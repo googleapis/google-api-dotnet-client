@@ -6013,7 +6013,11 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Lists a file's revisions. For more information, see [Manage file
-        /// revisions](https://developers.google.com/workspace/drive/api/guides/manage-revisions).
+        /// revisions](https://developers.google.com/workspace/drive/api/guides/manage-revisions). **Important:** The
+        /// list of revisions returned by this method might be incomplete for files with a large revision history,
+        /// including frequently edited Google Docs, Sheets, and Slides. Older revisions might be omitted from the
+        /// response, meaning the first revision returned may not be the oldest existing revision. The revision history
+        /// visible in the Workspace editor user interface might be more complete than the list returned by the API.
         /// </summary>
         /// <param name="fileId">The ID of the file.</param>
         public virtual ListRequest List(string fileId)
@@ -6023,7 +6027,11 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Lists a file's revisions. For more information, see [Manage file
-        /// revisions](https://developers.google.com/workspace/drive/api/guides/manage-revisions).
+        /// revisions](https://developers.google.com/workspace/drive/api/guides/manage-revisions). **Important:** The
+        /// list of revisions returned by this method might be incomplete for files with a large revision history,
+        /// including frequently edited Google Docs, Sheets, and Slides. Older revisions might be omitted from the
+        /// response, meaning the first revision returned may not be the oldest existing revision. The revision history
+        /// visible in the Workspace editor user interface might be more complete than the list returned by the API.
         /// </summary>
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.RevisionList>
         {
@@ -7071,7 +7079,8 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string Anchor { get; set; }
 
         /// <summary>
-        /// Output only. The email of the user who is assigned to this comment, if none is assigned this will be unset.
+        /// Output only. The email address of the user assigned to this comment. If no user is assigned, the field is
+        /// unset.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assigneeEmailAddress")]
         public virtual string AssigneeEmailAddress { get; set; }
@@ -7129,8 +7138,8 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string Kind { get; set; }
 
         /// <summary>
-        /// Output only. The emails of the users who were mentioned in this comment, if none were mentioned this will be
-        /// an empty list.
+        /// Output only. A list of email addresses for users mentioned in this comment. If no users are mentioned, the
+        /// list is empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mentionedEmailAddresses")]
         public virtual System.Collections.Generic.IList<string> MentionedEmailAddresses { get; set; }
@@ -9179,7 +9188,8 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string Action { get; set; }
 
         /// <summary>
-        /// Output only. The email of the user who is assigned to this reply, if none is assigned this will be unset.
+        /// Output only. The email address of the user assigned to this comment. If no user is assigned, the field is
+        /// unset.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assigneeEmailAddress")]
         public virtual string AssigneeEmailAddress { get; set; }
@@ -9237,8 +9247,8 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string Kind { get; set; }
 
         /// <summary>
-        /// Output only. The emails of the users who were mentioned in this reply, if none were mentioned this will be
-        /// an empty list.
+        /// Output only. A list of email addresses for users mentioned in this comment. If no users are mentioned, the
+        /// list is empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mentionedEmailAddresses")]
         public virtual System.Collections.Generic.IList<string> MentionedEmailAddresses { get; set; }
