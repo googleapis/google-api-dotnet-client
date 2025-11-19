@@ -4318,6 +4318,10 @@ namespace Google.Apis.GKEOnPrem.v1
                     [Google.Apis.Util.RequestParameterAttribute("allowPreflightFailure", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> AllowPreflightFailure { get; set; }
 
+                    /// <summary>Optional. If set, skip the specified validations.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("skipValidations", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> SkipValidations { get; set; }
+
                     /// <summary>Validate the request without actually doing any updates.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -4360,6 +4364,14 @@ namespace Google.Apis.GKEOnPrem.v1
                         RequestParameters.Add("allowPreflightFailure", new Google.Apis.Discovery.Parameter
                         {
                             Name = "allowPreflightFailure",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("skipValidations", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "skipValidations",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4798,6 +4810,10 @@ namespace Google.Apis.GKEOnPrem.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>Optional. If set, the server-side preflight checks will be skipped.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("skipValidations", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> SkipValidations { get; set; }
+
                     /// <summary>
                     /// Required. Field mask is used to specify the fields to be overwritten in the VMwareAdminCluster
                     /// resource by the update. The fields specified in the update_mask are relative to the resource,
@@ -4838,6 +4854,14 @@ namespace Google.Apis.GKEOnPrem.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/vmwareAdminClusters/[^/]+$",
+                        });
+                        RequestParameters.Add("skipValidations", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "skipValidations",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
@@ -6418,6 +6442,10 @@ namespace Google.Apis.GKEOnPrem.v1
                     [Google.Apis.Util.RequestParameterAttribute("allowPreflightFailure", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> AllowPreflightFailure { get; set; }
 
+                    /// <summary>Optional. List of validations to skip during cluster creation.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("skipValidations", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> SkipValidations { get; set; }
+
                     /// <summary>Validate the request without actually doing any updates.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -6459,6 +6487,14 @@ namespace Google.Apis.GKEOnPrem.v1
                         RequestParameters.Add("allowPreflightFailure", new Google.Apis.Discovery.Parameter
                         {
                             Name = "allowPreflightFailure",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("skipValidations", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "skipValidations",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -7034,6 +7070,9 @@ namespace Google.Apis.GKEOnPrem.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    [Google.Apis.Util.RequestParameterAttribute("skipValidations", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> SkipValidations { get; set; }
+
                     /// <summary>
                     /// Required. Field mask is used to specify the fields to be overwritten in the VMwareCluster
                     /// resource by the update. The fields specified in the update_mask are relative to the resource,
@@ -7074,6 +7113,14 @@ namespace Google.Apis.GKEOnPrem.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/vmwareClusters/[^/]+$",
+                        });
+                        RequestParameters.Add("skipValidations", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "skipValidations",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
@@ -7639,6 +7686,72 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// BareMetalAdminBgpLbConfig represents configuration parameters for a Border Gateway Protocol (BGP) load balancer.
+    /// </summary>
+    public class BareMetalAdminBgpLbConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. AddressPools is a list of non-overlapping IP pools used by load balancer typed services. All
+        /// addresses must be routable to load balancer nodes. IngressVIP must be included in the pools.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addressPools")]
+        public virtual System.Collections.Generic.IList<BareMetalAdminLoadBalancerAddressPool> AddressPools { get; set; }
+
+        /// <summary>
+        /// Required. BGP autonomous system number (ASN) of the cluster. This field can be updated after cluster
+        /// creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asn")]
+        public virtual System.Nullable<long> Asn { get; set; }
+
+        /// <summary>
+        /// Required. The list of BGP peers that the cluster will connect to. At least one peer must be configured for
+        /// each control plane node. Control plane nodes will connect to these peers to advertise the control plane VIP.
+        /// The Services load balancer also uses these peers by default. This field can be updated after cluster
+        /// creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bgpPeerConfigs")]
+        public virtual System.Collections.Generic.IList<BareMetalAdminBgpPeerConfig> BgpPeerConfigs { get; set; }
+
+        /// <summary>
+        /// Specifies the node pool running data plane load balancing. L2 connectivity is required among nodes in this
+        /// pool. If missing, the control plane node pool is used for data plane load balancing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancerNodePoolConfig")]
+        public virtual BareMetalAdminLoadBalancerNodePoolConfig LoadBalancerNodePoolConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// BareMetalAdminBgpPeerConfig represents configuration parameters for a Border Gateway Protocol (BGP) peer.
+    /// </summary>
+    public class BareMetalAdminBgpPeerConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. BGP autonomous system number (ASN) for the network that contains the external peer device.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asn")]
+        public virtual System.Nullable<long> Asn { get; set; }
+
+        /// <summary>
+        /// The IP address of the control plane node that connects to the external peer. If you don't specify any
+        /// control plane nodes, all control plane nodes can connect to the external peer. If you specify one or more IP
+        /// addresses, only the nodes specified participate in peering sessions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneNodes")]
+        public virtual System.Collections.Generic.IList<string> ControlPlaneNodes { get; set; }
+
+        /// <summary>Required. The IP address of the external peer device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Resource that represents a bare metal admin cluster.</summary>
     public class BareMetalAdminCluster : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7982,9 +8095,42 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents an IP pool used by the load balancer.</summary>
+    public class BareMetalAdminLoadBalancerAddressPool : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The addresses that are part of this pool. Each address must be either in the CIDR form
+        /// (1.2.3.0/24) or range form (1.2.3.1-1.2.3.5).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addresses")]
+        public virtual System.Collections.Generic.IList<string> Addresses { get; set; }
+
+        /// <summary>
+        /// If true, avoid using IPs ending in .0 or .255. This avoids buggy consumer devices mistakenly dropping IPv4
+        /// traffic for those special IP addresses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("avoidBuggyIps")]
+        public virtual System.Nullable<bool> AvoidBuggyIps { get; set; }
+
+        /// <summary>If true, prevent IP addresses from being automatically assigned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manualAssign")]
+        public virtual System.Nullable<bool> ManualAssign { get; set; }
+
+        /// <summary>Required. The name of the address pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pool")]
+        public virtual string Pool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>BareMetalAdminLoadBalancerConfig specifies the load balancer configuration.</summary>
     public class BareMetalAdminLoadBalancerConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Configuration for BGP typed load balancers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bgpLbConfig")]
+        public virtual BareMetalAdminBgpLbConfig BgpLbConfig { get; set; }
+
         /// <summary>Manually configured load balancers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manualLbConfig")]
         public virtual BareMetalAdminManualLbConfig ManualLbConfig { get; set; }
@@ -7996,6 +8142,17 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// <summary>The VIPs used by the load balancer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vipConfig")]
         public virtual BareMetalAdminVipConfig VipConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies the load balancer's node pool configuration.</summary>
+    public class BareMetalAdminLoadBalancerNodePoolConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The generic configuration for a node pool running a load balancer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodePoolConfig")]
+        public virtual BareMetalNodePoolConfig NodePoolConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8064,12 +8221,37 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specifies the multiple networking interfaces cluster configuration.</summary>
+    public class BareMetalAdminMultipleNetworkInterfacesConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether to enable multiple network interfaces for your pods. When set network_config.advanced_networking is
+        /// automatically set to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>BareMetalAdminNetworkConfig specifies the cluster network configuration.</summary>
     public class BareMetalAdminNetworkConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Enables the use of advanced Anthos networking features, such as Bundled Load Balancing with BGP or the
+        /// egress NAT gateway. Setting configuration for advanced networking features will automatically set this flag.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedNetworking")]
+        public virtual System.Nullable<bool> AdvancedNetworking { get; set; }
+
         /// <summary>Configuration for Island mode CIDR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("islandModeCidr")]
         public virtual BareMetalAdminIslandModeCidrConfig IslandModeCidr { get; set; }
+
+        /// <summary>Configuration for multiple network interfaces.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multipleNetworkInterfacesConfig")]
+        public virtual BareMetalAdminMultipleNetworkInterfacesConfig MultipleNetworkInterfacesConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
