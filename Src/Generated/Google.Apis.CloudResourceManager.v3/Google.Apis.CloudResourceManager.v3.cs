@@ -1792,7 +1792,9 @@ namespace Google.Apis.CloudResourceManager.v3
                 }
             }
 
-            /// <summary>Updates tag bindings directly attached to a GCP resource.</summary>
+            /// <summary>
+            /// Updates tag bindings directly attached to a GCP resource. Update_mask can be kept empty or "*".
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Identifier. The name of the TagBindingCollection, following the convention:
@@ -1800,16 +1802,18 @@ namespace Google.Apis.CloudResourceManager.v3
             /// encoded-full-resource-name is the UTF-8 encoded name of the GCP resource the TagBindings are bound to.
             /// "locations/global/tagBindingCollections/%2f%2fcloudresourcemanager.googleapis.com%2fprojects%2f123"
             /// </param>
-            public virtual UpdateRequest Update(Google.Apis.CloudResourceManager.v3.Data.TagBindingCollection body, string name)
+            public virtual PatchRequest Patch(Google.Apis.CloudResourceManager.v3.Data.TagBindingCollection body, string name)
             {
-                return new UpdateRequest(this.service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
-            /// <summary>Updates tag bindings directly attached to a GCP resource.</summary>
-            public class UpdateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+            /// <summary>
+            /// Updates tag bindings directly attached to a GCP resource. Update_mask can be kept empty or "*".
+            /// </summary>
+            public class PatchRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
             {
-                /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.TagBindingCollection body, string name) : base(service)
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.TagBindingCollection body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -1826,6 +1830,10 @@ namespace Google.Apis.CloudResourceManager.v3
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>Optional. An update mask to selectively update fields.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudResourceManager.v3.Data.TagBindingCollection Body { get; set; }
 
@@ -1833,15 +1841,15 @@ namespace Google.Apis.CloudResourceManager.v3
                 protected override object GetBody() => Body;
 
                 /// <summary>Gets the method name.</summary>
-                public override string MethodName => "update";
+                public override string MethodName => "patch";
 
                 /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "PUT";
+                public override string HttpMethod => "PATCH";
 
                 /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v3/{+name}";
 
-                /// <summary>Initializes Update parameter list.</summary>
+                /// <summary>Initializes Patch parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
@@ -1852,6 +1860,14 @@ namespace Google.Apis.CloudResourceManager.v3
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^locations/[^/]+/tagBindingCollections/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -5780,7 +5796,7 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     {
         /// <summary>
         /// A pagination token returned from a previous call to `ListTagValues` that indicates from where listing should
-        /// continue. This is currently not used, but the server may at any point start supplying a valid token.
+        /// continue.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -6621,6 +6637,13 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     /// <summary>A TagKey, used to group a set of TagValues.</summary>
     public class TagKey : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Regular expression constraint for freeform tag values. If present, it implicitly allows freeform
+        /// values (constrained by the regex).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedValuesRegex")]
+        public virtual string AllowedValuesRegex { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
