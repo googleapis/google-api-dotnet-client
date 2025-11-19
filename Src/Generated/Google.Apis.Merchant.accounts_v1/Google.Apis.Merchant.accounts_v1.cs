@@ -281,6 +281,7 @@ namespace Google.Apis.Merchant.accounts_v1
             GbpAccounts = new GbpAccountsResource(service);
             Homepage = new HomepageResource(service);
             Issues = new IssuesResource(service);
+            Limits = new LimitsResource(service);
             OmnichannelSettings = new OmnichannelSettingsResource(service);
             OnlineReturnPolicies = new OnlineReturnPoliciesResource(service);
             Programs = new ProgramsResource(service);
@@ -1822,6 +1823,166 @@ namespace Google.Apis.Merchant.accounts_v1
                     RequestParameters.Add("timeZone", new Google.Apis.Discovery.Parameter
                     {
                         Name = "timeZone",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Limits resource.</summary>
+        public virtual LimitsResource Limits { get; }
+
+        /// <summary>The "limits" collection of methods.</summary>
+        public class LimitsResource
+        {
+            private const string Resource = "limits";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LimitsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Retrieves an account limit.</summary>
+            /// <param name="name">
+            /// Required. The name of the limit to retrieve. Format: `accounts/{account}/limits/{limit}` For example:
+            /// `accounts/123/limits/products~ADS_NON_EEA`
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Retrieves an account limit.</summary>
+            public class GetRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1.Data.AccountLimit>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the limit to retrieve. Format: `accounts/{account}/limits/{limit}` For
+                /// example: `accounts/123/limits/products~ADS_NON_EEA`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/limits/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists the limits of an account.</summary>
+            /// <param name="parent">Required. The parent account. Format: `accounts/{account}`</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>Lists the limits of an account.</summary>
+            public class ListRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1.Data.ListAccountLimitsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The parent account. Format: `accounts/{account}`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Required. A filter on the limit `type` is required, for example, `type = "products"`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Optional. The maximum number of limits to return. The service may return fewer than this value. If
+                /// unspecified, at most 100 limits will be returned. The maximum value is 100; values above 100 will be
+                /// coerced to 100.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `ListAccountLimits` call. Provide this to retrieve
+                /// the subsequent page. When paginating, all other parameters provided to `ListAccountLimits` must
+                /// match the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1/{+parent}/limits";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4484,6 +4645,82 @@ namespace Google.Apis.Merchant.accounts_v1
             public UsersResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                Me = new MeResource(service);
+            }
+
+            /// <summary>Gets the Me resource.</summary>
+            public virtual MeResource Me { get; }
+
+            /// <summary>The "me" collection of methods.</summary>
+            public class MeResource
+            {
+                private const string Resource = "me";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public MeResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Updates the user that is represented by the caller from pending to verified.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="account">
+                /// Required. The name of the account under which the caller is a user. Format: `accounts/{account}`
+                /// </param>
+                public virtual VerifySelfRequest VerifySelf(Google.Apis.Merchant.accounts_v1.Data.VerifySelfRequest body, string account)
+                {
+                    return new VerifySelfRequest(this.service, body, account);
+                }
+
+                /// <summary>Updates the user that is represented by the caller from pending to verified.</summary>
+                public class VerifySelfRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1.Data.User>
+                {
+                    /// <summary>Constructs a new VerifySelf request.</summary>
+                    public VerifySelfRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1.Data.VerifySelfRequest body, string account) : base(service)
+                    {
+                        Account = account;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the account under which the caller is a user. Format: `accounts/{account}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("account", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Account { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Merchant.accounts_v1.Data.VerifySelfRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "verifySelf";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "accounts/v1/{+account}/users/me:verifySelf";
+
+                    /// <summary>Initializes VerifySelf parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("account", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "account",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Creates a Merchant Center account user. Executing this method requires admin access.</summary>
@@ -5619,6 +5856,24 @@ namespace Google.Apis.Merchant.accounts_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A limit of a certain type that is applied to an account.</summary>
+    public class AccountLimit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Identifier. The limit part of the name will be a combination of the type and the scope. For example:
+        /// `accounts/123/limits/products~ADS_NON_EEA` Format: `accounts/{account}/limits/{limit}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The limit for products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("products")]
+        public virtual ProductLimit Products { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>`AccountManagement` payload.</summary>
     public class AccountManagement : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5705,6 +5960,13 @@ namespace Google.Apis.Merchant.accounts_v1.Data
         public virtual CampaignsManagement CampaignsManagement { get; set; }
 
         /// <summary>
+        /// Service type for comparison shopping. The provider is a CSS (Comparison Shopping Service) managing the
+        /// account. See https://support.google.com/merchants/answer/12653197
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comparisonShopping")]
+        public virtual ComparisonShopping ComparisonShopping { get; set; }
+
+        /// <summary>
         /// Immutable. An optional, immutable identifier that Google uses to refer to this account when communicating
         /// with the provider. This should be the unique account ID within the provider's system (for example, your shop
         /// ID in Shopify). If you have multiple accounts with the same provider - for instance, different accounts for
@@ -5775,6 +6037,41 @@ namespace Google.Apis.Merchant.accounts_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountAggregation")]
         public virtual AccountAggregation AccountAggregation { get; set; }
 
+        /// <summary>The provider manages this account. Payload for service type Account Management.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountManagement")]
+        public virtual AccountManagement AccountManagement { get; set; }
+
+        /// <summary>
+        /// The provider manages campaigns for this account. Payload for service type campaigns management.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignsManagement")]
+        public virtual CampaignsManagement CampaignsManagement { get; set; }
+
+        /// <summary>
+        /// The provider is a CSS (Comparison Shopping Service) of this account. Payload for service type Comparison
+        /// Shopping.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comparisonShopping")]
+        public virtual ComparisonShopping ComparisonShopping { get; set; }
+
+        /// <summary>
+        /// Immutable. An optional, immutable identifier that Google uses to refer to this account when communicating
+        /// with the provider. This should be the unique account ID within the provider's system (for example, your shop
+        /// ID in Shopify). If you have multiple accounts with the same provider - for instance, different accounts for
+        /// various regions — the `external_account_id` differentiates between them, ensuring accurate linking and
+        /// integration between Google and the provider. The external account ID must be specified for the campaigns
+        /// management service type. The external account ID must not be specified for the account aggregation service
+        /// type. The external account ID is optional / may be specified for all other service types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalAccountId")]
+        public virtual string ExternalAccountId { get; set; }
+
+        /// <summary>
+        /// The provider manages products for this account. Payload for service type products management.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productsManagement")]
+        public virtual ProductsManagement ProductsManagement { get; set; }
+
         /// <summary>
         /// Required. The provider of the service. Either the reference to an account such as `providers/123` or a
         /// well-known service provider (one of `providers/GOOGLE_ADS` or `providers/GOOGLE_BUSINESS_PROFILE`).
@@ -5798,6 +6095,12 @@ namespace Google.Apis.Merchant.accounts_v1.Data
         /// <summary>Required. The email address of the user (for example, `john.doe@gmail.com`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; }
+
+        /// <summary>
+        /// Optional. Settings related to configuring the verification email that is sent after adding a user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verificationMailSettings")]
+        public virtual VerificationMailSettings VerificationMailSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6332,6 +6635,13 @@ namespace Google.Apis.Merchant.accounts_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>`ComparisonShopping` payload.</summary>
+    public class ComparisonShopping : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for the `CreateAndConfigureAccount` method.</summary>
     public class CreateAndConfigureAccountRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6348,6 +6658,13 @@ namespace Google.Apis.Merchant.accounts_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual System.Collections.Generic.IList<AddAccountService> Service { get; set; }
+
+        /// <summary>
+        /// Optional. If a relationship is created with a provider, you can set an alias for it with this field. The
+        /// calling user must be an admin on the provider to be able to set an alias.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setAlias")]
+        public virtual System.Collections.Generic.IList<SetAliasForRelationship> SetAlias { get; set; }
 
         /// <summary>Optional. Users to be added to the account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
@@ -7040,6 +7357,24 @@ namespace Google.Apis.Merchant.accounts_v1.Data
         /// <summary>The issues from the specified account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountIssues")]
         public virtual System.Collections.Generic.IList<AccountIssue> AccountIssues { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the `ListAccountLimits` method.</summary>
+    public class ListAccountLimitsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The limits for the given account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountLimits")]
+        public virtual System.Collections.Generic.IList<AccountLimit> AccountLimits { get; set; }
 
         /// <summary>
         /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
@@ -7781,6 +8116,23 @@ namespace Google.Apis.Merchant.accounts_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The limit for products.</summary>
+    public class ProductLimit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The maximum number of products that are allowed in the account in the given scope.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("limit")]
+        public virtual System.Nullable<long> Limit { get; set; }
+
+        /// <summary>Required. The scope of the product limit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The message that the merchant will receive to notify about product status change event</summary>
     public class ProductStatusChangeMessage : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8292,6 +8644,27 @@ namespace Google.Apis.Merchant.accounts_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Set an alias for a relationship between a provider and the account to be created.</summary>
+    public class SetAliasForRelationship : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The unique ID of this account in the provider's system. The value must be unique across all
+        /// accounts on the platform for this provider.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountIdAlias")]
+        public virtual string AccountIdAlias { get; set; }
+
+        /// <summary>
+        /// Required. The provider of the service. This is a reference to an account such as `providers/123` or
+        /// `accounts/123`. The same provider must be specified in at least one of the `service` fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provider")]
+        public virtual string Provider { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The Merchant Center account's [shipping settings](https://support.google.com/merchants/answer/6069284). The
     /// `ShippingSettings` resource lets you retrieve and update the shipping settings of your advanced account and all
@@ -8723,6 +9096,26 @@ namespace Google.Apis.Merchant.accounts_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subtable")]
         public virtual string Subtable { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings related to the verification email that is sent after adding a user.</summary>
+    public class VerificationMailSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Mode of the verification mail. If not set, the default is `SEND_VERIFICATION_MAIL`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verificationMailMode")]
+        public virtual string VerificationMailMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the `VerifySelf` method.</summary>
+    public class VerifySelfRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
