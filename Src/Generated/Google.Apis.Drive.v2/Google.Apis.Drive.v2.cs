@@ -7969,14 +7969,26 @@ namespace Google.Apis.Drive.v2
             }
         }
 
-        /// <summary>Lists a file's revisions.</summary>
+        /// <summary>
+        /// Lists a file's revisions. **Important:** The list of revisions returned by this method might be incomplete
+        /// for files with a large revision history, including frequently edited Google Docs, Sheets, and Slides. Older
+        /// revisions might be omitted from the response, meaning the first revision returned may not be the oldest
+        /// existing revision. The revision history visible in the Workspace editor user interface might be more
+        /// complete than the list returned by the API.
+        /// </summary>
         /// <param name="fileId">The ID of the file.</param>
         public virtual ListRequest List(string fileId)
         {
             return new ListRequest(this.service, fileId);
         }
 
-        /// <summary>Lists a file's revisions.</summary>
+        /// <summary>
+        /// Lists a file's revisions. **Important:** The list of revisions returned by this method might be incomplete
+        /// for files with a large revision history, including frequently edited Google Docs, Sheets, and Slides. Older
+        /// revisions might be omitted from the response, meaning the first revision returned may not be the oldest
+        /// existing revision. The revision history visible in the Workspace editor user interface might be more
+        /// complete than the list returned by the API.
+        /// </summary>
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.RevisionList>
         {
             /// <summary>Constructs a new List request.</summary>
