@@ -808,6 +808,26 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A URL for deep linking into an app for the given operating system.</summary>
+    public class GoogleAdsSearchads360V0CommonFinalAppUrl : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The operating system targeted by this URL. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osType")]
+        public virtual string OsType { get; set; }
+
+        /// <summary>
+        /// The app deep link URL. Deep links specify a location in an app that corresponds to the content you'd like to
+        /// show, and should be of the form {scheme}://{host_path} The scheme identifies which app to open. For your
+        /// app, you can use a custom scheme that starts with the app's name. The host and path specify the unique
+        /// location in the app where your content exists. Example: "exampleapp://productid_1234". Required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A rule specifying the maximum number of times an ad (or some set of ads) can be shown to a user over a
     /// particular time period.
@@ -1167,6 +1187,16 @@ namespace Google.Apis.SA360.v0.Data
         public virtual System.Nullable<double> AllConversionsValuePerCost { get; set; }
 
         /// <summary>
+        /// Average cart size is the average number of products in each order attributed to your ads. How it works: You
+        /// report conversions with cart data for completed purchases on your website. Average cart size is the total
+        /// number of products sold divided by the total number of orders you received. Example: You received 2 orders,
+        /// the first included 3 products and the second included 2. The average cart size is 2.5 products = (3+2)/2.
+        /// This metric is only available if you report conversions with cart data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageCartSize")]
+        public virtual System.Nullable<double> AverageCartSize { get; set; }
+
+        /// <summary>
         /// The average amount you pay per interaction. This amount is the total cost of your ads divided by the total
         /// number of interactions.
         /// </summary>
@@ -1188,6 +1218,24 @@ namespace Google.Apis.SA360.v0.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageCpm")]
         public virtual System.Nullable<double> AverageCpm { get; set; }
+
+        /// <summary>
+        /// The average number of times a unique user saw your ad during the requested time period. This metric cannot
+        /// be aggregated, and can only be requested for date ranges of 92 days or less. This metric is available for
+        /// following campaign types - Display, Video, Discovery and App.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageImpressionFrequencyPerUser")]
+        public virtual System.Nullable<double> AverageImpressionFrequencyPerUser { get; set; }
+
+        /// <summary>
+        /// Average order value is the average revenue you made per order attributed to your ads. How it works: You
+        /// report conversions with cart data for completed purchases on your website. Average order value is the total
+        /// revenue from your orders divided by the total number of orders. Example: You received 3 orders which made
+        /// $10, $15 and $20 worth of revenue. The average order value is $15 = ($10 + $15 + $20)/3. This metric is only
+        /// available if you report conversions with cart data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageOrderValueMicros")]
+        public virtual System.Nullable<long> AverageOrderValueMicros { get; set; }
 
         /// <summary>The average quality score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageQualityScore")]
@@ -1428,6 +1476,18 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("costMicros")]
         public virtual System.Nullable<long> CostMicros { get; set; }
 
+        /// <summary>
+        /// Cost of goods sold (COGS) is the total cost of the products you sold in orders attributed to your ads. How
+        /// it works: You can add a cost of goods sold value to every product in Merchant Center. If you report
+        /// conversions with cart data, the products you sold are matched with their cost of goods sold value and this
+        /// can be used to calculate the gross profit you made on each order. Example: Someone clicked on a Shopping ad
+        /// for a hat then bought the same hat and a shirt. The hat has a cost of goods sold value of $3, the shirt has
+        /// a cost of goods sold value of $5. The cost of goods sold for this order is $8 = $3 + $5. This metric is only
+        /// available if you report conversions with cart data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("costOfGoodsSoldMicros")]
+        public virtual System.Nullable<long> CostOfGoodsSoldMicros { get; set; }
+
         /// <summary>The cost of ad interactions divided by all conversions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("costPerAllConversions")]
         public virtual System.Nullable<double> CostPerAllConversions { get; set; }
@@ -1555,6 +1615,33 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("generalInvalidClicks")]
         public virtual System.Nullable<long> GeneralInvalidClicks { get; set; }
 
+        /// <summary>
+        /// Gross profit margin is the percentage gross profit you made from orders attributed to your ads, after taking
+        /// out the cost of goods sold (COGS). How it works: You report conversions with cart data for completed
+        /// purchases on your website. Gross profit margin is the gross profit you made divided by your total revenue
+        /// and multiplied by 100%. Gross profit margin calculations only include products that have a cost of goods
+        /// sold value in Merchant Center. Example: Someone bought a hat and a shirt in an order on your website. The
+        /// hat is priced $10 and has a cost of goods sold value of $3. The shirt is priced $20 but has no cost of goods
+        /// sold value. Gross profit margin for this order will only take into account the hat because it has a cost of
+        /// goods sold value, so it's 70% = ($10 - $3)/$10 x 100%. This metric is only available if you report
+        /// conversions with cart data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grossProfitMargin")]
+        public virtual System.Nullable<double> GrossProfitMargin { get; set; }
+
+        /// <summary>
+        /// Gross profit is the profit you made from orders attributed to your ads minus the cost of goods sold (COGS).
+        /// How it works: Gross profit is the revenue you made from sales attributed to your ads minus cost of goods
+        /// sold. Gross profit calculations only include products that have a cost of goods sold value in Merchant
+        /// Center. Example: Someone clicked on a Shopping ad for a hat then bought the same hat and a shirt in an order
+        /// from your website. The hat is priced $10 and the shirt is priced $20. The hat has a cost of goods sold value
+        /// of $3, but the shirt has no cost of goods sold value. Gross profit for this order will only take into
+        /// account the hat, so it's $7 = $10 - $3. This metric is only available if you report conversions with cart
+        /// data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grossProfitMicros")]
+        public virtual System.Nullable<long> GrossProfitMicros { get; set; }
+
         /// <summary>The creative historical quality score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("historicalCreativeQualityScore")]
         public virtual string HistoricalCreativeQualityScore { get; set; }
@@ -1669,9 +1756,31 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mobileFriendlyClicksPercentage")]
         public virtual System.Nullable<double> MobileFriendlyClicksPercentage { get; set; }
 
+        /// <summary>
+        /// Orders is the total number of purchase conversions you received attributed to your ads. How it works: You
+        /// report conversions with cart data for completed purchases on your website. If a conversion is attributed to
+        /// previous interactions with your ads (clicks for text or Shopping ads, views for video ads etc.) it's counted
+        /// as an order. Example: Someone clicked on a Shopping ad for a hat then bought the same hat and a shirt in an
+        /// order on your website. Even though they bought 2 products, this would count as 1 order. This metric is only
+        /// available if you report conversions with cart data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orders")]
+        public virtual System.Nullable<double> Orders { get; set; }
+
         /// <summary>The raw event conversion metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rawEventConversionMetrics")]
         public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0CommonValue> RawEventConversionMetrics { get; set; }
+
+        /// <summary>
+        /// Revenue is the total amount you made from orders attributed to your ads. How it works: You report
+        /// conversions with cart data for completed purchases on your website. Revenue is the total value of all the
+        /// orders you received attributed to your ads, minus any discount. Example: Someone clicked on a Shopping ad
+        /// for a hat then bought the same hat and a shirt in an order from your website. The hat is priced $10 and the
+        /// shirt is priced $20. The entire order has a $5 discount. The revenue from this order is $25 = ($10 + $20) -
+        /// $5. This metric is only available if you report conversions with cart data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revenueMicros")]
+        public virtual System.Nullable<long> RevenueMicros { get; set; }
 
         /// <summary>
         /// The percentage of the customer's Shopping or Search ad impressions that are shown in the most prominent
@@ -1768,6 +1877,24 @@ namespace Google.Apis.SA360.v0.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topImpressionPercentage")]
         public virtual System.Nullable<double> TopImpressionPercentage { get; set; }
+
+        /// <summary>
+        /// The number of unique users who saw your ad during the requested time period. This metric cannot be
+        /// aggregated, and can only be requested for date ranges of 92 days or less. This metric is available for
+        /// following campaign types - Display, Video, Discovery and App.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uniqueUsers")]
+        public virtual System.Nullable<long> UniqueUsers { get; set; }
+
+        /// <summary>
+        /// Units sold is the total number of products sold from orders attributed to your ads. How it works: You report
+        /// conversions with cart data for completed purchases on your website. Units sold is the total number of
+        /// products sold from all orders attributed to your ads. Example: Someone clicked on a Shopping ad for a hat
+        /// then bought the same hat, a shirt and a jacket. The units sold in this order is 3. This metric is only
+        /// available if you report conversions with cart data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unitsSold")]
+        public virtual System.Nullable<double> UnitsSold { get; set; }
 
         /// <summary>The value of all conversions divided by the number of all conversions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valuePerAllConversions")]
@@ -3160,6 +3287,20 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expandedTextAd")]
         public virtual GoogleAdsSearchads360V0CommonSearchAds360ExpandedTextAdInfo ExpandedTextAd { get; set; }
 
+        /// <summary>
+        /// A list of final app URLs that will be used on mobile if the user has the specific app installed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalAppUrls")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0CommonFinalAppUrl> FinalAppUrls { get; set; }
+
+        /// <summary>The list of possible final mobile URLs after all cross-domain redirects for the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalMobileUrls")]
+        public virtual System.Collections.Generic.IList<string> FinalMobileUrls { get; set; }
+
+        /// <summary>The suffix to use when constructing a final URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalUrlSuffix")]
+        public virtual string FinalUrlSuffix { get; set; }
+
         /// <summary>The list of possible final URLs after all cross-domain redirects for the ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalUrls")]
         public virtual System.Collections.Generic.IList<string> FinalUrls { get; set; }
@@ -3193,6 +3334,10 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>Immutable. Details pertaining to a text ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textAd")]
         public virtual GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo TextAd { get; set; }
+
+        /// <summary>The URL template for constructing a tracking URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackingUrlTemplate")]
+        public virtual string TrackingUrlTemplate { get; set; }
 
         /// <summary>Output only. The type of ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -3246,6 +3391,10 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>Output only. The Engine Status for ad group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("engineStatus")]
         public virtual string EngineStatus { get; set; }
+
+        /// <summary>URL template for appending params to Final URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalUrlSuffix")]
+        public virtual string FinalUrlSuffix { get; set; }
 
         /// <summary>Output only. The ID of the ad group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -3301,6 +3450,10 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>Setting for targeting related features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingSetting")]
         public virtual GoogleAdsSearchads360V0CommonTargetingSetting TargetingSetting { get; set; }
+
+        /// <summary>The URL template for constructing a tracking URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackingUrlTemplate")]
+        public virtual string TrackingUrlTemplate { get; set; }
 
         /// <summary>Immutable. The type of the ad group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -3391,7 +3544,7 @@ namespace Google.Apis.SA360.v0.Data
 
         /// <summary>
         /// Immutable. The resource name of the ad group ad effective label. Ad group ad effective label resource names
-        /// have the form: `customers/{customer_id}/adGroupAdEffectiveLabels/{ad_group_id}~{ad_id}~{label_id}`
+        /// have the form: `customers/{owner_customer_id}/adGroupAdEffectiveLabels/{ad_group_id}~{ad_id}~{label_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
@@ -3417,7 +3570,7 @@ namespace Google.Apis.SA360.v0.Data
 
         /// <summary>
         /// Immutable. The resource name of the ad group ad label. Ad group ad label resource names have the form:
-        /// `customers/{customer_id}/adGroupAdLabels/{ad_group_id}~{ad_id}~{label_id}`
+        /// `customers/{owner_customer_id}/adGroupAdLabels/{ad_group_id}~{ad_id}~{label_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
@@ -3582,6 +3735,10 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("engineStatus")]
         public virtual string EngineStatus { get; set; }
 
+        /// <summary>The list of possible final mobile URLs after all cross-domain redirects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalMobileUrls")]
+        public virtual System.Collections.Generic.IList<string> FinalMobileUrls { get; set; }
+
         /// <summary>URL template for appending params to final URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalUrlSuffix")]
         public virtual string FinalUrlSuffix { get; set; }
@@ -3658,6 +3815,13 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
+        /// <summary>
+        /// The list of mappings used to substitute custom parameter tags in a `tracking_url_template`, `final_urls`, or
+        /// `mobile_final_urls`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urlCustomParameters")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0CommonCustomParameter> UrlCustomParameters { get; set; }
+
         /// <summary>Immutable. User List.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userList")]
         public virtual GoogleAdsSearchads360V0CommonUserListInfo UserList { get; set; }
@@ -3691,7 +3855,7 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>
         /// Immutable. The resource name of the ad group criterion effective label. Ad group criterion effective label
         /// resource names have the form:
-        /// `customers/{customer_id}/adGroupCriterionEffectiveLabels/{ad_group_id}~{criterion_id}~{label_id}`
+        /// `customers/{owner_customer_id}/adGroupCriterionEffectiveLabels/{ad_group_id}~{criterion_id}~{label_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
@@ -3717,7 +3881,7 @@ namespace Google.Apis.SA360.v0.Data
 
         /// <summary>
         /// Immutable. The resource name of the ad group criterion label. Ad group criterion label resource names have
-        /// the form: `customers/{customer_id}/adGroupCriterionLabels/{ad_group_id}~{criterion_id}~{label_id}`
+        /// the form: `customers/{owner_customer_id}/adGroupCriterionLabels/{ad_group_id}~{criterion_id}~{label_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
@@ -3774,7 +3938,7 @@ namespace Google.Apis.SA360.v0.Data
 
         /// <summary>
         /// Immutable. The resource name of the ad group effective label. Ad group effective label resource names have
-        /// the form: `customers/{customer_id}/adGroupEffectiveLabels/{ad_group_id}~{label_id}`
+        /// the form: `customers/{owner_customer_id}/adGroupEffectiveLabels/{ad_group_id}~{label_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
@@ -3800,7 +3964,7 @@ namespace Google.Apis.SA360.v0.Data
 
         /// <summary>
         /// Immutable. The resource name of the ad group label. Ad group label resource names have the form:
-        /// `customers/{customer_id}/adGroupLabels/{ad_group_id}~{label_id}`
+        /// `customers/{owner_customer_id}/adGroupLabels/{ad_group_id}~{label_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
@@ -3852,6 +4016,14 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>Output only. The Engine Status for an asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("engineStatus")]
         public virtual string EngineStatus { get; set; }
+
+        /// <summary>A list of possible final mobile URLs after all cross domain redirects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalMobileUrls")]
+        public virtual System.Collections.Generic.IList<string> FinalMobileUrls { get; set; }
+
+        /// <summary>URL template for appending params to landing page URLs served with parallel tracking.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalUrlSuffix")]
+        public virtual string FinalUrlSuffix { get; set; }
 
         /// <summary>A list of possible final URLs after all cross domain redirects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalUrls")]
@@ -3914,6 +4086,13 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>Output only. Type of the asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>
+        /// A list of mappings to be used for substituting URL custom parameter tags in the tracking_url_template,
+        /// final_urls, and/or final_mobile_urls.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urlCustomParameters")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0CommonCustomParameter> UrlCustomParameters { get; set; }
 
         /// <summary>Immutable. A YouTube video asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("youtubeVideoAsset")]
@@ -4438,6 +4617,10 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("excludedParentAssetFieldTypes")]
         public virtual System.Collections.Generic.IList<string> ExcludedParentAssetFieldTypes { get; set; }
 
+        /// <summary>Output only. Types of feeds that are attached directly to this campaign.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedTypes")]
+        public virtual System.Collections.Generic.IList<string> FeedTypes { get; set; }
+
         /// <summary>
         /// Suffix used to append query parameters to landing pages that are served with parallel tracking.
         /// </summary>
@@ -4854,7 +5037,7 @@ namespace Google.Apis.SA360.v0.Data
 
         /// <summary>
         /// Immutable. Name of the resource. CampaignEffectivelabel resource names have the form:
-        /// `customers/{customer_id}/campaignEffectiveLabels/{campaign_id}~{label_id}`
+        /// `customers/{owner_customer_id}/campaignEffectiveLabels/{campaign_id}~{label_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
@@ -4895,7 +5078,7 @@ namespace Google.Apis.SA360.v0.Data
 
         /// <summary>
         /// Immutable. Name of the resource. Campaign label resource names have the form:
-        /// `customers/{customer_id}/campaignLabels/{campaign_id}~{label_id}`
+        /// `customers/{owner_customer_id}/campaignLabels/{campaign_id}~{label_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
@@ -5943,7 +6126,7 @@ namespace Google.Apis.SA360.v0.Data
 
         /// <summary>
         /// Immutable. Name of the resource. Label resource names have the form:
-        /// `customers/{customer_id}/labels/{label_id}`
+        /// `customers/{owner_customer_id}/labels/{label_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
@@ -6301,7 +6484,12 @@ namespace Google.Apis.SA360.v0.Data
     /// Shopping performance view. Provides Shopping campaign statistics aggregated at several product dimension levels.
     /// Product dimension values from Merchant Center such as brand, category, custom attributes, product condition and
     /// product type will reflect the state of each dimension as of the date and time when the corresponding event was
-    /// recorded.
+    /// recorded. The number of impressions and clicks that shopping_performance_view returns stats for may be different
+    /// from campaign reports. shopping_performance_view shows impressions and clicks on products appearing in ads,
+    /// while campaign reports show impressions and clicks on the ads themselves. Depending on the format, an ad can
+    /// show from zero to several products, so the numbers may not match. In Google Ads UI, you can query impressions
+    /// and clicks of products appearing in ads by selecting a column from "Product attributes" in the report editor.
+    /// For example, selecting the "Brand" column is equivalent to selecting `segments.product_brand`.
     /// </summary>
     public class GoogleAdsSearchads360V0ResourcesShoppingPerformanceView : Google.Apis.Requests.IDirectResponseSchema
     {
