@@ -6707,8 +6707,8 @@ namespace Google.Apis.Firestore.v1.Data
     public class GoogleFirestoreAdminV1ExportDocumentsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Which collection IDs to export. Unspecified means all collections. Each collection ID in this list must be
-        /// unique.
+        /// IDs of the collection groups to export. Unspecified means all collection groups. Each collection group in
+        /// this list must be unique.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectionIds")]
         public virtual System.Collections.Generic.IList<string> CollectionIds { get; set; }
@@ -7065,8 +7065,8 @@ namespace Google.Apis.Firestore.v1.Data
     public class GoogleFirestoreAdminV1ImportDocumentsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Which collection IDs to import. Unspecified means all collections included in the import. Each collection ID
-        /// in this list must be unique.
+        /// IDs of the collection groups to import. Unspecified means all collection groups that were included in the
+        /// export. Each collection group in this list must be unique.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectionIds")]
         public virtual System.Collections.Generic.IList<string> CollectionIds { get; set; }
