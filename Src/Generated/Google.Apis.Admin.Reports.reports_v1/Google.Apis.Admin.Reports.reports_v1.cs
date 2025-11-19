@@ -64,20 +64,20 @@ namespace Google.Apis.Admin.Reports.reports_v1
         /// <summary>Available OAuth 2.0 scopes for use with the Admin SDK API.</summary>
         public class Scope
         {
-            /// <summary>View audit reports for your G Suite domain</summary>
+            /// <summary>View audit reports for your Google Workspace domain</summary>
             public static string AdminReportsAuditReadonly = "https://www.googleapis.com/auth/admin.reports.audit.readonly";
 
-            /// <summary>View usage reports for your G Suite domain</summary>
+            /// <summary>View usage reports for your Google Workspace domain</summary>
             public static string AdminReportsUsageReadonly = "https://www.googleapis.com/auth/admin.reports.usage.readonly";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Admin SDK API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View audit reports for your G Suite domain</summary>
+            /// <summary>View audit reports for your Google Workspace domain</summary>
             public const string AdminReportsAuditReadonly = "https://www.googleapis.com/auth/admin.reports.audit.readonly";
 
-            /// <summary>View usage reports for your G Suite domain</summary>
+            /// <summary>View usage reports for your Google Workspace domain</summary>
             public const string AdminReportsUsageReadonly = "https://www.googleapis.com/auth/admin.reports.usage.readonly";
         }
 
