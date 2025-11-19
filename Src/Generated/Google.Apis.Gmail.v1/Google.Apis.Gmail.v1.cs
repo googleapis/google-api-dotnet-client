@@ -7524,6 +7524,50 @@ namespace Google.Apis.Gmail.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Field values for a classification label.</summary>
+    public class ClassificationLabelFieldValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The field ID for the Classification Label Value. Maps to the ID field of the Google Drive
+        /// `Label.Field` object.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldId")]
+        public virtual string FieldId { get; set; }
+
+        /// <summary>
+        /// Selection choice ID for the selection option. Should only be set if the field type is `SELECTION` in the
+        /// Google Drive `Label.Field` object. Maps to the id field of the Google Drive `Label.Field.SelectionOptions`
+        /// resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selection")]
+        public virtual string Selection { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Classification Labels applied to the email message. Classification Labels are different from Gmail inbox labels.
+    /// Only used for Google Workspace accounts. [Learn more about classification
+    /// labels](https://support.google.com/a/answer/9292382).
+    /// </summary>
+    public class ClassificationLabelValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Field values for the given classification label ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IList<ClassificationLabelFieldValue> Fields { get; set; }
+
+        /// <summary>
+        /// Required. The canonical or raw alphanumeric classification label ID. Maps to the ID field of the Google
+        /// Drive Label resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelId")]
+        public virtual string LabelId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The client-side encryption (CSE) configuration for the email address of an authenticated user. Gmail uses CSE
     /// configurations to save drafts of client-side encrypted email messages, and to sign and send encrypted email
@@ -8294,6 +8338,14 @@ namespace Google.Apis.Gmail.v1.Data
     /// <summary>An email message.</summary>
     public class Message : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Classification Label values on the message. Available Classification Label schemas can be queried using the
+        /// Google Drive Labels API. Each classification label ID must be unique. If duplicate IDs are provided, only
+        /// one will be retained, and the selection is arbitrary. Only used for Google Workspace accounts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("classificationLabelValues")]
+        public virtual System.Collections.Generic.IList<ClassificationLabelValue> ClassificationLabelValues { get; set; }
+
         /// <summary>The ID of the last history record that modified this message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("historyId")]
         public virtual System.Nullable<ulong> HistoryId { get; set; }
