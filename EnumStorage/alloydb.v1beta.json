@@ -8,6 +8,16 @@
     "1",
     "2"
   ],
+  "Google.Apis.CloudAlloyDBAdmin.v1beta.ProjectsResource+LocationsResource+BackupsResource+GetRequest.ViewEnum": [
+    "BACKUP_VIEW_UNSPECIFIED",
+    "BACKUP_VIEW_BASIC",
+    "BACKUP_VIEW_CLUSTER_DELETED"
+  ],
+  "Google.Apis.CloudAlloyDBAdmin.v1beta.ProjectsResource+LocationsResource+BackupsResource+ListRequest.ViewEnum": [
+    "BACKUP_VIEW_UNSPECIFIED",
+    "BACKUP_VIEW_BASIC",
+    "BACKUP_VIEW_CLUSTER_DELETED"
+  ],
   "Google.Apis.CloudAlloyDBAdmin.v1beta.ProjectsResource+LocationsResource+ClustersResource+GetRequest.ViewEnum": [
     "CLUSTER_VIEW_UNSPECIFIED",
     "CLUSTER_VIEW_BASIC",
