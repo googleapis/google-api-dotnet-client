@@ -71,7 +71,7 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>See and download your contacts</summary>
             public static string ContactsReadonly = "https://www.googleapis.com/auth/contacts.readonly";
 
-            /// <summary>See and download your organization's GSuite directory</summary>
+            /// <summary>See and download your organization's Google Workspace directory</summary>
             public static string DirectoryReadonly = "https://www.googleapis.com/auth/directory.readonly";
 
             /// <summary>View your street addresses</summary>
@@ -111,7 +111,7 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>See and download your contacts</summary>
             public const string ContactsReadonly = "https://www.googleapis.com/auth/contacts.readonly";
 
-            /// <summary>See and download your organization's GSuite directory</summary>
+            /// <summary>See and download your organization's Google Workspace directory</summary>
             public const string DirectoryReadonly = "https://www.googleapis.com/auth/directory.readonly";
 
             /// <summary>View your street addresses</summary>
