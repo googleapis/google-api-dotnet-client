@@ -8142,6 +8142,10 @@ namespace Google.Apis.CloudAsset.v1.Data
     /// </summary>
     public class VersionedResource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The exceptions of a resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetExceptions")]
+        public virtual System.Collections.Generic.IList<AssetException> AssetExceptions { get; set; }
+
         /// <summary>
         /// JSON representation of the resource as defined by the corresponding service providing this resource.
         /// Example: If the resource is an instance provided by Compute Engine, this field will contain the JSON
