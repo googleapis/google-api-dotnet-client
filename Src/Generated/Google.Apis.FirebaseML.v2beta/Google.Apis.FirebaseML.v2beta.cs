@@ -1141,6 +1141,20 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Optional. The partial argument value of the function call. If provided, represents the arguments/fields that
+        /// are streamed incrementally.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialArgs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1PartialArg> PartialArgs { get; set; }
+
+        /// <summary>
+        /// Optional. Whether this is the last part of the FunctionCall. If true, another partial message for the
+        /// current FunctionCall is expected to follow.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("willContinue")]
+        public virtual System.Nullable<bool> WillContinue { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1159,6 +1173,14 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Optional. Function calling mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
+
+        /// <summary>
+        /// Optional. When set to true, arguments of a single function call will be streamed out in multiple
+        /// parts/contents/responses. Partial parameter results will be returned in the [FunctionCall.partial_args]
+        /// field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamFunctionCallArguments")]
+        public virtual System.Nullable<bool> StreamFunctionCallArguments { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1181,7 +1203,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
 
         /// <summary>
         /// Required. The name of the function to call. Must start with a letter or an underscore. Must be a-z, A-Z,
-        /// 0-9, or contain underscores, dots and dashes, with a maximum length of 64.
+        /// 0-9, or contain underscores, dots, colons and dashes, with a maximum length of 64.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -1828,6 +1850,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("thinkingBudget")]
         public virtual System.Nullable<int> ThinkingBudget { get; set; }
 
+        /// <summary>Optional. The number of thoughts tokens that the model should generate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thinkingLevel")]
+        public virtual string ThinkingLevel { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2140,6 +2166,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageOutputOptions")]
         public virtual GoogleCloudAiplatformV1beta1ImageConfigImageOutputOptions ImageOutputOptions { get; set; }
 
+        /// <summary>
+        /// Optional. Specifies the size of generated images. Supported values are `1K`, `2K`, `4K`. If not specified,
+        /// the model will use default value `1K`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageSize")]
+        public virtual string ImageSize { get; set; }
+
         /// <summary>Optional. Controls whether the model can generate people.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("personGeneration")]
         public virtual string PersonGeneration { get; set; }
@@ -2339,6 +2372,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inlineData")]
         public virtual GoogleCloudAiplatformV1beta1Blob InlineData { get; set; }
 
+        /// <summary>per part media resolution. Media resolution for the input media.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaResolution")]
+        public virtual GoogleCloudAiplatformV1beta1PartMediaResolution MediaResolution { get; set; }
+
         /// <summary>Optional. The text content of the part.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
@@ -2359,6 +2396,54 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoMetadata")]
         public virtual GoogleCloudAiplatformV1beta1VideoMetadata VideoMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>per part media resolution. Media resolution for the input media.</summary>
+    public class GoogleCloudAiplatformV1beta1PartMediaResolution : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The tokenization quality used for given media.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("level")]
+        public virtual string Level { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Partial argument value of the function call.</summary>
+    public class GoogleCloudAiplatformV1beta1PartialArg : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Represents a boolean value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; }
+
+        /// <summary>
+        /// Required. A JSON Path (RFC 9535) to the argument being streamed.
+        /// https://datatracker.ietf.org/doc/html/rfc9535. e.g. "$.foo.bar[0].data".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonPath")]
+        public virtual string JsonPath { get; set; }
+
+        /// <summary>Optional. Represents a null value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nullValue")]
+        public virtual string NullValue { get; set; }
+
+        /// <summary>Optional. Represents a double value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numberValue")]
+        public virtual System.Nullable<double> NumberValue { get; set; }
+
+        /// <summary>Optional. Represents a string value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
+
+        /// <summary>
+        /// Optional. Whether this is not the last part of the same json_path. If true, another PartialArg message for
+        /// the current json_path is expected to follow.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("willContinue")]
+        public virtual System.Nullable<bool> WillContinue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2497,6 +2582,24 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Optional. The model name of the rank service. Format: `semantic-ranker-512@latest`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelName")]
         public virtual string ModelName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration for the replicated voice to use.</summary>
+    public class GoogleCloudAiplatformV1beta1ReplicatedVoiceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The mimetype of the voice sample. Currently only mime_type=audio/pcm is supported, which is raw
+        /// mono 16-bit signed little-endian pcm data, with 24k sampling rate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>Optional. The sample of the custom voice.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("voiceSampleAudio")]
+        public virtual string VoiceSampleAudio { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3187,6 +3290,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>The configuration for a prebuilt voice.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prebuiltVoiceConfig")]
         public virtual GoogleCloudAiplatformV1beta1PrebuiltVoiceConfig PrebuiltVoiceConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The configuration for a replicated voice. This enables users to replicate a voice from an audio
+        /// sample.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicatedVoiceConfig")]
+        public virtual GoogleCloudAiplatformV1beta1ReplicatedVoiceConfig ReplicatedVoiceConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
