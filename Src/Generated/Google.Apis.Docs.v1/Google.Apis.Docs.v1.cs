@@ -3862,20 +3862,20 @@ namespace Google.Apis.Docs.v1.Data
     public class RichLinkProperties : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. The [MIME type](https://developers.google.com/drive/api/v3/mime-types) of the RichLink, if
-        /// there's one (for example, when it's a file in Drive).
+        /// The [MIME type](https://developers.google.com/drive/api/v3/mime-types) of the RichLink, if there's one (for
+        /// example, when it's a file in Drive).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
 
         /// <summary>
-        /// Output only. The title of the RichLink as displayed in the link. This title matches the title of the linked
-        /// resource at the time of the insertion or last update of the link. This field is always present.
+        /// The title of the RichLink as displayed in the link. This title matches the title of the linked resource at
+        /// the time of the insertion or last update of the link. This field is always present.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
-        /// <summary>Output only. The URI to the RichLink. This is always present.</summary>
+        /// <summary>The URI to the RichLink. This is always present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
