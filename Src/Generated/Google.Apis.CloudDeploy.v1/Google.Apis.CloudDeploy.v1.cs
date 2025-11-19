@@ -9360,6 +9360,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetSnapshots")]
         public virtual System.Collections.Generic.IList<Target> TargetSnapshots { get; set; }
 
+        /// <summary>
+        /// Optional. The tool versions to use for this release and all subsequent operations involving this release. If
+        /// unset, then it will freeze the tool versions at the time of release creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolVersions")]
+        public virtual ToolVersions ToolVersions { get; set; }
+
         /// <summary>Output only. Unique identifier of the `Release`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
@@ -9368,6 +9375,26 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>ReleaseCondition contains all conditions relevant to a Release.</summary>
     public class ReleaseCondition : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Details around the support state of the release's Docker version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dockerVersionSupportedCondition")]
+        public virtual ToolVersionSupportedCondition DockerVersionSupportedCondition { get; set; }
+
+        /// <summary>Output only. Details around the support state of the release's Helm version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("helmVersionSupportedCondition")]
+        public virtual ToolVersionSupportedCondition HelmVersionSupportedCondition { get; set; }
+
+        /// <summary>Output only. Details around the support state of the release's Kpt version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kptVersionSupportedCondition")]
+        public virtual ToolVersionSupportedCondition KptVersionSupportedCondition { get; set; }
+
+        /// <summary>Output only. Details around the support state of the release's Kubectl version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubectlVersionSupportedCondition")]
+        public virtual ToolVersionSupportedCondition KubectlVersionSupportedCondition { get; set; }
+
+        /// <summary>Output only. Details around the support state of the release's Kustomize version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kustomizeVersionSupportedCondition")]
+        public virtual ToolVersionSupportedCondition KustomizeVersionSupportedCondition { get; set; }
+
         /// <summary>Details around the Releases's overall status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releaseReadyCondition")]
         public virtual ReleaseReadyCondition ReleaseReadyCondition { get; set; }
@@ -9375,6 +9402,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Details around the support state of the release's Skaffold version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skaffoldSupportedCondition")]
         public virtual SkaffoldSupportedCondition SkaffoldSupportedCondition { get; set; }
+
+        /// <summary>Output only. Details around the support state of the release's Skaffold version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skaffoldVersionSupportedCondition")]
+        public virtual ToolVersionSupportedCondition SkaffoldVersionSupportedCondition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11283,6 +11314,136 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// ToolVersionSupportedCondition contains information about when support for the release's version of a Tool ends.
+    /// </summary>
+    public class ToolVersionSupportedCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _maintenanceModeTimeRaw;
+
+        private object _maintenanceModeTime;
+
+        /// <summary>
+        /// Output only. The time at which this release's version of the Tool will enter maintenance mode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceModeTime")]
+        public virtual string MaintenanceModeTimeRaw
+        {
+            get => _maintenanceModeTimeRaw;
+            set
+            {
+                _maintenanceModeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _maintenanceModeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="MaintenanceModeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use MaintenanceModeTimeDateTimeOffset instead.")]
+        public virtual object MaintenanceModeTime
+        {
+            get => _maintenanceModeTime;
+            set
+            {
+                _maintenanceModeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _maintenanceModeTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="MaintenanceModeTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? MaintenanceModeTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MaintenanceModeTimeRaw);
+            set => MaintenanceModeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. True if the version of Tool used by this release is supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual System.Nullable<bool> Status { get; set; }
+
+        private string _supportExpirationTimeRaw;
+
+        private object _supportExpirationTime;
+
+        /// <summary>
+        /// Output only. The time at which this release's version of the Tool will no longer be supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportExpirationTime")]
+        public virtual string SupportExpirationTimeRaw
+        {
+            get => _supportExpirationTimeRaw;
+            set
+            {
+                _supportExpirationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _supportExpirationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="SupportExpirationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SupportExpirationTimeDateTimeOffset instead.")]
+        public virtual object SupportExpirationTime
+        {
+            get => _supportExpirationTime;
+            set
+            {
+                _supportExpirationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _supportExpirationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SupportExpirationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SupportExpirationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SupportExpirationTimeRaw);
+            set => SupportExpirationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The Tool support state for this release's version of the Tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolVersionSupportState")]
+        public virtual string ToolVersionSupportState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of ToolVersions for the release.</summary>
+    public class ToolVersions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The docker version to use for Cloud Deploy operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("docker")]
+        public virtual string Docker { get; set; }
+
+        /// <summary>Optional. The helm version to use for Cloud Deploy operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("helm")]
+        public virtual string Helm { get; set; }
+
+        /// <summary>Optional. The kpt version to use for Cloud Deploy operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kpt")]
+        public virtual string Kpt { get; set; }
+
+        /// <summary>Optional. The kubectl version to use for Cloud Deploy operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubectl")]
+        public virtual string Kubectl { get; set; }
+
+        /// <summary>Optional. The kustomize version to use for Cloud Deploy operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kustomize")]
+        public virtual string Kustomize { get; set; }
+
+        /// <summary>Optional. The skaffold version to use for Cloud Deploy operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skaffold")]
+        public virtual string Skaffold { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
