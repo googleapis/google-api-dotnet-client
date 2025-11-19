@@ -36933,6 +36933,16 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     public class GoogleCloudDialogflowV2beta1Participant : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. For tracking the utilization of prebuilt Agent Assist integration modules. This field is only
+        /// inscope for Integration type that include UI Modules, Backend Modules, and Agent Desktop connector, it is
+        /// out of scope for CCaaS and Direct Integration. For each human agent, prebuilt UI Modules needs to trigger
+        /// the UpdateParticipant API to update this field. Both CreateParticipantRequest and UpdateParticipantRequest
+        /// will be supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentDesktopSource")]
+        public virtual string AgentDesktopSource { get; set; }
+
+        /// <summary>
         /// Optional. Key-value filters on the metadata of documents returned by article suggestion. If specified,
         /// article suggestion only returns suggested documents that match all filters in their Document.metadata.
         /// Multiple values for a metadata key should be concatenated by comma. For example, filters to match all
