@@ -2559,9 +2559,9 @@ namespace Google.Apis.AppHub.v1
 
                     /// <summary>
                     /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                    /// `true` when reading across collections e.g. when `parent` is set to
-                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
                     /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                     /// specific documentation.
                     /// </summary>
@@ -3073,6 +3073,56 @@ namespace Google.Apis.AppHub.v1
                 }
             }
 
+            /// <summary>Gets a Boundary.</summary>
+            /// <param name="name">
+            /// Required. The name of the boundary to retrieve. Format: projects/{project}/locations/{location}/boundary
+            /// </param>
+            public virtual GetBoundaryRequest GetBoundary(string name)
+            {
+                return new GetBoundaryRequest(this.service, name);
+            }
+
+            /// <summary>Gets a Boundary.</summary>
+            public class GetBoundaryRequest : AppHubBaseServiceRequest<Google.Apis.AppHub.v1.Data.Boundary>
+            {
+                /// <summary>Constructs a new GetBoundary request.</summary>
+                public GetBoundaryRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the boundary to retrieve. Format:
+                /// projects/{project}/locations/{location}/boundary
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getBoundary";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes GetBoundary parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/boundary$",
+                    });
+                }
+            }
+
             /// <summary>Lists information about the supported locations for this service.</summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -3230,6 +3280,103 @@ namespace Google.Apis.AppHub.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Updates a Boundary.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The resource name of the boundary. Format:
+            /// "projects/{project}/locations/{location}/boundary"
+            /// </param>
+            public virtual UpdateBoundaryRequest UpdateBoundary(Google.Apis.AppHub.v1.Data.Boundary body, string name)
+            {
+                return new UpdateBoundaryRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates a Boundary.</summary>
+            public class UpdateBoundaryRequest : AppHubBaseServiceRequest<Google.Apis.AppHub.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new UpdateBoundary request.</summary>
+                public UpdateBoundaryRequest(Google.Apis.Services.IClientService service, Google.Apis.AppHub.v1.Data.Boundary body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The resource name of the boundary. Format:
+                /// "projects/{project}/locations/{location}/boundary"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you
+                /// must retry your request, the server will know to ignore the request if it has already been
+                /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                /// example, consider a situation where you make an initial request and the request times out. If you
+                /// make the request again with the same request ID, the server can check if original operation with the
+                /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+                /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception
+                /// that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string RequestId { get; set; }
+
+                /// <summary>
+                /// Required. Field mask is used to specify the fields to be overwritten in the Boundary resource by the
+                /// update. The fields specified in the update_mask are relative to the resource, not the full request.
+                /// A field will be overwritten if it is in the mask. If the user does not provide a mask then all
+                /// fields will be overwritten.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AppHub.v1.Data.Boundary Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateBoundary";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes UpdateBoundary parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/boundary$",
+                    });
+                    RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -3512,6 +3659,104 @@ namespace Google.Apis.AppHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Application management boundary.</summary>
+    public class Boundary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. The resource name of the CRM node being attached to the boundary. Format:
+        /// `projects/{project-number}` or `projects/{project-id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crmNode")]
+        public virtual string CrmNode { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the boundary. Format: "projects/{project}/locations/{location}/boundary"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Boundary type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Update time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3685,12 +3930,39 @@ namespace Google.Apis.AppHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Additional metadata for a Service or Workload.</summary>
+    public class ExtendedMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The metadata contents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataStruct")]
+        public virtual System.Collections.Generic.IDictionary<string, object> MetadataStruct { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The functional type of a service or workload.</summary>
     public class FunctionalType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The functional type of a service or workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The identity associated with a service or workload.</summary>
+    public class Identity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Principal of the identity. Supported formats: * `sa://my-sa@xxxx.iam.gserviceaccount.com` for
+        /// GCP Service Account *
+        /// `principal://POOL_ID.global.PROJECT_NUMBER.workload.id.goog/ns/NAMESPACE_ID/sa/MANAGED_IDENTITY_ID` for
+        /// Managed Workload Identity
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principal")]
+        public virtual string Principal { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3781,8 +4053,8 @@ namespace Google.Apis.AppHub.v1.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -4153,6 +4425,17 @@ namespace Google.Apis.AppHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The registration type of a service.</summary>
+    public class RegistrationType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The registration type of a service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Scope of an application.</summary>
     public class Scope : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4373,6 +4656,14 @@ namespace Google.Apis.AppHub.v1.Data
     /// <summary>Properties of an underlying cloud resource that can comprise a Service.</summary>
     public class ServiceProperties : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. Additional metadata specific to the resource type. The key is a string that identifies the type
+        /// of metadata and the value is the metadata contents specific to that type. Key format:
+        /// `apphub.googleapis.com/{metadataType}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extendedMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, ExtendedMetadata> ExtendedMetadata { get; set; }
+
         /// <summary>Output only. The type of the service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionalType")]
         public virtual FunctionalType FunctionalType { get; set; }
@@ -4383,9 +4674,17 @@ namespace Google.Apis.AppHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcpProject")]
         public virtual string GcpProject { get; set; }
 
+        /// <summary>Output only. The identity associated with the service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identity")]
+        public virtual Identity Identity { get; set; }
+
         /// <summary>Output only. The location that the underlying resource resides in, for example, us-west1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
+
+        /// <summary>Output only. The registration type of the service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("registrationType")]
+        public virtual RegistrationType RegistrationType { get; set; }
 
         /// <summary>
         /// Output only. The location that the underlying resource resides in if it is zonal, for example, us-west1-a).
@@ -4622,6 +4921,14 @@ namespace Google.Apis.AppHub.v1.Data
     /// <summary>Properties of an underlying compute resource represented by the Workload.</summary>
     public class WorkloadProperties : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. Additional metadata specific to the resource type. The key is a string that identifies the type
+        /// of metadata and the value is the metadata contents specific to that type. Key format:
+        /// `apphub.googleapis.com/{metadataType}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extendedMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, ExtendedMetadata> ExtendedMetadata { get; set; }
+
         /// <summary>Output only. The type of the workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionalType")]
         public virtual FunctionalType FunctionalType { get; set; }
@@ -4632,6 +4939,10 @@ namespace Google.Apis.AppHub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpProject")]
         public virtual string GcpProject { get; set; }
+
+        /// <summary>Output only. The identity associated with the workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identity")]
+        public virtual Identity Identity { get; set; }
 
         /// <summary>
         /// Output only. The location that the underlying compute resource resides in (for example, us-west1).
