@@ -8237,6 +8237,10 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adapters")]
         public virtual NetworkAdapterList Adapters { get; set; }
 
+        /// <summary>Optional. Default gateway address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultGateway")]
+        public virtual string DefaultGateway { get; set; }
+
         /// <summary>The primary IP address of the machine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryIpAddress")]
         public virtual string PrimaryIpAddress { get; set; }
