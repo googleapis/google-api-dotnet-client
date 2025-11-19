@@ -1743,6 +1743,73 @@ namespace Google.Apis.SQLAdmin.v1
         }
 
         /// <summary>
+        /// Lists all versions of EntraID certificates for the specified instance. There can be up to three sets of
+        /// certificates listed: the certificate that is currently in use, a future that has been added but not yet used
+        /// to sign a certificate, and a certificate that has been rotated out.
+        /// </summary>
+        /// <param name="project">Required. Project ID of the project that contains the instance.</param>
+        /// <param name="instance">Required. Cloud SQL instance ID. This does not include the project ID.</param>
+        public virtual ListEntraIdCertificatesRequest ListEntraIdCertificates(string project, string instance)
+        {
+            return new ListEntraIdCertificatesRequest(this.service, project, instance);
+        }
+
+        /// <summary>
+        /// Lists all versions of EntraID certificates for the specified instance. There can be up to three sets of
+        /// certificates listed: the certificate that is currently in use, a future that has been added but not yet used
+        /// to sign a certificate, and a certificate that has been rotated out.
+        /// </summary>
+        public class ListEntraIdCertificatesRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1.Data.InstancesListEntraIdCertificatesResponse>
+        {
+            /// <summary>Constructs a new ListEntraIdCertificates request.</summary>
+            public ListEntraIdCertificatesRequest(Google.Apis.Services.IClientService service, string project, string instance) : base(service)
+            {
+                Project = project;
+                Instance = instance;
+                InitParameters();
+            }
+
+            /// <summary>Required. Project ID of the project that contains the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Required. Cloud SQL instance ID. This does not include the project ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "ListEntraIdCertificates";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/projects/{project}/instances/{instance}/listEntraIdCertificates";
+
+            /// <summary>Initializes ListEntraIdCertificates parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
         /// Lists all versions of server certificates and certificate authorities (CAs) for the specified instance.
         /// There can be up to three sets of certs listed: the certificate that is currently in use, a future that has
         /// been added but not yet used to sign a certificate, and a certificate that has been rotated out. For
@@ -1789,6 +1856,77 @@ namespace Google.Apis.SQLAdmin.v1
             public override string RestPath => "v1/projects/{project}/instances/{instance}/listServerCertificates";
 
             /// <summary>Initializes ListServerCertificates parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Rotates the server certificate version to one previously added with the addEntraIdCertificate method.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Required. Project ID of the project that contains the instance.</param>
+        /// <param name="instance">Required. Cloud SQL instance ID. This does not include the project ID.</param>
+        public virtual RotateEntraIdCertificateRequest RotateEntraIdCertificate(Google.Apis.SQLAdmin.v1.Data.InstancesRotateEntraIdCertificateRequest body, string project, string instance)
+        {
+            return new RotateEntraIdCertificateRequest(this.service, body, project, instance);
+        }
+
+        /// <summary>
+        /// Rotates the server certificate version to one previously added with the addEntraIdCertificate method.
+        /// </summary>
+        public class RotateEntraIdCertificateRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new RotateEntraIdCertificate request.</summary>
+            public RotateEntraIdCertificateRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1.Data.InstancesRotateEntraIdCertificateRequest body, string project, string instance) : base(service)
+            {
+                Project = project;
+                Instance = instance;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. Project ID of the project that contains the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Required. Cloud SQL instance ID. This does not include the project ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.SQLAdmin.v1.Data.InstancesRotateEntraIdCertificateRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "RotateEntraIdCertificate";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/projects/{project}/instances/{instance}/rotateEntraIdCertificate";
+
+            /// <summary>Initializes RotateEntraIdCertificate parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -5595,6 +5733,13 @@ namespace Google.Apis.SQLAdmin.v1
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>
+            /// Optional. List of database roles to grant to the user. body.database_roles will be ignored for update
+            /// request.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("databaseRoles", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> DatabaseRoles { get; set; }
+
             /// <summary>Optional. Host of the user in the instance.</summary>
             [Google.Apis.Util.RequestParameterAttribute("host", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Host { get; set; }
@@ -5635,6 +5780,14 @@ namespace Google.Apis.SQLAdmin.v1
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("databaseRoles", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "databaseRoles",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -7938,7 +8091,7 @@ namespace Google.Apis.SQLAdmin.v1.Data
             public virtual EncryptionOptionsData EncryptionOptions { get; set; }
 
             /// <summary>
-            /// Whether or not the backup importing will restore database with NORECOVERY option Applies only to Cloud
+            /// Whether or not the backup importing will restore database with NORECOVERY option. Applies only to Cloud
             /// SQL for SQL Server.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("noRecovery")]
@@ -8268,6 +8421,25 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Instances ListEntraIdCertificates response.</summary>
+    public class InstancesListEntraIdCertificatesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The `sha1_fingerprint` of the active certificate from `certs`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeVersion")]
+        public virtual string ActiveVersion { get; set; }
+
+        /// <summary>List of Entra ID certificates for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certs")]
+        public virtual System.Collections.Generic.IList<SslCert> Certs { get; set; }
+
+        /// <summary>This is always `sql#instancesListEntraIdCertificates`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Database instances list response.</summary>
     public class InstancesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8397,6 +8569,17 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restoreInstanceSettings")]
         public virtual DatabaseInstance RestoreInstanceSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Rotate Entra ID certificate request.</summary>
+    public class InstancesRotateEntraIdCertificateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Contains details about the rotate server certificate operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rotateEntraIdCertificateContext")]
+        public virtual RotateEntraIdCertificateContext RotateEntraIdCertificateContext { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8589,6 +8772,15 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serverCaPool")]
         public virtual string ServerCaPool { get; set; }
+
+        /// <summary>
+        /// Optional. Controls the automatic server certificate rotation feature. This feature is disabled by default.
+        /// When enabled, the server certificate will be automatically rotated during Cloud SQL scheduled maintenance or
+        /// self-service maintenance updates up to six months before it expires. This setting can only be set if
+        /// server_ca_mode is either GOOGLE_MANAGED_CAS_CA or CUSTOMER_MANAGED_CAS_CA.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverCertificateRotationMode")]
+        public virtual string ServerCertificateRotationMode { get; set; }
 
         /// <summary>
         /// Specify how SSL/TLS is enforced in database connections. If you must use the `require_ssl` flag for backward
@@ -9385,8 +9577,8 @@ namespace Google.Apis.SQLAdmin.v1.Data
     }
 
     /// <summary>
-    /// The context to perform a point-in-time recovery of an instance managed by Google Cloud Backup and Disaster
-    /// Recovery.
+    /// The context to perform a point-in-time recovery of an instance managed by Backup and Disaster Recovery (DR)
+    /// Service.
     /// </summary>
     public class PointInTimeRestoreContext : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9401,7 +9593,7 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string AllocatedIpRange { get; set; }
 
         /// <summary>
-        /// The Google Cloud Backup and Disaster Recovery Datasource URI. Format:
+        /// The Backup and Disaster Recovery (DR) Service Datasource URI. Format:
         /// projects/{project}/locations/{region}/backupVaults/{backupvault}/dataSources/{datasource}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasource")]
@@ -9827,6 +10019,24 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Instance rotate Entra ID certificate context.</summary>
+    public class RotateEntraIdCertificateContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. This is always `sql#rotateEntraIdCertificateContext`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// Optional. The fingerprint of the next version to be rotated to. If left unspecified, will be rotated to the
+        /// most recently added server certificate version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextVersion")]
+        public virtual string NextVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Instance rotate server CA context.</summary>
     public class RotateServerCaContext : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9958,7 +10168,8 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual System.Nullable<bool> CrashSafeReplicationEnabled { get; set; }
 
         /// <summary>
-        /// This parameter controls whether to allow using Data API to connect to the instance. Not allowed by default.
+        /// This parameter controls whether to allow using ExecuteSql API to connect to the instance. Not allowed by
+        /// default.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataApiAccess")]
         public virtual string DataApiAccess { get; set; }
@@ -10028,6 +10239,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableGoogleMlIntegration")]
         public virtual System.Nullable<bool> EnableGoogleMlIntegration { get; set; }
+
+        /// <summary>Optional. The Microsoft Entra ID configuration for the SQL Server instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entraidConfig")]
+        public virtual SqlServerEntraIdConfig EntraidConfig { get; set; }
 
         /// <summary>Optional. The final backup configuration for the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalBackupConfig")]
@@ -10621,6 +10836,25 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>SQL Server Entra ID configuration.</summary>
+    public class SqlServerEntraIdConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The application ID for the Entra ID configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationId")]
+        public virtual string ApplicationId { get; set; }
+
+        /// <summary>Output only. This is always sql#sqlServerEntraIdConfig</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>Optional. The tenant ID for the Entra ID configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenantId")]
+        public virtual string TenantId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a Sql Server user on the Cloud SQL instance.</summary>
     public class SqlServerUserDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10976,6 +11210,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
     /// <summary>A Cloud SQL user resource.</summary>
     public class User : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Role memberships of the user</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseRoles")]
+        public virtual System.Collections.Generic.IList<string> DatabaseRoles { get; set; }
+
         /// <summary>Dual password status for the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dualPasswordType")]
         public virtual string DualPasswordType { get; set; }
