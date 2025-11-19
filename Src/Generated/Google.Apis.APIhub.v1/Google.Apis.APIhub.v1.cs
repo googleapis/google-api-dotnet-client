@@ -292,6 +292,7 @@ namespace Google.Apis.APIhub.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                Addons = new AddonsResource(service);
                 ApiHubInstances = new ApiHubInstancesResource(service);
                 Apis = new ApisResource(service);
                 Attributes = new AttributesResource(service);
@@ -304,6 +305,240 @@ namespace Google.Apis.APIhub.v1
                 Operations = new OperationsResource(service);
                 Plugins = new PluginsResource(service);
                 RuntimeProjectAttachments = new RuntimeProjectAttachmentsResource(service);
+            }
+
+            /// <summary>Gets the Addons resource.</summary>
+            public virtual AddonsResource Addons { get; }
+
+            /// <summary>The "addons" collection of methods.</summary>
+            public class AddonsResource
+            {
+                private const string Resource = "addons";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AddonsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Get an addon.</summary>
+                /// <param name="name">
+                /// Required. The name of the addon to get. Format:
+                /// `projects/{project}/locations/{location}/addons/{addon}`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Get an addon.</summary>
+                public class GetRequest : APIhubBaseServiceRequest<Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1Addon>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the addon to get. Format:
+                    /// `projects/{project}/locations/{location}/addons/{addon}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/addons/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>List addons.</summary>
+                /// <param name="parent">
+                /// Required. The parent resource where this addon will be created. Format:
+                /// `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>List addons.</summary>
+                public class ListRequest : APIhubBaseServiceRequest<Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1ListAddonsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource where this addon will be created. Format:
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An expression that filters the list of addons. The only supported filter is
+                    /// `plugin_instance_name`. It can be used to filter addons that are enabled for a given plugin
+                    /// instance. The format of the filter is `plugin_instance_name =
+                    /// "projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}"`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of hub addons to return. The service may return fewer than this
+                    /// value. If unspecified, at most 50 hub addons will be returned. The maximum value is 1000; values
+                    /// above 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListAddons` call. Provide this to retrieve the
+                    /// subsequent page. When paginating, all other parameters (except page_size) provided to
+                    /// `ListAddons` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/addons";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Manage addon config. This RPC is used for managing the config of the addon. Calling this RPC moves
+                /// the addon into an updating state until the long-running operation succeeds.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the addon for which the config is to be managed. Format:
+                /// `projects/{project}/locations/{location}/addons/{addon}`.
+                /// </param>
+                public virtual ManageConfigRequest ManageConfig(Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1ManageAddonConfigRequest body, string name)
+                {
+                    return new ManageConfigRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Manage addon config. This RPC is used for managing the config of the addon. Calling this RPC moves
+                /// the addon into an updating state until the long-running operation succeeds.
+                /// </summary>
+                public class ManageConfigRequest : APIhubBaseServiceRequest<Google.Apis.APIhub.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new ManageConfig request.</summary>
+                    public ManageConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1ManageAddonConfigRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the addon for which the config is to be managed. Format:
+                    /// `projects/{project}/locations/{location}/addons/{addon}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1ManageAddonConfigRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "manageConfig";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:manageConfig";
+
+                    /// <summary>Initializes ManageConfig parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/addons/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the ApiHubInstances resource.</summary>
@@ -7524,6 +7759,146 @@ namespace Google.Apis.APIhub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Addon resource.</summary>
+    public class GoogleCloudApihubV1Addon : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The configuration of the addon.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual GoogleCloudApihubV1AddonConfig Config { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time at which the addon was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Required. The data source on which the addon operates. This determines which field in the `config` oneof is
+        /// used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
+        public virtual string DataSource { get; set; }
+
+        /// <summary>Optional. The description of the addon.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. The display name of the addon.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the addon to enable. Format:
+        /// `projects/{project}/locations/{location}/addons/{addon}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The state of the addon.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time at which the addon was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the addon.</summary>
+    public class GoogleCloudApihubV1AddonConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration for addons which act on all data in the API hub.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allDataAddonConfig")]
+        public virtual GoogleCloudApihubV1AllDataAddonConfig AllDataAddonConfig { get; set; }
+
+        /// <summary>Configuration for gateway plugin addons.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatewayPluginAddonConfig")]
+        public virtual GoogleCloudApihubV1GatewayPluginAddonConfig GatewayPluginAddonConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for addons which act on all data in the API hub. This is used to specify if the addon is enabled
+    /// for all data in the API hub.
+    /// </summary>
+    public class GoogleCloudApihubV1AllDataAddonConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. If true, the addon is enabled for all data in the API hub.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The value that can be assigned to the attribute when the data type is enum.</summary>
     public class GoogleCloudApihubV1AllowedValue : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8101,6 +8476,60 @@ namespace Google.Apis.APIhub.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for Apigee Edge gateways. Applicability of a filter is determined by the filter being provided. If
+    /// none of the filters are provided the addon will be enabled for all data brought in by the gateway plugin
+    /// instance.
+    /// </summary>
+    public class GoogleCloudApihubV1ApigeeEdgeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The filter to apply on the resources managed by the gateway plugin instance. If provided this
+        /// filter applies environment specific filtering.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentFilter")]
+        public virtual GoogleCloudApihubV1EnvironmentFilter EnvironmentFilter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for Apigee OPDK gateways. Applicability of a filter is determined by the filter being provided. If
+    /// none of the filters are provided the addon will be enabled for all data brought in by the gateway plugin
+    /// instance.
+    /// </summary>
+    public class GoogleCloudApihubV1ApigeeOPDKConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The filter to apply on the resources managed by the gateway plugin instance. If provided this
+        /// filter applies environment specific filtering.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentFilter")]
+        public virtual GoogleCloudApihubV1EnvironmentFilter EnvironmentFilter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for Apigee X and Apigee Hybrid gateways. Applicability of a filter is determined by the filter
+    /// being provided. If none of the filters are provided the addon will be enabled for all data brought in by the
+    /// gateway plugin instance.
+    /// </summary>
+    public class GoogleCloudApihubV1ApigeeXHybridConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The filter to apply on the resources managed by the gateway plugin instance. If provided this
+        /// filter applies environment specific filtering.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentFilter")]
+        public virtual GoogleCloudApihubV1EnvironmentFilter EnvironmentFilter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9720,6 +10149,27 @@ namespace Google.Apis.APIhub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Filter for environments.</summary>
+    public class GoogleCloudApihubV1EnvironmentFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Indicates if this filter should match all environments or only a subset of environments. If set to
+        /// true, all environments are matched.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allEnvironments")]
+        public virtual System.Nullable<bool> AllEnvironments { get; set; }
+
+        /// <summary>
+        /// Optional. If provided, only environments in this list are matched. This field is ignored if
+        /// `all_environments` is true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environments")]
+        public virtual System.Collections.Generic.IList<string> Environments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The ExecutePluginInstanceAction method's request.</summary>
     public class GoogleCloudApihubV1ExecutePluginInstanceActionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9861,6 +10311,49 @@ namespace Google.Apis.APIhub.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for gateway plugin addons. This is used to specify the list of gateway plugin configs for which
+    /// the addon is enabled.
+    /// </summary>
+    public class GoogleCloudApihubV1GatewayPluginAddonConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The list of gateway plugin configs for which the addon is enabled. Each gateway plugin config
+        /// should have a unique plugin instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatewayPluginConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudApihubV1GatewayPluginConfig> GatewayPluginConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for a gateway plugin. This is used to specify configs for different gateways.</summary>
+    public class GoogleCloudApihubV1GatewayPluginConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration for Apigee Edge gateways.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apigeeEdgeConfig")]
+        public virtual GoogleCloudApihubV1ApigeeEdgeConfig ApigeeEdgeConfig { get; set; }
+
+        /// <summary>Configuration for Apigee OPDK gateways.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apigeeOpdkConfig")]
+        public virtual GoogleCloudApihubV1ApigeeOPDKConfig ApigeeOpdkConfig { get; set; }
+
+        /// <summary>Configuration for Apigee X and Apigee Hybrid gateways.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apigeeXHybridConfig")]
+        public virtual GoogleCloudApihubV1ApigeeXHybridConfig ApigeeXHybridConfig { get; set; }
+
+        /// <summary>
+        /// Required. The name of the gateway plugin instance for which the config is to be specified. Format:
+        /// projects/{project}/locations/{location}/plugins/{plugin}/pluginInstances/{plugin_instance}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pluginInstance")]
+        public virtual string PluginInstance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10244,6 +10737,23 @@ namespace Google.Apis.APIhub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The ListAddons method's response.</summary>
+    public class GoogleCloudApihubV1ListAddonsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of addons.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addons")]
+        public virtual System.Collections.Generic.IList<GoogleCloudApihubV1Addon> Addons { get; set; }
+
+        /// <summary>
+        /// A token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The ListApiOperations method's response.</summary>
     public class GoogleCloudApihubV1ListApiOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10533,6 +11043,20 @@ namespace Google.Apis.APIhub.v1.Data
         /// <summary>Runtime project attachment for a project if exists, empty otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeProjectAttachment")]
         public virtual GoogleCloudApihubV1RuntimeProjectAttachment RuntimeProjectAttachment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The ManageAddonConfig method's request.</summary>
+    public class GoogleCloudApihubV1ManageAddonConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The config of the addon to be managed. This config will replace the config present in the addon.
+        /// The type of the config should match the config type already present in the addon.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual GoogleCloudApihubV1AddonConfig Config { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11108,6 +11632,13 @@ namespace Google.Apis.APIhub.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// Optional. The source environment's config present in the gateway instance linked to the plugin instance. The
+        /// key is the `source_environment` name from the SourceEnvironment message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceEnvironmentsConfig")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudApihubV1SourceEnvironment> SourceEnvironmentsConfig { get; set; }
+
+        /// <summary>
         /// Optional. The source project id of the plugin instance. This will be the id of runtime project in case of
         /// gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for
         /// Google provided on-ramp plugins.
@@ -11498,6 +12029,98 @@ namespace Google.Apis.APIhub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretVersion")]
         public virtual string SecretVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message representing the source environment details.</summary>
+    public class GoogleCloudApihubV1SourceEnvironment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Optional. The time at which the environment was created at the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. The name of the environment at the source. This should map to Deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceEnvironment")]
+        public virtual string SourceEnvironment { get; set; }
+
+        /// <summary>
+        /// The location where additional information about source environments can be found. The location should be
+        /// relative path of the environment manifest with respect to a plugin instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceEnvironmentUri")]
+        public virtual string SourceEnvironmentUri { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Optional. The time at which the environment was last updated at the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
