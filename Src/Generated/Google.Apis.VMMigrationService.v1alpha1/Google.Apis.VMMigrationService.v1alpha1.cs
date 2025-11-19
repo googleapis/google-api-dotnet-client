@@ -7332,6 +7332,16 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// <summary>Used when the image import is not using OS adaptation process.</summary>
     public class DataDiskImageImport : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. A list of guest OS features to apply to the imported image. These features are flags that are used
+        /// by Compute Engine to enable certain capabilities for virtual machine instances that are created from the
+        /// image. This field does not change the OS of the image; it only marks the image with the specified features.
+        /// The user must ensure that the OS is compatible with the features. For a list of available features, see
+        /// https://cloud.google.com/compute/docs/images/create-custom#guest-os-features.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestOsFeatures")]
+        public virtual System.Collections.Generic.IList<string> GuestOsFeatures { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
