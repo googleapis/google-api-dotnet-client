@@ -8461,6 +8461,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredPrivateIpv6GoogleAccess")]
         public virtual string DesiredPrivateIpv6GoogleAccess { get; set; }
 
+        /// <summary>The desired privileged admission config for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredPrivilegedAdmissionConfig")]
+        public virtual PrivilegedAdmissionConfig DesiredPrivilegedAdmissionConfig { get; set; }
+
         /// <summary>
         /// Deprecated: Use DesiredSecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.
         /// </summary>
@@ -10204,12 +10208,15 @@ namespace Google.Apis.Container.v1beta1.Data
         /// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following
         /// parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog
         /// net.core.rmem_max net.core.rmem_default net.core.wmem_default net.core.wmem_max net.core.optmem_max
-        /// net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse net.ipv4.tcp_max_orphans
-        /// net.netfilter.nf_conntrack_max net.netfilter.nf_conntrack_buckets
+        /// net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse net.ipv4.tcp_mtu_probing
+        /// net.ipv4.tcp_max_orphans net.ipv4.tcp_max_tw_buckets net.ipv4.tcp_syn_retries net.ipv4.tcp_ecn
+        /// net.ipv4.tcp_congestion_control net.netfilter.nf_conntrack_max net.netfilter.nf_conntrack_buckets
         /// net.netfilter.nf_conntrack_tcp_timeout_close_wait net.netfilter.nf_conntrack_tcp_timeout_time_wait
         /// net.netfilter.nf_conntrack_tcp_timeout_established net.netfilter.nf_conntrack_acct kernel.shmmni
-        /// kernel.shmmax kernel.shmall fs.aio-max-nr fs.file-max fs.inotify.max_user_instances
-        /// fs.inotify.max_user_watches fs.nr_open vm.dirty_background_ratio vm.dirty_expire_centisecs vm.dirty_ratio
+        /// kernel.shmmax kernel.shmall kernel.perf_event_paranoid kernel.sched_rt_runtime_us kernel.softlockup_panic
+        /// kernel.yama.ptrace_scope kernel.kptr_restrict kernel.dmesg_restrict kernel.sysrq fs.aio-max-nr fs.file-max
+        /// fs.inotify.max_user_instances fs.inotify.max_user_watches fs.nr_open vm.dirty_background_ratio
+        /// vm.dirty_background_bytes vm.dirty_expire_centisecs vm.dirty_ratio vm.dirty_bytes
         /// vm.dirty_writeback_centisecs vm.max_map_count vm.overcommit_memory vm.overcommit_ratio vm.vfs_cache_pressure
         /// vm.swappiness vm.watermark_scale_factor vm.min_free_kbytes
         /// </summary>
@@ -14751,6 +14758,13 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneDiskEncryptionKey")]
         public virtual string ControlPlaneDiskEncryptionKey { get; set; }
+
+        /// <summary>
+        /// Output only. All of the versions of the Cloud KMS cryptoKey that are used by Confidential Hyperdisks on the
+        /// control plane nodes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneDiskEncryptionKeyVersions")]
+        public virtual System.Collections.Generic.IList<string> ControlPlaneDiskEncryptionKeyVersions { get; set; }
 
         /// <summary>
         /// Resource path of the Certificate Authority Service caPool to use for the etcd API CA in this cluster.
