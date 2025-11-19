@@ -25005,6 +25005,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("onDemand")]
         public virtual GoogleCloudDataplexV1TriggerOnDemand OnDemand { get; set; }
 
+        /// <summary>The scan runs once, and does not create an associated ScanJob child resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneTime")]
+        public virtual GoogleCloudDataplexV1TriggerOneTime OneTime { get; set; }
+
         /// <summary>The scan is scheduled to run periodically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
         public virtual GoogleCloudDataplexV1TriggerSchedule Schedule { get; set; }
@@ -25016,6 +25020,22 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>The scan runs once via RunDataScan API.</summary>
     public class GoogleCloudDataplexV1TriggerOnDemand : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The scan runs once using create API.</summary>
+    public class GoogleCloudDataplexV1TriggerOneTime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Time to live for OneTime scans. default value is 24 hours, minimum value is 0 seconds, and maximum
+        /// value is 365 days. The time is calculated from the data scan job completion time. If value is set as 0
+        /// seconds, the scan will be immediately deleted upon job completion, regardless of whether the job succeeded
+        /// or failed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttlAfterScanCompletion")]
+        public virtual object TtlAfterScanCompletion { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
