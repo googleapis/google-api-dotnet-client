@@ -74,5 +74,13 @@
     "DAILY_MAX_QPM",
     "DAILY_SEARCH_REQUEST",
     "TOTAL_STORAGE"
+  ],
+  "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+QueryConfigurablePricingUsageStatsRequest.MetricTypesEnum": [
+    "BILLING_METRIC_TYPE_UNSPECIFIED",
+    "DAILY_MDN_QPM",
+    "DAILY_MIN_QPM",
+    "DAILY_MAX_QPM",
+    "DAILY_SEARCH_REQUEST",
+    "TOTAL_STORAGE"
   ]
 }

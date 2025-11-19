@@ -35,7 +35,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
         public DiscoveryEngineService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             BillingAccounts = new BillingAccountsResource(this);
-            Media = new MediaResource(this);
             Projects = new ProjectsResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://discoveryengine.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://discoveryengine.googleapis.com/batch");
@@ -113,9 +112,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
         /// <summary>Gets the BillingAccounts resource.</summary>
         public virtual BillingAccountsResource BillingAccounts { get; }
-
-        /// <summary>Gets the Media resource.</summary>
-        public virtual MediaResource Media { get; }
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -576,386 +572,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         Pattern = @"^billingAccounts/[^/]+/billingAccountLicenseConfigs/[^/]+$",
                     });
                 }
-            }
-        }
-    }
-
-    /// <summary>The "media" collection of methods.</summary>
-    public class MediaResource
-    {
-        private const string Resource = "media";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public MediaResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-        }
-
-        /// <summary>Downloads a file from the session.</summary>
-        /// <param name="name">
-        /// Required. The resource name of the Session. Format:
-        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}`
-        /// </param>
-        public virtual DownloadRequest Download(string name)
-        {
-            return new DownloadRequest(this.service, name);
-        }
-
-        /// <summary>Downloads a file from the session.</summary>
-        public class DownloadRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GdataMedia>
-        {
-            /// <summary>Constructs a new Download request.</summary>
-            public DownloadRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-            {
-                Name = name;
-                MediaDownloader = new Google.Apis.Download.MediaDownloader(service);
-                InitParameters();
-            }
-
-            /// <summary>
-            /// Required. The resource name of the Session. Format:
-            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}`
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>Required. The ID of the file to be downloaded.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string FileId { get; set; }
-
-            /// <summary>Optional. The ID of the view to be downloaded.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("viewId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ViewId { get; set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "download";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1alpha/{+name}:downloadFile";
-
-            /// <summary>Initializes Download parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/sessions/[^/]+$",
-                });
-                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fileId",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("viewId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "viewId",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-
-            /// <summary>Gets the media downloader.</summary>
-            public Google.Apis.Download.IMediaDownloader MediaDownloader { get; private set; }
-
-            /// <summary>
-            /// <para>Synchronously download the media into the given stream.</para>
-            /// <para>
-            /// Warning: This method hides download errors; use <see cref="DownloadWithStatus(System.IO.Stream)"/>
-            /// instead.
-            /// </para>
-            /// </summary>
-            /// <remarks>
-            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
-            /// handlers and other configuration may be performed using that property prior to calling this method.
-            /// </remarks>
-            public virtual void Download(System.IO.Stream stream)
-            {
-                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
-                mediaDownloader.Range = null;
-                mediaDownloader.Download(this.GenerateRequestUri(), stream);
-            }
-
-            /// <summary>Synchronously download the media into the given stream.</summary>
-            /// <remarks>
-            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
-            /// handlers and other configuration may be performed using that property prior to calling this method.
-            /// </remarks>
-            /// <returns>The final status of the download; including whether the download succeeded or failed.</returns>
-            public virtual Google.Apis.Download.IDownloadProgress DownloadWithStatus(System.IO.Stream stream)
-            {
-                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
-                mediaDownloader.Range = null;
-                return mediaDownloader.Download(this.GenerateRequestUri(), stream);
-            }
-
-            /// <summary>Asynchronously download the media into the given stream.</summary>
-            /// <remarks>
-            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
-            /// handlers and other configuration may be performed using that property prior to calling this method.
-            /// </remarks>
-            public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadAsync(System.IO.Stream stream)
-            {
-                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
-                mediaDownloader.Range = null;
-                return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream);
-            }
-
-            /// <summary>Asynchronously download the media into the given stream.</summary>
-            /// <remarks>
-            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
-            /// handlers and other configuration may be performed using that property prior to calling this method.
-            /// </remarks>
-            public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadAsync(System.IO.Stream stream,
-                System.Threading.CancellationToken cancellationToken)
-            {
-                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
-                mediaDownloader.Range = null;
-                return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
-            }
-
-            /// <summary>Synchronously download a range of the media into the given stream.</summary>
-            /// <remarks>
-            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
-            /// handlers and other configuration may be performed using that property prior to calling this method.
-            /// </remarks>
-            public virtual Google.Apis.Download.IDownloadProgress DownloadRange(System.IO.Stream stream, System.Net.Http.Headers.RangeHeaderValue range)
-            {
-                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
-                mediaDownloader.Range = range;
-                return mediaDownloader.Download(this.GenerateRequestUri(), stream);
-            }
-
-            /// <summary>Asynchronously download a range of the media into the given stream.</summary>
-            /// <remarks>
-            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
-            /// handlers and other configuration may be performed using that property prior to calling this method.
-            /// </remarks>
-            public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadRangeAsync(System.IO.Stream stream,
-                System.Net.Http.Headers.RangeHeaderValue range,
-                System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-            {
-                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
-                mediaDownloader.Range = range;
-                return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
-            }
-        }
-
-        /// <summary>Uploads a file for the assistant to use as a source of information within the session.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="name">
-        /// Required. The resource name of the Session. Format:
-        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}`
-        /// </param>
-        public virtual UploadRequest Upload(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUploadSessionFileRequest body, string name)
-        {
-            return new UploadRequest(this.service, body, name);
-        }
-
-        /// <summary>Uploads a file for the assistant to use as a source of information within the session.</summary>
-        public class UploadRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUploadSessionFileResponse>
-        {
-            /// <summary>Constructs a new Upload request.</summary>
-            public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUploadSessionFileRequest body, string name) : base(service)
-            {
-                Name = name;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>
-            /// Required. The resource name of the Session. Format:
-            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}`
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUploadSessionFileRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "upload";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1alpha/{+name}:uploadFile";
-
-            /// <summary>Initializes Upload parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/sessions/[^/]+$",
-                });
-            }
-        }
-
-        /// <summary>Uploads a file for the assistant to use as a source of information within the session.</summary>
-        /// <remarks>
-        /// Considerations regarding <paramref name="stream"/>:
-        /// <list type="bullet">
-        /// <item>
-        /// <description>
-        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before reading
-        /// commences. If <paramref name="stream"/> is not seekable, then it will be read from its current position
-        /// </description>
-        /// </item>
-        /// <item>
-        /// <description>
-        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
-        /// </description>
-        /// </item>
-        /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
-        /// </list>
-        /// </remarks>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="name">
-        /// Required. The resource name of the Session. Format:
-        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}`
-        /// </param>
-        /// <param name="stream">The stream to upload. See remarks for further information.</param>
-        /// <param name="contentType">The content type of the stream to upload.</param>
-        public virtual UploadMediaUpload Upload(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUploadSessionFileRequest body, string name, System.IO.Stream stream, string contentType)
-        {
-            return new UploadMediaUpload(service, body, name, stream, contentType);
-        }
-
-        /// <summary>Upload media upload which supports resumable upload.</summary>
-        public class UploadMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUploadSessionFileRequest, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUploadSessionFileResponse>
-        {
-            /// <summary>V1 error format.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
-
-            /// <summary>V1 error format.</summary>
-            public enum XgafvEnum
-            {
-                /// <summary>v1 error format</summary>
-                [Google.Apis.Util.StringValueAttribute("1")]
-                Value1 = 0,
-
-                /// <summary>v2 error format</summary>
-                [Google.Apis.Util.StringValueAttribute("2")]
-                Value2 = 1,
-            }
-
-            /// <summary>OAuth access token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string AccessToken { get; set; }
-
-            /// <summary>Data format for response.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<AltEnum> Alt { get; set; }
-
-            /// <summary>Data format for response.</summary>
-            public enum AltEnum
-            {
-                /// <summary>Responses with Content-Type of application/json</summary>
-                [Google.Apis.Util.StringValueAttribute("json")]
-                Json = 0,
-
-                /// <summary>Media download with context-dependent Content-Type</summary>
-                [Google.Apis.Util.StringValueAttribute("media")]
-                Media = 1,
-
-                /// <summary>Responses with Content-Type of application/x-protobuf</summary>
-                [Google.Apis.Util.StringValueAttribute("proto")]
-                Proto = 2,
-            }
-
-            /// <summary>JSONP</summary>
-            [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Callback { get; set; }
-
-            /// <summary>Selector specifying which fields to include in a partial response.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Fields { get; set; }
-
-            /// <summary>
-            /// API key. Your API key identifies your project and provides you with API access, quota, and reports.
-            /// Required unless you provide an OAuth 2.0 token.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Key { get; set; }
-
-            /// <summary>OAuth 2.0 token for the current user.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string OauthToken { get; set; }
-
-            /// <summary>Returns response with indentations and line breaks.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> PrettyPrint { get; set; }
-
-            /// <summary>
-            /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned
-            /// to a user, but should not exceed 40 characters.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string QuotaUser { get; set; }
-
-            /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
-            [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string UploadType { get; set; }
-
-            /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
-            [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string UploadProtocol { get; set; }
-
-            /// <summary>
-            /// Required. The resource name of the Session. Format:
-            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}`
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>Constructs a new Upload media upload instance.</summary>
-            /// <remarks>
-            /// Considerations regarding <paramref name="stream"/>:
-            /// <list type="bullet">
-            /// <item>
-            /// <description>
-            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
-            /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its current
-            /// position
-            /// </description>
-            /// </item>
-            /// <item>
-            /// <description>
-            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
-            /// </description>
-            /// </item>
-            /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
-            /// </list>
-            /// </remarks>
-            public UploadMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUploadSessionFileRequest body, string name, System.IO.Stream stream, string contentType)
-                : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "v1alpha/{+name}:uploadFile"), "POST", stream, contentType)
-            {
-                Name = name;
-                Body = body;
             }
         }
     }
@@ -1876,9 +1492,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                             /// <summary>
                             /// When set to `true`, operations that are reachable are returned as normal, and those that
-                            /// are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can
-                            /// only be `true` when reading across collections e.g. when `parent` is set to
-                            /// `"projects/example/locations/-"`. This field is not by default supported and will result
+                            /// are unreachable are returned in the ListOperationsResponse.unreachable field. This can
+                            /// only be `true` when reading across collections. For example, when `parent` is set to
+                            /// `"projects/example/locations/-"`. This field is not supported by default and will result
                             /// in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or
                             /// product specific documentation.
                             /// </summary>
@@ -3251,11 +2867,11 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                                 /// <summary>
                                 /// When set to `true`, operations that are reachable are returned as normal, and those
-                                /// that are unreachable are returned in the [ListOperationsResponse.unreachable] field.
-                                /// This can only be `true` when reading across collections e.g. when `parent` is set to
-                                /// `"projects/example/locations/-"`. This field is not by default supported and will
-                                /// result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in
-                                /// service or product specific documentation.
+                                /// that are unreachable are returned in the ListOperationsResponse.unreachable field.
+                                /// This can only be `true` when reading across collections. For example, when `parent`
+                                /// is set to `"projects/example/locations/-"`. This field is not supported by default
+                                /// and will result in an `UNIMPLEMENTED` error if set unless explicitly documented
+                                /// otherwise in service or product specific documentation.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
                                 public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
@@ -4833,11 +4449,11 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                                 /// <summary>
                                 /// When set to `true`, operations that are reachable are returned as normal, and those
-                                /// that are unreachable are returned in the [ListOperationsResponse.unreachable] field.
-                                /// This can only be `true` when reading across collections e.g. when `parent` is set to
-                                /// `"projects/example/locations/-"`. This field is not by default supported and will
-                                /// result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in
-                                /// service or product specific documentation.
+                                /// that are unreachable are returned in the ListOperationsResponse.unreachable field.
+                                /// This can only be `true` when reading across collections. For example, when `parent`
+                                /// is set to `"projects/example/locations/-"`. This field is not supported by default
+                                /// and will result in an `UNIMPLEMENTED` error if set unless explicitly documented
+                                /// otherwise in service or product specific documentation.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
                                 public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
@@ -5009,9 +4625,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                             /// <summary>
                             /// When set to `true`, operations that are reachable are returned as normal, and those that
-                            /// are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can
-                            /// only be `true` when reading across collections e.g. when `parent` is set to
-                            /// `"projects/example/locations/-"`. This field is not by default supported and will result
+                            /// are unreachable are returned in the ListOperationsResponse.unreachable field. This can
+                            /// only be `true` when reading across collections. For example, when `parent` is set to
+                            /// `"projects/example/locations/-"`. This field is not supported by default and will result
                             /// in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or
                             /// product specific documentation.
                             /// </summary>
@@ -5202,11 +4818,11 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                                 /// <summary>
                                 /// When set to `true`, operations that are reachable are returned as normal, and those
-                                /// that are unreachable are returned in the [ListOperationsResponse.unreachable] field.
-                                /// This can only be `true` when reading across collections e.g. when `parent` is set to
-                                /// `"projects/example/locations/-"`. This field is not by default supported and will
-                                /// result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in
-                                /// service or product specific documentation.
+                                /// that are unreachable are returned in the ListOperationsResponse.unreachable field.
+                                /// This can only be `true` when reading across collections. For example, when `parent`
+                                /// is set to `"projects/example/locations/-"`. This field is not supported by default
+                                /// and will result in an `UNIMPLEMENTED` error if set unless explicitly documented
+                                /// otherwise in service or product specific documentation.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
                                 public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
@@ -6798,11 +6414,11 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                                 /// <summary>
                                 /// When set to `true`, operations that are reachable are returned as normal, and those
-                                /// that are unreachable are returned in the [ListOperationsResponse.unreachable] field.
-                                /// This can only be `true` when reading across collections e.g. when `parent` is set to
-                                /// `"projects/example/locations/-"`. This field is not by default supported and will
-                                /// result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in
-                                /// service or product specific documentation.
+                                /// that are unreachable are returned in the ListOperationsResponse.unreachable field.
+                                /// This can only be `true` when reading across collections. For example, when `parent`
+                                /// is set to `"projects/example/locations/-"`. This field is not supported by default
+                                /// and will result in an `UNIMPLEMENTED` error if set unless explicitly documented
+                                /// otherwise in service or product specific documentation.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
                                 public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
@@ -7189,9 +6805,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     /// <summary>
                                     /// When set to `true`, operations that are reachable are returned as normal, and
                                     /// those that are unreachable are returned in the
-                                    /// [ListOperationsResponse.unreachable] field. This can only be `true` when reading
-                                    /// across collections e.g. when `parent` is set to
-                                    /// `"projects/example/locations/-"`. This field is not by default supported and
+                                    /// ListOperationsResponse.unreachable field. This can only be `true` when reading
+                                    /// across collections. For example, when `parent` is set to
+                                    /// `"projects/example/locations/-"`. This field is not supported by default and
                                     /// will result in an `UNIMPLEMENTED` error if set unless explicitly documented
                                     /// otherwise in service or product specific documentation.
                                     /// </summary>
@@ -9711,6 +9327,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             {
                                 this.service = service;
                                 Files = new FilesResource(service);
+                                Operations = new OperationsResource(service);
                             }
 
                             /// <summary>Gets the Files resource.</summary>
@@ -9789,6 +9406,75 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                             ParameterType = "path",
                                             DefaultValue = null,
                                             Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                        });
+                                    }
+                                }
+                            }
+
+                            /// <summary>Gets the Operations resource.</summary>
+                            public virtual OperationsResource Operations { get; }
+
+                            /// <summary>The "operations" collection of methods.</summary>
+                            public class OperationsResource
+                            {
+                                private const string Resource = "operations";
+
+                                /// <summary>The service which this resource belongs to.</summary>
+                                private readonly Google.Apis.Services.IClientService service;
+
+                                /// <summary>Constructs a new resource.</summary>
+                                public OperationsResource(Google.Apis.Services.IClientService service)
+                                {
+                                    this.service = service;
+                                }
+
+                                /// <summary>
+                                /// Gets the latest state of a long-running operation. Clients can use this method to
+                                /// poll the operation result at intervals as recommended by the API service.
+                                /// </summary>
+                                /// <param name="name">The name of the operation resource.</param>
+                                public virtual GetRequest Get(string name)
+                                {
+                                    return new GetRequest(this.service, name);
+                                }
+
+                                /// <summary>
+                                /// Gets the latest state of a long-running operation. Clients can use this method to
+                                /// poll the operation result at intervals as recommended by the API service.
+                                /// </summary>
+                                public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                                {
+                                    /// <summary>Constructs a new Get request.</summary>
+                                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                    {
+                                        Name = name;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>The name of the operation resource.</summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Name { get; private set; }
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "get";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "GET";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "v1alpha/{+name}";
+
+                                    /// <summary>Initializes Get parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "name",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+/operations/[^/]+$",
                                         });
                                     }
                                 }
@@ -10935,6 +10621,138 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             }
                         }
 
+                        /// <summary>Creates an Assistant.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The parent resource name. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+                        /// </param>
+                        public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAssistant body, string parent)
+                        {
+                            return new CreateRequest(this.service, body, parent);
+                        }
+
+                        /// <summary>Creates an Assistant.</summary>
+                        public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAssistant>
+                        {
+                            /// <summary>Constructs a new Create request.</summary>
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAssistant body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The parent resource name. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Required. The ID to use for the Assistant, which will become the final component of the
+                            /// Assistant's resource name. This field must conform to
+                            /// [RFC-1034](https://tools.ietf.org/html/rfc1034) with a length limit of 63 characters.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("assistantId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string AssistantId { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAssistant Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "create";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+parent}/assistants";
+
+                            /// <summary>Initializes Create parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+$",
+                                });
+                                RequestParameters.Add("assistantId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "assistantId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Deletes an Assistant.</summary>
+                        /// <param name="name">
+                        /// Required. Resource name of Assistant. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}`
+                        /// If the caller does not have permission to delete the Assistant, regardless of whether or not
+                        /// it exists, a PERMISSION_DENIED error is returned. If the Assistant to delete does not exist,
+                        /// a NOT_FOUND error is returned.
+                        /// </param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(this.service, name);
+                        }
+
+                        /// <summary>Deletes an Assistant.</summary>
+                        public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleProtobufEmpty>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Resource name of Assistant. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}`
+                            /// If the caller does not have permission to delete the Assistant, regardless of whether or
+                            /// not it exists, a PERMISSION_DENIED error is returned. If the Assistant to delete does
+                            /// not exist, a NOT_FOUND error is returned.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+$",
+                                });
+                            }
+                        }
+
                         /// <summary>Gets an Assistant.</summary>
                         /// <param name="name">
                         /// Required. Resource name of Assistant. Format:
@@ -10982,6 +10800,89 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Lists all Assistants under an Engine.</summary>
+                        /// <param name="parent">
+                        /// Required. The parent resource name. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(this.service, parent);
+                        }
+
+                        /// <summary>Lists all Assistants under an Engine.</summary>
+                        public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaListAssistantsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The parent resource name. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Maximum number of Assistants to return. If unspecified, defaults to 100. The maximum
+                            /// allowed value is 1000; anything above that will be coerced down to 1000.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// A page token ListAssistantsResponse.next_page_token, received from a previous
+                            /// AssistantService.ListAssistants call. Provide this to retrieve the subsequent page. When
+                            /// paginating, all other parameters provided to ListAssistants must match the call that
+                            /// provided the page token.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+parent}/assistants";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+$",
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                             }
                         }
@@ -12408,9 +12309,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                             /// <summary>
                             /// When set to `true`, operations that are reachable are returned as normal, and those that
-                            /// are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can
-                            /// only be `true` when reading across collections e.g. when `parent` is set to
-                            /// `"projects/example/locations/-"`. This field is not by default supported and will result
+                            /// are unreachable are returned in the ListOperationsResponse.unreachable field. This can
+                            /// only be `true` when reading across collections. For example, when `parent` is set to
+                            /// `"projects/example/locations/-"`. This field is not supported by default and will result
                             /// in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or
                             /// product specific documentation.
                             /// </summary>
@@ -14574,9 +14475,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                         /// <summary>
                         /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                        /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                        /// `true` when reading across collections e.g. when `parent` is set to
-                        /// `"projects/example/locations/-"`. This field is not by default supported and will result in
+                        /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                        /// `true` when reading across collections. For example, when `parent` is set to
+                        /// `"projects/example/locations/-"`. This field is not supported by default and will result in
                         /// an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                         /// specific documentation.
                         /// </summary>
@@ -16113,9 +16014,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                             /// <summary>
                             /// When set to `true`, operations that are reachable are returned as normal, and those that
-                            /// are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can
-                            /// only be `true` when reading across collections e.g. when `parent` is set to
-                            /// `"projects/example/locations/-"`. This field is not by default supported and will result
+                            /// are unreachable are returned in the ListOperationsResponse.unreachable field. This can
+                            /// only be `true` when reading across collections. For example, when `parent` is set to
+                            /// `"projects/example/locations/-"`. This field is not supported by default and will result
                             /// in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or
                             /// product specific documentation.
                             /// </summary>
@@ -17620,9 +17521,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                             /// <summary>
                             /// When set to `true`, operations that are reachable are returned as normal, and those that
-                            /// are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can
-                            /// only be `true` when reading across collections e.g. when `parent` is set to
-                            /// `"projects/example/locations/-"`. This field is not by default supported and will result
+                            /// are unreachable are returned in the ListOperationsResponse.unreachable field. This can
+                            /// only be `true` when reading across collections. For example, when `parent` is set to
+                            /// `"projects/example/locations/-"`. This field is not supported by default and will result
                             /// in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or
                             /// product specific documentation.
                             /// </summary>
@@ -17796,9 +17697,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                         /// <summary>
                         /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                        /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                        /// `true` when reading across collections e.g. when `parent` is set to
-                        /// `"projects/example/locations/-"`. This field is not by default supported and will result in
+                        /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                        /// `true` when reading across collections. For example, when `parent` is set to
+                        /// `"projects/example/locations/-"`. This field is not supported by default and will result in
                         /// an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                         /// specific documentation.
                         /// </summary>
@@ -22065,9 +21966,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                         /// <summary>
                         /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                        /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                        /// `true` when reading across collections e.g. when `parent` is set to
-                        /// `"projects/example/locations/-"`. This field is not by default supported and will result in
+                        /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                        /// `true` when reading across collections. For example, when `parent` is set to
+                        /// `"projects/example/locations/-"`. This field is not supported by default and will result in
                         /// an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                         /// specific documentation.
                         /// </summary>
@@ -23171,85 +23072,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             });
                         }
                     }
-
-                    /// <summary>Uploads a file for Notebook LM to use. Creates a Source.</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">
-                    /// Required. The parent resource where the sources will be created. Format:
-                    /// projects/{project}/locations/{location}/notebooks/{notebook}
-                    /// </param>
-                    /// <param name="sourceId">
-                    /// The source id of the associated file. If not set, a source id will be generated and a new
-                    /// tentative source will be created.
-                    /// </param>
-                    public virtual UploadFileRequest UploadFile(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaUploadSourceFileRequest body, string parent, string sourceId)
-                    {
-                        return new UploadFileRequest(this.service, body, parent, sourceId);
-                    }
-
-                    /// <summary>Uploads a file for Notebook LM to use. Creates a Source.</summary>
-                    public class UploadFileRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaUploadSourceFileResponse>
-                    {
-                        /// <summary>Constructs a new UploadFile request.</summary>
-                        public UploadFileRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaUploadSourceFileRequest body, string parent, string sourceId) : base(service)
-                        {
-                            Parent = parent;
-                            SourceId = sourceId;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The parent resource where the sources will be created. Format:
-                        /// projects/{project}/locations/{location}/notebooks/{notebook}
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>
-                        /// The source id of the associated file. If not set, a source id will be generated and a new
-                        /// tentative source will be created.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("sourceId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string SourceId { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaUploadSourceFileRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "uploadFile";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1alpha/{+parent}/sources/{sourceId}:uploadFile";
-
-                        /// <summary>Initializes UploadFile parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/notebooks/[^/]+$",
-                            });
-                            RequestParameters.Add("sourceId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "sourceId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
-                    }
                 }
 
                 /// <summary>Batch deletes Notebooks.</summary>
@@ -23662,9 +23484,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                     /// <summary>
                     /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                    /// `true` when reading across collections e.g. when `parent` is set to
-                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
                     /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                     /// specific documentation.
                     /// </summary>
@@ -25331,9 +25153,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                         /// <summary>
                         /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                        /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                        /// `true` when reading across collections e.g. when `parent` is set to
-                        /// `"projects/example/locations/-"`. This field is not by default supported and will result in
+                        /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                        /// `true` when reading across collections. For example, when `parent` is set to
+                        /// `"projects/example/locations/-"`. This field is not supported by default and will result in
                         /// an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                         /// specific documentation.
                         /// </summary>
@@ -25442,15 +25264,20 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. Filter for the list request. Supported fields: * `license`_`assignment`_`state` *
-                        /// `user_principal` * `user_profile` Examples: * `license`_`assignment`_`state = ASSIGNED` to
-                        /// list assigned user licenses. * `license`_`assignment`_`state = NO_LICENSE` to list not
-                        /// licensed users. * `license`_`assignment`_`state = NO_LICENSE_ATTEMPTED_LOGIN` to list users
-                        /// who attempted login but no license assigned. * `license`_`assignment`_`state !=
-                        /// NO_LICENSE_ATTEMPTED_LOGIN` to filter out users who attempted login but no license assigned.
+                        /// Optional. The order in which the UserLicenses are listed. The value must be a
+                        /// comma-separated list of fields. Default sorting order is ascending. To specify descending
+                        /// order for a field, append a " desc" suffix. Redundant space characters in the syntax are
+                        /// insignificant. Supported fields: * `license_assignment_state` * `user_principal` *
+                        /// `user_profile` * `last_login_date` * `update_time` If not set, the default ordering is by
+                        /// `user_principal`. Examples: * `user_principal desc` to order by `user_principal` in
+                        /// descending order. * `license_assignment_state` to order by `license_assignment_state` in
+                        /// ascending order. * `last_login_date desc` to order by `last_login_date` in descending order.
+                        /// * `update_time desc` to order by `update_time` in descending order. * `last_login_date desc,
+                        /// user_principal` to order by `last_login_date` in descending order and then by
+                        /// `user_principal` in ascending order.
                         /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Filter { get; set; }
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
 
                         /// <summary>
                         /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
@@ -25489,9 +25316,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/userStores/[^/]+$",
                             });
-                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "filter",
+                                Name = "orderBy",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -25992,32 +25819,101 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 }
             }
 
-            /// <summary>Gets configurable pricing usage stats.</summary>
-            /// <param name="name">
-            /// Required. The name of the ConfigurablePricingUsageStats to retrieve. Format:
-            /// projects/{project}/locations/{location}/configurablePricingUsageStats
+            /// <summary>
+            /// Obtains the time series data of organic or dedicated crawl rate for monitoring. When dedicated crawl
+            /// rate is not set, it will return vertex AI's organic crawl rate time series. Organic crawl means Google
+            /// automatically crawl the internet at its own convenience. When dedicated crawl rate is set, it will
+            /// return vertex AI's dedicated crawl rate time series.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="location">
+            /// Required. The location resource where crawl rate management will be performed. Format:
+            /// `projects/{project}/locations/{location}`
             /// </param>
-            public virtual GetConfigurablePricingUsageStatsRequest GetConfigurablePricingUsageStats(string name)
+            public virtual ObtainCrawlRateRequest ObtainCrawlRate(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaObtainCrawlRateRequest body, string location)
             {
-                return new GetConfigurablePricingUsageStatsRequest(this.service, name);
+                return new ObtainCrawlRateRequest(this.service, body, location);
             }
 
-            /// <summary>Gets configurable pricing usage stats.</summary>
-            public class GetConfigurablePricingUsageStatsRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaConfigurablePricingUsageStats>
+            /// <summary>
+            /// Obtains the time series data of organic or dedicated crawl rate for monitoring. When dedicated crawl
+            /// rate is not set, it will return vertex AI's organic crawl rate time series. Organic crawl means Google
+            /// automatically crawl the internet at its own convenience. When dedicated crawl rate is set, it will
+            /// return vertex AI's dedicated crawl rate time series.
+            /// </summary>
+            public class ObtainCrawlRateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaObtainCrawlRateResponse>
             {
-                /// <summary>Constructs a new GetConfigurablePricingUsageStats request.</summary>
-                public GetConfigurablePricingUsageStatsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                /// <summary>Constructs a new ObtainCrawlRate request.</summary>
+                public ObtainCrawlRateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaObtainCrawlRateRequest body, string location) : base(service)
                 {
-                    Name = name;
+                    Location = location;
+                    Body = body;
                     InitParameters();
                 }
 
                 /// <summary>
-                /// Required. The name of the ConfigurablePricingUsageStats to retrieve. Format:
-                /// projects/{project}/locations/{location}/configurablePricingUsageStats
+                /// Required. The location resource where crawl rate management will be performed. Format:
+                /// `projects/{project}/locations/{location}`
                 /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Location { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaObtainCrawlRateRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "obtainCrawlRate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+location}:obtainCrawlRate";
+
+                /// <summary>Initializes ObtainCrawlRate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Queries configurable pricing usage stats for a project.</summary>
+            /// <param name="project">Required. The project to query usage stats for. Format: projects/{project}</param>
+            /// <param name="location">Required. The location to query usage stats for.</param>
+            public virtual QueryConfigurablePricingUsageStatsRequest QueryConfigurablePricingUsageStats(string project, string location)
+            {
+                return new QueryConfigurablePricingUsageStatsRequest(this.service, project, location);
+            }
+
+            /// <summary>Queries configurable pricing usage stats for a project.</summary>
+            public class QueryConfigurablePricingUsageStatsRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaQueryConfigurablePricingUsageStatsResponse>
+            {
+                /// <summary>Constructs a new QueryConfigurablePricingUsageStats request.</summary>
+                public QueryConfigurablePricingUsageStatsRequest(Google.Apis.Services.IClientService service, string project, string location) : base(service)
+                {
+                    Project = project;
+                    Location = location;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The project to query usage stats for. Format: projects/{project}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Project { get; private set; }
+
+                /// <summary>Required. The location to query usage stats for.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Location { get; private set; }
 
                 /// <summary>Optional. The metric types to return usage for.</summary>
                 /// <remarks>
@@ -26098,25 +25994,33 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 public virtual System.Nullable<int> TimeRangeStartDateYear { get; set; }
 
                 /// <summary>Gets the method name.</summary>
-                public override string MethodName => "getConfigurablePricingUsageStats";
+                public override string MethodName => "queryConfigurablePricingUsageStats";
 
                 /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha/{+name}";
+                public override string RestPath => "v1alpha/{+project}/locations/{location}:queryConfigurablePricingUsageStats";
 
-                /// <summary>Initializes GetConfigurablePricingUsageStats parameter list.</summary>
+                /// <summary>Initializes QueryConfigurablePricingUsageStats parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "name",
+                        Name = "project",
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^projects/[^/]+/locations/[^/]+/configurablePricingUsageStats$",
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("metricTypes", new Google.Apis.Discovery.Parameter
                     {
@@ -26173,75 +26077,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
-                    });
-                }
-            }
-
-            /// <summary>
-            /// Obtains the time series data of organic or dedicated crawl rate for monitoring. When dedicated crawl
-            /// rate is not set, it will return vertex AI's organic crawl rate time series. Organic crawl means Google
-            /// automatically crawl the internet at its own convenience. When dedicated crawl rate is set, it will
-            /// return vertex AI's dedicated crawl rate time series.
-            /// </summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="location">
-            /// Required. The location resource where crawl rate management will be performed. Format:
-            /// `projects/{project}/locations/{location}`
-            /// </param>
-            public virtual ObtainCrawlRateRequest ObtainCrawlRate(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaObtainCrawlRateRequest body, string location)
-            {
-                return new ObtainCrawlRateRequest(this.service, body, location);
-            }
-
-            /// <summary>
-            /// Obtains the time series data of organic or dedicated crawl rate for monitoring. When dedicated crawl
-            /// rate is not set, it will return vertex AI's organic crawl rate time series. Organic crawl means Google
-            /// automatically crawl the internet at its own convenience. When dedicated crawl rate is set, it will
-            /// return vertex AI's dedicated crawl rate time series.
-            /// </summary>
-            public class ObtainCrawlRateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaObtainCrawlRateResponse>
-            {
-                /// <summary>Constructs a new ObtainCrawlRate request.</summary>
-                public ObtainCrawlRateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaObtainCrawlRateRequest body, string location) : base(service)
-                {
-                    Location = location;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. The location resource where crawl rate management will be performed. Format:
-                /// `projects/{project}/locations/{location}`
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Location { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaObtainCrawlRateRequest Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "obtainCrawlRate";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "POST";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha/{+location}:obtainCrawlRate";
-
-                /// <summary>Initializes ObtainCrawlRate parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "location",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
                     });
                 }
             }
@@ -26800,10 +26635,11 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                 /// <summary>
                 /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be `true`
-                /// when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This
-                /// field is not by default supported and will result in an `UNIMPLEMENTED` error if set unless
-                /// explicitly documented otherwise in service or product specific documentation.
+                /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true`
+                /// when reading across collections. For example, when `parent` is set to
+                /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
+                /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific
+                /// documentation.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
@@ -27114,647 +26950,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 }
 namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 {
-    /// <summary>Extra information added to operations that support Scotty media requests.</summary>
-    public class ApiservingMediaRequestInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The number of current bytes uploaded or downloaded.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("currentBytes")]
-        public virtual System.Nullable<long> CurrentBytes { get; set; }
-
-        /// <summary>
-        /// Data to be copied to backend requests. Custom data is returned to Scotty in the agent_state field, which
-        /// Scotty will then provide in subsequent upload notifications.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("customData")]
-        public virtual string CustomData { get; set; }
-
-        /// <summary>
-        /// Set if the http request info is diff encoded. The value of this field is the version number of the base
-        /// revision. This is corresponding to Apiary's mediaDiffObjectVersion
-        /// (//depot/google3/java/com/google/api/server/media/variable/DiffObjectVersionVariable.java). See
-        /// go/esf-scotty-diff-upload for more information.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("diffObjectVersion")]
-        public virtual string DiffObjectVersion { get; set; }
-
-        /// <summary>
-        /// The existence of the final_status field indicates that this is the last call to the agent for this
-        /// request_id. http://google3/uploader/agent/scotty_agent.proto?l=737&amp;amp;rcl=347601929
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("finalStatus")]
-        public virtual System.Nullable<int> FinalStatus { get; set; }
-
-        /// <summary>The type of notification received from Scotty.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("notificationType")]
-        public virtual string NotificationType { get; set; }
-
-        /// <summary>
-        /// The physical headers provided by RequestReceivedParameters in Scotty request. type is
-        /// uploader_service.KeyValuePairs.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("physicalHeaders")]
-        public virtual string PhysicalHeaders { get; set; }
-
-        /// <summary>The Scotty request ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; }
-
-        /// <summary>
-        /// The partition of the Scotty server handling this request. type is
-        /// uploader_service.RequestReceivedParamsServingInfo
-        /// LINT.IfChange(request_received_params_serving_info_annotations) LINT.ThenChange()
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestReceivedParamsServingInfo")]
-        public virtual string RequestReceivedParamsServingInfo { get; set; }
-
-        /// <summary>The total size of the file.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("totalBytes")]
-        public virtual System.Nullable<long> TotalBytes { get; set; }
-
-        /// <summary>Whether the total bytes field contains an estimated data.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("totalBytesIsEstimated")]
-        public virtual System.Nullable<bool> TotalBytesIsEstimated { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// This message is for backends to pass their scotty media specific fields to ESF. Backend will include this in
-    /// their response message to ESF. Example: ExportFile is an rpc defined for upload using scotty from ESF. rpc
-    /// ExportFile(ExportFileRequest) returns (ExportFileResponse) Message ExportFileResponse will include
-    /// apiserving.MediaResponseInfo to tell ESF about data like dynamic_dropzone it needs to pass to Scotty. message
-    /// ExportFileResponse { optional gdata.Media blob = 1; optional apiserving.MediaResponseInfo media_response_info =
-    /// 2 }
-    /// </summary>
-    public class ApiservingMediaResponseInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Data to copy from backend response to the next backend requests. Custom data is returned to Scotty in the
-        /// agent_state field, which Scotty will then provide in subsequent upload notifications.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("customData")]
-        public virtual string CustomData { get; set; }
-
-        /// <summary>
-        /// Specifies any transformation to be applied to data before persisting it or retrieving from storage. E.g.,
-        /// encryption options for blobstore2. This should be of the form uploader_service.DataStorageTransform.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataStorageTransform")]
-        public virtual string DataStorageTransform { get; set; }
-
-        /// <summary>
-        /// For the first notification of a |diff_encoded| HttpRequestInfo, this is the index of the blob mint that
-        /// Scotty should use when writing the resulting blob. This field is optional. It's not required ever, even if
-        /// `original_object_blob_mint_index` is set. In situations like that, we will use the destination blob's mint
-        /// for the destination blob and regular blob ACL checks for the original object. Note: This field is only for
-        /// use by Drive API for diff uploads.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("destinationBlobMintIndex")]
-        public virtual System.Nullable<int> DestinationBlobMintIndex { get; set; }
-
-        /// <summary>
-        /// Specifies the Scotty Drop Target to use for uploads. If present in a media response, Scotty does not upload
-        /// to a standard drop zone. Instead, Scotty saves the upload directly to the location specified in this drop
-        /// target. Unlike drop zones, the drop target is the final storage location for an upload. So, the agent does
-        /// not need to clone the blob at the end of the upload. The agent is responsible for garbage collecting any
-        /// orphaned blobs that may occur due to aborted uploads. For more information, see the drop target design doc
-        /// here: http://goto/ScottyDropTarget This field will be preferred to dynamicDropzone. If provided, the
-        /// identified field in the response must be of the type uploader.agent.DropTarget.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dynamicDropTarget")]
-        public virtual string DynamicDropTarget { get; set; }
-
-        /// <summary>Specifies the Scotty dropzone to use for uploads.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dynamicDropzone")]
-        public virtual string DynamicDropzone { get; set; }
-
-        /// <summary>
-        /// Diff Updates must respond to a START notification with this Media proto to tell Scotty to decode the diff
-        /// encoded payload and apply the diff against this field. If the request was diff encoded, but this field is
-        /// not set, Scotty will treat the encoding as identity. This is corresponding to Apiary's
-        /// DiffUploadResponse.original_object (//depot/google3/gdata/rosy/proto/data.proto?l=413). See
-        /// go/esf-scotty-diff-upload for more information.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mediaForDiff")]
-        public virtual GdataMedia MediaForDiff { get; set; }
-
-        /// <summary>
-        /// For the first notification of a |diff_encoded| HttpRequestInfo, this is the index of the blob mint that
-        /// Scotty should use when reading the original blob. This field is optional. It's not required ever, even if
-        /// `destination_blob_mint_index` is set. In situations like that, we will use the destination blob's mint for
-        /// the destination blob and regular blob ACL checks for the original object. Note: This field is only for use
-        /// by Drive API for diff uploads.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("originalObjectBlobMintIndex")]
-        public virtual System.Nullable<int> OriginalObjectBlobMintIndex { get; set; }
-
-        /// <summary>Request class to use for all Blobstore operations for this request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestClass")]
-        public virtual string RequestClass { get; set; }
-
-        /// <summary>Requester ID passed along to be recorded in the Scotty logs</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scottyAgentUserId")]
-        public virtual System.Nullable<long> ScottyAgentUserId { get; set; }
-
-        /// <summary>
-        /// Customer-specific data to be recorded in the Scotty logs type is logs_proto_scotty.CustomerLog
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scottyCustomerLog")]
-        public virtual string ScottyCustomerLog { get; set; }
-
-        /// <summary>
-        /// Specifies the TrafficClass that Scotty should use for any RPCs to fetch the response bytes. Will override
-        /// the traffic class GTOS of the incoming http request. This is a temporary field to facilitate whitelisting
-        /// and experimentation by the bigstore agent only. For instance, this does not apply to RTMP reads. WARNING: DO
-        /// NOT USE WITHOUT PERMISSION FROM THE SCOTTY TEAM.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("trafficClassField")]
-        public virtual string TrafficClassField { get; set; }
-
-        /// <summary>
-        /// Tells Scotty to verify hashes on the agent's behalf by parsing out the X-Goog-Hash header.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("verifyHashFromHeader")]
-        public virtual System.Nullable<bool> VerifyHashFromHeader { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Information to read/write to blobstore2.</summary>
-    public class GdataBlobstore2Info : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The blob generation id.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("blobGeneration")]
-        public virtual System.Nullable<long> BlobGeneration { get; set; }
-
-        /// <summary>The blob id, e.g., /blobstore/prod/playground/scotty</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("blobId")]
-        public virtual string BlobId { get; set; }
-
-        /// <summary>
-        /// Read handle passed from Bigstore -&amp;gt; Scotty for a GCS download. This is a signed, serialized
-        /// blobstore2.ReadHandle proto which must never be set outside of Bigstore, and is not applicable to non-GCS
-        /// media downloads.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("downloadReadHandle")]
-        public virtual string DownloadReadHandle { get; set; }
-
-        /// <summary>
-        /// The blob read token. Needed to read blobs that have not been replicated. Might not be available until the
-        /// final call.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("readToken")]
-        public virtual string ReadToken { get; set; }
-
-        /// <summary>
-        /// Metadata passed from Blobstore -&amp;gt; Scotty for a new GCS upload. This is a signed, serialized
-        /// blobstore2.BlobMetadataContainer proto which must never be consumed outside of Bigstore, and is not
-        /// applicable to non-GCS media uploads.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uploadMetadataContainer")]
-        public virtual string UploadMetadataContainer { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A sequence of media data references representing composite data. Introduced to support Bigstore composite
-    /// objects. For details, visit http://go/bigstore-composites.
-    /// </summary>
-    public class GdataCompositeMedia : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Blobstore v1 reference, set if reference_type is BLOBSTORE_REF This should be the byte representation of a
-        /// blobstore.BlobRef. Since Blobstore is deprecating v1, use blobstore2_info instead. For now, any v2 blob will
-        /// also be represented in this field as v1 BlobRef.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("blobRef")]
-        public virtual string BlobRef { get; set; }
-
-        /// <summary>Blobstore v2 info, set if reference_type is BLOBSTORE_REF and it refers to a v2 blob.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("blobstore2Info")]
-        public virtual GdataBlobstore2Info Blobstore2Info { get; set; }
-
-        /// <summary>
-        /// A binary data reference for a media download. Serves as a technology-agnostic binary reference in some
-        /// Google infrastructure. This value is a serialized storage_cosmo.BinaryReference proto. Storing it as bytes
-        /// is a hack to get around the fact that the cosmo proto (as well as others it includes) doesn't support
-        /// JavaScript. This prevents us from including the actual type of this field.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cosmoBinaryReference")]
-        public virtual string CosmoBinaryReference { get; set; }
-
-        /// <summary>crc32.c hash for the payload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("crc32cHash")]
-        public virtual System.Nullable<long> Crc32cHash { get; set; }
-
-        /// <summary>Media data, set if reference_type is INLINE</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inline")]
-        public virtual string Inline { get; set; }
-
-        /// <summary>Size of the data, in bytes</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("length")]
-        public virtual System.Nullable<long> Length { get; set; }
-
-        /// <summary>MD5 hash for the payload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("md5Hash")]
-        public virtual string Md5Hash { get; set; }
-
-        /// <summary>Reference to a TI Blob, set if reference_type is BIGSTORE_REF.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
-        public virtual GdataObjectId ObjectId { get; set; }
-
-        /// <summary>Path to the data, set if reference_type is PATH</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; }
-
-        /// <summary>Describes what the field reference contains.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("referenceType")]
-        public virtual string ReferenceType { get; set; }
-
-        /// <summary>SHA-1 hash for the payload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sha1Hash")]
-        public virtual string Sha1Hash { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Detailed Content-Type information from Scotty. The Content-Type of the media will typically be filled in by the
-    /// header or Scotty's best_guess, but this extended information provides the backend with more information so that
-    /// it can make a better decision if needed. This is only used on media upload requests from Scotty.
-    /// </summary>
-    public class GdataContentTypeInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Scotty's best guess of what the content type of the file is.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bestGuess")]
-        public virtual string BestGuess { get; set; }
-
-        /// <summary>
-        /// The content type of the file derived by looking at specific bytes (i.e. "magic bytes") of the actual file.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fromBytes")]
-        public virtual string FromBytes { get; set; }
-
-        /// <summary>
-        /// The content type of the file derived from the file extension of the original file name used by the client.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fromFileName")]
-        public virtual string FromFileName { get; set; }
-
-        /// <summary>
-        /// The content type of the file as specified in the request headers, multipart headers, or RUPIO start request.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fromHeader")]
-        public virtual string FromHeader { get; set; }
-
-        /// <summary>
-        /// The content type of the file derived from the file extension of the URL path. The URL path is assumed to
-        /// represent a file name (which is typically only true for agents that are providing a REST API).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fromUrlPath")]
-        public virtual string FromUrlPath { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Backend response for a Diff get checksums response. For details on the Scotty Diff protocol, visit
-    /// http://go/scotty-diff-protocol.
-    /// </summary>
-    public class GdataDiffChecksumsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Exactly one of these fields must be populated. If checksums_location is filled, the server will return the
-        /// corresponding contents to the user. If object_location is filled, the server will calculate the checksums
-        /// based on the content there and return that to the user. For details on the format of the checksums, see
-        /// http://go/scotty-diff-protocol.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("checksumsLocation")]
-        public virtual GdataCompositeMedia ChecksumsLocation { get; set; }
-
-        /// <summary>The chunk size of checksums. Must be a multiple of 256KB.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("chunkSizeBytes")]
-        public virtual System.Nullable<long> ChunkSizeBytes { get; set; }
-
-        /// <summary>If set, calculate the checksums based on the contents and return them to the caller.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("objectLocation")]
-        public virtual GdataCompositeMedia ObjectLocation { get; set; }
-
-        /// <summary>The total size of the server object.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("objectSizeBytes")]
-        public virtual System.Nullable<long> ObjectSizeBytes { get; set; }
-
-        /// <summary>The object version of the object the checksums are being returned for.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("objectVersion")]
-        public virtual string ObjectVersion { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Backend response for a Diff download response. For details on the Scotty Diff protocol, visit
-    /// http://go/scotty-diff-protocol.
-    /// </summary>
-    public class GdataDiffDownloadResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The original object location.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("objectLocation")]
-        public virtual GdataCompositeMedia ObjectLocation { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A Diff upload request. For details on the Scotty Diff protocol, visit http://go/scotty-diff-protocol.
-    /// </summary>
-    public class GdataDiffUploadRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The location of the checksums for the new object. Agents must clone the object located here, as the upload
-        /// server will delete the contents once a response is received. For details on the format of the checksums, see
-        /// http://go/scotty-diff-protocol.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("checksumsInfo")]
-        public virtual GdataCompositeMedia ChecksumsInfo { get; set; }
-
-        /// <summary>
-        /// The location of the new object. Agents must clone the object located here, as the upload server will delete
-        /// the contents once a response is received.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("objectInfo")]
-        public virtual GdataCompositeMedia ObjectInfo { get; set; }
-
-        /// <summary>
-        /// The object version of the object that is the base version the incoming diff script will be applied to. This
-        /// field will always be filled in.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("objectVersion")]
-        public virtual string ObjectVersion { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Backend response for a Diff upload request. For details on the Scotty Diff protocol, visit
-    /// http://go/scotty-diff-protocol.
-    /// </summary>
-    public class GdataDiffUploadResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The object version of the object at the server. Must be included in the end notification response. The
-        /// version in the end notification response must correspond to the new version of the object that is now stored
-        /// at the server, after the upload.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("objectVersion")]
-        public virtual string ObjectVersion { get; set; }
-
-        /// <summary>
-        /// The location of the original file for a diff upload request. Must be filled in if responding to an upload
-        /// start notification.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("originalObject")]
-        public virtual GdataCompositeMedia OriginalObject { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Backend response for a Diff get version response. For details on the Scotty Diff protocol, visit
-    /// http://go/scotty-diff-protocol.
-    /// </summary>
-    public class GdataDiffVersionResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The total size of the server object.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("objectSizeBytes")]
-        public virtual System.Nullable<long> ObjectSizeBytes { get; set; }
-
-        /// <summary>The version of the object stored at the server.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("objectVersion")]
-        public virtual string ObjectVersion { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Parameters specific to media downloads.</summary>
-    public class GdataDownloadParameters : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A boolean to be returned in the response to Scotty. Allows/disallows gzip encoding of the payload content
-        /// when the server thinks it's advantageous (hence, does not guarantee compression) which allows Scotty to GZip
-        /// the response to the client.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allowGzipCompression")]
-        public virtual System.Nullable<bool> AllowGzipCompression { get; set; }
-
-        /// <summary>
-        /// Determining whether or not Apiary should skip the inclusion of any Content-Range header on its response to
-        /// Scotty.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ignoreRange")]
-        public virtual System.Nullable<bool> IgnoreRange { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A reference to data stored on the filesystem, on GFS or in blobstore.</summary>
-    public class GdataMedia : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Deprecated, use one of explicit hash type fields instead. Algorithm used for calculating the hash. As of
-        /// 2011/01/21, "MD5" is the only possible value for this field. New values may be added at any time.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("algorithm")]
-        public virtual string Algorithm { get; set; }
-
-        /// <summary>Use object_id instead.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bigstoreObjectRef")]
-        public virtual string BigstoreObjectRef { get; set; }
-
-        /// <summary>
-        /// Blobstore v1 reference, set if reference_type is BLOBSTORE_REF This should be the byte representation of a
-        /// blobstore.BlobRef. Since Blobstore is deprecating v1, use blobstore2_info instead. For now, any v2 blob will
-        /// also be represented in this field as v1 BlobRef.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("blobRef")]
-        public virtual string BlobRef { get; set; }
-
-        /// <summary>Blobstore v2 info, set if reference_type is BLOBSTORE_REF and it refers to a v2 blob.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("blobstore2Info")]
-        public virtual GdataBlobstore2Info Blobstore2Info { get; set; }
-
-        /// <summary>
-        /// A composite media composed of one or more media objects, set if reference_type is COMPOSITE_MEDIA. The media
-        /// length field must be set to the sum of the lengths of all composite media objects. Note: All composite media
-        /// must have length specified.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("compositeMedia")]
-        public virtual System.Collections.Generic.IList<GdataCompositeMedia> CompositeMedia { get; set; }
-
-        /// <summary>MIME type of the data</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
-        public virtual string ContentType { get; set; }
-
-        /// <summary>Extended content type information provided for Scotty uploads.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contentTypeInfo")]
-        public virtual GdataContentTypeInfo ContentTypeInfo { get; set; }
-
-        /// <summary>
-        /// A binary data reference for a media download. Serves as a technology-agnostic binary reference in some
-        /// Google infrastructure. This value is a serialized storage_cosmo.BinaryReference proto. Storing it as bytes
-        /// is a hack to get around the fact that the cosmo proto (as well as others it includes) doesn't support
-        /// JavaScript. This prevents us from including the actual type of this field.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cosmoBinaryReference")]
-        public virtual string CosmoBinaryReference { get; set; }
-
-        /// <summary>
-        /// For Scotty Uploads: Scotty-provided hashes for uploads For Scotty Downloads: (WARNING: DO NOT USE WITHOUT
-        /// PERMISSION FROM THE SCOTTY TEAM.) A Hash provided by the agent to be used to verify the data being
-        /// downloaded. Currently only supported for inline payloads. Further, only crc32c_hash is currently supported.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("crc32cHash")]
-        public virtual System.Nullable<long> Crc32cHash { get; set; }
-
-        /// <summary>Set if reference_type is DIFF_CHECKSUMS_RESPONSE.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("diffChecksumsResponse")]
-        public virtual GdataDiffChecksumsResponse DiffChecksumsResponse { get; set; }
-
-        /// <summary>Set if reference_type is DIFF_DOWNLOAD_RESPONSE.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("diffDownloadResponse")]
-        public virtual GdataDiffDownloadResponse DiffDownloadResponse { get; set; }
-
-        /// <summary>Set if reference_type is DIFF_UPLOAD_REQUEST.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("diffUploadRequest")]
-        public virtual GdataDiffUploadRequest DiffUploadRequest { get; set; }
-
-        /// <summary>Set if reference_type is DIFF_UPLOAD_RESPONSE.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("diffUploadResponse")]
-        public virtual GdataDiffUploadResponse DiffUploadResponse { get; set; }
-
-        /// <summary>Set if reference_type is DIFF_VERSION_RESPONSE.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("diffVersionResponse")]
-        public virtual GdataDiffVersionResponse DiffVersionResponse { get; set; }
-
-        /// <summary>Parameters for a media download.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("downloadParameters")]
-        public virtual GdataDownloadParameters DownloadParameters { get; set; }
-
-        /// <summary>Original file name</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("filename")]
-        public virtual string Filename { get; set; }
-
-        /// <summary>
-        /// Deprecated, use one of explicit hash type fields instead. These two hash related fields will only be
-        /// populated on Scotty based media uploads and will contain the content of the hash group in the
-        /// NotificationRequest:
-        /// http://cs/#google3/blobstore2/api/scotty/service/proto/upload_listener.proto&amp;amp;q=class:Hash Hex
-        /// encoded hash value of the uploaded media.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hash")]
-        public virtual string Hash { get; set; }
-
-        /// <summary>
-        /// For Scotty uploads only. If a user sends a hash code and the backend has requested that Scotty verify the
-        /// upload against the client hash, Scotty will perform the check on behalf of the backend and will reject it if
-        /// the hashes don't match. This is set to true if Scotty performed this verification.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hashVerified")]
-        public virtual System.Nullable<bool> HashVerified { get; set; }
-
-        /// <summary>Media data, set if reference_type is INLINE</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inline")]
-        public virtual string Inline { get; set; }
-
-        /// <summary>
-        /// |is_potential_retry| is set false only when Scotty is certain that it has not sent the request before. When
-        /// a client resumes an upload, this field must be set true in agent calls, because Scotty cannot be certain
-        /// that it has never sent the request before due to potential failure in the session state persistence.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("isPotentialRetry")]
-        public virtual System.Nullable<bool> IsPotentialRetry { get; set; }
-
-        /// <summary>Size of the data, in bytes</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("length")]
-        public virtual System.Nullable<long> Length { get; set; }
-
-        /// <summary>Scotty-provided MD5 hash for an upload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("md5Hash")]
-        public virtual string Md5Hash { get; set; }
-
-        /// <summary>Media id to forward to the operation GetMedia. Can be set if reference_type is GET_MEDIA.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mediaId")]
-        public virtual string MediaId { get; set; }
-
-        /// <summary>Reference to a TI Blob, set if reference_type is BIGSTORE_REF.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
-        public virtual GdataObjectId ObjectId { get; set; }
-
-        /// <summary>Path to the data, set if reference_type is PATH</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; }
-
-        /// <summary>Describes what the field reference contains.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("referenceType")]
-        public virtual string ReferenceType { get; set; }
-
-        /// <summary>Scotty-provided SHA1 hash for an upload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sha1Hash")]
-        public virtual string Sha1Hash { get; set; }
-
-        /// <summary>Scotty-provided SHA256 hash for an upload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sha256Hash")]
-        public virtual string Sha256Hash { get; set; }
-
-        /// <summary>Time at which the media data was last updated, in milliseconds since UNIX epoch</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
-        public virtual System.Nullable<ulong> Timestamp { get; set; }
-
-        /// <summary>A unique fingerprint/version id for the media data</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("token")]
-        public virtual string Token { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// This is a copy of the tech.blob.ObjectId proto, which could not be used directly here due to transitive closure
-    /// issues with JavaScript support; see http://b/8801763.
-    /// </summary>
-    public class GdataObjectId : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The name of the bucket to which this object belongs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bucketName")]
-        public virtual string BucketName { get; set; }
-
-        /// <summary>
-        /// Generation of the object. Generations are monotonically increasing across writes, allowing them to be be
-        /// compared to determine which generation is newer. If this is omitted in a request, then you are requesting
-        /// the live object. See http://go/bigstore-versions
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
-        public virtual System.Nullable<long> Generation { get; set; }
-
-        /// <summary>The name of the object.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("objectName")]
-        public virtual string ObjectName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// `Distribution` contains summary statistics for a population of values. It optionally contains a histogram
     /// representing the distribution of those values across a set of buckets. The summary statistics are the count,
@@ -28517,6 +27712,20 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual GoogleCloudDiscoveryengineV1AssistantCustomerPolicy CustomerPolicy { get; set; }
 
         /// <summary>
+        /// Optional. Description for additional information. Expected to be shown on the configuration UI, not to the
+        /// users of the assistant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. The assistant display name. It must be a UTF-8 encoded string with a length limit of 128
+        /// characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
         /// Optional. Note: not implemented yet. Use enabled_actions instead. The enabled tools on this assistant. The
         /// keys are connector name, for example
         /// "projects/{projectId}/locations/{locationId}/collections/{collectionId}/dataconnector The values consist of
@@ -28622,12 +27831,20 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Configuration for the generation of the assistant response.</summary>
     public class GoogleCloudDiscoveryengineV1AssistantGenerationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The list of models that are allowed to be used for assistant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedModelIds")]
+        public virtual System.Collections.Generic.IList<string> AllowedModelIds { get; set; }
+
         /// <summary>
         /// The default language to use for the generation of the assistant response. Use an ISO 639-1 language code
         /// such as `en`. If not specified, the language will be automatically detected.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultLanguage")]
         public virtual string DefaultLanguage { get; set; }
+
+        /// <summary>Optional. The default model to use for assistant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultModelId")]
+        public virtual string DefaultModelId { get; set; }
 
         /// <summary>
         /// System instruction, also known as the prompt preamble for LLM calls. See also
@@ -37132,6 +36349,20 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicy CustomerPolicy { get; set; }
 
         /// <summary>
+        /// Optional. Description for additional information. Expected to be shown on the configuration UI, not to the
+        /// users of the assistant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. The assistant display name. It must be a UTF-8 encoded string with a length limit of 128
+        /// characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
         /// Optional. Note: not implemented yet. Use enabled_actions instead. The enabled tools on this assistant. The
         /// keys are connector name, for example
         /// "projects/{projectId}/locations/{locationId}/collections/{collectionId}/dataconnector The values consist of
@@ -37330,12 +36561,20 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Configuration for the generation of the assistant response.</summary>
     public class GoogleCloudDiscoveryengineV1alphaAssistantGenerationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The list of models that are allowed to be used for assistant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedModelIds")]
+        public virtual System.Collections.Generic.IList<string> AllowedModelIds { get; set; }
+
         /// <summary>
         /// The default language to use for the generation of the assistant response. Use an ISO 639-1 language code
         /// such as `en`. If not specified, the language will be automatically detected.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultLanguage")]
         public virtual string DefaultLanguage { get; set; }
+
+        /// <summary>Optional. The default model to use for assistant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultModelId")]
+        public virtual string DefaultModelId { get; set; }
 
         /// <summary>
         /// System instruction, also known as the prompt preamble for LLM calls. See also
@@ -39295,63 +38534,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response for [EstimateBillingService.GetConfigurablePricingUsageStats] method.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaConfigurablePricingUsageStats : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A list of metric usages, one for each requested resource type that has data in the requested time range.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metricUsages")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaConfigurablePricingUsageStatsMetricUsage> MetricUsages { get; set; }
-
-        /// <summary>
-        /// Identifier. The name of the ConfigurablePricingUsageStats. Format:
-        /// projects/{project}/locations/{location}/configurablePricingUsageStats
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A list of usages for a specific day.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaConfigurablePricingUsageStatsDatedUsage : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The date of the usage.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("date")]
-        public virtual GoogleTypeDate Date { get; set; }
-
-        /// <summary>The usage value on the date.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("usage")]
-        public virtual System.Nullable<double> Usage { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The usage of a metric over a list of days.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaConfigurablePricingUsageStatsMetricUsage : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The list of usages for this resource type, chronologically sorted by date. This is populated for metrics
-        /// with daily aggregation like DAILY_MDN_QPM.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("datedUsages")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaConfigurablePricingUsageStatsDatedUsage> DatedUsages { get; set; }
-
-        /// <summary>The metric type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metricType")]
-        public virtual string MetricType { get; set; }
-
-        /// <summary>The list of total usages for this resource type</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("totalUsages")]
-        public virtual System.Collections.Generic.IList<System.Nullable<double>> TotalUsages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -46064,6 +45246,24 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for the AssistantService.ListAssistants method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaListAssistantsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All the customer's Assistants.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assistants")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAssistant> Assistants { get; set; }
+
+        /// <summary>
+        /// A token that can be sent as ListAssistantsRequest.page_token to retrieve the next page. If this field is
+        /// omitted, there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for the AuthorizationService.ListAuthorizations method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaListAuthorizationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -47871,6 +47071,56 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for [ProjectService.QueryConfigurablePricingUsageStats] method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaQueryConfigurablePricingUsageStatsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of metric usages, one for each requested resource type that has data in the requested time range.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricUsages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaQueryConfigurablePricingUsageStatsResponseMetricUsage> MetricUsages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of usages for a specific day.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaQueryConfigurablePricingUsageStatsResponseDatedUsage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The date of the usage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("date")]
+        public virtual GoogleTypeDate Date { get; set; }
+
+        /// <summary>The usage value on the date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usage")]
+        public virtual System.Nullable<double> Usage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The usage of a metric over a list of days.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaQueryConfigurablePricingUsageStatsResponseMetricUsage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of usages for this resource type, chronologically sorted by date. This is populated for metrics
+        /// with daily aggregation like DAILY_MDN_QPM.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datedUsages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaQueryConfigurablePricingUsageStatsResponseDatedUsage> DatedUsages { get; set; }
+
+        /// <summary>The metric type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricType")]
+        public virtual string MetricType { get; set; }
+
+        /// <summary>The total usage for this resource type. This is populated for metrics like TOTAL_STORAGE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalUsage")]
+        public virtual System.Nullable<double> TotalUsage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for RankService.Rank method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaRankRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -49097,6 +48347,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec ContentSearchSpec { get; set; }
 
         /// <summary>
+        /// Optional. Crowding specifications for improving result diversity. If multiple CrowdingSpecs are specified,
+        /// crowding will be evaluated on each unique combination of the `field` values, and max_count will be the
+        /// maximum value of `max_count` across all CrowdingSpecs. For example, if the first CrowdingSpec has `field` =
+        /// "color" and `max_count` = 3, and the second CrowdingSpec has `field` = "size" and `max_count` = 2, then
+        /// after 3 documents that share the same color AND size have been returned, subsequent ones should be removed
+        /// or demoted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crowdingSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSearchRequestCrowdingSpec> CrowdingSpecs { get; set; }
+
+        /// <summary>
         /// Custom fine tuning configs. If set, it has higher priority than the configs set in
         /// ServingConfig.custom_fine_tuning_spec.
         /// </summary>
@@ -49195,6 +48456,19 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
         public virtual string OrderBy { get; set; }
+
+        /// <summary>
+        /// Optional. The categories associated with a category page. Must be set for category navigation queries to
+        /// achieve good search quality. The format should be the same as UserEvent.PageInfo.page_category. This field
+        /// is the equivalent of the query for browse (navigation) queries. It's used by the browse model when the query
+        /// is empty. If the field is empty, it will not be used by the browse model. To represent full path of a
+        /// category, use '&amp;gt;' character to separate different hierarchies. If '&amp;gt;' is part of the category
+        /// name, replace it with other character(s). For example, `Graphics Cards &amp;gt; RTX&amp;gt;4090 &amp;gt;
+        /// Founders Edition` where "RTX &amp;gt; 4090" represents one level, can be rewritten as `Graphics Cards
+        /// &amp;gt; RTX_4090 &amp;gt; Founders Edition`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageCategories")]
+        public virtual System.Collections.Generic.IList<string> PageCategories { get; set; }
 
         /// <summary>
         /// Maximum number of Documents to return. The maximum allowed value depends on the data type. Values above the
@@ -49779,6 +49053,36 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Optional. Source of image returned in the answer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageSource")]
         public virtual string ImageSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specification for crowding. Crowding improves the diversity of search results by limiting the number of results
+    /// that share the same field value. For example, crowding on the color field with a max_count of 3 and mode
+    /// DROP_CROWDED_RESULTS will return at most 3 results with the same color across all pages.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestCrowdingSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The field to use for crowding. Documents can be crowded by a field in the Document object. Crowding field is
+        /// case sensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual string Field { get; set; }
+
+        /// <summary>
+        /// The maximum number of documents to keep per value of the field. Once there are at least max_count previous
+        /// results which contain the same value for the given field (according to the order specified in `order_by`),
+        /// later results with the same value are "crowded away". If not specified, the default value is 1.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxCount")]
+        public virtual System.Nullable<int> MaxCount { get; set; }
+
+        /// <summary>Mode to use for documents that are crowded away.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -52014,6 +51318,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assistToken")]
         public virtual string AssistToken { get; set; }
 
+        /// <summary>The tool names of the tools that were invoked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invocationTools")]
+        public virtual System.Collections.Generic.IList<string> InvocationTools { get; set; }
+
         /// <summary>
         /// Session information. Only included in the final StreamAssistResponse of the response stream.
         /// </summary>
@@ -52821,66 +52129,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for the AgentService.UploadAgentFile method.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaUploadAgentFileRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Information about the file being uploaded.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("blob")]
-        public virtual GdataMedia Blob { get; set; }
-
-        /// <summary>Media upload request metadata.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mediaRequestInfo")]
-        public virtual ApiservingMediaRequestInfo MediaRequestInfo { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for the AgentService.UploadAgentFile method.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaUploadAgentFileResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The uploaded AgentFile.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("agentFile")]
-        public virtual GoogleCloudDiscoveryengineV1alphaAgentFile AgentFile { get; set; }
-
-        /// <summary>Media upload response metadata.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mediaResponseInfo")]
-        public virtual ApiservingMediaResponseInfo MediaResponseInfo { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request for the AssistantService.UploadSessionFile method.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaUploadSessionFileRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Information about the file being uploaded.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("blob")]
-        public virtual GdataMedia Blob { get; set; }
-
-        /// <summary>Media upload request metadata.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mediaRequestInfo")]
-        public virtual ApiservingMediaRequestInfo MediaRequestInfo { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response for the AssistantService.UploadSessionFile method.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaUploadSessionFileResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ID of the uploaded file.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fileId")]
-        public virtual string FileId { get; set; }
-
-        /// <summary>Media upload response metadata.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mediaResponseInfo")]
-        public virtual ApiservingMediaResponseInfo MediaResponseInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -58712,6 +57960,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec ContentSearchSpec { get; set; }
 
         /// <summary>
+        /// Optional. Crowding specifications for improving result diversity. If multiple CrowdingSpecs are specified,
+        /// crowding will be evaluated on each unique combination of the `field` values, and max_count will be the
+        /// maximum value of `max_count` across all CrowdingSpecs. For example, if the first CrowdingSpec has `field` =
+        /// "color" and `max_count` = 3, and the second CrowdingSpec has `field` = "size" and `max_count` = 2, then
+        /// after 3 documents that share the same color AND size have been returned, subsequent ones should be removed
+        /// or demoted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crowdingSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpec> CrowdingSpecs { get; set; }
+
+        /// <summary>
         /// Specifications that define the specific DataStores to be searched, along with configurations for those data
         /// stores. This is only considered for Engines with multiple data stores. For engines with a single data store,
         /// the specs directly under SearchRequest should be used.
@@ -58803,6 +58062,19 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
         public virtual string OrderBy { get; set; }
+
+        /// <summary>
+        /// Optional. The categories associated with a category page. Must be set for category navigation queries to
+        /// achieve good search quality. The format should be the same as UserEvent.PageInfo.page_category. This field
+        /// is the equivalent of the query for browse (navigation) queries. It's used by the browse model when the query
+        /// is empty. If the field is empty, it will not be used by the browse model. To represent full path of a
+        /// category, use '&amp;gt;' character to separate different hierarchies. If '&amp;gt;' is part of the category
+        /// name, replace it with other character(s). For example, `Graphics Cards &amp;gt; RTX&amp;gt;4090 &amp;gt;
+        /// Founders Edition` where "RTX &amp;gt; 4090" represents one level, can be rewritten as `Graphics Cards
+        /// &amp;gt; RTX_4090 &amp;gt; Founders Edition`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageCategories")]
+        public virtual System.Collections.Generic.IList<string> PageCategories { get; set; }
 
         /// <summary>
         /// Maximum number of Documents to return. The maximum allowed value depends on the data type. Values above the
@@ -59379,6 +58651,36 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Optional. Source of image returned in the answer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageSource")]
         public virtual string ImageSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specification for crowding. Crowding improves the diversity of search results by limiting the number of results
+    /// that share the same field value. For example, crowding on the color field with a max_count of 3 and mode
+    /// DROP_CROWDED_RESULTS will return at most 3 results with the same color across all pages.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The field to use for crowding. Documents can be crowded by a field in the Document object. Crowding field is
+        /// case sensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual string Field { get; set; }
+
+        /// <summary>
+        /// The maximum number of documents to keep per value of the field. Once there are at least max_count previous
+        /// results which contain the same value for the given field (according to the order specified in `order_by`),
+        /// later results with the same value are "crowded away". If not specified, the default value is 1.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxCount")]
+        public virtual System.Nullable<int> MaxCount { get; set; }
+
+        /// <summary>Mode to use for documents that are crowded away.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -61335,43 +60637,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request for the SourceService.UploadSourceFile method.</summary>
-    public class GoogleCloudNotebooklmV1alphaUploadSourceFileRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Information about the file being uploaded.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("blob")]
-        public virtual GdataMedia Blob { get; set; }
-
-        /// <summary>Media upload request metadata.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mediaRequestInfo")]
-        public virtual ApiservingMediaRequestInfo MediaRequestInfo { get; set; }
-
-        /// <summary>
-        /// The source id of the associated file. If not set, a source id will be generated and a new tentative source
-        /// will be created.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceId")]
-        public virtual string SourceId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response for the SourceService.UploadSourceFile method.</summary>
-    public class GoogleCloudNotebooklmV1alphaUploadSourceFileResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Media upload response metadata.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mediaResponseInfo")]
-        public virtual ApiservingMediaResponseInfo MediaResponseInfo { get; set; }
-
-        /// <summary>The source id of the uploaded source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceId")]
-        public virtual GoogleCloudNotebooklmV1alphaSourceId SourceId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>The "Content" messages refer to data the user wants to upload.</summary>
     public class GoogleCloudNotebooklmV1alphaUserContent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -61687,8 +60952,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
