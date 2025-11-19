@@ -7601,7 +7601,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Nullable<bool> ScreenCaptureDisabled { get; set; }
 
         /// <summary>
-        /// Whether changing the user icon is disabled. The setting has effect only on fully managed devices.
+        /// Whether changing the user icon is disabled. This applies only on devices running Android 7 and above.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setUserIconDisabled")]
         public virtual System.Nullable<bool> SetUserIconDisabled { get; set; }
@@ -7614,10 +7614,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("setupActions")]
         public virtual System.Collections.Generic.IList<SetupAction> SetupActions { get; set; }
 
-        /// <summary>
-        /// Whether location sharing is disabled. share_location_disabled is supported for both fully managed devices
-        /// and personally owned work profiles.
-        /// </summary>
+        /// <summary>Whether location sharing is disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shareLocationDisabled")]
         public virtual System.Nullable<bool> ShareLocationDisabled { get; set; }
 
