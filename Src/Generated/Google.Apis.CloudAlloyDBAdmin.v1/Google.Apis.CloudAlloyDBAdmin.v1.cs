@@ -536,6 +536,31 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>Optional. The view of the backup to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>Optional. The view of the backup to return.</summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>Value unspecified, equivalent to BASIC.</summary>
+                        [Google.Apis.Util.StringValueAttribute("BACKUP_VIEW_UNSPECIFIED")]
+                        BACKUPVIEWUNSPECIFIED = 0,
+
+                        /// <summary>
+                        /// Responses include all fields that aren't explicitly gated behind another view.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("BACKUP_VIEW_BASIC")]
+                        BACKUPVIEWBASIC = 1,
+
+                        /// <summary>
+                        /// Response include all the field from BASIC plus the field cluster_deleted, which specifies if
+                        /// the cluster corresponding to this backup is deleted.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("BACKUP_VIEW_CLUSTER_DELETED")]
+                        BACKUPVIEWCLUSTERDELETED = 2,
+                    }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
@@ -556,6 +581,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/backups/[^/]+$",
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -599,6 +632,31 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                     /// <summary>A token identifying a page of results the server should return.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The view of the backup to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>Optional. The view of the backup to return.</summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>Value unspecified, equivalent to BASIC.</summary>
+                        [Google.Apis.Util.StringValueAttribute("BACKUP_VIEW_UNSPECIFIED")]
+                        BACKUPVIEWUNSPECIFIED = 0,
+
+                        /// <summary>
+                        /// Responses include all fields that aren't explicitly gated behind another view.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("BACKUP_VIEW_BASIC")]
+                        BACKUPVIEWBASIC = 1,
+
+                        /// <summary>
+                        /// Response include all the field from BASIC plus the field cluster_deleted, which specifies if
+                        /// the cluster corresponding to this backup is deleted.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("BACKUP_VIEW_CLUSTER_DELETED")]
+                        BACKUPVIEWCLUSTERDELETED = 2,
+                    }
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -648,6 +706,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4753,6 +4819,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceUpdatePolicy")]
         public virtual MaintenanceUpdatePolicy MaintenanceUpdatePolicy { get; set; }
 
+        /// <summary>
+        /// Input only. Policy to use to automatically select the maintenance version to which to update the cluster's
+        /// instances.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceVersionSelectionPolicy")]
+        public virtual string MaintenanceVersionSelectionPolicy { get; set; }
+
         /// <summary>Output only. Cluster created via DMS migration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("migrationSource")]
         public virtual MigrationSource MigrationSource { get; set; }
@@ -5727,6 +5800,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// <summary>Configurations for the machines that host the underlying database engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineConfig")]
         public virtual MachineConfig MachineConfig { get; set; }
+
+        /// <summary>
+        /// Output only. Maintenance version of the instance, for example: POSTGRES_15.2025_07_15.04_00. Output only.
+        /// Update this field via the parent cluster's maintenance_version field(s).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceVersionName")]
+        public virtual string MaintenanceVersionName { get; set; }
 
         /// <summary>
         /// Output only. The name of the instance resource with the format: *
@@ -7519,7 +7599,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common model for database resource instance metadata. Next ID: 29</summary>
+    /// <summary>Common model for database resource instance metadata. Next ID: 30</summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Availability configuration for this instance</summary>
@@ -7614,6 +7694,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// <summary>The type of the instance. Specified at creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceType")]
         public virtual string InstanceType { get; set; }
+
+        /// <summary>Optional. Whether deletion protection is enabled for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDeletionProtectionEnabled")]
+        public virtual System.Nullable<bool> IsDeletionProtectionEnabled { get; set; }
 
         /// <summary>The resource location. REQUIRED</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
