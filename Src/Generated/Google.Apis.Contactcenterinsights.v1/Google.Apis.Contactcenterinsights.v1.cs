@@ -2573,9 +2573,9 @@ namespace Google.Apis.Contactcenterinsights.v1
 
                             /// <summary>
                             /// When set to `true`, operations that are reachable are returned as normal, and those that
-                            /// are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can
-                            /// only be `true` when reading across collections e.g. when `parent` is set to
-                            /// `"projects/example/locations/-"`. This field is not by default supported and will result
+                            /// are unreachable are returned in the ListOperationsResponse.unreachable field. This can
+                            /// only be `true` when reading across collections. For example, when `parent` is set to
+                            /// `"projects/example/locations/-"`. This field is not supported by default and will result
                             /// in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or
                             /// product specific documentation.
                             /// </summary>
@@ -8669,9 +8669,9 @@ namespace Google.Apis.Contactcenterinsights.v1
 
                     /// <summary>
                     /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                    /// `true` when reading across collections e.g. when `parent` is set to
-                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
                     /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                     /// specific documentation.
                     /// </summary>
@@ -14621,6 +14621,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("issueDimensionMetadata")]
         public virtual GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata IssueDimensionMetadata { get; set; }
 
+        /// <summary>Output only. Metadata about conversation labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata LabelDimensionMetadata { get; set; }
+
         /// <summary>Output only. Metadata about the conversation medium dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediumDimensionMetadata")]
         public virtual GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata MediumDimensionMetadata { get; set; }
@@ -14760,6 +14764,21 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>The parent issue model ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issueModelId")]
         public virtual string IssueModelId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about conversation labels.</summary>
+    public class GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The label key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelKey")]
+        public virtual string LabelKey { get; set; }
+
+        /// <summary>Optional. The label value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelValue")]
+        public virtual string LabelValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21486,6 +21505,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("issueDimensionMetadata")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimensionMetadata IssueDimensionMetadata { get; set; }
 
+        /// <summary>Output only. Metadata about conversation labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1DimensionLabelDimensionMetadata LabelDimensionMetadata { get; set; }
+
         /// <summary>Output only. Metadata about the conversation medium dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediumDimensionMetadata")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1DimensionMediumDimensionMetadata MediumDimensionMetadata { get; set; }
@@ -21625,6 +21648,21 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>The parent issue model ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issueModelId")]
         public virtual string IssueModelId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about conversation labels.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1DimensionLabelDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The label key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelKey")]
+        public virtual string LabelKey { get; set; }
+
+        /// <summary>Optional. The label value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelValue")]
+        public virtual string LabelValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24783,8 +24821,8 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
