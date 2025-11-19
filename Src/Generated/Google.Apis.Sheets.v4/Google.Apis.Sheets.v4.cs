@@ -6355,8 +6355,8 @@ namespace Google.Apis.Sheets.v4.Data
     public class NumberFormat : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Pattern string used for formatting. If not set, a default pattern based on the user's locale will be used if
-        /// necessary for the given type. See the [Date and Number Formats
+        /// Pattern string used for formatting. If not set, a default pattern based on the spreadsheet's locale will be
+        /// used if necessary for the given type. See the [Date and Number Formats
         /// guide](https://developers.google.com/workspace/sheets/api/guides/formats) for more information about the
         /// supported patterns.
         /// </summary>
