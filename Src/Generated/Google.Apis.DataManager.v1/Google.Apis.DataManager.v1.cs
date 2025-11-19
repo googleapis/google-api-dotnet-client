@@ -583,7 +583,8 @@ namespace Google.Apis.DataManager.v1.Data
 
         /// <summary>
         /// Required. The URI of the AWS KMS key used to decrypt the DEK. Should be in the format of
-        /// "arn:{partition}:kms:{region}:{account_id}:key/{key_id}"
+        /// `arn:{partition}:kms:{region}:{account_id}:key/{key_id}` or
+        /// `aws-kms://arn:{partition}:kms:{region}:{account_id}:key/{key_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kekUri")]
         public virtual string KekUri { get; set; }
@@ -594,7 +595,7 @@ namespace Google.Apis.DataManager.v1.Data
 
         /// <summary>
         /// Required. The Amazon Resource Name of the IAM Role to assume for KMS decryption access. Should be in the
-        /// format of "arn:{partition}:iam::{account_id}:role/{role_name}"
+        /// format of `arn:{partition}:iam::{account_id}:role/{role_name}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roleArn")]
         public virtual string RoleArn { get; set; }
@@ -1000,7 +1001,8 @@ namespace Google.Apis.DataManager.v1.Data
         /// <summary>
         /// Required. Google Cloud Platform [Cloud Key Management Service resource
         /// ID](//cloud.google.com/kms/docs/getting-resource-ids). Should be in the format of
-        /// "projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}".
+        /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}` or
+        /// `gcp-kms://projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kekUri")]
         public virtual string KekUri { get; set; }
