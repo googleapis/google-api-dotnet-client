@@ -7324,6 +7324,14 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clusterExpressions")]
         public virtual System.Collections.Generic.IList<string> ClusterExpressions { get; set; }
 
+        /// <summary>
+        /// Optional. The connection specifying the credentials to be used to read and write to external storage, such
+        /// as Cloud Storage. The connection can have the form `{project}.{location}.{connection_id}` or
+        /// `projects/{project}/locations/{location}/connections/{connection_id}", or be set to DEFAULT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connection")]
+        public virtual string Connection { get; set; }
+
         /// <summary>A list of actions that this action depends on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dependencyTargets")]
         public virtual System.Collections.Generic.IList<Target> DependencyTargets { get; set; }
@@ -7331,6 +7339,10 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// <summary>Whether this action is disabled (i.e. should not be run).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>Optional. The file format for the BigQuery table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileFormat")]
+        public virtual string FileFormat { get; set; }
 
         /// <summary>
         /// Configures `INCREMENTAL_TABLE` settings for this relation. Only set if `relation_type` is
@@ -7373,6 +7385,17 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// <summary>The SELECT query which returns rows which this relation should contain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectQuery")]
         public virtual string SelectQuery { get; set; }
+
+        /// <summary>
+        /// Optional. The fully qualified location prefix of the external folder where table data is stored. The URI
+        /// should be in the format `gs://bucket/path_to_table/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageUri")]
+        public virtual string StorageUri { get; set; }
+
+        /// <summary>Optional. The table format for the BigQuery table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableFormat")]
+        public virtual string TableFormat { get; set; }
 
         /// <summary>Arbitrary, user-defined tags on this action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
