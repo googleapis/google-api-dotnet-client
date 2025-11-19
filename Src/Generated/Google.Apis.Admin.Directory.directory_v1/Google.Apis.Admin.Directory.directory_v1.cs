@@ -11250,7 +11250,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backlightInfo")]
         public virtual System.Collections.Generic.IList<BacklightInfo> BacklightInfo { get; set; }
 
-        /// <summary>Output only. Information about bluetooth adapters of the device.</summary>
+        /// <summary>Output only. Information about Bluetooth adapters of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bluetoothAdapterInfo")]
         public virtual System.Collections.Generic.IList<BluetoothAdapterInfo> BluetoothAdapterInfo { get; set; }
 
