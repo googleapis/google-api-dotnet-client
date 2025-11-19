@@ -635,6 +635,13 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         public virtual GoogleIdentityStsV1AccessBoundary AccessBoundary { get; set; }
 
         /// <summary>
+        /// The unpadded, base64url-encoded SHA-256 hash of the certificate's DER encoding and it must be 43 characters
+        /// long. The resulting token will be bound to this value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bindCertFingerprint")]
+        public virtual string BindCertFingerprint { get; set; }
+
+        /// <summary>
         /// A Google project used for quota and billing purposes when the credential is used to access Google APIs. The
         /// provided project overrides the project bound to the credential. The value must be a project number or a
         /// project ID. Example: `my-sample-project-191923`. The maximum length is 32 characters.
