@@ -8019,7 +8019,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>LINT.IfChange Feature config to use for Rollout.</summary>
+    /// <summary>Feature config to use for Rollout.</summary>
     public class FeatureUpdate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Configuration for Binary Authorization.</summary>
