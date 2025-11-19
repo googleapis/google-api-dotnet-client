@@ -1674,14 +1674,17 @@ namespace Google.Apis.Backupdr.v1
                             /// <summary>
                             /// Optional. A filter expression that filters the results fetched in the response. The
                             /// expression must specify the field name, a comparison operator, and the value that you
-                            /// want to use for filtering. Supported fields:
+                            /// want to use for filtering. Supported fields: * name * state * backup_type * create_time
+                            /// * expire_time * enforced_retention_end_time * gcp_backup_plan_info.backup_plan *
+                            /// cloud_sql_instance_backup_properties.instance_tier *
+                            /// cloud_sql_instance_backup_properties.database_installed_version
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
 
                             /// <summary>
                             /// Optional. A comma-separated list of fields to order by, sorted in ascending order. Use
-                            /// "desc" after a field name for descending.
+                            /// "desc" after a field name for descending. Supported fields: * name
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string OrderBy { get; set; }
@@ -5072,6 +5075,59 @@ namespace Google.Apis.Backupdr.v1
                     this.service = service;
                 }
 
+                /// <summary>Ends the trial for a project</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent resource where this trial will be ended.</param>
+                public virtual EndRequest End(Google.Apis.Backupdr.v1.Data.EndTrialRequest body, string parent)
+                {
+                    return new EndRequest(this.service, body, parent);
+                }
+
+                /// <summary>Ends the trial for a project</summary>
+                public class EndRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.Trial>
+                {
+                    /// <summary>Constructs a new End request.</summary>
+                    public EndRequest(Google.Apis.Services.IClientService service, Google.Apis.Backupdr.v1.Data.EndTrialRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource where this trial will be ended.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Backupdr.v1.Data.EndTrialRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "end";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/trial:end";
+
+                    /// <summary>Initializes End parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Subscribes to a trial for a project</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -5685,6 +5741,13 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backupApplianceLocks")]
         public virtual System.Collections.Generic.IList<BackupLock> BackupApplianceLocks { get; set; }
 
+        /// <summary>
+        /// Output only. Setting for how the enforced retention end time is inherited. This value is copied from this
+        /// backup's BackupVault.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupRetentionInheritance")]
+        public virtual string BackupRetentionInheritance { get; set; }
+
         /// <summary>Output only. Type of the backup, unspecified, scheduled or ondemand.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupType")]
         public virtual string BackupType { get; set; }
@@ -5868,6 +5931,10 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>Output only. Unique identifier of the GCP resource that is being backed up.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpResource")]
         public virtual BackupGcpResource GcpResource { get; set; }
+
+        /// <summary>Optional. Output only. The list of KMS key versions used to encrypt the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersions")]
+        public virtual System.Collections.Generic.IList<string> KmsKeyVersions { get; set; }
 
         /// <summary>
         /// Optional. Resource labels to represent user provided metadata. No labels currently defined.
@@ -6933,6 +7000,10 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backupMinimumEnforcedRetentionDuration")]
         public virtual object BackupMinimumEnforcedRetentionDuration { get; set; }
 
+        /// <summary>Optional. Setting for how a backup's enforced retention end time is inherited.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupRetentionInheritance")]
+        public virtual string BackupRetentionInheritance { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -7014,6 +7085,10 @@ namespace Google.Apis.Backupdr.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EffectiveTimeRaw);
             set => EffectiveTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. The encryption config of the backup vault.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
+        public virtual EncryptionConfig EncryptionConfig { get; set; }
 
         /// <summary>
         /// Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from
@@ -8440,6 +8515,35 @@ namespace Google.Apis.Backupdr.v1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Message describing the EncryptionConfig of backup vault. This determines how data within the vault is encrypted
+    /// at rest.
+    /// </summary>
+    public class EncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The Cloud KMS key name to encrypt backups in this backup vault. Must be in the same region as the
+        /// vault. Some workload backups like compute disk backups may use their inherited source key instead. Format:
+        /// projects/{project}/locations/{location}/keyRings/{ring}/cryptoKeys/{key}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ending a trial.</summary>
+    public class EndTrialRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The reason for ending the trial.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endReason")]
+        public virtual string EndReason { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10004,6 +10108,17 @@ namespace Google.Apis.Backupdr.v1.Data
     /// <summary>Request message for restoring from a Backup.</summary>
     public class RestoreBackupRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. A field mask used to clear server-side default values for fields within the `instance_properties`
+        /// oneof. When a field in this mask is cleared, the server will not apply its default logic (like inheriting a
+        /// value from the source) for that field. The most common current use case is clearing default encryption keys.
+        /// Examples of field mask paths: - Compute Instance Disks:
+        /// `compute_instance_restore_properties.disks.*.disk_encryption_key` - Single Disk:
+        /// `disk_restore_properties.disk_encryption_key`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clearOverridesFieldMask")]
+        public virtual object ClearOverridesFieldMask { get; set; }
+
         /// <summary>Compute Engine instance properties to be overridden during restore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeInstanceRestoreProperties")]
         public virtual ComputeInstanceRestoreProperties ComputeInstanceRestoreProperties { get; set; }
@@ -10536,6 +10651,10 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customRetentionDays")]
         public virtual System.Nullable<int> CustomRetentionDays { get; set; }
+
+        /// <summary>Optional. Labels to be applied on the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
