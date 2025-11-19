@@ -837,8 +837,8 @@ namespace Google.Apis.NetworkManagement.v1beta1
                 /// <summary>Lists all `VpcFlowLogsConfigs` in a given organization.</summary>
                 /// <param name="parent">
                 /// Required. The parent resource of the VpcFlowLogsConfig, in one of the following formats: - For
-                /// project-level resourcs: `projects/{project_id}/locations/global` - For organization-level resources:
-                /// `organizations/{organization_id}/locations/global`
+                /// project-level resources: `projects/{project_id}/locations/global` - For organization-level
+                /// resources: `organizations/{organization_id}/locations/global`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -857,7 +857,7 @@ namespace Google.Apis.NetworkManagement.v1beta1
 
                     /// <summary>
                     /// Required. The parent resource of the VpcFlowLogsConfig, in one of the following formats: - For
-                    /// project-level resourcs: `projects/{project_id}/locations/global` - For organization-level
+                    /// project-level resources: `projects/{project_id}/locations/global` - For organization-level
                     /// resources: `organizations/{organization_id}/locations/global`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -2467,8 +2467,8 @@ namespace Google.Apis.NetworkManagement.v1beta1
                 /// <summary>Lists all `VpcFlowLogsConfigs` in a given project.</summary>
                 /// <param name="parent">
                 /// Required. The parent resource of the VpcFlowLogsConfig, in one of the following formats: - For
-                /// project-level resourcs: `projects/{project_id}/locations/global` - For organization-level resources:
-                /// `organizations/{organization_id}/locations/global`
+                /// project-level resources: `projects/{project_id}/locations/global` - For organization-level
+                /// resources: `organizations/{organization_id}/locations/global`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -2487,7 +2487,7 @@ namespace Google.Apis.NetworkManagement.v1beta1
 
                     /// <summary>
                     /// Required. The parent resource of the VpcFlowLogsConfig, in one of the following formats: - For
-                    /// project-level resourcs: `projects/{project_id}/locations/global` - For organization-level
+                    /// project-level resources: `projects/{project_id}/locations/global` - For organization-level
                     /// resources: `organizations/{organization_id}/locations/global`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
