@@ -1535,7 +1535,7 @@
       }
     }
   },
-  "revision": "20251106",
+  "revision": "20251109",
   "rootUrl": "https://chat.googleapis.com/",
   "schemas": {
     "AccessSettings": {
@@ -1802,7 +1802,7 @@
           "readOnly": true
         },
         "name": {
-          "description": "Optional. Resource name of the attachment, in the form `spaces/{space}/messages/{message}/attachments/{attachment}`.",
+          "description": "Identifier. Resource name of the attachment. Format: `spaces/{space}/messages/{message}/attachments/{attachment}`.",
           "type": "string"
         },
         "source": {

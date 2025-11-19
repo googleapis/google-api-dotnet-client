@@ -5131,7 +5131,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual DriveDataRef DriveDataRef { get; set; }
 
         /// <summary>
-        /// Optional. Resource name of the attachment, in the form
+        /// Identifier. Resource name of the attachment. Format:
         /// `spaces/{space}/messages/{message}/attachments/{attachment}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
