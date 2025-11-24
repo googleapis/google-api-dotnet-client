@@ -26,7 +26,12 @@
     "gemini_for_workspace",
     "gemini_in_workspace_apps",
     "classroom",
-    "gmail"
+    "gmail",
+    "assignments",
+    "cloud_search",
+    "tasks",
+    "data_migration",
+    "meet_hardware"
   ],
   "Google.Apis.Admin.Reports.reports_v1.ActivitiesResource+WatchRequest.ApplicationNameEnum": [
     "application_name_unspecified",

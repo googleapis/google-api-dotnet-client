@@ -509,6 +509,41 @@ namespace Google.Apis.Admin.Reports.reports_v1
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("classroom")]
                 Classroom = 25,
+
+                /// <summary>
+                /// The assignments application's activity reports return information about various types of assignments
+                /// activity events.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("assignments")]
+                Assignments = 27,
+
+                /// <summary>
+                /// The Cloud Search application's activity reports return information about various types of
+                /// cloud_search activity events.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("cloud_search")]
+                CloudSearch = 28,
+
+                /// <summary>
+                /// The Tasks application's activity reports return information about various types of Tasks activity
+                /// events.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("tasks")]
+                Tasks = 29,
+
+                /// <summary>
+                /// The Data Migration application's activity reports return information about various types of data
+                /// migration activity events.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("data_migration")]
+                DataMigration = 30,
+
+                /// <summary>
+                /// The Meet Hardware application's activity reports return information about various types of Meet
+                /// Hardware activity events.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("meet_hardware")]
+                MeetHardware = 31,
             }
 
             /// <summary>
@@ -618,6 +653,54 @@ namespace Google.Apis.Admin.Reports.reports_v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
+            /// Optional. The `resourceDetailsFilter` query string is an AND separated list composed of [Resource
+            /// Details](#resourcedetails) fields manipulated by relational operators. Resource Details Filters are in
+            /// the form `{resourceDetails.field1}{relational operator}{field1 value} AND
+            /// {resourceDetails.field2}{relational operator}{field2 value}...` All the inner fields are traversed using
+            /// the `.` operator, as shown in the following example:
+            /// ```
+            /// resourceDetails.id = "resourceId" AND
+            /// resourceDetails.appliedLabels.id = "appliedLabelId" AND resourceDetails.appliedLabels.fieldValue.id =
+            /// "fieldValueId"
+            /// ```
+            /// `resourceDetailsFilter` query supports these relational operators: * `=`—'equal to'.
+            /// * `!=`—'not equal to'. * `:`—'exists'. This is used for filtering on repeated fields.
+            /// [`FieldValue`](#fieldvalue) types that are repeated in nature uses `exists` operator for filtering. The
+            /// following [`FieldValue`](#fieldvalue) types are repeated: * [`TextListValue`](#textlistvalue) *
+            /// [`SelectionListValue`](#selectionlistvalue) * [`UserListValue`](#userlistvalue) For example, in the
+            /// following filter, [`SelectionListValue`](#selectionlistvalue), is a repeated field. The filter checks
+            /// whether [`SelectionListValue`](#selectionlistvalue) contains `selection_id`:
+            /// ```
+            /// resourceDetails.id =
+            /// "resourceId" AND resourceDetails.appliedLabels.id = "appliedLabelId" AND
+            /// resourceDetails.appliedLabels.fieldValue.id = "fieldValueId" AND
+            /// resourceDetails.appliedLabels.fieldValue.type = "SELECTION_LIST_VALUE" AND
+            /// resourceDetails.appliedLabels.fieldValue.selectionListValue.id: "id"
+            /// ```
+            /// **Usage**
+            /// ```
+            /// GET...&amp;amp;resourceDetailsFilter=resourceDetails.id = "resourceId" AND
+            /// resourceDetails.appliedLabels.id = "appliedLabelId"
+            /// GET...&amp;amp;resourceDetailsFilter=resourceDetails.id=%22resourceId%22%20AND%20resourceDetails.appliedLabels.id=%22appliedLabelId%22
+            /// ```
+            /// **Note the following**: * You must URL encode the query string before sending the request. * The API
+            /// supports a maximum of 5 fields separated by the AND operator. - When filtering on deeper levels (e.g.,
+            /// [`AppliedLabel`](#appliedlabel), [`FieldValue`](#fieldvalue)), the IDs of all preceding levels in the
+            /// hierarchy must be included in the filter. For example: Filtering on [`FieldValue`](#fieldvalue) requires
+            /// [`AppliedLabel`](#appliedlabel) ID and resourceDetails ID to be present. *Sample Query*:
+            /// ```
+            /// resourceDetails.id = "resourceId" AND resourceDetails.appliedLabels.id = "appliedLabelId" AND
+            /// resourceDetails.appliedLabels.fieldValue.id = "fieldValueId"
+            /// ```
+            /// * Filtering on inner
+            /// [`FieldValue`](#fieldvalue) types like `longTextValue` and `textValue` requires
+            /// `resourceDetails.appliedLabels.fieldValue.type` to be present. * Only Filtering on a single
+            /// [`AppliedLabel`](#appliedlabel) id and [`FieldValue`](#fieldvalue) id is supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceDetailsFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ResourceDetailsFilter { get; set; }
+
+            /// <summary>
             /// Sets the beginning of the range of time shown in the report. The date is in the RFC 3339 format, for
             /// example 2010-10-28T10:26:35.000Z. The report returns all activities from `startTime` until `endTime`.
             /// The `startTime` must be before the `endTime` (if specified) and the current time when the request is
@@ -654,7 +737,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = @"(access_transparency)|(admin)|(calendar)|(chat)|(chrome)|(classroom)|(context_aware_access)|(data_studio)|(drive)|(gcp)|(gmail)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(login)|(meet)|(mobile)|(rules)|(saml)|(token)|(user_accounts)|(vault)|(gemini_in_workspace_apps)",
+                    Pattern = @"(access_transparency)|(admin)|(assignments)|(calendar)|(chat)|(chrome)|(classroom)|(cloud_search)|(context_aware_access)|(data_studio)|(data_migration)|(drive)|(gcp)|(gmail)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(login)|(meet)|(meet_hardware)|(mobile)|(rules)|(saml)|(token)|(user_accounts)|(vault)|(gemini_in_workspace_apps)|(tasks)",
                 });
                 RequestParameters.Add("actorIpAddress", new Google.Apis.Discovery.Parameter
                 {
@@ -723,6 +806,14 @@ namespace Google.Apis.Admin.Reports.reports_v1
                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("resourceDetailsFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resourceDetailsFilter",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
