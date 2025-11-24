@@ -14711,7 +14711,7 @@ namespace Google.Apis.DLP.v2.Data
     public class GooglePrivacyDlpV2DataSourceType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// An identifying string to the type of resource being profiled. Current values: * google/bigquery/table *
+        /// A string that identifies the type of resource being profiled. Current values: * google/bigquery/table *
         /// google/project * google/sql/table * google/gcs/bucket
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
@@ -21836,7 +21836,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Identifies a single Vertex AI resource. Currently only datasets are supported.</summary>
+    /// <summary>Identifies a single Vertex AI resource. Only datasets are supported.</summary>
     public class GooglePrivacyDlpV2VertexDatasetResourceReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
