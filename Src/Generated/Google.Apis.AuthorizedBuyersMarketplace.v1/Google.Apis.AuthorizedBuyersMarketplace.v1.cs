@@ -3522,6 +3522,13 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         public virtual System.Collections.Generic.IList<string> EligibleSeatIds { get; set; }
 
         /// <summary>
+        /// Output only. The minimum price a buyer has to bid to compete in this auction package. If this is field is
+        /// not populated, there is no floor price.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floorPriceCpm")]
+        public virtual Money FloorPriceCpm { get; set; }
+
+        /// <summary>
         /// Immutable. The unique identifier for the auction package. Format:
         /// `buyers/{accountId}/auctionPackages/{auctionPackageId}` The auction_package_id part of name is sent in the
         /// BidRequest to all RTB bidders and is returned as deal_id by the bidder in the BidResponse.
