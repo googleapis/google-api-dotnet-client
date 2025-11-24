@@ -651,11 +651,11 @@ namespace Google.Apis.Merchant.products_v1beta
             /// deleting a product input, it may take several minutes before the updated final product can be retrieved.
             /// </summary>
             /// <param name="name">
-            /// Required. The name of the product. Format: `accounts/{account}/products/{product}` The {product} segment
-            /// is a unique identifier for the product. This identifier must be unique within a merchant account and
-            /// generally follows the structure: `content_language~feed_label~offer_id`. Example: `en~US~sku123` For
+            /// Required. The name of the product. Format: `accounts/{account}/products/{product}` The `{product}`
+            /// segment is a unique identifier for the product. This identifier must be unique within a merchant account
+            /// and generally follows the structure: `content_language~feed_label~offer_id`. Example: `en~US~sku123` For
             /// legacy local products, the structure is: `local~content_language~feed_label~offer_id`. Example:
-            /// `local~en~US~sku123` The format of the {product} segment in the URL is automatically detected by the
+            /// `local~en~US~sku123` The format of the `{product}` segment in the URL is automatically detected by the
             /// server, supporting two options: 1. **Encoded Format**: The `{product}` segment is an unpadded base64url
             /// encoded string (RFC 4648 Section 5). The decoded string must result in the
             /// `content_language~feed_label~offer_id` structure. This encoding MUST be used if any part of the product
@@ -690,12 +690,12 @@ namespace Google.Apis.Merchant.products_v1beta
                 }
 
                 /// <summary>
-                /// Required. The name of the product. Format: `accounts/{account}/products/{product}` The {product}
+                /// Required. The name of the product. Format: `accounts/{account}/products/{product}` The `{product}`
                 /// segment is a unique identifier for the product. This identifier must be unique within a merchant
                 /// account and generally follows the structure: `content_language~feed_label~offer_id`. Example:
                 /// `en~US~sku123` For legacy local products, the structure is:
                 /// `local~content_language~feed_label~offer_id`. Example: `local~en~US~sku123` The format of the
-                /// {product} segment in the URL is automatically detected by the server, supporting two options: 1.
+                /// `{product}` segment in the URL is automatically detected by the server, supporting two options: 1.
                 /// **Encoded Format**: The `{product}` segment is an unpadded base64url encoded string (RFC 4648
                 /// Section 5). The decoded string must result in the `content_language~feed_label~offer_id` structure.
                 /// This encoding MUST be used if any part of the product identifier (like `offer_id`) contains
