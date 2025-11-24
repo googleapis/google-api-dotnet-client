@@ -268,7 +268,168 @@ namespace Google.Apis.Merchant.quota_v1
         public AccountsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            Limits = new LimitsResource(service);
             Quotas = new QuotasResource(service);
+        }
+
+        /// <summary>Gets the Limits resource.</summary>
+        public virtual LimitsResource Limits { get; }
+
+        /// <summary>The "limits" collection of methods.</summary>
+        public class LimitsResource
+        {
+            private const string Resource = "limits";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LimitsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Retrieves an account limit.</summary>
+            /// <param name="name">
+            /// Required. The name of the limit to retrieve. Format: `accounts/{account}/limits/{limit}` For example:
+            /// `accounts/123/limits/products~ADS_NON_EEA`
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Retrieves an account limit.</summary>
+            public class GetRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.quota_v1.Data.AccountLimit>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the limit to retrieve. Format: `accounts/{account}/limits/{limit}` For
+                /// example: `accounts/123/limits/products~ADS_NON_EEA`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "quota/v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/limits/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists the limits of an account.</summary>
+            /// <param name="parent">Required. The parent account. Format: `accounts/{account}`</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>Lists the limits of an account.</summary>
+            public class ListRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.quota_v1.Data.ListAccountLimitsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The parent account. Format: `accounts/{account}`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Required. A filter on the limit `type` is required, for example, `type = "products"`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Optional. The maximum number of limits to return. The service may return fewer than this value. If
+                /// unspecified, at most 100 limits will be returned. The maximum value is 100; values above 100 will be
+                /// coerced to 100.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `ListAccountLimits` call. Provide this to retrieve
+                /// the subsequent page. When paginating, all other parameters provided to `ListAccountLimits` must
+                /// match the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "quota/v1/{+parent}/limits";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Quotas resource.</summary>
@@ -371,6 +532,42 @@ namespace Google.Apis.Merchant.quota_v1
 }
 namespace Google.Apis.Merchant.quota_v1.Data
 {
+    /// <summary>A limit of a certain type that is applied to an account.</summary>
+    public class AccountLimit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Identifier. The limit part of the name will be a combination of the type and the scope. For example:
+        /// `accounts/123/limits/products~ADS_NON_EEA` Format: `accounts/{account}/limits/{limit}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The limit for products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("products")]
+        public virtual ProductLimit Products { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the `ListAccountLimits` method.</summary>
+    public class ListAccountLimitsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The limits for the given account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountLimits")]
+        public virtual System.Collections.Generic.IList<AccountLimit> AccountLimits { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for the ListMethodGroups method.</summary>
     public class ListQuotaGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -446,6 +643,23 @@ namespace Google.Apis.Merchant.quota_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportingContext")]
         public virtual string ReportingContext { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The limit for products.</summary>
+    public class ProductLimit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The maximum number of products that are allowed in the account in the given scope.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("limit")]
+        public virtual System.Nullable<long> Limit { get; set; }
+
+        /// <summary>Required. The scope of the product limit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
