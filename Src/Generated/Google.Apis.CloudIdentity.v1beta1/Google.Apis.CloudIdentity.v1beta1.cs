@@ -5341,7 +5341,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         }
 
         /// <summary>Delete a policy.</summary>
-        /// <param name="name">Required. The name of the policy to retrieve. Format: "policies/{policy}".</param>
+        /// <param name="name">Required. The name of the policy to retrieve. Format: `policies/{policy}`.</param>
         public virtual DeleteRequest Delete(string name)
         {
             return new DeleteRequest(this.service, name);
@@ -5357,7 +5357,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 InitParameters();
             }
 
-            /// <summary>Required. The name of the policy to retrieve. Format: "policies/{policy}".</summary>
+            /// <summary>Required. The name of the policy to retrieve. Format: `policies/{policy}`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -5386,7 +5386,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         }
 
         /// <summary>Get a policy.</summary>
-        /// <param name="name">Required. The name of the policy to retrieve. Format: "policies/{policy}".</param>
+        /// <param name="name">Required. The name of the policy to retrieve. Format: `policies/{policy}`.</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(this.service, name);
@@ -5402,7 +5402,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 InitParameters();
             }
 
-            /// <summary>Required. The name of the policy to retrieve. Format: "policies/{policy}".</summary>
+            /// <summary>Required. The name of the policy to retrieve. Format: `policies/{policy}`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
