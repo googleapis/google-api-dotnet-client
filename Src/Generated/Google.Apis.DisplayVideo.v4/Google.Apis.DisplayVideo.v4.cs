@@ -16950,7 +16950,7 @@ namespace Google.Apis.DisplayVideo.v4
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>
-                /// Optional. Requested page size. Must be between `1` and `100`. If unspecified will default to `100`.
+                /// Optional. Requested page size. Must be between `1` and `200`. If unspecified will default to `100`.
                 /// Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -25915,15 +25915,12 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual FixedBidStrategy FixedBid { get; set; }
 
         /// <summary>
-        /// A strategy that automatically adjusts the bid to optimize to your performance goal while spending the full
-        /// budget. At insertion order level, the markup_type of line items cannot be set to
-        /// `PARTNER_REVENUE_MODEL_MARKUP_TYPE_CPM`. In addition, when performance_goal_type is one of: *
-        /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC` *
-        /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED` , the line_item_type of the insertion order line items
-        /// must be either: * `LINE_ITEM_TYPE_DISPLAY_DEFAULT` * `LINE_ITEM_TYPE_VIDEO_DEFAULT` , and when
-        /// performance_goal_type is either: * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA` *
-        /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN` the line_item_type of the insertion order line items must
-        /// be `LINE_ITEM_TYPE_VIDEO_DEFAULT`.
+        /// * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA`, `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC`, and
+        /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED` only allow for `LINE_ITEM_TYPE_DISPLAY_DEFAULT` or
+        /// `LINE_ITEM_TYPE_VIDEO_DEFAULT` line items. * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA` and
+        /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN` only allow for `LINE_ITEM_TYPE_VIDEO_DEFAULT` line items. *
+        /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_REACH` only allows for `LINE_ITEM_TYPE_VIDEO_OVER_THE_TOP` line
+        /// items.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximizeSpendAutoBid")]
         public virtual MaximizeSpendBidStrategy MaximizeSpendAutoBid { get; set; }
@@ -29038,7 +29035,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("audienceSource")]
         public virtual string AudienceSource { get; set; }
 
-        /// <summary>Output only. The type of the audience.</summary>
+        /// <summary>Immutable. The type of the audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audienceType")]
         public virtual string AudienceType { get; set; }
 
@@ -29050,7 +29047,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual ContactInfoList ContactInfoList { get; set; }
 
         /// <summary>
-        /// Output only. The user-provided description of the audience. Only applicable to first party audiences.
+        /// Optional. The user-provided description of the audience. Only applicable to first party audiences.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -29087,7 +29084,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayMobileWebAudienceSize")]
         public virtual System.Nullable<long> DisplayMobileWebAudienceSize { get; set; }
 
-        /// <summary>Output only. The display name of the first party and partner audience.</summary>
+        /// <summary>Optional. The display name of the first party and partner audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -29110,7 +29107,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual System.Nullable<long> GmailAudienceSize { get; set; }
 
         /// <summary>
-        /// Output only. The duration in days that an entry remains in the audience after the qualifying event. The set
+        /// Optional. The duration in days that an entry remains in the audience after the qualifying event. The set
         /// value must be greater than 0 and less than or equal to 540. Only applicable to first party audiences. This
         /// field is required if one of the following audience_type is used: * `CUSTOMER_MATCH_CONTACT_INFO` *
         /// `CUSTOMER_MATCH_DEVICE_ID`
