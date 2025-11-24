@@ -38,7 +38,6 @@ namespace Google.Apis.WorkspaceEvents.v1
             Operations = new OperationsResource(this);
             Subscriptions = new SubscriptionsResource(this);
             Tasks = new TasksResource(this);
-            V1 = new V1Resource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://workspaceevents.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://workspaceevents.googleapis.com/batch");
         }
@@ -236,9 +235,6 @@ namespace Google.Apis.WorkspaceEvents.v1
 
         /// <summary>Gets the Tasks resource.</summary>
         public virtual TasksResource Tasks { get; }
-
-        /// <summary>Gets the V1 resource.</summary>
-        public virtual V1Resource V1 { get; }
     }
 
     /// <summary>A base abstract class for WorkspaceEvents requests.</summary>
@@ -1517,339 +1513,9 @@ namespace Google.Apis.WorkspaceEvents.v1
             }
         }
     }
-
-    /// <summary>The "v1" collection of methods.</summary>
-    public class V1Resource
-    {
-        private const string Resource = "v1";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public V1Resource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-        }
-
-        /// <summary>GetAgentCard returns the agent card for the agent.</summary>
-        public virtual GetCardRequest GetCard()
-        {
-            return new GetCardRequest(this.service);
-        }
-
-        /// <summary>GetAgentCard returns the agent card for the agent.</summary>
-        public class GetCardRequest : WorkspaceEventsBaseServiceRequest<Google.Apis.WorkspaceEvents.v1.Data.AgentCard>
-        {
-            /// <summary>Constructs a new GetCard request.</summary>
-            public GetCardRequest(Google.Apis.Services.IClientService service) : base(service)
-            {
-                InitParameters();
-            }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "getCard";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/card";
-
-            /// <summary>Initializes GetCard parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-            }
-        }
-    }
 }
 namespace Google.Apis.WorkspaceEvents.v1.Data
 {
-    public class APIKeySecurityScheme : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Description of this security scheme.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>Location of the API key, valid values are "query", "header", or "cookie"</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; }
-
-        /// <summary>Name of the header, query or cookie parameter to be used.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Defines the A2A feature set supported by the agent</summary>
-    public class AgentCapabilities : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Extensions supported by this agent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
-        public virtual System.Collections.Generic.IList<AgentExtension> Extensions { get; set; }
-
-        /// <summary>If the agent can send push notifications to the clients webhook</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pushNotifications")]
-        public virtual System.Nullable<bool> PushNotifications { get; set; }
-
-        /// <summary>If the agent will support streaming responses</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("streaming")]
-        public virtual System.Nullable<bool> Streaming { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// AgentCard conveys key information: - Overall details (version, name, description, uses) - Skills; a set of
-    /// actions/solutions the agent can perform - Default modalities/content types supported by the agent. -
-    /// Authentication requirements Next ID: 19
-    /// </summary>
-    public class AgentCard : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Announcement of additional supported transports. Client can use any of the supported transports.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("additionalInterfaces")]
-        public virtual System.Collections.Generic.IList<AgentInterface> AdditionalInterfaces { get; set; }
-
-        /// <summary>A2A Capability set supported by the agent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("capabilities")]
-        public virtual AgentCapabilities Capabilities { get; set; }
-
-        /// <summary>
-        /// protolint:enable REPEATED_FIELD_NAMES_PLURALIZED The set of interaction modes that the agent supports across
-        /// all skills. This can be overridden per skill. Defined as mime types.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("defaultInputModes")]
-        public virtual System.Collections.Generic.IList<string> DefaultInputModes { get; set; }
-
-        /// <summary>The mime types supported as outputs from this agent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("defaultOutputModes")]
-        public virtual System.Collections.Generic.IList<string> DefaultOutputModes { get; set; }
-
-        /// <summary>
-        /// A description of the agent's domain of action/solution space. Example: "Agent that helps users with recipes
-        /// and cooking."
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>A url to provide additional documentation about the agent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("documentationUrl")]
-        public virtual string DocumentationUrl { get; set; }
-
-        /// <summary>An optional URL to an icon for the agent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
-        public virtual string IconUrl { get; set; }
-
-        /// <summary>A human readable name for the agent. Example: "Recipe Agent"</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The transport of the preferred endpoint. If empty, defaults to JSONRPC.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("preferredTransport")]
-        public virtual string PreferredTransport { get; set; }
-
-        /// <summary>The version of the A2A protocol this agent supports.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("protocolVersion")]
-        public virtual string ProtocolVersion { get; set; }
-
-        /// <summary>The service provider of the agent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("provider")]
-        public virtual AgentProvider Provider { get; set; }
-
-        /// <summary>
-        /// protolint:disable REPEATED_FIELD_NAMES_PLURALIZED Security requirements for contacting the agent. This list
-        /// can be seen as an OR of ANDs. Each object in the list describes one possible set of security requirements
-        /// that must be present on a request. This allows specifying, for example, "callers must either use OAuth OR an
-        /// API Key AND mTLS." Example: security { schemes { key: "oauth" value { list: ["read"] } } } security {
-        /// schemes { key: "api-key" } schemes { key: "mtls" } }
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("security")]
-        public virtual System.Collections.Generic.IList<Security> Security { get; set; }
-
-        /// <summary>The security scheme details used for authenticating with this agent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("securitySchemes")]
-        public virtual System.Collections.Generic.IDictionary<string, SecurityScheme> SecuritySchemes { get; set; }
-
-        /// <summary>JSON Web Signatures computed for this AgentCard.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("signatures")]
-        public virtual System.Collections.Generic.IList<AgentCardSignature> Signatures { get; set; }
-
-        /// <summary>
-        /// Skills represent a unit of ability an agent can perform. This may somewhat abstract but represents a more
-        /// focused set of actions that the agent is highly likely to succeed at.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("skills")]
-        public virtual System.Collections.Generic.IList<AgentSkill> Skills { get; set; }
-
-        /// <summary>
-        /// Whether the agent supports providing an extended agent card when the user is authenticated, i.e. is the card
-        /// from .well-known different than the card from GetAgentCard.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("supportsAuthenticatedExtendedCard")]
-        public virtual System.Nullable<bool> SupportsAuthenticatedExtendedCard { get; set; }
-
-        /// <summary>
-        /// A URL to the address the agent is hosted at. This represents the preferred endpoint as declared by the
-        /// agent.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; }
-
-        /// <summary>The version of the agent. Example: "1.0.0"</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// AgentCardSignature represents a JWS signature of an AgentCard. This follows the JSON format of an RFC 7515 JSON
-    /// Web Signature (JWS).
-    /// </summary>
-    public class AgentCardSignature : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The unprotected JWS header values.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual System.Collections.Generic.IDictionary<string, object> Header { get; set; }
-
-        /// <summary>
-        /// Required. The protected JWS header for the signature. This is always a base64url-encoded JSON object.
-        /// Required.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("protected")]
-        public virtual string Protected__ { get; set; }
-
-        /// <summary>Required. The computed signature, base64url-encoded. Required.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("signature")]
-        public virtual string Signature { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A declaration of an extension supported by an Agent.</summary>
-    public class AgentExtension : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A description of how this agent uses this extension. Example: "Google OAuth 2.0 authentication"
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>Optional configuration for the extension.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("params")]
-        public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
-
-        /// <summary>Whether the client must follow specific requirements of the extension. Example: false</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("required")]
-        public virtual System.Nullable<bool> Required { get; set; }
-
-        /// <summary>
-        /// The URI of the extension. Example: "https://developers.google.com/identity/protocols/oauth2"
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Defines additional transport information for the agent.</summary>
-    public class AgentInterface : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The transport supported this url. This is an open form string, to be easily extended for many transport
-        /// protocols. The core ones officially supported are JSONRPC, GRPC and HTTP+JSON.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("transport")]
-        public virtual string Transport { get; set; }
-
-        /// <summary>The url this interface is found at.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents information about the service provider of an agent.</summary>
-    public class AgentProvider : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The providers organization name Example: "Google"</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("organization")]
-        public virtual string Organization { get; set; }
-
-        /// <summary>The providers reference url Example: "https://ai.google.dev"</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// AgentSkill represents a unit of action/solution that the agent can perform. One can think of this as a type of
-    /// highly reliable solution that an agent can be tasked to provide. Agents have the autonomy to choose how and when
-    /// to use specific skills, but clients should have confidence that if the skill is defined that unit of action can
-    /// be reliably performed.
-    /// </summary>
-    public class AgentSkill : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A human (or llm) readable description of the skill details and behaviors.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>
-        /// A set of example queries that this skill is designed to address. These examples should help the caller to
-        /// understand how to craft requests to the agent to achieve specific goals. Example: ["I need a recipe for
-        /// bread"]
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("examples")]
-        public virtual System.Collections.Generic.IList<string> Examples { get; set; }
-
-        /// <summary>Unique identifier of the skill within this agent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
-
-        /// <summary>Possible input modalities supported.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inputModes")]
-        public virtual System.Collections.Generic.IList<string> InputModes { get; set; }
-
-        /// <summary>A human readable name for the skill.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Possible output modalities produced</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("outputModes")]
-        public virtual System.Collections.Generic.IList<string> OutputModes { get; set; }
-
-        /// <summary>
-        /// protolint:disable REPEATED_FIELD_NAMES_PLURALIZED Security schemes necessary for the agent to leverage this
-        /// skill. As in the overall AgentCard.security, this list represents a logical OR of security requirement
-        /// objects. Each object is a set of security schemes that must be used together (a logical AND).
-        /// protolint:enable REPEATED_FIELD_NAMES_PLURALIZED
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("security")]
-        public virtual System.Collections.Generic.IList<Security> Security { get; set; }
-
-        /// <summary>
-        /// A set of tags for the skill to enhance categorization/utilization. Example: ["cooking", "customer support",
-        /// "billing"]
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
-        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Artifacts are the container for task completed results. These are similar to Messages but are intended to be the
     /// product of a task, as opposed to point-to-point communication.
@@ -1899,69 +1565,8 @@ namespace Google.Apis.WorkspaceEvents.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class AuthorizationCodeOAuthFlow : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The authorization URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard
-        /// requires the use of TLS
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("authorizationUrl")]
-        public virtual string AuthorizationUrl { get; set; }
-
-        /// <summary>
-        /// The URL to be used for obtaining refresh tokens. This MUST be in the form of a URL. The OAuth2 standard
-        /// requires the use of TLS.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("refreshUrl")]
-        public virtual string RefreshUrl { get; set; }
-
-        /// <summary>
-        /// The available scopes for the OAuth2 security scheme. A map between the scope name and a short description
-        /// for it. The map MAY be empty.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Scopes { get; set; }
-
-        /// <summary>
-        /// The token URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard requires the
-        /// use of TLS.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tokenUrl")]
-        public virtual string TokenUrl { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     public class CancelTaskRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class ClientCredentialsOAuthFlow : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The URL to be used for obtaining refresh tokens. This MUST be in the form of a URL. The OAuth2 standard
-        /// requires the use of TLS.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("refreshUrl")]
-        public virtual string RefreshUrl { get; set; }
-
-        /// <summary>
-        /// The available scopes for the OAuth2 security scheme. A map between the scope name and a short description
-        /// for it. The map MAY be empty.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Scopes { get; set; }
-
-        /// <summary>
-        /// The token URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard requires the
-        /// use of TLS.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tokenUrl")]
-        public virtual string TokenUrl { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2005,58 +1610,6 @@ namespace Google.Apis.WorkspaceEvents.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class HTTPAuthSecurityScheme : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A hint to the client to identify how the bearer token is formatted. Bearer tokens are usually generated by
-        /// an authorization server, so this information is primarily for documentation purposes.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bearerFormat")]
-        public virtual string BearerFormat { get; set; }
-
-        /// <summary>Description of this security scheme.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>
-        /// The name of the HTTP Authentication scheme to be used in the Authorization header as defined in RFC7235. The
-        /// values used SHOULD be registered in the IANA Authentication Scheme registry. The value is case-insensitive,
-        /// as defined in RFC7235.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scheme")]
-        public virtual string Scheme { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class ImplicitOAuthFlow : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The authorization URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard
-        /// requires the use of TLS
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("authorizationUrl")]
-        public virtual string AuthorizationUrl { get; set; }
-
-        /// <summary>
-        /// The URL to be used for obtaining refresh tokens. This MUST be in the form of a URL. The OAuth2 standard
-        /// requires the use of TLS.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("refreshUrl")]
-        public virtual string RefreshUrl { get; set; }
-
-        /// <summary>
-        /// The available scopes for the OAuth2 security scheme. A map between the scope name and a short description
-        /// for it. The map MAY be empty.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Scopes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2148,16 +1701,6 @@ namespace Google.Apis.WorkspaceEvents.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class MutualTlsSecurityScheme : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Description of this security scheme.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>The endpoint where the subscription delivers events.</summary>
     public class NotificationEndpoint : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2174,59 +1717,6 @@ namespace Google.Apis.WorkspaceEvents.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
         public virtual string PubsubTopic { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class OAuth2SecurityScheme : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Description of this security scheme.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>An object containing configuration information for the flow types supported</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("flows")]
-        public virtual OAuthFlows Flows { get; set; }
-
-        /// <summary>
-        /// URL to the oauth2 authorization server metadata [RFC8414](https://datatracker.ietf.org/doc/html/rfc8414).
-        /// TLS is required.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("oauth2MetadataUrl")]
-        public virtual string Oauth2MetadataUrl { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class OAuthFlows : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("authorizationCode")]
-        public virtual AuthorizationCodeOAuthFlow AuthorizationCode { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("clientCredentials")]
-        public virtual ClientCredentialsOAuthFlow ClientCredentials { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("implicit")]
-        public virtual ImplicitOAuthFlow Implicit__ { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("password")]
-        public virtual PasswordOAuthFlow Password { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class OpenIdConnectSecurityScheme : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Description of this security scheme.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>Well-known URL to discover the [[OpenID-Connect-Discovery]] provider metadata.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("openIdConnectUrl")]
-        public virtual string OpenIdConnectUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2298,33 +1788,6 @@ namespace Google.Apis.WorkspaceEvents.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class PasswordOAuthFlow : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The URL to be used for obtaining refresh tokens. This MUST be in the form of a URL. The OAuth2 standard
-        /// requires the use of TLS.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("refreshUrl")]
-        public virtual string RefreshUrl { get; set; }
-
-        /// <summary>
-        /// The available scopes for the OAuth2 security scheme. A map between the scope name and a short description
-        /// for it. The map MAY be empty.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Scopes { get; set; }
-
-        /// <summary>
-        /// The token URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard requires the
-        /// use of TLS.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tokenUrl")]
-        public virtual string TokenUrl { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Options about what data to include in the event payload. Only supported for Google Chat and Google Drive events.
     /// </summary>
@@ -2378,36 +1841,6 @@ namespace Google.Apis.WorkspaceEvents.v1.Data
     /// <summary>The request message for SubscriptionsService.ReactivateSubscription.</summary>
     public class ReactivateSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class Security : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("schemes")]
-        public virtual System.Collections.Generic.IDictionary<string, StringList> Schemes { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class SecurityScheme : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("apiKeySecurityScheme")]
-        public virtual APIKeySecurityScheme ApiKeySecurityScheme { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("httpAuthSecurityScheme")]
-        public virtual HTTPAuthSecurityScheme HttpAuthSecurityScheme { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("mtlsSecurityScheme")]
-        public virtual MutualTlsSecurityScheme MtlsSecurityScheme { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("oauth2SecurityScheme")]
-        public virtual OAuth2SecurityScheme Oauth2SecurityScheme { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("openIdConnectSecurityScheme")]
-        public virtual OpenIdConnectSecurityScheme OpenIdConnectSecurityScheme { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2509,16 +1942,6 @@ namespace Google.Apis.WorkspaceEvents.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("task")]
         public virtual Task Task { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>protolint:disable REPEATED_FIELD_NAMES_PLURALIZED</summary>
-    public class StringList : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("list")]
-        public virtual System.Collections.Generic.IList<string> List { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
