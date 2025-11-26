@@ -234,6 +234,9 @@ namespace Google.Apis.DataPortability.v1beta
             /// <summary>Move a copy of your YouTube comments</summary>
             public static string DataportabilityYoutubeComments = "https://www.googleapis.com/auth/dataportability.youtube.comments";
 
+            /// <summary>Move a copy of all your YouTube messages</summary>
+            public static string DataportabilityYoutubeConversations = "https://www.googleapis.com/auth/dataportability.youtube.conversations";
+
             /// <summary>Move a copy of your YouTube messages in live chat</summary>
             public static string DataportabilityYoutubeLiveChat = "https://www.googleapis.com/auth/dataportability.youtube.live_chat";
 
@@ -444,6 +447,9 @@ namespace Google.Apis.DataPortability.v1beta
 
             /// <summary>Move a copy of your YouTube comments</summary>
             public const string DataportabilityYoutubeComments = "https://www.googleapis.com/auth/dataportability.youtube.comments";
+
+            /// <summary>Move a copy of all your YouTube messages</summary>
+            public const string DataportabilityYoutubeConversations = "https://www.googleapis.com/auth/dataportability.youtube.conversations";
 
             /// <summary>Move a copy of your YouTube messages in live chat</summary>
             public const string DataportabilityYoutubeLiveChat = "https://www.googleapis.com/auth/dataportability.youtube.live_chat";
