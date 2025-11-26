@@ -17998,6 +17998,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseToken")]
         public virtual string PurchaseToken { get; set; }
 
+        /// <summary>The originating sales channel of the order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("salesChannel")]
+        public virtual string SalesChannel { get; set; }
+
         /// <summary>The state of the order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
