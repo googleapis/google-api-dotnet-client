@@ -7087,6 +7087,25 @@ namespace Google.Apis.Merchant.accounts_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees
+    /// latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard.
+    /// Values must be within normalized ranges.
+    /// </summary>
+    public class LatLng : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The latitude in degrees. It must be in the range [-90.0, +90.0].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latitude")]
+        public virtual System.Nullable<double> Latitude { get; set; }
+
+        /// <summary>The longitude in degrees. It must be in the range [-180.0, +180.0].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
+        public virtual System.Nullable<double> Longitude { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Collection of information related to the LFP link.</summary>
     public class LfpLink : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8107,6 +8126,34 @@ namespace Google.Apis.Merchant.accounts_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A radius area that defines the region area.</summary>
+    public class RadiusArea : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The center of the radius area. It represents a latitude/longitude pair in decimal degrees format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latLng")]
+        public virtual LatLng LatLng { get; set; }
+
+        /// <summary>Required. The radius distance of the area.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("radius")]
+        public virtual System.Nullable<double> Radius { get; set; }
+
+        /// <summary>Optional. The unit of the radius.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("radiusUnits")]
+        public virtual string RadiusUnits { get; set; }
+
+        /// <summary>
+        /// Required. [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) or the
+        /// country the radius area applies to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Shipping rate group definitions. Only the last one is allowed to have an empty `applicable_shipping_labels`,
     /// which means "everything else". The other `applicable_shipping_labels` must not overlap.
@@ -8180,6 +8227,10 @@ namespace Google.Apis.Merchant.accounts_v1.Data
         /// <summary>Optional. A list of postal codes that defines the region area.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCodeArea")]
         public virtual PostalCodeArea PostalCodeArea { get; set; }
+
+        /// <summary>Optional. A radius area that defines the region area.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("radiusArea")]
+        public virtual RadiusArea RadiusArea { get; set; }
 
         /// <summary>
         /// Output only. Indicates if the region is eligible for use in the Regional Inventory configuration.
