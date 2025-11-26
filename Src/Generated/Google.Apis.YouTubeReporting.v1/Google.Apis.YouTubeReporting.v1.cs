@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1132,6 +1132,10 @@ namespace Google.Apis.YouTubeReporting.v1.Data
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blobId")]
         public virtual string BlobId { get; set; }
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadExternalReadToken")]
+        public virtual string DownloadExternalReadToken { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadReadHandle")]
