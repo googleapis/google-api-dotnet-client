@@ -544,6 +544,34 @@ namespace Google.Apis.Admin.Reports.reports_v1
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("meet_hardware")]
                 MeetHardware = 31,
+
+                /// <summary>
+                /// The Directory Sync application's activity reports return information about various types of
+                /// Directory Sync activity events.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("directory_sync")]
+                DirectorySync = 32,
+
+                /// <summary>
+                /// The ldap application's activity reports return information about various types of ldap activity
+                /// events.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("ldap")]
+                Ldap = 33,
+
+                /// <summary>
+                /// The Profile application's activity reports return information about various types of Profile
+                /// activity events.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("profile")]
+                Profile = 34,
+
+                /// <summary>
+                /// The Access Evaluation activity reports return information about various types of Access Evaluation
+                /// activity events.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("access_evaluation")]
+                AccessEvaluation = 35,
             }
 
             /// <summary>
@@ -737,7 +765,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = @"(access_transparency)|(admin)|(assignments)|(calendar)|(chat)|(chrome)|(classroom)|(cloud_search)|(context_aware_access)|(data_studio)|(data_migration)|(drive)|(gcp)|(gmail)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(login)|(meet)|(meet_hardware)|(mobile)|(rules)|(saml)|(token)|(user_accounts)|(vault)|(gemini_in_workspace_apps)|(tasks)",
+                    Pattern = @"(access_evaluation)|(access_transparency)|(admin)|(assignments)|(calendar)|(chat)|(chrome)|(classroom)|(cloud_search)|(context_aware_access)|(data_studio)|(data_migration)|(directory_sync)|(drive)|(gcp)|(gmail)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(ldap)|(login)|(meet)|(meet_hardware)|(mobile)|(profile)|(rules)|(saml)|(token)|(user_accounts)|(vault)|(gemini_in_workspace_apps)|(tasks)",
                 });
                 RequestParameters.Add("actorIpAddress", new Google.Apis.Discovery.Parameter
                 {

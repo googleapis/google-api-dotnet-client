@@ -31,7 +31,11 @@
     "cloud_search",
     "tasks",
     "data_migration",
-    "meet_hardware"
+    "meet_hardware",
+    "directory_sync",
+    "ldap",
+    "profile",
+    "access_evaluation"
   ],
   "Google.Apis.Admin.Reports.reports_v1.ActivitiesResource+WatchRequest.ApplicationNameEnum": [
     "application_name_unspecified",
