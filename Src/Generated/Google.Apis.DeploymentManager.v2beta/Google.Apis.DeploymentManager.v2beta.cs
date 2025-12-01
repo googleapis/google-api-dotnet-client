@@ -4227,6 +4227,18 @@ namespace Google.Apis.DeploymentManager.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    public class FirewallPolicyRuleOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The priority allocated for the firewall policy rule if query parameters specified minPriority/maxPriority.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocatedPriority")]
+        public virtual System.Nullable<int> AllocatedPriority { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GlobalSetPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4465,6 +4477,9 @@ namespace Google.Apis.DeploymentManager.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual ErrorData Error { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("firewallPolicyRuleOperationMetadata")]
+        public virtual FirewallPolicyRuleOperationMetadata FirewallPolicyRuleOperationMetadata { get; set; }
 
         /// <summary>
         /// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as
