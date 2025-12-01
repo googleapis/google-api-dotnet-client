@@ -9289,6 +9289,53 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
         }
 
+        /// <summary>
+        /// Create a guest user with access to a [subset of Workspace
+        /// capabilities](https://support.google.com/a/answer/16558545?hl=en). This feature is currently in Alpha.
+        /// Please reach out to support if you are interested in trying this feature.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateGuestRequest CreateGuest(Google.Apis.Admin.Directory.directory_v1.Data.DirectoryUsersCreateGuestRequest body)
+        {
+            return new CreateGuestRequest(this.service, body);
+        }
+
+        /// <summary>
+        /// Create a guest user with access to a [subset of Workspace
+        /// capabilities](https://support.google.com/a/answer/16558545?hl=en). This feature is currently in Alpha.
+        /// Please reach out to support if you are interested in trying this feature.
+        /// </summary>
+        public class CreateGuestRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.User>
+        {
+            /// <summary>Constructs a new CreateGuest request.</summary>
+            public CreateGuestRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.DirectoryUsersCreateGuestRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Admin.Directory.directory_v1.Data.DirectoryUsersCreateGuestRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "createGuest";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "admin/directory/v1/users:createGuest";
+
+            /// <summary>Initializes CreateGuest parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
         /// <summary>Deletes a user.</summary>
         /// <param name="userKey">
         /// Identifies the user in the API request. The value can be the user's primary email address, alias email
@@ -12299,6 +12346,17 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Directory users guest creation request message.</summary>
+    public class DirectoryUsersCreateGuestRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. External email of the guest user being created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryGuestEmail")]
+        public virtual string PrimaryGuestEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class DomainAlias : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The creation time of the domain alias. (Read-only).</summary>
@@ -12622,6 +12680,17 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>Token used to access next page of this result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+    }
+
+    /// <summary>Account info specific to Guest users.</summary>
+    public class GuestAccountInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The guest's external email.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryGuestEmail")]
+        public virtual string PrimaryGuestEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     public class ListPrintServersResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -13941,6 +14010,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gender")]
         public virtual object Gender { get; set; }
 
+        /// <summary>Immutable. Additional guest-related metadata fields</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestAccountInfo")]
+        public virtual GuestAccountInfo GuestAccountInfo { get; set; }
+
         /// <summary>
         /// Stores the hash format of the `password` property. The following `hashFunction` values are allowed: * `MD5`
         /// - Accepts simple hex-encoded values. * `SHA-1` - Accepts simple hex-encoded values. * `crypt` - Compliant
@@ -14008,6 +14081,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>Output only. Is enrolled in 2-step verification (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isEnrolledIn2Sv")]
         public virtual System.Nullable<bool> IsEnrolledIn2Sv { get; set; }
+
+        /// <summary>Immutable. Indicates if the inserted user is a guest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isGuestUser")]
+        public virtual System.Nullable<bool> IsGuestUser { get; set; }
 
         /// <summary>
         /// Output only. Indicates if the user's Google mailbox is created. This property is only applicable if the user
