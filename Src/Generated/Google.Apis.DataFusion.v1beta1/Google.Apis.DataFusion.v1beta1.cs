@@ -2625,6 +2625,10 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicy")]
         public virtual MaintenancePolicy MaintenancePolicy { get; set; }
 
+        /// <summary>Optional. The monitoring configuration for this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoringConfig")]
+        public virtual MonitoringConfig MonitoringConfig { get; set; }
+
         /// <summary>
         /// Output only. The name of this instance is in the form of
         /// projects/{project}/locations/{location}/instances/{instance}.
@@ -3031,6 +3035,20 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         /// <summary>Required. The recurring time window of the maintenance window.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurringTimeWindow")]
         public virtual RecurringTimeWindow RecurringTimeWindow { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Monitoring configuration for a Data Fusion instance.</summary>
+    public class MonitoringConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Option to enable the instance v2 metrics for this instance. This field is supported only in CDF
+        /// versions 6.11.1.1 and above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableInstanceV2Metrics")]
+        public virtual System.Nullable<bool> EnableInstanceV2Metrics { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
