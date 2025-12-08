@@ -4646,6 +4646,12 @@ namespace Google.Apis.Calendar.v3.Data
     public class Calendar : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Whether this calendar automatically accepts invitations. Only valid for resource calendars.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoAcceptInvitations")]
+        public virtual System.Nullable<bool> AutoAcceptInvitations { get; set; }
+
+        /// <summary>
         /// Conferencing properties for this calendar, for example what types of conferences are allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conferenceProperties")]
