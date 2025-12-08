@@ -27519,6 +27519,14 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Configurations for a Search Engine.</summary>
     public class GoogleCloudDiscoveryengineV1EngineSearchEngineConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The required subscription tier of this engine. They cannot be modified after engine creation. If
+        /// the required subscription tier is search, user with higher license tier like assist can still access the
+        /// standalone app associated with this engine.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredSubscriptionTier")]
+        public virtual string RequiredSubscriptionTier { get; set; }
+
         /// <summary>The add-on that this search engine enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchAddOns")]
         public virtual System.Collections.Generic.IList<string> SearchAddOns { get; set; }
@@ -27770,6 +27778,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalIdentity")]
         public virtual string ExternalIdentity { get; set; }
+
+        /// <summary>Optional. The name of the external identity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalIdentityName")]
+        public virtual string ExternalIdentityName { get; set; }
 
         /// <summary>
         /// Group identifier. For Google Workspace user account, group_id should be the google workspace group email.
@@ -31364,6 +31376,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Promotions for site search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchLinkPromotions")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1SearchLinkPromotion> SearchLinkPromotions { get; set; }
+
+        /// <summary>Output only. Indicates the semantic state of the search response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("semanticState")]
+        public virtual string SemanticState { get; set; }
 
         /// <summary>
         /// Session information. Only set if SearchRequest.session is provided. See its description for more details.
@@ -39542,6 +39558,14 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Configurations for a Search Engine.</summary>
     public class GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The required subscription tier of this engine. They cannot be modified after engine creation. If
+        /// the required subscription tier is search, user with higher license tier like assist can still access the
+        /// standalone app associated with this engine.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredSubscriptionTier")]
+        public virtual string RequiredSubscriptionTier { get; set; }
+
         /// <summary>The add-on that this search engine enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchAddOns")]
         public virtual System.Collections.Generic.IList<string> SearchAddOns { get; set; }
@@ -47361,6 +47385,14 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Configurations for a Search Engine.</summary>
     public class GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The required subscription tier of this engine. They cannot be modified after engine creation. If
+        /// the required subscription tier is search, user with higher license tier like assist can still access the
+        /// standalone app associated with this engine.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredSubscriptionTier")]
+        public virtual string RequiredSubscriptionTier { get; set; }
+
         /// <summary>The add-on that this search engine enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchAddOns")]
         public virtual System.Collections.Generic.IList<string> SearchAddOns { get; set; }
