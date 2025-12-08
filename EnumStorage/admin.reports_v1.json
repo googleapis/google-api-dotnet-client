@@ -35,7 +35,11 @@
     "directory_sync",
     "ldap",
     "profile",
-    "access_evaluation"
+    "access_evaluation",
+    "admin_data_action",
+    "contacts",
+    "takeout",
+    "graduation"
   ],
   "Google.Apis.Admin.Reports.reports_v1.ActivitiesResource+WatchRequest.ApplicationNameEnum": [
     "application_name_unspecified",
