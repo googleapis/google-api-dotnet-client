@@ -3762,7 +3762,8 @@ namespace Google.Apis.DeveloperConnect.v1.Data
 
         /// <summary>
         /// Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events,
-        /// formatted as `projects/*/secrets/*/versions/*`. This is used to validate and create webhooks.
+        /// formatted as `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*` (if regional
+        /// secrets are supported in that location). This is used to validate and create webhooks.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookSecretSecretVersion")]
         public virtual string WebhookSecretSecretVersion { get; set; }
@@ -3817,7 +3818,8 @@ namespace Google.Apis.DeveloperConnect.v1.Data
 
         /// <summary>
         /// Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events,
-        /// formatted as `projects/*/secrets/*/versions/*`. This is used to validate webhooks.
+        /// formatted as `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*` (if regional
+        /// secrets are supported in that location). This is used to validate webhooks.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookSecretSecretVersion")]
         public virtual string WebhookSecretSecretVersion { get; set; }
@@ -4387,7 +4389,8 @@ namespace Google.Apis.DeveloperConnect.v1.Data
 
         /// <summary>
         /// Optional. SecretManager resource containing the private key of the GitHub App, formatted as
-        /// `projects/*/secrets/*/versions/*`.
+        /// `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*` (if regional secrets are
+        /// supported in that location).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateKeySecretVersion")]
         public virtual string PrivateKeySecretVersion { get; set; }
@@ -4411,7 +4414,8 @@ namespace Google.Apis.DeveloperConnect.v1.Data
 
         /// <summary>
         /// Optional. SecretManager resource containing the webhook secret of the GitHub App, formatted as
-        /// `projects/*/secrets/*/versions/*`.
+        /// `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*` (if regional secrets are
+        /// supported in that location).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookSecretSecretVersion")]
         public virtual string WebhookSecretSecretVersion { get; set; }
@@ -4441,7 +4445,8 @@ namespace Google.Apis.DeveloperConnect.v1.Data
 
         /// <summary>
         /// Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project, formatted as
-        /// `projects/*/secrets/*/versions/*`. This is used to validate webhooks.
+        /// `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*` (if regional secrets are
+        /// supported in that location). This is used to validate webhooks.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookSecretSecretVersion")]
         public virtual string WebhookSecretSecretVersion { get; set; }
@@ -4494,7 +4499,8 @@ namespace Google.Apis.DeveloperConnect.v1.Data
 
         /// <summary>
         /// Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project, formatted as
-        /// `projects/*/secrets/*/versions/*`. This is used to validate webhooks.
+        /// `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*` (if regional secrets are
+        /// supported in that location). This is used to validate webhooks.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookSecretSecretVersion")]
         public virtual string WebhookSecretSecretVersion { get; set; }
@@ -5120,7 +5126,8 @@ namespace Google.Apis.DeveloperConnect.v1.Data
     {
         /// <summary>
         /// Required. A SecretManager resource containing the OAuth token that authorizes the connection. Format:
-        /// `projects/*/secrets/*/versions/*`.
+        /// `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*` (if regional secrets are
+        /// supported in that location).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauthTokenSecretVersion")]
         public virtual string OauthTokenSecretVersion { get; set; }
@@ -5532,7 +5539,8 @@ namespace Google.Apis.DeveloperConnect.v1.Data
     {
         /// <summary>
         /// Required. A SecretManager resource containing the user token that authorizes the Developer Connect
-        /// connection. Format: `projects/*/secrets/*/versions/*`.
+        /// connection. Format: `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*` (if
+        /// regional secrets are supported in that location).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userTokenSecretVersion")]
         public virtual string UserTokenSecretVersion { get; set; }
