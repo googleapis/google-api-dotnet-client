@@ -6791,6 +6791,13 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual string BlobId { get; set; }
 
         /// <summary>
+        /// A serialized External Read Token passed from Bigstore -&amp;gt; Scotty for a GCS download. This field must
+        /// never be consumed outside of Bigstore, and is not applicable to non-GCS media uploads.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadExternalReadToken")]
+        public virtual string DownloadExternalReadToken { get; set; }
+
+        /// <summary>
         /// Read handle passed from Bigstore -&amp;gt; Scotty for a GCS download. This is a signed, serialized
         /// blobstore2.ReadHandle proto which must never be set outside of Bigstore, and is not applicable to non-GCS
         /// media downloads.
