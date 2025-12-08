@@ -3033,6 +3033,17 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>BigQuery clustering configuration.</summary>
+    public class BigQueryClustering : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Column names to set as clustering columns.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columns")]
+        public virtual System.Collections.Generic.IList<string> Columns { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>BigQuery destination configuration</summary>
     public class BigQueryDestinationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3063,6 +3074,29 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Source hierarchy datasets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceHierarchyDatasets")]
         public virtual SourceHierarchyDatasets SourceHierarchyDatasets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>BigQuery partitioning configuration.</summary>
+    public class BigQueryPartitioning : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Ingestion time partitioning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingestionTimePartition")]
+        public virtual IngestionTimePartition IngestionTimePartition { get; set; }
+
+        /// <summary>Integer range partitioning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integerRangePartition")]
+        public virtual IntegerRangePartition IntegerRangePartition { get; set; }
+
+        /// <summary>Optional. If true, queries over the table require a partition filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requirePartitionFilter")]
+        public virtual System.Nullable<bool> RequirePartitionFilter { get; set; }
+
+        /// <summary>Time unit column partitioning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeUnitPartition")]
+        public virtual TimeUnitPartition TimeUnitPartition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3292,6 +3326,21 @@ namespace Google.Apis.Datastream.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A customization rule to apply to a set of objects.</summary>
+    public class CustomizationRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>BigQuery clustering rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryClustering")]
+        public virtual BigQueryClustering BigqueryClustering { get; set; }
+
+        /// <summary>BigQuery partitioning rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryPartitioning")]
+        public virtual BigQueryPartitioning BigqueryPartitioning { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3671,6 +3720,44 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Optional. Port for the connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Ingestion time partitioning. see https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time
+    /// </summary>
+    public class IngestionTimePartition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Partition granularity</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitioningTimeGranularity")]
+        public virtual string PartitioningTimeGranularity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Integer range partitioning. see https://cloud.google.com/bigquery/docs/partitioned-tables#integer_range
+    /// </summary>
+    public class IntegerRangePartition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The partitioning column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("column")]
+        public virtual string Column { get; set; }
+
+        /// <summary>Required. The ending value for range partitioning (exclusive).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("end")]
+        public virtual System.Nullable<long> End { get; set; }
+
+        /// <summary>Required. The interval of each range within the partition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interval")]
+        public virtual System.Nullable<long> Interval { get; set; }
+
+        /// <summary>Required. The starting value for range partitioning (inclusive).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("start")]
+        public virtual System.Nullable<long> Start { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4421,6 +4508,17 @@ namespace Google.Apis.Datastream.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretManagerStoredClientSecret")]
         public virtual string SecretManagerStoredClientSecret { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Object filter to apply the rules to.</summary>
+    public class ObjectFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specific source object identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceObjectIdentifier")]
+        public virtual SourceObjectIdentifier SourceObjectIdentifier { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5318,6 +5416,21 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A set of rules to apply to a set of objects.</summary>
+    public class RuleSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. List of customization rules to apply.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customizationRules")]
+        public virtual System.Collections.Generic.IList<CustomizationRule> CustomizationRules { get; set; }
+
+        /// <summary>Required. Object filter to apply the customization rules to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectFilter")]
+        public virtual ObjectFilter ObjectFilter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for running a stream.</summary>
     public class RunStreamRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6067,6 +6180,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. Rule sets to apply to the stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleSets")]
+        public virtual System.Collections.Generic.IList<RuleSet> RuleSets { get; set; }
+
         /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
         public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
@@ -6175,6 +6292,13 @@ namespace Google.Apis.Datastream.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>
+        /// Output only. The customization rules for the object. These rules are derived from the parent Stream's
+        /// `rule_sets` and represent the intended configuration for the object.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customizationRules")]
+        public virtual System.Collections.Generic.IList<CustomizationRule> CustomizationRules { get; set; }
+
         /// <summary>Required. Display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -6227,6 +6351,24 @@ namespace Google.Apis.Datastream.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Time unit column partitioning. see
+    /// https://cloud.google.com/bigquery/docs/partitioned-tables#date_timestamp_partitioned_tables
+    /// </summary>
+    public class TimeUnitPartition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The partitioning column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("column")]
+        public virtual string Column { get; set; }
+
+        /// <summary>Optional. Partition granularity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitioningTimeGranularity")]
+        public virtual string PartitioningTimeGranularity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
