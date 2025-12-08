@@ -66,7 +66,7 @@ namespace Google.Apis.Cloudchannel.v1
             /// <summary>Manage users on your domain</summary>
             public static string AppsOrder = "https://www.googleapis.com/auth/apps.order";
 
-            /// <summary>View usage reports for your G Suite domain</summary>
+            /// <summary>View usage reports for your Google Workspace domain</summary>
             public static string AppsReportsUsageReadonly = "https://www.googleapis.com/auth/apps.reports.usage.readonly";
         }
 
@@ -76,7 +76,7 @@ namespace Google.Apis.Cloudchannel.v1
             /// <summary>Manage users on your domain</summary>
             public const string AppsOrder = "https://www.googleapis.com/auth/apps.order";
 
-            /// <summary>View usage reports for your G Suite domain</summary>
+            /// <summary>View usage reports for your Google Workspace domain</summary>
             public const string AppsReportsUsageReadonly = "https://www.googleapis.com/auth/apps.reports.usage.readonly";
         }
 
