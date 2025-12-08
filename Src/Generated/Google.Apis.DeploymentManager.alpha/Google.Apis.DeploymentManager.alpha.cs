@@ -4640,7 +4640,9 @@ namespace Google.Apis.DeploymentManager.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instancesBulkInsertOperationMetadata")]
         public virtual InstancesBulkInsertOperationMetadata InstancesBulkInsertOperationMetadata { get; set; }
 
-        /// <summary>[Output Only] Type of the resource. Always `compute#operation` for Operation resources.</summary>
+        /// <summary>
+        /// Output only. [Output Only] Type of the resource. Always `compute#operation` for Operation resources.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4649,8 +4651,8 @@ namespace Google.Apis.DeploymentManager.alpha.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// [Output Only] An ID that represents a group of operations, such as when a group of operations results from a
-        /// `bulkInsert` API request.
+        /// Output only. [Output Only] An ID that represents a group of operations, such as when a group of operations
+        /// results from a `bulkInsert` API request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationGroupId")]
         public virtual string OperationGroupId { get; set; }
@@ -4678,7 +4680,7 @@ namespace Google.Apis.DeploymentManager.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
 
-        /// <summary>[Output Only] Server-defined URL for this resource with the resource id.</summary>
+        /// <summary>Output only. [Output Only] Server-defined URL for this resource with the resource id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLinkWithId")]
         public virtual string SelfLinkWithId { get; set; }
 
@@ -4689,8 +4691,8 @@ namespace Google.Apis.DeploymentManager.alpha.Data
         public virtual SetAutoscalerLinkOperationMetadata SetAutoscalerLinkOperationMetadata { get; set; }
 
         /// <summary>
-        /// [Output Only] If the operation is for projects.setCommonInstanceMetadata, this field will contain
-        /// information on all underlying zonal actions and their state.
+        /// Output only. [Output Only] If the operation is for projects.setCommonInstanceMetadata, this field will
+        /// contain information on all underlying zonal actions and their state.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setCommonInstanceMetadataOperationMetadata")]
         public virtual SetCommonInstanceMetadataOperationMetadata SetCommonInstanceMetadataOperationMetadata { get; set; }
@@ -4762,9 +4764,9 @@ namespace Google.Apis.DeploymentManager.alpha.Data
             public class ErrorsData
             {
                 /// <summary>
-                /// [Output Only] Optional error details WARNING: DO NOT MAKE VISIBLE This is for internal use-only
-                /// (like componentization) (thus the visibility "none") and in case of public exposure it is strongly
-                /// recommended to follow pattern of: https://aip.dev/193 and expose as details field.
+                /// Output only. [Output Only] Optional error details WARNING: DO NOT MAKE VISIBLE This is for internal
+                /// use-only (like componentization) (thus the visibility "none") and in case of public exposure it is
+                /// strongly recommended to follow pattern of: https://aip.dev/193 and expose as details field.
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("arguments")]
                 public virtual System.Collections.Generic.IList<string> Arguments { get; set; }
@@ -5253,9 +5255,9 @@ namespace Google.Apis.DeploymentManager.alpha.Data
             public class ErrorsData
             {
                 /// <summary>
-                /// [Output Only] Optional error details WARNING: DO NOT MAKE VISIBLE This is for internal use-only
-                /// (like componentization) (thus the visibility "none") and in case of public exposure it is strongly
-                /// recommended to follow pattern of: https://aip.dev/193 and expose as details field.
+                /// Output only. [Output Only] Optional error details WARNING: DO NOT MAKE VISIBLE This is for internal
+                /// use-only (like componentization) (thus the visibility "none") and in case of public exposure it is
+                /// strongly recommended to follow pattern of: https://aip.dev/193 and expose as details field.
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("arguments")]
                 public virtual System.Collections.Generic.IList<string> Arguments { get; set; }
