@@ -1276,9 +1276,9 @@ namespace Google.Apis.TPU.v2alpha1
 
                     /// <summary>
                     /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                    /// `true` when reading across collections e.g. when `parent` is set to
-                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
                     /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                     /// specific documentation.
                     /// </summary>
@@ -2147,8 +2147,8 @@ namespace Google.Apis.TPU.v2alpha1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
-                /// primarily intended for internal usage.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -2704,8 +2704,8 @@ namespace Google.Apis.TPU.v2alpha1.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
