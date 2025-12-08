@@ -539,9 +539,9 @@ namespace Google.Apis.Document.v1
 
                     /// <summary>
                     /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                    /// `true` when reading across collections e.g. when `parent` is set to
-                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
                     /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                     /// specific documentation.
                     /// </summary>
@@ -3706,6 +3706,13 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>Display name to show to users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. Document level prompt provided by the user. This custom text is injected into the AI model's
+        /// prompt to provide extra, document-wide guidance for processing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentPrompt")]
+        public virtual string DocumentPrompt { get; set; }
 
         /// <summary>Entity types of the schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
@@ -7449,7 +7456,9 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("generateSchemaVersionParams")]
         public virtual GoogleCloudDocumentaiV1GenerateSchemaVersionRequestGenerateSchemaVersionParams GenerateSchemaVersionParams { get; set; }
 
-        /// <summary>The set of documents specified inline.</summary>
+        /// <summary>
+        /// The set of documents specified inline. For each document, its `uri` or `content` field must be set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inlineDocuments")]
         public virtual GoogleCloudDocumentaiV1Documents InlineDocuments { get; set; }
 
@@ -10304,8 +10313,8 @@ namespace Google.Apis.Document.v1.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
