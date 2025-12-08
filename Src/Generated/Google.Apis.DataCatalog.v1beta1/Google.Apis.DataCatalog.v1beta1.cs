@@ -5169,6 +5169,10 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcsFilesetSpec")]
         public virtual GoogleCloudDatacatalogV1GcsFilesetSpec GcsFilesetSpec { get; set; }
 
+        /// <summary>Spec for graph.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("graphSpec")]
+        public virtual GoogleCloudDatacatalogV1GraphSpec GraphSpec { get; set; }
+
         /// <summary>
         /// Output only. Indicates the entry's source system that Data Catalog integrates with, such as BigQuery,
         /// Pub/Sub, or Dataproc Metastore.
@@ -5363,6 +5367,109 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleGcsFileSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1GcsFileSpec> SampleGcsFileSpecs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification that applies to a graph.</summary>
+    public class GoogleCloudDatacatalogV1GraphSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Edge tables of the graph.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edgeTables")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1GraphSpecGraphElementTable> EdgeTables { get; set; }
+
+        /// <summary>Output only. Fully qualified graph name. e.g. `named_catalog.MyGraph`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. Node tables of the graph.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeTables")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1GraphSpecGraphElementTable> NodeTables { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Element table definition.</summary>
+    public class GoogleCloudDatacatalogV1GraphSpecGraphElementTable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The alias name of the graph element.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alias")]
+        public virtual string Alias { get; set; }
+
+        /// <summary>
+        /// Required. The name of the data source. This is either a table name or a view name that is used for graph
+        /// element input source. E.g. `Person` table or `PersonView` view.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
+        public virtual string DataSource { get; set; }
+
+        /// <summary>Optional. Only applies to `kind = EDGE`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationNodeReference")]
+        public virtual string DestinationNodeReference { get; set; }
+
+        /// <summary>Optional. If true, the graph element has a dynamic label in schemaless model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicLabelEnabled")]
+        public virtual System.Nullable<bool> DynamicLabelEnabled { get; set; }
+
+        /// <summary>Optional. If true, the graph element has dynamic properties in schemaless model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicPropertiesEnabled")]
+        public virtual System.Nullable<bool> DynamicPropertiesEnabled { get; set; }
+
+        /// <summary>Required. The name of the keys of the elements in the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("elementKeys")]
+        public virtual System.Collections.Generic.IList<string> ElementKeys { get; set; }
+
+        /// <summary>Required. The input source of the graph element.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputSource")]
+        public virtual string InputSource { get; set; }
+
+        /// <summary>Required. The kind of the graph element.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>Required. The labels and their properties for the graph element.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelAndProperties")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties> LabelAndProperties { get; set; }
+
+        /// <summary>
+        /// Optional. Only applies to `kind = EDGE`. The reference to the source node of the edge. This name must be a
+        /// valid `alias` of a node element in the same graph. Example, `Person` node can be a source node of an edge
+        /// element `Person_to_Address`. Similar rule applies to `destination_node_reference`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceNodeReference")]
+        public virtual string SourceNodeReference { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The label and its properties. Each label is associated with a set of properties.</summary>
+    public class GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>Optional. The properties associated with the label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty> Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A property declaration.</summary>
+    public class GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Property name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. Property data type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
