@@ -8609,6 +8609,14 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("artifactId")]
         public virtual string ArtifactId { get; set; }
 
+        /// <summary>
+        /// Optional. Path to a folder containing the files to upload to Artifact Registry. This can be either an
+        /// absolute path, e.g. `/workspace/my-app/target/`, or a relative path from /workspace, e.g. `my-app/target/`.
+        /// This field is mutually exclusive with the `path` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployFolder")]
+        public virtual string DeployFolder { get; set; }
+
         /// <summary>Maven `groupId` value used when uploading the artifact to Artifact Registry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
         public virtual string GroupId { get; set; }
