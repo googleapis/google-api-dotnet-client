@@ -6378,6 +6378,77 @@ namespace Google.Apis.TagManager.v2
                     }
                 }
 
+                /// <summary>
+                /// Applies multiple entity changes to a workspace in one call. When creating new entities, their entity
+                /// IDs must be unique and in correct format. That is, they must start with "new_" and followed by
+                /// number, e.g. "new_1", "new_2". Example body snippet to create myNewTag under myNewFolder is:
+                /// ```
+                /// "changes": [ { "folder": { "folderId": "new_1", "name": "myNewFolder", ... }, "changeStatus":
+                /// "added" }, { "tag": { "tagId": "new_2", "name": "myNewTag", "parentFolderId": "new_1", ... },
+                /// "changeStatus": "added" } ]
+                /// ```
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="path">GTM Workspace's API relative path.</param>
+                public virtual BulkUpdateRequest BulkUpdate(Google.Apis.TagManager.v2.Data.ProposedChange body, string path)
+                {
+                    return new BulkUpdateRequest(this.service, body, path);
+                }
+
+                /// <summary>
+                /// Applies multiple entity changes to a workspace in one call. When creating new entities, their entity
+                /// IDs must be unique and in correct format. That is, they must start with "new_" and followed by
+                /// number, e.g. "new_1", "new_2". Example body snippet to create myNewTag under myNewFolder is:
+                /// ```
+                /// "changes": [ { "folder": { "folderId": "new_1", "name": "myNewFolder", ... }, "changeStatus":
+                /// "added" }, { "tag": { "tagId": "new_2", "name": "myNewTag", "parentFolderId": "new_1", ... },
+                /// "changeStatus": "added" } ]
+                /// ```
+                /// </summary>
+                public class BulkUpdateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v2.Data.BulkUpdateWorkspaceResponse>
+                {
+                    /// <summary>Constructs a new BulkUpdate request.</summary>
+                    public BulkUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v2.Data.ProposedChange body, string path) : base(service)
+                    {
+                        Path = path;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>GTM Workspace's API relative path.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Path { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.TagManager.v2.Data.ProposedChange Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "bulk_update";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "tagmanager/v2/{+path}/bulk_update";
+
+                    /// <summary>Initializes BulkUpdate parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("path", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "path",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Creates a Workspace.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">GTM parent Container's API relative path.</param>
@@ -8070,6 +8141,19 @@ namespace Google.Apis.TagManager.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    public class BulkUpdateWorkspaceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The entities that were added or updated during the bulk-update. Does not include entities that were deleted
+        /// or updated by the system.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changes")]
+        public virtual System.Collections.Generic.IList<Entity> Changes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class Client : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>GTM Account ID.</summary>
@@ -9262,6 +9346,16 @@ namespace Google.Apis.TagManager.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ProposedChange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of workspace changes to be applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changes")]
+        public virtual System.Collections.Generic.IList<Entity> Changes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
