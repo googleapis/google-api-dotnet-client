@@ -551,9 +551,9 @@ namespace Google.Apis.Texttospeech.v1
 
                     /// <summary>
                     /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                    /// `true` when reading across collections e.g. when `parent` is set to
-                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
                     /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                     /// specific documentation.
                     /// </summary>
@@ -1038,8 +1038,8 @@ namespace Google.Apis.Texttospeech.v1.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -1198,7 +1198,9 @@ namespace Google.Apis.Texttospeech.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customPronunciations")]
         public virtual CustomPronunciations CustomPronunciations { get; set; }
 
-        /// <summary>Markup for HD voices specifically. This field may not be used with any other voices.</summary>
+        /// <summary>
+        /// Markup for Chirp 3: HD voices specifically. This field may not be used with any other voices.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("markup")]
         public virtual string Markup { get; set; }
 
