@@ -2173,6 +2173,10 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("geoTargetMetro")]
         public virtual string GeoTargetMetro { get; set; }
 
+        /// <summary>Resource name of the geo target constant that represents a postal code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geoTargetPostalCode")]
+        public virtual string GeoTargetPostalCode { get; set; }
+
         /// <summary>Resource name of the geo target constant that represents a region.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoTargetRegion")]
         public virtual string GeoTargetRegion { get; set; }
@@ -3655,8 +3659,8 @@ namespace Google.Apis.SA360.v0.Data
     public class GoogleAdsSearchads360V0ResourcesAdGroupBidModifier : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The modifier for the bid when the criterion matches. The modifier must be in the range: 0.1 - 10.0. The
-        /// range is 1.0 - 6.0 for PreferredContent. Use 0 to opt out of a Device type.
+        /// The modifier for the bid when the criterion matches. The modifier must be in the range: 0.1 - 10.0. Use 0 to
+        /// opt out of a Device type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bidModifier")]
         public virtual System.Nullable<double> BidModifier { get; set; }
