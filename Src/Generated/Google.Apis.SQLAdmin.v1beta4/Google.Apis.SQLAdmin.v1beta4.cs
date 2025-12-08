@@ -2101,12 +2101,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// Adds a new Entra ID certificate for the specified instance. If an Entra ID certificate was previously added
         /// but never used in a certificate rotation, this operation replaces that version.
         /// </summary>
-        /// <param name="body">The body of the request.</param>
         /// <param name="project">Required. Project ID of the project that contains the instance.</param>
         /// <param name="instance">Required. Cloud SQL instance ID. This does not include the project ID.</param>
-        public virtual AddEntraIdCertificateRequest AddEntraIdCertificate(Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesAddEntraIdCertificateRequest body, string project, string instance)
+        public virtual AddEntraIdCertificateRequest AddEntraIdCertificate(string project, string instance)
         {
-            return new AddEntraIdCertificateRequest(this.service, body, project, instance);
+            return new AddEntraIdCertificateRequest(this.service, project, instance);
         }
 
         /// <summary>
@@ -2116,11 +2115,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class AddEntraIdCertificateRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new AddEntraIdCertificate request.</summary>
-            public AddEntraIdCertificateRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesAddEntraIdCertificateRequest body, string project, string instance) : base(service)
+            public AddEntraIdCertificateRequest(Google.Apis.Services.IClientService service, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
-                Body = body;
                 InitParameters();
             }
 
@@ -2131,12 +2129,6 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Required. Cloud SQL instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesAddEntraIdCertificateRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "addEntraIdCertificate";
@@ -9629,7 +9621,11 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Database instance local user password validation policy</summary>
+    /// <summary>
+    /// Database instance local user password validation policy. This message defines the password policy for local
+    /// database users. When enabled, it enforces constraints on password complexity, length, and reuse. Keep this
+    /// policy enabled to help prevent unauthorized access.
+    /// </summary>
     public class PasswordValidationPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The complexity of the password.</summary>
@@ -9644,7 +9640,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disallowUsernameSubstring")]
         public virtual System.Nullable<bool> DisallowUsernameSubstring { get; set; }
 
-        /// <summary>Whether the password policy is enabled or not.</summary>
+        /// <summary>
+        /// Whether to enable the password policy or not. When enabled, passwords must meet complexity requirements.
+        /// Keep this policy enabled to help prevent unauthorized access. Disabling this policy allows weak passwords.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePasswordPolicy")]
         public virtual System.Nullable<bool> EnablePasswordPolicy { get; set; }
 
@@ -9672,6 +9671,45 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>The target disk shrink size in GigaBytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetSizeGb")]
         public virtual System.Nullable<long> TargetSizeGb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Performance Capture configuration.</summary>
+    public class PerformanceCaptureConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Enable or disable the Performance Capture.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>
+        /// Optional. The minimum number of consecutive readings above threshold that triggers instance state capture.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("probeThreshold")]
+        public virtual System.Nullable<int> ProbeThreshold { get; set; }
+
+        /// <summary>Optional. The time interval in seconds between any two probes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("probingIntervalSeconds")]
+        public virtual System.Nullable<int> ProbingIntervalSeconds { get; set; }
+
+        /// <summary>Optional. The minimum number of server threads running to trigger the capture on primary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runningThreadsThreshold")]
+        public virtual System.Nullable<int> RunningThreadsThreshold { get; set; }
+
+        /// <summary>
+        /// Optional. The minimum number of seconds replica must be lagging behind primary to trigger capture on
+        /// replica.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondsBehindSourceThreshold")]
+        public virtual System.Nullable<int> SecondsBehindSourceThreshold { get; set; }
+
+        /// <summary>
+        /// Optional. The amount of time in seconds that a transaction needs to have been open before the watcher starts
+        /// recording it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionDurationThreshold")]
+        public virtual System.Nullable<int> TransactionDurationThreshold { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9789,6 +9827,17 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>Output only. The name of the read pool node, to be used for retrieving metrics and logs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The list of settings for requested automatically-setup Private Service Connect (PSC) consumer
+        /// endpoints that can be used to connect to this read pool node.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscAutoConnections")]
+        public virtual System.Collections.Generic.IList<PscAutoConnectionConfig> PscAutoConnections { get; set; }
+
+        /// <summary>Output only. The Private Service Connect (PSC) service attachment of the read pool node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscServiceAttachmentLink")]
+        public virtual string PscServiceAttachmentLink { get; set; }
 
         /// <summary>Output only. The current state of the read pool node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -10383,6 +10432,12 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual PasswordValidationPolicy PasswordValidationPolicy { get; set; }
 
         /// <summary>
+        /// Optional. Configuration for Performance Capture, provides diagnostic metrics during high load situations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("performanceCaptureConfig")]
+        public virtual PerformanceCaptureConfig PerformanceCaptureConfig { get; set; }
+
+        /// <summary>
         /// The pricing plan for this instance. This can be either `PER_USE` or `PACKAGE`. Only `PER_USE` is supported
         /// for Second Generation instances.
         /// </summary>
@@ -10519,13 +10574,6 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request for AddEntraIdCertificate RPC.</summary>
-    public class SqlInstancesAddEntraIdCertificateRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
