@@ -2525,6 +2525,12 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("failedReason")]
         public virtual string FailedReason { get; set; }
 
+        /// <summary>
+        /// Output only. Indicates that the test replayed saved actions and concluded without a final AI assertion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalAiAssertionMissing")]
+        public virtual System.Nullable<bool> FinalAiAssertionMissing { get; set; }
+
         /// <summary>Output only. The reason why the test was inconclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inconclusiveReason")]
         public virtual string InconclusiveReason { get; set; }
