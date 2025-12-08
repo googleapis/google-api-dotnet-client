@@ -983,6 +983,90 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Properties of a DateElement.</summary>
+    public class DateElementProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Determines how the date part of the DateElement will be displayed in the document. If unset, the default
+        /// value is DATE_FORMAT_MONTH_DAY_YEAR_ABBREVIATED, indicating the DateElement will be formatted as `MMM d, y`
+        /// in `en_US`, or locale specific equivalent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateFormat")]
+        public virtual string DateFormat { get; set; }
+
+        /// <summary>Output only. Indicates how the DateElement is displayed in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayText")]
+        public virtual string DisplayText { get; set; }
+
+        /// <summary>
+        /// The locale of the document, as defined by the Unicode Common Locale Data Repository (CLDR) project. For
+        /// example, `en_US`. If unset, the default locale is `en_US`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locale")]
+        public virtual string Locale { get; set; }
+
+        /// <summary>
+        /// Determines how the time part of the DateElement will be displayed in the document. If unset, the default
+        /// value is TIME_FORMAT_DISABLED, indicating no time should be shown.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeFormat")]
+        public virtual string TimeFormat { get; set; }
+
+        /// <summary>
+        /// The time zone of the DateElement, as defined by the Unicode Common Locale Data Repository (CLDR) project.
+        /// For example, `America/New York`. If unset, the default time zone is `etc/UTC`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZoneId")]
+        public virtual string TimeZoneId { get; set; }
+
+        private string _timestampRaw;
+
+        private object _timestamp;
+
+        /// <summary>
+        /// The point in time to represent, in seconds and nanoseconds since Unix epoch: January 1, 1970 at midnight
+        /// UTC. Timestamp is expected to be in UTC. If time_zone_id is set, the timestamp is adjusted according to the
+        /// time zone. For example, a timestamp of `18000` with a date format of `DATE_FORMAT_ISO8601` and time format
+        /// of `TIME_FORMAT_HOUR_MINUTE` would be displayed as `1970-01-01 5:00 AM`. A timestamp of `18000` with date
+        /// format of `DATE_FORMAT_8SO8601`, time format of `TIME_FORMAT_HOUR_MINUTE`, and time zone set to
+        /// `America/New_York` will instead be `1970-01-01 12:00 AM`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual string TimestampRaw
+        {
+            get => _timestampRaw;
+            set
+            {
+                _timestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimestampDateTimeOffset instead.")]
+        public virtual object Timestamp
+        {
+            get => _timestamp;
+            set
+            {
+                _timestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _timestamp = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampRaw);
+            set => TimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Deletes content from the document.</summary>
     public class DeleteContentRangeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2152,6 +2236,29 @@ namespace Google.Apis.Docs.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("embeddedObjectSuggestionState")]
         public virtual EmbeddedObjectSuggestionState EmbeddedObjectSuggestionState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Inserts a date at the specified location.</summary>
+    public class InsertDateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The properties of the date to insert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateElementProperties")]
+        public virtual DateElementProperties DateElementProperties { get; set; }
+
+        /// <summary>Inserts the date at the end of the given header, footer or document body.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endOfSegmentLocation")]
+        public virtual EndOfSegmentLocation EndOfSegmentLocation { get; set; }
+
+        /// <summary>
+        /// Inserts the date at a specific index in the document. The date must be inserted inside the bounds of an
+        /// existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e. between an existing
+        /// table and its preceding paragraph).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual Location Location { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3676,6 +3783,10 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>Deletes a row from a table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTableRow")]
         public virtual DeleteTableRowRequest DeleteTableRow { get; set; }
+
+        /// <summary>Inserts a date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insertDate")]
+        public virtual InsertDateRequest InsertDate { get; set; }
 
         /// <summary>Inserts an inline image at the specified location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertInlineImage")]
