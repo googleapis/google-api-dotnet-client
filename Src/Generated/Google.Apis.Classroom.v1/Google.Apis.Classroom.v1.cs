@@ -8985,11 +8985,11 @@ namespace Google.Apis.Classroom.v1
 
             /// <summary>
             /// Mask that identifies which fields on the course to update. This field is required to do an update. The
-            /// update will fail if invalid fields are specified. The following fields are valid: * `name` * `section` *
-            /// `descriptionHeading` * `description` * `room` * `courseState` * `ownerId` Note: patches to ownerId are
-            /// treated as being effective immediately, but in practice it may take some time for the ownership transfer
-            /// of all affected resources to complete. When set in a query parameter, this field should be specified as
-            /// `updateMask=,,...`
+            /// update will fail if invalid fields are specified. The following fields are valid: * `courseState` *
+            /// `description` * `descriptionHeading` * `name` * `ownerId` * `room` * `section` * `subject` Note: patches
+            /// to ownerId are treated as being effective immediately, but in practice it may take some time for the
+            /// ownership transfer of all affected resources to complete. When set in a query parameter, this field
+            /// should be specified as `updateMask=,,...`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
