@@ -572,6 +572,34 @@ namespace Google.Apis.Admin.Reports.reports_v1
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("access_evaluation")]
                 AccessEvaluation = 35,
+
+                /// <summary>
+                /// The Admin Data Action application's activity reports return information about various types of Admin
+                /// Data Action activity events.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("admin_data_action")]
+                AdminDataAction = 36,
+
+                /// <summary>
+                /// The Contacts application's activity reports return information about various types of Contacts
+                /// activity events.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("contacts")]
+                Contacts = 37,
+
+                /// <summary>
+                /// The Takeout application's activity reports return information about various types of Takeout
+                /// activity events.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("takeout")]
+                Takeout = 38,
+
+                /// <summary>
+                /// The Graduation application's activity reports return information about various types of Graduation
+                /// activity events.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("graduation")]
+                Graduation = 39,
             }
 
             /// <summary>
@@ -765,7 +793,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = @"(access_evaluation)|(access_transparency)|(admin)|(assignments)|(calendar)|(chat)|(chrome)|(classroom)|(cloud_search)|(context_aware_access)|(data_studio)|(data_migration)|(directory_sync)|(drive)|(gcp)|(gmail)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(ldap)|(login)|(meet)|(meet_hardware)|(mobile)|(profile)|(rules)|(saml)|(token)|(user_accounts)|(vault)|(gemini_in_workspace_apps)|(tasks)",
+                    Pattern = @"(access_evaluation)|(access_transparency)|(admin)|(admin_data_action)|(assignments)|(calendar)|(chat)|(chrome)|(classroom)|(cloud_search)|(contacts)|(context_aware_access)|(data_studio)|(data_migration)|(directory_sync)|(drive)|(gcp)|(gmail)|(gplus)|(graduation)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(ldap)|(login)|(meet)|(meet_hardware)|(mobile)|(profile)|(rules)|(saml)|(token)|(user_accounts)|(vault)|(gemini_in_workspace_apps)|(tasks)|(takeout)",
                 });
                 RequestParameters.Add("actorIpAddress", new Google.Apis.Discovery.Parameter
                 {
