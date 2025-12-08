@@ -7328,7 +7328,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// <summary>
                         /// Bulk exports all resources from the FHIR store to the specified destination. Implements the
                         /// FHIR implementation guide [system level
-                        /// $export](https://build.fhir.org/ig/HL7/bulk-data/export.html#endpoint---system-level-export.
+                        /// $export](https://build.fhir.org/ig/HL7/bulk-data/export.html#endpoint---system-level-export).
                         /// The following headers must be set in the request: * `Accept`: specifies the format of the
                         /// `OperationOutcome` response. Only `application/fhir+json` is supported. * `Prefer`:
                         /// specifies whether the response is immediate or asynchronous. Must be to `respond-async`
@@ -7360,7 +7360,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// <summary>
                         /// Bulk exports all resources from the FHIR store to the specified destination. Implements the
                         /// FHIR implementation guide [system level
-                        /// $export](https://build.fhir.org/ig/HL7/bulk-data/export.html#endpoint---system-level-export.
+                        /// $export](https://build.fhir.org/ig/HL7/bulk-data/export.html#endpoint---system-level-export).
                         /// The following headers must be set in the request: * `Accept`: specifies the format of the
                         /// `OperationOutcome` response. Only `application/fhir+json` is supported. * `Prefer`:
                         /// specifies whether the response is immediate or asynchronous. Must be to `respond-async`
@@ -8559,7 +8559,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">Required. Name of the FHIR store to retrieve resources from.</param>
-                        public virtual SearchRequest Search(Google.Apis.CloudHealthcare.v1.Data.SearchResourcesRequest body, string parent)
+                        public virtual SearchRequest Search(Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string parent)
                         {
                             return new SearchRequest(this.service, body, parent);
                         }
@@ -8623,7 +8623,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         public class SearchRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new Search request.</summary>
-                            public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.SearchResourcesRequest body, string parent) : base(service)
+                            public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string parent) : base(service)
                             {
                                 Parent = parent;
                                 Body = body;
@@ -8634,8 +8634,19 @@ namespace Google.Apis.CloudHealthcare.v1
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
+                            /// <summary>
+                            /// Optional. The FHIR resource type to search, such as Patient or Observation. For a
+                            /// complete list, see the FHIR Resource Index
+                            /// ([DSTU2](https://hl7.org/fhir/DSTU2/resourcelist.html),
+                            /// [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
+                            /// [R4](https://hl7.org/fhir/R4/resourcelist.html)),
+                            /// [R5](https://hl7.org/fhir/R5/resourcelist.html)).
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("resourceType", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string ResourceType { get; set; }
+
                             /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.CloudHealthcare.v1.Data.SearchResourcesRequest Body { get; set; }
+                            Google.Apis.CloudHealthcare.v1.Data.HttpBody Body { get; set; }
 
                             /// <summary>Returns the body of the request.</summary>
                             protected override object GetBody() => Body;
@@ -8660,6 +8671,14 @@ namespace Google.Apis.CloudHealthcare.v1
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                                });
+                                RequestParameters.Add("resourceType", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "resourceType",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                             }
                         }
@@ -8729,7 +8748,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// [R4](https://hl7.org/fhir/R4/resourcelist.html)),
                         /// [R5](https://hl7.org/fhir/R5/resourcelist.html)).
                         /// </param>
-                        public virtual SearchTypeRequest SearchType(Google.Apis.CloudHealthcare.v1.Data.SearchResourcesRequest body, string parent, string resourceType)
+                        public virtual SearchTypeRequest SearchType(Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string parent, string resourceType)
                         {
                             return new SearchTypeRequest(this.service, body, parent, resourceType);
                         }
@@ -8793,7 +8812,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         public class SearchTypeRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new SearchType request.</summary>
-                            public SearchTypeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.SearchResourcesRequest body, string parent, string resourceType) : base(service)
+                            public SearchTypeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string parent, string resourceType) : base(service)
                             {
                                 Parent = parent;
                                 ResourceType = resourceType;
@@ -8817,7 +8836,7 @@ namespace Google.Apis.CloudHealthcare.v1
                             public virtual string ResourceType { get; private set; }
 
                             /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.CloudHealthcare.v1.Data.SearchResourcesRequest Body { get; set; }
+                            Google.Apis.CloudHealthcare.v1.Data.HttpBody Body { get; set; }
 
                             /// <summary>Returns the body of the request.</summary>
                             protected override object GetBody() => Body;
@@ -12203,9 +12222,9 @@ namespace Google.Apis.CloudHealthcare.v1
 
                         /// <summary>
                         /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                        /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                        /// `true` when reading across collections e.g. when `parent` is set to
-                        /// `"projects/example/locations/-"`. This field is not by default supported and will result in
+                        /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                        /// `true` when reading across collections. For example, when `parent` is set to
+                        /// `"projects/example/locations/-"`. This field is not supported by default and will result in
                         /// an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                         /// specific documentation.
                         /// </summary>
@@ -15657,6 +15676,25 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual System.Nullable<bool> Force { get; set; }
 
         /// <summary>
+        /// Optional. If true, the source store name will be included as a column in the BigQuery schema.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeSourceStore")]
+        public virtual System.Nullable<bool> IncludeSourceStore { get; set; }
+
+        /// <summary>
+        /// Optional. Setting this field will use flattened DICOM instances schema for the BigQuery table. The flattened
+        /// schema will have one column for each DICOM tag.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaFlattened")]
+        public virtual SchemaFlattened SchemaFlattened { get; set; }
+
+        /// <summary>
+        /// Optional. Setting this field will store all the DICOM tags as a JSON type in a single column.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaJson")]
+        public virtual SchemaJSON SchemaJson { get; set; }
+
+        /// <summary>
         /// Optional. BigQuery URI to a table, up to 2000 characters long, in the format
         /// `bq://projectId.bqDatasetId.tableId`
         /// </summary>
@@ -16497,8 +16535,8 @@ namespace Google.Apis.CloudHealthcare.v1.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -17021,6 +17059,14 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pending")]
         public virtual System.Nullable<long> Pending { get; set; }
 
+        /// <summary>The number of secondary units that failed in the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryFailure")]
+        public virtual System.Nullable<long> SecondaryFailure { get; set; }
+
+        /// <summary>The number of secondary units that succeeded in the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondarySuccess")]
+        public virtual System.Nullable<long> SecondarySuccess { get; set; }
+
         /// <summary>The number of units that succeeded in the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("success")]
         public virtual System.Nullable<long> Success { get; set; }
@@ -17419,6 +17465,16 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Using this field will flatten the DICOM instances into a BigQuery table. The table will have one column for each
+    /// DICOM tag. The column name will be the DICOM tag's textual representation.
+    /// </summary>
+    public class SchemaFlattened : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An HL7v2 logical group construct.</summary>
     public class SchemaGroup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17445,6 +17501,24 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Using this field will set the schema such that all DICOM tags will be included in the BigQuery table as a single
+    /// JSON type column. The BigQuery table schema will include the following columns: * `StudyInstanceUID` (Type:
+    /// STRING): DICOM Tag 0020000D. * `SeriesInstanceUID` (Type: STRING): DICOM Tag 0020000E. * `SOPInstanceUID` (Type:
+    /// STRING): DICOM Tag 00080018. * `SourceDicomStore` (Type: STRING): The name of the source DICOM store. This field
+    /// is only included if the `include_source_store` option is set to true. * `Metadata` (Type: JSON): All DICOM tags
+    /// for the instance, stored in a single JSON object. * `StructuredStorageSize` (Type: INTEGER): Size of the
+    /// structured storage in bytes. * `DroppedTags` (Type: STRING, Repeated: Yes): List of tags that were dropped
+    /// during the conversion. * `StorageClass` (Type: STRING): The storage class of the instance. * `LastUpdated`
+    /// (Type: TIMESTAMP): Timestamp of the last update to the instance. * `BlobStorageSize` (Type: INTEGER): Size of
+    /// the blob storage in bytes. * `Type` (Type: STRING): Indicates the type of operation (e.g., INSERT, DELETE).
+    /// </summary>
+    public class SchemaJSON : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -17520,22 +17594,6 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// <summary>The error output of the parser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual string Error { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request to search the resources in the specified FHIR store.</summary>
-    public class SearchResourcesRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. The FHIR resource type to search, such as Patient or Observation. For a complete list, see the
-        /// FHIR Resource Index ([DSTU2](https://hl7.org/fhir/DSTU2/resourcelist.html),
-        /// [STU3](https://hl7.org/fhir/STU3/resourcelist.html), [R4](https://hl7.org/fhir/R4/resourcelist.html)),
-        /// [R5](https://hl7.org/fhir/R5/resourcelist.html)).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
-        public virtual string ResourceType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18119,7 +18177,8 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// property of one of the enabled ImplementationGuides. The Cloud Healthcare API does not currently enforce all
         /// of the rules in a StructureDefinition. The following rules are supported: - min/max - minValue/maxValue -
         /// maxLength - type - fixed[x] - pattern[x] on simple types - slicing, when using "value" as the discriminator
-        /// type When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
+        /// type - FHIRPath constraints (only when `enable_fhirpath_profile_validation` is true) When a URL cannot be
+        /// resolved (for example, in a type assertion), the server does not return an error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabledImplementationGuides")]
         public virtual System.Collections.Generic.IList<string> EnabledImplementationGuides { get; set; }
