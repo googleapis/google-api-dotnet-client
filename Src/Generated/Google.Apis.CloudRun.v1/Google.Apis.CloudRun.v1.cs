@@ -4727,9 +4727,9 @@ namespace Google.Apis.CloudRun.v1
 
                     /// <summary>
                     /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                    /// `true` when reading across collections e.g. when `parent` is set to
-                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
                     /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                     /// specific documentation.
                     /// </summary>
@@ -8726,6 +8726,14 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("artifactId")]
         public virtual string ArtifactId { get; set; }
 
+        /// <summary>
+        /// Optional. Path to a folder containing the files to upload to Artifact Registry. This can be either an
+        /// absolute path, e.g. `/workspace/my-app/target/`, or a relative path from /workspace, e.g. `my-app/target/`.
+        /// This field is mutually exclusive with the `path` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployFolder")]
+        public virtual string DeployFolder { get; set; }
+
         /// <summary>Maven `groupId` value used when uploading the artifact to Artifact Registry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
         public virtual string GroupId { get; set; }
@@ -9351,8 +9359,8 @@ namespace Google.Apis.CloudRun.v1.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -10043,12 +10051,14 @@ namespace Google.Apis.CloudRun.v1.Data
         /// `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`:
         /// Service. * `run.googleapis.com/gpu-zonal-redundancy-disabled`: Revision. *
         /// `run.googleapis.com/health-check-disabled`: Revision. * `run.googleapis.com/ingress`: Service. *
-        /// `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/minScale`: Service *
+        /// `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/minScale`: Service. *
+        /// `run.googleapis.com/maxScale`: Service. * `run.googleapis.com/manualInstanceCount`: Service. *
         /// `run.googleapis.com/network-interfaces`: Revision, Execution. *
-        /// `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision,
-        /// Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`:
-        /// Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`:
-        /// Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution.
+        /// `run.googleapis.com/post-key-revocation-action-type`: Revision. `run.googleapis.com/scalingMode`: Service. *
+        /// `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. *
+        /// `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. *
+        /// `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`:
+        /// Revision, Execution.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
