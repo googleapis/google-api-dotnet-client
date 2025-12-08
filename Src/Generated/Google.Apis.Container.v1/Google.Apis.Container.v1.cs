@@ -8626,6 +8626,38 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>DisruptionEvent is a notification sent to customers about the disruption event of a resource.</summary>
+    public class DisruptionEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of the disruption event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disruptionType")]
+        public virtual string DisruptionType { get; set; }
+
+        /// <summary>
+        /// The node whose drain is blocked by PDB. This field is set for both POD_PDB_VIOLATION and POD_NOT_ENOUGH_PDB
+        /// event.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pdbBlockedNode")]
+        public virtual string PdbBlockedNode { get; set; }
+
+        /// <summary>
+        /// The pods whose evictions are blocked by PDB. This field is set for both POD_PDB_VIOLATION and
+        /// POD_NOT_ENOUGH_PDB event.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pdbBlockedPod")]
+        public virtual System.Collections.Generic.IList<PdbBlockedPod> PdbBlockedPod { get; set; }
+
+        /// <summary>
+        /// The timeout in seconds for which the node drain is blocked by PDB. After this timeout, pods are forcefully
+        /// evicted. This field is only populated when event_type is POD_PDB_VIOLATION.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pdbViolationTimeout")]
+        public virtual object PdbViolationTimeout { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for NodeLocal DNSCache</summary>
     public class DnsCacheConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10527,6 +10559,17 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>NodeDrainConfig contains the node drain related configurations for this nodepool.</summary>
+    public class NodeDrainConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether to respect PDB during node pool deletion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("respectPdbDuringNodePoolDeletion")]
+        public virtual System.Nullable<bool> RespectPdbDuringNodePoolDeletion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for kernel module loading on nodes.</summary>
     public class NodeKernelModuleLoading : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10834,10 +10877,9 @@ namespace Google.Apis.Container.v1.Data
         public virtual string PodRange { get; set; }
 
         /// <summary>
-        /// Output only. The subnetwork path for the node pool. Format:
-        /// projects/{project}/regions/{region}/subnetworks/{subnetwork} If the cluster is associated with multiple
-        /// subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool
-        /// creation and is immutable.
+        /// The subnetwork path for the node pool. Format: projects/{project}/regions/{region}/subnetworks/{subnetwork}
+        /// If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on
+        /// the IP utilization during node pool creation and is immutable.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; }
@@ -10932,6 +10974,10 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkConfig")]
         public virtual NodeNetworkConfig NetworkConfig { get; set; }
+
+        /// <summary>Specifies the node drain configuration for this node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeDrainConfig")]
+        public virtual NodeDrainConfig NodeDrainConfig { get; set; }
 
         /// <summary>Specifies the node placement policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placementPolicy")]
@@ -11378,6 +11424,21 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The namespace/name of the pod whose eviction is blocked by PDB.</summary>
+    public class PdbBlockedPod : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the pod.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The namespace of the pod.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
+        public virtual string Namespace__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>PlacementPolicy defines the placement policy used by the node pool.</summary>
     public class PlacementPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11656,7 +11717,7 @@ namespace Google.Apis.Container.v1.Data
     public class RecurringTimeWindow : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how this window reccurs. They go on for
+        /// An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how this window recurs. They go on for
         /// the span of time between the start and end time. For example, to have something repeat every weekday, you'd
         /// use: `FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR` To repeat some window daily (equivalent to the
         /// DailyMaintenanceWindow): `FREQ=DAILY` For the first weekend of every month:
@@ -13196,6 +13257,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>The desired node drain configuration for nodes in the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeDrainConfig")]
+        public virtual NodeDrainConfig NodeDrainConfig { get; set; }
+
         /// <summary>Node network config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeNetworkConfig")]
         public virtual NodeNetworkConfig NodeNetworkConfig { get; set; }
@@ -13489,6 +13554,13 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>A brief description of the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// The information about the disruption event. This field is only populated when event_type is
+        /// DISRUPTION_EVENT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disruptionEvent")]
+        public virtual DisruptionEvent DisruptionEvent { get; set; }
 
         private string _endTimeRaw;
 
