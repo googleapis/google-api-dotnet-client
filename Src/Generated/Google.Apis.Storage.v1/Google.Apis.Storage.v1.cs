@@ -11197,6 +11197,10 @@ namespace Google.Apis.Storage.v1.Data
     /// <summary>A Compose request.</summary>
     public class ComposeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If true, the source objects will be deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteSourceObjects")]
+        public virtual System.Nullable<bool> DeleteSourceObjects { get; set; }
+
         /// <summary>Properties of the resulting object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual Object Destination { get; set; }
