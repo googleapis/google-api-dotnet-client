@@ -14311,9 +14311,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     public class AutoRenewingBasePlanType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Account hold period of the subscription, specified in ISO 8601 format. Acceptable values must be
-        /// in days and between P0D and P60D. If not specified, the default value is P30D. The sum of
-        /// gracePeriodDuration and accountHoldDuration must be between P30D and P60D days, inclusive.
+        /// Optional. Custom account hold period of the subscription, specified in ISO 8601 format. Acceptable values
+        /// must be in days and between P0D and P60D. An empty field represents a recommended account hold, calculated
+        /// as 60 days minus grace period. The sum of gracePeriodDuration and accountHoldDuration must be between P30D
+        /// and P60D days, inclusive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountHoldDuration")]
         public virtual string AccountHoldDuration { get; set; }
@@ -16626,9 +16627,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     public class InstallmentsBasePlanType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Account hold period of the subscription, specified in ISO 8601 format. Acceptable values must be
-        /// in days and between P0D and P60D. If not specified, the default value is P30D. The sum of
-        /// gracePeriodDuration and accountHoldDuration must be between P30D and P60D days, inclusive.
+        /// Optional. Custom account hold period of the subscription, specified in ISO 8601 format. Acceptable values
+        /// must be in days and between P0D and P60D. An empty field represents a recommended account hold, calculated
+        /// as 60 days minus grace period. The sum of gracePeriodDuration and accountHoldDuration must be between P30D
+        /// and P60D days, inclusive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountHoldDuration")]
         public virtual string AccountHoldDuration { get; set; }
