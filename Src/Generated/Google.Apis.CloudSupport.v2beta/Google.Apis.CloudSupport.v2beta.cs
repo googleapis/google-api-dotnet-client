@@ -2317,6 +2317,10 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         public virtual string BlobId { get; set; }
 
         /// <summary># gdata.* are outside protos with mising documentation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadExternalReadToken")]
+        public virtual string DownloadExternalReadToken { get; set; }
+
+        /// <summary># gdata.* are outside protos with mising documentation</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadReadHandle")]
         public virtual string DownloadReadHandle { get; set; }
 
