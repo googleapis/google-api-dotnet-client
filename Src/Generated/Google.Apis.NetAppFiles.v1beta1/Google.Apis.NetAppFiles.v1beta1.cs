@@ -295,6 +295,7 @@ namespace Google.Apis.NetAppFiles.v1beta1
                 ActiveDirectories = new ActiveDirectoriesResource(service);
                 BackupPolicies = new BackupPoliciesResource(service);
                 BackupVaults = new BackupVaultsResource(service);
+                HostGroups = new HostGroupsResource(service);
                 KmsConfigs = new KmsConfigsResource(service);
                 Operations = new OperationsResource(service);
                 StoragePools = new StoragePoolsResource(service);
@@ -1787,6 +1788,368 @@ namespace Google.Apis.NetAppFiles.v1beta1
                 }
             }
 
+            /// <summary>Gets the HostGroups resource.</summary>
+            public virtual HostGroupsResource HostGroups { get; }
+
+            /// <summary>The "hostGroups" collection of methods.</summary>
+            public class HostGroupsResource
+            {
+                private const string Resource = "hostGroups";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public HostGroupsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new host group.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Parent value for CreateHostGroupRequest</param>
+                public virtual CreateRequest Create(Google.Apis.NetAppFiles.v1beta1.Data.HostGroup body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new host group.</summary>
+                public class CreateRequest : NetAppFilesBaseServiceRequest<Google.Apis.NetAppFiles.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetAppFiles.v1beta1.Data.HostGroup body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Parent value for CreateHostGroupRequest</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. ID of the host group to create. Must be unique within the parent resource. Must
+                    /// contain only letters, numbers, and hyphen, with the first character a letter or underscore, the
+                    /// last a letter or underscore or a number, and a 63 character maximum.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("hostGroupId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string HostGroupId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetAppFiles.v1beta1.Data.HostGroup Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/hostGroups";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("hostGroupId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "hostGroupId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a host group.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the host group. Format:
+                /// `projects/{project_number}/locations/{location_id}/hostGroups/{host_group_id}`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a host group.</summary>
+                public class DeleteRequest : NetAppFilesBaseServiceRequest<Google.Apis.NetAppFiles.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the host group. Format:
+                    /// `projects/{project_number}/locations/{location_id}/hostGroups/{host_group_id}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/hostGroups/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Returns details of the specified host group.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the host group. Format:
+                /// `projects/{project_number}/locations/{location_id}/hostGroups/{host_group_id}`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Returns details of the specified host group.</summary>
+                public class GetRequest : NetAppFilesBaseServiceRequest<Google.Apis.NetAppFiles.v1beta1.Data.HostGroup>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the host group. Format:
+                    /// `projects/{project_number}/locations/{location_id}/hostGroups/{host_group_id}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/hostGroups/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns a list of host groups in a location. Use '-' as location to list host groups across all
+                /// locations.
+                /// </summary>
+                /// <param name="parent">Required. Parent value for ListHostGroupsRequest</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// Returns a list of host groups in a location. Use '-' as location to list host groups across all
+                /// locations.
+                /// </summary>
+                public class ListRequest : NetAppFilesBaseServiceRequest<Google.Apis.NetAppFiles.v1beta1.Data.ListHostGroupsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Parent value for ListHostGroupsRequest</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Filter to apply to the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Hint for how to order the results</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified, the
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/hostGroups";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates an existing host group.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The resource name of the host group. Format:
+                /// `projects/{project_number}/locations/{location_id}/hostGroups/{host_group_id}`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetAppFiles.v1beta1.Data.HostGroup body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates an existing host group.</summary>
+                public class PatchRequest : NetAppFilesBaseServiceRequest<Google.Apis.NetAppFiles.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetAppFiles.v1beta1.Data.HostGroup body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The resource name of the host group. Format:
+                    /// `projects/{project_number}/locations/{location_id}/hostGroups/{host_group_id}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. The list of fields to update.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetAppFiles.v1beta1.Data.HostGroup Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/hostGroups/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the KmsConfigs resource.</summary>
             public virtual KmsConfigsResource KmsConfigs { get; }
 
@@ -2471,9 +2834,9 @@ namespace Google.Apis.NetAppFiles.v1beta1
 
                     /// <summary>
                     /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                    /// `true` when reading across collections e.g. when `parent` is set to
-                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
                     /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                     /// specific documentation.
                     /// </summary>
@@ -5651,6 +6014,51 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Block device represents the device(s) which are stored in the block volume.</summary>
+    public class BlockDevice : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A list of host groups that identify hosts that can mount the block volume. Format:
+        /// `projects/{project_id}/locations/{location}/hostGroups/{host_group_id}` This field can be updated after the
+        /// block device is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostGroups")]
+        public virtual System.Collections.Generic.IList<string> HostGroups { get; set; }
+
+        /// <summary>
+        /// Output only. Device identifier of the Block volume. This represents lun_serial_number for iSCSI volumes
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identifier")]
+        public virtual string Identifier { get; set; }
+
+        /// <summary>
+        /// Optional. User-defined name for the block device, unique within the Volume. In case no user input is
+        /// provided, name will be autogenerated in the backend. The name must meet the following requirements: * Be
+        /// between 1 and 255 characters long. * Contain only uppercase or lowercase letters (A-Z, a-z), numbers (0-9),
+        /// and the following special characters: "-", "_", "}", "{", ".". * Spaces are not allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The OS type of the volume. This field can't be changed after the block device is
+        /// created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osType")]
+        public virtual string OsType { get; set; }
+
+        /// <summary>
+        /// Optional. The size of the block device in GiB. Any value provided in this field during Volume creation is
+        /// IGNORED. The block device's size is system-managed and will be set to match the parent Volume's
+        /// `capacity_gib`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeGib")]
+        public virtual System.Nullable<long> SizeGib { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration of the cache volume.</summary>
     public class CacheConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5901,6 +6309,85 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
     /// </summary>
     public class GoogleProtobufEmpty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Host group is a collection of hosts that can be used for accessing a Block Volume.</summary>
+    public class HostGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Create time of the host group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Description of the host group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. The list of hosts associated with the host group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hosts")]
+        public virtual System.Collections.Generic.IList<string> Hosts { get; set; }
+
+        /// <summary>Optional. Labels of the host group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the host group. Format:
+        /// `projects/{project_number}/locations/{location_id}/hostGroups/{host_group_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. The OS type of the host group. It indicates the type of operating system used by all of the hosts
+        /// in the HostGroup. All hosts in a HostGroup must be of the same OS type. This can be set only when creating a
+        /// HostGroup.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osType")]
+        public virtual string OsType { get; set; }
+
+        /// <summary>Output only. State of the host group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Required. Type of the host group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6223,6 +6710,25 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>ListHostGroupsResponse is the response to a ListHostGroupsRequest.</summary>
+    public class ListHostGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of host groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostGroups")]
+        public virtual System.Collections.Generic.IList<HostGroup> HostGroups { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>ListKmsConfigsResponse is the response to a ListKmsConfigsRequest.</summary>
     public class ListKmsConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6270,8 +6776,8 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -7329,6 +7835,14 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalThroughputMibps")]
         public virtual System.Nullable<long> TotalThroughputMibps { get; set; }
 
+        /// <summary>
+        /// Optional. Type of the storage pool. This field is used to control whether the pool supports FILE based
+        /// volumes only or UNIFIED (both FILE and BLOCK) volumes. If not specified during creation, it defaults to
+        /// FILE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
         /// <summary>Output only. Allocated size of all volumes in GIB in the storage pool</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeCapacityGib")]
         public virtual System.Nullable<long> VolumeCapacityGib { get; set; }
@@ -7558,6 +8072,12 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         /// <summary>BackupConfig of the volume.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupConfig")]
         public virtual BackupConfig BackupConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Block devices for the volume. Currently, only one block device is permitted per Volume.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockDevices")]
+        public virtual System.Collections.Generic.IList<BlockDevice> BlockDevices { get; set; }
 
         /// <summary>Optional. Cache parameters for the volume.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheParameters")]
