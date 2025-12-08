@@ -1783,9 +1783,9 @@ namespace Google.Apis.CloudRun.v2
 
                     /// <summary>
                     /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                    /// `true` when reading across collections e.g. when `parent` is set to
-                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
                     /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                     /// specific documentation.
                     /// </summary>
@@ -5647,6 +5647,12 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2Service> Services { get; set; }
 
+        /// <summary>
+        /// Output only. For global requests, returns the list of regions that could not be reached within the deadline.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7780,11 +7786,7 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creator")]
         public virtual string Creator { get; set; }
 
-        /// <summary>
-        /// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the
-        /// full URL in a string. The custom audiences are encoded in the token and used to authenticate requests. For
-        /// more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
-        /// </summary>
+        /// <summary>Not supported, and ignored by Cloud Run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customAudiences")]
         public virtual System.Collections.Generic.IList<string> CustomAudiences { get; set; }
 
@@ -7993,6 +7995,13 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("terminalCondition")]
         public virtual GoogleCloudRunV2Condition TerminalCondition { get; set; }
+
+        /// <summary>
+        /// Output only. Indicates whether Cloud Run Threat Detection monitoring is enabled for the parent project of
+        /// this worker pool.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threatDetectionEnabled")]
+        public virtual System.Nullable<bool> ThreatDetectionEnabled { get; set; }
 
         /// <summary>
         /// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed
@@ -9180,6 +9189,14 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("artifactId")]
         public virtual string ArtifactId { get; set; }
 
+        /// <summary>
+        /// Optional. Path to a folder containing the files to upload to Artifact Registry. This can be either an
+        /// absolute path, e.g. `/workspace/my-app/target/`, or a relative path from /workspace, e.g. `my-app/target/`.
+        /// This field is mutually exclusive with the `path` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployFolder")]
+        public virtual string DeployFolder { get; set; }
+
         /// <summary>Maven `groupId` value used when uploading the artifact to Artifact Registry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
         public virtual string GroupId { get; set; }
@@ -10055,8 +10072,8 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
