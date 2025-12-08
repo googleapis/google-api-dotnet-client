@@ -36,6 +36,7 @@ namespace Google.Apis.Drive.v3
         {
             About = new AboutResource(this);
             Accessproposals = new AccessproposalsResource(this);
+            Approvals = new ApprovalsResource(this);
             Apps = new AppsResource(this);
             Changes = new ChangesResource(this);
             Channels = new ChannelsResource(this);
@@ -146,6 +147,9 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>Gets the Accessproposals resource.</summary>
         public virtual AccessproposalsResource Accessproposals { get; }
+
+        /// <summary>Gets the Approvals resource.</summary>
+        public virtual ApprovalsResource Approvals { get; }
 
         /// <summary>Gets the Apps resource.</summary>
         public virtual AppsResource Apps { get; }
@@ -641,6 +645,154 @@ namespace Google.Apis.Drive.v3
                     Name = "proposalId",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "approvals" collection of methods.</summary>
+    public class ApprovalsResource
+    {
+        private const string Resource = "approvals";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ApprovalsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Gets an Approval by ID.</summary>
+        /// <param name="fileId">Required. The ID of the file the Approval is on.</param>
+        /// <param name="approvalId">Required. The ID of the Approval.</param>
+        public virtual GetRequest Get(string fileId, string approvalId)
+        {
+            return new GetRequest(this.service, fileId, approvalId);
+        }
+
+        /// <summary>Gets an Approval by ID.</summary>
+        public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Approval>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string fileId, string approvalId) : base(service)
+            {
+                FileId = fileId;
+                ApprovalId = approvalId;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the file the Approval is on.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string FileId { get; private set; }
+
+            /// <summary>Required. The ID of the Approval.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("approvalId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ApprovalId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "files/{fileId}/approvals/{approvalId}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("approvalId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "approvalId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Lists the Approvals on a file.</summary>
+        /// <param name="fileId">Required. The ID of the file the Approval is on.</param>
+        public virtual ListRequest List(string fileId)
+        {
+            return new ListRequest(this.service, fileId);
+        }
+
+        /// <summary>Lists the Approvals on a file.</summary>
+        public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.ApprovalList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string fileId) : base(service)
+            {
+                FileId = fileId;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the file the Approval is on.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string FileId { get; private set; }
+
+            /// <summary>
+            /// The maximum number of Approvals to return. When not set, at most 100 Approvals will be returned.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// The token for continuing a previous list request on the next page. This should be set to the value of
+            /// nextPageToken from a previous response.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "files/{fileId}/approvals";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -6897,6 +7049,211 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for an approval. An approval is a review/approve process for a Drive item.</summary>
+    public class Approval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Approval ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approvalId")]
+        public virtual string ApprovalId { get; set; }
+
+        private string _completeTimeRaw;
+
+        private object _completeTime;
+
+        /// <summary>Output only. The time time the approval was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual string CompleteTimeRaw
+        {
+            get => _completeTimeRaw;
+            set
+            {
+                _completeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _completeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CompleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CompleteTimeDateTimeOffset instead.")]
+        public virtual object CompleteTime
+        {
+            get => _completeTime;
+            set
+            {
+                _completeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _completeTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CompleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompleteTimeRaw);
+            set => CompleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the approval was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _dueTimeRaw;
+
+        private object _dueTime;
+
+        /// <summary>The time that the approval is due.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dueTime")]
+        public virtual string DueTimeRaw
+        {
+            get => _dueTimeRaw;
+            set
+            {
+                _dueTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _dueTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DueTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DueTimeDateTimeOffset instead.")]
+        public virtual object DueTime
+        {
+            get => _dueTime;
+            set
+            {
+                _dueTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _dueTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DueTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DueTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DueTimeRaw);
+            set => DueTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The user that requested the Approval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initiator")]
+        public virtual User Initiator { get; set; }
+
+        /// <summary>This is always drive#approval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        private string _modifyTimeRaw;
+
+        private object _modifyTime;
+
+        /// <summary>Output only. The most recent time the approval was modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modifyTime")]
+        public virtual string ModifyTimeRaw
+        {
+            get => _modifyTimeRaw;
+            set
+            {
+                _modifyTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _modifyTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ModifyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ModifyTimeDateTimeOffset instead.")]
+        public virtual object ModifyTime
+        {
+            get => _modifyTime;
+            set
+            {
+                _modifyTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _modifyTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ModifyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ModifyTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ModifyTimeRaw);
+            set => ModifyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The responses made on the Approval by reviewers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reviewerResponses")]
+        public virtual System.Collections.Generic.IList<ReviewerResponse> ReviewerResponses { get; set; }
+
+        /// <summary>Output only. The status of the approval at the time this resource was requested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>Target file id of the approval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetFileId")]
+        public virtual string TargetFileId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response of an Approvals list request.</summary>
+    public class ApprovalList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of Approvals. If nextPageToken is populated, then this list may be incomplete and an additional
+        /// page of results should be fetched.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<Approval> Items { get; set; }
+
+        /// <summary>This is always drive#approvalList</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// The page token for the next page of Approvals. This will be absent if the end of the Approvals list has been
+        /// reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted
+        /// from the first page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A change to a file or shared drive.</summary>
     public class Change : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9332,6 +9689,25 @@ namespace Google.Apis.Drive.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("view")]
         public virtual string View { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A response on an Approval made by a specific Reviewer.</summary>
+    public class ReviewerResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This is always drive#reviewerResponse.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>A Reviewer’s Response for the Approval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual string Response { get; set; }
+
+        /// <summary>The user that is responsible for this response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reviewer")]
+        public virtual User Reviewer { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
