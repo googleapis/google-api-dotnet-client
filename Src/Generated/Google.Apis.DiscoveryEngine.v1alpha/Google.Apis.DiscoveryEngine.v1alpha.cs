@@ -9795,6 +9795,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 public virtual string Name { get; private set; }
 
                                 /// <summary>
+                                /// Optional. Indicates whether to consider if the caller is an admin. If set, and the
+                                /// caller is an admin, the response will consider admin-only permissions. Otherwise, a
+                                /// caller with admin permissions will get a response as an unprivileged user.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("adminView", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<bool> AdminView { get; set; }
+
+                                /// <summary>
                                 /// Optional. The UI language currently shown to the user. Specifying this field request
                                 /// that the texts in the AgentView in the response should be translated to this
                                 /// language.
@@ -9828,6 +9836,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                         ParameterType = "path",
                                         DefaultValue = null,
                                         Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                    });
+                                    RequestParameters.Add("adminView", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "adminView",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
                                     });
                                     RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
                                     {
@@ -10920,6 +10936,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
+                            /// <summary>
+                            /// Optional. Indicates whether to consider if the caller is an admin. If set, and the
+                            /// caller is an admin, the response will consider admin-only permissions. Otherwise, a
+                            /// caller with admin permissions will get a response as an unprivileged user.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("adminView", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> AdminView { get; set; }
+
                             /// <summary>Optional. The origin of the Agent.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("agentOrigin", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<AgentOriginEnum> AgentOrigin { get; set; }
@@ -11011,6 +11035,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+$",
+                                });
+                                RequestParameters.Add("adminView", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "adminView",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                                 RequestParameters.Add("agentOrigin", new Google.Apis.Discovery.Parameter
                                 {
@@ -12983,8 +13015,98 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         public SessionsResource(Google.Apis.Services.IClientService service)
                         {
                             this.service = service;
+                            AlphaEvolveExperiments = new AlphaEvolveExperimentsResource(service);
                             Answers = new AnswersResource(service);
                             Files = new FilesResource(service);
+                            Operations = new OperationsResource(service);
+                        }
+
+                        /// <summary>Gets the AlphaEvolveExperiments resource.</summary>
+                        public virtual AlphaEvolveExperimentsResource AlphaEvolveExperiments { get; }
+
+                        /// <summary>The "alphaEvolveExperiments" collection of methods.</summary>
+                        public class AlphaEvolveExperimentsResource
+                        {
+                            private const string Resource = "alphaEvolveExperiments";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public AlphaEvolveExperimentsResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+                                Operations = new OperationsResource(service);
+                            }
+
+                            /// <summary>Gets the Operations resource.</summary>
+                            public virtual OperationsResource Operations { get; }
+
+                            /// <summary>The "operations" collection of methods.</summary>
+                            public class OperationsResource
+                            {
+                                private const string Resource = "operations";
+
+                                /// <summary>The service which this resource belongs to.</summary>
+                                private readonly Google.Apis.Services.IClientService service;
+
+                                /// <summary>Constructs a new resource.</summary>
+                                public OperationsResource(Google.Apis.Services.IClientService service)
+                                {
+                                    this.service = service;
+                                }
+
+                                /// <summary>
+                                /// Gets the latest state of a long-running operation. Clients can use this method to
+                                /// poll the operation result at intervals as recommended by the API service.
+                                /// </summary>
+                                /// <param name="name">The name of the operation resource.</param>
+                                public virtual GetRequest Get(string name)
+                                {
+                                    return new GetRequest(this.service, name);
+                                }
+
+                                /// <summary>
+                                /// Gets the latest state of a long-running operation. Clients can use this method to
+                                /// poll the operation result at intervals as recommended by the API service.
+                                /// </summary>
+                                public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                                {
+                                    /// <summary>Constructs a new Get request.</summary>
+                                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                    {
+                                        Name = name;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>The name of the operation resource.</summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Name { get; private set; }
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "get";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "GET";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "v1alpha/{+name}";
+
+                                    /// <summary>Initializes Get parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "name",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/sessions/[^/]+/alphaEvolveExperiments/[^/]+/operations/[^/]+$",
+                                        });
+                                    }
+                                }
+                            }
                         }
 
                         /// <summary>Gets the Answers resource.</summary>
@@ -13201,6 +13323,75 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                         ParameterType = "query",
                                         DefaultValue = null,
                                         Pattern = null,
+                                    });
+                                }
+                            }
+                        }
+
+                        /// <summary>Gets the Operations resource.</summary>
+                        public virtual OperationsResource Operations { get; }
+
+                        /// <summary>The "operations" collection of methods.</summary>
+                        public class OperationsResource
+                        {
+                            private const string Resource = "operations";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public OperationsResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+                            }
+
+                            /// <summary>
+                            /// Gets the latest state of a long-running operation. Clients can use this method to poll
+                            /// the operation result at intervals as recommended by the API service.
+                            /// </summary>
+                            /// <param name="name">The name of the operation resource.</param>
+                            public virtual GetRequest Get(string name)
+                            {
+                                return new GetRequest(this.service, name);
+                            }
+
+                            /// <summary>
+                            /// Gets the latest state of a long-running operation. Clients can use this method to poll
+                            /// the operation result at intervals as recommended by the API service.
+                            /// </summary>
+                            public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                            {
+                                /// <summary>Constructs a new Get request.</summary>
+                                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>The name of the operation resource.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "get";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+name}";
+
+                                /// <summary>Initializes Get parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/sessions/[^/]+/operations/[^/]+$",
                                     });
                                 }
                             }
@@ -31309,6 +31500,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Configurations for a Search Engine.</summary>
     public class GoogleCloudDiscoveryengineV1EngineSearchEngineConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The required subscription tier of this engine. They cannot be modified after engine creation. If
+        /// the required subscription tier is search, user with higher license tier like assist can still access the
+        /// standalone app associated with this engine.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredSubscriptionTier")]
+        public virtual string RequiredSubscriptionTier { get; set; }
+
         /// <summary>The add-on that this search engine enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchAddOns")]
         public virtual System.Collections.Generic.IList<string> SearchAddOns { get; set; }
@@ -36354,6 +36553,12 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates whether to disable user location context. By default, user location context is enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableLocationContext")]
+        public virtual System.Nullable<bool> DisableLocationContext { get; set; }
 
         /// <summary>
         /// Required. The assistant display name. It must be a UTF-8 encoded string with a length limit of 128
@@ -42975,6 +43180,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Configurations for a Search Engine.</summary>
     public class GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The required subscription tier of this engine. They cannot be modified after engine creation. If
+        /// the required subscription tier is search, user with higher license tier like assist can still access the
+        /// standalone app associated with this engine.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredSubscriptionTier")]
+        public virtual string RequiredSubscriptionTier { get; set; }
+
         /// <summary>The add-on that this search engine enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchAddOns")]
         public virtual System.Collections.Generic.IList<string> SearchAddOns { get; set; }
@@ -44069,6 +44282,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalIdentity")]
         public virtual string ExternalIdentity { get; set; }
+
+        /// <summary>Optional. The name of the external identity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalIdentityName")]
+        public virtual string ExternalIdentityName { get; set; }
 
         /// <summary>
         /// Group identifier. For Google Workspace user account, group_id should be the google workspace group email.
@@ -49536,6 +49753,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Promotions for site search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchLinkPromotions")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSearchLinkPromotion> SearchLinkPromotions { get; set; }
+
+        /// <summary>Output only. Indicates the semantic state of the search response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("semanticState")]
+        public virtual string SemanticState { get; set; }
 
         /// <summary>
         /// Session information. Only set if SearchRequest.session is provided. See its description for more details.
@@ -56138,6 +56359,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Configurations for a Search Engine.</summary>
     public class GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The required subscription tier of this engine. They cannot be modified after engine creation. If
+        /// the required subscription tier is search, user with higher license tier like assist can still access the
+        /// standalone app associated with this engine.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredSubscriptionTier")]
+        public virtual string RequiredSubscriptionTier { get; set; }
+
         /// <summary>The add-on that this search engine enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchAddOns")]
         public virtual System.Collections.Generic.IList<string> SearchAddOns { get; set; }
