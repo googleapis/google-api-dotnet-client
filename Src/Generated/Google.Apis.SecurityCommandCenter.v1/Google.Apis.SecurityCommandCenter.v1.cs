@@ -7473,10 +7473,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be `true`
-                /// when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This
-                /// field is not by default supported and will result in an `UNIMPLEMENTED` error if set unless
-                /// explicitly documented otherwise in service or product specific documentation.
+                /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true`
+                /// when reading across collections. For example, when `parent` is set to
+                /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
+                /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific
+                /// documentation.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
@@ -15305,6 +15306,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publisher")]
         public virtual string Publisher { get; set; }
 
+        /// <summary>The purpose of the model, for example, "Inteference" or "Training".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usageCategory")]
+        public virtual string UsageCategory { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -18875,6 +18880,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     /// <summary>Information related to the Google Cloud resource.</summary>
     public class GoogleCloudSecuritycenterV1Resource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The App Hub application this resource belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("application")]
+        public virtual GoogleCloudSecuritycenterV1ResourceApplication Application { get; set; }
+
         /// <summary>The AWS metadata associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsMetadata")]
         public virtual AwsMetadata AwsMetadata { get; set; }
@@ -18952,6 +18961,84 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string Service { get; set; }
 
         /// <summary>The full resource type of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The App Hub Application associated with the finding's resource.</summary>
+    public class GoogleCloudSecuritycenterV1ResourceApplication : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Consumer provided attributes for the application</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual GoogleCloudSecuritycenterV1ResourceApplicationAttributes Attributes { get; set; }
+
+        /// <summary>
+        /// The resource name of an Application. Format:
+        /// `projects/{host-project-id}/locations/{location}/applications/{application-id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Consumer provided attributes for the application</summary>
+    public class GoogleCloudSecuritycenterV1ResourceApplicationAttributes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Business team that ensures user needs are met and value is delivered</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessOwners")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo> BusinessOwners { get; set; }
+
+        /// <summary>User-defined criticality information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("criticality")]
+        public virtual GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality Criticality { get; set; }
+
+        /// <summary>Developer team that owns development and coding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("developerOwners")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo> DeveloperOwners { get; set; }
+
+        /// <summary>User-defined environment information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment Environment { get; set; }
+
+        /// <summary>Operator team that ensures runtime and operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operatorOwners")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo> OperatorOwners { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contact information of stakeholders.</summary>
+    public class GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Email address of the contacts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Criticality of the Application, Service, or Workload</summary>
+    public class GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Criticality Type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Environment of the Application, Service, or Workload</summary>
+    public class GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Environment Type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -19725,6 +19812,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>The publisher of the model, for example, “google” or “nvidia”.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisher")]
         public virtual string Publisher { get; set; }
+
+        /// <summary>The purpose of the model, for example, "Inteference" or "Training".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usageCategory")]
+        public virtual string UsageCategory { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23673,6 +23764,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     /// <summary>Information related to the Google Cloud resource.</summary>
     public class GoogleCloudSecuritycenterV2Resource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The App Hub application this resource belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("application")]
+        public virtual GoogleCloudSecuritycenterV2ResourceApplication Application { get; set; }
+
         /// <summary>The AWS metadata associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsMetadata")]
         public virtual GoogleCloudSecuritycenterV2AwsMetadata AwsMetadata { get; set; }
@@ -23725,6 +23820,84 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string Service { get; set; }
 
         /// <summary>The full resource type of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The App Hub Application associated with the finding's resource.</summary>
+    public class GoogleCloudSecuritycenterV2ResourceApplication : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Consumer provided attributes for the application</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual GoogleCloudSecuritycenterV2ResourceApplicationAttributes Attributes { get; set; }
+
+        /// <summary>
+        /// The resource name of an Application. Format:
+        /// `projects/{host-project-id}/locations/{location}/applications/{application-id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Consumer provided attributes for the application</summary>
+    public class GoogleCloudSecuritycenterV2ResourceApplicationAttributes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Business team that ensures user needs are met and value is delivered</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessOwners")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo> BusinessOwners { get; set; }
+
+        /// <summary>User-defined criticality information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("criticality")]
+        public virtual GoogleCloudSecuritycenterV2ResourceApplicationAttributesCriticality Criticality { get; set; }
+
+        /// <summary>Developer team that owns development and coding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("developerOwners")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo> DeveloperOwners { get; set; }
+
+        /// <summary>User-defined environment information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual GoogleCloudSecuritycenterV2ResourceApplicationAttributesEnvironment Environment { get; set; }
+
+        /// <summary>Operator team that ensures runtime and operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operatorOwners")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo> OperatorOwners { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contact information of stakeholders.</summary>
+    public class GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Email address of the contacts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Criticality of the Application, Service, or Workload</summary>
+    public class GoogleCloudSecuritycenterV2ResourceApplicationAttributesCriticality : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Criticality Type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Environment of the Application, Service, or Workload</summary>
+    public class GoogleCloudSecuritycenterV2ResourceApplicationAttributesEnvironment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Environment Type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -25392,8 +25565,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -26175,6 +26348,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     /// <summary>Information related to the Google Cloud resource that is associated with this finding.</summary>
     public class Resource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The App Hub application this resource belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("application")]
+        public virtual GoogleCloudSecuritycenterV1ResourceApplication Application { get; set; }
+
         /// <summary>The AWS metadata associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsMetadata")]
         public virtual AwsMetadata AwsMetadata { get; set; }
