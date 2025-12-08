@@ -1872,7 +1872,11 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual System.Nullable<bool> AllowAllPackageNames { get; set; }
 
         /// <summary>
-        /// Optional. Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
+        /// Optional. Android package names of apps allowed to use the key. Example: 'com.companyname.appname' Each key
+        /// supports a maximum of 250 package names. To use a key on more apps, set `allow_all_package_names` to true.
+        /// When this is set, you are responsible for validating the package name by checking the
+        /// `token_properties.android_package_name` field in each assessment response against your list of allowed
+        /// package names.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedPackageNames")]
         public virtual System.Collections.Generic.IList<string> AllowedPackageNames { get; set; }
@@ -1899,6 +1903,10 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; }
 
+        /// <summary>
+        /// Optional. The annotation that is assigned to the Event. This field can be left empty to provide reasons that
+        /// apply to an event without concluding whether the event is legitimate or fraudulent.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotation")]
         public virtual string Annotation { get; set; }
 
@@ -1917,6 +1925,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("phoneAuthenticationEvent")]
         public virtual GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent PhoneAuthenticationEvent { get; set; }
 
+        /// <summary>Optional. Reasons for the annotation that are assigned to the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasons")]
         public virtual System.Collections.Generic.IList<string> Reasons { get; set; }
 
@@ -2607,7 +2616,10 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual System.Nullable<bool> AllowAllBundleIds { get; set; }
 
         /// <summary>
-        /// Optional. iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
+        /// Optional. iOS bundle IDs of apps allowed to use the key. Example: 'com.companyname.productname.appname' Each
+        /// key supports a maximum of 250 bundle IDs. To use a key on more apps, set `allow_all_bundle_ids` to true.
+        /// When this is set, you are responsible for validating the bundle id by checking the
+        /// `token_properties.ios_bundle_id` field in each assessment response against your list of allowed bundle IDs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedBundleIds")]
         public virtual System.Collections.Generic.IList<string> AllowedBundleIds { get; set; }
@@ -2885,9 +2897,9 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// <summary>
         /// Optional. If true, skips the billing check. A reCAPTCHA Enterprise key or migrated key behaves differently
         /// than a reCAPTCHA (non-Enterprise version) key when you reach a quota limit (see
-        /// https://cloud.google.com/recaptcha/quotas#quota_limit). To avoid any disruption of your usage, we check that
-        /// a billing account is present. If your usage of reCAPTCHA is under the free quota, you can safely skip the
-        /// billing check and proceed with the migration. See
+        /// https://docs.cloud.google.com/recaptcha/quotas#quota_limit). To avoid any disruption of your usage, we check
+        /// that a billing account is present. If your usage of reCAPTCHA is under the free quota, you can safely skip
+        /// the billing check and proceed with the migration. See
         /// https://cloud.google.com/recaptcha/docs/billing-information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipBillingCheck")]
@@ -3709,7 +3721,10 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// <summary>
         /// Optional. Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are
         /// automatically allowed. A valid domain requires a host and must not include any path, port, query or
-        /// fragment. Examples: 'example.com' or 'subdomain.example.com'
+        /// fragment. Examples: 'example.com' or 'subdomain.example.com' Each key supports a maximum of 250 domains. To
+        /// use a key on more domains, set `allow_all_domains` to true. When this is set, you are responsible for
+        /// validating the hostname by checking the `token_properties.hostname` field in each assessment response
+        /// against your list of allowed domains.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedDomains")]
         public virtual System.Collections.Generic.IList<string> AllowedDomains { get; set; }
