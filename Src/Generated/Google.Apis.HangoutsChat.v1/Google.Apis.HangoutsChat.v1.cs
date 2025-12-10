@@ -7180,7 +7180,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("openAs")]
         public virtual string OpenAs { get; set; }
 
-        /// <summary>The URL to open.</summary>
+        /// <summary>The URL to open. HTTP URLs are converted to HTTPS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
 
