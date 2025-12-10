@@ -7,5 +7,14 @@
   "Google.Apis.APIhub.v1.APIhubBaseServiceRequest<<TResponse>>.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.APIhub.v1.ProjectsResource+LocationsResource+ApisResource+VersionsResource+SpecsResource+FetchAdditionalSpecContentRequest.SpecContentTypeEnum": [
+    "SPEC_CONTENT_TYPE_UNSPECIFIED",
+    "BOOSTED_SPEC_CONTENT"
+  ],
+  "Google.Apis.APIhub.v1.ProjectsResource+LocationsResource+RetrieveApiViewsRequest.ViewEnum": [
+    "API_VIEW_TYPE_UNSPECIFIED",
+    "MCP_SERVER",
+    "MCP_TOOL"
   ]
 }

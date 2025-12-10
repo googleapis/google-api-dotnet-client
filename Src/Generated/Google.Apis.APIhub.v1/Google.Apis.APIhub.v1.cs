@@ -1270,7 +1270,8 @@ namespace Google.Apis.APIhub.v1
                         /// Update an operation in an API version. The following fields in the ApiOperation resource can
                         /// be updated: * details.description * details.documentation * details.http_operation.path *
                         /// details.http_operation.method * details.deprecated * attributes * details.mcp_tool.title *
-                        /// details.mcp_tool.description * details.input_schema * details.output_schema *
+                        /// details.mcp_tool.description * details.mcp_tool.input_schema *
+                        /// details.mcp_tool.output_schema * details.input_schema * details.output_schema *
                         /// details.mcp_tool.annotations.title * details.mcp_tool.annotations.read_only_hint *
                         /// details.mcp_tool.annotations.destructive_hint * details.mcp_tool.annotations.idempotent_hint
                         /// * details.mcp_tool.annotations.open_world_hint *
@@ -1293,7 +1294,8 @@ namespace Google.Apis.APIhub.v1
                         /// Update an operation in an API version. The following fields in the ApiOperation resource can
                         /// be updated: * details.description * details.documentation * details.http_operation.path *
                         /// details.http_operation.method * details.deprecated * attributes * details.mcp_tool.title *
-                        /// details.mcp_tool.description * details.input_schema * details.output_schema *
+                        /// details.mcp_tool.description * details.mcp_tool.input_schema *
+                        /// details.mcp_tool.output_schema * details.input_schema * details.output_schema *
                         /// details.mcp_tool.annotations.title * details.mcp_tool.annotations.read_only_hint *
                         /// details.mcp_tool.annotations.destructive_hint * details.mcp_tool.annotations.idempotent_hint
                         /// * details.mcp_tool.annotations.open_world_hint *
@@ -1533,6 +1535,83 @@ namespace Google.Apis.APIhub.v1
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/apis/[^/]+/versions/[^/]+/specs/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Fetch additional spec content.</summary>
+                        /// <param name="name">
+                        /// Required. The name of the spec whose contents need to be retrieved. Format:
+                        /// `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}`
+                        /// </param>
+                        public virtual FetchAdditionalSpecContentRequest FetchAdditionalSpecContent(string name)
+                        {
+                            return new FetchAdditionalSpecContentRequest(this.service, name);
+                        }
+
+                        /// <summary>Fetch additional spec content.</summary>
+                        public class FetchAdditionalSpecContentRequest : APIhubBaseServiceRequest<Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1FetchAdditionalSpecContentResponse>
+                        {
+                            /// <summary>Constructs a new FetchAdditionalSpecContent request.</summary>
+                            public FetchAdditionalSpecContentRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the spec whose contents need to be retrieved. Format:
+                            /// `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Optional. The type of the spec contents to be retrieved.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("specContentType", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<SpecContentTypeEnum> SpecContentType { get; set; }
+
+                            /// <summary>Optional. The type of the spec contents to be retrieved.</summary>
+                            public enum SpecContentTypeEnum
+                            {
+                                /// <summary>
+                                /// Unspecified spec content type. Defaults to spec content uploaded by the user.
+                                /// </summary>
+                                [Google.Apis.Util.StringValueAttribute("SPEC_CONTENT_TYPE_UNSPECIFIED")]
+                                SPECCONTENTTYPEUNSPECIFIED = 0,
+
+                                /// <summary>The spec content type for boosted spec.</summary>
+                                [Google.Apis.Util.StringValueAttribute("BOOSTED_SPEC_CONTENT")]
+                                BOOSTEDSPECCONTENT = 1,
+                            }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "fetchAdditionalSpecContent";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}:fetchAdditionalSpecContent";
+
+                            /// <summary>Initializes FetchAdditionalSpecContent parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/apis/[^/]+/versions/[^/]+/specs/[^/]+$",
+                                });
+                                RequestParameters.Add("specContentType", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "specContentType",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                             }
                         }
@@ -2673,11 +2752,15 @@ namespace Google.Apis.APIhub.v1
                     /// `id(name)`. The `id(name)` function returns the id of the resource name. For example, `id(name)
                     /// = \"api-1\"` is equivalent to `name =
                     /// \"projects/test-project-id/locations/test-location-id/apis/api-1\"` provided the parent is
-                    /// `projects/test-project-id/locations/test-location-id`. Expressions are combined with either
-                    /// `AND` logic operator or `OR` logical operator but not both of them together i.e. only one of the
-                    /// `AND` or `OR` operator can be used throughout the filter string and both the operators cannot be
-                    /// used together. No other logical operators are supported. At most three filter fields are allowed
-                    /// in the filter string and if provided more than that then `INVALID_ARGUMENT` error is returned by
+                    /// `projects/test-project-id/locations/test-location-id`. Another supported filter function is
+                    /// `plugins(source_metadata)`. This function filters for resources that are associated with a
+                    /// specific plugin. For example, `plugins(source_metadata) :
+                    /// "projects/test-project-id/locations/test-location-id/plugins/test-plugin-id"` will return
+                    /// resources sourced from the given plugin. Expressions are combined with either `AND` logic
+                    /// operator or `OR` logical operator but not both of them together i.e. only one of the `AND` or
+                    /// `OR` operator can be used throughout the filter string and both the operators cannot be used
+                    /// together. No other logical operators are supported. At most three filter fields are allowed in
+                    /// the filter string and if provided more than that then `INVALID_ARGUMENT` error is returned by
                     /// the API. Here are a few examples: * `owner.email = \"apihub@google.com\"` - - The owner team
                     /// email is _apihub@google.com_. * `owner.email = \"apihub@google.com\" AND create_time &amp;lt;
                     /// \"2021-08-15T14:50:00Z\" AND create_time &amp;gt; \"2021-08-10T12:00:00Z\"` - The owner team
@@ -5662,9 +5745,9 @@ namespace Google.Apis.APIhub.v1
 
                     /// <summary>
                     /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                    /// `true` when reading across collections e.g. when `parent` is set to
-                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
                     /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                     /// specific documentation.
                     /// </summary>
@@ -6161,9 +6244,10 @@ namespace Google.Apis.APIhub.v1
                         /// be a string. The comparison operator must be one of: `&amp;lt;`, `&amp;gt;` or `=`. Filters
                         /// are not case sensitive. The following fields in the `PluginInstances` are eligible for
                         /// filtering: * `state` - The state of the Plugin Instance. Allowed comparison operators: `=`.
-                        /// A filter function is also supported in the filter string. The filter function is `id(name)`.
-                        /// The `id(name)` function returns the id of the resource name. For example, `id(name) =
-                        /// \"plugin-instance-1\"` is equivalent to `name =
+                        /// * `source_project_id` - The source project id of the Plugin Instance. Allowed comparison
+                        /// operators: `=`. A filter function is also supported in the filter string. The filter
+                        /// function is `id(name)`. The `id(name)` function returns the id of the resource name. For
+                        /// example, `id(name) = \"plugin-instance-1\"` is equivalent to `name =
                         /// \"projects/test-project-id/locations/test-location-id/plugins/plugin-1/instances/plugin-instance-1\"`
                         /// provided the parent is
                         /// `projects/test-project-id/locations/test-location-id/plugins/plugin-1`. Expressions are
@@ -7572,6 +7656,122 @@ namespace Google.Apis.APIhub.v1
                 }
             }
 
+            /// <summary>Retrieve API views.</summary>
+            /// <param name="parent">
+            /// Required. The parent resource name. Format: `projects/{project}/locations/{location}`.
+            /// </param>
+            public virtual RetrieveApiViewsRequest RetrieveApiViews(string parent)
+            {
+                return new RetrieveApiViewsRequest(this.service, parent);
+            }
+
+            /// <summary>Retrieve API views.</summary>
+            public class RetrieveApiViewsRequest : APIhubBaseServiceRequest<Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1RetrieveApiViewsResponse>
+            {
+                /// <summary>Constructs a new RetrieveApiViews request.</summary>
+                public RetrieveApiViewsRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent resource name. Format: `projects/{project}/locations/{location}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Optional. The filter expression.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>Optional. The maximum number of results to return. Default to 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `RetrieveApiViews` call. Provide this to retrieve
+                /// the subsequent page.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Required. The view type to return.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                /// <summary>Required. The view type to return.</summary>
+                public enum ViewEnum
+                {
+                    /// <summary>The default view type.</summary>
+                    [Google.Apis.Util.StringValueAttribute("API_VIEW_TYPE_UNSPECIFIED")]
+                    APIVIEWTYPEUNSPECIFIED = 0,
+
+                    /// <summary>The MCP server view in API hub.</summary>
+                    [Google.Apis.Util.StringValueAttribute("MCP_SERVER")]
+                    MCPSERVER = 1,
+
+                    /// <summary>The MCP tool view in API hub.</summary>
+                    [Google.Apis.Util.StringValueAttribute("MCP_TOOL")]
+                    MCPTOOL = 2,
+                }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "retrieveApiViews";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}:retrieveApiViews";
+
+                /// <summary>Initializes RetrieveApiViews parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
             /// <summary>Search across API-Hub resources.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="location">
@@ -7754,6 +7954,102 @@ namespace Google.Apis.APIhub.v1.Data
         /// <summary>Required. The action id of the plugin to execute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionId")]
         public virtual string ActionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The additional spec content for the spec. This contains the metadata and the last update time for the additional
+    /// spec content.
+    /// </summary>
+    public class GoogleCloudApihubV1AdditionalSpecContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time at which the spec content was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. The labels of the spec content e.g. specboost addon version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Required. The type of the spec content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("specContentType")]
+        public virtual string SpecContentType { get; set; }
+
+        /// <summary>Optional. The additional spec contents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("specContents")]
+        public virtual GoogleCloudApihubV1SpecContents SpecContents { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time at which the spec content was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8476,6 +8772,21 @@ namespace Google.Apis.APIhub.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The view of an API.</summary>
+    public class GoogleCloudApihubV1ApiView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. MCP server view.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mcpServerView")]
+        public virtual GoogleCloudApihubV1FlattenedApiVersionDeploymentView McpServerView { get; set; }
+
+        /// <summary>Output only. MCP tools view.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mcpToolView")]
+        public virtual GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView McpToolView { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10316,6 +10627,62 @@ namespace Google.Apis.APIhub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The FetchAdditionalSpecContent method's response.</summary>
+    public class GoogleCloudApihubV1FetchAdditionalSpecContentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The additional spec content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalSpecContent")]
+        public virtual GoogleCloudApihubV1AdditionalSpecContent AdditionalSpecContent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A flattened view of an API, its version and one of the linked deployments.</summary>
+    public class GoogleCloudApihubV1FlattenedApiVersionDeploymentView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("api")]
+        public virtual GoogleCloudApihubV1Api Api { get; set; }
+
+        /// <summary>The deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
+        public virtual GoogleCloudApihubV1Deployment Deployment { get; set; }
+
+        /// <summary>The version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual GoogleCloudApihubV1Version Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A flattened view of an API, its version, one of its operations and one of the linked deployments. If there are
+    /// no deployments linked to the operation then the result will be empty.
+    /// </summary>
+    public class GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("api")]
+        public virtual GoogleCloudApihubV1Api Api { get; set; }
+
+        /// <summary>The API operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiOperation")]
+        public virtual GoogleCloudApihubV1ApiOperation ApiOperation { get; set; }
+
+        /// <summary>The deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
+        public virtual GoogleCloudApihubV1Deployment Deployment { get; set; }
+
+        /// <summary>The version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual GoogleCloudApihubV1Version Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Configuration for gateway plugin addons. This is used to specify the list of gateway plugin configs for which
     /// the addon is enabled.
@@ -10624,6 +10991,13 @@ namespace Google.Apis.APIhub.v1.Data
         /// <summary>Output only. The result of the last execution of the plugin instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
         public virtual string Result { get; set; }
+
+        /// <summary>
+        /// Output only. The result metadata of the last execution of the plugin instance. This will be a string
+        /// representation of a JSON object and will be available on successful execution.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultMetadata")]
+        public virtual string ResultMetadata { get; set; }
 
         private string _startTimeRaw;
 
@@ -11108,6 +11482,37 @@ namespace Google.Apis.APIhub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details describing an MCP Tool.</summary>
+    public class GoogleCloudApihubV1McpTool : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Optional annotations for the tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual GoogleCloudApihubV1ToolAnnotations Annotations { get; set; }
+
+        /// <summary>Optional. Description of what the tool does.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. Input schema for the operation. This can be parsed only from MCP schema type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputSchema")]
+        public virtual GoogleCloudApihubV1OperationSchema InputSchema { get; set; }
+
+        /// <summary>Required. The name of the tool, unique within its parent scope (version).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Output schema for the operation. This can be parsed only from MCP schema type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputSchema")]
+        public virtual GoogleCloudApihubV1OperationSchema OutputSchema { get; set; }
+
+        /// <summary>Optional. Optional title for the tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The config variable value of data type multi int.</summary>
     public class GoogleCloudApihubV1MultiIntValues : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11210,6 +11615,10 @@ namespace Google.Apis.APIhub.v1.Data
         /// <summary>The HTTP Operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpOperation")]
         public virtual GoogleCloudApihubV1HttpOperation HttpOperation { get; set; }
+
+        /// <summary>The MCP Tool Operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mcpTool")]
+        public virtual GoogleCloudApihubV1McpTool McpTool { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11315,6 +11724,19 @@ namespace Google.Apis.APIhub.v1.Data
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The operation schema needed for an operation.</summary>
+    public class GoogleCloudApihubV1OperationSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The JSON schema. Only valid JSON is accepted but semantic validation of schema is not supported right now.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonSchema")]
+        public virtual System.Collections.Generic.IDictionary<string, object> JsonSchema { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11856,6 +12278,21 @@ namespace Google.Apis.APIhub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The RetrieveApiViews method's response.</summary>
+    public class GoogleCloudApihubV1RetrieveApiViewsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of API views.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiViews")]
+        public virtual System.Collections.Generic.IList<GoogleCloudApihubV1ApiView> ApiViews { get; set; }
+
+        /// <summary>Next page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Runtime project attachment represents an attachment from the runtime project to the host project. Api Hub looks
     /// for deployments in the attached runtime projects and creates corresponding resources in Api Hub for the
@@ -12229,6 +12666,10 @@ namespace Google.Apis.APIhub.v1.Data
     /// </summary>
     public class GoogleCloudApihubV1Spec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The additional spec contents for the spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalSpecContents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudApihubV1AdditionalSpecContent> AdditionalSpecContents { get; set; }
+
         /// <summary>
         /// Optional. The list of user defined attributes associated with the spec. The key is the attribute name. It
         /// will be of the format: `projects/{project}/locations/{location}/attributes/{attribute}`. The value is the
@@ -12561,6 +13002,37 @@ namespace Google.Apis.APIhub.v1.Data
         /// <summary>Required. Severity of the issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Annotations for a Tool.</summary>
+    public class GoogleCloudApihubV1ToolAnnotations : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Additional hints which may help tools and not covered in defaults.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalHints")]
+        public virtual System.Collections.Generic.IDictionary<string, string> AdditionalHints { get; set; }
+
+        /// <summary>Optional. Hint indicating if the tool may have destructive side effects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destructiveHint")]
+        public virtual System.Nullable<bool> DestructiveHint { get; set; }
+
+        /// <summary>Optional. Hint indicating if the tool is idempotent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idempotentHint")]
+        public virtual System.Nullable<bool> IdempotentHint { get; set; }
+
+        /// <summary>Optional. Hint indicating if the tool interacts with the open world (e.g., internet).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("openWorldHint")]
+        public virtual System.Nullable<bool> OpenWorldHint { get; set; }
+
+        /// <summary>Optional. Hint indicating if the tool is read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readOnlyHint")]
+        public virtual System.Nullable<bool> ReadOnlyHint { get; set; }
+
+        /// <summary>Optional. A human-readable title for the tool (if different from Tool.title).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13049,8 +13521,8 @@ namespace Google.Apis.APIhub.v1.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
