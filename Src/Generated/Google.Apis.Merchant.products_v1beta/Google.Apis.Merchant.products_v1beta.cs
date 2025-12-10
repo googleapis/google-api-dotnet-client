@@ -1442,7 +1442,7 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         public virtual ProductStructuredTitle StructuredTitle { get; set; }
 
         /// <summary>
-        /// Number of periods (months or years) and amount of payment per period for an item with an associated
+        /// Number of periods (weeks, months or years) and amount of payment per period for an item with an associated
         /// subscription contract.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptionCost")]
@@ -2702,7 +2702,7 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
         public virtual Price Amount { get; set; }
 
-        /// <summary>The type of subscription period. Supported values are: * "`month`" * "`year`"</summary>
+        /// <summary>The type of subscription period. Supported values are: * "`month`" * "`year`" * "`week`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("period")]
         public virtual string Period { get; set; }
 
