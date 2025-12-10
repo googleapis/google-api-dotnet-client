@@ -399,7 +399,6 @@ namespace Google.Apis.CloudKMS.v1
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
         /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`
-        /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
         /// </param>
         public virtual UpdateAutokeyConfigRequest UpdateAutokeyConfig(Google.Apis.CloudKMS.v1.Data.AutokeyConfig body, string name)
         {
@@ -424,7 +423,6 @@ namespace Google.Apis.CloudKMS.v1
 
             /// <summary>
             /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`
-            /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -5513,7 +5511,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Cloud KMS Autokey configuration for a folder or project.</summary>
+    /// <summary>Cloud KMS Autokey configuration for a folder.</summary>
     public class AutokeyConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5537,7 +5535,6 @@ namespace Google.Apis.CloudKMS.v1.Data
 
         /// <summary>
         /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`
-        /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5835,8 +5832,9 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// Immutable. The resource name of the backend environment where the key material for all CryptoKeyVersions
         /// associated with this CryptoKey reside and where all related cryptographic operations are performed. Only
         /// applicable if CryptoKeyVersions have a ProtectionLevel of EXTERNAL_VPC, with the resource name in the format
-        /// `projects/*/locations/*/ekmConnections/*`. Note, this list is non-exhaustive and may apply to additional
-        /// ProtectionLevels in the future.
+        /// `projects/*/locations/*/ekmConnections/*`. Only applicable if CryptoKeyVersions have a ProtectionLevel of
+        /// HSM_SINGLE_TENANT, with the resource name in the format `projects/*/locations/*/singleTenantHsmInstances/*`.
+        /// Note, this list is non-exhaustive and may apply to additional ProtectionLevels in the future.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyBackend")]
         public virtual string CryptoKeyBackend { get; set; }
@@ -6860,6 +6858,15 @@ namespace Google.Apis.CloudKMS.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>
+        /// Immutable. The resource name of the backend environment where the key material for the wrapping key resides
+        /// and where all related cryptographic operations are performed. Currently, this field is only populated for
+        /// keys stored in HSM_SINGLE_TENANT. Note, this list is non-exhaustive and may apply to additional
+        /// ProtectionLevels in the future.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyBackend")]
+        public virtual string CryptoKeyBackend { get; set; }
+
         private string _expireEventTimeRaw;
 
         private object _expireEventTime;
@@ -7373,6 +7380,12 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>Indicates whether CryptoKeys with protection_level HSM can be created in this location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hsmAvailable")]
         public virtual System.Nullable<bool> HsmAvailable { get; set; }
+
+        /// <summary>
+        /// Indicates whether CryptoKeys with protection_level HSM_SINGLE_TENANT can be created in this location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hsmSingleTenantAvailable")]
+        public virtual System.Nullable<bool> HsmSingleTenantAvailable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
