@@ -437,6 +437,69 @@ namespace Google.Apis.CloudFunctions.v2alpha
                 }
 
                 /// <summary>
+                /// Commits a function upgrade from GCF Gen1 to GCF Gen2. This action deletes the Gen1 function, leaving
+                /// the Gen2 function active and manageable by the GCFv2 API.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the function for which upgrade should be committed to Gen2.
+                /// </param>
+                public virtual CommitFunctionUpgradeAsGen2Request CommitFunctionUpgradeAsGen2(Google.Apis.CloudFunctions.v2alpha.Data.CommitFunctionUpgradeAsGen2Request body, string name)
+                {
+                    return new CommitFunctionUpgradeAsGen2Request(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Commits a function upgrade from GCF Gen1 to GCF Gen2. This action deletes the Gen1 function, leaving
+                /// the Gen2 function active and manageable by the GCFv2 API.
+                /// </summary>
+                public class CommitFunctionUpgradeAsGen2Request : CloudFunctionsBaseServiceRequest<Google.Apis.CloudFunctions.v2alpha.Data.Operation>
+                {
+                    /// <summary>Constructs a new CommitFunctionUpgradeAsGen2 request.</summary>
+                    public CommitFunctionUpgradeAsGen2Request(Google.Apis.Services.IClientService service, Google.Apis.CloudFunctions.v2alpha.Data.CommitFunctionUpgradeAsGen2Request body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the function for which upgrade should be committed to Gen2.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudFunctions.v2alpha.Data.CommitFunctionUpgradeAsGen2Request Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "commitFunctionUpgradeAsGen2";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2alpha/{+name}:commitFunctionUpgradeAsGen2";
+
+                    /// <summary>Initializes CommitFunctionUpgradeAsGen2 parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/functions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Creates a new function. If a function with the given name already exists in the specified project,
                 /// the long running operation will return `ALREADY_EXISTS` error.
                 /// </summary>
@@ -1549,9 +1612,9 @@ namespace Google.Apis.CloudFunctions.v2alpha
 
                     /// <summary>
                     /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                    /// `true` when reading across collections e.g. when `parent` is set to
-                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
                     /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                     /// specific documentation.
                     /// </summary>
@@ -2037,6 +2100,13 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
         public virtual string WorkerPool { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for the `CommitFunctionUpgradeAsGen2` method.</summary>
+    public class CommitFunctionUpgradeAsGen2Request : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2717,8 +2787,8 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
