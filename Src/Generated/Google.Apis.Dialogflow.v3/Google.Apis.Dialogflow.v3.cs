@@ -11262,9 +11262,9 @@ namespace Google.Apis.Dialogflow.v3
 
                     /// <summary>
                     /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                    /// `true` when reading across collections e.g. when `parent` is set to
-                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
                     /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                     /// specific documentation.
                     /// </summary>
@@ -11976,10 +11976,11 @@ namespace Google.Apis.Dialogflow.v3
 
                 /// <summary>
                 /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be `true`
-                /// when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This
-                /// field is not by default supported and will result in an `UNIMPLEMENTED` error if set unless
-                /// explicitly documented otherwise in service or product specific documentation.
+                /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true`
+                /// when reading across collections. For example, when `parent` is set to
+                /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
+                /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific
+                /// documentation.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
@@ -18254,9 +18255,20 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultBannedPhraseMatchStrategy")]
         public virtual string DefaultBannedPhraseMatchStrategy { get; set; }
 
+        /// <summary>
+        /// Optional. Immutable. Default RAI settings to be annotated on the agent, so that users will be able to
+        /// restore their RAI configurations to the default settings. Read-only field for the API proto only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultRaiSettings")]
+        public virtual GoogleCloudDialogflowCxV3SafetySettingsRaiSettings DefaultRaiSettings { get; set; }
+
         /// <summary>Optional. Settings for prompt security checks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promptSecuritySettings")]
         public virtual GoogleCloudDialogflowCxV3SafetySettingsPromptSecuritySettings PromptSecuritySettings { get; set; }
+
+        /// <summary>Optional. Settings for Responsible AI checks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("raiSettings")]
+        public virtual GoogleCloudDialogflowCxV3SafetySettingsRaiSettings RaiSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18283,6 +18295,32 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>Optional. Enable prompt security checks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePromptSecurity")]
         public virtual System.Nullable<bool> EnablePromptSecurity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for Responsible AI.</summary>
+    public class GoogleCloudDialogflowCxV3SafetySettingsRaiSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. RAI blocking configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryFilters")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3SafetySettingsRaiSettingsCategoryFilter> CategoryFilters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration of the sensitivity level for blocking an RAI category.</summary>
+    public class GoogleCloudDialogflowCxV3SafetySettingsRaiSettingsCategoryFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>RAI category to configure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>Blocking sensitivity level to configure for the RAI category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterLevel")]
+        public virtual string FilterLevel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -30170,8 +30208,8 @@ namespace Google.Apis.Dialogflow.v3.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
