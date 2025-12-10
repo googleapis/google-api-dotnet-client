@@ -1306,9 +1306,9 @@ namespace Google.Apis.Storagetransfer.v1
 
             /// <summary>
             /// When set to `true`, operations that are reachable are returned as normal, and those that are unreachable
-            /// are returned in the [ListOperationsResponse.unreachable] field. This can only be `true` when reading
-            /// across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This field is not by
-            /// default supported and will result in an `UNIMPLEMENTED` error if set unless explicitly documented
+            /// are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading
+            /// across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is
+            /// not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented
             /// otherwise in service or product specific documentation.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
@@ -2061,8 +2061,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -2941,10 +2941,9 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// <summary>
         /// Optional. The user-managed service account to which to delegate service agent permissions. You can grant
         /// Cloud Storage bucket permissions to this service account instead of to the Transfer Service service agent.
-        /// Format is `projects/-/serviceAccounts/ACCOUNT_EMAIL_OR_UNIQUEID` Either the service account email
-        /// (`SERVICE_ACCOUNT_NAME@PROJECT_ID.iam.gserviceaccount.com`) or the unique ID (`123456789012345678901`) are
-        /// accepted in the string. The `-` wildcard character is required; replacing it with a project ID is invalid.
-        /// See https://cloud.google.com//storage-transfer/docs/delegate-service-agent-permissions for required
+        /// Either the service account email (`SERVICE_ACCOUNT_NAME@PROJECT_ID.iam.gserviceaccount.com`) or the unique
+        /// ID (`123456789012345678901`) are accepted. See
+        /// https://docs.cloud.google.com/storage-transfer/docs/delegate-service-agent-permissions for required
         /// permissions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
