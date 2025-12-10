@@ -500,6 +500,103 @@ namespace Google.Apis.Tests.Apis.Upload
                 Assert.Equal(UploadStatus.Completed, progress.Status);
             }
         }
+#if NET6_0_OR_GREATER
+        /// <summary>
+        /// Verifies that a resumable upload completes successfully and validates crc32c checksum across different chunking configurations 
+        /// and stream types of known size.
+        /// </summary>
+        [Theory, CombinatorialData]
+        public void TestChunkedUpload_CompletesAndVerifiesChecksumInPartialServer(
+            [CombinatorialValues(true, false)] bool knownSize,
+            [CombinatorialValues(80, 150)] int partialSize,
+            [CombinatorialValues(100, 200)] int chunkSize)
+        {
+            var actualChunkSize = Math.Min(partialSize, chunkSize);
+            var expectedCallCount = (UploadLength + actualChunkSize - 1) / actualChunkSize + 1;
+            using (var server = new MultiChunkPartialServer(_server, partialSize))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = knownSize ? new MemoryStream(UploadTestBytes) : new UnknownSizeMemoryStream(UploadTestBytes);
+                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", actualChunkSize);
+                var progress = uploader.Upload();
+                Assert.Equal(expectedCallCount, server.Requests.Count);
+                var request = server.Requests.Last();
+
+                if (knownSize)
+                {
+                    Assert.Contains(ResumableUpload.GoogleHashHeader, request.Headers.AllKeys);
+                    var headerValue = request.Headers[ResumableUpload.GoogleHashHeader];
+                    var expectedBase64Hash = CalculateCrc32c(UploadTestBytes);
+                    Assert.Equal($"crc32c={expectedBase64Hash}", headerValue);
+                }
+                else
+                {
+                    Assert.DoesNotContain(ResumableUpload.GoogleHashHeader, request.Headers.AllKeys);
+                }
+
+                Assert.Equal(UploadTestBytes, server.Bytes);
+                Assert.Equal(UploadStatus.Completed, progress.Status);
+            }
+        }
+
+        /// <summary>
+        /// Verifies that the session initiation succeeds when a matching CRC32C checksum is provided.
+        /// </summary>
+        [Fact]
+        public async Task TestInitiateSessionWithMatchingCrc32c()
+        {
+            var content = new MemoryStream(UploadTestBytes);
+            using (var server = new MultiChunkServer(_server))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var chunkSize = 1024;
+                var expectedBase64Hash = CalculateCrc32c(UploadTestBytes);
+                var body = new TestResumableUploadWithCrc32c { Crc32c = expectedBase64Hash };
+                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize)
+                {
+                    Body = body
+                };
+
+                await uploader.InitiateSessionAsync();
+                // Assert that the initiation request was sent
+                Assert.Single(server.Requests);
+                var initiationRequest = server.Requests.First();
+
+                // Assert that the X-Goog-Hash header was sent with the correct CRC32C
+                Assert.Contains(ResumableUpload.GoogleHashHeader, initiationRequest.Headers.AllKeys);
+                Assert.Equal($"crc32c={expectedBase64Hash}", initiationRequest.Headers[ResumableUpload.GoogleHashHeader]);
+                Assert.True(uploader.Crc32cHeaderSentInInitiation);
+            }
+        }
+
+        /// <summary>
+        /// Verifies that the session initiation fails when a mismatched CRC32C checksum is provided.
+        /// </summary>
+        [Fact]
+        public async Task TestInitiateSessionWithMismatchingCrc32c()
+        {
+            var content = new MemoryStream(UploadTestBytes);
+            using (var server = new MultiChunkServer(_server))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var chunkSize = 1024;
+                var expectedBase64Hash = CalculateCrc32c(UploadTestBytes);
+                var body = new TestResumableUploadWithCrc32c { Crc32c = "incorrectHash" };
+
+                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize)
+                {
+                    Body = body
+                };
+
+                var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => uploader.InitiateSessionAsync());
+                Assert.Equal($"The calculated CRC32C of the stream ({expectedBase64Hash}) does not match the CRC32C provided in the object metadata ({body.Crc32c}).", exception.Message);
+
+                // Assert that no request was sent to the server
+                Assert.Empty(server.Requests);
+                Assert.False(uploader.Crc32cHeaderSentInInitiation);
+            }
+        }
+#endif
 
         /// <summary>
         /// Server that expects an initial call with path and query parameters.
@@ -697,5 +794,18 @@ namespace Google.Apis.Tests.Apis.Upload
                 Assert.Equal(1, reponseReceivedCount);
             }
         }
+
+#if NET6_0_OR_GREATER
+        /// <summary>
+        /// Calculates the CRC32C checksum for the specified data.
+        /// </summary>
+        private string CalculateCrc32c(byte[] uploadTestBytes)
+        {
+            var crc32 = new System.IO.Hashing.Crc32();
+            crc32.Append(uploadTestBytes);
+            byte[] hashBytes = crc32.GetCurrentHash();
+            return Convert.ToBase64String(hashBytes);
+        }
+#endif
     }
 }

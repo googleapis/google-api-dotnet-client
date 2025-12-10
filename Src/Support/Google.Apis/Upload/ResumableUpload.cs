@@ -72,6 +72,19 @@ namespace Google.Apis.Upload
         /// The x-goog-api-client header value used for resumable uploads initiated without any options or an HttpClient.
         /// </summary>
         private static readonly string DefaultGoogleApiClientHeader = new VersionHeaderBuilder().AppendDotNetEnvironment().AppendAssemblyVersion("gdcl", typeof(ResumableUpload)).ToString();
+
+        /// <summary>
+        /// The header name used to specify the crc32c hash of the stream for validation.
+        /// </summary>
+        internal const string GoogleHashHeader = "X-Goog-Hash";
+
+#if NET6_0_OR_GREATER
+        /// <summary>
+        /// The size of the buffer (in bytes) used when reading the stream to calculate the CRC32C checksum.
+        /// Set to 80 KB (81920 bytes) to balance memory usage and I/O performance.
+        /// </summary>
+        private const int Crc32cCalculationBufferSize = 81920;
+#endif
         #endregion // Constants
 
         #region Construction
@@ -141,6 +154,12 @@ namespace Google.Apis.Upload
         /// Gets the HTTP client to use to make requests.
         /// </summary>
         internal ConfigurableHttpClient HttpClient { get; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the CRC32C checksum header was included 
+        /// during the initiation of the resumable upload session.
+        /// </summary>
+        public bool Crc32cHeaderSentInInitiation { get; internal set; }
 
         /// <summary>Gets or sets the stream to upload.</summary>
         public Stream ContentStream { get; }
@@ -641,6 +660,24 @@ namespace Google.Apis.Upload
             BytesClientSent = BytesServerReceived + contentLength;
             Logger.Debug("MediaUpload[{0}] - Sending bytes={1}-{2}", UploadUri, BytesServerReceived,
                 BytesClientSent - 1);
+            bool isFinalChunk = BytesClientSent == StreamLength;
+            if (isFinalChunk && !Crc32cHeaderSentInInitiation)
+            {
+                string trailingCrc32c = await CalculateCrc32cAsync(ContentStream, cancellationToken).ConfigureAwait(false);
+                if (trailingCrc32c != null)
+                {
+                    request.Headers.TryAddWithoutValidation(GoogleHashHeader, $"crc32c={trailingCrc32c}");
+                }
+            }
+            else
+            {
+                // Explicitly ensure the header is NOT present for non-final chunks
+                // (Just in case it was added by a default modifier elsewhere)
+                if (request.Headers.Contains(GoogleHashHeader))
+                {
+                    request.Headers.Remove(GoogleHashHeader);
+                }
+            }
 
             // We can't assume that the server actually received all the data. It almost always does,
             // but just occasionally it'll return a 308 that makes us resend a chunk. We need to
@@ -663,6 +700,54 @@ namespace Google.Apis.Upload
             }
             return completed;
         }
+
+#if NET6_0_OR_GREATER
+        /// <summary>
+        /// Calculates the CRC32C hash of the entire stream and returns it as a Base64 string.
+        /// </summary>
+        internal async Task<string> CalculateCrc32cAsync(Stream stream, CancellationToken cancellationToken)
+        {
+            if (stream == null || !stream.CanSeek)
+            {
+                return null;
+            }
+
+            long originalPosition = stream.Position;
+            try
+            {
+                stream.Position = 0;
+
+                var crc32c = new System.IO.Hashing.Crc32();
+                byte[] buffer = System.Buffers.ArrayPool<byte>.Shared.Rent(Crc32cCalculationBufferSize);
+                try
+                {
+                    int bytesRead;
+                    while ((bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length, cancellationToken).ConfigureAwait(false)) > 0)
+                    {
+                        crc32c.Append(new ReadOnlySpan<byte>(buffer, 0, bytesRead));
+                    }
+                }
+                finally
+                {
+                    System.Buffers.ArrayPool<byte>.Shared.Return(buffer);
+                }
+
+                byte[] hashBytes = crc32c.GetCurrentHash();
+                return Convert.ToBase64String(hashBytes);
+            }
+            finally
+            {
+                // Restore the stream position. Important so the upload continues correctly.
+                stream.Position = originalPosition;
+            }
+        }
+#else
+        /// <summary>
+        /// Calculates the CRC32C hash of the entire stream and returns it as a Base64 string.
+        /// </summary>
+        internal Task<string> CalculateCrc32cAsync(Stream stream, CancellationToken cancellationToken) =>
+            Task.FromResult<string>(null);
+#endif
 
         /// <summary>Handles a media upload HTTP response.</summary>
         /// <returns><c>True</c> if the entire media has been completely uploaded.</returns>
@@ -1063,6 +1148,10 @@ namespace Google.Apis.Upload
         /// <summary>The uploadType parameter value for resumable uploads.</summary>
         private const string Resumable = "resumable";
 
+        /// <summary>
+        /// The identifier string for the CRC32C hash.</summary>
+        private const string Crc32c = "Crc32c";
+
         #endregion // Constants
 
         #region Construction
@@ -1133,6 +1222,29 @@ namespace Google.Apis.Upload
         public override async Task<Uri> InitiateSessionAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             HttpRequestMessage request = CreateInitializeRequest();
+            Crc32cHeaderSentInInitiation = false;
+            if (Body != null)
+            {
+                var metadataHash = GetPropertyFromGenericBody(Body, Crc32c);
+                if (!string.IsNullOrEmpty(metadataHash))
+                {
+                    string calculatedHash = await CalculateCrc32cAsync(ContentStream, cancellationToken).ConfigureAwait(false);
+                    if (calculatedHash != null)
+                    {
+                        if (metadataHash != calculatedHash)
+                        {
+                            throw new InvalidOperationException(
+                                $"The calculated CRC32C of the stream ({calculatedHash}) does not match the CRC32C provided in the object metadata ({metadataHash}).");
+                        }
+                        request.Headers.TryAddWithoutValidation(GoogleHashHeader, $"crc32c={calculatedHash}");
+                        Crc32cHeaderSentInInitiation = true;
+                    }
+                    else
+                    {
+                        ApplicationContext.Logger.ForType<ResumableUpload<TRequest>>().Warning("A CRC32C hash was provided in the request body, but the stream is not seekable. The hash will not be validated on the client, and will not be sent to the server.");
+                    }
+                }
+            }
             Options?.ModifySessionInitiationRequest?.Invoke(request);
             var response = await Service.HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
 
@@ -1210,6 +1322,12 @@ namespace Google.Apis.Upload
                 }
             }
         }
+
+        /// <summary>
+        /// Retrieves the value of a specific property from a generic object using reflection.
+        /// </summary>
+        internal string GetPropertyFromGenericBody(TRequest body, string propertyName) =>
+        body?.GetType().GetProperty(propertyName)?.GetValue(body) as string;
 
         #endregion Upload Implementation
     }
