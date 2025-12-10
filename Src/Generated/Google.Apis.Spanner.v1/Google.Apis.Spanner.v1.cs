@@ -9467,6 +9467,13 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Container for various pieces of client-owned context attached to a request.</summary>
+    public class ClientContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for a column.</summary>
     public class ColumnMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14132,6 +14139,10 @@ namespace Google.Apis.Spanner.v1.Data
     /// <summary>Common request options for various APIs.</summary>
     public class RequestOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Optional context that may be needed for some requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientContext")]
+        public virtual ClientContext ClientContext { get; set; }
+
         /// <summary>Priority for the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual string Priority { get; set; }
@@ -14720,9 +14731,9 @@ namespace Google.Apis.Spanner.v1.Data
 
         /// <summary>
         /// Optional. If `true`, specifies a multiplexed session. Use a multiplexed session for multiple, concurrent
-        /// read-only operations. Don't use them for read-write transactions, partitioned reads, or partitioned queries.
-        /// Use `sessions.create` to create multiplexed sessions. Don't use BatchCreateSessions to create a multiplexed
-        /// session. You can't delete or list multiplexed sessions.
+        /// operations including any combination of read-only and read-write transactions. Use `sessions.create` to
+        /// create multiplexed sessions. Don't use BatchCreateSessions to create a multiplexed session. You can't delete
+        /// or list multiplexed sessions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiplexed")]
         public virtual System.Nullable<bool> Multiplexed { get; set; }
