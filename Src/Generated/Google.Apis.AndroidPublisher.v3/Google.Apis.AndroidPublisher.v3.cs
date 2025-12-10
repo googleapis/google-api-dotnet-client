@@ -4876,6 +4876,36 @@ namespace Google.Apis.AndroidPublisher.v3
             [Google.Apis.Util.RequestParameterAttribute("changesNotSentForReview", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ChangesNotSentForReview { get; set; }
 
+            /// <summary>
+            /// Optional. The behavior of committing a new edit while a submission is already in review.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("inProgressReviewBehaviour", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<InProgressReviewBehaviourEnum> InProgressReviewBehaviour { get; set; }
+
+            /// <summary>
+            /// Optional. The behavior of committing a new edit while a submission is already in review.
+            /// </summary>
+            public enum InProgressReviewBehaviourEnum
+            {
+                /// <summary>The behavior is not specified.</summary>
+                [Google.Apis.Util.StringValueAttribute("IN_PROGRESS_REVIEW_BEHAVIOUR_UNSPECIFIED")]
+                INPROGRESSREVIEWBEHAVIOURUNSPECIFIED = 0,
+
+                /// <summary>
+                /// The changes in review will be canceled, and the new changes will be sent for review. Thus resetting
+                /// the review process.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("CANCEL_IN_PROGRESS_AND_SUBMIT")]
+                CANCELINPROGRESSANDSUBMIT = 1,
+
+                /// <summary>
+                /// The commit will fail with an error if there are changes in review. If the edit doesn't result in a
+                /// new submission being created then it won't throw an error even if there are changes in review.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("THROW_ERROR_IF_IN_PROGRESS")]
+                THROWERRORIFINPROGRESS = 2,
+            }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "commit";
 
@@ -4908,6 +4938,14 @@ namespace Google.Apis.AndroidPublisher.v3
                 RequestParameters.Add("changesNotSentForReview", new Google.Apis.Discovery.Parameter
                 {
                     Name = "changesNotSentForReview",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("inProgressReviewBehaviour", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "inProgressReviewBehaviour",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
