@@ -773,9 +773,9 @@ namespace Google.Apis.Dataform.v1beta1
 
                     /// <summary>
                     /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                    /// `true` when reading across collections e.g. when `parent` is set to
-                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
                     /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                     /// specific documentation.
                     /// </summary>
@@ -5873,6 +5873,13 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// Output only. Metadata indicating whether this resource is user-scoped. `CompilationResult` resource is
+        /// `user_scoped` only if it is sourced from a workspace.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateResourceMetadata")]
+        public virtual PrivateResourceMetadata PrivateResourceMetadata { get; set; }
+
+        /// <summary>
         /// Immutable. The name of the release config to compile. Must be in the format
         /// `projects/*/locations/*/repositories/*/releaseConfigs/*`.
         /// </summary>
@@ -6572,8 +6579,8 @@ namespace Google.Apis.Dataform.v1beta1.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -7161,6 +7168,20 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata used to identify if a resource is user scoped.</summary>
+    public class PrivateResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. If true, this resource is user-scoped, meaning it is either a workspace or sourced from a
+        /// workspace.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userScoped")]
+        public virtual System.Nullable<bool> UserScoped { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8129,6 +8150,13 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// Output only. Metadata indicating whether this resource is user-scoped. `WorkflowInvocation` resource is
+        /// `user_scoped` only if it is sourced from a compilation result and the compilation result is user-scoped.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateResourceMetadata")]
+        public virtual PrivateResourceMetadata PrivateResourceMetadata { get; set; }
+
+        /// <summary>
         /// Output only. The resolved compilation result that was used to create this invocation. Will be in the format
         /// `projects/*/locations/*/repositories/*/compilationResults/*`.
         /// </summary>
@@ -8258,6 +8286,13 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// <summary>Identifier. The workspace's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Metadata indicating whether this resource is user-scoped. For `Workspace` resources, the
+        /// `user_scoped` field is always `true`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateResourceMetadata")]
+        public virtual PrivateResourceMetadata PrivateResourceMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
