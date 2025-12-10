@@ -26,6 +26,11 @@
     "1",
     "2"
   ],
+  "Google.Apis.AndroidPublisher.v3.EditsResource+CommitRequest.InProgressReviewBehaviourEnum": [
+    "IN_PROGRESS_REVIEW_BEHAVIOUR_UNSPECIFIED",
+    "CANCEL_IN_PROGRESS_AND_SUBMIT",
+    "THROW_ERROR_IF_IN_PROGRESS"
+  ],
   "Google.Apis.AndroidPublisher.v3.EditsResource+DeobfuscationfilesResource+UploadMediaUpload.AltEnum": [
     "json",
     "media",
