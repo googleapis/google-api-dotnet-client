@@ -4473,7 +4473,7 @@ namespace Google.Apis.CloudAsset.v1.Data
 
         /// <summary>
         /// Organization Policy condition/expression. For example:
-        /// `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade ==
+        /// `resource.instanceName.matches("(production|test)_(.+_)?[\d]+")'` or, `resource.management.auto_upgrade ==
         /// true`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
