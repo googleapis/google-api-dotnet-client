@@ -4738,6 +4738,12 @@ namespace Google.Apis.Calendar.v3.Data
         public virtual string AccessRole { get; set; }
 
         /// <summary>
+        /// Whether this calendar automatically accepts invitations. Only valid for resource calendars. Read-only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoAcceptInvitations")]
+        public virtual System.Nullable<bool> AutoAcceptInvitations { get; set; }
+
+        /// <summary>
         /// The main color of the calendar in the hexadecimal format "#0088aa". This property supersedes the index-based
         /// colorId property. To set or change this property, you need to specify colorRgbFormat=true in the parameters
         /// of the insert, update and patch methods. Optional.
