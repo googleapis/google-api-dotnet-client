@@ -2391,9 +2391,9 @@ namespace Google.Apis.CloudFilestore.v1beta1
 
                     /// <summary>
                     /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                    /// `true` when reading across collections e.g. when `parent` is set to
-                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
                     /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                     /// specific documentation.
                     /// </summary>
@@ -2524,8 +2524,8 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
-                /// primarily intended for internal usage.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -3436,7 +3436,9 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("capacityGb")]
         public virtual System.Nullable<long> CapacityGb { get; set; }
 
-        /// <summary>Output only. The increase/decrease capacity step size.</summary>
+        /// <summary>
+        /// Output only. The incremental increase or decrease in capacity, designated in some number of GB.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capacityStepSizeGb")]
         public virtual System.Nullable<long> CapacityStepSizeGb { get; set; }
 
@@ -3520,15 +3522,15 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Output only. The max capacity of the instance.</summary>
+        /// <summary>Output only. The maximum capacity of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxCapacityGb")]
         public virtual System.Nullable<long> MaxCapacityGb { get; set; }
 
-        /// <summary>The max number of shares allowed.</summary>
+        /// <summary>The maximum number of shares allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxShareCount")]
         public virtual System.Nullable<long> MaxShareCount { get; set; }
 
-        /// <summary>Output only. The min capacity of the instance.</summary>
+        /// <summary>Output only. The minimum capacity of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCapacityGb")]
         public virtual System.Nullable<long> MinCapacityGb { get; set; }
 
@@ -3724,8 +3726,8 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -4268,23 +4270,23 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     /// <summary>The enforced performance limits, calculated from the instance's performance configuration.</summary>
     public class PerformanceLimits : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The max IOPS.</summary>
+        /// <summary>Output only. The maximum IOPS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxIops")]
         public virtual System.Nullable<long> MaxIops { get; set; }
 
-        /// <summary>Output only. The max read IOPS.</summary>
+        /// <summary>Output only. The maximum read IOPS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxReadIops")]
         public virtual System.Nullable<long> MaxReadIops { get; set; }
 
-        /// <summary>Output only. The max read throughput in bytes per second.</summary>
+        /// <summary>Output only. The maximum read throughput in bytes per second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxReadThroughputBps")]
         public virtual System.Nullable<long> MaxReadThroughputBps { get; set; }
 
-        /// <summary>Output only. The max write IOPS.</summary>
+        /// <summary>Output only. The maximum write IOPS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxWriteIops")]
         public virtual System.Nullable<long> MaxWriteIops { get; set; }
 
-        /// <summary>Output only. The max write throughput in bytes per second.</summary>
+        /// <summary>Output only. The maximumwrite throughput in bytes per second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxWriteThroughputBps")]
         public virtual System.Nullable<long> MaxWriteThroughputBps { get; set; }
 
@@ -4367,7 +4369,11 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
             set => LastActiveSyncTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>The peer instance.</summary>
+        /// <summary>
+        /// The name of the source instance for the replica, in the format
+        /// `projects/{project}/locations/{location}/instances/{instance}`. This field is required when creating a
+        /// replica.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerInstance")]
         public virtual string PeerInstance { get; set; }
 
@@ -4422,7 +4428,7 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Replication specifications.</summary>
+    /// <summary>Optional. The configuration used to replicate an instance.</summary>
     public class Replication : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4432,7 +4438,9 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("replicas")]
         public virtual System.Collections.Generic.IList<ReplicaConfig> Replicas { get; set; }
 
-        /// <summary>Output only. The replication role.</summary>
+        /// <summary>
+        /// Output only. The replication role. When creating a new replica, this field must be set to `STANDBY`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
 
