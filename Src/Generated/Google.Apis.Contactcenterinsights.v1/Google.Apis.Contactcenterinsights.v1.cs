@@ -16821,6 +16821,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exactMatchConfig")]
         public virtual GoogleCloudContactcenterinsightsV1ExactMatchConfig ExactMatchConfig { get; set; }
 
+        /// <summary>The configuration for the regex match rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regexMatchConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1RegexMatchConfig RegexMatchConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -18200,6 +18204,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplate")]
         public virtual string InspectTemplate { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Regex match configuration.</summary>
+    public class GoogleCloudContactcenterinsightsV1RegexMatchConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -24553,6 +24564,5443 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Optional. Speech-to-Text configuration. Will default to the config specified in Settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechConfig")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1SpeechConfig SpeechConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The analysis resource.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainAnalysis : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The result of the analysis, which is populated when the analysis finishes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisResult")]
+        public virtual GoogleCloudContactcenterinsightsV1mainAnalysisResult AnalysisResult { get; set; }
+
+        /// <summary>
+        /// To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators
+        /// will be run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotatorSelector")]
+        public virtual GoogleCloudContactcenterinsightsV1mainAnnotatorSelector AnnotatorSelector { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>
+        /// Output only. The time at which the analysis was created, which occurs when the long-running operation
+        /// completes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Immutable. The resource name of the analysis. Format:
+        /// projects/{project}/locations/{location}/conversations/{conversation}/analyses/{analysis}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _requestTimeRaw;
+
+        private object _requestTime;
+
+        /// <summary>Output only. The time at which the analysis was requested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestTime")]
+        public virtual string RequestTimeRaw
+        {
+            get => _requestTimeRaw;
+            set
+            {
+                _requestTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _requestTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RequestTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RequestTimeDateTimeOffset instead.")]
+        public virtual object RequestTime
+        {
+            get => _requestTime;
+            set
+            {
+                _requestTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _requestTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RequestTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RequestTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RequestTimeRaw);
+            set => RequestTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The result of an analysis.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainAnalysisResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Call-specific metadata created by the analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callAnalysisMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1mainAnalysisResultCallAnalysisMetadata CallAnalysisMetadata { get; set; }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>The time at which the analysis ended.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Call-specific metadata created during analysis.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainAnalysisResultCallAnalysisMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of call annotations that apply to this call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainCallAnnotation> Annotations { get; set; }
+
+        /// <summary>All the entities in the call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entities")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudContactcenterinsightsV1mainEntity> Entities { get; set; }
+
+        /// <summary>All the matched intents in the call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intents")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudContactcenterinsightsV1mainIntent> Intents { get; set; }
+
+        /// <summary>Overall conversation-level issue modeling result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueModelResult")]
+        public virtual GoogleCloudContactcenterinsightsV1mainIssueModelResult IssueModelResult { get; set; }
+
+        /// <summary>All the matched phrase matchers in the call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phraseMatchers")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudContactcenterinsightsV1mainPhraseMatchData> PhraseMatchers { get; set; }
+
+        /// <summary>Results of scoring QaScorecards.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaScorecardResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainQaScorecardResult> QaScorecardResults { get; set; }
+
+        /// <summary>Overall conversation-level sentiment for each channel of the call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentiments")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainConversationLevelSentiment> Sentiments { get; set; }
+
+        /// <summary>Overall conversation-level silence during the call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("silence")]
+        public virtual GoogleCloudContactcenterinsightsV1mainConversationLevelSilence Silence { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A point in a conversation that marks the start or the end of an annotation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainAnnotationBoundary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The index in the sequence of transcribed pieces of the conversation where the boundary is located. This
+        /// index starts at zero.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcriptIndex")]
+        public virtual System.Nullable<int> TranscriptIndex { get; set; }
+
+        /// <summary>
+        /// The word index of this boundary with respect to the first word in the transcript piece. This index starts at
+        /// zero.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wordIndex")]
+        public virtual System.Nullable<int> WordIndex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Selector of all available annotators and phrase matchers to run.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainAnnotatorSelector : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The issue model to run. If not provided, the most recently deployed topic model will be used. The provided
+        /// issue model will only be used for inference if the issue model is deployed and if run_issue_model_annotator
+        /// is set to true. If more than one issue model is provided, only the first provided issue model will be used
+        /// for inference.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueModels")]
+        public virtual System.Collections.Generic.IList<string> IssueModels { get; set; }
+
+        /// <summary>
+        /// The list of phrase matchers to run. If not provided, all active phrase matchers will be used. If inactive
+        /// phrase matchers are provided, they will not be used. Phrase matchers will be run only if
+        /// run_phrase_matcher_annotator is set to true. Format:
+        /// projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phraseMatchers")]
+        public virtual System.Collections.Generic.IList<string> PhraseMatchers { get; set; }
+
+        /// <summary>Configuration for the QA annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfig QaConfig { get; set; }
+
+        /// <summary>Whether to run the entity annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runEntityAnnotator")]
+        public virtual System.Nullable<bool> RunEntityAnnotator { get; set; }
+
+        /// <summary>Whether to run the intent annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runIntentAnnotator")]
+        public virtual System.Nullable<bool> RunIntentAnnotator { get; set; }
+
+        /// <summary>Whether to run the interruption annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runInterruptionAnnotator")]
+        public virtual System.Nullable<bool> RunInterruptionAnnotator { get; set; }
+
+        /// <summary>
+        /// Whether to run the issue model annotator. A model should have already been deployed for this to take effect.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runIssueModelAnnotator")]
+        public virtual System.Nullable<bool> RunIssueModelAnnotator { get; set; }
+
+        /// <summary>Whether to run the active phrase matcher annotator(s).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runPhraseMatcherAnnotator")]
+        public virtual System.Nullable<bool> RunPhraseMatcherAnnotator { get; set; }
+
+        /// <summary>Whether to run the QA annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runQaAnnotator")]
+        public virtual System.Nullable<bool> RunQaAnnotator { get; set; }
+
+        /// <summary>Whether to run the sentiment annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runSentimentAnnotator")]
+        public virtual System.Nullable<bool> RunSentimentAnnotator { get; set; }
+
+        /// <summary>Whether to run the silence annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runSilenceAnnotator")]
+        public virtual System.Nullable<bool> RunSilenceAnnotator { get; set; }
+
+        /// <summary>Whether to run the summarization annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runSummarizationAnnotator")]
+        public virtual System.Nullable<bool> RunSummarizationAnnotator { get; set; }
+
+        /// <summary>Configuration for the summarization annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarizationConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorSummarizationConfig SummarizationConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the QA feature.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A manual list of scorecards to score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scorecardList")]
+        public virtual GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfigScorecardList ScorecardList { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Container for a list of scorecards.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfigScorecardList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of QaScorecardRevisions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaScorecardRevisions")]
+        public virtual System.Collections.Generic.IList<string> QaScorecardRevisions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for summarization.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorSummarizationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Resource name of the Dialogflow conversation profile. Format:
+        /// projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationProfile")]
+        public virtual string ConversationProfile { get; set; }
+
+        /// <summary>
+        /// The resource name of the existing created generator. Format: projects//locations//generators/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generator")]
+        public virtual string Generator { get; set; }
+
+        /// <summary>Default summarization model to be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarizationModel")]
+        public virtual string SummarizationModel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The feedback that the customer has about a certain answer in the conversation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainAnswerFeedback : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates whether an answer or item was clicked by the human agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clicked")]
+        public virtual System.Nullable<bool> Clicked { get; set; }
+
+        /// <summary>The correctness level of an answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("correctnessLevel")]
+        public virtual string CorrectnessLevel { get; set; }
+
+        /// <summary>
+        /// Indicates whether an answer or item was displayed to the human agent in the agent desktop UI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayed")]
+        public virtual System.Nullable<bool> Displayed { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Agent Assist Article Suggestion data.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainArticleSuggestionData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The system's confidence score that this article is a good match for this conversation, ranging from 0.0
+        /// (completely uncertain) to 1.0 (completely certain).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidenceScore")]
+        public virtual System.Nullable<float> ConfidenceScore { get; set; }
+
+        /// <summary>
+        /// Map that contains metadata about the Article Suggestion and the document that it originates from.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryRecord")]
+        public virtual string QueryRecord { get; set; }
+
+        /// <summary>
+        /// The knowledge document that this answer was extracted from. Format:
+        /// projects/{project}/knowledgeBases/{knowledge_base}/documents/{document}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>Article title.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>Article URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata for a bulk analyze conversations operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of requested analyses that have completed successfully so far.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completedAnalysesCount")]
+        public virtual System.Nullable<int> CompletedAnalysesCount { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The number of requested analyses that have failed so far.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedAnalysesCount")]
+        public virtual System.Nullable<int> FailedAnalysesCount { get; set; }
+
+        /// <summary>
+        /// Output only. Partial errors during bulk analyze operation that might cause the operation output to be
+        /// incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
+        /// <summary>The original request for bulk analyze.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsRequest Request { get; set; }
+
+        /// <summary>
+        /// Total number of analyses requested. Computed by the number of conversations returned by `filter` multiplied
+        /// by `analysis_percentage` in the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalRequestedAnalysesCount")]
+        public virtual System.Nullable<int> TotalRequestedAnalysesCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to analyze conversations in bulk.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Percentage of selected conversation to analyze, between [0, 100].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisPercentage")]
+        public virtual System.Nullable<float> AnalysisPercentage { get; set; }
+
+        /// <summary>
+        /// To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators
+        /// will be run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotatorSelector")]
+        public virtual GoogleCloudContactcenterinsightsV1mainAnnotatorSelector AnnotatorSelector { get; set; }
+
+        /// <summary>Required. Filter used to select the subset of conversations to analyze.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>Required. The parent resource to create analyses in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for a bulk analyze conversations operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Count of failed analyses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedAnalysisCount")]
+        public virtual System.Nullable<int> FailedAnalysisCount { get; set; }
+
+        /// <summary>Count of successful analyses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successfulAnalysisCount")]
+        public virtual System.Nullable<int> SuccessfulAnalysisCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata for a bulk delete conversations operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Partial errors during bulk delete conversations operation that might cause the operation output to be
+        /// incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
+        /// <summary>The original request for bulk delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to delete conversations in bulk.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Filter used to select the subset of conversations to delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// If set to true, all of this conversation's analyses will also be deleted. Otherwise, the request will only
+        /// succeed if the conversation has no analyses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; }
+
+        /// <summary>Maximum number of conversations to delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDeleteCount")]
+        public virtual System.Nullable<int> MaxDeleteCount { get; set; }
+
+        /// <summary>
+        /// Required. The parent resource to delete conversations from. Format: projects/{project}/locations/{location}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for a bulk delete conversations operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for the BulkDeleteFeedbackLabels endpoint.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Partial errors during deletion operation that might cause the operation output to be incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
+        /// <summary>Output only. The original request for delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for the BulkDeleteFeedbackLabels endpoint.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions
+        /// (AND). Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` *
+        /// `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI,
+        /// TOPIC_MODELING
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>Required. The parent resource for new feedback labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the BulkDeleteFeedbackLabels endpoint.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for the BulkDownloadFeedbackLabel endpoint.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Statistics for BulkDownloadFeedbackLabels operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadStats")]
+        public virtual GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadataDownloadStats DownloadStats { get; set; }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Partial errors during ingest operation that might cause the operation output to be incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
+        /// <summary>Output only. The original request for download.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Statistics for BulkDownloadFeedbackLabels operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadataDownloadStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Full name of the files written to Cloud storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileNames")]
+        public virtual System.Collections.Generic.IList<string> FileNames { get; set; }
+
+        /// <summary>The number of objects processed during the download operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processedObjectCount")]
+        public virtual System.Nullable<int> ProcessedObjectCount { get; set; }
+
+        /// <summary>
+        /// The number of new feedback labels downloaded during this operation. Different from "processed" because some
+        /// labels might not be downloaded because an error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successfulDownloadCount")]
+        public virtual System.Nullable<int> SuccessfulDownloadCount { get; set; }
+
+        /// <summary>Total number of files written to the provided Cloud Storage bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalFilesWritten")]
+        public virtual System.Nullable<int> TotalFilesWritten { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for the BulkDownloadFeedbackLabel endpoint.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Filter parent conversations to download feedback labels for. When specified, the feedback labels
+        /// will be downloaded for the conversations that match the filter. If `template_qa_scorecard_id` is set, all
+        /// the conversations that match the filter will be paired with the questions under the scorecard for labeling.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationFilter")]
+        public virtual string ConversationFilter { get; set; }
+
+        /// <summary>Optional. The type of feedback labels that will be downloaded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedbackLabelType")]
+        public virtual string FeedbackLabelType { get; set; }
+
+        /// <summary>
+        /// Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions
+        /// (AND). Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` *
+        /// `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI,
+        /// TOPIC_MODELING
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>A cloud storage bucket destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
+        public virtual GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestGcsDestination GcsDestination { get; set; }
+
+        /// <summary>
+        /// Optional. Limits the maximum number of feedback labels that will be downloaded. The first `N` feedback
+        /// labels will be downloaded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDownloadCount")]
+        public virtual System.Nullable<int> MaxDownloadCount { get; set; }
+
+        /// <summary>Required. The parent resource for new feedback labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>A sheets document destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sheetsDestination")]
+        public virtual GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestSheetsDestination SheetsDestination { get; set; }
+
+        /// <summary>
+        /// Optional. If set, a template for labeling conversations and scorecard questions will be created from the
+        /// conversation_filter and the questions under the scorecard(s). The feedback label `filter` will be ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templateQaScorecardId")]
+        public virtual System.Collections.Generic.IList<string> TemplateQaScorecardId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Google Cloud Storage Object details to write the feedback labels to.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestGcsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Add whitespace to the JSON file. Makes easier to read, but increases file size. Only applicable
+        /// for JSON format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addWhitespace")]
+        public virtual System.Nullable<bool> AddWhitespace { get; set; }
+
+        /// <summary>
+        /// Optional. Always print fields with no presence. This is useful for printing fields that are not set, like
+        /// implicit 0 value or empty lists/maps. Only applicable for JSON format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alwaysPrintEmptyFields")]
+        public virtual System.Nullable<bool> AlwaysPrintEmptyFields { get; set; }
+
+        /// <summary>Required. File format in which the labels will be exported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("format")]
+        public virtual string Format { get; set; }
+
+        /// <summary>
+        /// Required. The Google Cloud Storage URI to write the feedback labels to. The file name will be used as a
+        /// prefix for the files written to the bucket if the output needs to be split across multiple files, otherwise
+        /// it will be used as is. The file extension will be appended to the file name based on the format selected.
+        /// E.g. `gs://bucket_name/object_uri_prefix`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectUri")]
+        public virtual string ObjectUri { get; set; }
+
+        /// <summary>Optional. The number of records per file. Applicable for either format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordsPerFileCount")]
+        public virtual System.Nullable<long> RecordsPerFileCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Google Sheets document details to write the feedback labels to.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestSheetsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The title of the new sheet to write the feedback labels to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sheetTitle")]
+        public virtual string SheetTitle { get; set; }
+
+        /// <summary>
+        /// Required. The Google Sheets document to write the feedback labels to. Retrieved from Google Sheets URI. E.g.
+        /// `https://docs.google.com/spreadsheets/d/1234567890` The spreadsheet must be shared with the Insights P4SA.
+        /// The spreadsheet ID written to will be returned as `file_names` in the BulkDownloadFeedbackLabelsMetadata.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spreadsheetUri")]
+        public virtual string SpreadsheetUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the BulkDownloadFeedbackLabel endpoint.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A piece of metadata that applies to a window of a call.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainCallAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The boundary in the conversation where the annotation ends, inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotationEndBoundary")]
+        public virtual GoogleCloudContactcenterinsightsV1mainAnnotationBoundary AnnotationEndBoundary { get; set; }
+
+        /// <summary>The boundary in the conversation where the annotation starts, inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotationStartBoundary")]
+        public virtual GoogleCloudContactcenterinsightsV1mainAnnotationBoundary AnnotationStartBoundary { get; set; }
+
+        /// <summary>
+        /// The channel of the audio where the annotation occurs. For single-channel audio, this field is not populated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelTag")]
+        public virtual System.Nullable<int> ChannelTag { get; set; }
+
+        /// <summary>Data specifying an entity mention.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityMentionData")]
+        public virtual GoogleCloudContactcenterinsightsV1mainEntityMentionData EntityMentionData { get; set; }
+
+        /// <summary>Data specifying a hold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("holdData")]
+        public virtual GoogleCloudContactcenterinsightsV1mainHoldData HoldData { get; set; }
+
+        /// <summary>Data specifying an intent match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentMatchData")]
+        public virtual GoogleCloudContactcenterinsightsV1mainIntentMatchData IntentMatchData { get; set; }
+
+        /// <summary>Data specifying an interruption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interruptionData")]
+        public virtual GoogleCloudContactcenterinsightsV1mainInterruptionData InterruptionData { get; set; }
+
+        /// <summary>Data specifying an issue match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueMatchData")]
+        public virtual GoogleCloudContactcenterinsightsV1mainIssueMatchData IssueMatchData { get; set; }
+
+        /// <summary>Data specifying a phrase match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phraseMatchData")]
+        public virtual GoogleCloudContactcenterinsightsV1mainPhraseMatchData PhraseMatchData { get; set; }
+
+        /// <summary>Data specifying sentiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentimentData")]
+        public virtual GoogleCloudContactcenterinsightsV1mainSentimentData SentimentData { get; set; }
+
+        /// <summary>Data specifying silence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("silenceData")]
+        public virtual GoogleCloudContactcenterinsightsV1mainSilenceData SilenceData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The conversation resource.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An opaque, user-specified string representing the human agent who handled the conversation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
+        public virtual string AgentId { get; set; }
+
+        /// <summary>Call-specific metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1mainConversationCallMetadata CallMetadata { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time at which the conversation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The source of the audio and transcription for the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
+        public virtual GoogleCloudContactcenterinsightsV1mainConversationDataSource DataSource { get; set; }
+
+        /// <summary>
+        /// Output only. All the matched Dialogflow intents in the call. The key corresponds to a Dialogflow intent,
+        /// format: projects/{project}/agent/{agent}/intents/{intent}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowIntents")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudContactcenterinsightsV1mainDialogflowIntent> DialogflowIntents { get; set; }
+
+        /// <summary>Output only. The duration of the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
+
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
+        /// <summary>
+        /// The time at which this conversation should expire. After this time, the conversation data and any associated
+        /// analyses will be deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// A map for the user to specify any custom fields. A maximum of 100 labels per conversation is allowed, with a
+        /// maximum of 256 characters per entry.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>A user-specified language code for the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>Output only. The conversation's latest analysis, if one exists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestAnalysis")]
+        public virtual GoogleCloudContactcenterinsightsV1mainAnalysis LatestAnalysis { get; set; }
+
+        /// <summary>Output only. Latest summary of the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestSummary")]
+        public virtual GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData LatestSummary { get; set; }
+
+        /// <summary>Immutable. The conversation medium, if unspecified will default to PHONE_CALL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("medium")]
+        public virtual string Medium { get; set; }
+
+        /// <summary>
+        /// Input only. JSON metadata encoded as a string. This field is primarily used by Insights integrations with
+        /// various telephony systems and must be in one of Insight's supported formats.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataJson")]
+        public virtual string MetadataJson { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the conversation. Format:
+        /// projects/{project}/locations/{location}/conversations/{conversation}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Obfuscated user ID which the customer sent to us.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedUserId")]
+        public virtual string ObfuscatedUserId { get; set; }
+
+        /// <summary>Conversation metadata related to quality management.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qualityMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1mainConversationQualityMetadata QualityMetadata { get; set; }
+
+        /// <summary>
+        /// Output only. The annotations that were generated during the customer and agent interaction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation> RuntimeAnnotations { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>The time at which the conversation started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The conversation transcript.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
+        public virtual GoogleCloudContactcenterinsightsV1mainConversationTranscript Transcript { get; set; }
+
+        /// <summary>
+        /// Input only. The TTL for this resource. If specified, then this TTL will be used to calculate the expire
+        /// time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual object Ttl { get; set; }
+
+        /// <summary>Output only. The number of turns in the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("turnCount")]
+        public virtual System.Nullable<int> TurnCount { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The most recent time at which the conversation was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Call-specific metadata.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationCallMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The audio channel that contains the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentChannel")]
+        public virtual System.Nullable<int> AgentChannel { get; set; }
+
+        /// <summary>The audio channel that contains the customer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerChannel")]
+        public virtual System.Nullable<int> CustomerChannel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The conversation source, which is a combination of transcript and audio.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationDataSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The source when the conversation comes from Dialogflow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowSource")]
+        public virtual GoogleCloudContactcenterinsightsV1mainDialogflowSource DialogflowSource { get; set; }
+
+        /// <summary>A Cloud Storage location specification for the audio and transcript.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GoogleCloudContactcenterinsightsV1mainGcsSource GcsSource { get; set; }
+
+        /// <summary>Cloud Storage URI that points to a file that contains the conversation metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataUri")]
+        public virtual string MetadataUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>One channel of conversation-level sentiment data.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationLevelSentiment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The channel of the audio that the data applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelTag")]
+        public virtual System.Nullable<int> ChannelTag { get; set; }
+
+        /// <summary>Data specifying sentiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentimentData")]
+        public virtual GoogleCloudContactcenterinsightsV1mainSentimentData SentimentData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Conversation-level silence data.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationLevelSilence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Amount of time calculated to be in silence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("silenceDuration")]
+        public virtual object SilenceDuration { get; set; }
+
+        /// <summary>Percentage of the total conversation spent in silence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("silencePercentage")]
+        public virtual System.Nullable<float> SilencePercentage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The call participant speaking for a given utterance.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationParticipant : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Deprecated. Use `dialogflow_participant_name` instead. The name of the Dialogflow participant. Format:
+        /// projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowParticipant")]
+        public virtual string DialogflowParticipant { get; set; }
+
+        /// <summary>
+        /// The name of the participant provided by Dialogflow. Format:
+        /// projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowParticipantName")]
+        public virtual string DialogflowParticipantName { get; set; }
+
+        /// <summary>Obfuscated user ID from Dialogflow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedExternalUserId")]
+        public virtual string ObfuscatedExternalUserId { get; set; }
+
+        /// <summary>The role of the participant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
+
+        /// <summary>A user-specified ID representing the participant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Conversation metadata related to quality management.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationQualityMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Information about agents involved in the call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentInfo")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo> AgentInfo { get; set; }
+
+        /// <summary>An arbitrary integer value indicating the customer's satisfaction rating.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerSatisfactionRating")]
+        public virtual System.Nullable<int> CustomerSatisfactionRating { get; set; }
+
+        /// <summary>Input only. The feedback labels associated with the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedbackLabels")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainFeedbackLabel> FeedbackLabels { get; set; }
+
+        /// <summary>An arbitrary string value specifying the menu path the customer took.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("menuPath")]
+        public virtual string MenuPath { get; set; }
+
+        /// <summary>The amount of time the customer waited to connect with an agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("waitDuration")]
+        public virtual object WaitDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about an agent involved in the conversation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A user-specified string representing the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
+        public virtual string AgentId { get; set; }
+
+        /// <summary>The agent type, e.g. HUMAN_AGENT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentType")]
+        public virtual string AgentType { get; set; }
+
+        /// <summary>The agent's deployment display name. Only applicable to automated agents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentDisplayName")]
+        public virtual string DeploymentDisplayName { get; set; }
+
+        /// <summary>The agent's deployment ID. Only applicable to automated agents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentId")]
+        public virtual string DeploymentId { get; set; }
+
+        /// <summary>The agent's name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>A user-provided string indicating the outcome of the agent's segment of the call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dispositionCode")]
+        public virtual string DispositionCode { get; set; }
+
+        /// <summary>The agent's location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
+        /// A user-specified string representing the agent's team. Deprecated in favor of the `teams` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("team")]
+        public virtual string Team { get; set; }
+
+        /// <summary>User-specified strings representing the agent's teams.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("teams")]
+        public virtual System.Collections.Generic.IList<string> Teams { get; set; }
+
+        /// <summary>The agent's version display name. Only applicable to automated agents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionDisplayName")]
+        public virtual string VersionDisplayName { get; set; }
+
+        /// <summary>The agent's version ID. Only applicable to automated agents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
+        public virtual string VersionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Conversation summarization suggestion data.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
+
+        /// <summary>The confidence score of the summarization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>
+        /// The name of the model that generates this summary. Format:
+        /// projects/{project}/locations/{location}/conversationModels/{conversation_model}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationModel")]
+        public virtual string ConversationModel { get; set; }
+
+        /// <summary>Agent Assist generator ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatorId")]
+        public virtual string GeneratorId { get; set; }
+
+        /// <summary>
+        /// A map that contains metadata about the summarization and the document from which it originates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>The summarization content that is concatenated into one string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>
+        /// The summarization content that is divided into sections. The key is the section's name and the value is the
+        /// section's content. There is no specific format for the key or value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textSections")]
+        public virtual System.Collections.Generic.IDictionary<string, string> TextSections { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A message representing the transcript of a conversation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationTranscript : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of sequential transcript segments that comprise the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcriptSegments")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegment> TranscriptSegments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A segment of a full transcript.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// For conversations derived from multi-channel audio, this is the channel number corresponding to the audio
+        /// from that channel. For audioChannelCount = N, its output values can range from '1' to 'N'. A channel tag of
+        /// 0 indicates that the audio is mono.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelTag")]
+        public virtual System.Nullable<int> ChannelTag { get; set; }
+
+        /// <summary>
+        /// A confidence estimate between 0.0 and 1.0 of the fidelity of this segment. A default value of 0.0 indicates
+        /// that the value is unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>CCAI metadata relating to the current transcript segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowSegmentMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata DialogflowSegmentMetadata { get; set; }
+
+        /// <summary>
+        /// The language code of this segment as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
+        /// Example: "en-US".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        private string _messageTimeRaw;
+
+        private object _messageTime;
+
+        /// <summary>The time that the message occurred, if provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageTime")]
+        public virtual string MessageTimeRaw
+        {
+            get => _messageTimeRaw;
+            set
+            {
+                _messageTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _messageTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="MessageTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use MessageTimeDateTimeOffset instead.")]
+        public virtual object MessageTime
+        {
+            get => _messageTime;
+            set
+            {
+                _messageTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _messageTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="MessageTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? MessageTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MessageTimeRaw);
+            set => MessageTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The participant of this segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segmentParticipant")]
+        public virtual GoogleCloudContactcenterinsightsV1mainConversationParticipant SegmentParticipant { get; set; }
+
+        /// <summary>The sentiment for this transcript segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentiment")]
+        public virtual GoogleCloudContactcenterinsightsV1mainSentimentData Sentiment { get; set; }
+
+        /// <summary>The text of this segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>A list of the word-specific information for each word in the segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("words")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentWordInfo> Words { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata from Dialogflow relating to the current transcript segment.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether the transcript segment was covered under the configured smart reply allowlist in Agent Assist.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("smartReplyAllowlistCovered")]
+        public virtual System.Nullable<bool> SmartReplyAllowlistCovered { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Word-level info for words in a transcript.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentWordInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A confidence estimate between 0.0 and 1.0 of the fidelity of this word. A default value of 0.0 indicates
+        /// that the value is unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>Time offset of the end of this word relative to the beginning of the total conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endOffset")]
+        public virtual object EndOffset { get; set; }
+
+        /// <summary>
+        /// Time offset of the start of this word relative to the beginning of the total conversation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startOffset")]
+        public virtual object StartOffset { get; set; }
+
+        /// <summary>The word itself. Includes punctuation marks that surround the word.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("word")]
+        public virtual string Word { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for a create analysis operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainCreateAnalysisOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The annotator selector used for the analysis (if any).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotatorSelector")]
+        public virtual GoogleCloudContactcenterinsightsV1mainAnnotatorSelector AnnotatorSelector { get; set; }
+
+        /// <summary>Output only. The Conversation that this Analysis Operation belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversation")]
+        public virtual string Conversation { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for creating an issue.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainCreateIssueMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The original request for creation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1mainCreateIssueRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for creating an issue model.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainCreateIssueModelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The original request for creation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1mainCreateIssueModelRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to create an issue model.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainCreateIssueModelRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The issue model to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueModel")]
+        public virtual GoogleCloudContactcenterinsightsV1mainIssueModel IssueModel { get; set; }
+
+        /// <summary>Required. The parent resource of the issue model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to create an issue.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainCreateIssueRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The values for the new issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issue")]
+        public virtual GoogleCloudContactcenterinsightsV1mainIssue Issue { get; set; }
+
+        /// <summary>Required. The parent resource of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Dataset resource represents a collection of conversations that may be bounded (Static Dataset, e.g. golden
+    /// dataset for training), or unbounded (Dynamic Dataset, e.g. live traffic, or agent training traffic)
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1mainDataset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Dataset create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Dataset description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Display name for the dataaset</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Immutable. Identifier. Resource name of the dataset. Format:
+        /// projects/{project}/locations/{location}/datasets/{dataset}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Option TTL for the dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual object Ttl { get; set; }
+
+        /// <summary>Dataset usage type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Dataset update time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for deleting an issue model.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainDeleteIssueModelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The original request for deletion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1mainDeleteIssueModelRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to delete an issue model.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainDeleteIssueModelRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the issue model to delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata for deleting a QaQuestionTag Resource.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The original request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for deleting a QaQuestionTag.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the QaQuestionTag to delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for deploying an issue model.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainDeployIssueModelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The original request for deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1mainDeployIssueModelRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to deploy an issue model.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainDeployIssueModelRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The issue model to deploy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response to deploy an issue model.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainDeployIssueModelResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The data for a Dialogflow intent. Represents a detected intent in the conversation, e.g. MAKES_PROMISE.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1mainDialogflowIntent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The human-readable name of the intent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Dialogflow interaction data.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainDialogflowInteractionData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The confidence of the match ranging from 0.0 (completely uncertain) to 1.0 (completely certain).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>
+        /// The Dialogflow intent resource path. Format: projects/{project}/agent/{agent}/intents/{intent}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowIntentId")]
+        public virtual string DialogflowIntentId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Dialogflow source of conversation data.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainDialogflowSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cloud Storage URI that points to a file that contains the conversation audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioUri")]
+        public virtual string AudioUri { get; set; }
+
+        /// <summary>
+        /// Output only. The name of the Dialogflow conversation that this conversation resource is derived from.
+        /// Format: projects/{project}/locations/{location}/conversations/{conversation}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowConversation")]
+        public virtual string DialogflowConversation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A dimension determines the grouping key for the query. In SQL terms, these would be part of both the "SELECT"
+    /// and "GROUP BY" clauses.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1mainDimension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Metadata about the agent dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1mainDimensionAgentDimensionMetadata AgentDimensionMetadata { get; set; }
+
+        /// <summary>Output only. Metadata about the client sentiment category dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSentimentCategoryDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1mainDimensionClientSentimentCategoryDimensionMetadata ClientSentimentCategoryDimensionMetadata { get; set; }
+
+        /// <summary>Output only. Metadata about the conversation profile dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationProfileDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1mainDimensionConversationProfileDimensionMetadata ConversationProfileDimensionMetadata { get; set; }
+
+        /// <summary>Output only. Metadata about the Conversational Agents playbook dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationalAgentsPlaybookDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsPlaybookDimensionMetadata ConversationalAgentsPlaybookDimensionMetadata { get; set; }
+
+        /// <summary>Output only. Metadata about the Conversational Agents tool dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationalAgentsToolDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsToolDimensionMetadata ConversationalAgentsToolDimensionMetadata { get; set; }
+
+        /// <summary>The key of the dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionKey")]
+        public virtual string DimensionKey { get; set; }
+
+        /// <summary>Output only. Metadata about the issue dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1mainDimensionIssueDimensionMetadata IssueDimensionMetadata { get; set; }
+
+        /// <summary>Output only. Metadata about conversation labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1mainDimensionLabelDimensionMetadata LabelDimensionMetadata { get; set; }
+
+        /// <summary>Output only. Metadata about the conversation medium dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediumDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1mainDimensionMediumDimensionMetadata MediumDimensionMetadata { get; set; }
+
+        /// <summary>Output only. Metadata about the QA question-answer dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaQuestionAnswerDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionAnswerDimensionMetadata QaQuestionAnswerDimensionMetadata { get; set; }
+
+        /// <summary>Output only. Metadata about the QA question dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaQuestionDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionDimensionMetadata QaQuestionDimensionMetadata { get; set; }
+
+        /// <summary>Output only. Metadata about the QA scorecard dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaScorecardDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1mainDimensionQaScorecardDimensionMetadata QaScorecardDimensionMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the agent dimension.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainDimensionAgentDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The agent's deployment display name. Only applicable to automated agents. This will be populated
+        /// for AGENT_DEPLOYMENT_ID dimensions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentDeploymentDisplayName")]
+        public virtual string AgentDeploymentDisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. The agent's deployment ID. Only applicable to automated agents. This will be populated for AGENT
+        /// and AGENT_DEPLOYMENT_ID dimensions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentDeploymentId")]
+        public virtual string AgentDeploymentId { get; set; }
+
+        /// <summary>
+        /// Optional. The agent's name This will be populated for AGENT, AGENT_TEAM, AGENT_VERSION_ID, and
+        /// AGENT_DEPLOYMENT_ID dimensions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentDisplayName")]
+        public virtual string AgentDisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. A user-specified string representing the agent. This will be populated for AGENT, AGENT_TEAM,
+        /// AGENT_VERSION_ID, and AGENT_DEPLOYMENT_ID dimensions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
+        public virtual string AgentId { get; set; }
+
+        /// <summary>Optional. A user-specified string representing the agent's team.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentTeam")]
+        public virtual string AgentTeam { get; set; }
+
+        /// <summary>
+        /// Optional. The agent's version display name. Only applicable to automated agents. This will be populated for
+        /// AGENT_VERSION_ID, and AGENT_DEPLOYMENT_ID dimensions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentVersionDisplayName")]
+        public virtual string AgentVersionDisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. The agent's version ID. Only applicable to automated agents. This will be populated for
+        /// AGENT_VERSION_ID, and AGENT_DEPLOYMENT_ID dimensions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentVersionId")]
+        public virtual string AgentVersionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the client sentiment category dimension.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainDimensionClientSentimentCategoryDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The client sentiment category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentimentCategory")]
+        public virtual string SentimentCategory { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the conversation profile dimension.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainDimensionConversationProfileDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The conversation profile ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationProfileId")]
+        public virtual string ConversationProfileId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the Conversational Agents playbook dimension.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsPlaybookDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The dialogflow playbook display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playbookDisplayName")]
+        public virtual string PlaybookDisplayName { get; set; }
+
+        /// <summary>Optional. The dialogflow playbook ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playbookId")]
+        public virtual string PlaybookId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the Conversational Agents tool dimension.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsToolDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The dialogflow tool display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolDisplayName")]
+        public virtual string ToolDisplayName { get; set; }
+
+        /// <summary>Optional. The dialogflow tool ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolId")]
+        public virtual string ToolId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the issue dimension.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainDimensionIssueDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The issue display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueDisplayName")]
+        public virtual string IssueDisplayName { get; set; }
+
+        /// <summary>The issue ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueId")]
+        public virtual string IssueId { get; set; }
+
+        /// <summary>The parent issue model ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueModelId")]
+        public virtual string IssueModelId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about conversation labels.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainDimensionLabelDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The label key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelKey")]
+        public virtual string LabelKey { get; set; }
+
+        /// <summary>Optional. The label value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelValue")]
+        public virtual string LabelValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the conversation medium dimension.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainDimensionMediumDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The conversation medium. Currently supports : PHONE_CALL, CHAT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("medium")]
+        public virtual string Medium { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata about the QA question-answer dimension. This is useful for showing the answer distribution for
+    /// questions for a given scorecard.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionAnswerDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The full body of the question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerValue")]
+        public virtual string AnswerValue { get; set; }
+
+        /// <summary>Optional. The QA question ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaQuestionId")]
+        public virtual string QaQuestionId { get; set; }
+
+        /// <summary>Optional. The QA scorecard ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaScorecardId")]
+        public virtual string QaScorecardId { get; set; }
+
+        /// <summary>Optional. The full body of the question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("questionBody")]
+        public virtual string QuestionBody { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the QA question dimension.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The QA question ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaQuestionId")]
+        public virtual string QaQuestionId { get; set; }
+
+        /// <summary>Optional. The QA scorecard ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaScorecardId")]
+        public virtual string QaScorecardId { get; set; }
+
+        /// <summary>Optional. The full body of the question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("questionBody")]
+        public virtual string QuestionBody { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the QA scorecard dimension.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainDimensionQaScorecardDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The QA scorecard ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaScorecardId")]
+        public virtual string QaScorecardId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A customer-managed encryption key specification that can be applied to all created resources (e.g.
+    /// `Conversation`).
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1mainEncryptionSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of customer-managed encryption key that is used to secure a resource and its
+        /// sub-resources. If empty, the resource is secured by our default encryption key. Only the key in the same
+        /// location as this resource is allowed to be used for encryption. Format:
+        /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the encryption key specification resource. Format:
+        /// projects/{project}/locations/{location}/encryptionSpec
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The data for an entity annotation. Represents a phrase in the conversation that is a known entity, such as a
+    /// person, an organization, or location.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1mainEntity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The representative name for the entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Metadata associated with the entity. For most entity types, the metadata is a Wikipedia URL
+        /// (`wikipedia_url`) and Knowledge Graph MID (`mid`), if they are available. For the metadata associated with
+        /// other entity types, see the Type table below.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The salience score associated with the entity in the [0, 1.0] range. The salience score for an entity
+        /// provides information about the importance or centrality of that entity to the entire document text. Scores
+        /// closer to 0 are less salient, while scores closer to 1.0 are highly salient.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("salience")]
+        public virtual System.Nullable<float> Salience { get; set; }
+
+        /// <summary>The aggregate sentiment expressed for this entity in the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentiment")]
+        public virtual GoogleCloudContactcenterinsightsV1mainSentimentData Sentiment { get; set; }
+
+        /// <summary>The entity type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The data for an entity mention annotation. This represents a mention of an `Entity` in the conversation.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1mainEntityMentionData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The key of this entity in conversation entities. Can be used to retrieve the exact `Entity` this mention is
+        /// attached to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityUniqueId")]
+        public virtual string EntityUniqueId { get; set; }
+
+        /// <summary>Sentiment expressed for this mention of the entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentiment")]
+        public virtual GoogleCloudContactcenterinsightsV1mainSentimentData Sentiment { get; set; }
+
+        /// <summary>The type of the entity mention.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for an export insights operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainExportInsightsDataMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of conversations that were exported successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completedExportCount")]
+        public virtual System.Nullable<int> CompletedExportCount { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The number of conversations that failed to be exported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedExportCount")]
+        public virtual System.Nullable<int> FailedExportCount { get; set; }
+
+        /// <summary>
+        /// Partial errors during export operation that might cause the operation output to be incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
+        /// <summary>The original request for export.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to export insights.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specified if sink is a BigQuery table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigQueryDestination")]
+        public virtual GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequestBigQueryDestination BigQueryDestination { get; set; }
+
+        /// <summary>Optional. Version of the export schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportSchemaVersion")]
+        public virtual string ExportSchemaVersion { get; set; }
+
+        /// <summary>
+        /// A filter to reduce results to a specific subset. Useful for exporting conversations with specific
+        /// properties.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// A fully qualified KMS key name for BigQuery tables protected by CMEK. Format:
+        /// projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}/cryptoKeyVersions/{version}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>Required. The parent resource to export data from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>Options for what to do if the destination table already exists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeDisposition")]
+        public virtual string WriteDisposition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A BigQuery Table Reference.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequestBigQueryDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the BigQuery dataset that the snapshot result should be exported to. If this dataset
+        /// does not exist, the export call returns an INVALID_ARGUMENT error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
+        public virtual string Dataset { get; set; }
+
+        /// <summary>
+        /// A project ID or number. If specified, then export will attempt to write data to this project instead of the
+        /// resource project. Otherwise, the resource project will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>
+        /// The BigQuery table name to which the insights data should be written. If this table does not exist, the
+        /// export call returns an INVALID_ARGUMENT error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual string Table { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for an export insights operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainExportInsightsDataResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata used for export issue model.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainExportIssueModelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The original export request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1mainExportIssueModelRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to export an issue model.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainExportIssueModelRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Google Cloud Storage URI to export the issue model to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
+        public virtual GoogleCloudContactcenterinsightsV1mainExportIssueModelRequestGcsDestination GcsDestination { get; set; }
+
+        /// <summary>Required. The issue model to export.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Google Cloud Storage Object URI to save the issue model to.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainExportIssueModelRequestGcsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Format: `gs:///`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectUri")]
+        public virtual string ObjectUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response from export issue model</summary>
+    public class GoogleCloudContactcenterinsightsV1mainExportIssueModelResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Agent Assist frequently-asked-question answer data.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainFaqAnswerData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The piece of text from the `source` knowledge base document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answer")]
+        public virtual string Answer { get; set; }
+
+        /// <summary>
+        /// The system's confidence score that this answer is a good match for this conversation, ranging from 0.0
+        /// (completely uncertain) to 1.0 (completely certain).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidenceScore")]
+        public virtual System.Nullable<float> ConfidenceScore { get; set; }
+
+        /// <summary>Map that contains metadata about the FAQ answer and the document that it originates from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryRecord")]
+        public virtual string QueryRecord { get; set; }
+
+        /// <summary>The corresponding FAQ question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("question")]
+        public virtual string Question { get; set; }
+
+        /// <summary>
+        /// The knowledge document that this answer was extracted from. Format:
+        /// projects/{project}/knowledgeBases/{knowledge_base}/documents/{document}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a conversation, resource, and label provided by the user. Can take the form of a string label or a
+    /// QaAnswer label. QaAnswer labels are used for Quality AI example conversations. String labels are used for Topic
+    /// Modeling. AgentAssistSummary labels are used for Agent Assist Summarization.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1mainFeedbackLabel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Create time of the label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>String label used for Topic Modeling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>
+        /// Name of the resource to be labeled. Supported resources are: *
+        /// `projects/{project}/locations/{location}/qaScorecards/{scorecard}/revisions/{revision}/qaQuestions/{question}`
+        /// * `projects/{project}/locations/{location}/issueModels/{issue_model}` *
+        /// `projects/{project}/locations/{location}/generators/{generator_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labeledResource")]
+        public virtual string LabeledResource { get; set; }
+
+        /// <summary>
+        /// Immutable. Resource name of the FeedbackLabel. Format:
+        /// projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>QaAnswer label used for Quality AI example conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaAnswerLabel")]
+        public virtual GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue QaAnswerLabel { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Update time of the label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Cloud Storage source of conversation data.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainGcsSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cloud Storage URI that points to a file that contains the conversation audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioUri")]
+        public virtual string AudioUri { get; set; }
+
+        /// <summary>
+        /// Immutable. Cloud Storage URI that points to a file that contains the conversation transcript.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcriptUri")]
+        public virtual string TranscriptUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The data for a hold annotation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainHoldData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata used for import issue model.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainImportIssueModelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The original import request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1mainImportIssueModelRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to import an issue model.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainImportIssueModelRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If set to true, will create an issue model from the imported file with randomly generated IDs for
+        /// the issue model and corresponding issues. Otherwise, replaces an existing model with the same ID as the
+        /// file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createNewModel")]
+        public virtual System.Nullable<bool> CreateNewModel { get; set; }
+
+        /// <summary>Google Cloud Storage source message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GoogleCloudContactcenterinsightsV1mainImportIssueModelRequestGcsSource GcsSource { get; set; }
+
+        /// <summary>Required. The parent resource of the issue model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Google Cloud Storage Object URI to get the issue model file from.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainImportIssueModelRequestGcsSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Format: `gs:///`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectUri")]
+        public virtual string ObjectUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response from import issue model</summary>
+    public class GoogleCloudContactcenterinsightsV1mainImportIssueModelResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The issue model that was imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueModel")]
+        public virtual GoogleCloudContactcenterinsightsV1mainIssueModel IssueModel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata for an IngestConversations operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Statistics for IngestConversations operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingestConversationsStats")]
+        public virtual GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadataIngestConversationsStats IngestConversationsStats { get; set; }
+
+        /// <summary>
+        /// Output only. Partial errors during ingest operation that might cause the operation output to be incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
+        /// <summary>Output only. The original request for ingest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1mainIngestConversationsRequest Request { get; set; }
+
+        /// <summary>Output only. Stores the conversation resources produced by ingest sampling operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampledConversations")]
+        public virtual System.Collections.Generic.IList<string> SampledConversations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Statistics for IngestConversations operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadataIngestConversationsStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The number of objects skipped because another conversation with the same transcript uri had
+        /// already been ingested.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duplicatesSkippedCount")]
+        public virtual System.Nullable<int> DuplicatesSkippedCount { get; set; }
+
+        /// <summary>
+        /// Output only. The number of objects which were unable to be ingested due to errors. The errors are populated
+        /// in the partial_errors field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedIngestCount")]
+        public virtual System.Nullable<int> FailedIngestCount { get; set; }
+
+        /// <summary>Output only. The number of objects processed during the ingest operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processedObjectCount")]
+        public virtual System.Nullable<int> ProcessedObjectCount { get; set; }
+
+        /// <summary>Output only. The number of new conversations added during this ingest operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successfulIngestCount")]
+        public virtual System.Nullable<int> SuccessfulIngestCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to ingest conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainIngestConversationsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration that applies to all conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestConversationConfig ConversationConfig { get; set; }
+
+        /// <summary>
+        /// A cloud storage bucket source. Note that any previously ingested objects from the source will be skipped to
+        /// avoid duplication.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestGcsSource GcsSource { get; set; }
+
+        /// <summary>Required. The parent resource for new conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>
+        /// Optional. DLP settings for transcript redaction. Optional, will default to the config specified in Settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redactionConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1mainRedactionConfig RedactionConfig { get; set; }
+
+        /// <summary>
+        /// Optional. If set, this fields indicates the number of objects to ingest from the Cloud Storage bucket. If
+        /// empty, the entire bucket will be ingested. Unless they are first deleted, conversations produced through
+        /// sampling won't be ingested by subsequent ingest requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleSize")]
+        public virtual System.Nullable<int> SampleSize { get; set; }
+
+        /// <summary>
+        /// Optional. Default Speech-to-Text configuration. Optional, will default to the config specified in Settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speechConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1mainSpeechConfig SpeechConfig { get; set; }
+
+        /// <summary>Configuration for when `source` contains conversation transcripts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcriptObjectConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestTranscriptObjectConfig TranscriptObjectConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration that applies to all conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestConversationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Indicates which of the channels, 1 or 2, contains the agent. Note that this must be set for
+        /// conversations to be properly displayed and analyzed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentChannel")]
+        public virtual System.Nullable<int> AgentChannel { get; set; }
+
+        /// <summary>
+        /// Optional. An opaque, user-specified string representing a human agent who handled all conversations in the
+        /// import. Note that this will be overridden if per-conversation metadata is provided through the
+        /// `metadata_bucket_uri`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
+        public virtual string AgentId { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates which of the channels, 1 or 2, contains the agent. Note that this must be set for
+        /// conversations to be properly displayed and analyzed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerChannel")]
+        public virtual System.Nullable<int> CustomerChannel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for Cloud Storage bucket sources.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestGcsSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The Cloud Storage path to the conversation audio file. Note that: [1] Audio files will be
+        /// transcribed if not already. [2] Audio files and transcript files must be in separate buckets / folders. [3]
+        /// A source file and its corresponding audio file must share the same name to be properly ingested, E.g.
+        /// `gs://bucket/transcript/conversation1.json` and `gs://bucket/audio/conversation1.mp3`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioBucketUri")]
+        public virtual string AudioBucketUri { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the type of the objects in `bucket_uri`. Avoid passing this. This is inferred from the
+        /// `transcript_bucket_uri`, `audio_bucket_uri`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketObjectType")]
+        public virtual string BucketObjectType { get; set; }
+
+        /// <summary>
+        /// Optional. The Cloud Storage bucket containing source objects. Avoid passing this. Pass this through one of
+        /// `transcript_bucket_uri` or `audio_bucket_uri`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketUri")]
+        public virtual string BucketUri { get; set; }
+
+        /// <summary>
+        /// Optional. Custom keys to extract as conversation labels from metadata files in `metadata_bucket_uri`. Keys
+        /// not included in this field will be ignored. Note that there is a limit of 100 labels per conversation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customMetadataKeys")]
+        public virtual System.Collections.Generic.IList<string> CustomMetadataKeys { get; set; }
+
+        /// <summary>
+        /// Optional. The Cloud Storage path to the conversation metadata. Note that: [1] Metadata files are expected to
+        /// be in JSON format. [2] Metadata and source files (transcripts or audio) must be in separate buckets /
+        /// folders. [3] A source file and its corresponding metadata file must share the same name to be properly
+        /// ingested, E.g. `gs://bucket/audio/conversation1.mp3` and `gs://bucket/metadata/conversation1.json`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataBucketUri")]
+        public virtual string MetadataBucketUri { get; set; }
+
+        /// <summary>
+        /// Optional. The Cloud Storage path to the conversation transcripts. Note that: [1] Transcript files are
+        /// expected to be in JSON format. [2] Transcript, audio, metadata files must be in separate buckets / folders.
+        /// [3] A source file and its corresponding metadata file must share the same name to be properly ingested, E.g.
+        /// `gs://bucket/audio/conversation1.mp3` and `gs://bucket/metadata/conversation1.json`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcriptBucketUri")]
+        public virtual string TranscriptBucketUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for processing transcript objects.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestTranscriptObjectConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The medium transcript objects represent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("medium")]
+        public virtual string Medium { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response to an IngestConversations operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainIngestConversationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for initializing a location-level encryption specification.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Partial errors during initializing operation that might cause the operation output to be incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
+        /// <summary>Output only. The original request for initialization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to initialize a location-level encryption specification.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The encryption spec used for CMEK encryption. It is required that the kms key is in the same
+        /// region as the endpoint. The same key will be used for all provisioned resources, if encryption is available.
+        /// If the `kms_key_name` field is left empty, no encryption will be enforced.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionSpec")]
+        public virtual GoogleCloudContactcenterinsightsV1mainEncryptionSpec EncryptionSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response to initialize a location-level encryption specification.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The data for an intent. Represents a detected intent in the conversation, for example MAKES_PROMISE.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1mainIntent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The human-readable name of the intent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The unique identifier of the intent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The data for an intent match. Represents an intent match for a text segment in the conversation. A text segment
+    /// can be part of a sentence, a complete sentence, or an utterance with multiple sentences.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1mainIntentMatchData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The id of the matched intent. Can be used to retrieve the corresponding intent information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentUniqueId")]
+        public virtual string IntentUniqueId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The data for an interruption annotation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainInterruptionData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The issue resource.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainIssue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time at which this issue was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Representative description of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayDescription")]
+        public virtual string DisplayDescription { get; set; }
+
+        /// <summary>The representative name for the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the issue. Format:
+        /// projects/{project}/locations/{location}/issueModels/{issue_model}/issues/{issue}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Resource names of the sample representative utterances that match to this issue.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleUtterances")]
+        public virtual System.Collections.Generic.IList<string> SampleUtterances { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The most recent time that this issue was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about the issue.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainIssueAssignment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. Display name of the assigned issue. This field is set at time of analysis and immutable since
+        /// then.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Resource name of the assigned issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issue")]
+        public virtual string Issue { get; set; }
+
+        /// <summary>Score indicating the likelihood of the issue assignment. currently bounded on [0,1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The data for an issue match annotation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainIssueMatchData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Information about the issue's assignment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueAssignment")]
+        public virtual GoogleCloudContactcenterinsightsV1mainIssueAssignment IssueAssignment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The issue model resource.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainIssueModel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time at which this issue model was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The representative name for the issue model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Configs for the input data that used to create the issue model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputDataConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1mainIssueModelInputDataConfig InputDataConfig { get; set; }
+
+        /// <summary>Output only. Number of issues in this issue model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueCount")]
+        public virtual System.Nullable<long> IssueCount { get; set; }
+
+        /// <summary>Language of the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>Type of the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelType")]
+        public virtual string ModelType { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the issue model. Format:
+        /// projects/{project}/locations/{location}/issueModels/{issue_model}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. State of the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Immutable. The issue model's label statistics on its training data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingStats")]
+        public virtual GoogleCloudContactcenterinsightsV1mainIssueModelLabelStats TrainingStats { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The most recent time at which the issue model was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configs for the input data used to create the issue model.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainIssueModelInputDataConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A filter to reduce the conversations used for training the model to a specific subset. Refer to
+        /// https://cloud.google.com/contact-center/insights/docs/filtering for details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Medium of conversations used in training data. This field is being deprecated. To specify the medium to be
+        /// used in training a new issue model, set the `medium` field on `filter`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("medium")]
+        public virtual string Medium { get; set; }
+
+        /// <summary>Output only. Number of conversations used in training. Output only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingConversationsCount")]
+        public virtual System.Nullable<long> TrainingConversationsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Aggregated statistics about an issue model.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainIssueModelLabelStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of conversations the issue model has analyzed at this point in time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analyzedConversationsCount")]
+        public virtual System.Nullable<long> AnalyzedConversationsCount { get; set; }
+
+        /// <summary>Statistics on each issue. Key is the issue's resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueStats")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudContactcenterinsightsV1mainIssueModelLabelStatsIssueStats> IssueStats { get; set; }
+
+        /// <summary>Number of analyzed conversations for which no issue was applicable at this point in time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unclassifiedConversationsCount")]
+        public virtual System.Nullable<long> UnclassifiedConversationsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Aggregated statistics about an issue.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainIssueModelLabelStatsIssueStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Display name of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Issue resource. Format: projects/{project}/locations/{location}/issueModels/{issue_model}/issues/{issue}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issue")]
+        public virtual string Issue { get; set; }
+
+        /// <summary>Number of conversations attached to the issue at this point in time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labeledConversationsCount")]
+        public virtual System.Nullable<long> LabeledConversationsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Issue Modeling result on a conversation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainIssueModelResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Issue model that generates the result. Format:
+        /// projects/{project}/locations/{location}/issueModels/{issue_model}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueModel")]
+        public virtual string IssueModel { get; set; }
+
+        /// <summary>All the matched issues.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issues")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainIssueAssignment> Issues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for listing all feedback labels.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainListAllFeedbackLabelsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The feedback labels that match the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedbackLabels")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainFeedbackLabel> FeedbackLabels { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for listing feedback labels.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainListFeedbackLabelsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The feedback labels that match the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedbackLabels")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainFeedbackLabel> FeedbackLabels { get; set; }
+
+        /// <summary>The next page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The data for a matched phrase matcher. Represents information identifying a phrase matcher for a given match.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1mainPhraseMatchData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The human-readable name of the phrase matcher.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The unique identifier (the resource name) of the phrase matcher.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phraseMatcher")]
+        public virtual string PhraseMatcher { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An answer to a QaQuestion.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainQaAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of all individual answers given to the question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerSources")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerSource> AnswerSources { get; set; }
+
+        /// <summary>The main answer value, incorporating any manual edits if they exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerValue")]
+        public virtual GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue AnswerValue { get; set; }
+
+        /// <summary>The conversation the answer applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversation")]
+        public virtual string Conversation { get; set; }
+
+        /// <summary>The QaQuestion answered by this answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaQuestion")]
+        public virtual string QaQuestion { get; set; }
+
+        /// <summary>Question text. E.g., "Did the agent greet the customer?"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("questionBody")]
+        public virtual string QuestionBody { get; set; }
+
+        /// <summary>
+        /// User-defined list of arbitrary tags. Matches the value from QaScorecard.ScorecardQuestion.tags. Used for
+        /// grouping/organization and for weighting the score of each answer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A question may have multiple answers from varying sources, one of which becomes the "main" answer above.
+    /// AnswerSource represents each individual answer.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The answer value from this source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerValue")]
+        public virtual GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue AnswerValue { get; set; }
+
+        /// <summary>What created the answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
+        public virtual string SourceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Message for holding the value of a QaAnswer. QaQuestion.AnswerChoice defines the possible answer values for a
+    /// question.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Boolean value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; }
+
+        /// <summary>
+        /// A short string used as an identifier. Matches the value used in QaQuestion.AnswerChoice.key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>A value of "Not Applicable (N/A)". Should only ever be `true`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("naValue")]
+        public virtual System.Nullable<bool> NaValue { get; set; }
+
+        /// <summary>Output only. Normalized score of the questions. Calculated as score / potential_score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalizedScore")]
+        public virtual System.Nullable<double> NormalizedScore { get; set; }
+
+        /// <summary>Numerical value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numValue")]
+        public virtual System.Nullable<double> NumValue { get; set; }
+
+        /// <summary>Output only. The maximum potential score of the question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("potentialScore")]
+        public virtual System.Nullable<double> PotentialScore { get; set; }
+
+        /// <summary>Output only. Numerical score of the answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>
+        /// Output only. A value of "Skip". If provided, this field may only be set to `true`. If a question receives
+        /// this answer, it will be excluded from any score calculations. This would mean that the question was not
+        /// evaluated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipValue")]
+        public virtual System.Nullable<bool> SkipValue { get; set; }
+
+        /// <summary>String value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("strValue")]
+        public virtual string StrValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A tag is a resource which aims to categorize a set of questions across multiple scorecards, e.g., "Customer
+    /// Satisfaction","Billing", etc.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1mainQaQuestionTag : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time at which the question tag was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. A user-specified display name for the tag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Identifier. Resource name for the QaQuestionTag Format
+        /// projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag} In the above format, the last
+        /// segment, i.e., qa_question_tag, is a server-generated ID corresponding to the tag resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. The list of Scorecard Question IDs that the tag applies to. Each QaQuestionId is represented as a
+        /// full resource name containing the Question ID. Lastly, Since a tag may not necessarily be referenced by any
+        /// Scorecard Questions, we treat this field as optional.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaQuestionIds")]
+        public virtual System.Collections.Generic.IList<string> QaQuestionIds { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The most recent time at which the question tag was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The results of scoring a single conversation against a QaScorecard. Contains a collection of QaAnswers and
+    /// aggregate score.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1mainQaScorecardResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ID of the agent that handled the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
+        public virtual string AgentId { get; set; }
+
+        /// <summary>The conversation scored by this result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversation")]
+        public virtual string Conversation { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp that the revision was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Identifier. The name of the scorecard result. Format:
+        /// projects/{project}/locations/{location}/qaScorecardResults/{qa_scorecard_result}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The normalized score, which is the score divided by the potential score. Any manual edits are included if
+        /// they exist.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalizedScore")]
+        public virtual System.Nullable<double> NormalizedScore { get; set; }
+
+        /// <summary>
+        /// The maximum potential overall score of the scorecard. Any questions answered using `na_value` are excluded
+        /// from this calculation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("potentialScore")]
+        public virtual System.Nullable<double> PotentialScore { get; set; }
+
+        /// <summary>Set of QaAnswers represented in the result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaAnswers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainQaAnswer> QaAnswers { get; set; }
+
+        /// <summary>The QaScorecardRevision scored by this result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaScorecardRevision")]
+        public virtual string QaScorecardRevision { get; set; }
+
+        /// <summary>Collection of tags and their scores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaTagResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult> QaTagResults { get; set; }
+
+        /// <summary>The overall numerical score of the result, incorporating any manual edits if they exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>List of all individual score sets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scoreSources")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainQaScorecardResultScoreSource> ScoreSources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Tags and their corresponding results.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The normalized score the tag applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalizedScore")]
+        public virtual System.Nullable<double> NormalizedScore { get; set; }
+
+        /// <summary>The potential score the tag applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("potentialScore")]
+        public virtual System.Nullable<double> PotentialScore { get; set; }
+
+        /// <summary>The score the tag applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>The tag the score applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A scorecard result may have multiple sets of scores from varying sources, one of which becomes the "main" answer
+    /// above. A ScoreSource represents each individual set of scores.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1mainQaScorecardResultScoreSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The normalized score, which is the score divided by the potential score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalizedScore")]
+        public virtual System.Nullable<double> NormalizedScore { get; set; }
+
+        /// <summary>
+        /// The maximum potential overall score of the scorecard. Any questions answered using `na_value` are excluded
+        /// from this calculation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("potentialScore")]
+        public virtual System.Nullable<double> PotentialScore { get; set; }
+
+        /// <summary>Collection of tags and their scores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaTagResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult> QaTagResults { get; set; }
+
+        /// <summary>The overall numerical score of the result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>What created the score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
+        public virtual string SourceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata from querying metrics.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainQueryMetricsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether the result rows were truncated because the result row size is too large to materialize.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultIsTruncated")]
+        public virtual System.Nullable<bool> ResultIsTruncated { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for querying metrics.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The location of the data. "projects/{project}/locations/{location}"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
+        /// The macro average slice contains aggregated averages across all selected dimensions. i.e. if group_by agent
+        /// and scorecard_id is specified, this field will contain the average across all agents and all scorecards.
+        /// This field is only populated if the request specifies a Dimension.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("macroAverageSlice")]
+        public virtual GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice MacroAverageSlice { get; set; }
+
+        /// <summary>
+        /// A slice contains a total and (if the request specified a time granularity) a time series of metric values.
+        /// Each slice contains a unique combination of the cardinality of dimensions from the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("slices")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice> Slices { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>The metrics last update time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A slice contains a total and (if the request specified a time granularity) a time series of metric values. Each
+    /// slice contains a unique combination of the cardinality of dimensions from the request. For example, if the
+    /// request specifies a single ISSUE dimension and it has a cardinality of 2 (i.e. the data used to compute the
+    /// metrics has 2 issues in total), the response will have 2 slices: * Slice 1 -&amp;gt; dimensions=[Issue 1] *
+    /// Slice 2 -&amp;gt; dimensions=[Issue 2]
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A unique combination of dimensions that this slice represents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainDimension> Dimensions { get; set; }
+
+        /// <summary>
+        /// A time series of metric values. This is only populated if the request specifies a time granularity other
+        /// than NONE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeries")]
+        public virtual GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceTimeSeries TimeSeries { get; set; }
+
+        /// <summary>
+        /// The total metric value. The interval of this data point is [starting create time, ending create time) from
+        /// the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("total")]
+        public virtual GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint Total { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A data point contains the metric values mapped to an interval.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The measure related to conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationMeasure")]
+        public virtual GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure ConversationMeasure { get; set; }
+
+        /// <summary>
+        /// The interval that this data point represents. * If this is the total data point, the interval is [starting
+        /// create time, ending create time) from the request. * If this a data point from the time series, the interval
+        /// is [time, time + time granularity from the request).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interval")]
+        public virtual GoogleTypeInterval Interval { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The measure related to conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The average agent's sentiment score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageAgentSentimentScore")]
+        public virtual System.Nullable<float> AverageAgentSentimentScore { get; set; }
+
+        /// <summary>The average client's sentiment score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageClientSentimentScore")]
+        public virtual System.Nullable<float> AverageClientSentimentScore { get; set; }
+
+        /// <summary>The average customer satisfaction rating.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageCustomerSatisfactionRating")]
+        public virtual System.Nullable<double> AverageCustomerSatisfactionRating { get; set; }
+
+        /// <summary>The average duration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageDuration")]
+        public virtual object AverageDuration { get; set; }
+
+        /// <summary>
+        /// The average normalized QA score for a scorecard. When computing the average across a set of conversations,
+        /// if a conversation has been evaluated with multiple revisions of a scorecard, only the latest revision
+        /// results will be used. Will exclude 0's in average calculation. Will be only populated if the request
+        /// specifies a dimension of QA_SCORECARD_ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageQaNormalizedScore")]
+        public virtual System.Nullable<double> AverageQaNormalizedScore { get; set; }
+
+        /// <summary>
+        /// Average QA normalized score averaged for questions averaged across all revisions of the parent scorecard.
+        /// Will be only populated if the request specifies a dimension of QA_QUESTION_ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageQaQuestionNormalizedScore")]
+        public virtual System.Nullable<double> AverageQaQuestionNormalizedScore { get; set; }
+
+        /// <summary>The average silence percentage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageSilencePercentage")]
+        public virtual System.Nullable<float> AverageSilencePercentage { get; set; }
+
+        /// <summary>The average turn count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageTurnCount")]
+        public virtual System.Nullable<float> AverageTurnCount { get; set; }
+
+        /// <summary>The conversation count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationCount")]
+        public virtual System.Nullable<int> ConversationCount { get; set; }
+
+        /// <summary>Average QA normalized score for all the tags.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaTagScores")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasureQaTagScore> QaTagScores { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Average QA normalized score for the tag.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasureQaTagScore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Average tag normalized score per tag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageTagNormalizedScore")]
+        public virtual System.Nullable<double> AverageTagNormalizedScore { get; set; }
+
+        /// <summary>Tag name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A time series of metric values.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceTimeSeries : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The data points that make up the time series .</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataPoints")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint> DataPoints { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata for querying performance overview.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for querying performance overview.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The summary text of the performance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summaryText")]
+        public virtual string SummaryText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// DLP resources used for redaction while ingesting conversations. DLP settings are applied to conversations
+    /// ingested from the `UploadConversation` and `IngestConversations` endpoints, including conversation coming from
+    /// CCAI Platform. They are not applied to conversations ingested from the `CreateConversation` endpoint or the
+    /// Dialogflow / Agent Assist runtime integrations. When using Dialogflow / Agent Assist runtime integrations,
+    /// redaction should be performed in Dialogflow / Agent Assist.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1mainRedactionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The fully-qualified DLP deidentify template resource name. Format:
+        /// `projects/{project}/deidentifyTemplates/{template}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deidentifyTemplate")]
+        public virtual string DeidentifyTemplate { get; set; }
+
+        /// <summary>
+        /// The fully-qualified DLP inspect template resource name. Format:
+        /// `projects/{project}/locations/{location}/inspectTemplates/{template}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplate")]
+        public virtual string InspectTemplate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An annotation that was generated during the customer and agent interaction.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The unique identifier of the annotation. Format:
+        /// projects/{project}/locations/{location}/conversationDatasets/{dataset}/conversationDataItems/{data_item}/conversationAnnotations/{annotation}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotationId")]
+        public virtual string AnnotationId { get; set; }
+
+        /// <summary>The feedback that the customer has about the answer in `data`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerFeedback")]
+        public virtual GoogleCloudContactcenterinsightsV1mainAnswerFeedback AnswerFeedback { get; set; }
+
+        /// <summary>Agent Assist Article Suggestion data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("articleSuggestion")]
+        public virtual GoogleCloudContactcenterinsightsV1mainArticleSuggestionData ArticleSuggestion { get; set; }
+
+        /// <summary>Conversation summarization suggestion data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationSummarizationSuggestion")]
+        public virtual GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData ConversationSummarizationSuggestion { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>The time at which this annotation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Dialogflow interaction data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowInteraction")]
+        public virtual GoogleCloudContactcenterinsightsV1mainDialogflowInteractionData DialogflowInteraction { get; set; }
+
+        /// <summary>The boundary in the conversation where the annotation ends, inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endBoundary")]
+        public virtual GoogleCloudContactcenterinsightsV1mainAnnotationBoundary EndBoundary { get; set; }
+
+        /// <summary>Agent Assist FAQ answer data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("faqAnswer")]
+        public virtual GoogleCloudContactcenterinsightsV1mainFaqAnswerData FaqAnswer { get; set; }
+
+        /// <summary>Agent Assist Smart Compose suggestion data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("smartComposeSuggestion")]
+        public virtual GoogleCloudContactcenterinsightsV1mainSmartComposeSuggestionData SmartComposeSuggestion { get; set; }
+
+        /// <summary>Agent Assist Smart Reply data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("smartReply")]
+        public virtual GoogleCloudContactcenterinsightsV1mainSmartReplyData SmartReply { get; set; }
+
+        /// <summary>The boundary in the conversation where the annotation starts, inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startBoundary")]
+        public virtual GoogleCloudContactcenterinsightsV1mainAnnotationBoundary StartBoundary { get; set; }
+
+        /// <summary>Explicit input used for generating the answer</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInput")]
+        public virtual GoogleCloudContactcenterinsightsV1mainRuntimeAnnotationUserInput UserInput { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Explicit input used for generating the answer</summary>
+    public class GoogleCloudContactcenterinsightsV1mainRuntimeAnnotationUserInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of associated generator. Format: `projects//locations//generators/`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatorName")]
+        public virtual string GeneratorName { get; set; }
+
+        /// <summary>
+        /// Query text. Article Search uses this to store the input query used to generate the search results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>Query source for the answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("querySource")]
+        public virtual string QuerySource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata for an SampleConversations operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Partial errors during sample conversations operation that might cause the operation output to
+        /// be incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
+        /// <summary>Output only. The original request for sample conversations to dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1mainSampleConversationsRequest Request { get; set; }
+
+        /// <summary>Output only. Statistics for SampleConversations operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleConversationsStats")]
+        public virtual GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadataSampleConversationsStats SampleConversationsStats { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Statistics for SampleConversations operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadataSampleConversationsStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The number of objects which were unable to be sampled due to errors. The errors are populated
+        /// in the partial_errors field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedSampleCount")]
+        public virtual System.Nullable<int> FailedSampleCount { get; set; }
+
+        /// <summary>Output only. The number of new conversations added during this sample operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successfulSampleCount")]
+        public virtual System.Nullable<int> SuccessfulSampleCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to sample conversations to a dataset.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainSampleConversationsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The dataset resource to copy the sampled conversations to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationDataset")]
+        public virtual GoogleCloudContactcenterinsightsV1mainDataset DestinationDataset { get; set; }
+
+        /// <summary>Required. The parent resource of the dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>Optional. The sample rule used for sampling conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleRule")]
+        public virtual GoogleCloudContactcenterinsightsV1mainSampleRule SampleRule { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response to an SampleConversations operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainSampleConversationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for sampling conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainSampleRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// To specify the filter for the conversions that should apply this sample rule. An empty filter means this
+        /// sample rule applies to all conversations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationFilter")]
+        public virtual string ConversationFilter { get; set; }
+
+        /// <summary>
+        /// Optional. Group by dimension to sample the conversation. If no dimension is provided, the sampling will be
+        /// applied to the project level. Current supported dimensions is 'quality_metadata.agent_info.agent_id'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
+        public virtual string Dimension { get; set; }
+
+        /// <summary>
+        /// Percentage of conversations that we should sample based on the dimension between [0, 100].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("samplePercentage")]
+        public virtual System.Nullable<double> SamplePercentage { get; set; }
+
+        /// <summary>Number of the conversations that we should sample based on the dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleRow")]
+        public virtual System.Nullable<long> SampleRow { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The data for a sentiment annotation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainSentimentData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A non-negative number from 0 to infinity which represents the absolute magnitude of sentiment regardless of
+        /// score.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("magnitude")]
+        public virtual System.Nullable<float> Magnitude { get; set; }
+
+        /// <summary>The sentiment score between -1.0 (negative) and 1.0 (positive).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The data for a silence annotation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainSilenceData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Agent Assist Smart Compose suggestion data.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainSmartComposeSuggestionData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The system's confidence score that this suggestion is a good match for this conversation, ranging from 0.0
+        /// (completely uncertain) to 1.0 (completely certain).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidenceScore")]
+        public virtual System.Nullable<double> ConfidenceScore { get; set; }
+
+        /// <summary>
+        /// Map that contains metadata about the Smart Compose suggestion and the document from which it originates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryRecord")]
+        public virtual string QueryRecord { get; set; }
+
+        /// <summary>The content of the suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestion")]
+        public virtual string Suggestion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Agent Assist Smart Reply data.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainSmartReplyData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The system's confidence score that this reply is a good match for this conversation, ranging from 0.0
+        /// (completely uncertain) to 1.0 (completely certain).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidenceScore")]
+        public virtual System.Nullable<double> ConfidenceScore { get; set; }
+
+        /// <summary>
+        /// Map that contains metadata about the Smart Reply and the document from which it originates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryRecord")]
+        public virtual string QueryRecord { get; set; }
+
+        /// <summary>The content of the reply.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reply")]
+        public virtual string Reply { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Speech-to-Text configuration. Speech-to-Text settings are applied to conversations ingested from the
+    /// `UploadConversation` and `IngestConversations` endpoints, including conversation coming from CCAI Platform. They
+    /// are not applied to conversations ingested from the `CreateConversation` endpoint.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1mainSpeechConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The fully-qualified Speech Recognizer resource name. Format:
+        /// `projects/{project_id}/locations/{location}/recognizer/{recognizer}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speechRecognizer")]
+        public virtual string SpeechRecognizer { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for undeploying an issue model.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainUndeployIssueModelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The original request for undeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1mainUndeployIssueModelRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to undeploy an issue model.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainUndeployIssueModelRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The issue model to undeploy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response to undeploy an issue model.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainUndeployIssueModelResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata for updating a QaQuestionTag Resource.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The original request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for updating a QaQuestionTag.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The QaQuestionTag to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaQuestionTag")]
+        public virtual GoogleCloudContactcenterinsightsV1mainQaQuestionTag QaQuestionTag { get; set; }
+
+        /// <summary>
+        /// Optional. The list of fields to be updated. All possible fields can be updated by passing `*`, or a subset
+        /// of the following updateable fields can be provided: * `qa_question_tag_name` - the name of the tag *
+        /// `qa_question_ids` - the list of questions the tag applies to
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata for an `UploadConversation` operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainUploadConversationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The operation name for a successfully created analysis operation, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisOperation")]
+        public virtual string AnalysisOperation { get; set; }
+
+        /// <summary>Output only. The redaction config applied to the uploaded conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appliedRedactionConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1mainRedactionConfig AppliedRedactionConfig { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The original request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1mainUploadConversationRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to upload a conversation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainUploadConversationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The conversation resource to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversation")]
+        public virtual GoogleCloudContactcenterinsightsV1mainConversation Conversation { get; set; }
+
+        /// <summary>
+        /// Optional. A unique ID for the new conversation. This ID will become the final component of the
+        /// conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should
+        /// be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationId")]
+        public virtual string ConversationId { get; set; }
+
+        /// <summary>Required. The parent resource of the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>
+        /// Optional. DLP settings for transcript redaction. Will default to the config specified in Settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redactionConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1mainRedactionConfig RedactionConfig { get; set; }
+
+        /// <summary>Optional. Speech-to-Text configuration. Will default to the config specified in Settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speechConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1mainSpeechConfig SpeechConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
