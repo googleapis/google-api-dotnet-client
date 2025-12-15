@@ -295,6 +295,7 @@ namespace Google.Apis.AppHub.v1alpha
                 Applications = new ApplicationsResource(service);
                 DiscoveredServices = new DiscoveredServicesResource(service);
                 DiscoveredWorkloads = new DiscoveredWorkloadsResource(service);
+                ExtendedMetadataSchemas = new ExtendedMetadataSchemasResource(service);
                 Operations = new OperationsResource(service);
                 ServiceProjectAttachments = new ServiceProjectAttachmentsResource(service);
             }
@@ -2534,6 +2535,153 @@ namespace Google.Apis.AppHub.v1alpha
                 }
             }
 
+            /// <summary>Gets the ExtendedMetadataSchemas resource.</summary>
+            public virtual ExtendedMetadataSchemasResource ExtendedMetadataSchemas { get; }
+
+            /// <summary>The "extendedMetadataSchemas" collection of methods.</summary>
+            public class ExtendedMetadataSchemasResource
+            {
+                private const string Resource = "extendedMetadataSchemas";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ExtendedMetadataSchemasResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Gets an Extended Metadata Schema.</summary>
+                /// <param name="name">
+                /// Required. Schema resource name Format: projects//locations//extendedMetadataSchemas/ could be
+                /// "apphub.googleapis.com/Name"
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets an Extended Metadata Schema.</summary>
+                public class GetRequest : AppHubBaseServiceRequest<Google.Apis.AppHub.v1alpha.Data.ExtendedMetadataSchema>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Schema resource name Format: projects//locations//extendedMetadataSchemas/ could be
+                    /// "apphub.googleapis.com/Name"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/extendedMetadataSchemas/.*$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists Extended Metadata Schemas available in a host project and location.</summary>
+                /// <param name="parent">
+                /// Required. Project and location to list Extended Metadata Schemas on. Expected format:
+                /// `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists Extended Metadata Schemas available in a host project and location.</summary>
+                public class ListRequest : AppHubBaseServiceRequest<Google.Apis.AppHub.v1alpha.Data.ListExtendedMetadataSchemasResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Project and location to list Extended Metadata Schemas on. Expected format:
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/extendedMetadataSchemas";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the Operations resource.</summary>
             public virtual OperationsResource Operations { get; }
 
@@ -3905,7 +4053,7 @@ namespace Google.Apis.AppHub.v1alpha.Data
 
         /// <summary>
         /// Optional. The resource name of the CRM node being attached to the boundary. Format:
-        /// `projects/{project-number}` or `projects/{project-id}`
+        /// `projects/{project-number}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crmNode")]
         public virtual string CrmNode { get; set; }
@@ -4181,6 +4329,29 @@ namespace Google.Apis.AppHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>ExtendedMetadataSchema represents a schema for extended metadata of a service or workload.</summary>
+    public class ExtendedMetadataSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The JSON schema as a string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonSchema")]
+        public virtual string JsonSchema { get; set; }
+
+        /// <summary>
+        /// Identifier. Resource name of the schema. Format: projects//locations//extendedMetadataSchemas/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The version of the schema. New versions are required to be backwards compatible.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaVersion")]
+        public virtual System.Nullable<long> SchemaVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for FindUnregisteredServices.</summary>
     public class FindUnregisteredServicesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4234,8 +4405,8 @@ namespace Google.Apis.AppHub.v1alpha.Data
     public class Identity : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Principal of the identity. Supported formats: * `sa://my-sa@xxxx.iam.gserviceaccount.com` for
-        /// GCP Service Account *
+        /// Output only. The principal of the identity. Supported formats: *
+        /// `sa://my-sa@PROJECT_ID.iam.gserviceaccount.com` for GCP Service Account *
         /// `principal://POOL_ID.global.PROJECT_NUMBER.workload.id.goog/ns/NAMESPACE_ID/sa/MANAGED_IDENTITY_ID` for
         /// Managed Workload Identity
         /// </summary>
@@ -4298,6 +4469,21 @@ namespace Google.Apis.AppHub.v1alpha.Data
         /// <summary>Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for ListExtendedMetadataSchemas.</summary>
+    public class ListExtendedMetadataSchemasResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of Extended Metadata Schemas.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extendedMetadataSchemas")]
+        public virtual System.Collections.Generic.IList<ExtendedMetadataSchema> ExtendedMetadataSchemas { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
