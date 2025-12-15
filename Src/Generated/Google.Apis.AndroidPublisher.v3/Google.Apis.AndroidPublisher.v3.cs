@@ -4876,36 +4876,6 @@ namespace Google.Apis.AndroidPublisher.v3
             [Google.Apis.Util.RequestParameterAttribute("changesNotSentForReview", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ChangesNotSentForReview { get; set; }
 
-            /// <summary>
-            /// Optional. The behavior of committing a new edit while a submission is already in review.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("inProgressReviewBehaviour", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<InProgressReviewBehaviourEnum> InProgressReviewBehaviour { get; set; }
-
-            /// <summary>
-            /// Optional. The behavior of committing a new edit while a submission is already in review.
-            /// </summary>
-            public enum InProgressReviewBehaviourEnum
-            {
-                /// <summary>The behavior is not specified.</summary>
-                [Google.Apis.Util.StringValueAttribute("IN_PROGRESS_REVIEW_BEHAVIOUR_UNSPECIFIED")]
-                INPROGRESSREVIEWBEHAVIOURUNSPECIFIED = 0,
-
-                /// <summary>
-                /// The changes in review will be canceled, and the new changes will be sent for review. Thus resetting
-                /// the review process.
-                /// </summary>
-                [Google.Apis.Util.StringValueAttribute("CANCEL_IN_PROGRESS_AND_SUBMIT")]
-                CANCELINPROGRESSANDSUBMIT = 1,
-
-                /// <summary>
-                /// The commit will fail with an error if there are changes in review. If the edit doesn't result in a
-                /// new submission being created then it won't throw an error even if there are changes in review.
-                /// </summary>
-                [Google.Apis.Util.StringValueAttribute("THROW_ERROR_IF_IN_PROGRESS")]
-                THROWERRORIFINPROGRESS = 2,
-            }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "commit";
 
@@ -4938,14 +4908,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 RequestParameters.Add("changesNotSentForReview", new Google.Apis.Discovery.Parameter
                 {
                     Name = "changesNotSentForReview",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("inProgressReviewBehaviour", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "inProgressReviewBehaviour",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -15815,6 +15777,41 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Reporting details unique to the external offers program.</summary>
+    public class ExternalOfferDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The external transaction id associated with the app download event through an external link.
+        /// Required when reporting transactions made in externally installed apps.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appDownloadEventExternalTransactionId")]
+        public virtual string AppDownloadEventExternalTransactionId { get; set; }
+
+        /// <summary>
+        /// Optional. The category of the downloaded app though this transaction. This must match the category provided
+        /// in Play Console during the external app verification process. Only required for app downloads.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installedAppCategory")]
+        public virtual string InstalledAppCategory { get; set; }
+
+        /// <summary>
+        /// Optional. The package name of the app downloaded through this transaction. Required when link_type is
+        /// LINK_TO_APP_DOWNLOAD.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installedAppPackage")]
+        public virtual string InstalledAppPackage { get; set; }
+
+        /// <summary>
+        /// Optional. The type of content being reported by this transaction. Required when reporting app downloads or
+        /// purchased digital content offers made in app installed through Google Play.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkType")]
+        public virtual string LinkType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details of an external subscription.</summary>
     public class ExternalSubscription : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15882,6 +15879,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentTaxAmount")]
         public virtual Price CurrentTaxAmount { get; set; }
+
+        /// <summary>Optional. Details necessary to accurately report external offers transactions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalOfferDetails")]
+        public virtual ExternalOfferDetails ExternalOfferDetails { get; set; }
 
         /// <summary>
         /// Output only. The id of this transaction. All transaction ids under the same package name must be unique. Set
@@ -17076,6 +17077,14 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual System.Nullable<bool> IsTokenizedDigitalAsset { get; set; }
 
         /// <summary>
+        /// Product tax category code to assign to the in-app product. Product tax category determines the transaction
+        /// tax rates applied to the product. Refer to the [Help Center
+        /// article](https://support.google.com/googleplay/android-developer/answer/16408159) for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productTaxCategoryCode")]
+        public virtual string ProductTaxCategoryCode { get; set; }
+
+        /// <summary>
         /// A mapping from region code to tax rate details. The keys are region codes as defined by Unicode's "CLDR".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxRateInfoByRegionCode")]
@@ -17863,6 +17872,14 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isTokenizedDigitalAsset")]
         public virtual System.Nullable<bool> IsTokenizedDigitalAsset { get; set; }
+
+        /// <summary>
+        /// Product tax category code to assign to the one-time product. Product tax category determines the transaction
+        /// tax rates applied to the product. Refer to the [Help Center
+        /// article](https://support.google.com/googleplay/android-developer/answer/16408159) for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productTaxCategoryCode")]
+        public virtual string ProductTaxCategoryCode { get; set; }
 
         /// <summary>Regional tax configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionalTaxConfigs")]
@@ -20757,6 +20774,14 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isTokenizedDigitalAsset")]
         public virtual System.Nullable<bool> IsTokenizedDigitalAsset { get; set; }
+
+        /// <summary>
+        /// Product tax category code to assign to the subscription. Product tax category determines the transaction tax
+        /// rates applied to the subscription. Refer to the [Help Center
+        /// article](https://support.google.com/googleplay/android-developer/answer/16408159) for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productTaxCategoryCode")]
+        public virtual string ProductTaxCategoryCode { get; set; }
 
         /// <summary>
         /// A mapping from region code to tax rate details. The keys are region codes as defined by Unicode's "CLDR".
