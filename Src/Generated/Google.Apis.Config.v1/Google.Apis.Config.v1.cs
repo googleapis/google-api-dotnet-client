@@ -2023,9 +2023,9 @@ namespace Google.Apis.Config.v1
 
                     /// <summary>
                     /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                    /// `true` when reading across collections e.g. when `parent` is set to
-                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
                     /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                     /// specific documentation.
                     /// </summary>
@@ -3091,6 +3091,57 @@ namespace Google.Apis.Config.v1
                 }
             }
 
+            /// <summary>Get the AutoMigrationConfig for a given project and location.</summary>
+            /// <param name="name">
+            /// Required. The name of the AutoMigrationConfig. Format:
+            /// 'projects/{project_id}/locations/{location}/AutoMigrationConfig'.
+            /// </param>
+            public virtual GetAutoMigrationConfigRequest GetAutoMigrationConfig(string name)
+            {
+                return new GetAutoMigrationConfigRequest(this.service, name);
+            }
+
+            /// <summary>Get the AutoMigrationConfig for a given project and location.</summary>
+            public class GetAutoMigrationConfigRequest : ConfigBaseServiceRequest<Google.Apis.Config.v1.Data.AutoMigrationConfig>
+            {
+                /// <summary>Constructs a new GetAutoMigrationConfig request.</summary>
+                public GetAutoMigrationConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the AutoMigrationConfig. Format:
+                /// 'projects/{project_id}/locations/{location}/AutoMigrationConfig'.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getAutoMigrationConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes GetAutoMigrationConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/autoMigrationConfig$",
+                    });
+                }
+            }
+
             /// <summary>Lists information about the supported locations for this service.</summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -3194,6 +3245,77 @@ namespace Google.Apis.Config.v1
                     });
                 }
             }
+
+            /// <summary>Updates the AutoMigrationConfig for a given project and location.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The name of the AutoMigrationConfig. Format:
+            /// 'projects/{project_id}/locations/{location}/AutoMigrationConfig'.
+            /// </param>
+            public virtual UpdateAutoMigrationConfigRequest UpdateAutoMigrationConfig(Google.Apis.Config.v1.Data.AutoMigrationConfig body, string name)
+            {
+                return new UpdateAutoMigrationConfigRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates the AutoMigrationConfig for a given project and location.</summary>
+            public class UpdateAutoMigrationConfigRequest : ConfigBaseServiceRequest<Google.Apis.Config.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new UpdateAutoMigrationConfig request.</summary>
+                public UpdateAutoMigrationConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.Config.v1.Data.AutoMigrationConfig body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The name of the AutoMigrationConfig. Format:
+                /// 'projects/{project_id}/locations/{location}/AutoMigrationConfig'.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Optional. The update mask applies to the resource. See google.protobuf.FieldMask.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Config.v1.Data.AutoMigrationConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateAutoMigrationConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes UpdateAutoMigrationConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/autoMigrationConfig$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
     }
 }
@@ -3269,6 +3391,61 @@ namespace Google.Apis.Config.v1.Data
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
         public virtual string LogType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AutoMigrationConfig contains the automigration configuration for a project.</summary>
+    public class AutoMigrationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether the auto migration is enabled for the project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoMigrationEnabled")]
+        public virtual System.Nullable<bool> AutoMigrationEnabled { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the AutoMigrationConfig. Format:
+        /// 'projects/{project_id}/locations/{location}/AutoMigrationConfig'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Time the AutoMigrationConfig was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3778,8 +3955,8 @@ namespace Google.Apis.Config.v1.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
