@@ -5504,7 +5504,10 @@ namespace Google.Apis.Drive.v3
             this.service = service;
         }
 
-        /// <summary>Creates a reply to a comment.</summary>
+        /// <summary>
+        /// Creates a reply to a comment. For more information, see [Manage comments and
+        /// replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file.</param>
         /// <param name="commentId">The ID of the comment.</param>
@@ -5513,7 +5516,10 @@ namespace Google.Apis.Drive.v3
             return new CreateRequest(this.service, body, fileId, commentId);
         }
 
-        /// <summary>Creates a reply to a comment.</summary>
+        /// <summary>
+        /// Creates a reply to a comment. For more information, see [Manage comments and
+        /// replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
+        /// </summary>
         public class CreateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Reply>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -5571,7 +5577,10 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Deletes a reply.</summary>
+        /// <summary>
+        /// Deletes a reply. For more information, see [Manage comments and
+        /// replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
+        /// </summary>
         /// <param name="fileId">The ID of the file.</param>
         /// <param name="commentId">The ID of the comment.</param>
         /// <param name="replyId">The ID of the reply.</param>
@@ -5580,7 +5589,10 @@ namespace Google.Apis.Drive.v3
             return new DeleteRequest(this.service, fileId, commentId, replyId);
         }
 
-        /// <summary>Deletes a reply.</summary>
+        /// <summary>
+        /// Deletes a reply. For more information, see [Manage comments and
+        /// replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
+        /// </summary>
         public class DeleteRequest : DriveBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -5644,7 +5656,10 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Gets a reply by ID.</summary>
+        /// <summary>
+        /// Gets a reply by ID. For more information, see [Manage comments and
+        /// replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
+        /// </summary>
         /// <param name="fileId">The ID of the file.</param>
         /// <param name="commentId">The ID of the comment.</param>
         /// <param name="replyId">The ID of the reply.</param>
@@ -5653,7 +5668,10 @@ namespace Google.Apis.Drive.v3
             return new GetRequest(this.service, fileId, commentId, replyId);
         }
 
-        /// <summary>Gets a reply by ID.</summary>
+        /// <summary>
+        /// Gets a reply by ID. For more information, see [Manage comments and
+        /// replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
+        /// </summary>
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Reply>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -5678,7 +5696,7 @@ namespace Google.Apis.Drive.v3
             public virtual string ReplyId { get; private set; }
 
             /// <summary>
-            /// Whether to return deleted replies. Deleted replies will not include their original content.
+            /// Whether to return deleted replies. Deleted replies don't include their original content.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("includeDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeDeleted { get; set; }
@@ -5731,7 +5749,10 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Lists a comment's replies.</summary>
+        /// <summary>
+        /// Lists a comment's replies. For more information, see [Manage comments and
+        /// replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
+        /// </summary>
         /// <param name="fileId">The ID of the file.</param>
         /// <param name="commentId">The ID of the comment.</param>
         public virtual ListRequest List(string fileId, string commentId)
@@ -5739,7 +5760,10 @@ namespace Google.Apis.Drive.v3
             return new ListRequest(this.service, fileId, commentId);
         }
 
-        /// <summary>Lists a comment's replies.</summary>
+        /// <summary>
+        /// Lists a comment's replies. For more information, see [Manage comments and
+        /// replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
+        /// </summary>
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.ReplyList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -5759,7 +5783,7 @@ namespace Google.Apis.Drive.v3
             public virtual string CommentId { get; private set; }
 
             /// <summary>
-            /// Whether to include deleted replies. Deleted replies will not include their original content.
+            /// Whether to include deleted replies. Deleted replies don't include their original content.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("includeDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeDeleted { get; set; }
@@ -5770,7 +5794,7 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>
             /// The token for continuing a previous list request on the next page. This should be set to the value of
-            /// 'nextPageToken' from the previous response.
+            /// `nextPageToken` from the previous response.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -5831,7 +5855,10 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Updates a reply with patch semantics.</summary>
+        /// <summary>
+        /// Updates a reply with patch semantics. For more information, see [Manage comments and
+        /// replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file.</param>
         /// <param name="commentId">The ID of the comment.</param>
@@ -5841,7 +5868,10 @@ namespace Google.Apis.Drive.v3
             return new UpdateRequest(this.service, body, fileId, commentId, replyId);
         }
 
-        /// <summary>Updates a reply with patch semantics.</summary>
+        /// <summary>
+        /// Updates a reply with patch semantics. For more information, see [Manage comments and
+        /// replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
+        /// </summary>
         public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Reply>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -9539,7 +9569,7 @@ namespace Google.Apis.Drive.v3.Data
     public class Reply : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The action the reply performed to the parent comment. Valid values are: * `resolve` * `reopen`
+        /// The action the reply performed to the parent comment. The supported values are: * `resolve` * `reopen`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; }
@@ -9552,14 +9582,14 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string AssigneeEmailAddress { get; set; }
 
         /// <summary>
-        /// Output only. The author of the reply. The author's email address and permission ID will not be populated.
+        /// Output only. The author of the reply. The author's email address and permission ID won't be populated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("author")]
         public virtual User Author { get; set; }
 
         /// <summary>
         /// The plain text content of the reply. This field is used for setting the content, while `htmlContent` should
-        /// be displayed. This is required on creates if no `action` is specified.
+        /// be displayed. This field is required by the `create` method if no `action` value is specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
@@ -9652,8 +9682,8 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string NextPageToken { get; set; }
 
         /// <summary>
-        /// The list of replies. If nextPageToken is populated, then this list may be incomplete and an additional page
-        /// of results should be fetched.
+        /// The list of replies. If `nextPageToken` is populated, then this list may be incomplete and an additional
+        /// page of results should be fetched.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replies")]
         public virtual System.Collections.Generic.IList<Reply> Replies { get; set; }
