@@ -9136,9 +9136,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string DatasetSplit { get; set; }
 
         /// <summary>
-        /// Optional. The type of the documents to be imported in this batch. This will be used to auto-label the
-        /// documents with a single entity of the provided type. This field can only be used with a classifier or
-        /// splitter processor. Providing this field is mutually exclusive with `entities` and `auto_labeling_config`.
+        /// Optional. If set, determines the type of the documents to be imported in this batch. It can be used to
+        /// auto-label the documents with a single entity of the provided type. This field can only be used with a
+        /// classifier or splitter processor. Providing this field is mutually exclusive with `entities` and
+        /// `auto_labeling_config`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentType")]
         public virtual string DocumentType { get; set; }
@@ -9438,7 +9439,7 @@ namespace Google.Apis.Document.v1beta3.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. The user-defined name of the Schema.</summary>
+        /// <summary>Required. The user-defined name of the Schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -10461,7 +10462,7 @@ namespace Google.Apis.Document.v1beta3.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. The user-defined name of the SchemaVersion.</summary>
+        /// <summary>Required. The user-defined name of the SchemaVersion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
