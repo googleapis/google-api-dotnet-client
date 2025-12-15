@@ -17264,6 +17264,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual GoogleCloudDialogflowCxV3beta1QueryParameters QueryParams { get; set; }
 
         /// <summary>
+        /// Optional. Specifies which fields in the QueryResult to return. If not set, the default is
+        /// DETECT_INTENT_RESPONSE_VIEW_FULL.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseView")]
+        public virtual string ResponseView { get; set; }
+
+        /// <summary>
         /// Required. The name of the session this query is sent to. Format: `projects//locations//agents//sessions/` or
         /// `projects//locations//agents//environments//sessions/`. If `Environment ID` is not specified, we assume
         /// default 'draft' environment. It's up to the API caller to choose an appropriate `Session ID`. It can be a
