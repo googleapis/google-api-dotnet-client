@@ -3087,9 +3087,9 @@ namespace Google.Apis.DataCatalog.v1
 
                     /// <summary>
                     /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                    /// `true` when reading across collections e.g. when `parent` is set to
-                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
                     /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                     /// specific documentation.
                     /// </summary>
@@ -6546,17 +6546,19 @@ namespace Google.Apis.DataCatalog.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
         public virtual string DataSource { get; set; }
 
-        /// <summary>Optional. Only applies to `kind = EDGE`.</summary>
+        /// <summary>Optional. The destination node reference of the edge.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationNodeReference")]
-        public virtual string DestinationNodeReference { get; set; }
+        public virtual GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference DestinationNodeReference { get; set; }
 
-        /// <summary>Optional. If true, the graph element has a dynamic label in schemaless model.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dynamicLabelEnabled")]
-        public virtual System.Nullable<bool> DynamicLabelEnabled { get; set; }
+        /// <summary>Optional. If set, this is the input column for dynamic label in schemaless data model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicLabelColumn")]
+        public virtual string DynamicLabelColumn { get; set; }
 
-        /// <summary>Optional. If true, the graph element has dynamic properties in schemaless model.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dynamicPropertiesEnabled")]
-        public virtual System.Nullable<bool> DynamicPropertiesEnabled { get; set; }
+        /// <summary>
+        /// Optional. If set, this is the input column for dynamic properties in schemaless data model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicPropertiesColumn")]
+        public virtual string DynamicPropertiesColumn { get; set; }
 
         /// <summary>Required. The name of the keys of the elements in the table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("elementKeys")]
@@ -6574,13 +6576,35 @@ namespace Google.Apis.DataCatalog.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labelAndProperties")]
         public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties> LabelAndProperties { get; set; }
 
-        /// <summary>
-        /// Optional. Only applies to `kind = EDGE`. The reference to the source node of the edge. This name must be a
-        /// valid `alias` of a node element in the same graph. Example, `Person` node can be a source node of an edge
-        /// element `Person_to_Address`. Similar rule applies to `destination_node_reference`.
-        /// </summary>
+        /// <summary>Optional. The source node reference of the edge.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceNodeReference")]
-        public virtual string SourceNodeReference { get; set; }
+        public virtual GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference SourceNodeReference { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A reference to a source or destination node in a graph edge.</summary>
+    public class GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The referencing columns in the edge table. The size of `edge_table_columns` must be equal to the
+        /// size of `node_table_columns`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edgeTableColumns")]
+        public virtual System.Collections.Generic.IList<string> EdgeTableColumns { get; set; }
+
+        /// <summary>
+        /// Required. The reference to the source/destination node of the edge. This name must be a valid `alias` of a
+        /// node element in the same graph. Example, `Person` node can be a source node name of an edge element
+        /// `Person_to_Address`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeAlias")]
+        public virtual string NodeAlias { get; set; }
+
+        /// <summary>Required. The referenced columns of the source node table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeTableColumns")]
+        public virtual System.Collections.Generic.IList<string> NodeTableColumns { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8346,8 +8370,8 @@ namespace Google.Apis.DataCatalog.v1.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
