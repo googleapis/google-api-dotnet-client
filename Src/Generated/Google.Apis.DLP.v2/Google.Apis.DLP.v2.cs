@@ -12632,7 +12632,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pubSub")]
         public virtual GooglePrivacyDlpV2PublishToPubSub PubSub { get; set; }
 
-        /// <summary>Publish findings to Cloud Datahub.</summary>
+        /// <summary>
+        /// Deprecated because Data Catalog is being turned down. Use publish_findings_to_dataplex_catalog to publish
+        /// findings to Dataplex Universal Catalog.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishFindingsToCloudDataCatalog")]
         public virtual GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog PublishFindingsToCloudDataCatalog { get; set; }
 
