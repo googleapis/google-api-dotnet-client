@@ -999,6 +999,36 @@ namespace Google.Apis.ManagedKafka.v1
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
+                        /// <summary>
+                        /// Optional. Specifies the view (BASIC or FULL) of the ConsumerGroup resource to be returned in
+                        /// the response. Defaults to FULL view.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// Optional. Specifies the view (BASIC or FULL) of the ConsumerGroup resource to be returned in
+                        /// the response. Defaults to FULL view.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>The default / unset value. The API will default to the FULL view.</summary>
+                            [Google.Apis.Util.StringValueAttribute("CONSUMER_GROUP_VIEW_UNSPECIFIED")]
+                            CONSUMERGROUPVIEWUNSPECIFIED = 0,
+
+                            /// <summary>
+                            /// Include the name of the ConsumerGroup. This hides partition and topic metadata.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("CONSUMER_GROUP_VIEW_BASIC")]
+                            CONSUMERGROUPVIEWBASIC = 1,
+
+                            /// <summary>
+                            /// Include everything, including partition and topic metadata. This is the default value.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("CONSUMER_GROUP_VIEW_FULL")]
+                            CONSUMERGROUPVIEWFULL = 2,
+                        }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
@@ -1031,6 +1061,14 @@ namespace Google.Apis.ManagedKafka.v1
                             RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -7544,9 +7582,10 @@ namespace Google.Apis.ManagedKafka.v1.Data
     public class ConnectNetworkConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Additional subnets may be specified. They may be in another region, but must be in the same VPC
-        /// network. The Connect workers can communicate with network endpoints in either the primary or additional
-        /// subnets.
+        /// Optional. Deprecated: Managed Kafka Connect clusters can now reach any endpoint accessible from the primary
+        /// subnet without the need to define additional subnets. Please see
+        /// https://cloud.google.com/managed-service-for-apache-kafka/docs/connect-cluster/create-connect-cluster#worker-subnet
+        /// for more information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalSubnets")]
         public virtual System.Collections.Generic.IList<string> AdditionalSubnets { get; set; }
