@@ -1470,6 +1470,73 @@ namespace Google.Apis.CloudFilestore.v1
                     }
                 }
 
+                /// <summary>
+                /// Pause the standby instance (replica). WARNING: This operation makes the standby instance's NFS
+                /// filesystem writable. Any data written to the standby instance while paused will be lost when the
+                /// replica is resumed or promoted.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the instance, in the format
+                /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
+                /// </param>
+                public virtual PauseReplicaRequest PauseReplica(Google.Apis.CloudFilestore.v1.Data.PauseReplicaRequest body, string name)
+                {
+                    return new PauseReplicaRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Pause the standby instance (replica). WARNING: This operation makes the standby instance's NFS
+                /// filesystem writable. Any data written to the standby instance while paused will be lost when the
+                /// replica is resumed or promoted.
+                /// </summary>
+                public class PauseReplicaRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new PauseReplica request.</summary>
+                    public PauseReplicaRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1.Data.PauseReplicaRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the instance, in the format
+                    /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudFilestore.v1.Data.PauseReplicaRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "pauseReplica";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:pauseReplica";
+
+                    /// <summary>Initializes PauseReplica parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Promote the standby instance (replica).</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -1582,6 +1649,71 @@ namespace Google.Apis.CloudFilestore.v1
                     public override string RestPath => "v1/{+name}:restore";
 
                     /// <summary>Initializes Restore parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Resume the standby instance (replica). WARNING: Any data written to the standby instance while
+                /// paused will be lost when the replica is resumed.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the instance, in the format
+                /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
+                /// </param>
+                public virtual ResumeReplicaRequest ResumeReplica(Google.Apis.CloudFilestore.v1.Data.ResumeReplicaRequest body, string name)
+                {
+                    return new ResumeReplicaRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Resume the standby instance (replica). WARNING: Any data written to the standby instance while
+                /// paused will be lost when the replica is resumed.
+                /// </summary>
+                public class ResumeReplicaRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new ResumeReplica request.</summary>
+                    public ResumeReplicaRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1.Data.ResumeReplicaRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the instance, in the format
+                    /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudFilestore.v1.Data.ResumeReplicaRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "resumeReplica";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:resumeReplica";
+
+                    /// <summary>Initializes ResumeReplica parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -1885,9 +2017,9 @@ namespace Google.Apis.CloudFilestore.v1
 
                     /// <summary>
                     /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                    /// `true` when reading across collections e.g. when `parent` is set to
-                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
                     /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                     /// specific documentation.
                     /// </summary>
@@ -2018,8 +2150,8 @@ namespace Google.Apis.CloudFilestore.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
-                /// primarily intended for internal usage.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -2915,7 +3047,9 @@ namespace Google.Apis.CloudFilestore.v1.Data
     /// <summary>A Filestore instance.</summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The increase/decrease capacity step size in GB.</summary>
+        /// <summary>
+        /// Output only. The incremental increase or decrease in capacity, designated in some number of GB.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capacityStepSizeGb")]
         public virtual System.Nullable<long> CapacityStepSizeGb { get; set; }
 
@@ -3002,11 +3136,11 @@ namespace Google.Apis.CloudFilestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Output only. The max capacity of the instance in GB.</summary>
+        /// <summary>Output only. The maximum capacity of the instance in GB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxCapacityGb")]
         public virtual System.Nullable<long> MaxCapacityGb { get; set; }
 
-        /// <summary>Output only. The min capacity of the instance in GB.</summary>
+        /// <summary>Output only. The minimum capacity of the instance in GB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCapacityGb")]
         public virtual System.Nullable<long> MinCapacityGb { get; set; }
 
@@ -3195,8 +3329,8 @@ namespace Google.Apis.CloudFilestore.v1.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -3646,6 +3780,13 @@ namespace Google.Apis.CloudFilestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>PauseReplicaRequest pauses a Filestore standby instance (replica).</summary>
+    public class PauseReplicaRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Used for setting the performance configuration. If the user doesn't specify PerformanceConfig, automatically
     /// provision the default performance settings as described in https://cloud.google.com/filestore/docs/performance.
@@ -3682,23 +3823,23 @@ namespace Google.Apis.CloudFilestore.v1.Data
     /// <summary>The enforced performance limits, calculated from the instance's performance configuration.</summary>
     public class PerformanceLimits : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The max IOPS.</summary>
+        /// <summary>Output only. The maximum IOPS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxIops")]
         public virtual System.Nullable<long> MaxIops { get; set; }
 
-        /// <summary>Output only. The max read IOPS.</summary>
+        /// <summary>Output only. The maximum read IOPS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxReadIops")]
         public virtual System.Nullable<long> MaxReadIops { get; set; }
 
-        /// <summary>Output only. The max read throughput in bytes per second.</summary>
+        /// <summary>Output only. The maximum read throughput in bytes per second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxReadThroughputBps")]
         public virtual System.Nullable<long> MaxReadThroughputBps { get; set; }
 
-        /// <summary>Output only. The max write IOPS.</summary>
+        /// <summary>Output only. The maximum write IOPS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxWriteIops")]
         public virtual System.Nullable<long> MaxWriteIops { get; set; }
 
-        /// <summary>Output only. The max write throughput in bytes per second.</summary>
+        /// <summary>Output only. The maximum write throughput in bytes per second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxWriteThroughputBps")]
         public virtual System.Nullable<long> MaxWriteThroughputBps { get; set; }
 
@@ -3781,7 +3922,11 @@ namespace Google.Apis.CloudFilestore.v1.Data
             set => LastActiveSyncTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. The peer instance.</summary>
+        /// <summary>
+        /// Optional. The name of the source instance for the replica, in the format
+        /// `projects/{project}/locations/{location}/instances/{instance}`. This field is required when creating a
+        /// replica.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerInstance")]
         public virtual string PeerInstance { get; set; }
 
@@ -3836,7 +3981,7 @@ namespace Google.Apis.CloudFilestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Replication specifications.</summary>
+    /// <summary>Optional. The configuration used to replicate an instance.</summary>
     public class Replication : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3846,7 +3991,9 @@ namespace Google.Apis.CloudFilestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("replicas")]
         public virtual System.Collections.Generic.IList<ReplicaConfig> Replicas { get; set; }
 
-        /// <summary>Optional. The replication role.</summary>
+        /// <summary>
+        /// Optional. The replication role. When creating a new replica, this field must be set to `STANDBY`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
 
@@ -3870,6 +4017,13 @@ namespace Google.Apis.CloudFilestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceBackup")]
         public virtual string SourceBackup { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ResumeReplicaRequest resumes a Filestore standby instance (replica).</summary>
+    public class ResumeReplicaRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
