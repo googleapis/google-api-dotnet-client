@@ -293,6 +293,7 @@ namespace Google.Apis.VMwareEngine.v1
             {
                 this.service = service;
                 Announcements = new AnnouncementsResource(service);
+                Datastores = new DatastoresResource(service);
                 DnsBindPermission = new DnsBindPermissionResource(service);
                 NetworkPeerings = new NetworkPeeringsResource(service);
                 NetworkPolicies = new NetworkPoliciesResource(service);
@@ -497,6 +498,523 @@ namespace Google.Apis.VMwareEngine.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Datastores resource.</summary>
+            public virtual DatastoresResource Datastores { get; }
+
+            /// <summary>The "datastores" collection of methods.</summary>
+            public class DatastoresResource
+            {
+                private const string Resource = "datastores";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DatastoresResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Creates a new `Datastore` resource in a given project and location. Datastores are regional
+                /// resources
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the location to create the new datastore in. Resource names are
+                /// schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+                /// For example: `projects/my-project/locations/us-central1`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.VMwareEngine.v1.Data.Datastore body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a new `Datastore` resource in a given project and location. Datastores are regional
+                /// resources
+                /// </summary>
+                public class CreateRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.Datastore body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the location to create the new datastore in. Resource names are
+                    /// schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The user-provided identifier of the datastore to be created. This identifier must be
+                    /// unique among each `Datastore` within the parent and becomes the final token in the name URI. The
+                    /// identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters
+                    /// and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not
+                    /// formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
+                    /// (section 3.5)
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("datastoreId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string DatastoreId { get; set; }
+
+                    /// <summary>
+                    /// Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.VMwareEngine.v1.Data.Datastore Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/datastores";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("datastoreId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "datastoreId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes a `Datastore` resource. You can only delete a Datastore after all resources that refer to it
+                /// are deleted. For example, multiple clusters of the same private cloud or different private clouds
+                /// can refer to the same datastore.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The resource name of the Datastore to be deleted. Resource names are schemeless URIs that
+                /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-project/locations/us-central1/datastore/my-datastore`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Deletes a `Datastore` resource. You can only delete a Datastore after all resources that refer to it
+                /// are deleted. For example, multiple clusters of the same private cloud or different private clouds
+                /// can refer to the same datastore.
+                /// </summary>
+                public class DeleteRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Datastore to be deleted. Resource names are schemeless URIs
+                    /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1/datastore/my-datastore`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Checksum used to ensure that the user-provided value is up to date before the server
+                    /// processes the request. The server compares provided checksum with the current checksum of the
+                    /// resource. If the user-provided value is out of date, this request returns an `ABORTED` error.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>
+                    /// Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/datastores/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Retrieves a `Datastore` resource by its resource name. The resource contains details of the
+                /// Datastore, such as its description, subnets, type, and more.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The resource name of the Datastore to retrieve. Resource names are schemeless URIs that
+                /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-project/locations/us-central1/datastores/my-datastore`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Retrieves a `Datastore` resource by its resource name. The resource contains details of the
+                /// Datastore, such as its description, subnets, type, and more.
+                /// </summary>
+                public class GetRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Datastore>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Datastore to retrieve. Resource names are schemeless URIs
+                    /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1/datastores/my-datastore`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/datastores/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists `Datastore` resources in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The resource name of the location to query for Datastores. Resource names are schemeless
+                /// URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For
+                /// example: `projects/my-project/locations/us-central1`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists `Datastore` resources in a given project and location.</summary>
+                public class ListRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.ListDatastoresResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the location to query for Datastores. Resource names are
+                    /// schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A filter expression that matches resources returned in the response. The expression
+                    /// must specify the field name, a comparison operator, and the value that you want to use for
+                    /// filtering. The value must be a string, a number, or a boolean. The comparison operator must be
+                    /// `=`, `!=`, `&amp;gt;`, or `&amp;lt;`. For example, if you are filtering a list of datastores,
+                    /// you can exclude the ones named `example-datastore` by specifying `name != "example-datastore"`.
+                    /// To filter on multiple expressions, provide each separate expression within parentheses. For
+                    /// example:
+                    /// ```
+                    /// (name = "example-datastore") (createTime &amp;gt; "2021-04-12T08:15:10.40Z")
+                    /// ```
+                    /// By
+                    /// default, each expression is an `AND` expression. However, you can include `AND` and `OR`
+                    /// expressions explicitly. For example:
+                    /// ```
+                    /// (name = "example-datastore-1") AND (createTime &amp;gt;
+                    /// "2021-04-12T08:15:10.40Z") OR (name = "example-datastore-2")
+                    /// ```
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Sorts list results by a certain order. By default, returned results are ordered by
+                    /// `name` in ascending order. You can also sort results in descending order based on the `name`
+                    /// value using `orderBy="name desc"`. Currently, only ordering by `name` is supported.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of results to return in one page. The maximum value is coerced to
+                    /// 1000. The default value of this field is 500.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListDatastores` call. Provide this to retrieve
+                    /// the subsequent page. When paginating, all other parameters provided to `ListDatastores` must
+                    /// match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>
+                    /// Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/datastores";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Modifies a Datastore resource. Only the following fields can be updated: `description`. Only fields
+                /// specified in `updateMask` are applied.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. Identifier. The resource name of this datastore. Resource names are schemeless URIs
+                /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-project/locations/us-central1/datastores/datastore`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.Datastore body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Modifies a Datastore resource. Only the following fields can be updated: `description`. Only fields
+                /// specified in `updateMask` are applied.
+                /// </summary>
+                public class PatchRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.Datastore body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. Identifier. The resource name of this datastore. Resource names are schemeless URIs
+                    /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1/datastores/datastore`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the Datastore resource
+                    /// by the update. The fields specified in the `update_mask` are relative to the resource, not the
+                    /// full request. A field will be overwritten if it is in the mask. If the user does not provide a
+                    /// mask then all fields will be overwritten. Only the following fields can be updated:
+                    /// `description`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.VMwareEngine.v1.Data.Datastore Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/datastores/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2763,9 +3281,9 @@ namespace Google.Apis.VMwareEngine.v1
 
                     /// <summary>
                     /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                    /// `true` when reading across collections e.g. when `parent` is set to
-                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
                     /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                     /// specific documentation.
                     /// </summary>
@@ -3484,6 +4002,69 @@ namespace Google.Apis.VMwareEngine.v1
                         }
                     }
 
+                    /// <summary>Mounts a `Datastore` on a cluster resource Datastores are zonal resources</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The resource name of the cluster to mount the datastore. Resource names are schemeless
+                    /// URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For
+                    /// example:
+                    /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster`
+                    /// </param>
+                    public virtual MountDatastoreRequest MountDatastore(Google.Apis.VMwareEngine.v1.Data.MountDatastoreRequest body, string name)
+                    {
+                        return new MountDatastoreRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Mounts a `Datastore` on a cluster resource Datastores are zonal resources</summary>
+                    public class MountDatastoreRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new MountDatastore request.</summary>
+                        public MountDatastoreRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.MountDatastoreRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the cluster to mount the datastore. Resource names are
+                        /// schemeless URIs that follow the conventions in
+                        /// https://cloud.google.com/apis/design/resource_names. For example:
+                        /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.VMwareEngine.v1.Data.MountDatastoreRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "mountDatastore";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:mountDatastore";
+
+                        /// <summary>Initializes MountDatastore parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+/clusters/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>
                     /// Modifies a `Cluster` resource. Only fields specified in `updateMask` are applied. During
                     /// operation processing, the resource is temporarily in the `ACTIVE` state before the operation
@@ -3732,6 +4313,69 @@ namespace Google.Apis.VMwareEngine.v1
                             RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+/clusters/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Mounts a `Datastore` on a cluster resource Datastores are zonal resources</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The resource name of the cluster to unmount the datastore. Resource names are
+                    /// schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster`
+                    /// </param>
+                    public virtual UnmountDatastoreRequest UnmountDatastore(Google.Apis.VMwareEngine.v1.Data.UnmountDatastoreRequest body, string name)
+                    {
+                        return new UnmountDatastoreRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Mounts a `Datastore` on a cluster resource Datastores are zonal resources</summary>
+                    public class UnmountDatastoreRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new UnmountDatastore request.</summary>
+                        public UnmountDatastoreRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.UnmountDatastoreRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the cluster to unmount the datastore. Resource names are
+                        /// schemeless URIs that follow the conventions in
+                        /// https://cloud.google.com/apis/design/resource_names. For example:
+                        /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.VMwareEngine.v1.Data.UnmountDatastoreRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "unmountDatastore";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:unmountDatastore";
+
+                        /// <summary>Initializes UnmountDatastore parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -8943,8 +9587,8 @@ namespace Google.Apis.VMwareEngine.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
-                /// primarily intended for internal usage.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -9429,6 +10073,10 @@ namespace Google.Apis.VMwareEngine.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. Configuration of a mounted datastore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datastoreMountConfig")]
+        public virtual System.Collections.Generic.IList<DatastoreMountConfig> DatastoreMountConfig { get; set; }
+
         /// <summary>
         /// Output only. True if the cluster is a management cluster; false otherwise. There can only be one management
         /// cluster in a private cloud and it has to be the first one.
@@ -9554,6 +10202,201 @@ namespace Google.Apis.VMwareEngine.v1.Data
         /// <summary>Initial username.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a datastore resource.</summary>
+    public class Datastore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Clusters to which the datastore is attached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusters")]
+        public virtual System.Collections.Generic.IList<string> Clusters { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Creation time of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. User-provided description for this datastore</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Checksum that may be sent on update and delete requests to ensure that the user-provided value is
+        /// up to date before the server processes a request. The server computes checksums based on the value of other
+        /// fields in the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Output only. Identifier. The resource name of this datastore. Resource names are schemeless URIs that follow
+        /// the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+        /// `projects/my-project/locations/us-central1/datastores/datastore`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. Settings for the NFS datastore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nfsDatastore")]
+        public virtual NfsDatastore NfsDatastore { get; set; }
+
+        /// <summary>Output only. The state of the Datastore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. System-generated unique identifier for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Last update time of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
+    /// <summary>The Datastore Mount configuration</summary>
+    public class DatastoreMountConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. NFS is accessed by hosts in read mode Optional. Default value used will be READ_WRITE
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessMode")]
+        public virtual string AccessMode { get; set; }
+
+        /// <summary>
+        /// Required. The resource name of the datastore to unmount. The datastore requested to be mounted should be in
+        /// same region/zone as the cluster. Resource names are schemeless URIs that follow the conventions in
+        /// https://cloud.google.com/apis/design/resource_names. For example:
+        /// `projects/my-project/locations/us-central1/datastores/my-datastore`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datastore")]
+        public virtual string Datastore { get; set; }
+
+        /// <summary>Required. The network configuration for the datastore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datastoreNetwork")]
+        public virtual DatastoreNetwork DatastoreNetwork { get; set; }
+
+        /// <summary>Output only. File share name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileShare")]
+        public virtual string FileShare { get; set; }
+
+        /// <summary>Optional. The NFS protocol supported by the NFS volume. Default value used will be NFS_V3</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nfsVersion")]
+        public virtual string NfsVersion { get; set; }
+
+        /// <summary>Optional. ONLY required when NFS 4.1 version is used</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityType")]
+        public virtual string SecurityType { get; set; }
+
+        /// <summary>
+        /// Output only. Server IP addresses of the NFS volume. For NFS 3, you can only provide a single server IP
+        /// address or DNS names.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servers")]
+        public virtual System.Collections.Generic.IList<string> Servers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The network configuration for the datastore.</summary>
+    public class DatastoreNetwork : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The number of connections of the NFS volume. Spported from vsphere 8.0u1</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionCount")]
+        public virtual System.Nullable<int> ConnectionCount { get; set; }
+
+        /// <summary>
+        /// Optional. The Maximal Transmission Unit (MTU) of the datastore. System sets default MTU size. It prefers the
+        /// VPC peering MTU, falling back to the VEN MTU if no peering MTU is found. when detected, and falling back to
+        /// the VEN MTU otherwise.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mtu")]
+        public virtual System.Nullable<int> Mtu { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the network peering, used to access the file share by clients on private
+        /// cloud. Resource names are schemeless URIs that follow the conventions in
+        /// https://cloud.google.com/apis/design/resource_names. e.g.
+        /// projects/my-project/locations/us-central1/networkPeerings/my-network-peering
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkPeering")]
+        public virtual string NetworkPeering { get; set; }
+
+        /// <summary>
+        /// Required. The resource name of the subnet Resource names are schemeless URIs that follow the conventions in
+        /// https://cloud.google.com/apis/design/resource_names. e.g.
+        /// projects/my-project/locations/us-central1/subnets/my-subnet
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnet")]
+        public virtual string Subnet { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10046,6 +10889,32 @@ namespace Google.Apis.VMwareEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Google service file service configuration</summary>
+    public class GoogleFileService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Google filestore instance resource name e.g. projects/my-project/locations/me-west1-b/instances/my-instance
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filestoreInstance")]
+        public virtual string FilestoreInstance { get; set; }
+
+        /// <summary>
+        /// Google netapp volume resource name e.g. projects/my-project/locations/me-west1-b/volumes/my-volume
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("netappVolume")]
+        public virtual string NetappVolume { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Volume message captures user inputs for creation of file services managed by GCVE</summary>
+    public class GoogleVmwareFileService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for VmwareEngine.GrantDnsBindPermission</summary>
     public class GrantDnsBindPermissionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10324,6 +11193,28 @@ namespace Google.Apis.VMwareEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for VmwareEngine.ListDatastores</summary>
+    public class ListDatastoresResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of Datastores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datastores")]
+        public virtual System.Collections.Generic.IList<Datastore> Datastores { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Unreachable resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for VmwareEngine.ListExternalAccessRules</summary>
     public class ListExternalAccessRulesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10546,8 +11437,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -11008,6 +11899,33 @@ namespace Google.Apis.VMwareEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Mount Datastore Request message</summary>
+    public class MountDatastoreRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The datastore mount configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datastoreMountConfig")]
+        public virtual DatastoreMountConfig DatastoreMountConfig { get; set; }
+
+        /// <summary>
+        /// Optional. If set to true, the colocation requirement will be ignored. If set to false, the colocation
+        /// requirement will be enforced. If not set, the colocation requirement will be enforced. Colocation
+        /// requirement is the requirement that the cluster must be in the same region/zone of datastore(regional/zonal
+        /// datastore).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreColocation")]
+        public virtual System.Nullable<bool> IgnoreColocation { get; set; }
+
+        /// <summary>
+        /// Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported
+        /// (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Network configuration in the consumer project with which the peering has to be done.</summary>
     public class NetworkConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11379,6 +12297,25 @@ namespace Google.Apis.VMwareEngine.v1.Data
         /// <summary>Output only. State of the service. New values may be added to this enum when appropriate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The NFS datastore configuration.</summary>
+    public class NfsDatastore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Google service file service configuration</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleFileService")]
+        public virtual GoogleFileService GoogleFileService { get; set; }
+
+        /// <summary>GCVE file service configuration</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleVmwareFileService")]
+        public virtual GoogleVmwareFileService GoogleVmwareFileService { get; set; }
+
+        /// <summary>Third party file service configuration</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyFileService")]
+        public virtual ThirdPartyFileService ThirdPartyFileService { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12482,6 +13419,31 @@ namespace Google.Apis.VMwareEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Third party file service configuration</summary>
+    public class ThirdPartyFileService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Required Mount Folder name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileShare")]
+        public virtual string FileShare { get; set; }
+
+        /// <summary>
+        /// Required. Required to identify vpc peering used for NFS access network name of NFS's vpc e.g.
+        /// projects/project-id/global/networks/my-network_id
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>
+        /// Required. Server IP addresses of the NFS file service. NFS v3, provide a single IP address or DNS name.
+        /// Multiple servers can be supported in future when NFS 4.1 protocol support is enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servers")]
+        public virtual System.Collections.Generic.IList<string> Servers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Thresholds define the utilization of resources triggering scale-out and scale-in operations.</summary>
     public class Thresholds : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12556,6 +13518,28 @@ namespace Google.Apis.VMwareEngine.v1.Data
     /// <summary>Request message for VmwareEngine.UndeletePrivateCloud</summary>
     public class UndeletePrivateCloudRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported
+        /// (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Unmount Datastore Request messag</summary>
+    public class UnmountDatastoreRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The resource name of the datastore to unmount. Resource names are schemeless URIs that follow the
+        /// conventions in https://cloud.google.com/apis/design/resource_names. For example:
+        /// `projects/my-project/locations/us-central1/datastores/my-datastore`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datastore")]
+        public virtual string Datastore { get; set; }
+
         /// <summary>
         /// Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported
         /// (00000000-0000-0000-0000-000000000000).
