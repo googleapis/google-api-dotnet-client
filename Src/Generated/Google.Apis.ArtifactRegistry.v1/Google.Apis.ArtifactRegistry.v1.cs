@@ -5068,7 +5068,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     }
                 }
 
-                /// <summary>Exports an artifact.</summary>
+                /// <summary>Exports an artifact to a Cloud Storage bucket.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="repository">
                 /// Required. The repository of the artifact to export. Format:
@@ -5079,7 +5079,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     return new ExportArtifactRequest(this.service, body, repository);
                 }
 
-                /// <summary>Exports an artifact.</summary>
+                /// <summary>Exports an artifact to a Cloud Storage bucket.</summary>
                 public class ExportArtifactRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new ExportArtifact request.</summary>
@@ -6309,6 +6309,14 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     /// </summary>
     public class DockerImage : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// ArtifactType of this image, e.g. "application/vnd.example+type". If the `subject_digest` is set and no
+        /// `artifact_type` is given, the `media_type` will be considered as the `artifact_type`. This field is returned
+        /// as the `metadata.artifactType` field in the Version resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactType")]
+        public virtual string ArtifactType { get; set; }
+
         private string _buildTimeRaw;
 
         private object _buildTime;
@@ -6349,6 +6357,12 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(BuildTimeRaw);
             set => BuildTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Optional. For multi-arch images (manifest lists), this field contains the list of image manifests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageManifests")]
+        public virtual System.Collections.Generic.IList<ImageManifest> ImageManifests { get; set; }
 
         /// <summary>
         /// Calculated size of the image. This field is returned as the 'metadata.imageSizeBytes' field in the Version
@@ -7141,6 +7155,52 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         /// <summary>The hash value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of a single image manifest within a multi-arch image.</summary>
+    public class ImageManifest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The CPU architecture of the image. Values are provided by the Docker client and are not validated
+        /// by Artifact Registry. Example values include "amd64", "arm64", "ppc64le", "s390x", "riscv64", "mips64le",
+        /// etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
+        public virtual string Architecture { get; set; }
+
+        /// <summary>Optional. The manifest digest, in the format "sha256:".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("digest")]
+        public virtual string Digest { get; set; }
+
+        /// <summary>
+        /// Optional. The media type of the manifest, e.g., "application/vnd.docker.distribution.manifest.v2+json"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaType")]
+        public virtual string MediaType { get; set; }
+
+        /// <summary>
+        /// Optional. The operating system of the image. Values are provided by the Docker client and are not validated
+        /// by Artifact Registry. Example values include "linux", "windows", "darwin", "aix", etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("os")]
+        public virtual string Os { get; set; }
+
+        /// <summary>Optional. The required OS features for the image, for example on Windows `win32k`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osFeatures")]
+        public virtual System.Collections.Generic.IList<string> OsFeatures { get; set; }
+
+        /// <summary>Optional. The OS version of the image, for example on Windows `10.0.14393.1066`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
+        public virtual string OsVersion { get; set; }
+
+        /// <summary>
+        /// Optional. The variant of the CPU in the image, for example `v7` to specify ARMv7 when architecture is `arm`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variant")]
+        public virtual string Variant { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
