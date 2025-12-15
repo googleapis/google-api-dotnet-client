@@ -7523,6 +7523,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicy")]
         public virtual MaintenancePolicy MaintenancePolicy { get; set; }
 
+        /// <summary>Configuration for Managed OpenTelemetry pipeline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedOpentelemetryConfig")]
+        public virtual ManagedOpenTelemetryConfig ManagedOpentelemetryConfig { get; set; }
+
         /// <summary>
         /// The authentication information for accessing the master endpoint. If unspecified, the defaults are used: For
         /// clusters before v1.12, if master_auth is unspecified, `username` will be set to "admin", a random password
@@ -7973,6 +7977,10 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredLoggingService")]
         public virtual string DesiredLoggingService { get; set; }
+
+        /// <summary>The desired managed open telemetry configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredManagedOpentelemetryConfig")]
+        public virtual ManagedOpenTelemetryConfig DesiredManagedOpentelemetryConfig { get; set; }
 
         /// <summary>
         /// The desired configuration options for master authorized networks feature. Deprecated: Use
@@ -9860,6 +9868,17 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurringWindow")]
         public virtual RecurringTimeWindow RecurringWindow { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ManagedOpenTelemetryConfig is the configuration for the GKE Managed OpenTelemetry pipeline.</summary>
+    public class ManagedOpenTelemetryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Scope of the Managed OpenTelemetry pipeline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
