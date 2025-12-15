@@ -16424,6 +16424,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("approvedCountries")]
         public virtual System.Collections.Generic.IList<string> ApprovedCountries { get; set; }
 
+        /// <summary>The channel of the destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channel")]
+        public virtual string Channel { get; set; }
+
         /// <summary>The name of the destination</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; }
