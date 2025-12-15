@@ -577,6 +577,121 @@ namespace Google.Apis.DeveloperConnect.v1
                         }
                     }
 
+                    /// <summary>Finishes OAuth flow for an account connector.</summary>
+                    /// <param name="accountConnector">
+                    /// Required. The resource name of the AccountConnector in the format
+                    /// `projects/*/locations/*/accountConnectors/*`.
+                    /// </param>
+                    public virtual FinishOAuthFlowRequest FinishOAuthFlow(string accountConnector)
+                    {
+                        return new FinishOAuthFlowRequest(this.service, accountConnector);
+                    }
+
+                    /// <summary>Finishes OAuth flow for an account connector.</summary>
+                    public class FinishOAuthFlowRequest : DeveloperConnectBaseServiceRequest<Google.Apis.DeveloperConnect.v1.Data.FinishOAuthResponse>
+                    {
+                        /// <summary>Constructs a new FinishOAuthFlow request.</summary>
+                        public FinishOAuthFlowRequest(Google.Apis.Services.IClientService service, string accountConnector) : base(service)
+                        {
+                            AccountConnector = accountConnector;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the AccountConnector in the format
+                        /// `projects/*/locations/*/accountConnectors/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("accountConnector", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string AccountConnector { get; private set; }
+
+                        /// <summary>Required. The scopes returned by Google OAuth flow.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("googleOauthParams.scopes", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<string> GoogleOauthParamsScopes { get; set; }
+
+                        /// <summary>
+                        /// Required. The ticket to be used for post processing the callback from Google OAuth flow.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("googleOauthParams.ticket", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string GoogleOauthParamsTicket { get; set; }
+
+                        /// <summary>Optional. The version info returned by Google OAuth flow.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("googleOauthParams.versionInfo", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string GoogleOauthParamsVersionInfo { get; set; }
+
+                        /// <summary>Required. The code to be used for getting the token from SCM provider.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("oauthParams.code", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OauthParamsCode { get; set; }
+
+                        /// <summary>
+                        /// Required. The ticket to be used for post processing the callback from SCM provider.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("oauthParams.ticket", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OauthParamsTicket { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "finishOAuthFlow";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+accountConnector}/users:finishOAuthFlow";
+
+                        /// <summary>Initializes FinishOAuthFlow parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("accountConnector", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "accountConnector",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/accountConnectors/[^/]+$",
+                            });
+                            RequestParameters.Add("googleOauthParams.scopes", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "googleOauthParams.scopes",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("googleOauthParams.ticket", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "googleOauthParams.ticket",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("googleOauthParams.versionInfo", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "googleOauthParams.versionInfo",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("oauthParams.code", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "oauthParams.code",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("oauthParams.ticket", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "oauthParams.ticket",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
                     /// <summary>Lists Users in a given project, location, and account_connector.</summary>
                     /// <param name="parent">Required. Parent value for ListUsersRequest</param>
                     public virtual ListRequest List(string parent)
@@ -669,6 +784,57 @@ namespace Google.Apis.DeveloperConnect.v1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Starts OAuth flow for an account connector.</summary>
+                    /// <param name="accountConnector">
+                    /// Required. The resource name of the AccountConnector in the format
+                    /// `projects/*/locations/*/accountConnectors/*`.
+                    /// </param>
+                    public virtual StartOAuthFlowRequest StartOAuthFlow(string accountConnector)
+                    {
+                        return new StartOAuthFlowRequest(this.service, accountConnector);
+                    }
+
+                    /// <summary>Starts OAuth flow for an account connector.</summary>
+                    public class StartOAuthFlowRequest : DeveloperConnectBaseServiceRequest<Google.Apis.DeveloperConnect.v1.Data.StartOAuthResponse>
+                    {
+                        /// <summary>Constructs a new StartOAuthFlow request.</summary>
+                        public StartOAuthFlowRequest(Google.Apis.Services.IClientService service, string accountConnector) : base(service)
+                        {
+                            AccountConnector = accountConnector;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the AccountConnector in the format
+                        /// `projects/*/locations/*/accountConnectors/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("accountConnector", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string AccountConnector { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "startOAuthFlow";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+accountConnector}/users:startOAuthFlow";
+
+                        /// <summary>Initializes StartOAuthFlow parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("accountConnector", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "accountConnector",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/accountConnectors/[^/]+$",
                             });
                         }
                     }
@@ -2687,6 +2853,174 @@ namespace Google.Apis.DeveloperConnect.v1
                 public InsightsConfigsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    DeploymentEvents = new DeploymentEventsResource(service);
+                }
+
+                /// <summary>Gets the DeploymentEvents resource.</summary>
+                public virtual DeploymentEventsResource DeploymentEvents { get; }
+
+                /// <summary>The "deploymentEvents" collection of methods.</summary>
+                public class DeploymentEventsResource
+                {
+                    private const string Resource = "deploymentEvents";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public DeploymentEventsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Gets a single Deployment Event.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the deployment event to retrieve. Format:
+                    /// projects/{project}/locations/{location}/insightsConfigs/{insights_config}/deploymentEvents/{uuid}
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets a single Deployment Event.</summary>
+                    public class GetRequest : DeveloperConnectBaseServiceRequest<Google.Apis.DeveloperConnect.v1.Data.DeploymentEvent>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the deployment event to retrieve. Format:
+                        /// projects/{project}/locations/{location}/insightsConfigs/{insights_config}/deploymentEvents/{uuid}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/insightsConfigs/[^/]+/deploymentEvents/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists Deployment Events in a given insights config.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent insights config that owns this collection of deployment events. Format:
+                    /// projects/{project}/locations/{location}/insightsConfigs/{insights_config}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists Deployment Events in a given insights config.</summary>
+                    public class ListRequest : DeveloperConnectBaseServiceRequest<Google.Apis.DeveloperConnect.v1.Data.ListDeploymentEventsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent insights config that owns this collection of deployment events. Format:
+                        /// projects/{project}/locations/{location}/insightsConfigs/{insights_config}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Filter expression that matches a subset of the DeploymentEvents.
+                        /// https://google.aip.dev/160.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of deployment events to return. The service may return fewer
+                        /// than this value. If unspecified, at most 50 deployment events will be returned. The maximum
+                        /// value is 1000; values above 1000 will be coerced to 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListDeploymentEvents` call. Provide this
+                        /// to retrieve the subsequent page. When paginating, all other parameters provided to
+                        /// `ListDeploymentEvents` must match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/deploymentEvents";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/insightsConfigs/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Creates a new InsightsConfig in a given project and location.</summary>
@@ -3742,6 +4076,120 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The ArtifactDeployment resource represents the deployment of the artifact within the InsightsConfig resource.
+    /// </summary>
+    public class ArtifactDeployment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The artifact alias in the deployment spec, with Tag/SHA. e.g.
+        /// us-docker.pkg.dev/my-project/my-repo/image:1.0.0
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactAlias")]
+        public virtual string ArtifactAlias { get; set; }
+
+        /// <summary>Output only. The artifact that is deployed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactReference")]
+        public virtual string ArtifactReference { get; set; }
+
+        /// <summary>
+        /// Output only. The summary of container status of the artifact deployment. Format as
+        /// `ContainerStatusState-Reason : restartCount` e.g. "Waiting-ImagePullBackOff : 3"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerStatusSummary")]
+        public virtual string ContainerStatusSummary { get; set; }
+
+        private string _deployTimeRaw;
+
+        private object _deployTime;
+
+        /// <summary>Output only. The time at which the deployment was deployed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployTime")]
+        public virtual string DeployTimeRaw
+        {
+            get => _deployTimeRaw;
+            set
+            {
+                _deployTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deployTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeployTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeployTimeDateTimeOffset instead.")]
+        public virtual object DeployTime
+        {
+            get => _deployTime;
+            set
+            {
+                _deployTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deployTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeployTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeployTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeployTimeRaw);
+            set => DeployTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Unique identifier of `ArtifactDeployment`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Output only. The source commits at which this artifact was built. Extracted from provenance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceCommitUris")]
+        public virtual System.Collections.Generic.IList<string> SourceCommitUris { get; set; }
+
+        private string _undeployTimeRaw;
+
+        private object _undeployTime;
+
+        /// <summary>
+        /// Output only. The time at which the deployment was undeployed, all artifacts are considered undeployed once
+        /// this time is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("undeployTime")]
+        public virtual string UndeployTimeRaw
+        {
+            get => _undeployTimeRaw;
+            set
+            {
+                _undeployTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _undeployTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UndeployTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UndeployTimeDateTimeOffset instead.")]
+        public virtual object UndeployTime
+        {
+            get => _undeployTime;
+            set
+            {
+                _undeployTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _undeployTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UndeployTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UndeployTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UndeployTimeRaw);
+            set => UndeployTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for connections to an instance of Bitbucket Cloud.</summary>
     public class BitbucketCloudConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4048,6 +4496,202 @@ namespace Google.Apis.DeveloperConnect.v1.Data
     }
 
     /// <summary>
+    /// The DeploymentEvent resource represents the deployment of the artifact within the InsightsConfig resource.
+    /// </summary>
+    public class DeploymentEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The artifact deployments of the DeploymentEvent. Each artifact deployment contains the artifact
+        /// uri and the runtime configuration uri. For GKE, this would be all the containers images that are deployed in
+        /// the pod.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactDeployments")]
+        public virtual System.Collections.Generic.IList<ArtifactDeployment> ArtifactDeployments { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The create time of the DeploymentEvent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _deployTimeRaw;
+
+        private object _deployTime;
+
+        /// <summary>
+        /// Output only. The time at which the DeploymentEvent was deployed. This would be the min of all
+        /// ArtifactDeployment deploy_times.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployTime")]
+        public virtual string DeployTimeRaw
+        {
+            get => _deployTimeRaw;
+            set
+            {
+                _deployTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deployTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeployTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeployTimeDateTimeOffset instead.")]
+        public virtual object DeployTime
+        {
+            get => _deployTime;
+            set
+            {
+                _deployTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deployTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeployTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeployTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeployTimeRaw);
+            set => DeployTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Identifier. The name of the DeploymentEvent. This name is provided by DCI. Format:
+        /// projects/{project}/locations/{location}/insightsConfigs/{insights_config}/deploymentEvents/{uuid}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The runtime configurations where the DeploymentEvent happened.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeConfig")]
+        public virtual RuntimeConfig RuntimeConfig { get; set; }
+
+        /// <summary>
+        /// Output only. The runtime assigned URI of the DeploymentEvent. For GKE, this is the fully qualified replica
+        /// set uri. e.g.
+        /// container.googleapis.com/projects/{project}/locations/{location}/clusters/{cluster}/k8s/namespaces/{namespace}/apps/replicasets/{replica-set-id}
+        /// For Cloud Run, this is the revision name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeDeploymentUri")]
+        public virtual string RuntimeDeploymentUri { get; set; }
+
+        /// <summary>Output only. The state of the DeploymentEvent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _undeployTimeRaw;
+
+        private object _undeployTime;
+
+        /// <summary>
+        /// Output only. The time at which the DeploymentEvent was undeployed, all artifacts are considered undeployed
+        /// once this time is set. This would be the max of all ArtifactDeployment undeploy_times. If any
+        /// ArtifactDeployment is still active (i.e. does not have an undeploy_time), this field will be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("undeployTime")]
+        public virtual string UndeployTimeRaw
+        {
+            get => _undeployTimeRaw;
+            set
+            {
+                _undeployTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _undeployTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UndeployTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UndeployTimeDateTimeOffset instead.")]
+        public virtual object UndeployTime
+        {
+            get => _undeployTime;
+            set
+            {
+                _undeployTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _undeployTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UndeployTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UndeployTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UndeployTimeRaw);
+            set => UndeployTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The update time of the DeploymentEvent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
@@ -4305,6 +4949,17 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         /// <summary>The token content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual string Token { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for responding to finishing an OAuth flow.</summary>
+    public class FinishOAuthResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The error resulted from exchanging OAuth tokens from the service provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exchangeError")]
+        public virtual ExchangeError ExchangeError { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4839,6 +5494,10 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. The GCP projects to track with the InsightsConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projects")]
+        public virtual Projects Projects { get; set; }
+
         /// <summary>
         /// Output only. Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of
         /// InsightsConfig does not match the user's intended state, and the service is actively updating the resource
@@ -4987,6 +5646,24 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         /// <summary>Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response to listing DeploymentEvents.</summary>
+    public class ListDeploymentEventsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of DeploymentEvents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentEvents")]
+        public virtual System.Collections.Generic.IList<DeploymentEvent> DeploymentEvents { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5343,6 +6020,17 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Projects represents the projects to track with the InsightsConfig.</summary>
+    public class Projects : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The GCP Project IDs. Format: projects/{project}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectIds")]
+        public virtual System.Collections.Generic.IList<string> ProjectIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>ProviderOAuthConfig is the OAuth config for a provider.</summary>
     public class ProviderOAuthConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5404,6 +6092,44 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for responding to starting an OAuth flow.</summary>
+    public class StartOAuthResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The authorization server URL to the OAuth flow of the service provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authUri")]
+        public virtual string AuthUri { get; set; }
+
+        /// <summary>The client ID to the OAuth App of the service provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>
+        /// https://datatracker.ietf.org/doc/html/rfc7636#section-4.1 Follow http://shortn/_WFYl6U0NyC to include it in
+        /// the AutoCodeURL.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("codeChallenge")]
+        public virtual string CodeChallenge { get; set; }
+
+        /// <summary>https://datatracker.ietf.org/doc/html/rfc7636#section-4.2</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("codeChallengeMethod")]
+        public virtual string CodeChallengeMethod { get; set; }
+
+        /// <summary>The list of scopes requested by the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
+
+        /// <summary>The ID of the system provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemProviderId")]
+        public virtual string SystemProviderId { get; set; }
+
+        /// <summary>The ticket to be used for post processing the callback from the service provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ticket")]
+        public virtual string Ticket { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
