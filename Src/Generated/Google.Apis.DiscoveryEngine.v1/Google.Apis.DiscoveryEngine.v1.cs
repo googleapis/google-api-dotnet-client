@@ -3840,6 +3840,61 @@ namespace Google.Apis.DiscoveryEngine.v1
                         }
 
                         /// <summary>
+                        /// Deletes a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
+                        /// </summary>
+                        /// <param name="name">
+                        /// Required. The resource name of the ServingConfig to delete. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
+                        /// </param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Deletes a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
+                        /// </summary>
+                        public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleProtobufEmpty>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the ServingConfig to delete. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/servingConfigs/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
                         /// Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
                         /// </summary>
                         /// <param name="name">
@@ -9252,6 +9307,61 @@ namespace Google.Apis.DiscoveryEngine.v1
                         }
 
                         /// <summary>
+                        /// Deletes a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
+                        /// </summary>
+                        /// <param name="name">
+                        /// Required. The resource name of the ServingConfig to delete. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
+                        /// </param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Deletes a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
+                        /// </summary>
+                        public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleProtobufEmpty>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the ServingConfig to delete. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/servingConfigs/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
                         /// Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
                         /// </summary>
                         /// <param name="name">
@@ -13893,6 +14003,61 @@ namespace Google.Apis.DiscoveryEngine.v1
                             RequestParameters.Add("servingConfig", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "servingConfig",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/servingConfigs/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the ServingConfig to delete. Format:
+                    /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Deletes a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
+                    /// </summary>
+                    public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the ServingConfig to delete. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -25569,6 +25734,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. Configuration for Natural Language Query Understanding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("naturalLanguageQueryUnderstandingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1NaturalLanguageQueryUnderstandingConfig NaturalLanguageQueryUnderstandingConfig { get; set; }
+
         /// <summary>Optional. Stores serving config at DataStore level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingConfigDataStore")]
         public virtual GoogleCloudDiscoveryengineV1DataStoreServingConfigDataStore ServingConfigDataStore { get; set; }
@@ -28976,6 +29145,20 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for Natural Language Query Understanding.</summary>
+    public class GoogleCloudDiscoveryengineV1NaturalLanguageQueryUnderstandingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Mode of Natural Language Query Understanding. If this field is unset, the behavior defaults to
+        /// NaturalLanguageQueryUnderstandingConfig.Mode.DISABLED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Detailed page information.</summary>
     public class GoogleCloudDiscoveryengineV1PageInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -30448,11 +30631,12 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// Optional. The categories associated with a category page. Must be set for category navigation queries to
         /// achieve good search quality. The format should be the same as UserEvent.PageInfo.page_category. This field
         /// is the equivalent of the query for browse (navigation) queries. It's used by the browse model when the query
-        /// is empty. If the field is empty, it will not be used by the browse model. To represent full path of a
-        /// category, use '&amp;gt;' character to separate different hierarchies. If '&amp;gt;' is part of the category
-        /// name, replace it with other character(s). For example, `Graphics Cards &amp;gt; RTX&amp;gt;4090 &amp;gt;
-        /// Founders Edition` where "RTX &amp;gt; 4090" represents one level, can be rewritten as `Graphics Cards
-        /// &amp;gt; RTX_4090 &amp;gt; Founders Edition`
+        /// is empty. If the field is empty, it will not be used by the browse model. If the field contains more than
+        /// one element, only the first element will be used. To represent full path of a category, use '&amp;gt;'
+        /// character to separate different hierarchies. If '&amp;gt;' is part of the category name, replace it with
+        /// other character(s). For example, `Graphics Cards &amp;gt; RTX&amp;gt;4090 &amp;gt; Founders Edition` where
+        /// "RTX &amp;gt; 4090" represents one level, can be rewritten as `Graphics Cards &amp;gt; RTX_4090 &amp;gt;
+        /// Founders Edition`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageCategories")]
         public virtual System.Collections.Generic.IList<string> PageCategories { get; set; }
@@ -33346,12 +33530,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string EventType { get; set; }
 
         /// <summary>
-        /// The filter syntax consists of an expression language for constructing a predicate from one or more fields of
-        /// the documents being filtered. One example is for `search` events, the associated SearchRequest may contain a
-        /// filter expression in SearchRequest.filter conforming to https://google.aip.dev/160#filtering. Similarly, for
-        /// `view-item-list` events that are generated from a RecommendRequest, this field may be populated directly
-        /// from RecommendRequest.filter conforming to https://google.aip.dev/160#filtering. The value must be a UTF-8
-        /// encoded string with a length limit of 1,000 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
+        /// Optional. The filter syntax consists of an expression language for constructing a predicate from one or more
+        /// fields of the documents being filtered. One example is for `search` events, the associated SearchRequest may
+        /// contain a filter expression in SearchRequest.filter conforming to https://google.aip.dev/160#filtering.
+        /// Similarly, for `view-item-list` events that are generated from a RecommendRequest, this field may be
+        /// populated directly from RecommendRequest.filter conforming to https://google.aip.dev/160#filtering. The
+        /// value must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an
+        /// `INVALID_ARGUMENT` error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -42340,11 +42525,12 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// Optional. The categories associated with a category page. Must be set for category navigation queries to
         /// achieve good search quality. The format should be the same as UserEvent.PageInfo.page_category. This field
         /// is the equivalent of the query for browse (navigation) queries. It's used by the browse model when the query
-        /// is empty. If the field is empty, it will not be used by the browse model. To represent full path of a
-        /// category, use '&amp;gt;' character to separate different hierarchies. If '&amp;gt;' is part of the category
-        /// name, replace it with other character(s). For example, `Graphics Cards &amp;gt; RTX&amp;gt;4090 &amp;gt;
-        /// Founders Edition` where "RTX &amp;gt; 4090" represents one level, can be rewritten as `Graphics Cards
-        /// &amp;gt; RTX_4090 &amp;gt; Founders Edition`
+        /// is empty. If the field is empty, it will not be used by the browse model. If the field contains more than
+        /// one element, only the first element will be used. To represent full path of a category, use '&amp;gt;'
+        /// character to separate different hierarchies. If '&amp;gt;' is part of the category name, replace it with
+        /// other character(s). For example, `Graphics Cards &amp;gt; RTX&amp;gt;4090 &amp;gt; Founders Edition` where
+        /// "RTX &amp;gt; 4090" represents one level, can be rewritten as `Graphics Cards &amp;gt; RTX_4090 &amp;gt;
+        /// Founders Edition`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageCategories")]
         public virtual System.Collections.Generic.IList<string> PageCategories { get; set; }
@@ -49322,11 +49508,12 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// Optional. The categories associated with a category page. Must be set for category navigation queries to
         /// achieve good search quality. The format should be the same as UserEvent.PageInfo.page_category. This field
         /// is the equivalent of the query for browse (navigation) queries. It's used by the browse model when the query
-        /// is empty. If the field is empty, it will not be used by the browse model. To represent full path of a
-        /// category, use '&amp;gt;' character to separate different hierarchies. If '&amp;gt;' is part of the category
-        /// name, replace it with other character(s). For example, `Graphics Cards &amp;gt; RTX&amp;gt;4090 &amp;gt;
-        /// Founders Edition` where "RTX &amp;gt; 4090" represents one level, can be rewritten as `Graphics Cards
-        /// &amp;gt; RTX_4090 &amp;gt; Founders Edition`
+        /// is empty. If the field is empty, it will not be used by the browse model. If the field contains more than
+        /// one element, only the first element will be used. To represent full path of a category, use '&amp;gt;'
+        /// character to separate different hierarchies. If '&amp;gt;' is part of the category name, replace it with
+        /// other character(s). For example, `Graphics Cards &amp;gt; RTX&amp;gt;4090 &amp;gt; Founders Edition` where
+        /// "RTX &amp;gt; 4090" represents one level, can be rewritten as `Graphics Cards &amp;gt; RTX_4090 &amp;gt;
+        /// Founders Edition`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageCategories")]
         public virtual System.Collections.Generic.IList<string> PageCategories { get; set; }
