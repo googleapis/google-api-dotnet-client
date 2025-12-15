@@ -7053,15 +7053,15 @@ namespace Google.Apis.ChromeManagement.v1.Data
     /// <summary>One risk assessment entry.</summary>
     public class GoogleChromeManagementV1RiskAssessmentEntry : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The risk assessment provider from which this entry comes from.</summary>
+        /// <summary>Output only. The risk assessment provider from which this entry comes from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provider")]
         public virtual string Provider { get; set; }
 
-        /// <summary>The details of the provider's risk assessment.</summary>
+        /// <summary>Output only. The details of the provider's risk assessment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("riskAssessment")]
         public virtual GoogleChromeManagementV1RiskAssessment RiskAssessment { get; set; }
 
-        /// <summary>The bucketed risk level for the risk assessment.</summary>
+        /// <summary>Output only. The bucketed risk level for the risk assessment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("riskLevel")]
         public virtual string RiskLevel { get; set; }
 
