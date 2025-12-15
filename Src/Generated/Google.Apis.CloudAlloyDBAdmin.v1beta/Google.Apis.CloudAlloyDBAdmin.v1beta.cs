@@ -3572,9 +3572,9 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta
 
                     /// <summary>
                     /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                    /// `true` when reading across collections e.g. when `parent` is set to
-                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
                     /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                     /// specific documentation.
                     /// </summary>
@@ -6208,8 +6208,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -7475,6 +7475,117 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>BigQueryResourceMetadata contains information about the BigQuery resource. Next ID: 9</summary>
+    public class StorageDatabasecenterPartnerapiV1mainBigQueryResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>
+        /// The creation time of the resource, i.e. the time when resource is created and recorded in partner service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. Full resource name of this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
+        public virtual string FullResourceName { get; set; }
+
+        /// <summary>Required. location of the resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>The product this resource represents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("product")]
+        public virtual StorageDatabasecenterProtoCommonProduct Product { get; set; }
+
+        /// <summary>
+        /// Closest parent Cloud Resource Manager container of this resource. It must be resource name of a Cloud
+        /// Resource Manager project with the format of "/", such as "projects/123". For GCP provided resources, number
+        /// should be project number.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceContainer")]
+        public virtual string ResourceContainer { get; set; }
+
+        /// <summary>Required. Database resource id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
+        public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceId ResourceId { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>The time at which the resource was updated and recorded at partner service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>User-provided labels associated with the resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLabelSet")]
+        public virtual StorageDatabasecenterPartnerapiV1mainUserLabels UserLabelSet { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains compliance information about a security standard indicating unmet recommendations.</summary>
     public class StorageDatabasecenterPartnerapiV1mainCompliance : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7581,6 +7692,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// <summary>BackupDR metadata is used to ingest metadata from BackupDR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupdrMetadata")]
         public virtual StorageDatabasecenterPartnerapiV1mainBackupDRMetadata BackupdrMetadata { get; set; }
+
+        /// <summary>For BigQuery resource metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryResourceMetadata")]
+        public virtual StorageDatabasecenterPartnerapiV1mainBigQueryResourceMetadata BigqueryResourceMetadata { get; set; }
 
         /// <summary>
         /// Config based signal data is used to ingest signals that are generated based on the configuration of the
@@ -7799,9 +7914,9 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
         /// <summary>
         /// Required. The type of resource this ID is identifying. Ex go/keep-sorted start
-        /// alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance, bigtableadmin.googleapis.com/Cluster,
-        /// bigtableadmin.googleapis.com/Instance compute.googleapis.com/Instance firestore.googleapis.com/Database,
-        /// redis.googleapis.com/Instance, redis.googleapis.com/Cluster,
+        /// alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance, bigquery.googleapis.com/Dataset,
+        /// bigtableadmin.googleapis.com/Cluster, bigtableadmin.googleapis.com/Instance compute.googleapis.com/Instance
+        /// firestore.googleapis.com/Database, redis.googleapis.com/Instance, redis.googleapis.com/Cluster,
         /// oracledatabase.googleapis.com/CloudExadataInfrastructure oracledatabase.googleapis.com/CloudVmCluster
         /// oracledatabase.googleapis.com/AutonomousDatabase spanner.googleapis.com/Instance,
         /// spanner.googleapis.com/Database, sqladmin.googleapis.com/Instance, go/keep-sorted end REQUIRED Please refer
