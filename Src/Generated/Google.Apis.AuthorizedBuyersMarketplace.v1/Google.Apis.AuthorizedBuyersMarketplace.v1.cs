@@ -4482,6 +4482,27 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; }
 
+        /// <summary>
+        /// Output only. The ancestor names of the media planner. Format: `mediaPlanners/{mediaPlannerAccountId}` Can be
+        /// used to filter the response of the mediaPlanners.list method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ancestorNames")]
+        public virtual System.Collections.Generic.IList<string> AncestorNames { get; set; }
+
+        /// <summary>
+        /// Output only. The display name of the media planner. Can be used to filter the response of the
+        /// mediaPlanners.list method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Identifier. The unique resource name of the media planner. Format: `mediaPlanners/{mediaPlannerAccountId}`
+        /// Can be used to filter the response of the mediaPlanners.list method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
