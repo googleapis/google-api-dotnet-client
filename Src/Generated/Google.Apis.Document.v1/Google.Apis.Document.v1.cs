@@ -7652,7 +7652,7 @@ namespace Google.Apis.Document.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. The user-defined name of the Schema.</summary>
+        /// <summary>Required. The user-defined name of the Schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -8510,7 +8510,7 @@ namespace Google.Apis.Document.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. The user-defined name of the SchemaVersion.</summary>
+        /// <summary>Required. The user-defined name of the SchemaVersion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
