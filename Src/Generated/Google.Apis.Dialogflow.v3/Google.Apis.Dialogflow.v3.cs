@@ -13516,6 +13516,13 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("queryParams")]
         public virtual GoogleCloudDialogflowCxV3QueryParameters QueryParams { get; set; }
 
+        /// <summary>
+        /// Optional. Specifies which fields in the QueryResult to return. If not set, the default is
+        /// DETECT_INTENT_RESPONSE_VIEW_FULL.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseView")]
+        public virtual string ResponseView { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
