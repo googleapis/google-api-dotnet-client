@@ -2404,9 +2404,9 @@ namespace Google.Apis.CertificateManager.v1
 
                     /// <summary>
                     /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                    /// `true` when reading across collections e.g. when `parent` is set to
-                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
                     /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                     /// specific documentation.
                     /// </summary>
@@ -3220,6 +3220,10 @@ namespace Google.Apis.CertificateManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("managed")]
         public virtual ManagedCertificate Managed { get; set; }
 
+        /// <summary>If set, contains configuration and state of a managed identity certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedIdentity")]
+        public virtual ManagedIdentityCertificate ManagedIdentity { get; set; }
+
         /// <summary>
         /// Identifier. A user-defined name of the certificate. Certificate names must be unique globally and match
         /// pattern `projects/*/locations/*/certificates/*`.
@@ -4031,8 +4035,8 @@ namespace Google.Apis.CertificateManager.v1.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -4131,6 +4135,28 @@ namespace Google.Apis.CertificateManager.v1.Data
         public virtual string IssuanceConfig { get; set; }
 
         /// <summary>Output only. Information about issues with provisioning a Managed Certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisioningIssue")]
+        public virtual ProvisioningIssue ProvisioningIssue { get; set; }
+
+        /// <summary>Output only. State of the managed certificate resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration and state of a Managed Identity Certificate. Certificate Manager provisions and renews Managed
+    /// Identity Certificates automatically, for as long as it's authorized to do so.
+    /// </summary>
+    public class ManagedIdentityCertificate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Immutable. SPIFFE ID of the Managed Identity used for this certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identity")]
+        public virtual string Identity { get; set; }
+
+        /// <summary>Output only. Information about issues with provisioning a managed certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisioningIssue")]
         public virtual ProvisioningIssue ProvisioningIssue { get; set; }
 
@@ -4460,6 +4486,13 @@ namespace Google.Apis.CertificateManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Defines a mapping from a trust domain to a TrustStore. This is used for SPIFFE certificate
+        /// validation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spiffeTrustStores")]
+        public virtual System.Collections.Generic.IDictionary<string, TrustStore> SpiffeTrustStores { get; set; }
 
         /// <summary>
         /// Optional. Set of trust stores to perform validation against. This field is supported when TrustConfig is
