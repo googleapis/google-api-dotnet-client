@@ -4094,11 +4094,10 @@ namespace Google.Apis.HangoutsChat.v1
             /// is not supported with `useAdminAccess`. `permission_settings`: Supports changing the [permission
             /// settings](https://support.google.com/chat/answer/13340792) of a space. When updating permission
             /// settings, you can only specify `permissionSettings` field masks; you cannot update other field masks at
-            /// the same time. `permissionSettings` is not supported with `useAdminAccess`. The supported field masks
-            /// include: - `permission_settings.manageMembersAndGroups` - `permission_settings.modifySpaceDetails` -
-            /// `permission_settings.toggleHistory` - `permission_settings.useAtMentionAll` -
-            /// `permission_settings.manageApps` - `permission_settings.manageWebhooks` -
-            /// `permission_settings.replyMessages`
+            /// the same time. The supported field masks include: - `permission_settings.manageMembersAndGroups` -
+            /// `permission_settings.modifySpaceDetails` - `permission_settings.toggleHistory` -
+            /// `permission_settings.useAtMentionAll` - `permission_settings.manageApps` -
+            /// `permission_settings.manageWebhooks` - `permission_settings.replyMessages`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
@@ -6201,9 +6200,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string DisplayStyle { get; set; }
 
         /// <summary>
-        /// The expression data for the card. Available for Google Workspace add-ons that extend Google Workspace flows,
-        /// which is available as part of the [Gemini Alpha program](https://support.google.com/a/answer/14170809).
-        /// Unavailable for Google Chat apps.
+        /// The expression data for the card. Available for Google Workspace add-ons that extend Google Workspace
+        /// Studio. Unavailable for Google Chat apps.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expressionData")]
         public virtual System.Collections.Generic.IList<GoogleAppsCardV1ExpressionData> ExpressionData { get; set; }
@@ -6534,8 +6532,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// Represents an action that is not specific to a widget. Available for Google Workspace add-ons that extend Google
-    /// Workspace flows, which is available as part of the [Gemini Alpha
-    /// program](https://support.google.com/a/answer/14170809). Unavailable for Google Chat apps.
+    /// Workspace Studio. Unavailable for Google Chat apps.
     /// </summary>
     public class GoogleAppsCardV1CommonWidgetAction : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6549,8 +6546,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// Represents a condition that can be used to trigger an action. Available for Google Workspace add-ons that extend
-    /// Google Workspace flows, which is available as part of the [Gemini Alpha
-    /// program](https://support.google.com/a/answer/14170809). Unavailable for Google Chat apps.
+    /// Google Workspace Studio. Unavailable for Google Chat apps.
     /// </summary>
     public class GoogleAppsCardV1Condition : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6568,8 +6564,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// A configuration object that helps configure the data sources for a widget. Available for Google Workspace
-    /// add-ons that extend Google Workspace flows, which is available as part of the [Gemini Alpha
-    /// program](https://support.google.com/a/answer/14170809). Unavailable for Google Chat apps.
+    /// add-ons that extend Google Workspace Studio. Unavailable for Google Chat apps.
     /// </summary>
     public class GoogleAppsCardV1DataSourceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6599,8 +6594,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>
         /// A data source that's unique to a Google Workspace host application, such as Gmail emails, Google Calendar
-        /// events, or Google Chat messages. Available for Google Workspace add-ons that extend Google Workspace flows,
-        /// which is available as part of the [Gemini Alpha program](https://support.google.com/a/answer/14170809).
+        /// events, or Google Chat messages. Available for Google Workspace add-ons that extend Google Workspace Studio.
         /// Unavailable for Google Chat apps.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostAppDataSource")]
@@ -6762,8 +6756,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// Represents an actionthat can be performed on an ui element. Available for Google Workspace add-ons that extend
-    /// Google Workspace flows, which is available as part of the [Gemini Alpha
-    /// program](https://support.google.com/a/answer/14170809). Unavailable for Google Chat apps.
+    /// Google Workspace Studio. Unavailable for Google Chat apps.
     /// </summary>
     public class GoogleAppsCardV1EventAction : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6785,8 +6778,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// Represents the data that is used to evaluate an expression. Available for Google Workspace add-ons that extend
-    /// Google Workspace flows, which is available as part of the [Gemini Alpha
-    /// program](https://support.google.com/a/answer/14170809). Unavailable for Google Chat apps.
+    /// Google Workspace Studio. Unavailable for Google Chat apps.
     /// </summary>
     public class GoogleAppsCardV1ExpressionData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6812,8 +6804,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// Represents a condition that is evaluated using CEL. Available for Google Workspace add-ons that extend Google
-    /// Workspace flows, which is available as part of the [Gemini Alpha
-    /// program](https://support.google.com/a/answer/14170809). Unavailable for Google Chat apps.
+    /// Workspace Studio. Unavailable for Google Chat apps.
     /// </summary>
     public class GoogleAppsCardV1ExpressionDataCondition : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7291,8 +7282,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// A unique ID assigned to the section that's used to identify the section to be mutated. The ID has a
         /// character limit of 64 characters and should be in the format of `[a-zA-Z0-9-]+`. Available for Google
-        /// Workspace add-ons that extend Google Workspace flows, which is available as part of the [Gemini Alpha
-        /// program](https://support.google.com/a/answer/14170809). Unavailable for Google Chat apps.
+        /// Workspace add-ons that extend Google Workspace Studio. Unavailable for Google Chat apps.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -7332,9 +7322,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// Optional. The data source configs for the selection control. This field provides more fine-grained control
         /// over the data source. If specified, the `multi_select_max_selected_items` field,
         /// `multi_select_min_query_length` field, `external_data_source` field and `platform_data_source` field are
-        /// ignored. Available for Google Workspace add-ons that extend Google Workspace flows, which is available as
-        /// part of the [Gemini Alpha program](https://support.google.com/a/answer/14170809). Unavailable for Google
-        /// Chat apps.
+        /// ignored. Available for Google Workspace add-ons that extend Google Workspace Studio. Available for the
+        /// `Dropdown widget` widget in Google Chat apps as part of the [Developer Preview
+        /// Program](https://developers.google.com/workspace/preview). For the `Dropdown` widget in Google Chat apps,
+        /// only one `DataSourceConfig` is supported. If multiple `DataSourceConfig`s are set, only the first one is
+        /// used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceConfigs")]
         public virtual System.Collections.Generic.IList<GoogleAppsCardV1DataSourceConfig> DataSourceConfigs { get; set; }
@@ -7346,8 +7338,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// Optional. Text that appears below the selection input field meant to assist users by prompting them to enter
         /// a certain value. This text is always visible. Available for Google Workspace add-ons that extend Google
-        /// Workspace flows, which is available as part of the [Gemini Alpha
-        /// program](https://support.google.com/a/answer/14170809). Unavailable for Google Chat apps.
+        /// Workspace Studio. Unavailable for Google Chat apps.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hintText")]
         public virtual string HintText { get; set; }
@@ -7560,8 +7551,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// A data source that's unique to a Google Workspace host application, such as Gmail emails, Google Calendar
-        /// events, or Google Chat messages. Available for Google Workspace add-ons that extend Google Workspace flows,
-        /// which is available as part of the [Gemini Alpha program](https://support.google.com/a/answer/14170809).
+        /// events, or Google Chat messages. Available for Google Workspace add-ons that extend Google Workspace Studio.
         /// Unavailable for Google Chat apps.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostAppDataSource")]
@@ -7673,9 +7663,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Represents a trigger. Available for Google Workspace add-ons that extend Google Workspace flows, which is
-    /// available as part of the [Gemini Alpha program](https://support.google.com/a/answer/14170809). Unavailable for
-    /// Google Chat apps.
+    /// Represents a trigger. Available for Google Workspace add-ons that extend Google Workspace Studio. Unavailable
+    /// for Google Chat apps.
     /// </summary>
     public class GoogleAppsCardV1Trigger : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7689,8 +7678,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// Represents an action that updates the visibility of a widget. Available for Google Workspace add-ons that extend
-    /// Google Workspace flows, which is available as part of the [Gemini Alpha
-    /// program](https://support.google.com/a/answer/14170809). Unavailable for Google Chat apps.
+    /// Google Workspace Studio. Unavailable for Google Chat apps.
     /// </summary>
     public class GoogleAppsCardV1UpdateVisibilityAction : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7816,8 +7804,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// Specifies the event actions that can be performed on the widget. Available for Google Workspace add-ons that
-        /// extend Google Workspace flows, which is available as part of the [Gemini Alpha
-        /// program](https://support.google.com/a/answer/14170809). Unavailable for Google Chat apps.
+        /// extend Google Workspace Studio. Unavailable for Google Chat apps.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventActions")]
         public virtual System.Collections.Generic.IList<GoogleAppsCardV1EventAction> EventActions { get; set; }
@@ -7845,9 +7832,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// A unique ID assigned to the widget that's used to identify the widget to be mutated. The ID has a character
-        /// limit of 64 characters and should be in the format of `[a-zA-Z0-9-]+` and. Available for Google Workspace
-        /// add-ons that extend Google Workspace flows, which is available as part of the [Gemini Alpha
-        /// program](https://support.google.com/a/answer/14170809). Unavailable for Google Chat apps.
+        /// limit of 64 characters and should be in the format of `[a-zA-Z0-9-]+`. Available for Google Workspace
+        /// add-ons that extend Google Workspace Studio. Unavailable for Google Chat apps.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -7909,8 +7895,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// Specifies whether the widget is visible or hidden. The default value is `VISIBLE`. Available for Google
-        /// Workspace add-ons that extend Google Workspace flows, which is available as part of the [Gemini Alpha
-        /// program](https://support.google.com/a/answer/14170809). Unavailable for Google Chat apps.
+        /// Workspace add-ons that extend Google Workspace Studio. Unavailable for Google Chat apps.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
         public virtual string Visibility { get; set; }
