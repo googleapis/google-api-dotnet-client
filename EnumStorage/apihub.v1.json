@@ -10,7 +10,8 @@
   ],
   "Google.Apis.APIhub.v1.ProjectsResource+LocationsResource+ApisResource+VersionsResource+SpecsResource+FetchAdditionalSpecContentRequest.SpecContentTypeEnum": [
     "SPEC_CONTENT_TYPE_UNSPECIFIED",
-    "BOOSTED_SPEC_CONTENT"
+    "BOOSTED_SPEC_CONTENT",
+    "GATEWAY_OPEN_API_SPEC"
   ],
   "Google.Apis.APIhub.v1.ProjectsResource+LocationsResource+RetrieveApiViewsRequest.ViewEnum": [
     "API_VIEW_TYPE_UNSPECIFIED",

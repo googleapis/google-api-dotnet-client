@@ -1582,6 +1582,13 @@ namespace Google.Apis.APIhub.v1
                                 /// <summary>The spec content type for boosted spec.</summary>
                                 [Google.Apis.Util.StringValueAttribute("BOOSTED_SPEC_CONTENT")]
                                 BOOSTEDSPECCONTENT = 1,
+
+                                /// <summary>
+                                /// The spec content type for OpenAPI spec. This enum is used for OpenAPI specs ingested
+                                /// via APIGEE X Gateway.
+                                /// </summary>
+                                [Google.Apis.Util.StringValueAttribute("GATEWAY_OPEN_API_SPEC")]
+                                GATEWAYOPENAPISPEC = 2,
                             }
 
                             /// <summary>Gets the method name.</summary>
