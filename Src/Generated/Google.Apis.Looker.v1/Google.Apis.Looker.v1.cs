@@ -1612,6 +1612,10 @@ namespace Google.Apis.Looker.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("marketplaceEnabled")]
         public virtual System.Nullable<bool> MarketplaceEnabled { get; set; }
 
+        /// <summary>Output only. The list of IP addresses used by Secure Web Proxy for outbound traffic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webProxyIps")]
+        public virtual System.Collections.Generic.IList<string> WebProxyIps { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
