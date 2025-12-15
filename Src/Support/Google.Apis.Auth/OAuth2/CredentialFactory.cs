@@ -219,7 +219,7 @@ public static class CredentialFactory
     /// if the credential data is incompatible with the requested type <typeparamref name="T"/>,
     /// or in the rare event of an internal logic error indicating a bug.
     /// </exception>
-    internal static T FromJsonParameters<T>(JsonCredentialParameters credentialParameters)
+    public static T FromJsonParameters<T>(JsonCredentialParameters credentialParameters)
     {
         credentialParameters.ThrowIfNull(nameof(credentialParameters));
         if (FromJsonParameters(credentialParameters, typeof(T)) is T credentialAsT)
