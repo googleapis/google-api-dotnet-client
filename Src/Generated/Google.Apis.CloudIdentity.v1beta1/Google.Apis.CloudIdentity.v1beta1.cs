@@ -5796,7 +5796,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual System.Nullable<bool> IsBulkDataEntryAnalysisEnabled { get; set; }
 
         /// <summary>
-        /// Current state of [Chrome Cleanup](https://chromeenterprise.google/policies/#ChromeCleanupEnabled).
+        /// Deprecated: This field is not used for Chrome version 118 and later. Current state of [Chrome
+        /// Cleanup](https://chromeenterprise.google/policies/#ChromeCleanupEnabled).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isChromeCleanupEnabled")]
         public virtual System.Nullable<bool> IsChromeCleanupEnabled { get; set; }
@@ -7131,7 +7132,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual System.Nullable<bool> IsBulkDataEntryAnalysisEnabled { get; set; }
 
         /// <summary>
-        /// Current state of [Chrome Cleanup](https://chromeenterprise.google/policies/#ChromeCleanupEnabled).
+        /// Deprecated: This field is not used for Chrome version 118 and later. Current state of [Chrome
+        /// Cleanup](https://chromeenterprise.google/policies/#ChromeCleanupEnabled).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isChromeCleanupEnabled")]
         public virtual System.Nullable<bool> IsChromeCleanupEnabled { get; set; }
