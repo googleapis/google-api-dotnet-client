@@ -1983,6 +1983,13 @@ namespace Google.Apis.ServiceControl.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("constraint")]
         public virtual string Constraint { get; set; }
 
+        /// <summary>
+        /// Optional. Provides extra information for the specific violated constraint. See the constraint's
+        /// documentation to determine if this field is populated and what the structure of the message should be.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constraintViolationInfo")]
+        public virtual System.Collections.Generic.IDictionary<string, object> ConstraintViolationInfo { get; set; }
+
         /// <summary>Optional. Error message that policy is indicating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
         public virtual string ErrorMessage { get; set; }
