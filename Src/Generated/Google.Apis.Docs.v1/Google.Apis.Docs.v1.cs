@@ -983,6 +983,48 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A date instance mentioned in a document.</summary>
+    public class DateElement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The properties of this DateElement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateElementProperties")]
+        public virtual DateElementProperties DateElementProperties { get; set; }
+
+        /// <summary>Output only. The unique ID of this date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateId")]
+        public virtual string DateId { get; set; }
+
+        /// <summary>The suggested changes to the date element properties, keyed by suggestion ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedDateElementPropertiesChanges")]
+        public virtual System.Collections.Generic.IDictionary<string, SuggestedDateElementProperties> SuggestedDateElementPropertiesChanges { get; set; }
+
+        /// <summary>
+        /// IDs for suggestions that remove this date from the document. A DateElement might have multiple deletion IDs
+        /// if, for example, multiple users suggest deleting it. If empty, then this date isn't suggested for deletion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedDeletionIds")]
+        public virtual System.Collections.Generic.IList<string> SuggestedDeletionIds { get; set; }
+
+        /// <summary>
+        /// IDs for suggestions that insert this date into the document. A DateElement might have multiple insertion IDs
+        /// if it's a nested suggested change (a suggestion within a suggestion made by a different user, for example).
+        /// If empty, then this date isn't a suggested insertion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedInsertionIds")]
+        public virtual System.Collections.Generic.IList<string> SuggestedInsertionIds { get; set; }
+
+        /// <summary>The suggested text style changes to this DateElement, keyed by suggestion ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedTextStyleChanges")]
+        public virtual System.Collections.Generic.IDictionary<string, SuggestedTextStyle> SuggestedTextStyleChanges { get; set; }
+
+        /// <summary>The text style of this DateElement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textStyle")]
+        public virtual TextStyle TextStyle { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Properties of a DateElement.</summary>
     public class DateElementProperties : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1062,6 +1104,36 @@ namespace Google.Apis.Docs.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampRaw);
             set => TimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A mask that indicates which of the fields on the base DateElementProperties have been changed in this
+    /// suggestion. For any field set to true, there's a new suggested value.
+    /// </summary>
+    public class DateElementPropertiesSuggestionState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates if there was a suggested change to date_format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateFormatSuggested")]
+        public virtual System.Nullable<bool> DateFormatSuggested { get; set; }
+
+        /// <summary>Indicates if there was a suggested change to locale.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localeSuggested")]
+        public virtual System.Nullable<bool> LocaleSuggested { get; set; }
+
+        /// <summary>Indicates if there was a suggested change to time_format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeFormatSuggested")]
+        public virtual System.Nullable<bool> TimeFormatSuggested { get; set; }
+
+        /// <summary>Indicates if there was a suggested change to time_zone_id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZoneIdSuggested")]
+        public virtual System.Nullable<bool> TimeZoneIdSuggested { get; set; }
+
+        /// <summary>Indicates if there was a suggested change to timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestampSuggested")]
+        public virtual System.Nullable<bool> TimestampSuggested { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3071,6 +3143,10 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("columnBreak")]
         public virtual ColumnBreak ColumnBreak { get; set; }
 
+        /// <summary>A paragraph element that represents a date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateElement")]
+        public virtual DateElement DateElement { get; set; }
+
         /// <summary>The zero-base end index of this paragraph element, exclusive, in UTF-16 code units.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
         public virtual System.Nullable<int> EndIndex { get; set; }
@@ -4380,6 +4456,27 @@ namespace Google.Apis.Docs.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bulletSuggestionState")]
         public virtual BulletSuggestionState BulletSuggestionState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A suggested change to a DateElementProperties.</summary>
+    public class SuggestedDateElementProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// DateElementProperties that only includes the changes made in this suggestion. This can be used along with
+        /// the date_element_properties_suggestion_state to see which fields have changed and their new values.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateElementProperties")]
+        public virtual DateElementProperties DateElementProperties { get; set; }
+
+        /// <summary>
+        /// A mask that indicates which of the fields on the base DateElementProperties have been changed in this
+        /// suggestion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateElementPropertiesSuggestionState")]
+        public virtual DateElementPropertiesSuggestionState DateElementPropertiesSuggestionState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
