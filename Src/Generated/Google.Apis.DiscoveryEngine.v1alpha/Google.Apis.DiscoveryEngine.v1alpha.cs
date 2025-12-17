@@ -5307,6 +5307,91 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         }
 
                         /// <summary>
+                        /// Creates a ServingConfig. Note: The Google Cloud console works only with the default serving
+                        /// config. Additional ServingConfigs can be created and managed only via the API. A maximum of
+                        /// 100 ServingConfigs are allowed in an Engine, otherwise a RESOURCE_EXHAUSTED error is
+                        /// returned.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. Full resource name of parent. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+                        /// </param>
+                        public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaServingConfig body, string parent)
+                        {
+                            return new CreateRequest(this.service, body, parent);
+                        }
+
+                        /// <summary>
+                        /// Creates a ServingConfig. Note: The Google Cloud console works only with the default serving
+                        /// config. Additional ServingConfigs can be created and managed only via the API. A maximum of
+                        /// 100 ServingConfigs are allowed in an Engine, otherwise a RESOURCE_EXHAUSTED error is
+                        /// returned.
+                        /// </summary>
+                        public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaServingConfig>
+                        {
+                            /// <summary>Constructs a new Create request.</summary>
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaServingConfig body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Full resource name of parent. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Required. The ID to use for the ServingConfig, which will become the final component of
+                            /// the ServingConfig's resource name. This value should be 4-63 characters, and valid
+                            /// characters are /a-zA-Z0-9+/.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("servingConfigId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string ServingConfigId { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaServingConfig Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "create";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+parent}/servingConfigs";
+
+                            /// <summary>Initializes Create parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
+                                });
+                                RequestParameters.Add("servingConfigId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "servingConfigId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
                         /// Deletes a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
                         /// </summary>
                         /// <param name="name">
@@ -12547,6 +12632,91 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         }
 
                         /// <summary>
+                        /// Creates a ServingConfig. Note: The Google Cloud console works only with the default serving
+                        /// config. Additional ServingConfigs can be created and managed only via the API. A maximum of
+                        /// 100 ServingConfigs are allowed in an Engine, otherwise a RESOURCE_EXHAUSTED error is
+                        /// returned.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. Full resource name of parent. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+                        /// </param>
+                        public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaServingConfig body, string parent)
+                        {
+                            return new CreateRequest(this.service, body, parent);
+                        }
+
+                        /// <summary>
+                        /// Creates a ServingConfig. Note: The Google Cloud console works only with the default serving
+                        /// config. Additional ServingConfigs can be created and managed only via the API. A maximum of
+                        /// 100 ServingConfigs are allowed in an Engine, otherwise a RESOURCE_EXHAUSTED error is
+                        /// returned.
+                        /// </summary>
+                        public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaServingConfig>
+                        {
+                            /// <summary>Constructs a new Create request.</summary>
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaServingConfig body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Full resource name of parent. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Required. The ID to use for the ServingConfig, which will become the final component of
+                            /// the ServingConfig's resource name. This value should be 4-63 characters, and valid
+                            /// characters are /a-zA-Z0-9+/.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("servingConfigId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string ServingConfigId { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaServingConfig Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "create";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+parent}/servingConfigs";
+
+                            /// <summary>Initializes Create parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+$",
+                                });
+                                RequestParameters.Add("servingConfigId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "servingConfigId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
                         /// Deletes a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
                         /// </summary>
                         /// <param name="name">
@@ -18498,6 +18668,89 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/servingConfigs/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Creates a ServingConfig. Note: The Google Cloud console works only with the default serving
+                    /// config. Additional ServingConfigs can be created and managed only via the API. A maximum of 100
+                    /// ServingConfigs are allowed in an Engine, otherwise a RESOURCE_EXHAUSTED error is returned.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. Full resource name of parent. Format:
+                    /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaServingConfig body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Creates a ServingConfig. Note: The Google Cloud console works only with the default serving
+                    /// config. Additional ServingConfigs can be created and managed only via the API. A maximum of 100
+                    /// ServingConfigs are allowed in an Engine, otherwise a RESOURCE_EXHAUSTED error is returned.
+                    /// </summary>
+                    public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaServingConfig>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaServingConfig body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Full resource name of parent. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID to use for the ServingConfig, which will become the final component of the
+                        /// ServingConfig's resource name. This value should be 4-63 characters, and valid characters
+                        /// are /a-zA-Z0-9+/.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("servingConfigId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ServingConfigId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaServingConfig Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/servingConfigs";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+$",
+                            });
+                            RequestParameters.Add("servingConfigId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "servingConfigId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -34423,9 +34676,34 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Stored definition of an agent that uses A2A.</summary>
     public class GoogleCloudDiscoveryengineV1alphaA2AAgentDefinition : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Configuration specific to agents that are deployed from Cloud Marketplace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudMarketplaceConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaA2AAgentDefinitionCloudMarketplaceConfig CloudMarketplaceConfig { get; set; }
+
         /// <summary>Optional. The agent card is a JSON string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jsonAgentCard")]
         public virtual string JsonAgentCard { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration specific to agents that are deployed from Cloud Marketplace.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaA2AAgentDefinitionCloudMarketplaceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The Marketplace Entitlement this agent is associated with. Format:
+        /// `projects/{project}/entitlements/{entitlement}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entitlement")]
+        public virtual string Entitlement { get; set; }
+
+        /// <summary>
+        /// Output only. The Marketplace Order this agent belongs to. Format:
+        /// `billingAccounts/{billing_account}/orders/{order}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("order")]
+        public virtual string Order { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
