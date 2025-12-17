@@ -2736,130 +2736,156 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     }
 
     /// <summary>
-    /// Schema is used to define the format of input/output data. Represents a select subset of an [OpenAPI 3.0 schema
-    /// object](https://spec.openapis.org/oas/v3.0.3#schema-object). More fields may be added in the future as needed.
+    /// Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema
+    /// Object](https://spec.openapis.org/oas/v3.0.3#schema-object).
     /// </summary>
     public class GoogleCloudAiplatformV1beta1Schema : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Can either be a boolean or an object; controls the presence of additional properties.
+        /// Optional. If `type` is `OBJECT`, specifies how to handle properties not defined in `properties`. If it is a
+        /// boolean `false`, no additional properties are allowed. If it is a schema, additional properties are allowed
+        /// if they conform to the schema.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalProperties")]
         public virtual object AdditionalProperties { get; set; }
 
         /// <summary>
-        /// Optional. The value should be validated against any (one or more) of the subschemas in the list.
+        /// Optional. The instance must be valid against any (one or more) of the subschemas listed in `any_of`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("anyOf")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1Schema> AnyOf { get; set; }
 
-        /// <summary>Optional. Default value of the data.</summary>
+        /// <summary>Optional. Default value to use if the field is not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("default")]
         public virtual object Default__ { get; set; }
 
-        /// <summary>Optional. A map of definitions for use by `ref` Only allowed at the root of the schema.</summary>
+        /// <summary>
+        /// Optional. `defs` provides a map of schema definitions that can be reused by `ref` elsewhere in the schema.
+        /// Only allowed at root level of the schema.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defs")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudAiplatformV1beta1Schema> Defs { get; set; }
 
-        /// <summary>Optional. The description of the data.</summary>
+        /// <summary>Optional. Description of the schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Optional. Possible values of the element of primitive type with enum format. Examples: 1. We can define
-        /// direction as : {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]} 2. We can define apartment
-        /// number as : {type:INTEGER, format:enum, enum:["101", "201", "301"]}
+        /// Optional. Possible values of the field. This field can be used to restrict a value to a fixed set of values.
+        /// To mark a field as an enum, set `format` to `enum` and provide the list of possible values in `enum`. For
+        /// example: 1. To define directions: `{type:STRING, format:enum, enum:["EAST", "NORTH", "SOUTH", "WEST"]}` 2.
+        /// To define apartment numbers: `{type:INTEGER, format:enum, enum:["101", "201", "301"]}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enum")]
         public virtual System.Collections.Generic.IList<string> Enum__ { get; set; }
 
-        /// <summary>Optional. Example of the object. Will only populated when the object is the root.</summary>
+        /// <summary>Optional. Example of an instance of this schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("example")]
         public virtual object Example { get; set; }
 
         /// <summary>
-        /// Optional. The format of the data. Supported formats: for NUMBER type: "float", "double" for INTEGER type:
-        /// "int32", "int64" for STRING type: "email", "byte", etc
+        /// Optional. The format of the data. For `NUMBER` type, format can be `float` or `double`. For `INTEGER` type,
+        /// format can be `int32` or `int64`. For `STRING` type, format can be `email`, `byte`, `date`, `date-time`,
+        /// `password`, and other formats to further refine the data type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
         public virtual string Format { get; set; }
 
-        /// <summary>Optional. SCHEMA FIELDS FOR TYPE ARRAY Schema of the elements of Type.ARRAY.</summary>
+        /// <summary>Optional. If type is `ARRAY`, `items` specifies the schema of elements in the array.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual GoogleCloudAiplatformV1beta1Schema Items { get; set; }
 
-        /// <summary>Optional. Maximum number of the elements for Type.ARRAY.</summary>
+        /// <summary>
+        /// Optional. If type is `ARRAY`, `max_items` specifies the maximum number of items in an array.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxItems")]
         public virtual System.Nullable<long> MaxItems { get; set; }
 
-        /// <summary>Optional. Maximum length of the Type.STRING</summary>
+        /// <summary>Optional. If type is `STRING`, `max_length` specifies the maximum length of the string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxLength")]
         public virtual System.Nullable<long> MaxLength { get; set; }
 
-        /// <summary>Optional. Maximum number of the properties for Type.OBJECT.</summary>
+        /// <summary>
+        /// Optional. If type is `OBJECT`, `max_properties` specifies the maximum number of properties that can be
+        /// provided.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxProperties")]
         public virtual System.Nullable<long> MaxProperties { get; set; }
 
-        /// <summary>Optional. Maximum value of the Type.INTEGER and Type.NUMBER</summary>
+        /// <summary>
+        /// Optional. If type is `INTEGER` or `NUMBER`, `maximum` specifies the maximum allowed value.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximum")]
         public virtual System.Nullable<double> Maximum { get; set; }
 
-        /// <summary>Optional. Minimum number of the elements for Type.ARRAY.</summary>
+        /// <summary>
+        /// Optional. If type is `ARRAY`, `min_items` specifies the minimum number of items in an array.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minItems")]
         public virtual System.Nullable<long> MinItems { get; set; }
 
-        /// <summary>Optional. SCHEMA FIELDS FOR TYPE STRING Minimum length of the Type.STRING</summary>
+        /// <summary>Optional. If type is `STRING`, `min_length` specifies the minimum length of the string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minLength")]
         public virtual System.Nullable<long> MinLength { get; set; }
 
-        /// <summary>Optional. Minimum number of the properties for Type.OBJECT.</summary>
+        /// <summary>
+        /// Optional. If type is `OBJECT`, `min_properties` specifies the minimum number of properties that can be
+        /// provided.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minProperties")]
         public virtual System.Nullable<long> MinProperties { get; set; }
 
         /// <summary>
-        /// Optional. SCHEMA FIELDS FOR TYPE INTEGER and NUMBER Minimum value of the Type.INTEGER and Type.NUMBER
+        /// Optional. If type is `INTEGER` or `NUMBER`, `minimum` specifies the minimum allowed value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimum")]
         public virtual System.Nullable<double> Minimum { get; set; }
 
-        /// <summary>Optional. Indicates if the value may be null.</summary>
+        /// <summary>Optional. Indicates if the value of this field can be null.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nullable")]
         public virtual System.Nullable<bool> Nullable { get; set; }
 
-        /// <summary>Optional. Pattern of the Type.STRING to restrict a string to a regular expression.</summary>
+        /// <summary>
+        /// Optional. If type is `STRING`, `pattern` specifies a regular expression that the string must match.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
         public virtual string Pattern { get; set; }
 
-        /// <summary>Optional. SCHEMA FIELDS FOR TYPE OBJECT Properties of Type.OBJECT.</summary>
+        /// <summary>
+        /// Optional. If type is `OBJECT`, `properties` is a map of property names to schema definitions for each
+        /// property of the object.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudAiplatformV1beta1Schema> Properties { get; set; }
 
         /// <summary>
-        /// Optional. The order of the properties. Not a standard field in open api spec. Only used to support the order
-        /// of the properties.
+        /// Optional. Order of properties displayed or used where order matters. This is not a standard field in OpenAPI
+        /// specification, but can be used to control the order of properties.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertyOrdering")]
         public virtual System.Collections.Generic.IList<string> PropertyOrdering { get; set; }
 
         /// <summary>
-        /// Optional. Allows indirect references between schema nodes. The value should be a valid reference to a child
-        /// of the root `defs`. For example, the following schema defines a reference to a schema node named "Pet":
-        /// type: object properties: pet: ref: #/defs/Pet defs: Pet: type: object properties: name: type: string The
-        /// value of the "pet" property is a reference to the schema node named "Pet". See details in
+        /// Optional. Allows referencing another schema definition to use in place of this schema. The value must be a
+        /// valid reference to a schema in `defs`. For example, the following schema defines a reference to a schema
+        /// node named "Pet": type: object properties: pet: ref: #/defs/Pet defs: Pet: type: object properties: name:
+        /// type: string The value of the "pet" property is a reference to the schema node named "Pet". See details in
         /// https://json-schema.org/understanding-json-schema/structuring
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ref")]
         public virtual string Ref__ { get; set; }
 
-        /// <summary>Optional. Required properties of Type.OBJECT.</summary>
+        /// <summary>
+        /// Optional. If type is `OBJECT`, `required` lists the names of properties that must be present.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("required")]
         public virtual System.Collections.Generic.IList<string> Required { get; set; }
 
-        /// <summary>Optional. The title of the Schema.</summary>
+        /// <summary>Optional. Title for the schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
-        /// <summary>Optional. The type of the data.</summary>
+        /// <summary>Optional. Data type of the schema field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -3016,6 +3042,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual GoogleCloudAiplatformV1beta1GoogleSearchRetrieval GoogleSearchRetrieval { get; set; }
 
         /// <summary>
+        /// Optional. If specified, Vertex AI will use Parallel.ai to search for information to answer user queries. The
+        /// search results will be grounded on Parallel.ai and presented to the model for response generation
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parallelAiSearch")]
+        public virtual GoogleCloudAiplatformV1beta1ToolParallelAiSearch ParallelAiSearch { get; set; }
+
+        /// <summary>
         /// Optional. Retrieval tool type. System will always execute the provided retrieval tool(s) to get external
         /// knowledge to answer the prompt. Retrieval results are presented to the model for generation.
         /// </summary>
@@ -3092,6 +3125,32 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeDomains")]
         public virtual System.Collections.Generic.IList<string> ExcludeDomains { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ParallelAiSearch tool type. A tool that uses the Parallel.ai search engine for grounding.</summary>
+    public class GoogleCloudAiplatformV1beta1ToolParallelAiSearch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The API key for ParallelAiSearch. If an API key is not provided, the system will attempt to verify
+        /// access by checking for an active Parallel.ai subscription through the Google Cloud Marketplace. See
+        /// https://docs.parallel.ai/search/search-quickstart for more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKey")]
+        public virtual string ApiKey { get; set; }
+
+        /// <summary>
+        /// Optional. Custom configs for ParallelAiSearch. This field can be used to pass any parameter from the
+        /// Parallel.ai Search API. See the Parallel.ai documentation for the full list of available parameters and
+        /// their usage: https://docs.parallel.ai/api-reference/search-beta/search Currently only `source_policy`,
+        /// `excerpts`, `max_results`, `mode`, `fetch_policy` can be set via this field. For example: { "source_policy":
+        /// { "include_domains": ["google.com", "wikipedia.org"], "exclude_domains": ["example.com"] }, "fetch_policy":
+        /// { "max_age_seconds": 3600 } }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customConfigs")]
+        public virtual System.Collections.Generic.IDictionary<string, object> CustomConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
