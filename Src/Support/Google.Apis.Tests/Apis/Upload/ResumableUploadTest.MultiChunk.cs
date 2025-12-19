@@ -523,9 +523,8 @@ namespace Google.Apis.Tests.Apis.Upload
                 var request = server.Requests.Last();
                 Assert.Contains(ResumableUpload.GoogleHashHeader, request.Headers.AllKeys);
                 var headerValue = request.Headers[ResumableUpload.GoogleHashHeader];
-                var base64Hash = headerValue.Substring("crc32c=".Length);
                 var expectedBase64Hash = CalculateCrc32c(UploadTestBytes);
-                Assert.Equal(expectedBase64Hash, base64Hash);
+                Assert.Equal($"crc32c={expectedBase64Hash}", headerValue);
                 Assert.Equal(UploadTestBytes, server.Bytes);
                 Assert.Equal(UploadStatus.Completed, progress.Status);
             }
