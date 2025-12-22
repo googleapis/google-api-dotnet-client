@@ -11002,6 +11002,10 @@ namespace Google.Apis.YouTube.v3
                         InitParameters();
                     }
 
+                    /// <summary>Required. Return videos with the given ids.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> Id { get; set; }
+
                     /// <summary>
                     /// Optional. **Note:** This parameter is intended exclusively for YouTube content partners. The
                     /// `onBehalfOfContentOwner` parameter indicates that the request's authorization credentials
@@ -11026,10 +11030,6 @@ namespace Google.Apis.YouTube.v3
                     [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> Part { get; set; }
 
-                    /// <summary>Required. Return videos with the given ids.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("videoIds", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual Google.Apis.Util.Repeatable<string> VideoIds { get; set; }
-
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "batchGetStats";
 
@@ -11043,6 +11043,14 @@ namespace Google.Apis.YouTube.v3
                     protected override void InitParameters()
                     {
                         base.InitParameters();
+                        RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "id",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                         RequestParameters.Add("onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
                         {
                             Name = "onBehalfOfContentOwner",
@@ -11054,14 +11062,6 @@ namespace Google.Apis.YouTube.v3
                         RequestParameters.Add("part", new Google.Apis.Discovery.Parameter
                         {
                             Name = "part",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("videoIds", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "videoIds",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -17645,18 +17645,15 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
+        /// <summary>Output only. The ID that YouTube uses to uniquely identify the video.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
         /// <summary>
         /// Output only. Identifies what kind of resource this is. Value: the fixed string "youtube#videoStats".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
-
-        /// <summary>
-        /// Output only. Identifier. The resource name for the `VideoStats` resource, in the format
-        /// `videoStats/{video_stat}`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
 
         /// <summary>
         /// Output only. The VideoStatsSnippet object contains basic details about the video, such publish time.
@@ -17667,10 +17664,6 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>Output only. The VideoStatsStatistics object contains statistics about the video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statistics")]
         public virtual VideoStatsStatistics Statistics { get; set; }
-
-        /// <summary>Output only. The ID that YouTube uses to uniquely identify the video.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("videoId")]
-        public virtual string VideoId { get; set; }
     }
 
     /// <summary>Statistics about the video, such as the number of times the video was viewed or liked.</summary>
