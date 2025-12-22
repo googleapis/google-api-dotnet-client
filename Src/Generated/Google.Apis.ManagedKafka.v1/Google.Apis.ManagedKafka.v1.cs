@@ -1694,6 +1694,37 @@ namespace Google.Apis.ManagedKafka.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// Optional. Specifies the view of the Cluster resource to be returned. Defaults to
+                    /// CLUSTER_VIEW_BASIC. See the ClusterView enum for possible values.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>
+                    /// Optional. Specifies the view of the Cluster resource to be returned. Defaults to
+                    /// CLUSTER_VIEW_BASIC. See the ClusterView enum for possible values.
+                    /// </summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>The default / unset value. The API will default to the BASIC view.</summary>
+                        [Google.Apis.Util.StringValueAttribute("CLUSTER_VIEW_UNSPECIFIED")]
+                        CLUSTERVIEWUNSPECIFIED = 0,
+
+                        /// <summary>
+                        /// Include the basic metadata of the Cluster. This is the default value (for both ListClusters
+                        /// and GetCluster).
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("CLUSTER_VIEW_BASIC")]
+                        CLUSTERVIEWBASIC = 1,
+
+                        /// <summary>
+                        /// Include everything, including data fetched from the Kafka cluster source of truth.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("CLUSTER_VIEW_FULL")]
+                        CLUSTERVIEWFULL = 2,
+                    }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
@@ -1714,6 +1745,14 @@ namespace Google.Apis.ManagedKafka.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -7209,6 +7248,25 @@ namespace Google.Apis.ManagedKafka.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details of a broker in the Kafka cluster.</summary>
+    public class BrokerDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The index of the broker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brokerIndex")]
+        public virtual System.Nullable<long> BrokerIndex { get; set; }
+
+        /// <summary>Output only. The node id of the broker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeId")]
+        public virtual System.Nullable<long> NodeId { get; set; }
+
+        /// <summary>Output only. The rack of the broker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rack")]
+        public virtual string Rack { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7293,6 +7351,12 @@ namespace Google.Apis.ManagedKafka.v1.Data
     /// <summary>An Apache Kafka cluster deployed in a location.</summary>
     public class Cluster : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. Only populated when FULL view is requested. Details of each broker in the cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brokerDetails")]
+        public virtual System.Collections.Generic.IList<BrokerDetails> BrokerDetails { get; set; }
+
         /// <summary>Required. Capacity configuration for the Kafka cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capacityConfig")]
         public virtual CapacityConfig CapacityConfig { get; set; }
@@ -7337,6 +7401,12 @@ namespace Google.Apis.ManagedKafka.v1.Data
         /// <summary>Required. Configuration properties for a Kafka cluster deployed to Google Cloud Platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpConfig")]
         public virtual GcpConfig GcpConfig { get; set; }
+
+        /// <summary>
+        /// Output only. Only populated when FULL view is requested. The Kafka version of the cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kafkaVersion")]
+        public virtual string KafkaVersion { get; set; }
 
         /// <summary>Optional. Labels as key value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
