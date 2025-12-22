@@ -30983,9 +30983,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual GoogleCloudDiscoveryengineV1SearchRequestRelevanceScoreSpec RelevanceScoreSpec { get; set; }
 
         /// <summary>
-        /// The relevance threshold of the search results. Default to Google defined threshold, leveraging a balance of
-        /// precision and recall to deliver both highly accurate results and comprehensive coverage of relevant
-        /// information. This feature is not supported for healthcare search.
+        /// The global relevance threshold of the search results. Defaults to Google defined threshold, leveraging a
+        /// balance of precision and recall to deliver both highly accurate results and comprehensive coverage of
+        /// relevant information. If more granular relevance filtering is required, use the `relevance_filter_spec`
+        /// instead. This feature is not supported for healthcare search.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relevanceThreshold")]
         public virtual string RelevanceThreshold { get; set; }
@@ -42888,14 +42889,23 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
 
+        /// <summary>
+        /// Optional. The granular relevance filtering specification. If not specified, the global `relevance_threshold`
+        /// will be used for all sub-searches. If specified, this overrides the global `relevance_threshold` to use
+        /// thresholds on a per sub-search basis. This feature is currently supported only for custom and site search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relevanceFilterSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceFilterSpec RelevanceFilterSpec { get; set; }
+
         /// <summary>Optional. The specification for returning the relevance score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relevanceScoreSpec")]
         public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceScoreSpec RelevanceScoreSpec { get; set; }
 
         /// <summary>
-        /// The relevance threshold of the search results. Default to Google defined threshold, leveraging a balance of
-        /// precision and recall to deliver both highly accurate results and comprehensive coverage of relevant
-        /// information. This feature is not supported for healthcare search.
+        /// The global relevance threshold of the search results. Defaults to Google defined threshold, leveraging a
+        /// balance of precision and recall to deliver both highly accurate results and comprehensive coverage of
+        /// relevant information. If more granular relevance filtering is required, use the `relevance_filter_spec`
+        /// instead. This feature is not supported for healthcare search.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relevanceThreshold")]
         public virtual string RelevanceThreshold { get; set; }
@@ -43683,6 +43693,36 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pinUnexpandedResults")]
         public virtual System.Nullable<bool> PinUnexpandedResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Relevance filtering specification.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceFilterSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Relevance filtering threshold specification for keyword search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keywordSearchThreshold")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec KeywordSearchThreshold { get; set; }
+
+        /// <summary>Optional. Relevance filtering threshold specification for semantic search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("semanticSearchThreshold")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec SemanticSearchThreshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification for relevance filtering on a specific sub-search.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Pre-defined relevance threshold for the sub-search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relevanceThreshold")]
+        public virtual string RelevanceThreshold { get; set; }
+
+        /// <summary>Custom relevance threshold for the sub-search. The value must be in [0.0, 1.0].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("semanticRelevanceThreshold")]
+        public virtual System.Nullable<float> SemanticRelevanceThreshold { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -49871,14 +49911,23 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
 
+        /// <summary>
+        /// Optional. The granular relevance filtering specification. If not specified, the global `relevance_threshold`
+        /// will be used for all sub-searches. If specified, this overrides the global `relevance_threshold` to use
+        /// thresholds on a per sub-search basis. This feature is currently supported only for custom and site search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relevanceFilterSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpec RelevanceFilterSpec { get; set; }
+
         /// <summary>Optional. The specification for returning the relevance score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relevanceScoreSpec")]
         public virtual GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceScoreSpec RelevanceScoreSpec { get; set; }
 
         /// <summary>
-        /// The relevance threshold of the search results. Default to Google defined threshold, leveraging a balance of
-        /// precision and recall to deliver both highly accurate results and comprehensive coverage of relevant
-        /// information. This feature is not supported for healthcare search.
+        /// The global relevance threshold of the search results. Defaults to Google defined threshold, leveraging a
+        /// balance of precision and recall to deliver both highly accurate results and comprehensive coverage of
+        /// relevant information. If more granular relevance filtering is required, use the `relevance_filter_spec`
+        /// instead. This feature is not supported for healthcare search.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relevanceThreshold")]
         public virtual string RelevanceThreshold { get; set; }
@@ -50658,6 +50707,36 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pinUnexpandedResults")]
         public virtual System.Nullable<bool> PinUnexpandedResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Relevance filtering specification.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Relevance filtering threshold specification for keyword search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keywordSearchThreshold")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec KeywordSearchThreshold { get; set; }
+
+        /// <summary>Optional. Relevance filtering threshold specification for semantic search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("semanticSearchThreshold")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec SemanticSearchThreshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification for relevance filtering on a specific sub-search.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Pre-defined relevance threshold for the sub-search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relevanceThreshold")]
+        public virtual string RelevanceThreshold { get; set; }
+
+        /// <summary>Custom relevance threshold for the sub-search. The value must be in [0.0, 1.0].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("semanticRelevanceThreshold")]
+        public virtual System.Nullable<float> SemanticRelevanceThreshold { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
