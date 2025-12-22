@@ -2183,6 +2183,51 @@ namespace Google.Apis.Contactcenterinsights.v1
                             }
                         }
 
+                        /// <summary>Gets the signed URI for the audio for the given conversation.</summary>
+                        /// <param name="name">Required. The name of the conversation to sign.</param>
+                        public virtual GenerateSignedAudioRequest GenerateSignedAudio(string name)
+                        {
+                            return new GenerateSignedAudioRequest(this.service, name);
+                        }
+
+                        /// <summary>Gets the signed URI for the audio for the given conversation.</summary>
+                        public class GenerateSignedAudioRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse>
+                        {
+                            /// <summary>Constructs a new GenerateSignedAudio request.</summary>
+                            public GenerateSignedAudioRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The name of the conversation to sign.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "generateSignedAudio";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}:generateSignedAudio";
+
+                            /// <summary>Initializes GenerateSignedAudio parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+/conversations/[^/]+$",
+                                });
+                            }
+                        }
+
                         /// <summary>Gets a conversation.</summary>
                         /// <param name="name">Required. The name of the conversation to get.</param>
                         public virtual GetRequest Get(string name)
@@ -5496,6 +5541,51 @@ namespace Google.Apis.Contactcenterinsights.v1
                     }
                 }
 
+                /// <summary>Gets the signed URI for the audio for the given conversation.</summary>
+                /// <param name="name">Required. The name of the conversation to sign.</param>
+                public virtual GenerateSignedAudioRequest GenerateSignedAudio(string name)
+                {
+                    return new GenerateSignedAudioRequest(this.service, name);
+                }
+
+                /// <summary>Gets the signed URI for the audio for the given conversation.</summary>
+                public class GenerateSignedAudioRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse>
+                {
+                    /// <summary>Constructs a new GenerateSignedAudio request.</summary>
+                    public GenerateSignedAudioRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the conversation to sign.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "generateSignedAudio";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:generateSignedAudio";
+
+                    /// <summary>Initializes GenerateSignedAudio parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/conversations/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Gets a conversation.</summary>
                 /// <param name="name">Required. The name of the conversation to get.</param>
                 public virtual GetRequest Get(string name)
@@ -6527,6 +6617,51 @@ namespace Google.Apis.Contactcenterinsights.v1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets the signed URI for the audio for the given conversation.</summary>
+                    /// <param name="name">Required. The name of the conversation to sign.</param>
+                    public virtual GenerateSignedAudioRequest GenerateSignedAudio(string name)
+                    {
+                        return new GenerateSignedAudioRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets the signed URI for the audio for the given conversation.</summary>
+                    public class GenerateSignedAudioRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse>
+                    {
+                        /// <summary>Constructs a new GenerateSignedAudio request.</summary>
+                        public GenerateSignedAudioRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the conversation to sign.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "generateSignedAudio";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:generateSignedAudio";
+
+                        /// <summary>Initializes GenerateSignedAudio parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/conversations/[^/]+$",
                             });
                         }
                     }
@@ -13513,6 +13648,21 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A wrapper for holding the audio for any given turn.</summary>
+    public class GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The duration of the audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioDuration")]
+        public virtual object AudioDuration { get; set; }
+
+        /// <summary>The Cloud Storage URI of the audio for any given turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioGcsUri")]
+        public virtual string AudioGcsUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>One channel of conversation-level sentiment data.</summary>
     public class GoogleCloudContactcenterinsightsV1ConversationLevelSentiment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15413,6 +15563,17 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response from a GenerateConversationSignedAudio request.</summary>
+    public class GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The signed uris for the audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signedAudioUris")]
+        public virtual GoogleCloudContactcenterinsightsV1SignedAudioUris SignedAudioUris { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The data for a hold annotation.</summary>
     public class GoogleCloudContactcenterinsightsV1HoldData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17027,11 +17188,18 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>An answer to a QaQuestion.</summary>
     public class GoogleCloudContactcenterinsightsV1QaAnswer : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of all individual answers given to the question.</summary>
+        /// <summary>
+        /// Lists all answer sources containing one or more answer values of a specific source type, e.g., all
+        /// system-generated answer sources, or all manual edit answer sources.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("answerSources")]
         public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource> AnswerSources { get; set; }
 
-        /// <summary>The main answer value, incorporating any manual edits if they exist.</summary>
+        /// <summary>
+        /// The answer value from this source. This field is populated by default, unless the question has a selection
+        /// strategy configured to return multiple answer values, in which case `answer_values` will be populated
+        /// instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("answerValue")]
         public virtual GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue AnswerValue { get; set; }
 
@@ -17064,7 +17232,11 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// </summary>
     public class GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The answer value from this source.</summary>
+        /// <summary>
+        /// The answer value from this source. This field is populated by default, unless the question has a selection
+        /// strategy configured to return multiple answer values, in which case `answer_values` will be populated
+        /// instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("answerValue")]
         public virtual GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue AnswerValue { get; set; }
 
@@ -18814,6 +18986,25 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Signed audio URIs for a conversation.</summary>
+    public class GoogleCloudContactcenterinsightsV1SignedAudioUris : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The signed URI for the audio from the Dialogflow conversation source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signedDialogflowAudioUri")]
+        public virtual string SignedDialogflowAudioUri { get; set; }
+
+        /// <summary>The signed URI for the audio from the Cloud Storage conversation source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signedGcsAudioUri")]
+        public virtual string SignedGcsAudioUri { get; set; }
+
+        /// <summary>The signed URI for the audio corresponding to each turn in the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signedTurnLevelAudios")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio> SignedTurnLevelAudios { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The data for a silence annotation.</summary>
     public class GoogleCloudContactcenterinsightsV1SilenceData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -18888,6 +19079,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// </summary>
     public class GoogleCloudContactcenterinsightsV1SpeechConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Whether to disable word time offsets. If true, the `enable_word_time_offsets` field in the recognition
+        /// config will be set to false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableWordTimeOffsets")]
+        public virtual System.Nullable<bool> DisableWordTimeOffsets { get; set; }
+
         /// <summary>
         /// The fully-qualified Speech Recognizer resource name. Format:
         /// `projects/{project_id}/locations/{location}/recognizer/{recognizer}`
@@ -23241,11 +23439,18 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>An answer to a QaQuestion.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1QaAnswer : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of all individual answers given to the question.</summary>
+        /// <summary>
+        /// Lists all answer sources containing one or more answer values of a specific source type, e.g., all
+        /// system-generated answer sources, or all manual edit answer sources.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("answerSources")]
         public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerSource> AnswerSources { get; set; }
 
-        /// <summary>The main answer value, incorporating any manual edits if they exist.</summary>
+        /// <summary>
+        /// The answer value from this source. This field is populated by default, unless the question has a selection
+        /// strategy configured to return multiple answer values, in which case `answer_values` will be populated
+        /// instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("answerValue")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue AnswerValue { get; set; }
 
@@ -23278,7 +23483,11 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// </summary>
     public class GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The answer value from this source.</summary>
+        /// <summary>
+        /// The answer value from this source. This field is populated by default, unless the question has a selection
+        /// strategy configured to return multiple answer values, in which case `answer_values` will be populated
+        /// instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("answerValue")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue AnswerValue { get; set; }
 
@@ -24225,6 +24434,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// </summary>
     public class GoogleCloudContactcenterinsightsV1alpha1SpeechConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Whether to disable word time offsets. If true, the `enable_word_time_offsets` field in the recognition
+        /// config will be set to false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableWordTimeOffsets")]
+        public virtual System.Nullable<bool> DisableWordTimeOffsets { get; set; }
+
         /// <summary>
         /// The fully-qualified Speech Recognizer resource name. Format:
         /// `projects/{project_id}/locations/{location}/recognizer/{recognizer}`
@@ -28678,11 +28894,18 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>An answer to a QaQuestion.</summary>
     public class GoogleCloudContactcenterinsightsV1mainQaAnswer : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of all individual answers given to the question.</summary>
+        /// <summary>
+        /// Lists all answer sources containing one or more answer values of a specific source type, e.g., all
+        /// system-generated answer sources, or all manual edit answer sources.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("answerSources")]
         public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerSource> AnswerSources { get; set; }
 
-        /// <summary>The main answer value, incorporating any manual edits if they exist.</summary>
+        /// <summary>
+        /// The answer value from this source. This field is populated by default, unless the question has a selection
+        /// strategy configured to return multiple answer values, in which case `answer_values` will be populated
+        /// instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("answerValue")]
         public virtual GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue AnswerValue { get; set; }
 
@@ -28715,7 +28938,11 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// </summary>
     public class GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The answer value from this source.</summary>
+        /// <summary>
+        /// The answer value from this source. This field is populated by default, unless the question has a selection
+        /// strategy configured to return multiple answer values, in which case `answer_values` will be populated
+        /// instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("answerValue")]
         public virtual GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue AnswerValue { get; set; }
 
@@ -29662,6 +29889,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// </summary>
     public class GoogleCloudContactcenterinsightsV1mainSpeechConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Whether to disable word time offsets. If true, the `enable_word_time_offsets` field in the recognition
+        /// config will be set to false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableWordTimeOffsets")]
+        public virtual System.Nullable<bool> DisableWordTimeOffsets { get; set; }
+
         /// <summary>
         /// The fully-qualified Speech Recognizer resource name. Format:
         /// `projects/{project_id}/locations/{location}/recognizer/{recognizer}`
