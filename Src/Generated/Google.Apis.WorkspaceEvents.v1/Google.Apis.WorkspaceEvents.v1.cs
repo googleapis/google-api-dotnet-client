@@ -1131,6 +1131,12 @@ namespace Google.Apis.WorkspaceEvents.v1
                 [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ConfigId { get; set; }
 
+                /// <summary>
+                /// Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Tenant { get; set; }
+
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.WorkspaceEvents.v1.Data.TaskPushNotificationConfig Body { get; set; }
 
@@ -1166,6 +1172,14 @@ namespace Google.Apis.WorkspaceEvents.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
+                    RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "tenant",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
             }
 
@@ -1195,6 +1209,12 @@ namespace Google.Apis.WorkspaceEvents.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Tenant { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
@@ -1215,6 +1235,14 @@ namespace Google.Apis.WorkspaceEvents.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^tasks/[^/]+/pushNotificationConfigs/[^/]+$",
+                    });
+                    RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "tenant",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -1245,6 +1273,12 @@ namespace Google.Apis.WorkspaceEvents.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Tenant { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
@@ -1265,6 +1299,14 @@ namespace Google.Apis.WorkspaceEvents.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^tasks/[^/]+/pushNotificationConfigs/[^/]+$",
+                    });
+                    RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "tenant",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -1305,6 +1347,12 @@ namespace Google.Apis.WorkspaceEvents.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
+                /// <summary>
+                /// Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Tenant { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
@@ -1337,6 +1385,14 @@ namespace Google.Apis.WorkspaceEvents.v1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "tenant",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1428,6 +1484,12 @@ namespace Google.Apis.WorkspaceEvents.v1
             [Google.Apis.Util.RequestParameterAttribute("historyLength", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> HistoryLength { get; set; }
 
+            /// <summary>
+            /// Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Tenant { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
@@ -1452,6 +1514,14 @@ namespace Google.Apis.WorkspaceEvents.v1
                 RequestParameters.Add("historyLength", new Google.Apis.Discovery.Parameter
                 {
                     Name = "historyLength",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tenant",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -1489,6 +1559,12 @@ namespace Google.Apis.WorkspaceEvents.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>
+            /// Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Tenant { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "subscribe";
 
@@ -1509,6 +1585,14 @@ namespace Google.Apis.WorkspaceEvents.v1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^tasks/[^/]+$",
+                });
+                RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tenant",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -1567,6 +1651,12 @@ namespace Google.Apis.WorkspaceEvents.v1.Data
 
     public class CancelTaskRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenant")]
+        public virtual string Tenant { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1888,6 +1978,12 @@ namespace Google.Apis.WorkspaceEvents.v1.Data
         /// <summary>Optional metadata for the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>
+        /// Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenant")]
+        public virtual string Tenant { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
