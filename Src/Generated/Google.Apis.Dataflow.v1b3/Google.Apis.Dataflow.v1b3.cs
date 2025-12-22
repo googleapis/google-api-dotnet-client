@@ -9207,6 +9207,12 @@ namespace Google.Apis.Dataflow.v1b3.Data
     public class RuntimeUpdatableParams : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. The backlog threshold duration in seconds for autoscaling. Value must be non-negative.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceptableBacklogDuration")]
+        public virtual object AcceptableBacklogDuration { get; set; }
+
+        /// <summary>
         /// The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming
         /// Engine jobs.
         /// </summary>
