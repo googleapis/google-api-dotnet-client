@@ -9369,7 +9369,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>
         /// Optional. The tool versions to use for this release and all subsequent operations involving this release. If
-        /// unset, then it will freeze the tool versions at the time of release creation.
+        /// unset, tool versions are frozen when the release is created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolVersions")]
         public virtual ToolVersions ToolVersions { get; set; }
@@ -9390,7 +9390,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("helmVersionSupportedCondition")]
         public virtual ToolVersionSupportedCondition HelmVersionSupportedCondition { get; set; }
 
-        /// <summary>Output only. Details around the support state of the release's Kpt version.</summary>
+        /// <summary>Output only. Details around the support state of the release's kpt version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kptVersionSupportedCondition")]
         public virtual ToolVersionSupportedCondition KptVersionSupportedCondition { get; set; }
 
@@ -11327,7 +11327,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     }
 
     /// <summary>
-    /// ToolVersionSupportedCondition contains information about when support for the release's version of a Tool ends.
+    /// ToolVersionSupportedCondition contains information about when support for the release's version of a tool ends.
     /// </summary>
     public class ToolVersionSupportedCondition : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11336,7 +11336,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         private object _maintenanceModeTime;
 
         /// <summary>
-        /// Output only. The time at which this release's version of the Tool will enter maintenance mode.
+        /// Output only. The time at which this release's version of the tool will enter maintenance mode.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceModeTime")]
         public virtual string MaintenanceModeTimeRaw
@@ -11381,7 +11381,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         private object _supportExpirationTime;
 
         /// <summary>
-        /// Output only. The time at which this release's version of the Tool will no longer be supported.
+        /// Output only. The time at which this release's version of the tool will no longer be supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportExpirationTime")]
         public virtual string SupportExpirationTimeRaw
@@ -11417,7 +11417,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
             set => SupportExpirationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Output only. The Tool support state for this release's version of the Tool.</summary>
+        /// <summary>Output only. The tool support state for this release's version of the tool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolVersionSupportState")]
         public virtual string ToolVersionSupportState { get; set; }
 
@@ -11428,11 +11428,11 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>Details of ToolVersions for the release.</summary>
     public class ToolVersions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The docker version to use for Cloud Deploy operations.</summary>
+        /// <summary>Optional. The Docker version to use for Cloud Deploy operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("docker")]
         public virtual string Docker { get; set; }
 
-        /// <summary>Optional. The helm version to use for Cloud Deploy operations.</summary>
+        /// <summary>Optional. The Helm version to use for Cloud Deploy operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("helm")]
         public virtual string Helm { get; set; }
 
@@ -11440,15 +11440,15 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kpt")]
         public virtual string Kpt { get; set; }
 
-        /// <summary>Optional. The kubectl version to use for Cloud Deploy operations.</summary>
+        /// <summary>Optional. The Kubectl version to use for Cloud Deploy operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kubectl")]
         public virtual string Kubectl { get; set; }
 
-        /// <summary>Optional. The kustomize version to use for Cloud Deploy operations.</summary>
+        /// <summary>Optional. The Kustomize version to use for Cloud Deploy operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kustomize")]
         public virtual string Kustomize { get; set; }
 
-        /// <summary>Optional. The skaffold version to use for Cloud Deploy operations.</summary>
+        /// <summary>Optional. The Skaffold version to use for Cloud Deploy operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skaffold")]
         public virtual string Skaffold { get; set; }
 
