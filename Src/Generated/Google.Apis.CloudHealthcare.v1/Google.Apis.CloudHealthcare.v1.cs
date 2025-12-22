@@ -18169,6 +18169,14 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual System.Nullable<bool> DisableRequiredFieldValidation { get; set; }
 
         /// <summary>
+        /// Optional. Whether to enable FHIRPath validation for incoming resource types that have profiles configured
+        /// for them in the `enabled_implementation_guides` list. Set this to true to enable checking incoming resources
+        /// for conformance against FHIRPath requirements defined in the configured profiles.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableFhirpathProfileValidation")]
+        public virtual System.Nullable<bool> EnableFhirpathProfileValidation { get; set; }
+
+        /// <summary>
         /// Optional. A list of implementation guide URLs in this FHIR store that are used to configure the profiles to
         /// use for validation. For example, to use the US Core profiles for validation, set
         /// `enabled_implementation_guides` to `["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]`. If
