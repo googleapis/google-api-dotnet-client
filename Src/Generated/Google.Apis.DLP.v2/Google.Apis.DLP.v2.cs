@@ -14336,10 +14336,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sensitivityScore")]
         public virtual GooglePrivacyDlpV2SensitivityScore SensitivityScore { get; set; }
 
-        /// <summary>
-        /// Load an existing `StoredInfoType` resource for use in `InspectDataSource`. Not currently supported in
-        /// `InspectContent`.
-        /// </summary>
+        /// <summary>Loads an existing `StoredInfoType` resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storedType")]
         public virtual GooglePrivacyDlpV2StoredType StoredType { get; set; }
 
