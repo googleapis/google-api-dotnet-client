@@ -70,7 +70,10 @@ namespace Google.Apis.Spanner.v1
             /// <summary>Administer your Spanner databases</summary>
             public static string SpannerAdmin = "https://www.googleapis.com/auth/spanner.admin";
 
-            /// <summary>View and manage the contents of your Spanner databases</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud Spanner data and see the email address for your
+            /// Google Account
+            /// </summary>
             public static string SpannerData = "https://www.googleapis.com/auth/spanner.data";
         }
 
@@ -86,7 +89,10 @@ namespace Google.Apis.Spanner.v1
             /// <summary>Administer your Spanner databases</summary>
             public const string SpannerAdmin = "https://www.googleapis.com/auth/spanner.admin";
 
-            /// <summary>View and manage the contents of your Spanner databases</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud Spanner data and see the email address for your
+            /// Google Account
+            /// </summary>
             public const string SpannerData = "https://www.googleapis.com/auth/spanner.data";
         }
 
@@ -679,9 +685,9 @@ namespace Google.Apis.Spanner.v1
 
                     /// <summary>
                     /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                    /// `true` when reading across collections e.g. when `parent` is set to
-                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
                     /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                     /// specific documentation.
                     /// </summary>
@@ -986,9 +992,9 @@ namespace Google.Apis.Spanner.v1
 
                         /// <summary>
                         /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                        /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                        /// `true` when reading across collections e.g. when `parent` is set to
-                        /// `"projects/example/locations/-"`. This field is not by default supported and will result in
+                        /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                        /// `true` when reading across collections. For example, when `parent` is set to
+                        /// `"projects/example/locations/-"`. This field is not supported by default and will result in
                         /// an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                         /// specific documentation.
                         /// </summary>
@@ -1888,9 +1894,9 @@ namespace Google.Apis.Spanner.v1
 
                         /// <summary>
                         /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                        /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                        /// `true` when reading across collections e.g. when `parent` is set to
-                        /// `"projects/example/locations/-"`. This field is not by default supported and will result in
+                        /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                        /// `true` when reading across collections. For example, when `parent` is set to
+                        /// `"projects/example/locations/-"`. This field is not supported by default and will result in
                         /// an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                         /// specific documentation.
                         /// </summary>
@@ -3863,9 +3869,9 @@ namespace Google.Apis.Spanner.v1
 
                         /// <summary>
                         /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                        /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                        /// `true` when reading across collections e.g. when `parent` is set to
-                        /// `"projects/example/locations/-"`. This field is not by default supported and will result in
+                        /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                        /// `true` when reading across collections. For example, when `parent` is set to
+                        /// `"projects/example/locations/-"`. This field is not supported by default and will result in
                         /// an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                         /// specific documentation.
                         /// </summary>
@@ -6659,9 +6665,9 @@ namespace Google.Apis.Spanner.v1
 
                         /// <summary>
                         /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                        /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                        /// `true` when reading across collections e.g. when `parent` is set to
-                        /// `"projects/example/locations/-"`. This field is not by default supported and will result in
+                        /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                        /// `true` when reading across collections. For example, when `parent` is set to
+                        /// `"projects/example/locations/-"`. This field is not supported by default and will result in
                         /// an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                         /// specific documentation.
                         /// </summary>
@@ -7387,9 +7393,9 @@ namespace Google.Apis.Spanner.v1
 
                     /// <summary>
                     /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                    /// `true` when reading across collections e.g. when `parent` is set to
-                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
                     /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                     /// specific documentation.
                     /// </summary>
@@ -8345,6 +8351,29 @@ namespace Google.Apis.Spanner.v1
 }
 namespace Google.Apis.Spanner.v1.Data
 {
+    /// <summary>Arguments to ack operations.</summary>
+    public class Ack : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// By default, an attempt to ack a message that does not exist will fail with a `NOT_FOUND` error. With
+        /// `ignore_not_found` set to true, the ack will succeed even if the message does not exist. This is useful for
+        /// unconditionally acking a message, even if it is missing or has already been acked.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreNotFound")]
+        public virtual System.Nullable<bool> IgnoreNotFound { get; set; }
+
+        /// <summary>Required. The primary key of the message to be acked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual System.Collections.Generic.IList<object> Key { get; set; }
+
+        /// <summary>Required. The queue where the message to be acked is stored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queue")]
+        public virtual string Queue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message sent by the client to the adapter.</summary>
     public class AdaptMessageRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9467,13 +9496,6 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Container for various pieces of client-owned context attached to a request.</summary>
-    public class ClientContext : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Metadata for a column.</summary>
     public class ColumnMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9669,6 +9691,68 @@ namespace Google.Apis.Spanner.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mutationCount")]
         public virtual System.Nullable<long> MutationCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata type for the long-running operation returned by `CALL compact_all()`, which can be executed using
+    /// ExecuteSql or ExecuteStreamingSql APIs.
+    /// </summary>
+    public class CompactDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _cancelTimeRaw;
+
+        private object _cancelTime;
+
+        /// <summary>
+        /// Output only. The time at which cancellation of this operation was received. Operations.CancelOperation
+        /// starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the
+        /// operation, but success is not guaranteed. Clients can use Operations.GetOperation or other methods to check
+        /// whether the cancellation succeeded or whether the operation completed despite cancellation. On successful
+        /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
+        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelTime")]
+        public virtual string CancelTimeRaw
+        {
+            get => _cancelTimeRaw;
+            set
+            {
+                _cancelTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _cancelTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CancelTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CancelTimeDateTimeOffset instead.")]
+        public virtual object CancelTime
+        {
+            get => _cancelTime;
+            set
+            {
+                _cancelTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _cancelTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CancelTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CancelTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CancelTimeRaw);
+            set => CancelTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The database being compacted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>Output only. The progress of the compaction operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progress")]
+        public virtual OperationProgress Progress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12552,8 +12636,8 @@ namespace Google.Apis.Spanner.v1.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -12841,6 +12925,10 @@ namespace Google.Apis.Spanner.v1.Data
     /// </summary>
     public class Mutation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Ack a message from a queue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ack")]
+        public virtual Ack Ack { get; set; }
+
         /// <summary>Delete rows from a table. Succeeds whether or not the named rows were present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delete")]
         public virtual Delete Delete { get; set; }
@@ -12870,6 +12958,10 @@ namespace Google.Apis.Spanner.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replace")]
         public virtual Write Replace { get; set; }
+
+        /// <summary>Send a message to a queue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("send")]
+        public virtual Send Send { get; set; }
 
         /// <summary>
         /// Update existing rows in a table. If any of the rows does not already exist, the transaction fails with error
@@ -14139,10 +14231,6 @@ namespace Google.Apis.Spanner.v1.Data
     /// <summary>Common request options for various APIs.</summary>
     public class RequestOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Optional context that may be needed for some requests.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clientContext")]
-        public virtual ClientContext ClientContext { get; set; }
-
         /// <summary>Priority for the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual string Priority { get; set; }
@@ -14628,6 +14716,66 @@ namespace Google.Apis.Spanner.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Arguments to send operations.</summary>
+    public class Send : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _deliverTimeRaw;
+
+        private object _deliverTime;
+
+        /// <summary>
+        /// The time at which Spanner will begin attempting to deliver the message. If `deliver_time` is not set,
+        /// Spanner will deliver the message immediately. If `deliver_time` is in the past, Spanner will replace it with
+        /// a value closer to the current time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deliverTime")]
+        public virtual string DeliverTimeRaw
+        {
+            get => _deliverTimeRaw;
+            set
+            {
+                _deliverTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deliverTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeliverTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeliverTimeDateTimeOffset instead.")]
+        public virtual object DeliverTime
+        {
+            get => _deliverTime;
+            set
+            {
+                _deliverTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deliverTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeliverTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeliverTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeliverTimeRaw);
+            set => DeliverTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. The primary key of the message to be sent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual System.Collections.Generic.IList<object> Key { get; set; }
+
+        /// <summary>The payload of the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
+        public virtual object Payload { get; set; }
+
+        /// <summary>Required. The queue to which the message will be sent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queue")]
+        public virtual string Queue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
