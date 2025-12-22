@@ -5174,6 +5174,14 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
+        /// <summary>
+        /// Output only. The base URI for the HTTP proxy endpoint. Has the format
+        /// `https://{generatedID}-c-h-{shortRegion}.developerconnect.dev` Populated only when enabled is set to true.
+        /// This endpoint is used by other Google services that integrate with Developer Connect.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpProxyBaseUri")]
+        public virtual string HttpProxyBaseUri { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
