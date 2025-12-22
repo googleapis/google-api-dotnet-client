@@ -37,6 +37,7 @@ namespace Google.Apis.Safebrowsing.v5
             HashList = new HashListResource(this);
             HashLists = new HashListsResource(this);
             Hashes = new HashesResource(this);
+            Urls = new UrlsResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://safebrowsing.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://safebrowsing.googleapis.com/batch");
         }
@@ -67,6 +68,9 @@ namespace Google.Apis.Safebrowsing.v5
 
         /// <summary>Gets the Hashes resource.</summary>
         public virtual HashesResource Hashes { get; }
+
+        /// <summary>Gets the Urls resource.</summary>
+        public virtual UrlsResource Urls { get; }
     }
 
     /// <summary>A base abstract class for Safebrowsing requests.</summary>
@@ -265,9 +269,9 @@ namespace Google.Apis.Safebrowsing.v5
         }
 
         /// <summary>
-        /// Get the latest contents of a hash list. A hash list may either by a threat list or a non-threat list such as
-        /// the Global Cache. This is a standard Get method as defined by https://google.aip.dev/131 and the HTTP method
-        /// is also GET.
+        /// Gets the latest contents of a hash list. A hash list may either by a threat list or a non-threat list such
+        /// as the Global Cache. This is a standard Get method as defined by https://google.aip.dev/131 and the HTTP
+        /// method is also GET.
         /// </summary>
         /// <param name="name">
         /// Required. The name of this particular hash list. It may be a threat list, or it may be the Global Cache.
@@ -278,9 +282,9 @@ namespace Google.Apis.Safebrowsing.v5
         }
 
         /// <summary>
-        /// Get the latest contents of a hash list. A hash list may either by a threat list or a non-threat list such as
-        /// the Global Cache. This is a standard Get method as defined by https://google.aip.dev/131 and the HTTP method
-        /// is also GET.
+        /// Gets the latest contents of a hash list. A hash list may either by a threat list or a non-threat list such
+        /// as the Global Cache. This is a standard Get method as defined by https://google.aip.dev/131 and the HTTP
+        /// method is also GET.
         /// </summary>
         public class GetRequest : SafebrowsingBaseServiceRequest<Google.Apis.Safebrowsing.v5.Data.GoogleSecuritySafebrowsingV5HashList>
         {
@@ -386,7 +390,7 @@ namespace Google.Apis.Safebrowsing.v5
         }
 
         /// <summary>
-        /// Get multiple hash lists at once. It is very common for a client to need to get multiple hash lists. Using
+        /// Gets multiple hash lists at once. It is very common for a client to need to get multiple hash lists. Using
         /// this method is preferred over using the regular Get method multiple times. This is a standard batch Get
         /// method as defined by https://google.aip.dev/231 and the HTTP method is also GET.
         /// </summary>
@@ -396,7 +400,7 @@ namespace Google.Apis.Safebrowsing.v5
         }
 
         /// <summary>
-        /// Get multiple hash lists at once. It is very common for a client to need to get multiple hash lists. Using
+        /// Gets multiple hash lists at once. It is very common for a client to need to get multiple hash lists. Using
         /// this method is preferred over using the regular Get method multiple times. This is a standard batch Get
         /// method as defined by https://google.aip.dev/231 and the HTTP method is also GET.
         /// </summary>
@@ -492,7 +496,7 @@ namespace Google.Apis.Safebrowsing.v5
         }
 
         /// <summary>
-        /// List hash lists. In the V5 API, Google will never remove a hash list that has ever been returned by this
+        /// Lists hash lists. In the V5 API, Google will never remove a hash list that has ever been returned by this
         /// method. This enables clients to skip using this method and simply hard-code all hash lists they need. This
         /// is a standard List method as defined by https://google.aip.dev/132 and the HTTP method is GET.
         /// </summary>
@@ -502,7 +506,7 @@ namespace Google.Apis.Safebrowsing.v5
         }
 
         /// <summary>
-        /// List hash lists. In the V5 API, Google will never remove a hash list that has ever been returned by this
+        /// Lists hash lists. In the V5 API, Google will never remove a hash list that has ever been returned by this
         /// method. This enables clients to skip using this method and simply hard-code all hash lists they need. This
         /// is a standard List method as defined by https://google.aip.dev/132 and the HTTP method is GET.
         /// </summary>
@@ -577,7 +581,7 @@ namespace Google.Apis.Safebrowsing.v5
         }
 
         /// <summary>
-        /// Search for full hashes matching the specified prefixes. This is a custom method as defined by
+        /// Searches for full hashes matching the specified prefixes. This is a custom method as defined by
         /// https://google.aip.dev/136 (the custom method refers to this method having a custom name within Google's
         /// general API development nomenclature; it does not refer to using a custom HTTP method).
         /// </summary>
@@ -587,7 +591,7 @@ namespace Google.Apis.Safebrowsing.v5
         }
 
         /// <summary>
-        /// Search for full hashes matching the specified prefixes. This is a custom method as defined by
+        /// Searches for full hashes matching the specified prefixes. This is a custom method as defined by
         /// https://google.aip.dev/136 (the custom method refers to this method having a custom name within Google's
         /// general API development nomenclature; it does not refer to using a custom HTTP method).
         /// </summary>
@@ -624,6 +628,72 @@ namespace Google.Apis.Safebrowsing.v5
                 RequestParameters.Add("hashPrefixes", new Google.Apis.Discovery.Parameter
                 {
                     Name = "hashPrefixes",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "urls" collection of methods.</summary>
+    public class UrlsResource
+    {
+        private const string Resource = "urls";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public UrlsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Searches for URLs matching known threats. Each URL and it's host-suffix and path-prefix expressions (up to a
+        /// limited depth) are checked. This means that the response may contain URLs that were not included in the
+        /// request, but are expressions of the requested URLs.
+        /// </summary>
+        public virtual SearchRequest Search()
+        {
+            return new SearchRequest(this.service);
+        }
+
+        /// <summary>
+        /// Searches for URLs matching known threats. Each URL and it's host-suffix and path-prefix expressions (up to a
+        /// limited depth) are checked. This means that the response may contain URLs that were not included in the
+        /// request, but are expressions of the requested URLs.
+        /// </summary>
+        public class SearchRequest : SafebrowsingBaseServiceRequest<Google.Apis.Safebrowsing.v5.Data.GoogleSecuritySafebrowsingV5SearchUrlsResponse>
+        {
+            /// <summary>Constructs a new Search request.</summary>
+            public SearchRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>Required. The URLs to be looked up. Clients MUST NOT send more than 50 URLs.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("urls", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Urls { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "search";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v5/urls:search";
+
+            /// <summary>Initializes Search parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("urls", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "urls",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -1001,6 +1071,53 @@ namespace Google.Apis.Safebrowsing.v5.Data
         /// <summary>Unordered list. The unordered list of full hashes found.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullHashes")]
         public virtual System.Collections.Generic.IList<GoogleSecuritySafebrowsingV5FullHash> FullHashes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The response returned after searching threats matching the specified URLs. If nothing is found, the server will
+    /// return an OK status (HTTP status code 200) with the `threats` field empty, rather than returning a NOT_FOUND
+    /// status (HTTP status code 404).
+    /// </summary>
+    public class GoogleSecuritySafebrowsingV5SearchUrlsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The client-side cache duration. The client MUST add this duration to the current time to determine the
+        /// expiration time. The expiration time then applies to every URL queried by the client in the request,
+        /// regardless of how many URLs are returned in the response. Even if the server returns no matches for a
+        /// particular URL, this fact MUST also be cached by the client. If and only if the field `threats` is empty,
+        /// the client MAY increase the `cache_duration` to determine a new expiration that is later than that specified
+        /// by the server. In any case, the increased cache duration must not be longer than 24 hours. Important: the
+        /// client MUST NOT assume that the server will return the same cache duration for all responses. The server MAY
+        /// choose different cache durations for different responses depending on the situation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheDuration")]
+        public virtual object CacheDuration { get; set; }
+
+        /// <summary>
+        /// Unordered list. The unordered list of threat matches found. Each entry contains a URL and the threat types
+        /// that were found matching that URL. The list size can be greater than the number of URLs in the request as
+        /// the all expressions of the URL would've been considered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threats")]
+        public virtual System.Collections.Generic.IList<GoogleSecuritySafebrowsingV5ThreatUrl> Threats { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A URL matching one or more threats.</summary>
+    public class GoogleSecuritySafebrowsingV5ThreatUrl : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unordered list. The unordered list of threat that the URL is classified as.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threatTypes")]
+        public virtual System.Collections.Generic.IList<string> ThreatTypes { get; set; }
+
+        /// <summary>The requested URL that was matched by one or more threats.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
