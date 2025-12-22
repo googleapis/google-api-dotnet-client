@@ -10557,7 +10557,7 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>
         /// Output only. The compatibility status of the control plane. It should be empty if the cluster does not have
-        /// emulated version. For details, see go/user-initiated-rollbackable-upgrade-design.
+        /// emulated version.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compatibilityStatus")]
         public virtual CompatibilityStatus CompatibilityStatus { get; set; }
