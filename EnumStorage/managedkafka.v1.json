@@ -13,6 +13,11 @@
     "CONSUMER_GROUP_VIEW_BASIC",
     "CONSUMER_GROUP_VIEW_FULL"
   ],
+  "Google.Apis.ManagedKafka.v1.ProjectsResource+LocationsResource+ClustersResource+GetRequest.ViewEnum": [
+    "CLUSTER_VIEW_UNSPECIFIED",
+    "CLUSTER_VIEW_BASIC",
+    "CLUSTER_VIEW_FULL"
+  ],
   "Google.Apis.ManagedKafka.v1.ProjectsResource+LocationsResource+SchemaRegistriesResource+ListRequest.ViewEnum": [
     "SCHEMA_REGISTRY_VIEW_UNSPECIFIED",
     "SCHEMA_REGISTRY_VIEW_BASIC",
