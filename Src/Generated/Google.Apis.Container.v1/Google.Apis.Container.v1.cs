@@ -7177,7 +7177,7 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fqdns")]
         public virtual System.Collections.Generic.IList<string> Fqdns { get; set; }
 
-        /// <summary>Google Secret Manager (GCP) certificate configuration.</summary>
+        /// <summary>Secret Manager certificate configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpSecretManagerCertificateConfig")]
         public virtual GCPSecretManagerCertificateConfig GcpSecretManagerCertificateConfig { get; set; }
 
