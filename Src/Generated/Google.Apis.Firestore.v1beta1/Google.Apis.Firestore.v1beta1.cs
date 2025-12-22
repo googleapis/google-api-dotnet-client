@@ -778,6 +778,63 @@ namespace Google.Apis.Firestore.v1beta1
                     }
                 }
 
+                /// <summary>Executes a pipeline query.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="database">
+                /// Required. Database identifier, in the form `projects/{project}/databases/{database}`.
+                /// </param>
+                public virtual ExecutePipelineRequest ExecutePipeline(Google.Apis.Firestore.v1beta1.Data.ExecutePipelineRequest body, string database)
+                {
+                    return new ExecutePipelineRequest(this.service, body, database);
+                }
+
+                /// <summary>Executes a pipeline query.</summary>
+                public class ExecutePipelineRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1beta1.Data.ExecutePipelineResponse>
+                {
+                    /// <summary>Constructs a new ExecutePipeline request.</summary>
+                    public ExecutePipelineRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1beta1.Data.ExecutePipelineRequest body, string database) : base(service)
+                    {
+                        Database = database;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Database identifier, in the form `projects/{project}/databases/{database}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("database", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Database { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firestore.v1beta1.Data.ExecutePipelineRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "executePipeline";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+database}/documents:executePipeline";
+
+                    /// <summary>Initializes ExecutePipeline parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("database", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "database",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Gets a single document.</summary>
                 /// <param name="name">
                 /// Required. The resource name of the Document to get. In the format:
@@ -3118,6 +3175,147 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request for Firestore.ExecutePipeline.</summary>
+    public class ExecutePipelineRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Execute the pipeline in a new transaction. The identifier of the newly created transaction will be returned
+        /// in the first response on the stream. This defaults to a read-only transaction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newTransaction")]
+        public virtual TransactionOptions NewTransaction { get; set; }
+
+        private string _readTimeRaw;
+
+        private object _readTime;
+
+        /// <summary>
+        /// Execute the pipeline in a snapshot transaction at the given time. This must be a microsecond precision
+        /// timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole
+        /// minute timestamp within the past 7 days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
+        public virtual string ReadTimeRaw
+        {
+            get => _readTimeRaw;
+            set
+            {
+                _readTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _readTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ReadTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReadTimeDateTimeOffset instead.")]
+        public virtual object ReadTime
+        {
+            get => _readTime;
+            set
+            {
+                _readTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _readTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReadTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>A pipelined operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredPipeline")]
+        public virtual StructuredPipeline StructuredPipeline { get; set; }
+
+        /// <summary>
+        /// Run the query within an already active transaction. The value here is the opaque transaction ID to execute
+        /// the query in.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
+        public virtual string Transaction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for Firestore.Execute.</summary>
+    public class ExecutePipelineResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _executionTimeRaw;
+
+        private object _executionTime;
+
+        /// <summary>
+        /// The time at which the results are valid. This is a (not strictly) monotonically increasing value across
+        /// multiple responses in the same stream. The API guarantees that all previously returned results are still
+        /// valid at the latest `execution_time`. This allows the API consumer to treat the query if it ran at the
+        /// latest `execution_time` returned. If the query returns no results, a response with `execution_time` and no
+        /// `results` will be sent, and this represents the time at which the operation was run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionTime")]
+        public virtual string ExecutionTimeRaw
+        {
+            get => _executionTimeRaw;
+            set
+            {
+                _executionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _executionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExecutionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExecutionTimeDateTimeOffset instead.")]
+        public virtual object ExecutionTime
+        {
+            get => _executionTime;
+            set
+            {
+                _executionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _executionTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExecutionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExecutionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExecutionTimeRaw);
+            set => ExecutionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Query explain stats. This is present on the **last** response if the request configured explain to run in
+        /// 'analyze' or 'explain' mode in the pipeline options. If the query does not return any results, a response
+        /// with `explain_stats` and no `results` will still be sent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explainStats")]
+        public virtual ExplainStats ExplainStats { get; set; }
+
+        /// <summary>
+        /// An ordered batch of results returned executing a pipeline. The batch size is variable, and can even be zero
+        /// for when only a partial progress message is returned. The fields present in the returned documents are only
+        /// those that were explicitly requested in the pipeline, this includes those like `__name__` and
+        /// `__update_time__`. This is explicitly a divergence from `Firestore.RunQuery` / `Firestore.GetDocument` RPCs
+        /// which always return such fields even when they are not specified in the `mask`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<Document> Results { get; set; }
+
+        /// <summary>
+        /// Newly created transaction identifier. This field is only specified as part of the first response from the
+        /// server, alongside the `results` field when the original request specified ExecuteRequest.new_transaction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
+        public virtual string Transaction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Execution statistics for the query.</summary>
     public class ExecutionStats : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3208,6 +3406,23 @@ namespace Google.Apis.Firestore.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyze")]
         public virtual System.Nullable<bool> Analyze { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Pipeline explain stats. Depending on the explain options in the original request, this can contain the optimized
+    /// plan and / or execution stats.
+    /// </summary>
+    public class ExplainStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The format depends on the `output_format` options in the request. Currently there are two supported options:
+        /// `TEXT` and `JSON`. Both supply a `google.protobuf.StringValue`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Data { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3381,6 +3596,34 @@ namespace Google.Apis.Firestore.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vectorField")]
         public virtual FieldReference VectorField { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents an unevaluated scalar expression. For example, the expression `like(user_name, "%alice%")` is
+    /// represented as:
+    /// ```
+    /// name: "like" args { field_reference: "user_name" } args { string_value: "%alice%" }
+    /// ```
+    /// </summary>
+    public class Function : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Ordered list of arguments the given function expects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("args")]
+        public virtual System.Collections.Generic.IList<Value> Args { get; set; }
+
+        /// <summary>
+        /// Required. The name of the function to evaluate. **Requires:** * must be in snake case (lower case with
+        /// underscore separator).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Optional named arguments that certain functions may support.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("options")]
+        public virtual System.Collections.Generic.IDictionary<string, Value> Options { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4612,6 +4855,17 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A Firestore query represented as an ordered list of operations / stages.</summary>
+    public class Pipeline : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Ordered list of stages to evaluate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stages")]
+        public virtual System.Collections.Generic.IList<Stage> Stages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Planning phase information for the query.</summary>
     public class PlanSummary : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5081,6 +5335,37 @@ namespace Google.Apis.Firestore.v1beta1.Data
     }
 
     /// <summary>
+    /// A single operation within a pipeline. A stage is made up of a unique name, and a list of arguments. The exact
+    /// number of arguments &amp;amp; types is dependent on the stage type. To give an example, the stage `filter(state
+    /// = "MD")` would be encoded as:
+    /// ```
+    /// name: "filter" args { function_value { name: "eq" args {
+    /// field_reference_value: "state" } args { string_value: "MD" } } }
+    /// ```
+    /// See public documentation for the full list.
+    /// </summary>
+    public class Stage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Ordered list of arguments the given stage expects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("args")]
+        public virtual System.Collections.Generic.IList<Value> Args { get; set; }
+
+        /// <summary>
+        /// Required. The name of the stage to evaluate. **Requires:** * must be in snake case (lower case with
+        /// underscore separator).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Optional named arguments that certain functions may support.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("options")]
+        public virtual System.Collections.Generic.IDictionary<string, Value> Options { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
     /// three pieces of data: error code, error message, and error details. You can find out more about this error model
@@ -5122,6 +5407,25 @@ namespace Google.Apis.Firestore.v1beta1.Data
         /// <summary>Nested structured query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structuredQuery")]
         public virtual StructuredQuery StructuredQuery { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A Firestore query represented as an ordered list of operations / stages. This is considered the top-level
+    /// function which plans and executes a query. It is logically equivalent to `query(stages, options)`, but prevents
+    /// the client from having to build a function wrapper.
+    /// </summary>
+    public class StructuredPipeline : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Optional query-level arguments. </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("options")]
+        public virtual System.Collections.Generic.IDictionary<string, Value> Options { get; set; }
+
+        /// <summary>Required. The pipeline query to execute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipeline")]
+        public virtual Pipeline Pipeline { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5452,6 +5756,21 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
         public virtual System.Nullable<double> DoubleValue { get; set; }
 
+        /// <summary>
+        /// Value which references a field. This is considered relative (vs absolute) since it only refers to a field
+        /// and not a field within a particular document. **Requires:** * Must follow field reference limitations. * Not
+        /// allowed to be used when writing documents.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldReferenceValue")]
+        public virtual string FieldReferenceValue { get; set; }
+
+        /// <summary>
+        /// A value that represents an unevaluated expression. **Requires:** * Not allowed to be used when writing
+        /// documents.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("functionValue")]
+        public virtual Function FunctionValue { get; set; }
+
         /// <summary>A geo point value representing a point on the surface of Earth.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoPointValue")]
         public virtual LatLng GeoPointValue { get; set; }
@@ -5467,6 +5786,13 @@ namespace Google.Apis.Firestore.v1beta1.Data
         /// <summary>A null value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nullValue")]
         public virtual string NullValue { get; set; }
+
+        /// <summary>
+        /// A value that represents an unevaluated pipeline. **Requires:** * Not allowed to be used when writing
+        /// documents.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelineValue")]
+        public virtual Pipeline PipelineValue { get; set; }
 
         /// <summary>
         /// A reference to a document. For example:
