@@ -93,6 +93,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 _outputHelper.WriteLine($"Test {_id:0000} at {DateTime.UtcNow:HH:mm:ss.fff}: {caller} - {message}");
         }
 
+#if NET6_0_OR_GREATER
         /// <summary>
         /// Resumable upload class that allows Crc32c to be set for testing.
         /// </summary>
@@ -100,5 +101,6 @@ namespace Google.Apis.Tests.Apis.Upload
         {
             public string Crc32c { get; set; }
         }
+#endif
     }
 }

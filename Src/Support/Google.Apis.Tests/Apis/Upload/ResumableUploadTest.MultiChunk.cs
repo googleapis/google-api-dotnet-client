@@ -500,7 +500,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 Assert.Equal(UploadStatus.Completed, progress.Status);
             }
         }
-
+#if NET6_0_OR_GREATER
         /// <summary>
         /// Verifies that a resumable upload completes successfully and validates crc32c checksum across different chunking configurations 
         /// and stream types of known size.
@@ -589,6 +589,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 Assert.False(uploader.Crc32cHeaderSentInInitiation);
             }
         }
+#endif
 
         /// <summary>
         /// Server that expects an initial call with path and query parameters.
@@ -787,6 +788,7 @@ namespace Google.Apis.Tests.Apis.Upload
             }
         }
 
+#if NET6_0_OR_GREATER
         /// <summary>
         /// Calculates the CRC32C checksum for the specified data.
         /// </summary>
@@ -797,5 +799,6 @@ namespace Google.Apis.Tests.Apis.Upload
             byte[] hashBytes = crc32.GetCurrentHash();
             return Convert.ToBase64String(hashBytes);
         }
+#endif
     }
 }

@@ -78,11 +78,13 @@ namespace Google.Apis.Upload
         /// </summary>
         internal const string GoogleHashHeader = "X-Goog-Hash";
 
+#if NET6_0_OR_GREATER
         /// <summary>
         /// The size of the buffer (in bytes) used when reading the stream to calculate the CRC32C checksum.
         /// Set to 80 KB (81920 bytes) to balance memory usage and I/O performance.
         /// </summary>
         private const int Crc32cCalculationBufferSize = 81920;
+#endif
         #endregion // Constants
 
         #region Construction
@@ -699,6 +701,7 @@ namespace Google.Apis.Upload
             return completed;
         }
 
+#if NET6_0_OR_GREATER
         /// <summary>
         /// Calculates the CRC32C hash of the entire stream and returns it as a Base64 string.
         /// </summary>
@@ -738,6 +741,13 @@ namespace Google.Apis.Upload
                 stream.Position = originalPosition;
             }
         }
+#else
+        /// <summary>
+        /// Calculates the CRC32C hash of the entire stream and returns it as a Base64 string.
+        /// </summary>
+        internal Task<string> CalculateCrc32cAsync(Stream stream, CancellationToken cancellationToken) =>
+            Task.FromResult<string>(null);
+#endif
 
         /// <summary>Handles a media upload HTTP response.</summary>
         /// <returns><c>True</c> if the entire media has been completely uploaded.</returns>
