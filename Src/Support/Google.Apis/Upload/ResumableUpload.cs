@@ -1241,7 +1241,7 @@ namespace Google.Apis.Upload
                     }
                     else
                     {
-                        Console.WriteLine("A CRC32C hash was provided in the request body, but the stream is not seekable. The hash will not be validated on the client, and will not be sent to the server.");
+                        ApplicationContext.Logger.ForType<ResumableUpload<TRequest>>().Warning("A CRC32C hash was provided in the request body, but the stream is not seekable. The hash will not be validated on the client, and will not be sent to the server.");
                     }
                 }
             }
