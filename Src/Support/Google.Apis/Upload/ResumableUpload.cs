@@ -1239,6 +1239,10 @@ namespace Google.Apis.Upload
                         request.Headers.TryAddWithoutValidation(GoogleHashHeader, $"crc32c={calculatedHash}");
                         Crc32cHeaderSentInInitiation = true;
                     }
+                    else
+                    {
+                        Console.WriteLine("A CRC32C hash was provided in the request body, but the stream is not seekable. The hash will not be validated on the client, and will not be sent to the server.");
+                    }
                 }
             }
             Options?.ModifySessionInitiationRequest?.Invoke(request);
