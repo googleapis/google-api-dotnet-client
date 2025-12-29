@@ -12,15 +12,6 @@
   // Known exception for library generation
   "apigee.v1",
   
-  // Name clashes because of some request's service parameter.
-  // Investigate with auth team.
-  "metastore.v1alpha",
-  "metastore.v1beta",
-  "metastore.v1",
-
-  // Name clashes because of some response ETag field.
-  "contentwarehouse.v1",
-  
   // b/299569133 method.request.type instead of method.request.$ref
   // type is not a supported field in method.request.
   "integrations.v1alpha",
@@ -30,25 +21,15 @@
   // type is not a supported field in method.request.
   "datalineage.v1",
   
-  // b/299985033 Because on non-AIP compliant RPC.
-  "policysimulator.v1alpha",
-  "policysimulator.v1beta",
-  
-  // TODO: Explain these ones
+  // b/170974415 
   "identitytoolkit.v1",
   "identitytoolkit.v2",
   "identitytoolkit.v3",
 
-  // b/415809720 for investigating the failure
-  "compute.alpha",
+  // b/415809720
+  //"compute.alpha",
   "compute.beta",
-  
-  // b/447065891 for investigating the failure
-  "aiplatform.v1beta1",
 
-  // b/462033382 for investigating the failure
-  "aiplatform.v1",
-
-  // b/459521801 for investigating the failure
-  "composer.v1beta1",
+  // b/287068812
+  "aiplatform.v1beta1"
 ]
