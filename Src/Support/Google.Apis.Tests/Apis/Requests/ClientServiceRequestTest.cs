@@ -135,7 +135,7 @@ namespace Google.Apis.Tests.Apis.Requests
         /// <summary>A mock message handler which returns an error.</summary>
         class ErrorMessageHandler : CountableMessageHandler
         {
-            public const string ExpectedError = 
+            public const string ExpectedError =
                 @"Message[Login Required] Location[Authorization - header] Reason[required] Domain[global]";
             public const string ErrorContent =
                 @"{
@@ -210,7 +210,7 @@ namespace Google.Apis.Tests.Apis.Requests
                 }
                 else
                 {
-                    Assert.IsAssignableFrom<StringContent>(request.Content);
+                    Assert.IsAssignableFrom<JsonStreamContent>(request.Content);
                     strObject = await request.Content.ReadAsStringAsync().ConfigureAwait(false);
                 }
 
@@ -233,7 +233,7 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         /// <summary>
-        /// A mock exception which is thrown from a mock message handler in case it is configured to throw exceptions. 
+        /// A mock exception which is thrown from a mock message handler in case it is configured to throw exceptions.
         /// </summary>
         class InvalidOperationMockException : Exception
         {
@@ -296,7 +296,7 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         /// <summary>
-        /// A message handler which checks concurrent calls (each odd request will succeeded, and even request will 
+        /// A message handler which checks concurrent calls (each odd request will succeeded, and even request will
         /// fail on the first try and will succeeded in the second try.
         /// </summary>
         class ConcurrentCallsHandler : CountableMessageHandler
@@ -419,7 +419,7 @@ namespace Google.Apis.Tests.Apis.Requests
                 request = new TestClientServiceRequest(service, "POST", new MockRequest());
             }
 
-            // the service was disposed before the request was made (and the message handler as well). As a result an 
+            // the service was disposed before the request was made (and the message handler as well). As a result an
             // exception should be thrown before we try to send the request
             Assert.Throws<ObjectDisposedException>(() => request.Execute());
         }
@@ -459,11 +459,11 @@ namespace Google.Apis.Tests.Apis.Requests
                 }
 
                 // Note: Even if GZipEnabled is true, we don't need to extract the real string from the GZip stream,
-                // because in a real request we use HttpClientHandler which its AutomaticDecompression is set to 
+                // because in a real request we use HttpClientHandler which its AutomaticDecompression is set to
                 // System.Net.DecompressionMethods.GZip.
 
                 Assert.Equal(1, handler.Calls);
-                // The returned response should contain ETag, check that the service adds the right ETag property on 
+                // The returned response should contain ETag, check that the service adds the right ETag property on
                 // the response.
                 handler.ResponseObject.ETag = handler.ResponseETag;
                 Assert.Equal(handler.ResponseObject, response);
@@ -522,7 +522,7 @@ namespace Google.Apis.Tests.Apis.Requests
                 var request = new TestClientServiceRequest(service, "GET", handler.ExpectedRequestObject);
                 var response = request.Execute();
                 Assert.Equal(1, handler.Calls);
-                // The returned response should contain ETag, check that the service add the right ETag property on 
+                // The returned response should contain ETag, check that the service add the right ETag property on
                 // the response.
                 handler.ResponseObject.ETag = handler.ResponseETag;
                 Assert.Equal(handler.ResponseObject, response);
@@ -532,7 +532,7 @@ namespace Google.Apis.Tests.Apis.Requests
         /// <summary>
         /// A subtest for testing Execute when an exception is thrown while sending the request. This is tested with
         /// and without back-off. If back-off handler is attached to the service's message handler, there should be 3
-        /// tries (the default value of <seealso cref="ConfigurableMessageHandler.NumTries"/>) before the operation 
+        /// tries (the default value of <seealso cref="ConfigurableMessageHandler.NumTries"/>) before the operation
         /// fails.
         /// </summary>
         /// <param name="backOff">Indicates if back-off handler is attached to the service.</param>
@@ -577,13 +577,13 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         /// <summary>
-        /// A subtest for testing ExecuteAsync  when an exception is thrown while sending the request. This is tested 
-        /// with and without back-off. If back-off handler is attached to the service's message handler, there should 
-        /// be 3 tries (the default value of <seealso cref="ConfigurableMessageHandler.NumTries"/>) before the 
+        /// A subtest for testing ExecuteAsync  when an exception is thrown while sending the request. This is tested
+        /// with and without back-off. If back-off handler is attached to the service's message handler, there should
+        /// be 3 tries (the default value of <seealso cref="ConfigurableMessageHandler.NumTries"/>) before the
         /// operation fails.
         /// </summary>
         /// <param name="backOff">Indicates if back-off handler is attached to the service.</param>
-        [Theory, CombinatorialData]            
+        [Theory, CombinatorialData]
         public async Task SubtestExecuteAsync_ThrowException(bool backOff)
         {
             var handler = new MockMessageHandler(true);
@@ -641,7 +641,7 @@ namespace Google.Apis.Tests.Apis.Requests
                 var request = new TestClientServiceRequest(service, "GET", null);
                 var exception = await Assert.ThrowsAsync<GoogleApiException>(() => request.ExecuteAsync());
                 AutoResetEvent resetEvent = new AutoResetEvent(false);
-                
+
                 Assert.Equal(1, handler.Calls);
                 Assert.Equal(ErrorMessageHandler.ExpectedExceptionMessage, exception.Message);
                 Assert.Contains(ErrorMessageHandler.ExpectedError, exception.ToString());
@@ -679,9 +679,9 @@ namespace Google.Apis.Tests.Apis.Requests
                 {
                     var response = await tasks[i - 1];
 
-                    // check that we got the right response. Name should be equal to the index number modulo 10 (or 
-                    // index number plus one module 10, if it's an even request - because even request should fail in 
-                    // the first request, but should succeed in the next try). That's the logic of our 
+                    // check that we got the right response. Name should be equal to the index number modulo 10 (or
+                    // index number plus one module 10, if it's an even request - because even request should fail in
+                    // the first request, but should succeed in the next try). That's the logic of our
                     // ConcurrentCallHandler, see it core SendAsyncCore method to understand better the logic
                     var nameIndex = ((i % 2 == 0) ? i + 1 : i) % 10;
                     Assert.Equal("Name-" + nameIndex, response.Name);

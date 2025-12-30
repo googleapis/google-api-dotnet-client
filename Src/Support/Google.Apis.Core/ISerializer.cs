@@ -26,7 +26,7 @@ namespace Google.Apis
         string Format { get; }
 
         /// <summary>Serializes the specified object into a Stream.</summary>
-        void Serialize(object obj, Stream target);
+        void Serialize(object obj, Stream target, bool leaveOpen = false);
 
         /// <summary>Serializes the specified object into a string.</summary>
         string Serialize(object obj);

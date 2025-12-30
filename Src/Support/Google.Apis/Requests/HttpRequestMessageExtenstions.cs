@@ -47,19 +47,20 @@ namespace Google.Apis.Requests
             HttpContent content = null;
 
             var mediaType = "application/" + service.Serializer.Format;
-            var serializedObject = service.SerializeObject(body);
             if (gzipEnabled)
             {
+                var serializedObject = service.SerializeObject(body);
                 content = CreateZipContent(serializedObject);
-                content.Headers.ContentType = new MediaTypeHeaderValue(mediaType)
-                {
-                    CharSet = Encoding.UTF8.WebName
-                };
             }
             else
             {
-                content = new StringContent(serializedObject, Encoding.UTF8, mediaType);
+                content = new JsonStreamContent(body, service.Serializer);
             }
+
+            content.Headers.ContentType = new MediaTypeHeaderValue(mediaType)
+            {
+                CharSet = Encoding.UTF8.WebName
+            };
 
             request.Content = content;
         }
