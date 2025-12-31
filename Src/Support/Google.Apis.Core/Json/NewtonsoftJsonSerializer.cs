@@ -111,6 +111,9 @@ namespace Google.Apis.Json
     /// <summary>Class for serialization and deserialization of JSON documents using the Newtonsoft Library.</summary>
     public class NewtonsoftJsonSerializer : IJsonSerializer
     {
+        // See Serialize method for streams.
+        private static readonly Encoding UTF8NoBOM = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true);
+
         private readonly JsonSerializer serializer;
 
         /// <summary>The default instance of the Newtonsoft JSON Serializer, with default settings.</summary>
@@ -150,8 +153,8 @@ namespace Google.Apis.Json
         /// <inheritdoc/>
         public void Serialize(object obj, Stream target, bool leaveOpen = false)
         {
-            // Default encoding is UTF8 and default buffer size is 1kB per https://github.com/dotnet/dotnet/blob/main/src/runtime/src/libraries/System.Private.CoreLib/src/System/IO/StreamWriter.cs and commit 01aa2c17de57a4a5d2ca68aaffd79767e09207d5
-            using (var writer = new StreamWriter(target, Encoding.UTF8, 1024, leaveOpen))
+            // Default encoding is UTF8 with no BOM and default buffer size is 1kB per https://github.com/dotnet/dotnet/blob/main/src/runtime/src/libraries/System.Private.CoreLib/src/System/IO/StreamWriter.cs and commit 01aa2c17de57a4a5d2ca68aaffd79767e09207d5
+            using (var writer = new StreamWriter(target, UTF8NoBOM, 1024, leaveOpen))
             {
                 if (obj == null)
                 {

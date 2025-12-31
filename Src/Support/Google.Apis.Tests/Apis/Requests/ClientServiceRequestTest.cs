@@ -195,10 +195,10 @@ namespace Google.Apis.Tests.Apis.Requests
                 var mediaType = "application/json";
                 string strObject = null;
 
-                // If gzip enabled the request content is a gzip stream, otherwise it's a string content.
+                Assert.IsAssignableFrom<JsonStreamContent>(request.Content);
+
                 if (GZipEnabled)
                 {
-                    Assert.IsAssignableFrom<StreamContent>(request.Content);
                     var encoding = request.Content.Headers.ContentEncoding;
                     Assert.True(encoding.Count == 1 && encoding.First().Equals("gzip"),
                         "Content-Encoding should be 'gzip'");
@@ -210,7 +210,6 @@ namespace Google.Apis.Tests.Apis.Requests
                 }
                 else
                 {
-                    Assert.IsAssignableFrom<JsonStreamContent>(request.Content);
                     strObject = await request.Content.ReadAsStringAsync().ConfigureAwait(false);
                 }
 

@@ -44,55 +44,8 @@ namespace Google.Apis.Requests
             {
                 return;
             }
-            HttpContent content = null;
 
-            var mediaType = "application/" + service.Serializer.Format;
-            if (gzipEnabled)
-            {
-                var serializedObject = service.SerializeObject(body);
-                content = CreateZipContent(serializedObject);
-            }
-            else
-            {
-                content = new JsonStreamContent(body, service.Serializer);
-            }
-
-            content.Headers.ContentType = new MediaTypeHeaderValue(mediaType)
-            {
-                CharSet = Encoding.UTF8.WebName
-            };
-
-            request.Content = content;
-        }
-
-        /// <summary>Creates a GZip content based on the given content.</summary>
-        /// <param name="content">Content to GZip.</param>
-        /// <returns>GZiped HTTP content.</returns>
-        internal static HttpContent CreateZipContent(string content)
-        {
-            var stream = CreateGZipStream(content);
-            var sc = new StreamContent(stream);
-            sc.Headers.ContentEncoding.Add("gzip");
-            return sc;
-        }
-
-        /// <summary>Creates a GZip stream by the given serialized object.</summary>
-        private static Stream CreateGZipStream(string serializedObject)
-        {
-            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(serializedObject);
-            using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
-            {
-                using (GZipStream gzip = new GZipStream(ms, CompressionMode.Compress, true))
-                {
-                    gzip.Write(bytes, 0, bytes.Length);
-                }
-
-                // Reset the stream to the beginning. It doesn't work otherwise!
-                ms.Position = 0;
-                byte[] compressed = new byte[ms.Length];
-                ms.Read(compressed, 0, compressed.Length);
-                return new MemoryStream(compressed);
-            }
+            request.Content = new JsonStreamContent(body, service.Serializer, gzipEnabled);
         }
     }
 }
