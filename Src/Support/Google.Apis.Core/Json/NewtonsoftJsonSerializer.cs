@@ -21,6 +21,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -110,6 +111,9 @@ namespace Google.Apis.Json
     /// <summary>Class for serialization and deserialization of JSON documents using the Newtonsoft Library.</summary>
     public class NewtonsoftJsonSerializer : IJsonSerializer
     {
+        // See Serialize method for streams.
+        private static readonly Encoding UTF8NoBOM = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true);
+
         private readonly JsonSerializer serializer;
 
         /// <summary>The default instance of the Newtonsoft JSON Serializer, with default settings.</summary>
@@ -147,9 +151,10 @@ namespace Google.Apis.Json
         public string Format => "json";
 
         /// <inheritdoc/>
-        public void Serialize(object obj, Stream target)
+        public void Serialize(object obj, Stream target, bool leaveOpen = false)
         {
-            using (var writer = new StreamWriter(target))
+            // Default encoding is UTF8 with no BOM and default buffer size is 1kB per https://github.com/dotnet/dotnet/blob/main/src/runtime/src/libraries/System.Private.CoreLib/src/System/IO/StreamWriter.cs and commit 01aa2c17de57a4a5d2ca68aaffd79767e09207d5
+            using (var writer = new StreamWriter(target, UTF8NoBOM, 1024, leaveOpen))
             {
                 if (obj == null)
                 {
@@ -216,7 +221,7 @@ namespace Google.Apis.Json
         /// <param name="cancellationToken">Cancellation token for the operation.</param>
         /// <returns>The deserialized object.</returns>
         public async Task<T> DeserializeAsync<T>(Stream input, CancellationToken cancellationToken)
-        {            
+        {
             using (StreamReader streamReader = new StreamReader(input))
             {
                 string json = await streamReader.ReadToEndAsync().WithCancellationToken(cancellationToken).ConfigureAwait(false);
