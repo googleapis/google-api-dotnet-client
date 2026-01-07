@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2104,6 +2104,23 @@ namespace Google.Apis.CloudFunctions.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains overrides related to the function's build configuration.</summary>
+    public class BuildConfigOverrides : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies the desired runtime for the new Cloud Run function. (e.g., `"nodejs20"`, `"python312"`).
+        /// Constraints: 1. This field CANNOT be used to change the runtime language (e.g., from `NODEJS` to `PYTHON`).
+        /// The backend will enforce this. 2. This field can ONLY be used to upgrade the runtime version (e.g.,
+        /// `nodejs18` to `nodejs20`). Downgrading the version is not permitted. The backend will validate the version
+        /// change. If provided and valid, this overrides the runtime of the Gen1 function.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtime")]
+        public virtual string Runtime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for the `CommitFunctionUpgradeAsGen2` method.</summary>
     public class CommitFunctionUpgradeAsGen2Request : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3385,6 +3402,20 @@ namespace Google.Apis.CloudFunctions.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains overrides related to the function's service configuration.</summary>
+    public class ServiceConfigOverrides : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies the maximum number of instances for the new Cloud Run function. If provided, this
+        /// overrides the max_instance_count setting of the Gen1 function.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxInstanceCount")]
+        public virtual System.Nullable<int> MaxInstanceCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for `SetIamPolicy` method.</summary>
     public class SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3410,6 +3441,14 @@ namespace Google.Apis.CloudFunctions.v2beta.Data
     /// <summary>Request for the `SetupFunctionUpgradeConfig` method.</summary>
     public class SetupFunctionUpgradeConfigRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Specifies overrides for the build process.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildConfigOverrides")]
+        public virtual BuildConfigOverrides BuildConfigOverrides { get; set; }
+
+        /// <summary>Optional. Specifies overrides for the service configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceConfigOverrides")]
+        public virtual ServiceConfigOverrides ServiceConfigOverrides { get; set; }
+
         /// <summary>
         /// Optional. The trigger's service account. The service account must have permission to invoke Cloud Run
         /// services, the permission is `run.routes.invoke`. If empty, defaults to the Compute Engine default service
