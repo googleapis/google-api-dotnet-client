@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -5321,6 +5321,42 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents the result of evaluating artifact guard policies.</summary>
+    public class ArtifactGuardPolicies : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of failing policies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failingPolicies")]
+        public virtual System.Collections.Generic.IList<ArtifactGuardPolicy> FailingPolicies { get; set; }
+
+        /// <summary>The ID of the resource that has policies configured for it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
+        public virtual string ResourceId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an artifact guard policy.</summary>
+    public class ArtifactGuardPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The reason for the policy failure, for example, "severity=HIGH AND max_vuln_count=2".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureReason")]
+        public virtual string FailureReason { get; set; }
+
+        /// <summary>
+        /// The ID of the failing policy, for example, "organizations/3392779/locations/global/policies/prod-policy".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyId")]
+        public virtual string PolicyId { get; set; }
+
+        /// <summary>The type of the policy evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information about DDoS attack volume and classification.</summary>
     public class Attack : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7125,6 +7161,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskPath")]
         public virtual DiskPath DiskPath { get; set; }
 
+        /// <summary>The load state of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileLoadState")]
+        public virtual string FileLoadState { get; set; }
+
         /// <summary>
         /// The length in bytes of the file prefix that was hashed. If hashed_size == size, any hashes reported
         /// represent the entire file.
@@ -7196,6 +7236,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>Represents an application associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("application")]
         public virtual Application Application { get; set; }
+
+        /// <summary>ArtifactGuardPolicies associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactGuardPolicies")]
+        public virtual ArtifactGuardPolicies ArtifactGuardPolicies { get; set; }
 
         /// <summary>The results of an attack path simulation relevant to this finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attackExposure")]
@@ -7571,6 +7615,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
+
+        /// <summary>Secret associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secret")]
+        public virtual Secret Secret { get; set; }
 
         /// <summary>
         /// Output only. User specified security marks. These marks are entirely managed by the user and come from the
@@ -9382,6 +9430,42 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullUri")]
         public virtual string FullUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the result of evaluating artifact guard policies.</summary>
+    public class GoogleCloudSecuritycenterV2ArtifactGuardPolicies : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of failing policies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failingPolicies")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2ArtifactGuardPolicy> FailingPolicies { get; set; }
+
+        /// <summary>The ID of the resource that has policies configured for it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
+        public virtual string ResourceId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an artifact guard policy.</summary>
+    public class GoogleCloudSecuritycenterV2ArtifactGuardPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The reason for the policy failure, for example, "severity=HIGH AND max_vuln_count=2".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureReason")]
+        public virtual string FailureReason { get; set; }
+
+        /// <summary>
+        /// The ID of the failing policy, for example, "organizations/3392779/locations/global/policies/prod-policy".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyId")]
+        public virtual string PolicyId { get; set; }
+
+        /// <summary>The type of the policy evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11211,6 +11295,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskPath")]
         public virtual GoogleCloudSecuritycenterV2DiskPath DiskPath { get; set; }
 
+        /// <summary>The load state of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileLoadState")]
+        public virtual string FileLoadState { get; set; }
+
         /// <summary>
         /// The length in bytes of the file prefix that was hashed. If hashed_size == size, any hashes reported
         /// represent the entire file.
@@ -11282,6 +11370,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>Represents an application associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("application")]
         public virtual GoogleCloudSecuritycenterV2Application Application { get; set; }
+
+        /// <summary>ArtifactGuardPolicies associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactGuardPolicies")]
+        public virtual GoogleCloudSecuritycenterV2ArtifactGuardPolicies ArtifactGuardPolicies { get; set; }
 
         /// <summary>The results of an attack path simulation relevant to this finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attackExposure")]
@@ -11669,6 +11761,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
+
+        /// <summary>Secret associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secret")]
+        public virtual GoogleCloudSecuritycenterV2Secret Secret { get; set; }
 
         /// <summary>
         /// Output only. User specified security marks. These marks are entirely managed by the user and come from the
@@ -13634,6 +13730,104 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details about a secret or credential associated with the finding.</summary>
+    public class GoogleCloudSecuritycenterV2Secret : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The environment variable containing the secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentVariable")]
+        public virtual GoogleCloudSecuritycenterV2SecretEnvironmentVariable EnvironmentVariable { get; set; }
+
+        /// <summary>The file containing the secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
+        public virtual GoogleCloudSecuritycenterV2SecretFilePath FilePath { get; set; }
+
+        /// <summary>The status of the secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleCloudSecuritycenterV2SecretStatus Status { get; set; }
+
+        /// <summary>The type of secret, for example, GCP_API_KEY.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Environment variable containing the secret.</summary>
+    public class GoogleCloudSecuritycenterV2SecretEnvironmentVariable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Environment variable name as a JSON encoded string. Note that value is not included since the value contains
+        /// the secret data, which is sensitive core content.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>File path containing the secret.</summary>
+    public class GoogleCloudSecuritycenterV2SecretFilePath : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Path to the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of the secret.</summary>
+    public class GoogleCloudSecuritycenterV2SecretStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _lastUpdatedTimeRaw;
+
+        private object _lastUpdatedTime;
+
+        /// <summary>Time that the secret was found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdatedTime")]
+        public virtual string LastUpdatedTimeRaw
+        {
+            get => _lastUpdatedTimeRaw;
+            set
+            {
+                _lastUpdatedTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastUpdatedTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastUpdatedTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastUpdatedTimeDateTimeOffset instead.")]
+        public virtual object LastUpdatedTime
+        {
+            get => _lastUpdatedTime;
+            set
+            {
+                _lastUpdatedTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastUpdatedTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastUpdatedTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastUpdatedTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdatedTimeRaw);
+            set => LastUpdatedTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The validity of the secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validity")]
+        public virtual string Validity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>SecurityBulletin are notifications of vulnerabilities of Google products.</summary>
     public class GoogleCloudSecuritycenterV2SecurityBulletin : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15001,6 +15195,104 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>Role namespace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ns")]
         public virtual string Ns { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about a secret or credential associated with the finding.</summary>
+    public class Secret : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The environment variable containing the secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentVariable")]
+        public virtual SecretEnvironmentVariable EnvironmentVariable { get; set; }
+
+        /// <summary>The file containing the secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
+        public virtual SecretFilePath FilePath { get; set; }
+
+        /// <summary>The status of the secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual SecretStatus Status { get; set; }
+
+        /// <summary>The type of secret, for example, GCP_API_KEY.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Environment variable containing the secret.</summary>
+    public class SecretEnvironmentVariable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Environment variable name as a JSON encoded string. Note that value is not included since the value contains
+        /// the secret data, which is sensitive core content.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>File path containing the secret.</summary>
+    public class SecretFilePath : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Path to the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of the secret.</summary>
+    public class SecretStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _lastUpdatedTimeRaw;
+
+        private object _lastUpdatedTime;
+
+        /// <summary>Time that the secret was found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdatedTime")]
+        public virtual string LastUpdatedTimeRaw
+        {
+            get => _lastUpdatedTimeRaw;
+            set
+            {
+                _lastUpdatedTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastUpdatedTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastUpdatedTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastUpdatedTimeDateTimeOffset instead.")]
+        public virtual object LastUpdatedTime
+        {
+            get => _lastUpdatedTime;
+            set
+            {
+                _lastUpdatedTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastUpdatedTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastUpdatedTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastUpdatedTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdatedTimeRaw);
+            set => LastUpdatedTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The validity of the secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validity")]
+        public virtual string Validity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
