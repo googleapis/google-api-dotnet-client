@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11002,7 +11002,9 @@ namespace Google.Apis.YouTube.v3
                         InitParameters();
                     }
 
-                    /// <summary>Required. Return videos with the given ids.</summary>
+                    /// <summary>
+                    /// Required. Return videos with the given ids. The number of IDs specified cannot exceed 50.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> Id { get; set; }
 
