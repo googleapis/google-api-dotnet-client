@@ -1,0 +1,11 @@
+{
+  "Google.Apis.GSuiteMarketplaceAPI.v2.GSuiteMarketplaceAPIBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.GSuiteMarketplaceAPI.v2.GSuiteMarketplaceAPIBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
