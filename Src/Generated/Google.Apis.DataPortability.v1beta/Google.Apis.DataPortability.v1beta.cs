@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -149,6 +149,21 @@ namespace Google.Apis.DataPortability.v1beta
 
             /// <summary>Move a copy of the maps you created in My Maps</summary>
             public static string DataportabilityMymapsMaps = "https://www.googleapis.com/auth/dataportability.mymaps.maps";
+
+            /// <summary>Copy Nest camera event data</summary>
+            public static string DataportabilityNestCameraEvent = "https://www.googleapis.com/auth/dataportability.nest.camera_event";
+
+            /// <summary>Copy Nest camera feature data</summary>
+            public static string DataportabilityNestCameraFeature = "https://www.googleapis.com/auth/dataportability.nest.camera_feature";
+
+            /// <summary>Copy Nest camera footage</summary>
+            public static string DataportabilityNestCameraVideo = "https://www.googleapis.com/auth/dataportability.nest.camera_video";
+
+            /// <summary>Copy your Nest Store and Nest Renew billing and payment information</summary>
+            public static string DataportabilityNestStore = "https://www.googleapis.com/auth/dataportability.nest.store";
+
+            /// <summary>Copy your Nest user information</summary>
+            public static string DataportabilityNestUser = "https://www.googleapis.com/auth/dataportability.nest.user";
 
             /// <summary>Move a copy of your food purchase and reservation activity</summary>
             public static string DataportabilityOrderReservePurchasesReservations = "https://www.googleapis.com/auth/dataportability.order_reserve.purchases_reservations";
@@ -363,6 +378,21 @@ namespace Google.Apis.DataPortability.v1beta
 
             /// <summary>Move a copy of the maps you created in My Maps</summary>
             public const string DataportabilityMymapsMaps = "https://www.googleapis.com/auth/dataportability.mymaps.maps";
+
+            /// <summary>Copy Nest camera event data</summary>
+            public const string DataportabilityNestCameraEvent = "https://www.googleapis.com/auth/dataportability.nest.camera_event";
+
+            /// <summary>Copy Nest camera feature data</summary>
+            public const string DataportabilityNestCameraFeature = "https://www.googleapis.com/auth/dataportability.nest.camera_feature";
+
+            /// <summary>Copy Nest camera footage</summary>
+            public const string DataportabilityNestCameraVideo = "https://www.googleapis.com/auth/dataportability.nest.camera_video";
+
+            /// <summary>Copy your Nest Store and Nest Renew billing and payment information</summary>
+            public const string DataportabilityNestStore = "https://www.googleapis.com/auth/dataportability.nest.store";
+
+            /// <summary>Copy your Nest user information</summary>
+            public const string DataportabilityNestUser = "https://www.googleapis.com/auth/dataportability.nest.user";
 
             /// <summary>Move a copy of your food purchase and reservation activity</summary>
             public const string DataportabilityOrderReservePurchasesReservations = "https://www.googleapis.com/auth/dataportability.order_reserve.purchases_reservations";
