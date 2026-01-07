@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17085,6 +17085,12 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ProductTaxCategoryCode { get; set; }
 
         /// <summary>
+        /// Regional age rating information. Currently this field is only supported for region code `US`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionalProductAgeRatingInfos")]
+        public virtual System.Collections.Generic.IList<RegionalProductAgeRatingInfo> RegionalProductAgeRatingInfos { get; set; }
+
+        /// <summary>
         /// A mapping from region code to tax rate details. The keys are region codes as defined by Unicode's "CLDR".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxRateInfoByRegionCode")]
@@ -17880,6 +17886,12 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productTaxCategoryCode")]
         public virtual string ProductTaxCategoryCode { get; set; }
+
+        /// <summary>
+        /// Regional age rating information. Currently this field is only supported for region code `US`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionalProductAgeRatingInfos")]
+        public virtual System.Collections.Generic.IList<RegionalProductAgeRatingInfo> RegionalProductAgeRatingInfos { get; set; }
 
         /// <summary>Regional tax configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionalTaxConfigs")]
@@ -19272,6 +19284,21 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string PriceIncreaseType { get; set; }
 
         /// <summary>Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about the age rating for a specific geographic region.</summary>
+    public class RegionalProductAgeRatingInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The age rating tier of a product for the given region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productAgeRatingTier")]
+        public virtual string ProductAgeRatingTier { get; set; }
+
+        /// <summary>Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
 
@@ -20774,6 +20801,12 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productTaxCategoryCode")]
         public virtual string ProductTaxCategoryCode { get; set; }
+
+        /// <summary>
+        /// Regional age rating information. Currently this field is only supported for region code `US`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionalProductAgeRatingInfos")]
+        public virtual System.Collections.Generic.IList<RegionalProductAgeRatingInfo> RegionalProductAgeRatingInfos { get; set; }
 
         /// <summary>
         /// A mapping from region code to tax rate details. The keys are region codes as defined by Unicode's "CLDR".
