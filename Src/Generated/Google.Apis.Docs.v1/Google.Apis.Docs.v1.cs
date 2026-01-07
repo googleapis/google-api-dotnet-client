@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -535,6 +535,30 @@ namespace Google.Apis.Docs.v1
 }
 namespace Google.Apis.Docs.v1.Data
 {
+    /// <summary>
+    /// Adds a document tab. When a tab is added at a given index, all subsequent tabs' indexes are incremented.
+    /// </summary>
+    public class AddDocumentTabRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The properties of the tab to add. All properties are optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabProperties")]
+        public virtual TabProperties TabProperties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The result of adding a document tab.</summary>
+    public class AddDocumentTabResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The properties of the newly added tab.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabProperties")]
+        public virtual TabProperties TabProperties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A ParagraphElement representing a spot in the text that's dynamically replaced with content that can change over
     /// time, like a page number.
@@ -1261,6 +1285,17 @@ namespace Google.Apis.Docs.v1.Data
         /// request applies to the singular tab. In a document containing multiple tabs: - If provided, the request
         /// applies to the specified tab. - If omitted, the request applies to the first tab in the document.
         /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabId")]
+        public virtual string TabId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Deletes a tab. If the tab has child tabs, they are deleted as well.</summary>
+    public class DeleteTabRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the tab to delete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tabId")]
         public virtual string TabId { get; set; }
 
@@ -3808,6 +3843,10 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>A single update to apply to a document.</summary>
     public class Request : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Adds a document tab.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addDocumentTab")]
+        public virtual AddDocumentTabRequest AddDocumentTab { get; set; }
+
         /// <summary>Creates a footer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createFooter")]
         public virtual CreateFooterRequest CreateFooter { get; set; }
@@ -3851,6 +3890,10 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>Deletes a positioned object from the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletePositionedObject")]
         public virtual DeletePositionedObjectRequest DeletePositionedObject { get; set; }
+
+        /// <summary>Deletes a document tab.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTab")]
+        public virtual DeleteTabRequest DeleteTab { get; set; }
 
         /// <summary>Deletes a column from a table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTableColumn")]
@@ -3924,6 +3967,10 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateDocumentStyle")]
         public virtual UpdateDocumentStyleRequest UpdateDocumentStyle { get; set; }
 
+        /// <summary>Updates the properties of a document tab.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateDocumentTabProperties")]
+        public virtual UpdateDocumentTabPropertiesRequest UpdateDocumentTabProperties { get; set; }
+
         /// <summary>Updates the paragraph style at the specified range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateParagraphStyle")]
         public virtual UpdateParagraphStyleRequest UpdateParagraphStyle { get; set; }
@@ -3955,6 +4002,10 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>A single response from an update.</summary>
     public class Response : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The result of adding a document tab.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addDocumentTab")]
+        public virtual AddDocumentTabResponse AddDocumentTab { get; set; }
+
         /// <summary>The result of creating a footer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createFooter")]
         public virtual CreateFooterResponse CreateFooter { get; set; }
@@ -4710,7 +4761,7 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parentTabId")]
         public virtual string ParentTabId { get; set; }
 
-        /// <summary>Output only. The ID of the tab. This field can't be changed.</summary>
+        /// <summary>The immutable ID of the tab.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tabId")]
         public virtual string TabId { get; set; }
 
@@ -5364,6 +5415,24 @@ namespace Google.Apis.Docs.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tabId")]
         public virtual string TabId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Update the properties of a document tab.</summary>
+    public class UpdateDocumentTabPropertiesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The fields that should be updated. At least one field must be specified. The root `tab_properties` is
+        /// implied and should not be specified. A single `"*"` can be used as short-hand for listing every field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual object Fields { get; set; }
+
+        /// <summary>The tab properties to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabProperties")]
+        public virtual TabProperties TabProperties { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
