@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -8760,8 +8760,6 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and omit the
         /// following: *
         /// [Attachments](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.messages.attachments)
-        /// * [Accessory
-        /// widgets](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.messages#Message.AccessoryWidget)
         /// For details, see [Send a message
         /// privately](https://developers.google.com/workspace/chat/create-messages#private).
         /// </summary>
