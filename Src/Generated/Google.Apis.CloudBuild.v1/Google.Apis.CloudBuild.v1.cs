@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -7276,7 +7276,7 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>The default service account used for `Builds`.</summary>
     public class DefaultServiceAccount : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifier. Format: `projects/{project}/locations/{location}/defaultServiceAccount</summary>
+        /// <summary>Identifier. Format: `projects/{project}/locations/{location}/defaultServiceAccount`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
