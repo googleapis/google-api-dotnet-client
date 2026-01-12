@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17579,6 +17579,10 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>A sample that is a true positive for this infoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("example")]
         public virtual string Example { get; set; }
+
+        /// <summary>The launch status of the infoType.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("launchStatus")]
+        public virtual string LaunchStatus { get; set; }
 
         /// <summary>Locations at which this feature can be used. May change over time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationSupport")]
