@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21682,6 +21682,17 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual GoogleCloudDiscoveryengineV1AssistantCustomerPolicy CustomerPolicy { get; set; }
 
         /// <summary>
+        /// Optional. This field controls the default web grounding toggle for end users if `web_grounding_type` is set
+        /// to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`. By default, this field
+        /// is set to false. If `web_grounding_type` is `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+        /// `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web grounding enabled by default on UI. If
+        /// true, grounding toggle will be disabled by default on UI. End users can still enable web grounding in the UI
+        /// if web grounding is enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultWebGroundingToggleOff")]
+        public virtual System.Nullable<bool> DefaultWebGroundingToggleOff { get; set; }
+
+        /// <summary>
         /// Optional. Description for additional information. Expected to be shown on the configuration UI, not to the
         /// users of the assistant.
         /// </summary>
@@ -40131,6 +40142,17 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Optional. Customer policy for the assistant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerPolicy")]
         public virtual GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicy CustomerPolicy { get; set; }
+
+        /// <summary>
+        /// Optional. This field controls the default web grounding toggle for end users if `web_grounding_type` is set
+        /// to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`. By default, this field
+        /// is set to false. If `web_grounding_type` is `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+        /// `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web grounding enabled by default on UI. If
+        /// true, grounding toggle will be disabled by default on UI. End users can still enable web grounding in the UI
+        /// if web grounding is enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultWebGroundingToggleOff")]
+        public virtual System.Nullable<bool> DefaultWebGroundingToggleOff { get; set; }
 
         /// <summary>
         /// Optional. Description for additional information. Expected to be shown on the configuration UI, not to the
