@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -5561,8 +5561,8 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// Warning message with additional details of the issue. Should always be a message from
         /// com.google.devtools.toolresults.v1.warnings
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual Any Warning { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("warning_migration")]
+        public virtual Any WarningMigration { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
