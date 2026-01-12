@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1610,8 +1610,8 @@ namespace Google.Apis.Merchant.reports_v1beta.Data
         public virtual string ClickPotential { get; set; }
 
         /// <summary>
-        /// Rank of the product based on its click potential. A product with `click_potential_rank` 1 has the highest
-        /// click potential among the merchant's products that fulfill the search query conditions.
+        /// Normalized click potential of the product. Values range from 1 to 1000, where 1 is the highest click
+        /// potential and 1000 is the theoretical lowest.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickPotentialRank")]
         public virtual System.Nullable<long> ClickPotentialRank { get; set; }
