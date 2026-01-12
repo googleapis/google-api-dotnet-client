@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -627,25 +627,25 @@ namespace Google.Apis.Datastream.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Filter request.</summary>
+                    /// <summary>Optional. Filter request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Order by fields for the result.</summary>
+                    /// <summary>Optional. Order by fields for the result.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Maximum number of connection profiles to return. If unspecified, at most 50 connection profiles
-                    /// will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+                    /// Optional. Maximum number of connection profiles to return. If unspecified, at most 50 connection
+                    /// profiles will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Page token received from a previous `ListConnectionProfiles` call. Provide this to retrieve the
-                    /// subsequent page. When paginating, all other parameters provided to `ListConnectionProfiles` must
-                    /// match the call that provided the page token.
+                    /// Optional. Page token received from a previous `ListConnectionProfiles` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListConnectionProfiles` must match the call that provided the page token.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1387,26 +1387,26 @@ namespace Google.Apis.Datastream.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Filter request.</summary>
+                        /// <summary>Optional. Filter request.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>Order by fields for the result.</summary>
+                        /// <summary>Optional. Order by fields for the result.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
                         /// <summary>
-                        /// Maximum number of Routes to return. The service may return fewer than this value. If
-                        /// unspecified, at most 50 Routes will be returned. The maximum value is 1000; values above
+                        /// Optional. Maximum number of Routes to return. The service may return fewer than this value.
+                        /// If unspecified, at most 50 Routes will be returned. The maximum value is 1000; values above
                         /// 1000 will be coerced to 1000.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>
-                        /// Page token received from a previous `ListRoutes` call. Provide this to retrieve the
-                        /// subsequent page. When paginating, all other parameters provided to `ListRoutes` must match
-                        /// the call that provided the page token.
+                        /// Optional. Page token received from a previous `ListRoutes` call. Provide this to retrieve
+                        /// the subsequent page. When paginating, all other parameters provided to `ListRoutes` must
+                        /// match the call that provided the page token.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -1736,11 +1736,11 @@ namespace Google.Apis.Datastream.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Filter request.</summary>
+                    /// <summary>Optional. Filter request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Order by fields for the result.</summary>
+                    /// <summary>Optional. Order by fields for the result.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -1753,9 +1753,9 @@ namespace Google.Apis.Datastream.v1
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Page token received from a previous `ListPrivateConnections` call. Provide this to retrieve the
-                    /// subsequent page. When paginating, all other parameters provided to `ListPrivateConnections` must
-                    /// match the call that provided the page token.
+                    /// Optional. Page token received from a previous `ListPrivateConnections` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListPrivateConnections` must match the call that provided the page token.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1919,15 +1919,15 @@ namespace Google.Apis.Datastream.v1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Maximum number of objects to return. Default is 50. The maximum value is 1000; values above
-                        /// 1000 will be coerced to 1000.
+                        /// Optional. Maximum number of objects to return. Default is 50. The maximum value is 1000;
+                        /// values above 1000 will be coerced to 1000.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>
-                        /// Page token received from a previous `ListStreamObjectsRequest` call. Provide this to
-                        /// retrieve the subsequent page. When paginating, all other parameters provided to
+                        /// Optional. Page token received from a previous `ListStreamObjectsRequest` call. Provide this
+                        /// to retrieve the subsequent page. When paginating, all other parameters provided to
                         /// `ListStreamObjectsRequest` must match the call that provided the page token.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -2385,25 +2385,25 @@ namespace Google.Apis.Datastream.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Filter request.</summary>
+                    /// <summary>Optional. Filter request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Order by fields for the result.</summary>
+                    /// <summary>Optional. Order by fields for the result.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Maximum number of streams to return. If unspecified, at most 50 streams will be returned. The
-                    /// maximum value is 1000; values above 1000 will be coerced to 1000.
+                    /// Optional. Maximum number of streams to return. If unspecified, at most 50 streams will be
+                    /// returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Page token received from a previous `ListStreams` call. Provide this to retrieve the subsequent
-                    /// page. When paginating, all other parameters provided to `ListStreams` must match the call that
-                    /// provided the page token.
+                    /// Optional. Page token received from a previous `ListStreams` call. Provide this to retrieve the
+                    /// subsequent page. When paginating, all other parameters provided to `ListStreams` must match the
+                    /// call that provided the page token.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -2673,12 +2673,12 @@ namespace Google.Apis.Datastream.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Maximum number of Ips to return, will likely not be specified.</summary>
+                /// <summary>Optional. Maximum number of Ips to return, will likely not be specified.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// A page token, received from a previous `ListStaticIps` call. will likely not be specified.
+                /// Optional. A page token, received from a previous `ListStaticIps` call. will likely not be specified.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -3401,45 +3401,45 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>Request message for 'discover' ConnectionProfile request.</summary>
     public class DiscoverConnectionProfileRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An ad-hoc connection profile configuration.</summary>
+        /// <summary>Optional. An ad-hoc connection profile configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionProfile")]
         public virtual ConnectionProfile ConnectionProfile { get; set; }
 
-        /// <summary>A reference to an existing connection profile.</summary>
+        /// <summary>Optional. A reference to an existing connection profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionProfileName")]
         public virtual string ConnectionProfileName { get; set; }
 
         /// <summary>
-        /// Whether to retrieve the full hierarchy of data objects (TRUE) or only the current level (FALSE).
+        /// Optional. Whether to retrieve the full hierarchy of data objects (TRUE) or only the current level (FALSE).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullHierarchy")]
         public virtual System.Nullable<bool> FullHierarchy { get; set; }
 
-        /// <summary>The number of hierarchy levels below the current level to be retrieved.</summary>
+        /// <summary>Optional. The number of hierarchy levels below the current level to be retrieved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hierarchyDepth")]
         public virtual System.Nullable<int> HierarchyDepth { get; set; }
 
-        /// <summary>MongoDB cluster to enrich with child data objects and metadata.</summary>
+        /// <summary>Optional. MongoDB cluster to enrich with child data objects and metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mongodbCluster")]
         public virtual MongodbCluster MongodbCluster { get; set; }
 
-        /// <summary>MySQL RDBMS to enrich with child data objects and metadata.</summary>
+        /// <summary>Optional. MySQL RDBMS to enrich with child data objects and metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlRdbms")]
         public virtual MysqlRdbms MysqlRdbms { get; set; }
 
-        /// <summary>Oracle RDBMS to enrich with child data objects and metadata.</summary>
+        /// <summary>Optional. Oracle RDBMS to enrich with child data objects and metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oracleRdbms")]
         public virtual OracleRdbms OracleRdbms { get; set; }
 
-        /// <summary>PostgreSQL RDBMS to enrich with child data objects and metadata.</summary>
+        /// <summary>Optional. PostgreSQL RDBMS to enrich with child data objects and metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postgresqlRdbms")]
         public virtual PostgresqlRdbms PostgresqlRdbms { get; set; }
 
-        /// <summary>Salesforce organization to enrich with child data objects and metadata.</summary>
+        /// <summary>Optional. Salesforce organization to enrich with child data objects and metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salesforceOrg")]
         public virtual SalesforceOrg SalesforceOrg { get; set; }
 
-        /// <summary>SQLServer RDBMS to enrich with child data objects and metadata.</summary>
+        /// <summary>Optional. SQLServer RDBMS to enrich with child data objects and metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlServerRdbms")]
         public virtual SqlServerRdbms SqlServerRdbms { get; set; }
 
