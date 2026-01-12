@@ -27,7 +27,7 @@
   "identitytoolkit.v3",
 
   // b/415809720
-  //"compute.alpha",
+  "compute.alpha",
   "compute.beta",
 
   // b/287068812
