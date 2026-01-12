@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4781,9 +4781,9 @@ namespace Google.Apis.Connectors.v1
 
                     /// <summary>
                     /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                    /// `true` when reading across collections e.g. when `parent` is set to
-                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
                     /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                     /// specific documentation.
                     /// </summary>
@@ -5978,8 +5978,8 @@ namespace Google.Apis.Connectors.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
-                /// primarily intended for internal usage.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -7137,6 +7137,12 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("connectionRatelimitWindowSeconds")]
         public virtual System.Nullable<long> ConnectionRatelimitWindowSeconds { get; set; }
 
+        /// <summary>
+        /// Indicate whether connection service account is enabled. If false, the common runtime service agent is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionServiceAccountEnabled")]
+        public virtual System.Nullable<bool> ConnectionServiceAccountEnabled { get; set; }
+
         /// <summary>Indicate whether connector versioning is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectorVersioningEnabled")]
         public virtual System.Nullable<bool> ConnectorVersioningEnabled { get; set; }
@@ -7176,6 +7182,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Indicate whether memstore is required for connector job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisionMemstore")]
         public virtual System.Nullable<bool> ProvisionMemstore { get; set; }
+
+        /// <summary>Indicate whether public network ingress should be enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicNetworkIngressEnabled")]
+        public virtual System.Nullable<bool> PublicNetworkIngressEnabled { get; set; }
 
         /// <summary>Max QPS supported by the connector version before throttling of requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ratelimitThreshold")]
@@ -7956,6 +7966,21 @@ namespace Google.Apis.Connectors.v1.Data
     /// </summary>
     public class EgressControlConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Access mode for egress control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessMode")]
+        public virtual string AccessMode { get; set; }
+
+        /// <summary>
+        /// Additional extraction rules to identity the backends from customer provided configuration in Connection
+        /// resource. These rules are applied in addition to the ones specified in `oneof_backends`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalExtractionRules")]
+        public virtual ExtractionRules AdditionalExtractionRules { get; set; }
+
+        /// <summary>Optional. Used when access_mode is RESTRICTED or ACCESS_MODE_UNSPECIFIED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowlistedProjectNumbers")]
+        public virtual System.Collections.Generic.IList<string> AllowlistedProjectNumbers { get; set; }
+
         /// <summary>
         /// Static Comma separated backends which are common for all Connection resources. Supported formats for each
         /// backend are host:port or just host (host can be ip address or domain name).
@@ -7966,6 +7991,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Extractions Rules to extract the backends from customer provided configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extractionRules")]
         public virtual ExtractionRules ExtractionRules { get; set; }
+
+        /// <summary>Launch environment for egress control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("launchEnvironment")]
+        public virtual string LaunchEnvironment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9131,6 +9160,13 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("extractionRegex")]
         public virtual string ExtractionRegex { get; set; }
 
+        /// <summary>
+        /// Format string used to format the extracted backend details. If empty, extracted backend details will be
+        /// returned as it is.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("formatString")]
+        public virtual string FormatString { get; set; }
+
         /// <summary>Source on which the rule is applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual Source Source { get; set; }
@@ -9881,8 +9917,8 @@ namespace Google.Apis.Connectors.v1.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
