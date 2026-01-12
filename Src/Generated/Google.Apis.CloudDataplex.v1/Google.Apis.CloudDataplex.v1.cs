@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2767,10 +2767,10 @@ namespace Google.Apis.CloudDataplex.v1
                         this.service = service;
                     }
 
-                    /// <summary>Creates a Data Asset.</summary>
+                    /// <summary>Creates a data asset.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
-                    /// Required. The parent resource where this Data Asset will be created. Format:
+                    /// Required. The parent resource where this data asset will be created. Format:
                     /// projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1DataAsset body, string parent)
@@ -2778,7 +2778,7 @@ namespace Google.Apis.CloudDataplex.v1
                         return new CreateRequest(this.service, body, parent);
                     }
 
-                    /// <summary>Creates a Data Asset.</summary>
+                    /// <summary>Creates a data asset.</summary>
                     public class CreateRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -2790,24 +2790,24 @@ namespace Google.Apis.CloudDataplex.v1
                         }
 
                         /// <summary>
-                        /// Required. The parent resource where this Data Asset will be created. Format:
+                        /// Required. The parent resource where this data asset will be created. Format:
                         /// projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. The ID of the Data Asset to create.The ID must conform to RFC-1034 and contain
+                        /// Optional. The ID of the data asset to create.The ID must conform to RFC-1034 and contain
                         /// only lower-case letters (a-z), numbers (0-9), or hyphens, with the first character a letter,
                         /// the last a letter or a number, and a 63 character maximum. Characters outside of ASCII are
-                        /// not permitted. Valid format regex: (^a-z?$) If not provided, a system generated ID will be
-                        /// used.
+                        /// not permitted. Valid format regex: ^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$ If not provided, a
+                        /// system generated ID will be used.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("dataAssetId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string DataAssetId { get; set; }
 
                         /// <summary>
-                        /// Optional. Validates the request without actually creating the Data Asset. Defaults to false.
+                        /// Optional. Validates the request without actually creating the data asset. Defaults to false.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -2858,9 +2858,9 @@ namespace Google.Apis.CloudDataplex.v1
                         }
                     }
 
-                    /// <summary>Deletes a Data Asset.</summary>
+                    /// <summary>Deletes a data asset.</summary>
                     /// <param name="name">
-                    /// Required. The name of the Data Asset to delete. Format:
+                    /// Required. The name of the data asset to delete. Format:
                     /// projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}/dataAssets/{data_asset_id}
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
@@ -2868,7 +2868,7 @@ namespace Google.Apis.CloudDataplex.v1
                         return new DeleteRequest(this.service, name);
                     }
 
-                    /// <summary>Deletes a Data Asset.</summary>
+                    /// <summary>Deletes a data asset.</summary>
                     public class DeleteRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -2879,14 +2879,14 @@ namespace Google.Apis.CloudDataplex.v1
                         }
 
                         /// <summary>
-                        /// Required. The name of the Data Asset to delete. Format:
+                        /// Required. The name of the data asset to delete. Format:
                         /// projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}/dataAssets/{data_asset_id}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// Optional. The etag of the Data Asset. If this is provided, it must match the server's etag.
+                        /// Optional. The etag of the data asset. If this is provided, it must match the server's etag.
                         /// If the etag is provided and does not match the server-computed etag, the request must fail
                         /// with a ABORTED error code.
                         /// </summary>
@@ -2894,7 +2894,7 @@ namespace Google.Apis.CloudDataplex.v1
                         public virtual string Etag { get; set; }
 
                         /// <summary>
-                        /// Optional. Validates the request without actually deleting the Data Asset. Defaults to false.
+                        /// Optional. Validates the request without actually deleting the data asset. Defaults to false.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -2939,9 +2939,9 @@ namespace Google.Apis.CloudDataplex.v1
                         }
                     }
 
-                    /// <summary>Gets a Data Asset.</summary>
+                    /// <summary>Gets a data asset.</summary>
                     /// <param name="name">
-                    /// Required. The name of the Data Asset to retrieve. Format:
+                    /// Required. The name of the data asset to retrieve. Format:
                     /// projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}/dataAssets/{data_asset_id}
                     /// </param>
                     public virtual GetRequest Get(string name)
@@ -2949,7 +2949,7 @@ namespace Google.Apis.CloudDataplex.v1
                         return new GetRequest(this.service, name);
                     }
 
-                    /// <summary>Gets a Data Asset.</summary>
+                    /// <summary>Gets a data asset.</summary>
                     public class GetRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1DataAsset>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -2960,7 +2960,7 @@ namespace Google.Apis.CloudDataplex.v1
                         }
 
                         /// <summary>
-                        /// Required. The name of the Data Asset to retrieve. Format:
+                        /// Required. The name of the data asset to retrieve. Format:
                         /// projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}/dataAssets/{data_asset_id}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2990,9 +2990,9 @@ namespace Google.Apis.CloudDataplex.v1
                         }
                     }
 
-                    /// <summary>Lists Data Assets for a given Data Product.</summary>
+                    /// <summary>Lists data assets for a given data product.</summary>
                     /// <param name="parent">
-                    /// Required. The parent, which has this collection of Data Assets. Format:
+                    /// Required. The parent, which has this collection of data assets. Format:
                     /// projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}
                     /// </param>
                     public virtual ListRequest List(string parent)
@@ -3000,7 +3000,7 @@ namespace Google.Apis.CloudDataplex.v1
                         return new ListRequest(this.service, parent);
                     }
 
-                    /// <summary>Lists Data Assets for a given Data Product.</summary>
+                    /// <summary>Lists data assets for a given data product.</summary>
                     public class ListRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1ListDataAssetsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -3011,28 +3011,28 @@ namespace Google.Apis.CloudDataplex.v1
                         }
 
                         /// <summary>
-                        /// Required. The parent, which has this collection of Data Assets. Format:
+                        /// Required. The parent, which has this collection of data assets. Format:
                         /// projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. Filter expression that filters DataAssets listed in the response.
+                        /// Optional. Filter expression that filters data assets listed in the response.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
                         /// <summary>
-                        /// Optional. Order by expression that orders DataAssets listed in the response.Supported Order
-                        /// by fields are: name or create_time.If not specified, the ordering is undefined.
+                        /// Optional. Order by expression that orders data assets listed in the response.Supported
+                        /// order_by fields are: name or create_time.If not specified, the ordering is undefined.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
                         /// <summary>
-                        /// Optional. The maximum number of Data Assets to return. The service may return fewer than
-                        /// this value. If unspecified, at most 50 Data Assets will be returned. The maximum value is
+                        /// Optional. The maximum number of data assets to return. The service may return fewer than
+                        /// this value. If unspecified, at most 50 data assets will be returned. The maximum value is
                         /// 1000; values above 1000 will be coerced to 1000.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -3102,10 +3102,10 @@ namespace Google.Apis.CloudDataplex.v1
                         }
                     }
 
-                    /// <summary>Updates a Data Asset.</summary>
+                    /// <summary>Updates a data asset.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Identifier. Resource name of the Data Asset. Format:
+                    /// Identifier. Resource name of the data asset. Format:
                     /// projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}/dataAssets/{data_asset_id}
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1DataAsset body, string name)
@@ -3113,7 +3113,7 @@ namespace Google.Apis.CloudDataplex.v1
                         return new PatchRequest(this.service, body, name);
                     }
 
-                    /// <summary>Updates a Data Asset.</summary>
+                    /// <summary>Updates a data asset.</summary>
                     public class PatchRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
@@ -3125,21 +3125,21 @@ namespace Google.Apis.CloudDataplex.v1
                         }
 
                         /// <summary>
-                        /// Identifier. Resource name of the Data Asset. Format:
+                        /// Identifier. Resource name of the data asset. Format:
                         /// projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}/dataAssets/{data_asset_id}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// Optional. The list of fields to update. If this is empty or not set, then all fields that
-                        /// are populated (have a non-empty value) in data_asset above will be updated.
+                        /// Optional. The list of fields to update. If this is empty or not set, then all the fields
+                        /// will be updated.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
 
                         /// <summary>
-                        /// Optional. Validates the request without actually updating the Data Asset. Defaults to false.
+                        /// Optional. Validates the request without actually updating the data asset. Defaults to false.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -3191,10 +3191,10 @@ namespace Google.Apis.CloudDataplex.v1
                     }
                 }
 
-                /// <summary>Creates a Data Product.</summary>
+                /// <summary>Creates a data product.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent resource where this Data Product will be created. Format:
+                /// Required. The parent resource where this data product will be created. Format:
                 /// projects/{project_id_or_number}/locations/{location_id}
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1DataProduct body, string parent)
@@ -3202,7 +3202,7 @@ namespace Google.Apis.CloudDataplex.v1
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a Data Product.</summary>
+                /// <summary>Creates a data product.</summary>
                 public class CreateRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -3214,23 +3214,24 @@ namespace Google.Apis.CloudDataplex.v1
                     }
 
                     /// <summary>
-                    /// Required. The parent resource where this Data Product will be created. Format:
+                    /// Required. The parent resource where this data product will be created. Format:
                     /// projects/{project_id_or_number}/locations/{location_id}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. The ID of the Data Product to create.The ID must conform to RFC-1034 and contain only
+                    /// Optional. The ID of the data product to create.The ID must conform to RFC-1034 and contain only
                     /// lower-case letters (a-z), numbers (0-9), or hyphens, with the first character a letter, the last
                     /// a letter or a number, and a 63 character maximum. Characters outside of ASCII are not permitted.
-                    /// Valid format regex: (^a-z?$) If not provided, a system generated ID will be used.
+                    /// Valid format regex: ^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$ If not provided, a system generated ID
+                    /// will be used.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("dataProductId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DataProductId { get; set; }
 
                     /// <summary>
-                    /// Optional. Validates the request without actually creating the Data Product. Default: false.
+                    /// Optional. Validates the request without actually creating the data product. Default: false.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -3282,11 +3283,11 @@ namespace Google.Apis.CloudDataplex.v1
                 }
 
                 /// <summary>
-                /// Deletes a Data Product. The deletion will fail if the Data Product is not empty (i.e. contains at
-                /// least one Data Asset).
+                /// Deletes a data product. The deletion will fail if the data product is not empty (i.e. contains at
+                /// least one data asset).
                 /// </summary>
                 /// <param name="name">
-                /// Required. The name of the Data Product to delete. Format:
+                /// Required. The name of the data product to delete. Format:
                 /// projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
@@ -3295,8 +3296,8 @@ namespace Google.Apis.CloudDataplex.v1
                 }
 
                 /// <summary>
-                /// Deletes a Data Product. The deletion will fail if the Data Product is not empty (i.e. contains at
-                /// least one Data Asset).
+                /// Deletes a data product. The deletion will fail if the data product is not empty (i.e. contains at
+                /// least one data asset).
                 /// </summary>
                 public class DeleteRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
                 {
@@ -3308,22 +3309,22 @@ namespace Google.Apis.CloudDataplex.v1
                     }
 
                     /// <summary>
-                    /// Required. The name of the Data Product to delete. Format:
+                    /// Required. The name of the data product to delete. Format:
                     /// projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. The etag of the Data Product.If an etag is provided and does not match the current
-                    /// etag of the Data Product, then the deletion will be blocked and an ABORTED error will be
+                    /// Optional. The etag of the data product.If an etag is provided and does not match the current
+                    /// etag of the data product, then the deletion will be blocked and an ABORTED error will be
                     /// returned.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
 
                     /// <summary>
-                    /// Optional. Validates the request without actually deleting the Data Product. Default: false.
+                    /// Optional. Validates the request without actually deleting the data product. Default: false.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -3368,9 +3369,9 @@ namespace Google.Apis.CloudDataplex.v1
                     }
                 }
 
-                /// <summary>Gets a Data Product.</summary>
+                /// <summary>Gets a data product.</summary>
                 /// <param name="name">
-                /// Required. The name of the Data Product to retrieve. Format:
+                /// Required. The name of the data product to retrieve. Format:
                 /// projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}
                 /// </param>
                 public virtual GetRequest Get(string name)
@@ -3378,7 +3379,7 @@ namespace Google.Apis.CloudDataplex.v1
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets a Data Product.</summary>
+                /// <summary>Gets a data product.</summary>
                 public class GetRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1DataProduct>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -3389,7 +3390,7 @@ namespace Google.Apis.CloudDataplex.v1
                     }
 
                     /// <summary>
-                    /// Required. The name of the Data Product to retrieve. Format:
+                    /// Required. The name of the data product to retrieve. Format:
                     /// projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -3497,9 +3498,9 @@ namespace Google.Apis.CloudDataplex.v1
                     }
                 }
 
-                /// <summary>Lists Data Products for a given project.</summary>
+                /// <summary>Lists data products for a given project.</summary>
                 /// <param name="parent">
-                /// Required. The parent, which has this collection of Data Products.Format:
+                /// Required. The parent, which has this collection of data products.Format:
                 /// projects/{project_id_or_number}/locations/{location_id}.Supports listing across all locations with
                 /// the wildcard - (hyphen) character. Example: projects/{project_id_or_number}/locations/-
                 /// </param>
@@ -3508,7 +3509,7 @@ namespace Google.Apis.CloudDataplex.v1
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists Data Products for a given project.</summary>
+                /// <summary>Lists data products for a given project.</summary>
                 public class ListRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1ListDataProductsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -3519,7 +3520,7 @@ namespace Google.Apis.CloudDataplex.v1
                     }
 
                     /// <summary>
-                    /// Required. The parent, which has this collection of Data Products.Format:
+                    /// Required. The parent, which has this collection of data products.Format:
                     /// projects/{project_id_or_number}/locations/{location_id}.Supports listing across all locations
                     /// with the wildcard - (hyphen) character. Example: projects/{project_id_or_number}/locations/-
                     /// </summary>
@@ -3527,14 +3528,14 @@ namespace Google.Apis.CloudDataplex.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. Filter expression that filters Data Products listed in the response.Example of using
+                    /// Optional. Filter expression that filters data products listed in the response.Example of using
                     /// this filter is: display_name="my-data-product"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// Optional. Order by expression that orders Data Products listed in the response.Supported Order
+                    /// Optional. Order by expression that orders data products listed in the response.Supported Order
                     /// by fields are: name or create_time.If not specified, the ordering is undefined.Ordering by
                     /// create_time is not supported when listing resources across locations (i.e. when request contains
                     /// /locations/-).
@@ -3543,8 +3544,8 @@ namespace Google.Apis.CloudDataplex.v1
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Optional. The maximum number of Data Products to return. The service may return fewer than this
-                    /// value. If unspecified, at most 50 Data Products will be returned. The maximum value is 1000;
+                    /// Optional. The maximum number of data products to return. The service may return fewer than this
+                    /// value. If unspecified, at most 50 data products will be returned. The maximum value is 1000;
                     /// values above 1000 will be coerced to 1000.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -3614,10 +3615,10 @@ namespace Google.Apis.CloudDataplex.v1
                     }
                 }
 
-                /// <summary>Updates a Data Product.</summary>
+                /// <summary>Updates a data product.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Identifier. Resource name of the Data Product. Format:
+                /// Identifier. Resource name of the data product. Format:
                 /// projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1DataProduct body, string name)
@@ -3625,7 +3626,7 @@ namespace Google.Apis.CloudDataplex.v1
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Updates a Data Product.</summary>
+                /// <summary>Updates a data product.</summary>
                 public class PatchRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -3637,7 +3638,7 @@ namespace Google.Apis.CloudDataplex.v1
                     }
 
                     /// <summary>
-                    /// Identifier. Resource name of the Data Product. Format:
+                    /// Identifier. Resource name of the data product. Format:
                     /// projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -3651,7 +3652,7 @@ namespace Google.Apis.CloudDataplex.v1
                     public virtual object UpdateMask { get; set; }
 
                     /// <summary>
-                    /// Optional. Validates the request without actually updating the Data Product. Default: false.
+                    /// Optional. Validates the request without actually updating the data product. Default: false.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -18843,15 +18844,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a Data Asset resource that can be packaged and shared via a Data Product.</summary>
+    /// <summary>Represents a data asset resource that can be packaged and shared via a data product.</summary>
     public class GoogleCloudDataplexV1DataAsset : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Access groups configurations for this Data Asset. The key is DataProduct.AccessGroup.id and the
-        /// value is AccessGroupConfig. Example: key: "analyst" value: { AccessGroupConfig : { iam_roles :
-        /// "roles/bigquery.dataViewer" } } Currently, at most one IAM role is allowed per access group. For providing
-        /// multiple predefined IAM roles, wrap them in a custom IAM role as per
-        /// https://cloud.google.com/iam/docs/creating-custom-roles.
+        /// Optional. Access groups configurations for this data asset.The key is DataProduct.AccessGroup.id and the
+        /// value is AccessGroupConfig.Example: { "analyst": { "iamRoles": ["roles/bigquery.dataViewer"] } } Currently,
+        /// at most one IAM role is allowed per access group. For providing multiple predefined IAM roles, wrap them in
+        /// a custom IAM role as per https://cloud.google.com/iam/docs/creating-custom-roles.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessGroupConfigs")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDataplexV1DataAssetAccessGroupConfig> AccessGroupConfigs { get; set; }
@@ -18860,7 +18860,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. The time at which the Data Asset was created.</summary>
+        /// <summary>Output only. The time at which the data asset was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -18894,37 +18894,40 @@ namespace Google.Apis.CloudDataplex.v1.Data
         }
 
         /// <summary>
-        /// This checksum is computed by the server based on the value of other fields, and may be sent on update and
-        /// delete requests to ensure the client has an up-to-date value before proceeding.
+        /// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on
+        /// update and delete requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Optional. User-defined labels for the Data Asset.</summary>
+        /// <summary>
+        /// Optional. User-defined labels for the data asset.Example: { "environment": "production", "billing":
+        /// "marketing-department" }
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Identifier. Resource name of the Data Asset. Format:
+        /// Identifier. Resource name of the data asset. Format:
         /// projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}/dataAssets/{data_asset_id}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. Immutable. Full resource name of the cloud resource represented by the Data Asset. This must
+        /// Required. Immutable. Full resource name of the cloud resource represented by the data asset. This must
         /// follow https://cloud.google.com/iam/docs/full-resource-names. Example:
         /// //bigquery.googleapis.com/projects/my_project_123/datasets/dataset_456/tables/table_789 Only BigQuery tables
-        /// and datasets are currently supported. Data Asset creator must have getIamPolicy and setIamPolicy permissions
-        /// on the resource. Data Asset creator must also have resource specific get permission, for instance,
+        /// and datasets are currently supported. Data asset creator must have getIamPolicy and setIamPolicy permissions
+        /// on the resource. Data asset creator must also have resource specific get permission, for instance,
         /// bigquery.tables.get for BigQuery tables.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
 
         /// <summary>
-        /// Output only. System generated globally unique ID for the Data Asset. This ID will be different if the Data
-        /// Asset is deleted and re-created with the same name.
+        /// Output only. System generated globally unique ID for the data asset. This ID will be different if the data
+        /// asset is deleted and re-created with the same name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
@@ -18933,7 +18936,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. The time at which the Data Asset was last updated.</summary>
+        /// <summary>Output only. The time at which the data asset was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -18967,12 +18970,12 @@ namespace Google.Apis.CloudDataplex.v1.Data
         }
     }
 
-    /// <summary>Configuration for access group inherited from the parent Data Product.</summary>
+    /// <summary>Configuration for access group inherited from the parent data product.</summary>
     public class GoogleCloudDataplexV1DataAssetAccessGroupConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Optional. IAM roles granted on the resource to this access group. Role name follows
-        /// https://cloud.google.com/iam/docs/reference/rest/v1/roles. Example: "roles/bigquery.dataViewer"
+        /// https://cloud.google.com/iam/docs/reference/rest/v1/roles.Example: [ "roles/bigquery.dataViewer" ]
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iamRoles")]
         public virtual System.Collections.Generic.IList<string> IamRoles { get; set; }
@@ -19595,20 +19598,22 @@ namespace Google.Apis.CloudDataplex.v1.Data
     }
 
     /// <summary>
-    /// A Data Product is a curated collection of Data Assets, packaged to address specific use cases. It's a way to
+    /// A data product is a curated collection of data assets, packaged to address specific use cases. It's a way to
     /// manage and share data in a more organized, product-like manner.
     /// </summary>
     public class GoogleCloudDataplexV1DataProduct : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Data Product access groups by access group id as key. If Data Product is used only for packaging
-        /// Data Assets, then access groups may be empty. However, if a Data Product is used for sharing Data Assets,
-        /// then at least one access group must be specified.
+        /// Optional. Data product access groups by access group id as key. If data product is used only for packaging
+        /// data assets, then access groups may be empty. However, if a data product is used for sharing data assets,
+        /// then at least one access group must be specified.Example: { "analyst": { "id": "analyst", "displayName":
+        /// "Analyst", "description": "Access group for analysts", "principal": { "googleGroup": "analysts@example.com"
+        /// } } }
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessGroups")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDataplexV1DataProductAccessGroup> AccessGroups { get; set; }
 
-        /// <summary>Output only. Number of Data Assets associated with this Data Product.</summary>
+        /// <summary>Output only. Number of data assets associated with this data product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetCount")]
         public virtual System.Nullable<int> AssetCount { get; set; }
 
@@ -19616,7 +19621,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. The time at which the Data Product was created.</summary>
+        /// <summary>Output only. The time at which the data product was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -19649,23 +19654,23 @@ namespace Google.Apis.CloudDataplex.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. Description of the Data Product.</summary>
+        /// <summary>Optional. Description of the data product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Required. User-friendly display name of the Data Product.</summary>
+        /// <summary>Required. User-friendly display name of the data product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// This checksum is computed by the server based on the value of other fields, and may be sent on update and
-        /// delete requests to ensure the client has an up-to-date value before proceeding.
+        /// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on
+        /// update and delete requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Optional. Base64 encoded image representing the Data Product. Max Size: 3.0MiB Expected image dimensions are
+        /// Optional. Base64 encoded image representing the data product. Max Size: 3.0MiB Expected image dimensions are
         /// 512x512 pixels, however the API only performs validation on size of the encoded data. Note: For byte fields,
         /// the content of the fields are base64-encoded (which increases the size of the data by 33-36%) when using
         /// JSON on the wire.
@@ -19673,23 +19678,26 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("icon")]
         public virtual string Icon { get; set; }
 
-        /// <summary>Optional. User-defined labels for the Data Product.</summary>
+        /// <summary>
+        /// Optional. User-defined labels for the data product.Example: { "environment": "production", "billing":
+        /// "marketing-department" }
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Identifier. Resource name of the Data Product. Format:
+        /// Identifier. Resource name of the data product. Format:
         /// projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. Emails of the Data Product owners.</summary>
+        /// <summary>Required. Emails of the data product owners.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerEmails")]
         public virtual System.Collections.Generic.IList<string> OwnerEmails { get; set; }
 
         /// <summary>
-        /// Output only. System generated unique ID for the Data Product. This ID will be different if the Data Product
+        /// Output only. System generated unique ID for the data product. This ID will be different if the data product
         /// is deleted and re-created with the same name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
@@ -19699,7 +19707,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. The time at which the Data Product was last updated.</summary>
+        /// <summary>Output only. The time at which the data product was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -19734,8 +19742,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
     }
 
     /// <summary>
-    /// Custom user defined access groups at the Data Product level. These are used for granting different levels of
-    /// access (IAM roles) on the individual Data Product's Data Assets.
+    /// Custom user defined access groups at the data product level. These are used for granting different levels of
+    /// access (IAM roles) on the individual data product's data assets.
     /// </summary>
     public class GoogleCloudDataplexV1DataProductAccessGroup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19750,7 +19758,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Required. Unique identifier of the access group within the Data Product. User defined. Eg. "analyst",
+        /// Required. Unique identifier of the access group within the data product. User defined. Eg. "analyst",
         /// "developer", etc.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -19771,7 +19779,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
     public class GoogleCloudDataplexV1DataProductPrincipal : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Email of the Google Group, as per https://cloud.google.com/iam/docs/principals-overview#google-group.
+        /// Optional. Email of the Google Group, as per
+        /// https://cloud.google.com/iam/docs/principals-overview#google-group.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleGroup")]
         public virtual string GoogleGroup { get; set; }
@@ -24175,10 +24184,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for listing Data Assets.</summary>
+    /// <summary>Response message for listing data assets.</summary>
     public class GoogleCloudDataplexV1ListDataAssetsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Data Assets for the requested filter criteria.</summary>
+        /// <summary>The data assets for the requested filter criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataAssets")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataAsset> DataAssets { get; set; }
 
@@ -24235,10 +24244,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for listing Data Products.</summary>
+    /// <summary>Response message for listing data products.</summary>
     public class GoogleCloudDataplexV1ListDataProductsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Data Products for the requested filter criteria.</summary>
+        /// <summary>The data products for the requested filter criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataProducts")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataProduct> DataProducts { get; set; }
 
