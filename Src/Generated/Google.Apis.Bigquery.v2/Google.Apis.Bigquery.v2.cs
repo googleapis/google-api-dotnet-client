@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -5373,8 +5373,9 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>
         /// Optional. The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT -
         /// indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase
-        /// Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the
-        /// setting at this level takes precedence if 'encoding' is set at both levels.
+        /// Bytes.toBytes family of functions. PROTO_BINARY - indicates values are encoded using serialized proto
+        /// messages. This can only be used in combination with JSON type. 'encoding' can also be set at the column
+        /// family level. However, the setting at this level takes precedence if 'encoding' is set at both levels.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
         public virtual string Encoding { get; set; }
@@ -5393,6 +5394,12 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onlyReadLatest")]
         public virtual System.Nullable<bool> OnlyReadLatest { get; set; }
+
+        /// <summary>
+        /// Optional. Protobuf-specific configurations, only takes effect when the encoding is PROTO_BINARY.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protoConfig")]
+        public virtual BigtableProtoConfig ProtoConfig { get; set; }
 
         /// <summary>
         /// [Required] Qualifier of the column. Columns in the parent column family that has this exact qualifier are
@@ -5436,8 +5443,9 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>
         /// Optional. The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT -
         /// indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase
-        /// Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in
-        /// 'columns' and specifying an encoding for it.
+        /// Bytes.toBytes family of functions. PROTO_BINARY - indicates values are encoded using serialized proto
+        /// messages. This can only be used in combination with JSON type. This can be overridden for a specific column
+        /// by listing that column in 'columns' and specifying an encoding for it.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
         public virtual string Encoding { get; set; }
@@ -5453,6 +5461,12 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onlyReadLatest")]
         public virtual System.Nullable<bool> OnlyReadLatest { get; set; }
+
+        /// <summary>
+        /// Optional. Protobuf-specific configurations, only takes effect when the encoding is PROTO_BINARY.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protoConfig")]
+        public virtual BigtableProtoConfig ProtoConfig { get; set; }
 
         /// <summary>
         /// Optional. The type to convert the value in cells of this column family. The values are expected to be
@@ -5502,6 +5516,28 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readRowkeyAsString")]
         public virtual System.Nullable<bool> ReadRowkeyAsString { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information related to a Bigtable protobuf column.</summary>
+    public class BigtableProtoConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The fully qualified proto message name of the protobuf. In the format of "foo.bar.Message".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protoMessageName")]
+        public virtual string ProtoMessageName { get; set; }
+
+        /// <summary>
+        /// Optional. The ID of the Bigtable SchemaBundle resource associated with this protobuf. The ID should be
+        /// referred to within the parent table, e.g., `foo` rather than
+        /// `projects/{project}/instances/{instance}/tables/{table}/schemaBundles/foo`. See [more details on Bigtable
+        /// SchemaBundles](https://docs.cloud.google.com/bigtable/docs/create-manage-protobuf-schemas).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaBundleId")]
+        public virtual string SchemaBundleId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
