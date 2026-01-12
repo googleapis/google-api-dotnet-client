@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -658,18 +658,18 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// A filter expression that filters connection profiles listed in the response. The expression must
-                    /// specify the field name, a comparison operator, and the value that you want to use for filtering.
-                    /// The value must be a string, a number, or a boolean. The comparison operator must be either =,
-                    /// !=, &amp;gt;, or &amp;lt;. For example, list connection profiles created this year by specifying
-                    /// **createTime %gt; 2020-01-01T00:00:00.000000000Z**. You can also filter nested fields. For
-                    /// example, you could specify **mySql.username = %lt;my_username%gt;** to list all connection
-                    /// profiles configured to connect with a specific username.
+                    /// Optional. A filter expression that filters connection profiles listed in the response. The
+                    /// expression must specify the field name, a comparison operator, and the value that you want to
+                    /// use for filtering. The value must be a string, a number, or a boolean. The comparison operator
+                    /// must be either =, !=, &amp;gt;, or &amp;lt;. For example, list connection profiles created this
+                    /// year by specifying **createTime %gt; 2020-01-01T00:00:00.000000000Z**. You can also filter
+                    /// nested fields. For example, you could specify **mySql.username = %lt;my_username%gt;** to list
+                    /// all connection profiles configured to connect with a specific username.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>A comma-separated list of fields to order results according to.</summary>
+                    /// <summary>Optional. A comma-separated list of fields to order results according to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -682,9 +682,9 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// A page token, received from a previous `ListConnectionProfiles` call. Provide this to retrieve
-                    /// the subsequent page. When paginating, all other parameters provided to `ListConnectionProfiles`
-                    /// must match the call that provided the page token.
+                    /// Optional. A page token, received from a previous `ListConnectionProfiles` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListConnectionProfiles` must match the call that provided the page token.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1068,9 +1068,9 @@ namespace Google.Apis.DatabaseMigrationService.v1
                         public virtual string MappingRuleId { get; set; }
 
                         /// <summary>
-                        /// A unique ID used to identify the request. If the server receives two requests with the same
-                        /// ID, then the second request is ignored. It is recommended to always set this value to a
-                        /// UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+                        /// Optional. A unique ID used to identify the request. If the server receives two requests with
+                        /// the same ID, then the second request is ignored. It is recommended to always set this value
+                        /// to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
                         /// hyphens (-). The maximum length is 40 characters.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -1333,16 +1333,17 @@ namespace Google.Apis.DatabaseMigrationService.v1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// The maximum number of rules to return. The service may return fewer than this value.
+                        /// Optional. The maximum number of rules to return. The service may return fewer than this
+                        /// value.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>
-                        /// The nextPageToken value received in the previous call to mappingRules.list, used in the
-                        /// subsequent request to retrieve the next page of results. On first call this should be left
-                        /// blank. When paginating, all other parameters provided to mappingRules.list must match the
-                        /// call that provided the page token.
+                        /// Optional. The nextPageToken value received in the previous call to mappingRules.list, used
+                        /// in the subsequent request to retrieve the next page of results. On first call this should be
+                        /// left blank. When paginating, all other parameters provided to mappingRules.list must match
+                        /// the call that provided the page token.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -1590,10 +1591,10 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual string ConversionWorkspaceId { get; set; }
 
                     /// <summary>
-                    /// A unique ID used to identify the request. If the server receives two requests with the same ID,
-                    /// then the second request is ignored. It is recommended to always set this value to a UUID. The ID
-                    /// must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
-                    /// maximum length is 40 characters.
+                    /// Optional. A unique ID used to identify the request. If the server receives two requests with the
+                    /// same ID, then the second request is ignored. It is recommended to always set this value to a
+                    /// UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens
+                    /// (-). The maximum length is 40 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -1666,17 +1667,17 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Force delete the conversion workspace, even if there's a running migration that is using the
-                    /// workspace.
+                    /// Optional. Force delete the conversion workspace, even if there's a running migration that is
+                    /// using the workspace.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Force { get; set; }
 
                     /// <summary>
-                    /// A unique ID used to identify the request. If the server receives two requests with the same ID,
-                    /// then the second request is ignored. It is recommended to always set this value to a UUID. The ID
-                    /// must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
-                    /// maximum length is 40 characters.
+                    /// Optional. A unique ID used to identify the request. If the server receives two requests with the
+                    /// same ID, then the second request is ignored. It is recommended to always set this value to a
+                    /// UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens
+                    /// (-). The maximum length is 40 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -2143,29 +2144,29 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// A filter expression that filters conversion workspaces listed in the response. The expression
-                    /// must specify the field name, a comparison operator, and the value that you want to use for
-                    /// filtering. The value must be a string, a number, or a boolean. The comparison operator must be
-                    /// either =, !=, &amp;gt;, or &amp;lt;. For example, list conversion workspaces created this year
-                    /// by specifying **createTime %gt; 2020-01-01T00:00:00.000000000Z.** You can also filter nested
-                    /// fields. For example, you could specify **source.version = "12.c.1"** to select all conversion
-                    /// workspaces with source database version equal to 12.c.1.
+                    /// Optional. A filter expression that filters conversion workspaces listed in the response. The
+                    /// expression must specify the field name, a comparison operator, and the value that you want to
+                    /// use for filtering. The value must be a string, a number, or a boolean. The comparison operator
+                    /// must be either =, !=, &amp;gt;, or &amp;lt;. For example, list conversion workspaces created
+                    /// this year by specifying **createTime %gt; 2020-01-01T00:00:00.000000000Z.** You can also filter
+                    /// nested fields. For example, you could specify **source.version = "12.c.1"** to select all
+                    /// conversion workspaces with source database version equal to 12.c.1.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// The maximum number of conversion workspaces to return. The service may return fewer than this
-                    /// value. If unspecified, at most 50 sets are returned.
+                    /// Optional. The maximum number of conversion workspaces to return. The service may return fewer
+                    /// than this value. If unspecified, at most 50 sets are returned.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// The nextPageToken value received in the previous call to conversionWorkspaces.list, used in the
-                    /// subsequent request to retrieve the next page of results. On first call this should be left
-                    /// blank. When paginating, all other parameters provided to conversionWorkspaces.list must match
-                    /// the call that provided the page token.
+                    /// Optional. The nextPageToken value received in the previous call to conversionWorkspaces.list,
+                    /// used in the subsequent request to retrieve the next page of results. On first call this should
+                    /// be left blank. When paginating, all other parameters provided to conversionWorkspaces.list must
+                    /// match the call that provided the page token.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -2248,10 +2249,10 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// A unique ID used to identify the request. If the server receives two requests with the same ID,
-                    /// then the second request is ignored. It is recommended to always set this value to a UUID. The ID
-                    /// must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
-                    /// maximum length is 40 characters.
+                    /// Optional. A unique ID used to identify the request. If the server receives two requests with the
+                    /// same ID, then the second request is ignored. It is recommended to always set this value to a
+                    /// UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens
+                    /// (-). The maximum length is 40 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -2873,15 +2874,15 @@ namespace Google.Apis.DatabaseMigrationService.v1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Maximum number of objects to return. Default is 50. The maximum value is 1000; values above
-                        /// 1000 will be coerced to 1000.
+                        /// Optional. Maximum number of objects to return. Default is 50. The maximum value is 1000;
+                        /// values above 1000 will be coerced to 1000.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>
-                        /// Page token received from a previous `ListMigrationJObObjectsRequest` call. Provide this to
-                        /// retrieve the subsequent page. When paginating, all other parameters provided to
+                        /// Optional. Page token received from a previous `ListMigrationJObObjectsRequest` call. Provide
+                        /// this to retrieve the subsequent page. When paginating, all other parameters provided to
                         /// `ListMigrationJobObjectsRequest` must match the call that provided the page token.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -3229,17 +3230,17 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// The destination CloudSQL connection profile is always deleted with the migration job. In case of
-                    /// force delete, the destination CloudSQL replica database is also deleted.
+                    /// Optional. The destination CloudSQL connection profile is always deleted with the migration job.
+                    /// In case of force delete, the destination CloudSQL replica database is also deleted.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Force { get; set; }
 
                     /// <summary>
-                    /// A unique ID used to identify the request. If the server receives two requests with the same ID,
-                    /// then the second request is ignored. It is recommended to always set this value to a UUID. The ID
-                    /// must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
-                    /// maximum length is 40 characters.
+                    /// Optional. A unique ID used to identify the request. If the server receives two requests with the
+                    /// same ID, then the second request is ignored. It is recommended to always set this value to a
+                    /// UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens
+                    /// (-). The maximum length is 40 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -3290,7 +3291,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// PostgreSQL to AlloyDB for PostgreSQL.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Name of the migration job resource to demote its destination.</param>
+                /// <param name="name">Required. Name of the migration job resource to demote its destination.</param>
                 public virtual DemoteDestinationRequest DemoteDestination(Google.Apis.DatabaseMigrationService.v1.Data.DemoteDestinationRequest body, string name)
                 {
                     return new DemoteDestinationRequest(this.service, body, name);
@@ -3311,7 +3312,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                         InitParameters();
                     }
 
-                    /// <summary>Name of the migration job resource to demote its destination.</summary>
+                    /// <summary>Required. Name of the migration job resource to demote its destination.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -3661,35 +3662,35 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// A filter expression that filters migration jobs listed in the response. The expression must
-                    /// specify the field name, a comparison operator, and the value that you want to use for filtering.
-                    /// The value must be a string, a number, or a boolean. The comparison operator must be either =,
-                    /// !=, &amp;gt;, or &amp;lt;. For example, list migration jobs created this year by specifying
-                    /// **createTime %gt; 2020-01-01T00:00:00.000000000Z.** You can also filter nested fields. For
-                    /// example, you could specify **reverseSshConnectivity.vmIp = "1.2.3.4"** to select all migration
-                    /// jobs connecting through the specific SSH tunnel bastion.
+                    /// Optional. A filter expression that filters migration jobs listed in the response. The expression
+                    /// must specify the field name, a comparison operator, and the value that you want to use for
+                    /// filtering. The value must be a string, a number, or a boolean. The comparison operator must be
+                    /// either =, !=, &amp;gt;, or &amp;lt;. For example, list migration jobs created this year by
+                    /// specifying **createTime %gt; 2020-01-01T00:00:00.000000000Z.** You can also filter nested
+                    /// fields. For example, you could specify **reverseSshConnectivity.vmIp = "1.2.3.4"** to select all
+                    /// migration jobs connecting through the specific SSH tunnel bastion.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// Sort the results based on the migration job name. Valid values are: "name", "name asc", and
-                    /// "name desc".
+                    /// Optional. Sort the results based on the migration job name. Valid values are: "name", "name
+                    /// asc", and "name desc".
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// The maximum number of migration jobs to return. The service may return fewer than this value. If
-                    /// unspecified, at most 50 migration jobs will be returned. The maximum value is 1000; values above
-                    /// 1000 are coerced to 1000.
+                    /// Optional. The maximum number of migration jobs to return. The service may return fewer than this
+                    /// value. If unspecified, at most 50 migration jobs will be returned. The maximum value is 1000;
+                    /// values above 1000 are coerced to 1000.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// The nextPageToken value received in the previous call to migrationJobs.list, used in the
-                    /// subsequent request to retrieve the next page of results. On first call this should be left
+                    /// Optional. The nextPageToken value received in the previous call to migrationJobs.list, used in
+                    /// the subsequent request to retrieve the next page of results. On first call this should be left
                     /// blank. When paginating, all other parameters provided to migrationJobs.list must match the call
                     /// that provided the page token.
                     /// </summary>
@@ -3782,10 +3783,10 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// A unique ID used to identify the request. If the server receives two requests with the same ID,
-                    /// then the second request is ignored. It is recommended to always set this value to a UUID. The ID
-                    /// must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
-                    /// maximum length is 40 characters.
+                    /// Optional. A unique ID used to identify the request. If the server receives two requests with the
+                    /// same ID, then the second request is ignored. It is recommended to always set this value to a
+                    /// UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens
+                    /// (-). The maximum length is 40 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -4951,30 +4952,30 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// A filter expression that filters private connections listed in the response. The expression must
-                    /// specify the field name, a comparison operator, and the value that you want to use for filtering.
-                    /// The value must be a string, a number, or a boolean. The comparison operator must be either =,
-                    /// !=, &amp;gt;, or &amp;lt;. For example, list private connections created this year by specifying
-                    /// **createTime %gt; 2021-01-01T00:00:00.000000000Z**.
+                    /// Optional. A filter expression that filters private connections listed in the response. The
+                    /// expression must specify the field name, a comparison operator, and the value that you want to
+                    /// use for filtering. The value must be a string, a number, or a boolean. The comparison operator
+                    /// must be either =, !=, &amp;gt;, or &amp;lt;. For example, list private connections created this
+                    /// year by specifying **createTime %gt; 2021-01-01T00:00:00.000000000Z**.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Order by fields for the result.</summary>
+                    /// <summary>Optional. Order by fields for the result.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Maximum number of private connections to return. If unspecified, at most 50 private connections
-                    /// that are returned. The maximum value is 1000; values above 1000 are coerced to 1000.
+                    /// Optional. Maximum number of private connections to return. If unspecified, at most 50 private
+                    /// connections that are returned. The maximum value is 1000; values above 1000 are coerced to 1000.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Page token received from a previous `ListPrivateConnections` call. Provide this to retrieve the
-                    /// subsequent page. When paginating, all other parameters provided to `ListPrivateConnections` must
-                    /// match the call that provided the page token.
+                    /// Optional. Page token received from a previous `ListPrivateConnections` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListPrivateConnections` must match the call that provided the page token.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -5207,11 +5208,11 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Maximum number of IPs to return.</summary>
+                /// <summary>Optional. Maximum number of IPs to return.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>A page token, received from a previous `FetchStaticIps` call.</summary>
+                /// <summary>Optional. A page token, received from a previous `FetchStaticIps` call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -5490,8 +5491,8 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual System.Nullable<bool> DryRun { get; set; }
 
         /// <summary>
-        /// Filter which entities to apply. Leaving this field empty will apply all of the entities. Supports Google AIP
-        /// 160 based filtering.
+        /// Optional. Filter which entities to apply. Leaving this field empty will apply all of the entities. Supports
+        /// Google AIP 160 based filtering.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -7990,6 +7991,12 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oracleToPostgresConfig")]
         public virtual OracleToPostgresConfig OracleToPostgresConfig { get; set; }
 
+        /// <summary>
+        /// Optional. A failback replication pointer to the resource name (URI) of the original migration job.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalMigrationName")]
+        public virtual string OriginalMigrationName { get; set; }
+
         /// <summary>Optional. Data dump parallelism settings used by the migration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceConfig")]
         public virtual PerformanceConfig PerformanceConfig { get; set; }
@@ -7997,6 +8004,16 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// <summary>Output only. The current migration job phase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phase")]
         public virtual string Phase { get; set; }
+
+        /// <summary>Configuration for heterogeneous failback migrations from **PostgreSQL to SQL Server**.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postgresToSqlserverConfig")]
+        public virtual PostgresToSqlServerConfig PostgresToSqlserverConfig { get; set; }
+
+        /// <summary>
+        /// Output only. Migration job mode. Migration jobs can be standard forward jobs or failback migration jobs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purpose")]
+        public virtual string Purpose { get; set; }
 
         /// <summary>The details needed to communicate to the source over Reverse SSH tunnel connectivity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reverseSshConnectivity")]
@@ -8703,6 +8720,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
         public virtual string Database { get; set; }
 
+        /// <summary>Forward SSH tunnel connectivity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forwardSshConnectivity")]
+        public virtual ForwardSshTunnelConnectivity ForwardSshConnectivity { get; set; }
+
         /// <summary>Required. The IP or hostname of the source PostgreSQL database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
@@ -8729,6 +8750,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// <summary>Required. The network port of the source PostgreSQL database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>Private connectivity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateConnectivity")]
+        public virtual PrivateConnectivity PrivateConnectivity { get; set; }
 
         /// <summary>Private service connect connectivity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateServiceConnectConnectivity")]
@@ -8766,6 +8791,32 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// <summary>Optional. Timeout for data migration transactions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionTimeout")]
         public virtual object TransactionTimeout { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for Postgres as a source in a migration.</summary>
+    public class PostgresSourceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether to skip full dump or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipFullDump")]
+        public virtual System.Nullable<bool> SkipFullDump { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for heterogeneous failback migrations from **PostgreSQL to SQL Server**.</summary>
+    public class PostgresToSqlServerConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Configuration for PostgreSQL source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postgresSourceConfig")]
+        public virtual PostgresSourceConfig PostgresSourceConfig { get; set; }
+
+        /// <summary>Optional. Configuration for SQL Server destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlserverDestinationConfig")]
+        public virtual SqlServerDestinationConfig SqlserverDestinationConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9697,6 +9748,24 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionOptions")]
         public virtual SqlServerEncryptionOptions EncryptionOptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for SQL Server as a destination in a migration.</summary>
+    public class SqlServerDestinationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Maximum number of connections Database Migration Service will open to the destination for data
+        /// migration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentConnections")]
+        public virtual System.Nullable<int> MaxConcurrentConnections { get; set; }
+
+        /// <summary>Optional. Timeout for data migration transactions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionTimeout")]
+        public virtual object TransactionTimeout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
