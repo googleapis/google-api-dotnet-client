@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11053,6 +11053,10 @@ namespace Google.Apis.Classroom.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("section")]
         public virtual string Section { get; set; }
+
+        /// <summary>Optional. The subject of the course.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subject")]
+        public virtual string Subject { get; set; }
 
         /// <summary>
         /// Information about a Drive Folder that is shared with all teachers of the course. This field will only be set
