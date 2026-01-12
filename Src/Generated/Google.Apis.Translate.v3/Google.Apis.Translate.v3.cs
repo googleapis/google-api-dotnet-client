@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2111,7 +2111,7 @@ namespace Google.Apis.Translate.v3
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. The resource name of the glossary. Glossary names have the form
+                /// Identifier. The resource name of the glossary. Glossary names have the form
                 /// `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Translate.v3.Data.Glossary body, string name)
@@ -2134,14 +2134,15 @@ namespace Google.Apis.Translate.v3
                     }
 
                     /// <summary>
-                    /// Required. The resource name of the glossary. Glossary names have the form
+                    /// Identifier. The resource name of the glossary. Glossary names have the form
                     /// `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// The list of fields to be updated. Currently only `display_name` and 'input_config'
+                    /// The list of fields to be updated. Currently, only `display_name` and `input_config` are
+                    /// supported.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -2672,6 +2673,17 @@ namespace Google.Apis.Translate.v3
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// When set to `true`, operations that are reachable are returned as normal, and those that are
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
+                    /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
+                    /// specific documentation.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -2712,6 +2724,14 @@ namespace Google.Apis.Translate.v3
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3220,8 +3240,8 @@ namespace Google.Apis.Translate.v3
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -3298,6 +3318,67 @@ namespace Google.Apis.Translate.v3
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Refines the input translated text to improve the quality.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. Project or location to make a call. Must refer to a caller's project. Format:
+            /// `projects/{project-number-or-id}/locations/{location-id}`. For global calls, use
+            /// `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`.
+            /// </param>
+            public virtual RefineTextRequest RefineText(Google.Apis.Translate.v3.Data.RefineTextRequest body, string parent)
+            {
+                return new RefineTextRequest(this.service, body, parent);
+            }
+
+            /// <summary>Refines the input translated text to improve the quality.</summary>
+            public class RefineTextRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3.Data.RefineTextResponse>
+            {
+                /// <summary>Constructs a new RefineText request.</summary>
+                public RefineTextRequest(Google.Apis.Services.IClientService service, Google.Apis.Translate.v3.Data.RefineTextRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Project or location to make a call. Must refer to a caller's project. Format:
+                /// `projects/{project-number-or-id}/locations/{location-id}`. For global calls, use
+                /// `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Translate.v3.Data.RefineTextRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "refineText";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+parent}:refineText";
+
+                /// <summary>Initializes RefineText parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
                     });
                 }
             }
@@ -3839,7 +3920,7 @@ namespace Google.Apis.Translate.v3.Data
         public virtual System.Nullable<int> ExampleCount { get; set; }
 
         /// <summary>
-        /// Required. The resource name of the dataset, in form of
+        /// Identifier. The resource name of the dataset, in form of
         /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -3943,7 +4024,7 @@ namespace Google.Apis.Translate.v3.Data
         public virtual System.Nullable<int> EntryCount { get; set; }
 
         /// <summary>
-        /// Required. The resource name of the file, in form of
+        /// Identifier. The resource name of the file, in form of
         /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -4031,7 +4112,7 @@ namespace Google.Apis.Translate.v3.Data
         }
 
         /// <summary>
-        /// Required. The resource name of the file, in form of
+        /// Identifier. The resource name of the file, in form of
         /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}/adaptiveMtSentences/{sentence}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -4265,6 +4346,10 @@ namespace Google.Apis.Translate.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
         public virtual BatchDocumentOutputConfig OutputConfig { get; set; }
 
+        /// <summary>Optional. If true, only native pdf pages will be translated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pdfNativeOnly")]
+        public virtual System.Nullable<bool> PdfNativeOnly { get; set; }
+
         /// <summary>
         /// Required. The ISO-639 language code of the input document if known, for example, "en-US" or "sr-Latn".
         /// Supported language codes are listed in [Language
@@ -4275,7 +4360,8 @@ namespace Google.Apis.Translate.v3.Data
 
         /// <summary>
         /// Required. The ISO-639 language code to use for translation of the input document. Specify up to 10 language
-        /// codes here.
+        /// codes here. Supported language codes are listed in [Language
+        /// Support](https://cloud.google.com/translate/docs/languages).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetLanguageCodes")]
         public virtual System.Collections.Generic.IList<string> TargetLanguageCodes { get; set; }
@@ -4325,11 +4411,17 @@ namespace Google.Apis.Translate.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
         public virtual OutputConfig OutputConfig { get; set; }
 
-        /// <summary>Required. Source language code.</summary>
+        /// <summary>
+        /// Required. Source language code. Supported language codes are listed in [Language
+        /// Support](https://cloud.google.com/translate/docs/languages).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceLanguageCode")]
         public virtual string SourceLanguageCode { get; set; }
 
-        /// <summary>Required. Specify up to 10 language codes here.</summary>
+        /// <summary>
+        /// Required. Specify up to 10 language codes here. Supported language codes are listed in [Language
+        /// Support](https://cloud.google.com/translate/docs/languages).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetLanguageCodes")]
         public virtual System.Collections.Generic.IList<string> TargetLanguageCodes { get; set; }
 
@@ -4491,6 +4583,10 @@ namespace Google.Apis.Translate.v3.Data
         /// <summary>The content of the input stored as a string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
+
+        /// <summary>Optional. The document configuration of the input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentInputConfig")]
+        public virtual DocumentInputConfig DocumentInputConfig { get; set; }
 
         /// <summary>
         /// Optional. The labels with user-defined metadata for the request. Label keys and values can be no longer than
@@ -4830,7 +4926,7 @@ namespace Google.Apis.Translate.v3.Data
         public virtual LanguageCodePair LanguagePair { get; set; }
 
         /// <summary>
-        /// Required. The resource name of the glossary. Glossary names have the form
+        /// Identifier. The resource name of the glossary. Glossary names have the form
         /// `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -5100,8 +5196,8 @@ namespace Google.Apis.Translate.v3.Data
     public class LanguageCodesSet : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The ISO-639 language code(s) for terms defined in the glossary. All entries are unique. The list contains at
-        /// least two entries. Expected to be an exact match for GlossaryTerm.language_code.
+        /// Optional. The ISO-639 language code(s) for terms defined in the glossary. All entries are unique. The list
+        /// contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCodes")]
         public virtual System.Collections.Generic.IList<string> LanguageCodes { get; set; }
@@ -5279,6 +5375,14 @@ namespace Google.Apis.Translate.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
+        /// <summary>
+        /// Unordered list. Unreachable resources. Populated when the request sets
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5358,7 +5462,7 @@ namespace Google.Apis.Translate.v3.Data
         }
 
         /// <summary>
-        /// The dataset from which the model is trained, in form of
+        /// Required. The dataset from which the model is trained, in form of
         /// `projects/{project-number-or-id}/locations/{location_id}/datasets/{dataset_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
@@ -5577,6 +5681,53 @@ namespace Google.Apis.Translate.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for RefineText.</summary>
+    public class RefineTextRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The source texts and original translations in the source and target languages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refinementEntries")]
+        public virtual System.Collections.Generic.IList<RefinementEntry> RefinementEntries { get; set; }
+
+        /// <summary>
+        /// Required. The BCP-47 language code of the source text in the request, for example, "en-US".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceLanguageCode")]
+        public virtual string SourceLanguageCode { get; set; }
+
+        /// <summary>Required. The BCP-47 language code for translation output, for example, "zh-CN".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetLanguageCode")]
+        public virtual string TargetLanguageCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for RefineText.</summary>
+    public class RefineTextResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The refined translations obtained from the original translations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refinedTranslations")]
+        public virtual System.Collections.Generic.IList<string> RefinedTranslations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single refinement entry for RefineTextRequest.</summary>
+    public class RefinementEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The original translation of the source text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalTranslation")]
+        public virtual string OriginalTranslation { get; set; }
+
+        /// <summary>Required. The source text to be refined.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceText")]
+        public virtual string SourceText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A single romanization response.</summary>
     public class Romanization : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5606,9 +5757,10 @@ namespace Google.Apis.Translate.v3.Data
         public virtual System.Collections.Generic.IList<string> Contents { get; set; }
 
         /// <summary>
-        /// Optional. The ISO-639 language code of the input text if known, for example, "hi" or "zh". If the source
-        /// language isn't specified, the API attempts to identify the source language automatically and returns the
-        /// source language for each content in the response.
+        /// Optional. The ISO-639 language code of the input text if known, for example, "hi" or "zh". Supported
+        /// language codes are listed in [Language Support](https://cloud.google.com/translate/docs/languages#roman). If
+        /// the source language isn't specified, the API attempts to identify the source language automatically and
+        /// returns the source language for each content in the response.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceLanguageCode")]
         public virtual string SourceLanguageCode { get; set; }
@@ -5771,7 +5923,8 @@ namespace Google.Apis.Translate.v3.Data
 
         /// <summary>
         /// Optional. The ISO-639 language code of the input document if known, for example, "en-US" or "sr-Latn".
-        /// Supported language codes are listed in Language Support. If the source language isn't specified, the API
+        /// Supported language codes are listed in [Language
+        /// Support](https://cloud.google.com/translate/docs/languages). If the source language isn't specified, the API
         /// attempts to identify the source language automatically and returns the source language within the response.
         /// Source language must be specified if the request contains a glossary or a custom model.
         /// </summary>
@@ -5780,7 +5933,7 @@ namespace Google.Apis.Translate.v3.Data
 
         /// <summary>
         /// Required. The ISO-639 language code to use for translation of the input document, set to one of the language
-        /// codes listed in Language Support.
+        /// codes listed in [Language Support](https://cloud.google.com/translate/docs/languages).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetLanguageCode")]
         public virtual string TargetLanguageCode { get; set; }
@@ -5893,15 +6046,16 @@ namespace Google.Apis.Translate.v3.Data
 
         /// <summary>
         /// Optional. The ISO-639 language code of the input text if known, for example, "en-US" or "sr-Latn". Supported
-        /// language codes are listed in Language Support. If the source language isn't specified, the API attempts to
-        /// identify the source language automatically and returns the source language within the response.
+        /// language codes are listed in [Language Support](https://cloud.google.com/translate/docs/languages). If the
+        /// source language isn't specified, the API attempts to identify the source language automatically and returns
+        /// the source language within the response.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceLanguageCode")]
         public virtual string SourceLanguageCode { get; set; }
 
         /// <summary>
         /// Required. The ISO-639 language code to use for translation of the input text, set to one of the language
-        /// codes listed in Language Support.
+        /// codes listed in [Language Support](https://cloud.google.com/translate/docs/languages).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetLanguageCode")]
         public virtual string TargetLanguageCode { get; set; }
