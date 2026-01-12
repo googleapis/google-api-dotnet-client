@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -324,8 +324,8 @@ namespace Google.Apis.Backupdr.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The backup plan association project and location in the format
-                /// `projects/{project_id}/locations/{location}`. In Cloud BackupDR locations map to GCP regions, for
-                /// example **us-central1**.
+                /// `projects/{project_id}/locations/{location}`. In Backup and DR locations map to Google Cloud
+                /// regions, for example **us-central1**.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Backupdr.v1.Data.BackupPlanAssociation body, string parent)
                 {
@@ -345,8 +345,8 @@ namespace Google.Apis.Backupdr.v1
 
                     /// <summary>
                     /// Required. The backup plan association project and location in the format
-                    /// `projects/{project_id}/locations/{location}`. In Cloud BackupDR locations map to GCP regions,
-                    /// for example **us-central1**.
+                    /// `projects/{project_id}/locations/{location}`. In Backup and DR locations map to Google Cloud
+                    /// regions, for example **us-central1**.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -547,7 +547,9 @@ namespace Google.Apis.Backupdr.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Required. The type of the GCP resource. Ex: sql.googleapis.com/Instance</summary>
+                    /// <summary>
+                    /// Required. The type of the Google Cloud resource. Ex: sql.googleapis.com/Instance
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("resourceType", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ResourceType { get; set; }
 
@@ -669,9 +671,9 @@ namespace Google.Apis.Backupdr.v1
                 /// <summary>Lists BackupPlanAssociations in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The project and location for which to retrieve backup Plan Associations information, in
-                /// the format `projects/{project_id}/locations/{location}`. In Cloud BackupDR, locations map to GCP
-                /// regions, for example **us-central1**. To retrieve backup plan associations for all locations, use
-                /// "-" for the `{location}` value.
+                /// the format `projects/{project_id}/locations/{location}`. In Backup and DR, locations map to Google
+                /// Cloud regions, for example **us-central1**. To retrieve backup plan associations for all locations,
+                /// use "-" for the `{location}` value.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -690,8 +692,8 @@ namespace Google.Apis.Backupdr.v1
 
                     /// <summary>
                     /// Required. The project and location for which to retrieve backup Plan Associations information,
-                    /// in the format `projects/{project_id}/locations/{location}`. In Cloud BackupDR, locations map to
-                    /// GCP regions, for example **us-central1**. To retrieve backup plan associations for all
+                    /// in the format `projects/{project_id}/locations/{location}`. In Backup and DR, locations map to
+                    /// Google Cloud regions, for example **us-central1**. To retrieve backup plan associations for all
                     /// locations, use "-" for the `{location}` value.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -1007,8 +1009,8 @@ namespace Google.Apis.Backupdr.v1
                     /// <summary>Lists BackupPlanRevisions in a given project and location.</summary>
                     /// <param name="parent">
                     /// Required. The project and location for which to retrieve `BackupPlanRevisions` information.
-                    /// Format: `projects/{project}/locations/{location}/backupPlans/{backup_plan}`. In Cloud BackupDR,
-                    /// locations map to GCP regions, for e.g. **us-central1**.
+                    /// Format: `projects/{project}/locations/{location}/backupPlans/{backup_plan}`. In Google Cloud
+                    /// Backup and DR, locations map to Google Cloud regions, for example **us-central1**.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -1027,8 +1029,8 @@ namespace Google.Apis.Backupdr.v1
 
                         /// <summary>
                         /// Required. The project and location for which to retrieve `BackupPlanRevisions` information.
-                        /// Format: `projects/{project}/locations/{location}/backupPlans/{backup_plan}`. In Cloud
-                        /// BackupDR, locations map to GCP regions, for e.g. **us-central1**.
+                        /// Format: `projects/{project}/locations/{location}/backupPlans/{backup_plan}`. In Google Cloud
+                        /// Backup and DR, locations map to Google Cloud regions, for example **us-central1**.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1096,8 +1098,8 @@ namespace Google.Apis.Backupdr.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The `BackupPlan` project and location in the format
-                /// `projects/{project}/locations/{location}`. In Cloud BackupDR locations map to GCP regions, for
-                /// example **us-central1**.
+                /// `projects/{project}/locations/{location}`. In Google Cloud Backup and DR locations map to Google
+                /// Cloud regions, for example **us-central1**.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Backupdr.v1.Data.BackupPlan body, string parent)
                 {
@@ -1117,8 +1119,8 @@ namespace Google.Apis.Backupdr.v1
 
                     /// <summary>
                     /// Required. The `BackupPlan` project and location in the format
-                    /// `projects/{project}/locations/{location}`. In Cloud BackupDR locations map to GCP regions, for
-                    /// example **us-central1**.
+                    /// `projects/{project}/locations/{location}`. In Google Cloud Backup and DR locations map to Google
+                    /// Cloud regions, for example **us-central1**.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1316,8 +1318,9 @@ namespace Google.Apis.Backupdr.v1
                 /// <summary>Lists BackupPlans in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The project and location for which to retrieve `BackupPlans` information. Format:
-                /// `projects/{project}/locations/{location}`. In Cloud BackupDR, locations map to GCP regions, for e.g.
-                /// **us-central1**. To retrieve backup plans for all locations, use "-" for the `{location}` value.
+                /// `projects/{project}/locations/{location}`. In Google Cloud Backup and DR, locations map to Google
+                /// Cloud regions, for example **us-central1**. To retrieve backup plans for all locations, use "-" for
+                /// the `{location}` value.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1336,9 +1339,9 @@ namespace Google.Apis.Backupdr.v1
 
                     /// <summary>
                     /// Required. The project and location for which to retrieve `BackupPlans` information. Format:
-                    /// `projects/{project}/locations/{location}`. In Cloud BackupDR, locations map to GCP regions, for
-                    /// e.g. **us-central1**. To retrieve backup plans for all locations, use "-" for the `{location}`
-                    /// value.
+                    /// `projects/{project}/locations/{location}`. In Google Cloud Backup and DR, locations map to
+                    /// Google Cloud regions, for example **us-central1**. To retrieve backup plans for all locations,
+                    /// use "-" for the `{location}` value.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1707,7 +1710,7 @@ namespace Google.Apis.Backupdr.v1
                             public virtual string PageToken { get; set; }
 
                             /// <summary>
-                            /// Required. The type of the GCP resource. Ex: sqladmin.googleapis.com/Instance
+                            /// Required. The type of the Google Cloud resource. Ex: sqladmin.googleapis.com/Instance
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("resourceType", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string ResourceType { get; set; }
@@ -3711,7 +3714,9 @@ namespace Google.Apis.Backupdr.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Required. The type of the GCP resource. Ex: sql.googleapis.com/Instance</summary>
+                    /// <summary>
+                    /// Required. The type of the Google Cloud resource. Ex: sql.googleapis.com/Instance
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("resourceType", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ResourceType { get; set; }
 
@@ -4260,9 +4265,9 @@ namespace Google.Apis.Backupdr.v1
                 /// <summary>Lists ManagementServers in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The project and location for which to retrieve management servers information, in the
-                /// format 'projects/{project_id}/locations/{location}'. In Cloud BackupDR, locations map to Google
-                /// Cloud regions, for example **us-central1**. To retrieve management servers for all locations, use
-                /// "-" for the '{location}' value.
+                /// format 'projects/{project_id}/locations/{location}'. In Google Cloud Backup and DR, locations map to
+                /// Google Cloud regions, for example **us-central1**. To retrieve management servers for all locations,
+                /// use "-" for the '{location}' value.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -4281,9 +4286,9 @@ namespace Google.Apis.Backupdr.v1
 
                     /// <summary>
                     /// Required. The project and location for which to retrieve management servers information, in the
-                    /// format 'projects/{project_id}/locations/{location}'. In Cloud BackupDR, locations map to Google
-                    /// Cloud regions, for example **us-central1**. To retrieve management servers for all locations,
-                    /// use "-" for the '{location}' value.
+                    /// format 'projects/{project_id}/locations/{location}'. In Google Cloud Backup and DR, locations
+                    /// map to Google Cloud regions, for example **us-central1**. To retrieve management servers for all
+                    /// locations, use "-" for the '{location}' value.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -4367,8 +4372,8 @@ namespace Google.Apis.Backupdr.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The project and location to be used to check CSS metadata for target project information,
-                /// in the format 'projects/{project_id}/locations/{location}'. In Cloud BackupDR, locations map to
-                /// Google Cloud regions, for example **us-central1**.
+                /// in the format 'projects/{project_id}/locations/{location}'. In Google Cloud Backup and DR, locations
+                /// map to Google Cloud regions, for example **us-central1**.
                 /// </param>
                 public virtual MsComplianceMetadataRequest MsComplianceMetadata(Google.Apis.Backupdr.v1.Data.FetchMsComplianceMetadataRequest body, string parent)
                 {
@@ -4388,8 +4393,8 @@ namespace Google.Apis.Backupdr.v1
 
                     /// <summary>
                     /// Required. The project and location to be used to check CSS metadata for target project
-                    /// information, in the format 'projects/{project_id}/locations/{location}'. In Cloud BackupDR,
-                    /// locations map to Google Cloud regions, for example **us-central1**.
+                    /// information, in the format 'projects/{project_id}/locations/{location}'. In Google Cloud Backup
+                    /// and DR, locations map to Google Cloud regions, for example **us-central1**.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -4878,8 +4883,8 @@ namespace Google.Apis.Backupdr.v1
                 /// <summary>Lists ResourceBackupConfigs.</summary>
                 /// <param name="parent">
                 /// Required. The project and location for which to retrieve resource backup configs. Format:
-                /// 'projects/{project_id}/locations/{location}'. In Cloud Backup and DR, locations map to Google Cloud
-                /// regions, for example **us-central1**.
+                /// 'projects/{project_id}/locations/{location}'. In Google Cloud Backup and DR, locations map to Google
+                /// Cloud regions, for example **us-central1**.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -4898,8 +4903,8 @@ namespace Google.Apis.Backupdr.v1
 
                     /// <summary>
                     /// Required. The project and location for which to retrieve resource backup configs. Format:
-                    /// 'projects/{project_id}/locations/{location}'. In Cloud Backup and DR, locations map to Google
-                    /// Cloud regions, for example **us-central1**.
+                    /// 'projects/{project_id}/locations/{location}'. In Google Cloud Backup and DR, locations map to
+                    /// Google Cloud regions, for example **us-central1**.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -5545,6 +5550,13 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Properties for an AlloyDB cluster backup plan association.</summary>
+    public class AlloyDBClusterBackupPlanAssociationProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6242,11 +6254,11 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backupConfigSourceDisplayName")]
         public virtual string BackupConfigSourceDisplayName { get; set; }
 
-        /// <summary>Backup and DR's Backup Plan specific data.</summary>
+        /// <summary>Google Cloud Backup and DR's Backup Plan specific data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupDrPlanConfig")]
         public virtual BackupDrPlanConfig BackupDrPlanConfig { get; set; }
 
-        /// <summary>Backup and DR's Template specific data.</summary>
+        /// <summary>Google Cloud Backup and DR's Template specific data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupDrTemplateConfig")]
         public virtual BackupDrTemplateConfig BackupDrTemplateConfig { get; set; }
 
@@ -6388,7 +6400,7 @@ namespace Google.Apis.Backupdr.v1.Data
     }
 
     /// <summary>
-    /// BackupDrPlanConfig has additional information about Backup and DR's Plan backup configuration.
+    /// BackupDrPlanConfig has additional information about Google Cloud Backup and DR's Plan backup configuration.
     /// </summary>
     public class BackupDrPlanConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6451,7 +6463,7 @@ namespace Google.Apis.Backupdr.v1.Data
     }
 
     /// <summary>
-    /// BackupDrTemplateConfig has additional information about Backup and DR's Template backup configuration.
+    /// Provides additional information about Google Cloud Backup and DR's Template backup configuration.
     /// </summary>
     public class BackupDrTemplateConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6584,8 +6596,8 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string BackupVault { get; set; }
 
         /// <summary>
-        /// Output only. The Google Cloud Platform Service Account to be used by the BackupVault for taking backups.
-        /// Specify the email address of the Backup Vault Service Account.
+        /// Output only. The Google Cloud service account to be used by the BackupVault for taking backups. Specify the
+        /// email address of the Backup Vault Service Account.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupVaultServiceAccount")]
         public virtual string BackupVaultServiceAccount { get; set; }
@@ -6651,9 +6663,9 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Optional. Applicable only for CloudSQL resource_type. Configures how long logs will be stored. It is defined
-        /// in “days”. This value should be greater than or equal to minimum enforced log retention duration of the
-        /// backup vault.
+        /// Optional. Applicable only for Cloud SQL resource_type. Configures how long logs will be stored. It is
+        /// defined in “days”. This value should be greater than or equal to minimum enforced log retention duration of
+        /// the backup vault.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logRetentionDays")]
         public virtual System.Nullable<long> LogRetentionDays { get; set; }
@@ -6745,6 +6757,10 @@ namespace Google.Apis.Backupdr.v1.Data
     /// </summary>
     public class BackupPlanAssociation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. AlloyDB cluster's backup plan association properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alloydbClusterBackupPlanAssociationProperties")]
+        public virtual AlloyDBClusterBackupPlanAssociationProperties AlloydbClusterBackupPlanAssociationProperties { get; set; }
+
         /// <summary>
         /// Required. Resource name of backup plan which needs to be applied on workload. Format:
         /// projects/{project}/locations/{location}/backupPlans/{backupPlanId}
@@ -6812,6 +6828,10 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
         public virtual string DataSource { get; set; }
+
+        /// <summary>Output only. Filestore instance's backup plan association properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filestoreInstanceBackupPlanAssociationProperties")]
+        public virtual FilestoreInstanceBackupPlanAssociationProperties FilestoreInstanceBackupPlanAssociationProperties { get; set; }
 
         /// <summary>
         /// Output only. Identifier. The resource name of BackupPlanAssociation in below format Format :
@@ -7179,7 +7199,7 @@ namespace Google.Apis.Backupdr.v1.Data
     public class BackupWindow : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The hour of day (1-24) when the window end for e.g. if value of end hour of day is 10 that mean
+        /// Required. The hour of day (1-24) when the window end for example if value of end hour of day is 10 that mean
         /// backup window end time is 10:00. End hour of day should be greater than start hour of day. 0 &amp;lt;=
         /// start_hour_of_day &amp;lt; end_hour_of_day &amp;lt;= 24 End hour of day is not include in backup window that
         /// mean if end_hour_of_day= 10 jobs should start before 10:00.
@@ -7188,7 +7208,7 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual System.Nullable<int> EndHourOfDay { get; set; }
 
         /// <summary>
-        /// Required. The hour of day (0-23) when the window starts for e.g. if value of start hour of day is 6 that
+        /// Required. The hour of day (0-23) when the window starts for example if value of start hour of day is 6 that
         /// mean backup window start at 6:00.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startHourOfDay")]
@@ -8175,7 +8195,7 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The GCP resource that the DataSource is associated with.</summary>
+    /// <summary>The Google Cloud resource that the DataSource is associated with.</summary>
     public class DataSourceGcpResourceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The properties of the Cloud SQL instance.</summary>
@@ -8183,16 +8203,17 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual CloudSqlInstanceDataSourceReferenceProperties CloudSqlInstanceProperties { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of the GCP resource. Ex: projects/{project}/zones/{zone}/instances/{instance}
+        /// Output only. The resource name of the Google Cloud resource. Ex:
+        /// projects/{project}/zones/{zone}/instances/{instance}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpResourcename")]
         public virtual string GcpResourcename { get; set; }
 
-        /// <summary>Output only. The location of the GCP resource. Ex: //"global"/"unspecified"</summary>
+        /// <summary>Output only. The location of the Google Cloud resource. Ex: //"global"/"unspecified"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>Output only. The type of the GCP resource. Ex: compute.googleapis.com/Instance</summary>
+        /// <summary>Output only. The type of the Google Cloud resource. Ex: compute.googleapis.com/Instance</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -8259,7 +8280,7 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceBackupCount")]
         public virtual System.Nullable<long> DataSourceBackupCount { get; set; }
 
-        /// <summary>Output only. The GCP resource that the DataSource is associated with.</summary>
+        /// <summary>Output only. The Google Cloud resource that the DataSource is associated with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceGcpResourceInfo")]
         public virtual DataSourceGcpResourceInfo DataSourceGcpResourceInfo { get; set; }
 
@@ -8753,7 +8774,7 @@ namespace Google.Apis.Backupdr.v1.Data
     public class FetchMsComplianceMetadataResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The ms compliance metadata of the target project, if the project is an assured workloads project, values
+        /// The ms compliance metadata of the target project, if the project is an Assured Workloads project, values
         /// will be true, otherwise false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isAssuredWorkload")]
@@ -8782,6 +8803,52 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Filestore instance's BPA properties.</summary>
+    public class FilestoreInstanceBackupPlanAssociationProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _instanceCreateTimeRaw;
+
+        private object _instanceCreateTime;
+
+        /// <summary>Output only. The time when the instance was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceCreateTime")]
+        public virtual string InstanceCreateTimeRaw
+        {
+            get => _instanceCreateTimeRaw;
+            set
+            {
+                _instanceCreateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _instanceCreateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="InstanceCreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use InstanceCreateTimeDateTimeOffset instead.")]
+        public virtual object InstanceCreateTime
+        {
+            get => _instanceCreateTime;
+            set
+            {
+                _instanceCreateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _instanceCreateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="InstanceCreateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? InstanceCreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(InstanceCreateTimeRaw);
+            set => InstanceCreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9080,7 +9147,7 @@ namespace Google.Apis.Backupdr.v1.Data
         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
         /// your request, the server will know to ignore the request if it has already been completed. The server will
         /// guarantee that for at least 60 minutes since the first request. For example, consider a situation where you
-        /// make an initial request and t he request times out. If you make the request again with the same request ID,
+        /// make an initial request and the request times out. If you make the request again with the same request ID,
         /// the server can check if original operation with the same request ID was received, and if so, will ignore the
         /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
         /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -9525,7 +9592,7 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual System.Collections.Generic.IList<NetworkConfig> Networks { get; set; }
 
         /// <summary>
-        /// Output only. The OAuth 2.0 client id is required to make API calls to the BackupDR instance API of this
+        /// Output only. The OAuth 2.0 client id is required to make API calls to the Backup and DR instance API of this
         /// ManagementServer. This is the value that should be provided in the 'aud' field of the OIDC ID Token (see
         /// openid specification https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
         /// </summary>
@@ -10448,7 +10515,7 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>
         /// Required. The time zone to be used when interpreting the schedule. The value of this field must be a time
         /// zone name from the IANA tz database. See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for
-        /// the list of valid timezone names. For e.g., Europe/Paris.
+        /// the list of valid timezone names. For example, Europe/Paris.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
