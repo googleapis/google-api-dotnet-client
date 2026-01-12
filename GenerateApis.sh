@@ -38,8 +38,7 @@ then
   fi
 fi
 
-source ./CSharpGeneratorFunctions.sh
-install_csharp_generator
+dotnet tool restore > /dev/null
 
 CODE_GENERATION_DIR=Src/Generated
 
@@ -55,7 +54,7 @@ for file in $FILES
 do
   service=$(basename $file | sed 's/.json//g')
   echo "Generating $service from $file"
-  run_csharp_generator "$file" "$CODE_GENERATION_DIR" features.json "EnumStorage/$service.json"
+  dotnet google-rest-generator "$file" "$CODE_GENERATION_DIR" features.json "EnumStorage/$service.json"
 
   if [[ -f PostGeneration/$service.sh ]]
   then
