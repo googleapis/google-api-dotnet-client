@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -5258,7 +5258,7 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual System.Nullable<int> AckDeadlineSeconds { get; set; }
 
         /// <summary>
-        /// Output only. Information about the associated Analytics Hub subscription. Only set if the subscritpion is
+        /// Output only. Information about the associated Analytics Hub subscription. Only set if the subscription is
         /// created by Analytics Hub.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyticsHubSubscriptionInfo")]
