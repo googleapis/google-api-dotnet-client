@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -6978,6 +6978,10 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
     /// <summary>Metadata for a given google.cloud.location.Location.</summary>
     public class LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Indicates if the location has ONTAP Proxy support.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasOntapProxy")]
+        public virtual System.Nullable<bool> HasOntapProxy { get; set; }
+
         /// <summary>Output only. Indicates if the location has VCP support.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasVcp")]
         public virtual System.Nullable<bool> HasVcp { get; set; }
