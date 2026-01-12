@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -7185,6 +7185,10 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>The entity validation output for this revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityValidationOutput")]
         public virtual GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutput EntityValidationOutput { get; set; }
+
+        /// <summary>Optional. The history of this revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual GoogleCloudDocumentaiV1beta3DocumentProvenance Provenance { get; set; }
 
         /// <summary>The revision id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
