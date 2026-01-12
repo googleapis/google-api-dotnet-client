@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -5245,6 +5245,10 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceSystemTimestamps")]
         public virtual GoogleCloudDatacatalogV1SystemTimestamps SourceSystemTimestamps { get; set; }
 
+        /// <summary>Specification of a Spanner table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spannerTableSpec")]
+        public virtual GoogleCloudDatacatalogV1SpannerTableSpec SpannerTableSpec { get; set; }
+
         /// <summary>
         /// Specification that applies to a relational database system. Only settable when `user_specified_system` is
         /// equal to `SQL_DATABASE`
@@ -5826,6 +5830,69 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         /// <summary>Specification that applies to Instance entries of `CLOUD_BIGTABLE` system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudBigtableInstanceSpec")]
         public virtual GoogleCloudDatacatalogV1CloudBigtableInstanceSpec CloudBigtableInstanceSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification of a Spanner table.</summary>
+    public class GoogleCloudDatacatalogV1SpannerTableSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The foreign keys of the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("foreignKeys")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey> ForeignKeys { get; set; }
+
+        /// <summary>Output only. The primary key of the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryKey")]
+        public virtual GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey PrimaryKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification of a Spanner foreign key.</summary>
+    public class GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The ordered list of column mappings for this foreign key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnMappings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping> ColumnMappings { get; set; }
+
+        /// <summary>
+        /// Output only. The table name this foreign key referenced to. Format:
+        /// `projects/{PROJECT_ID}/locations/{LOCATION}/entryGroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entry")]
+        public virtual string Entry { get; set; }
+
+        /// <summary>Output only. The constraint_name of the foreign key, for example, FK_CustomerOrder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Column mapping for a Spanner foreign key.</summary>
+    public class GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The column in the current table that is part of the foreign key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("column")]
+        public virtual string Column { get; set; }
+
+        /// <summary>Output only. The column in the referenced table that is part of the foreign key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceColumn")]
+        public virtual string ReferenceColumn { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification of a Spanner primary key.</summary>
+    public class GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Column names of the primary key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columns")]
+        public virtual System.Collections.Generic.IList<string> Columns { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
