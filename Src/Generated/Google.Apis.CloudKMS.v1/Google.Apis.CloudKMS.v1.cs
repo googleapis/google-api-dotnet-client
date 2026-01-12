@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -719,6 +719,7 @@ namespace Google.Apis.CloudKMS.v1
                 KeyHandles = new KeyHandlesResource(service);
                 KeyRings = new KeyRingsResource(service);
                 Operations = new OperationsResource(service);
+                SingleTenantHsmInstances = new SingleTenantHsmInstancesResource(service);
             }
 
             /// <summary>Gets the EkmConfig resource.</summary>
@@ -4685,6 +4686,717 @@ namespace Google.Apis.CloudKMS.v1
                 }
             }
 
+            /// <summary>Gets the SingleTenantHsmInstances resource.</summary>
+            public virtual SingleTenantHsmInstancesResource SingleTenantHsmInstances { get; }
+
+            /// <summary>The "singleTenantHsmInstances" collection of methods.</summary>
+            public class SingleTenantHsmInstancesResource
+            {
+                private const string Resource = "singleTenantHsmInstances";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SingleTenantHsmInstancesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Proposals = new ProposalsResource(service);
+                }
+
+                /// <summary>Gets the Proposals resource.</summary>
+                public virtual ProposalsResource Proposals { get; }
+
+                /// <summary>The "proposals" collection of methods.</summary>
+                public class ProposalsResource
+                {
+                    private const string Resource = "proposals";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ProposalsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Approves a SingleTenantHsmInstanceProposal for a given SingleTenantHsmInstance. The proposal
+                    /// must be in the PENDING state.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The name of the SingleTenantHsmInstanceProposal to approve.</param>
+                    public virtual ApproveRequest Approve(Google.Apis.CloudKMS.v1.Data.ApproveSingleTenantHsmInstanceProposalRequest body, string name)
+                    {
+                        return new ApproveRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Approves a SingleTenantHsmInstanceProposal for a given SingleTenantHsmInstance. The proposal
+                    /// must be in the PENDING state.
+                    /// </summary>
+                    public class ApproveRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.ApproveSingleTenantHsmInstanceProposalResponse>
+                    {
+                        /// <summary>Constructs a new Approve request.</summary>
+                        public ApproveRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudKMS.v1.Data.ApproveSingleTenantHsmInstanceProposalRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the SingleTenantHsmInstanceProposal to approve.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudKMS.v1.Data.ApproveSingleTenantHsmInstanceProposalRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "approve";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:approve";
+
+                        /// <summary>Initializes Approve parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/singleTenantHsmInstances/[^/]+/proposals/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Creates a new SingleTenantHsmInstanceProposal for a given SingleTenantHsmInstance.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The name of the SingleTenantHsmInstance associated with the
+                    /// SingleTenantHsmInstanceProposals.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.CloudKMS.v1.Data.SingleTenantHsmInstanceProposal body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Creates a new SingleTenantHsmInstanceProposal for a given SingleTenantHsmInstance.
+                    /// </summary>
+                    public class CreateRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudKMS.v1.Data.SingleTenantHsmInstanceProposal body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the SingleTenantHsmInstance associated with the
+                        /// SingleTenantHsmInstanceProposals.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. It must be unique within a location and match the regular expression
+                        /// `[a-zA-Z0-9_-]{1,63}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("singleTenantHsmInstanceProposalId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string SingleTenantHsmInstanceProposalId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudKMS.v1.Data.SingleTenantHsmInstanceProposal Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/proposals";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/singleTenantHsmInstances/[^/]+$",
+                            });
+                            RequestParameters.Add("singleTenantHsmInstanceProposalId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "singleTenantHsmInstanceProposalId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a SingleTenantHsmInstanceProposal.</summary>
+                    /// <param name="name">Required. The name of the SingleTenantHsmInstanceProposal to delete.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Deletes a SingleTenantHsmInstanceProposal.</summary>
+                    public class DeleteRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the SingleTenantHsmInstanceProposal to delete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/singleTenantHsmInstances/[^/]+/proposals/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Executes a SingleTenantHsmInstanceProposal for a given SingleTenantHsmInstance. The proposal
+                    /// must be in the APPROVED state.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The name of the SingleTenantHsmInstanceProposal to execute.</param>
+                    public virtual ExecuteRequest Execute(Google.Apis.CloudKMS.v1.Data.ExecuteSingleTenantHsmInstanceProposalRequest body, string name)
+                    {
+                        return new ExecuteRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Executes a SingleTenantHsmInstanceProposal for a given SingleTenantHsmInstance. The proposal
+                    /// must be in the APPROVED state.
+                    /// </summary>
+                    public class ExecuteRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Execute request.</summary>
+                        public ExecuteRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudKMS.v1.Data.ExecuteSingleTenantHsmInstanceProposalRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the SingleTenantHsmInstanceProposal to execute.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudKMS.v1.Data.ExecuteSingleTenantHsmInstanceProposalRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "execute";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:execute";
+
+                        /// <summary>Initializes Execute parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/singleTenantHsmInstances/[^/]+/proposals/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Returns metadata for a given SingleTenantHsmInstanceProposal.</summary>
+                    /// <param name="name">Required. The name of the SingleTenantHsmInstanceProposal to get.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Returns metadata for a given SingleTenantHsmInstanceProposal.</summary>
+                    public class GetRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.SingleTenantHsmInstanceProposal>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the SingleTenantHsmInstanceProposal to get.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/singleTenantHsmInstances/[^/]+/proposals/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists SingleTenantHsmInstanceProposals.</summary>
+                    /// <param name="parent">
+                    /// Required. The resource name of the location associated with the SingleTenantHsmInstanceProposals
+                    /// to list, in the format `projects/*/locations/*/singleTenantHsmInstances/*`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists SingleTenantHsmInstanceProposals.</summary>
+                    public class ListRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.ListSingleTenantHsmInstanceProposalsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the location associated with the
+                        /// SingleTenantHsmInstanceProposals to list, in the format
+                        /// `projects/*/locations/*/singleTenantHsmInstances/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Only include resources that match the filter in the response. For more
+                        /// information, see [Sorting and filtering list
+                        /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. Specify how the results should be sorted. If not specified, the results will be
+                        /// sorted in the default order. For more information, see [Sorting and filtering list
+                        /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// Optional. Optional limit on the number of SingleTenantHsmInstanceProposals to include in the
+                        /// response. Further SingleTenantHsmInstanceProposals can subsequently be obtained by including
+                        /// the ListSingleTenantHsmInstanceProposalsResponse.next_page_token in a subsequent request. If
+                        /// unspecified, the server will pick an appropriate default.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. Optional pagination token, returned earlier via
+                        /// ListSingleTenantHsmInstanceProposalsResponse.next_page_token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>
+                        /// Optional. If set to true, HsmManagement.ListSingleTenantHsmInstanceProposals will also
+                        /// return SingleTenantHsmInstanceProposals in DELETED state.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/proposals";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/singleTenantHsmInstances/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "showDeleted",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>
+                /// Creates a new SingleTenantHsmInstance in a given Project and Location. User must create a
+                /// RegisterTwoFactorAuthKeys proposal with this single-tenant HSM instance to finish setup of the
+                /// instance.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the location associated with the SingleTenantHsmInstance, in the
+                /// format `projects/*/locations/*`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.CloudKMS.v1.Data.SingleTenantHsmInstance body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a new SingleTenantHsmInstance in a given Project and Location. User must create a
+                /// RegisterTwoFactorAuthKeys proposal with this single-tenant HSM instance to finish setup of the
+                /// instance.
+                /// </summary>
+                public class CreateRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudKMS.v1.Data.SingleTenantHsmInstance body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the location associated with the SingleTenantHsmInstance, in the
+                    /// format `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. It must be unique within a location and match the regular expression
+                    /// `[a-zA-Z0-9_-]{1,63}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("singleTenantHsmInstanceId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string SingleTenantHsmInstanceId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudKMS.v1.Data.SingleTenantHsmInstance Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/singleTenantHsmInstances";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("singleTenantHsmInstanceId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "singleTenantHsmInstanceId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Returns metadata for a given SingleTenantHsmInstance.</summary>
+                /// <param name="name">Required. The name of the SingleTenantHsmInstance to get.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Returns metadata for a given SingleTenantHsmInstance.</summary>
+                public class GetRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.SingleTenantHsmInstance>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the SingleTenantHsmInstance to get.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/singleTenantHsmInstances/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists SingleTenantHsmInstances.</summary>
+                /// <param name="parent">
+                /// Required. The resource name of the location associated with the SingleTenantHsmInstances to list, in
+                /// the format `projects/*/locations/*`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists SingleTenantHsmInstances.</summary>
+                public class ListRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.ListSingleTenantHsmInstancesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the location associated with the SingleTenantHsmInstances to
+                    /// list, in the format `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Only include resources that match the filter in the response. For more information,
+                    /// see [Sorting and filtering list
+                    /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Specify how the results should be sorted. If not specified, the results will be sorted
+                    /// in the default order. For more information, see [Sorting and filtering list
+                    /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Optional limit on the number of SingleTenantHsmInstances to include in the response.
+                    /// Further SingleTenantHsmInstances can subsequently be obtained by including the
+                    /// ListSingleTenantHsmInstancesResponse.next_page_token in a subsequent request. If unspecified,
+                    /// the server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. Optional pagination token, returned earlier via
+                    /// ListSingleTenantHsmInstancesResponse.next_page_token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, HsmManagement.ListSingleTenantHsmInstances will also return
+                    /// SingleTenantHsmInstances in DELETED state.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/singleTenantHsmInstances";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "showDeleted",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Generate random bytes using the Cloud KMS randomness source in the provided location.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="location">
@@ -5297,6 +6009,45 @@ namespace Google.Apis.CloudKMS.v1
 }
 namespace Google.Apis.CloudKMS.v1.Data
 {
+    /// <summary>
+    /// Add a quorum member to the SingleTenantHsmInstance. This will increase the total_approver_count by 1. The
+    /// SingleTenantHsmInstance must be in the ACTIVE state to perform this operation.
+    /// </summary>
+    public class AddQuorumMember : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The public key associated with the 2FA key for the new quorum member to add. Public keys must be
+        /// associated with RSA 2048 keys.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("twoFactorPublicKeyPem")]
+        public virtual string TwoFactorPublicKeyPem { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for HsmManagement.ApproveSingleTenantHsmInstanceProposal.</summary>
+    public class ApproveSingleTenantHsmInstanceProposalRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The reply to QuorumParameters for approving the proposal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quorumReply")]
+        public virtual QuorumReply QuorumReply { get; set; }
+
+        /// <summary>Required. The reply to RequiredActionQuorumParameters for approving the proposal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredActionQuorumReply")]
+        public virtual RequiredActionQuorumReply RequiredActionQuorumReply { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for HsmManagement.ApproveSingleTenantHsmInstanceProposal.</summary>
+    public class ApproveSingleTenantHsmInstanceProposalResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for KeyManagementService.AsymmetricDecrypt.</summary>
     public class AsymmetricDecryptRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5757,6 +6508,39 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>Google partition certificate chain corresponding to the attestation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googlePartitionCerts")]
         public virtual System.Collections.Generic.IList<string> GooglePartitionCerts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A challenge to be signed by a 2FA key.</summary>
+    public class Challenge : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The challenge to be signed by the 2FA key indicated by the public key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("challenge")]
+        public virtual string ChallengeValue { get; set; }
+
+        /// <summary>Output only. The public key associated with the 2FA key that should sign the challenge.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicKeyPem")]
+        public virtual string PublicKeyPem { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A reply to a challenge signed by a 2FA key.</summary>
+    public class ChallengeReply : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The public key associated with the 2FA key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicKeyPem")]
+        public virtual string PublicKeyPem { get; set; }
+
+        /// <summary>
+        /// Required. The signed challenge associated with the 2FA key. The signature must be RSASSA-PKCS1 v1.5 with a
+        /// SHA256 digest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signedChallenge")]
+        public virtual string SignedChallenge { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6402,6 +7186,17 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Delete the SingleTenantHsmInstance. Deleting a SingleTenantHsmInstance will make all CryptoKeys attached to the
+    /// SingleTenantHsmInstance unusable. The SingleTenantHsmInstance must not be in the DELETING or DELETED state to
+    /// perform this operation.
+    /// </summary>
+    public class DeleteSingleTenantHsmInstance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for KeyManagementService.DestroyCryptoKeyVersion.</summary>
     public class DestroyCryptoKeyVersionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6424,6 +7219,16 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sha512")]
         public virtual string Sha512 { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Disable the SingleTenantHsmInstance. The SingleTenantHsmInstance must be in the ACTIVE state to perform this
+    /// operation.
+    /// </summary>
+    public class DisableSingleTenantHsmInstance : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6525,6 +7330,27 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceResolvers")]
         public virtual System.Collections.Generic.IList<ServiceResolver> ServiceResolvers { get; set; }
+    }
+
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    /// </summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Enable the SingleTenantHsmInstance. The SingleTenantHsmInstance must be in the DISABLED state to perform this
+    /// operation.
+    /// </summary>
+    public class EnableSingleTenantHsmInstance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Request message for KeyManagementService.Encrypt.</summary>
@@ -6632,6 +7458,13 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("verifiedPlaintextCrc32c")]
         public virtual System.Nullable<bool> VerifiedPlaintextCrc32c { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for HsmManagement.ExecuteSingleTenantHsmInstanceProposal.</summary>
+    public class ExecuteSingleTenantHsmInstanceProposalRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7336,6 +8169,56 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for HsmManagement.ListSingleTenantHsmInstanceProposals.</summary>
+    public class ListSingleTenantHsmInstanceProposalsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token to retrieve next page of results. Pass this value in
+        /// ListSingleTenantHsmInstanceProposalsRequest.page_token to retrieve the next page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of SingleTenantHsmInstanceProposals.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleTenantHsmInstanceProposals")]
+        public virtual System.Collections.Generic.IList<SingleTenantHsmInstanceProposal> SingleTenantHsmInstanceProposals { get; set; }
+
+        /// <summary>
+        /// The total number of SingleTenantHsmInstanceProposals that matched the query. This field is not populated if
+        /// ListSingleTenantHsmInstanceProposalsRequest.filter is applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<int> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for HsmManagement.ListSingleTenantHsmInstances.</summary>
+    public class ListSingleTenantHsmInstancesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token to retrieve next page of results. Pass this value in ListSingleTenantHsmInstancesRequest.page_token
+        /// to retrieve the next page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of SingleTenantHsmInstances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleTenantHsmInstances")]
+        public virtual System.Collections.Generic.IList<SingleTenantHsmInstance> SingleTenantHsmInstances { get; set; }
+
+        /// <summary>
+        /// The total number of SingleTenantHsmInstances that matched the query. This field is not populated if
+        /// ListSingleTenantHsmInstancesRequest.filter is applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<int> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A resource that represents a Google Cloud location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7728,6 +8611,73 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for M of N quorum auth.</summary>
+    public class QuorumAuth : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The required numbers of approvers. The M value used for M of N quorum auth. Must be greater
+        /// than or equal to 2 and less than or equal to total_approver_count - 1.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredApproverCount")]
+        public virtual System.Nullable<int> RequiredApproverCount { get; set; }
+
+        /// <summary>
+        /// Required. The total number of approvers. This is the N value used for M of N quorum auth. Must be greater
+        /// than or equal to 3 and less than or equal to 16.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalApproverCount")]
+        public virtual System.Nullable<int> TotalApproverCount { get; set; }
+
+        /// <summary>Output only. The public keys associated with the 2FA keys for M of N quorum auth.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("twoFactorPublicKeyPems")]
+        public virtual System.Collections.Generic.IList<string> TwoFactorPublicKeyPems { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Parameters of quorum approval for the SingleTenantHsmInstanceProposal.</summary>
+    public class QuorumParameters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The public keys associated with the 2FA keys that have already approved the
+        /// SingleTenantHsmInstanceProposal by signing the challenge.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approvedTwoFactorPublicKeyPems")]
+        public virtual System.Collections.Generic.IList<string> ApprovedTwoFactorPublicKeyPems { get; set; }
+
+        /// <summary>
+        /// Output only. The challenges to be signed by 2FA keys for quorum auth. M of N of these challenges are
+        /// required to be signed to approve the operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("challenges")]
+        public virtual System.Collections.Generic.IList<Challenge> Challenges { get; set; }
+
+        /// <summary>
+        /// Output only. The required numbers of approvers. This is the M value used for M of N quorum auth. It is less
+        /// than the number of public keys.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredApproverCount")]
+        public virtual System.Nullable<int> RequiredApproverCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The reply to QuorumParameters for approving the proposal.</summary>
+    public class QuorumReply : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The challenge replies to approve the proposal. Challenge replies can be sent across multiple
+        /// requests. The proposal will be approved when required_approver_count challenge replies are provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("challengeReplies")]
+        public virtual System.Collections.Generic.IList<ChallengeReply> ChallengeReplies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for KeyManagementService.RawDecrypt.</summary>
     public class RawDecryptRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8022,6 +8972,117 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Refreshes the SingleTenantHsmInstance. This operation must be performed periodically to keep the
+    /// SingleTenantHsmInstance active. This operation must be performed before unrefreshed_duration_until_disable has
+    /// passed. The SingleTenantHsmInstance must be in the ACTIVE state to perform this operation.
+    /// </summary>
+    public class RefreshSingleTenantHsmInstance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Register 2FA keys for the SingleTenantHsmInstance. This operation requires all Challenges to be signed by 2FA
+    /// keys. The SingleTenantHsmInstance must be in the PENDING_TWO_FACTOR_AUTH_REGISTRATION state to perform this
+    /// operation.
+    /// </summary>
+    public class RegisterTwoFactorAuthKeys : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The required numbers of approvers to set for the SingleTenantHsmInstance. This is the M value used
+        /// for M of N quorum auth. Must be greater than or equal to 2 and less than or equal to total_approver_count -
+        /// 1.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredApproverCount")]
+        public virtual System.Nullable<int> RequiredApproverCount { get; set; }
+
+        /// <summary>
+        /// Required. The public keys associated with the 2FA keys for M of N quorum auth. Public keys must be
+        /// associated with RSA 2048 keys.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("twoFactorPublicKeyPems")]
+        public virtual System.Collections.Generic.IList<string> TwoFactorPublicKeyPems { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Remove a quorum member from the SingleTenantHsmInstance. This will reduce total_approver_count by 1. The
+    /// SingleTenantHsmInstance must be in the ACTIVE state to perform this operation.
+    /// </summary>
+    public class RemoveQuorumMember : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The public key associated with the 2FA key for the quorum member to remove. Public keys must be
+        /// associated with RSA 2048 keys.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("twoFactorPublicKeyPem")]
+        public virtual string TwoFactorPublicKeyPem { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Parameters for an approval that has both required challenges and a quorum.</summary>
+    public class RequiredActionQuorumParameters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The public keys associated with the 2FA keys that have already approved the
+        /// SingleTenantHsmInstanceProposal by signing the challenge.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approvedTwoFactorPublicKeyPems")]
+        public virtual System.Collections.Generic.IList<string> ApprovedTwoFactorPublicKeyPems { get; set; }
+
+        /// <summary>
+        /// Output only. The challenges to be signed by 2FA keys for quorum auth. M of N of these challenges are
+        /// required to be signed to approve the operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quorumChallenges")]
+        public virtual System.Collections.Generic.IList<Challenge> QuorumChallenges { get; set; }
+
+        /// <summary>
+        /// Output only. The required number of quorum approvers. This is the M value used for M of N quorum auth. It is
+        /// less than the number of public keys.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredApproverCount")]
+        public virtual System.Nullable<int> RequiredApproverCount { get; set; }
+
+        /// <summary>
+        /// Output only. A list of specific challenges that must be signed. For some operations, this will contain a
+        /// single challenge.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredChallenges")]
+        public virtual System.Collections.Generic.IList<Challenge> RequiredChallenges { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The reply to RequiredActionQuorumParameters for approving the proposal.</summary>
+    public class RequiredActionQuorumReply : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Quorum members' signed challenge replies. These can be provided across multiple requests. The
+        /// proposal will be approved when required_approver_count quorum_challenge_replies are provided and when all
+        /// required_challenge_replies are provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quorumChallengeReplies")]
+        public virtual System.Collections.Generic.IList<ChallengeReply> QuorumChallengeReplies { get; set; }
+
+        /// <summary>
+        /// Required. All required challenges must be signed for the proposal to be approved. These can be sent across
+        /// multiple requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredChallengeReplies")]
+        public virtual System.Collections.Generic.IList<ChallengeReply> RequiredChallengeReplies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for KeyManagementService.RestoreCryptoKeyVersion.</summary>
     public class RestoreCryptoKeyVersionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8125,6 +9186,402 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>The effective KeyAccessJustificationsPolicyConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveKajPolicy")]
         public virtual KeyAccessJustificationsPolicyConfig EffectiveKajPolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A SingleTenantHsmInstance represents a single-tenant HSM instance. It can be used for creating CryptoKeys with a
+    /// ProtectionLevel of HSM_SINGLE_TENANT, as well as performing cryptographic operations using keys created within
+    /// the SingleTenantHsmInstance.
+    /// </summary>
+    public class SingleTenantHsmInstance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time at which the SingleTenantHsmInstance was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _deleteTimeRaw;
+
+        private object _deleteTime;
+
+        /// <summary>Output only. The time at which the SingleTenantHsmInstance was deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual string DeleteTimeRaw
+        {
+            get => _deleteTimeRaw;
+            set
+            {
+                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deleteTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
+        public virtual object DeleteTime
+        {
+            get => _deleteTime;
+            set
+            {
+                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deleteTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _disableTimeRaw;
+
+        private object _disableTime;
+
+        /// <summary>
+        /// Output only. The time at which the instance will be automatically disabled if not refreshed. This field is
+        /// updated upon creation and after each successful refresh operation and enable. A
+        /// RefreshSingleTenantHsmInstance operation must be made via a SingleTenantHsmInstanceProposal before this time
+        /// otherwise the SingleTenantHsmInstance will become disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableTime")]
+        public virtual string DisableTimeRaw
+        {
+            get => _disableTimeRaw;
+            set
+            {
+                _disableTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _disableTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DisableTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DisableTimeDateTimeOffset instead.")]
+        public virtual object DisableTime
+        {
+            get => _disableTime;
+            set
+            {
+                _disableTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _disableTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DisableTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DisableTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DisableTimeRaw);
+            set => DisableTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Identifier. The resource name for this SingleTenantHsmInstance in the format
+        /// `projects/*/locations/*/singleTenantHsmInstances/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The quorum auth configuration for the SingleTenantHsmInstance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quorumAuth")]
+        public virtual QuorumAuth QuorumAuth { get; set; }
+
+        /// <summary>Output only. The state of the SingleTenantHsmInstance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. The system-defined duration that an instance can remain unrefreshed until it is automatically
+        /// disabled. This will have a value of 120 days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unrefreshedDurationUntilDisable")]
+        public virtual object UnrefreshedDurationUntilDisable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A SingleTenantHsmInstanceProposal represents a proposal to perform an operation on a SingleTenantHsmInstance.
+    /// </summary>
+    public class SingleTenantHsmInstanceProposal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Add a quorum member to the SingleTenantHsmInstance. This will increase the total_approver_count by 1. The
+        /// SingleTenantHsmInstance must be in the ACTIVE state to perform this operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addQuorumMember")]
+        public virtual AddQuorumMember AddQuorumMember { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time at which the SingleTenantHsmInstanceProposal was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Delete the SingleTenantHsmInstance. Deleting a SingleTenantHsmInstance will make all CryptoKeys attached to
+        /// the SingleTenantHsmInstance unusable. The SingleTenantHsmInstance must be in the DISABLED or
+        /// PENDING_TWO_FACTOR_AUTH_REGISTRATION state to perform this operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteSingleTenantHsmInstance")]
+        public virtual DeleteSingleTenantHsmInstance DeleteSingleTenantHsmInstance { get; set; }
+
+        private string _deleteTimeRaw;
+
+        private object _deleteTime;
+
+        /// <summary>Output only. The time at which the SingleTenantHsmInstanceProposal was deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual string DeleteTimeRaw
+        {
+            get => _deleteTimeRaw;
+            set
+            {
+                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deleteTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
+        public virtual object DeleteTime
+        {
+            get => _deleteTime;
+            set
+            {
+                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deleteTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Disable the SingleTenantHsmInstance. The SingleTenantHsmInstance must be in the ACTIVE state to perform this
+        /// operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableSingleTenantHsmInstance")]
+        public virtual DisableSingleTenantHsmInstance DisableSingleTenantHsmInstance { get; set; }
+
+        /// <summary>
+        /// Enable the SingleTenantHsmInstance. The SingleTenantHsmInstance must be in the DISABLED state to perform
+        /// this operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableSingleTenantHsmInstance")]
+        public virtual EnableSingleTenantHsmInstance EnableSingleTenantHsmInstance { get; set; }
+
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
+        /// <summary>
+        /// The time at which the SingleTenantHsmInstanceProposal will expire if not approved and executed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The root cause of the most recent failure. Only present if state is FAILED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureReason")]
+        public virtual string FailureReason { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name for this SingleTenantHsmInstance in the format
+        /// `projects/*/locations/*/singleTenantHsmInstances/*/proposals/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _purgeTimeRaw;
+
+        private object _purgeTime;
+
+        /// <summary>
+        /// Output only. The time at which the soft-deleted SingleTenantHsmInstanceProposal will be permanently purged.
+        /// This field is only populated when the state is DELETED and will be set a time after expiration of the
+        /// proposal, i.e. &amp;gt;= expire_time or (create_time + ttl).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeTime")]
+        public virtual string PurgeTimeRaw
+        {
+            get => _purgeTimeRaw;
+            set
+            {
+                _purgeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _purgeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="PurgeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PurgeTimeDateTimeOffset instead.")]
+        public virtual object PurgeTime
+        {
+            get => _purgeTime;
+            set
+            {
+                _purgeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _purgeTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PurgeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PurgeTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PurgeTimeRaw);
+            set => PurgeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The quorum approval parameters for the SingleTenantHsmInstanceProposal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quorumParameters")]
+        public virtual QuorumParameters QuorumParameters { get; set; }
+
+        /// <summary>
+        /// Refreshes the SingleTenantHsmInstance. This operation must be performed periodically to keep the
+        /// SingleTenantHsmInstance active. This operation must be performed before unrefreshed_duration_until_disable
+        /// has passed. The SingleTenantHsmInstance must be in the ACTIVE state to perform this operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshSingleTenantHsmInstance")]
+        public virtual RefreshSingleTenantHsmInstance RefreshSingleTenantHsmInstance { get; set; }
+
+        /// <summary>
+        /// Register 2FA keys for the SingleTenantHsmInstance. This operation requires all N Challenges to be signed by
+        /// 2FA keys. The SingleTenantHsmInstance must be in the PENDING_TWO_FACTOR_AUTH_REGISTRATION state to perform
+        /// this operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("registerTwoFactorAuthKeys")]
+        public virtual RegisterTwoFactorAuthKeys RegisterTwoFactorAuthKeys { get; set; }
+
+        /// <summary>
+        /// Remove a quorum member from the SingleTenantHsmInstance. This will reduce total_approver_count by 1. The
+        /// SingleTenantHsmInstance must be in the ACTIVE state to perform this operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removeQuorumMember")]
+        public virtual RemoveQuorumMember RemoveQuorumMember { get; set; }
+
+        /// <summary>
+        /// Output only. Parameters for an approval of a SingleTenantHsmInstanceProposal that has both required
+        /// challenges and a quorum.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredActionQuorumParameters")]
+        public virtual RequiredActionQuorumParameters RequiredActionQuorumParameters { get; set; }
+
+        /// <summary>Output only. The state of the SingleTenantHsmInstanceProposal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Input only. The TTL for the SingleTenantHsmInstanceProposal. Proposals will expire after this duration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual object Ttl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
