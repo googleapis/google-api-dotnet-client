@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25476,7 +25476,7 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An inventory source.</summary>
+    /// <summary>An inventory source. Next ID: 22</summary>
     public class InventorySource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether the inventory source has a guaranteed or non-guaranteed delivery.</summary>
