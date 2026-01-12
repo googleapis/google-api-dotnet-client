@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3744,6 +3744,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gkeMasterCluster")]
         public virtual string GkeMasterCluster { get; set; }
 
+        /// <summary>A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkePod")]
+        public virtual string GkePod { get; set; }
+
         /// <summary>A Compute Engine instance URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
         public virtual string Instance { get; set; }
@@ -4070,6 +4074,32 @@ namespace Google.Apis.NetworkManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>For display only. Metadata associated with a Google Kubernetes Engine (GKE) Pod.</summary>
+    public class GkePodInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// IP address of a GKE Pod. If the Pod is dual-stack, this is the IP address relevant to the trace.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; }
+
+        /// <summary>URI of the network containing the GKE Pod.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
+        public virtual string NetworkUri { get; set; }
+
+        /// <summary>
+        /// URI of a GKE Pod. For Pods in regional Clusters, the URI format is:
+        /// `projects/{project}/locations/{location}/clusters/{cluster}/k8s/namespaces/{namespace}/pods/{pod}` For Pods
+        /// in zonal Clusters, the URI format is:
+        /// `projects/{project}/zones/{zone}/clusters/{cluster}/k8s/namespaces/{namespace}/pods/{pod}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("podUri")]
+        public virtual string PodUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// For display only. Details of a Google Service sending packets to a VPC network. Although the source IP might be
     /// a publicly routable address, some Google Services use special routes within Google production infrastructure to
@@ -4191,6 +4221,24 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// <summary>URI of an Interconnect attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>For display only. Contains information about why IP masquerading was skipped for the packet.</summary>
+    public class IpMasqueradingSkippedInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The matched non-masquerade IP range. Only set if reason is DESTINATION_IP_IN_CONFIGURED_NON_MASQUERADE_RANGE
+        /// or DESTINATION_IP_IN_DEFAULT_NON_MASQUERADE_RANGE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonMasqueradeRange")]
+        public virtual string NonMasqueradeRange { get; set; }
+
+        /// <summary>Reason why IP masquerading was not applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5388,6 +5436,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gkeMaster")]
         public virtual GKEMasterInfo GkeMaster { get; set; }
 
+        /// <summary>Display information of a Google Kubernetes Engine Pod.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkePod")]
+        public virtual GkePodInfo GkePod { get; set; }
+
         /// <summary>Display information of a Google service</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleService")]
         public virtual GoogleServiceInfo GoogleService { get; set; }
@@ -5403,6 +5455,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// <summary>Display information of an interconnect attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interconnectAttachment")]
         public virtual InterconnectAttachmentInfo InterconnectAttachment { get; set; }
+
+        /// <summary>Display information of the reason why GKE Pod IP masquerading was skipped.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipMasqueradingSkipped")]
+        public virtual IpMasqueradingSkippedInfo IpMasqueradingSkipped { get; set; }
 
         /// <summary>
         /// Display information of the load balancers. Deprecated in favor of the `load_balancer_backend_info` field,
