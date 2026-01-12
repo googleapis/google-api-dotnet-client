@@ -1,7 +1,7 @@
 # This is intended to be imported using the "source" function
 # from any script that wants to invoke the C#-based generator.
 
-declare -r GAPIC_GENERATOR_VERSION=1.4.29
+declare -r GAPIC_GENERATOR_VERSION=1.4.36
 
 TMP_CSHARP_GENERATOR_DIR=tmp-gapic-generator-csharp
 if [[ $CSHARP_GENERATOR_DIR == "" ]]
@@ -48,6 +48,6 @@ run_csharp_generator() {
   # TODO: Rather than hard-coding this, we could build into a new directory (once)
   # where we'd always have a fresh copy.
   dotnet \
-    $CSHARP_GENERATOR_DIR/Google.Api.Generator.Rest/bin/Release/net6.0/Google.Api.Generator.Rest.dll \
+    $CSHARP_GENERATOR_DIR/Google.Api.Generator.Rest/bin/Release/net8.0/Google.Api.Generator.Rest.dll \
     "$1" "$2" "$3" "$4"
 }
