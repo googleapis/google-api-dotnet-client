@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22396,13 +22396,14 @@ namespace Google.Apis.Logging.v2.Data
     {
         /// <summary>
         /// Optional. A filter that chooses which log entries to return. For more information, see Logging query
-        /// language (https://cloud.google.com/logging/docs/view/logging-query-language).Only log entries that match the
-        /// filter are returned. An empty filter matches all log entries in the resources listed in resource_names.
-        /// Referencing a parent resource that is not listed in resource_names will cause the filter to return no
-        /// results. The maximum length of a filter is 20,000 characters.To make queries faster, you can make the filter
-        /// more selective by using restrictions on indexed fields
-        /// (https://cloud.google.com/logging/docs/view/logging-query-language#indexed-fields) as well as limit the time
-        /// range of the query by adding range restrictions on the timestamp field.
+        /// language
+        /// (https://{$universe.dns_names.final_documentation_domain}/logging/docs/view/logging-query-language).Only log
+        /// entries that match the filter are returned. An empty filter matches all log entries in the resources listed
+        /// in resource_names. Referencing a parent resource that is not listed in resource_names will cause the filter
+        /// to return no results. The maximum length of a filter is 20,000 characters.To make queries faster, you can
+        /// make the filter more selective by using restrictions on indexed fields
+        /// (https://{$universe.dns_names.final_documentation_domain}/logging/docs/view/logging-query-language#indexed-fields)
+        /// as well as limit the time range of the query by adding range restrictions on the timestamp field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -22882,10 +22883,17 @@ namespace Google.Apis.Logging.v2.Data
 
         /// <summary>
         /// Output only. AppHub application metadata associated with the destination application. This is only populated
-        /// if the log represented "edge"-like data (such as for VPC flow logs) with a source and destination.
+        /// if the log represented "edge"-like data (such as for VPC flow logs) with a destination.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apphubDestination")]
         public virtual AppHub ApphubDestination { get; set; }
+
+        /// <summary>
+        /// Output only. AppHub application metadata associated with the source application. This is only populated if
+        /// the log represented "edge"-like data (such as for VPC flow logs) with a source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apphubSource")]
+        public virtual AppHub ApphubSource { get; set; }
 
         /// <summary>
         /// Output only. The Error Reporting (https://cloud.google.com/error-reporting) error groups associated with
@@ -25006,9 +25014,12 @@ namespace Google.Apis.Logging.v2.Data
         public virtual object BufferWindow { get; set; }
 
         /// <summary>
-        /// Optional. Only log entries that match the filter are returned. An empty filter matches all log entries in
-        /// the resources listed in resource_names. Referencing a parent resource that is not listed in resource_names
-        /// will cause the filter to return no results. The maximum length of a filter is 20,000 characters.
+        /// Optional. A filter that chooses which log entries to return. For more information, see Logging query
+        /// language
+        /// (https://{$universe.dns_names.final_documentation_domain}/logging/docs/view/logging-query-language).Only log
+        /// entries that match the filter are returned. An empty filter matches all log entries in the resources listed
+        /// in resource_names. Referencing a parent resource that is not listed in resource_names will cause the filter
+        /// to return no results. The maximum length of a filter is 20,000 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
