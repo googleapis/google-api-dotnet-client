@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2361,9 +2361,9 @@ namespace Google.Apis.CloudRedis.v1beta1
 
                     /// <summary>
                     /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                    /// `true` when reading across collections e.g. when `parent` is set to
-                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
                     /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                     /// specific documentation.
                     /// </summary>
@@ -5315,8 +5315,8 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -5364,11 +5364,21 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
     public class MachineConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Baseline slots for BigQuery Reservations. Baseline slots are in increments of 50.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baselineSlots")]
+        public virtual System.Nullable<long> BaselineSlots { get; set; }
+
+        /// <summary>
         /// The number of CPUs. Deprecated. Use vcpu_count instead. TODO(b/342344482) add proto validations again after
         /// bug fix.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuCount")]
         public virtual System.Nullable<int> CpuCount { get; set; }
+
+        /// <summary>Optional. Max slots for BigQuery Reservations. Max slots are in increments of 50.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxReservationSlots")]
+        public virtual System.Nullable<long> MaxReservationSlots { get; set; }
 
         /// <summary>Memory size in bytes. TODO(b/342344482) add proto validations again after bug fix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memorySizeInBytes")]
