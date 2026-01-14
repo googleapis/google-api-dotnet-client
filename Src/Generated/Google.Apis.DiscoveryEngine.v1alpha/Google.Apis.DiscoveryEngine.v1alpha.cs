@@ -8518,6 +8518,85 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         }
                     }
 
+                    /// <summary>
+                    /// Adds a group of patient IDs as a patient filter for the data store. Patient filters are empty by
+                    /// default when a data store is created, and are stored in a separate table. The data store must
+                    /// first be created, and must be a healthcare data store. The filter group must be a FHIR resource
+                    /// name of type Group, and the filter will be constructed from the direct members of the group
+                    /// which are Patient resources.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="dataStore">
+                    /// Required. Full resource name of DataStore, such as
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+                    /// If the caller does not have permission to access the DataStore, regardless of whether or not it
+                    /// exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a
+                    /// NOT_FOUND error is returned. If the requested DataStore already has a patient filter, an
+                    /// ALREADY_EXISTS error will be returned.
+                    /// </param>
+                    public virtual AddPatientFilterRequest AddPatientFilter(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAddPatientFilterRequest body, string dataStore)
+                    {
+                        return new AddPatientFilterRequest(this.service, body, dataStore);
+                    }
+
+                    /// <summary>
+                    /// Adds a group of patient IDs as a patient filter for the data store. Patient filters are empty by
+                    /// default when a data store is created, and are stored in a separate table. The data store must
+                    /// first be created, and must be a healthcare data store. The filter group must be a FHIR resource
+                    /// name of type Group, and the filter will be constructed from the direct members of the group
+                    /// which are Patient resources.
+                    /// </summary>
+                    public class AddPatientFilterRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new AddPatientFilter request.</summary>
+                        public AddPatientFilterRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAddPatientFilterRequest body, string dataStore) : base(service)
+                        {
+                            DataStore = dataStore;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Full resource name of DataStore, such as
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+                        /// If the caller does not have permission to access the DataStore, regardless of whether or not
+                        /// it exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist,
+                        /// a NOT_FOUND error is returned. If the requested DataStore already has a patient filter, an
+                        /// ALREADY_EXISTS error will be returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("dataStore", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string DataStore { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAddPatientFilterRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "addPatientFilter";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+dataStore}:addPatientFilter";
+
+                        /// <summary>Initializes AddPatientFilter parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("dataStore", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "dataStore",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Completes the specified user input with keyword suggestions.</summary>
                     /// <param name="dataStore">
                     /// Required. The parent data store resource name for which the completion is performed, such as
@@ -8833,6 +8912,83 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes the entire patient filter for the data store. Patient filters are empty by default when
+                    /// a data store is created, and are stored in a separate table. The data store must first be
+                    /// created, and must be a healthcare data store. This method will fail if the data store does not
+                    /// have a patient filter.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="dataStore">
+                    /// Required. Full resource name of DataStore, such as
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+                    /// If the caller does not have permission to access the DataStore, regardless of whether or not it
+                    /// exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a
+                    /// NOT_FOUND error is returned. If the requested DataStore does not have a patient filter, a
+                    /// NOT_FOUND error will be returned.
+                    /// </param>
+                    public virtual DeletePatientFilterRequest DeletePatientFilter(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDeletePatientFiltersRequest body, string dataStore)
+                    {
+                        return new DeletePatientFilterRequest(this.service, body, dataStore);
+                    }
+
+                    /// <summary>
+                    /// Deletes the entire patient filter for the data store. Patient filters are empty by default when
+                    /// a data store is created, and are stored in a separate table. The data store must first be
+                    /// created, and must be a healthcare data store. This method will fail if the data store does not
+                    /// have a patient filter.
+                    /// </summary>
+                    public class DeletePatientFilterRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new DeletePatientFilter request.</summary>
+                        public DeletePatientFilterRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDeletePatientFiltersRequest body, string dataStore) : base(service)
+                        {
+                            DataStore = dataStore;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Full resource name of DataStore, such as
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+                        /// If the caller does not have permission to access the DataStore, regardless of whether or not
+                        /// it exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist,
+                        /// a NOT_FOUND error is returned. If the requested DataStore does not have a patient filter, a
+                        /// NOT_FOUND error will be returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("dataStore", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string DataStore { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDeletePatientFiltersRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "deletePatientFilter";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+dataStore}:deletePatientFilter";
+
+                        /// <summary>Initializes DeletePatientFilter parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("dataStore", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "dataStore",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -9178,6 +9334,168 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Removes a group of patient IDs from the patient filter for the data store. Patient filters are
+                    /// empty by default when a data store is created, and are stored in a separate table. The data
+                    /// store must first be created, and must be a healthcare data store. This method will fail if the
+                    /// data store does not have a patient filter. The filter group must be a FHIR resource name of type
+                    /// Group, and the list of patient IDs to remove will be constructed from the direct members of the
+                    /// group which are Patient resources.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="dataStore">
+                    /// Required. Full resource name of DataStore, such as
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+                    /// If the caller does not have permission to access the DataStore, regardless of whether or not it
+                    /// exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a
+                    /// NOT_FOUND error is returned. If the requested DataStore does not have a patient filter, a
+                    /// NOT_FOUND error will be returned
+                    /// </param>
+                    public virtual RemovePatientFilterRequest RemovePatientFilter(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRemovePatientFilterRequest body, string dataStore)
+                    {
+                        return new RemovePatientFilterRequest(this.service, body, dataStore);
+                    }
+
+                    /// <summary>
+                    /// Removes a group of patient IDs from the patient filter for the data store. Patient filters are
+                    /// empty by default when a data store is created, and are stored in a separate table. The data
+                    /// store must first be created, and must be a healthcare data store. This method will fail if the
+                    /// data store does not have a patient filter. The filter group must be a FHIR resource name of type
+                    /// Group, and the list of patient IDs to remove will be constructed from the direct members of the
+                    /// group which are Patient resources.
+                    /// </summary>
+                    public class RemovePatientFilterRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new RemovePatientFilter request.</summary>
+                        public RemovePatientFilterRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRemovePatientFilterRequest body, string dataStore) : base(service)
+                        {
+                            DataStore = dataStore;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Full resource name of DataStore, such as
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+                        /// If the caller does not have permission to access the DataStore, regardless of whether or not
+                        /// it exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist,
+                        /// a NOT_FOUND error is returned. If the requested DataStore does not have a patient filter, a
+                        /// NOT_FOUND error will be returned
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("dataStore", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string DataStore { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRemovePatientFilterRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "removePatientFilter";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+dataStore}:removePatientFilter";
+
+                        /// <summary>Initializes RemovePatientFilter parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("dataStore", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "dataStore",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Replaces the patient filter for the data store. This method is essentially a combination of
+                    /// DeletePatientFilters and AddPatientFilter. Patient filters are empty by default when a data
+                    /// store is created, and are stored in a separate table. The data store must first be created, and
+                    /// must be a healthcare data store. This method will fail if the data store does not have a patient
+                    /// filter. The filter group must be a FHIR resource name of type Group, and the new filter will be
+                    /// constructed from the direct members of the group which are Patient resources.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="dataStore">
+                    /// Required. Full resource name of DataStore, such as
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+                    /// If the caller does not have permission to access the DataStore, regardless of whether or not it
+                    /// exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a
+                    /// NOT_FOUND error is returned. If the requested DataStore already has a patient filter, an
+                    /// ALREADY_EXISTS error will be returned.
+                    /// </param>
+                    public virtual ReplacePatientFilterRequest ReplacePatientFilter(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest body, string dataStore)
+                    {
+                        return new ReplacePatientFilterRequest(this.service, body, dataStore);
+                    }
+
+                    /// <summary>
+                    /// Replaces the patient filter for the data store. This method is essentially a combination of
+                    /// DeletePatientFilters and AddPatientFilter. Patient filters are empty by default when a data
+                    /// store is created, and are stored in a separate table. The data store must first be created, and
+                    /// must be a healthcare data store. This method will fail if the data store does not have a patient
+                    /// filter. The filter group must be a FHIR resource name of type Group, and the new filter will be
+                    /// constructed from the direct members of the group which are Patient resources.
+                    /// </summary>
+                    public class ReplacePatientFilterRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new ReplacePatientFilter request.</summary>
+                        public ReplacePatientFilterRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest body, string dataStore) : base(service)
+                        {
+                            DataStore = dataStore;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Full resource name of DataStore, such as
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+                        /// If the caller does not have permission to access the DataStore, regardless of whether or not
+                        /// it exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist,
+                        /// a NOT_FOUND error is returned. If the requested DataStore already has a patient filter, an
+                        /// ALREADY_EXISTS error will be returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("dataStore", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string DataStore { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "replacePatientFilter";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+dataStore}:replacePatientFilter";
+
+                        /// <summary>Initializes ReplacePatientFilter parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("dataStore", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "dataStore",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
                             });
                         }
                     }
@@ -21244,6 +21562,85 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     }
                 }
 
+                /// <summary>
+                /// Adds a group of patient IDs as a patient filter for the data store. Patient filters are empty by
+                /// default when a data store is created, and are stored in a separate table. The data store must first
+                /// be created, and must be a healthcare data store. The filter group must be a FHIR resource name of
+                /// type Group, and the filter will be constructed from the direct members of the group which are
+                /// Patient resources.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="dataStore">
+                /// Required. Full resource name of DataStore, such as
+                /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If
+                /// the caller does not have permission to access the DataStore, regardless of whether or not it exists,
+                /// a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a NOT_FOUND error
+                /// is returned. If the requested DataStore already has a patient filter, an ALREADY_EXISTS error will
+                /// be returned.
+                /// </param>
+                public virtual AddPatientFilterRequest AddPatientFilter(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAddPatientFilterRequest body, string dataStore)
+                {
+                    return new AddPatientFilterRequest(this.service, body, dataStore);
+                }
+
+                /// <summary>
+                /// Adds a group of patient IDs as a patient filter for the data store. Patient filters are empty by
+                /// default when a data store is created, and are stored in a separate table. The data store must first
+                /// be created, and must be a healthcare data store. The filter group must be a FHIR resource name of
+                /// type Group, and the filter will be constructed from the direct members of the group which are
+                /// Patient resources.
+                /// </summary>
+                public class AddPatientFilterRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new AddPatientFilter request.</summary>
+                    public AddPatientFilterRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAddPatientFilterRequest body, string dataStore) : base(service)
+                    {
+                        DataStore = dataStore;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Full resource name of DataStore, such as
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+                    /// If the caller does not have permission to access the DataStore, regardless of whether or not it
+                    /// exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a
+                    /// NOT_FOUND error is returned. If the requested DataStore already has a patient filter, an
+                    /// ALREADY_EXISTS error will be returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("dataStore", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string DataStore { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAddPatientFilterRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "addPatientFilter";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+dataStore}:addPatientFilter";
+
+                    /// <summary>Initializes AddPatientFilter parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("dataStore", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "dataStore",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Completes the specified user input with keyword suggestions.</summary>
                 /// <param name="dataStore">
                 /// Required. The parent data store resource name for which the completion is performed, such as
@@ -21557,6 +21954,83 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes the entire patient filter for the data store. Patient filters are empty by default when a
+                /// data store is created, and are stored in a separate table. The data store must first be created, and
+                /// must be a healthcare data store. This method will fail if the data store does not have a patient
+                /// filter.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="dataStore">
+                /// Required. Full resource name of DataStore, such as
+                /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If
+                /// the caller does not have permission to access the DataStore, regardless of whether or not it exists,
+                /// a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a NOT_FOUND error
+                /// is returned. If the requested DataStore does not have a patient filter, a NOT_FOUND error will be
+                /// returned.
+                /// </param>
+                public virtual DeletePatientFilterRequest DeletePatientFilter(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDeletePatientFiltersRequest body, string dataStore)
+                {
+                    return new DeletePatientFilterRequest(this.service, body, dataStore);
+                }
+
+                /// <summary>
+                /// Deletes the entire patient filter for the data store. Patient filters are empty by default when a
+                /// data store is created, and are stored in a separate table. The data store must first be created, and
+                /// must be a healthcare data store. This method will fail if the data store does not have a patient
+                /// filter.
+                /// </summary>
+                public class DeletePatientFilterRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new DeletePatientFilter request.</summary>
+                    public DeletePatientFilterRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDeletePatientFiltersRequest body, string dataStore) : base(service)
+                    {
+                        DataStore = dataStore;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Full resource name of DataStore, such as
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+                    /// If the caller does not have permission to access the DataStore, regardless of whether or not it
+                    /// exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a
+                    /// NOT_FOUND error is returned. If the requested DataStore does not have a patient filter, a
+                    /// NOT_FOUND error will be returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("dataStore", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string DataStore { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDeletePatientFiltersRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "deletePatientFilter";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+dataStore}:deletePatientFilter";
+
+                    /// <summary>Initializes DeletePatientFilter parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("dataStore", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "dataStore",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
@@ -21902,6 +22376,168 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Removes a group of patient IDs from the patient filter for the data store. Patient filters are empty
+                /// by default when a data store is created, and are stored in a separate table. The data store must
+                /// first be created, and must be a healthcare data store. This method will fail if the data store does
+                /// not have a patient filter. The filter group must be a FHIR resource name of type Group, and the list
+                /// of patient IDs to remove will be constructed from the direct members of the group which are Patient
+                /// resources.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="dataStore">
+                /// Required. Full resource name of DataStore, such as
+                /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If
+                /// the caller does not have permission to access the DataStore, regardless of whether or not it exists,
+                /// a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a NOT_FOUND error
+                /// is returned. If the requested DataStore does not have a patient filter, a NOT_FOUND error will be
+                /// returned
+                /// </param>
+                public virtual RemovePatientFilterRequest RemovePatientFilter(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRemovePatientFilterRequest body, string dataStore)
+                {
+                    return new RemovePatientFilterRequest(this.service, body, dataStore);
+                }
+
+                /// <summary>
+                /// Removes a group of patient IDs from the patient filter for the data store. Patient filters are empty
+                /// by default when a data store is created, and are stored in a separate table. The data store must
+                /// first be created, and must be a healthcare data store. This method will fail if the data store does
+                /// not have a patient filter. The filter group must be a FHIR resource name of type Group, and the list
+                /// of patient IDs to remove will be constructed from the direct members of the group which are Patient
+                /// resources.
+                /// </summary>
+                public class RemovePatientFilterRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new RemovePatientFilter request.</summary>
+                    public RemovePatientFilterRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRemovePatientFilterRequest body, string dataStore) : base(service)
+                    {
+                        DataStore = dataStore;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Full resource name of DataStore, such as
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+                    /// If the caller does not have permission to access the DataStore, regardless of whether or not it
+                    /// exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a
+                    /// NOT_FOUND error is returned. If the requested DataStore does not have a patient filter, a
+                    /// NOT_FOUND error will be returned
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("dataStore", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string DataStore { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRemovePatientFilterRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "removePatientFilter";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+dataStore}:removePatientFilter";
+
+                    /// <summary>Initializes RemovePatientFilter parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("dataStore", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "dataStore",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Replaces the patient filter for the data store. This method is essentially a combination of
+                /// DeletePatientFilters and AddPatientFilter. Patient filters are empty by default when a data store is
+                /// created, and are stored in a separate table. The data store must first be created, and must be a
+                /// healthcare data store. This method will fail if the data store does not have a patient filter. The
+                /// filter group must be a FHIR resource name of type Group, and the new filter will be constructed from
+                /// the direct members of the group which are Patient resources.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="dataStore">
+                /// Required. Full resource name of DataStore, such as
+                /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If
+                /// the caller does not have permission to access the DataStore, regardless of whether or not it exists,
+                /// a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a NOT_FOUND error
+                /// is returned. If the requested DataStore already has a patient filter, an ALREADY_EXISTS error will
+                /// be returned.
+                /// </param>
+                public virtual ReplacePatientFilterRequest ReplacePatientFilter(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest body, string dataStore)
+                {
+                    return new ReplacePatientFilterRequest(this.service, body, dataStore);
+                }
+
+                /// <summary>
+                /// Replaces the patient filter for the data store. This method is essentially a combination of
+                /// DeletePatientFilters and AddPatientFilter. Patient filters are empty by default when a data store is
+                /// created, and are stored in a separate table. The data store must first be created, and must be a
+                /// healthcare data store. This method will fail if the data store does not have a patient filter. The
+                /// filter group must be a FHIR resource name of type Group, and the new filter will be constructed from
+                /// the direct members of the group which are Patient resources.
+                /// </summary>
+                public class ReplacePatientFilterRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new ReplacePatientFilter request.</summary>
+                    public ReplacePatientFilterRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest body, string dataStore) : base(service)
+                    {
+                        DataStore = dataStore;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Full resource name of DataStore, such as
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+                    /// If the caller does not have permission to access the DataStore, regardless of whether or not it
+                    /// exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a
+                    /// NOT_FOUND error is returned. If the requested DataStore already has a patient filter, an
+                    /// ALREADY_EXISTS error will be returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("dataStore", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string DataStore { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "replacePatientFilter";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+dataStore}:replacePatientFilter";
+
+                    /// <summary>Initializes ReplacePatientFilter parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("dataStore", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "dataStore",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+$",
                         });
                     }
                 }
@@ -31642,6 +32278,12 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string IndustryVertical { get; set; }
 
         /// <summary>
+        /// Optional. Configurations for the Knowledge Graph. Only applicable if solution_type is SOLUTION_TYPE_SEARCH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeGraphConfig")]
+        public virtual GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfig KnowledgeGraphConfig { get; set; }
+
+        /// <summary>
         /// Configurations for the Media Engine. Only applicable on the data stores with solution_type
         /// SOLUTION_TYPE_RECOMMENDATION and IndustryVertical.MEDIA vertical.
         /// </summary>
@@ -31821,6 +32463,66 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration message for the Knowledge Graph.</summary>
+    public class GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specify entity types to support.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudKnowledgeGraphTypes")]
+        public virtual System.Collections.Generic.IList<string> CloudKnowledgeGraphTypes { get; set; }
+
+        /// <summary>
+        /// Whether to enable the Cloud Knowledge Graph for the engine. Defaults to false if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableCloudKnowledgeGraph")]
+        public virtual System.Nullable<bool> EnableCloudKnowledgeGraph { get; set; }
+
+        /// <summary>
+        /// Whether to enable the Private Knowledge Graph for the engine. Defaults to false if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateKnowledgeGraph")]
+        public virtual System.Nullable<bool> EnablePrivateKnowledgeGraph { get; set; }
+
+        /// <summary>Optional. Feature config for the Knowledge Graph.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureConfig")]
+        public virtual GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfigFeatureConfig FeatureConfig { get; set; }
+
+        /// <summary>Specify entity types to support.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateKnowledgeGraphTypes")]
+        public virtual System.Collections.Generic.IList<string> PrivateKnowledgeGraphTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Feature config for the Knowledge Graph.</summary>
+    public class GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfigFeatureConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether to disable the private KG auto complete for the engine. Defaults to false if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disablePrivateKgAutoComplete")]
+        public virtual System.Nullable<bool> DisablePrivateKgAutoComplete { get; set; }
+
+        /// <summary>
+        /// Whether to disable the private KG enrichment for the engine. Defaults to false if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disablePrivateKgEnrichment")]
+        public virtual System.Nullable<bool> DisablePrivateKgEnrichment { get; set; }
+
+        /// <summary>Whether to disable the private KG for query UI chips. Defaults to false if not specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disablePrivateKgQueryUiChips")]
+        public virtual System.Nullable<bool> DisablePrivateKgQueryUiChips { get; set; }
+
+        /// <summary>
+        /// Whether to disable the private KG query understanding for the engine. Defaults to false if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disablePrivateKgQueryUnderstanding")]
+        public virtual System.Nullable<bool> DisablePrivateKgQueryUnderstanding { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Additional config specs for a Media Recommendation engine.</summary>
     public class GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -31973,6 +32675,15 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStaticIndexingForBatchIngestion")]
         public virtual System.Nullable<bool> EnableStaticIndexingForBatchIngestion { get; set; }
+
+        /// <summary>
+        /// Optional. Names of the Group resources to use as a basis for the initial patient filter, in format
+        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Group/{group_id}`.
+        /// The filter group must be a FHIR resource name of type Group, and the filter will be constructed from the
+        /// direct members of the group which are Patient resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initialFilterGroups")]
+        public virtual System.Collections.Generic.IList<string> InitialFilterGroups { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -34797,6 +35508,36 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for DataStoreService.AddPatientFilter method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAddPatientFilterRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Full resource name of DataStore, such as
+        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If the
+        /// caller does not have permission to access the DataStore, regardless of whether or not it exists, a
+        /// PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a NOT_FOUND error is
+        /// returned. If the requested DataStore already has a patient filter, an ALREADY_EXISTS error will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStore")]
+        public virtual string DataStore { get; set; }
+
+        /// <summary>
+        /// Required. Names of the Group resources to use as a basis for the patient filter, in format
+        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Group/{group_id}`.
+        /// if the caller does not have permission to access the FHIR store, regardless of whether it exists,
+        /// PERMISSION_DENIED error is returned. If the discovery engine service account does not have permission to
+        /// access the FHIR store, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the
+        /// group is not found at the location, a RESOURCE_NOT_FOUND error will be returned. The filter group must be a
+        /// FHIR resource name of type Group, and the filter will be constructed from the direct members of the group
+        /// which are Patient resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterGroups")]
+        public virtual System.Collections.Generic.IList<string> FilterGroups { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Stores the definition of an agent that uses ADK and is deployed to Agent Engine (formerly known as Reasoning
     /// Engine).
@@ -37516,7 +38257,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual System.Nullable<bool> PkceVerificationEnabled { get; set; }
 
         /// <summary>
-        /// Required. The scopes to request. Example: `https://www.googleapis.com/auth/calendar.events`
+        /// Optional. The scopes to request. Example: `https://www.googleapis.com/auth/calendar.events` If omitted, no
+        /// additional scopes are requested beyond those required by the authorization uri. If set, it will overwrite
+        /// the scopes in the authorization uri when acquiring user authorization.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
         public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
@@ -42109,6 +42852,23 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for DataStoreService.DeletePatientFilters method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDeletePatientFiltersRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Full resource name of DataStore, such as
+        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If the
+        /// caller does not have permission to access the DataStore, regardless of whether or not it exists, a
+        /// PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a NOT_FOUND error is
+        /// returned. If the requested DataStore does not have a patient filter, a NOT_FOUND error will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStore")]
+        public virtual string DataStore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for DeleteSchema LRO.</summary>
     public class GoogleCloudDiscoveryengineV1alphaDeleteSchemaMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -43262,6 +44022,12 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string IndustryVertical { get; set; }
 
         /// <summary>
+        /// Optional. Configurations for the Knowledge Graph. Only applicable if solution_type is SOLUTION_TYPE_SEARCH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeGraphConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfig KnowledgeGraphConfig { get; set; }
+
+        /// <summary>
         /// Configurations for the Media Engine. Only applicable on the data stores with solution_type
         /// SOLUTION_TYPE_RECOMMENDATION and IndustryVertical.MEDIA vertical.
         /// </summary>
@@ -43447,6 +44213,66 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companyName")]
         public virtual string CompanyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration message for the Knowledge Graph.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specify entity types to support.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudKnowledgeGraphTypes")]
+        public virtual System.Collections.Generic.IList<string> CloudKnowledgeGraphTypes { get; set; }
+
+        /// <summary>
+        /// Whether to enable the Cloud Knowledge Graph for the engine. Defaults to false if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableCloudKnowledgeGraph")]
+        public virtual System.Nullable<bool> EnableCloudKnowledgeGraph { get; set; }
+
+        /// <summary>
+        /// Whether to enable the Private Knowledge Graph for the engine. Defaults to false if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateKnowledgeGraph")]
+        public virtual System.Nullable<bool> EnablePrivateKnowledgeGraph { get; set; }
+
+        /// <summary>Optional. Feature config for the Knowledge Graph.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfigFeatureConfig FeatureConfig { get; set; }
+
+        /// <summary>Specify entity types to support.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateKnowledgeGraphTypes")]
+        public virtual System.Collections.Generic.IList<string> PrivateKnowledgeGraphTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Feature config for the Knowledge Graph.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfigFeatureConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether to disable the private KG auto complete for the engine. Defaults to false if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disablePrivateKgAutoComplete")]
+        public virtual System.Nullable<bool> DisablePrivateKgAutoComplete { get; set; }
+
+        /// <summary>
+        /// Whether to disable the private KG enrichment for the engine. Defaults to false if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disablePrivateKgEnrichment")]
+        public virtual System.Nullable<bool> DisablePrivateKgEnrichment { get; set; }
+
+        /// <summary>Whether to disable the private KG for query UI chips. Defaults to false if not specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disablePrivateKgQueryUiChips")]
+        public virtual System.Nullable<bool> DisablePrivateKgQueryUiChips { get; set; }
+
+        /// <summary>
+        /// Whether to disable the private KG query understanding for the engine. Defaults to false if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disablePrivateKgQueryUnderstanding")]
+        public virtual System.Nullable<bool> DisablePrivateKgQueryUnderstanding { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -44761,6 +45587,15 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStaticIndexingForBatchIngestion")]
         public virtual System.Nullable<bool> EnableStaticIndexingForBatchIngestion { get; set; }
+
+        /// <summary>
+        /// Optional. Names of the Group resources to use as a basis for the initial patient filter, in format
+        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Group/{group_id}`.
+        /// The filter group must be a FHIR resource name of type Group, and the filter will be constructed from the
+        /// direct members of the group which are Patient resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initialFilterGroups")]
+        public virtual System.Collections.Generic.IList<string> InitialFilterGroups { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -46699,6 +47534,98 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata related to the progress of the various patient filter operations. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaPatientFilterOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The number of patient IDs added to the patient filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filtersAddedCount")]
+        public virtual System.Nullable<long> FiltersAddedCount { get; set; }
+
+        /// <summary>The number of patient IDs removed from the patient filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filtersRemovedCount")]
+        public virtual System.Nullable<long> FiltersRemovedCount { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for pausing training of an engine.</summary>
     public class GoogleCloudDiscoveryengineV1alphaPauseEngineRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -48396,6 +49323,37 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for DataStoreService.RemovePatientFilter method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaRemovePatientFilterRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Full resource name of DataStore, such as
+        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If the
+        /// caller does not have permission to access the DataStore, regardless of whether or not it exists, a
+        /// PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a NOT_FOUND error is
+        /// returned. If the requested DataStore does not have a patient filter, a NOT_FOUND error will be returned
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStore")]
+        public virtual string DataStore { get; set; }
+
+        /// <summary>
+        /// Required. Names of the Group resources to use as a basis for the list of patients to remove from the patient
+        /// filter, in format
+        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Group/{group_id}`.
+        /// if the caller does not have permission to access the FHIR store, regardless of whether it exists,
+        /// PERMISSION_DENIED error is returned. If the discovery engine service account does not have permission to
+        /// access the FHIR store, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the
+        /// group is not found at the location, a RESOURCE_NOT_FOUND error will be returned. The filter group must be a
+        /// FHIR resource name of type Group, and the list of IDs to remove will be constructed from the direct members
+        /// of the group which are Patient resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterGroups")]
+        public virtual System.Collections.Generic.IList<string> FilterGroups { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for CompletionService.RemoveSuggestion method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaRemoveSuggestionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -48470,6 +49428,37 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Response message for CompletionService.RemoveSuggestion method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaRemoveSuggestionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for DataStoreService.ReplacePatientFilter method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Full resource name of DataStore, such as
+        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If the
+        /// caller does not have permission to access the DataStore, regardless of whether or not it exists, a
+        /// PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a NOT_FOUND error is
+        /// returned. If the requested DataStore already has a patient filter, an ALREADY_EXISTS error will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStore")]
+        public virtual string DataStore { get; set; }
+
+        /// <summary>
+        /// Required. Names of the Group resources to use as a basis for the list of patients for the new patient
+        /// filter, in format
+        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Group/{group_id}`.
+        /// if the caller does not have permission to access the FHIR store, regardless of whether it exists,
+        /// PERMISSION_DENIED error is returned. If the discovery engine service account does not have permission to
+        /// access the FHIR store, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the
+        /// group is not found at the location, a RESOURCE_NOT_FOUND error will be returned. The filter group must be a
+        /// FHIR resource name of type Group, and the new filter will be constructed from the direct members of the
+        /// group which are Patient resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterGroups")]
+        public virtual System.Collections.Generic.IList<string> FilterGroups { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -56609,6 +57598,12 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string IndustryVertical { get; set; }
 
         /// <summary>
+        /// Optional. Configurations for the Knowledge Graph. Only applicable if solution_type is SOLUTION_TYPE_SEARCH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeGraphConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfig KnowledgeGraphConfig { get; set; }
+
+        /// <summary>
         /// Configurations for the Media Engine. Only applicable on the data stores with solution_type
         /// SOLUTION_TYPE_RECOMMENDATION and IndustryVertical.MEDIA vertical.
         /// </summary>
@@ -56783,6 +57778,66 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companyName")]
         public virtual string CompanyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration message for the Knowledge Graph.</summary>
+    public class GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specify entity types to support.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudKnowledgeGraphTypes")]
+        public virtual System.Collections.Generic.IList<string> CloudKnowledgeGraphTypes { get; set; }
+
+        /// <summary>
+        /// Whether to enable the Cloud Knowledge Graph for the engine. Defaults to false if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableCloudKnowledgeGraph")]
+        public virtual System.Nullable<bool> EnableCloudKnowledgeGraph { get; set; }
+
+        /// <summary>
+        /// Whether to enable the Private Knowledge Graph for the engine. Defaults to false if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateKnowledgeGraph")]
+        public virtual System.Nullable<bool> EnablePrivateKnowledgeGraph { get; set; }
+
+        /// <summary>Optional. Feature config for the Knowledge Graph.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfigFeatureConfig FeatureConfig { get; set; }
+
+        /// <summary>Specify entity types to support.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateKnowledgeGraphTypes")]
+        public virtual System.Collections.Generic.IList<string> PrivateKnowledgeGraphTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Feature config for the Knowledge Graph.</summary>
+    public class GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfigFeatureConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether to disable the private KG auto complete for the engine. Defaults to false if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disablePrivateKgAutoComplete")]
+        public virtual System.Nullable<bool> DisablePrivateKgAutoComplete { get; set; }
+
+        /// <summary>
+        /// Whether to disable the private KG enrichment for the engine. Defaults to false if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disablePrivateKgEnrichment")]
+        public virtual System.Nullable<bool> DisablePrivateKgEnrichment { get; set; }
+
+        /// <summary>Whether to disable the private KG for query UI chips. Defaults to false if not specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disablePrivateKgQueryUiChips")]
+        public virtual System.Nullable<bool> DisablePrivateKgQueryUiChips { get; set; }
+
+        /// <summary>
+        /// Whether to disable the private KG query understanding for the engine. Defaults to false if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disablePrivateKgQueryUnderstanding")]
+        public virtual System.Nullable<bool> DisablePrivateKgQueryUnderstanding { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -57093,6 +58148,15 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStaticIndexingForBatchIngestion")]
         public virtual System.Nullable<bool> EnableStaticIndexingForBatchIngestion { get; set; }
+
+        /// <summary>
+        /// Optional. Names of the Group resources to use as a basis for the initial patient filter, in format
+        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Group/{group_id}`.
+        /// The filter group must be a FHIR resource name of type Group, and the filter will be constructed from the
+        /// direct members of the group which are Patient resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initialFilterGroups")]
+        public virtual System.Collections.Generic.IList<string> InitialFilterGroups { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
