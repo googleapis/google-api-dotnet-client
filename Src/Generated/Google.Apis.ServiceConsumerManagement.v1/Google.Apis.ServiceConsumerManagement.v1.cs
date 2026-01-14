@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -492,9 +492,9 @@ namespace Google.Apis.ServiceConsumerManagement.v1
 
             /// <summary>
             /// When set to `true`, operations that are reachable are returned as normal, and those that are unreachable
-            /// are returned in the [ListOperationsResponse.unreachable] field. This can only be `true` when reading
-            /// across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This field is not by
-            /// default supported and will result in an `UNIMPLEMENTED` error if set unless explicitly documented
+            /// are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading
+            /// across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is
+            /// not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented
             /// otherwise in service or product specific documentation.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
@@ -2050,8 +2050,8 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
     public class Control : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The service controller environment to use. If empty, no control plane feature (like quota and billing) will
-        /// be enabled. The recommended value for most services is servicecontrol.googleapis.com
+        /// The service controller environment to use. If empty, no control plane features (like quota and billing) will
+        /// be enabled. The recommended value for most services is servicecontrol.googleapis.com.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; }
@@ -2851,8 +2851,8 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -4340,6 +4340,14 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
     /// <summary>Resource constituting the TenancyUnit.</summary>
     public class TenantResource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. The newly created regional resource name of the tenant project that has been migrated from a
+        /// global service. This field is only set for migrated tenant projects. Format:
+        /// `services//{collection_id}/{RESOURCE_ID}/locations/{LOCATION}/tenantProjects/{TENANT_ID}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migratedTenantProject")]
+        public virtual string MigratedTenantProject { get; set; }
+
         /// <summary>
         /// Output only. @OutputOnly Identifier of the tenant resource. For cloud projects, it is in the form
         /// 'projects/{number}'. For example 'projects/123456'.
