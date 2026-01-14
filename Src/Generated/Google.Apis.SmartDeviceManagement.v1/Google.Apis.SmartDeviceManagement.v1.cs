@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -695,6 +695,10 @@ namespace Google.Apis.SmartDeviceManagement.v1.Data
     /// <summary>Device resource represents an instance of enterprise managed device in the property.</summary>
     public class GoogleHomeEnterpriseSdmV1Device : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The GHP device ID of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ghpName")]
+        public virtual string GhpName { get; set; }
+
         /// <summary>Required. The resource name of the device. For example: "enterprises/XYZ/devices/123".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -790,6 +794,13 @@ namespace Google.Apis.SmartDeviceManagement.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
+        /// Output only. The GHP name of the relation -- e.g., structure/room where the device is assigned to. For
+        /// example: "homegraph.googleapis.com/Structure/ABC" or "homegraph.googleapis.com/Room/ABC"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ghpParent")]
+        public virtual string GhpParent { get; set; }
+
+        /// <summary>
         /// Output only. The name of the relation -- e.g., structure/room where the device is assigned to. For example:
         /// "enterprises/XYZ/structures/ABC" or "enterprises/XYZ/structures/ABC/rooms/123"
         /// </summary>
@@ -823,6 +834,13 @@ namespace Google.Apis.SmartDeviceManagement.v1.Data
     /// <summary>Structure resource represents an instance of enterprise managed home or hotel room.</summary>
     public class GoogleHomeEnterpriseSdmV1Structure : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. The unique identifier for the structure in Google Home Platform. Format:
+        /// homegraph.googleapis.com/Structure/{structure_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ghpName")]
+        public virtual string GhpName { get; set; }
+
         /// <summary>
         /// Output only. The resource name of the structure. For example: "enterprises/XYZ/structures/ABC".
         /// </summary>
