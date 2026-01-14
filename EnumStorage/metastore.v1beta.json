@@ -1,0 +1,11 @@
+{
+  "Google.Apis.DataprocMetastore.v1beta.DataprocMetastoreBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.DataprocMetastore.v1beta.DataprocMetastoreBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
