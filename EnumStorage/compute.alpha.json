@@ -54,6 +54,16 @@
     "FULL",
     "INSTANCE_VIEW_UNSPECIFIED"
   ],
+  "Google.Apis.Compute.alpha.ReservationBlocksResource+GetRequest.ViewEnum": [
+    "BASIC",
+    "BLOCK_VIEW_UNSPECIFIED",
+    "FULL"
+  ],
+  "Google.Apis.Compute.alpha.ReservationSubBlocksResource+GetRequest.ViewEnum": [
+    "SUB_BLOCK_VIEW_BASIC",
+    "SUB_BLOCK_VIEW_FULL",
+    "SUB_BLOCK_VIEW_UNSPECIFIED"
+  ],
   "Google.Apis.Compute.alpha.RoutersResource+ListBgpRoutesRequest.AddressFamilyEnum": [
     "IPV4",
     "IPV6",
@@ -63,6 +73,10 @@
     "ADVERTISED",
     "LEARNED",
     "UNSPECIFIED_ROUTE_TYPE"
+  ],
+  "Google.Apis.Compute.alpha.SubnetworksResource+AggregatedListRequest.ViewsEnum": [
+    "DEFAULT",
+    "WITH_UTILIZATION"
   ],
   "Google.Apis.Compute.alpha.SubnetworksResource+GetRequest.ViewsEnum": [
     "DEFAULT",
