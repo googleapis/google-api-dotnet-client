@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -802,8 +802,8 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
 
                 /// <summary>
                 /// Required. Identifies the subscription resource on the Partner side. The value is restricted to 63
-                /// ASCII characters at the maximum. If a subscription was previously created with the same
-                /// subscription_id, we will directly return that one.
+                /// ASCII characters at the maximum. If a subscription with the same ID already exists, the creation
+                /// fails with an `ALREADY_EXISTS` error.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("subscriptionId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string SubscriptionId { get; set; }
@@ -1104,8 +1104,8 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
 
                 /// <summary>
                 /// Required. Identifies the subscription resource on the Partner side. The value is restricted to 63
-                /// ASCII characters at the maximum. If a subscription was previously created with the same
-                /// subscription_id, we will directly return that one.
+                /// ASCII characters at the maximum. If a subscription with the same ID already exists, the creation
+                /// fails with an `ALREADY_EXISTS` error.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("subscriptionId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string SubscriptionId { get; set; }
