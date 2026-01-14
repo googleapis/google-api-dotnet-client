@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -7500,9 +7500,13 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dnsScope")]
         public virtual string DnsScope { get; set; }
 
-        /// <summary>The DNS name.</summary>
+        /// <summary>Output only. The DNS name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. The manager for this DNS record.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordManager")]
+        public virtual string RecordManager { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7522,6 +7526,14 @@ namespace Google.Apis.SQLAdmin.v1.Data
     /// <summary>The request payload used to execute SQL statements.</summary>
     public class ExecuteSqlPayload : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Specifies the name of the application that is making the request. This field is used for
+        /// telemetry. Only alphanumeric characters, dashes, and underscores are allowed. The maximum length is 32
+        /// characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("application")]
+        public virtual string Application { get; set; }
+
         /// <summary>
         /// Optional. When set to true, the API caller identity associated with the request is used for database
         /// authentication. The API caller must be an IAM user in the database.
@@ -8352,6 +8364,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
     /// </summary>
     public class InsightsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Whether enhanced query insights feature is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enhancedQueryInsightsEnabled")]
+        public virtual System.Nullable<bool> EnhancedQueryInsightsEnabled { get; set; }
+
         /// <summary>Whether Query Insights feature is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryInsightsEnabled")]
         public virtual System.Nullable<bool> QueryInsightsEnabled { get; set; }
