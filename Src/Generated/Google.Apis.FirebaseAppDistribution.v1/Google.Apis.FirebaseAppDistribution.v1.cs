@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2366,6 +2366,13 @@ namespace Google.Apis.FirebaseAppDistribution.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readToken")]
         public virtual string ReadToken { get; set; }
+
+        /// <summary>
+        /// A serialized Object Fragment List Creation Info passed from Bigstore -&amp;gt; Scotty for a GCS upload. This
+        /// field must never be consumed outside of Bigstore, and is not applicable to non-GCS media uploads.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uploadFragmentListCreationInfo")]
+        public virtual string UploadFragmentListCreationInfo { get; set; }
 
         /// <summary>
         /// Metadata passed from Blobstore -&amp;gt; Scotty for a new GCS upload. This is a signed, serialized
