@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2376,7 +2376,11 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mediaResolution")]
         public virtual GoogleCloudAiplatformV1beta1PartMediaResolution MediaResolution { get; set; }
 
-        /// <summary>Optional. The text content of the part.</summary>
+        /// <summary>
+        /// Optional. The text content of the part. When sent from the VSCode Gemini Code Assist extension, references
+        /// to @mentioned items will be converted to markdown boldface text. For example `@my-repo` will be converted to
+        /// and sent as `**my-repo**` by the IDE agent.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
 
