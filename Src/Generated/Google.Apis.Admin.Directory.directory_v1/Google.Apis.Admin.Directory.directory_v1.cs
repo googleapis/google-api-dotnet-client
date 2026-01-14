@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12349,6 +12349,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// <summary>Directory users guest creation request message.</summary>
     public class DirectoryUsersCreateGuestRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Immutable ID of the Google Workspace account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; }
+
         /// <summary>Immutable. External email of the guest user being created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryGuestEmail")]
         public virtual string PrimaryGuestEmail { get; set; }
