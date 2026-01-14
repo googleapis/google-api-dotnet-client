@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1069,7 +1069,7 @@ namespace Google.Apis.CloudSearch.v1
                     /// delete any queued item with a version value that is less than or equal to the version of the
                     /// currently indexed item. The maximum length for this field is 1024 bytes. For information on how
                     /// item version affects the deletion process, refer to [Handle revisions after manual
-                    /// deletes](https://developers.google.com/cloud-search/docs/guides/operations).
+                    /// deletes](https://developers.google.com/workspace/cloud-search/docs/guides/operations).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("version", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Version { get; set; }
@@ -1955,15 +1955,15 @@ namespace Google.Apis.CloudSearch.v1
         /// <summary>
         /// Uploads media for indexing. The upload endpoint supports direct and resumable upload protocols and is
         /// intended for large items that can not be [inlined during index
-        /// requests](https://developers.google.com/cloud-search/docs/reference/rest/v1/indexing.datasources.items#itemcontent).
+        /// requests](https://developers.google.com/workspace/cloud-search/docs/reference/rest/v1/indexing.datasources.items#itemcontent).
         /// To index large content: 1. Call indexing.datasources.items.upload with the item name to begin an upload
         /// session and retrieve the UploadItemRef. 1. Call media.upload to upload the content, as a streaming request,
         /// using the same resource name from the UploadItemRef from step 1. 1. Call indexing.datasources.items.index to
         /// index the item. Populate the
         /// [ItemContent](/cloud-search/docs/reference/rest/v1/indexing.datasources.items#ItemContent) with the
         /// UploadItemRef from step 1. For additional information, see [Create a content connector using the REST
-        /// API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest). **Note:** This API
-        /// requires a service account to execute.
+        /// API](https://developers.google.com/workspace/cloud-search/docs/guides/content-connector#rest). **Note:**
+        /// This API requires a service account to execute.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resourceName">
@@ -1977,15 +1977,15 @@ namespace Google.Apis.CloudSearch.v1
         /// <summary>
         /// Uploads media for indexing. The upload endpoint supports direct and resumable upload protocols and is
         /// intended for large items that can not be [inlined during index
-        /// requests](https://developers.google.com/cloud-search/docs/reference/rest/v1/indexing.datasources.items#itemcontent).
+        /// requests](https://developers.google.com/workspace/cloud-search/docs/reference/rest/v1/indexing.datasources.items#itemcontent).
         /// To index large content: 1. Call indexing.datasources.items.upload with the item name to begin an upload
         /// session and retrieve the UploadItemRef. 1. Call media.upload to upload the content, as a streaming request,
         /// using the same resource name from the UploadItemRef from step 1. 1. Call indexing.datasources.items.index to
         /// index the item. Populate the
         /// [ItemContent](/cloud-search/docs/reference/rest/v1/indexing.datasources.items#ItemContent) with the
         /// UploadItemRef from step 1. For additional information, see [Create a content connector using the REST
-        /// API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest). **Note:** This API
-        /// requires a service account to execute.
+        /// API](https://developers.google.com/workspace/cloud-search/docs/guides/content-connector#rest). **Note:**
+        /// This API requires a service account to execute.
         /// </summary>
         public class UploadRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Media>
         {
@@ -2034,15 +2034,15 @@ namespace Google.Apis.CloudSearch.v1
         /// <summary>
         /// Uploads media for indexing. The upload endpoint supports direct and resumable upload protocols and is
         /// intended for large items that can not be [inlined during index
-        /// requests](https://developers.google.com/cloud-search/docs/reference/rest/v1/indexing.datasources.items#itemcontent).
+        /// requests](https://developers.google.com/workspace/cloud-search/docs/reference/rest/v1/indexing.datasources.items#itemcontent).
         /// To index large content: 1. Call indexing.datasources.items.upload with the item name to begin an upload
         /// session and retrieve the UploadItemRef. 1. Call media.upload to upload the content, as a streaming request,
         /// using the same resource name from the UploadItemRef from step 1. 1. Call indexing.datasources.items.index to
         /// index the item. Populate the
         /// [ItemContent](/cloud-search/docs/reference/rest/v1/indexing.datasources.items#ItemContent) with the
         /// UploadItemRef from step 1. For additional information, see [Create a content connector using the REST
-        /// API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest). **Note:** This API
-        /// requires a service account to execute.
+        /// API](https://developers.google.com/workspace/cloud-search/docs/guides/content-connector#rest). **Note:**
+        /// This API requires a service account to execute.
         /// </summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
@@ -2256,6 +2256,17 @@ namespace Google.Apis.CloudSearch.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
+                /// <summary>
+                /// When set to `true`, operations that are reachable are returned as normal, and those that are
+                /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true`
+                /// when reading across collections. For example, when `parent` is set to
+                /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
+                /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific
+                /// documentation.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
@@ -2296,6 +2307,14 @@ namespace Google.Apis.CloudSearch.v1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "returnPartialSuccess",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2393,7 +2412,7 @@ namespace Google.Apis.CloudSearch.v1
             /// Returns list of sources that user can use for Search and Suggest APIs. **Note:** This API requires a
             /// standard end user account to execute. A service account can't perform Query API requests directly; to
             /// use a service account to perform queries, set up [Google Workspace domain-wide delegation of
-            /// authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
+            /// authority](https://developers.google.com/workspace/cloud-search/docs/guides/delegation/).
             /// </summary>
             public virtual ListRequest List()
             {
@@ -2404,7 +2423,7 @@ namespace Google.Apis.CloudSearch.v1
             /// Returns list of sources that user can use for Search and Suggest APIs. **Note:** This API requires a
             /// standard end user account to execute. A service account can't perform Query API requests directly; to
             /// use a service account to perform queries, set up [Google Workspace domain-wide delegation of
-            /// authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
+            /// authority](https://developers.google.com/workspace/cloud-search/docs/guides/delegation/).
             /// </summary>
             public class ListRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.ListQuerySourcesResponse>
             {
@@ -2514,7 +2533,7 @@ namespace Google.Apis.CloudSearch.v1
         /// Returns Debug information for Cloud Search Query API provides the search method. **Note:** This API requires
         /// a standard end user account to execute. A service account can't perform Query API requests directly; to use
         /// a service account to perform queries, set up [Google Workspace domain-wide delegation of
-        /// authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
+        /// authority](https://developers.google.com/workspace/cloud-search/docs/guides/delegation/).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual DebugSearchRequest DebugSearch(Google.Apis.CloudSearch.v1.Data.SearchRequest body)
@@ -2526,7 +2545,7 @@ namespace Google.Apis.CloudSearch.v1
         /// Returns Debug information for Cloud Search Query API provides the search method. **Note:** This API requires
         /// a standard end user account to execute. A service account can't perform Query API requests directly; to use
         /// a service account to perform queries, set up [Google Workspace domain-wide delegation of
-        /// authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
+        /// authority](https://developers.google.com/workspace/cloud-search/docs/guides/delegation/).
         /// </summary>
         public class DebugSearchRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.DebugResponse>
         {
@@ -2563,7 +2582,8 @@ namespace Google.Apis.CloudSearch.v1
         /// Provides functionality to remove logged activity for a user. Currently to be used only for Chat 1p clients
         /// **Note:** This API requires a standard end user account to execute. A service account can't perform Remove
         /// Activity requests directly; to use a service account to perform queries, set up [Google Workspace
-        /// domain-wide delegation of authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
+        /// domain-wide delegation of
+        /// authority](https://developers.google.com/workspace/cloud-search/docs/guides/delegation/).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual RemoveActivityRequest RemoveActivity(Google.Apis.CloudSearch.v1.Data.RemoveActivityRequest body)
@@ -2575,7 +2595,8 @@ namespace Google.Apis.CloudSearch.v1
         /// Provides functionality to remove logged activity for a user. Currently to be used only for Chat 1p clients
         /// **Note:** This API requires a standard end user account to execute. A service account can't perform Remove
         /// Activity requests directly; to use a service account to perform queries, set up [Google Workspace
-        /// domain-wide delegation of authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
+        /// domain-wide delegation of
+        /// authority](https://developers.google.com/workspace/cloud-search/docs/guides/delegation/).
         /// </summary>
         public class RemoveActivityRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.RemoveActivityResponse>
         {
@@ -2614,7 +2635,7 @@ namespace Google.Apis.CloudSearch.v1
         /// data that you have indexed from a third party. **Note:** This API requires a standard end user account to
         /// execute. A service account can't perform Query API requests directly; to use a service account to perform
         /// queries, set up [Google Workspace domain-wide delegation of
-        /// authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
+        /// authority](https://developers.google.com/workspace/cloud-search/docs/guides/delegation/).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual SearchRequest Search(Google.Apis.CloudSearch.v1.Data.SearchRequest body)
@@ -2628,7 +2649,7 @@ namespace Google.Apis.CloudSearch.v1
         /// data that you have indexed from a third party. **Note:** This API requires a standard end user account to
         /// execute. A service account can't perform Query API requests directly; to use a service account to perform
         /// queries, set up [Google Workspace domain-wide delegation of
-        /// authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
+        /// authority](https://developers.google.com/workspace/cloud-search/docs/guides/delegation/).
         /// </summary>
         public class SearchRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.SearchResponse>
         {
@@ -2665,7 +2686,7 @@ namespace Google.Apis.CloudSearch.v1
         /// Provides suggestions for autocompleting the query. **Note:** This API requires a standard end user account
         /// to execute. A service account can't perform Query API requests directly; to use a service account to perform
         /// queries, set up [Google Workspace domain-wide delegation of
-        /// authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
+        /// authority](https://developers.google.com/workspace/cloud-search/docs/guides/delegation/).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual SuggestRequest Suggest(Google.Apis.CloudSearch.v1.Data.SuggestRequest body)
@@ -2677,7 +2698,7 @@ namespace Google.Apis.CloudSearch.v1
         /// Provides suggestions for autocompleting the query. **Note:** This API requires a standard end user account
         /// to execute. A service account can't perform Query API requests directly; to use a service account to perform
         /// queries, set up [Google Workspace domain-wide delegation of
-        /// authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
+        /// authority](https://developers.google.com/workspace/cloud-search/docs/guides/delegation/).
         /// </summary>
         public class SuggestRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.SuggestResponse>
         {
@@ -3010,7 +3031,7 @@ namespace Google.Apis.CloudSearch.v1
 
                 /// <summary>
                 /// Only applies to
-                /// [`settings.datasources.patch`](https://developers.google.com/cloud-search/docs/reference/rest/v1/settings.datasources/patch).
+                /// [`settings.datasources.patch`](https://developers.google.com/workspace/cloud-search/docs/reference/rest/v1/settings.datasources/patch).
                 /// Update mask to control which fields to update. Example field paths: `name`, `displayName`. * If
                 /// `update_mask` is non-empty, then only the fields specified in the `update_mask` are updated. * If
                 /// you specify a field in the `update_mask`, but don't specify its value in the source, that field is
@@ -3424,7 +3445,7 @@ namespace Google.Apis.CloudSearch.v1
 
                 /// <summary>
                 /// Only applies to
-                /// [`settings.searchapplications.patch`](https://developers.google.com/cloud-search/docs/reference/rest/v1/settings.searchapplications/patch).
+                /// [`settings.searchapplications.patch`](https://developers.google.com/workspace/cloud-search/docs/reference/rest/v1/settings.searchapplications/patch).
                 /// Update mask to control which fields to update. Example field paths: `search_application.name`,
                 /// `search_application.displayName`. * If `update_mask` is non-empty, then only the fields specified in
                 /// the `update_mask` are updated. * If you specify a field in the `update_mask`, but don't specify its
@@ -3566,7 +3587,7 @@ namespace Google.Apis.CloudSearch.v1
 
                 /// <summary>
                 /// Only applies to
-                /// [`settings.searchapplications.patch`](https://developers.google.com/cloud-search/docs/reference/rest/v1/settings.searchapplications/patch).
+                /// [`settings.searchapplications.patch`](https://developers.google.com/workspace/cloud-search/docs/reference/rest/v1/settings.searchapplications/patch).
                 /// Update mask to control which fields to update. Example field paths: `search_application.name`,
                 /// `search_application.displayName`. * If `update_mask` is non-empty, then only the fields specified in
                 /// the `update_mask` are updated. * If you specify a field in the `update_mask`, but don't specify its
@@ -7663,7 +7684,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// index or delete any queued item with a version value that is less than or equal to the version of the
         /// currently indexed item. The maximum length for this field is 1024 bytes. For information on how item version
         /// affects the deletion process, refer to [Handle revisions after manual
-        /// deletes](https://developers.google.com/cloud-search/docs/guides/operations).
+        /// deletes](https://developers.google.com/workspace/cloud-search/docs/guides/operations).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
@@ -7674,7 +7695,7 @@ namespace Google.Apis.CloudSearch.v1.Data
 
     /// <summary>
     /// Access control list information for the item. For more information see [Map
-    /// ACLs](https://developers.google.com/cloud-search/docs/guides/acls).
+    /// ACLs](https://developers.google.com/workspace/cloud-search/docs/guides/acls).
     /// </summary>
     public class ItemAcl : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8031,6 +8052,14 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>
+        /// Unordered list. Unreachable resources. Populated when the request sets
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8955,7 +8984,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// Indicates that users can perform wildcard search for this property. Only supported for Text properties.
         /// IsReturnable must be true to set this option. In a given datasource maximum of 5 properties can be marked as
         /// is_wildcard_searchable. For more details, see [Define object
-        /// properties](https://developers.google.com/cloud-search/docs/guides/schema-guide#properties)
+        /// properties](https://developers.google.com/workspace/cloud-search/docs/guides/schema-guide#properties)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isWildcardSearchable")]
         public virtual System.Nullable<bool> IsWildcardSearchable { get; set; }
@@ -9112,6 +9141,14 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interpretedQuery")]
         public virtual string InterpretedQuery { get; set; }
+
+        /// <summary>The actual number of results returned by the interpreted query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interpretedQueryActualResultCount")]
+        public virtual System.Nullable<int> InterpretedQueryActualResultCount { get; set; }
+
+        /// <summary>The estimated number of results returned by the interpreted query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interpretedQueryEstimatedResultCount")]
+        public virtual System.Nullable<long> InterpretedQueryEstimatedResultCount { get; set; }
 
         /// <summary>
         /// The reason for interpretation of the query. This field will not be UNSPECIFIED if the interpretation type is
@@ -9735,7 +9772,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The search API request. NEXT ID: 17</summary>
+    /// <summary>The search API request. NEXT ID: 24</summary>
     public class SearchRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -9789,7 +9826,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The search API response. NEXT ID: 17</summary>
+    /// <summary>The search API response. NEXT ID: 19</summary>
     public class SearchResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Debugging information about the response.</summary>
@@ -9842,7 +9879,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Results containing indexed information for a document.</summary>
+    /// <summary>Results containing indexed information for a document. Next ID: 16</summary>
     public class SearchResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -10353,7 +10390,7 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         /// <summary>
         /// Only applies to
-        /// [`settings.datasources.patch`](https://developers.google.com/cloud-search/docs/reference/rest/v1/settings.datasources/patch).
+        /// [`settings.datasources.patch`](https://developers.google.com/workspace/cloud-search/docs/reference/rest/v1/settings.datasources/patch).
         /// Update mask to control which fields to update. Example field paths: `name`, `displayName`. * If
         /// `update_mask` is non-empty, then only the fields specified in the `update_mask` are updated. * If you
         /// specify a field in the `update_mask`, but don't specify its value in the source, that field is cleared. * If
