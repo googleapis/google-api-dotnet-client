@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1144,6 +1144,10 @@ namespace Google.Apis.YouTubeReporting.v1.Data
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readToken")]
         public virtual string ReadToken { get; set; }
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uploadFragmentListCreationInfo")]
+        public virtual string UploadFragmentListCreationInfo { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadMetadataContainer")]
