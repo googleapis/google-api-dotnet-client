@@ -5043,6 +5043,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ultraWidebandState")]
         public virtual string UltraWidebandState { get; set; }
 
+        /// <summary>Optional. Controls whether the user is allowed to add eSIM profiles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInitiatedAddEsimSettings")]
+        public virtual string UserInitiatedAddEsimSettings { get; set; }
+
         /// <summary>Controls current state of Wi-Fi and if user can change its state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiState")]
         public virtual string WifiState { get; set; }
