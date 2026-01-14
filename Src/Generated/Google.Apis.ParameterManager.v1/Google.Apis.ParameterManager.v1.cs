@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -532,7 +532,7 @@ namespace Google.Apis.ParameterManager.v1
                         /// </summary>
                         public enum ViewEnum
                         {
-                            /// <summary>The default / unset value. The API will default to the FULL view..</summary>
+                            /// <summary>The default / unset value. The API will default to the FULL view.</summary>
                             [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
                             VIEWUNSPECIFIED = 0,
 
@@ -622,7 +622,11 @@ namespace Google.Apis.ParameterManager.v1
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
-                        /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListParameterVersions` call. Provide this
+                        /// to retrieve the subsequent page. When paginating, all other parameters provided to
+                        /// `ListParameterVersions` must match the call that provided the page token.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
@@ -1072,7 +1076,11 @@ namespace Google.Apis.ParameterManager.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListParameters` call. Provide this to retrieve
+                    /// the subsequent page. When paginating, all other parameters provided to `ListParameters` must
+                    /// match the call that provided the page token.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
