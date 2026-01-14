@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2433,8 +2433,8 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
     public class Control : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The service controller environment to use. If empty, no control plane feature (like quota and billing) will
-        /// be enabled. The recommended value for most services is servicecontrol.googleapis.com
+        /// The service controller environment to use. If empty, no control plane features (like quota and billing) will
+        /// be enabled. The recommended value for most services is servicecontrol.googleapis.com.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; }
