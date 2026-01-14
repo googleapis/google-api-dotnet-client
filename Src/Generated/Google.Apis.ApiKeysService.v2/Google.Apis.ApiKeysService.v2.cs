@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1207,8 +1207,8 @@ namespace Google.Apis.ApiKeysService.v2.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Output only. A checksum computed by the server based on the current value of the Key resource. This may be
-        /// sent on update and delete requests to ensure the client has an up-to-date value before proceeding. See
+        /// A checksum computed by the server based on the current value of the Key resource. This may be sent on update
+        /// and delete requests to ensure the client has an up-to-date value before proceeding. See
         /// https://google.aip.dev/154.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
