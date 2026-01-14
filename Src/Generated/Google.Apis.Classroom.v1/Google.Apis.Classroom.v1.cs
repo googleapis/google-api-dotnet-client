@@ -441,6 +441,7 @@ namespace Google.Apis.Classroom.v1
             CourseWork = new CourseWorkResource(service);
             CourseWorkMaterials = new CourseWorkMaterialsResource(service);
             Posts = new PostsResource(service);
+            StudentGroups = new StudentGroupsResource(service);
             Students = new StudentsResource(service);
             Teachers = new TeachersResource(service);
             Topics = new TopicsResource(service);
@@ -3521,9 +3522,9 @@ namespace Google.Apis.Classroom.v1
 
                 /// <summary>
                 /// Returns a list of student submissions that the requester is permitted to view, factoring in the
-                /// OAuth scopes of the request. `-` may be specified as the `course_work_id` to include student
-                /// submissions for multiple course work items. Course students may only view their own work. Course
-                /// teachers and domain administrators may view all student submissions. This method returns the
+                /// OAuth scopes of the request. A hyphen (`-`) may be specified as the `course_work_id` to include
+                /// student submissions for multiple course work items. Course students may only view their own work.
+                /// Course teachers and domain administrators may view all student submissions. This method returns the
                 /// following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the
                 /// requested course or course work, or for access errors. * `INVALID_ARGUMENT` if the request is
                 /// malformed. * `NOT_FOUND` if the requested course does not exist.
@@ -3543,9 +3544,9 @@ namespace Google.Apis.Classroom.v1
 
                 /// <summary>
                 /// Returns a list of student submissions that the requester is permitted to view, factoring in the
-                /// OAuth scopes of the request. `-` may be specified as the `course_work_id` to include student
-                /// submissions for multiple course work items. Course students may only view their own work. Course
-                /// teachers and domain administrators may view all student submissions. This method returns the
+                /// OAuth scopes of the request. A hyphen (`-`) may be specified as the `course_work_id` to include
+                /// student submissions for multiple course work items. Course students may only view their own work.
+                /// Course teachers and domain administrators may view all student submissions. This method returns the
                 /// following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the
                 /// requested course or course work, or for access errors. * `INVALID_ARGUMENT` if the request is
                 /// malformed. * `NOT_FOUND` if the requested course does not exist.
@@ -7391,6 +7392,621 @@ namespace Google.Apis.Classroom.v1
                     RequestParameters.Add("itemId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "itemId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the StudentGroups resource.</summary>
+        public virtual StudentGroupsResource StudentGroups { get; }
+
+        /// <summary>The "studentGroups" collection of methods.</summary>
+        public class StudentGroupsResource
+        {
+            private const string Resource = "studentGroups";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public StudentGroupsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                StudentGroupMembers = new StudentGroupMembersResource(service);
+            }
+
+            /// <summary>Gets the StudentGroupMembers resource.</summary>
+            public virtual StudentGroupMembersResource StudentGroupMembers { get; }
+
+            /// <summary>The "studentGroupMembers" collection of methods.</summary>
+            public class StudentGroupMembersResource
+            {
+                private const string Resource = "studentGroupMembers";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public StudentGroupMembersResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Creates a student group member for a student group. This method returns the following error codes: *
+                /// `PERMISSION_DENIED` if the requesting user is not permitted to create the student group or member
+                /// for access errors. * `NOT_FOUND` if the student group does not exist or the user does not have
+                /// access to the student group. * `ALREADY_EXISTS` if the student group member already exists. *
+                /// `FAILED_PRECONDITION` if attempting to add a member to a student group that has reached its member
+                /// limit.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="courseId">Required. The identifier of the course.</param>
+                /// <param name="studentGroupId">Required. The identifier of the student group.</param>
+                public virtual CreateRequest Create(Google.Apis.Classroom.v1.Data.StudentGroupMember body, string courseId, string studentGroupId)
+                {
+                    return new CreateRequest(this.service, body, courseId, studentGroupId);
+                }
+
+                /// <summary>
+                /// Creates a student group member for a student group. This method returns the following error codes: *
+                /// `PERMISSION_DENIED` if the requesting user is not permitted to create the student group or member
+                /// for access errors. * `NOT_FOUND` if the student group does not exist or the user does not have
+                /// access to the student group. * `ALREADY_EXISTS` if the student group member already exists. *
+                /// `FAILED_PRECONDITION` if attempting to add a member to a student group that has reached its member
+                /// limit.
+                /// </summary>
+                public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.StudentGroupMember>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.StudentGroupMember body, string courseId, string studentGroupId) : base(service)
+                    {
+                        CourseId = courseId;
+                        StudentGroupId = studentGroupId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The identifier of the course.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseId { get; private set; }
+
+                    /// <summary>Required. The identifier of the student group.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("studentGroupId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string StudentGroupId { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Classroom.v1.Data.StudentGroupMember Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/courses/{courseId}/studentGroups/{studentGroupId}/studentGroupMembers";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("studentGroupId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "studentGroupId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes a student group member. This method returns the following error codes: * `PERMISSION_DENIED`
+                /// if the requesting user is not permitted to delete the requested student group member or for access
+                /// errors. * `NOT_FOUND` if the student group member does not exist or the user does not have access to
+                /// the student group.
+                /// </summary>
+                /// <param name="courseId">
+                /// Required. The identifier of the course containing the relevant student group.
+                /// </param>
+                /// <param name="studentGroupId">
+                /// Required. The identifier of the student group containing the student group member to delete.
+                /// </param>
+                /// <param name="userId">Required. The identifier of the student group member to delete.</param>
+                public virtual DeleteRequest Delete(string courseId, string studentGroupId, string userId)
+                {
+                    return new DeleteRequest(this.service, courseId, studentGroupId, userId);
+                }
+
+                /// <summary>
+                /// Deletes a student group member. This method returns the following error codes: * `PERMISSION_DENIED`
+                /// if the requesting user is not permitted to delete the requested student group member or for access
+                /// errors. * `NOT_FOUND` if the student group member does not exist or the user does not have access to
+                /// the student group.
+                /// </summary>
+                public class DeleteRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string courseId, string studentGroupId, string userId) : base(service)
+                    {
+                        CourseId = courseId;
+                        StudentGroupId = studentGroupId;
+                        UserId = userId;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The identifier of the course containing the relevant student group.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseId { get; private set; }
+
+                    /// <summary>
+                    /// Required. The identifier of the student group containing the student group member to delete.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("studentGroupId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string StudentGroupId { get; private set; }
+
+                    /// <summary>Required. The identifier of the student group member to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string UserId { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/courses/{courseId}/studentGroups/{studentGroupId}/studentGroupMembers/{userId}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("studentGroupId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "studentGroupId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns a list of students in a group. This method returns the following error codes: * `NOT_FOUND`
+                /// if the course or student group does not exist.
+                /// </summary>
+                /// <param name="courseId">Required. The identifier of the course.</param>
+                /// <param name="studentGroupId">Required. The identifier of the student group.</param>
+                public virtual ListRequest List(string courseId, string studentGroupId)
+                {
+                    return new ListRequest(this.service, courseId, studentGroupId);
+                }
+
+                /// <summary>
+                /// Returns a list of students in a group. This method returns the following error codes: * `NOT_FOUND`
+                /// if the course or student group does not exist.
+                /// </summary>
+                public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListStudentGroupMembersResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string courseId, string studentGroupId) : base(service)
+                    {
+                        CourseId = courseId;
+                        StudentGroupId = studentGroupId;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The identifier of the course.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseId { get; private set; }
+
+                    /// <summary>Required. The identifier of the student group.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("studentGroupId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string StudentGroupId { get; private set; }
+
+                    /// <summary>
+                    /// Maximum number of items to return. Zero or unspecified indicates that the server may assign a
+                    /// maximum. The server may return fewer than the specified number of results.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// nextPageToken value returned from a previous list call, indicating that the subsequent page of
+                    /// results should be returned. The list request must be otherwise identical to the one that
+                    /// resulted in this token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/courses/{courseId}/studentGroups/{studentGroupId}/studentGroupMembers";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("studentGroupId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "studentGroupId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>
+            /// Creates a student group for a course. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to create the student group or for access
+            /// errors. * `NOT_FOUND` if the course does not exist or the requesting user doesn't have access to the
+            /// course. * `FAILED_PRECONDITION` if creating the student group would exceed the maximum number of student
+            /// groups per course.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="courseId">Required. The identifier of the course.</param>
+            public virtual CreateRequest Create(Google.Apis.Classroom.v1.Data.StudentGroup body, string courseId)
+            {
+                return new CreateRequest(this.service, body, courseId);
+            }
+
+            /// <summary>
+            /// Creates a student group for a course. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to create the student group or for access
+            /// errors. * `NOT_FOUND` if the course does not exist or the requesting user doesn't have access to the
+            /// course. * `FAILED_PRECONDITION` if creating the student group would exceed the maximum number of student
+            /// groups per course.
+            /// </summary>
+            public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.StudentGroup>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.StudentGroup body, string courseId) : base(service)
+                {
+                    CourseId = courseId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The identifier of the course.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string CourseId { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Classroom.v1.Data.StudentGroup Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/courses/{courseId}/studentGroups";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Deletes a student group. This method returns the following error codes: * `PERMISSION_DENIED` if the
+            /// requesting user is not permitted to delete the requested student group or for access errors. *
+            /// `NOT_FOUND` if the student group does not exist or the user does not have access to the student group.
+            /// </summary>
+            /// <param name="courseId">
+            /// Required. The identifier of the course containing the student group to delete.
+            /// </param>
+            /// <param name="id">Required. The identifier of the student group to delete.</param>
+            public virtual DeleteRequest Delete(string courseId, string id)
+            {
+                return new DeleteRequest(this.service, courseId, id);
+            }
+
+            /// <summary>
+            /// Deletes a student group. This method returns the following error codes: * `PERMISSION_DENIED` if the
+            /// requesting user is not permitted to delete the requested student group or for access errors. *
+            /// `NOT_FOUND` if the student group does not exist or the user does not have access to the student group.
+            /// </summary>
+            public class DeleteRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string courseId, string id) : base(service)
+                {
+                    CourseId = courseId;
+                    Id = id;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The identifier of the course containing the student group to delete.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string CourseId { get; private set; }
+
+                /// <summary>Required. The identifier of the student group to delete.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Id { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/courses/{courseId}/studentGroups/{id}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Returns a list of groups in a course. This method returns the following error codes: * `NOT_FOUND` if
+            /// the course does not exist.
+            /// </summary>
+            /// <param name="courseId">Required. The identifier of the course.</param>
+            public virtual ListRequest List(string courseId)
+            {
+                return new ListRequest(this.service, courseId);
+            }
+
+            /// <summary>
+            /// Returns a list of groups in a course. This method returns the following error codes: * `NOT_FOUND` if
+            /// the course does not exist.
+            /// </summary>
+            public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListStudentGroupsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string courseId) : base(service)
+                {
+                    CourseId = courseId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The identifier of the course.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string CourseId { get; private set; }
+
+                /// <summary>
+                /// Maximum number of items to return. Zero or unspecified indicates that the server may assign a
+                /// maximum, which is currently set to 75 items. The server may return fewer than the specified number
+                /// of results.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// nextPageToken value returned from a previous list call, indicating that the subsequent page of
+                /// results should be returned. The list request must be otherwise identical to the one that resulted in
+                /// this token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/courses/{courseId}/studentGroups";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Updates one or more fields in a student group. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to modify the requested student group or for
+            /// access errors. * `NOT_FOUND` if the student group does not exist or the user does not have access to the
+            /// student group. * `INVALID_ARGUMENT` if invalid fields are specified in the update mask or if no update
+            /// mask is supplied.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="courseId">Required. Identifier of the course.</param>
+            /// <param name="id">Required. Identifier of the student group.</param>
+            public virtual PatchRequest Patch(Google.Apis.Classroom.v1.Data.StudentGroup body, string courseId, string id)
+            {
+                return new PatchRequest(this.service, body, courseId, id);
+            }
+
+            /// <summary>
+            /// Updates one or more fields in a student group. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to modify the requested student group or for
+            /// access errors. * `NOT_FOUND` if the student group does not exist or the user does not have access to the
+            /// student group. * `INVALID_ARGUMENT` if invalid fields are specified in the update mask or if no update
+            /// mask is supplied.
+            /// </summary>
+            public class PatchRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.StudentGroup>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.StudentGroup body, string courseId, string id) : base(service)
+                {
+                    CourseId = courseId;
+                    Id = id;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Identifier of the course.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string CourseId { get; private set; }
+
+                /// <summary>Required. Identifier of the student group.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Id { get; private set; }
+
+                /// <summary>
+                /// Required. Mask that identifies which fields on the student group to update. This field is required
+                /// to do an update. The update fails if invalid fields are specified. The following fields can be
+                /// specified by teachers: * `title`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Classroom.v1.Data.StudentGroup Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/courses/{courseId}/studentGroups/{id}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -12348,6 +12964,40 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response when listing students in a group.</summary>
+    public class ListStudentGroupMembersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Token identifying the next page of results to return. If empty, no further results are available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The student group members.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studentGroupMembers")]
+        public virtual System.Collections.Generic.IList<StudentGroupMember> StudentGroupMembers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response when listing student groups.</summary>
+    public class ListStudentGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Token identifying the next page of results to return. If empty, no further results are available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The student groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studentGroups")]
+        public virtual System.Collections.Generic.IList<StudentGroup> StudentGroups { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response when listing student submissions.</summary>
     public class ListStudentSubmissionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12919,6 +13569,44 @@ namespace Google.Apis.Classroom.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("submissionId")]
         public virtual string SubmissionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A student group in a course.</summary>
+    public class StudentGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The identifier of the course.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("courseId")]
+        public virtual string CourseId { get; set; }
+
+        /// <summary>The identifier of the student group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The title of the student group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A student member in a student group.</summary>
+    public class StudentGroupMember : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The identifier of the course.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("courseId")]
+        public virtual string CourseId { get; set; }
+
+        /// <summary>The identifier of the student group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studentGroupId")]
+        public virtual string StudentGroupId { get; set; }
+
+        /// <summary>Identifier of the student.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
