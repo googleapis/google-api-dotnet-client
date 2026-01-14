@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -325,6 +325,170 @@ namespace Google.Apis.Dataform.v1beta1
                     this.service = service;
                 }
 
+                /// <summary>Creates a new Folder in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The location in which to create the Folder. Must be in the format
+                /// `projects/*/locations/*`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Dataform.v1beta1.Data.Folder body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new Folder in a given project and location.</summary>
+                public class CreateRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.Folder>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataform.v1beta1.Data.Folder body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The location in which to create the Folder. Must be in the format
+                    /// `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The ID to use for the Folder, which will become the final component of the Folder's resource
+                    /// name.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("folderId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string FolderId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataform.v1beta1.Data.Folder Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/folders";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("folderId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "folderId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single Folder.</summary>
+                /// <param name="name">Required. The Folder's name.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single Folder.</summary>
+                public class DeleteRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The Folder's name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/folders/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Fetches a single Folder.</summary>
+                /// <param name="name">Required. The Folder's name.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Fetches a single Folder.</summary>
+                public class GetRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.Folder>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The Folder's name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/folders/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
                 /// does not have a policy set.
@@ -397,6 +561,240 @@ namespace Google.Apis.Dataform.v1beta1
                         RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
                         {
                             Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Moves a Folder to a new Folder, TeamFolder, or the root location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The full resource name of the Folder to move.</param>
+                public virtual MoveRequest Move(Google.Apis.Dataform.v1beta1.Data.MoveFolderRequest body, string name)
+                {
+                    return new MoveRequest(this.service, body, name);
+                }
+
+                /// <summary>Moves a Folder to a new Folder, TeamFolder, or the root location.</summary>
+                public class MoveRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Move request.</summary>
+                    public MoveRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataform.v1beta1.Data.MoveFolderRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The full resource name of the Folder to move.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataform.v1beta1.Data.MoveFolderRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "move";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:move";
+
+                    /// <summary>Initializes Move parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/folders/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Updates a single Folder.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Identifier. The Folder's name.</param>
+                public virtual PatchRequest Patch(Google.Apis.Dataform.v1beta1.Data.Folder body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a single Folder.</summary>
+                public class PatchRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.Folder>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataform.v1beta1.Data.Folder body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Identifier. The Folder's name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Specifies the fields to be updated in the Folder. If left unset, all fields that can
+                    /// be updated, will be updated. A few fields cannot be updated and will be ignored if specified in
+                    /// the update_mask (e.g. parent_name, team_folder_name).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataform.v1beta1.Data.Folder Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/folders/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Returns the contents of a given Folder.</summary>
+                /// <param name="folder">
+                /// Required. Name of the folder whose contents to list. Format: projects/*/locations/*/folders/*
+                /// </param>
+                public virtual QueryFolderContentsRequest QueryFolderContents(string folder)
+                {
+                    return new QueryFolderContentsRequest(this.service, folder);
+                }
+
+                /// <summary>Returns the contents of a given Folder.</summary>
+                public class QueryFolderContentsRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.QueryFolderContentsResponse>
+                {
+                    /// <summary>Constructs a new QueryFolderContents request.</summary>
+                    public QueryFolderContentsRequest(Google.Apis.Services.IClientService service, string folder) : base(service)
+                    {
+                        Folder = folder;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the folder whose contents to list. Format: projects/*/locations/*/folders/*
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Folder { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Optional filtering for the returned list. Filtering is currently only supported on the
+                    /// `display_name` field. Example: - `filter="display_name="MyFolder""`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Field to additionally sort results by. Will order Folders before Repositories, and
+                    /// then by `order_by` in ascending order. Supported keywords: display_name (default), create_time,
+                    /// last_modified_time. Examples: - `orderBy="display_name"` - `orderBy="display_name desc"`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Maximum number of paths to return. The server may return fewer items than requested.
+                    /// If unspecified, the server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. Page token received from a previous `QueryFolderContents` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `QueryFolderContents`, with the exception of `page_size`, must match the call that provided the
+                    /// page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "queryFolderContents";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+folder}:queryFolderContents";
+
+                    /// <summary>Initializes QueryFolderContents parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "folder",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/folders/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4408,6 +4806,59 @@ namespace Google.Apis.Dataform.v1beta1
                     }
                 }
 
+                /// <summary>Moves a Repository to a new location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The full resource name of the repository to move.</param>
+                public virtual MoveRequest Move(Google.Apis.Dataform.v1beta1.Data.MoveRepositoryRequest body, string name)
+                {
+                    return new MoveRequest(this.service, body, name);
+                }
+
+                /// <summary>Moves a Repository to a new location.</summary>
+                public class MoveRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Move request.</summary>
+                    public MoveRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataform.v1beta1.Data.MoveRepositoryRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The full resource name of the repository to move.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataform.v1beta1.Data.MoveRepositoryRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "move";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:move";
+
+                    /// <summary>Initializes Move parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Updates a single Repository. **Note:** *This method does not fully implement
                 /// [AIP/134](https://google.aip.dev/134). The wildcard entry (\*) is treated as a bad request, and when
@@ -4830,6 +5281,170 @@ namespace Google.Apis.Dataform.v1beta1
                     this.service = service;
                 }
 
+                /// <summary>Creates a new TeamFolder in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The location in which to create the TeamFolder. Must be in the format
+                /// `projects/*/locations/*`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Dataform.v1beta1.Data.TeamFolder body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new TeamFolder in a given project and location.</summary>
+                public class CreateRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.TeamFolder>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataform.v1beta1.Data.TeamFolder body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The location in which to create the TeamFolder. Must be in the format
+                    /// `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The ID to use for the TeamFolder, which will become the final component of the TeamFolder's
+                    /// resource name.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("teamFolderId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string TeamFolderId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataform.v1beta1.Data.TeamFolder Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/teamFolders";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("teamFolderId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "teamFolderId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single TeamFolder.</summary>
+                /// <param name="name">Required. The TeamFolder's name.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single TeamFolder.</summary>
+                public class DeleteRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The TeamFolder's name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/teamFolders/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Fetches a single TeamFolder.</summary>
+                /// <param name="name">Required. The TeamFolder's name.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Fetches a single TeamFolder.</summary>
+                public class GetRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.TeamFolder>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The TeamFolder's name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/teamFolders/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
                 /// does not have a policy set.
@@ -4902,6 +5517,306 @@ namespace Google.Apis.Dataform.v1beta1
                         RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
                         {
                             Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a single TeamFolder.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Identifier. The TeamFolder's name.</param>
+                public virtual PatchRequest Patch(Google.Apis.Dataform.v1beta1.Data.TeamFolder body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a single TeamFolder.</summary>
+                public class PatchRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.TeamFolder>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataform.v1beta1.Data.TeamFolder body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Identifier. The TeamFolder's name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Specifies the fields to be updated in the Folder. If left unset, all fields will be
+                    /// updated.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataform.v1beta1.Data.TeamFolder Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/teamFolders/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Returns the contents of a given TeamFolder.</summary>
+                /// <param name="teamFolder">
+                /// Required. Name of the team_folder whose contents to list. Format:
+                /// `projects/*/locations/*/teamFolders/*`.
+                /// </param>
+                public virtual QueryContentsRequest QueryContents(string teamFolder)
+                {
+                    return new QueryContentsRequest(this.service, teamFolder);
+                }
+
+                /// <summary>Returns the contents of a given TeamFolder.</summary>
+                public class QueryContentsRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.QueryTeamFolderContentsResponse>
+                {
+                    /// <summary>Constructs a new QueryContents request.</summary>
+                    public QueryContentsRequest(Google.Apis.Services.IClientService service, string teamFolder) : base(service)
+                    {
+                        TeamFolder = teamFolder;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the team_folder whose contents to list. Format:
+                    /// `projects/*/locations/*/teamFolders/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("teamFolder", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string TeamFolder { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Optional filtering for the returned list. Filtering is currently only supported on the
+                    /// `display_name` field. Example: - `filter="display_name="MyFolder""`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Field to additionally sort results by. Will order Folders before Repositories, and
+                    /// then by `order_by` in ascending order. Supported keywords: `display_name` (default),
+                    /// `create_time`, last_modified_time. Examples: - `orderBy="display_name"` - `orderBy="display_name
+                    /// desc"`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Maximum number of paths to return. The server may return fewer items than requested.
+                    /// If unspecified, the server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. Page token received from a previous `QueryTeamFolderContents` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `QueryTeamFolderContents`, with the exception of `page_size`, must match the call that provided
+                    /// the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "queryContents";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+teamFolder}:queryContents";
+
+                    /// <summary>Initializes QueryContents parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("teamFolder", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "teamFolder",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/teamFolders/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns all TeamFolders in a given location that the caller has access to and match the provided
+                /// filter.
+                /// </summary>
+                /// <param name="location">
+                /// Required. Location in which to query TeamFolders. Format: `projects/*/locations/*`.
+                /// </param>
+                public virtual SearchRequest Search(string location)
+                {
+                    return new SearchRequest(this.service, location);
+                }
+
+                /// <summary>
+                /// Returns all TeamFolders in a given location that the caller has access to and match the provided
+                /// filter.
+                /// </summary>
+                public class SearchRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.SearchTeamFoldersResponse>
+                {
+                    /// <summary>Constructs a new Search request.</summary>
+                    public SearchRequest(Google.Apis.Services.IClientService service, string location) : base(service)
+                    {
+                        Location = location;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Location in which to query TeamFolders. Format: `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Location { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Optional filtering for the returned list. Filtering is currently only supported on the
+                    /// `display_name` field. Example: - `filter="display_name="MyFolder""`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Field to additionally sort results by. Supported keywords: `display_name` (default),
+                    /// `create_time`, `last_modified_time`. Examples: - `orderBy="display_name"` -
+                    /// `orderBy="display_name desc"`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Maximum number of TeamFolders to return. The server may return fewer items than
+                    /// requested. If unspecified, the server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. Page token received from a previous `SearchTeamFolders` call. Provide this to retrieve
+                    /// the subsequent page. When paginating, all other parameters provided to `SearchTeamFolders`, with
+                    /// the exception of `page_size`, must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "search";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+location}/teamFolders:search";
+
+                    /// <summary>Initializes Search parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "location",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -5219,6 +6134,124 @@ namespace Google.Apis.Dataform.v1beta1
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Returns the contents of a caller's root folder in a given location. The root folder contains all
+            /// resources that are created by the user and not contained in any other folder.
+            /// </summary>
+            /// <param name="location">
+            /// Required. Location of the user root folder whose contents to list. Format: projects/*/locations/*
+            /// </param>
+            public virtual QueryUserRootContentsRequest QueryUserRootContents(string location)
+            {
+                return new QueryUserRootContentsRequest(this.service, location);
+            }
+
+            /// <summary>
+            /// Returns the contents of a caller's root folder in a given location. The root folder contains all
+            /// resources that are created by the user and not contained in any other folder.
+            /// </summary>
+            public class QueryUserRootContentsRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.QueryUserRootContentsResponse>
+            {
+                /// <summary>Constructs a new QueryUserRootContents request.</summary>
+                public QueryUserRootContentsRequest(Google.Apis.Services.IClientService service, string location) : base(service)
+                {
+                    Location = location;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Location of the user root folder whose contents to list. Format: projects/*/locations/*
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Location { get; private set; }
+
+                /// <summary>
+                /// Optional. Optional filtering for the returned list. Filtering is currently only supported on the
+                /// `display_name` field. Example: - `filter="display_name="MyFolder""`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Optional. Field to additionally sort results by. Will order Folders before Repositories, and then by
+                /// `order_by` in ascending order. Supported keywords: display_name (default), created_at,
+                /// last_modified_at. Examples: - `orderBy="display_name"` - `orderBy="display_name desc"`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>
+                /// Optional. Maximum number of paths to return. The server may return fewer items than requested. If
+                /// unspecified, the server will pick an appropriate default.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. Page token received from a previous `QueryUserRootContents` call. Provide this to retrieve
+                /// the subsequent page. When paginating, all other parameters provided to
+                /// `QueryUserRootFolderContents`, with the exception of `page_size`, must match the call that provided
+                /// the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "queryUserRootContents";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+location}:queryUserRootContents";
+
+                /// <summary>Initializes QueryUserRootContents parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -6279,6 +7312,142 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents a Dataform Folder. This is a resource that is used to organize Files and other Folders and provide
+    /// hierarchical access controls.
+    /// </summary>
+    public class Folder : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The containing Folder resource name. This should take the format:
+        /// projects/{project}/locations/{location}/folders/{folder},
+        /// projects/{project}/locations/{location}/teamFolders/{teamFolder}, or just
+        /// projects/{project}/locations/{location} if this is a root Folder. This field can only be updated through
+        /// MoveFolder.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containingFolder")]
+        public virtual string ContainingFolder { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp of when the Folder was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The IAM principal identifier of the creator of the Folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creatorIamPrincipal")]
+        public virtual string CreatorIamPrincipal { get; set; }
+
+        /// <summary>Required. The Folder's user-friendly name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. All the metadata information that is used internally to serve the resource. For example:
+        /// timestamps, flags, status fields, etc. The format of this field is a JSON string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalMetadata")]
+        public virtual string InternalMetadata { get; set; }
+
+        /// <summary>Identifier. The Folder's name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the TeamFolder that this Folder is associated with. This should take the
+        /// format: projects/{project}/locations/{location}/teamFolders/{teamFolder}. If this is not set, the Folder is
+        /// not associated with a TeamFolder and is a UserFolder.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("teamFolderName")]
+        public virtual string TeamFolderName { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp of when the Folder was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a single content entry.</summary>
+    public class FolderContentsEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A subfolder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("folder")]
+        public virtual Folder Folder { get; set; }
+
+        /// <summary>A repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repository")]
+        public virtual Repository Repository { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Controls Git remote configuration for a repository.</summary>
     public class GitRemoteSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6826,6 +7995,36 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>`MoveFolder` request message.</summary>
+    public class MoveFolderRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the Folder, TeamFolder, or root location to move the Folder to. Can be in the format
+        /// of: - "" to move into the root User folder - `projects/*/locations/*/folders/*` -
+        /// `projects/*/locations/*/teamFolders/*`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationContainingFolder")]
+        public virtual string DestinationContainingFolder { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>`MoveRepository` request message.</summary>
+    public class MoveRepositoryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the Folder, TeamFolder, or root location to move the repository to. Can be in the
+        /// format of: - "" to move into the root User folder - `projects/*/locations/*/folders/*` -
+        /// `projects/*/locations/*/teamFolders/*`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationContainingFolder")]
+        public virtual string DestinationContainingFolder { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a notebook.</summary>
     public class Notebook : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7272,12 +8471,66 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>`QueryFolderContents` response message.</summary>
+    public class QueryFolderContentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of entries in the folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entries")]
+        public virtual System.Collections.Generic.IList<FolderContentsEntry> Entries { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>`QueryRepositoryDirectoryContents` response message.</summary>
     public class QueryRepositoryDirectoryContentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of entries in the directory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directoryEntries")]
         public virtual System.Collections.Generic.IList<DirectoryEntry> DirectoryEntries { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>`QueryTeamFolderContents` response message.</summary>
+    public class QueryTeamFolderContentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of entries in the TeamFolder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entries")]
+        public virtual System.Collections.Generic.IList<TeamFolderContentsEntry> Entries { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>`QueryUserRootContents` response message.</summary>
+    public class QueryUserRootContentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of entries in the folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entries")]
+        public virtual System.Collections.Generic.IList<RootContentsEntry> Entries { get; set; }
 
         /// <summary>
         /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
@@ -7553,6 +8806,14 @@ namespace Google.Apis.Dataform.v1beta1.Data
     /// <summary>Represents a Dataform Git repository.</summary>
     public class Repository : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The name of the containing folder of the repository. The field is immutable and it can be modified
+        /// via a MoveRepository operation. Format: `projects/*/locations/*/folders/*`. or
+        /// `projects/*/locations/*/teamFolders/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containingFolder")]
+        public virtual string ContainingFolder { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -7649,6 +8910,14 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual System.Nullable<bool> SetAuthenticatedUserAdmin { get; set; }
 
         /// <summary>
+        /// Output only. The resource name of the TeamFolder that this Repository is associated with. This should take
+        /// the format: projects/{project}/locations/{location}/teamFolders/{teamFolder}. If this is not set, the
+        /// Repository is not associated with a TeamFolder.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("teamFolderName")]
+        public virtual string TeamFolderName { get; set; }
+
+        /// <summary>
         /// Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that
         /// are specified in dataform.json when creating workspace-scoped compilation results. See documentation for
         /// `WorkspaceCompilationOverrides` for more information.
@@ -7681,6 +8950,21 @@ namespace Google.Apis.Dataform.v1beta1.Data
     /// <summary>`ResetWorkspaceChanges` response message.</summary>
     public class ResetWorkspaceChangesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a single content entry.</summary>
+    public class RootContentsEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A subfolder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("folder")]
+        public virtual Folder Folder { get; set; }
+
+        /// <summary>A repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repository")]
+        public virtual Repository Repository { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7834,6 +9118,24 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>`SearchTeamFolders` response message.</summary>
+    public class SearchTeamFoldersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of TeamFolders that match the search query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<TeamFolderSearchResult> Results { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for `SetIamPolicy` method.</summary>
     public class SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7941,6 +9243,136 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// <summary>Optional. The action's schema (BigQuery dataset ID), within `database`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual string Schema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a Dataform TeamFolder. This is a resource that sits at the project level and is used to organize
+    /// Repositories and Folders with hierarchical access controls. They provide a team context and stricter access
+    /// controls.
+    /// </summary>
+    public class TeamFolder : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp of when the TeamFolder was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The IAM principal identifier of the creator of the TeamFolder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creatorIamPrincipal")]
+        public virtual string CreatorIamPrincipal { get; set; }
+
+        /// <summary>Required. The TeamFolder's user-friendly name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. All the metadata information that is used internally to serve the resource. For example:
+        /// timestamps, flags, status fields, etc. The format of this field is a JSON string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalMetadata")]
+        public virtual string InternalMetadata { get; set; }
+
+        /// <summary>Identifier. The TeamFolder's name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp of when the TeamFolder was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a single content entry.</summary>
+    public class TeamFolderContentsEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A subfolder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("folder")]
+        public virtual Folder Folder { get; set; }
+
+        /// <summary>A repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repository")]
+        public virtual Repository Repository { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a single content entry.</summary>
+    public class TeamFolderSearchResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A TeamFolder resource that is in the project / location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("teamFolder")]
+        public virtual TeamFolder TeamFolder { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8275,6 +9707,13 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataEncryptionState")]
         public virtual DataEncryptionState DataEncryptionState { get; set; }
+
+        /// <summary>
+        /// Optional. If set to true, workspaces will not be moved if its linked Repository is moved. Instead, it will
+        /// be deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableMoves")]
+        public virtual System.Nullable<bool> DisableMoves { get; set; }
 
         /// <summary>
         /// Output only. All the metadata information that is used internally to serve the resource. For example:
