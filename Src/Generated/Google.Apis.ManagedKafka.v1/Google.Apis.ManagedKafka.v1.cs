@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -985,6 +985,13 @@ namespace Google.Apis.ManagedKafka.v1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
+                        /// Optional. Filter expression for the result. Only supports filtering by topic name as a key
+                        /// in the `topics` map.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
                         /// Optional. The maximum number of consumer groups to return. The service may return fewer than
                         /// this value. If unset or zero, all consumer groups for the parent is returned.
                         /// </summary>
@@ -1049,6 +1056,14 @@ namespace Google.Apis.ManagedKafka.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                             RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                             {
