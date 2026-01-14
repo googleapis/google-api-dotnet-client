@@ -18201,6 +18201,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conversationMeasure")]
         public virtual GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasure ConversationMeasure { get; set; }
 
+        /// <summary>The measure related to dialogflow interactions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowInteractionMeasure")]
+        public virtual GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure DialogflowInteractionMeasure { get; set; }
+
         /// <summary>
         /// The interval that this data point represents. * If this is the total data point, the interval is [starting
         /// create time, ending create time) from the request. * If this a data point from the time series, the interval
@@ -18216,6 +18220,60 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>The measure related to conversations.</summary>
     public class GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasure : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The number of conversations that were assigned to an AA human supervisor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aaSupervisorAssignedConversationsCount")]
+        public virtual System.Nullable<int> AaSupervisorAssignedConversationsCount { get; set; }
+
+        /// <summary>
+        /// The number of conversations that were dropped, i.e. escalated but not assigned to an AA human supervisor.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aaSupervisorDroppedConversationsCount")]
+        public virtual System.Nullable<int> AaSupervisorDroppedConversationsCount { get; set; }
+
+        /// <summary>
+        /// The number of conversations that were escalated to an AA human supervisor for intervention.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aaSupervisorEscalatedConversationsCount")]
+        public virtual System.Nullable<int> AaSupervisorEscalatedConversationsCount { get; set; }
+
+        /// <summary>The number of conversations scanned by the AA human supervisor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aaSupervisorMonitoredConversationsCount")]
+        public virtual System.Nullable<int> AaSupervisorMonitoredConversationsCount { get; set; }
+
+        /// <summary>The number of conversations transferred to a human agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aaSupervisorTransferredToHumanAgentConvCount")]
+        public virtual System.Nullable<int> AaSupervisorTransferredToHumanAgentConvCount { get; set; }
+
+        /// <summary>Count of agent messages that triggered an Ai Coach Suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiCoachSuggestionAgentMessageTriggerCount")]
+        public virtual System.Nullable<int> AiCoachSuggestionAgentMessageTriggerCount { get; set; }
+
+        /// <summary>Count of Ai Coach Suggestion that has been used by agents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiCoachSuggestionAgentUsageCount")]
+        public virtual System.Nullable<int> AiCoachSuggestionAgentUsageCount { get; set; }
+
+        /// <summary>Proportion of Ai Coach Suggestion that has been used by agents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiCoachSuggestionAgentUsageRatio")]
+        public virtual System.Nullable<double> AiCoachSuggestionAgentUsageRatio { get; set; }
+
+        /// <summary>Count of customer messages that triggered an Ai Coach Suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiCoachSuggestionCustomerMessageTriggerCount")]
+        public virtual System.Nullable<int> AiCoachSuggestionCustomerMessageTriggerCount { get; set; }
+
+        /// <summary>Proportion of customer messages that triggered an Ai Coach Suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiCoachSuggestionCustomerMessageTriggerRatio")]
+        public virtual System.Nullable<double> AiCoachSuggestionCustomerMessageTriggerRatio { get; set; }
+
+        /// <summary>Count of end_of_utterance trigger event messages that triggered an Ai Coach Suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiCoachSuggestionMessageTriggerCount")]
+        public virtual System.Nullable<int> AiCoachSuggestionMessageTriggerCount { get; set; }
+
+        /// <summary>
+        /// Proportion of end_of_utterance trigger event messages that triggered an Ai Coach Suggestion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiCoachSuggestionMessageTriggerRatio")]
+        public virtual System.Nullable<double> AiCoachSuggestionMessageTriggerRatio { get; set; }
+
         /// <summary>The average agent's sentiment score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageAgentSentimentScore")]
         public virtual System.Nullable<float> AverageAgentSentimentScore { get; set; }
@@ -18252,17 +18310,195 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("averageSilencePercentage")]
         public virtual System.Nullable<float> AverageSilencePercentage { get; set; }
 
+        /// <summary>
+        /// Average edit distance of the summarization suggestions. Edit distance (also called as levenshtein distance)
+        /// is calculated by summing up number of insertions, deletions and substitutions required to transform the
+        /// summization feedback to the original summary suggestion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageSummarizationSuggestionEditDistance")]
+        public virtual System.Nullable<double> AverageSummarizationSuggestionEditDistance { get; set; }
+
+        /// <summary>
+        /// Normalized Average edit distance of the summarization suggestions. Edit distance (also called as levenshtein
+        /// distance) is calculated by summing up number of insertions, deletions and substitutions required to
+        /// transform the summization feedback to the original summary suggestion. Normalized edit distance is the
+        /// average of (edit distance / summary length).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageSummarizationSuggestionNormalizedEditDistance")]
+        public virtual System.Nullable<double> AverageSummarizationSuggestionNormalizedEditDistance { get; set; }
+
         /// <summary>The average turn count.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageTurnCount")]
         public virtual System.Nullable<float> AverageTurnCount { get; set; }
+
+        /// <summary>
+        /// The exponential moving average of the sentiment score of client turns in the conversation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("avgConversationClientTurnSentimentEma")]
+        public virtual System.Nullable<double> AvgConversationClientTurnSentimentEma { get; set; }
+
+        /// <summary>The number of conversations that were contained.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containedConversationCount")]
+        public virtual System.Nullable<int> ContainedConversationCount { get; set; }
+
+        /// <summary>The percentage of conversations that were contained.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containedConversationRatio")]
+        public virtual System.Nullable<double> ContainedConversationRatio { get; set; }
+
+        /// <summary>Count of conversations that has Ai Coach Suggestions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationAiCoachSuggestionCount")]
+        public virtual System.Nullable<int> ConversationAiCoachSuggestionCount { get; set; }
+
+        /// <summary>Proportion of conversations that has Ai Coach Suggestions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationAiCoachSuggestionRatio")]
+        public virtual System.Nullable<double> ConversationAiCoachSuggestionRatio { get; set; }
 
         /// <summary>The conversation count.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversationCount")]
         public virtual System.Nullable<int> ConversationCount { get; set; }
 
+        /// <summary>Proportion of conversations that had a suggested summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationSuggestedSummaryRatio")]
+        public virtual System.Nullable<double> ConversationSuggestedSummaryRatio { get; set; }
+
+        /// <summary>The agent message count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationTotalAgentMessageCount")]
+        public virtual System.Nullable<int> ConversationTotalAgentMessageCount { get; set; }
+
+        /// <summary>The customer message count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationTotalCustomerMessageCount")]
+        public virtual System.Nullable<int> ConversationTotalCustomerMessageCount { get; set; }
+
+        /// <summary>
+        /// The average latency of conversational agents' audio in audio out latency per interaction. This is computed
+        /// as the average of the all the interactions' audio in audio out latencies in a conversation and averaged
+        /// across conversations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationalAgentsAverageAudioInAudioOutLatency")]
+        public virtual System.Nullable<double> ConversationalAgentsAverageAudioInAudioOutLatency { get; set; }
+
+        /// <summary>
+        /// The average latency of conversational agents' latency per interaction. This is computed as the average of
+        /// the all the iteractions' end to end latencies in a conversation and averaged across conversations. The e2e
+        /// latency is the time between the end of the user utterance and the start of the agent utterance on the
+        /// interaction level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationalAgentsAverageEndToEndLatency")]
+        public virtual System.Nullable<double> ConversationalAgentsAverageEndToEndLatency { get; set; }
+
+        /// <summary>
+        /// The average latency of conversational agents' LLM call latency per interaction. This is computed as the
+        /// average of the all the interactions LLM call latencies in a conversation and averaged across conversations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationalAgentsAverageLlmCallLatency")]
+        public virtual System.Nullable<double> ConversationalAgentsAverageLlmCallLatency { get; set; }
+
+        /// <summary>
+        /// The macro average latency of conversational agents' TTS latency per interaction. This is computed as the
+        /// average of the all the interactions' TTS latencies in a conversation and averaged across conversations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationalAgentsAverageTtsLatency")]
+        public virtual System.Nullable<double> ConversationalAgentsAverageTtsLatency { get; set; }
+
+        /// <summary>Average latency of dialogflow webhook calls.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowAverageWebhookLatency")]
+        public virtual System.Nullable<double> DialogflowAverageWebhookLatency { get; set; }
+
+        /// <summary>count of conversations that was handed off from virtual agent to human agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowConversationsEscalationCount")]
+        public virtual System.Nullable<double> DialogflowConversationsEscalationCount { get; set; }
+
+        /// <summary>Proportion of conversations that was handed off from virtual agent to human agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowConversationsEscalationRatio")]
+        public virtual System.Nullable<double> DialogflowConversationsEscalationRatio { get; set; }
+
+        /// <summary>Proportion of dialogflow interactions that has empty input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowInteractionsNoInputRatio")]
+        public virtual System.Nullable<double> DialogflowInteractionsNoInputRatio { get; set; }
+
+        /// <summary>Proportion of dialogflow interactions that has no intent match for the input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowInteractionsNoMatchRatio")]
+        public virtual System.Nullable<double> DialogflowInteractionsNoMatchRatio { get; set; }
+
+        /// <summary>Proportion of dialogflow webhook calls that failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowWebhookFailureRatio")]
+        public virtual System.Nullable<double> DialogflowWebhookFailureRatio { get; set; }
+
+        /// <summary>Proportion of dialogflow webhook calls that timed out.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowWebhookTimeoutRatio")]
+        public virtual System.Nullable<double> DialogflowWebhookTimeoutRatio { get; set; }
+
+        /// <summary>
+        /// Proportion of knowledge assist (Proactive Generative Knowledge Assist) queries that had negative feedback.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeAssistNegativeFeedbackRatio")]
+        public virtual System.Nullable<double> KnowledgeAssistNegativeFeedbackRatio { get; set; }
+
+        /// <summary>
+        /// Proportion of knowledge assist (Proactive Generative Knowledge Assist) queries that had positive feedback.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeAssistPositiveFeedbackRatio")]
+        public virtual System.Nullable<double> KnowledgeAssistPositiveFeedbackRatio { get; set; }
+
+        /// <summary>
+        /// Count of knowledge assist results (Proactive Generative Knowledge Assist) shown to the user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeAssistResultCount")]
+        public virtual System.Nullable<int> KnowledgeAssistResultCount { get; set; }
+
+        /// <summary>
+        /// Proportion of knowledge assist (Proactive Generative Knowledge Assist) queries that had a URL clicked.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeAssistUriClickRatio")]
+        public virtual System.Nullable<double> KnowledgeAssistUriClickRatio { get; set; }
+
+        /// <summary>
+        /// Proportion of knowledge search (Generative Knowledge Assist) queries made by the agent compared to the total
+        /// number of knowledge search queries made.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSearchAgentQuerySourceRatio")]
+        public virtual System.Nullable<double> KnowledgeSearchAgentQuerySourceRatio { get; set; }
+
+        /// <summary>
+        /// Proportion of knowledge search (Generative Knowledge Assist) queries that had negative feedback.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSearchNegativeFeedbackRatio")]
+        public virtual System.Nullable<double> KnowledgeSearchNegativeFeedbackRatio { get; set; }
+
+        /// <summary>
+        /// Proportion of knowledge search (Generative Knowledge Assist) queries that had positive feedback.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSearchPositiveFeedbackRatio")]
+        public virtual System.Nullable<double> KnowledgeSearchPositiveFeedbackRatio { get; set; }
+
+        /// <summary>Count of knowledge search results (Generative Knowledge Assist) shown to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSearchResultCount")]
+        public virtual System.Nullable<int> KnowledgeSearchResultCount { get; set; }
+
+        /// <summary>
+        /// Proportion of knowledge search (Generative Knowledge Assist) queries suggested compared to the total number
+        /// of knowledge search queries made.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSearchSuggestedQuerySourceRatio")]
+        public virtual System.Nullable<double> KnowledgeSearchSuggestedQuerySourceRatio { get; set; }
+
+        /// <summary>
+        /// Proportion of knowledge search (Generative Knowledge Assist) queries that had a URL clicked.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSearchUriClickRatio")]
+        public virtual System.Nullable<double> KnowledgeSearchUriClickRatio { get; set; }
+
         /// <summary>Average QA normalized score for all the tags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qaTagScores")]
         public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore> QaTagScores { get; set; }
+
+        /// <summary>Proportion of summarization suggestions that were manually edited.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarizationSuggestionEditRatio")]
+        public virtual System.Nullable<double> SummarizationSuggestionEditRatio { get; set; }
+
+        /// <summary>Count of summarization suggestions results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarizationSuggestionResultCount")]
+        public virtual System.Nullable<int> SummarizationSuggestionResultCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18278,6 +18514,58 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Tag name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
         public virtual string Tag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The measure related to dialogflow interactions.</summary>
+    public class GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The percentile result for audio in audio out latency in milliseconds per dialogflow interaction level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentileAudioInAudioOutLatency")]
+        public virtual GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult PercentileAudioInAudioOutLatency { get; set; }
+
+        /// <summary>
+        /// The percentile result for end to end chat latency in milliseconds per dialogflow interaction level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentileEndToEndLatency")]
+        public virtual GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult PercentileEndToEndLatency { get; set; }
+
+        /// <summary>The percentile result for LLM latency in milliseconds per dialogflow interaction level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentileLlmCallLatency")]
+        public virtual GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult PercentileLlmCallLatency { get; set; }
+
+        /// <summary>
+        /// The percentile result for tool use latency in milliseconds per dialogflow interaction level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentileToolUseLatency")]
+        public virtual GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult PercentileToolUseLatency { get; set; }
+
+        /// <summary>The percentile result for TTS latency in milliseconds per dialogflow interaction level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentileTtsLatency")]
+        public virtual GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult PercentileTtsLatency { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The percentile result. Currently supported percentiles are 50th, 90th, and 99th.</summary>
+    public class GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The 50th percentile value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("p50")]
+        public virtual System.Nullable<double> P50 { get; set; }
+
+        /// <summary>The 90th percentile value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("p90")]
+        public virtual System.Nullable<double> P90 { get; set; }
+
+        /// <summary>The 99th percentile value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("p99")]
+        public virtual System.Nullable<double> P99 { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23921,6 +24209,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conversationMeasure")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasure ConversationMeasure { get; set; }
 
+        /// <summary>The measure related to dialogflow interactions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowInteractionMeasure")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure DialogflowInteractionMeasure { get; set; }
+
         /// <summary>
         /// The interval that this data point represents. * If this is the total data point, the interval is [starting
         /// create time, ending create time) from the request. * If this a data point from the time series, the interval
@@ -23936,6 +24228,60 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>The measure related to conversations.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasure : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The number of conversations that were assigned to an AA human supervisor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aaSupervisorAssignedConversationsCount")]
+        public virtual System.Nullable<int> AaSupervisorAssignedConversationsCount { get; set; }
+
+        /// <summary>
+        /// The number of conversations that were dropped, i.e. escalated but not assigned to an AA human supervisor.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aaSupervisorDroppedConversationsCount")]
+        public virtual System.Nullable<int> AaSupervisorDroppedConversationsCount { get; set; }
+
+        /// <summary>
+        /// The number of conversations that were escalated to an AA human supervisor for intervention.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aaSupervisorEscalatedConversationsCount")]
+        public virtual System.Nullable<int> AaSupervisorEscalatedConversationsCount { get; set; }
+
+        /// <summary>The number of conversations scanned by the AA human supervisor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aaSupervisorMonitoredConversationsCount")]
+        public virtual System.Nullable<int> AaSupervisorMonitoredConversationsCount { get; set; }
+
+        /// <summary>The number of conversations transferred to a human agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aaSupervisorTransferredToHumanAgentConvCount")]
+        public virtual System.Nullable<int> AaSupervisorTransferredToHumanAgentConvCount { get; set; }
+
+        /// <summary>Count of agent messages that triggered an Ai Coach Suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiCoachSuggestionAgentMessageTriggerCount")]
+        public virtual System.Nullable<int> AiCoachSuggestionAgentMessageTriggerCount { get; set; }
+
+        /// <summary>Count of Ai Coach Suggestion that has been used by agents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiCoachSuggestionAgentUsageCount")]
+        public virtual System.Nullable<int> AiCoachSuggestionAgentUsageCount { get; set; }
+
+        /// <summary>Proportion of Ai Coach Suggestion that has been used by agents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiCoachSuggestionAgentUsageRatio")]
+        public virtual System.Nullable<double> AiCoachSuggestionAgentUsageRatio { get; set; }
+
+        /// <summary>Count of customer messages that triggered an Ai Coach Suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiCoachSuggestionCustomerMessageTriggerCount")]
+        public virtual System.Nullable<int> AiCoachSuggestionCustomerMessageTriggerCount { get; set; }
+
+        /// <summary>Proportion of customer messages that triggered an Ai Coach Suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiCoachSuggestionCustomerMessageTriggerRatio")]
+        public virtual System.Nullable<double> AiCoachSuggestionCustomerMessageTriggerRatio { get; set; }
+
+        /// <summary>Count of end_of_utterance trigger event messages that triggered an Ai Coach Suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiCoachSuggestionMessageTriggerCount")]
+        public virtual System.Nullable<int> AiCoachSuggestionMessageTriggerCount { get; set; }
+
+        /// <summary>
+        /// Proportion of end_of_utterance trigger event messages that triggered an Ai Coach Suggestion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiCoachSuggestionMessageTriggerRatio")]
+        public virtual System.Nullable<double> AiCoachSuggestionMessageTriggerRatio { get; set; }
+
         /// <summary>The average agent's sentiment score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageAgentSentimentScore")]
         public virtual System.Nullable<float> AverageAgentSentimentScore { get; set; }
@@ -23972,17 +24318,195 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("averageSilencePercentage")]
         public virtual System.Nullable<float> AverageSilencePercentage { get; set; }
 
+        /// <summary>
+        /// Average edit distance of the summarization suggestions. Edit distance (also called as levenshtein distance)
+        /// is calculated by summing up number of insertions, deletions and substitutions required to transform the
+        /// summization feedback to the original summary suggestion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageSummarizationSuggestionEditDistance")]
+        public virtual System.Nullable<double> AverageSummarizationSuggestionEditDistance { get; set; }
+
+        /// <summary>
+        /// Normalized Average edit distance of the summarization suggestions. Edit distance (also called as levenshtein
+        /// distance) is calculated by summing up number of insertions, deletions and substitutions required to
+        /// transform the summization feedback to the original summary suggestion. Normalized edit distance is the
+        /// average of (edit distance / summary length).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageSummarizationSuggestionNormalizedEditDistance")]
+        public virtual System.Nullable<double> AverageSummarizationSuggestionNormalizedEditDistance { get; set; }
+
         /// <summary>The average turn count.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageTurnCount")]
         public virtual System.Nullable<float> AverageTurnCount { get; set; }
+
+        /// <summary>
+        /// The exponential moving average of the sentiment score of client turns in the conversation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("avgConversationClientTurnSentimentEma")]
+        public virtual System.Nullable<double> AvgConversationClientTurnSentimentEma { get; set; }
+
+        /// <summary>The number of conversations that were contained.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containedConversationCount")]
+        public virtual System.Nullable<int> ContainedConversationCount { get; set; }
+
+        /// <summary>The percentage of conversations that were contained.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containedConversationRatio")]
+        public virtual System.Nullable<double> ContainedConversationRatio { get; set; }
+
+        /// <summary>Count of conversations that has Ai Coach Suggestions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationAiCoachSuggestionCount")]
+        public virtual System.Nullable<int> ConversationAiCoachSuggestionCount { get; set; }
+
+        /// <summary>Proportion of conversations that has Ai Coach Suggestions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationAiCoachSuggestionRatio")]
+        public virtual System.Nullable<double> ConversationAiCoachSuggestionRatio { get; set; }
 
         /// <summary>The conversation count.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversationCount")]
         public virtual System.Nullable<int> ConversationCount { get; set; }
 
+        /// <summary>Proportion of conversations that had a suggested summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationSuggestedSummaryRatio")]
+        public virtual System.Nullable<double> ConversationSuggestedSummaryRatio { get; set; }
+
+        /// <summary>The agent message count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationTotalAgentMessageCount")]
+        public virtual System.Nullable<int> ConversationTotalAgentMessageCount { get; set; }
+
+        /// <summary>The customer message count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationTotalCustomerMessageCount")]
+        public virtual System.Nullable<int> ConversationTotalCustomerMessageCount { get; set; }
+
+        /// <summary>
+        /// The average latency of conversational agents' audio in audio out latency per interaction. This is computed
+        /// as the average of the all the interactions' audio in audio out latencies in a conversation and averaged
+        /// across conversations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationalAgentsAverageAudioInAudioOutLatency")]
+        public virtual System.Nullable<double> ConversationalAgentsAverageAudioInAudioOutLatency { get; set; }
+
+        /// <summary>
+        /// The average latency of conversational agents' latency per interaction. This is computed as the average of
+        /// the all the iteractions' end to end latencies in a conversation and averaged across conversations. The e2e
+        /// latency is the time between the end of the user utterance and the start of the agent utterance on the
+        /// interaction level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationalAgentsAverageEndToEndLatency")]
+        public virtual System.Nullable<double> ConversationalAgentsAverageEndToEndLatency { get; set; }
+
+        /// <summary>
+        /// The average latency of conversational agents' LLM call latency per interaction. This is computed as the
+        /// average of the all the interactions LLM call latencies in a conversation and averaged across conversations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationalAgentsAverageLlmCallLatency")]
+        public virtual System.Nullable<double> ConversationalAgentsAverageLlmCallLatency { get; set; }
+
+        /// <summary>
+        /// The macro average latency of conversational agents' TTS latency per interaction. This is computed as the
+        /// average of the all the interactions' TTS latencies in a conversation and averaged across conversations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationalAgentsAverageTtsLatency")]
+        public virtual System.Nullable<double> ConversationalAgentsAverageTtsLatency { get; set; }
+
+        /// <summary>Average latency of dialogflow webhook calls.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowAverageWebhookLatency")]
+        public virtual System.Nullable<double> DialogflowAverageWebhookLatency { get; set; }
+
+        /// <summary>count of conversations that was handed off from virtual agent to human agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowConversationsEscalationCount")]
+        public virtual System.Nullable<double> DialogflowConversationsEscalationCount { get; set; }
+
+        /// <summary>Proportion of conversations that was handed off from virtual agent to human agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowConversationsEscalationRatio")]
+        public virtual System.Nullable<double> DialogflowConversationsEscalationRatio { get; set; }
+
+        /// <summary>Proportion of dialogflow interactions that has empty input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowInteractionsNoInputRatio")]
+        public virtual System.Nullable<double> DialogflowInteractionsNoInputRatio { get; set; }
+
+        /// <summary>Proportion of dialogflow interactions that has no intent match for the input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowInteractionsNoMatchRatio")]
+        public virtual System.Nullable<double> DialogflowInteractionsNoMatchRatio { get; set; }
+
+        /// <summary>Proportion of dialogflow webhook calls that failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowWebhookFailureRatio")]
+        public virtual System.Nullable<double> DialogflowWebhookFailureRatio { get; set; }
+
+        /// <summary>Proportion of dialogflow webhook calls that timed out.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowWebhookTimeoutRatio")]
+        public virtual System.Nullable<double> DialogflowWebhookTimeoutRatio { get; set; }
+
+        /// <summary>
+        /// Proportion of knowledge assist (Proactive Generative Knowledge Assist) queries that had negative feedback.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeAssistNegativeFeedbackRatio")]
+        public virtual System.Nullable<double> KnowledgeAssistNegativeFeedbackRatio { get; set; }
+
+        /// <summary>
+        /// Proportion of knowledge assist (Proactive Generative Knowledge Assist) queries that had positive feedback.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeAssistPositiveFeedbackRatio")]
+        public virtual System.Nullable<double> KnowledgeAssistPositiveFeedbackRatio { get; set; }
+
+        /// <summary>
+        /// Count of knowledge assist results (Proactive Generative Knowledge Assist) shown to the user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeAssistResultCount")]
+        public virtual System.Nullable<int> KnowledgeAssistResultCount { get; set; }
+
+        /// <summary>
+        /// Proportion of knowledge assist (Proactive Generative Knowledge Assist) queries that had a URL clicked.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeAssistUriClickRatio")]
+        public virtual System.Nullable<double> KnowledgeAssistUriClickRatio { get; set; }
+
+        /// <summary>
+        /// Proportion of knowledge search (Generative Knowledge Assist) queries made by the agent compared to the total
+        /// number of knowledge search queries made.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSearchAgentQuerySourceRatio")]
+        public virtual System.Nullable<double> KnowledgeSearchAgentQuerySourceRatio { get; set; }
+
+        /// <summary>
+        /// Proportion of knowledge search (Generative Knowledge Assist) queries that had negative feedback.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSearchNegativeFeedbackRatio")]
+        public virtual System.Nullable<double> KnowledgeSearchNegativeFeedbackRatio { get; set; }
+
+        /// <summary>
+        /// Proportion of knowledge search (Generative Knowledge Assist) queries that had positive feedback.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSearchPositiveFeedbackRatio")]
+        public virtual System.Nullable<double> KnowledgeSearchPositiveFeedbackRatio { get; set; }
+
+        /// <summary>Count of knowledge search results (Generative Knowledge Assist) shown to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSearchResultCount")]
+        public virtual System.Nullable<int> KnowledgeSearchResultCount { get; set; }
+
+        /// <summary>
+        /// Proportion of knowledge search (Generative Knowledge Assist) queries suggested compared to the total number
+        /// of knowledge search queries made.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSearchSuggestedQuerySourceRatio")]
+        public virtual System.Nullable<double> KnowledgeSearchSuggestedQuerySourceRatio { get; set; }
+
+        /// <summary>
+        /// Proportion of knowledge search (Generative Knowledge Assist) queries that had a URL clicked.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSearchUriClickRatio")]
+        public virtual System.Nullable<double> KnowledgeSearchUriClickRatio { get; set; }
+
         /// <summary>Average QA normalized score for all the tags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qaTagScores")]
         public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore> QaTagScores { get; set; }
+
+        /// <summary>Proportion of summarization suggestions that were manually edited.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarizationSuggestionEditRatio")]
+        public virtual System.Nullable<double> SummarizationSuggestionEditRatio { get; set; }
+
+        /// <summary>Count of summarization suggestions results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarizationSuggestionResultCount")]
+        public virtual System.Nullable<int> SummarizationSuggestionResultCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23998,6 +24522,58 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Tag name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
         public virtual string Tag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The measure related to dialogflow interactions.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The percentile result for audio in audio out latency in milliseconds per dialogflow interaction level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentileAudioInAudioOutLatency")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult PercentileAudioInAudioOutLatency { get; set; }
+
+        /// <summary>
+        /// The percentile result for end to end chat latency in milliseconds per dialogflow interaction level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentileEndToEndLatency")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult PercentileEndToEndLatency { get; set; }
+
+        /// <summary>The percentile result for LLM latency in milliseconds per dialogflow interaction level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentileLlmCallLatency")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult PercentileLlmCallLatency { get; set; }
+
+        /// <summary>
+        /// The percentile result for tool use latency in milliseconds per dialogflow interaction level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentileToolUseLatency")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult PercentileToolUseLatency { get; set; }
+
+        /// <summary>The percentile result for TTS latency in milliseconds per dialogflow interaction level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentileTtsLatency")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult PercentileTtsLatency { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The percentile result. Currently supported percentiles are 50th, 90th, and 99th.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The 50th percentile value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("p50")]
+        public virtual System.Nullable<double> P50 { get; set; }
+
+        /// <summary>The 90th percentile value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("p90")]
+        public virtual System.Nullable<double> P90 { get; set; }
+
+        /// <summary>The 99th percentile value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("p99")]
+        public virtual System.Nullable<double> P99 { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -29376,6 +29952,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conversationMeasure")]
         public virtual GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure ConversationMeasure { get; set; }
 
+        /// <summary>The measure related to dialogflow interactions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowInteractionMeasure")]
+        public virtual GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointDialogflowInteractionMeasure DialogflowInteractionMeasure { get; set; }
+
         /// <summary>
         /// The interval that this data point represents. * If this is the total data point, the interval is [starting
         /// create time, ending create time) from the request. * If this a data point from the time series, the interval
@@ -29391,6 +29971,60 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>The measure related to conversations.</summary>
     public class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The number of conversations that were assigned to an AA human supervisor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aaSupervisorAssignedConversationsCount")]
+        public virtual System.Nullable<int> AaSupervisorAssignedConversationsCount { get; set; }
+
+        /// <summary>
+        /// The number of conversations that were dropped, i.e. escalated but not assigned to an AA human supervisor.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aaSupervisorDroppedConversationsCount")]
+        public virtual System.Nullable<int> AaSupervisorDroppedConversationsCount { get; set; }
+
+        /// <summary>
+        /// The number of conversations that were escalated to an AA human supervisor for intervention.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aaSupervisorEscalatedConversationsCount")]
+        public virtual System.Nullable<int> AaSupervisorEscalatedConversationsCount { get; set; }
+
+        /// <summary>The number of conversations scanned by the AA human supervisor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aaSupervisorMonitoredConversationsCount")]
+        public virtual System.Nullable<int> AaSupervisorMonitoredConversationsCount { get; set; }
+
+        /// <summary>The number of conversations transferred to a human agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aaSupervisorTransferredToHumanAgentConvCount")]
+        public virtual System.Nullable<int> AaSupervisorTransferredToHumanAgentConvCount { get; set; }
+
+        /// <summary>Count of agent messages that triggered an Ai Coach Suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiCoachSuggestionAgentMessageTriggerCount")]
+        public virtual System.Nullable<int> AiCoachSuggestionAgentMessageTriggerCount { get; set; }
+
+        /// <summary>Count of Ai Coach Suggestion that has been used by agents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiCoachSuggestionAgentUsageCount")]
+        public virtual System.Nullable<int> AiCoachSuggestionAgentUsageCount { get; set; }
+
+        /// <summary>Proportion of Ai Coach Suggestion that has been used by agents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiCoachSuggestionAgentUsageRatio")]
+        public virtual System.Nullable<double> AiCoachSuggestionAgentUsageRatio { get; set; }
+
+        /// <summary>Count of customer messages that triggered an Ai Coach Suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiCoachSuggestionCustomerMessageTriggerCount")]
+        public virtual System.Nullable<int> AiCoachSuggestionCustomerMessageTriggerCount { get; set; }
+
+        /// <summary>Proportion of customer messages that triggered an Ai Coach Suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiCoachSuggestionCustomerMessageTriggerRatio")]
+        public virtual System.Nullable<double> AiCoachSuggestionCustomerMessageTriggerRatio { get; set; }
+
+        /// <summary>Count of end_of_utterance trigger event messages that triggered an Ai Coach Suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiCoachSuggestionMessageTriggerCount")]
+        public virtual System.Nullable<int> AiCoachSuggestionMessageTriggerCount { get; set; }
+
+        /// <summary>
+        /// Proportion of end_of_utterance trigger event messages that triggered an Ai Coach Suggestion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiCoachSuggestionMessageTriggerRatio")]
+        public virtual System.Nullable<double> AiCoachSuggestionMessageTriggerRatio { get; set; }
+
         /// <summary>The average agent's sentiment score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageAgentSentimentScore")]
         public virtual System.Nullable<float> AverageAgentSentimentScore { get; set; }
@@ -29427,17 +30061,195 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("averageSilencePercentage")]
         public virtual System.Nullable<float> AverageSilencePercentage { get; set; }
 
+        /// <summary>
+        /// Average edit distance of the summarization suggestions. Edit distance (also called as levenshtein distance)
+        /// is calculated by summing up number of insertions, deletions and substitutions required to transform the
+        /// summization feedback to the original summary suggestion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageSummarizationSuggestionEditDistance")]
+        public virtual System.Nullable<double> AverageSummarizationSuggestionEditDistance { get; set; }
+
+        /// <summary>
+        /// Normalized Average edit distance of the summarization suggestions. Edit distance (also called as levenshtein
+        /// distance) is calculated by summing up number of insertions, deletions and substitutions required to
+        /// transform the summization feedback to the original summary suggestion. Normalized edit distance is the
+        /// average of (edit distance / summary length).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageSummarizationSuggestionNormalizedEditDistance")]
+        public virtual System.Nullable<double> AverageSummarizationSuggestionNormalizedEditDistance { get; set; }
+
         /// <summary>The average turn count.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageTurnCount")]
         public virtual System.Nullable<float> AverageTurnCount { get; set; }
+
+        /// <summary>
+        /// The exponential moving average of the sentiment score of client turns in the conversation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("avgConversationClientTurnSentimentEma")]
+        public virtual System.Nullable<double> AvgConversationClientTurnSentimentEma { get; set; }
+
+        /// <summary>The number of conversations that were contained.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containedConversationCount")]
+        public virtual System.Nullable<int> ContainedConversationCount { get; set; }
+
+        /// <summary>The percentage of conversations that were contained.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containedConversationRatio")]
+        public virtual System.Nullable<double> ContainedConversationRatio { get; set; }
+
+        /// <summary>Count of conversations that has Ai Coach Suggestions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationAiCoachSuggestionCount")]
+        public virtual System.Nullable<int> ConversationAiCoachSuggestionCount { get; set; }
+
+        /// <summary>Proportion of conversations that has Ai Coach Suggestions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationAiCoachSuggestionRatio")]
+        public virtual System.Nullable<double> ConversationAiCoachSuggestionRatio { get; set; }
 
         /// <summary>The conversation count.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversationCount")]
         public virtual System.Nullable<int> ConversationCount { get; set; }
 
+        /// <summary>Proportion of conversations that had a suggested summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationSuggestedSummaryRatio")]
+        public virtual System.Nullable<double> ConversationSuggestedSummaryRatio { get; set; }
+
+        /// <summary>The agent message count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationTotalAgentMessageCount")]
+        public virtual System.Nullable<int> ConversationTotalAgentMessageCount { get; set; }
+
+        /// <summary>The customer message count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationTotalCustomerMessageCount")]
+        public virtual System.Nullable<int> ConversationTotalCustomerMessageCount { get; set; }
+
+        /// <summary>
+        /// The average latency of conversational agents' audio in audio out latency per interaction. This is computed
+        /// as the average of the all the interactions' audio in audio out latencies in a conversation and averaged
+        /// across conversations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationalAgentsAverageAudioInAudioOutLatency")]
+        public virtual System.Nullable<double> ConversationalAgentsAverageAudioInAudioOutLatency { get; set; }
+
+        /// <summary>
+        /// The average latency of conversational agents' latency per interaction. This is computed as the average of
+        /// the all the iteractions' end to end latencies in a conversation and averaged across conversations. The e2e
+        /// latency is the time between the end of the user utterance and the start of the agent utterance on the
+        /// interaction level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationalAgentsAverageEndToEndLatency")]
+        public virtual System.Nullable<double> ConversationalAgentsAverageEndToEndLatency { get; set; }
+
+        /// <summary>
+        /// The average latency of conversational agents' LLM call latency per interaction. This is computed as the
+        /// average of the all the interactions LLM call latencies in a conversation and averaged across conversations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationalAgentsAverageLlmCallLatency")]
+        public virtual System.Nullable<double> ConversationalAgentsAverageLlmCallLatency { get; set; }
+
+        /// <summary>
+        /// The macro average latency of conversational agents' TTS latency per interaction. This is computed as the
+        /// average of the all the interactions' TTS latencies in a conversation and averaged across conversations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationalAgentsAverageTtsLatency")]
+        public virtual System.Nullable<double> ConversationalAgentsAverageTtsLatency { get; set; }
+
+        /// <summary>Average latency of dialogflow webhook calls.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowAverageWebhookLatency")]
+        public virtual System.Nullable<double> DialogflowAverageWebhookLatency { get; set; }
+
+        /// <summary>count of conversations that was handed off from virtual agent to human agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowConversationsEscalationCount")]
+        public virtual System.Nullable<double> DialogflowConversationsEscalationCount { get; set; }
+
+        /// <summary>Proportion of conversations that was handed off from virtual agent to human agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowConversationsEscalationRatio")]
+        public virtual System.Nullable<double> DialogflowConversationsEscalationRatio { get; set; }
+
+        /// <summary>Proportion of dialogflow interactions that has empty input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowInteractionsNoInputRatio")]
+        public virtual System.Nullable<double> DialogflowInteractionsNoInputRatio { get; set; }
+
+        /// <summary>Proportion of dialogflow interactions that has no intent match for the input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowInteractionsNoMatchRatio")]
+        public virtual System.Nullable<double> DialogflowInteractionsNoMatchRatio { get; set; }
+
+        /// <summary>Proportion of dialogflow webhook calls that failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowWebhookFailureRatio")]
+        public virtual System.Nullable<double> DialogflowWebhookFailureRatio { get; set; }
+
+        /// <summary>Proportion of dialogflow webhook calls that timed out.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowWebhookTimeoutRatio")]
+        public virtual System.Nullable<double> DialogflowWebhookTimeoutRatio { get; set; }
+
+        /// <summary>
+        /// Proportion of knowledge assist (Proactive Generative Knowledge Assist) queries that had negative feedback.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeAssistNegativeFeedbackRatio")]
+        public virtual System.Nullable<double> KnowledgeAssistNegativeFeedbackRatio { get; set; }
+
+        /// <summary>
+        /// Proportion of knowledge assist (Proactive Generative Knowledge Assist) queries that had positive feedback.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeAssistPositiveFeedbackRatio")]
+        public virtual System.Nullable<double> KnowledgeAssistPositiveFeedbackRatio { get; set; }
+
+        /// <summary>
+        /// Count of knowledge assist results (Proactive Generative Knowledge Assist) shown to the user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeAssistResultCount")]
+        public virtual System.Nullable<int> KnowledgeAssistResultCount { get; set; }
+
+        /// <summary>
+        /// Proportion of knowledge assist (Proactive Generative Knowledge Assist) queries that had a URL clicked.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeAssistUriClickRatio")]
+        public virtual System.Nullable<double> KnowledgeAssistUriClickRatio { get; set; }
+
+        /// <summary>
+        /// Proportion of knowledge search (Generative Knowledge Assist) queries made by the agent compared to the total
+        /// number of knowledge search queries made.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSearchAgentQuerySourceRatio")]
+        public virtual System.Nullable<double> KnowledgeSearchAgentQuerySourceRatio { get; set; }
+
+        /// <summary>
+        /// Proportion of knowledge search (Generative Knowledge Assist) queries that had negative feedback.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSearchNegativeFeedbackRatio")]
+        public virtual System.Nullable<double> KnowledgeSearchNegativeFeedbackRatio { get; set; }
+
+        /// <summary>
+        /// Proportion of knowledge search (Generative Knowledge Assist) queries that had positive feedback.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSearchPositiveFeedbackRatio")]
+        public virtual System.Nullable<double> KnowledgeSearchPositiveFeedbackRatio { get; set; }
+
+        /// <summary>Count of knowledge search results (Generative Knowledge Assist) shown to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSearchResultCount")]
+        public virtual System.Nullable<int> KnowledgeSearchResultCount { get; set; }
+
+        /// <summary>
+        /// Proportion of knowledge search (Generative Knowledge Assist) queries suggested compared to the total number
+        /// of knowledge search queries made.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSearchSuggestedQuerySourceRatio")]
+        public virtual System.Nullable<double> KnowledgeSearchSuggestedQuerySourceRatio { get; set; }
+
+        /// <summary>
+        /// Proportion of knowledge search (Generative Knowledge Assist) queries that had a URL clicked.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSearchUriClickRatio")]
+        public virtual System.Nullable<double> KnowledgeSearchUriClickRatio { get; set; }
+
         /// <summary>Average QA normalized score for all the tags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qaTagScores")]
         public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasureQaTagScore> QaTagScores { get; set; }
+
+        /// <summary>Proportion of summarization suggestions that were manually edited.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarizationSuggestionEditRatio")]
+        public virtual System.Nullable<double> SummarizationSuggestionEditRatio { get; set; }
+
+        /// <summary>Count of summarization suggestions results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarizationSuggestionResultCount")]
+        public virtual System.Nullable<int> SummarizationSuggestionResultCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -29453,6 +30265,58 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Tag name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
         public virtual string Tag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The measure related to dialogflow interactions.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointDialogflowInteractionMeasure : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The percentile result for audio in audio out latency in milliseconds per dialogflow interaction level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentileAudioInAudioOutLatency")]
+        public virtual GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult PercentileAudioInAudioOutLatency { get; set; }
+
+        /// <summary>
+        /// The percentile result for end to end chat latency in milliseconds per dialogflow interaction level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentileEndToEndLatency")]
+        public virtual GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult PercentileEndToEndLatency { get; set; }
+
+        /// <summary>The percentile result for LLM latency in milliseconds per dialogflow interaction level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentileLlmCallLatency")]
+        public virtual GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult PercentileLlmCallLatency { get; set; }
+
+        /// <summary>
+        /// The percentile result for tool use latency in milliseconds per dialogflow interaction level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentileToolUseLatency")]
+        public virtual GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult PercentileToolUseLatency { get; set; }
+
+        /// <summary>The percentile result for TTS latency in milliseconds per dialogflow interaction level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentileTtsLatency")]
+        public virtual GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult PercentileTtsLatency { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The percentile result. Currently supported percentiles are 50th, 90th, and 99th.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The 50th percentile value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("p50")]
+        public virtual System.Nullable<double> P50 { get; set; }
+
+        /// <summary>The 90th percentile value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("p90")]
+        public virtual System.Nullable<double> P90 { get; set; }
+
+        /// <summary>The 99th percentile value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("p99")]
+        public virtual System.Nullable<double> P99 { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
