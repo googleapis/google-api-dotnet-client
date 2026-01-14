@@ -27,7 +27,7 @@
   "identitytoolkit.v3",
 
   // b/287068812
-  "aiplatform.v1beta1"
+  "aiplatform.v1beta1",
 
   // b/475730149
   "connectors.v2"
