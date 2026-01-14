@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3284,6 +3284,14 @@ namespace Google.Apis.FirebaseAppHosting.v1.Data
     public class Config : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Output only. [OUTPUT_ONLY] This field represents all environment variables employed during both the build
+        /// and runtime. This list reflects the result of merging variables from all sources (Backend.override_env,
+        /// Build.Config.env, YAML, defaults, system). Each variable includes its `origin`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveEnv")]
+        public virtual System.Collections.Generic.IList<EnvironmentVariable> EffectiveEnv { get; set; }
+
+        /// <summary>
         /// Optional. Supplied environment variables for a specific build. Provided at Build creation time and immutable
         /// afterwards. This field is only applicable for Builds using a build image - (e.g., ContainerSource or
         /// ArchiveSource with locally_build_source) Attempts to set this for other build types will result in an error
@@ -3837,6 +3845,17 @@ namespace Google.Apis.FirebaseAppHosting.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availability")]
         public virtual System.Collections.Generic.IList<string> Availability { get; set; }
+
+        /// <summary>Output only. The high-level origin category of the environment variable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("origin")]
+        public virtual string Origin { get; set; }
+
+        /// <summary>
+        /// Output only. Specific detail about the source. For APPHOSTING_YAML origins, this will contain the exact
+        /// filename, such as "apphosting.yaml" or "apphosting.staging.yaml".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originFileName")]
+        public virtual string OriginFileName { get; set; }
 
         /// <summary>
         /// A fully qualified secret version. The value of the secret will be accessed once while building the
