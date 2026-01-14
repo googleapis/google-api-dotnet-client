@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -386,9 +386,9 @@ namespace Google.Apis.ServiceUsage.v1beta1
 
             /// <summary>
             /// When set to `true`, operations that are reachable are returned as normal, and those that are unreachable
-            /// are returned in the [ListOperationsResponse.unreachable] field. This can only be `true` when reading
-            /// across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This field is not by
-            /// default supported and will result in an `UNIMPLEMENTED` error if set unless explicitly documented
+            /// are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading
+            /// across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is
+            /// not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented
             /// otherwise in service or product specific documentation.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
@@ -3455,8 +3455,8 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
     public class Control : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The service controller environment to use. If empty, no control plane feature (like quota and billing) will
-        /// be enabled. The recommended value for most services is servicecontrol.googleapis.com
+        /// The service controller environment to use. If empty, no control plane features (like quota and billing) will
+        /// be enabled. The recommended value for most services is servicecontrol.googleapis.com.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; }
@@ -4743,8 +4743,138 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>McpEnableRule contains MCP enablement related rules.</summary>
+    public class GoogleApiServiceusageV2betaMcpEnableRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of enabled MCP services.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mcpServices")]
+        public virtual System.Collections.Generic.IList<GoogleApiServiceusageV2betaMcpService> McpServices { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// MCP Consumer Policy is a set of rules that define MCP related policy for a cloud resource hierarchy.
+    /// </summary>
+    public class GoogleApiServiceusageV2betaMcpPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>
+        /// Output only. The time the policy was created. For singleton policies (such as the `default` policy), this is
+        /// the first touch of the policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>An opaque tag indicating the current version of the policy, used for concurrency control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>McpEnableRules contains MCP enablement related rules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mcpEnableRules")]
+        public virtual System.Collections.Generic.IList<GoogleApiServiceusageV2betaMcpEnableRule> McpEnableRules { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the policy. Only the `default` policy is supported. We allow the following
+        /// formats: `projects/{PROJECT_NUMBER}/mcpPolicies/default`, `projects/{PROJECT_ID}/mcpPolicies/default`,
+        /// `folders/{FOLDER_ID}/mcpPolicies/default`, `organizations/{ORG_ID}/mcpPolicies/default`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time the policy was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
+    /// <summary>McpService contains the service names that are enabled for MCP.</summary>
+    public class GoogleApiServiceusageV2betaMcpService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The names of the services that are enabled for MCP. Example: `services/library-example.googleapis.com`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for the `UpdateConsumerPolicy` method.</summary>
     public class GoogleApiServiceusageV2betaUpdateConsumerPolicyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for the `UpdateMcpPolicy` method.</summary>
+    public class GoogleApiServiceusageV2betaUpdateMcpPolicyMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5212,8 +5342,8 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
