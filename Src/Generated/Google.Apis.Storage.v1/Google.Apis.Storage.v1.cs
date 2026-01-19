@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12499,6 +12499,14 @@ namespace Google.Apis.Storage.v1.Data
         /// <summary>The bucket's new custom placement configuration if relocating to a Custom Dual Region.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationCustomPlacementConfig")]
         public virtual DestinationCustomPlacementConfigData DestinationCustomPlacementConfig { get; set; }
+
+        /// <summary>
+        /// Resource name of a Cloud KMS key, of the form
+        /// projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key. If set, is used to encrypt all
+        /// objects in the destination bucket.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationKmsKeyName")]
+        public virtual string DestinationKmsKeyName { get; set; }
 
         /// <summary>The new location the bucket will be relocated to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationLocation")]
