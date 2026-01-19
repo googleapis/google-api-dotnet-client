@@ -2760,6 +2760,36 @@ namespace Google.Apis.AnalyticsHub.v1
 }
 namespace Google.Apis.AnalyticsHub.v1.Data
 {
+    /// <summary>Configuration for making inference requests against Vertex AI models.</summary>
+    public class AIInference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. An endpoint to a Vertex AI model of the form
+        /// `projects/{project}/locations/{location}/endpoints/{endpoint}` or
+        /// `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`. Vertex AI API requests will
+        /// be sent to this endpoint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
+        public virtual string Endpoint { get; set; }
+
+        /// <summary>
+        /// Optional. The service account to use to make prediction requests against endpoints. The resource creator or
+        /// updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+        /// If not specified, the Pub/Sub [service
+        /// agent]({$universe.dns_names.final_documentation_domain}/iam/docs/service-agents),
+        /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
+        public virtual string ServiceAccountEmail { get; set; }
+
+        /// <summary>Optional. Requests and responses can be any arbitrary JSON object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unstructuredInference")]
+        public virtual UnstructuredInference UnstructuredInference { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for approving a QueryTemplate.</summary>
     public class ApproveQueryTemplateRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3889,6 +3919,10 @@ namespace Google.Apis.AnalyticsHub.v1.Data
     /// <summary>All supported message transforms types.</summary>
     public class MessageTransform : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. AI Inference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiInference")]
+        public virtual AIInference AiInference { get; set; }
+
         /// <summary>
         /// Optional. If true, the transform is disabled and will not be applied to messages. Defaults to `false`.
         /// </summary>
@@ -4916,6 +4950,20 @@ namespace Google.Apis.AnalyticsHub.v1.Data
     /// </summary>
     public class TextConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for making inferences using arbitrary JSON payloads.</summary>
+    public class UnstructuredInference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A parameters object to be included in each inference request. The parameters object is combined
+        /// with the data field of the Pub/Sub message to form the inference request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
