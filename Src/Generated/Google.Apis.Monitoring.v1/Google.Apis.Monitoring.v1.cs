@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2460,6 +2460,17 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A widget that displays an input field to change the value of a template variable.</summary>
+    public class FilterControl : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the template variable the widget affects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templateVariable")]
+        public virtual string TemplateVariable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A gauge chart shows where the current value sits within a pre-defined range. The upper and lower bounds should
     /// define the possible range of values for the scorecard's query (inclusive).
@@ -4083,6 +4094,10 @@ namespace Google.Apis.Monitoring.v1.Data
         /// <summary>A widget that displays a list of error groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorReportingPanel")]
         public virtual ErrorReportingPanel ErrorReportingPanel { get; set; }
+
+        /// <summary>A widget that displays an input field to change the value of a template variable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterControl")]
+        public virtual FilterControl FilterControl { get; set; }
 
         /// <summary>
         /// Optional. The widget id. Ids may be made up of alphanumerics, dashes and underscores. Widget ids are
