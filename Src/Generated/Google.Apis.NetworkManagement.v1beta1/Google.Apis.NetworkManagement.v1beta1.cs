@@ -4125,6 +4125,31 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>For display only. Metadata associated with ARRIVE_AT_GOOGLE_MANAGED_SERVICE state.</summary>
+    public class GoogleManagedServiceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>IP address of the Google-managed service endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; }
+
+        /// <summary>
+        /// URI of the Google-managed service endpoint network, it is empty if the IP address is a public IP address.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
+        public virtual string NetworkUri { get; set; }
+
+        /// <summary>Type of a Google-managed service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceType")]
+        public virtual string ServiceType { get; set; }
+
+        /// <summary>URI of the Google-managed service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceUri")]
+        public virtual string ServiceUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// For display only. Details of a Google Service sending packets to a VPC network. Although the source IP might be
     /// a publicly routable address, some Google Services use special routes within Google production infrastructure to
@@ -5464,6 +5489,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// <summary>Display information of a Google Kubernetes Engine Pod.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkePod")]
         public virtual GkePodInfo GkePod { get; set; }
+
+        /// <summary>Display information of a Google-managed service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleManagedService")]
+        public virtual GoogleManagedServiceInfo GoogleManagedService { get; set; }
 
         /// <summary>Display information of a Google service</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleService")]
