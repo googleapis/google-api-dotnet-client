@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -8974,6 +8974,13 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         /// <summary>Optional. Description of the version, as specified in its metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. Immutable reference for the version, calculated based on the version's content. Currently we
+        /// only support dirsum_sha256 hash algorithm. Additional hash algorithms may be added in the future.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fingerprints")]
+        public virtual System.Collections.Generic.IList<Hash> Fingerprints { get; set; }
 
         /// <summary>
         /// Output only. Repository-specific Metadata stored against this version. The fields returned are defined by
