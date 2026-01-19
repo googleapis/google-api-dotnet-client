@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -525,9 +525,9 @@ namespace Google.Apis.FirebaseDataConnect.v1beta
 
                     /// <summary>
                     /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                    /// `true` when reading across collections e.g. when `parent` is set to
-                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
                     /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                     /// specific documentation.
                     /// </summary>
@@ -3061,6 +3061,10 @@ namespace Google.Apis.FirebaseDataConnect.v1beta.Data
     /// <summary>A data source that backs Firebase Data Connect services.</summary>
     public class Datasource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>HTTP GraphQL server webhook configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpGraphql")]
+        public virtual HttpGraphql HttpGraphql { get; set; }
+
         /// <summary>PostgreSQL configurations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postgresql")]
         public virtual PostgreSql Postgresql { get; set; }
@@ -3319,6 +3323,21 @@ namespace Google.Apis.FirebaseDataConnect.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Settings for HTTP GraphQL server webhook.</summary>
+    public class HttpGraphql : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Timeout duration for the HTTP request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual object Timeout { get; set; }
+
+        /// <summary>Required. The endpoint of the HTTP GraphQL server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The Impersonate request to Firebase Data Connect.</summary>
     public class ImpersonateRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3418,8 +3437,8 @@ namespace Google.Apis.FirebaseDataConnect.v1beta.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
