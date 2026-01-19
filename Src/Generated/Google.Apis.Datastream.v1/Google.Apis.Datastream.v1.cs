@@ -2915,6 +2915,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("salesforceExcludedObjects")]
         public virtual SalesforceOrg SalesforceExcludedObjects { get; set; }
 
+        /// <summary>Spanner data source objects to avoid backfilling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spannerExcludedObjects")]
+        public virtual SpannerDatabase SpannerExcludedObjects { get; set; }
+
         /// <summary>SQLServer data source objects to avoid backfilling</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlServerExcludedObjects")]
         public virtual SqlServerRdbms SqlServerExcludedObjects { get; set; }
@@ -3282,6 +3286,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
+        /// <summary>Spanner Connection Profile configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spannerProfile")]
+        public virtual SpannerProfile SpannerProfile { get; set; }
+
         /// <summary>SQLServer Connection Profile configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlServerProfile")]
         public virtual SqlServerProfile SqlServerProfile { get; set; }
@@ -3439,6 +3447,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("salesforceOrg")]
         public virtual SalesforceOrg SalesforceOrg { get; set; }
 
+        /// <summary>Optional. Spanner database to enrich with child data objects and metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spannerDatabase")]
+        public virtual SpannerDatabase SpannerDatabase { get; set; }
+
         /// <summary>Optional. SQLServer RDBMS to enrich with child data objects and metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlServerRdbms")]
         public virtual SqlServerRdbms SqlServerRdbms { get; set; }
@@ -3469,6 +3481,10 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Enriched Salesforce organization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salesforceOrg")]
         public virtual SalesforceOrg SalesforceOrg { get; set; }
+
+        /// <summary>Enriched Spanner database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spannerDatabase")]
+        public virtual SpannerDatabase SpannerDatabase { get; set; }
 
         /// <summary>Enriched SQLServer RDBMS object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlServerRdbms")]
@@ -5662,6 +5678,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceConnectionProfile")]
         public virtual string SourceConnectionProfile { get; set; }
 
+        /// <summary>Spanner data source configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spannerSourceConfig")]
+        public virtual SpannerSourceConfig SpannerSourceConfig { get; set; }
+
         /// <summary>SQLServer data source configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlServerSourceConfig")]
         public virtual SqlServerSourceConfig SqlServerSourceConfig { get; set; }
@@ -5713,9 +5733,158 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("salesforceIdentifier")]
         public virtual SalesforceObjectIdentifier SalesforceIdentifier { get; set; }
 
+        /// <summary>Spanner data source object identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spannerIdentifier")]
+        public virtual SpannerObjectIdentifier SpannerIdentifier { get; set; }
+
         /// <summary>SQLServer data source object identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlServerIdentifier")]
         public virtual SqlServerObjectIdentifier SqlServerIdentifier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Spanner column.</summary>
+    public class SpannerColumn : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Column name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("column")]
+        public virtual string Column { get; set; }
+
+        /// <summary>Optional. Spanner data type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
+        public virtual string DataType { get; set; }
+
+        /// <summary>Optional. Whether or not the column is a primary key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isPrimaryKey")]
+        public virtual System.Nullable<bool> IsPrimaryKey { get; set; }
+
+        /// <summary>Optional. The ordinal position of the column in the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ordinalPosition")]
+        public virtual System.Nullable<long> OrdinalPosition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Spanner database structure.</summary>
+    public class SpannerDatabase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Spanner schemas in the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemas")]
+        public virtual System.Collections.Generic.IList<SpannerSchema> Schemas { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Spanner data source object identifier.</summary>
+    public class SpannerObjectIdentifier : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The schema name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual string Schema { get; set; }
+
+        /// <summary>Required. The table name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual string Table { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Spanner profile.</summary>
+    public class SpannerProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Immutable. Cloud Spanner database resource. This field is immutable. Must be in the format:
+        /// projects/{project}/instances/{instance}/databases/{database_id}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>
+        /// Optional. The Spanner endpoint to connect to. Defaults to the global endpoint
+        /// (https://spanner.googleapis.com). Must be in the format: https://spanner.{region}.rep.googleapis.com.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Spanner schema.</summary>
+    public class SpannerSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Schema name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual string Schema { get; set; }
+
+        /// <summary>Optional. Spanner tables in the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tables")]
+        public virtual System.Collections.Generic.IList<SpannerTable> Tables { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Spanner source configuration.</summary>
+    public class SpannerSourceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether to use Data Boost for Spanner backfills. Defaults to false if not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backfillDataBoostEnabled")]
+        public virtual System.Nullable<bool> BackfillDataBoostEnabled { get; set; }
+
+        /// <summary>Required. Immutable. The change stream name to use for the stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeStreamName")]
+        public virtual string ChangeStreamName { get; set; }
+
+        /// <summary>
+        /// Optional. Spanner objects to avoid retrieving. If some objects are both included and excluded, an error will
+        /// be thrown.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeObjects")]
+        public virtual SpannerDatabase ExcludeObjects { get; set; }
+
+        /// <summary>Optional. The FGAC role to use for the stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fgacRole")]
+        public virtual string FgacRole { get; set; }
+
+        /// <summary>
+        /// Optional. Spanner objects to retrieve from the data source. If some objects are both included and excluded,
+        /// an error will be thrown.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeObjects")]
+        public virtual SpannerDatabase IncludeObjects { get; set; }
+
+        /// <summary>Optional. Maximum number of concurrent backfill tasks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentBackfillTasks")]
+        public virtual System.Nullable<int> MaxConcurrentBackfillTasks { get; set; }
+
+        /// <summary>Optional. Maximum number of concurrent CDC tasks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentCdcTasks")]
+        public virtual System.Nullable<int> MaxConcurrentCdcTasks { get; set; }
+
+        /// <summary>Optional. The RPC priority to use for the stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spannerRpcPriority")]
+        public virtual string SpannerRpcPriority { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Spanner table.</summary>
+    public class SpannerTable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Spanner columns in the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columns")]
+        public virtual System.Collections.Generic.IList<SpannerColumn> Columns { get; set; }
+
+        /// <summary>Required. Table name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual string Table { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
