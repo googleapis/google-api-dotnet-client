@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2001,6 +2001,10 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaConsumed")]
         public virtual System.Collections.Generic.IDictionary<string, System.Nullable<int>> QuotaConsumed { get; set; }
+
+        /// <summary>Output only. Indicates the state of the quota extraction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaExtractionState")]
+        public virtual string QuotaExtractionState { get; set; }
 
         /// <summary>
         /// Quota metrics to indicate the usage. Depending on the check request, one or more of the following metrics
