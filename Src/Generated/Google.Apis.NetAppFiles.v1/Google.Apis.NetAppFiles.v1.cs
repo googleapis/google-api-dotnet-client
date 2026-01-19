@@ -2483,7 +2483,10 @@ namespace Google.Apis.NetAppFiles.v1
 
                 /// <summary>Updates the Kms config properties with the full spec</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Identifier. Name of the KmsConfig.</param>
+                /// <param name="name">
+                /// Identifier. Name of the KmsConfig. Format:
+                /// `projects/{project}/locations/{location}/kmsConfigs/{kms_config}`
+                /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetAppFiles.v1.Data.KmsConfig body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
@@ -2500,7 +2503,10 @@ namespace Google.Apis.NetAppFiles.v1
                         InitParameters();
                     }
 
-                    /// <summary>Identifier. Name of the KmsConfig.</summary>
+                    /// <summary>
+                    /// Identifier. Name of the KmsConfig. Format:
+                    /// `projects/{project}/locations/{location}/kmsConfigs/{kms_config}`
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -4900,6 +4906,71 @@ namespace Google.Apis.NetAppFiles.v1
                     }
                 }
 
+                /// <summary>
+                /// Establish volume peering. This is used to establish cluster and svm peerings between the GCNV and
+                /// OnPrem clusters.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The volume resource name, in the format
+                /// `projects/{project_id}/locations/{location}/volumes/{volume_id}`
+                /// </param>
+                public virtual EstablishPeeringRequest EstablishPeering(Google.Apis.NetAppFiles.v1.Data.EstablishVolumePeeringRequest body, string name)
+                {
+                    return new EstablishPeeringRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Establish volume peering. This is used to establish cluster and svm peerings between the GCNV and
+                /// OnPrem clusters.
+                /// </summary>
+                public class EstablishPeeringRequest : NetAppFilesBaseServiceRequest<Google.Apis.NetAppFiles.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new EstablishPeering request.</summary>
+                    public EstablishPeeringRequest(Google.Apis.Services.IClientService service, Google.Apis.NetAppFiles.v1.Data.EstablishVolumePeeringRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The volume resource name, in the format
+                    /// `projects/{project_id}/locations/{location}/volumes/{volume_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetAppFiles.v1.Data.EstablishVolumePeeringRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "establishPeering";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:establishPeering";
+
+                    /// <summary>Initializes EstablishPeering parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/volumes/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Gets details of a single Volume.</summary>
                 /// <param name="name">Required. Name of the volume</param>
                 public virtual GetRequest Get(string name)
@@ -5860,7 +5931,7 @@ namespace Google.Apis.NetAppFiles.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backupRegion")]
         public virtual string BackupRegion { get; set; }
 
-        /// <summary>Optional. Backup retention policy defining the retenton of backups.</summary>
+        /// <summary>Optional. Backup retention policy defining the retention of backups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupRetentionPolicy")]
         public virtual BackupRetentionPolicy BackupRetentionPolicy { get; set; }
 
@@ -5870,7 +5941,7 @@ namespace Google.Apis.NetAppFiles.v1.Data
 
         /// <summary>
         /// Output only. The crypto key version used to encrypt the backup vault. Format:
-        /// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}
+        /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupsCryptoKeyVersion")]
         public virtual string BackupsCryptoKeyVersion { get; set; }
@@ -5928,8 +5999,8 @@ namespace Google.Apis.NetAppFiles.v1.Data
         public virtual string EncryptionState { get; set; }
 
         /// <summary>
-        /// Optional. Specifies the KMS config to be used for backup encryption. Format:
-        /// projects/{project}/locations/{location}/kmsConfigs/{kms_config}
+        /// Optional. Specifies the Key Management System (KMS) configuration to be used for backup encryption. Format:
+        /// `projects/{project}/locations/{location}/kmsConfigs/{kms_config}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsConfig")]
         public virtual string KmsConfig { get; set; }
@@ -5986,7 +6057,7 @@ namespace Google.Apis.NetAppFiles.v1.Data
 
         /// <summary>
         /// Optional. User-defined name for the block device, unique within the volume. In case no user input is
-        /// provided, name will be autogenerated in the backend. The name must meet the following requirements: * Be
+        /// provided, name will be auto-generated in the backend. The name must meet the following requirements: * Be
         /// between 1 and 255 characters long. * Contain only uppercase or lowercase letters (A-Z, a-z), numbers (0-9),
         /// and the following special characters: "-", "_", "}", "{", ".". * Spaces are not allowed.
         /// </summary>
@@ -6141,7 +6212,7 @@ namespace Google.Apis.NetAppFiles.v1.Data
         public virtual System.Collections.Generic.IList<string> PathList { get; set; }
 
         /// <summary>
-        /// Optional. Flag indicating whether the directories listed with the pathList need to be recursively
+        /// Optional. Flag indicating whether the directories listed with the `path_list` need to be recursively
         /// pre-populated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recursion")]
@@ -6224,6 +6295,37 @@ namespace Google.Apis.NetAppFiles.v1.Data
     /// replications.
     /// </summary>
     public class EstablishPeeringRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Name of the user's local source cluster to be peered with the destination cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerClusterName")]
+        public virtual string PeerClusterName { get; set; }
+
+        /// <summary>Optional. List of IPv4 ip addresses to be used for peering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerIpAddresses")]
+        public virtual System.Collections.Generic.IList<string> PeerIpAddresses { get; set; }
+
+        /// <summary>
+        /// Required. Name of the user's local source vserver svm to be peered with the destination vserver svm.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerSvmName")]
+        public virtual string PeerSvmName { get; set; }
+
+        /// <summary>
+        /// Required. Name of the user's local source volume to be peered with the destination volume.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerVolumeName")]
+        public virtual string PeerVolumeName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// EstablishVolumePeeringRequest establishes cluster and svm peerings between the source and destination clusters.
+    /// </summary>
+    public class EstablishVolumePeeringRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Required. Name of the user's local source cluster to be peered with the destination cluster.
@@ -6507,7 +6609,7 @@ namespace Google.Apis.NetAppFiles.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>KmsConfig is the customer managed encryption key(CMEK) configuration.</summary>
+    /// <summary>KmsConfig is the customer-managed encryption key(CMEK) configuration.</summary>
     public class KmsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -6548,8 +6650,8 @@ namespace Google.Apis.NetAppFiles.v1.Data
         }
 
         /// <summary>
-        /// Required. Customer managed crypto key resource full name. Format:
-        /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        /// Required. Customer-managed crypto key resource full name. Format:
+        /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyName")]
         public virtual string CryptoKeyName { get; set; }
@@ -6566,7 +6668,9 @@ namespace Google.Apis.NetAppFiles.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Identifier. Name of the KmsConfig.</summary>
+        /// <summary>
+        /// Identifier. Name of the KmsConfig. Format: `projects/{project}/locations/{location}/kmsConfigs/{kms_config}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -7412,7 +7516,7 @@ namespace Google.Apis.NetAppFiles.v1.Data
         public virtual string AllowedClients { get; set; }
 
         /// <summary>
-        /// Optional. An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when
+        /// Optional. An integer representing the anonymous user ID. Range is 0 to `4294967295`. Required when
         /// `squash_mode` is `ROOT_SQUASH` or `ALL_SQUASH`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("anonUid")]
