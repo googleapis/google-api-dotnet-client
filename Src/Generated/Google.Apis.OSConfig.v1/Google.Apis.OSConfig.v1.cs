@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -296,6 +296,7 @@ namespace Google.Apis.OSConfig.v1
                 this.service = service;
                 Global = new GlobalResource(service);
                 Instances = new InstancesResource(service);
+                Operations = new OperationsResource(service);
                 OsPolicyAssignments = new OsPolicyAssignmentsResource(service);
             }
 
@@ -1101,6 +1102,301 @@ namespace Google.Apis.OSConfig.v1
                                 Pattern = null,
                             });
                         }
+                    }
+                }
+            }
+
+            /// <summary>Gets the Operations resource.</summary>
+            public virtual OperationsResource Operations { get; }
+
+            /// <summary>The "operations" collection of methods.</summary>
+            public class OperationsResource
+            {
+                private const string Resource = "operations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public OperationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+                /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it
+                /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
+                /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
+                /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">The name of the operation resource to be cancelled.</param>
+                public virtual CancelRequest Cancel(Google.Apis.OSConfig.v1.Data.CancelOperationRequest body, string name)
+                {
+                    return new CancelRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+                /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it
+                /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
+                /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
+                /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+                /// </summary>
+                public class CancelRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Cancel request.</summary>
+                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.OSConfig.v1.Data.CancelOperationRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource to be cancelled.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OSConfig.v1.Data.CancelOperationRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "cancel";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:cancel";
+
+                    /// <summary>Initializes Cancel parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes a long-running operation. This method indicates that the client is no longer interested in
+                /// the operation result. It does not cancel the operation. If the server doesn't support this method,
+                /// it returns `google.rpc.Code.UNIMPLEMENTED`.
+                /// </summary>
+                /// <param name="name">The name of the operation resource to be deleted.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Deletes a long-running operation. This method indicates that the client is no longer interested in
+                /// the operation result. It does not cancel the operation. If the server doesn't support this method,
+                /// it returns `google.rpc.Code.UNIMPLEMENTED`.
+                /// </summary>
+                public class DeleteRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource to be deleted.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
+                /// <param name="name">The name of the operation resource.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
+                public class GetRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Lists operations that match the specified filter in the request. If the server doesn't support this
+                /// method, it returns `UNIMPLEMENTED`.
+                /// </summary>
+                /// <param name="name">The name of the operation's parent resource.</param>
+                public virtual ListRequest List(string name)
+                {
+                    return new ListRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Lists operations that match the specified filter in the request. If the server doesn't support this
+                /// method, it returns `UNIMPLEMENTED`.
+                /// </summary>
+                public class ListRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.ListOperationsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation's parent resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The standard list page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>
+                    /// When set to `true`, operations that are reachable are returned as normal, and those that are
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
+                    /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
+                    /// specific documentation.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}/operations";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
                 }
             }
@@ -2891,6 +3187,321 @@ namespace Google.Apis.OSConfig.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents the metadata of a generic long-running operation.</summary>
+    public class GoogleCloudOsconfigCommonV1OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. API version used to start the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
+        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
+        /// `Code.CANCELLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
+        public virtual System.Nullable<bool> RequestedCancellation { get; set; }
+
+        /// <summary>Output only. Human-readable status of the operation, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
+        public virtual string StatusMessage { get; set; }
+
+        /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; }
+
+        /// <summary>Output only. Name of the verb executed by the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
+        public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the metadata of a generic long-running operation.</summary>
+    public class GoogleCloudOsconfigCommonV1alphaOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. API version used to start the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
+        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
+        /// `Code.CANCELLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
+        public virtual System.Nullable<bool> RequestedCancellation { get; set; }
+
+        /// <summary>Output only. Human-readable status of the operation, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
+        public virtual string StatusMessage { get; set; }
+
+        /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; }
+
+        /// <summary>Output only. Name of the verb executed by the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
+        public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the metadata of a generic long-running operation.</summary>
+    public class GoogleCloudOsconfigCommonV1mainOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. API version used to start the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
+        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
+        /// `Code.CANCELLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
+        public virtual System.Nullable<bool> RequestedCancellation { get; set; }
+
+        /// <summary>Output only. Human-readable status of the operation, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
+        public virtual string StatusMessage { get; set; }
+
+        /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; }
+
+        /// <summary>Output only. Name of the verb executed by the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
+        public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// OS policy assignment operation metadata provided by OS policy assignment API methods that return long running
     /// operations.
@@ -3773,6 +4384,29 @@ namespace Google.Apis.OSConfig.v1.Data
         /// <summary>The list of assignments</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osPolicyAssignments")]
         public virtual System.Collections.Generic.IList<OSPolicyAssignment> OsPolicyAssignments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Operations.ListOperations.</summary>
+    public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of operations that matches the specified filter in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>
+        /// Unordered list. Unreachable resources. Populated when the request sets
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
