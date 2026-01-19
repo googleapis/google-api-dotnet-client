@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2760,6 +2760,17 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectsFromSourceSkippedBySync")]
         public virtual System.Nullable<long> ObjectsFromSourceSkippedBySync { get; set; }
+
+        /// <summary>Number of unrestored deep archive objects skipped.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unrestoredDeepArchiveObjectsSkippedCount")]
+        public virtual System.Nullable<long> UnrestoredDeepArchiveObjectsSkippedCount { get; set; }
+
+        /// <summary>
+        /// Number of glacier objects skipped, glacier objects are unsupported by default regardless of the restore
+        /// status. Allowlist the project to copy glacier objects if needed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unsupportedS3GlacierObjectsSkippedCount")]
+        public virtual System.Nullable<long> UnsupportedS3GlacierObjectsSkippedCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
