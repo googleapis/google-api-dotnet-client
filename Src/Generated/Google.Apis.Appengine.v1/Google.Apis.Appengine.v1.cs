@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2727,93 +2727,6 @@ namespace Google.Apis.Appengine.v1
                     }
                 }
 
-                /// <summary>Exports a user image to Artifact Registry.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="appsId">
-                /// Part of `name`. Required. Name of the App Engine version resource. Format:
-                /// apps/{app}/services/{service}/versions/{version}
-                /// </param>
-                /// <param name="servicesId">Part of `name`. See documentation of `appsId`.</param>
-                /// <param name="versionsId">Part of `name`. See documentation of `appsId`.</param>
-                public virtual ExportAppImageRequest ExportAppImage(Google.Apis.Appengine.v1.Data.ExportAppImageRequest body, string appsId, string servicesId, string versionsId)
-                {
-                    return new ExportAppImageRequest(this.service, body, appsId, servicesId, versionsId);
-                }
-
-                /// <summary>Exports a user image to Artifact Registry.</summary>
-                public class ExportAppImageRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.Operation>
-                {
-                    /// <summary>Constructs a new ExportAppImage request.</summary>
-                    public ExportAppImageRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1.Data.ExportAppImageRequest body, string appsId, string servicesId, string versionsId) : base(service)
-                    {
-                        AppsId = appsId;
-                        ServicesId = servicesId;
-                        VersionsId = versionsId;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Part of `name`. Required. Name of the App Engine version resource. Format:
-                    /// apps/{app}/services/{service}/versions/{version}
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string AppsId { get; private set; }
-
-                    /// <summary>Part of `name`. See documentation of `appsId`.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("servicesId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string ServicesId { get; private set; }
-
-                    /// <summary>Part of `name`. See documentation of `appsId`.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("versionsId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string VersionsId { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Appengine.v1.Data.ExportAppImageRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "exportAppImage";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}:exportAppImage";
-
-                    /// <summary>Initializes ExportAppImage parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "appsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("servicesId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "servicesId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("versionsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "versionsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
                 /// <summary>
                 /// Gets the specified Version resource. By default, only a BASIC_VIEW will be returned. Specify the
                 /// FULL_VIEW parameter to get the full resource.
@@ -5228,6 +5141,166 @@ namespace Google.Apis.Appengine.v1
                         public VersionsResource(Google.Apis.Services.IClientService service)
                         {
                             this.service = service;
+                            Instances = new InstancesResource(service);
+                        }
+
+                        /// <summary>Gets the Instances resource.</summary>
+                        public virtual InstancesResource Instances { get; }
+
+                        /// <summary>The "instances" collection of methods.</summary>
+                        public class InstancesResource
+                        {
+                            private const string Resource = "instances";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public InstancesResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+                            }
+
+                            /// <summary>
+                            /// Enables debugging on a VM instance. This allows you to use the SSH command to connect to
+                            /// the virtual machine where the instance lives. While in "debug mode", the instance
+                            /// continues to serve live traffic. You should delete the instance when you are done
+                            /// debugging and then allow the system to take over and determine if another instance
+                            /// should be started.Only applicable for instances in App Engine flexible environment.
+                            /// </summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="projectsId">
+                            /// Part of `name`. Required. Name of the resource requested. Example:
+                            /// apps/myapp/services/default/versions/v1/instances/instance-1.
+                            /// </param>
+                            /// <param name="locationsId">Part of `name`. See documentation of `projectsId`.</param>
+                            /// <param name="applicationsId">Part of `name`. See documentation of `projectsId`.</param>
+                            /// <param name="servicesId">Part of `name`. See documentation of `projectsId`.</param>
+                            /// <param name="versionsId">Part of `name`. See documentation of `projectsId`.</param>
+                            /// <param name="instancesId">Part of `name`. See documentation of `projectsId`.</param>
+                            public virtual DebugRequest Debug(Google.Apis.Appengine.v1.Data.DebugInstanceRequest body, string projectsId, string locationsId, string applicationsId, string servicesId, string versionsId, string instancesId)
+                            {
+                                return new DebugRequest(this.service, body, projectsId, locationsId, applicationsId, servicesId, versionsId, instancesId);
+                            }
+
+                            /// <summary>
+                            /// Enables debugging on a VM instance. This allows you to use the SSH command to connect to
+                            /// the virtual machine where the instance lives. While in "debug mode", the instance
+                            /// continues to serve live traffic. You should delete the instance when you are done
+                            /// debugging and then allow the system to take over and determine if another instance
+                            /// should be started.Only applicable for instances in App Engine flexible environment.
+                            /// </summary>
+                            public class DebugRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.Operation>
+                            {
+                                /// <summary>Constructs a new Debug request.</summary>
+                                public DebugRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1.Data.DebugInstanceRequest body, string projectsId, string locationsId, string applicationsId, string servicesId, string versionsId, string instancesId) : base(service)
+                                {
+                                    ProjectsId = projectsId;
+                                    LocationsId = locationsId;
+                                    ApplicationsId = applicationsId;
+                                    ServicesId = servicesId;
+                                    VersionsId = versionsId;
+                                    InstancesId = instancesId;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Part of `name`. Required. Name of the resource requested. Example:
+                                /// apps/myapp/services/default/versions/v1/instances/instance-1.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string ProjectsId { get; private set; }
+
+                                /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string LocationsId { get; private set; }
+
+                                /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("applicationsId", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string ApplicationsId { get; private set; }
+
+                                /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("servicesId", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string ServicesId { get; private set; }
+
+                                /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("versionsId", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string VersionsId { get; private set; }
+
+                                /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("instancesId", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string InstancesId { get; private set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.Appengine.v1.Data.DebugInstanceRequest Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "debug";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "POST";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}:debug";
+
+                                /// <summary>Initializes Debug parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "projectsId",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "locationsId",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("applicationsId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "applicationsId",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("servicesId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "servicesId",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("versionsId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "versionsId",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("instancesId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "instancesId",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
                         }
 
                         /// <summary>Deletes an existing Version resource.</summary>
@@ -5291,121 +5364,6 @@ namespace Google.Apis.Appengine.v1
                             public override string RestPath => "v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}";
 
                             /// <summary>Initializes Delete parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-                                RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectsId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                                RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "locationsId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                                RequestParameters.Add("applicationsId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "applicationsId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                                RequestParameters.Add("servicesId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "servicesId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                                RequestParameters.Add("versionsId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "versionsId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            }
-                        }
-
-                        /// <summary>Exports a user image to Artifact Registry.</summary>
-                        /// <param name="body">The body of the request.</param>
-                        /// <param name="projectsId">
-                        /// Part of `name`. Required. Name of the App Engine version resource. Format:
-                        /// apps/{app}/services/{service}/versions/{version}
-                        /// </param>
-                        /// <param name="locationsId">Part of `name`. See documentation of `projectsId`.</param>
-                        /// <param name="applicationsId">Part of `name`. See documentation of `projectsId`.</param>
-                        /// <param name="servicesId">Part of `name`. See documentation of `projectsId`.</param>
-                        /// <param name="versionsId">Part of `name`. See documentation of `projectsId`.</param>
-                        public virtual ExportAppImageRequest ExportAppImage(Google.Apis.Appengine.v1.Data.ExportAppImageRequest body, string projectsId, string locationsId, string applicationsId, string servicesId, string versionsId)
-                        {
-                            return new ExportAppImageRequest(this.service, body, projectsId, locationsId, applicationsId, servicesId, versionsId);
-                        }
-
-                        /// <summary>Exports a user image to Artifact Registry.</summary>
-                        public class ExportAppImageRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.Operation>
-                        {
-                            /// <summary>Constructs a new ExportAppImage request.</summary>
-                            public ExportAppImageRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1.Data.ExportAppImageRequest body, string projectsId, string locationsId, string applicationsId, string servicesId, string versionsId) : base(service)
-                            {
-                                ProjectsId = projectsId;
-                                LocationsId = locationsId;
-                                ApplicationsId = applicationsId;
-                                ServicesId = servicesId;
-                                VersionsId = versionsId;
-                                Body = body;
-                                InitParameters();
-                            }
-
-                            /// <summary>
-                            /// Part of `name`. Required. Name of the App Engine version resource. Format:
-                            /// apps/{app}/services/{service}/versions/{version}
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string ProjectsId { get; private set; }
-
-                            /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string LocationsId { get; private set; }
-
-                            /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("applicationsId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string ApplicationsId { get; private set; }
-
-                            /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("servicesId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string ServicesId { get; private set; }
-
-                            /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("versionsId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string VersionsId { get; private set; }
-
-                            /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.Appengine.v1.Data.ExportAppImageRequest Body { get; set; }
-
-                            /// <summary>Returns the body of the request.</summary>
-                            protected override object GetBody() => Body;
-
-                            /// <summary>Gets the method name.</summary>
-                            public override string MethodName => "exportAppImage";
-
-                            /// <summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod => "POST";
-
-                            /// <summary>Gets the REST path.</summary>
-                            public override string RestPath => "v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}:exportAppImage";
-
-                            /// <summary>Initializes ExportAppImage parameter list.</summary>
                             protected override void InitParameters()
                             {
                                 base.InitParameters();
@@ -6746,26 +6704,6 @@ namespace Google.Apis.Appengine.v1.Data
         /// <summary>Static file content to be served for this error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("staticFile")]
         public virtual string StaticFile { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for Versions.ExportAppImage.</summary>
-    public class ExportAppImageRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. The full resource name of the AR repository to export to. Format:
-        /// projects/{project}/locations/{location}/repositories/{repository} If not specified, defaults to
-        /// projects/{project}/locations/{location}/repositories/gae-standard in the same region as the app. The default
-        /// repository will be created if it does not exist.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("destinationRepository")]
-        public virtual string DestinationRepository { get; set; }
-
-        /// <summary>Optional. Optional: A service account to use for authenticating to Artifact Registry.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
-        public virtual string ServiceAccount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
