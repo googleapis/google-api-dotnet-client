@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1485,9 +1485,9 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// https://www.googleapis.com/auth/cloud-identity.devices.lookup If multiple properties are provided, only
             /// DeviceUsers having all of these properties are considered as matches - i.e. the query behaves like an
             /// AND. Different platforms require different amounts of information from the caller to ensure that the
-            /// DeviceUser is uniquely identified. - iOS: Specifying the 'partner' and 'ios_device_id' fields is
-            /// required. - Android: Specifying the 'android_id' field is required. - Desktop: Specifying the
-            /// 'raw_resource_id' field is required.
+            /// DeviceUser is uniquely identified. - iOS: If either the `partner` or `ios_device_id` field is provided,
+            /// then both fields are required. - Android: Specifying the `android_id` field is required. - Desktop:
+            /// Specifying the `raw_resource_id` field is required.
             /// </summary>
             /// <param name="parent">
             /// Must be set to "devices/-/deviceUsers" to search across all DeviceUser belonging to the user.
@@ -1503,9 +1503,9 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// https://www.googleapis.com/auth/cloud-identity.devices.lookup If multiple properties are provided, only
             /// DeviceUsers having all of these properties are considered as matches - i.e. the query behaves like an
             /// AND. Different platforms require different amounts of information from the caller to ensure that the
-            /// DeviceUser is uniquely identified. - iOS: Specifying the 'partner' and 'ios_device_id' fields is
-            /// required. - Android: Specifying the 'android_id' field is required. - Desktop: Specifying the
-            /// 'raw_resource_id' field is required.
+            /// DeviceUser is uniquely identified. - iOS: If either the `partner` or `ios_device_id` field is provided,
+            /// then both fields are required. - Android: Specifying the `android_id` field is required. - Desktop:
+            /// Specifying the `raw_resource_id` field is required.
             /// </summary>
             public class LookupRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.LookupSelfDeviceUsersResponse>
             {
