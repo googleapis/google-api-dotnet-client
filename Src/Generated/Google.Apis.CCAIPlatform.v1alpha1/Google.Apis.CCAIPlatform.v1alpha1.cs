@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2242,13 +2242,13 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         public virtual System.Collections.Generic.IList<string> AssignableEmployeeIds { get; set; }
 
         /// <summary>
-        /// Fixed number of days off per week. An employee has a given day off if they are not assigned to a shift that
-        /// starts on that day. A week is 7 days and begins on Sunday.
+        /// Optional. Fixed number of days off per week. An employee has a given day off if they are not assigned to a
+        /// shift that starts on that day. A week is 7 days and begins on Sunday.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("daysOffCountPerWeek")]
         public virtual System.Nullable<int> DaysOffCountPerWeek { get; set; }
 
-        /// <summary>Fixed dates when shifts from this template should not be generated.</summary>
+        /// <summary>Optional. Fixed dates when shifts from this template should not be generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("daysOffDates")]
         public virtual DateList DaysOffDates { get; set; }
 
