@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2681,8 +2681,8 @@ namespace Google.Apis.Dns.v1beta2
             public virtual System.Nullable<int> MaxResults { get; set; }
 
             /// <summary>
-            /// Restricts the list to return only records with this fully qualified domain name. Mutually exclusive with
-            /// the {@code filter} field.
+            /// Specify a fully qualified domain name to view only those records. The name parameter is not supported
+            /// and must be omitted when you use filter.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
@@ -2695,8 +2695,8 @@ namespace Google.Apis.Dns.v1beta2
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Restricts the list to return only records of this type. If present, the "name" parameter must also be
-            /// present. Mutually exclusive with the {@code filter} field.
+            /// Specify a record type to view only those records. You must also specify the name parameter. The type
+            /// parameter is not supported and must be omitted when you use filter.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Type { get; set; }
