@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1128,7 +1128,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// <summary>Gets a pretargeting configuration.</summary>
             /// <param name="name">
             /// Required. Name of the pretargeting configuration to get. Format:
-            /// bidders/{bidderAccountId}/pretargetingConfig/{configId}
+            /// bidders/{bidderAccountId}/pretargetingConfigs/{configId}
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -1147,7 +1147,7 @@ namespace Google.Apis.RealTimeBidding.v1
 
                 /// <summary>
                 /// Required. Name of the pretargeting configuration to get. Format:
-                /// bidders/{bidderAccountId}/pretargetingConfig/{configId}
+                /// bidders/{bidderAccountId}/pretargetingConfigs/{configId}
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
