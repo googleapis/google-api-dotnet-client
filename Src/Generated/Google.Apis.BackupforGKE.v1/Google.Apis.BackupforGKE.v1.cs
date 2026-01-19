@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2265,6 +2265,51 @@ namespace Google.Apis.BackupforGKE.v1
                     }
                 }
 
+                /// <summary>Returns tags directly bound to a GCP resource.</summary>
+                /// <param name="name">Required. The full resource name of the service resource.</param>
+                public virtual GetTagsRequest GetTags(string name)
+                {
+                    return new GetTagsRequest(this.service, name);
+                }
+
+                /// <summary>Returns tags directly bound to a GCP resource.</summary>
+                public class GetTagsRequest : BackupforGKEBaseServiceRequest<Google.Apis.BackupforGKE.v1.Data.GetTagsResponse>
+                {
+                    /// <summary>Constructs a new GetTags request.</summary>
+                    public GetTagsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The full resource name of the service resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getTags";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:getTags";
+
+                    /// <summary>Initializes GetTags parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/backupPlans/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Lists BackupPlans in a given location.</summary>
                 /// <param name="parent">
                 /// Required. The location that contains the BackupPlans to list. Format: `projects/*/locations/*`
@@ -2509,6 +2554,59 @@ namespace Google.Apis.BackupforGKE.v1
                         RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
                         {
                             Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/backupPlans/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Updates tags directly bound to a GCP resource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The full resource name of the service resource.</param>
+                public virtual SetTagsRequest SetTags(Google.Apis.BackupforGKE.v1.Data.SetTagsRequest body, string name)
+                {
+                    return new SetTagsRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates tags directly bound to a GCP resource.</summary>
+                public class SetTagsRequest : BackupforGKEBaseServiceRequest<Google.Apis.BackupforGKE.v1.Data.SetTagsResponse>
+                {
+                    /// <summary>Constructs a new SetTags request.</summary>
+                    public SetTagsRequest(Google.Apis.Services.IClientService service, Google.Apis.BackupforGKE.v1.Data.SetTagsRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The full resource name of the service resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BackupforGKE.v1.Data.SetTagsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setTags";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:setTags";
+
+                    /// <summary>Initializes SetTags parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
@@ -4788,6 +4886,51 @@ namespace Google.Apis.BackupforGKE.v1
                     }
                 }
 
+                /// <summary>Returns tags directly bound to a GCP resource.</summary>
+                /// <param name="name">Required. The full resource name of the service resource.</param>
+                public virtual GetTagsRequest GetTags(string name)
+                {
+                    return new GetTagsRequest(this.service, name);
+                }
+
+                /// <summary>Returns tags directly bound to a GCP resource.</summary>
+                public class GetTagsRequest : BackupforGKEBaseServiceRequest<Google.Apis.BackupforGKE.v1.Data.GetTagsResponse>
+                {
+                    /// <summary>Constructs a new GetTags request.</summary>
+                    public GetTagsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The full resource name of the service resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getTags";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:getTags";
+
+                    /// <summary>Initializes GetTags parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/restorePlans/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Lists RestorePlans in a given location.</summary>
                 /// <param name="parent">
                 /// Required. The location that contains the RestorePlans to list. Format: `projects/*/locations/*`
@@ -5031,6 +5174,59 @@ namespace Google.Apis.BackupforGKE.v1
                         RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
                         {
                             Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/restorePlans/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Updates tags directly bound to a GCP resource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The full resource name of the service resource.</param>
+                public virtual SetTagsRequest SetTags(Google.Apis.BackupforGKE.v1.Data.SetTagsRequest body, string name)
+                {
+                    return new SetTagsRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates tags directly bound to a GCP resource.</summary>
+                public class SetTagsRequest : BackupforGKEBaseServiceRequest<Google.Apis.BackupforGKE.v1.Data.SetTagsResponse>
+                {
+                    /// <summary>Constructs a new SetTags request.</summary>
+                    public SetTagsRequest(Google.Apis.Services.IClientService service, Google.Apis.BackupforGKE.v1.Data.SetTagsRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The full resource name of the service resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BackupforGKE.v1.Data.SetTagsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setTags";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:setTags";
+
+                    /// <summary>Initializes SetTags parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
@@ -6708,6 +6904,25 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for GetTags.</summary>
+    public class GetTagsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A checksum based on the current bindings. This field is always set in server responses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Required. The full resource name of the service resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Tag keys/values directly bound to this resource. Each item in the map must be expressed as " : ".
+        /// For example: "123/environment" : "production", "123/costCenter" : "marketing"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class GoogleLongrunningCancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8361,6 +8576,51 @@ namespace Google.Apis.BackupforGKE.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for SetTags.</summary>
+    public class SetTagsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A checksum based on the current bindings which can be passed to prevent race conditions. If not
+        /// passed, etag check would be skipped.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. A unique identifier for this request. Must be a valid UUID. This request is only idempotent if a
+        /// `request_id` is provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>
+        /// Required. These bindings will override any bindings previously set and will be effective immediately. Each
+        /// item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter"
+        /// : "marketing"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+    }
+
+    /// <summary>Response message for SetTags.</summary>
+    public class SetTagsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A checksum based on the current bindings. This field is always set in server responses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Required. The full resource name of the service resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Tag keys/values directly bound to this resource. Each item in the map must be expressed as " : ".
+        /// For example: "123/environment" : "production", "123/costCenter" : "marketing"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
     }
 
     /// <summary>
