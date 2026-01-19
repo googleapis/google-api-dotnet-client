@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2758,12 +2758,10 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         public virtual string Assignee { get; set; }
 
         /// <summary>
-        /// Optional. This field controls if "Gemini in BigQuery"
+        /// Optional. Deprecated: "Gemini in BigQuery" is now available by default for all BigQuery editions and should
+        /// not be explicitly set. Controls if "Gemini in BigQuery"
         /// (https://cloud.google.com/gemini/docs/bigquery/overview) features should be enabled for this reservation
-        /// assignment, which is not on by default. "Gemini in BigQuery" has a distinct compliance posture from
-        /// BigQuery. If this field is set to true, the assignment job type is QUERY, and the parent reservation edition
-        /// is ENTERPRISE_PLUS, then the assignment will give the grantee project/organization access to "Gemini in
-        /// BigQuery" features.
+        /// assignment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableGeminiInBigquery")]
         public virtual System.Nullable<bool> EnableGeminiInBigquery { get; set; }
