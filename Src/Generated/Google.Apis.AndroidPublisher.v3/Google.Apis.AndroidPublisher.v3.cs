@@ -16832,7 +16832,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     public class LineItem : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Item's listed price on Play Store, this may or may not include tax. Excludes any discounts or promotions.
+        /// Item's listed price on Play Store, this may or may not include tax. Excludes Google-funded discounts only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listingPrice")]
         public virtual Money ListingPrice { get; set; }
