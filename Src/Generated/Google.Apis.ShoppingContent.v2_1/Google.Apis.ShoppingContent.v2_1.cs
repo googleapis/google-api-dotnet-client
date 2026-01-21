@@ -5791,10 +5791,12 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <summary>
         /// Start an action. The action can be requested by merchants in third-party application. Before merchants can
         /// request the action, the third-party application needs to show them action specific content and display a
-        /// user input form. The action can be successfully started only once all `required` inputs are provided. If any
-        /// `required` input is missing, or invalid value was provided, the service will return 400 error. Validation
-        /// errors will contain Ids for all problematic field together with translated, human readable error messages
-        /// that can be shown to the user.
+        /// user input form. You can request access using [Trigger action allowlist
+        /// form](https://docs.google.com/forms/d/e/1FAIpQLSfeV_sBW9MBQv9BMTV6JZ1g11PGHLdHsrefca-9h0LmpU7CUg/viewform?usp=sharing).
+        /// The action can be successfully started only once all `required` inputs are provided. If any `required` input
+        /// is missing, or invalid value was provided, the service will return 400 error. Validation errors will contain
+        /// Ids for all problematic field together with translated, human readable error messages that can be shown to
+        /// the user.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">Required. The ID of the merchant's account.</param>
@@ -5806,10 +5808,12 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <summary>
         /// Start an action. The action can be requested by merchants in third-party application. Before merchants can
         /// request the action, the third-party application needs to show them action specific content and display a
-        /// user input form. The action can be successfully started only once all `required` inputs are provided. If any
-        /// `required` input is missing, or invalid value was provided, the service will return 400 error. Validation
-        /// errors will contain Ids for all problematic field together with translated, human readable error messages
-        /// that can be shown to the user.
+        /// user input form. You can request access using [Trigger action allowlist
+        /// form](https://docs.google.com/forms/d/e/1FAIpQLSfeV_sBW9MBQv9BMTV6JZ1g11PGHLdHsrefca-9h0LmpU7CUg/viewform?usp=sharing).
+        /// The action can be successfully started only once all `required` inputs are provided. If any `required` input
+        /// is missing, or invalid value was provided, the service will return 400 error. Validation errors will contain
+        /// Ids for all problematic field together with translated, human readable error messages that can be shown to
+        /// the user.
         /// </summary>
         public class TriggeractionRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.TriggerActionResponse>
         {
