@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3150,8 +3150,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// workstation VM when the VM is created. The URI must be of the form gs://{bucket-name}/{object-name}. If
         /// specifying a startup script, the service account must have [Permission to access the bucket and script file
         /// in Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-permissions). Otherwise, the
-        /// script must be publicly accessible. Note that the service regularly updates the OS version used, and it is
-        /// the responsibility of the user to ensure the script stays compatible with the OS version.
+        /// script must be publicly accessible. Note that the service regularly updates the OS version of the host VM,
+        /// and it is the responsibility of the user to ensure the script stays compatible with the OS version.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startupScriptUri")]
         public virtual string StartupScriptUri { get; set; }
@@ -3246,6 +3246,15 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     /// </summary>
     public class GceRegionalPersistentDisk : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Number of seconds to wait after initially creating or subsequently shutting down the workstation
+        /// before converting its disk into a snapshot. This generally saves costs at the expense of greater startup
+        /// time on next workstation start, as the service will need to create a disk from the archival snapshot. A
+        /// value of `"0s"` indicates that the disk will never be archived.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archiveTimeout")]
+        public virtual object ArchiveTimeout { get; set; }
+
         /// <summary>
         /// Optional. The [type of the persistent disk](https://cloud.google.com/compute/docs/disks#disk-types) for the
         /// home directory. Defaults to `"pd-standard"`.
