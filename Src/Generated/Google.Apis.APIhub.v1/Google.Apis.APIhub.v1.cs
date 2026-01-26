@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -742,12 +742,13 @@ namespace Google.Apis.APIhub.v1
                 }
 
                 /// <summary>
-                /// Looks up an Api Hub instance in a given GCP project. There will always be only one Api Hub instance
-                /// for a GCP project across all locations.
+                /// Looks up an Api Hub instance in a given Google Cloud project. There will always be only one Api Hub
+                /// instance for a Google Cloud project across all locations.
                 /// </summary>
                 /// <param name="parent">
-                /// Required. There will always be only one Api Hub instance for a GCP project across all locations. The
-                /// parent resource for the Api Hub instance resource. Format: `projects/{project}/locations/{location}`
+                /// Required. There will always be only one Api Hub instance for a Google Cloud project across all
+                /// locations. The parent resource for the Api Hub instance resource. Format:
+                /// `projects/{project}/locations/{location}`
                 /// </param>
                 public virtual LookupRequest Lookup(string parent)
                 {
@@ -755,8 +756,8 @@ namespace Google.Apis.APIhub.v1
                 }
 
                 /// <summary>
-                /// Looks up an Api Hub instance in a given GCP project. There will always be only one Api Hub instance
-                /// for a GCP project across all locations.
+                /// Looks up an Api Hub instance in a given Google Cloud project. There will always be only one Api Hub
+                /// instance for a Google Cloud project across all locations.
                 /// </summary>
                 public class LookupRequest : APIhubBaseServiceRequest<Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1LookupApiHubInstanceResponse>
                 {
@@ -768,8 +769,8 @@ namespace Google.Apis.APIhub.v1
                     }
 
                     /// <summary>
-                    /// Required. There will always be only one Api Hub instance for a GCP project across all locations.
-                    /// The parent resource for the Api Hub instance resource. Format:
+                    /// Required. There will always be only one Api Hub instance for a Google Cloud project across all
+                    /// locations. The parent resource for the Api Hub instance resource. Format:
                     /// `projects/{project}/locations/{location}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -9879,8 +9880,8 @@ namespace Google.Apis.APIhub.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudApihubV1SourceMetadata> SourceMetadata { get; set; }
 
         /// <summary>
-        /// Optional. The project to which the deployment belongs. For GCP gateways, this will refer to the project
-        /// identifier. For others like Edge/OPDK, this will refer to the org identifier.
+        /// Optional. The project to which the deployment belongs. For Google Cloud gateways, this will refer to the
+        /// project identifier. For others like Edge/OPDK, this will refer to the org identifier.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceProject")]
         public virtual string SourceProject { get; set; }
@@ -10152,7 +10153,7 @@ namespace Google.Apis.APIhub.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Optional. For an observation pushed from a gcp resource, this would be the gcp project id.
+        /// Optional. For an observation pushed from a Google Cloud resource, this would be the Google Cloud project id.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("origin")]
         public virtual string Origin { get; set; }
@@ -12069,8 +12070,8 @@ namespace Google.Apis.APIhub.v1.Data
 
         /// <summary>
         /// Optional. The source project id of the plugin instance. This will be the id of runtime project in case of
-        /// gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for
-        /// Google provided on-ramp plugins.
+        /// Google Cloud based plugins and org id in case of non-Google Cloud based plugins. This field will be a
+        /// required field for Google provided on-ramp plugins.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceProjectId")]
         public virtual string SourceProjectId { get; set; }
@@ -12147,7 +12148,7 @@ namespace Google.Apis.APIhub.v1.Data
 
         /// <summary>
         /// Output only. The configuration of resources created for a given plugin instance action. Note these will be
-        /// returned only in case of Non-GCP plugins like OPDK.
+        /// returned only in case of non-Google Cloud plugins like OPDK.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceConfig")]
         public virtual GoogleCloudApihubV1ResourceConfig ResourceConfig { get; set; }
@@ -12166,8 +12167,8 @@ namespace Google.Apis.APIhub.v1.Data
         public virtual string ScheduleTimeZone { get; set; }
 
         /// <summary>
-        /// Optional. The service account used to publish data. Note, the service account will only be accepted for non
-        /// GCP plugins like OPDK.
+        /// Optional. The service account used to publish data. Note, the service account will only be accepted for
+        /// non-Google Cloud plugins like OPDK.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
