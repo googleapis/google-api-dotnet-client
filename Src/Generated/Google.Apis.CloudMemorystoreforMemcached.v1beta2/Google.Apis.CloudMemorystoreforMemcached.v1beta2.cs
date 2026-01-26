@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1223,9 +1223,9 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
 
                     /// <summary>
                     /// When set to `true`, operations that are reachable are returned as normal, and those that are
-                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
-                    /// `true` when reading across collections e.g. when `parent` is set to
-                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                    /// `true` when reading across collections. For example, when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not supported by default and will result in an
                     /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
                     /// specific documentation.
                     /// </summary>
@@ -1356,8 +1356,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
-                /// primarily intended for internal usage.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -1578,7 +1578,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
     /// <summary>Request message for GetTags.</summary>
     public class GetTagsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The full One Platform resource name of the service resource.</summary>
+        /// <summary>Required. The full resource name of the service resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -1589,7 +1589,11 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
     /// <summary>Response message for GetTags.</summary>
     public class GetTagsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The full One Platform resource name of the service resource.</summary>
+        /// <summary>A checksum based on the current bindings. This field is always set in server responses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Required. The full resource name of the service resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -1599,13 +1603,6 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
-
-        /// <summary>A checksum based on the current bindings. This field is always set in server responses.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tagsEtag")]
-        public virtual string TagsEtag { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>Metadata for the given google.cloud.location.Location.</summary>
@@ -2612,8 +2609,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -3222,7 +3219,14 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
     /// <summary>Request message for SetTags.</summary>
     public class SetTagsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The full One Platform resource name of the service resource.</summary>
+        /// <summary>
+        /// Optional. A checksum based on the current bindings which can be passed to prevent race conditions. If not
+        /// passed, etag check would be skipped.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Required. The full resource name of the service resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3240,22 +3244,16 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
-
-        /// <summary>
-        /// Optional. A checksum based on the current bindings which can be passed to prevent race conditions. If not
-        /// passed, etag check would be skipped.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tagsEtag")]
-        public virtual string TagsEtag { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>Response message for SetTags.</summary>
     public class SetTagsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The full One Platform resource name of the service resource.</summary>
+        /// <summary>A checksum based on the current bindings. This field is always set in server responses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Required. The full resource name of the service resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3265,13 +3263,6 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
-
-        /// <summary>A checksum based on the current bindings. This field is always set in server responses.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tagsEtag")]
-        public virtual string TagsEtag { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>
