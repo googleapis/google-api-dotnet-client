@@ -8568,6 +8568,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
     public class SystemUpdate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// If this is greater than zero, then this is the number of days after a pending update becoming available that
+        /// a device can remain compliant, without taking the update. Has no effect otherwise.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedDaysWithoutUpdate")]
+        public virtual System.Nullable<int> AllowedDaysWithoutUpdate { get; set; }
+
+        /// <summary>
         /// If the type is WINDOWED, the end of the maintenance window, measured as the number of minutes after midnight
         /// in device's local time. This value must be between 0 and 1439, inclusive. If this value is less than
         /// start_minutes, then the maintenance window spans midnight. If the maintenance window specified is smaller
