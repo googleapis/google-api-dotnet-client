@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2350,8 +2350,9 @@ namespace Google.Apis.AppHub.v1
 
                 /// <summary>Gets an Extended Metadata Schema.</summary>
                 /// <param name="name">
-                /// Required. Schema resource name Format: projects//locations//extendedMetadataSchemas/ could be
-                /// "apphub.googleapis.com/Name"
+                /// Required. Schema resource name. Format:
+                /// `projects/{project}/locations/{location}/extendedMetadataSchemas/{extended_metadata_schema}`.
+                /// `{extended_metadata_schema}` has the format `"apphub.googleapis.com/{SchemaName}"`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -2369,8 +2370,9 @@ namespace Google.Apis.AppHub.v1
                     }
 
                     /// <summary>
-                    /// Required. Schema resource name Format: projects//locations//extendedMetadataSchemas/ could be
-                    /// "apphub.googleapis.com/Name"
+                    /// Required. Schema resource name. Format:
+                    /// `projects/{project}/locations/{location}/extendedMetadataSchemas/{extended_metadata_schema}`.
+                    /// `{extended_metadata_schema}` has the format `"apphub.googleapis.com/{SchemaName}"`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3223,7 +3225,8 @@ namespace Google.Apis.AppHub.v1
 
             /// <summary>Gets a Boundary.</summary>
             /// <param name="name">
-            /// Required. The name of the boundary to retrieve. Format: projects/{project}/locations/{location}/boundary
+            /// Required. The name of the boundary to retrieve. Format:
+            /// `projects/{project}/locations/{location}/boundary`.
             /// </param>
             public virtual GetBoundaryRequest GetBoundary(string name)
             {
@@ -3242,7 +3245,7 @@ namespace Google.Apis.AppHub.v1
 
                 /// <summary>
                 /// Required. The name of the boundary to retrieve. Format:
-                /// projects/{project}/locations/{location}/boundary
+                /// `projects/{project}/locations/{location}/boundary`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3849,7 +3852,7 @@ namespace Google.Apis.AppHub.v1.Data
 
         /// <summary>
         /// Optional. The resource name of the CRM node being attached to the boundary. Format:
-        /// `projects/{project-number}`
+        /// `projects/{project-number}` or `projects/{project-id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crmNode")]
         public virtual string CrmNode { get; set; }
