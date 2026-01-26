@@ -2469,7 +2469,7 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>
         /// Inserts the person mention at a specific index in the document. The person mention must be inserted inside
         /// the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e.
-        /// between the table and its preceding paragraph). People cannot be inserted inside an equation.
+        /// between the table and its preceding paragraph). Person mentions cannot be inserted inside an equation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual Location Location { get; set; }
