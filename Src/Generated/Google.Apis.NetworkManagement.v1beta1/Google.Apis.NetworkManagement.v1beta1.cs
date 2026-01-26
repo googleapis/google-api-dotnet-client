@@ -3792,13 +3792,14 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancerType")]
         public virtual string LoadBalancerType { get; set; }
 
-        /// <summary>A VPC network URI.</summary>
+        /// <summary>
+        /// A VPC network URI. Used according to the `network_type`. Relevant only for the source endpoints.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
         /// <summary>
-        /// Type of the network where the endpoint is located. Applicable only to source endpoint, as destination
-        /// network type can be inferred from the source.
+        /// Type of the network where the endpoint is located. Relevant only for the source endpoints.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkType")]
         public virtual string NetworkType { get; set; }
@@ -3808,11 +3809,7 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual System.Nullable<int> Port { get; set; }
 
         /// <summary>
-        /// Project ID where the endpoint is located. The project ID can be derived from the URI if you provide a
-        /// endpoint or network URI. The following are two cases where you may need to provide the project ID: 1. Only
-        /// the IP address is specified, and the IP address is within a Google Cloud project. 2. When you are using
-        /// Shared VPC and the IP address that you provide is from the service project. In this case, the network that
-        /// the IP address resides in is defined in the host project.
+        /// Endpoint project ID. Used according to the `network_type`. Relevant only for the source endpoints.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
