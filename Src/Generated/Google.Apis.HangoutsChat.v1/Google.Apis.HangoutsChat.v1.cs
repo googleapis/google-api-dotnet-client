@@ -5939,6 +5939,26 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata about the source space from which a message was forwarded.</summary>
+    public class ForwardedMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The resource name of the source space. Format: spaces/{space}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("space")]
+        public virtual string Space { get; set; }
+
+        /// <summary>
+        /// Output only. The display name of the source space or DM at the time of forwarding. For `SPACE`, this is the
+        /// space name. For `DIRECT_MESSAGE`, this is the other participant's name (e.g., "User A"). For `GROUP_CHAT`,
+        /// this is a generated name based on members' first names, limited to 5 including the creator (e.g., "User A,
+        /// User B").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spaceDisplayName")]
+        public virtual string SpaceDisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An action that describes the behavior when the form is submitted. For example, you can invoke an Apps Script
     /// script to handle the form. If the action is triggered, the form values are sent to the server. [Google Workspace
@@ -8996,6 +9016,12 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// </summary>
     public class QuotedMessageMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. Metadata about the source space of the quoted message. Populated only for FORWARD quote type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forwardedMetadata")]
+        public virtual ForwardedMetadata ForwardedMetadata { get; set; }
+
         private string _lastUpdateTimeRaw;
 
         private object _lastUpdateTime;
@@ -9045,6 +9071,55 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the quote type. If not set, defaults to REPLY in the message read/write path for
+        /// backward compatibility.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quoteType")]
+        public virtual string QuoteType { get; set; }
+
+        /// <summary>Output only. A snapshot of the quoted message's content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotedMessageSnapshot")]
+        public virtual QuotedMessageSnapshot QuotedMessageSnapshot { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Provides a snapshot of the content of the quoted message at the time of quoting or forwarding</summary>
+    public class QuotedMessageSnapshot : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Annotations parsed from the text body of the quoted message. Populated only for FORWARD quote
+        /// type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IList<Annotation> Annotations { get; set; }
+
+        /// <summary>
+        /// Output only. Attachments that were part of the quoted message. These are copies of the quoted message's
+        /// attachment metadata. Populated only for FORWARD quote type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachments")]
+        public virtual System.Collections.Generic.IList<Attachment> Attachments { get; set; }
+
+        /// <summary>
+        /// Output only. Contains the quoted message `text` with markups added to support rich formatting like
+        /// hyperlinks,custom emojis, markup, etc. Populated only for FORWARD quote type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("formattedText")]
+        public virtual string FormattedText { get; set; }
+
+        /// <summary>
+        /// Output only. The quoted message's author name. Populated for both REPLY &amp;amp; FORWARD quote types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sender")]
+        public virtual string Sender { get; set; }
+
+        /// <summary>Output only. Snapshot of the quoted message's text content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
