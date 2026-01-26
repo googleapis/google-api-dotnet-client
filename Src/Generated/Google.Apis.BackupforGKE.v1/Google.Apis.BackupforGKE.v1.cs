@@ -5512,6 +5512,384 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Log entry for BDRBackupPlanJobLog for resources using BackupPlan based protection.</summary>
+    public class BDRBackupPlanJobLog : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Canonical resource name for Backup Plan Plan of the job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlanName")]
+        public virtual string BackupPlanName { get; set; }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>End time of the job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The error code. Only populated in error scenarios.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
+        public virtual System.Nullable<int> ErrorCode { get; set; }
+
+        /// <summary>The user readable error message. Only populated in error scenarios.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>The name of the error type eg. PERMISSION_DENIED. Only populated in error scenarios.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorType")]
+        public virtual string ErrorType { get; set; }
+
+        /// <summary>The category field displays the category of the job. Can be one of [UPDATE_BACKUP_PLAN].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobCategory")]
+        public virtual string JobCategory { get; set; }
+
+        /// <summary>The job_id field displays the identifier of the job being reported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
+        public virtual string JobId { get; set; }
+
+        /// <summary>
+        /// The status field displays the status of the job. Can be one of [RUNNING,SUCCESSFUL, FAILED].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobStatus")]
+        public virtual string JobStatus { get; set; }
+
+        /// <summary>User friendly revision id e.g. v0, v1 etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newBackupPlanRevisionId")]
+        public virtual string NewBackupPlanRevisionId { get; set; }
+
+        /// <summary>Full resource name for new backup plan revision</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newBackupPlanRevisionName")]
+        public virtual string NewBackupPlanRevisionName { get; set; }
+
+        /// <summary>User friendly revision id e.g. v0, v1 etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previousBackupPlanRevisionId")]
+        public virtual string PreviousBackupPlanRevisionId { get; set; }
+
+        /// <summary>Full resource name for previous backup plan revision</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previousBackupPlanRevisionName")]
+        public virtual string PreviousBackupPlanRevisionName { get; set; }
+
+        /// <summary>Previous Backup Plan rules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previousBackupRules")]
+        public virtual System.Collections.Generic.IList<BackupRuleDetail> PreviousBackupRules { get; set; }
+
+        /// <summary>The resource_type field displays the type of the protected resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
+        /// <summary>Revised Backup Plan rules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisedBackupRules")]
+        public virtual System.Collections.Generic.IList<BackupRuleDetail> RevisedBackupRules { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Start time of the job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The total number of workloads affected by the job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadsAffectedCount")]
+        public virtual System.Nullable<int> WorkloadsAffectedCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Log entry for Backup and Restore Job for resources using BackupPlan based protection. Next Id: 23
+    /// </summary>
+    public class BDRBackupRestoreJobLog : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _backupConsistencyTimeRaw;
+
+        private object _backupConsistencyTime;
+
+        /// <summary>Backup consistency time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupConsistencyTime")]
+        public virtual string BackupConsistencyTimeRaw
+        {
+            get => _backupConsistencyTimeRaw;
+            set
+            {
+                _backupConsistencyTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _backupConsistencyTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="BackupConsistencyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use BackupConsistencyTimeDateTimeOffset instead.")]
+        public virtual object BackupConsistencyTime
+        {
+            get => _backupConsistencyTime;
+            set
+            {
+                _backupConsistencyTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _backupConsistencyTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="BackupConsistencyTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? BackupConsistencyTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(BackupConsistencyTimeRaw);
+            set => BackupConsistencyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Full resource name of the backup created in backup jobs and used in restore jobs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupName")]
+        public virtual string BackupName { get; set; }
+
+        /// <summary>
+        /// Full resource name for Backup Plan of the job. Only populated for Scheduled Backup and Adhoc Backup.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlanName")]
+        public virtual string BackupPlanName { get; set; }
+
+        /// <summary>Backup retention in days.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupRetentionDays")]
+        public virtual System.Nullable<int> BackupRetentionDays { get; set; }
+
+        /// <summary>Name of the backup rule. Only populated for Scheduled Backup and Adhoc Backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupRule")]
+        public virtual string BackupRule { get; set; }
+
+        /// <summary>Full resource name backup vault name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupVaultName")]
+        public virtual string BackupVaultName { get; set; }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>End time of the job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The error code. Only populated in error scenarios.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
+        public virtual System.Nullable<int> ErrorCode { get; set; }
+
+        /// <summary>The user readable error message. Only populated in error scenarios.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>The name of the error type eg. PERMISSION_DENIED. Only populated in error scenarios.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorType")]
+        public virtual string ErrorType { get; set; }
+
+        /// <summary>The amount of incremental backup data copied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("incrementalBackupSizeGib")]
+        public virtual System.Nullable<double> IncrementalBackupSizeGib { get; set; }
+
+        /// <summary>The category field displays the category of the job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobCategory")]
+        public virtual string JobCategory { get; set; }
+
+        /// <summary>The job_id field displays the identifier of the job being logged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
+        public virtual string JobId { get; set; }
+
+        /// <summary>The status field displays the status of the job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobStatus")]
+        public virtual string JobStatus { get; set; }
+
+        private string _recoveryPointTimeRaw;
+
+        private object _recoveryPointTime;
+
+        /// <summary>Recovery point time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recoveryPointTime")]
+        public virtual string RecoveryPointTimeRaw
+        {
+            get => _recoveryPointTimeRaw;
+            set
+            {
+                _recoveryPointTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _recoveryPointTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RecoveryPointTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RecoveryPointTimeDateTimeOffset instead.")]
+        public virtual object RecoveryPointTime
+        {
+            get => _recoveryPointTime;
+            set
+            {
+                _recoveryPointTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _recoveryPointTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="RecoveryPointTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RecoveryPointTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RecoveryPointTimeRaw);
+            set => RecoveryPointTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The resource_type field displays the type of the protected resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
+        /// <summary>Restore resource location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restoreResourceLocation")]
+        public virtual string RestoreResourceLocation { get; set; }
+
+        /// <summary>Full resource name of the restore resource. Only populated in restore jobs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restoreResourceName")]
+        public virtual string RestoreResourceName { get; set; }
+
+        /// <summary>The source resource ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceResourceId")]
+        public virtual string SourceResourceId { get; set; }
+
+        /// <summary>Source resource location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceResourceLocation")]
+        public virtual string SourceResourceLocation { get; set; }
+
+        /// <summary>Full resource name of the protected resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceResourceName")]
+        public virtual string SourceResourceName { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Start time of the job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a request to perform a single point-in-time capture of some portion of the state of a GKE cluster,
     /// the record of the backup operation itself, and an anchor for the underlying artifacts that comprise the Backup
@@ -6570,6 +6948,36 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// <summary>Output only. State of the BackupPlan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class BackupRuleDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Backup Window For Eg. “00:00 to 06:00”</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupWindow")]
+        public virtual string BackupWindow { get; set; }
+
+        /// <summary>Backup Window Timezone in IANA format. For Eg. “America/Los_Angeles”</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupWindowTimezone")]
+        public virtual string BackupWindowTimezone { get; set; }
+
+        /// <summary>Recurrence Type. For Eg. “Weekly”,” Monthly” or “Daily”.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recurrence")]
+        public virtual string Recurrence { get; set; }
+
+        /// <summary>Recurrence Repeat Schedule. For Eg. “1st and 25th day of the month.”</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recurrenceSchedule")]
+        public virtual string RecurrenceSchedule { get; set; }
+
+        /// <summary>Backup Retention in Days.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionDays")]
+        public virtual System.Nullable<int> RetentionDays { get; set; }
+
+        /// <summary>Backup Rule Name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleName")]
+        public virtual string RuleName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
