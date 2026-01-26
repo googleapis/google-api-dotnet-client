@@ -6821,6 +6821,13 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>
+        /// Optional. Document level prompt provided by the user. This custom text is injected into the AI model's
+        /// prompt to provide extra, document-wide guidance for processing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentPrompt")]
+        public virtual string DocumentPrompt { get; set; }
+
         /// <summary>Entity types of the schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentSchemaEntityType> EntityTypes { get; set; }
@@ -9241,6 +9248,13 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>Display name to show to users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. Document level prompt provided by the user. This custom text is injected into the AI model's
+        /// prompt to provide extra, document-wide guidance for processing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentPrompt")]
+        public virtual string DocumentPrompt { get; set; }
 
         /// <summary>Entity types of the schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
