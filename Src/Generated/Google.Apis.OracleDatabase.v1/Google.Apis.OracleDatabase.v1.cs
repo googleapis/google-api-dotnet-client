@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -5889,11 +5889,11 @@ namespace Google.Apis.OracleDatabase.v1.Data
     /// </summary>
     public class AutonomousDatabase : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The password for the default ADMIN user.</summary>
+        /// <summary>Optional. Immutable. The password for the default ADMIN user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adminPassword")]
         public virtual string AdminPassword { get; set; }
 
-        /// <summary>Optional. The subnet CIDR range for the Autonomous Database.</summary>
+        /// <summary>Optional. Immutable. The subnet CIDR range for the Autonomous Database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cidr")]
         public virtual string Cidr { get; set; }
 
@@ -5935,8 +5935,8 @@ namespace Google.Apis.OracleDatabase.v1.Data
         }
 
         /// <summary>
-        /// Optional. The name of the Autonomous Database. The database name must be unique in the project. The name
-        /// must begin with a letter and can contain a maximum of 30 alphanumeric characters.
+        /// Optional. Immutable. The name of the Autonomous Database. The database name must be unique in the project.
+        /// The name must begin with a letter and can contain a maximum of 30 alphanumeric characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
         public virtual string Database { get; set; }
@@ -5949,8 +5949,8 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual System.Collections.Generic.IList<string> DisasterRecoverySupportedLocations { get; set; }
 
         /// <summary>
-        /// Optional. The display name for the Autonomous Database. The name does not have to be unique within your
-        /// project.
+        /// Optional. Immutable. The display name for the Autonomous Database. The name does not have to be unique
+        /// within your project.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -5973,14 +5973,14 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Optional. The name of the VPC network used by the Autonomous Database in the following format:
+        /// Optional. Immutable. The name of the VPC network used by the Autonomous Database in the following format:
         /// projects/{project}/global/networks/{network}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
         /// <summary>
-        /// Optional. The name of the OdbNetwork associated with the Autonomous Database. Format:
+        /// Optional. Immutable. The name of the OdbNetwork associated with the Autonomous Database. Format:
         /// projects/{project}/locations/{location}/odbNetworks/{odb_network} It is optional but if specified, this
         /// should match the parent ODBNetwork of the OdbSubnet.
         /// </summary>
@@ -5988,7 +5988,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string OdbNetwork { get; set; }
 
         /// <summary>
-        /// Optional. The name of the OdbSubnet associated with the Autonomous Database. Format:
+        /// Optional. Immutable. The name of the OdbSubnet associated with the Autonomous Database. Format:
         /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("odbSubnet")]
@@ -6003,9 +6003,9 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual AutonomousDatabaseProperties Properties { get; set; }
 
         /// <summary>
-        /// Optional. The source Autonomous Database configuration for the standby Autonomous Database. The source
-        /// Autonomous Database is configured while creating the Peer Autonomous Database and can't be updated after
-        /// creation.
+        /// Optional. Immutable. The source Autonomous Database configuration for the standby Autonomous Database. The
+        /// source Autonomous Database is configured while creating the Peer Autonomous Database and can't be updated
+        /// after creation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceConfig")]
         public virtual SourceConfig SourceConfig { get; set; }
@@ -6405,7 +6405,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allocatedStorageSizeTb")]
         public virtual System.Nullable<double> AllocatedStorageSizeTb { get; set; }
 
-        /// <summary>Optional. The list of allowlisted IP addresses for the Autonomous Database.</summary>
+        /// <summary>Optional. Immutable. The list of allowlisted IP addresses for the Autonomous Database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowlistedIps")]
         public virtual System.Collections.Generic.IList<string> AllowlistedIps { get; set; }
 
@@ -6435,17 +6435,19 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual System.Collections.Generic.IList<string> AvailableUpgradeVersions { get; set; }
 
         /// <summary>
-        /// Optional. The retention period for the Autonomous Database. This field is specified in days, can range from
-        /// 1 day to 60 days, and has a default value of 60 days.
+        /// Optional. Immutable. The retention period for the Autonomous Database. This field is specified in days, can
+        /// range from 1 day to 60 days, and has a default value of 60 days.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupRetentionPeriodDays")]
         public virtual System.Nullable<int> BackupRetentionPeriodDays { get; set; }
 
-        /// <summary>Optional. The character set for the Autonomous Database. The default is AL32UTF8.</summary>
+        /// <summary>
+        /// Optional. Immutable. The character set for the Autonomous Database. The default is AL32UTF8.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("characterSet")]
         public virtual string CharacterSet { get; set; }
 
-        /// <summary>Optional. The number of compute servers for the Autonomous Database.</summary>
+        /// <summary>Optional. Immutable. The number of compute servers for the Autonomous Database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeCount")]
         public virtual System.Nullable<float> ComputeCount { get; set; }
 
@@ -6457,11 +6459,11 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("connectionUrls")]
         public virtual AutonomousDatabaseConnectionUrls ConnectionUrls { get; set; }
 
-        /// <summary>Optional. The number of CPU cores to be made available to the database.</summary>
+        /// <summary>Optional. Immutable. The number of CPU cores to be made available to the database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuCoreCount")]
         public virtual System.Nullable<int> CpuCoreCount { get; set; }
 
-        /// <summary>Optional. The list of customer contacts.</summary>
+        /// <summary>Optional. Immutable. The list of customer contacts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerContacts")]
         public virtual System.Collections.Generic.IList<CustomerContact> CustomerContacts { get; set; }
 
@@ -6511,11 +6513,11 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataSafeState")]
         public virtual string DataSafeState { get; set; }
 
-        /// <summary>Optional. The size of the data stored in the database, in gigabytes.</summary>
+        /// <summary>Optional. Immutable. The size of the data stored in the database, in gigabytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStorageSizeGb")]
         public virtual System.Nullable<int> DataStorageSizeGb { get; set; }
 
-        /// <summary>Optional. The size of the data stored in the database, in terabytes.</summary>
+        /// <summary>Optional. Immutable. The size of the data stored in the database, in terabytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStorageSizeTb")]
         public virtual System.Nullable<int> DataStorageSizeTb { get; set; }
 
@@ -6523,15 +6525,15 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("databaseManagementState")]
         public virtual string DatabaseManagementState { get; set; }
 
-        /// <summary>Optional. The edition of the Autonomous Databases.</summary>
+        /// <summary>Optional. Immutable. The edition of the Autonomous Databases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dbEdition")]
         public virtual string DbEdition { get; set; }
 
-        /// <summary>Optional. The Oracle Database version for the Autonomous Database.</summary>
+        /// <summary>Optional. Immutable. The Oracle Database version for the Autonomous Database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dbVersion")]
         public virtual string DbVersion { get; set; }
 
-        /// <summary>Required. The workload type of the Autonomous Database.</summary>
+        /// <summary>Required. Immutable. The workload type of the Autonomous Database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dbWorkload")]
         public virtual string DbWorkload { get; set; }
 
@@ -6596,7 +6598,8 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual object FailedDataRecoveryDuration { get; set; }
 
         /// <summary>
-        /// Optional. This field indicates if auto scaling is enabled for the Autonomous Database CPU core count.
+        /// Optional. Immutable. This field indicates if auto scaling is enabled for the Autonomous Database CPU core
+        /// count.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isAutoScalingEnabled")]
         public virtual System.Nullable<bool> IsAutoScalingEnabled { get; set; }
@@ -6608,12 +6611,12 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual System.Nullable<bool> IsLocalDataGuardEnabled { get; set; }
 
         /// <summary>
-        /// Optional. This field indicates if auto scaling is enabled for the Autonomous Database storage.
+        /// Optional. Immutable. This field indicates if auto scaling is enabled for the Autonomous Database storage.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isStorageAutoScalingEnabled")]
         public virtual System.Nullable<bool> IsStorageAutoScalingEnabled { get; set; }
 
-        /// <summary>Required. The license type used for the Autonomous Database.</summary>
+        /// <summary>Required. Immutable. The license type used for the Autonomous Database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseType")]
         public virtual string LicenseType { get; set; }
 
@@ -6715,7 +6718,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
             set => MaintenanceEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. The maintenance schedule of the Autonomous Database.</summary>
+        /// <summary>Optional. Immutable. The maintenance schedule of the Autonomous Database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceScheduleType")]
         public virtual string MaintenanceScheduleType { get; set; }
 
@@ -6727,12 +6730,14 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("memoryTableGbs")]
         public virtual System.Nullable<int> MemoryTableGbs { get; set; }
 
-        /// <summary>Optional. This field specifies if the Autonomous Database requires mTLS connections.</summary>
+        /// <summary>
+        /// Optional. Immutable. This field specifies if the Autonomous Database requires mTLS connections.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mtlsConnectionRequired")]
         public virtual System.Nullable<bool> MtlsConnectionRequired { get; set; }
 
         /// <summary>
-        /// Optional. The national character set for the Autonomous Database. The default is AL16UTF16.
+        /// Optional. Immutable. The national character set for the Autonomous Database. The default is AL16UTF16.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nCharacterSet")]
         public virtual string NCharacterSet { get; set; }
@@ -6812,11 +6817,11 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateEndpoint")]
         public virtual string PrivateEndpoint { get; set; }
 
-        /// <summary>Optional. The private endpoint IP address for the Autonomous Database.</summary>
+        /// <summary>Optional. Immutable. The private endpoint IP address for the Autonomous Database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateEndpointIp")]
         public virtual string PrivateEndpointIp { get; set; }
 
-        /// <summary>Optional. The private endpoint label for the Autonomous Database.</summary>
+        /// <summary>Optional. Immutable. The private endpoint label for the Autonomous Database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateEndpointLabel")]
         public virtual string PrivateEndpointLabel { get; set; }
 
@@ -6836,7 +6841,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledOperationDetails")]
         public virtual System.Collections.Generic.IList<ScheduledOperationDetails> ScheduledOperationDetails { get; set; }
 
-        /// <summary>Optional. The ID of the Oracle Cloud Infrastructure vault secret.</summary>
+        /// <summary>Optional. Immutable. The ID of the Oracle Cloud Infrastructure vault secret.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretId")]
         public virtual string SecretId { get; set; }
 
@@ -6871,7 +6876,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("usedDataStorageSizeTbs")]
         public virtual System.Nullable<int> UsedDataStorageSizeTbs { get; set; }
 
-        /// <summary>Optional. The ID of the Oracle Cloud Infrastructure vault.</summary>
+        /// <summary>Optional. Immutable. The ID of the Oracle Cloud Infrastructure vault.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vaultId")]
         public virtual string VaultId { get; set; }
 
@@ -9015,7 +9020,10 @@ namespace Google.Apis.OracleDatabase.v1.Data
     /// <summary>The request for `OracleDatabase.FailoverAutonomousDatabase`.</summary>
     public class FailoverAutonomousDatabaseRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The peer database name to fail over to.</summary>
+        /// <summary>
+        /// Optional. The peer database name to fail over to. Required for cross-region standby, and must be omitted for
+        /// in-region Data Guard.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerAutonomousDatabase")]
         public virtual string PeerAutonomousDatabase { get; set; }
 
@@ -10267,7 +10275,10 @@ namespace Google.Apis.OracleDatabase.v1.Data
     /// <summary>The request for `OracleDatabase.SwitchoverAutonomousDatabase`.</summary>
     public class SwitchoverAutonomousDatabaseRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The peer database name to switch over to.</summary>
+        /// <summary>
+        /// Optional. The peer database name to switch over to. Required for cross-region standby, and must be omitted
+        /// for in-region Data Guard.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerAutonomousDatabase")]
         public virtual string PeerAutonomousDatabase { get; set; }
 
