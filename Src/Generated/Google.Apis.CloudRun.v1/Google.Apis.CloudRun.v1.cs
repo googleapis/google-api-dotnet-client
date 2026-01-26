@@ -282,6 +282,7 @@ namespace Google.Apis.CloudRun.v1
             Configurations = new ConfigurationsResource(service);
             Domainmappings = new DomainmappingsResource(service);
             Executions = new ExecutionsResource(service);
+            Instances = new InstancesResource(service);
             Jobs = new JobsResource(service);
             Revisions = new RevisionsResource(service);
             Routes = new RoutesResource(service);
@@ -1336,6 +1337,483 @@ namespace Google.Apis.CloudRun.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Instances resource.</summary>
+        public virtual InstancesResource Instances { get; }
+
+        /// <summary>The "instances" collection of methods.</summary>
+        public class InstancesResource
+        {
+            private const string Resource = "instances";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public InstancesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Create a Instance.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The namespace in which the Instance should be created. Replace {namespace} with the project ID
+            /// or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.Instance body, string parent)
+            {
+                return new CreateRequest(this.service, body, parent);
+            }
+
+            /// <summary>Create a Instance.</summary>
+            public class CreateRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Instance>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Instance body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The namespace in which the Instance should be created. Replace {namespace} with the
+                /// project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudRun.v1.Data.Instance Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "apis/run.googleapis.com/v1/{+parent}/instances";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^namespaces/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Delete a Instance.</summary>
+            /// <param name="name">
+            /// Required. The name of the Instance to delete. Replace {namespace} with the project ID or number. It
+            /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(this.service, name);
+            }
+
+            /// <summary>Delete a Instance.</summary>
+            public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Status>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the Instance to delete. Replace {namespace} with the project ID or number. It
+                /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Optional. Cloud Run currently ignores this parameter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual new string ApiVersion { get; set; }
+
+                /// <summary>Optional. Cloud Run currently ignores this parameter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Kind { get; set; }
+
+                /// <summary>
+                /// Optional. Specifies the propagation policy of delete. Cloud Run currently ignores this setting, and
+                /// deletes in the background. Please see
+                /// kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for more information.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("propagationPolicy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PropagationPolicy { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "apis/run.googleapis.com/v1/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^namespaces/[^/]+/instances/[^/]+$",
+                    });
+                    RequestParameters.Add("apiVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "apiVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("kind", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "kind",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("propagationPolicy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "propagationPolicy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Get an Instance.</summary>
+            /// <param name="name">
+            /// Required. The name of the Instance to retrieve. It takes the form
+            /// namespaces/{namespace}/instances/{Instance_name} and the `endpoint` must be regional. Replace
+            /// {namespace} with the project ID or number.
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Get an Instance.</summary>
+            public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Instance>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the Instance to retrieve. It takes the form
+                /// namespaces/{namespace}/instances/{Instance_name} and the `endpoint` must be regional. Replace
+                /// {namespace} with the project ID or number.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "apis/run.googleapis.com/v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^namespaces/[^/]+/instances/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>List Instances. Results are sorted by creation time, descending.</summary>
+            /// <param name="parent">
+            /// Required. The namespace from which the Instances should be listed. Replace {namespace} with the project
+            /// ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>List Instances. Results are sorted by creation time, descending.</summary>
+            public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListInstancesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The namespace from which the Instances should be listed. Replace {namespace} with the
+                /// project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Optional. Optional encoded string to continue paging.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Continue { get; set; }
+
+                /// <summary>Optional. Not supported by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string FieldSelector { get; set; }
+
+                /// <summary>Optional. Not supported by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
+
+                /// <summary>
+                /// Optional. Allows to filter resources based on a label. Supported operations are =, !=, exists, in,
+                /// and notIn.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string LabelSelector { get; set; }
+
+                /// <summary>Optional. The maximum number of records that should be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> Limit { get; set; }
+
+                /// <summary>Optional. Not supported by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ResourceVersion { get; set; }
+
+                /// <summary>Optional. Not supported by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> Watch { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "apis/run.googleapis.com/v1/{+parent}/instances";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^namespaces/[^/]+$",
+                    });
+                    RequestParameters.Add("continue", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "continue",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("fieldSelector", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fieldSelector",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("includeUninitialized", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeUninitialized",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("labelSelector", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "labelSelector",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("limit", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "limit",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("resourceVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("watch", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "watch",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Start an Instance which has been stopped.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the Instance to run. Replace {namespace} with the project ID or number. It takes
+            /// the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+            /// </param>
+            public virtual StartRequest Start(Google.Apis.CloudRun.v1.Data.StartInstanceRequest body, string name)
+            {
+                return new StartRequest(this.service, body, name);
+            }
+
+            /// <summary>Start an Instance which has been stopped.</summary>
+            public class StartRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Instance>
+            {
+                /// <summary>Constructs a new Start request.</summary>
+                public StartRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.StartInstanceRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the Instance to run. Replace {namespace} with the project ID or number. It
+                /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudRun.v1.Data.StartInstanceRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "start";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "apis/run.googleapis.com/v1/{+name}:start";
+
+                /// <summary>Initializes Start parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^namespaces/[^/]+/instances/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Stop an Instance that is running.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the Instance to run. Replace {namespace} with the project ID or number. It takes
+            /// the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+            /// </param>
+            public virtual StopRequest Stop(Google.Apis.CloudRun.v1.Data.StopInstanceRequest body, string name)
+            {
+                return new StopRequest(this.service, body, name);
+            }
+
+            /// <summary>Stop an Instance that is running.</summary>
+            public class StopRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Instance>
+            {
+                /// <summary>Constructs a new Stop request.</summary>
+                public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.StopInstanceRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the Instance to run. Replace {namespace} with the project ID or number. It
+                /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudRun.v1.Data.StopInstanceRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "stop";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "apis/run.googleapis.com/v1/{+name}:stop";
+
+                /// <summary>Initializes Stop parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^namespaces/[^/]+/instances/[^/]+$",
                     });
                 }
             }
@@ -3619,6 +4097,7 @@ namespace Google.Apis.CloudRun.v1
                 Authorizeddomains = new AuthorizeddomainsResource(service);
                 Configurations = new ConfigurationsResource(service);
                 Domainmappings = new DomainmappingsResource(service);
+                Instances = new InstancesResource(service);
                 Jobs = new JobsResource(service);
                 Operations = new OperationsResource(service);
                 Revisions = new RevisionsResource(service);
@@ -4320,6 +4799,236 @@ namespace Google.Apis.CloudRun.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Instances resource.</summary>
+            public virtual InstancesResource Instances { get; }
+
+            /// <summary>The "instances" collection of methods.</summary>
+            public class InstancesResource
+            {
+                private const string Resource = "instances";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public InstancesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Get the IAM Access Control policy currently in effect for the given instance. This result does not
+                /// include any inherited policies.
+                /// </summary>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                {
+                    return new GetIamPolicyRequest(this.service, resource);
+                }
+
+                /// <summary>
+                /// Get the IAM Access Control policy currently in effect for the given instance. This result does not
+                /// include any inherited policies.
+                /// </summary>
+                public class GetIamPolicyRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset. The policy in the response might use the
+                    /// policy version that you specified, or it might use a lower policy version. For example, if you
+                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
+                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Sets the IAM Access control policy for the specified instance. Overwrites any existing policy.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudRun.v1.Data.SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Sets the IAM Access control policy for the specified instance. Overwrites any existing policy.
+                /// </summary>
+                public class SetIamPolicyRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRun.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified instance. There are no permissions required
+                /// for making this API call.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudRun.v1.Data.TestIamPermissionsRequest body, string resource)
+                {
+                    return new TestIamPermissionsRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified instance. There are no permissions required
+                /// for making this API call.
+                /// </summary>
+                public class TestIamPermissionsRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRun.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "testIamPermissions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
                         });
                     }
                 }
@@ -9499,6 +10208,73 @@ namespace Google.Apis.CloudRun.v1.Data
     }
 
     /// <summary>
+    /// Instance represents the configuration of a single Instance, which references a container image which is run to
+    /// completion.
+    /// </summary>
+    public class Instance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. APIVersion defines the versioned schema of this representation of an object. Servers should
+        /// convert recognized schemas to the latest internal value, and may reject unrecognized values.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; }
+
+        /// <summary>
+        /// Optional. Kind is a string value representing the REST resource this object represents. Servers may infer
+        /// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>Optional. Standard object's metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual ObjectMeta Metadata { get; set; }
+
+        /// <summary>Optional. Specification of the desired behavior of a Instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spec")]
+        public virtual InstanceSpec Spec { get; set; }
+
+        /// <summary>Output only. Current status of a Instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual InstanceStatus Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>InstanceSpec describes how the Instance will look.</summary>
+    public class InstanceSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. List of containers belonging to the Instance. We disallow a number of fields on this Container.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containers")]
+        public virtual System.Collections.Generic.IList<Container> Containers { get; set; }
+
+        /// <summary>
+        /// Optional. The Node Selector configuration. Map of selector key to a value which matches a node.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeSelector")]
+        public virtual System.Collections.Generic.IDictionary<string, string> NodeSelector { get; set; }
+
+        /// <summary>
+        /// Optional. Email address of the IAM service account associated with the Instance. The service account
+        /// represents the identity of the running container, and determines what permissions the Instance has. If not
+        /// provided, the Instance will use the project's default service account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountName")]
+        public virtual string ServiceAccountName { get; set; }
+
+        /// <summary>Optional. List of volumes that can be mounted by containers belonging to the Instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
+        public virtual System.Collections.Generic.IList<Volume> Volumes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Holds a single instance split entry for the Worker. Allocations can be done to a specific Revision name, or
     /// pointing to the latest Ready Revision.
     /// </summary>
@@ -9520,6 +10296,29 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>Revision to which to assign this portion of instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionName")]
         public virtual string RevisionName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>InstanceStatus represents the current state of a Instance.</summary>
+    public class InstanceStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Conditions communicate information about ongoing/complete reconciliation processes that bring
+        /// the "spec" inline with the observed state of the world. Instance-specific conditions include: * `Ready`:
+        /// `True` when the Instance is ready to be executed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV1Condition> Conditions { get; set; }
+
+        /// <summary>Optional. URI where logs for this execution can be found in Cloud Console.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logUri")]
+        public virtual string LogUri { get; set; }
+
+        /// <summary>Output only. The 'generation' of the Instance that was last processed by the controller.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observedGeneration")]
+        public virtual System.Nullable<int> ObservedGeneration { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9733,6 +10532,33 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string Kind { get; set; }
 
         /// <summary>Metadata associated with this executions list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual ListMeta Metadata { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ListInstancesResponse is a list of Instances resources.</summary>
+    public class ListInstancesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The API version for this call such as "run.googleapis.com/v1".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; }
+
+        /// <summary>List of Instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<Instance> Items { get; set; }
+
+        /// <summary>The kind of this resource, in this case "InstancesList".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>Metadata associated with this Instances list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual ListMeta Metadata { get; set; }
 
@@ -11003,6 +11829,13 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for starting a stopped Instance.</summary>
+    public class StartInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Status is a return value for calls that don't return other objects.</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11118,6 +11951,13 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for stopping a running Instance.</summary>
+    public class StopInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
