@@ -1261,9 +1261,9 @@ namespace Google.Apis.Pubsub.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Required. Identifier. User-provided name for this snapshot. If the name is not provided in the request,
-            /// the server will assign a random name for this snapshot on the same project as the subscription. Note
-            /// that for REST API requests, you must specify a name. See the [resource name
+            /// Required. User-provided name for this snapshot. If the name is not provided in the request, the server
+            /// will assign a random name for this snapshot on the same project as the subscription. Note that for REST
+            /// API requests, you must specify a name. See the [resource name
             /// rules](https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). Format is
             /// `projects/{project}/snapshots/{snap}`.
             /// </param>
@@ -1296,9 +1296,9 @@ namespace Google.Apis.Pubsub.v1
                 }
 
                 /// <summary>
-                /// Required. Identifier. User-provided name for this snapshot. If the name is not provided in the
-                /// request, the server will assign a random name for this snapshot on the same project as the
-                /// subscription. Note that for REST API requests, you must specify a name. See the [resource name
+                /// Required. User-provided name for this snapshot. If the name is not provided in the request, the
+                /// server will assign a random name for this snapshot on the same project as the subscription. Note
+                /// that for REST API requests, you must specify a name. See the [resource name
                 /// rules](https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). Format is
                 /// `projects/{project}/snapshots/{snap}`.
                 /// </summary>
@@ -1345,8 +1345,7 @@ namespace Google.Apis.Pubsub.v1
             /// subscription is specified.
             /// </summary>
             /// <param name="snapshot">
-            /// Required. Identifier. The name of the snapshot to delete. Format is
-            /// `projects/{project}/snapshots/{snap}`.
+            /// Required. The name of the snapshot to delete. Format is `projects/{project}/snapshots/{snap}`.
             /// </param>
             public virtual DeleteRequest Delete(string snapshot)
             {
@@ -1372,8 +1371,7 @@ namespace Google.Apis.Pubsub.v1
                 }
 
                 /// <summary>
-                /// Required. Identifier. The name of the snapshot to delete. Format is
-                /// `projects/{project}/snapshots/{snap}`.
+                /// Required. The name of the snapshot to delete. Format is `projects/{project}/snapshots/{snap}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("snapshot", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Snapshot { get; private set; }
@@ -1409,7 +1407,7 @@ namespace Google.Apis.Pubsub.v1
             /// existing subscription to the state captured by a snapshot.
             /// </summary>
             /// <param name="snapshot">
-            /// Required. Identifier. The name of the snapshot to get. Format is `projects/{project}/snapshots/{snap}`.
+            /// Required. The name of the snapshot to get. Format is `projects/{project}/snapshots/{snap}`.
             /// </param>
             public virtual GetRequest Get(string snapshot)
             {
@@ -1432,8 +1430,7 @@ namespace Google.Apis.Pubsub.v1
                 }
 
                 /// <summary>
-                /// Required. Identifier. The name of the snapshot to get. Format is
-                /// `projects/{project}/snapshots/{snap}`.
+                /// Required. The name of the snapshot to get. Format is `projects/{project}/snapshots/{snap}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("snapshot", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Snapshot { get; private set; }
@@ -1548,8 +1545,7 @@ namespace Google.Apis.Pubsub.v1
             /// subscription to the state captured by a snapshot.
             /// </summary>
             /// <param name="project">
-            /// Required. Identifier. The name of the project in which to list snapshots. Format is
-            /// `projects/{project-id}`.
+            /// Required. The name of the project in which to list snapshots. Format is `projects/{project-id}`.
             /// </param>
             public virtual ListRequest List(string project)
             {
@@ -1572,8 +1568,7 @@ namespace Google.Apis.Pubsub.v1
                 }
 
                 /// <summary>
-                /// Required. Identifier. The name of the project in which to list snapshots. Format is
-                /// `projects/{project-id}`.
+                /// Required. The name of the project in which to list snapshots. Format is `projects/{project-id}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Project { get; private set; }
@@ -2006,7 +2001,7 @@ namespace Google.Apis.Pubsub.v1
             /// unless the same topic is specified.
             /// </summary>
             /// <param name="subscription">
-            /// Required. Identifier. The subscription to delete. Format is `projects/{project}/subscriptions/{sub}`.
+            /// Required. The subscription to delete. Format is `projects/{project}/subscriptions/{sub}`.
             /// </param>
             public virtual DeleteRequest Delete(string subscription)
             {
@@ -2029,8 +2024,7 @@ namespace Google.Apis.Pubsub.v1
                 }
 
                 /// <summary>
-                /// Required. Identifier. The subscription to delete. Format is
-                /// `projects/{project}/subscriptions/{sub}`.
+                /// Required. The subscription to delete. Format is `projects/{project}/subscriptions/{sub}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("subscription", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Subscription { get; private set; }
@@ -2118,8 +2112,7 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Gets the configuration details of a subscription.</summary>
             /// <param name="subscription">
-            /// Required. Identifier. The name of the subscription to get. Format is
-            /// `projects/{project}/subscriptions/{sub}`.
+            /// Required. The name of the subscription to get. Format is `projects/{project}/subscriptions/{sub}`.
             /// </param>
             public virtual GetRequest Get(string subscription)
             {
@@ -2137,8 +2130,7 @@ namespace Google.Apis.Pubsub.v1
                 }
 
                 /// <summary>
-                /// Required. Identifier. The name of the subscription to get. Format is
-                /// `projects/{project}/subscriptions/{sub}`.
+                /// Required. The name of the subscription to get. Format is `projects/{project}/subscriptions/{sub}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("subscription", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Subscription { get; private set; }
@@ -2248,8 +2240,7 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Lists matching subscriptions.</summary>
             /// <param name="project">
-            /// Required. Identifier. The name of the project in which to list subscriptions. Format is
-            /// `projects/{project-id}`.
+            /// Required. The name of the project in which to list subscriptions. Format is `projects/{project-id}`.
             /// </param>
             public virtual ListRequest List(string project)
             {
@@ -2267,8 +2258,7 @@ namespace Google.Apis.Pubsub.v1
                 }
 
                 /// <summary>
-                /// Required. Identifier. The name of the project in which to list subscriptions. Format is
-                /// `projects/{project-id}`.
+                /// Required. The name of the project in which to list subscriptions. Format is `projects/{project-id}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Project { get; private set; }
@@ -3092,7 +3082,7 @@ namespace Google.Apis.Pubsub.v1
             /// `topic` field is set to `_deleted-topic_`.
             /// </summary>
             /// <param name="topic">
-            /// Required. Identifier. Name of the topic to delete. Format is `projects/{project}/topics/{topic}`.
+            /// Required. Name of the topic to delete. Format is `projects/{project}/topics/{topic}`.
             /// </param>
             public virtual DeleteRequest Delete(string topic)
             {
@@ -3115,7 +3105,7 @@ namespace Google.Apis.Pubsub.v1
                 }
 
                 /// <summary>
-                /// Required. Identifier. Name of the topic to delete. Format is `projects/{project}/topics/{topic}`.
+                /// Required. Name of the topic to delete. Format is `projects/{project}/topics/{topic}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("topic", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Topic { get; private set; }
@@ -3146,7 +3136,7 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Gets the configuration of a topic.</summary>
             /// <param name="topic">
-            /// Required. Identifier. The name of the topic to get. Format is `projects/{project}/topics/{topic}`.
+            /// Required. The name of the topic to get. Format is `projects/{project}/topics/{topic}`.
             /// </param>
             public virtual GetRequest Get(string topic)
             {
@@ -3164,7 +3154,7 @@ namespace Google.Apis.Pubsub.v1
                 }
 
                 /// <summary>
-                /// Required. Identifier. The name of the topic to get. Format is `projects/{project}/topics/{topic}`.
+                /// Required. The name of the topic to get. Format is `projects/{project}/topics/{topic}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("topic", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Topic { get; private set; }
@@ -3274,8 +3264,7 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Lists matching topics.</summary>
             /// <param name="project">
-            /// Required. Identifier. The name of the project in which to list topics. Format is
-            /// `projects/{project-id}`.
+            /// Required. The name of the project in which to list topics. Format is `projects/{project-id}`.
             /// </param>
             public virtual ListRequest List(string project)
             {
@@ -3293,8 +3282,7 @@ namespace Google.Apis.Pubsub.v1
                 }
 
                 /// <summary>
-                /// Required. Identifier. The name of the project in which to list topics. Format is
-                /// `projects/{project-id}`.
+                /// Required. The name of the project in which to list topics. Format is `projects/{project-id}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Project { get; private set; }
@@ -3426,7 +3414,7 @@ namespace Google.Apis.Pubsub.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="topic">
-            /// Required. Identifier. The messages in the request will be published on this topic. Format is
+            /// Required. The messages in the request will be published on this topic. Format is
             /// `projects/{project}/topics/{topic}`.
             /// </param>
             public virtual PublishRequest Publish(Google.Apis.Pubsub.v1.Data.PublishRequest body, string topic)
@@ -3448,7 +3436,7 @@ namespace Google.Apis.Pubsub.v1
                 }
 
                 /// <summary>
-                /// Required. Identifier. The messages in the request will be published on this topic. Format is
+                /// Required. The messages in the request will be published on this topic. Format is
                 /// `projects/{project}/topics/{topic}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("topic", Google.Apis.Util.RequestParameterType.Path)]
@@ -3624,6 +3612,36 @@ namespace Google.Apis.Pubsub.v1
 }
 namespace Google.Apis.Pubsub.v1.Data
 {
+    /// <summary>Configuration for making inference requests against Vertex AI models.</summary>
+    public class AIInference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. An endpoint to a Vertex AI model of the form
+        /// `projects/{project}/locations/{location}/endpoints/{endpoint}` or
+        /// `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`. Vertex AI API requests will
+        /// be sent to this endpoint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
+        public virtual string Endpoint { get; set; }
+
+        /// <summary>
+        /// Optional. The service account to use to make prediction requests against endpoints. The resource creator or
+        /// updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+        /// If not specified, the Pub/Sub [service
+        /// agent]({$universe.dns_names.final_documentation_domain}/iam/docs/service-agents),
+        /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
+        public virtual string ServiceAccountEmail { get; set; }
+
+        /// <summary>Optional. Requests and responses can be any arbitrary JSON object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unstructuredInference")]
+        public virtual UnstructuredInference UnstructuredInference { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for the Acknowledge method.</summary>
     public class AcknowledgeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4174,12 +4192,11 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Required. Identifier. The subscription whose backlog the snapshot retains. Specifically, the created
-        /// snapshot is guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is
-        /// defined as the messages in the subscription's backlog that are unacknowledged upon the successful completion
-        /// of the `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic
-        /// following the successful completion of the CreateSnapshot request. Format is
-        /// `projects/{project}/subscriptions/{sub}`.
+        /// Required. The subscription whose backlog the snapshot retains. Specifically, the created snapshot is
+        /// guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the
+        /// messages in the subscription's backlog that are unacknowledged upon the successful completion of the
+        /// `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the
+        /// successful completion of the CreateSnapshot request. Format is `projects/{project}/subscriptions/{sub}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
         public virtual string Subscription { get; set; }
@@ -4518,6 +4535,13 @@ namespace Google.Apis.Pubsub.v1.Data
     /// <summary>All supported message transforms types.</summary>
     public class MessageTransform : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. AI Inference. Specifies the Vertex AI endpoint that inference requests built from the Pub/Sub
+        /// message data and provided parameters will be sent to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiInference")]
+        public virtual AIInference AiInference { get; set; }
+
         /// <summary>
         /// Optional. If true, the transform is disabled and will not be applied to messages. Defaults to `false`.
         /// </summary>
@@ -5404,7 +5428,7 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
-        /// Required. Identifier. The name of the topic from which this subscription is receiving messages. Format is
+        /// Required. The name of the topic from which this subscription is receiving messages. Format is
         /// `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been
         /// deleted.
         /// </summary>
@@ -5550,6 +5574,20 @@ namespace Google.Apis.Pubsub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for making inferences using arbitrary JSON payloads.</summary>
+    public class UnstructuredInference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A parameters object to be included in each inference request. The parameters object is combined
+        /// with the data field of the Pub/Sub message to form the inference request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
