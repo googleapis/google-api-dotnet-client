@@ -1,0 +1,11 @@
+{
+  "Google.Apis.ThreatIntelligenceService.v1beta.ThreatIntelligenceServiceBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.ThreatIntelligenceService.v1beta.ThreatIntelligenceServiceBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
