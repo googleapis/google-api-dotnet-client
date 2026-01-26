@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2645,25 +2645,28 @@ namespace Google.Apis.Drive.v2
             public virtual string TimedTextTrackName { get; set; }
 
             /// <summary>
-            /// The visibility of the new file. This parameter is only relevant when the source is not a native Google
-            /// Doc and convert=false.
+            /// The visibility of the new file. Permissions are still inherited from parent folders. This parameter is
+            /// only relevant when the source is not a Google Doc file and when `convert=false`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("visibility", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<VisibilityEnum> Visibility { get; set; }
 
             /// <summary>
-            /// The visibility of the new file. This parameter is only relevant when the source is not a native Google
-            /// Doc and convert=false.
+            /// The visibility of the new file. Permissions are still inherited from parent folders. This parameter is
+            /// only relevant when the source is not a Google Doc file and when `convert=false`.
             /// </summary>
             public enum VisibilityEnum
             {
                 /// <summary>
-                /// The visibility of the new file is determined by the user's default visibility/sharing policies.
+                /// The visibility of the new file is determined by the user's default visibility or sharing policies.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("DEFAULT")]
                 DEFAULT__ = 0,
 
-                /// <summary>The new file will be visible to only the owner.</summary>
+                /// <summary>
+                /// The user's default visibility or sharing policies are ignored, and the new file is only visible to
+                /// the owner and any users with permissions inherited from the parent folder.
+                /// </summary>
                 [Google.Apis.Util.StringValueAttribute("PRIVATE")]
                 PRIVATE__ = 1,
             }
@@ -3530,20 +3533,29 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("useContentAsIndexableText", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseContentAsIndexableText { get; set; }
 
-            /// <summary>The visibility of the new file. This parameter is only relevant when convert=false.</summary>
+            /// <summary>
+            /// The visibility of the new file. Permissions are still inherited from parent folders. This parameter is
+            /// only relevant when `convert=false`.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("visibility", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<VisibilityEnum> Visibility { get; set; }
 
-            /// <summary>The visibility of the new file. This parameter is only relevant when convert=false.</summary>
+            /// <summary>
+            /// The visibility of the new file. Permissions are still inherited from parent folders. This parameter is
+            /// only relevant when `convert=false`.
+            /// </summary>
             public enum VisibilityEnum
             {
                 /// <summary>
-                /// The visibility of the new file is determined by the user's default visibility/sharing policies.
+                /// The visibility of the new file is determined by the user's default visibility or sharing policies.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("DEFAULT")]
                 DEFAULT__ = 0,
 
-                /// <summary>The new file will be visible to only the owner.</summary>
+                /// <summary>
+                /// The user's default visibility or sharing policies are ignored, and the new file is only visible to
+                /// the owner and any users with permissions inherited from the parent folder.
+                /// </summary>
                 [Google.Apis.Util.StringValueAttribute("PRIVATE")]
                 PRIVATE__ = 1,
             }
@@ -3849,20 +3861,29 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("useContentAsIndexableText", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseContentAsIndexableText { get; set; }
 
-            /// <summary>The visibility of the new file. This parameter is only relevant when convert=false.</summary>
+            /// <summary>
+            /// The visibility of the new file. Permissions are still inherited from parent folders. This parameter is
+            /// only relevant when `convert=false`.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("visibility", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<VisibilityEnum> Visibility { get; set; }
 
-            /// <summary>The visibility of the new file. This parameter is only relevant when convert=false.</summary>
+            /// <summary>
+            /// The visibility of the new file. Permissions are still inherited from parent folders. This parameter is
+            /// only relevant when `convert=false`.
+            /// </summary>
             public enum VisibilityEnum
             {
                 /// <summary>
-                /// The visibility of the new file is determined by the user's default visibility/sharing policies.
+                /// The visibility of the new file is determined by the user's default visibility or sharing policies.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("DEFAULT")]
                 DEFAULT__ = 0,
 
-                /// <summary>The new file will be visible to only the owner.</summary>
+                /// <summary>
+                /// The user's default visibility or sharing policies are ignored, and the new file is only visible to
+                /// the owner and any users with permissions inherited from the parent folder.
+                /// </summary>
                 [Google.Apis.Util.StringValueAttribute("PRIVATE")]
                 PRIVATE__ = 1,
             }
