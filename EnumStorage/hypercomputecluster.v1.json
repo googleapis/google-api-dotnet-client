@@ -1,0 +1,11 @@
+{
+  "Google.Apis.HypercomputeCluster.v1.HypercomputeClusterBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.HypercomputeCluster.v1.HypercomputeClusterBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
