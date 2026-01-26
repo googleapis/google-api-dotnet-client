@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3145,8 +3145,8 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
         /// (in seconds) followed by `s` (for "seconds"). For more information on the format, see the documentation for
         /// [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration). Queues created by Cloud Tasks
         /// have a default `task_ttl` of 31 days. . Queues created by queue.yaml/xml have a fixed `task_ttl` of the
-        /// maximum duration, because there is a [storage quota](https://cloud.google.com/appengine/quotas#Task_Queue)
-        /// for these queues.
+        /// maximum duration, because there is a [storage
+        /// quota](https://docs.cloud.google.com/appengine/docs/standard/quotas#Task_Queue) for these queues.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskTtl")]
         public virtual object TaskTtl { get; set; }
