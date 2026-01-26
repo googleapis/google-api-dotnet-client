@@ -4159,7 +4159,11 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
 
         /// <summary>
         /// Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is
-        /// automatically generated to service all defined APIs.
+        /// automatically generated to service all defined APIs. WARNING: Defining any entries in the `endpoints` list
+        /// disables the automatic generation of default endpoint variations (e.g., `{service}.clients6.google.com`,
+        /// `content-{service}.googleapis.com`, and mTLS variants like `{service}.mtls.googleapis.com`). To retain these
+        /// default variations, you are required to explicitly include your main service endpoint (e.g.,
+        /// `myservice.googleapis.com`) in this list alongside any other custom endpoints (like REP, GFE, etc.).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpoints")]
         public virtual System.Collections.Generic.IList<Endpoint> Endpoints { get; set; }
@@ -4197,8 +4201,8 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         public virtual System.Collections.Generic.IList<MetricDescriptor> Metrics { get; set; }
 
         /// <summary>
-        /// Defines the monitored resources used by this service. This is required by the Service.monitoring and
-        /// Service.logging configurations.
+        /// Defines the monitored resources used by this service. This is required by the `Service.monitoring` and
+        /// `Service.logging` configurations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoredResources")]
         public virtual System.Collections.Generic.IList<MonitoredResourceDescriptor> MonitoredResources { get; set; }
