@@ -12677,6 +12677,100 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// AdjustmentRule condition for image findings. This rule is silently ignored if the content being inspected is not
+    /// an image.
+    /// </summary>
+    public class GooglePrivacyDlpV2AdjustByImageFindings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies the required spatial relationship between the bounding boxes of the target finding and the context
+        /// infoType findings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageContainmentType")]
+        public virtual GooglePrivacyDlpV2ImageContainmentType ImageContainmentType { get; set; }
+
+        /// <summary>
+        /// A list of image-supported infoTypes—excluding [document
+        /// infoTypes](https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference#documents)—to be used
+        /// as context for the adjustment rule. Sensitive Data Protection adjusts the likelihood of an image finding if
+        /// its bounding box has the specified spatial relationship (defined by `image_containment_type`) with a finding
+        /// of an infoType in this list. For example, you can create a rule to adjust the likelihood of a `US_PASSPORT`
+        /// finding if it is enclosed by a finding of `OBJECT_TYPE/PERSON/PASSPORT`. To configure this, set
+        /// `US_PASSPORT` in `InspectionRuleSet.info_types`. Add an `adjustment_rule` with an
+        /// `adjust_by_image_findings.info_types` that contains `OBJECT_TYPE/PERSON/PASSPORT` and
+        /// `image_containment_type` set to `encloses`. In this case, the likelihood of the `US_PASSPORT` finding is
+        /// adjusted, but the likelihood of the `OBJECT_TYPE/PERSON/PASSPORT` finding is not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoType> InfoTypes { get; set; }
+
+        /// <summary>
+        /// Required. Minimum likelihood of the `adjust_by_image_findings.info_types` finding. If the likelihood is
+        /// lower than this value, Sensitive Data Protection doesn't adjust the likelihood of the
+        /// `InspectionRuleSet.info_types` finding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minLikelihood")]
+        public virtual string MinLikelihood { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AdjustmentRule condition for matching infoTypes.</summary>
+    public class GooglePrivacyDlpV2AdjustByMatchingInfoTypes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Sensitive Data Protection adjusts the likelihood of a finding if that finding also matches one of these
+        /// infoTypes. For example, you can create a rule to adjust the likelihood of a `PHONE_NUMBER` finding if the
+        /// string is found within a document that is classified as `DOCUMENT_TYPE/HR/RESUME`. To configure this, set
+        /// `PHONE_NUMBER` in `InspectionRuleSet.info_types`. Add an `adjustment_rule` with an
+        /// `adjust_by_matching_info_types.info_types` that contains `DOCUMENT_TYPE/HR/RESUME`. In this case, the
+        /// likelihood of the `PHONE_NUMBER` finding is adjusted, but the likelihood of the `DOCUMENT_TYPE/HR/RESUME`
+        /// finding is not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoType> InfoTypes { get; set; }
+
+        /// <summary>
+        /// How the adjustment rule is applied. Only MATCHING_TYPE_PARTIAL_MATCH is supported: - Partial match: adjusts
+        /// the findings of infoTypes specified in the inspection rule when they have a nonempty intersection with a
+        /// finding of an infoType specified in this adjustment rule.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchingType")]
+        public virtual string MatchingType { get; set; }
+
+        /// <summary>
+        /// Required. Minimum likelihood of the `adjust_by_matching_info_types.info_types` finding. If the likelihood is
+        /// lower than this value, Sensitive Data Protection doesn't adjust the likelihood of the
+        /// `InspectionRuleSet.info_types` finding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minLikelihood")]
+        public virtual string MinLikelihood { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Rule that specifies conditions when a certain infoType's finding details should be adjusted.</summary>
+    public class GooglePrivacyDlpV2AdjustmentRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>AdjustmentRule condition for image findings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adjustByImageFindings")]
+        public virtual GooglePrivacyDlpV2AdjustByImageFindings AdjustByImageFindings { get; set; }
+
+        /// <summary>Set of infoTypes for which findings would affect this rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adjustByMatchingInfoTypes")]
+        public virtual GooglePrivacyDlpV2AdjustByMatchingInfoTypes AdjustByMatchingInfoTypes { get; set; }
+
+        /// <summary>Likelihood adjustment to apply to the infoType.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("likelihoodAdjustment")]
+        public virtual GooglePrivacyDlpV2LikelihoodAdjustment LikelihoodAdjustment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Apply transformation to all findings.</summary>
     public class GooglePrivacyDlpV2AllInfoTypes : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16383,6 +16477,13 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Defines a condition where one bounding box encloses another.</summary>
+    public class GooglePrivacyDlpV2Encloses : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An entity in a dataset is a field or set of fields that correspond to a single person. For example, in medical
     /// records the `EntityId` might be a patient identifier, or for financial records it might be an account
@@ -16446,6 +16547,37 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The rule to exclude image findings based on spatial relationships with other image findings. For example,
+    /// exclude an image finding if it overlaps with another image finding. This rule is silently ignored if the content
+    /// being inspected is not an image.
+    /// </summary>
+    public class GooglePrivacyDlpV2ExcludeByImageFindings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies the required spatial relationship between the bounding boxes of the target finding and the context
+        /// infoType findings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageContainmentType")]
+        public virtual GooglePrivacyDlpV2ImageContainmentType ImageContainmentType { get; set; }
+
+        /// <summary>
+        /// A list of image-supported infoTypes—excluding [document
+        /// infoTypes](https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference#documents)—to be used
+        /// as context for the exclusion rule. A finding is excluded if its bounding box has the specified spatial
+        /// relationship (defined by `image_containment_type`) with a finding of an infoType in this list. For example,
+        /// if `InspectionRuleSet.info_types` includes `OBJECT_TYPE/PERSON` and this `exclusion_rule` specifies
+        /// `info_types` as `OBJECT_TYPE/PERSON/PASSPORT` with `image_containment_type` set to `encloses`, then
+        /// `OBJECT_TYPE/PERSON` findings will be excluded if they are fully contained within the bounding box of an
+        /// `OBJECT_TYPE/PERSON/PASSPORT` finding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoType> InfoTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>List of excluded infoTypes.</summary>
     public class GooglePrivacyDlpV2ExcludeInfoTypes : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16479,6 +16611,13 @@ namespace Google.Apis.DLP.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeByHotword")]
         public virtual GooglePrivacyDlpV2ExcludeByHotword ExcludeByHotword { get; set; }
+
+        /// <summary>
+        /// Exclude findings based on image containment rules. For example, exclude an image finding if it overlaps with
+        /// another image finding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeByImageFindings")]
+        public virtual GooglePrivacyDlpV2ExcludeByImageFindings ExcludeByImageFindings { get; set; }
 
         /// <summary>Set of infoTypes for which findings would affect this rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeInfoTypes")]
@@ -17225,6 +17364,13 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Defines a condition where one bounding box is fully inside another.</summary>
+    public class GooglePrivacyDlpV2FullyInside : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Processing occurs in the global region.</summary>
     public class GooglePrivacyDlpV2GlobalProcessing : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17412,6 +17558,29 @@ namespace Google.Apis.DLP.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableOptions")]
         public virtual GooglePrivacyDlpV2TableOptions TableOptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies the relationship between bounding boxes for image findings.</summary>
+    public class GooglePrivacyDlpV2ImageContainmentType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The context finding's bounding box must fully contain the target finding's bounding box.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encloses")]
+        public virtual GooglePrivacyDlpV2Encloses Encloses { get; set; }
+
+        /// <summary>
+        /// The context finding's bounding box must be fully inside the target finding's bounding box.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullyInside")]
+        public virtual GooglePrivacyDlpV2FullyInside FullyInside { get; set; }
+
+        /// <summary>
+        /// The context finding's bounding box and the target finding's bounding box must have a non-zero intersection.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overlaps")]
+        public virtual GooglePrivacyDlpV2Overlap Overlaps { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18014,6 +18183,10 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>A single inspection rule to be applied to infoTypes, specified in `InspectionRuleSet`.</summary>
     public class GooglePrivacyDlpV2InspectionRule : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Adjustment rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adjustmentRule")]
+        public virtual GooglePrivacyDlpV2AdjustmentRule AdjustmentRule { get; set; }
+
         /// <summary>Exclusion rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusionRule")]
         public virtual GooglePrivacyDlpV2ExclusionRule ExclusionRule { get; set; }
@@ -19121,6 +19294,13 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual GooglePrivacyDlpV2BigQueryTable Table { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines a condition for overlapping bounding boxes.</summary>
+    public class GooglePrivacyDlpV2Overlap : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
