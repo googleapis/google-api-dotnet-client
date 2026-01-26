@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4319,6 +4319,14 @@ namespace Google.Apis.Appengine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gceTag")]
         public virtual System.Collections.Generic.IList<GceTag> GceTag { get; set; }
+
+        /// <summary>
+        /// DEPRECATED: Indicates whether the GCE project is in the DEPROVISIONING state. This field is a temporary
+        /// workaround (see b/475310865) to allow GCE extensions to bypass certain checks during deprovisioning. It will
+        /// be replaced by a permanent solution in the future.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isGceProjectDeprovisioning")]
+        public virtual System.Nullable<bool> IsGceProjectDeprovisioning { get; set; }
 
         /// <summary>
         /// The service account authorized to operate on the consumer project. Note: CCFE only propagates P4SA with
