@@ -27647,8 +27647,9 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
         /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
-        /// `personalization-memory` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation`
-        /// * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload`
+        /// `personalization-memory` * `personalization-suggested-highlights` * `disable-agent-sharing` *
+        /// `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` *
+        /// `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -29361,7 +29362,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for UserLicenseService.ListLicenseConfigUsageStats method.</summary>
+    /// <summary>Response message for UserLicenseService.ListLicenseConfigsUsageStats method.</summary>
     public class GoogleCloudDiscoveryengineV1ListLicenseConfigsUsageStatsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>All the customer's LicenseConfigUsageStats.</summary>
@@ -30968,14 +30969,14 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
 
         /// <summary>
         /// Optional. The categories associated with a category page. Must be set for category navigation queries to
-        /// achieve good search quality. The format should be the same as UserEvent.PageInfo.page_category. This field
-        /// is the equivalent of the query for browse (navigation) queries. It's used by the browse model when the query
-        /// is empty. If the field is empty, it will not be used by the browse model. If the field contains more than
-        /// one element, only the first element will be used. To represent full path of a category, use '&amp;gt;'
-        /// character to separate different hierarchies. If '&amp;gt;' is part of the category name, replace it with
-        /// other character(s). For example, `Graphics Cards &amp;gt; RTX&amp;gt;4090 &amp;gt; Founders Edition` where
-        /// "RTX &amp;gt; 4090" represents one level, can be rewritten as `Graphics Cards &amp;gt; RTX_4090 &amp;gt;
-        /// Founders Edition`
+        /// achieve good search quality. The format should be the same as PageInfo.page_category. This field is the
+        /// equivalent of the query for browse (navigation) queries. It's used by the browse model when the query is
+        /// empty. If the field is empty, it will not be used by the browse model. If the field contains more than one
+        /// element, only the first element will be used. To represent full path of a category, use '&amp;gt;' character
+        /// to separate different hierarchies. If '&amp;gt;' is part of the category name, replace it with other
+        /// character(s). For example, `Graphics Cards &amp;gt; RTX&amp;gt;4090 &amp;gt; Founders Edition` where "RTX
+        /// &amp;gt; 4090" represents one level, can be rewritten as `Graphics Cards &amp;gt; RTX_4090 &amp;gt; Founders
+        /// Edition`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageCategories")]
         public virtual System.Collections.Generic.IList<string> PageCategories { get; set; }
@@ -31741,7 +31742,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// on the request. For single datastore structured search, the default is `HARD_FILTER`. For multi-datastore
         /// search, the default behavior is `SOFT_BOOST`. Location-based filters are always applied as hard filters, and
         /// the `SOFT_BOOST` setting will not affect them. This field is only used if
-        /// SearchRequest.natural_language_query_understanding_spec.filter_extraction_condition is set to
+        /// SearchRequest.NaturalLanguageQueryUnderstandingSpec.FilterExtractionCondition is set to
         /// FilterExtractionCondition.ENABLED.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extractedFilterBehavior")]
@@ -31875,6 +31876,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("facets")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1SearchResponseFacet> Facets { get; set; }
 
+        /// <summary>Output only. Natural language query understanding information for the returned results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("naturalLanguageQueryUnderstandingInfo")]
+        public virtual GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfo NaturalLanguageQueryUnderstandingInfo { get; set; }
+
         /// <summary>
         /// A token that can be sent as SearchRequest.page_token to retrieve the next page. If this field is omitted,
         /// there are no subsequent pages.
@@ -31968,6 +31973,173 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Text value of a facet, such as "Black" for facet "colors".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information describing what natural language understanding was done on the input query.</summary>
+    public class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The classified intents from the input query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("classifiedIntents")]
+        public virtual System.Collections.Generic.IList<string> ClassifiedIntents { get; set; }
+
+        /// <summary>The filters that were extracted from the input query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extractedFilters")]
+        public virtual string ExtractedFilters { get; set; }
+
+        /// <summary>Rewritten input query minus the extracted filters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rewrittenQuery")]
+        public virtual string RewrittenQuery { get; set; }
+
+        /// <summary>The filters that were extracted from the input query represented in a structured form.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredExtractedFilter")]
+        public virtual GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilter StructuredExtractedFilter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The filters that were extracted from the input query represented in a structured form.</summary>
+    public class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The expression denoting the filter that was extracted from the input query in a structured form. It can be a
+        /// simple expression denoting a single string, numerical or geolocation constraint or a compound expression
+        /// which is a combination of multiple expressions connected using logical (OR and AND) operators.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expression")]
+        public virtual GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression Expression { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Logical `And` operator.</summary>
+    public class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterAndExpression : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The expressions that were ANDed together.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expressions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression> Expressions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The expression denoting the filter that was extracted from the input query.</summary>
+    public class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Logical "And" compound operator connecting multiple expressions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("andExpr")]
+        public virtual GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterAndExpression AndExpr { get; set; }
+
+        /// <summary>Geolocation constraint expression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geolocationConstraint")]
+        public virtual GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterGeolocationConstraint GeolocationConstraint { get; set; }
+
+        /// <summary>Numerical constraint expression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numberConstraint")]
+        public virtual GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterNumberConstraint NumberConstraint { get; set; }
+
+        /// <summary>Logical "Or" compound operator connecting multiple expressions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orExpr")]
+        public virtual GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression OrExpr { get; set; }
+
+        /// <summary>String constraint expression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringConstraint")]
+        public virtual GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterStringConstraint StringConstraint { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Constraint of a geolocation field. Name of the geolocation field as defined in the schema.</summary>
+    public class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterGeolocationConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The reference address that was inferred from the input query. The proximity of the reference address to the
+        /// geolocation field will be used to filter the results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("address")]
+        public virtual string Address { get; set; }
+
+        /// <summary>The name of the geolocation field as defined in the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
+        public virtual string FieldName { get; set; }
+
+        /// <summary>The latitude of the geolocation inferred from the input query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latitude")]
+        public virtual System.Nullable<double> Latitude { get; set; }
+
+        /// <summary>The longitude of the geolocation inferred from the input query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
+        public virtual System.Nullable<double> Longitude { get; set; }
+
+        /// <summary>
+        /// The radius in meters around the address. The record is returned if the location of the geolocation field is
+        /// within the radius.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("radiusInMeters")]
+        public virtual System.Nullable<float> RadiusInMeters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Constraint expression of a number field. Example: price &lt; 100.</summary>
+    public class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterNumberConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The comparison operation performed between the field value and the value specified in the constraint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comparison")]
+        public virtual string Comparison { get; set; }
+
+        /// <summary>Name of the numerical field as defined in the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
+        public virtual string FieldName { get; set; }
+
+        /// <summary>Identifies the keywords within the search query that match a filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("querySegment")]
+        public virtual string QuerySegment { get; set; }
+
+        /// <summary>The value specified in the numerical constraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<double> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Logical `Or` operator.</summary>
+    public class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The expressions that were ORed together.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expressions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression> Expressions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Constraint expression of a string field.</summary>
+    public class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterStringConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the string field as defined in the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
+        public virtual string FieldName { get; set; }
+
+        /// <summary>Identifies the keywords within the search query that match a filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("querySegment")]
+        public virtual string QuerySegment { get; set; }
+
+        /// <summary>
+        /// Values of the string field. The record will only be returned if the field value matches one of the values
+        /// specified here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -34529,7 +34701,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>
         /// The name of the collection. It should be collection resource name. Format:
         /// `projects/{project}/locations/{location}/collections/{collection_id}`. For APIs under WidgetService, such as
-        /// WidgetService.LookUpWidgetConfig, the project number and location part is erased in this field.
+        /// WidgetService.LookupWidgetConfig, the project number and location part is erased in this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -34577,7 +34749,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>
         /// The name of the data store. It should be data store resource name Format:
         /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. For APIs
-        /// under WidgetService, such as WidgetService.LookUpWidgetConfig, the project number and location part is
+        /// under WidgetService, such as WidgetService.LookupWidgetConfig, the project number and location part is
         /// erased in this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -34613,7 +34785,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>
         /// The name of the data store. It should be data store resource name Format:
         /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. For APIs
-        /// under WidgetService, such as WidgetService.LookUpWidgetConfig, the project number and location part is
+        /// under WidgetService, such as WidgetService.LookupWidgetConfig, the project number and location part is
         /// erased in this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -34775,8 +34947,9 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// Output only. Feature config for the engine to opt in or opt out of features. Supported keys: *
         /// `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` *
         /// `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
-        /// `personalization-memory` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation`
-        /// * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload`
+        /// `personalization-memory` * `personalization-suggested-highlights` * `disable-agent-sharing` *
+        /// `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` *
+        /// `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -35745,8 +35918,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>
         /// Output only. When set, uniquely identifies a reply within the `AssistAnswer` resource. During an
         /// AssistantService.StreamAssist call, multiple `Reply` messages with the same ID can occur within the response
-        /// stream (across multiple AssistantService.StreamAssistResponse messages). These represent parts of a single
-        /// `Reply` message in the final `AssistAnswer` resource.
+        /// stream (across multiple StreamAssistResponse messages). These represent parts of a single `Reply` message in
+        /// the final `AssistAnswer` resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replyId")]
         public virtual string ReplyId { get; set; }
@@ -39705,8 +39878,9 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
         /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
-        /// `personalization-memory` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation`
-        /// * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload`
+        /// `personalization-memory` * `personalization-suggested-highlights` * `disable-agent-sharing` *
+        /// `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` *
+        /// `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -43139,14 +43313,14 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
 
         /// <summary>
         /// Optional. The categories associated with a category page. Must be set for category navigation queries to
-        /// achieve good search quality. The format should be the same as UserEvent.PageInfo.page_category. This field
-        /// is the equivalent of the query for browse (navigation) queries. It's used by the browse model when the query
-        /// is empty. If the field is empty, it will not be used by the browse model. If the field contains more than
-        /// one element, only the first element will be used. To represent full path of a category, use '&amp;gt;'
-        /// character to separate different hierarchies. If '&amp;gt;' is part of the category name, replace it with
-        /// other character(s). For example, `Graphics Cards &amp;gt; RTX&amp;gt;4090 &amp;gt; Founders Edition` where
-        /// "RTX &amp;gt; 4090" represents one level, can be rewritten as `Graphics Cards &amp;gt; RTX_4090 &amp;gt;
-        /// Founders Edition`
+        /// achieve good search quality. The format should be the same as PageInfo.page_category. This field is the
+        /// equivalent of the query for browse (navigation) queries. It's used by the browse model when the query is
+        /// empty. If the field is empty, it will not be used by the browse model. If the field contains more than one
+        /// element, only the first element will be used. To represent full path of a category, use '&amp;gt;' character
+        /// to separate different hierarchies. If '&amp;gt;' is part of the category name, replace it with other
+        /// character(s). For example, `Graphics Cards &amp;gt; RTX&amp;gt;4090 &amp;gt; Founders Edition` where "RTX
+        /// &amp;gt; 4090" represents one level, can be rewritten as `Graphics Cards &amp;gt; RTX_4090 &amp;gt; Founders
+        /// Edition`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageCategories")]
         public virtual System.Collections.Generic.IList<string> PageCategories { get; set; }
@@ -44007,7 +44181,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// on the request. For single datastore structured search, the default is `HARD_FILTER`. For multi-datastore
         /// search, the default behavior is `SOFT_BOOST`. Location-based filters are always applied as hard filters, and
         /// the `SOFT_BOOST` setting will not affect them. This field is only used if
-        /// SearchRequest.natural_language_query_understanding_spec.filter_extraction_condition is set to
+        /// SearchRequest.NaturalLanguageQueryUnderstandingSpec.FilterExtractionCondition is set to
         /// FilterExtractionCondition.ENABLED.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extractedFilterBehavior")]
@@ -47921,8 +48095,9 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
         /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
-        /// `personalization-memory` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation`
-        /// * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload`
+        /// `personalization-memory` * `personalization-suggested-highlights` * `disable-agent-sharing` *
+        /// `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` *
+        /// `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -50236,14 +50411,14 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
 
         /// <summary>
         /// Optional. The categories associated with a category page. Must be set for category navigation queries to
-        /// achieve good search quality. The format should be the same as UserEvent.PageInfo.page_category. This field
-        /// is the equivalent of the query for browse (navigation) queries. It's used by the browse model when the query
-        /// is empty. If the field is empty, it will not be used by the browse model. If the field contains more than
-        /// one element, only the first element will be used. To represent full path of a category, use '&amp;gt;'
-        /// character to separate different hierarchies. If '&amp;gt;' is part of the category name, replace it with
-        /// other character(s). For example, `Graphics Cards &amp;gt; RTX&amp;gt;4090 &amp;gt; Founders Edition` where
-        /// "RTX &amp;gt; 4090" represents one level, can be rewritten as `Graphics Cards &amp;gt; RTX_4090 &amp;gt;
-        /// Founders Edition`
+        /// achieve good search quality. The format should be the same as PageInfo.page_category. This field is the
+        /// equivalent of the query for browse (navigation) queries. It's used by the browse model when the query is
+        /// empty. If the field is empty, it will not be used by the browse model. If the field contains more than one
+        /// element, only the first element will be used. To represent full path of a category, use '&amp;gt;' character
+        /// to separate different hierarchies. If '&amp;gt;' is part of the category name, replace it with other
+        /// character(s). For example, `Graphics Cards &amp;gt; RTX&amp;gt;4090 &amp;gt; Founders Edition` where "RTX
+        /// &amp;gt; 4090" represents one level, can be rewritten as `Graphics Cards &amp;gt; RTX_4090 &amp;gt; Founders
+        /// Edition`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageCategories")]
         public virtual System.Collections.Generic.IList<string> PageCategories { get; set; }
@@ -51096,7 +51271,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// on the request. For single datastore structured search, the default is `HARD_FILTER`. For multi-datastore
         /// search, the default behavior is `SOFT_BOOST`. Location-based filters are always applied as hard filters, and
         /// the `SOFT_BOOST` setting will not affect them. This field is only used if
-        /// SearchRequest.natural_language_query_understanding_spec.filter_extraction_condition is set to
+        /// SearchRequest.NaturalLanguageQueryUnderstandingSpec.FilterExtractionCondition is set to
         /// FilterExtractionCondition.ENABLED.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extractedFilterBehavior")]
