@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -5769,7 +5769,7 @@ namespace Google.Apis.GKEHub.v1beta.Data
     public class ClusterSelector : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The label selector must be a valid CEL (go/cel) expression which evaluates resource.labels.
+        /// Optional. A valid CEL (Common Expression Language) expression which evaluates `resource.labels`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelSelector")]
         public virtual string LabelSelector { get; set; }
@@ -6720,7 +6720,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hierarchyController")]
         public virtual ConfigManagementHierarchyControllerConfig HierarchyController { get; set; }
 
-        /// <summary>Optional. Enables automatic Feature management.</summary>
+        /// <summary>
+        /// Optional. Deprecated: From version 1.21.0, automatic Feature management is unavailable, and Config Sync only
+        /// supports manual upgrades.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("management")]
         public virtual string Management { get; set; }
 
@@ -10607,8 +10610,7 @@ namespace Google.Apis.GKEHub.v1beta.Data
 
         /// <summary>
         /// Optional. Immutable. The full, unique resource name of the rollout sequence that initiatied this Rollout. In
-        /// the format of `projects/{project}/locations/global/rolloutSequences/{rollout_sequence}`. Empty for user
-        /// initiated rollouts.
+        /// the format of `projects/{project}/locations/global/rolloutSequences/{rollout_sequence}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rolloutSequence")]
         public virtual string RolloutSequence { get; set; }
@@ -10617,9 +10619,7 @@ namespace Google.Apis.GKEHub.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
         public virtual Schedule Schedule { get; set; }
 
-        /// <summary>
-        /// Output only. The stages of the Rollout. Note: this is only populated for google-initiated rollouts.
-        /// </summary>
+        /// <summary>Output only. The stages of the Rollout.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stages")]
         public virtual System.Collections.Generic.IList<RolloutStage> Stages { get; set; }
 
@@ -10675,7 +10675,7 @@ namespace Google.Apis.GKEHub.v1beta.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. Config for version upgrade of clusters. Note: Currently for GDCE clusters only.</summary>
+        /// <summary>Optional. Config for version upgrade of clusters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionUpgrade")]
         public virtual VersionUpgrade VersionUpgrade { get; set; }
     }
@@ -10984,16 +10984,15 @@ namespace Google.Apis.GKEHub.v1beta.Data
     {
         /// <summary>
         /// Optional. Output only. The resource link of the Cluster resource upgraded in this Rollout. It is formatted
-        /// as: ///projects//locations//clusters/. I.e. for GKE clusters, it is formatted as:
-        /// //container.googleapis.com/projects//locations//clusters/. For GDCE, it is formatted as:
-        /// //edgecontainer.googleapis.com/projects//locations//clusters/.
+        /// as: `//{api_service}/projects/{project_number}/locations/{location}/clusters/{cluster_name}`. .
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual string Cluster { get; set; }
 
         /// <summary>
         /// Optional. Output only. The resource link of the NodePool resource upgraded in this Rollout. It is formatted
-        /// as: ///projects//locations//clusters//nodePools/.
+        /// as:
+        /// `//{api_service}/projects/{project_number}/locations/{location}/clusters/{cluster_name}/nodePools/{node_pool_name}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodePool")]
         public virtual string NodePool { get; set; }
