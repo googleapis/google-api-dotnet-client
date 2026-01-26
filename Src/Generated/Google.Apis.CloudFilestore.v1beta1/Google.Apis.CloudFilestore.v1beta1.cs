@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3981,10 +3981,7 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddresses")]
         public virtual System.Collections.Generic.IList<string> IpAddresses { get; set; }
 
-        /// <summary>
-        /// Internet protocol versions for which the instance has IP addresses assigned. For this version, only
-        /// MODE_IPV4 is supported.
-        /// </summary>
+        /// <summary>Internet protocol versions for which the instance has IP addresses assigned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modes")]
         public virtual System.Collections.Generic.IList<string> Modes { get; set; }
 
