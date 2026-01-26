@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -10438,6 +10438,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>Set of computation configuration information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamingComputationConfigs")]
         public virtual System.Collections.Generic.IList<StreamingComputationConfig> StreamingComputationConfigs { get; set; }
+
+        /// <summary>Optional. The state tag encoding format version for streaming engine jobs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamingEngineStateTagEncodingVersion")]
+        public virtual System.Nullable<int> StreamingEngineStateTagEncodingVersion { get; set; }
 
         /// <summary>Map from user step names to state families.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userStepToStateFamilyNameMap")]
