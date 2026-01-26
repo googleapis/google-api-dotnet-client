@@ -7921,7 +7921,7 @@ namespace Google.Apis.Bigquery.v2.Data
     /// </summary>
     public class IncrementalResultStats : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Reason why incremental query results are/were not written by the query.</summary>
+        /// <summary>Output only. Reason why incremental query results are/were not written by the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabledReason")]
         public virtual string DisabledReason { get; set; }
 
@@ -7930,8 +7930,8 @@ namespace Google.Apis.Bigquery.v2.Data
         private object _resultSetLastModifyTime;
 
         /// <summary>
-        /// The time at which the result table's contents were modified. May be absent if no results have been written
-        /// or the query has completed.
+        /// Output only. The time at which the result table's contents were modified. May be absent if no results have
+        /// been written or the query has completed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultSetLastModifyTime")]
         public virtual string ResultSetLastModifyTimeRaw
@@ -7972,8 +7972,8 @@ namespace Google.Apis.Bigquery.v2.Data
         private object _resultSetLastReplaceTime;
 
         /// <summary>
-        /// The time at which the result table's contents were completely replaced. May be absent if no results have
-        /// been written or the query has completed.
+        /// Output only. The time at which the result table's contents were completely replaced. May be absent if no
+        /// results have been written or the query has completed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultSetLastReplaceTime")]
         public virtual string ResultSetLastReplaceTimeRaw
@@ -8931,9 +8931,9 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>
         /// Optional. Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true.
-        /// If set to false, the query will use BigQuery's GoogleSQL: https://cloud.google.com/bigquery/sql-reference/
-        /// When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if
-        /// flattenResults is false.
+        /// If set to false, the query uses BigQuery's
+        /// [GoogleSQL](https://docs.cloud.google.com/bigquery/docs/introduction-sql). When useLegacySql is set to
+        /// false, the value of flattenResults is ignored; query will be run as if flattenResults is false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useLegacySql")]
         public virtual System.Nullable<bool> UseLegacySql { get; set; }
@@ -10974,9 +10974,9 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>
         /// Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to
-        /// false, the query will use BigQuery's GoogleSQL: https://cloud.google.com/bigquery/sql-reference/ When
-        /// useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults
-        /// is false.
+        /// false, the query uses BigQuery's [GoogleSQL](https://docs.cloud.google.com/bigquery/docs/introduction-sql).
+        /// When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if
+        /// flattenResults is false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useLegacySql")]
         public virtual System.Nullable<bool> UseLegacySql { get; set; }
@@ -14031,9 +14031,9 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>
         /// Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false,
-        /// the view will use BigQuery's GoogleSQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views
-        /// that reference this view must use the same flag value. A wrapper is used here because the default value is
-        /// True.
+        /// the view uses BigQuery's [GoogleSQL](https://docs.cloud.google.com/bigquery/docs/introduction-sql). Queries
+        /// and views that reference this view must use the same flag value. A wrapper is used here because the default
+        /// value is True.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useLegacySql")]
         public virtual System.Nullable<bool> UseLegacySql { get; set; }
