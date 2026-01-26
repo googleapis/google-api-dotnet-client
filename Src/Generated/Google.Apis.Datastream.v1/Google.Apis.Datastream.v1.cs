@@ -3106,7 +3106,7 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>BigQuery warehouse profile.</summary>
+    /// <summary>Profile for connecting to a BigQuery destination.</summary>
     public class BigQueryProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -3193,7 +3193,7 @@ namespace Google.Apis.Datastream.v1.Data
     /// </summary>
     public class ConnectionProfile : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>BigQuery Connection Profile configuration.</summary>
+        /// <summary>Profile for connecting to a BigQuery destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryProfile")]
         public virtual BigQueryProfile BigqueryProfile { get; set; }
 
@@ -3242,7 +3242,7 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("forwardSshConnectivity")]
         public virtual ForwardSshTunnelConnectivity ForwardSshConnectivity { get; set; }
 
-        /// <summary>Cloud Storage ConnectionProfile configuration.</summary>
+        /// <summary>Profile for connecting to a Cloud Storage destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsProfile")]
         public virtual GcsProfile GcsProfile { get; set; }
 
@@ -3250,11 +3250,11 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>MongoDB Connection Profile configuration.</summary>
+        /// <summary>Profile for connecting to a MongoDB source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mongodbProfile")]
         public virtual MongodbProfile MongodbProfile { get; set; }
 
-        /// <summary>MySQL ConnectionProfile configuration.</summary>
+        /// <summary>Profile for connecting to a MySQL source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlProfile")]
         public virtual MysqlProfile MysqlProfile { get; set; }
 
@@ -3262,11 +3262,11 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Oracle ConnectionProfile configuration.</summary>
+        /// <summary>Profile for connecting to an Oracle source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oracleProfile")]
         public virtual OracleProfile OracleProfile { get; set; }
 
-        /// <summary>PostgreSQL Connection Profile configuration.</summary>
+        /// <summary>Profile for connecting to a PostgreSQL source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postgresqlProfile")]
         public virtual PostgresqlProfile PostgresqlProfile { get; set; }
 
@@ -3274,7 +3274,7 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateConnectivity")]
         public virtual PrivateConnectivity PrivateConnectivity { get; set; }
 
-        /// <summary>Salesforce Connection Profile configuration.</summary>
+        /// <summary>Profile for connecting to a Salesforce source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salesforceProfile")]
         public virtual SalesforceProfile SalesforceProfile { get; set; }
 
@@ -3286,11 +3286,11 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
-        /// <summary>Spanner Connection Profile configuration.</summary>
+        /// <summary>Profile for connecting to a Spanner source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spannerProfile")]
         public virtual SpannerProfile SpannerProfile { get; set; }
 
-        /// <summary>SQLServer Connection Profile configuration.</summary>
+        /// <summary>Profile for connecting to a SQLServer source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlServerProfile")]
         public virtual SqlServerProfile SqlServerProfile { get; set; }
 
@@ -3616,8 +3616,8 @@ namespace Google.Apis.Datastream.v1.Data
     public class EventFilter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// An SQL-query Where clause selecting which data should be included, not including the "WHERE" keyword. E.g.,
-        /// "t.key1 = 'value1' AND t.key2 = 'value2'".
+        /// An SQL-query Where clause selecting which data should be included, not including the "WHERE" keyword. e.g.,
+        /// `t.key1 = 'value1' AND t.key2 = 'value2'`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlWhereClause")]
         public virtual string SqlWhereClause { get; set; }
@@ -3701,14 +3701,14 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Cloud Storage bucket profile.</summary>
+    /// <summary>Profile for connecting to a Cloud Storage destination.</summary>
     public class GcsProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The Cloud Storage bucket name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
         public virtual string Bucket { get; set; }
 
-        /// <summary>The root path inside the Cloud Storage bucket.</summary>
+        /// <summary>Optional. The root path inside the Cloud Storage bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootPath")]
         public virtual string RootPath { get; set; }
 
@@ -4065,7 +4065,7 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>MongoDB Collection.</summary>
     public class MongodbCollection : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Collection name.</summary>
+        /// <summary>The collection name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collection")]
         public virtual string Collection { get; set; }
 
@@ -4084,7 +4084,7 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("collections")]
         public virtual System.Collections.Generic.IList<MongodbCollection> Collections { get; set; }
 
-        /// <summary>Database name.</summary>
+        /// <summary>The database name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
         public virtual string Database { get; set; }
 
@@ -4095,7 +4095,7 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>MongoDB Field.</summary>
     public class MongodbField : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Field name.</summary>
+        /// <summary>The field name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual string Field { get; set; }
 
@@ -4118,7 +4118,7 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>MongoDB profile.</summary>
+    /// <summary>Profile for connecting to a MongoDB source.</summary>
     public class MongodbProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4180,14 +4180,14 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>MongoDB source configuration.</summary>
+    /// <summary>Configuration for syncing data from a MongoDB source.</summary>
     public class MongodbSourceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>MongoDB collections to exclude from the stream.</summary>
+        /// <summary>The MongoDB collections to exclude from the stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeObjects")]
         public virtual MongodbCluster ExcludeObjects { get; set; }
 
-        /// <summary>MongoDB collections to include in the stream.</summary>
+        /// <summary>The MongoDB collections to include in the stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeObjects")]
         public virtual MongodbCluster IncludeObjects { get; set; }
 
@@ -4269,7 +4269,7 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("collation")]
         public virtual string Collation { get; set; }
 
-        /// <summary>Column name.</summary>
+        /// <summary>The column name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("column")]
         public virtual string Column { get; set; }
 
@@ -4311,7 +4311,7 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>MySQL database.</summary>
     public class MysqlDatabase : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Database name.</summary>
+        /// <summary>The database name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
         public virtual string Database { get; set; }
 
@@ -4364,7 +4364,7 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>MySQL database profile.</summary>
+    /// <summary>Profile for connecting to a MySQL source.</summary>
     public class MysqlProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Hostname for the MySQL connection.</summary>
@@ -4412,14 +4412,14 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>MySQL source configuration</summary>
+    /// <summary>Configuration for syncing data from a MySQL source.</summary>
     public class MysqlSourceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Use Binary log position based replication.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binaryLogPosition")]
         public virtual BinaryLogPosition BinaryLogPosition { get; set; }
 
-        /// <summary>MySQL objects to exclude from the stream.</summary>
+        /// <summary>The MySQL objects to exclude from the stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeObjects")]
         public virtual MysqlRdbms ExcludeObjects { get; set; }
 
@@ -4427,7 +4427,7 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gtid")]
         public virtual Gtid Gtid { get; set; }
 
-        /// <summary>MySQL objects to retrieve from the source.</summary>
+        /// <summary>The MySQL objects to retrieve from the source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeObjects")]
         public virtual MysqlRdbms IncludeObjects { get; set; }
 
@@ -4499,7 +4499,7 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlColumns")]
         public virtual System.Collections.Generic.IList<MysqlColumn> MysqlColumns { get; set; }
 
-        /// <summary>Table name.</summary>
+        /// <summary>The table name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual string Table { get; set; }
 
@@ -4757,7 +4757,7 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>Oracle Column.</summary>
     public class OracleColumn : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Column name.</summary>
+        /// <summary>The column name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("column")]
         public virtual string Column { get; set; }
 
@@ -4812,7 +4812,7 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Oracle database profile.</summary>
+    /// <summary>Profile for connecting to an Oracle source.</summary>
     public class OracleProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Connection string attributes</summary>
@@ -4879,7 +4879,7 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oracleTables")]
         public virtual System.Collections.Generic.IList<OracleTable> OracleTables { get; set; }
 
-        /// <summary>Schema name.</summary>
+        /// <summary>The schema name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual string Schema { get; set; }
 
@@ -4898,7 +4898,7 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Oracle data source configuration</summary>
+    /// <summary>Configuration for syncing data from an Oracle source.</summary>
     public class OracleSourceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Use Binary Log Parser.</summary>
@@ -4909,11 +4909,11 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dropLargeObjects")]
         public virtual DropLargeObjects DropLargeObjects { get; set; }
 
-        /// <summary>Oracle objects to exclude from the stream.</summary>
+        /// <summary>The Oracle objects to exclude from the stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeObjects")]
         public virtual OracleRdbms ExcludeObjects { get; set; }
 
-        /// <summary>Oracle objects to include in the stream.</summary>
+        /// <summary>The Oracle objects to include in the stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeObjects")]
         public virtual OracleRdbms IncludeObjects { get; set; }
 
@@ -4981,7 +4981,7 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oracleColumns")]
         public virtual System.Collections.Generic.IList<OracleColumn> OracleColumns { get; set; }
 
-        /// <summary>Table name.</summary>
+        /// <summary>The table name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual string Table { get; set; }
 
@@ -4992,7 +4992,7 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>PostgreSQL Column.</summary>
     public class PostgresqlColumn : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Column name.</summary>
+        /// <summary>The column name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("column")]
         public virtual string Column { get; set; }
 
@@ -5043,7 +5043,7 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>PostgreSQL database profile.</summary>
+    /// <summary>Profile for connecting to a PostgreSQL source.</summary>
     public class PostgresqlProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Database for the PostgreSQL connection.</summary>
@@ -5106,7 +5106,7 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("postgresqlTables")]
         public virtual System.Collections.Generic.IList<PostgresqlTable> PostgresqlTables { get; set; }
 
-        /// <summary>Schema name.</summary>
+        /// <summary>The schema name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual string Schema { get; set; }
 
@@ -5114,14 +5114,14 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>PostgreSQL data source configuration</summary>
+    /// <summary>Configuration for syncing data from a PostgreSQL source.</summary>
     public class PostgresqlSourceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>PostgreSQL objects to exclude from the stream.</summary>
+        /// <summary>The PostgreSQL objects to exclude from the stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeObjects")]
         public virtual PostgresqlRdbms ExcludeObjects { get; set; }
 
-        /// <summary>PostgreSQL objects to include in the stream.</summary>
+        /// <summary>The PostgreSQL objects to include in the stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeObjects")]
         public virtual PostgresqlRdbms IncludeObjects { get; set; }
 
@@ -5180,7 +5180,7 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("postgresqlColumns")]
         public virtual System.Collections.Generic.IList<PostgresqlColumn> PostgresqlColumns { get; set; }
 
-        /// <summary>Table name.</summary>
+        /// <summary>The table name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual string Table { get; set; }
 
@@ -5481,7 +5481,7 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
         public virtual string DataType { get; set; }
 
-        /// <summary>Field name.</summary>
+        /// <summary>The field name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -5503,7 +5503,7 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<SalesforceField> Fields { get; set; }
 
-        /// <summary>Object name.</summary>
+        /// <summary>The object name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectName")]
         public virtual string ObjectName { get; set; }
 
@@ -5533,7 +5533,7 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Salesforce profile</summary>
+    /// <summary>Profile for connecting to a Salesforce source.</summary>
     public class SalesforceProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Domain endpoint for the Salesforce connection.</summary>
@@ -5552,20 +5552,20 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Salesforce source configuration</summary>
+    /// <summary>Configuration for syncing data from a Salesforce source.</summary>
     public class SalesforceSourceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Salesforce objects to exclude from the stream.</summary>
+        /// <summary>The Salesforce objects to exclude from the stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeObjects")]
         public virtual SalesforceOrg ExcludeObjects { get; set; }
 
-        /// <summary>Salesforce objects to retrieve from the source.</summary>
+        /// <summary>The Salesforce objects to retrieve from the source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeObjects")]
         public virtual SalesforceOrg IncludeObjects { get; set; }
 
         /// <summary>
         /// Required. Salesforce objects polling interval. The interval at which new changes will be polled for each
-        /// object. The duration must be between 5 minutes and 24 hours.
+        /// object. The duration must be from `5 minutes` to `24 hours`, inclusive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pollingInterval")]
         public virtual object PollingInterval { get; set; }
@@ -5748,7 +5748,7 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>Spanner column.</summary>
     public class SpannerColumn : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Column name.</summary>
+        /// <summary>Required. The column name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("column")]
         public virtual string Column { get; set; }
 
@@ -5794,7 +5794,7 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Spanner profile.</summary>
+    /// <summary>Profile for connecting to a Spanner source.</summary>
     public class SpannerProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5818,7 +5818,7 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>Spanner schema.</summary>
     public class SpannerSchema : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Schema name.</summary>
+        /// <summary>Required. The schema name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual string Schema { get; set; }
 
@@ -5830,7 +5830,7 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Spanner source configuration.</summary>
+    /// <summary>Configuration for syncing data from a Spanner source.</summary>
     public class SpannerSourceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Whether to use Data Boost for Spanner backfills. Defaults to false if not set.</summary>
@@ -5842,8 +5842,8 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ChangeStreamName { get; set; }
 
         /// <summary>
-        /// Optional. Spanner objects to avoid retrieving. If some objects are both included and excluded, an error will
-        /// be thrown.
+        /// Optional. The Spanner objects to avoid retrieving. If some objects are both included and excluded, an error
+        /// will be thrown.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeObjects")]
         public virtual SpannerDatabase ExcludeObjects { get; set; }
@@ -5853,8 +5853,8 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string FgacRole { get; set; }
 
         /// <summary>
-        /// Optional. Spanner objects to retrieve from the data source. If some objects are both included and excluded,
-        /// an error will be thrown.
+        /// Optional. The Spanner objects to retrieve from the data source. If some objects are both included and
+        /// excluded, an error will be thrown.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeObjects")]
         public virtual SpannerDatabase IncludeObjects { get; set; }
@@ -5882,7 +5882,7 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
         public virtual System.Collections.Generic.IList<SpannerColumn> Columns { get; set; }
 
-        /// <summary>Required. Table name.</summary>
+        /// <summary>Required. The table name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual string Table { get; set; }
 
@@ -5927,7 +5927,7 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>SQLServer Column.</summary>
     public class SqlServerColumn : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Column name.</summary>
+        /// <summary>The column name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("column")]
         public virtual string Column { get; set; }
 
@@ -5989,7 +5989,7 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>SQLServer database profile.</summary>
+    /// <summary>Profile for connecting to a SQLServer source.</summary>
     public class SqlServerProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Database for the SQLServer connection.</summary>
@@ -6044,7 +6044,7 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>SQLServer schema.</summary>
     public class SqlServerSchema : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Schema name.</summary>
+        /// <summary>The schema name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual string Schema { get; set; }
 
@@ -6056,18 +6056,18 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>SQLServer data source configuration</summary>
+    /// <summary>Configuration for syncing data from a SQLServer source.</summary>
     public class SqlServerSourceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>CDC reader reads from change tables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("changeTables")]
         public virtual SqlServerChangeTables ChangeTables { get; set; }
 
-        /// <summary>SQLServer objects to exclude from the stream.</summary>
+        /// <summary>The SQLServer objects to exclude from the stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeObjects")]
         public virtual SqlServerRdbms ExcludeObjects { get; set; }
 
-        /// <summary>SQLServer objects to include in the stream.</summary>
+        /// <summary>The SQLServer objects to include in the stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeObjects")]
         public virtual SqlServerRdbms IncludeObjects { get; set; }
 
@@ -6122,7 +6122,7 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
         public virtual System.Collections.Generic.IList<SqlServerColumn> Columns { get; set; }
 
-        /// <summary>Table name.</summary>
+        /// <summary>The table name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual string Table { get; set; }
 
