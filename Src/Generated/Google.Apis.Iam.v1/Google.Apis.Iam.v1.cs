@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -627,7 +627,7 @@ namespace Google.Apis.Iam.v1
 
                         /// <summary>
                         /// Required. The ID to use for the key, which becomes the final component of the resource name.
-                        /// This value must be 4-32 characters, and may contain the characters [a-z0-9-].
+                        /// This value must be 4-32 characters, and may contain the characters `[a-z0-9-]`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("workforcePoolProviderKeyId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string WorkforcePoolProviderKeyId { get; set; }
@@ -1067,7 +1067,7 @@ namespace Google.Apis.Iam.v1
                             /// <summary>
                             /// Required. Gemini Enterprise only. The ID to use for the SCIM token, which becomes the
                             /// final component of the resource name. This value should be 4-32 characters and follow
-                            /// the pattern: "([a-z]([a-z0-9\\-]{2,30}[a-z0-9]))"
+                            /// the pattern: `([a-z]([a-z0-9\\-]{2,30}[a-z0-9]))`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("workforcePoolProviderScimTokenId", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string WorkforcePoolProviderScimTokenId { get; set; }
@@ -1511,7 +1511,7 @@ namespace Google.Apis.Iam.v1
                         /// <summary>
                         /// Required. Gemini Enterprise only. The ID to use for the SCIM tenant, which becomes the final
                         /// component of the resource name. This value should be 4-32 characters, containing the
-                        /// characters [a-z0-9-].
+                        /// characters `[a-z0-9-]`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("workforcePoolProviderScimTenantId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string WorkforcePoolProviderScimTenantId { get; set; }
@@ -1958,7 +1958,7 @@ namespace Google.Apis.Iam.v1
 
                     /// <summary>
                     /// Required. The ID for the provider, which becomes the final component of the resource name. This
-                    /// value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is
+                    /// value must be 4-32 characters, and may contain the characters `[a-z0-9-]`. The prefix `gcp-` is
                     /// reserved for use by Google, and may not be specified.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("workforcePoolProviderId", Google.Apis.Util.RequestParameterType.Query)]
@@ -12786,12 +12786,12 @@ namespace Google.Apis.Iam.v1.Data
         /// field. When set, the image will be visible as the user's profile picture. If not set, a generic user icon
         /// will be displayed instead. This attribute cannot be referenced in IAM bindings. * `google.posix_username`:
         /// The Linux username used by OS Login. This is an optional field and the mapped POSIX username cannot exceed
-        /// 32 characters. The key must match the regex "^a-zA-Z0-9._{0,31}$". This attribute cannot be referenced in
+        /// 32 characters. The key must match the regex `^a-zA-Z0-9._{0,31}$`. This attribute cannot be referenced in
         /// IAM bindings. You can also provide custom attributes by specifying `attribute.{custom_attribute}`, where
         /// {custom_attribute} is the name of the custom attribute to be mapped. You can define a maximum of 50 custom
         /// attributes. The maximum length of a mapped attribute key is 100 characters, and the key may only contain the
-        /// characters [a-z0-9_]. You can reference these attributes in IAM policies to define fine-grained access for a
-        /// workforce pool to Google Cloud resources. For example: * `google.subject`:
+        /// characters `[a-z0-9_]`. You can reference these attributes in IAM policies to define fine-grained access for
+        /// a workforce pool to Google Cloud resources. For example: * `google.subject`:
         /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool}/subject/{value}` * `google.groups`:
         /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool}/group/{value}` *
         /// `attribute.{custom_attribute}`:
