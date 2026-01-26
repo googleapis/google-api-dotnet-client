@@ -5557,6 +5557,10 @@ namespace Google.Apis.Backupdr.v1.Data
     /// <summary>Properties for an AlloyDB cluster backup plan association.</summary>
     public class AlloyDBClusterBackupPlanAssociationProperties : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The cluster UID of the AlloyDB cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterUid")]
+        public virtual string ClusterUid { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5567,7 +5571,34 @@ namespace Google.Apis.Backupdr.v1.Data
     /// </summary>
     public class AlloyDBClusterDataSourceProperties : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The cluster UID of the AlloyDB cluster backed up by the datasource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterUid")]
+        public virtual string ClusterUid { get; set; }
+
         /// <summary>Output only. Name of the AlloyDB cluster backed up by the datasource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Point in time recovery windows. The order is guaranteed to be ascending by start time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pitrWindows")]
+        public virtual System.Collections.Generic.IList<AlloyDbPitrWindow> PitrWindows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// AlloyDBClusterDataSourceReferenceProperties represents the properties of an AlloyDB cluster that are stored in
+    /// the DataSourceReference.
+    /// </summary>
+    public class AlloyDBClusterDataSourceReferenceProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Name of the AlloyDB cluster backed up by the datasource. Format:
+        /// projects/{project}/locations/{location}/clusters/{cluster}
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -5598,6 +5629,94 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>Output only. Storage usage of this particular backup</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storedBytes")]
         public virtual System.Nullable<long> StoredBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Point in time recovery window for an AlloyDB cluster.</summary>
+    public class AlloyDbPitrWindow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>
+        /// Output only. The end time of the PITR window. It is not set if the corresponding Backup Plan Association is
+        /// active.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Log retention days for the PITR window.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logRetentionDays")]
+        public virtual System.Nullable<long> LogRetentionDays { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Output only. The start time of the PITR window.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8198,6 +8317,10 @@ namespace Google.Apis.Backupdr.v1.Data
     /// <summary>The Google Cloud resource that the DataSource is associated with.</summary>
     public class DataSourceGcpResourceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The properties of the AlloyDB cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alloyDbClusterProperties")]
+        public virtual AlloyDBClusterDataSourceReferenceProperties AlloyDbClusterProperties { get; set; }
+
         /// <summary>Output only. The properties of the Cloud SQL instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlInstanceProperties")]
         public virtual CloudSqlInstanceDataSourceReferenceProperties CloudSqlInstanceProperties { get; set; }

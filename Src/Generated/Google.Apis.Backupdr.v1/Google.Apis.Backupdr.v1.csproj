@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Backupdr.v1 Client Library</Title>
-    <Version>1.73.0.4013</Version>
+    <Version>1.73.0.4033</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2026 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
