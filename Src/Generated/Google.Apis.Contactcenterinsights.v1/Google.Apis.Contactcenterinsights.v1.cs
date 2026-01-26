@@ -295,6 +295,7 @@ namespace Google.Apis.Contactcenterinsights.v1
                 AnalysisRules = new AnalysisRulesResource(service);
                 AssessmentRules = new AssessmentRulesResource(service);
                 AuthorizedViewSets = new AuthorizedViewSetsResource(service);
+                AutoLabelingRules = new AutoLabelingRulesResource(service);
                 Conversations = new ConversationsResource(service);
                 Datasets = new DatasetsResource(service);
                 EncryptionSpec = new EncryptionSpecResource(service);
@@ -3840,6 +3841,409 @@ namespace Google.Apis.Contactcenterinsights.v1
                 }
             }
 
+            /// <summary>Gets the AutoLabelingRules resource.</summary>
+            public virtual AutoLabelingRulesResource AutoLabelingRules { get; }
+
+            /// <summary>The "autoLabelingRules" collection of methods.</summary>
+            public class AutoLabelingRulesResource
+            {
+                private const string Resource = "autoLabelingRules";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AutoLabelingRulesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates an auto labeling rule.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The project and location to create the auto labeling rule in. Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1AutoLabelingRule body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates an auto labeling rule.</summary>
+                public class CreateRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1AutoLabelingRule>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1AutoLabelingRule body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location to create the auto labeling rule in. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The ID to use for the auto labeling rule, which will become the final component of the
+                    /// auto labeling rule's resource name.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("autoLabelingRuleId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string AutoLabelingRuleId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1AutoLabelingRule Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/autoLabelingRules";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("autoLabelingRuleId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "autoLabelingRuleId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes an auto labeling rule.</summary>
+                /// <param name="name">
+                /// Required. The name of the auto labeling rule to delete. Format:
+                /// projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule}
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes an auto labeling rule.</summary>
+                public class DeleteRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the auto labeling rule to delete. Format:
+                    /// projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/autoLabelingRules/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets an auto labeling rule.</summary>
+                /// <param name="name">
+                /// Required. The name of the auto labeling rule to get. Format:
+                /// projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets an auto labeling rule.</summary>
+                public class GetRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1AutoLabelingRule>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the auto labeling rule to get. Format:
+                    /// projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/autoLabelingRules/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists auto labeling rules.</summary>
+                /// <param name="parent">
+                /// Required. The project and location to list auto labeling rules from. Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists auto labeling rules.</summary>
+                public class ListRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location to list auto labeling rules from. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of auto labeling rules to return in a single response. If
+                    /// unspecified, at most 100 rules will be returned. The maximum value is 1000; values above 1000
+                    /// will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The next_page_token value returned from a previous List request, if any.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/autoLabelingRules";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates an auto labeling rule.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The resource name of the auto-labeling rule. Format:
+                /// projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1AutoLabelingRule body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates an auto labeling rule.</summary>
+                public class PatchRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1AutoLabelingRule>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1AutoLabelingRule body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The resource name of the auto-labeling rule. Format:
+                    /// projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. The list of fields to be updated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1AutoLabelingRule Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/autoLabelingRules/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Tests auto labeling rules against a conversation.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent project and location. Format: projects/{project}/locations/{location}
+                /// </param>
+                public virtual TestRequest Test(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest body, string parent)
+                {
+                    return new TestRequest(this.service, body, parent);
+                }
+
+                /// <summary>Tests auto labeling rules against a conversation.</summary>
+                public class TestRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse>
+                {
+                    /// <summary>Constructs a new Test request.</summary>
+                    public TestRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent project and location. Format: projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "test";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/autoLabelingRules:test";
+
+                    /// <summary>Initializes Test parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the Conversations resource.</summary>
             public virtual ConversationsResource Conversations { get; }
 
@@ -5894,6 +6298,12 @@ namespace Google.Apis.Contactcenterinsights.v1
                     public virtual System.Nullable<bool> AllowMissing { get; set; }
 
                     /// <summary>
+                    /// Optional. If set to true, the conversation will be updated with auto labeling results.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("conversationAutoLabelingUpdateConfig.allowAutoLabelingUpdate", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ConversationAutoLabelingUpdateConfigAllowAutoLabelingUpdate { get; set; }
+
+                    /// <summary>
                     /// The list of fields to be updated. All possible fields can be updated by passing `*`, or a subset
                     /// of the following updateable fields can be provided: * `agent_id` * `language_code` * `labels` *
                     /// `metadata` * `quality_metadata` * `call_metadata` * `start_time` * `expire_time` or `ttl` *
@@ -5933,6 +6343,14 @@ namespace Google.Apis.Contactcenterinsights.v1
                         RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
                         {
                             Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("conversationAutoLabelingUpdateConfig.allowAutoLabelingUpdate", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "conversationAutoLabelingUpdateConfig.allowAutoLabelingUpdate",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -11243,6 +11661,57 @@ namespace Google.Apis.Contactcenterinsights.v1
                 }
             }
 
+            /// <summary>Gets correlation config.</summary>
+            /// <param name="name">
+            /// Required. The name of the correlation config resource to get. Format:
+            /// projects/{project}/locations/{location}/correlationConfig
+            /// </param>
+            public virtual GetCorrelationConfigRequest GetCorrelationConfig(string name)
+            {
+                return new GetCorrelationConfigRequest(this.service, name);
+            }
+
+            /// <summary>Gets correlation config.</summary>
+            public class GetCorrelationConfigRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1CorrelationConfig>
+            {
+                /// <summary>Constructs a new GetCorrelationConfig request.</summary>
+                public GetCorrelationConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the correlation config resource to get. Format:
+                /// projects/{project}/locations/{location}/correlationConfig
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getCorrelationConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes GetCorrelationConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/correlationConfig$",
+                    });
+                }
+            }
+
             /// <summary>Gets location-level encryption key specification.</summary>
             /// <param name="name">Required. The name of the encryption spec resource to get.</param>
             public virtual GetEncryptionSpecRequest GetEncryptionSpec(string name)
@@ -11547,6 +12016,134 @@ namespace Google.Apis.Contactcenterinsights.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Tests correlation config on a conversation.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="location">
+            /// Required. The location to test correlation config. Format: projects/{project}/locations/{location}
+            /// </param>
+            public virtual TestCorrelationConfigRequest TestCorrelationConfig(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest body, string location)
+            {
+                return new TestCorrelationConfigRequest(this.service, body, location);
+            }
+
+            /// <summary>Tests correlation config on a conversation.</summary>
+            public class TestCorrelationConfigRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new TestCorrelationConfig request.</summary>
+                public TestCorrelationConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest body, string location) : base(service)
+                {
+                    Location = location;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The location to test correlation config. Format: projects/{project}/locations/{location}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Location { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "testCorrelationConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+location}:testCorrelationConfig";
+
+                /// <summary>Initializes TestCorrelationConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Updates correlation config.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Immutable. Identifier. The resource name of the correlation config. Format:
+            /// projects/{project}/locations/{location}/correlationConfig
+            /// </param>
+            public virtual UpdateCorrelationConfigRequest UpdateCorrelationConfig(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1CorrelationConfig body, string name)
+            {
+                return new UpdateCorrelationConfigRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates correlation config.</summary>
+            public class UpdateCorrelationConfigRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1CorrelationConfig>
+            {
+                /// <summary>Constructs a new UpdateCorrelationConfig request.</summary>
+                public UpdateCorrelationConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1CorrelationConfig body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Immutable. Identifier. The resource name of the correlation config. Format:
+                /// projects/{project}/locations/{location}/correlationConfig
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Optional. The list of fields to be updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1CorrelationConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateCorrelationConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes UpdateCorrelationConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/correlationConfig$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -12549,6 +13146,142 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Rule for auto-labeling conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1AutoLabelingRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the rule is active.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("active")]
+        public virtual System.Nullable<bool> Active { get; set; }
+
+        /// <summary>
+        /// Conditions to apply for auto-labeling the label_key. Representing sequential block of if .. else if .. else
+        /// statements. The value of the first matching condition will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition> Conditions { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time at which this rule was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The description of the rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The user-provided display name of the rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The label key. This is also the {auto_labeling_rule} in the resource name. Only settable if label_key_type
+        /// is LABEL_KEY_TYPE_CUSTOM.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelKey")]
+        public virtual string LabelKey { get; set; }
+
+        /// <summary>The type of the label key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelKeyType")]
+        public virtual string LabelKeyType { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the auto-labeling rule. Format:
+        /// projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The most recent time at which the rule was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Condition for auto-labeling conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A optional CEL expression to be evaluated as a boolean value. Once evaluated as true, then we will proceed
+        /// with the value evaluation. An empty condition will be auto evaluated as true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>CEL expression to be evaluated as the value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The metadata for a bulk analyze conversations operation.</summary>
     public class GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13365,6 +14098,44 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The result of testing a constraint expression on a pair of conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The first conversation resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationA")]
+        public virtual string ConversationA { get; set; }
+
+        /// <summary>The second conversation resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationB")]
+        public virtual string ConversationB { get; set; }
+
+        /// <summary>The results for each applicable constraint rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleConstraintResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1ConstraintEvaluationResultRuleConstraintResult> RuleConstraintResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The result of a single constraint rule on the pair of conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1ConstraintEvaluationResultRuleConstraintResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the constraint expression evaluated to true for (A, B) or (B, A).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constraintMet")]
+        public virtual System.Nullable<bool> ConstraintMet { get; set; }
+
+        /// <summary>The error status if the constraint expression failed to evaluate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>The rule ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleId")]
+        public virtual string RuleId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The conversation resource.</summary>
     public class GoogleCloudContactcenterinsightsV1Conversation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13377,6 +14148,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Call-specific metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("callMetadata")]
         public virtual GoogleCloudContactcenterinsightsV1ConversationCallMetadata CallMetadata { get; set; }
+
+        /// <summary>Output only. Info for correlating across conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("correlationInfo")]
+        public virtual GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo CorrelationInfo { get; set; }
 
         private string _createTimeRaw;
 
@@ -13489,7 +14264,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("latestSummary")]
         public virtual GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData LatestSummary { get; set; }
 
-        /// <summary>Immutable. The conversation medium, if unspecified will default to PHONE_CALL.</summary>
+        /// <summary>Immutable. The conversation medium.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("medium")]
         public virtual string Medium { get; set; }
 
@@ -13624,6 +14399,77 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>The audio channel that contains the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerChannel")]
         public virtual System.Nullable<int> CustomerChannel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Info for correlating across conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The correlation types of this conversation. A single conversation can have multiple correlation
+        /// types. For example a conversation that only has a single segment is both a SEGMENT and a FULL_CONVERSATION.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("correlationTypes")]
+        public virtual System.Collections.Generic.IList<string> CorrelationTypes { get; set; }
+
+        /// <summary>Output only. The full conversation correlation id this conversation is a segment of.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullConversationCorrelationId")]
+        public virtual string FullConversationCorrelationId { get; set; }
+
+        /// <summary>
+        /// Output only. The full conversation correlation id this conversation is a merged conversation of.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mergedFullConversationCorrelationId")]
+        public virtual string MergedFullConversationCorrelationId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The result of testing correlation config on a single conversation.</summary>
+    public class GoogleCloudContactcenterinsightsV1ConversationCorrelationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The conversation resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversation")]
+        public virtual string Conversation { get; set; }
+
+        /// <summary>The results for each correlation rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1ConversationCorrelationResultRuleCorrelationResult> RuleResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The result of a single correlation rule.</summary>
+    public class GoogleCloudContactcenterinsightsV1ConversationCorrelationResultRuleCorrelationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The correlation ID generated by the join key expression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("correlationId")]
+        public virtual string CorrelationId { get; set; }
+
+        /// <summary>The error status if the join key expression failed to evaluate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>The rule ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleId")]
+        public virtual string RuleId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Options for configuring what metadata is included in the conversation data used in QAI and Discovery Engine.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1ConversationDataOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether to include the per turn Dialogflow interaction data in conversation transcript.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeDialogflowInteractionData")]
+        public virtual System.Nullable<bool> IncludeDialogflowInteractionData { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13984,6 +14830,142 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>The word itself. Includes punctuation marks that surround the word.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("word")]
         public virtual string Word { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A configuration that defines how to correlate conversations for a given a given project.</summary>
+    public class GoogleCloudContactcenterinsightsV1CorrelationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time at which the correlation config was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The correlation type config for full conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullConversationConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1CorrelationTypeConfig FullConversationConfig { get; set; }
+
+        /// <summary>
+        /// Immutable. Identifier. The resource name of the correlation config. Format:
+        /// projects/{project}/locations/{location}/correlationConfig
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time at which the correlation config was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A correlation rule that defines how to join conversations for a given correlation type.</summary>
+    public class GoogleCloudContactcenterinsightsV1CorrelationRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether the config is active to be evaluated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("active")]
+        public virtual System.Nullable<bool> Active { get; set; }
+
+        /// <summary>
+        /// Optional. A cel expression (go/cel) to be evaluated as a boolean value. Two variables conversation_a and
+        /// conversation_b will be available for evaluation. This expression should evaluate to true if conversation_a
+        /// and conversation_b should be joined. This is used as an extra constraint on top of the join_key_expression
+        /// to further refine the group of conversations that are joined together and will be evaluated in both
+        /// directions. for two conversations c1 and c2 and the result will be OR'd. We will evaluate: f(c1, c2) OR
+        /// f(c2, c1)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constraintExpression")]
+        public virtual string ConstraintExpression { get; set; }
+
+        /// <summary>
+        /// Optional. A cel expression (go/cel) to be evaluated as a string value. This string value will be used as the
+        /// join key for the correlation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("joinKeyExpression")]
+        public virtual string JoinKeyExpression { get; set; }
+
+        /// <summary>Required. The unique identifier of the rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleId")]
+        public virtual string RuleId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of correlation rules for a given correlation type.</summary>
+    public class GoogleCloudContactcenterinsightsV1CorrelationTypeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of correlation rules to be evaluated for correlation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("correlationRules")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1CorrelationRule> CorrelationRules { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16600,6 +17582,24 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response message for listing auto labeling rules.</summary>
+    public class GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The auto labeling rules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoLabelingRules")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1AutoLabelingRule> AutoLabelingRules { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response of listing conversations.</summary>
     public class GoogleCloudContactcenterinsightsV1ListConversationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17381,6 +18381,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("predefinedQuestionConfig")]
         public virtual GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig PredefinedQuestionConfig { get; set; }
 
+        /// <summary>Options for configuring the data used to generate the QA question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaQuestionDataOptions")]
+        public virtual GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions QaQuestionDataOptions { get; set; }
+
         /// <summary>Question text. E.g., "Did the agent greet the customer?"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("questionBody")]
         public virtual string QuestionBody { get; set; }
@@ -17508,6 +18512,17 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>The type of the predefined question.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Options for configuring the data used to generate the QA question.</summary>
+    public class GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Options for configuring the conversation data used to generate the QA question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationDataOptions")]
+        public virtual GoogleCloudContactcenterinsightsV1ConversationDataOptions ConversationDataOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19385,6 +20400,203 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request message for testing auto labeling rules.</summary>
+    public class GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The auto labeling rule to test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoLabelingRule")]
+        public virtual GoogleCloudContactcenterinsightsV1AutoLabelingRule AutoLabelingRule { get; set; }
+
+        /// <summary>Required. Conversation data to test rules against.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversation")]
+        public virtual GoogleCloudContactcenterinsightsV1Conversation Conversation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for testing auto labeling rules.</summary>
+    public class GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The result of the test auto labeling rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelResult")]
+        public virtual string LabelResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for testing correlation config.</summary>
+    public class GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The dataset used for sampling conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
+        public virtual string Dataset { get; set; }
+
+        /// <summary>The statistics for the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStats Stats { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Statistics for TestCorrelationConfig operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of errors that occurred during correlation, one for each conversation that failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationCorrelationErrors")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError> ConversationCorrelationErrors { get; set; }
+
+        /// <summary>The number of conversations correlated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("correlatedConversationsCount")]
+        public virtual System.Nullable<int> CorrelatedConversationsCount { get; set; }
+
+        /// <summary>The number of conversations that failed correlation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedConversationsCount")]
+        public virtual System.Nullable<int> FailedConversationsCount { get; set; }
+
+        /// <summary>
+        /// Partial errors during test correlation config operation that might cause the operation output to be
+        /// incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
+        /// <summary>The number of conversations sampled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampledConversationsCount")]
+        public virtual System.Nullable<int> SampledConversationsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An error that occurred during correlation for a specific conversation.</summary>
+    public class GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The conversation resource name that had an error during correlation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversation")]
+        public virtual string Conversation { get; set; }
+
+        /// <summary>The error status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to test correlation config.</summary>
+    public class GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A list of conversations to test against.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversations")]
+        public virtual GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations Conversations { get; set; }
+
+        /// <summary>Required. The correlation config to test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("correlationConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1CorrelationConfig CorrelationConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Filter to select conversations to test correlation against. Conversations matching this filter
+        /// will be sampled based on start time. The most recent `max_sample_count` conversations will be selected. If
+        /// no conversations match the filter, the request will fail with an `INVALID_ARGUMENT` error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Optional. The maximum number of conversations to sample when using the `filter`. If not set, defaults to
+        /// 1000. Values greater than 1000 are coerced to 1000. This field is ignored if `conversations` is provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSampleCount")]
+        public virtual System.Nullable<int> MaxSampleCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wrapper for a list of conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1Conversation> Conversations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response of testing correlation config.</summary>
+    public class GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Results for the DETAILED_SYNC execution mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detailedResults")]
+        public virtual GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponseDetailedCorrelationResults DetailedResults { get; set; }
+
+        /// <summary>
+        /// Partial errors during test correlation config operation that might cause the operation output to be
+        /// incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wrapper for detailed, step-by-step results.</summary>
+    public class GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponseDetailedCorrelationResults : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of constraint evaluation results for each pair of conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constraintResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult> ConstraintResults { get; set; }
+
+        /// <summary>A list of join key correlation results for each conversation tested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("joinKeyResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1ConversationCorrelationResult> JoinKeyResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for TuneQaScorecardRevision endpoint.</summary>
     public class GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -20618,6 +21830,44 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The result of testing a constraint expression on a pair of conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The first conversation resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationA")]
+        public virtual string ConversationA { get; set; }
+
+        /// <summary>The second conversation resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationB")]
+        public virtual string ConversationB { get; set; }
+
+        /// <summary>The results for each applicable constraint rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleConstraintResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResultRuleConstraintResult> RuleConstraintResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The result of a single constraint rule on the pair of conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResultRuleConstraintResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the constraint expression evaluated to true for (A, B) or (B, A).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constraintMet")]
+        public virtual System.Nullable<bool> ConstraintMet { get; set; }
+
+        /// <summary>The error status if the constraint expression failed to evaluate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>The rule ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleId")]
+        public virtual string RuleId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The conversation resource.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1Conversation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -20630,6 +21880,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Call-specific metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("callMetadata")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1ConversationCallMetadata CallMetadata { get; set; }
+
+        /// <summary>Output only. Info for correlating across conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("correlationInfo")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationInfo CorrelationInfo { get; set; }
 
         private string _createTimeRaw;
 
@@ -20742,7 +21996,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("latestSummary")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData LatestSummary { get; set; }
 
-        /// <summary>Immutable. The conversation medium, if unspecified will default to PHONE_CALL.</summary>
+        /// <summary>Immutable. The conversation medium.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("medium")]
         public virtual string Medium { get; set; }
 
@@ -20877,6 +22131,64 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>The audio channel that contains the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerChannel")]
         public virtual System.Nullable<int> CustomerChannel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Info for correlating across conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The correlation types of this conversation. A single conversation can have multiple correlation
+        /// types. For example a conversation that only has a single segment is both a SEGMENT and a FULL_CONVERSATION.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("correlationTypes")]
+        public virtual System.Collections.Generic.IList<string> CorrelationTypes { get; set; }
+
+        /// <summary>Output only. The full conversation correlation id this conversation is a segment of.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullConversationCorrelationId")]
+        public virtual string FullConversationCorrelationId { get; set; }
+
+        /// <summary>
+        /// Output only. The full conversation correlation id this conversation is a merged conversation of.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mergedFullConversationCorrelationId")]
+        public virtual string MergedFullConversationCorrelationId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The result of testing correlation config on a single conversation.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The conversation resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversation")]
+        public virtual string Conversation { get; set; }
+
+        /// <summary>The results for each correlation rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResultRuleCorrelationResult> RuleResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The result of a single correlation rule.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResultRuleCorrelationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The correlation ID generated by the join key expression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("correlationId")]
+        public virtual string CorrelationId { get; set; }
+
+        /// <summary>The error status if the join key expression failed to evaluate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>The rule ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleId")]
+        public virtual string RuleId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25028,6 +26340,136 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for testing correlation config.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The dataset used for sampling conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
+        public virtual string Dataset { get; set; }
+
+        /// <summary>The statistics for the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStats Stats { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Statistics for TestCorrelationConfig operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of errors that occurred during correlation, one for each conversation that failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationCorrelationErrors")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError> ConversationCorrelationErrors { get; set; }
+
+        /// <summary>The number of conversations correlated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("correlatedConversationsCount")]
+        public virtual System.Nullable<int> CorrelatedConversationsCount { get; set; }
+
+        /// <summary>The number of conversations that failed correlation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedConversationsCount")]
+        public virtual System.Nullable<int> FailedConversationsCount { get; set; }
+
+        /// <summary>
+        /// Partial errors during test correlation config operation that might cause the operation output to be
+        /// incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
+        /// <summary>The number of conversations sampled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampledConversationsCount")]
+        public virtual System.Nullable<int> SampledConversationsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An error that occurred during correlation for a specific conversation.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The conversation resource name that had an error during correlation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversation")]
+        public virtual string Conversation { get; set; }
+
+        /// <summary>The error status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response of testing correlation config.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Results for the DETAILED_SYNC execution mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detailedResults")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponseDetailedCorrelationResults DetailedResults { get; set; }
+
+        /// <summary>
+        /// Partial errors during test correlation config operation that might cause the operation output to be
+        /// incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wrapper for detailed, step-by-step results.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponseDetailedCorrelationResults : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of constraint evaluation results for each pair of conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constraintResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResult> ConstraintResults { get; set; }
+
+        /// <summary>A list of join key correlation results for each conversation tested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("joinKeyResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResult> JoinKeyResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for undeploying an issue model.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -26361,6 +27803,44 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The result of testing a constraint expression on a pair of conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The first conversation resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationA")]
+        public virtual string ConversationA { get; set; }
+
+        /// <summary>The second conversation resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationB")]
+        public virtual string ConversationB { get; set; }
+
+        /// <summary>The results for each applicable constraint rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleConstraintResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResultRuleConstraintResult> RuleConstraintResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The result of a single constraint rule on the pair of conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResultRuleConstraintResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the constraint expression evaluated to true for (A, B) or (B, A).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constraintMet")]
+        public virtual System.Nullable<bool> ConstraintMet { get; set; }
+
+        /// <summary>The error status if the constraint expression failed to evaluate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>The rule ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleId")]
+        public virtual string RuleId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The conversation resource.</summary>
     public class GoogleCloudContactcenterinsightsV1mainConversation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -26373,6 +27853,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Call-specific metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("callMetadata")]
         public virtual GoogleCloudContactcenterinsightsV1mainConversationCallMetadata CallMetadata { get; set; }
+
+        /// <summary>Output only. Info for correlating across conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("correlationInfo")]
+        public virtual GoogleCloudContactcenterinsightsV1mainConversationCorrelationInfo CorrelationInfo { get; set; }
 
         private string _createTimeRaw;
 
@@ -26485,7 +27969,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("latestSummary")]
         public virtual GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData LatestSummary { get; set; }
 
-        /// <summary>Immutable. The conversation medium, if unspecified will default to PHONE_CALL.</summary>
+        /// <summary>Immutable. The conversation medium.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("medium")]
         public virtual string Medium { get; set; }
 
@@ -26620,6 +28104,64 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>The audio channel that contains the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerChannel")]
         public virtual System.Nullable<int> CustomerChannel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Info for correlating across conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationCorrelationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The correlation types of this conversation. A single conversation can have multiple correlation
+        /// types. For example a conversation that only has a single segment is both a SEGMENT and a FULL_CONVERSATION.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("correlationTypes")]
+        public virtual System.Collections.Generic.IList<string> CorrelationTypes { get; set; }
+
+        /// <summary>Output only. The full conversation correlation id this conversation is a segment of.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullConversationCorrelationId")]
+        public virtual string FullConversationCorrelationId { get; set; }
+
+        /// <summary>
+        /// Output only. The full conversation correlation id this conversation is a merged conversation of.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mergedFullConversationCorrelationId")]
+        public virtual string MergedFullConversationCorrelationId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The result of testing correlation config on a single conversation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationCorrelationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The conversation resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversation")]
+        public virtual string Conversation { get; set; }
+
+        /// <summary>The results for each correlation rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainConversationCorrelationResultRuleCorrelationResult> RuleResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The result of a single correlation rule.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationCorrelationResultRuleCorrelationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The correlation ID generated by the join key expression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("correlationId")]
+        public virtual string CorrelationId { get; set; }
+
+        /// <summary>The error status if the join key expression failed to evaluate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>The rule ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleId")]
+        public virtual string RuleId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -30766,6 +32308,136 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechRecognizer")]
         public virtual string SpeechRecognizer { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for testing correlation config.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The dataset used for sampling conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
+        public virtual string Dataset { get; set; }
+
+        /// <summary>The statistics for the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStats Stats { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Statistics for TestCorrelationConfig operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of errors that occurred during correlation, one for each conversation that failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationCorrelationErrors")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError> ConversationCorrelationErrors { get; set; }
+
+        /// <summary>The number of conversations correlated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("correlatedConversationsCount")]
+        public virtual System.Nullable<int> CorrelatedConversationsCount { get; set; }
+
+        /// <summary>The number of conversations that failed correlation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedConversationsCount")]
+        public virtual System.Nullable<int> FailedConversationsCount { get; set; }
+
+        /// <summary>
+        /// Partial errors during test correlation config operation that might cause the operation output to be
+        /// incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
+        /// <summary>The number of conversations sampled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampledConversationsCount")]
+        public virtual System.Nullable<int> SampledConversationsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An error that occurred during correlation for a specific conversation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The conversation resource name that had an error during correlation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversation")]
+        public virtual string Conversation { get; set; }
+
+        /// <summary>The error status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response of testing correlation config.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Results for the DETAILED_SYNC execution mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detailedResults")]
+        public virtual GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponseDetailedCorrelationResults DetailedResults { get; set; }
+
+        /// <summary>
+        /// Partial errors during test correlation config operation that might cause the operation output to be
+        /// incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wrapper for detailed, step-by-step results.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponseDetailedCorrelationResults : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of constraint evaluation results for each pair of conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constraintResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult> ConstraintResults { get; set; }
+
+        /// <summary>A list of join key correlation results for each conversation tested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("joinKeyResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainConversationCorrelationResult> JoinKeyResults { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
