@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -800,6 +800,13 @@ namespace Google.Apis.Texttospeech.v1.Data
     public class AdvancedVoiceOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. If true, textnorm will be applied to text input. This feature is enabled by default. Only applies
+        /// for Gemini TTS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableTextnorm")]
+        public virtual System.Nullable<bool> EnableTextnorm { get; set; }
+
+        /// <summary>
         /// Only for Journey voices. If false, the synthesis is context aware and has a higher latency.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lowLatencyJourneySynthesis")]
@@ -1348,7 +1355,7 @@ namespace Google.Apis.Texttospeech.v1.Data
     /// <summary>The top-level message sent by the client for the `SynthesizeSpeech` method.</summary>
     public class SynthesizeSpeechRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Advanced voice options.</summary>
+        /// <summary>Optional. Advanced voice options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advancedVoiceOptions")]
         public virtual AdvancedVoiceOptions AdvancedVoiceOptions { get; set; }
 
