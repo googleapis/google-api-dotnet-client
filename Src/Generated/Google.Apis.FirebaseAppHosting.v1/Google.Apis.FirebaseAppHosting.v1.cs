@@ -4252,6 +4252,21 @@ namespace Google.Apis.FirebaseAppHosting.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A file path pattern to match against.</summary>
+    public class Path : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The pattern to match against.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
+        public virtual string Pattern { get; set; }
+
+        /// <summary>Optional. The type of pattern to match against.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specifies redirect behavior for a domain.</summary>
     public class Redirect : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4496,6 +4511,23 @@ namespace Google.Apis.FirebaseAppHosting.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DisabledTimeRaw);
             set => DisabledTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Optional. A list of file paths patterns to exclude from triggering a rollout. Patterns in this list take
+        /// precedence over required_paths. **Note**: All paths must be in the ignored_paths in order for the rollout to
+        /// be skipped. Limited to 100 paths. Example: ignored_paths: { pattern: "foo/bar/excluded/*” type: GLOB }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoredPaths")]
+        public virtual System.Collections.Generic.IList<Path> IgnoredPaths { get; set; }
+
+        /// <summary>
+        /// Optional. A list of file paths patterns that trigger a build and rollout if at least one of the changed
+        /// files in the commit are present in this list. This field is optional; the rollout policy will default to
+        /// triggering on all paths if not populated. Limited to 100 paths. Example: “required_paths: { pattern:
+        /// "foo/bar/*” type: GLOB }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredPaths")]
+        public virtual System.Collections.Generic.IList<Path> RequiredPaths { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
