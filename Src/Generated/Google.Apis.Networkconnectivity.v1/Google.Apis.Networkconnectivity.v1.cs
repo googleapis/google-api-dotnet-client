@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -292,6 +292,7 @@ namespace Google.Apis.Networkconnectivity.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                AutomatedDnsRecords = new AutomatedDnsRecordsResource(service);
                 Global = new GlobalResource(service);
                 InternalRanges = new InternalRangesResource(service);
                 MulticloudDataTransferConfigs = new MulticloudDataTransferConfigsResource(service);
@@ -303,6 +304,410 @@ namespace Google.Apis.Networkconnectivity.v1
                 ServiceConnectionPolicies = new ServiceConnectionPoliciesResource(service);
                 ServiceConnectionTokens = new ServiceConnectionTokensResource(service);
                 Spokes = new SpokesResource(service);
+            }
+
+            /// <summary>Gets the AutomatedDnsRecords resource.</summary>
+            public virtual AutomatedDnsRecordsResource AutomatedDnsRecords { get; }
+
+            /// <summary>The "automatedDnsRecords" collection of methods.</summary>
+            public class AutomatedDnsRecordsResource
+            {
+                private const string Resource = "automatedDnsRecords";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AutomatedDnsRecordsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new AutomatedDnsRecord in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource's name of the AutomatedDnsRecord. ex. projects/123/locations/us-east1
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Networkconnectivity.v1.Data.AutomatedDnsRecord body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new AutomatedDnsRecord in a given project and location.</summary>
+                public class CreateRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.AutomatedDnsRecord body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource's name of the AutomatedDnsRecord. ex.
+                    /// projects/123/locations/us-east1
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Resource ID (i.e. 'foo' in '[...]/projects/p/locations/l/automatedDnsRecords/foo') See
+                    /// https://google.aip.dev/122#resource-id-segments Unique per location. If one is not provided, one
+                    /// will be generated.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("automatedDnsRecordId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string AutomatedDnsRecordId { get; set; }
+
+                    /// <summary>Optional. The insert mode when creating AutomatedDnsRecord.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("insertMode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<InsertModeEnum> InsertMode { get; set; }
+
+                    /// <summary>Optional. The insert mode when creating AutomatedDnsRecord.</summary>
+                    public enum InsertModeEnum
+                    {
+                        /// <summary>An invalid insert mode as the default case.</summary>
+                        [Google.Apis.Util.StringValueAttribute("INSERT_MODE_UNSPECIFIED")]
+                        INSERTMODEUNSPECIFIED = 0,
+
+                        /// <summary>Fail the request if the record already exists in cloud DNS.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FAIL_IF_EXISTS")]
+                        FAILIFEXISTS = 1,
+
+                        /// <summary>Overwrite the existing record in cloud DNS.</summary>
+                        [Google.Apis.Util.StringValueAttribute("OVERWRITE")]
+                        OVERWRITE = 2,
+                    }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Networkconnectivity.v1.Data.AutomatedDnsRecord Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/automatedDnsRecords";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("automatedDnsRecordId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "automatedDnsRecordId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("insertMode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "insertMode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single AutomatedDnsRecord.</summary>
+                /// <param name="name">Required. The name of the AutomatedDnsRecord to delete.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single AutomatedDnsRecord.</summary>
+                public class DeleteRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the AutomatedDnsRecord to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Delete mode when deleting AutomatedDnsRecord. If set to DEPROGRAM, the record will be
+                    /// deprogrammed in Cloud DNS. If set to SKIP_DEPROGRAMMING, the record will not be deprogrammed in
+                    /// Cloud DNS.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("deleteMode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<DeleteModeEnum> DeleteMode { get; set; }
+
+                    /// <summary>
+                    /// Optional. Delete mode when deleting AutomatedDnsRecord. If set to DEPROGRAM, the record will be
+                    /// deprogrammed in Cloud DNS. If set to SKIP_DEPROGRAMMING, the record will not be deprogrammed in
+                    /// Cloud DNS.
+                    /// </summary>
+                    public enum DeleteModeEnum
+                    {
+                        /// <summary>An invalid delete mode as the default case.</summary>
+                        [Google.Apis.Util.StringValueAttribute("DELETE_MODE_UNSPECIFIED")]
+                        DELETEMODEUNSPECIFIED = 0,
+
+                        /// <summary>Deprogram the record in Cloud DNS.</summary>
+                        [Google.Apis.Util.StringValueAttribute("DEPROGRAM")]
+                        DEPROGRAM = 1,
+
+                        /// <summary>Skip deprogramming the record in Cloud DNS.</summary>
+                        [Google.Apis.Util.StringValueAttribute("SKIP_DEPROGRAMMING")]
+                        SKIPDEPROGRAMMING = 2,
+                    }
+
+                    /// <summary>
+                    /// Optional. The etag is computed by the server, and may be sent on update and delete requests to
+                    /// ensure the client has an up-to-date value before proceeding.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/automatedDnsRecords/[^/]+$",
+                        });
+                        RequestParameters.Add("deleteMode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "deleteMode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single AutomatedDnsRecord.</summary>
+                /// <param name="name">
+                /// Required. Name of the AutomatedDnsRecord to get. Format:
+                /// projects/{project}/locations/{location}/automatedDnsRecords/{automated_dns_record}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single AutomatedDnsRecord.</summary>
+                public class GetRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.AutomatedDnsRecord>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the AutomatedDnsRecord to get. Format:
+                    /// projects/{project}/locations/{location}/automatedDnsRecords/{automated_dns_record}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/automatedDnsRecords/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists AutomatedDnsRecords in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent resource's name. ex. projects/123/locations/us-east1
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists AutomatedDnsRecords in a given project and location.</summary>
+                public class ListRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.ListAutomatedDnsRecordsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource's name. ex. projects/123/locations/us-east1</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>A filter expression that filters the results listed in the response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Sort the results by a certain order.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>The maximum number of results per page that should be returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/automatedDnsRecords";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Global resource.</summary>
@@ -8368,6 +8773,13 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     public class AutoCreatedSubnetworkInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Output only. Indicates whether the subnetwork is delinked from the Service Connection Policy. Only set if
+        /// the subnetwork mode is AUTO_CREATED during creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delinked")]
+        public virtual System.Nullable<bool> Delinked { get; set; }
+
+        /// <summary>
         /// Output only. URI of the automatically created Internal Range. Only set if the subnetwork mode is
         /// AUTO_CREATED during creation.
         /// </summary>
@@ -8427,6 +8839,198 @@ namespace Google.Apis.Networkconnectivity.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a DNS record managed by the AutomatedDnsRecord API.</summary>
+    public class AutomatedDnsRecord : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Immutable. The full resource path of the consumer network this AutomatedDnsRecord is visible to.
+        /// Example: "projects/{projectNumOrId}/global/networks/{networkName}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerNetwork")]
+        public virtual string ConsumerNetwork { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp of when the record was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Required. Immutable. The creation mode of the AutomatedDnsRecord. This field is immutable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationMode")]
+        public virtual string CreationMode { get; set; }
+
+        /// <summary>
+        /// Output only. The current settings for this record as identified by (`hostname`, `dns_suffix`, `type`) in
+        /// Cloud DNS. The `current_config` field reflects the actual settings of the DNS record in Cloud DNS based on
+        /// the `hostname`, `dns_suffix`, and `type`. * **Absence:** If `current_config` is unset, it means a DNS record
+        /// with the specified `hostname`, `dns_suffix`, and `type` does not currently exist in Cloud DNS. This could be
+        /// because the `AutomatedDnsRecord` has never been successfully programmed, has been deleted, or there was an
+        /// error during provisioning. * **Presence:** If `current_config` is present: * It can be different from the
+        /// `original_config`. This can happen due to several reasons: * Out-of-band changes: A consumer might have
+        /// directly modified the DNS record in Cloud DNS. * `OVERWRITE` operations from other `AutomatedDnsRecord`
+        /// resources: Another `AutomatedDnsRecord` with the same identifying attributes (`hostname`, `dns_suffix`,
+        /// `type`) but a different configuration might have overwritten the record using `insert_mode: OVERWRITE`.
+        /// Therefore, the presence of `current_config` indicates that a corresponding DNS record exists, but its values
+        /// (TTL and RRData) might not always align with the `original_config` of the AutomatedDnsRecord.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentConfig")]
+        public virtual Config CurrentConfig { get; set; }
+
+        /// <summary>A human-readable description of the record.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The dns suffix for this record to use in longest-suffix matching. Requires a trailing
+        /// dot. Example: "example.com."
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsSuffix")]
+        public virtual string DnsSuffix { get; set; }
+
+        /// <summary>
+        /// Output only. DnsZone is the DNS zone managed by automation. Format:
+        /// projects/{project}/managedZones/{managedZone}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsZone")]
+        public virtual string DnsZone { get; set; }
+
+        /// <summary>
+        /// Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the
+        /// client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Output only. The FQDN created by combining the hostname and dns suffix. Should include a trailing dot.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fqdn")]
+        public virtual string Fqdn { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The hostname for the DNS record. This value will be prepended to the `dns_suffix` to
+        /// create the full domain name (FQDN) for the record. For example, if `hostname` is "corp.db" and `dns_suffix`
+        /// is "example.com.", the resulting record will be "corp.db.example.com.". Should not include a trailing dot.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
+        public virtual string Hostname { get; set; }
+
+        /// <summary>Optional. User-defined labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Immutable. Identifier. The name of an AutomatedDnsRecord. Format:
+        /// projects/{project}/locations/{location}/automatedDnsRecords/{automated_dns_record} See:
+        /// https://google.aip.dev/122#fields-representing-resource-names
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The configuration settings used to create this DNS record. These settings define the
+        /// desired state of the record as specified by the producer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalConfig")]
+        public virtual Config OriginalConfig { get; set; }
+
+        /// <summary>Required. Immutable. The identifier of a supported record type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordType")]
+        public virtual string RecordType { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The service class identifier which authorizes this AutomatedDnsRecord. Any API calls
+        /// targeting this AutomatedDnsRecord must have `networkconnectivity.serviceclasses.use` IAM permission for the
+        /// provided service class.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceClass")]
+        public virtual string ServiceClass { get; set; }
+
+        /// <summary>
+        /// Output only. The current operational state of this AutomatedDnsRecord as managed by Service Connectivity
+        /// Automation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. A human-readable message providing more context about the current state, such as an error
+        /// description if the state is `FAILED_DEPROGRAMMING`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateDetails")]
+        public virtual string StateDetails { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp of when the record was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
     }
 
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
@@ -8534,6 +9138,27 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>List of validation errors. If the list is empty, the consumer config is valid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<string> Errors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the configuration of a DNS record.</summary>
+    public class Config : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The list of resource record data strings. The content and format of these strings depend on the
+        /// AutomatedDnsRecord.type. For many common record types, this list may contain multiple strings. As defined in
+        /// RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples. Examples: A record: ["192.0.2.1"] or
+        /// ["192.0.2.1", "192.0.2.2"] TXT record: ["This is a text record"] CNAME record: ["target.example.com."] AAAA
+        /// record: ["::1"] or ["2001:0db8:85a3:0000:0000:8a2e:0370:7334", "2001:0db8:85a3:0000:0000:8a2e:0370:7335"]
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rrdatas")]
+        public virtual System.Collections.Generic.IList<string> Rrdatas { get; set; }
+
+        /// <summary>Required. Number of seconds that this DNS record can be cached by resolvers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual object Ttl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9476,7 +10101,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
 
         private object _createTime;
 
-        /// <summary>Time when the internal range was created.</summary>
+        /// <summary>Output only. Time when the internal range was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -9591,7 +10216,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Time when the internal range was updated.</summary>
+        /// <summary>Output only. Time when the internal range was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -9700,13 +10325,13 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ProducerNetwork { get; set; }
 
         /// <summary>
-        /// Output only. The proposed exclude export IP ranges waiting for hub administration's approval.
+        /// Output only. The proposed exclude export IP ranges waiting for hub administrator's approval.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proposedExcludeExportRanges")]
         public virtual System.Collections.Generic.IList<string> ProposedExcludeExportRanges { get; set; }
 
         /// <summary>
-        /// Output only. The proposed include export IP ranges waiting for hub administration's approval.
+        /// Output only. The proposed include export IP ranges waiting for hub administrator's approval.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proposedIncludeExportRanges")]
         public virtual System.Collections.Generic.IList<string> ProposedIncludeExportRanges { get; set; }
@@ -9774,13 +10399,13 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual System.Collections.Generic.IList<string> ProducerVpcSpokes { get; set; }
 
         /// <summary>
-        /// Output only. The proposed exclude export IP ranges waiting for hub administration's approval.
+        /// Output only. The proposed exclude export IP ranges waiting for hub administrator's approval.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proposedExcludeExportRanges")]
         public virtual System.Collections.Generic.IList<string> ProposedExcludeExportRanges { get; set; }
 
         /// <summary>
-        /// Output only. The proposed include export IP ranges waiting for hub administration's approval.
+        /// Output only. The proposed include export IP ranges waiting for hub administrator's approval.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proposedIncludeExportRanges")]
         public virtual System.Collections.Generic.IList<string> ProposedIncludeExportRanges { get; set; }
@@ -9821,6 +10446,28 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>Output only. The VPC network where these VPN tunnels are located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcNetwork")]
         public virtual string VpcNetwork { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for ListAutomatedDnsRecords.</summary>
+    public class ListAutomatedDnsRecordsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>AutomatedDnsRecords to be returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automatedDnsRecords")]
+        public virtual System.Collections.Generic.IList<AutomatedDnsRecord> AutomatedDnsRecords { get; set; }
+
+        /// <summary>
+        /// The next pagination token in the List response. It should be used as page_token for the following request.
+        /// An empty value means no more result.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12219,7 +12866,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Optional. The list of fields waiting for hub administration's approval.</summary>
+        /// <summary>Optional. The list of fields waiting for hub administrator's approval.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldPathsPendingUpdate")]
         public virtual System.Collections.Generic.IList<string> FieldPathsPendingUpdate { get; set; }
 
@@ -12458,7 +13105,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The reason a spoke is inactive.</summary>
+    /// <summary>The reason for the current state of the spoke.</summary>
     public class StateReason : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The code associated with this reason.</summary>

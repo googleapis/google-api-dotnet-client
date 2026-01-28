@@ -8,6 +8,16 @@
     "1",
     "2"
   ],
+  "Google.Apis.Networkconnectivity.v1.ProjectsResource+LocationsResource+AutomatedDnsRecordsResource+CreateRequest.InsertModeEnum": [
+    "INSERT_MODE_UNSPECIFIED",
+    "FAIL_IF_EXISTS",
+    "OVERWRITE"
+  ],
+  "Google.Apis.Networkconnectivity.v1.ProjectsResource+LocationsResource+AutomatedDnsRecordsResource+DeleteRequest.DeleteModeEnum": [
+    "DELETE_MODE_UNSPECIFIED",
+    "DEPROGRAM",
+    "SKIP_DEPROGRAMMING"
+  ],
   "Google.Apis.Networkconnectivity.v1.ProjectsResource+LocationsResource+GlobalResource+HubsResource+ListSpokesRequest.ViewEnum": [
     "SPOKE_VIEW_UNSPECIFIED",
     "BASIC",
