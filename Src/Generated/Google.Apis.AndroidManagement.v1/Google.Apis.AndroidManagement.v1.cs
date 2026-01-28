@@ -3618,7 +3618,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// ManagedProperty values supported by the app. Each field name in the managed configuration must match the key
         /// field of the ManagedProperty. The field value must be compatible with the type of the ManagedProperty:
         /// *type* *JSON value* BOOL true or false STRING string INTEGER number CHOICE string MULTISELECT array of
-        /// strings HIDDEN string BUNDLE_ARRAY array of objects
+        /// strings HIDDEN string BUNDLE_ARRAY array of objects Note: string values cannot be longer than 65535
+        /// characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedConfiguration")]
         public virtual System.Collections.Generic.IDictionary<string, object> ManagedConfiguration { get; set; }
