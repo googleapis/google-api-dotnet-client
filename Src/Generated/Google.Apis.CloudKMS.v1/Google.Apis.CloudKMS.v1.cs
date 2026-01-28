@@ -5011,8 +5011,9 @@ namespace Google.Apis.CloudKMS.v1
 
                     /// <summary>Lists SingleTenantHsmInstanceProposals.</summary>
                     /// <param name="parent">
-                    /// Required. The resource name of the location associated with the SingleTenantHsmInstanceProposals
-                    /// to list, in the format `projects/*/locations/*/singleTenantHsmInstances/*`.
+                    /// Required. The resource name of the single tenant HSM instance associated with the
+                    /// SingleTenantHsmInstanceProposals to list, in the format
+                    /// `projects/*/locations/*/singleTenantHsmInstances/*`.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -5030,7 +5031,7 @@ namespace Google.Apis.CloudKMS.v1
                         }
 
                         /// <summary>
-                        /// Required. The resource name of the location associated with the
+                        /// Required. The resource name of the single tenant HSM instance associated with the
                         /// SingleTenantHsmInstanceProposals to list, in the format
                         /// `projects/*/locations/*/singleTenantHsmInstances/*`.
                         /// </summary>
