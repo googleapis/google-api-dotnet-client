@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3604,9 +3604,10 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>
                     /// When set to true, operations that are reachable are returned as normal, and those that are
                     /// unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true
-                    /// when reading across collections e.g. when parent is set to "projects/example/locations/-".This
-                    /// field is not by default supported and will result in an UNIMPLEMENTED error if set unless
-                    /// explicitly documented otherwise in service or product specific documentation.
+                    /// when reading across collections. For example, when parent is set to
+                    /// "projects/example/locations/-".This field is not supported by default and will result in an
+                    /// UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific
+                    /// documentation.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
@@ -10653,9 +10654,10 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>
                     /// When set to true, operations that are reachable are returned as normal, and those that are
                     /// unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true
-                    /// when reading across collections e.g. when parent is set to "projects/example/locations/-".This
-                    /// field is not by default supported and will result in an UNIMPLEMENTED error if set unless
-                    /// explicitly documented otherwise in service or product specific documentation.
+                    /// when reading across collections. For example, when parent is set to
+                    /// "projects/example/locations/-".This field is not supported by default and will result in an
+                    /// UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific
+                    /// documentation.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
@@ -15744,8 +15746,8 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Unordered list. Unreachable resources. Populated when the request sets
-        /// ListOperationsRequest.return_partial_success and reads across collections e.g. when attempting to list all
-        /// resources across all supported locations.
+        /// ListOperationsRequest.return_partial_success and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -16628,7 +16630,9 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>Configuration for PyPi repository</summary>
     public class PyPiRepositoryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. PyPi repository address</summary>
+        /// <summary>
+        /// Optional. The PyPi repository address. Note: This field is not available for batch workloads.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pypiRepository")]
         public virtual string PypiRepository { get; set; }
 
@@ -17161,8 +17165,8 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual AutotuningConfig AutotuningConfig { get; set; }
 
         /// <summary>
-        /// Optional. Cohort identifier. Identifies families of the workloads having the same shape, e.g. daily ETL
-        /// jobs.
+        /// Optional. Cohort identifier. Identifies families of the workloads that have the same shape, for example,
+        /// daily ETL jobs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cohort")]
         public virtual string Cohort { get; set; }
@@ -18319,6 +18323,92 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents the lifecycle and details of an Execution via Spark Connect</summary>
+    public class SparkConnectExecutionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Timestamp when the execution was closed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("closeTimestamp")]
+        public virtual System.Nullable<long> CloseTimestamp { get; set; }
+
+        /// <summary>Detailed information about the execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detail")]
+        public virtual string Detail { get; set; }
+
+        /// <summary>Timestamp when the execution finished.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finishTimestamp")]
+        public virtual System.Nullable<long> FinishTimestamp { get; set; }
+
+        /// <summary>Optional. List of job ids associated with the execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobIds")]
+        public virtual System.Collections.Generic.IList<string> JobIds { get; set; }
+
+        /// <summary>Required. Job tag of the execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobTag")]
+        public virtual string JobTag { get; set; }
+
+        /// <summary>Unique identifier for the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
+        public virtual string OperationId { get; set; }
+
+        /// <summary>Required. Session ID, ties the execution to a specific Spark Connect session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionId")]
+        public virtual string SessionId { get; set; }
+
+        /// <summary>Optional. Tags associated with the Spark session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkSessionTags")]
+        public virtual System.Collections.Generic.IList<string> SparkSessionTags { get; set; }
+
+        /// <summary>Optional. List of sql execution ids associated with the execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlExecIds")]
+        public virtual System.Collections.Generic.IList<string> SqlExecIds { get; set; }
+
+        /// <summary>Timestamp when the execution started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTimestamp")]
+        public virtual System.Nullable<long> StartTimestamp { get; set; }
+
+        /// <summary>Output only. Current state of the execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>statement of the execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statement")]
+        public virtual string Statement { get; set; }
+
+        /// <summary>User ID of the user who started the execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents session-level information for Spark Connect</summary>
+    public class SparkConnectSessionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Timestamp when the session finished.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finishTimestamp")]
+        public virtual System.Nullable<long> FinishTimestamp { get; set; }
+
+        /// <summary>Required. Session ID of the session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionId")]
+        public virtual string SessionId { get; set; }
+
+        /// <summary>Timestamp when the session started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTimestamp")]
+        public virtual System.Nullable<long> StartTimestamp { get; set; }
+
+        /// <summary>Optional. Total number of executions in the session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalExecution")]
+        public virtual System.Nullable<long> TotalExecution { get; set; }
+
+        /// <summary>User ID of the user who started the session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Spark History Server configuration for the workload.</summary>
     public class SparkHistoryServerConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -18769,6 +18859,14 @@ namespace Google.Apis.Dataproc.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("resourceProfileInfo")]
         public virtual ResourceProfileInfo ResourceProfileInfo { get; set; }
+
+        /// <summary>Spark Connect Execution Info</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkConnectExecutionInfo")]
+        public virtual SparkConnectExecutionInfo SparkConnectExecutionInfo { get; set; }
+
+        /// <summary>Spark Connect Session Info</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkConnectSessionInfo")]
+        public virtual SparkConnectSessionInfo SparkConnectSessionInfo { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("sparkPlanGraph")]
         public virtual SparkPlanGraph SparkPlanGraph { get; set; }
