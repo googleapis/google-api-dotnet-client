@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -8557,7 +8557,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
         /// <summary>
         /// Output only. Statistics for number of products in the branch, provided for different scopes. This field is
-        /// not populated in BranchView.BASIC view.
+        /// not populated in BranchView.BRANCH_VIEW_BASIC view.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productCountStats")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaBranchProductCountStatistic> ProductCountStats { get; set; }
@@ -8565,7 +8565,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>
         /// Output only. The quality metrics measured among products of this branch. See QualityMetric.requirement_key
         /// for supported metrics. Metrics could be missing if failed to retrieve. This field is not populated in
-        /// BranchView.BASIC view.
+        /// BranchView.BRANCH_VIEW_BASIC view.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qualityMetrics")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaBranchQualityMetric> QualityMetrics { get; set; }
@@ -9627,7 +9627,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
         /// <summary>
         /// Optional. The sort string to specify the sorting of search results. The syntax of the sort string is the
-        /// same as SearchRequest.sort.
+        /// same as SearchRequest.order_by.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sortBy")]
         public virtual string SortBy { get; set; }
@@ -9644,7 +9644,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     {
         /// <summary>
         /// Optional. This field specifies the selected answer during the conversational search. This should be a subset
-        /// of ConversationalSearchResponse.followup_question.suggested_answers.
+        /// of ConversationalSearchResponse.FollowupQuestion.SuggestedAnswer.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectedAnswer")]
         public virtual GoogleCloudRetailV2alphaConversationalSearchRequestUserAnswerSelectedAnswer SelectedAnswer { get; set; }
@@ -9727,7 +9727,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     {
         /// <summary>
         /// This is the incremental additional filters implied from the current user answer. User should add the
-        /// suggested addition filters to the previous ConversationalSearchRequest.search_params.filter and
+        /// suggested addition filters to the previous ConversationalSearchRequest.SearchParams.filter and
         /// SearchRequest.filter, and use the merged filter in the follow up requests.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalFilter")]
@@ -10040,7 +10040,10 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 
-        /// <summary>Required. The output location of the data.</summary>
+        /// <summary>
+        /// Required. The output location of the data. Only `bigquery_destination` is supported, and
+        /// `bigquery_destination.table_type` must be set to `view`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
         public virtual GoogleCloudRetailV2alphaOutputConfig OutputConfig { get; set; }
 
@@ -10176,7 +10179,10 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 
-        /// <summary>Required. The output location of the data.</summary>
+        /// <summary>
+        /// Required. The output location of the data. Only `bigquery_destination` is supported, and
+        /// `bigquery_destination.table_type` must be set to `view`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
         public virtual GoogleCloudRetailV2alphaOutputConfig OutputConfig { get; set; }
 
@@ -10213,7 +10219,10 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 
-        /// <summary>Required. The output location of the data.</summary>
+        /// <summary>
+        /// Required. The output location of the data. Only `bigquery_destination` is supported, and
+        /// `bigquery_destination.table_type` must be set to `view`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
         public virtual GoogleCloudRetailV2alphaOutputConfig OutputConfig { get; set; }
 
@@ -13860,8 +13869,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     {
         /// <summary>
         /// This field specifies the conversation id, which maintains the state of the conversation between client side
-        /// and server side. Use the value from the previous ConversationalSearchResult.conversation_id. For the initial
-        /// request, this should be empty.
+        /// and server side. Use the value from the previous SearchResponse.ConversationalSearchResult.conversation_id.
+        /// For the initial request, this should be empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversationId")]
         public virtual string ConversationId { get; set; }
@@ -13893,7 +13902,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     {
         /// <summary>
         /// This field specifies the selected attributes during the conversational search. This should be a subset of
-        /// ConversationalSearchResult.suggested_answers.
+        /// SearchResponse.ConversationalSearchResult.suggested_answers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectedAnswer")]
         public virtual GoogleCloudRetailV2alphaSearchRequestConversationalSearchSpecUserAnswerSelectedAnswer SelectedAnswer { get; set; }
