@@ -26152,6 +26152,97 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveSearchQpmThreshold")]
         public virtual System.Nullable<long> EffectiveSearchQpmThreshold { get; set; }
 
+        private string _indexingCoreThresholdNextUpdateTimeRaw;
+
+        private object _indexingCoreThresholdNextUpdateTime;
+
+        /// <summary>
+        /// Output only. The earliest next update time for the indexing core subscription threshold. This is based on
+        /// the next_update_time returned by the underlying Cloud Billing Subscription V3 API. This field is populated
+        /// only if an update indexing core subscription threshold request is succeeded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexingCoreThresholdNextUpdateTime")]
+        public virtual string IndexingCoreThresholdNextUpdateTimeRaw
+        {
+            get => _indexingCoreThresholdNextUpdateTimeRaw;
+            set
+            {
+                _indexingCoreThresholdNextUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _indexingCoreThresholdNextUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="IndexingCoreThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IndexingCoreThresholdNextUpdateTimeDateTimeOffset instead.")]
+        public virtual object IndexingCoreThresholdNextUpdateTime
+        {
+            get => _indexingCoreThresholdNextUpdateTime;
+            set
+            {
+                _indexingCoreThresholdNextUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _indexingCoreThresholdNextUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of
+        /// <see cref="IndexingCoreThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? IndexingCoreThresholdNextUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IndexingCoreThresholdNextUpdateTimeRaw);
+            set => IndexingCoreThresholdNextUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _searchQpmThresholdNextUpdateTimeRaw;
+
+        private object _searchQpmThresholdNextUpdateTime;
+
+        /// <summary>
+        /// Output only. The earliest next update time for the search QPM subscription threshold. This is based on the
+        /// next_update_time returned by the underlying Cloud Billing Subscription V3 API. This field is populated only
+        /// if an update QPM subscription threshold request is succeeded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchQpmThresholdNextUpdateTime")]
+        public virtual string SearchQpmThresholdNextUpdateTimeRaw
+        {
+            get => _searchQpmThresholdNextUpdateTimeRaw;
+            set
+            {
+                _searchQpmThresholdNextUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _searchQpmThresholdNextUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="SearchQpmThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SearchQpmThresholdNextUpdateTimeDateTimeOffset instead.")]
+        public virtual object SearchQpmThresholdNextUpdateTime
+        {
+            get => _searchQpmThresholdNextUpdateTime;
+            set
+            {
+                _searchQpmThresholdNextUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _searchQpmThresholdNextUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SearchQpmThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SearchQpmThresholdNextUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SearchQpmThresholdNextUpdateTimeRaw);
+            set => SearchQpmThresholdNextUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         private string _startTimeRaw;
 
         private object _startTime;
@@ -26187,6 +26278,45 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         {
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _terminateTimeRaw;
+
+        private object _terminateTime;
+
+        /// <summary>
+        /// Output only. The latest terminate effective time of search qpm and indexing core subscriptions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("terminateTime")]
+        public virtual string TerminateTimeRaw
+        {
+            get => _terminateTimeRaw;
+            set
+            {
+                _terminateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _terminateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TerminateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TerminateTimeDateTimeOffset instead.")]
+        public virtual object TerminateTime
+        {
+            get => _terminateTime;
+            set
+            {
+                _terminateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _terminateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TerminateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TerminateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TerminateTimeRaw);
+            set => TerminateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -35065,6 +35195,97 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveSearchQpmThreshold")]
         public virtual System.Nullable<long> EffectiveSearchQpmThreshold { get; set; }
 
+        private string _indexingCoreThresholdNextUpdateTimeRaw;
+
+        private object _indexingCoreThresholdNextUpdateTime;
+
+        /// <summary>
+        /// Output only. The earliest next update time for the indexing core subscription threshold. This is based on
+        /// the next_update_time returned by the underlying Cloud Billing Subscription V3 API. This field is populated
+        /// only if an update indexing core subscription threshold request is succeeded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexingCoreThresholdNextUpdateTime")]
+        public virtual string IndexingCoreThresholdNextUpdateTimeRaw
+        {
+            get => _indexingCoreThresholdNextUpdateTimeRaw;
+            set
+            {
+                _indexingCoreThresholdNextUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _indexingCoreThresholdNextUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="IndexingCoreThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IndexingCoreThresholdNextUpdateTimeDateTimeOffset instead.")]
+        public virtual object IndexingCoreThresholdNextUpdateTime
+        {
+            get => _indexingCoreThresholdNextUpdateTime;
+            set
+            {
+                _indexingCoreThresholdNextUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _indexingCoreThresholdNextUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of
+        /// <see cref="IndexingCoreThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? IndexingCoreThresholdNextUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IndexingCoreThresholdNextUpdateTimeRaw);
+            set => IndexingCoreThresholdNextUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _searchQpmThresholdNextUpdateTimeRaw;
+
+        private object _searchQpmThresholdNextUpdateTime;
+
+        /// <summary>
+        /// Output only. The earliest next update time for the search QPM subscription threshold. This is based on the
+        /// next_update_time returned by the underlying Cloud Billing Subscription V3 API. This field is populated only
+        /// if an update QPM subscription threshold request is succeeded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchQpmThresholdNextUpdateTime")]
+        public virtual string SearchQpmThresholdNextUpdateTimeRaw
+        {
+            get => _searchQpmThresholdNextUpdateTimeRaw;
+            set
+            {
+                _searchQpmThresholdNextUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _searchQpmThresholdNextUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="SearchQpmThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SearchQpmThresholdNextUpdateTimeDateTimeOffset instead.")]
+        public virtual object SearchQpmThresholdNextUpdateTime
+        {
+            get => _searchQpmThresholdNextUpdateTime;
+            set
+            {
+                _searchQpmThresholdNextUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _searchQpmThresholdNextUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SearchQpmThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SearchQpmThresholdNextUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SearchQpmThresholdNextUpdateTimeRaw);
+            set => SearchQpmThresholdNextUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         private string _startTimeRaw;
 
         private object _startTime;
@@ -35100,6 +35321,45 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         {
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _terminateTimeRaw;
+
+        private object _terminateTime;
+
+        /// <summary>
+        /// Output only. The latest terminate effective time of search qpm and indexing core subscriptions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("terminateTime")]
+        public virtual string TerminateTimeRaw
+        {
+            get => _terminateTimeRaw;
+            set
+            {
+                _terminateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _terminateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TerminateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TerminateTimeDateTimeOffset instead.")]
+        public virtual object TerminateTime
+        {
+            get => _terminateTime;
+            set
+            {
+                _terminateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _terminateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TerminateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TerminateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TerminateTimeRaw);
+            set => TerminateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -38824,7 +39084,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Specification to boost suggestions based on the condtion of the suggestion.</summary>
+    /// <summary>Specification to boost suggestions based on the condition of the suggestion.</summary>
     public class GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -47413,6 +47673,97 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveSearchQpmThreshold")]
         public virtual System.Nullable<long> EffectiveSearchQpmThreshold { get; set; }
 
+        private string _indexingCoreThresholdNextUpdateTimeRaw;
+
+        private object _indexingCoreThresholdNextUpdateTime;
+
+        /// <summary>
+        /// Output only. The earliest next update time for the indexing core subscription threshold. This is based on
+        /// the next_update_time returned by the underlying Cloud Billing Subscription V3 API. This field is populated
+        /// only if an update indexing core subscription threshold request is succeeded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexingCoreThresholdNextUpdateTime")]
+        public virtual string IndexingCoreThresholdNextUpdateTimeRaw
+        {
+            get => _indexingCoreThresholdNextUpdateTimeRaw;
+            set
+            {
+                _indexingCoreThresholdNextUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _indexingCoreThresholdNextUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="IndexingCoreThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IndexingCoreThresholdNextUpdateTimeDateTimeOffset instead.")]
+        public virtual object IndexingCoreThresholdNextUpdateTime
+        {
+            get => _indexingCoreThresholdNextUpdateTime;
+            set
+            {
+                _indexingCoreThresholdNextUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _indexingCoreThresholdNextUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of
+        /// <see cref="IndexingCoreThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? IndexingCoreThresholdNextUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IndexingCoreThresholdNextUpdateTimeRaw);
+            set => IndexingCoreThresholdNextUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _searchQpmThresholdNextUpdateTimeRaw;
+
+        private object _searchQpmThresholdNextUpdateTime;
+
+        /// <summary>
+        /// Output only. The earliest next update time for the search QPM subscription threshold. This is based on the
+        /// next_update_time returned by the underlying Cloud Billing Subscription V3 API. This field is populated only
+        /// if an update QPM subscription threshold request is succeeded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchQpmThresholdNextUpdateTime")]
+        public virtual string SearchQpmThresholdNextUpdateTimeRaw
+        {
+            get => _searchQpmThresholdNextUpdateTimeRaw;
+            set
+            {
+                _searchQpmThresholdNextUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _searchQpmThresholdNextUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="SearchQpmThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SearchQpmThresholdNextUpdateTimeDateTimeOffset instead.")]
+        public virtual object SearchQpmThresholdNextUpdateTime
+        {
+            get => _searchQpmThresholdNextUpdateTime;
+            set
+            {
+                _searchQpmThresholdNextUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _searchQpmThresholdNextUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SearchQpmThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SearchQpmThresholdNextUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SearchQpmThresholdNextUpdateTimeRaw);
+            set => SearchQpmThresholdNextUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         private string _startTimeRaw;
 
         private object _startTime;
@@ -47448,6 +47799,45 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         {
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _terminateTimeRaw;
+
+        private object _terminateTime;
+
+        /// <summary>
+        /// Output only. The latest terminate effective time of search qpm and indexing core subscriptions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("terminateTime")]
+        public virtual string TerminateTimeRaw
+        {
+            get => _terminateTimeRaw;
+            set
+            {
+                _terminateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _terminateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TerminateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TerminateTimeDateTimeOffset instead.")]
+        public virtual object TerminateTime
+        {
+            get => _terminateTime;
+            set
+            {
+                _terminateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _terminateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TerminateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TerminateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TerminateTimeRaw);
+            set => TerminateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
