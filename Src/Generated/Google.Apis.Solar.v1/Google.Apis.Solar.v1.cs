@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -314,7 +314,12 @@ namespace Google.Apis.Solar.v1
             [Google.Apis.Util.RequestParameterAttribute("exactQualityRequired", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ExactQualityRequired { get; set; }
 
-            /// <summary>Optional. Specifies the pre-GA features to enable.</summary>
+            /// <summary>
+            /// Optional. Specifies the pre-GA experiments to enable. Requests using this field are classified as a
+            /// pre-GA offering under the [Google Maps Platform Service Specific
+            /// Terms](https://cloud.google.com/maps-platform/terms/maps-service-terms). See [launch stage
+            /// descriptions](https://cloud.google.com/maps-platform/terms/launch-stages) for more details.
+            /// </summary>
             /// <remarks>
             /// Use this property to set a single value for the parameter, or <see cref="ExperimentsList"/> to set
             /// multiple values. Do not set both properties.
@@ -322,7 +327,12 @@ namespace Google.Apis.Solar.v1
             [Google.Apis.Util.RequestParameterAttribute("experiments", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ExperimentsEnum> Experiments { get; set; }
 
-            /// <summary>Optional. Specifies the pre-GA features to enable.</summary>
+            /// <summary>
+            /// Optional. Specifies the pre-GA experiments to enable. Requests using this field are classified as a
+            /// pre-GA offering under the [Google Maps Platform Service Specific
+            /// Terms](https://cloud.google.com/maps-platform/terms/maps-service-terms). See [launch stage
+            /// descriptions](https://cloud.google.com/maps-platform/terms/launch-stages) for more details.
+            /// </summary>
             /// <remarks>
             /// Use this property to set one or more values for the parameter. Do not set both this property and
             /// <see cref="Experiments"/>.
@@ -330,7 +340,12 @@ namespace Google.Apis.Solar.v1
             [Google.Apis.Util.RequestParameterAttribute("experiments", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<ExperimentsEnum> ExperimentsList { get; set; }
 
-            /// <summary>Optional. Specifies the pre-GA features to enable.</summary>
+            /// <summary>
+            /// Optional. Specifies the pre-GA experiments to enable. Requests using this field are classified as a
+            /// pre-GA offering under the [Google Maps Platform Service Specific
+            /// Terms](https://cloud.google.com/maps-platform/terms/maps-service-terms). See [launch stage
+            /// descriptions](https://cloud.google.com/maps-platform/terms/launch-stages) for more details.
+            /// </summary>
             public enum ExperimentsEnum
             {
                 /// <summary>No experiments are specified.</summary>
@@ -493,7 +508,12 @@ namespace Google.Apis.Solar.v1
             [Google.Apis.Util.RequestParameterAttribute("exactQualityRequired", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ExactQualityRequired { get; set; }
 
-            /// <summary>Optional. Specifies the pre-GA experiments to enable.</summary>
+            /// <summary>
+            /// Optional. Specifies the pre-GA experiments to enable. Requests using this field are classified as a
+            /// pre-GA offering under the [Google Maps Platform Service Specific
+            /// Terms](https://cloud.google.com/maps-platform/terms/maps-service-terms). See [launch stage
+            /// descriptions]( https://cloud.google.com/maps-platform/terms/launch-stages) for more details.
+            /// </summary>
             /// <remarks>
             /// Use this property to set a single value for the parameter, or <see cref="ExperimentsList"/> to set
             /// multiple values. Do not set both properties.
@@ -501,7 +521,12 @@ namespace Google.Apis.Solar.v1
             [Google.Apis.Util.RequestParameterAttribute("experiments", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ExperimentsEnum> Experiments { get; set; }
 
-            /// <summary>Optional. Specifies the pre-GA experiments to enable.</summary>
+            /// <summary>
+            /// Optional. Specifies the pre-GA experiments to enable. Requests using this field are classified as a
+            /// pre-GA offering under the [Google Maps Platform Service Specific
+            /// Terms](https://cloud.google.com/maps-platform/terms/maps-service-terms). See [launch stage
+            /// descriptions]( https://cloud.google.com/maps-platform/terms/launch-stages) for more details.
+            /// </summary>
             /// <remarks>
             /// Use this property to set one or more values for the parameter. Do not set both this property and
             /// <see cref="Experiments"/>.
@@ -509,7 +534,12 @@ namespace Google.Apis.Solar.v1
             [Google.Apis.Util.RequestParameterAttribute("experiments", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<ExperimentsEnum> ExperimentsList { get; set; }
 
-            /// <summary>Optional. Specifies the pre-GA experiments to enable.</summary>
+            /// <summary>
+            /// Optional. Specifies the pre-GA experiments to enable. Requests using this field are classified as a
+            /// pre-GA offering under the [Google Maps Platform Service Specific
+            /// Terms](https://cloud.google.com/maps-platform/terms/maps-service-terms). See [launch stage
+            /// descriptions]( https://cloud.google.com/maps-platform/terms/launch-stages) for more details.
+            /// </summary>
             public enum ExperimentsEnum
             {
                 /// <summary>No experiments are specified.</summary>
