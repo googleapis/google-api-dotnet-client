@@ -9748,6 +9748,131 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 });
                             }
                         }
+
+                        /// <summary>Gets the AnalyticsConfig.</summary>
+                        /// <param name="name">
+                        /// Required. The resource name of the analytics customer config. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/analytics/config`
+                        /// </param>
+                        public virtual GetConfigRequest GetConfig(string name)
+                        {
+                            return new GetConfigRequest(this.service, name);
+                        }
+
+                        /// <summary>Gets the AnalyticsConfig.</summary>
+                        public class GetConfigRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAnalyticsConfig>
+                        {
+                            /// <summary>Constructs a new GetConfig request.</summary>
+                            public GetConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the analytics customer config. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/analytics/config`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "getConfig";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+name}";
+
+                            /// <summary>Initializes GetConfig parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/analytics/config$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Updates the AnalyticsConfig for analytics.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Required. The resource name of the analytics customer config. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/analytics/config`
+                        /// </param>
+                        public virtual UpdateConfigRequest UpdateConfig(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAnalyticsConfig body, string name)
+                        {
+                            return new UpdateConfigRequest(this.service, body, name);
+                        }
+
+                        /// <summary>Updates the AnalyticsConfig for analytics.</summary>
+                        public class UpdateConfigRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAnalyticsConfig>
+                        {
+                            /// <summary>Constructs a new UpdateConfig request.</summary>
+                            public UpdateConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAnalyticsConfig body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the analytics customer config. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/analytics/config`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// The list of fields of AnalyticsConfig to update. If not specified, the method will
+                            /// perform a full replacement.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAnalyticsConfig Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "updateConfig";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+name}";
+
+                            /// <summary>Initializes UpdateConfig parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/analytics/config$",
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>Gets the Assistants resource.</summary>
@@ -33458,6 +33583,97 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveSearchQpmThreshold")]
         public virtual System.Nullable<long> EffectiveSearchQpmThreshold { get; set; }
 
+        private string _indexingCoreThresholdNextUpdateTimeRaw;
+
+        private object _indexingCoreThresholdNextUpdateTime;
+
+        /// <summary>
+        /// Output only. The earliest next update time for the indexing core subscription threshold. This is based on
+        /// the next_update_time returned by the underlying Cloud Billing Subscription V3 API. This field is populated
+        /// only if an update indexing core subscription threshold request is succeeded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexingCoreThresholdNextUpdateTime")]
+        public virtual string IndexingCoreThresholdNextUpdateTimeRaw
+        {
+            get => _indexingCoreThresholdNextUpdateTimeRaw;
+            set
+            {
+                _indexingCoreThresholdNextUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _indexingCoreThresholdNextUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="IndexingCoreThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IndexingCoreThresholdNextUpdateTimeDateTimeOffset instead.")]
+        public virtual object IndexingCoreThresholdNextUpdateTime
+        {
+            get => _indexingCoreThresholdNextUpdateTime;
+            set
+            {
+                _indexingCoreThresholdNextUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _indexingCoreThresholdNextUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of
+        /// <see cref="IndexingCoreThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? IndexingCoreThresholdNextUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IndexingCoreThresholdNextUpdateTimeRaw);
+            set => IndexingCoreThresholdNextUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _searchQpmThresholdNextUpdateTimeRaw;
+
+        private object _searchQpmThresholdNextUpdateTime;
+
+        /// <summary>
+        /// Output only. The earliest next update time for the search QPM subscription threshold. This is based on the
+        /// next_update_time returned by the underlying Cloud Billing Subscription V3 API. This field is populated only
+        /// if an update QPM subscription threshold request is succeeded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchQpmThresholdNextUpdateTime")]
+        public virtual string SearchQpmThresholdNextUpdateTimeRaw
+        {
+            get => _searchQpmThresholdNextUpdateTimeRaw;
+            set
+            {
+                _searchQpmThresholdNextUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _searchQpmThresholdNextUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="SearchQpmThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SearchQpmThresholdNextUpdateTimeDateTimeOffset instead.")]
+        public virtual object SearchQpmThresholdNextUpdateTime
+        {
+            get => _searchQpmThresholdNextUpdateTime;
+            set
+            {
+                _searchQpmThresholdNextUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _searchQpmThresholdNextUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SearchQpmThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SearchQpmThresholdNextUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SearchQpmThresholdNextUpdateTimeRaw);
+            set => SearchQpmThresholdNextUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         private string _startTimeRaw;
 
         private object _startTime;
@@ -33493,6 +33709,45 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         {
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _terminateTimeRaw;
+
+        private object _terminateTime;
+
+        /// <summary>
+        /// Output only. The latest terminate effective time of search qpm and indexing core subscriptions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("terminateTime")]
+        public virtual string TerminateTimeRaw
+        {
+            get => _terminateTimeRaw;
+            set
+            {
+                _terminateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _terminateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TerminateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TerminateTimeDateTimeOffset instead.")]
+        public virtual object TerminateTime
+        {
+            get => _terminateTime;
+            set
+            {
+                _terminateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _terminateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TerminateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TerminateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TerminateTimeRaw);
+            set => TerminateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -35676,7 +35931,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Specification to boost suggestions based on the condtion of the suggestion.</summary>
+    /// <summary>Specification to boost suggestions based on the condition of the suggestion.</summary>
     public class GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestBoostSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -36217,10 +36472,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. The display name of the agent owner.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ownerDisplayName")]
-        public virtual string OwnerDisplayName { get; set; }
-
         /// <summary>
         /// The reason why the agent was rejected. Only set if the state is PRIVATE, and got there via rejection.
         /// </summary>
@@ -36455,6 +36706,24 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Required. The AlloyDB table to copy the data from with a length limit of 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
         public virtual string TableId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The customer controllable config for Analytics.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnalyticsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The resource name of the analytics customer config. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/analytics/config`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Whether user-level metrics are enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLevelMetricsEnabled")]
+        public virtual System.Nullable<bool> UserLevelMetricsEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -47882,6 +48151,97 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveSearchQpmThreshold")]
         public virtual System.Nullable<long> EffectiveSearchQpmThreshold { get; set; }
 
+        private string _indexingCoreThresholdNextUpdateTimeRaw;
+
+        private object _indexingCoreThresholdNextUpdateTime;
+
+        /// <summary>
+        /// Output only. The earliest next update time for the indexing core subscription threshold. This is based on
+        /// the next_update_time returned by the underlying Cloud Billing Subscription V3 API. This field is populated
+        /// only if an update indexing core subscription threshold request is succeeded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexingCoreThresholdNextUpdateTime")]
+        public virtual string IndexingCoreThresholdNextUpdateTimeRaw
+        {
+            get => _indexingCoreThresholdNextUpdateTimeRaw;
+            set
+            {
+                _indexingCoreThresholdNextUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _indexingCoreThresholdNextUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="IndexingCoreThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IndexingCoreThresholdNextUpdateTimeDateTimeOffset instead.")]
+        public virtual object IndexingCoreThresholdNextUpdateTime
+        {
+            get => _indexingCoreThresholdNextUpdateTime;
+            set
+            {
+                _indexingCoreThresholdNextUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _indexingCoreThresholdNextUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of
+        /// <see cref="IndexingCoreThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? IndexingCoreThresholdNextUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IndexingCoreThresholdNextUpdateTimeRaw);
+            set => IndexingCoreThresholdNextUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _searchQpmThresholdNextUpdateTimeRaw;
+
+        private object _searchQpmThresholdNextUpdateTime;
+
+        /// <summary>
+        /// Output only. The earliest next update time for the search QPM subscription threshold. This is based on the
+        /// next_update_time returned by the underlying Cloud Billing Subscription V3 API. This field is populated only
+        /// if an update QPM subscription threshold request is succeeded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchQpmThresholdNextUpdateTime")]
+        public virtual string SearchQpmThresholdNextUpdateTimeRaw
+        {
+            get => _searchQpmThresholdNextUpdateTimeRaw;
+            set
+            {
+                _searchQpmThresholdNextUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _searchQpmThresholdNextUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="SearchQpmThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SearchQpmThresholdNextUpdateTimeDateTimeOffset instead.")]
+        public virtual object SearchQpmThresholdNextUpdateTime
+        {
+            get => _searchQpmThresholdNextUpdateTime;
+            set
+            {
+                _searchQpmThresholdNextUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _searchQpmThresholdNextUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SearchQpmThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SearchQpmThresholdNextUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SearchQpmThresholdNextUpdateTimeRaw);
+            set => SearchQpmThresholdNextUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         private string _startTimeRaw;
 
         private object _startTime;
@@ -47917,6 +48277,45 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         {
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _terminateTimeRaw;
+
+        private object _terminateTime;
+
+        /// <summary>
+        /// Output only. The latest terminate effective time of search qpm and indexing core subscriptions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("terminateTime")]
+        public virtual string TerminateTimeRaw
+        {
+            get => _terminateTimeRaw;
+            set
+            {
+                _terminateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _terminateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TerminateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TerminateTimeDateTimeOffset instead.")]
+        public virtual object TerminateTime
+        {
+            get => _terminateTime;
+            set
+            {
+                _terminateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _terminateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TerminateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TerminateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TerminateTimeRaw);
+            set => TerminateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -54656,6 +55055,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. The nodes associated with the Widget Config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaWidgetConfigNode> Nodes { get; set; }
+
         /// <summary>
         /// The type of snippet to display in UCS widget. - RESULT_DISPLAY_TYPE_UNSPECIFIED for existing users. -
         /// SNIPPET for new non-enterprise search users. - EXTRACTIVE_ANSWER for new enterprise search users.
@@ -54980,6 +55383,45 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Image URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a single reusable computational or logical unit.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaWidgetConfigNode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A detailed description of what the node does.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. A human readable name for the node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. An identifier or URL pointing to an icon representing this node type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
+        public virtual string IconUrl { get; set; }
+
+        /// <summary>
+        /// Output only. The output schema of the tool. This schema is expected to conform to the OpenAPI Schema
+        /// standard (see https://spec.openapis.org/oas/v3.0.3.html/ and AIP-146). It describes the structure of the
+        /// output produced by this node.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputSchema")]
+        public virtual System.Collections.Generic.IDictionary<string, object> OutputSchema { get; set; }
+
+        /// <summary>
+        /// Output only. The parameter schema of the tool. This schema is expected to conform to the OpenAPI Schema
+        /// standard (see https://spec.openapis.org/oas/v3.0.3.html and AIP-146). It describes the expected structure of
+        /// the parameters that this node accepts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameterSchema")]
+        public virtual System.Collections.Generic.IDictionary<string, object> ParameterSchema { get; set; }
+
+        /// <summary>Output only. The type of the node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -59178,6 +59620,97 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveSearchQpmThreshold")]
         public virtual System.Nullable<long> EffectiveSearchQpmThreshold { get; set; }
 
+        private string _indexingCoreThresholdNextUpdateTimeRaw;
+
+        private object _indexingCoreThresholdNextUpdateTime;
+
+        /// <summary>
+        /// Output only. The earliest next update time for the indexing core subscription threshold. This is based on
+        /// the next_update_time returned by the underlying Cloud Billing Subscription V3 API. This field is populated
+        /// only if an update indexing core subscription threshold request is succeeded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexingCoreThresholdNextUpdateTime")]
+        public virtual string IndexingCoreThresholdNextUpdateTimeRaw
+        {
+            get => _indexingCoreThresholdNextUpdateTimeRaw;
+            set
+            {
+                _indexingCoreThresholdNextUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _indexingCoreThresholdNextUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="IndexingCoreThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IndexingCoreThresholdNextUpdateTimeDateTimeOffset instead.")]
+        public virtual object IndexingCoreThresholdNextUpdateTime
+        {
+            get => _indexingCoreThresholdNextUpdateTime;
+            set
+            {
+                _indexingCoreThresholdNextUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _indexingCoreThresholdNextUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of
+        /// <see cref="IndexingCoreThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? IndexingCoreThresholdNextUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IndexingCoreThresholdNextUpdateTimeRaw);
+            set => IndexingCoreThresholdNextUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _searchQpmThresholdNextUpdateTimeRaw;
+
+        private object _searchQpmThresholdNextUpdateTime;
+
+        /// <summary>
+        /// Output only. The earliest next update time for the search QPM subscription threshold. This is based on the
+        /// next_update_time returned by the underlying Cloud Billing Subscription V3 API. This field is populated only
+        /// if an update QPM subscription threshold request is succeeded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchQpmThresholdNextUpdateTime")]
+        public virtual string SearchQpmThresholdNextUpdateTimeRaw
+        {
+            get => _searchQpmThresholdNextUpdateTimeRaw;
+            set
+            {
+                _searchQpmThresholdNextUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _searchQpmThresholdNextUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="SearchQpmThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SearchQpmThresholdNextUpdateTimeDateTimeOffset instead.")]
+        public virtual object SearchQpmThresholdNextUpdateTime
+        {
+            get => _searchQpmThresholdNextUpdateTime;
+            set
+            {
+                _searchQpmThresholdNextUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _searchQpmThresholdNextUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SearchQpmThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SearchQpmThresholdNextUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SearchQpmThresholdNextUpdateTimeRaw);
+            set => SearchQpmThresholdNextUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         private string _startTimeRaw;
 
         private object _startTime;
@@ -59213,6 +59746,45 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         {
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _terminateTimeRaw;
+
+        private object _terminateTime;
+
+        /// <summary>
+        /// Output only. The latest terminate effective time of search qpm and indexing core subscriptions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("terminateTime")]
+        public virtual string TerminateTimeRaw
+        {
+            get => _terminateTimeRaw;
+            set
+            {
+                _terminateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _terminateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TerminateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TerminateTimeDateTimeOffset instead.")]
+        public virtual object TerminateTime
+        {
+            get => _terminateTime;
+            set
+            {
+                _terminateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _terminateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TerminateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TerminateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TerminateTimeRaw);
+            set => TerminateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -62101,9 +62673,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ingestionError")]
         public virtual GoogleCloudNotebooklmV1alphaFailureReasonIngestionError IngestionError { get; set; }
 
+        /// <summary>Indicates that the source MIME type is blocked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeTypeBlocked")]
+        public virtual GoogleCloudNotebooklmV1alphaFailureReasonMimeTypeBlocked MimeTypeBlocked { get; set; }
+
         /// <summary>Indicates that the source is paywalled and cannot be ingested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paywallError")]
         public virtual GoogleCloudNotebooklmV1alphaFailureReasonPaywallError PaywallError { get; set; }
+
+        /// <summary>Indicates that the policy check failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyCheckFailed")]
+        public virtual GoogleCloudNotebooklmV1alphaFailureReasonPolicyCheckFailed PolicyCheckFailed { get; set; }
 
         /// <summary>Indicates that the source is empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceEmpty")]
@@ -62198,8 +62778,22 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Indicates that the source MIME type is blocked.</summary>
+    public class GoogleCloudNotebooklmV1alphaFailureReasonMimeTypeBlocked : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Indicates that the source is paywalled and cannot be ingested.</summary>
     public class GoogleCloudNotebooklmV1alphaFailureReasonPaywallError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Indicates that the policy check failed.</summary>
+    public class GoogleCloudNotebooklmV1alphaFailureReasonPolicyCheckFailed : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
