@@ -3919,7 +3919,10 @@ namespace Google.Apis.AnalyticsHub.v1.Data
     /// <summary>All supported message transforms types.</summary>
     public class MessageTransform : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. AI Inference.</summary>
+        /// <summary>
+        /// Optional. AI Inference. Specifies the Vertex AI endpoint that inference requests built from the Pub/Sub
+        /// message data and provided parameters will be sent to.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aiInference")]
         public virtual AIInference AiInference { get; set; }
 
