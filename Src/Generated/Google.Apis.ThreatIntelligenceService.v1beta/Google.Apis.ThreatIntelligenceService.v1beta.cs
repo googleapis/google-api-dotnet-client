@@ -4125,7 +4125,7 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
     /// <summary>Contains details for a technology watchlist alert.</summary>
     public class TargetTechnologyAlertDetail : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The vulnerability match details.</summary>
+        /// <summary>Optional. The vulnerability match details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vulnerabilityMatch")]
         public virtual VulnerabilityMatch VulnerabilityMatch { get; set; }
 
@@ -4136,7 +4136,7 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
     /// <summary>Contains details for a technology watchlist finding.</summary>
     public class TargetTechnologyFindingDetail : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The vulnerability match details.</summary>
+        /// <summary>Optional. The vulnerability match details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vulnerabilityMatch")]
         public virtual VulnerabilityMatch VulnerabilityMatch { get; set; }
 
@@ -4206,34 +4206,34 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("associations")]
         public virtual System.Collections.Generic.IList<Association> Associations { get; set; }
 
-        /// <summary>Output only. The collection ID of the vulnerability. Ex: "vulnerability--cve-2025-9876".</summary>
+        /// <summary>Required. The collection ID of the vulnerability. Ex: "vulnerability--cve-2025-9876".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectionId")]
         public virtual string CollectionId { get; set; }
 
         /// <summary>
-        /// Output only. The CVE ID of the vulnerability. Ex: "CVE-2025-9876". See https://www.cve.org/ for more
+        /// Required. The CVE ID of the vulnerability. Ex: "CVE-2025-9876". See https://www.cve.org/ for more
         /// information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cveId")]
         public virtual string CveId { get; set; }
 
-        /// <summary>Output only. The CVSS v3 score of the vulnerability. Example: 6.4.</summary>
+        /// <summary>Required. The CVSS v3 score of the vulnerability. Example: 6.4.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cvss3Score")]
         public virtual System.Nullable<float> Cvss3Score { get; set; }
 
-        /// <summary>Output only. A description of the vulnerability.</summary>
+        /// <summary>Required. A description of the vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Output only. The exploitation state of the vulnerability.</summary>
+        /// <summary>Required. The exploitation state of the vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exploitationState")]
         public virtual string ExploitationState { get; set; }
 
-        /// <summary>Output only. The risk rating of the vulnerability.</summary>
+        /// <summary>Required. The risk rating of the vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("riskRating")]
         public virtual string RiskRating { get; set; }
 
-        /// <summary>Output only. The affected technologies. Ex: "Apache Struts".</summary>
+        /// <summary>Required. The affected technologies. Ex: "Apache Struts".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("technologies")]
         public virtual System.Collections.Generic.IList<string> Technologies { get; set; }
 
