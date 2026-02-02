@@ -1290,14 +1290,24 @@ namespace Google.Apis.Translate.v3beta1
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3beta1.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
