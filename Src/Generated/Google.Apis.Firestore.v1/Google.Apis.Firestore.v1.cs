@@ -7687,6 +7687,14 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>The metadata message for google.cloud.location.Location.metadata.</summary>
     public class GoogleFirestoreAdminV1LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The storage placements available in the location. When the location represents a Standard Managed
+        /// Multi-Region (SMMR) like "us", this field lists the available Google-Managed Multi-Regions (GMMRs) within
+        /// it, such as "nam5" or "eur3".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableStoragePlacements")]
+        public virtual System.Collections.Generic.IList<string> AvailableStoragePlacements { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
