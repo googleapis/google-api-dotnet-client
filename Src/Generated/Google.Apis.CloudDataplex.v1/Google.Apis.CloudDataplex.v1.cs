@@ -1227,6 +1227,7 @@ namespace Google.Apis.CloudDataplex.v1
                 Glossaries = new GlossariesResource(service);
                 GovernanceRules = new GovernanceRulesResource(service);
                 Lakes = new LakesResource(service);
+                MetadataFeeds = new MetadataFeedsResource(service);
                 MetadataJobs = new MetadataJobsResource(service);
                 Operations = new OperationsResource(service);
             }
@@ -16300,6 +16301,413 @@ namespace Google.Apis.CloudDataplex.v1
                 }
             }
 
+            /// <summary>Gets the MetadataFeeds resource.</summary>
+            public virtual MetadataFeedsResource MetadataFeeds { get; }
+
+            /// <summary>The "metadataFeeds" collection of methods.</summary>
+            public class MetadataFeedsResource
+            {
+                private const string Resource = "metadataFeeds";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public MetadataFeedsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a MetadataFeed.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the parent location, in the format
+                /// projects/{project_id_or_number}/locations/{location_id}
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1MetadataFeed body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a MetadataFeed.</summary>
+                public class CreateRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1MetadataFeed body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the parent location, in the format
+                    /// projects/{project_id_or_number}/locations/{location_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The metadata job ID. If not provided, a unique ID is generated with the prefix
+                    /// metadata-job-.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("metadataFeedId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string MetadataFeedId { get; set; }
+
+                    /// <summary>
+                    /// Optional. The service validates the request without performing any mutations. The default is
+                    /// false.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1MetadataFeed Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/metadataFeeds";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("metadataFeedId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "metadataFeedId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a MetadataFeed.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the metadata feed, in the format
+                /// projects/{project_id_or_number}/locations/{location_id}/MetadataFeeds/{metadata_feed_id}.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a MetadataFeed.</summary>
+                public class DeleteRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the metadata feed, in the format
+                    /// projects/{project_id_or_number}/locations/{location_id}/MetadataFeeds/{metadata_feed_id}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/metadataFeeds/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets a MetadataFeed.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the metadata feed, in the format
+                /// projects/{project_id_or_number}/locations/{location_id}/MetadataFeeds/{metadata_feed_id}.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a MetadataFeed.</summary>
+                public class GetRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1MetadataFeed>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the metadata feed, in the format
+                    /// projects/{project_id_or_number}/locations/{location_id}/MetadataFeeds/{metadata_feed_id}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/metadataFeeds/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Retrieve a list of MetadataFeeds.</summary>
+                /// <param name="parent">
+                /// Required. The resource name of the parent location, in the format
+                /// projects/{project_id_or_number}/locations/{location_id}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Retrieve a list of MetadataFeeds.</summary>
+                public class ListRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1ListMetadataFeedsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the parent location, in the format
+                    /// projects/{project_id_or_number}/locations/{location_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Filter request. Filters are case-sensitive. The service supports the following
+                    /// formats: labels.key1 = "value1" labels:key1 name = "value"You can combine filters with AND, OR,
+                    /// and NOT operators.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The field to sort the results by, either name or create_time. If not specified, the
+                    /// ordering is undefined.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of metadata feeds to return. The service might return fewer feeds
+                    /// than this value. If unspecified, at most 10 feeds are returned. The maximum value is 1,000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The page token received from a previous ListMetadataFeeds call. Provide this token to
+                    /// retrieve the subsequent page of results. When paginating, all other parameters that are provided
+                    /// to the ListMetadataFeeds request must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/metadataFeeds";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a MetadataFeed.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The resource name of the metadata feed, in the format
+                /// projects/{project_id_or_number}/locations/{location_id}/metadataFeeds/{metadata_feed_id}.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1MetadataFeed body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a MetadataFeed.</summary>
+                public class PatchRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1MetadataFeed body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The resource name of the metadata feed, in the format
+                    /// projects/{project_id_or_number}/locations/{location_id}/metadataFeeds/{metadata_feed_id}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. Mask of fields to update.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>
+                    /// Optional. Only validate the request, but do not perform mutations. The default is false.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1MetadataFeed Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/metadataFeeds/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the MetadataJobs resource.</summary>
             public virtual MetadataJobsResource MetadataJobs { get; }
 
@@ -16984,14 +17392,24 @@ namespace Google.Apis.CloudDataplex.v1
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// List all public locations: Use the path GET /v1/locations. List project-visible locations: Use the path
+            /// GET /v1/projects/{project_id}/locations. This may include public locations as well as private or other
+            /// locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// List all public locations: Use the path GET /v1/locations. List project-visible locations: Use the path
+            /// GET /v1/projects/{project_id}/locations. This may include public locations as well as private or other
+            /// locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudLocationListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -19592,6 +20010,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>Optional. Whether to publish result to Dataplex Catalog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("catalogPublishingEnabled")]
         public virtual System.Nullable<bool> CatalogPublishingEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies which components of the data documentation to generate. Any component that is required
+        /// to generate the specified components will also be generated. If no generation scope is specified, all
+        /// available documentation components will be generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generationScopes")]
+        public virtual System.Collections.Generic.IList<string> GenerationScopes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24543,6 +24969,27 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListMetadataFeeds.</summary>
+    public class GoogleCloudDataplexV1ListMetadataFeedsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of metadata feeds under the specified parent location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataFeeds")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1MetadataFeed> MetadataFeeds { get; set; }
+
+        /// <summary>
+        /// A token to retrieve the next page of results. If there are no more results in the list, the value is empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Unordered list. Locations that the service couldn't reach.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>List metadata jobs response.</summary>
     public class GoogleCloudDataplexV1ListMetadataJobsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -24631,6 +25078,186 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>Zones under the given parent lake.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zones")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1Zone> Zones { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MetadataFeed contains information related to the metadata feed.</summary>
+    public class GoogleCloudDataplexV1MetadataFeed : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the feed was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. The filters of the metadata feed. Only the changes that match the filters are published.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filters")]
+        public virtual GoogleCloudDataplexV1MetadataFeedFilters Filters { get; set; }
+
+        /// <summary>Optional. User-defined labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the metadata feed, in the format
+        /// projects/{project_id_or_number}/locations/{location_id}/metadataFeeds/{metadata_feed_id}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. The pubsub topic that you want the metadata feed messages to publish to. Please grant Dataplex
+        /// service account the permission to publish messages to the topic. The service account is:
+        /// service-{PROJECT_NUMBER}@gcp-sa-dataplex.iam.gserviceaccount.com.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
+        public virtual string PubsubTopic { get; set; }
+
+        /// <summary>Required. The scope of the metadata feed. Only the in scope changes are published.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual GoogleCloudDataplexV1MetadataFeedScope Scope { get; set; }
+
+        /// <summary>
+        /// Output only. A system-generated, globally unique ID for the metadata job. If the metadata job is deleted and
+        /// then re-created with the same name, this ID is different.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time when the feed was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Filters defines the type of changes that you want to listen to. You can have multiple entry type filters and
+    /// multiple aspect type filters. All of the entry type filters are OR'ed together. All of the aspect type filters
+    /// are OR'ed together. All of the entry type filters and aspect type filters are AND'ed together.
+    /// </summary>
+    public class GoogleCloudDataplexV1MetadataFeedFilters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The aspect types that you want to listen to. Depending on how the aspect is attached to the entry,
+        /// in the format: projects/{project_id_or_number}/locations/{location}/aspectTypes/{aspect_type_id}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aspectTypes")]
+        public virtual System.Collections.Generic.IList<string> AspectTypes { get; set; }
+
+        /// <summary>
+        /// Optional. The type of change that you want to listen to. If not specified, all changes are published.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeTypes")]
+        public virtual System.Collections.Generic.IList<string> ChangeTypes { get; set; }
+
+        /// <summary>
+        /// Optional. The entry types that you want to listen to, specified as relative resource names in the format
+        /// projects/{project_id_or_number}/locations/{location}/entryTypes/{entry_type_id}. Only entries that belong to
+        /// the specified entry types are published.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryTypes")]
+        public virtual System.Collections.Generic.IList<string> EntryTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Scope defines the scope of the metadata feed. Scopes are exclusive. Only one of the scopes can be specified.
+    /// </summary>
+    public class GoogleCloudDataplexV1MetadataFeedScope : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The entry groups whose entries you want to listen to. Must be in the format:
+        /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryGroups")]
+        public virtual System.Collections.Generic.IList<string> EntryGroups { get; set; }
+
+        /// <summary>
+        /// Optional. Whether the metadata feed is at the organization-level. If true, all changes happened to the
+        /// entries in the same organization as the feed are published. If false, you must specify a list of projects or
+        /// a list of entry groups whose entries you want to listen to.The default is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organizationLevel")]
+        public virtual System.Nullable<bool> OrganizationLevel { get; set; }
+
+        /// <summary>
+        /// Optional. The projects whose entries you want to listen to. Must be in the same organization as the feed.
+        /// Must be in the format: projects/{project_id_or_number}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projects")]
+        public virtual System.Collections.Generic.IList<string> Projects { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
