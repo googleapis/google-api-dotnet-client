@@ -8520,6 +8520,38 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoscalingTargetHighPriorityCpuUtilizationPercent")]
         public virtual System.Nullable<int> AutoscalingTargetHighPriorityCpuUtilizationPercent { get; set; }
 
+        /// <summary>
+        /// Optional. If specified, overrides the autoscaling target `total_cpu_utilization_percent` in the top-level
+        /// autoscaling configuration for the selected replicas.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscalingTargetTotalCpuUtilizationPercent")]
+        public virtual System.Nullable<int> AutoscalingTargetTotalCpuUtilizationPercent { get; set; }
+
+        /// <summary>
+        /// Optional. If true, disables high priority CPU autoscaling for the selected replicas and ignores
+        /// high_priority_cpu_utilization_percent in the top-level autoscaling configuration. When setting this field to
+        /// true, setting autoscaling_target_high_priority_cpu_utilization_percent field to a non-zero value for the
+        /// same replica is not supported. If false, the autoscaling_target_high_priority_cpu_utilization_percent field
+        /// in the replica will be used if set to a non-zero value. Otherwise, the high_priority_cpu_utilization_percent
+        /// field in the top-level autoscaling configuration will be used. Setting both
+        /// disable_high_priority_cpu_autoscaling and disable_total_cpu_autoscaling to true for the same replica is not
+        /// supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableHighPriorityCpuAutoscaling")]
+        public virtual System.Nullable<bool> DisableHighPriorityCpuAutoscaling { get; set; }
+
+        /// <summary>
+        /// Optional. If true, disables total CPU autoscaling for the selected replicas and ignores
+        /// total_cpu_utilization_percent in the top-level autoscaling configuration. When setting this field to true,
+        /// setting autoscaling_target_total_cpu_utilization_percent field to a non-zero value for the same replica is
+        /// not supported. If false, the autoscaling_target_total_cpu_utilization_percent field in the replica will be
+        /// used if set to a non-zero value. Otherwise, the total_cpu_utilization_percent field in the top-level
+        /// autoscaling configuration will be used. Setting both disable_high_priority_cpu_autoscaling and
+        /// disable_total_cpu_autoscaling to true for the same replica is not supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableTotalCpuAutoscaling")]
+        public virtual System.Nullable<bool> DisableTotalCpuAutoscaling { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8566,9 +8598,10 @@ namespace Google.Apis.Spanner.v1.Data
     public class AutoscalingTargets : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The target high priority cpu utilization percentage that the autoscaler should be trying to
+        /// Optional. The target high priority cpu utilization percentage that the autoscaler should be trying to
         /// achieve for the instance. This number is on a scale from 0 (no utilization) to 100 (full utilization). The
-        /// valid range is [10, 90] inclusive.
+        /// valid range is [10, 90] inclusive. If not specified or set to 0, the autoscaler skips scaling based on high
+        /// priority CPU utilization.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("highPriorityCpuUtilizationPercent")]
         public virtual System.Nullable<int> HighPriorityCpuUtilizationPercent { get; set; }
@@ -8580,6 +8613,17 @@ namespace Google.Apis.Spanner.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageUtilizationPercent")]
         public virtual System.Nullable<int> StorageUtilizationPercent { get; set; }
+
+        /// <summary>
+        /// Optional. The target total CPU utilization percentage that the autoscaler should be trying to achieve for
+        /// the instance. This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range
+        /// is [10, 90] inclusive. If not specified or set to 0, the autoscaler skips scaling based on total CPU
+        /// utilization. If both `high_priority_cpu_utilization_percent` and `total_cpu_utilization_percent` are
+        /// specified, the autoscaler provisions the larger of the two required compute capacities to satisfy both
+        /// targets.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCpuUtilizationPercent")]
+        public virtual System.Nullable<int> TotalCpuUtilizationPercent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8780,6 +8824,13 @@ namespace Google.Apis.Spanner.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MaxExpireTimeRaw);
             set => MaxExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Output only. The minimum edition required to successfully restore the backup. Populated only if the edition
+        /// is Enterprise or Enterprise Plus.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumRestorableEdition")]
+        public virtual string MinimumRestorableEdition { get; set; }
 
         /// <summary>
         /// Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique
@@ -9491,6 +9542,20 @@ namespace Google.Apis.Spanner.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variable")]
         public virtual string Variable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Container for various pieces of client-owned context attached to a request.</summary>
+    public class ClientContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Map of parameter name to value for this request. These values will be returned by any
+        /// SECURE_CONTEXT() calls invoked by this request (e.g., by queries against Parameterized Secure Views).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secureContext")]
+        public virtual System.Collections.Generic.IDictionary<string, object> SecureContext { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13437,20 +13502,20 @@ namespace Google.Apis.Spanner.v1.Data
     public class PartitionQueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// It isn't always possible for Cloud Spanner to infer the right SQL type from a JSON value. For example,
-        /// values of type `BYTES` and values of type `STRING` both appear in params as JSON strings. In these cases,
-        /// `param_types` can be used to specify the exact SQL type for some or all of the SQL query parameters. See the
-        /// definition of Type for more information about SQL types.
+        /// Optional. It isn't always possible for Cloud Spanner to infer the right SQL type from a JSON value. For
+        /// example, values of type `BYTES` and values of type `STRING` both appear in params as JSON strings. In these
+        /// cases, `param_types` can be used to specify the exact SQL type for some or all of the SQL query parameters.
+        /// See the definition of Type for more information about SQL types.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paramTypes")]
         public virtual System.Collections.Generic.IDictionary<string, Type> ParamTypes { get; set; }
 
         /// <summary>
-        /// Parameter names and values that bind to placeholders in the SQL string. A parameter placeholder consists of
-        /// the `@` character followed by the parameter name (for example, `@firstName`). Parameter names can contain
-        /// letters, numbers, and underscores. Parameters can appear anywhere that a literal value is expected. The same
-        /// parameter name can be used more than once, for example: `"WHERE id &amp;gt; @msg_id AND id &amp;lt; @msg_id
-        /// + 100"` It's an error to execute a SQL statement with unbound parameters.
+        /// Optional. Parameter names and values that bind to placeholders in the SQL string. A parameter placeholder
+        /// consists of the `@` character followed by the parameter name (for example, `@firstName`). Parameter names
+        /// can contain letters, numbers, and underscores. Parameters can appear anywhere that a literal value is
+        /// expected. The same parameter name can be used more than once, for example: `"WHERE id &amp;gt; @msg_id AND
+        /// id &amp;lt; @msg_id + 100"` It's an error to execute a SQL statement with unbound parameters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
@@ -14231,6 +14296,10 @@ namespace Google.Apis.Spanner.v1.Data
     /// <summary>Common request options for various APIs.</summary>
     public class RequestOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Optional context that may be needed for some requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientContext")]
+        public virtual ClientContext ClientContext { get; set; }
+
         /// <summary>Priority for the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual string Priority { get; set; }
