@@ -1358,7 +1358,12 @@ namespace Google.Apis.Appengine.v1alpha
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// List all public locations: Use the path GET /v1/locations. List project-visible locations: Use the path
+            /// GET /v1/projects/{project_id}/locations. This may include public locations as well as private or other
+            /// locations specifically visible to the project.
+            /// </summary>
             /// <param name="appsId">
             /// Part of `name`. The resource that owns the locations collection, if applicable.
             /// </param>
@@ -1367,7 +1372,12 @@ namespace Google.Apis.Appengine.v1alpha
                 return new ListRequest(this.service, appsId);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// List all public locations: Use the path GET /v1/locations. List project-visible locations: Use the path
+            /// GET /v1/projects/{project_id}/locations. This may include public locations as well as private or other
+            /// locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1alpha.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -3285,7 +3295,12 @@ namespace Google.Apis.Appengine.v1alpha
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// List all public locations: Use the path GET /v1/locations. List project-visible locations: Use the path
+            /// GET /v1/projects/{project_id}/locations. This may include public locations as well as private or other
+            /// locations specifically visible to the project.
+            /// </summary>
             /// <param name="projectsId">
             /// Part of `name`. The resource that owns the locations collection, if applicable.
             /// </param>
@@ -3294,7 +3309,12 @@ namespace Google.Apis.Appengine.v1alpha
                 return new ListRequest(this.service, projectsId);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// List all public locations: Use the path GET /v1/locations. List project-visible locations: Use the path
+            /// GET /v1/projects/{project_id}/locations. This may include public locations as well as private or other
+            /// locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1alpha.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
