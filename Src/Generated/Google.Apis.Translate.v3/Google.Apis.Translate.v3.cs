@@ -361,7 +361,7 @@ namespace Google.Apis.Translate.v3
 
                         /// <summary>Lists all AdaptiveMtSentences under a given file/dataset.</summary>
                         /// <param name="parent">
-                        /// Required. The resource name of the project from which to list the Adaptive MT files. The
+                        /// Required. The resource name of the Adaptive MT file from which to list the sentences. The
                         /// following format lists all sentences under a file.
                         /// `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}`
                         /// The following format lists all sentences within a dataset.
@@ -383,8 +383,8 @@ namespace Google.Apis.Translate.v3
                             }
 
                             /// <summary>
-                            /// Required. The resource name of the project from which to list the Adaptive MT files. The
-                            /// following format lists all sentences under a file.
+                            /// Required. The resource name of the Adaptive MT file from which to list the sentences.
+                            /// The following format lists all sentences under a file.
                             /// `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}`
                             /// The following format lists all sentences within a dataset.
                             /// `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}`
@@ -549,7 +549,7 @@ namespace Google.Apis.Translate.v3
 
                     /// <summary>Lists all AdaptiveMtFiles associated to an AdaptiveMtDataset.</summary>
                     /// <param name="parent">
-                    /// Required. The resource name of the project from which to list the Adaptive MT files.
+                    /// Required. The resource name of the dataset from which to list the Adaptive MT files.
                     /// `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}`
                     /// </param>
                     public virtual ListRequest List(string parent)
@@ -568,7 +568,7 @@ namespace Google.Apis.Translate.v3
                         }
 
                         /// <summary>
-                        /// Required. The resource name of the project from which to list the Adaptive MT files.
+                        /// Required. The resource name of the dataset from which to list the Adaptive MT files.
                         /// `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -646,7 +646,7 @@ namespace Google.Apis.Translate.v3
 
                     /// <summary>Lists all AdaptiveMtSentences under a given file/dataset.</summary>
                     /// <param name="parent">
-                    /// Required. The resource name of the project from which to list the Adaptive MT files. The
+                    /// Required. The resource name of the Adaptive MT file from which to list the sentences. The
                     /// following format lists all sentences under a file.
                     /// `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}`
                     /// The following format lists all sentences within a dataset.
@@ -668,7 +668,7 @@ namespace Google.Apis.Translate.v3
                         }
 
                         /// <summary>
-                        /// Required. The resource name of the project from which to list the Adaptive MT files. The
+                        /// Required. The resource name of the Adaptive MT file from which to list the sentences. The
                         /// following format lists all sentences under a file.
                         /// `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}`
                         /// The following format lists all sentences within a dataset.
@@ -3218,14 +3218,24 @@ namespace Google.Apis.Translate.v3
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -4175,7 +4185,7 @@ namespace Google.Apis.Translate.v3.Data
         public virtual System.Collections.Generic.IList<string> Content { get; set; }
 
         /// <summary>
-        /// Required. The resource name for the dataset to use for adaptive MT.
+        /// Required. The resource name for the dataset to use for adaptive MT translation.
         /// `projects/{project}/locations/{location-id}/adaptiveMtDatasets/{dataset}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
