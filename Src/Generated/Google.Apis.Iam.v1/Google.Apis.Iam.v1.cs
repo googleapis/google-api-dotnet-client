@@ -5344,7 +5344,7 @@ namespace Google.Apis.Iam.v1
                         /// Updates an existing WorkloadIdentityPoolManagedIdentity in a WorkloadIdentityPoolNamespace.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="name">Output only. The resource name of the managed identity.</param>
+                        /// <param name="name">Identifier. The resource name of the managed identity.</param>
                         public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.WorkloadIdentityPoolManagedIdentity body, string name)
                         {
                             return new PatchRequest(this.service, body, name);
@@ -5363,7 +5363,7 @@ namespace Google.Apis.Iam.v1
                                 InitParameters();
                             }
 
-                            /// <summary>Output only. The resource name of the managed identity.</summary>
+                            /// <summary>Identifier. The resource name of the managed identity.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -5929,7 +5929,7 @@ namespace Google.Apis.Iam.v1
 
                     /// <summary>Updates an existing WorkloadIdentityPoolNamespace in a WorkloadIdentityPool.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Output only. The resource name of the namespace.</param>
+                    /// <param name="name">Identifier. The resource name of the namespace.</param>
                     public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.WorkloadIdentityPoolNamespace body, string name)
                     {
                         return new PatchRequest(this.service, body, name);
@@ -5946,7 +5946,7 @@ namespace Google.Apis.Iam.v1
                             InitParameters();
                         }
 
-                        /// <summary>Output only. The resource name of the namespace.</summary>
+                        /// <summary>Identifier. The resource name of the namespace.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -6887,7 +6887,7 @@ namespace Google.Apis.Iam.v1
 
                     /// <summary>Updates an existing WorkloadIdentityPoolProvider.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Output only. The resource name of the provider.</param>
+                    /// <param name="name">Identifier. The resource name of the provider.</param>
                     public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.WorkloadIdentityPoolProvider body, string name)
                     {
                         return new PatchRequest(this.service, body, name);
@@ -6904,7 +6904,7 @@ namespace Google.Apis.Iam.v1
                             InitParameters();
                         }
 
-                        /// <summary>Output only. The resource name of the provider.</summary>
+                        /// <summary>Identifier. The resource name of the provider.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -7347,7 +7347,7 @@ namespace Google.Apis.Iam.v1
 
                 /// <summary>Updates an existing WorkloadIdentityPool.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Output only. The resource name of the pool.</param>
+                /// <param name="name">Identifier. The resource name of the pool.</param>
                 public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.WorkloadIdentityPool body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
@@ -7364,7 +7364,7 @@ namespace Google.Apis.Iam.v1
                         InitParameters();
                     }
 
-                    /// <summary>Output only. The resource name of the pool.</summary>
+                    /// <summary>Identifier. The resource name of the pool.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -13214,7 +13214,7 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
 
-        /// <summary>Output only. The resource name of the pool.</summary>
+        /// <summary>Identifier. The resource name of the pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -13279,7 +13279,7 @@ namespace Google.Apis.Iam.v1.Data
             set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Output only. The resource name of the managed identity.</summary>
+        /// <summary>Identifier. The resource name of the managed identity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -13346,7 +13346,7 @@ namespace Google.Apis.Iam.v1.Data
             set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Output only. The resource name of the namespace.</summary>
+        /// <summary>Identifier. The resource name of the namespace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -13488,7 +13488,7 @@ namespace Google.Apis.Iam.v1.Data
             set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Output only. The resource name of the provider.</summary>
+        /// <summary>Identifier. The resource name of the provider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -13563,7 +13563,7 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("keyData")]
         public virtual KeyData KeyData { get; set; }
 
-        /// <summary>Output only. The resource name of the key.</summary>
+        /// <summary>Identifier. The resource name of the key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
