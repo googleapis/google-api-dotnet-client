@@ -23030,14 +23030,13 @@ namespace Google.Apis.Logging.v2.Data
         public virtual LogEntrySourceLocation SourceLocation { get; set; }
 
         /// <summary>
-        /// Optional. The ID of the Cloud Trace (https://cloud.google.com/trace) span associated with the current
-        /// operation in which the log is being written. For example, if a span has the REST resource name of
-        /// "projects/some-project/traces/some-trace/spans/some-span-id", then the span_id field is "some-span-id".A
-        /// Span (https://cloud.google.com/trace/docs/reference/v2/rest/v2/projects.traces/batchWrite#Span) represents a
+        /// Optional. The ID of the Cloud Trace (https://docs.cloud.google.com/trace/docs) span associated with the
+        /// current operation in which the log is being written.A Span
+        /// (https://docs.cloud.google.com/trace/docs/reference/v2/rest/v2/projects.traces/batchWrite#Span) represents a
         /// single operation within a trace. Whereas a trace may involve multiple different microservices running on
         /// multiple different machines, a span generally corresponds to a single logical operation being performed in a
         /// single instance of a microservice on one specific machine. Spans are the nodes within the tree that is a
-        /// trace.Applications that are instrumented for tracing (https://cloud.google.com/trace/docs/setup) will
+        /// trace.Applications that are instrumented for tracing (https://docs.cloud.google.com/trace/docs/setup) will
         /// generally assign a new, unique span ID on each incoming request. It is also common to create and record
         /// additional spans corresponding to internal processing elements as well as issuing requests to
         /// dependencies.The span ID is expected to be a 16-character, hexadecimal encoding of an 8-byte array and
@@ -23104,12 +23103,13 @@ namespace Google.Apis.Logging.v2.Data
         }
 
         /// <summary>
-        /// Optional. The REST resource name of the trace being written to Cloud Trace (https://cloud.google.com/trace)
-        /// in association with this log entry. For example, if your trace data is stored in the Cloud project
+        /// Optional. The trace ID being written to Cloud Trace (https://docs.cloud.google.com/trace/docs) in
+        /// association with this log entry. For example, if your trace data is stored in the Cloud project
         /// "my-trace-project" and if the service that is creating the log entry receives a trace header that includes
-        /// the trace ID "12345", then the service should use "projects/my-trace-project/traces/12345".The trace field
-        /// provides the link between logs and traces. By using this field, you can navigate from a log entry to a
-        /// trace.
+        /// the trace ID "12345", then the service should use "12345".The REST resource name of the trace is also
+        /// supported, but using this format is not recommended. An example trace REST resource name is similar to
+        /// "projects/my-trace-project/traces/12345".The trace field provides the link between logs and traces. By using
+        /// this field, you can navigate from a log entry to a trace.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trace")]
         public virtual string Trace { get; set; }
