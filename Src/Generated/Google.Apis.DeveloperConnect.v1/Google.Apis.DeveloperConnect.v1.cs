@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3789,14 +3789,24 @@ namespace Google.Apis.DeveloperConnect.v1
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : DeveloperConnectBaseServiceRequest<Google.Apis.DeveloperConnect.v1.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -3967,7 +3977,7 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oauthStartUri")]
         public virtual string OauthStartUri { get; set; }
 
-        /// <summary>Provider OAuth config.</summary>
+        /// <summary>Optional. Provider OAuth config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("providerOauthConfig")]
         public virtual ProviderOAuthConfig ProviderOauthConfig { get; set; }
 
@@ -4185,6 +4195,32 @@ namespace Google.Apis.DeveloperConnect.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UndeployTimeRaw);
             set => UndeployTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Basic authentication with username and password.</summary>
+    public class BasicAuthentication : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The password SecretManager secret version to authenticate as.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordSecretVersion")]
+        public virtual string PasswordSecretVersion { get; set; }
+
+        /// <summary>Required. The username to authenticate as.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Bearer token authentication with a token.</summary>
+    public class BearerTokenAuthentication : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The token SecretManager secret version to authenticate as.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenSecretVersion")]
+        public virtual string TokenSecretVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4416,6 +4452,10 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gitlabEnterpriseConfig")]
         public virtual GitLabEnterpriseConfig GitlabEnterpriseConfig { get; set; }
 
+        /// <summary>Optional. Configuration for connections to an HTTP service provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpConfig")]
+        public virtual GenericHTTPEndpointConfig HttpConfig { get; set; }
+
         /// <summary>Output only. Installation state of the Connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installationState")]
         public virtual InstallationState InstallationState { get; set; }
@@ -4436,6 +4476,10 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>Configuration for connections to an instance of Secure Source Manager.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secureSourceManagerInstanceConfig")]
+        public virtual SecureSourceManagerInstanceConfig SecureSourceManagerInstanceConfig { get; set; }
 
         /// <summary>Output only. A system-assigned unique identifier for the Connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
@@ -4586,7 +4630,7 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         }
 
         /// <summary>
-        /// Identifier. The name of the DeploymentEvent. This name is provided by DCI. Format:
+        /// Identifier. The name of the DeploymentEvent. This name is provided by Developer Connect insights. Format:
         /// projects/{project}/locations/{location}/insightsConfigs/{insights_config}/deploymentEvents/{uuid}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -4986,6 +5030,37 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Defines the configuration for connections to an HTTP service provider.</summary>
+    public class GenericHTTPEndpointConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Basic authentication with username and password.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basicAuthentication")]
+        public virtual BasicAuthentication BasicAuthentication { get; set; }
+
+        /// <summary>Optional. Bearer token authentication with a token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bearerTokenAuthentication")]
+        public virtual BearerTokenAuthentication BearerTokenAuthentication { get; set; }
+
+        /// <summary>Required. Immutable. The service provider's https endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostUri")]
+        public virtual string HostUri { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration for using Service Directory to privately connect to a HTTP service provider. This
+        /// should only be set if the Http service provider is hosted on-premises and not reachable by public internet.
+        /// If this field is left empty, calls to the HTTP service provider will be made over the public internet.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceDirectoryConfig")]
+        public virtual ServiceDirectoryConfig ServiceDirectoryConfig { get; set; }
+
+        /// <summary>Optional. The SSL certificate to use for requests to the HTTP service provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslCaCertificate")]
+        public virtual string SslCaCertificate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for connections to github.com.</summary>
     public class GitHubConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5041,6 +5116,10 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installationUri")]
         public virtual string InstallationUri { get; set; }
+
+        /// <summary>Optional. Immutable. GitHub Enterprise organization in which the GitHub App is created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organization")]
+        public virtual string Organization { get; set; }
 
         /// <summary>
         /// Optional. SecretManager resource containing the private key of the GitHub App, formatted as
@@ -5423,7 +5502,7 @@ namespace Google.Apis.DeveloperConnect.v1.Data
 
     /// <summary>
     /// The InsightsConfig resource is the core configuration object to capture events from your Software Development
-    /// Lifecycle. It acts as the central hub for managing how Developer connect understands your application, its
+    /// Lifecycle. It acts as the central hub for managing how Developer Connect understands your application, its
     /// runtime environments, and the artifacts deployed within them.
     /// </summary>
     public class InsightsConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -5502,7 +5581,7 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Optional. The GCP projects to track with the InsightsConfig.</summary>
+        /// <summary>Optional. The projects to track with the InsightsConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projects")]
         public virtual Projects Projects { get; set; }
 
@@ -6031,7 +6110,7 @@ namespace Google.Apis.DeveloperConnect.v1.Data
     /// <summary>Projects represents the projects to track with the InsightsConfig.</summary>
     public class Projects : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The GCP Project IDs. Format: projects/{project}</summary>
+        /// <summary>Optional. The project IDs. Format: {project}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectIds")]
         public virtual System.Collections.Generic.IList<string> ProjectIds { get; set; }
 
@@ -6049,7 +6128,7 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
         public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
 
-        /// <summary>Immutable. Developer Connect provided OAuth.</summary>
+        /// <summary>Optional. Immutable. Developer Connect provided OAuth.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("systemProviderId")]
         public virtual string SystemProviderId { get; set; }
 
@@ -6091,6 +6170,19 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for connections to SSM instance</summary>
+    public class SecureSourceManagerInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Immutable. SSM instance resource, formatted as `projects/*/locations/*/instances/*`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instance")]
+        public virtual string Instance { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>ServiceDirectoryConfig represents Service Directory configuration for a connection.</summary>
     public class ServiceDirectoryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6116,14 +6208,11 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; }
 
-        /// <summary>
-        /// https://datatracker.ietf.org/doc/html/rfc7636#section-4.1 Follow http://shortn/_WFYl6U0NyC to include it in
-        /// the AutoCodeURL.
-        /// </summary>
+        /// <summary>Please refer to https://datatracker.ietf.org/doc/html/rfc7636#section-4.1</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codeChallenge")]
         public virtual string CodeChallenge { get; set; }
 
-        /// <summary>https://datatracker.ietf.org/doc/html/rfc7636#section-4.2</summary>
+        /// <summary>Please refer to https://datatracker.ietf.org/doc/html/rfc7636#section-4.2</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codeChallengeMethod")]
         public virtual string CodeChallengeMethod { get; set; }
 
