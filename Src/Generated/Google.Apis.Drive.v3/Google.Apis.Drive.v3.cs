@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3793,10 +3793,10 @@ namespace Google.Apis.Drive.v3
             }
 
             /// <summary>
-            /// Bodies of items (files or documents) to which the query applies. Supported bodies are: * `user` *
-            /// `domain` * `drive` * `allDrives` Prefer `user` or `drive` to `allDrives` for efficiency. By default,
-            /// corpora is set to `user`. However, this can change depending on the filter set through the `q`
-            /// parameter. For more information, see [File
+            /// Specifies a collection of items (files or documents) to which the query applies. Supported items
+            /// include: * `user` * `domain` * `drive` * `allDrives` Prefer `user` or `drive` to `allDrives` for
+            /// efficiency. By default, corpora is set to `user`. However, this can change depending on the filter set
+            /// through the `q` parameter. For more information, see [File
             /// organization](https://developers.google.com/workspace/drive/api/guides/about-files#file-organization).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("corpora", Google.Apis.Util.RequestParameterType.Query)]
@@ -3843,16 +3843,18 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> IncludeTeamDriveItems { get; set; }
 
             /// <summary>
-            /// A comma-separated list of sort keys. Valid keys are: * `createdTime`: When the file was created. *
-            /// `folder`: The folder ID. This field is sorted using alphabetical ordering. * `modifiedByMeTime`: The
-            /// last time the file was modified by the user. * `modifiedTime`: The last time the file was modified by
-            /// anyone. * `name`: The name of the file. This field is sorted using alphabetical ordering, so 1, 12, 2,
-            /// 22. * `name_natural`: The name of the file. This field is sorted using natural sort ordering, so 1, 2,
-            /// 12, 22. * `quotaBytesUsed`: The number of storage quota bytes used by the file. * `recency`: The most
-            /// recent timestamp from the file's date-time fields. * `sharedWithMeTime`: When the file was shared with
-            /// the user, if applicable. * `starred`: Whether the user has starred the file. * `viewedByMeTime`: The
-            /// last time the file was viewed by the user. Each key sorts ascending by default, but can be reversed with
-            /// the `desc` modifier. Example usage: `?orderBy=folder,modifiedTime desc,name`.
+            /// A comma-separated list of sort keys. Valid keys are: * `createdTime`: When the file was created. Avoid
+            /// using this key for queries on large item collections as it might result in timeouts or other issues. For
+            /// time-related sorting on large item collections, use `modifiedTime` instead. * `folder`: The folder ID.
+            /// This field is sorted using alphabetical ordering. * `modifiedByMeTime`: The last time the file was
+            /// modified by the user. * `modifiedTime`: The last time the file was modified by anyone. * `name`: The
+            /// name of the file. This field is sorted using alphabetical ordering, so 1, 12, 2, 22. * `name_natural`:
+            /// The name of the file. This field is sorted using natural sort ordering, so 1, 2, 12, 22. *
+            /// `quotaBytesUsed`: The number of storage quota bytes used by the file. * `recency`: The most recent
+            /// timestamp from the file's date-time fields. * `sharedWithMeTime`: When the file was shared with the
+            /// user, if applicable. * `starred`: Whether the user has starred the file. * `viewedByMeTime`: The last
+            /// time the file was viewed by the user. Each key sorts ascending by default, but can be reversed with the
+            /// `desc` modifier. Example usage: `?orderBy=folder,modifiedTime desc,name`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
