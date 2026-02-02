@@ -4605,8 +4605,8 @@ namespace Google.Apis.DataprocMetastore.v1.Data
     }
 
     /// <summary>
-    /// Metadata about a custom region. This is only populated if the region is a custom region. For single/multi
-    /// regions, it will be empty.
+    /// Deprecated: Use a single region service instead. Metadata about a custom region. This is only populated if the
+    /// region is a custom region. For single/multi regions, it will be empty.
     /// </summary>
     public class CustomRegionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5266,11 +5266,17 @@ namespace Google.Apis.DataprocMetastore.v1.Data
     /// <summary>Metadata about the service in a location.</summary>
     public class LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Possible configurations supported if the current region is a custom region.</summary>
+        /// <summary>
+        /// Deprecated: Use a single region service instead. Possible configurations supported if the current region is
+        /// a custom region.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customRegionMetadata")]
         public virtual System.Collections.Generic.IList<CustomRegionMetadata> CustomRegionMetadata { get; set; }
 
-        /// <summary>The multi-region metadata if the current region is a multi-region.</summary>
+        /// <summary>
+        /// Deprecated: Use a single region service instead. The multi-region metadata if the current region is a
+        /// multi-region.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiRegionMetadata")]
         public virtual MultiRegionMetadata MultiRegionMetadata { get; set; }
 
@@ -5710,8 +5716,9 @@ namespace Google.Apis.DataprocMetastore.v1.Data
     }
 
     /// <summary>
-    /// The metadata for the multi-region that includes the constituent regions. The metadata is only populated if the
-    /// region is multi-region. For single region or custom dual region, it will be empty.
+    /// Deprecated: Use a single region service instead. The metadata for the multi-region that includes the constituent
+    /// regions. The metadata is only populated if the region is multi-region. For single region or custom dual region,
+    /// it will be empty.
     /// </summary>
     public class MultiRegionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
