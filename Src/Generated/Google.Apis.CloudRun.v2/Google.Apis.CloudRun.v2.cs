@@ -5005,6 +5005,14 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cancelledCount")]
         public virtual System.Nullable<int> CancelledCount { get; set; }
 
+        /// <summary>Output only. Arbitrary identifier for the API client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("client")]
+        public virtual string Client { get; set; }
+
+        /// <summary>Output only. Arbitrary version identifier for the API client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientVersion")]
+        public virtual string ClientVersion { get; set; }
+
         private string _completionTimeRaw;
 
         private object _completionTime;
@@ -5213,7 +5221,7 @@ namespace Google.Apis.CloudRun.v2.Data
         /// The least stable launch stage needed to create this resource, as defined by [Google Cloud Platform Launch
         /// Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. Note
         /// that this value might not be what was used as input. For example, if ALPHA was provided as input in the
-        /// parent resource, but only BETA and GA-level features are were, this field will be BETA.
+        /// parent resource, but only BETA and GA-level features are used, this field will be BETA.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
         public virtual string LaunchStage { get; set; }
@@ -5506,6 +5514,14 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        /// <summary>Optional. Arbitrary identifier for the API client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("client")]
+        public virtual string Client { get; set; }
+
+        /// <summary>Optional. Arbitrary version identifier for the API client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientVersion")]
+        public virtual string ClientVersion { get; set; }
 
         /// <summary>
         /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are
@@ -6725,6 +6741,14 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
+        /// <summary>Output only. Arbitrary identifier for the API client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("client")]
+        public virtual string Client { get; set; }
+
+        /// <summary>Output only. Arbitrary version identifier for the API client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientVersion")]
+        public virtual string ClientVersion { get; set; }
+
         /// <summary>
         /// Output only. The Condition of this Revision, containing its readiness status, and detailed error information
         /// in case it did not reach a serving state.
@@ -6910,7 +6934,7 @@ namespace Google.Apis.CloudRun.v2.Data
         /// The least stable launch stage needed to create this resource, as defined by [Google Cloud Platform Launch
         /// Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. Note
         /// that this value might not be what was used as input. For example, if ALPHA was provided as input in the
-        /// parent resource, but only BETA and GA-level features are were, this field will be BETA.
+        /// parent resource, but only BETA and GA-level features are used, this field will be BETA.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
         public virtual string LaunchStage { get; set; }
@@ -7079,6 +7103,14 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        /// <summary>Optional. Arbitrary identifier for the API client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("client")]
+        public virtual string Client { get; set; }
+
+        /// <summary>Optional. Arbitrary version identifier for the API client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientVersion")]
+        public virtual string ClientVersion { get; set; }
 
         /// <summary>Holds the single container that defines the unit of execution for this Revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containers")]
@@ -8916,6 +8948,14 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        /// <summary>Optional. Arbitrary identifier for the API client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("client")]
+        public virtual string Client { get; set; }
+
+        /// <summary>Optional. Arbitrary version identifier for the API client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientVersion")]
+        public virtual string ClientVersion { get; set; }
 
         /// <summary>Holds list of the containers that defines the unit of execution for this Revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containers")]
