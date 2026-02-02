@@ -5261,11 +5261,11 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         public virtual System.Collections.Generic.IList<AllowedKeyType> AllowedKeyTypes { get; set; }
 
         /// <summary>
-        /// Optional. The duration to backdate all certificates issued from this CaPool. If not set, the certificates
-        /// will be issued with a not_before_time of the issuance time (i.e. the current time). If set, the certificates
-        /// will be issued with a not_before_time of the issuance time minus the backdate_duration. The not_after_time
-        /// will be adjusted to preserve the requested lifetime. The backdate_duration must be less than or equal to 48
-        /// hours.
+        /// Optional. If set, all certificates issued from this CaPool will be backdated by this duration. The
+        /// 'not_before_time' will be the issuance time minus this backdate_duration, and the 'not_after_time' will be
+        /// adjusted to preserve the requested lifetime. The maximum duration that a certificate can be backdated with
+        /// these options is 48 hours in the past. This option cannot be set if
+        /// allow_requester_specified_not_before_time is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backdateDuration")]
         public virtual object BackdateDuration { get; set; }
