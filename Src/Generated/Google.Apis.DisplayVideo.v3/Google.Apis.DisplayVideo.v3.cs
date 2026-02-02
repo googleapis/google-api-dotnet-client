@@ -383,7 +383,7 @@ namespace Google.Apis.DisplayVideo.v3
 
             /// <summary>Gets an ad group ad.</summary>
             /// <param name="advertiserId">Required. The ID of the advertiser this ad group ad belongs to.</param>
-            /// <param name="adGroupAdId">Required. The ID of the ad group ad to fetch.</param>
+            /// <param name="adGroupAdId">Required. The ID of the ad to fetch.</param>
             public virtual GetRequest Get(long advertiserId, long adGroupAdId)
             {
                 return new GetRequest(this.service, advertiserId, adGroupAdId);
@@ -404,7 +404,7 @@ namespace Google.Apis.DisplayVideo.v3
                 [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long AdvertiserId { get; private set; }
 
-                /// <summary>Required. The ID of the ad group ad to fetch.</summary>
+                /// <summary>Required. The ID of the ad to fetch.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("adGroupAdId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long AdGroupAdId { get; private set; }
 
@@ -441,7 +441,7 @@ namespace Google.Apis.DisplayVideo.v3
             }
 
             /// <summary>Lists ad group ads.</summary>
-            /// <param name="advertiserId">Required. The ID of the advertiser the ad groups belongs to.</param>
+            /// <param name="advertiserId">Required. The ID of the advertiser the ads belong to.</param>
             public virtual ListRequest List(long advertiserId)
             {
                 return new ListRequest(this.service, advertiserId);
@@ -457,13 +457,13 @@ namespace Google.Apis.DisplayVideo.v3
                     InitParameters();
                 }
 
-                /// <summary>Required. The ID of the advertiser the ad groups belongs to.</summary>
+                /// <summary>Required. The ID of the advertiser the ads belong to.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long AdvertiserId { get; private set; }
 
                 /// <summary>
-                /// Optional. Allows filtering by custom ad group ad fields. Supported syntax: * Filter expressions are
-                /// made up of one or more restrictions. * Restrictions can be combined by `AND` and `OR`. A sequence of
+                /// Optional. Allows filtering by ad group ad fields. Supported syntax: * Filter expressions are made up
+                /// of one or more restrictions. * Restrictions can be combined by `AND` and `OR`. A sequence of
                 /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. *
                 /// All fields must use the `EQUALS (=)` operator. Supported fields: * `adGroupId` * `displayName` *
                 /// `entityStatus` * `adGroupAdId` Examples: * All ad group ads under an ad group: `adGroupId="1234"` *
@@ -19385,7 +19385,7 @@ namespace Google.Apis.DisplayVideo.v3.Data
     /// <summary>A single ad associated with an ad group.</summary>
     public class AdGroupAd : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The unique ID of the ad. Assigned by the system.</summary>
+        /// <summary>Output only. The unique ID of the ad. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupAdId")]
         public virtual System.Nullable<long> AdGroupAdId { get; set; }
 
@@ -19397,7 +19397,7 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupId")]
         public virtual System.Nullable<long> AdGroupId { get; set; }
 
-        /// <summary>The policy approval status of the ad.</summary>
+        /// <summary>Output only. The policy approval status of the ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adPolicy")]
         public virtual AdPolicy AdPolicy { get; set; }
 
@@ -19405,7 +19405,7 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adUrls")]
         public virtual System.Collections.Generic.IList<AdUrl> AdUrls { get; set; }
 
-        /// <summary>The unique ID of the advertiser the ad belongs to.</summary>
+        /// <summary>Output only. The unique ID of the advertiser the ad belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Nullable<long> AdvertiserId { get; set; }
 
@@ -19448,7 +19448,7 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mastheadAd")]
         public virtual MastheadAd MastheadAd { get; set; }
 
-        /// <summary>The resource name of the ad.</summary>
+        /// <summary>Output only. The resource name of the ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -26272,7 +26272,7 @@ namespace Google.Apis.DisplayVideo.v3.Data
 
     public class ListAdGroupAdsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of ad group ads. This list will be absent if empty.</summary>
+        /// <summary>The list of ads. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupAds")]
         public virtual System.Collections.Generic.IList<AdGroupAd> AdGroupAds { get; set; }
 
