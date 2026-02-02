@@ -1208,6 +1208,13 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>When set in OperationStep, indicates that cluster health check should be performed.</summary>
+    public class CheckClusterHealth : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A collection of virtual machines and connected resources forming a high-performance computing cluster capable of
     /// running large-scale, tightly coupled workloads. A cluster combines a set a compute resources that perform
@@ -1426,6 +1433,196 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
         /// <summary>Optional. Immutable. If set, indicates that this resource should use spot VMs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newSpotInstances")]
         public virtual NewSpotInstancesConfig NewSpotInstances { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>When set in OperationStep, indicates that a new filestore instance should be created.</summary>
+    public class CreateFilestoreInstance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Name of the Filestore instance, in the format
+        /// `projects/{project}/locations/{location}/instances/{instance}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filestore")]
+        public virtual string Filestore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>When set in OperationStep, indicates that a login node should be created.</summary>
+    public class CreateLoginNode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>When set in OperationStep, indicates that a new lustre instance should be created.</summary>
+    public class CreateLustreInstance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Name of the Managed Lustre instance, in the format
+        /// `projects/{project}/locations/{location}/instances/{instance}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lustre")]
+        public virtual string Lustre { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>When set in OperationStep, indicates that a new network should be created.</summary>
+    public class CreateNetwork : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Name of the network to create, in the format `projects/{project}/global/networks/{network}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>When set in OperationStep, indicates that a nodeset should be created.</summary>
+    public class CreateNodeset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Name of the nodeset to create</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodesets")]
+        public virtual System.Collections.Generic.IList<string> Nodesets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>When set in OperationStep, indicates that an orchestrator should be created.</summary>
+    public class CreateOrchestrator : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>When set in OperationStep, indicates that a partition should be created.</summary>
+    public class CreatePartition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Name of the partition to create</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitions")]
+        public virtual System.Collections.Generic.IList<string> Partitions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>When set in OperationStep, indicates that a new private service access should be created.</summary>
+    public class CreatePrivateServiceAccess : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>When set in OperationStep, indicates that a new storage bucket should be created.</summary>
+    public class CreateStorageBucket : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Name of the bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>When set in OperationStep, indicates that a Filestore instance should be deleted.</summary>
+    public class DeleteFilestoreInstance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Name of the Filestore instance, in the format
+        /// `projects/{project}/locations/{location}/instances/{instance}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filestore")]
+        public virtual string Filestore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>When set in OperationStep, indicates that a login node should be deleted.</summary>
+    public class DeleteLoginNode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>When set in OperationStep, indicates that a Lustre instance should be deleted.</summary>
+    public class DeleteLustreInstance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Name of the Managed Lustre instance, in the format
+        /// `projects/{project}/locations/{location}/instances/{instance}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lustre")]
+        public virtual string Lustre { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>When set in OperationStep, indicates network deletion step with the resource name.</summary>
+    public class DeleteNetwork : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Name of the network to delete, in the format `projects/{project}/global/networks/{network}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>When set in OperationStep, indicates that a nodeset should be deleted.</summary>
+    public class DeleteNodeset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Name of the nodeset to delete</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodesets")]
+        public virtual System.Collections.Generic.IList<string> Nodesets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>When set in OperationStep, indicates that an orchestrator should be deleted.</summary>
+    public class DeleteOrchestrator : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>When set in OperationStep, indicates that a partition should be deleted.</summary>
+    public class DeletePartition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Name of the partition to delete</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitions")]
+        public virtual System.Collections.Generic.IList<string> Partitions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>When set in OperationStep, indicates private service access deletion step.</summary>
+    public class DeletePrivateServiceAccess : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>When set in OperationStep, indicates that Cloud Storage bucket should be deleted.</summary>
+    public class DeleteStorageBucket : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Name of the bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2085,6 +2282,10 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. Progress of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progress")]
+        public virtual OperationProgress Progress { get; set; }
+
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
         /// been cancelled successfully have google.longrunning.Operation.error value with a google.rpc.Status.code of
@@ -2100,6 +2301,132 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing the progress of a cluster mutation long-running operation. operation.</summary>
+    public class OperationProgress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Steps and status of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("steps")]
+        public virtual System.Collections.Generic.IList<OperationStep> Steps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing the status of a single step in a cluster mutation long-running operation.</summary>
+    public class OperationStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. If set, indicates that cluster health check is part of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checkClusterHealth")]
+        public virtual CheckClusterHealth CheckClusterHealth { get; set; }
+
+        /// <summary>
+        /// Output only. If set, indicates that new Filestore instance creation is part of the operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createFilestoreInstance")]
+        public virtual CreateFilestoreInstance CreateFilestoreInstance { get; set; }
+
+        /// <summary>Output only. If set, indicates that new login node creation is part of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createLoginNode")]
+        public virtual CreateLoginNode CreateLoginNode { get; set; }
+
+        /// <summary>
+        /// Output only. If set, indicates that new Lustre instance creation is part of the operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createLustreInstance")]
+        public virtual CreateLustreInstance CreateLustreInstance { get; set; }
+
+        /// <summary>Output only. If set, indicates that new network creation is part of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createNetwork")]
+        public virtual CreateNetwork CreateNetwork { get; set; }
+
+        /// <summary>Output only. If set, indicates that new nodeset creation is part of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createNodeset")]
+        public virtual CreateNodeset CreateNodeset { get; set; }
+
+        /// <summary>Output only. If set, indicates that orchestrator creation is part of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createOrchestrator")]
+        public virtual CreateOrchestrator CreateOrchestrator { get; set; }
+
+        /// <summary>Output only. If set, indicates that new partition creation is part of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createPartition")]
+        public virtual CreatePartition CreatePartition { get; set; }
+
+        /// <summary>
+        /// Output only. If set, indicates that new private service access creation is part of the operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createPrivateServiceAccess")]
+        public virtual CreatePrivateServiceAccess CreatePrivateServiceAccess { get; set; }
+
+        /// <summary>
+        /// Output only. If set, indicates that new Cloud Storage bucket creation is part of the operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createStorageBucket")]
+        public virtual CreateStorageBucket CreateStorageBucket { get; set; }
+
+        /// <summary>Output only. If set, indicates that Filestore instance deletion is part of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteFilestoreInstance")]
+        public virtual DeleteFilestoreInstance DeleteFilestoreInstance { get; set; }
+
+        /// <summary>Output only. If set, indicates that login node deletion is part of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteLoginNode")]
+        public virtual DeleteLoginNode DeleteLoginNode { get; set; }
+
+        /// <summary>Output only. If set, indicates that Lustre instance deletion is part of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteLustreInstance")]
+        public virtual DeleteLustreInstance DeleteLustreInstance { get; set; }
+
+        /// <summary>Output only. If set, indicates that network deletion is part of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteNetwork")]
+        public virtual DeleteNetwork DeleteNetwork { get; set; }
+
+        /// <summary>Output only. If set, indicates that nodeset deletion is part of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteNodeset")]
+        public virtual DeleteNodeset DeleteNodeset { get; set; }
+
+        /// <summary>Output only. If set, indicates that orchestrator deletion is part of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteOrchestrator")]
+        public virtual DeleteOrchestrator DeleteOrchestrator { get; set; }
+
+        /// <summary>Output only. If set, indicates that partition deletion is part of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletePartition")]
+        public virtual DeletePartition DeletePartition { get; set; }
+
+        /// <summary>
+        /// Output only. If set, indicates that private service access deletion is part of the operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletePrivateServiceAccess")]
+        public virtual DeletePrivateServiceAccess DeletePrivateServiceAccess { get; set; }
+
+        /// <summary>
+        /// Output only. If set, indicates that Cloud Storage bucket deletion is part of the operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteStorageBucket")]
+        public virtual DeleteStorageBucket DeleteStorageBucket { get; set; }
+
+        /// <summary>Output only. State of the operation step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. If set, indicates that login node update is part of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateLoginNode")]
+        public virtual UpdateLoginNode UpdateLoginNode { get; set; }
+
+        /// <summary>Output only. If set, indicates that nodeset update is part of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateNodeset")]
+        public virtual UpdateNodeset UpdateNodeset { get; set; }
+
+        /// <summary>Output only. If set, indicates that an orchestrator update is part of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateOrchestrator")]
+        public virtual UpdateOrchestrator UpdateOrchestrator { get; set; }
+
+        /// <summary>Output only. If set, indicates that partition update is part of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updatePartition")]
+        public virtual UpdatePartition UpdatePartition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2443,6 +2770,42 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newLustre")]
         public virtual NewLustreConfig NewLustre { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>When set in OperationStep, indicates that a login node should be updated.</summary>
+    public class UpdateLoginNode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>When set in OperationStep, indicates that a nodeset should be updated.</summary>
+    public class UpdateNodeset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Name of the nodeset to update</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodesets")]
+        public virtual System.Collections.Generic.IList<string> Nodesets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>When set in OperationStep, indicates that an orchestrator should be updated.</summary>
+    public class UpdateOrchestrator : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>When set in OperationStep, indicates that a partition should be updated.</summary>
+    public class UpdatePartition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Name of the partition to update</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitions")]
+        public virtual System.Collections.Generic.IList<string> Partitions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
