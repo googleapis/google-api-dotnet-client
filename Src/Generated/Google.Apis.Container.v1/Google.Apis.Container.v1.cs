@@ -6682,6 +6682,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rayOperatorConfig")]
         public virtual RayOperatorConfig RayOperatorConfig { get; set; }
 
+        /// <summary>Optional. Configuration for the slice controller add-on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sliceControllerConfig")]
+        public virtual SliceControllerConfig SliceControllerConfig { get; set; }
+
         /// <summary>Optional. Configuration for the StatefulHA add-on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statefulHaConfig")]
         public virtual StatefulHAConfig StatefulHaConfig { get; set; }
@@ -7126,6 +7130,21 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Disk size in GB. Replaces NodeConfig.disk_size_gb</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
         public virtual System.Nullable<long> SizeGb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Swap on the node's boot disk.</summary>
+    public class BootDiskProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the size of the swap space in gibibytes (GiB).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("swapSizeGib")]
+        public virtual System.Nullable<long> SwapSizeGib { get; set; }
+
+        /// <summary>Specifies the size of the swap space as a percentage of the boot disk size.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("swapSizePercent")]
+        public virtual System.Nullable<int> SwapSizePercent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8589,6 +8608,17 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Provisions a new, separate local NVMe SSD exclusively for swap.</summary>
+    public class DedicatedLocalSsdProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of physical local NVMe SSD disks to attach.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskCount")]
+        public virtual System.Nullable<long> DiskCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>DefaultComputeClassConfig defines default compute class configuration.</summary>
     public class DefaultComputeClassConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8698,6 +8728,17 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Defines encryption settings for the swap space.</summary>
+    public class EncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. If true, swap space will not be encrypted. Defaults to false (encrypted).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// EnterpriseConfig is the cluster enterprise configuration. Deprecated: GKE Enterprise features are now available
     /// without an Enterprise tier.
@@ -8711,6 +8752,21 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>desired_tier specifies the desired tier of the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredTier")]
         public virtual string DesiredTier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Swap on the local SSD shared with pod ephemeral storage.</summary>
+    public class EphemeralLocalSsdProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the size of the swap space in gibibytes (GiB).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("swapSizeGib")]
+        public virtual System.Nullable<long> SwapSizeGib { get; set; }
+
+        /// <summary>Specifies the size of the swap space as a percentage of the ephemeral local SSD capacity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("swapSizePercent")]
+        public virtual System.Nullable<int> SwapSizePercent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8987,6 +9043,17 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretUri")]
         public virtual string SecretUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>GPUDirectConfig specifies the GPU direct strategy on the node pool.</summary>
+    public class GPUDirectConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of GPU direct strategy to enable on the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpuDirectStrategy")]
+        public virtual string GpuDirectStrategy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9644,6 +9711,10 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeKernelModuleLoading")]
         public virtual NodeKernelModuleLoading NodeKernelModuleLoading { get; set; }
+
+        /// <summary>Optional. Enables and configures swap space on nodes. If omitted, swap is disabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("swapConfig")]
+        public virtual SwapConfig SwapConfig { get; set; }
 
         /// <summary>
         /// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following
@@ -10375,6 +10446,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Google Container File System (image streaming) configs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcfsConfig")]
         public virtual GcfsConfig GcfsConfig { get; set; }
+
+        /// <summary>The configuration for GPU Direct</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpuDirectConfig")]
+        public virtual GPUDirectConfig GpuDirectConfig { get; set; }
 
         /// <summary>Enable or disable gvnic in the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gvnic")]
@@ -12794,6 +12869,17 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for the Slice Controller.</summary>
+    public class SliceControllerConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Indicates whether Slice Controller is enabled in the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// SoleTenantConfig contains the NodeAffinities to specify what shared sole tenant node groups should back the node
     /// pool.
@@ -12935,6 +13021,33 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Human-friendly representation of the condition</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for swap memory on a node pool.</summary>
+    public class SwapConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Swap on the node's boot disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootDiskProfile")]
+        public virtual BootDiskProfile BootDiskProfile { get; set; }
+
+        /// <summary>Provisions a new, separate local NVMe SSD exclusively for swap.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dedicatedLocalSsdProfile")]
+        public virtual DedicatedLocalSsdProfile DedicatedLocalSsdProfile { get; set; }
+
+        /// <summary>Optional. Enables or disables swap for the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Optional. If omitted, swap space is encrypted by default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
+        public virtual EncryptionConfig EncryptionConfig { get; set; }
+
+        /// <summary>Swap on the local SSD shared with pod ephemeral storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ephemeralLocalSsdProfile")]
+        public virtual EphemeralLocalSsdProfile EphemeralLocalSsdProfile { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
