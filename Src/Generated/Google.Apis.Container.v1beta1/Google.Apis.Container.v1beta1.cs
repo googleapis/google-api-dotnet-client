@@ -6878,6 +6878,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rayOperatorConfig")]
         public virtual RayOperatorConfig RayOperatorConfig { get; set; }
 
+        /// <summary>Optional. Configuration for the slice controller add-on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sliceControllerConfig")]
+        public virtual SliceControllerConfig SliceControllerConfig { get; set; }
+
         /// <summary>Optional. Configuration for the StatefulHA add-on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statefulHaConfig")]
         public virtual StatefulHAConfig StatefulHaConfig { get; set; }
@@ -9543,6 +9547,17 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>GPUDirectConfig specifies the GPU direct strategy on the node pool.</summary>
+    public class GPUDirectConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of GPU direct strategy to enable on the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpuDirectStrategy")]
+        public virtual string GpuDirectStrategy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>GPUDriverInstallationConfig specifies the version of GPU driver to be auto installed.</summary>
     public class GPUDriverInstallationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11052,6 +11067,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>GCFS (Google Container File System) configs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcfsConfig")]
         public virtual GcfsConfig GcfsConfig { get; set; }
+
+        /// <summary>The configuration for GPU Direct</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpuDirectConfig")]
+        public virtual GPUDirectConfig GpuDirectConfig { get; set; }
 
         /// <summary>Enable or disable gvnic on the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gvnic")]
@@ -13658,6 +13677,17 @@ namespace Google.Apis.Container.v1beta1.Data
     public class ShieldedNodes : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether Shielded Nodes features are enabled on all nodes in this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the Slice Controller.</summary>
+    public class SliceControllerConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Indicates whether Slice Controller is enabled in the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
