@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.DataprocMetastore.v1beta Client Library</Title>
-    <Version>1.73.0.3981</Version>
+    <Version>1.73.0.4039</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2026 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
