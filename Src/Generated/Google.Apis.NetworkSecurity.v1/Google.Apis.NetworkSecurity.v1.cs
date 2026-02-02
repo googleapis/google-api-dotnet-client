@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1920,14 +1920,14 @@ namespace Google.Apis.NetworkSecurity.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Maximum number of SecurityProfileGroups to return per call.</summary>
+                    /// <summary>Optional. Maximum number of SecurityProfileGroups to return per call.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// The value returned by the last `ListSecurityProfileGroupsResponse` Indicates that this is a
-                    /// continuation of a prior `ListSecurityProfileGroups` call, and that the system should return the
-                    /// next page of data.
+                    /// Optional. The value returned by the last `ListSecurityProfileGroupsResponse` Indicates that this
+                    /// is a continuation of a prior `ListSecurityProfileGroups` call, and that the system should return
+                    /// the next page of data.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -2283,12 +2283,12 @@ namespace Google.Apis.NetworkSecurity.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Maximum number of SecurityProfiles to return per call.</summary>
+                    /// <summary>Optional. Maximum number of SecurityProfiles to return per call.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// The value returned by the last `ListSecurityProfilesResponse` Indicates that this is a
+                    /// Optional. The value returned by the last `ListSecurityProfilesResponse` Indicates that this is a
                     /// continuation of a prior `ListSecurityProfiles` call, and that the system should return the next
                     /// page of data.
                     /// </summary>
@@ -12436,14 +12436,24 @@ namespace Google.Apis.NetworkSecurity.v1
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -16302,6 +16312,10 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         /// <summary>Output only. The current state of the endpoint group. See https://google.aip.dev/216.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>Immutable. The type of the endpoint group. If left unspecified, defaults to DIRECT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         private string _updateTimeRaw;
 
