@@ -3793,13 +3793,16 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string LoadBalancerType { get; set; }
 
         /// <summary>
-        /// A VPC network URI. Used according to the `network_type`. Relevant only for the source endpoints.
+        /// A VPC network URI. For source endpoints, used according to the `network_type`. For destination endpoints,
+        /// used only when the source is an external IP address endpoint, and the destination is an internal IP address
+        /// endpoint.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
         /// <summary>
-        /// Type of the network where the endpoint is located. Relevant only for the source endpoints.
+        /// For source endpoints, type of the network where the endpoint is located. Not relevant for destination
+        /// endpoints.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkType")]
         public virtual string NetworkType { get; set; }
@@ -3809,7 +3812,8 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual System.Nullable<int> Port { get; set; }
 
         /// <summary>
-        /// Endpoint project ID. Used according to the `network_type`. Relevant only for the source endpoints.
+        /// For source endpoints, endpoint project ID. Used according to the `network_type`. Not relevant for
+        /// destination endpoints.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
