@@ -12416,6 +12416,83 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
             }
 
+            /// <summary>Defers the renewal of a subscription.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="packageName">
+            /// Required. The package of the application for which this subscription was purchased (for example,
+            /// 'com.some.thing').
+            /// </param>
+            /// <param name="token">
+            /// Required. The token provided to the user's device when the subscription was purchased.
+            /// </param>
+            public virtual DeferRequest Defer(Google.Apis.AndroidPublisher.v3.Data.DeferSubscriptionPurchaseRequest body, string packageName, string token)
+            {
+                return new DeferRequest(this.service, body, packageName, token);
+            }
+
+            /// <summary>Defers the renewal of a subscription.</summary>
+            public class DeferRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.DeferSubscriptionPurchaseResponse>
+            {
+                /// <summary>Constructs a new Defer request.</summary>
+                public DeferRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.DeferSubscriptionPurchaseRequest body, string packageName, string token) : base(service)
+                {
+                    PackageName = packageName;
+                    Token = token;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The package of the application for which this subscription was purchased (for example,
+                /// 'com.some.thing').
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>
+                /// Required. The token provided to the user's device when the subscription was purchased.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Token { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidPublisher.v3.Data.DeferSubscriptionPurchaseRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "defer";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}:defer";
+
+                /// <summary>Initializes Defer parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("token", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "token",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
             /// <summary>Get metadata about a subscription</summary>
             /// <param name="packageName">
             /// The package of the application for which this subscription was purchased (for example,
@@ -14465,6 +14542,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details about base price offer phase.</summary>
+    public class BasePriceOfferPhase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for BatchDeleteOneTimeProductOffers.</summary>
     public class BatchDeleteOneTimeProductOffersRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15261,6 +15345,51 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for the v2 purchases.subscriptions.defer API.</summary>
+    public class DeferSubscriptionPurchaseRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Details about the subscription deferral.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deferralContext")]
+        public virtual DeferralContext DeferralContext { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the v2 purchases.subscriptions.defer API.</summary>
+    public class DeferSubscriptionPurchaseResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The new expiry time for each subscription items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemExpiryTimeDetails")]
+        public virtual System.Collections.Generic.IList<ItemExpiryTimeDetails> ItemExpiryTimeDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Deferral context of the purchases.subscriptionsv2.defer API.</summary>
+    public class DeferralContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The duration by which all subscription items should be deferred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deferDuration")]
+        public virtual object DeferDuration { get; set; }
+
+        /// <summary>
+        /// Required. The API will fail if the etag does not match the latest etag for this subscription. The etag is
+        /// retrieved from purchases.subscriptionsv2.get:
+        /// https://developers.google.com/android-publisher/api-ref/rest/v3/purchases.subscriptionsv2/get
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// If set to "true", the request is a dry run to validate the effect of Defer, the subscription would not be
+        /// impacted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
     }
 
     /// <summary>Information related to deferred item replacement.</summary>
@@ -16100,6 +16229,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details about free trial offer phase.</summary>
+    public class FreeTrialOfferPhase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A full refund of the remaining amount of a transaction.</summary>
     public class FullRefund : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16790,6 +16926,61 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details about introductory price offer phase.</summary>
+    public class IntroductoryPriceOfferPhase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Expiry time details of a subscription item.</summary>
+    public class ItemExpiryTimeDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _expiryTimeRaw;
+
+        private object _expiryTime;
+
+        /// <summary>The new expiry time for this subscription item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expiryTime")]
+        public virtual string ExpiryTimeRaw
+        {
+            get => _expiryTimeRaw;
+            set
+            {
+                _expiryTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expiryTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpiryTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpiryTimeDateTimeOffset instead.")]
+        public virtual object ExpiryTime
+        {
+            get => _expiryTime;
+            set
+            {
+                _expiryTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expiryTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpiryTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpiryTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpiryTimeRaw);
+            set => ExpiryTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The product ID of the subscription item (for example, 'premium_plan').</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details about a subscription line item that is being replaced.</summary>
     public class ItemReplacement : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17268,6 +17459,29 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offerTags")]
         public virtual System.Collections.Generic.IList<string> OfferTags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Offer phase details.</summary>
+    public class OfferPhase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Set when the offer phase is a base plan pricing phase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basePrice")]
+        public virtual BasePriceOfferPhase BasePrice { get; set; }
+
+        /// <summary>Set when the offer phase is a free trial.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeTrial")]
+        public virtual FreeTrialOfferPhase FreeTrial { get; set; }
+
+        /// <summary>Set when the offer phase is an introductory price offer phase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("introductoryPrice")]
+        public virtual IntroductoryPriceOfferPhase IntroductoryPrice { get; set; }
+
+        /// <summary>Set when the offer phase is a proration period.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prorationPeriod")]
+        public virtual ProrationPeriodOfferPhase ProrationPeriod { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19014,6 +19228,20 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details about proration period offer phase.</summary>
+    public class ProrationPeriodOfferPhase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The original offer phase type before the proration period. Only set when the proration period is updated
+        /// from an existing offer phase.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalOfferPhaseType")]
+        public virtual string OriginalOfferPhaseType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Details about taxation, Google Play policy and legal compliance for one-time product purchase options.
     /// </summary>
@@ -20599,6 +20827,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("offerDetails")]
         public virtual OfferDetails OfferDetails { get; set; }
 
+        /// <summary>Current offer phase details for this item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerPhase")]
+        public virtual OfferPhase OfferPhase { get; set; }
+
         /// <summary>The item is prepaid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prepaidPlan")]
         public virtual PrepaidPlan PrepaidPlan { get; set; }
@@ -20628,6 +20860,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canceledStateContext")]
         public virtual CanceledStateContext CanceledStateContext { get; set; }
+
+        /// <summary>
+        /// Entity tag representing the current state of the subscription. The developer will provide this etag for
+        /// subscription actions. This etag is always present for auto-renewing and prepaid subscriptions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
 
         /// <summary>User account identifier in the third-party service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalAccountIdentifiers")]
@@ -20734,9 +20973,6 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Only present if this subscription purchase is a test purchase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testPurchase")]
         public virtual TestPurchase TestPurchase { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>Request for the purchases.subscriptions.acknowledge API.</summary>
@@ -21226,10 +21462,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Representation of a single country where the contents of a track are available.</summary>
+    /// <summary>Representation of a single country where the contents of a track can be made available.</summary>
     public class TrackTargetedCountry : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The country to target, as a two-letter CLDR code.</summary>
+        /// <summary>The country that can be targeted, as a two-letter CLDR code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
         public virtual string CountryCode { get; set; }
 
