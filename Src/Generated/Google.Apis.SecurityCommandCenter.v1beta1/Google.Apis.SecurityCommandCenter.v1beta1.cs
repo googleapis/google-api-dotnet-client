@@ -2371,6 +2371,52 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents an ADC application associated with the finding.</summary>
+    public class AdcApplication : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Consumer provided attributes for the AppHub application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual GoogleCloudSecuritycenterV1ResourceApplicationAttributes Attributes { get; set; }
+
+        /// <summary>
+        /// The resource name of an ADC Application. Format:
+        /// projects/{project}/locations/{location}/spaces/{space}/applications/{application}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an ADC template associated with the finding.</summary>
+    public class AdcApplicationTemplateRevision : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of an ADC Application Template Revision. Format:
+        /// projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{application_template}/revisions/{revision}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an ADC shared template associated with the finding.</summary>
+    public class AdcSharedTemplateRevision : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of an ADC Shared Template Revision. Format:
+        /// projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{application_template}/revisions/{revision}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details about resources affected by this finding.</summary>
     public class AffectedResources : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5656,6 +5702,18 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
     /// <summary>Information related to the Google Cloud resource.</summary>
     public class GoogleCloudSecuritycenterV1Resource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ADC application associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adcApplication")]
+        public virtual AdcApplication AdcApplication { get; set; }
+
+        /// <summary>The ADC template associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adcApplicationTemplate")]
+        public virtual AdcApplicationTemplateRevision AdcApplicationTemplate { get; set; }
+
+        /// <summary>The ADC shared template associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adcSharedTemplate")]
+        public virtual AdcSharedTemplateRevision AdcSharedTemplate { get; set; }
+
         /// <summary>The App Hub application this resource belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("application")]
         public virtual GoogleCloudSecuritycenterV1ResourceApplication Application { get; set; }
@@ -6720,6 +6778,52 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<double> Confidence { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an ADC application associated with the finding.</summary>
+    public class GoogleCloudSecuritycenterV2AdcApplication : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Consumer provided attributes for the AppHub application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual GoogleCloudSecuritycenterV2ResourceApplicationAttributes Attributes { get; set; }
+
+        /// <summary>
+        /// The resource name of an ADC Application. Format:
+        /// projects/{project}/locations/{location}/spaces/{space}/applications/{application}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an ADC template associated with the finding.</summary>
+    public class GoogleCloudSecuritycenterV2AdcApplicationTemplateRevision : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of an ADC Application Template Revision. Format:
+        /// projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{application_template}/revisions/{revision}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an ADC shared template associated with the finding.</summary>
+    public class GoogleCloudSecuritycenterV2AdcSharedTemplateRevision : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of an ADC Shared Template Revision. Format:
+        /// projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{application_template}/revisions/{revision}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9702,6 +9806,18 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
     /// <summary>A resource associated with the an issue.</summary>
     public class GoogleCloudSecuritycenterV2IssueResource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ADC application associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adcApplication")]
+        public virtual GoogleCloudSecuritycenterV2IssueResourceAdcApplication AdcApplication { get; set; }
+
+        /// <summary>The ADC template associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adcApplicationTemplate")]
+        public virtual GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateRevision AdcApplicationTemplate { get; set; }
+
+        /// <summary>The ADC shared template associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adcSharedTemplate")]
+        public virtual GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevision AdcSharedTemplate { get; set; }
+
         /// <summary>
         /// The AppHub application associated with the resource, if any. Only populated for the primary resource.
         /// </summary>
@@ -9742,6 +9858,52 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// <summary>The type of the resource associated with the issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an ADC application associated with the finding.</summary>
+    public class GoogleCloudSecuritycenterV2IssueResourceAdcApplication : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Consumer provided attributes for the AppHub application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes Attributes { get; set; }
+
+        /// <summary>
+        /// The resource name of an ADC Application. Format:
+        /// projects/{project}/locations/{location}/spaces/{space}/applications/{application}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an ADC template associated with the finding.</summary>
+    public class GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateRevision : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of an ADC Application Template Revision. Format:
+        /// projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{application_template}/revisions/{revision}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an ADC shared template associated with the finding.</summary>
+    public class GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevision : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of an ADC Shared Template Revision. Format:
+        /// projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{application_template}/revisions/{revision}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10766,6 +10928,18 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
     /// <summary>Information related to the Google Cloud resource.</summary>
     public class GoogleCloudSecuritycenterV2Resource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ADC application associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adcApplication")]
+        public virtual GoogleCloudSecuritycenterV2AdcApplication AdcApplication { get; set; }
+
+        /// <summary>The ADC template associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adcApplicationTemplate")]
+        public virtual GoogleCloudSecuritycenterV2AdcApplicationTemplateRevision AdcApplicationTemplate { get; set; }
+
+        /// <summary>The ADC shared template associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adcSharedTemplate")]
+        public virtual GoogleCloudSecuritycenterV2AdcSharedTemplateRevision AdcSharedTemplate { get; set; }
+
         /// <summary>The App Hub application this resource belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("application")]
         public virtual GoogleCloudSecuritycenterV2ResourceApplication Application { get; set; }
