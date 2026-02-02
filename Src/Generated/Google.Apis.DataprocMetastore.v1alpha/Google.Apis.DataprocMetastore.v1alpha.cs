@@ -4908,8 +4908,8 @@ namespace Google.Apis.DataprocMetastore.v1alpha.Data
     }
 
     /// <summary>
-    /// Custom configuration used to specify regions that the metastore service runs in. Currently only supported in the
-    /// us multi-region.
+    /// Deprecated: Use a single region service instead. Custom configuration used to specify regions that the metastore
+    /// service runs in. Currently only supported in the us multi-region.
     /// </summary>
     public class CustomRegionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4932,8 +4932,8 @@ namespace Google.Apis.DataprocMetastore.v1alpha.Data
     }
 
     /// <summary>
-    /// Metadata about a custom region. This is only populated if the region is a custom region. For single/multi
-    /// regions, it will be empty.
+    /// Deprecated: Use a single region service instead. Metadata about a custom region. This is only populated if the
+    /// region is a custom region. For single/multi regions, it will be empty.
     /// </summary>
     public class CustomRegionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5628,11 +5628,17 @@ namespace Google.Apis.DataprocMetastore.v1alpha.Data
     /// <summary>Metadata about the service in a location.</summary>
     public class LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Possible configurations supported if the current region is a custom region.</summary>
+        /// <summary>
+        /// Deprecated: Use a single region service instead. Possible configurations supported if the current region is
+        /// a custom region.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customRegionMetadata")]
         public virtual System.Collections.Generic.IList<CustomRegionMetadata> CustomRegionMetadata { get; set; }
 
-        /// <summary>The multi-region metadata if the current region is a multi-region.</summary>
+        /// <summary>
+        /// Deprecated: Use a single region service instead. The multi-region metadata if the current region is a
+        /// multi-region.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiRegionMetadata")]
         public virtual MultiRegionMetadata MultiRegionMetadata { get; set; }
 
@@ -6075,16 +6081,19 @@ namespace Google.Apis.DataprocMetastore.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The multi-region config for the Dataproc Metastore service.</summary>
+    /// <summary>
+    /// Deprecated: Use a single region service instead. The multi-region config for the Dataproc Metastore service.
+    /// </summary>
     public class MultiRegionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. The list of root CA certificates that a gRPC client uses to connect to a multi-regional
-        /// Dataproc Metastore service.
+        /// Output only. Deprecated: Use a single region service instead. The list of root CA certificates that a gRPC
+        /// client uses to connect to a multi-regional Dataproc Metastore service.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificates")]
         public virtual System.Collections.Generic.IList<RootCACertificate> Certificates { get; set; }
 
+        /// <summary>Immutable. Deprecated: Use a single region service instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customRegionConfig")]
         public virtual CustomRegionConfig CustomRegionConfig { get; set; }
 
@@ -6093,8 +6102,9 @@ namespace Google.Apis.DataprocMetastore.v1alpha.Data
     }
 
     /// <summary>
-    /// The metadata for the multi-region that includes the constituent regions. The metadata is only populated if the
-    /// region is multi-region. For single region or custom dual region, it will be empty.
+    /// Deprecated: Use a single region service instead. The metadata for the multi-region that includes the constituent
+    /// regions. The metadata is only populated if the region is multi-region. For single region or custom dual region,
+    /// it will be empty.
     /// </summary>
     public class MultiRegionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6551,12 +6561,15 @@ namespace Google.Apis.DataprocMetastore.v1alpha.Data
     }
 
     /// <summary>
-    /// A gRPC client must install all root CA certificates to connect to a multi-regional Dataproc Metastore service
-    /// and achieve failover.
+    /// Deprecated: Use a single region service instead. A gRPC client must install all root CA certificates to connect
+    /// to a multi-regional Dataproc Metastore service and achieve failover.
     /// </summary>
     public class RootCACertificate : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The root CA certificate in PEM format. The maximum length is 65536 bytes.</summary>
+        /// <summary>
+        /// Deprecated: Use a single region service instead. The root CA certificate in PEM format. The maximum length
+        /// is 65536 bytes.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificate")]
         public virtual string Certificate { get; set; }
 
@@ -6564,7 +6577,9 @@ namespace Google.Apis.DataprocMetastore.v1alpha.Data
 
         private object _expirationTime;
 
-        /// <summary>The certificate expiration time in timestamp format.</summary>
+        /// <summary>
+        /// Deprecated: Use a single region service instead. The certificate expiration time in timestamp format.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
         public virtual string ExpirationTimeRaw
         {
@@ -6816,7 +6831,8 @@ namespace Google.Apis.DataprocMetastore.v1alpha.Data
         public virtual MetadataManagementActivity MetadataManagementActivity { get; set; }
 
         /// <summary>
-        /// Optional. Specifies the multi-region configuration information for the Hive metastore service.
+        /// Optional. Deprecated: Use a single region service instead. Specifies the multi-region configuration
+        /// information for the Hive metastore service.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiRegionConfig")]
         public virtual MultiRegionConfig MultiRegionConfig { get; set; }
