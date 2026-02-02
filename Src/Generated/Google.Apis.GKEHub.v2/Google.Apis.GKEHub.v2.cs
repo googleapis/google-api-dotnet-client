@@ -1038,14 +1038,24 @@ namespace Google.Apis.GKEHub.v2
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v2.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1385,15 +1395,22 @@ namespace Google.Apis.GKEHub.v2.Data
     /// <summary>Configuration for Config Sync</summary>
     public class ConfigManagementConfigSync : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Configuration for deployment overrides.</summary>
+        /// <summary>
+        /// Optional. Configuration for deployment overrides. Applies only to Config Sync deployments with containers
+        /// that are not a root or namespace reconciler: `reconciler-manager`, `otel-collector`,
+        /// `resource-group-controller-manager`, `admission-webhook`. To override a root or namespace reconciler, use
+        /// the rootsync or reposync fields at
+        /// https://docs.cloud.google.com/kubernetes-engine/config-sync/docs/reference/rootsync-reposync-fields#override-resources
+        /// instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deploymentOverrides")]
         public virtual System.Collections.Generic.IList<ConfigManagementDeploymentOverride> DeploymentOverrides { get; set; }
 
         /// <summary>
-        /// Optional. Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and
-        /// the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be
-        /// ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on
-        /// the presence of the git or oci field.
+        /// Optional. Enables the installation of Config Sync. If set to true, the Feature will manage Config Sync
+        /// resources, and apply the other ConfigSync fields if they exist. If set to false, the Feature will ignore all
+        /// other ConfigSync fields and delete the Config Sync resources. If omitted, ConfigSync is considered enabled
+        /// if the git or oci field is present.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
@@ -1419,14 +1436,18 @@ namespace Google.Apis.GKEHub.v2.Data
         public virtual ConfigManagementOciConfig Oci { get; set; }
 
         /// <summary>
-        /// Optional. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`,
-        /// disables the Config Sync admission webhook and does not prevent drifts.
+        /// Optional. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to false,
+        /// disables the Config Sync admission webhook and does not prevent drifts. Defaults to false. See
+        /// https://docs.cloud.google.com/kubernetes-engine/config-sync/docs/how-to/prevent-config-drift for details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preventDrift")]
         public virtual System.Nullable<bool> PreventDrift { get; set; }
 
         /// <summary>
-        /// Optional. Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
+        /// Optional. Specifies whether the Config Sync repo is in `hierarchical` or `unstructured` mode. Defaults to
+        /// `hierarchical`. See
+        /// https://docs.cloud.google.com/kubernetes-engine/config-sync/docs/concepts/configs#organize-configs for an
+        /// explanation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceFormat")]
         public virtual string SourceFormat { get; set; }
@@ -1589,19 +1610,31 @@ namespace Google.Apis.GKEHub.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containerName")]
         public virtual string ContainerName { get; set; }
 
-        /// <summary>Optional. The cpu limit of the container.</summary>
+        /// <summary>
+        /// Optional. The cpu limit of the container. Use the following CPU resource units:
+        /// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuLimit")]
         public virtual string CpuLimit { get; set; }
 
-        /// <summary>Optional. The cpu request of the container.</summary>
+        /// <summary>
+        /// Optional. The cpu request of the container. Use the following CPU resource units:
+        /// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuRequest")]
         public virtual string CpuRequest { get; set; }
 
-        /// <summary>Optional. The memory limit of the container.</summary>
+        /// <summary>
+        /// Optional. The memory limit of the container. Use the following memory resource units:
+        /// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memoryLimit")]
         public virtual string MemoryLimit { get; set; }
 
-        /// <summary>Optional. The memory request of the container.</summary>
+        /// <summary>
+        /// Optional. The memory request of the container. Use the following memory resource units:
+        /// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memoryRequest")]
         public virtual string MemoryRequest { get; set; }
 
@@ -1674,12 +1707,15 @@ namespace Google.Apis.GKEHub.v2.Data
     public class ConfigManagementGitConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The Google Cloud Service Account Email used for auth when secret_type is gcpServiceAccount.
+        /// Optional. The Google Cloud Service Account Email used for auth when secret_type is `gcpserviceaccount`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpServiceAccountEmail")]
         public virtual string GcpServiceAccountEmail { get; set; }
 
-        /// <summary>Optional. URL for the HTTPS proxy to be used when communicating with the Git repo.</summary>
+        /// <summary>
+        /// Optional. URL for the HTTPS proxy to be used when communicating with the Git repo. Only specify when
+        /// secret_type is `cookiefile`, `token`, or `none`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpsProxy")]
         public virtual string HttpsProxy { get; set; }
 
@@ -1691,8 +1727,8 @@ namespace Google.Apis.GKEHub.v2.Data
         public virtual string PolicyDir { get; set; }
 
         /// <summary>
-        /// Required. Type of secret configured for access to the Git repo. Must be one of ssh, cookiefile, gcenode,
-        /// token, gcpserviceaccount, githubapp or none. The validation of this is case-sensitive.
+        /// Required. Type of secret configured for access to the Git repo. Must be one of `ssh`, `cookiefile`,
+        /// `gcenode`, `token`, `gcpserviceaccount`, `githubapp` or `none`. The validation of this is case-sensitive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretType")]
         public virtual string SecretType { get; set; }
@@ -1815,7 +1851,7 @@ namespace Google.Apis.GKEHub.v2.Data
     public class ConfigManagementOciConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The Google Cloud Service Account Email used for auth when secret_type is gcpServiceAccount.
+        /// Optional. The Google Cloud Service Account Email used for auth when secret_type is `gcpserviceaccount`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpServiceAccountEmail")]
         public virtual string GcpServiceAccountEmail { get; set; }
@@ -1828,8 +1864,8 @@ namespace Google.Apis.GKEHub.v2.Data
         public virtual string PolicyDir { get; set; }
 
         /// <summary>
-        /// Required. Type of secret configured for access to the OCI repo. Must be one of gcenode, gcpserviceaccount,
-        /// k8sserviceaccount or none. The validation of this is case-sensitive.
+        /// Required. Type of secret configured for access to the OCI repo. Must be one of `gcenode`,
+        /// `gcpserviceaccount`, `k8sserviceaccount` or `none`. The validation of this is case-sensitive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretType")]
         public virtual string SecretType { get; set; }
@@ -2059,19 +2095,17 @@ namespace Google.Apis.GKEHub.v2.Data
     /// </summary>
     public class ConfigManagementSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. Binauthz conifguration for the cluster. Deprecated: This field will be ignored and should not be
-        /// set.
-        /// </summary>
+        /// <summary>Optional. Deprecated: Binauthz configuration will be ignored and should not be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binauthz")]
         public virtual ConfigManagementBinauthzConfig Binauthz { get; set; }
 
         /// <summary>
-        /// Optional. The user-specified cluster name used by Config Sync cluster-name-selector annotation or
-        /// ClusterSelector, for applying configs to only a subset of clusters. Omit this field if the cluster's fleet
-        /// membership name is used by Config Sync cluster-name-selector annotation or ClusterSelector. Set this field
-        /// if a name different from the cluster's fleet membership name is used by Config Sync cluster-name-selector
-        /// annotation or ClusterSelector.
+        /// Optional. User-specified cluster name used by the Config Sync cluster-name-selector annotation or
+        /// ClusterSelector object, for applying configs to only a subset of clusters. Read more about the
+        /// cluster-name-selector annotation and ClusterSelector object at
+        /// https://docs.cloud.google.com/kubernetes-engine/config-sync/docs/how-to/cluster-scoped-objects#limiting-configs.
+        /// Only set this field if a name different from the cluster's fleet membership name is used by the Config Sync
+        /// cluster-name-selector annotation or ClusterSelector.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual string Cluster { get; set; }
@@ -2102,7 +2136,11 @@ namespace Google.Apis.GKEHub.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("policyController")]
         public virtual ConfigManagementPolicyController PolicyController { get; set; }
 
-        /// <summary>Optional. Version of ACM installed.</summary>
+        /// <summary>
+        /// Optional. Version of Config Sync to install. Defaults to the latest supported Config Sync version if the
+        /// config_sync field is enabled. See supported versions at
+        /// https://cloud.google.com/kubernetes-engine/config-sync/docs/get-support-config-sync#version_support_policy.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
@@ -2341,6 +2379,10 @@ namespace Google.Apis.GKEHub.v2.Data
         /// <summary>The high-level state of this MembershipFeature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual State State { get; set; }
+
+        /// <summary>Workload Identity state</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadidentity")]
+        public virtual WorkloadIdentityState Workloadidentity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3937,6 +3979,36 @@ namespace Google.Apis.GKEHub.v2.Data
         /// <summary>CertificateManagement specifies workload certificate management.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificateManagement")]
         public virtual string CertificateManagement { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>IdentityProviderStateDetail represents the state of an Identity Provider.</summary>
+    public class WorkloadIdentityIdentityProviderStateDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The state of the Identity Provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>A human-readable description of the current state or returned error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>**WorkloadIdentity**: The membership-specific state for WorkloadIdentity feature.</summary>
+    public class WorkloadIdentityState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Deprecated, this field will be erased after code is changed to use the new field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The state of the Identity Providers corresponding to the membership.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityProviderStateDetails")]
+        public virtual System.Collections.Generic.IDictionary<string, WorkloadIdentityIdentityProviderStateDetail> IdentityProviderStateDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
