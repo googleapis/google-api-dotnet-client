@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -726,6 +726,39 @@ namespace Google.Apis.TravelImpactModel.v1.Data
         /// <summary>Required. IATA airport code for flight origin, e.g. "LHR".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("origin")]
         public virtual string Origin { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Profile describing the data handling characteristics of an MCP tool. When used within the McpTool.meta field,
+    /// this message should be packed into a google.protobuf.Any and associated with the key:
+    /// "google.com/tool.profiles/data_handling"
+    /// </summary>
+    public class McpToolDataHandlingProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>// The data access level of the tool's inputs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputDataAccessLevel")]
+        public virtual string InputDataAccessLevel { get; set; }
+
+        /// <summary>The data access level of the tool's outputs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputDataAccessLevel")]
+        public virtual string OutputDataAccessLevel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Profile describing the lifecycle stage of an MCP tool. When used within the McpTool.meta field, this message
+    /// should be packed into a google.protobuf.Any and associated with the key: "google.com/tool.profiles/lifecycle"
+    /// </summary>
+    public class McpToolLifecycleProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The current launch state of the MCP tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("launchState")]
+        public virtual string LaunchState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
