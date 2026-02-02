@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1852,6 +1852,45 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         {
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastScanTimeRaw);
             set => LastScanTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _lastVulnerabilityUpdateTimeRaw;
+
+        private object _lastVulnerabilityUpdateTime;
+
+        /// <summary>The last time vulnerability scan results changed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastVulnerabilityUpdateTime")]
+        public virtual string LastVulnerabilityUpdateTimeRaw
+        {
+            get => _lastVulnerabilityUpdateTimeRaw;
+            set
+            {
+                _lastVulnerabilityUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastVulnerabilityUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastVulnerabilityUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastVulnerabilityUpdateTimeDateTimeOffset instead.")]
+        public virtual object LastVulnerabilityUpdateTime
+        {
+            get => _lastVulnerabilityUpdateTime;
+            set
+            {
+                _lastVulnerabilityUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastVulnerabilityUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastVulnerabilityUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastVulnerabilityUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastVulnerabilityUpdateTimeRaw);
+            set => LastVulnerabilityUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The status of an SBOM generation.</summary>
