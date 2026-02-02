@@ -3,9 +3,9 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.DatabaseMigrationService.v1beta1 Client Library</Title>
-    <Version>1.73.0.3987</Version>
+    <Version>1.73.0.4038</Version>
     <Authors>Google LLC</Authors>
-    <Copyright>Copyright 2025 Google LLC</Copyright>
+    <Copyright>Copyright 2026 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
     <PackageProjectUrl>https://github.com/google/google-api-dotnet-client</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
