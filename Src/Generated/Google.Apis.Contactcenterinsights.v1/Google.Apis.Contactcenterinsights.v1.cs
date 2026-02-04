@@ -297,6 +297,7 @@ namespace Google.Apis.Contactcenterinsights.v1
                 AuthorizedViewSets = new AuthorizedViewSetsResource(service);
                 AutoLabelingRules = new AutoLabelingRulesResource(service);
                 Conversations = new ConversationsResource(service);
+                Dashboards = new DashboardsResource(service);
                 Datasets = new DatasetsResource(service);
                 EncryptionSpec = new EncryptionSpecResource(service);
                 Insightsdata = new InsightsdataResource(service);
@@ -2792,6 +2793,69 @@ namespace Google.Apis.Contactcenterinsights.v1
                             RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Natural language based Insights which powers the next generation of dashboards in Insights. Next
+                    /// generation of QueryMetrics.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="location">
+                    /// Required. The location of the data. "projects/{project}/locations/{location}"
+                    /// </param>
+                    public virtual GenerativeInsightsRequest GenerativeInsights(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest body, string location)
+                    {
+                        return new GenerativeInsightsRequest(this.service, body, location);
+                    }
+
+                    /// <summary>
+                    /// Natural language based Insights which powers the next generation of dashboards in Insights. Next
+                    /// generation of QueryMetrics.
+                    /// </summary>
+                    public class GenerativeInsightsRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new GenerativeInsights request.</summary>
+                        public GenerativeInsightsRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest body, string location) : base(service)
+                        {
+                            Location = location;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The location of the data. "projects/{project}/locations/{location}"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Location { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "generativeInsights";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+location}:generativeInsights";
+
+                        /// <summary>Initializes GenerativeInsights parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "location",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -6481,6 +6545,656 @@ namespace Google.Apis.Contactcenterinsights.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Dashboards resource.</summary>
+            public virtual DashboardsResource Dashboards { get; }
+
+            /// <summary>The "dashboards" collection of methods.</summary>
+            public class DashboardsResource
+            {
+                private const string Resource = "dashboards";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DashboardsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Charts = new ChartsResource(service);
+                }
+
+                /// <summary>Gets the Charts resource.</summary>
+                public virtual ChartsResource Charts { get; }
+
+                /// <summary>The "charts" collection of methods.</summary>
+                public class ChartsResource
+                {
+                    private const string Resource = "charts";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ChartsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates a Chart.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. The parent resource of the chart.</param>
+                    public virtual CreateRequest Create(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Chart body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Creates a Chart.</summary>
+                    public class CreateRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Chart>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Chart body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The parent resource of the chart.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. A unique ID for the new Chart. This ID will become the final component of the
+                        /// Chart's resource name. If no ID is specified, a server-generated ID will be used. This value
+                        /// should be 4-64 characters and must match the regular expression
+                        /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("chartId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ChartId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Chart Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/charts";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dashboards/[^/]+$",
+                            });
+                            RequestParameters.Add("chartId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "chartId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a Chart.</summary>
+                    /// <param name="name">Required. The name of the chart to delete.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Deletes a Chart.</summary>
+                    public class DeleteRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the chart to delete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dashboards/[^/]+/charts/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets a Chart.</summary>
+                    /// <param name="name">Required. The name of the chart to get.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets a Chart.</summary>
+                    public class GetRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Chart>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the chart to get.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dashboards/[^/]+/charts/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists Charts.</summary>
+                    /// <param name="parent">Required. The parent resource of the charts.</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists Charts.</summary>
+                    public class ListRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1ListChartsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The parent resource of the charts.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/charts";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dashboards/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates a Chart.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Identifier. Chart resource name. Format:
+                    /// projects/{project}/locations/{location}/dashboards/{dashboard}/charts/{chart}
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Chart body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Updates a Chart.</summary>
+                    public class PatchRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Chart>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Chart body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Identifier. Chart resource name. Format:
+                        /// projects/{project}/locations/{location}/dashboards/{dashboard}/charts/{chart}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. List of fields to be updated. All possible fields can be updated by passing `*`,
+                        /// or a subset of the following updateable fields can be provided: * `display_name`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Chart Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dashboards/[^/]+/charts/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Creates a Dashboard.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent resource of the dashboard.</param>
+                public virtual CreateRequest Create(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Dashboard body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a Dashboard.</summary>
+                public class CreateRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Dashboard>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Dashboard body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource of the dashboard.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A unique ID for the new Dashboard. This ID will become the final component of the
+                    /// Dashboard's resource name. If no ID is specified, a server-generated ID will be used. This value
+                    /// should be 4-64 characters and must match the regular expression
+                    /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("dashboardId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string DashboardId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Dashboard Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/dashboards";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("dashboardId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "dashboardId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a Dashboard.</summary>
+                /// <param name="name">Required. The name of the dashboard to delete.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a Dashboard.</summary>
+                public class DeleteRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the dashboard to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dashboards/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets a Dashboard.</summary>
+                /// <param name="name">Required. The name of the dashboard to get.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a Dashboard.</summary>
+                public class GetRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Dashboard>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the dashboard to get.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dashboards/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists Dashboards.</summary>
+                /// <param name="parent">Required. The parent resource of the dashboards.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists Dashboards.</summary>
+                public class ListRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1ListDashboardsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource of the dashboards.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. The filter expression to filter dashboards listed in the response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. The order by expression to order dashboards listed in the response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of dashboards to return. The service may return fewer than this
+                    /// value. The default and maximum value is 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The value returned by the last `ListDashboardsResponse`. This value indicates that
+                    /// this is a continuation of a prior `ListDashboards` call and that the system should return the
+                    /// next page of data.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/dashboards";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a Dashboard.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. Dashboard resource name. Format:
+                /// projects/{project}/locations/{location}/dashboards/{dashboard}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Dashboard body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a Dashboard.</summary>
+                public class PatchRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Dashboard>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Dashboard body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. Dashboard resource name. Format:
+                    /// projects/{project}/locations/{location}/dashboards/{dashboard}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. List of fields to be updated. All possible fields can be updated by passing `*`, or a
+                    /// subset of the following updateable fields can be provided: * `display_name` * `root_container`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Dashboard Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dashboards/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -11661,6 +12375,67 @@ namespace Google.Apis.Contactcenterinsights.v1
                 }
             }
 
+            /// <summary>
+            /// Natural language based Insights which powers the next generation of dashboards in Insights. Next
+            /// generation of QueryMetrics.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="location">
+            /// Required. The location of the data. "projects/{project}/locations/{location}"
+            /// </param>
+            public virtual GenerativeInsightsRequest GenerativeInsights(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest body, string location)
+            {
+                return new GenerativeInsightsRequest(this.service, body, location);
+            }
+
+            /// <summary>
+            /// Natural language based Insights which powers the next generation of dashboards in Insights. Next
+            /// generation of QueryMetrics.
+            /// </summary>
+            public class GenerativeInsightsRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new GenerativeInsights request.</summary>
+                public GenerativeInsightsRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest body, string location) : base(service)
+                {
+                    Location = location;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The location of the data. "projects/{project}/locations/{location}"</summary>
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Location { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "generativeInsights";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+location}:generativeInsights";
+
+                /// <summary>Initializes GenerativeInsights parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Gets correlation config.</summary>
             /// <param name="name">
             /// Required. The name of the correlation config resource to get. Format:
@@ -14098,6 +14873,144 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configurable dashboard's widget that displays data as a chart.</summary>
+    public class GoogleCloudContactcenterinsightsV1Chart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Chart type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chartType")]
+        public virtual string ChartType { get; set; }
+
+        /// <summary>Chart visualization type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chartVisualizationType")]
+        public virtual string ChartVisualizationType { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Chart create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
+        public virtual GoogleCloudContactcenterinsightsV1ChartDataSource DataSource { get; set; }
+
+        /// <summary>Date range config applied to the chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateRangeConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1DateRangeConfig DateRangeConfig { get; set; }
+
+        /// <summary>Chart description</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>User provided display name of the chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Filter applied to all charts in the container. Should support scope later.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>The height of the chart in grid units.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("height")]
+        public virtual System.Nullable<int> Height { get; set; }
+
+        /// <summary>
+        /// Identifier. Chart resource name. Format:
+        /// projects/{project}/locations/{location}/dashboards/{dashboard}/charts/{chart}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Chart last update time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The width of the chart in grid units.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("width")]
+        public virtual System.Nullable<int> Width { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request data for visualizing the dataset in the chart.</summary>
+    public class GoogleCloudContactcenterinsightsV1ChartDataSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Use natural language query to generate the chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generativeInsights")]
+        public virtual GoogleCloudContactcenterinsightsV1GenerativeInsights GenerativeInsights { get; set; }
+
+        /// <summary>Use the existing QueryMetrics to generate the chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryMetrics")]
+        public virtual GoogleCloudContactcenterinsightsV1QueryMetrics QueryMetrics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The result of testing a constraint expression on a pair of conversations.</summary>
     public class GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14131,6 +15044,45 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>The rule ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ruleId")]
         public virtual string RuleId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configurable dashboard's container. Container can contain multiple widgets.</summary>
+    public class GoogleCloudContactcenterinsightsV1Container : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Unique ID for the container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
+        public virtual string ContainerId { get; set; }
+
+        /// <summary>Date range config applied to all charts in the container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateRangeConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1DateRangeConfig DateRangeConfig { get; set; }
+
+        /// <summary>Container description</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>User provided display name of the Container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Filter applied to all charts in the container. Should support scope later.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>The height of the container in grid units.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("height")]
+        public virtual System.Nullable<int> Height { get; set; }
+
+        /// <summary>Widgets in the Container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1Widget> Widgets { get; set; }
+
+        /// <summary>The width of the container in grid units.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("width")]
+        public virtual System.Nullable<int> Width { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15260,6 +16212,123 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configurable dashboard</summary>
+    public class GoogleCloudContactcenterinsightsV1Dashboard : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Dashboard creation time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Date range config applied to all charts in the dashboard.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateRangeConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1DateRangeConfig DateRangeConfig { get; set; }
+
+        /// <summary>Dashboard description</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>User provided display name of the dashboard.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Filter applied to all charts in the dashboard. Should support scope later.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Identifier. Dashboard resource name. Format: projects/{project}/locations/{location}/dashboards/{dashboard}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Whether the dashboard is read-only. All predefined dashboards are read-only and cannot be
+        /// modified by the user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
+        public virtual System.Nullable<bool> ReadOnly__ { get; set; }
+
+        /// <summary>
+        /// The dashboard's root widget container. We want to display the dashboard layout in a tree-like structure,
+        /// where the root container contains other widgets (containers or charts) as children.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rootContainer")]
+        public virtual GoogleCloudContactcenterinsightsV1Container RootContainer { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Dashboard last update time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Dataset resource represents a collection of conversations that may be bounded (Static Dataset, e.g. golden
     /// dataset for training), or unbounded (Dynamic Dataset, e.g. live traffic, or agent training traffic)
@@ -15362,6 +16431,36 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Date range configuration for dashboard charts.</summary>
+    public class GoogleCloudContactcenterinsightsV1DateRangeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An absolute date range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("absoluteDateRange")]
+        public virtual GoogleCloudContactcenterinsightsV1QueryInterval AbsoluteDateRange { get; set; }
+
+        /// <summary>A relative date range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relativeDateRange")]
+        public virtual GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange RelativeDateRange { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Relative date range configuration.</summary>
+    public class GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The quantity of units in the past.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
+        public virtual System.Nullable<long> Quantity { get; set; }
+
+        /// <summary>Required. The unit of time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual string Unit { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16556,6 +17655,609 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The conversation transcript for the chart.</summary>
+    public class GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscript : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The conversation id of the chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationId")]
+        public virtual string ConversationId { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The create time of the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Ordered list of messages, including user inputs and system responses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessage> Messages { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The update time of the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The message in the conversation.</summary>
+    public class GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>
+        /// Output only. For user messages, this is the time at which the system received the message. For system
+        /// messages, this is the time at which the system generated the message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The message id of the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
+        public virtual string MessageId { get; set; }
+
+        /// <summary>A wrapper for system messages per turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemMessageWrapper")]
+        public virtual GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessages SystemMessageWrapper { get; set; }
+
+        /// <summary>A message from the user that is interacting with the system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userMessage")]
+        public virtual GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageUserMessage UserMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A message from the system in response to the user. This message can also be a message from the user as
+    /// historical context for multiturn conversations with the system.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Chart spec from LLM</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chartSpec")]
+        public virtual System.Collections.Generic.IDictionary<string, object> ChartSpec { get; set; }
+
+        /// <summary>Raw SQL from LLM, before templatization</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedSqlQuery")]
+        public virtual string GeneratedSqlQuery { get; set; }
+
+        /// <summary>A direct natural language response to the user message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textMessage")]
+        public virtual GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput TextMessage { get; set; }
+
+        /// <summary>Optional. User provided chart spec</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userProvidedChartSpec")]
+        public virtual System.Collections.Generic.IDictionary<string, object> UserProvidedChartSpec { get; set; }
+
+        /// <summary>Optional. User provided SQL query</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userProvidedSqlQuery")]
+        public virtual string UserProvidedSqlQuery { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A text output message from the system.</summary>
+    public class GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The parts of the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual System.Collections.Generic.IList<string> Text { get; set; }
+
+        /// <summary>The type of the text message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textType")]
+        public virtual string TextType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A wrapper for system messages per turn.</summary>
+    public class GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessages : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A message from the system in response to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemMessages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessage> SystemMessages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The user message.</summary>
+    public class GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageUserMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A message from the user that is interacting with the system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request that use natural language query to generate the chart.</summary>
+    public class GoogleCloudContactcenterinsightsV1GenerativeInsights : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The chart checkpoint used to generate the chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chartCheckpoint")]
+        public virtual GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint ChartCheckpoint { get; set; }
+
+        /// <summary>Output only. The chart conversations used to generate the chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chartConversations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation> ChartConversations { get; set; }
+
+        /// <summary>Chart spec for the chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chartSpec")]
+        public virtual System.Collections.Generic.IDictionary<string, object> ChartSpec { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Request { get; set; }
+
+        /// <summary>
+        /// Optional. For charts with comparison, this key will determine the metric that will be compared between the
+        /// current and another dataset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlComparisonKey")]
+        public virtual string SqlComparisonKey { get; set; }
+
+        /// <summary>SQL query used to generate the chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlQuery")]
+        public virtual string SqlQuery { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The current chart checkpoint state.</summary>
+    public class GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The revision id of the chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
+        public virtual string RevisionId { get; set; }
+
+        /// <summary>The session id of the chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionId")]
+        public virtual string SessionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The conversation used to generate the chart.</summary>
+    public class GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The conversation id of the chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationId")]
+        public virtual string ConversationId { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>The create time of the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Ordered list of messages, including user inputs and system responses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage> Messages { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>The update time of the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The message in the conversation.</summary>
+    public class GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>
+        /// For user messages, this is the time at which the system received the message. For system messages, this is
+        /// the time at which the system generated the message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The message id of the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
+        public virtual string MessageId { get; set; }
+
+        /// <summary>A message from the system in response to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemMessage")]
+        public virtual GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage SystemMessage { get; set; }
+
+        /// <summary>A message from the user that is interacting with the system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userMessage")]
+        public virtual GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage UserMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A message from the system in response to the user. This message can also be a message from the user as
+    /// historical context for multiturn conversations with the system.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Chart spec from LLM</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chartSpec")]
+        public virtual System.Collections.Generic.IDictionary<string, object> ChartSpec { get; set; }
+
+        /// <summary>Raw SQL from LLM, before templatization</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedSqlQuery")]
+        public virtual string GeneratedSqlQuery { get; set; }
+
+        /// <summary>A direct natural language response to the user message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textOutput")]
+        public virtual GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput TextOutput { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A text output message from the system.</summary>
+    public class GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The parts of the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("texts")]
+        public virtual System.Collections.Generic.IList<string> Texts { get; set; }
+
+        /// <summary>The type of the text message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The user message.</summary>
+    public class GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A message from the user that is interacting with the system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata for generative insights.</summary>
+    public class GoogleCloudContactcenterinsightsV1GenerativeInsightsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The error message when the generative insights request fails.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessages")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorMessages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for generative insights.</summary>
+    public class GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The full name of the chart resource this request corresponds to. Format:
+        /// projects/{project}/locations/{location}/dashboards/{dashboard}/charts/{chart}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chart")]
+        public virtual string Chart { get; set; }
+
+        /// <summary>
+        /// Optional. Filter for the data that can be specified in addition to the natural language query. This `filter`
+        /// is specifically used for charts where comparisons are possible. For example, "compare to last month" or
+        /// "compare to previous quarter".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comparisonFilter")]
+        public virtual string ComparisonFilter { get; set; }
+
+        /// <summary>
+        /// Filter for the data that can be specified in addition to the natural language query. Users are encouraged to
+        /// use this field to populate time-windows.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// The natural language query specified by the user. If this field is specified, `sql_query` will be ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("naturalLanguageQuery")]
+        public virtual string NaturalLanguageQuery { get; set; }
+
+        /// <summary>
+        /// Optional. The revision id that maps to the state of the chart state revision. When specified, the backend
+        /// will reload the chart with the sql and visual spec from that revision.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
+        public virtual string RevisionId { get; set; }
+
+        /// <summary>
+        /// Optional. The session id of the conversation. If the session id is not specified, backend will generate a
+        /// random session id. If the session id is specified, will associate user-provided user_query with the provided
+        /// session id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionId")]
+        public virtual string SessionId { get; set; }
+
+        /// <summary>
+        /// Optional. For charts with comparison, this key will determine the metric that will be compared between the
+        /// current and another dataset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlComparisonKey")]
+        public virtual string SqlComparisonKey { get; set; }
+
+        /// <summary>
+        /// Optional. The SQL query specified by the user. This query must be in BigQuery SQL dialect. The `filter`
+        /// field will also be ignored, as it is assumed that any filtering is already included in the SQL query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlQuery")]
+        public virtual string SqlQuery { get; set; }
+
+        /// <summary>
+        /// Optional. The user provided chart spec for the chart. This will be used to override the visual spec
+        /// generated by the LLM.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userProvidedChartSpec")]
+        public virtual System.Collections.Generic.IDictionary<string, object> UserProvidedChartSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for generative insights.</summary>
+    public class GoogleCloudContactcenterinsightsV1GenerativeInsightsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The full list of generative responses. Each response is ordered by time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generativeResponses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponse> GenerativeResponses { get; set; }
+
+        /// <summary>The transcript of the generative insights conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
+        public virtual GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscript Transcript { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wrapper for storing the generative response for a chart.</summary>
+    public class GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The chart spec for the data. This will be specified in the vega-lite or vega format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chartSpec")]
+        public virtual System.Collections.Generic.IDictionary<string, object> ChartSpec { get; set; }
+
+        /// <summary>
+        /// The generated SQL query from the LLM. Will be populated during the chart building phase. The generated SQL
+        /// will be cached in the corresponding chart resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedSqlQuery")]
+        public virtual string GeneratedSqlQuery { get; set; }
+
+        /// <summary>
+        /// The text output from the LLM. Will be populated during the chart building phase. For a reloaded chart, this
+        /// will NOT be populated. May contain THOUGHT or a FINAL response or some in-progress response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textMessage")]
+        public virtual GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponseTextOutput TextMessage { get; set; }
+
+        /// <summary>
+        /// The text output from the LLM. Will be populated during the chart building phase. For a reloaded chart, this
+        /// will NOT be populated. May contain THOUGHT or a FINAL response or some in-progress response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textOutput")]
+        public virtual string TextOutput { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wrapper for text output.</summary>
+    public class GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponseTextOutput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The text output from the LLM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual System.Collections.Generic.IList<string> Text { get; set; }
+
+        /// <summary>The type of text output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textType")]
+        public virtual string TextType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The data for a hold annotation.</summary>
     public class GoogleCloudContactcenterinsightsV1HoldData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17600,6 +19302,24 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response of listing charts.</summary>
+    public class GoogleCloudContactcenterinsightsV1ListChartsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The charts under the parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("charts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1Chart> Charts { get; set; }
+
+        /// <summary>
+        /// The value returned by the last `ListChartsResponse`. This value indicates that this is a continuation of a
+        /// prior `ListCharts` call and that the system should return the next page of data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response of listing conversations.</summary>
     public class GoogleCloudContactcenterinsightsV1ListConversationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17610,6 +19330,24 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>
         /// A token which can be sent as `page_token` to retrieve the next page. If this field is set, it means there is
         /// another page available. If it is not set, it means no other pages are available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response of listing dashboards.</summary>
+    public class GoogleCloudContactcenterinsightsV1ListDashboardsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The dashboards under the parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dashboards")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1Dashboard> Dashboards { get; set; }
+
+        /// <summary>
+        /// The value returned by the last `ListDashboardsResponse`. This value indicates that this is a continuation of
+        /// a prior `ListDashboards` call and that the system should return the next page of data.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -19059,6 +20797,16 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request data that use the existing QueryMetrics.</summary>
+    public class GoogleCloudContactcenterinsightsV1QueryMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Request { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21064,6 +22812,32 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a dashboard element, could be a nested Container or Chart.</summary>
+    public class GoogleCloudContactcenterinsightsV1Widget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A chart widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chart")]
+        public virtual GoogleCloudContactcenterinsightsV1Chart Chart { get; set; }
+
+        /// <summary>
+        /// A reference to a chart widget. Format:
+        /// projects/{project}/locations/{location}/dashboards/{dashboard}/charts/{chart}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chartReference")]
+        public virtual string ChartReference { get; set; }
+
+        /// <summary>A container widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("container")]
+        public virtual GoogleCloudContactcenterinsightsV1Container Container { get; set; }
+
+        /// <summary>Filter applied to all charts in the container. Should support scope later.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24081,6 +25855,294 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transcriptUri")]
         public virtual string TranscriptUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The conversation transcript for the chart.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscript : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The conversation id of the chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationId")]
+        public virtual string ConversationId { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The create time of the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Ordered list of messages, including user inputs and system responses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessage> Messages { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The update time of the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The message in the conversation.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>
+        /// Output only. For user messages, this is the time at which the system received the message. For system
+        /// messages, this is the time at which the system generated the message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The message id of the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
+        public virtual string MessageId { get; set; }
+
+        /// <summary>A wrapper for system messages per turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemMessageWrapper")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessages SystemMessageWrapper { get; set; }
+
+        /// <summary>A message from the user that is interacting with the system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userMessage")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageUserMessage UserMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A message from the system in response to the user. This message can also be a message from the user as
+    /// historical context for multiturn conversations with the system.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Chart spec from LLM</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chartSpec")]
+        public virtual System.Collections.Generic.IDictionary<string, object> ChartSpec { get; set; }
+
+        /// <summary>Raw SQL from LLM, before templatization</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedSqlQuery")]
+        public virtual string GeneratedSqlQuery { get; set; }
+
+        /// <summary>A direct natural language response to the user message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textMessage")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput TextMessage { get; set; }
+
+        /// <summary>Optional. User provided chart spec</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userProvidedChartSpec")]
+        public virtual System.Collections.Generic.IDictionary<string, object> UserProvidedChartSpec { get; set; }
+
+        /// <summary>Optional. User provided SQL query</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userProvidedSqlQuery")]
+        public virtual string UserProvidedSqlQuery { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A text output message from the system.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The parts of the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual System.Collections.Generic.IList<string> Text { get; set; }
+
+        /// <summary>The type of the text message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textType")]
+        public virtual string TextType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A wrapper for system messages per turn.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessages : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A message from the system in response to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemMessages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessage> SystemMessages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The user message.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageUserMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A message from the user that is interacting with the system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata for generative insights.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The error message when the generative insights request fails.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessages")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorMessages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for generative insights.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The full list of generative responses. Each response is ordered by time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generativeResponses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponse> GenerativeResponses { get; set; }
+
+        /// <summary>The transcript of the generative insights conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscript Transcript { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wrapper for storing the generative response for a chart.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The chart spec for the data. This will be specified in the vega-lite or vega format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chartSpec")]
+        public virtual System.Collections.Generic.IDictionary<string, object> ChartSpec { get; set; }
+
+        /// <summary>
+        /// The generated SQL query from the LLM. Will be populated during the chart building phase. The generated SQL
+        /// will be cached in the corresponding chart resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedSqlQuery")]
+        public virtual string GeneratedSqlQuery { get; set; }
+
+        /// <summary>
+        /// The text output from the LLM. Will be populated during the chart building phase. For a reloaded chart, this
+        /// will NOT be populated. May contain THOUGHT or a FINAL response or some in-progress response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textMessage")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponseTextOutput TextMessage { get; set; }
+
+        /// <summary>
+        /// The text output from the LLM. Will be populated during the chart building phase. For a reloaded chart, this
+        /// will NOT be populated. May contain THOUGHT or a FINAL response or some in-progress response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textOutput")]
+        public virtual string TextOutput { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wrapper for text output.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponseTextOutput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The text output from the LLM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual System.Collections.Generic.IList<string> Text { get; set; }
+
+        /// <summary>The type of text output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textType")]
+        public virtual string TextType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -30054,6 +32116,294 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transcriptUri")]
         public virtual string TranscriptUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The conversation transcript for the chart.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscript : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The conversation id of the chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationId")]
+        public virtual string ConversationId { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The create time of the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Ordered list of messages, including user inputs and system responses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessage> Messages { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The update time of the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The message in the conversation.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>
+        /// Output only. For user messages, this is the time at which the system received the message. For system
+        /// messages, this is the time at which the system generated the message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The message id of the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
+        public virtual string MessageId { get; set; }
+
+        /// <summary>A wrapper for system messages per turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemMessageWrapper")]
+        public virtual GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessages SystemMessageWrapper { get; set; }
+
+        /// <summary>A message from the user that is interacting with the system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userMessage")]
+        public virtual GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageUserMessage UserMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A message from the system in response to the user. This message can also be a message from the user as
+    /// historical context for multiturn conversations with the system.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Chart spec from LLM</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chartSpec")]
+        public virtual System.Collections.Generic.IDictionary<string, object> ChartSpec { get; set; }
+
+        /// <summary>Raw SQL from LLM, before templatization</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedSqlQuery")]
+        public virtual string GeneratedSqlQuery { get; set; }
+
+        /// <summary>A direct natural language response to the user message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textMessage")]
+        public virtual GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessageTextOutput TextMessage { get; set; }
+
+        /// <summary>Optional. User provided chart spec</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userProvidedChartSpec")]
+        public virtual System.Collections.Generic.IDictionary<string, object> UserProvidedChartSpec { get; set; }
+
+        /// <summary>Optional. User provided SQL query</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userProvidedSqlQuery")]
+        public virtual string UserProvidedSqlQuery { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A text output message from the system.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessageTextOutput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The parts of the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual System.Collections.Generic.IList<string> Text { get; set; }
+
+        /// <summary>The type of the text message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textType")]
+        public virtual string TextType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A wrapper for system messages per turn.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessages : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A message from the system in response to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemMessages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessage> SystemMessages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The user message.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageUserMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A message from the user that is interacting with the system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata for generative insights.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainGenerativeInsightsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The error message when the generative insights request fails.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessages")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorMessages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for generative insights.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The full list of generative responses. Each response is ordered by time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generativeResponses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponse> GenerativeResponses { get; set; }
+
+        /// <summary>The transcript of the generative insights conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
+        public virtual GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscript Transcript { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wrapper for storing the generative response for a chart.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The chart spec for the data. This will be specified in the vega-lite or vega format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chartSpec")]
+        public virtual System.Collections.Generic.IDictionary<string, object> ChartSpec { get; set; }
+
+        /// <summary>
+        /// The generated SQL query from the LLM. Will be populated during the chart building phase. The generated SQL
+        /// will be cached in the corresponding chart resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedSqlQuery")]
+        public virtual string GeneratedSqlQuery { get; set; }
+
+        /// <summary>
+        /// The text output from the LLM. Will be populated during the chart building phase. For a reloaded chart, this
+        /// will NOT be populated. May contain THOUGHT or a FINAL response or some in-progress response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textMessage")]
+        public virtual GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponseTextOutput TextMessage { get; set; }
+
+        /// <summary>
+        /// The text output from the LLM. Will be populated during the chart building phase. For a reloaded chart, this
+        /// will NOT be populated. May contain THOUGHT or a FINAL response or some in-progress response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textOutput")]
+        public virtual string TextOutput { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wrapper for text output.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponseTextOutput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The text output from the LLM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual System.Collections.Generic.IList<string> Text { get; set; }
+
+        /// <summary>The type of text output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textType")]
+        public virtual string TextType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
