@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -300,29 +300,29 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1
             public virtual string Parent { get; private set; }
 
             /// <summary>
-            /// Filtering criteria for anomalies. For basic filter guidance, please check: https://google.aip.dev/160.
-            /// **Supported functions:** * `activeBetween(startTime, endTime)`: If specified, only list anomalies that
-            /// were active in between `startTime` (inclusive) and `endTime` (exclusive). Both parameters are expected
-            /// to conform to an RFC-3339 formatted string (e.g. `2012-04-21T11:30:00-04:00`). UTC offsets are
-            /// supported. Both `startTime` and `endTime` accept the special value `UNBOUNDED`, to signify intervals
-            /// with no lower or upper bound, respectively. Examples: * `activeBetween("2021-04-21T11:30:00Z",
-            /// "2021-07-21T00:00:00Z")` * `activeBetween(UNBOUNDED, "2021-11-21T00:00:00-04:00")` *
-            /// `activeBetween("2021-07-21T00:00:00-04:00", UNBOUNDED)`
+            /// Optional. Filtering criteria for anomalies. For basic filter guidance, please check:
+            /// https://google.aip.dev/160. **Supported functions:** * `activeBetween(startTime, endTime)`: If
+            /// specified, only list anomalies that were active in between `startTime` (inclusive) and `endTime`
+            /// (exclusive). Both parameters are expected to conform to an RFC-3339 formatted string (e.g.
+            /// `2012-04-21T11:30:00-04:00`). UTC offsets are supported. Both `startTime` and `endTime` accept the
+            /// special value `UNBOUNDED`, to signify intervals with no lower or upper bound, respectively. Examples: *
+            /// `activeBetween("2021-04-21T11:30:00Z", "2021-07-21T00:00:00Z")` * `activeBetween(UNBOUNDED,
+            /// "2021-11-21T00:00:00-04:00")` * `activeBetween("2021-07-21T00:00:00-04:00", UNBOUNDED)`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>
-            /// Maximum size of the returned data. If unspecified, at most 10 anomalies will be returned. The maximum
-            /// value is 100; values above 100 will be coerced to 100.
+            /// Optional. Maximum size of the returned data. If unspecified, at most 10 anomalies will be returned. The
+            /// maximum value is 100; values above 100 will be coerced to 100.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>
-            /// A page token, received from a previous `ListErrorReports` call. Provide this to retrieve the subsequent
-            /// page. When paginating, all other parameters provided to `ListErrorReports` must match the call that
-            /// provided the page token.
+            /// Optional. A page token, received from a previous `ListErrorReports` call. Provide this to retrieve the
+            /// subsequent page. When paginating, all other parameters provided to `ListErrorReports` must match the
+            /// call that provided the page token.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -455,16 +455,17 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1
             }
 
             /// <summary>
-            /// The maximum number of apps to return. The service may return fewer than this value. If unspecified, at
-            /// most 50 apps will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+            /// Optional. The maximum number of apps to return. The service may return fewer than this value. If
+            /// unspecified, at most 50 apps will be returned. The maximum value is 1000; values above 1000 will be
+            /// coerced to 1000.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>
-            /// A page token, received from a previous `SearchAccessibleApps` call. Provide this to retrieve the
-            /// subsequent page. When paginating, all other parameters provided to `SearchAccessibleApps` must match the
-            /// call that provided the page token.
+            /// Optional. A page token, received from a previous `SearchAccessibleApps` call. Provide this to retrieve
+            /// the subsequent page. When paginating, all other parameters provided to `SearchAccessibleApps` must match
+            /// the call that provided the page token.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -941,32 +942,32 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// A selection predicate to retrieve only a subset of the issues. Counts in the returned error
-                    /// issues will only reflect occurrences that matched the filter. For filtering basics, please check
-                    /// [AIP-160](https://google.aip.dev/160). ** Supported field names:** * `apiLevel`: Matches error
-                    /// issues that occurred in the requested Android versions (specified as the numeric API level)
-                    /// only. Example: `apiLevel = 28 OR apiLevel = 29`. * `versionCode`: Matches error issues that
-                    /// occurred in the requested app version codes only. Example: `versionCode = 123 OR versionCode =
-                    /// 456`. * `deviceModel`: Matches error issues that occurred in the requested devices. Example:
-                    /// `deviceModel = "google/walleye" OR deviceModel = "google/marlin"`. * `deviceBrand`: Matches
-                    /// error issues that occurred in the requested device brands. Example: `deviceBrand = "Google". *
-                    /// `deviceType`: Matches error issues that occurred in the requested device types. Example:
-                    /// `deviceType = "PHONE"`. * `errorIssueType`: Matches error issues of the requested types only.
-                    /// Valid candidates: `CRASH`, `ANR`, `NON_FATAL`. Example: `errorIssueType = CRASH OR
-                    /// errorIssueType = ANR`. * `appProcessState`: Matches error issues on the process state of an app,
-                    /// indicating whether an app runs in the foreground (user-visible) or background. Valid candidates:
-                    /// `FOREGROUND`, `BACKGROUND`. Example: `appProcessState = FOREGROUND`. * `isUserPerceived`:
-                    /// Matches error issues that are user-perceived. It is not accompanied by any operators. Example:
-                    /// `isUserPerceived`. ** Supported operators:** * Comparison operators: The only supported
-                    /// comparison operator is equality. The filtered field must appear on the left hand side of the
-                    /// comparison. * Logical Operators: Logical operators `AND` and `OR` can be used to build complex
-                    /// filters following a conjunctive normal form (CNF), i.e., conjunctions of disjunctions. The `OR`
-                    /// operator takes precedence over `AND` so the use of parenthesis is not necessary when building
-                    /// CNF. The `OR` operator is only supported to build disjunctions that apply to the same field,
-                    /// e.g., `versionCode = 123 OR errorIssueType = ANR` is not a valid filter. ** Examples ** Some
-                    /// valid filtering expressions: * `versionCode = 123 AND errorIssueType = ANR` * `versionCode = 123
-                    /// AND errorIssueType = OR errorIssueType = CRASH` * `versionCode = 123 AND (errorIssueType = OR
-                    /// errorIssueType = CRASH)`
+                    /// Optional. A selection predicate to retrieve only a subset of the issues. Counts in the returned
+                    /// error issues will only reflect occurrences that matched the filter. For filtering basics, please
+                    /// check [AIP-160](https://google.aip.dev/160). ** Supported field names:** * `apiLevel`: Matches
+                    /// error issues that occurred in the requested Android versions (specified as the numeric API
+                    /// level) only. Example: `apiLevel = 28 OR apiLevel = 29`. * `versionCode`: Matches error issues
+                    /// that occurred in the requested app version codes only. Example: `versionCode = 123 OR
+                    /// versionCode = 456`. * `deviceModel`: Matches error issues that occurred in the requested
+                    /// devices. Example: `deviceModel = "google/walleye" OR deviceModel = "google/marlin"`. *
+                    /// `deviceBrand`: Matches error issues that occurred in the requested device brands. Example:
+                    /// `deviceBrand = "Google". * `deviceType`: Matches error issues that occurred in the requested
+                    /// device types. Example: `deviceType = "PHONE"`. * `errorIssueType`: Matches error issues of the
+                    /// requested types only. Valid candidates: `CRASH`, `ANR`, `NON_FATAL`. Example: `errorIssueType =
+                    /// CRASH OR errorIssueType = ANR`. * `appProcessState`: Matches error issues on the process state
+                    /// of an app, indicating whether an app runs in the foreground (user-visible) or background. Valid
+                    /// candidates: `FOREGROUND`, `BACKGROUND`. Example: `appProcessState = FOREGROUND`. *
+                    /// `isUserPerceived`: Matches error issues that are user-perceived. It is not accompanied by any
+                    /// operators. Example: `isUserPerceived`. ** Supported operators:** * Comparison operators: The
+                    /// only supported comparison operator is equality. The filtered field must appear on the left hand
+                    /// side of the comparison. * Logical Operators: Logical operators `AND` and `OR` can be used to
+                    /// build complex filters following a conjunctive normal form (CNF), i.e., conjunctions of
+                    /// disjunctions. The `OR` operator takes precedence over `AND` so the use of parenthesis is not
+                    /// necessary when building CNF. The `OR` operator is only supported to build disjunctions that
+                    /// apply to the same field, e.g., `versionCode = 123 OR errorIssueType = ANR` is not a valid
+                    /// filter. ** Examples ** Some valid filtering expressions: * `versionCode = 123 AND errorIssueType
+                    /// = ANR` * `versionCode = 123 AND errorIssueType = OR errorIssueType = CRASH` * `versionCode = 123
+                    /// AND (errorIssueType = OR errorIssueType = CRASH)`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -1088,7 +1089,7 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1
                     public virtual System.Nullable<int> IntervalStartTimeYear { get; set; }
 
                     /// <summary>
-                    /// Specifies a field that will be used to order the results. ** Supported dimensions:** *
+                    /// Optional. Specifies a field that will be used to order the results. ** Supported dimensions:** *
                     /// `errorReportCount`: Orders issues by number of error reports. * `distinctUsers`: Orders issues
                     /// by number of unique affected users. ** Supported operations:** * `asc` for ascending order. *
                     /// `desc` for descending order. Format: A field and an operation, e.g., `errorReportCount desc`
@@ -1098,17 +1099,17 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// The maximum number of error issues to return. The service may return fewer than this value. If
-                    /// unspecified, at most 50 error issues will be returned. The maximum value is 1000; values above
-                    /// 1000 will be coerced to 1000.
+                    /// Optional. The maximum number of error issues to return. The service may return fewer than this
+                    /// value. If unspecified, at most 50 error issues will be returned. The maximum value is 1000;
+                    /// values above 1000 will be coerced to 1000.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// A page token, received from a previous call. Provide this to retrieve the subsequent page. When
-                    /// paginating, all other parameters provided to the request must match the call that provided the
-                    /// page token.
+                    /// Optional. A page token, received from a previous call. Provide this to retrieve the subsequent
+                    /// page. When paginating, all other parameters provided to the request must match the call that
+                    /// provided the page token.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1390,11 +1391,11 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// A selection predicate to retrieve only a subset of the reports. For filtering basics, please
-                    /// check [AIP-160](https://google.aip.dev/160). ** Supported field names:** * `apiLevel`: Matches
-                    /// error reports that occurred in the requested Android versions (specified as the numeric API
-                    /// level) only. Example: `apiLevel = 28 OR apiLevel = 29`. * `versionCode`: Matches error reports
-                    /// that occurred in the requested app version codes only. Example: `versionCode = 123 OR
+                    /// Optional. A selection predicate to retrieve only a subset of the reports. For filtering basics,
+                    /// please check [AIP-160](https://google.aip.dev/160). ** Supported field names:** * `apiLevel`:
+                    /// Matches error reports that occurred in the requested Android versions (specified as the numeric
+                    /// API level) only. Example: `apiLevel = 28 OR apiLevel = 29`. * `versionCode`: Matches error
+                    /// reports that occurred in the requested app version codes only. Example: `versionCode = 123 OR
                     /// versionCode = 456`. * `deviceModel`: Matches error issues that occurred in the requested
                     /// devices. Example: `deviceModel = "google/walleye" OR deviceModel = "google/marlin"`. *
                     /// `deviceBrand`: Matches error issues that occurred in the requested device brands. Example:
@@ -1540,17 +1541,17 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1
                     public virtual System.Nullable<int> IntervalStartTimeYear { get; set; }
 
                     /// <summary>
-                    /// The maximum number of reports to return. The service may return fewer than this value. If
-                    /// unspecified, at most 50 reports will be returned. The maximum value is 100; values above 100
+                    /// Optional. The maximum number of reports to return. The service may return fewer than this value.
+                    /// If unspecified, at most 50 reports will be returned. The maximum value is 100; values above 100
                     /// will be coerced to 100.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// A page token, received from a previous `SearchErrorReports` call. Provide this to retrieve the
-                    /// subsequent page. When paginating, all other parameters provided to `SearchErrorReports` must
-                    /// match the call that provided the page token.
+                    /// Optional. A page token, received from a previous `SearchErrorReports` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `SearchErrorReports` must match the call that provided the page token.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -2475,7 +2476,7 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     /// <summary>Representations of an app version.</summary>
     public class GooglePlayDeveloperReportingV1beta1AppVersion : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Numeric version code of the app version (set by the app's developer).</summary>
+        /// <summary>Optional. Numeric version code of the app version (set by the app's developer).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
         public virtual System.Nullable<long> VersionCode { get; set; }
 
@@ -2657,7 +2658,7 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("freshnessInfo")]
         public virtual GooglePlayDeveloperReportingV1beta1FreshnessInfo FreshnessInfo { get; set; }
 
-        /// <summary>The resource name. Format: apps/{app}/errorCountMetricSet</summary>
+        /// <summary>Identifier. The resource name. Format: apps/{app}/errorCountMetricSet</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2871,7 +2872,7 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("issue")]
         public virtual string Issue { get; set; }
 
-        /// <summary>The resource name of the report. Format: apps/{app}/{report}</summary>
+        /// <summary>Identifier. The resource name of the report. Format: apps/{app}/{report}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3103,19 +3104,21 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     /// <summary>Represents a row of dimensions and metrics.</summary>
     public class GooglePlayDeveloperReportingV1beta1MetricsRow : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Granularity of the aggregation period of the row.</summary>
+        /// <summary>Optional. Granularity of the aggregation period of the row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregationPeriod")]
         public virtual string AggregationPeriod { get; set; }
 
-        /// <summary>Dimension columns in the row.</summary>
+        /// <summary>Optional. Dimension columns in the row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
         public virtual System.Collections.Generic.IList<GooglePlayDeveloperReportingV1beta1DimensionValue> Dimensions { get; set; }
 
-        /// <summary>Metric columns in the row.</summary>
+        /// <summary>Optional. Metric columns in the row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<GooglePlayDeveloperReportingV1beta1MetricValue> Metrics { get; set; }
 
-        /// <summary>Starting date (and time for hourly aggregation) of the period covered by this row.</summary>
+        /// <summary>
+        /// Optional. Starting date (and time for hourly aggregation) of the period covered by this row.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual GoogleTypeDateTime StartTime { get; set; }
 
@@ -3126,7 +3129,7 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     /// <summary>Representation of an OS version.</summary>
     public class GooglePlayDeveloperReportingV1beta1OsVersion : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Numeric version code of the OS - API level</summary>
+        /// <summary>Optional. Numeric version code of the OS - API level</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiLevel")]
         public virtual System.Nullable<long> ApiLevel { get; set; }
 
@@ -3138,8 +3141,8 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     public class GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Dimensions to slice the metrics by. **Supported dimensions:** * `apiLevel` (string): the API level of
-        /// Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that
+        /// Optional. Dimensions to slice the metrics by. **Supported dimensions:** * `apiLevel` (string): the API level
+        /// of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that
         /// was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model.
         /// The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device
         /// corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's
@@ -3162,15 +3165,15 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> Dimensions { get; set; }
 
         /// <summary>
-        /// Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard
-        /// and supports filtering by equality of all breakdown dimensions.
+        /// Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160)
+        /// standard and supports filtering by equality of all breakdown dimensions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 
         /// <summary>
-        /// Metrics to aggregate. **Supported metrics:** * `anrRate` (`google.type.Decimal`): Percentage of distinct
-        /// users in the aggregation period that experienced at least one ANR. * `anrRate7dUserWeighted`
+        /// Optional. Metrics to aggregate. **Supported metrics:** * `anrRate` (`google.type.Decimal`): Percentage of
+        /// distinct users in the aggregation period that experienced at least one ANR. * `anrRate7dUserWeighted`
         /// (`google.type.Decimal`): Rolling average value of `anrRate` in the last 7 days. The daily values are
         /// weighted by the count of distinct users for the day. Not supported in HOURLY granularity. *
         /// `anrRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `anrRate` in the last 28 days.
@@ -3192,30 +3195,30 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
 
         /// <summary>
-        /// Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is
-        /// 100,000; values above 100,000 will be coerced to 100,000.
+        /// Optional. Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum
+        /// value is 100,000; values above 100,000 will be coerced to 100,000.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
 
         /// <summary>
-        /// A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating,
-        /// all other parameters provided to the request must match the call that provided the page token.
+        /// Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When
+        /// paginating, all other parameters provided to the request must match the call that provided the page token.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
 
         /// <summary>
-        /// Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics
-        /// are aggregated in calendar date intervals. Due to historical constraints, the default and only supported
-        /// timezone is `America/Los_Angeles`. * HOURLY: metrics are aggregated in hourly intervals. The default and
-        /// only supported timezone is `UTC`.
+        /// Optional. Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY:
+        /// metrics are aggregated in calendar date intervals. Due to historical constraints, the default and only
+        /// supported timezone is `America/Los_Angeles`. * HOURLY: metrics are aggregated in hourly intervals. The
+        /// default and only supported timezone is `UTC`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timelineSpec")]
         public virtual GooglePlayDeveloperReportingV1beta1TimelineSpec TimelineSpec { get; set; }
 
         /// <summary>
-        /// User view to select. The output data will correspond to the selected view. **Supported values:** *
+        /// Optional. User view to select. The output data will correspond to the selected view. **Supported values:** *
         /// `OS_PUBLIC` To select data from all publicly released Android versions. This is the default. Supports all
         /// the above dimensions. * `APP_TESTERS` To select data from users who have opted in to be testers. Supports
         /// all the above dimensions. * `OS_BETA` To select data from beta android versions only, excluding data from
@@ -3249,8 +3252,8 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     public class GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Dimensions to slice the metrics by. **Supported dimensions:** * `apiLevel` (string): the API level of
-        /// Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that
+        /// Optional. Dimensions to slice the metrics by. **Supported dimensions:** * `apiLevel` (string): the API level
+        /// of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that
         /// was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model.
         /// The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device
         /// corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's
@@ -3273,15 +3276,15 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> Dimensions { get; set; }
 
         /// <summary>
-        /// Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard
-        /// and supports filtering by equality of all breakdown dimensions.
+        /// Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160)
+        /// standard and supports filtering by equality of all breakdown dimensions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 
         /// <summary>
-        /// Metrics to aggregate. **Supported metrics:** * `crashRate` (`google.type.Decimal`): Percentage of distinct
-        /// users in the aggregation period that experienced at least one crash. * `crashRate7dUserWeighted`
+        /// Optional. Metrics to aggregate. **Supported metrics:** * `crashRate` (`google.type.Decimal`): Percentage of
+        /// distinct users in the aggregation period that experienced at least one crash. * `crashRate7dUserWeighted`
         /// (`google.type.Decimal`): Rolling average value of `crashRate` in the last 7 days. The daily values are
         /// weighted by the count of distinct users for the day. * `crashRate28dUserWeighted` (`google.type.Decimal`):
         /// Rolling average value of `crashRate` in the last 28 days. The daily values are weighted by the count of
@@ -3305,30 +3308,30 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
 
         /// <summary>
-        /// Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is
-        /// 100,000; values above 100,000 will be coerced to 100,000.
+        /// Optional. Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum
+        /// value is 100,000; values above 100,000 will be coerced to 100,000.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
 
         /// <summary>
-        /// A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating,
-        /// all other parameters provided to the request must match the call that provided the page token.
+        /// Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When
+        /// paginating, all other parameters provided to the request must match the call that provided the page token.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
 
         /// <summary>
-        /// Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics
-        /// are aggregated in calendar date intervals. Due to historical constraints, the default and only supported
-        /// timezone is `America/Los_Angeles`. * HOURLY: metrics are aggregated in hourly intervals. The default and
-        /// only supported timezone is `UTC`.
+        /// Optional. Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY:
+        /// metrics are aggregated in calendar date intervals. Due to historical constraints, the default and only
+        /// supported timezone is `America/Los_Angeles`. * HOURLY: metrics are aggregated in hourly intervals. The
+        /// default and only supported timezone is `UTC`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timelineSpec")]
         public virtual GooglePlayDeveloperReportingV1beta1TimelineSpec TimelineSpec { get; set; }
 
         /// <summary>
-        /// User view to select. The output data will correspond to the selected view. **Supported values:** *
+        /// Optional. User view to select. The output data will correspond to the selected view. **Supported values:** *
         /// `OS_PUBLIC` To select data from all publicly released Android versions. This is the default. Supports all
         /// the above dimensions. * `APP_TESTERS` To select data from users who have opted in to be testers. Supports
         /// all the above dimensions. * `OS_BETA` To select data from beta android versions only, excluding data from
@@ -3362,9 +3365,9 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     public class GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android
-        /// that was running on the user's device, e.g., 26. * `versionCode` (int64): unique identifier of the user's
-        /// device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to
+        /// Optional. Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of
+        /// Android that was running on the user's device, e.g., 26. * `versionCode` (int64): unique identifier of the
+        /// user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to
         /// Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceModel` (string): unique
         /// identifier of the user's device model. * `deviceType` (string): identifier of the device's form factor,
         /// e.g., PHONE. * `reportType` (string): the type of error. The value should correspond to one of the possible
@@ -3385,40 +3388,41 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> Dimensions { get; set; }
 
         /// <summary>
-        /// Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard
-        /// and supports filtering by equality of all breakdown dimensions and: * `isUserPerceived` (string): denotes
-        /// whether error is user perceived or not, USER_PERCEIVED or NOT_USER_PERCEIVED.
+        /// Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160)
+        /// standard and supports filtering by equality of all breakdown dimensions and: * `isUserPerceived` (string):
+        /// denotes whether error is user perceived or not, USER_PERCEIVED or NOT_USER_PERCEIVED.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 
         /// <summary>
-        /// Metrics to aggregate. **Supported metrics:** * `errorReportCount` (`google.type.Decimal`): Absolute count of
-        /// individual error reports that have been received for an app. * `distinctUsers` (`google.type.Decimal`):
-        /// Count of distinct users for which reports have been received. Care must be taken not to aggregate this count
-        /// further, as it may result in users being counted multiple times. This value is not rounded, however it may
-        /// be an approximation.
+        /// Optional. Metrics to aggregate. **Supported metrics:** * `errorReportCount` (`google.type.Decimal`):
+        /// Absolute count of individual error reports that have been received for an app. * `distinctUsers`
+        /// (`google.type.Decimal`): Count of distinct users for which reports have been received. Care must be taken
+        /// not to aggregate this count further, as it may result in users being counted multiple times. This value is
+        /// not rounded, however it may be an approximation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
 
         /// <summary>
-        /// Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is
-        /// 100000; values above 100000 will be coerced to 100000.
+        /// Optional. Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum
+        /// value is 100000; values above 100000 will be coerced to 100000.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
 
         /// <summary>
-        /// A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating,
-        /// all other parameters provided to the request must match the call that provided the page token.
+        /// Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When
+        /// paginating, all other parameters provided to the request must match the call that provided the page token.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
 
         /// <summary>
-        /// Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics
-        /// are aggregated in calendar date intervals. The default and only supported timezone is `America/Los_Angeles`.
+        /// Optional. Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY:
+        /// metrics are aggregated in calendar date intervals. The default and only supported timezone is
+        /// `America/Los_Angeles`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timelineSpec")]
         public virtual GooglePlayDeveloperReportingV1beta1TimelineSpec TimelineSpec { get; set; }
@@ -3446,10 +3450,10 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     public class GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android
-        /// that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was
-        /// running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The
-        /// form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device
+        /// Optional. Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of
+        /// Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that
+        /// was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model.
+        /// The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device
         /// corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's
         /// device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's
         /// device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP
@@ -3470,15 +3474,15 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> Dimensions { get; set; }
 
         /// <summary>
-        /// Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard
-        /// and supports filtering by equality of all breakdown dimensions.
+        /// Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160)
+        /// standard and supports filtering by equality of all breakdown dimensions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 
         /// <summary>
-        /// Metrics to aggregate. **Supported metrics:** * `excessiveWakeupRate` (`google.type.Decimal`): Percentage of
-        /// distinct users in the aggregation period that had more than 10 wakeups per hour. *
+        /// Optional. Metrics to aggregate. **Supported metrics:** * `excessiveWakeupRate` (`google.type.Decimal`):
+        /// Percentage of distinct users in the aggregation period that had more than 10 wakeups per hour. *
         /// `excessiveWakeupRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `excessiveWakeupRate`
         /// in the last 7 days. The daily values are weighted by the count of distinct users for the day. *
         /// `excessiveWakeupRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `excessiveWakeupRate`
@@ -3493,30 +3497,30 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
 
         /// <summary>
-        /// Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is
-        /// 100000; values above 100000 will be coerced to 100000.
+        /// Optional. Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum
+        /// value is 100000; values above 100000 will be coerced to 100000.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
 
         /// <summary>
-        /// A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating,
-        /// all other parameters provided to the request must match the call that provided the page token.
+        /// Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When
+        /// paginating, all other parameters provided to the request must match the call that provided the page token.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
 
         /// <summary>
-        /// Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics
-        /// are aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is
-        /// `America/Los_Angeles`.
+        /// Optional. Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY:
+        /// metrics are aggregated in calendar date intervals. Due to historical constraints, the only supported
+        /// timezone is `America/Los_Angeles`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timelineSpec")]
         public virtual GooglePlayDeveloperReportingV1beta1TimelineSpec TimelineSpec { get; set; }
 
         /// <summary>
-        /// User view to select. The output data will correspond to the selected view. The only supported value is
-        /// `OS_PUBLIC`.
+        /// Optional. User view to select. The output data will correspond to the selected view. The only supported
+        /// value is `OS_PUBLIC`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userCohort")]
         public virtual string UserCohort { get; set; }
@@ -3649,10 +3653,10 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     public class GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android
-        /// that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was
-        /// running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The
-        /// form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device
+        /// Optional. Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of
+        /// Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that
+        /// was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model.
+        /// The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device
         /// corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's
         /// device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's
         /// device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP
@@ -3673,15 +3677,15 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> Dimensions { get; set; }
 
         /// <summary>
-        /// Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard
-        /// and supports filtering by equality of all breakdown dimensions.
+        /// Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160)
+        /// standard and supports filtering by equality of all breakdown dimensions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 
         /// <summary>
-        /// Metrics to aggregate. **Supported metrics:** * `slowRenderingRate20Fps` (`google.type.Decimal`): Percentage
-        /// of distinct users in the aggregation period that had a slow rendering. *
+        /// Optional. Metrics to aggregate. **Supported metrics:** * `slowRenderingRate20Fps` (`google.type.Decimal`):
+        /// Percentage of distinct users in the aggregation period that had a slow rendering. *
         /// `slowRenderingRate20Fps7dUserWeighted` (`google.type.Decimal`): Rolling average value of
         /// `slowRenderingRate20Fps` in the last 7 days. The daily values are weighted by the count of distinct users
         /// for the day. * `slowRenderingRate20Fps28dUserWeighted` (`google.type.Decimal`): Rolling average value of
@@ -3702,30 +3706,30 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
 
         /// <summary>
-        /// Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is
-        /// 100000; values above 100000 will be coerced to 100000.
+        /// Optional. Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum
+        /// value is 100000; values above 100000 will be coerced to 100000.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
 
         /// <summary>
-        /// A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating,
-        /// all other parameters provided to the request must match the call that provided the page token.
+        /// Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When
+        /// paginating, all other parameters provided to the request must match the call that provided the page token.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
 
         /// <summary>
-        /// Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics
-        /// are aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is
-        /// `America/Los_Angeles`.
+        /// Optional. Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY:
+        /// metrics are aggregated in calendar date intervals. Due to historical constraints, the only supported
+        /// timezone is `America/Los_Angeles`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timelineSpec")]
         public virtual GooglePlayDeveloperReportingV1beta1TimelineSpec TimelineSpec { get; set; }
 
         /// <summary>
-        /// User view to select. The output data will correspond to the selected view. The only supported value is
-        /// `OS_PUBLIC`.
+        /// Optional. User view to select. The output data will correspond to the selected view. The only supported
+        /// value is `OS_PUBLIC`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userCohort")]
         public virtual string UserCohort { get; set; }
@@ -3753,10 +3757,10 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     public class GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android
-        /// that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was
-        /// running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The
-        /// form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device
+        /// Optional. Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of
+        /// Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that
+        /// was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model.
+        /// The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device
         /// corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's
         /// device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's
         /// device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP
@@ -3777,15 +3781,15 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> Dimensions { get; set; }
 
         /// <summary>
-        /// Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard
-        /// and supports filtering by equality of all breakdown dimensions.
+        /// Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160)
+        /// standard and supports filtering by equality of all breakdown dimensions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 
         /// <summary>
-        /// Metrics to aggregate. **Supported metrics:** * `slowStartRate` (`google.type.Decimal`): Percentage of
-        /// distinct users in the aggregation period that had a slow start. * `slowStartRate7dUserWeighted`
+        /// Optional. Metrics to aggregate. **Supported metrics:** * `slowStartRate` (`google.type.Decimal`): Percentage
+        /// of distinct users in the aggregation period that had a slow start. * `slowStartRate7dUserWeighted`
         /// (`google.type.Decimal`): Rolling average value of `slowStartRate` in the last 7 days. The daily values are
         /// weighted by the count of distinct users for the day. * `slowStartRate28dUserWeighted`
         /// (`google.type.Decimal`): Rolling average value of `slowStartRate` in the last 28 days. The daily values are
@@ -3799,30 +3803,30 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
 
         /// <summary>
-        /// Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is
-        /// 100000; values above 100000 will be coerced to 100000.
+        /// Optional. Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum
+        /// value is 100000; values above 100000 will be coerced to 100000.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
 
         /// <summary>
-        /// A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating,
-        /// all other parameters provided to the request must match the call that provided the page token.
+        /// Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When
+        /// paginating, all other parameters provided to the request must match the call that provided the page token.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
 
         /// <summary>
-        /// Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics
-        /// are aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is
-        /// `America/Los_Angeles`.
+        /// Optional. Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY:
+        /// metrics are aggregated in calendar date intervals. Due to historical constraints, the only supported
+        /// timezone is `America/Los_Angeles`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timelineSpec")]
         public virtual GooglePlayDeveloperReportingV1beta1TimelineSpec TimelineSpec { get; set; }
 
         /// <summary>
-        /// User view to select. The output data will correspond to the selected view. The only supported value is
-        /// `OS_PUBLIC`.
+        /// Optional. User view to select. The output data will correspond to the selected view. The only supported
+        /// value is `OS_PUBLIC`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userCohort")]
         public virtual string UserCohort { get; set; }
@@ -3850,10 +3854,10 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     public class GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android
-        /// that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was
-        /// running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The
-        /// form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device
+        /// Optional. Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of
+        /// Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that
+        /// was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model.
+        /// The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device
         /// corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's
         /// device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's
         /// device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP
@@ -3874,16 +3878,16 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> Dimensions { get; set; }
 
         /// <summary>
-        /// Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard
-        /// and supports filtering by equality of all breakdown dimensions.
+        /// Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160)
+        /// standard and supports filtering by equality of all breakdown dimensions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 
         /// <summary>
-        /// Metrics to aggregate. **Supported metrics:** * `stuckBgWakelockRate` (`google.type.Decimal`): Percentage of
-        /// distinct users in the aggregation period that had a wakelock held in the background for longer than 1 hour.
-        /// * `stuckBgWakelockRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of
+        /// Optional. Metrics to aggregate. **Supported metrics:** * `stuckBgWakelockRate` (`google.type.Decimal`):
+        /// Percentage of distinct users in the aggregation period that had a wakelock held in the background for longer
+        /// than 1 hour. * `stuckBgWakelockRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of
         /// `stuckBgWakelockRate` in the last 7 days. The daily values are weighted by the count of distinct users for
         /// the day. * `stuckBgWakelockRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of
         /// `stuckBgWakelockRate` in the last 28 days. The daily values are weighted by the count of distinct users for
@@ -3898,30 +3902,30 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
 
         /// <summary>
-        /// Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is
-        /// 100000; values above 100000 will be coerced to 100000.
+        /// Optional. Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum
+        /// value is 100000; values above 100000 will be coerced to 100000.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
 
         /// <summary>
-        /// A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating,
-        /// all other parameters provided to the request must match the call that provided the page token.
+        /// Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When
+        /// paginating, all other parameters provided to the request must match the call that provided the page token.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
 
         /// <summary>
-        /// Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics
-        /// are aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is
-        /// `America/Los_Angeles`.
+        /// Optional. Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY:
+        /// metrics are aggregated in calendar date intervals. Due to historical constraints, the only supported
+        /// timezone is `America/Los_Angeles`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timelineSpec")]
         public virtual GooglePlayDeveloperReportingV1beta1TimelineSpec TimelineSpec { get; set; }
 
         /// <summary>
-        /// User view to select. The output data will correspond to the selected view. The only supported value is
-        /// `OS_PUBLIC`.
+        /// Optional. User view to select. The output data will correspond to the selected view. The only supported
+        /// value is `OS_PUBLIC`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userCohort")]
         public virtual string UserCohort { get; set; }
@@ -4194,26 +4198,26 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     public class GooglePlayDeveloperReportingV1beta1TimelineSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Type of the aggregation period of the datapoints in the timeline. Intervals are identified by the date and
-        /// time at the start of the interval.
+        /// Optional. Type of the aggregation period of the datapoints in the timeline. Intervals are identified by the
+        /// date and time at the start of the interval.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregationPeriod")]
         public virtual string AggregationPeriod { get; set; }
 
         /// <summary>
-        /// Ending datapoint of the timeline (exclusive). See start_time for restrictions. The timezone of the end point
-        /// must match the timezone of the start point.
+        /// Optional. Ending datapoint of the timeline (exclusive). See start_time for restrictions. The timezone of the
+        /// end point must match the timezone of the start point.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual GoogleTypeDateTime EndTime { get; set; }
 
         /// <summary>
-        /// Starting datapoint of the timeline (inclusive). Must be aligned to the aggregation period as follows: *
-        /// HOURLY: the 'minutes', 'seconds' and 'nanos' fields must be unset. The time_zone can be left unset (defaults
-        /// to UTC) or set explicitly to "UTC". Setting any other utc_offset or timezone id will result in a validation
-        /// error. * DAILY: the 'hours', 'minutes', 'seconds' and 'nanos' fields must be unset. Different metric sets
-        /// support different timezones. It can be left unset to use the default timezone specified by the metric set.
-        /// The timezone of the end point must match the timezone of the start point.
+        /// Optional. Starting datapoint of the timeline (inclusive). Must be aligned to the aggregation period as
+        /// follows: * HOURLY: the 'minutes', 'seconds' and 'nanos' fields must be unset. The time_zone can be left
+        /// unset (defaults to UTC) or set explicitly to "UTC". Setting any other utc_offset or timezone id will result
+        /// in a validation error. * DAILY: the 'hours', 'minutes', 'seconds' and 'nanos' fields must be unset.
+        /// Different metric sets support different timezones. It can be left unset to use the default timezone
+        /// specified by the metric set. The timezone of the end point must match the timezone of the start point.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual GoogleTypeDateTime StartTime { get; set; }
