@@ -300,9 +300,14 @@ namespace Google.Apis.Kmsinventory.v1
 
             /// <summary>
             /// Returns metadata about the resources protected by the given Cloud KMS CryptoKey in the given Cloud
-            /// organization.
+            /// organization/project.
             /// </summary>
-            /// <param name="scope">Required. Resource name of the organization. Example: organizations/123</param>
+            /// <param name="scope">
+            /// Required. A scope can be an organization or a project. Resources protected by the crypto key in provided
+            /// scope will be returned. The allowed values are: * organizations/{ORGANIZATION_NUMBER} (e.g.,
+            /// "organizations/12345678") * projects/{PROJECT_ID} (e.g., "projects/foo-bar") * projects/{PROJECT_NUMBER}
+            /// (e.g., "projects/12345678")
+            /// </param>
             public virtual SearchRequest Search(string scope)
             {
                 return new SearchRequest(this.service, scope);
@@ -310,7 +315,7 @@ namespace Google.Apis.Kmsinventory.v1
 
             /// <summary>
             /// Returns metadata about the resources protected by the given Cloud KMS CryptoKey in the given Cloud
-            /// organization.
+            /// organization/project.
             /// </summary>
             public class SearchRequest : KmsinventoryBaseServiceRequest<Google.Apis.Kmsinventory.v1.Data.GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse>
             {
@@ -321,7 +326,12 @@ namespace Google.Apis.Kmsinventory.v1
                     InitParameters();
                 }
 
-                /// <summary>Required. Resource name of the organization. Example: organizations/123</summary>
+                /// <summary>
+                /// Required. A scope can be an organization or a project. Resources protected by the crypto key in
+                /// provided scope will be returned. The allowed values are: * organizations/{ORGANIZATION_NUMBER}
+                /// (e.g., "organizations/12345678") * projects/{PROJECT_ID} (e.g., "projects/foo-bar") *
+                /// projects/{PROJECT_NUMBER} (e.g., "projects/12345678")
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Scope { get; private set; }
 
@@ -430,6 +440,7 @@ namespace Google.Apis.Kmsinventory.v1
             this.service = service;
             CryptoKeys = new CryptoKeysResource(service);
             Locations = new LocationsResource(service);
+            ProtectedResources = new ProtectedResourcesResource(service);
         }
 
         /// <summary>Gets the CryptoKeys resource.</summary>
@@ -589,9 +600,13 @@ namespace Google.Apis.Kmsinventory.v1
                     }
 
                     /// <summary>
-                    /// Returns aggregate information about the resources protected by the given Cloud KMS CryptoKey.
-                    /// Only resources within the same Cloud organization as the key will be returned. The project that
-                    /// holds the key must be part of an organization in order for this call to succeed.
+                    /// Returns aggregate information about the resources protected by the given Cloud KMS CryptoKey. By
+                    /// default, summary of resources within the same Cloud organization as the key will be returned,
+                    /// which requires the KMS organization service account to be configured(refer
+                    /// https://docs.cloud.google.com/kms/docs/view-key-usage#required-roles). If the KMS organization
+                    /// service account is not configured or key's project is not part of an organization, set
+                    /// fallback_scope to `FALLBACK_SCOPE_PROJECT` to retrieve a summary of protected resources within
+                    /// the key's project.
                     /// </summary>
                     /// <param name="name">Required. The resource name of the CryptoKey.</param>
                     public virtual GetProtectedResourcesSummaryRequest GetProtectedResourcesSummary(string name)
@@ -600,9 +615,13 @@ namespace Google.Apis.Kmsinventory.v1
                     }
 
                     /// <summary>
-                    /// Returns aggregate information about the resources protected by the given Cloud KMS CryptoKey.
-                    /// Only resources within the same Cloud organization as the key will be returned. The project that
-                    /// holds the key must be part of an organization in order for this call to succeed.
+                    /// Returns aggregate information about the resources protected by the given Cloud KMS CryptoKey. By
+                    /// default, summary of resources within the same Cloud organization as the key will be returned,
+                    /// which requires the KMS organization service account to be configured(refer
+                    /// https://docs.cloud.google.com/kms/docs/view-key-usage#required-roles). If the KMS organization
+                    /// service account is not configured or key's project is not part of an organization, set
+                    /// fallback_scope to `FALLBACK_SCOPE_PROJECT` to retrieve a summary of protected resources within
+                    /// the key's project.
                     /// </summary>
                     public class GetProtectedResourcesSummaryRequest : KmsinventoryBaseServiceRequest<Google.Apis.Kmsinventory.v1.Data.GoogleCloudKmsInventoryV1ProtectedResourcesSummary>
                     {
@@ -616,6 +635,29 @@ namespace Google.Apis.Kmsinventory.v1
                         /// <summary>Required. The resource name of the CryptoKey.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The scope to use if the kms organization service account is not configured.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("fallbackScope", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<FallbackScopeEnum> FallbackScope { get; set; }
+
+                        /// <summary>
+                        /// Optional. The scope to use if the kms organization service account is not configured.
+                        /// </summary>
+                        public enum FallbackScopeEnum
+                        {
+                            /// <summary>Unspecified scope type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("FALLBACK_SCOPE_UNSPECIFIED")]
+                            FALLBACKSCOPEUNSPECIFIED = 0,
+
+                            /// <summary>
+                            /// If set to `FALLBACK_SCOPE_PROJECT`, the API will fall back to using key's project as
+                            /// request scope if the kms organization service account is not configured.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("FALLBACK_SCOPE_PROJECT")]
+                            FALLBACKSCOPEPROJECT = 1,
+                        }
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "getProtectedResourcesSummary";
@@ -638,8 +680,160 @@ namespace Google.Apis.Kmsinventory.v1
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/.*$",
                             });
+                            RequestParameters.Add("fallbackScope", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "fallbackScope",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
                     }
+                }
+            }
+        }
+
+        /// <summary>Gets the ProtectedResources resource.</summary>
+        public virtual ProtectedResourcesResource ProtectedResources { get; }
+
+        /// <summary>The "protectedResources" collection of methods.</summary>
+        public class ProtectedResourcesResource
+        {
+            private const string Resource = "protectedResources";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ProtectedResourcesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Returns metadata about the resources protected by the given Cloud KMS CryptoKey in the given Cloud
+            /// organization/project.
+            /// </summary>
+            /// <param name="scope">
+            /// Required. A scope can be an organization or a project. Resources protected by the crypto key in provided
+            /// scope will be returned. The allowed values are: * organizations/{ORGANIZATION_NUMBER} (e.g.,
+            /// "organizations/12345678") * projects/{PROJECT_ID} (e.g., "projects/foo-bar") * projects/{PROJECT_NUMBER}
+            /// (e.g., "projects/12345678")
+            /// </param>
+            public virtual SearchRequest Search(string scope)
+            {
+                return new SearchRequest(this.service, scope);
+            }
+
+            /// <summary>
+            /// Returns metadata about the resources protected by the given Cloud KMS CryptoKey in the given Cloud
+            /// organization/project.
+            /// </summary>
+            public class SearchRequest : KmsinventoryBaseServiceRequest<Google.Apis.Kmsinventory.v1.Data.GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse>
+            {
+                /// <summary>Constructs a new Search request.</summary>
+                public SearchRequest(Google.Apis.Services.IClientService service, string scope) : base(service)
+                {
+                    Scope = scope;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. A scope can be an organization or a project. Resources protected by the crypto key in
+                /// provided scope will be returned. The allowed values are: * organizations/{ORGANIZATION_NUMBER}
+                /// (e.g., "organizations/12345678") * projects/{PROJECT_ID} (e.g., "projects/foo-bar") *
+                /// projects/{PROJECT_NUMBER} (e.g., "projects/12345678")
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Scope { get; private set; }
+
+                /// <summary>Required. The resource name of the CryptoKey.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("cryptoKey", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CryptoKey { get; set; }
+
+                /// <summary>
+                /// The maximum number of resources to return. The service may return fewer than this value. If
+                /// unspecified, at most 500 resources will be returned. The maximum value is 500; values above 500 will
+                /// be coerced to 500.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token, received from a previous KeyTrackingService.SearchProtectedResources call. Provide
+                /// this to retrieve the subsequent page. When paginating, all other parameters provided to
+                /// KeyTrackingService.SearchProtectedResources must match the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>
+                /// Optional. A list of resource types that this request searches for. If empty, it will search all the
+                /// [trackable resource types](https://cloud.google.com/kms/docs/view-key-usage#tracked-resource-types).
+                /// Regular expressions are also supported. For example: * `compute.googleapis.com.*` snapshots
+                /// resources whose type starts with `compute.googleapis.com`. * `.*Image` snapshots resources whose
+                /// type ends with `Image`. * `.*Image.*` snapshots resources whose type contains `Image`. See
+                /// [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular expression syntax. If the
+                /// regular expression does not match any supported resource type, an INVALID_ARGUMENT error will be
+                /// returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("resourceTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ResourceTypes { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "search";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+scope}/protectedResources:search";
+
+                /// <summary>Initializes Search parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("scope", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scope",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("cryptoKey", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "cryptoKey",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("resourceTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
             }
         }
@@ -761,8 +955,8 @@ namespace Google.Apis.Kmsinventory.v1.Data
     }
 
     /// <summary>
-    /// Aggregate information about the resources protected by a Cloud KMS key in the same Cloud organization as the
-    /// key.
+    /// Aggregate information about the resources protected by a Cloud KMS key in the same Cloud organization/project as
+    /// the key.
     /// </summary>
     public class GoogleCloudKmsInventoryV1ProtectedResourcesSummary : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -796,6 +990,13 @@ namespace Google.Apis.Kmsinventory.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceTypes")]
         public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> ResourceTypes { get; set; }
 
+        /// <summary>
+        /// Warning messages for the state of response ProtectedResourcesSummary For example, if the organization
+        /// service account is not configured, INSUFFICIENT_PERMISSIONS_PARTIAL_DATA warning will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudKmsInventoryV1Warning> Warnings { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -813,6 +1014,23 @@ namespace Google.Apis.Kmsinventory.v1.Data
         /// <summary>Protected resources for this page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protectedResources")]
         public virtual System.Collections.Generic.IList<GoogleCloudKmsInventoryV1ProtectedResource> ProtectedResources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Warning message specifying various states of response data that might indicate incomplete or partial results.
+    /// </summary>
+    public class GoogleCloudKmsInventoryV1Warning : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The literal message providing context and details about the warnings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayMessage")]
+        public virtual string DisplayMessage { get; set; }
+
+        /// <summary>The specific warning code for the displayed message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warningCode")]
+        public virtual string WarningCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

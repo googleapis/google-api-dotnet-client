@@ -7,5 +7,9 @@
   "Google.Apis.Kmsinventory.v1.KmsinventoryBaseServiceRequest<<TResponse>>.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.Kmsinventory.v1.ProjectsResource+LocationsResource+KeyRingsResource+CryptoKeysResource+GetProtectedResourcesSummaryRequest.FallbackScopeEnum": [
+    "FALLBACK_SCOPE_UNSPECIFIED",
+    "FALLBACK_SCOPE_PROJECT"
   ]
 }
