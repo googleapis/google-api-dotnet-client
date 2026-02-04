@@ -32466,6 +32466,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. Observability config for the engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observabilityConfig")]
+        public virtual GoogleCloudDiscoveryengineV1ObservabilityConfig ObservabilityConfig { get; set; }
+
         /// <summary>
         /// Configurations for the Search Engine. Only applicable if solution_type is SOLUTION_TYPE_SEARCH.
         /// </summary>
@@ -33454,6 +33458,24 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Observability config for a resource.</summary>
+    public class GoogleCloudDiscoveryengineV1ObservabilityConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Enables observability. If false, all other flags are ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observabilityEnabled")]
+        public virtual System.Nullable<bool> ObservabilityEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. Enables sensitive logging. Sensitive logging includes customer core content (e.g. prompts,
+        /// responses). If false, will sanitize all sensitive fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sensitiveLoggingEnabled")]
+        public virtual System.Nullable<bool> SensitiveLoggingEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata and configurations for a Google Cloud project in the service.</summary>
     public class GoogleCloudDiscoveryengineV1Project : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -33771,6 +33793,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Model Armor configuration to be used for sanitizing user prompts and LLM responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelArmorConfig")]
         public virtual GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig ModelArmorConfig { get; set; }
+
+        /// <summary>Optional. Observability config for NotebookLM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observabilityConfig")]
+        public virtual GoogleCloudDiscoveryengineV1ObservabilityConfig ObservabilityConfig { get; set; }
 
         /// <summary>
         /// Optional. Whether to disable the notebook sharing feature for the project. Default to false if not
@@ -44397,6 +44423,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. Observability config for the engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observabilityConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaObservabilityConfig ObservabilityConfig { get; set; }
+
         /// <summary>
         /// Output only. Additional information of a recommendation engine. Only applicable if solution_type is
         /// SOLUTION_TYPE_RECOMMENDATION.
@@ -47722,6 +47752,24 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Observability config for a resource.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaObservabilityConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Enables observability. If false, all other flags are ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observabilityEnabled")]
+        public virtual System.Nullable<bool> ObservabilityEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. Enables sensitive logging. Sensitive logging includes customer core content (e.g. prompts,
+        /// responses). If false, will sanitize all sensitive fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sensitiveLoggingEnabled")]
+        public virtual System.Nullable<bool> SensitiveLoggingEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for CrawlRateManagementService.ObtainCrawlRate method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaObtainCrawlRateRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -48339,6 +48387,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Model Armor configuration to be used for sanitizing user prompts and LLM responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelArmorConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig ModelArmorConfig { get; set; }
+
+        /// <summary>Optional. Observability config for NotebookLM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observabilityConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaObservabilityConfig ObservabilityConfig { get; set; }
 
         /// <summary>
         /// Optional. Whether to disable the notebook sharing feature for the project. Default to false if not
@@ -58148,6 +58200,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. Observability config for the engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observabilityConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaObservabilityConfig ObservabilityConfig { get; set; }
+
         /// <summary>
         /// Configurations for the Search Engine. Only applicable if solution_type is SOLUTION_TYPE_SEARCH.
         /// </summary>
@@ -59437,6 +59493,24 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Observability config for a resource.</summary>
+    public class GoogleCloudDiscoveryengineV1betaObservabilityConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Enables observability. If false, all other flags are ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observabilityEnabled")]
+        public virtual System.Nullable<bool> ObservabilityEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. Enables sensitive logging. Sensitive logging includes customer core content (e.g. prompts,
+        /// responses). If false, will sanitize all sensitive fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sensitiveLoggingEnabled")]
+        public virtual System.Nullable<bool> SensitiveLoggingEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Response message for CrawlRateManagementService.ObtainCrawlRate method. The response contains organcic or
     /// dedicated crawl rate time series data for monitoring, depending on whether dedicated crawl rate is set.
@@ -59808,6 +59882,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Model Armor configuration to be used for sanitizing user prompts and LLM responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelArmorConfig")]
         public virtual GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig ModelArmorConfig { get; set; }
+
+        /// <summary>Optional. Observability config for NotebookLM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observabilityConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaObservabilityConfig ObservabilityConfig { get; set; }
 
         /// <summary>
         /// Optional. Whether to disable the notebook sharing feature for the project. Default to false if not
