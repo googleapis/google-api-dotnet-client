@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -8026,8 +8026,9 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
 
     /// <summary>
     /// Represents a geographic region that you can use as a target with both the `RegionalInventory` and
-    /// `ShippingSettings` services. You can define regions as collections of either postal codes or, in some countries,
-    /// using predefined geotargets. For more information, see [Set up regions
+    /// `ShippingSettings` services. You can define regions as collections of either postal codes, radius areas or, in
+    /// some countries, using predefined geotargets. A region must be defined by specifying exactly one of
+    /// `postal_code_area`, `geotarget_area`, or `radius_area`. For more information, see [Set up regions
     /// ](https://support.google.com/merchants/answer/7410946#zippy=%2Ccreate-a-new-region) for more information.
     /// </summary>
     public class Region : Google.Apis.Requests.IDirectResponseSchema
