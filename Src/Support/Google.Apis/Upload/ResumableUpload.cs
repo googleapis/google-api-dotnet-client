@@ -18,6 +18,7 @@ using Google.Apis.Http;
 using Google.Apis.Json;
 using Google.Apis.Logging;
 using Google.Apis.Requests;
+using Google.Apis.Requests.Parameters;
 using Google.Apis.Responses;
 using Google.Apis.Services;
 using Google.Apis.Testing;
@@ -1180,35 +1181,11 @@ namespace Google.Apis.Upload
         /// </summary>
         private void SetAllPropertyValues(RequestBuilder requestBuilder)
         {
-            Type myType = this.GetType();
-            var properties = myType.GetProperties();
-
-            foreach (var property in properties)
-            {
-                var attribute = Utilities.GetCustomAttribute<RequestParameterAttribute>(property);
-
-                if (attribute != null)
-                {
-                    string name = attribute.Name ?? property.Name.ToLowerInvariant();
-                    object value = property.GetValue(this, null);
-                    if (value != null)
-                    {
-                        var valueAsEnumerable = value as IEnumerable;
-                        if (!(value is string) && valueAsEnumerable != null)
-                        {
-                            foreach (var elem in valueAsEnumerable)
-                            {
-                                requestBuilder.AddParameter(attribute.Type, name, Utilities.ConvertToString(elem));
-                            }
-                        }
-                        else
-                        {
-                            // Otherwise just convert it to a string.
-                            requestBuilder.AddParameter(attribute.Type, name, Utilities.ConvertToString(value));
-                        }
-                    }
-                }
-            }
+            // Use InitParametersWithExpansion which:
+            // 1. Uses ReflectionCache to avoid PropertyInfo regeneration (performance)
+            // 2. Expands IEnumerable/Repeatable<T> parameters correctly (functionality)
+            // Note: Using the expansion variant ensures mismatched library versions fail at compile time
+            ParameterUtils.InitParametersWithExpansion(requestBuilder, this);
         }
 
         #endregion Upload Implementation
