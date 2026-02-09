@@ -1002,7 +1002,7 @@ namespace Google.Apis.NetworkSecurity.v1
                     this.service = service;
                 }
 
-                /// <summary>Creates a new FirewallEndpoint in a given project and location.</summary>
+                /// <summary>Creates a new FirewallEndpoint in a given organization and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. Value for parent.</param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.FirewallEndpoint body, string parent)
@@ -1010,7 +1010,7 @@ namespace Google.Apis.NetworkSecurity.v1
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a new FirewallEndpoint in a given project and location.</summary>
+                /// <summary>Creates a new FirewallEndpoint in a given organization and location.</summary>
                 public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -1091,14 +1091,14 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Deletes a single Endpoint.</summary>
+                /// <summary>Deletes a single org Endpoint.</summary>
                 /// <param name="name">Required. Name of the resource</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a single Endpoint.</summary>
+                /// <summary>Deletes a single org Endpoint.</summary>
                 public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -1157,14 +1157,14 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Gets details of a single Endpoint.</summary>
+                /// <summary>Gets details of a single org Endpoint.</summary>
                 /// <param name="name">Required. Name of the resource</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets details of a single Endpoint.</summary>
+                /// <summary>Gets details of a single org Endpoint.</summary>
                 public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.FirewallEndpoint>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -1202,14 +1202,14 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Lists FirewallEndpoints in a given project and location.</summary>
+                /// <summary>Lists FirewallEndpoints in a given organization and location.</summary>
                 /// <param name="parent">Required. Parent value for ListEndpointsRequest</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists FirewallEndpoints in a given project and location.</summary>
+                /// <summary>Lists FirewallEndpoints in a given organization and location.</summary>
                 public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.ListFirewallEndpointsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1298,7 +1298,7 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Update a single Endpoint.</summary>
+                /// <summary>Update a single org Endpoint.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Immutable. Identifier. Name of resource.</param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.FirewallEndpoint body, string name)
@@ -1306,7 +1306,7 @@ namespace Google.Apis.NetworkSecurity.v1
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Update a single Endpoint.</summary>
+                /// <summary>Update a single org Endpoint.</summary>
                 public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -6356,14 +6356,14 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Deletes a single Endpoint.</summary>
+                /// <summary>Deletes a single project Endpoint.</summary>
                 /// <param name="name">Required. Name of the resource</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a single Endpoint.</summary>
+                /// <summary>Deletes a single project Endpoint.</summary>
                 public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -6422,14 +6422,14 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Gets details of a single Endpoint.</summary>
+                /// <summary>Gets details of a single project Endpoint.</summary>
                 /// <param name="name">Required. Name of the resource</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets details of a single Endpoint.</summary>
+                /// <summary>Gets details of a single project Endpoint.</summary>
                 public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.FirewallEndpoint>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -6563,7 +6563,7 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Update a single Endpoint.</summary>
+                /// <summary>Update a single project Endpoint.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Immutable. Identifier. Name of resource.</param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.FirewallEndpoint body, string name)
@@ -6571,7 +6571,7 @@ namespace Google.Apis.NetworkSecurity.v1
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Update a single Endpoint.</summary>
+                /// <summary>Update a single project Endpoint.</summary>
                 public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
