@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -533,6 +533,22 @@ namespace Google.Apis.Merchant.promotions_v1.Data
         public virtual string CouponValueType { get; set; }
 
         /// <summary>
+        /// Optional. The custom redemption restriction for the promotion. If the `redemption_restriction` field is set
+        /// to `CUSTOM`, this field must be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customRedemptionRestriction")]
+        public virtual string CustomRedemptionRestriction { get; set; }
+
+        /// <summary>
+        /// Optional. Event applicability for this promotion. When present, this field indicates you are creating a
+        /// [sales
+        /// event](https://support.google.com/merchants/answer/15523289?hl=en&amp;amp;sjid=11099988466404504696-NC) and
+        /// not a product promotion. Exactly one of `product_applicability` or `event_applicability` must be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventApplicability")]
+        public virtual string EventApplicability { get; set; }
+
+        /// <summary>
         /// Optional. [Free gift
         /// description](https://support.google.com/merchants/answer/13847245?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC)
         /// for the promotion.
@@ -570,6 +586,15 @@ namespace Google.Apis.Merchant.promotions_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("getThisQuantityDiscounted")]
         public virtual System.Nullable<long> GetThisQuantityDiscounted { get; set; }
+
+        /// <summary>
+        /// Optional. A list of Google product categories for this promotion. Set if `EventApplicability` is
+        /// `SPECIFIC_CATEGORIES`. Up to 5 product categories can be specified. For more details on eligible values for
+        /// product categories, checkout the `google_product_category` attribute in the [Promotion data
+        /// specification](https://support.google.com/merchants/answer/2906014?hl=en).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleProductCategories")]
+        public virtual System.Collections.Generic.IList<string> GoogleProductCategories { get; set; }
 
         /// <summary>
         /// Optional. Product filter by [item group
@@ -633,6 +658,13 @@ namespace Google.Apis.Merchant.promotions_v1.Data
         public virtual string LongTitle { get; set; }
 
         /// <summary>
+        /// Optional. The maximum monetary discount a customer can receive for the promotion. This field is only
+        /// supported with the `Percent off` coupon value type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDiscountAmount")]
+        public virtual Price MaxDiscountAmount { get; set; }
+
+        /// <summary>
         /// Optional. [Minimum purchase
         /// amount](https://support.google.com/merchants/answer/13837705?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC)
         /// for the promotion.
@@ -669,8 +701,9 @@ namespace Google.Apis.Merchant.promotions_v1.Data
         public virtual System.Nullable<long> PercentOff { get; set; }
 
         /// <summary>
-        /// Required. Applicability of the promotion to either all products or [only specific
+        /// Optional. Applicability of the promotion to either all products or [only specific
         /// products](https://support.google.com/merchants/answer/6396257?ref_topic=6396150&amp;amp;sjid=17642868584668136159-NC).
+        /// Exactly one of `product_applicability` or `event_applicability` must be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productApplicability")]
         public virtual string ProductApplicability { get; set; }
@@ -730,6 +763,10 @@ namespace Google.Apis.Merchant.promotions_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionUrl")]
         public virtual string PromotionUrl { get; set; }
+
+        /// <summary>Optional. A restriction customers must meet before they can redeem the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redemptionRestriction")]
+        public virtual string RedemptionRestriction { get; set; }
 
         /// <summary>
         /// Optional. Whether the promotion applies to [all stores, or only specified
