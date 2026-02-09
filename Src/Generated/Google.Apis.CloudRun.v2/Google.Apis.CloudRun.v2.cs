@@ -418,9 +418,10 @@ namespace Google.Apis.CloudRun.v2
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. The unique identifier for the Instance. It must begin with letter, and cannot end with
+                    /// Optional. The unique identifier for the Instance. It must begin with letter, and cannot end with
                     /// hyphen; must contain fewer than 50 characters. The name of the instance becomes
-                    /// {parent}/instances/{instance_id}.
+                    /// {parent}/instances/{instance_id}. If not provided, the server will generate a unique
+                    /// `instance_id`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("instanceId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string InstanceId { get; set; }
@@ -1408,7 +1409,8 @@ namespace Google.Apis.CloudRun.v2
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. The unique identifier for the Job. The name of the job becomes {parent}/jobs/{job_id}.
+                    /// Optional. The unique identifier for the Job. The name of the job becomes {parent}/jobs/{job_id}.
+                    /// If not provided, the server will generate a unique `job_id`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string JobId { get; set; }
@@ -2724,9 +2726,9 @@ namespace Google.Apis.CloudRun.v2
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. The unique identifier for the Service. It must begin with letter, and cannot end with
+                    /// Optional. The unique identifier for the Service. It must begin with letter, and cannot end with
                     /// hyphen; must contain fewer than 50 characters. The name of the service becomes
-                    /// {parent}/services/{service_id}.
+                    /// {parent}/services/{service_id}. If not provided, the server will generate a unique `service_id`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("serviceId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ServiceId { get; set; }
@@ -3640,9 +3642,10 @@ namespace Google.Apis.CloudRun.v2
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
                     /// <summary>
-                    /// Required. The unique identifier for the WorkerPool. It must begin with letter, and cannot end
+                    /// Optional. The unique identifier for the WorkerPool. It must begin with letter, and cannot end
                     /// with hyphen; must contain fewer than 50 characters. The name of the worker pool becomes
-                    /// `{parent}/workerPools/{worker_pool_id}`.
+                    /// `{parent}/workerPools/{worker_pool_id}`. If not provided, the server will generate a unique
+                    /// `worker_pool_id`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("workerPoolId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string WorkerPoolId { get; set; }
