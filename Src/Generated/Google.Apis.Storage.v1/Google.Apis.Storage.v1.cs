@@ -5398,6 +5398,13 @@ namespace Google.Apis.Storage.v1
             }
 
             /// <summary>
+            /// Specifies which groups of Object Contexts from the source object(s) should be dropped from the
+            /// destination object.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("dropContextGroups", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> DropContextGroups { get; set; }
+
+            /// <summary>
             /// Makes the operation conditional on whether the object's current generation matches the given value.
             /// Setting to 0 makes the operation succeed only if there are no live versions of the object.
             /// </summary>
@@ -5460,6 +5467,14 @@ namespace Google.Apis.Storage.v1
                 RequestParameters.Add("destinationPredefinedAcl", new Google.Apis.Discovery.Parameter
                 {
                     Name = "destinationPredefinedAcl",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("dropContextGroups", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dropContextGroups",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -7930,6 +7945,13 @@ namespace Google.Apis.Storage.v1
             }
 
             /// <summary>
+            /// Specifies which groups of Object Contexts from the source object should be dropped from the destination
+            /// object.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("dropContextGroups", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> DropContextGroups { get; set; }
+
+            /// <summary>
             /// Makes the operation conditional on whether the object's current generation matches the given value.
             /// Setting to 0 makes the operation succeed only if there are no live versions of the object.
             /// </summary>
@@ -8100,6 +8122,14 @@ namespace Google.Apis.Storage.v1
                 RequestParameters.Add("destinationPredefinedAcl", new Google.Apis.Discovery.Parameter
                 {
                     Name = "destinationPredefinedAcl",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("dropContextGroups", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dropContextGroups",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
