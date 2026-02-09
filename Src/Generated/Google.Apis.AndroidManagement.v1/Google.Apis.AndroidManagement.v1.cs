@@ -3814,7 +3814,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
     {
         /// <summary>
         /// Required. The SHA-256 hash value of the signing key certificate of the app. This must be a valid SHA-256
-        /// hash value, i.e. 32 bytes. Otherwise, the policy is rejected.
+        /// hash value, i.e. 32 bytes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signingKeyCertFingerprintSha256")]
         public virtual string SigningKeyCertFingerprintSha256 { get; set; }
