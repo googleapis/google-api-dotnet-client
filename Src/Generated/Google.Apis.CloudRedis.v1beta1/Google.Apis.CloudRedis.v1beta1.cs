@@ -2472,14 +2472,24 @@ namespace Google.Apis.CloudRedis.v1beta1
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1beta1.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -4103,7 +4113,7 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common model for database resource instance metadata. Next ID: 30</summary>
+    /// <summary>Common model for database resource instance metadata. Next ID: 31</summary>
     public class DatabaseResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Availability configuration for this instance</summary>
@@ -4241,6 +4251,10 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceContainer")]
         public virtual string ResourceContainer { get; set; }
+
+        /// <summary>Optional. List of resource flags for the database resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceFlags")]
+        public virtual System.Collections.Generic.IList<ResourceFlags> ResourceFlags { get; set; }
 
         /// <summary>
         /// Required. Different from DatabaseResourceId.unique_id, a resource name can be reused over time. That is,
@@ -6389,6 +6403,21 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message type for storing resource flags.</summary>
+    public class ResourceFlags : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Key of the resource flag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Optional. Value of the resource flag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Deny maintenance period for the database resource. It specifies the time range during which the maintenance
     /// cannot start. This is configured by the customer.
@@ -6418,15 +6447,75 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("denyMaintenanceSchedules")]
         public virtual System.Collections.Generic.IList<ResourceMaintenanceDenySchedule> DenyMaintenanceSchedules { get; set; }
 
+        /// <summary>
+        /// Optional. Whether the instance is in stopped state. This information is temporarily being captured in
+        /// maintenanceInfo, till STOPPED state is supported by DB Center.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isInstanceStopped")]
+        public virtual System.Nullable<bool> IsInstanceStopped { get; set; }
+
         /// <summary>Optional. Maintenance window for the database resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSchedule")]
         public virtual ResourceMaintenanceSchedule MaintenanceSchedule { get; set; }
+
+        /// <summary>Output only. Current state of maintenance on the database resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceState")]
+        public virtual string MaintenanceState { get; set; }
 
         /// <summary>
         /// Optional. Current Maintenance version of the database resource. Example: "MYSQL_8_0_41.R20250531.01_15"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceVersion")]
         public virtual string MaintenanceVersion { get; set; }
+
+        /// <summary>
+        /// Optional. Upcoming maintenance for the database resource. This field is populated once SLM generates and
+        /// publishes upcoming maintenance window.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upcomingMaintenance")]
+        public virtual UpcomingMaintenance UpcomingMaintenance { get; set; }
+
+        private string _versionUpdateTimeRaw;
+
+        private object _versionUpdateTime;
+
+        /// <summary>
+        /// Optional. This field will contain the date when the last version update was applied to the database
+        /// resource. This will be used to calculate the age of the maintenance version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionUpdateTime")]
+        public virtual string VersionUpdateTimeRaw
+        {
+            get => _versionUpdateTimeRaw;
+            set
+            {
+                _versionUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _versionUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="VersionUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use VersionUpdateTimeDateTimeOffset instead.")]
+        public virtual object VersionUpdateTime
+        {
+            get => _versionUpdateTime;
+            set
+            {
+                _versionUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _versionUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="VersionUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? VersionUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(VersionUpdateTimeRaw);
+            set => VersionUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6726,6 +6815,90 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// <summary>For string value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
         public virtual string StringValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Upcoming maintenance for the database resource. This is generated by SLM once the upcoming maintenance schedule
+    /// is published.
+    /// </summary>
+    public class UpcomingMaintenance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Optional. The end time of the upcoming maintenance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Optional. The start time of the upcoming maintenance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
