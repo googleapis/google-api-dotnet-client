@@ -19389,11 +19389,7 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupAdId")]
         public virtual System.Nullable<long> AdGroupAdId { get; set; }
 
-        /// <summary>
-        /// The unique ID of the ad group that the ad belongs to. *Caution*: Parent ad groups for Demand Gen ads are not
-        /// currently retrieveable using `advertisers.adGroups.list` or `advertisers.adGroups.get`. Demand Gen ads can
-        /// be identified by the absence of the `ad_details` union field.
-        /// </summary>
+        /// <summary>Required. The unique ID of the ad group that the ad belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupId")]
         public virtual System.Nullable<long> AdGroupId { get; set; }
 
@@ -19405,45 +19401,49 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adUrls")]
         public virtual System.Collections.Generic.IList<AdUrl> AdUrls { get; set; }
 
-        /// <summary>Output only. The unique ID of the advertiser the ad belongs to.</summary>
+        /// <summary>Required. The unique ID of the advertiser the ad belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>
-        /// Details of an [audio ad](//support.google.com/displayvideo/answer/6274216) used for reach marketing
-        /// objectives.
+        /// Output only. Details of an [audio ad](//support.google.com/displayvideo/answer/6274216) used for reach
+        /// marketing objectives.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioAd")]
         public virtual AudioAd AudioAd { get; set; }
 
         /// <summary>
-        /// Details of a [non-skippable short video ad](//support.google.com/displayvideo/answer/6274216), equal to or
-        /// less than 6 seconds, used for reach.
+        /// Output only. Details of a [non-skippable short video ad](//support.google.com/displayvideo/answer/6274216),
+        /// equal to or less than 6 seconds, used for reach.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bumperAd")]
         public virtual BumperAd BumperAd { get; set; }
 
-        /// <summary>The display name of the ad. Must be UTF-8 encoded with a maximum size of 255 bytes.</summary>
+        /// <summary>
+        /// Required. The display name of the ad. Must be UTF-8 encoded with a maximum size of 255 bytes.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Details of an ad sourced from a Display &amp; Video 360 creative.</summary>
+        /// <summary>Output only. Details of an ad sourced from a Display &amp; Video 360 creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayVideoSourceAd")]
         public virtual DisplayVideoSourceAd DisplayVideoSourceAd { get; set; }
 
-        /// <summary>The entity status of the ad.</summary>
+        /// <summary>Required. The entity status of the ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
         public virtual string EntityStatus { get; set; }
 
         /// <summary>
-        /// Details of an [in-stream ad skippable after 5 seconds](//support.google.com/displayvideo/answer/6274216),
-        /// used for brand awareness or reach marketing objectives.
+        /// Output only. Details of an [in-stream ad skippable after 5
+        /// seconds](//support.google.com/displayvideo/answer/6274216), used for brand awareness or reach marketing
+        /// objectives.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inStreamAd")]
         public virtual InStreamAd InStreamAd { get; set; }
 
         /// <summary>
-        /// Details of an [ad served on the YouTube Home feed](//support.google.com/google-ads/answer/9709826).
+        /// Output only. Details of an [ad served on the YouTube Home
+        /// feed](//support.google.com/google-ads/answer/9709826).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mastheadAd")]
         public virtual MastheadAd MastheadAd { get; set; }
@@ -19453,22 +19453,24 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Details of a [non-skippable short in-stream video ad](//support.google.com/displayvideo/answer/6274216),
-        /// between 6 and 15 seconds, used for reach marketing objectives.
+        /// Output only. Details of a [non-skippable short in-stream video
+        /// ad](//support.google.com/displayvideo/answer/6274216), between 6 and 15 seconds, used for reach marketing
+        /// objectives.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonSkippableAd")]
         public virtual NonSkippableAd NonSkippableAd { get; set; }
 
         /// <summary>
-        /// Details of an [ad promoting a video](//support.google.com/displayvideo/answer/6274216) that shows in places
-        /// of discovery.
+        /// Output only. Details of an [ad promoting a video](//support.google.com/displayvideo/answer/6274216) that
+        /// shows in places of discovery.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoDiscoverAd")]
         public virtual VideoDiscoveryAd VideoDiscoverAd { get; set; }
 
         /// <summary>
-        /// Details of an [ad used in a video action campaign](//support.google.com/google-ads/answer/10147229) to drive
-        /// actions to the business, service or product.
+        /// Output only. Details of an [ad used in a video action
+        /// campaign](//support.google.com/google-ads/answer/10147229) to drive actions to the business, service or
+        /// product.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoPerformanceAd")]
         public virtual VideoPerformanceAd VideoPerformanceAd { get; set; }
