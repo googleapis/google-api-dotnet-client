@@ -7060,14 +7060,24 @@ namespace Google.Apis.CloudRun.v1
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -10320,6 +10330,10 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("observedGeneration")]
         public virtual System.Nullable<int> ObservedGeneration { get; set; }
 
+        /// <summary>Output only. All URLs serving traffic for this Instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urls")]
+        public virtual System.Collections.Generic.IList<string> Urls { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10877,14 +10891,15 @@ namespace Google.Apis.CloudRun.v1.Data
         /// `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`:
         /// Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. *
         /// `run.googleapis.com/gpu-zonal-redundancy-disabled`: Revision. * `run.googleapis.com/health-check-disabled`:
-        /// Revision. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. *
-        /// `run.googleapis.com/minScale`: Service. * `run.googleapis.com/maxScale`: Service. *
-        /// `run.googleapis.com/manualInstanceCount`: Service. * `run.googleapis.com/network-interfaces`: Revision,
-        /// Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision.
-        /// `run.googleapis.com/scalingMode`: Service. * `run.googleapis.com/secrets`: Revision, Execution. *
-        /// `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. *
-        /// `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision,
-        /// Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution.
+        /// Revision. * `run.googleapis.com/ingress`: Service, Instance. * `run.googleapis.com/invoker-iam-disabled`:
+        /// Service, Instance. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/minScale`:
+        /// Service. * `run.googleapis.com/maxScale`: Service. * `run.googleapis.com/manualInstanceCount`: Service. *
+        /// `run.googleapis.com/network-interfaces`: Revision, Execution. *
+        /// `run.googleapis.com/post-key-revocation-action-type`: Revision. `run.googleapis.com/scalingMode`: Service. *
+        /// `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. *
+        /// `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. *
+        /// `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`:
+        /// Revision, Execution.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
@@ -10982,7 +10997,10 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("finalizers")]
         public virtual System.Collections.Generic.IList<string> Finalizers { get; set; }
 
-        /// <summary>Not supported by Cloud Run</summary>
+        /// <summary>
+        /// Optional. A prefix for the resource name if not provided in the create request. Must be less than 31
+        /// characters to allow for a random suffix.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generateName")]
         public virtual string GenerateName { get; set; }
 
@@ -11000,8 +11018,9 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Required. The name of the resource. Name is required when creating top-level resources (Service, Job), must
-        /// be unique within a Cloud Run project/region, and cannot be changed once created.
+        /// Optional. The name of the resource. A name for creating top-level resources (Service, Job, WorkerPool). Must
+        /// be unique within a Cloud Run project/region, and cannot be changed once created. If omitted, a default name
+        /// will be generated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
