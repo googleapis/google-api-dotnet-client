@@ -1081,14 +1081,24 @@ namespace Google.Apis.NetworkManagement.v1
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -2921,14 +2931,24 @@ namespace Google.Apis.NetworkManagement.v1
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -4117,31 +4137,6 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("podUri")]
         public virtual string PodUri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>For display only. Metadata associated with ARRIVE_AT_GOOGLE_MANAGED_SERVICE state.</summary>
-    public class GoogleManagedServiceInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>IP address of the Google-managed service endpoint.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
-        public virtual string IpAddress { get; set; }
-
-        /// <summary>
-        /// URI of the Google-managed service endpoint network, it is empty if the IP address is a public IP address.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
-        public virtual string NetworkUri { get; set; }
-
-        /// <summary>Type of a Google-managed service.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serviceType")]
-        public virtual string ServiceType { get; set; }
-
-        /// <summary>URI of the Google-managed service.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serviceUri")]
-        public virtual string ServiceUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5486,10 +5481,6 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// <summary>Display information of a Google Kubernetes Engine Pod.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkePod")]
         public virtual GkePodInfo GkePod { get; set; }
-
-        /// <summary>Display information of a Google-managed service.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("googleManagedService")]
-        public virtual GoogleManagedServiceInfo GoogleManagedService { get; set; }
 
         /// <summary>Display information of a Google service</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleService")]
