@@ -5352,14 +5352,24 @@ namespace Google.Apis.BackupforGKE.v1
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : BackupforGKEBaseServiceRequest<Google.Apis.BackupforGKE.v1.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -7312,6 +7322,17 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for GetTags.</summary>
+    public class GetTagsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The full resource name of the service resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for GetTags.</summary>
     public class GetTagsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8995,6 +9016,10 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        /// <summary>Required. The full resource name of the service resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>
         /// Optional. A unique identifier for this request. Must be a valid UUID. This request is only idempotent if a
