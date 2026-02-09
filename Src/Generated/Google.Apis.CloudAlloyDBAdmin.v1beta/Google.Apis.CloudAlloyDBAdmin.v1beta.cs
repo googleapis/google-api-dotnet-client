@@ -3817,14 +3817,24 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : CloudAlloyDBAdminBaseServiceRequest<Google.Apis.CloudAlloyDBAdmin.v1beta.Data.GoogleCloudLocationListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -5047,17 +5057,6 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
     /// <summary>Configuration for Managed Connection Pool (MCP).</summary>
     public class ConnectionPoolConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. Deprecated. Use 'flags' instead. The default pool size. Defaults to 20. Note: This field should
-        /// not be added to client libraries if not present already.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("defaultPoolSize")]
-        public virtual string DefaultPoolSize { get; set; }
-
-        /// <summary>Optional. Deprecated; Prefer 'enabled' as this will be removed soon.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enable")]
-        public virtual System.Nullable<bool> Enable { get; set; }
-
         /// <summary>Optional. Whether to enable Managed Connection Pool (MCP).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
@@ -5066,70 +5065,9 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("flags")]
         public virtual System.Collections.Generic.IDictionary<string, string> Flags { get; set; }
 
-        /// <summary>
-        /// Optional. Deprecated. Use 'flags' instead. The list of startup parameters to ignore. Defaults to
-        /// ["extra_float_digits"] Note: This field should not be added to client libraries if not present already.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ignoreStartupParameters")]
-        public virtual System.Collections.Generic.IList<string> IgnoreStartupParameters { get; set; }
-
-        /// <summary>
-        /// Optional. Deprecated. Use 'flags' instead. The maximum number of client connections allowed. Note: This
-        /// field should not be added to client libraries if not present already.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxClientConn")]
-        public virtual string MaxClientConn { get; set; }
-
-        /// <summary>
-        /// Optional. Deprecated. Use 'flags' instead. The maximum number of prepared statements allowed. MCP makes sure
-        /// that any statement prepared by a client, up to this limit, is available on the backing server connection in
-        /// transaction and statement pooling mode. Even if the statement was originally prepared on another server
-        /// connection. Defaults to 0. Note: This field should not be added to client libraries if not present already.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxPreparedStatements")]
-        public virtual string MaxPreparedStatements { get; set; }
-
-        /// <summary>
-        /// Optional. Deprecated. Use 'flags' instead. The minimum pool size. Defaults to 0. Note: This field should not
-        /// be added to client libraries if not present already.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("minPoolSize")]
-        public virtual string MinPoolSize { get; set; }
-
-        /// <summary>
-        /// Optional. Deprecated. Use 'flags' instead. The pool mode. Defaults to `POOL_MODE_TRANSACTION`. Note: This
-        /// field should not be added to client libraries if not present already.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("poolMode")]
-        public virtual string PoolMode { get; set; }
-
         /// <summary>Output only. The number of running poolers per instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("poolerCount")]
         public virtual System.Nullable<int> PoolerCount { get; set; }
-
-        /// <summary>
-        /// Optional. Deprecated. Use 'flags' instead. The maximum number of seconds queries are allowed to spend
-        /// waiting for execution. If the query is not assigned to a server during that time, the client is
-        /// disconnected. 0 disables. Note: This field should not be added to client libraries if not present already.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("queryWaitTimeout")]
-        public virtual string QueryWaitTimeout { get; set; }
-
-        /// <summary>
-        /// Optional. Deprecated. Use 'flags' instead. The maximum number of seconds a server is allowed to be idle
-        /// before it is disconnected. 0 disables. Note: This field should not be added to client libraries if not
-        /// present already.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serverIdleTimeout")]
-        public virtual string ServerIdleTimeout { get; set; }
-
-        /// <summary>
-        /// Optional. Deprecated. Use 'flags' instead. The list of users that are allowed to connect to the MCP stats
-        /// console. The users must exist in the database. Note: This field should not be added to client libraries if
-        /// not present already.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("statsUsers")]
-        public virtual System.Collections.Generic.IList<string> StatsUsers { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7830,7 +7768,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common model for database resource instance metadata. Next ID: 30</summary>
+    /// <summary>Common model for database resource instance metadata. Next ID: 31</summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Availability configuration for this instance</summary>
@@ -7968,6 +7906,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceContainer")]
         public virtual string ResourceContainer { get; set; }
+
+        /// <summary>Optional. List of resource flags for the database resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceFlags")]
+        public virtual System.Collections.Generic.IList<StorageDatabasecenterPartnerapiV1mainResourceFlags> ResourceFlags { get; set; }
 
         /// <summary>
         /// Required. Different from DatabaseResourceId.unique_id, a resource name can be reused over time. That is,
@@ -8376,6 +8318,21 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message type for storing resource flags.</summary>
+    public class StorageDatabasecenterPartnerapiV1mainResourceFlags : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Key of the resource flag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Optional. Value of the resource flag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Deny maintenance period for the database resource. It specifies the time range during which the maintenance
     /// cannot start. This is configured by the customer.
@@ -8405,6 +8362,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("denyMaintenanceSchedules")]
         public virtual System.Collections.Generic.IList<StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule> DenyMaintenanceSchedules { get; set; }
 
+        /// <summary>
+        /// Optional. Whether the instance is in stopped state. This information is temporarily being captured in
+        /// maintenanceInfo, till STOPPED state is supported by DB Center.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isInstanceStopped")]
+        public virtual System.Nullable<bool> IsInstanceStopped { get; set; }
+
         /// <summary>Optional. Maintenance window for the database resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSchedule")]
         public virtual StorageDatabasecenterPartnerapiV1mainResourceMaintenanceSchedule MaintenanceSchedule { get; set; }
@@ -8425,6 +8389,48 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upcomingMaintenance")]
         public virtual StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance UpcomingMaintenance { get; set; }
+
+        private string _versionUpdateTimeRaw;
+
+        private object _versionUpdateTime;
+
+        /// <summary>
+        /// Optional. This field will contain the date when the last version update was applied to the database
+        /// resource. This will be used to calculate the age of the maintenance version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionUpdateTime")]
+        public virtual string VersionUpdateTimeRaw
+        {
+            get => _versionUpdateTimeRaw;
+            set
+            {
+                _versionUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _versionUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="VersionUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use VersionUpdateTimeDateTimeOffset instead.")]
+        public virtual object VersionUpdateTime
+        {
+            get => _versionUpdateTime;
+            set
+            {
+                _versionUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _versionUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="VersionUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? VersionUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(VersionUpdateTimeRaw);
+            set => VersionUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
