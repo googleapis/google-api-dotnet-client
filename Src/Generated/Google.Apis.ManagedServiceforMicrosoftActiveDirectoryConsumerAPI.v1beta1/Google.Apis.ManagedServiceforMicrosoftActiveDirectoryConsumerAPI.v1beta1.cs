@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2711,6 +2711,17 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
+                        /// <summary>
+                        /// When set to `true`, operations that are reachable are returned as normal, and those that are
+                        /// unreachable are returned in the ListOperationsResponse.unreachable field. This can only be
+                        /// `true` when reading across collections. For example, when `parent` is set to
+                        /// `"projects/example/locations/-"`. This field is not supported by default and will result in
+                        /// an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
+                        /// specific documentation.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
@@ -2751,6 +2762,14 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
                             RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "returnPartialSuccess",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3402,14 +3421,24 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : ManagedServiceforMicrosoftActiveDirectoryConsumerAPIBaseServiceRequest<Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1beta1.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -3422,6 +3451,13 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
                 /// <summary>The resource that owns the locations collection, if applicable.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
 
                 /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
@@ -3463,6 +3499,14 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extraLocationTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
@@ -4499,6 +4543,16 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         [Newtonsoft.Json.JsonPropertyAttribute("consumerDefinedName")]
         public virtual string ConsumerDefinedName { get; set; }
 
+        /// <summary>
+        /// Optional. The consumer_project_number associated with this Apigee instance. This field is added specifically
+        /// to support Apigee integration with SLM Rollout and UMM. It represents the numerical project ID of the GCP
+        /// project that consumes this Apigee instance. It is used for SLM rollout notifications and UMM integration,
+        /// enabling proper mapping to customer projects and log delivery for Apigee instances. This field complements
+        /// consumer_project_id and may be used for specific Apigee scenarios where the numerical ID is required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerProjectNumber")]
+        public virtual string ConsumerProjectNumber { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -5127,6 +5181,14 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>
+        /// Unordered list. Unreachable resources. Populated when the request sets
+        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
+        /// list all resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
