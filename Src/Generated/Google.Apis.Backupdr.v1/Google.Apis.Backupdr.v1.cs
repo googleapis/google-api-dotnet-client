@@ -5295,14 +5295,24 @@ namespace Google.Apis.Backupdr.v1
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -10292,7 +10302,7 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>
         /// Output only. Whether the target resource is protected by a backup vault. This is true if the
         /// backup_configs_details is not empty and any of the ResourceBackupConfig.backup_configs_details has a backup
-        /// configuration with BackupConfigDetails.backup_vault set. set.
+        /// configuration with BackupConfigDetails.backup_vault set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vaulted")]
         public virtual System.Nullable<bool> Vaulted { get; set; }
