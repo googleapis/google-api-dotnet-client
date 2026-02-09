@@ -6418,6 +6418,13 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string KeyProject { get; set; }
 
         /// <summary>
+        /// Optional. KeyProjectResolutionMode for the AutokeyConfig. Valid values are `DEDICATED_KEY_PROJECT`,
+        /// `RESOURCE_PROJECT`, or `DISABLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyProjectResolutionMode")]
+        public virtual string KeyProjectResolutionMode { get; set; }
+
+        /// <summary>
         /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -7828,7 +7835,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// Immutable. The resource name of the backend environment where the key material for the wrapping key resides
         /// and where all related cryptographic operations are performed. Currently, this field is only populated for
         /// keys stored in HSM_SINGLE_TENANT. Note, this list is non-exhaustive and may apply to additional
-        /// ProtectionLevels in the future.
+        /// ProtectionLevels in the future. Supported resources: * `"projects/*/locations/*/singleTenantHsmInstances/*"`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyBackend")]
         public virtual string CryptoKeyBackend { get; set; }
