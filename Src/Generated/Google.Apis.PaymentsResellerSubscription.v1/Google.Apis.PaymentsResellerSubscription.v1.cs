@@ -293,7 +293,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
 
             /// <summary>
             /// Currently, it doesn't support **YouTube** products. Retrieves the products that can be resold by the
-            /// partner. It should be autenticated with a service account.
+            /// partner. It should be authenticated with a service account.
             /// </summary>
             /// <param name="parent">
             /// Required. The parent, the partner that can resell. Format: partners/{partner}
@@ -305,7 +305,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
 
             /// <summary>
             /// Currently, it doesn't support **YouTube** products. Retrieves the products that can be resold by the
-            /// partner. It should be autenticated with a service account.
+            /// partner. It should be authenticated with a service account.
             /// </summary>
             public class ListRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.ListProductsResponse>
             {
@@ -415,7 +415,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// Currently, it is only enabeld for **YouTube**. Finds eligible promotions for the current user. The API
+            /// Currently, it is only enabled for **YouTube**. Finds eligible promotions for the current user. The API
             /// requires user authorization via OAuth. The bare minimum oauth scope `openid` is sufficient, which will
             /// skip the consent screen.
             /// </summary>
@@ -429,7 +429,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// Currently, it is only enabeld for **YouTube**. Finds eligible promotions for the current user. The API
+            /// Currently, it is only enabled for **YouTube**. Finds eligible promotions for the current user. The API
             /// requires user authorization via OAuth. The bare minimum oauth scope `openid` is sufficient, which will
             /// skip the consent screen.
             /// </summary>
@@ -479,7 +479,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
 
             /// <summary>
             /// Currently, it doesn't support **YouTube** promotions. Retrieves the promotions, such as free trial, that
-            /// can be used by the partner. It should be autenticated with a service account.
+            /// can be used by the partner. It should be authenticated with a service account.
             /// </summary>
             /// <param name="parent">
             /// Required. The parent, the partner that can resell. Format: partners/{partner}
@@ -491,7 +491,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
 
             /// <summary>
             /// Currently, it doesn't support **YouTube** promotions. Retrieves the promotions, such as free trial, that
-            /// can be used by the partner. It should be autenticated with a service account.
+            /// can be used by the partner. It should be authenticated with a service account.
             /// </summary>
             public class ListRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.ListPromotionsResponse>
             {
@@ -521,7 +521,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
 
                 /// <summary>
                 /// Optional. The maximum number of promotions to return. The service may return fewer than this value.
-                /// If unspecified, at most 50 products will be returned. The maximum value is 1000; values above 1000
+                /// If unspecified, at most 50 promotions will be returned. The maximum value is 1000; values above 1000
                 /// will be coerced to 1000.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -620,7 +620,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
                 }
 
                 /// <summary>
-                /// Updates a line item of a subscription. It should be autenticated with a service account.
+                /// Updates a line item of a subscription. It should be authenticated with a service account.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -633,7 +633,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
                 }
 
                 /// <summary>
-                /// Updates a line item of a subscription. It should be autenticated with a service account.
+                /// Updates a line item of a subscription. It should be authenticated with a service account.
                 /// </summary>
                 public class PatchRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.SubscriptionLineItem>
                 {
@@ -1474,7 +1474,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// <summary>
         /// Optional. If true, Google will cancel the subscription immediately, and may or may not (based on the
         /// contract) issue a prorated refund for the remainder of the billing cycle. Otherwise, Google defers the
-        /// cancelation at renewal_time, and will not issue a refund. - YouTube subscriptions must use this option
+        /// cancellation at renewal_time, and will not issue a refund. - YouTube subscriptions must use this option
         /// currently. However, the user will still have access to the subscription until the end of the billing cycle.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelImmediately")]
@@ -1804,16 +1804,16 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
 
         /// <summary>
         /// Optional. The maximum number of promotions to return. The service may return fewer than this value. If
-        /// unspecified, at most 50 products will be returned. The maximum value is 1000; values above 1000 will be
+        /// unspecified, at most 50 promotions will be returned. The maximum value is 1000; values above 1000 will be
         /// coerced to 1000.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
 
         /// <summary>
-        /// Optional. A page token, received from a previous `ListPromotions` call. Provide this to retrieve the
-        /// subsequent page. When paginating, all other parameters provided to `ListPromotions` must match the call that
-        /// provided the page token.
+        /// Optional. A page token, received from a previous `FindEligiblePromotions` call. Provide this to retrieve the
+        /// subsequent page. When paginating, all other parameters provided to `FindEligiblePromotions` must match the
+        /// call that provided the page token.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
@@ -1840,11 +1840,11 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details for a subscriptiin line item with finite billing cycles.</summary>
+    /// <summary>Details for a subscription line item with finite billing cycles.</summary>
     public class FiniteBillingCycleDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The number of a subscription line item billing cycles after which billing will stop automatically.
+        /// The number of a subscription line item billing cycles after which billing will stop automatically.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingCycleCountLimit")]
         public virtual System.Nullable<long> BillingCycleCountLimit { get; set; }
@@ -2059,7 +2059,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ProductType { get; set; }
 
         /// <summary>
-        /// Output only. 2-letter ISO region code where the product is available in. Ex. "US" Please refers to:
+        /// Output only. 2-letter ISO region code where the product is available in. Ex. "US" Please refer to:
         /// https://en.wikipedia.org/wiki/ISO_3166-1
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCodes")]
@@ -2213,7 +2213,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string PromotionType { get; set; }
 
         /// <summary>
-        /// Output only. 2-letter ISO region code where the promotion is available in. Ex. "US" Please refers to:
+        /// Output only. 2-letter ISO region code where the promotion is available in. Ex. "US" Please refer to:
         /// https://en.wikipedia.org/wiki/ISO_3166-1
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCodes")]
@@ -2862,7 +2862,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual SubscriptionLineItemOneTimeRecurrenceDetails OneTimeRecurrenceDetails { get; set; }
 
         /// <summary>
-        /// Required. Product resource name that identifies one the line item The format is
+        /// Required. Product resource name that identifies the product associated with this line item. The format is
         /// 'partners/{partner_id}/products/{product_id}'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
