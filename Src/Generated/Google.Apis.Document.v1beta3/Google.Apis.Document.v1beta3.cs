@@ -2970,8 +2970,8 @@ namespace Google.Apis.Document.v1beta3
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>
-                        /// Optional. We will return the SchemaVersion sorted by creation time. The page token will
-                        /// point to the next SchemaVersion.
+                        /// Optional. Returns the SchemaVersion sorted by creation time. The page token will point to
+                        /// the next SchemaVersion.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -3047,7 +3047,7 @@ namespace Google.Apis.Document.v1beta3
 
                         /// <summary>
                         /// Optional. The update mask to apply to the resource. **Note:** Only the following fields can
-                        /// be updated: - display_name. - labels.
+                        /// be updated: - `display_name` - `labels`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -3296,8 +3296,8 @@ namespace Google.Apis.Document.v1beta3
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Optional. We will return the schema groups sorted by creation time. The page token will point to
-                    /// the next Schema.
+                    /// Optional. Returns the schema groups sorted by creation time. The page token will point to the
+                    /// next Schema.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -3373,7 +3373,7 @@ namespace Google.Apis.Document.v1beta3
 
                     /// <summary>
                     /// Optional. The update mask to apply to the resource. **Note:** Only the following fields can be
-                    /// updated: - display_name. - labels.
+                    /// updated: - `display_name` - `labels`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -3516,14 +3516,24 @@ namespace Google.Apis.Document.v1beta3
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1beta3.Data.GoogleCloudLocationListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -3643,7 +3653,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("childAlignmentRule")]
         public virtual CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleChildAlignmentRule ChildAlignmentRule { get; set; }
 
-        /// <summary>Description of the validation rule. This has no use but for documentation</summary>
+        /// <summary>Description of the validation rule. This has no use but for documentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -4217,7 +4227,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Display name to show to users.</summary>
+        /// <summary>Display name to show users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -4267,8 +4277,8 @@ namespace Google.Apis.Document.v1beta3.Data
 
         /// <summary>
         /// If specified, lists all the possible values for this entity. This should not be more than a handful of
-        /// values. If the number of values is &amp;gt;10 or could change frequently use the `EntityType.value_ontology`
-        /// field and specify a list of all possible values in a value ontology file.
+        /// values. If the number of values is &amp;gt;10 or could change frequently, use the
+        /// `EntityType.value_ontology` field and specify a list of all possible values in a value ontology file.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enumValues")]
         public virtual GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeEnumValues EnumValues { get; set; }
@@ -4277,7 +4287,7 @@ namespace Google.Apis.Document.v1beta3.Data
         /// Name of the type. It must be unique within the schema file and cannot be a "Common Type". The following
         /// naming conventions are used: - Use `snake_casing`. - Name matching is case-sensitive. - Maximum 64
         /// characters. - Must start with a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
-        /// compatibility internal infrastructure and tooling can handle any ascii character.) - The `/` is sometimes
+        /// compatibility, internal infrastructure and tooling can handle any ASCII character.) - The `/` is sometimes
         /// used to denote a property of a type. For example `line_item/amount`. This convention is deprecated, but will
         /// still be honored for backward compatibility.
         /// </summary>
@@ -4363,7 +4373,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual System.Nullable<bool> PrefixedNamingOnProperties { get; set; }
 
         /// <summary>
-        /// If set, we will skip the naming format validation in the schema. So the string values in
+        /// If set, this will skip the naming format validation in the schema. So the string values in
         /// `DocumentSchema.EntityType.name` and `DocumentSchema.EntityType.Property.name` will not be checked.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipNamingValidation")]
@@ -4449,7 +4459,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Evaluation metrics, either in aggregate or about a specific entity.</summary>
     public class GoogleCloudDocumentaiUiv1beta3EvaluationMetrics : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The calculated f1 score.</summary>
+        /// <summary>The calculated F1 score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("f1Score")]
         public virtual System.Nullable<float> F1Score { get; set; }
 
@@ -5082,11 +5092,11 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Information for a pretrained Google-managed foundation model.</summary>
     public class GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether finetuning is allowed for this base processor version.</summary>
+        /// <summary>Whether fine tuning is allowed for this base processor version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finetuningAllowed")]
         public virtual System.Nullable<bool> FinetuningAllowed { get; set; }
 
-        /// <summary>The minimum number of labeled documents in the training dataset required for finetuning.</summary>
+        /// <summary>The minimum number of labeled documents in the training dataset required for fine tuning.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minTrainLabeledDocuments")]
         public virtual System.Nullable<int> MinTrainLabeledDocuments { get; set; }
 
@@ -5270,7 +5280,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Display name to show to users.</summary>
+        /// <summary>Display name to show users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -6497,13 +6507,6 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
-        /// <summary>
-        /// Optional. A lightweight indexing source with low latency and high reliability, but lacking advanced features
-        /// like CMEK and content-based search.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("spannerIndexingConfig")]
-        public virtual GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig SpannerIndexingConfig { get; set; }
-
         /// <summary>Required. State of the dataset. Ignored when updating dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -6569,13 +6572,6 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Configuration specific to spanner-based indexing.</summary>
-    public class GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6670,7 +6666,8 @@ namespace Google.Apis.Document.v1beta3.Data
     {
         /// <summary>
         /// Optional. The blob assets in this document. This is used to store the content of the inline blobs in this
-        /// document, e.g. image bytes, such that it can be referenced by other fields in the document via asset id.
+        /// document, for example, image bytes, such that it can be referenced by other fields in the document via asset
+        /// id.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blobAssets")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3DocumentBlobAsset> BlobAssets { get; set; }
@@ -6702,7 +6699,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3DocumentEntity> Entities { get; set; }
 
         /// <summary>
-        /// The entity revision id that `document.entities` field is based on. If this field is set and
+        /// The entity revision ID that `document.entities` field is based on. If this field is set and
         /// `entities_revisions` is not empty, the entities in `document.entities` field are the entities in the entity
         /// revision with this id and `document.entity_validation_output` field is the `entity_validation_output` field
         /// in this entity revision.
@@ -6791,8 +6788,8 @@ namespace Google.Apis.Document.v1beta3.Data
     }
 
     /// <summary>
-    /// Represents a blob asset. It's used to store the content of the inline blob in this document, e.g. image bytes,
-    /// such that it can be referenced by other fields in the document via asset id.
+    /// Represents a blob asset. It's used to store the content of the inline blob in this document, for example, image
+    /// bytes, such that it can be referenced by other fields in the document via asset ID.
     /// </summary>
     public class GoogleCloudDocumentaiV1beta3DocumentBlobAsset : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6800,7 +6797,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assetId")]
         public virtual string AssetId { get; set; }
 
-        /// <summary>Optional. The content of the blob asset, e.g. image bytes.</summary>
+        /// <summary>Optional. The content of the blob asset, for example, image bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
 
@@ -6862,7 +6859,8 @@ namespace Google.Apis.Document.v1beta3.Data
     }
 
     /// <summary>
-    /// The chunk field in the chunk. A chunk field could be one of the various types (e.g. image, table) supported.
+    /// The chunk field in the chunk. A chunk field could be one of the various types (for example, image, table)
+    /// supported.
     /// </summary>
     public class GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkField : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7216,7 +7214,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mentionId")]
         public virtual string MentionId { get; set; }
 
-        /// <summary>Optional. Text value of the entity e.g. `1600 Amphitheatre Pkwy`.</summary>
+        /// <summary>Optional. Text value of the entity, for example, `1600 Amphitheatre Pkwy`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mentionText")]
         public virtual string MentionText { get; set; }
 
@@ -7225,9 +7223,9 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string Method { get; set; }
 
         /// <summary>
-        /// Optional. Normalized entity value. Absent if the extracted value could not be converted or the type (e.g.
-        /// address) is not supported for certain parsers. This field is also only populated for certain supported
-        /// document types.
+        /// Optional. Normalized entity value. Absent if the extracted value could not be converted or the type (for
+        /// example, address) is not supported for certain parsers. This field is also only populated for certain
+        /// supported document types.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("normalizedValue")]
         public virtual GoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue NormalizedValue { get; set; }
@@ -7257,7 +7255,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textAnchor")]
         public virtual GoogleCloudDocumentaiV1beta3DocumentTextAnchor TextAnchor { get; set; }
 
-        /// <summary>Required. Entity type from a schema e.g. `Address`.</summary>
+        /// <summary>Required. Entity type from a schema, for example, `Address`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -7601,7 +7599,9 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transforms")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3DocumentPageMatrix> Transforms { get; set; }
 
-        /// <summary>A list of detected non-text visual elements e.g. checkbox, signature etc. on the page.</summary>
+        /// <summary>
+        /// A list of detected non-text visual elements, for example, checkbox, signature etc. on the page.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visualElements")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3DocumentPageVisualElement> VisualElements { get; set; }
 
@@ -7748,7 +7748,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string CorrectedValueText { get; set; }
 
         /// <summary>
-        /// Layout for the FormField name. e.g. `Address`, `Email`, `Grand total`, `Phone number`, etc.
+        /// Layout for the FormField name. For example, `Address`, `Email`, `Grand total`, `Phone number`, etc.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
         public virtual GoogleCloudDocumentaiV1beta3DocumentPageLayout FieldName { get; set; }
@@ -7850,8 +7850,8 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual GoogleCloudDocumentaiV1beta3BoundingPoly BoundingPoly { get; set; }
 
         /// <summary>
-        /// Confidence of the current Layout within context of the object this layout is for. e.g. confidence can be for
-        /// a single token, a table, a visual element, etc. depending on context. Range `[0, 1]`.
+        /// Confidence of the current Layout within context of the object this layout is for. For example, confidence
+        /// can be for a single token, a table, a visual element, etc. depending on context. Range `[0, 1]`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
@@ -8122,7 +8122,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Detected non-text visual elements e.g. checkbox, signature etc. on the page.</summary>
+    /// <summary>Detected non-text visual elements, for example, checkbox, signature etc. on the page.</summary>
     public class GoogleCloudDocumentaiV1beta3DocumentPageVisualElement : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of detected languages together with confidence.</summary>
@@ -8270,7 +8270,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Human Review information of the document.</summary>
     public class GoogleCloudDocumentaiV1beta3DocumentRevisionHumanReview : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Human review state. e.g. `requested`, `succeeded`, `rejected`.</summary>
+        /// <summary>Human review state. For example, `requested`, `succeeded`, `rejected`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -8292,7 +8292,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Display name to show to users.</summary>
+        /// <summary>Display name to show users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -8342,8 +8342,8 @@ namespace Google.Apis.Document.v1beta3.Data
 
         /// <summary>
         /// If specified, lists all the possible values for this entity. This should not be more than a handful of
-        /// values. If the number of values is &amp;gt;10 or could change frequently use the `EntityType.value_ontology`
-        /// field and specify a list of all possible values in a value ontology file.
+        /// values. If the number of values is &amp;gt;10 or could change frequently, use the
+        /// `EntityType.value_ontology` field and specify a list of all possible values in a value ontology file.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enumValues")]
         public virtual GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeEnumValues EnumValues { get; set; }
@@ -8352,7 +8352,7 @@ namespace Google.Apis.Document.v1beta3.Data
         /// Name of the type. It must be unique within the schema file and cannot be a "Common Type". The following
         /// naming conventions are used: - Use `snake_casing`. - Name matching is case-sensitive. - Maximum 64
         /// characters. - Must start with a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
-        /// compatibility internal infrastructure and tooling can handle any ascii character.) - The `/` is sometimes
+        /// compatibility, internal infrastructure and tooling can handle any ASCII character.) - The `/` is sometimes
         /// used to denote a property of a type. For example `line_item/amount`. This convention is deprecated, but will
         /// still be honored for backward compatibility.
         /// </summary>
@@ -8438,7 +8438,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual System.Nullable<bool> PrefixedNamingOnProperties { get; set; }
 
         /// <summary>
-        /// If set, we will skip the naming format validation in the schema. So the string values in
+        /// If set, this will skip the naming format validation in the schema. So the string values in
         /// `DocumentSchema.EntityType.name` and `DocumentSchema.EntityType.Property.name` will not be checked.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipNamingValidation")]
@@ -8747,6 +8747,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Contains all revisions of the evaluation, excluding the latest one.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3EvaluationEvaluationRevision> Revisions { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8791,10 +8795,33 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A revision of the evaluation.</summary>
+    public class GoogleCloudDocumentaiV1beta3EvaluationEvaluationRevision : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Metrics for all the entities in aggregate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allEntitiesMetrics")]
+        public virtual GoogleCloudDocumentaiV1beta3EvaluationMultiConfidenceMetrics AllEntitiesMetrics { get; set; }
+
+        /// <summary>Output only. Counters for the documents used in the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentCounters")]
+        public virtual GoogleCloudDocumentaiV1beta3EvaluationCounters DocumentCounters { get; set; }
+
+        /// <summary>Output only. Metrics across confidence levels, for different entities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityMetrics")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDocumentaiV1beta3EvaluationMultiConfidenceMetrics> EntityMetrics { get; set; }
+
+        /// <summary>Output only. The revision ID of the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
+        public virtual string RevisionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Evaluation metrics, either in aggregate or about a specific entity.</summary>
     public class GoogleCloudDocumentaiV1beta3EvaluationMetrics : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The calculated f1 score.</summary>
+        /// <summary>The calculated F1 score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("f1Score")]
         public virtual System.Nullable<float> F1Score { get; set; }
 
@@ -9454,7 +9481,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Optional. The GCP labels for the Schema.</summary>
+        /// <summary>Optional. The {{gcp_name_short}} labels for the Schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
@@ -9711,7 +9738,7 @@ namespace Google.Apis.Document.v1beta3.Data
     {
         /// <summary>
         /// Optional. The percentile of cosine dissimilarity that must be exceeded between a group of tokens and the
-        /// next. The smaller this number is, the more chunks will be generated. THIS FIELD IS NOT YET USED.
+        /// next. The smaller this number is, the more chunks will be generated. **Note:** This field is not yet used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("breakpointPercentileThreshold")]
         public virtual System.Nullable<int> BreakpointPercentileThreshold { get; set; }
@@ -9725,8 +9752,8 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual System.Nullable<bool> IncludeAncestorHeadings { get; set; }
 
         /// <summary>
-        /// Optional. The number of tokens to group together when evaluating semantic similarity. THIS FIELD IS NOT YET
-        /// USED.
+        /// Optional. The number of tokens to group together when evaluating semantic similarity. **Note:** This field
+        /// is not yet used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("semanticChunkingGroupSize")]
         public virtual System.Nullable<bool> SemanticChunkingGroupSize { get; set; }
@@ -10173,11 +10200,11 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Information for a pretrained Google-managed foundation model.</summary>
     public class GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether finetuning is allowed for this base processor version.</summary>
+        /// <summary>Whether fine tuning is allowed for this base processor version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finetuningAllowed")]
         public virtual System.Nullable<bool> FinetuningAllowed { get; set; }
 
-        /// <summary>The minimum number of labeled documents in the training dataset required for finetuning.</summary>
+        /// <summary>The minimum number of labeled documents in the training dataset required for fine tuning.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minTrainLabeledDocuments")]
         public virtual System.Nullable<int> MinTrainLabeledDocuments { get; set; }
 
@@ -10477,7 +10504,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Optional. The GCP labels for the SchemaVersion.</summary>
+        /// <summary>Optional. The {{gcp_name_short}} labels for the SchemaVersion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
