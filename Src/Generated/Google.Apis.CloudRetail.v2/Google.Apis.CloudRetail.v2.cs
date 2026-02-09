@@ -10739,7 +10739,8 @@ namespace Google.Apis.CloudRetail.v2.Data
 
         /// <summary>
         /// Optional. An id corresponding to a place, such as a store id or region id. When specified, we use the price
-        /// from the local inventory with the matching product's LocalInventory.place_id for revenue optimization.
+        /// from the local inventory with the matching product's LocalInventory.place_id for revenue optimization. Note,
+        /// the currency of the local inventory's price must match the currency of the product's price.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placeId")]
         public virtual string PlaceId { get; set; }
