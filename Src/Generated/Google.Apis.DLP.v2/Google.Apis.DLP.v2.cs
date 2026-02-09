@@ -14386,7 +14386,8 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>
         /// Set of detection rules to apply to all findings of this CustomInfoType. Rules are applied in order that they
-        /// are specified. Not supported for the `surrogate_type` CustomInfoType.
+        /// are specified. Not supported for the `surrogate_type`, `metadata_key_value_expression`, and `prompt`
+        /// CustomInfoType.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectionRules")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2DetectionRule> DetectionRules { get; set; }
@@ -14397,7 +14398,7 @@ namespace Google.Apis.DLP.v2.Data
 
         /// <summary>
         /// If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used
-        /// for rules matching.
+        /// for rules matching. Not supported for the `metadata_key_value_expression` and `prompt` CustomInfoType.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusionType")]
         public virtual string ExclusionType { get; set; }
