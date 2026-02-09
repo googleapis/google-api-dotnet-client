@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4115,14 +4115,24 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -4876,6 +4886,46 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        private string _deleteTimeRaw;
+
+        private object _deleteTime;
+
+        /// <summary>
+        /// Output only. The timestamp when the resource was marked for deletion (deletion is an asynchronous
+        /// operation).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual string DeleteTimeRaw
+        {
+            get => _deleteTimeRaw;
+            set
+            {
+                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deleteTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
+        public virtual object DeleteTime
+        {
+            get => _deleteTime;
+            set
+            {
+                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deleteTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>
         /// Optional. Output only. Output only snapshot of the effective unit filter at Rollout start time. Contains a
         /// CEL(https://github.com/google/cel-spec) expression consisting of a conjunction of Rollout.unit_filter and
@@ -5332,10 +5382,10 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
     public class RolloutStats : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. A breakdown of the progress of operations triggered by the rollout. Provides a count of
-        /// Operations by their state. This can be used to determine the number of units which have been updated, or are
-        /// scheduled to be updated. There will be at most one entry per group. Possible values for operation groups
-        /// are: - "SCHEDULED" - "PENDING" - "RUNNING" - "SUCCEEDED" - "FAILED" - "CANCELLED"
+        /// Optional. Output only. Unordered list. A breakdown of the progress of operations triggered by the rollout.
+        /// Provides a count of Operations by their state. This can be used to determine the number of units which have
+        /// been updated, or are scheduled to be updated. There will be at most one entry per group. Possible values for
+        /// operation groups are: - "SCHEDULED" - "PENDING" - "RUNNING" - "SUCCEEDED" - "FAILED" - "CANCELLED"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationsByState")]
         public virtual System.Collections.Generic.IList<Aggregate> OperationsByState { get; set; }
@@ -6239,6 +6289,46 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         {
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _deleteTimeRaw;
+
+        private object _deleteTime;
+
+        /// <summary>
+        /// Output only. The timestamp when the resource was marked for deletion (deletion is an asynchronous
+        /// operation).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual string DeleteTimeRaw
+        {
+            get => _deleteTimeRaw;
+            set
+            {
+                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deleteTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
+        public virtual object DeleteTime
+        {
+            get => _deleteTime;
+            set
+            {
+                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deleteTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         [Newtonsoft.Json.JsonPropertyAttribute("deprovision")]
