@@ -15140,6 +15140,15 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
         public virtual Money Price { get; set; }
 
+        /// <summary>
+        /// Optional. Product tax category code in context. Product tax category determines the transaction tax rates
+        /// applied to the product that will be factored into the price calculation. If not set, tax rates for the
+        /// default product tax category will be used. Refer to the [Help Center
+        /// article](https://support.google.com/googleplay/android-developer/answer/16408159) for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productTaxCategoryCode")]
+        public virtual string ProductTaxCategoryCode { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
