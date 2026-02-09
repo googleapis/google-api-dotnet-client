@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -860,7 +860,11 @@ namespace Google.Apis.AIPlatformNotebooks.v2
                 }
 
                 /// <summary>Lists instances in a given project and location.</summary>
-                /// <param name="parent">Required. Format: `parent=projects/{project_id}/locations/{location}`</param>
+                /// <param name="parent">
+                /// Required. The parent of the instance. Formats: - `projects/{project_id}/locations/{location}` to
+                /// list instances in a specific zone. - `projects/{project_id}/locations/-` to list instances in all
+                /// locations.
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
@@ -876,7 +880,11 @@ namespace Google.Apis.AIPlatformNotebooks.v2
                         InitParameters();
                     }
 
-                    /// <summary>Required. Format: `parent=projects/{project_id}/locations/{location}`</summary>
+                    /// <summary>
+                    /// Required. The parent of the instance. Formats: - `projects/{project_id}/locations/{location}` to
+                    /// list instances in a specific zone. - `projects/{project_id}/locations/-` to list instances in
+                    /// all locations.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -2054,14 +2062,24 @@ namespace Google.Apis.AIPlatformNotebooks.v2
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v2.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -3040,8 +3058,9 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         public virtual string NextPageToken { get; set; }
 
         /// <summary>
-        /// Locations that could not be reached. For example, ['us-west1-a', 'us-central1-b']. A ListInstancesResponse
-        /// will only contain either instances or unreachables,
+        /// Unordered list. Locations that could not be reached. For example,
+        /// ['projects/{project_id}/locations/us-west1-a', 'projects/{project_id}/locations/us-central1-b']. A
+        /// ListInstancesResponse will only contain either instances or unreachables,
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
