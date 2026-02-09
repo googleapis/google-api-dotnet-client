@@ -2806,14 +2806,24 @@ namespace Google.Apis.FirebaseDataConnect.v1
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : FirebaseDataConnectBaseServiceRequest<Google.Apis.FirebaseDataConnect.v1.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -2921,6 +2931,33 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Client caching settings of a connector.</summary>
+    public class ClientCache : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A field that, if true, means that responses served by this connector will include entityIds in
+        /// GraphQL response extensions. This helps the client SDK cache responses in an improved way, known as
+        /// "normalized caching", if caching is enabled on the client. Each entityId is a stable key based on primary
+        /// key values. Therefore, this field should only be set to true if the primary keys of accessed tables do not
+        /// contain sensitive information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityIdIncluded")]
+        public virtual System.Nullable<bool> EntityIdIncluded { get; set; }
+
+        /// <summary>
+        /// Optional. A field that, if true, enables stricter validation on the connector source code to make sure the
+        /// operation response shapes are suitable for client-side caching. This can include additional errors and
+        /// warnings. For example, using the same alias for different fields is disallowed, as it may cause conflicts or
+        /// confusion with normalized caching. (This field is off by default for compatibility, but enabling it is
+        /// highly recommended to catch common caching pitfalls.)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("strictValidationEnabled")]
+        public virtual System.Nullable<bool> StrictValidationEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Settings for CloudSQL instance configuration.</summary>
     public class CloudSqlInstance : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2943,6 +2980,10 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         /// <summary>Optional. Stores small amounts of arbitrary data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        /// <summary>Optional. The client cache settings of the connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientCache")]
+        public virtual ClientCache ClientCache { get; set; }
 
         private string _createTimeRaw;
 
@@ -3058,6 +3099,35 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         }
     }
 
+    /// <summary>Data Connect specific properties for a path under response.data.</summary>
+    public class DataConnectProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A single Entity ID. Set if the path points to a single entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
+        public virtual string EntityId { get; set; }
+
+        /// <summary>
+        /// A list of Entity IDs. Set if the path points to an array of entities. An ID is present for each element of
+        /// the array at the corresponding index.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityIds")]
+        public virtual System.Collections.Generic.IList<string> EntityIds { get; set; }
+
+        /// <summary>The server-suggested duration before data under path is considered stale.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxAge")]
+        public virtual object MaxAge { get; set; }
+
+        /// <summary>
+        /// The path under response.data where the rest of the fields apply. Each element may be a string (field name)
+        /// or number (array index). The root of response.data is denoted by the empty list `[]`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual System.Collections.Generic.IList<object> Path { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A data source that backs Firebase Data Connect services.</summary>
     public class Datasource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3113,6 +3183,10 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<GraphqlError> Errors { get; set; }
 
+        /// <summary>Additional response information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
+        public virtual GraphqlResponseExtensions Extensions { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3145,6 +3219,10 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         /// <summary>Errors of this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<GraphqlError> Errors { get; set; }
+
+        /// <summary>Additional response information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
+        public virtual GraphqlResponseExtensions Extensions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3314,10 +3392,29 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
 
         /// <summary>
         /// Errors of this response. If the data entry in the response is not present, the errors entry must be present.
-        /// It conforms to https://spec.graphql.org/draft/#sec-Errors.
+        /// It conforms to https://spec.graphql.org/draft/#sec-Errors .
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<GraphqlError> Errors { get; set; }
+
+        /// <summary>
+        /// Additional response information. It conforms to https://spec.graphql.org/draft/#sec-Extensions .
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
+        public virtual GraphqlResponseExtensions Extensions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// GraphqlResponseExtensions contains additional information of `GraphqlResponse` or `ExecuteQueryResponse`.
+    /// </summary>
+    public class GraphqlResponseExtensions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Data Connect specific GraphQL extension, a list of paths and properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataConnect")]
+        public virtual System.Collections.Generic.IList<DataConnectProperties> DataConnect { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
