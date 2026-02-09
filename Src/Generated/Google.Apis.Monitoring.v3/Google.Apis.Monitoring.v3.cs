@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -10858,7 +10858,10 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notificationChannelNames")]
         public virtual System.Collections.Generic.IList<string> NotificationChannelNames { get; set; }
 
-        /// <summary>The frequency at which to send reminder notifications for open incidents.</summary>
+        /// <summary>
+        /// The frequency at which to send reminder notifications for open incidents. The value must be between 30
+        /// minutes and 24 hours.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("renotifyInterval")]
         public virtual object RenotifyInterval { get; set; }
 
