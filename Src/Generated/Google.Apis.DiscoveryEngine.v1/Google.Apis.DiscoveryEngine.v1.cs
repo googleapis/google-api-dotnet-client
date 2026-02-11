@@ -10689,7 +10689,7 @@ namespace Google.Apis.DiscoveryEngine.v1
                         }
                     }
 
-                    /// <summary>Creates a Engine.</summary>
+                    /// <summary>Creates an Engine.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The parent resource name, such as
@@ -10700,7 +10700,7 @@ namespace Google.Apis.DiscoveryEngine.v1
                         return new CreateRequest(this.service, body, parent);
                     }
 
-                    /// <summary>Creates a Engine.</summary>
+                    /// <summary>Creates an Engine.</summary>
                     public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -10765,7 +10765,7 @@ namespace Google.Apis.DiscoveryEngine.v1
                         }
                     }
 
-                    /// <summary>Deletes a Engine.</summary>
+                    /// <summary>Deletes an Engine.</summary>
                     /// <param name="name">
                     /// Required. Full resource name of Engine, such as
                     /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`. If
@@ -10778,7 +10778,7 @@ namespace Google.Apis.DiscoveryEngine.v1
                         return new DeleteRequest(this.service, name);
                     }
 
-                    /// <summary>Deletes a Engine.</summary>
+                    /// <summary>Deletes an Engine.</summary>
                     public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -10822,7 +10822,7 @@ namespace Google.Apis.DiscoveryEngine.v1
                         }
                     }
 
-                    /// <summary>Gets a Engine.</summary>
+                    /// <summary>Gets an Engine.</summary>
                     /// <param name="name">
                     /// Required. Full resource name of Engine, such as
                     /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
@@ -10832,7 +10832,7 @@ namespace Google.Apis.DiscoveryEngine.v1
                         return new GetRequest(this.service, name);
                     }
 
-                    /// <summary>Gets a Engine.</summary>
+                    /// <summary>Gets an Engine.</summary>
                     public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1Engine>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -10869,6 +10869,89 @@ namespace Google.Apis.DiscoveryEngine.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Gets the IAM access control policy for an Engine. A `NOT_FOUND` error is returned if the
+                    /// resource does not exist. An empty policy is returned if the resource exists but does not have a
+                    /// policy set on it.
+                    /// </summary>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </param>
+                    public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                    {
+                        return new GetIamPolicyRequest(this.service, resource);
+                    }
+
+                    /// <summary>
+                    /// Gets the IAM access control policy for an Engine. A `NOT_FOUND` error is returned if the
+                    /// resource does not exist. An empty policy is returned if the resource exists but does not have a
+                    /// policy set on it.
+                    /// </summary>
+                    public class GetIamPolicyRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleIamV1Policy>
+                    {
+                        /// <summary>Constructs a new GetIamPolicy request.</summary>
+                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The maximum policy version that will be used to format the policy. Valid values
+                        /// are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for
+                        /// policies with any conditional role bindings must specify version 3. Policies with no
+                        /// conditional role bindings may specify any valid value or leave the field unset. The policy
+                        /// in the response might use the policy version that you specified, or it might use a lower
+                        /// policy version. For example, if you specify version 3, but the policy has no conditional
+                        /// role bindings, the response uses version 1. To learn which resources support conditions in
+                        /// their IAM policies, see the [IAM
+                        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getIamPolicy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                        /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+$",
+                            });
+                            RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "options.requestedPolicyVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -11038,6 +11121,79 @@ namespace Google.Apis.DiscoveryEngine.v1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Sets the IAM access control policy for an Engine. A `NOT_FOUND` error is returned if the
+                    /// resource does not exist. **Important:** When setting a policy directly on an Engine resource,
+                    /// the only recommended roles in the bindings are: `roles/discoveryengine.user` and
+                    /// `roles/discoveryengine.agentspaceUser`. Attempting to grant any other role will result in a
+                    /// warning in logging.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </param>
+                    public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.DiscoveryEngine.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
+                    {
+                        return new SetIamPolicyRequest(this.service, body, resource);
+                    }
+
+                    /// <summary>
+                    /// Sets the IAM access control policy for an Engine. A `NOT_FOUND` error is returned if the
+                    /// resource does not exist. **Important:** When setting a policy directly on an Engine resource,
+                    /// the only recommended roles in the bindings are: `roles/discoveryengine.user` and
+                    /// `roles/discoveryengine.agentspaceUser`. Attempting to grant any other role will result in a
+                    /// warning in logging.
+                    /// </summary>
+                    public class SetIamPolicyRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleIamV1Policy>
+                    {
+                        /// <summary>Constructs a new SetIamPolicy request.</summary>
+                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1.Data.GoogleIamV1SetIamPolicyRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "setIamPolicy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                        /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+$",
                             });
                         }
                     }
@@ -29151,6 +29307,19 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoRenew")]
         public virtual System.Nullable<bool> AutoRenew { get; set; }
 
+        /// <summary>
+        /// Output only. Indication of whether the subscription is terminated earlier than the expiration date. This is
+        /// usually terminated by pipeline once the subscription gets terminated from subsv3.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("earlyTerminated")]
+        public virtual System.Nullable<bool> EarlyTerminated { get; set; }
+
+        /// <summary>
+        /// Output only. The date when the subscription is terminated earlier than the expiration date.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("earlyTerminationDate")]
+        public virtual GoogleTypeDate EarlyTerminationDate { get; set; }
+
         /// <summary>Optional. The planed end date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
         public virtual GoogleTypeDate EndDate { get; set; }
@@ -29938,6 +30107,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Configuration for NotebookLM.</summary>
     public class GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Specifies the data protection policy for NotebookLM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataProtectionPolicy")]
+        public virtual GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy DataProtectionPolicy { get; set; }
+
         /// <summary>Model Armor configuration to be used for sanitizing user prompts and LLM responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelArmorConfig")]
         public virtual GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig ModelArmorConfig { get; set; }
@@ -29952,6 +30125,31 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optOutNotebookSharing")]
         public virtual System.Nullable<bool> OptOutNotebookSharing { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Data protection policy config for NotebookLM.</summary>
+    public class GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The sensitive data protection policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sensitiveDataProtectionPolicy")]
+        public virtual GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy SensitiveDataProtectionPolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies a Sensitive Data Protection
+    /// (https://cloud.google.com/sensitive-data-protection/docs/sensitive-data-protection-overview) policy.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The Sensitive Data Protection policy resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual string Policy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -35420,6 +35618,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
 
+        /// <summary>Optional. The region code used of the user that subscribed to the alert policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -38001,6 +38203,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. Specifies the data protection policy for the connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataProtectionPolicy")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDataProtectionPolicy DataProtectionPolicy { get; set; }
+
         /// <summary>
         /// Required. The name of the data source. Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
         /// </summary>
@@ -38398,6 +38604,31 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startingSchema")]
         public virtual GoogleCloudDiscoveryengineV1alphaSchema StartingSchema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Data protection policy config for a connector.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDataProtectionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The sensitive data protection policy for the connector source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sensitiveDataProtectionPolicy")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDataProtectionPolicySensitiveDataProtectionPolicy SensitiveDataProtectionPolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies a Sensitive Data Protection
+    /// (https://cloud.google.com/sensitive-data-protection/docs/sensitive-data-protection-overview) policy.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaDataProtectionPolicySensitiveDataProtectionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The Sensitive Data Protection content policy resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual string Policy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -41825,6 +42056,19 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoRenew")]
         public virtual System.Nullable<bool> AutoRenew { get; set; }
 
+        /// <summary>
+        /// Output only. Indication of whether the subscription is terminated earlier than the expiration date. This is
+        /// usually terminated by pipeline once the subscription gets terminated from subsv3.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("earlyTerminated")]
+        public virtual System.Nullable<bool> EarlyTerminated { get; set; }
+
+        /// <summary>
+        /// Output only. The date when the subscription is terminated earlier than the expiration date.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("earlyTerminationDate")]
+        public virtual GoogleTypeDate EarlyTerminationDate { get; set; }
+
         /// <summary>Optional. The planed end date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
         public virtual GoogleTypeDate EndDate { get; set; }
@@ -42419,6 +42663,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Configuration for NotebookLM.</summary>
     public class GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Specifies the data protection policy for NotebookLM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataProtectionPolicy")]
+        public virtual GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy DataProtectionPolicy { get; set; }
+
         /// <summary>Model Armor configuration to be used for sanitizing user prompts and LLM responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelArmorConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig ModelArmorConfig { get; set; }
@@ -42433,6 +42681,31 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optOutNotebookSharing")]
         public virtual System.Nullable<bool> OptOutNotebookSharing { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Data protection policy config for NotebookLM.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The sensitive data protection policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sensitiveDataProtectionPolicy")]
+        public virtual GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy SensitiveDataProtectionPolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies a Sensitive Data Protection
+    /// (https://cloud.google.com/sensitive-data-protection/docs/sensitive-data-protection-overview) policy.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The Sensitive Data Protection policy resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual string Policy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -43070,6 +43343,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Defines a user inputed query.</summary>
     public class GoogleCloudDiscoveryengineV1alphaQuery : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Query content parts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaQueryPart> Parts { get; set; }
+
         /// <summary>Output only. Unique Id for the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryId")]
         public virtual string QueryId { get; set; }
@@ -43077,6 +43354,153 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Plain text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a part or the whole of a content, used to represent a query. A query can be made up of multiple
+    /// parts.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaQueryPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Other VAIS Document references.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentReference")]
+        public virtual GoogleCloudDiscoveryengineV1alphaQueryPartDocumentReference DocumentReference { get; set; }
+
+        /// <summary>Reference to a Google Drive document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driveDocumentReference")]
+        public virtual GoogleCloudDiscoveryengineV1alphaQueryPartDriveDocumentReference DriveDocumentReference { get; set; }
+
+        /// <summary>
+        /// Optional. The IANA standard MIME type of the data. See
+        /// https://www.iana.org/assignments/media-types/media-types.xhtml. This field is optional. If not set, the
+        /// default assumed MIME type is "text/plain" for the "data" field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>Reference to a person.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("personReference")]
+        public virtual GoogleCloudDiscoveryengineV1alphaQueryPartPersonReference PersonReference { get; set; }
+
+        /// <summary>Text content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>
+        /// This field is expected to be a ui message in JSON format. As of Q1 2026, ui_json_payload is only supported
+        /// for A2UI messages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uiJsonPayload")]
+        public virtual string UiJsonPayload { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a document reference.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaQueryPartDocumentReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The destination uri of the reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationUri")]
+        public virtual string DestinationUri { get; set; }
+
+        /// <summary>The display title of the reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayTitle")]
+        public virtual string DisplayTitle { get; set; }
+
+        /// <summary>
+        /// The full resource name of the document. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentName")]
+        public virtual string DocumentName { get; set; }
+
+        /// <summary>Output only. The file id of the document data stored in the session context files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileId")]
+        public virtual string FileId { get; set; }
+
+        /// <summary>The icon uri of the reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iconUri")]
+        public virtual string IconUri { get; set; }
+
+        /// <summary>Input only. The url_for_connector of the document returned by Federated Search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urlForConnector")]
+        public virtual string UrlForConnector { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a Google Drive document reference.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaQueryPartDriveDocumentReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The destination uri of the reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationUri")]
+        public virtual string DestinationUri { get; set; }
+
+        /// <summary>The display title of the reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayTitle")]
+        public virtual string DisplayTitle { get; set; }
+
+        /// <summary>
+        /// The full resource name of the document. Format:
+        /// `projects/*/locations/*/collections/*/dataStores/*/branches/*/documents/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentName")]
+        public virtual string DocumentName { get; set; }
+
+        /// <summary>The Drive id of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driveId")]
+        public virtual string DriveId { get; set; }
+
+        /// <summary>Output only. The file id of the Drive document data stored in the session context files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileId")]
+        public virtual string FileId { get; set; }
+
+        /// <summary>The icon uri of the Drive document reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iconUri")]
+        public virtual string IconUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a person reference.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaQueryPartPersonReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The destination uri of the person.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationUri")]
+        public virtual string DestinationUri { get; set; }
+
+        /// <summary>The display name of the person.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The display photo url of the person.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayPhotoUri")]
+        public virtual string DisplayPhotoUri { get; set; }
+
+        /// <summary>
+        /// The full resource name of the person. Format:
+        /// `projects/*/locations/*/collections/*/dataStores/*/branches/*/documents/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentName")]
+        public virtual string DocumentName { get; set; }
+
+        /// <summary>The email of the person.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>Output only. The file id of the person data stored in the session context files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileId")]
+        public virtual string FileId { get; set; }
+
+        /// <summary>The person id of the person.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("personId")]
+        public virtual string PersonId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -43637,6 +44061,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("naturalLanguageQueryUnderstandingSpec")]
         public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestNaturalLanguageQueryUnderstandingSpec NaturalLanguageQueryUnderstandingSpec { get; set; }
+
+        /// <summary>
+        /// Optional. The maximum number of results to retrieve from each data store. If not specified, it will use the
+        /// SearchRequest.data_store_specs.num_results if provided, otherwise there is no limit.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numResultsPerDataStore")]
+        public virtual System.Nullable<int> NumResultsPerDataStore { get; set; }
 
         /// <summary>
         /// A 0-indexed integer that specifies the current offset (that is, starting result location, amongst the
@@ -44343,6 +44774,14 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Optional. The maximum number of results to retrieve from this data store. If not specified, it will use the
+        /// SearchRequest.num_results_per_data_store if provided, otherwise there is no limit. If both this field and
+        /// SearchRequest.num_results_per_data_store are specified, this field will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numResults")]
+        public virtual System.Nullable<int> NumResults { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -49732,6 +50171,19 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoRenew")]
         public virtual System.Nullable<bool> AutoRenew { get; set; }
 
+        /// <summary>
+        /// Output only. Indication of whether the subscription is terminated earlier than the expiration date. This is
+        /// usually terminated by pipeline once the subscription gets terminated from subsv3.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("earlyTerminated")]
+        public virtual System.Nullable<bool> EarlyTerminated { get; set; }
+
+        /// <summary>
+        /// Output only. The date when the subscription is terminated earlier than the expiration date.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("earlyTerminationDate")]
+        public virtual GoogleTypeDate EarlyTerminationDate { get; set; }
+
         /// <summary>Optional. The planed end date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
         public virtual GoogleTypeDate EndDate { get; set; }
@@ -50175,6 +50627,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Configuration for NotebookLM.</summary>
     public class GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Specifies the data protection policy for NotebookLM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataProtectionPolicy")]
+        public virtual GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy DataProtectionPolicy { get; set; }
+
         /// <summary>Model Armor configuration to be used for sanitizing user prompts and LLM responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelArmorConfig")]
         public virtual GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig ModelArmorConfig { get; set; }
@@ -50189,6 +50645,31 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optOutNotebookSharing")]
         public virtual System.Nullable<bool> OptOutNotebookSharing { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Data protection policy config for NotebookLM.</summary>
+    public class GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The sensitive data protection policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sensitiveDataProtectionPolicy")]
+        public virtual GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy SensitiveDataProtectionPolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies a Sensitive Data Protection
+    /// (https://cloud.google.com/sensitive-data-protection/docs/sensitive-data-protection-overview) policy.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The Sensitive Data Protection policy resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual string Policy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -50893,6 +51374,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec NaturalLanguageQueryUnderstandingSpec { get; set; }
 
         /// <summary>
+        /// Optional. The maximum number of results to retrieve from each data store. If not specified, it will use the
+        /// SearchRequest.data_store_specs.num_results if provided, otherwise there is no limit.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numResultsPerDataStore")]
+        public virtual System.Nullable<int> NumResultsPerDataStore { get; set; }
+
+        /// <summary>
         /// A 0-indexed integer that specifies the current offset (that is, starting result location, amongst the
         /// Documents deemed by the API as relevant) in search results. This field is only considered if page_token is
         /// unset. If this field is negative, an `INVALID_ARGUMENT` is returned. A large offset may be capped to a
@@ -51589,6 +52077,14 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Optional. The maximum number of results to retrieve from this data store. If not specified, it will use the
+        /// SearchRequest.num_results_per_data_store if provided, otherwise there is no limit. If both this field and
+        /// SearchRequest.num_results_per_data_store are specified, this field will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numResults")]
+        public virtual System.Nullable<int> NumResults { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -52855,6 +53351,167 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Associates `members`, or principals, with a `role`.</summary>
+    public class GoogleIamV1Binding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding
+        /// applies to the current request. If the condition evaluates to `false`, then this binding does not apply to
+        /// the current request. However, a different role binding might grant the same role to one or more of the
+        /// principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual GoogleTypeExpr Condition { get; set; }
+
+        /// <summary>
+        /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
+        /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
+        /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
+        /// with a Google account or a service account. Does not include identities that come from external identity
+        /// providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a
+        /// specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address
+        /// that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
+        /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
+        /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
+        /// represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+        /// (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. *
+        /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+        /// A single identity in a workforce identity pool. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All
+        /// workforce identities in a group. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+        /// All workforce identities with a specific attribute value. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a
+        /// workforce identity pool. *
+        /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+        /// A single identity in a workload identity pool. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+        /// A workload identity pool group. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+        /// All identities in a workload identity pool with a certain attribute. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`:
+        /// All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address
+        /// (plus unique identifier) representing a user that has been recently deleted. For example,
+        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
+        /// `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
+        /// service account that has been recently deleted. For example,
+        /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
+        /// this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the
+        /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
+        /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
+        /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
+        /// in the binding. *
+        /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+        /// Deleted single identity in a workforce identity pool. For example,
+        /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("members")]
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
+
+        /// <summary>
+        /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
+        /// or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM
+        /// documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined
+        /// roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A
+    /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single
+    /// `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A
+    /// `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role.
+    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
+    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
+    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
+    /// conditions in their IAM policies, see the [IAM
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:**
+    /// ```
+    /// {
+    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
+    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
+    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
+    /// ```
+    /// **YAML
+    /// example:**
+    /// ```
+    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
+    /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
+    /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
+    /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3
+    /// ```
+    /// For a description of IAM and its
+    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// </summary>
+    public class GoogleIamV1Policy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that
+        /// determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one
+        /// principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals
+        /// can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the
+        /// `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you
+        /// can add another 1,450 principals to the `bindings` in the `Policy`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
+        public virtual System.Collections.Generic.IList<GoogleIamV1Binding> Bindings { get; set; }
+
+        /// <summary>
+        /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy
+        /// from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
+        /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
+        /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:**
+        /// If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit
+        /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid
+        /// value are rejected. Any operation that affects conditional role bindings must specify version `3`. This
+        /// requirement applies to the following operations: * Getting a policy that includes a conditional role binding
+        /// * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing
+        /// any role binding, with or without a condition, from a policy that includes conditions **Important:** If you
+        /// use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this
+        /// field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on
+        /// that policy may specify any valid version or leave the field unset. To learn which resources support
+        /// conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>Request message for `SetIamPolicy` method.</summary>
+    public class GoogleIamV1SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few
+        /// 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might
+        /// reject them.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual GoogleIamV1Policy Policy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class GoogleLongrunningCancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -53278,6 +53935,50 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("year")]
         public virtual System.Nullable<int> Year { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
+    /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
+    /// (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() &amp;lt; 100" Example (Equality): title: "Requestor is owner" description:
+    /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
+    /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
+    /// visible" expression: "document.type != 'private' &amp;amp;&amp;amp; document.type != 'internal'" Example (Data
+    /// Manipulation): title: "Notification string" description: "Create a notification string with a timestamp."
+    /// expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that
+    /// may be referenced within an expression are determined by the service that evaluates it. See the service
+    /// documentation for additional information.
+    /// </summary>
+    public class GoogleTypeExpr : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when
+        /// hovered over it in a UI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expression")]
+        public virtual string Expression { get; set; }
+
+        /// <summary>
+        /// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a
+        /// position in the file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
+        /// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs
+        /// which allow to enter the expression.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
