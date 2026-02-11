@@ -1936,6 +1936,69 @@ namespace Google.Apis.Connectors.v1
                     }
                 }
 
+                /// <summary>
+                /// Generates Toolspec Override for a connection for the given list of entityTypes and operations.
+                /// Returns results from the db if the entityType and operation are already present.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Resource name format: projects/{project}/locations/{location}/connections/{connection}
+                /// </param>
+                public virtual GenerateToolspecOverrideRequest GenerateToolspecOverride(Google.Apis.Connectors.v1.Data.GenerateConnectionToolspecOverrideRequest body, string name)
+                {
+                    return new GenerateToolspecOverrideRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Generates Toolspec Override for a connection for the given list of entityTypes and operations.
+                /// Returns results from the db if the entityType and operation are already present.
+                /// </summary>
+                public class GenerateToolspecOverrideRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.GenerateConnectionToolspecOverrideResponse>
+                {
+                    /// <summary>Constructs a new GenerateToolspecOverride request.</summary>
+                    public GenerateToolspecOverrideRequest(Google.Apis.Services.IClientService service, Google.Apis.Connectors.v1.Data.GenerateConnectionToolspecOverrideRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name format: projects/{project}/locations/{location}/connections/{connection}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Connectors.v1.Data.GenerateConnectionToolspecOverrideRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "generateToolspecOverride";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:generateToolspecOverride";
+
+                    /// <summary>Initializes GenerateToolspecOverride parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Gets details of a single Connection.</summary>
                 /// <param name="name">
                 /// Required. Resource name of the form: `projects/*/locations/*/connections/*`
@@ -2332,6 +2395,63 @@ namespace Google.Apis.Connectors.v1
                     }
                 }
 
+                /// <summary>Updates Toolspec Override for a connection with the admin provided descriptions.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Resource name format: projects/{project}/locations/{location}/connections/{connection}
+                /// </param>
+                public virtual ModifyToolspecOverrideRequest ModifyToolspecOverride(Google.Apis.Connectors.v1.Data.ModifyConnectionToolspecOverrideRequest body, string name)
+                {
+                    return new ModifyToolspecOverrideRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates Toolspec Override for a connection with the admin provided descriptions.</summary>
+                public class ModifyToolspecOverrideRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.ModifyConnectionToolspecOverrideResponse>
+                {
+                    /// <summary>Constructs a new ModifyToolspecOverride request.</summary>
+                    public ModifyToolspecOverrideRequest(Google.Apis.Services.IClientService service, Google.Apis.Connectors.v1.Data.ModifyConnectionToolspecOverrideRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name format: projects/{project}/locations/{location}/connections/{connection}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Connectors.v1.Data.ModifyConnectionToolspecOverrideRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "modifyToolspecOverride";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:modifyToolspecOverride";
+
+                    /// <summary>Initializes ModifyToolspecOverride parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Updates the parameters of a single Connection.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -2408,6 +2528,63 @@ namespace Google.Apis.Connectors.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes all Toolspec Override for a connection.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Resource name format: projects/{project}/locations/{location}/connections/{connection}
+                /// </param>
+                public virtual RemoveToolspecOverrideRequest RemoveToolspecOverride(Google.Apis.Connectors.v1.Data.RemoveConnectionToolspecOverrideRequest body, string name)
+                {
+                    return new RemoveToolspecOverrideRequest(this.service, body, name);
+                }
+
+                /// <summary>Deletes all Toolspec Override for a connection.</summary>
+                public class RemoveToolspecOverrideRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new RemoveToolspecOverride request.</summary>
+                    public RemoveToolspecOverrideRequest(Google.Apis.Services.IClientService service, Google.Apis.Connectors.v1.Data.RemoveConnectionToolspecOverrideRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name format: projects/{project}/locations/{location}/connections/{connection}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Connectors.v1.Data.RemoveConnectionToolspecOverrideRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "removeToolspecOverride";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:removeToolspecOverride";
+
+                    /// <summary>Initializes RemoveToolspecOverride parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
                         });
                     }
                 }
@@ -5956,14 +6133,24 @@ namespace Google.Apis.Connectors.v1
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -9285,6 +9472,28 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for GenerateConnectionToolspecOverride API.</summary>
+    public class GenerateConnectionToolspecOverrideRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. List of tools for which the tool spec override is to be generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolNames")]
+        public virtual System.Collections.Generic.IList<ToolName> ToolNames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for GenerateConnectionToolspecOverride API.</summary>
+    public class GenerateConnectionToolspecOverrideResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Toolspec overrides for the connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolspecOverride")]
+        public virtual ToolspecOverride ToolspecOverride { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Autoscaling config for connector deployment system metrics.</summary>
     public class HPAConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10493,6 +10702,28 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for ModifyConnectionToolspecOverride API.</summary>
+    public class ModifyConnectionToolspecOverrideRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Toolspec overrides to be modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolspecOverride")]
+        public virtual ToolspecOverride ToolspecOverride { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ModifyConnectionToolspecOverride API.</summary>
+    public class ModifyConnectionToolspecOverrideResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Toolspec overrides for the connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolspecOverrides")]
+        public virtual ToolspecOverride ToolspecOverrides { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>MultipleSelectConfig represents the multiple options for a config variable.</summary>
     public class MultipleSelectConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11425,6 +11656,13 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for RemoveConnectionToolspecOverride API.</summary>
+    public class RemoveConnectionToolspecOverrideRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for ConnectorsService.RepairEventing</summary>
     public class RepairEventingRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12102,6 +12340,115 @@ namespace Google.Apis.Connectors.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
         public virtual System.Nullable<int> Seconds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Tool name for which the tool spec override is to be generated.</summary>
+    public class ToolName : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Entity type name for which the tool was generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityType")]
+        public virtual string EntityType { get; set; }
+
+        /// <summary>Required. Tool name that was generated in the list tools call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Operation for which the tool was generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Toolspec overrides for a connection only holds the information that is to be displayed in the UI for admins.
+    /// </summary>
+    public class ToolspecOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Created time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Required. List of tools defined in the tool spec. Marking this field as required as this is the only field
+        /// that is editable by the user in modify API so we should have at least one tool in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tools")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Tools { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Updated time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
