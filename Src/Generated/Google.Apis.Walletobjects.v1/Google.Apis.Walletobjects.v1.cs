@@ -943,7 +943,10 @@ namespace Google.Apis.Walletobjects.v1
             }
         }
 
-        /// <summary>Modifies linked offer objects for the event ticket object with the given ID.</summary>
+        /// <summary>
+        /// Deprecated: Use Auto Linked Passes instead. Modifies linked offer objects for the event ticket object with
+        /// the given ID.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resourceId">
         /// The unique identifier for an object. This ID must be unique across all objects from an issuer. This value
@@ -955,7 +958,10 @@ namespace Google.Apis.Walletobjects.v1
             return new ModifylinkedofferobjectsRequest(this.service, body, resourceId);
         }
 
-        /// <summary>Modifies linked offer objects for the event ticket object with the given ID.</summary>
+        /// <summary>
+        /// Deprecated: Use Auto Linked Passes instead. Modifies linked offer objects for the event ticket object with
+        /// the given ID.
+        /// </summary>
         public class ModifylinkedofferobjectsRequest : WalletobjectsBaseServiceRequest<Google.Apis.Walletobjects.v1.Data.EventTicketObject>
         {
             /// <summary>Constructs a new Modifylinkedofferobjects request.</summary>
@@ -4253,7 +4259,10 @@ namespace Google.Apis.Walletobjects.v1
             }
         }
 
-        /// <summary>Modifies linked offer objects for the loyalty object with the given ID.</summary>
+        /// <summary>
+        /// Deprecated: Use Auto Linked Passes instead. Modifies linked offer objects for the loyalty object with the
+        /// given ID.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resourceId">
         /// The unique identifier for an object. This ID must be unique across all objects from an issuer. This value
@@ -4265,7 +4274,10 @@ namespace Google.Apis.Walletobjects.v1
             return new ModifylinkedofferobjectsRequest(this.service, body, resourceId);
         }
 
-        /// <summary>Modifies linked offer objects for the loyalty object with the given ID.</summary>
+        /// <summary>
+        /// Deprecated: Use Auto Linked Passes instead. Modifies linked offer objects for the loyalty object with the
+        /// given ID.
+        /// </summary>
         public class ModifylinkedofferobjectsRequest : WalletobjectsBaseServiceRequest<Google.Apis.Walletobjects.v1.Data.LoyaltyObject>
         {
             /// <summary>Constructs a new Modifylinkedofferobjects request.</summary>
