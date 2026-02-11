@@ -60,7 +60,13 @@
     "PAGE_URL",
     "HOSTED_CUSTOM_CHANNEL_ID",
     "TRAFFIC_SOURCE_NAME",
-    "TRAFFIC_SOURCE_CODE"
+    "TRAFFIC_SOURCE_CODE",
+    "OS_TYPE_NAME",
+    "OS_TYPE_CODE",
+    "BROWSER_TYPE_NAME",
+    "BROWSER_TYPE_CODE",
+    "WEBVIEW_TYPE_NAME",
+    "WEBVIEW_TYPE_CODE"
   ],
   "Google.Apis.Adsense.v2.AccountsResource+ReportsResource+GenerateCsvRequest.MetricsEnum": [
     "METRIC_UNSPECIFIED",
@@ -167,7 +173,13 @@
     "PAGE_URL",
     "HOSTED_CUSTOM_CHANNEL_ID",
     "TRAFFIC_SOURCE_NAME",
-    "TRAFFIC_SOURCE_CODE"
+    "TRAFFIC_SOURCE_CODE",
+    "OS_TYPE_NAME",
+    "OS_TYPE_CODE",
+    "BROWSER_TYPE_NAME",
+    "BROWSER_TYPE_CODE",
+    "WEBVIEW_TYPE_NAME",
+    "WEBVIEW_TYPE_CODE"
   ],
   "Google.Apis.Adsense.v2.AccountsResource+ReportsResource+GenerateRequest.MetricsEnum": [
     "METRIC_UNSPECIFIED",

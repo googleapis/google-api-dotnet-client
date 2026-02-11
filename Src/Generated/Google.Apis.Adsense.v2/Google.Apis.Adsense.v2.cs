@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2851,6 +2851,48 @@ namespace Google.Apis.Adsense.v2
                     /// <summary>Query strings for web searches.</summary>
                     [Google.Apis.Util.StringValueAttribute("WEBSEARCH_QUERY_STRING")]
                     WEBSEARCHQUERYSTRING = 43,
+
+                    /// <summary>
+                    /// Localized operating system type name (e.g. "Windows", "MacOS", "Android"). For more information,
+                    /// see [Operating system breakdown](https://support.google.com/adsense/answer/16853822).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("OS_TYPE_NAME")]
+                    OSTYPENAME = 51,
+
+                    /// <summary>
+                    /// Operating system type code (e.g. "WINDOWS", "MAC", "ANDROID"). For more information, see
+                    /// [Operating system breakdown](https://support.google.com/adsense/answer/16853822).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("OS_TYPE_CODE")]
+                    OSTYPECODE = 52,
+
+                    /// <summary>
+                    /// Localized browser type name (e.g. "Google Chrome", "Firefox", "Safari"). For more information,
+                    /// see [Browser breakdown](https://support.google.com/adsense/answer/16851903).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("BROWSER_TYPE_NAME")]
+                    BROWSERTYPENAME = 53,
+
+                    /// <summary>
+                    /// Browser type code (e.g. "CHROME", "FIREFOX", "SAFARI"). For more information, see [Browser
+                    /// breakdown](https://support.google.com/adsense/answer/16851903).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("BROWSER_TYPE_CODE")]
+                    BROWSERTYPECODE = 54,
+
+                    /// <summary>
+                    /// Localized webview type name (e.g. "Webview (Uncategorized)", "Non-webview"). For more
+                    /// information, see [Hosting App breakdown](https://support.google.com/adsense/answer/16853515).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("WEBVIEW_TYPE_NAME")]
+                    WEBVIEWTYPENAME = 55,
+
+                    /// <summary>
+                    /// Webview type code (e.g. "UNCATEGORIZED", "NONE"). For more information, see [Hosting App
+                    /// breakdown](https://support.google.com/adsense/answer/16853515).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("WEBVIEW_TYPE_CODE")]
+                    WEBVIEWTYPECODE = 56,
                 }
 
                 /// <summary>
@@ -3714,6 +3756,48 @@ namespace Google.Apis.Adsense.v2
                     /// <summary>Query strings for web searches.</summary>
                     [Google.Apis.Util.StringValueAttribute("WEBSEARCH_QUERY_STRING")]
                     WEBSEARCHQUERYSTRING = 43,
+
+                    /// <summary>
+                    /// Localized operating system type name (e.g. "Windows", "MacOS", "Android"). For more information,
+                    /// see [Operating system breakdown](https://support.google.com/adsense/answer/16853822).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("OS_TYPE_NAME")]
+                    OSTYPENAME = 51,
+
+                    /// <summary>
+                    /// Operating system type code (e.g. "WINDOWS", "MAC", "ANDROID"). For more information, see
+                    /// [Operating system breakdown](https://support.google.com/adsense/answer/16853822).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("OS_TYPE_CODE")]
+                    OSTYPECODE = 52,
+
+                    /// <summary>
+                    /// Localized browser type name (e.g. "Google Chrome", "Firefox", "Safari"). For more information,
+                    /// see [Browser breakdown](https://support.google.com/adsense/answer/16851903).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("BROWSER_TYPE_NAME")]
+                    BROWSERTYPENAME = 53,
+
+                    /// <summary>
+                    /// Browser type code (e.g. "CHROME", "FIREFOX", "SAFARI"). For more information, see [Browser
+                    /// breakdown](https://support.google.com/adsense/answer/16851903).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("BROWSER_TYPE_CODE")]
+                    BROWSERTYPECODE = 54,
+
+                    /// <summary>
+                    /// Localized webview type name (e.g. "Webview (Uncategorized)", "Non-webview"). For more
+                    /// information, see [Hosting App breakdown](https://support.google.com/adsense/answer/16853515).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("WEBVIEW_TYPE_NAME")]
+                    WEBVIEWTYPENAME = 55,
+
+                    /// <summary>
+                    /// Webview type code (e.g. "UNCATEGORIZED", "NONE"). For more information, see [Hosting App
+                    /// breakdown](https://support.google.com/adsense/answer/16853515).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("WEBVIEW_TYPE_CODE")]
+                    WEBVIEWTYPECODE = 56,
                 }
 
                 /// <summary>
