@@ -3313,6 +3313,93 @@ namespace Google.Apis.Storage.v1
         }
 
         /// <summary>
+        /// Deletes a folder recursively. Only applicable to buckets with hierarchical namespace enabled.
+        /// </summary>
+        /// <param name="bucket">Name of the bucket in which the folder resides.</param>
+        /// <param name="folder">Name of a folder.</param>
+        public virtual DeleteRecursiveRequest DeleteRecursive(string bucket, string folder)
+        {
+            return new DeleteRecursiveRequest(this.service, bucket, folder);
+        }
+
+        /// <summary>
+        /// Deletes a folder recursively. Only applicable to buckets with hierarchical namespace enabled.
+        /// </summary>
+        public class DeleteRecursiveRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.GoogleLongrunningOperation>
+        {
+            /// <summary>Constructs a new DeleteRecursive request.</summary>
+            public DeleteRecursiveRequest(Google.Apis.Services.IClientService service, string bucket, string folder) : base(service)
+            {
+                Bucket = bucket;
+                Folder = folder;
+                InitParameters();
+            }
+
+            /// <summary>Name of the bucket in which the folder resides.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>Name of a folder.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>If set, only deletes the folder if its metageneration matches this value.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> IfMetagenerationMatch { get; set; }
+
+            /// <summary>If set, only deletes the folder if its metageneration does not match this value.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> IfMetagenerationNotMatch { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "deleteRecursive";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/folders/{folder}/deleteRecursive";
+
+            /// <summary>Initializes DeleteRecursive parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
         /// Returns metadata for the specified folder. Only applicable to buckets with hierarchical namespace enabled.
         /// </summary>
         /// <param name="bucket">Name of the bucket in which the folder resides.</param>
