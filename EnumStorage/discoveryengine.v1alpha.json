@@ -45,6 +45,11 @@
     "ORGANIZATION",
     "USER"
   ],
+  "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+CompleteExternalIdentitiesRequest.EntityTypeFilterEnum": [
+    "ENTITY_TYPE_FILTER_UNSPECIFIED",
+    "USERS",
+    "GROUPS"
+  ],
   "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+DataStoresResource+BranchesResource+DocumentsResource+GetProcessedDocumentRequest.ProcessedDocumentFormatEnum": [
     "PROCESSED_DOCUMENT_FORMAT_UNSPECIFIED",
     "JSON"
