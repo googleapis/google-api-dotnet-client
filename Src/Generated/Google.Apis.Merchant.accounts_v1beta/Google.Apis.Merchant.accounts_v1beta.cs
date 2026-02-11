@@ -6299,7 +6299,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         /// part of the creation. At least one such service needs to be provided. Currently exactly one of these needs
         /// to be `account_aggregation` and `accounts.createAndConfigure` method can be used to create a sub-account
         /// under an existing advanced account through this method. Additional `account_management` or
-        /// `product_management` services may be provided.
+        /// `products_management` services may be provided.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual System.Collections.Generic.IList<AddAccountService> Service { get; set; }
