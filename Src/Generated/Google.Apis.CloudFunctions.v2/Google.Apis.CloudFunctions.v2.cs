@@ -2181,6 +2181,33 @@ namespace Google.Apis.CloudFunctions.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The Direct VPC network interface. This is mutually exclusive with VPC Connector.</summary>
+    public class DirectVpcNetworkInterface : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The name of the VPC network to which the function will be connected. Specify either a VPC network
+        /// or a subnet, or both. If you specify only a network, the subnet uses the same name as the network.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the VPC subnetwork that the Cloud Function resource will get IPs from. Specify either
+        /// a VPC network or a subnet, or both. If both network and subnetwork are specified, the given VPC subnetwork
+        /// must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with
+        /// the network will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
+        public virtual string Subnetwork { get; set; }
+
+        /// <summary>Optional. Network tags applied to this Cloud Function resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Filters events based on exact matches on the CloudEvents attributes.</summary>
     public class EventFilter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3277,6 +3304,19 @@ namespace Google.Apis.CloudFunctions.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binaryAuthorizationPolicy")]
         public virtual string BinaryAuthorizationPolicy { get; set; }
+
+        /// <summary>
+        /// Optional. Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directVpcEgress")]
+        public virtual string DirectVpcEgress { get; set; }
+
+        /// <summary>
+        /// Optional. The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is
+        /// supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directVpcNetworkInterface")]
+        public virtual System.Collections.Generic.IList<DirectVpcNetworkInterface> DirectVpcNetworkInterface { get; set; }
 
         /// <summary>Environment variables that shall be available during function execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environmentVariables")]
