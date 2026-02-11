@@ -969,7 +969,7 @@ namespace Google.Apis.Solar.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("monthlyFluxUrl")]
         public virtual string MonthlyFluxUrl { get; set; }
 
-        /// <summary>The URL for an image of RGB data (aerial photo) of the region.</summary>
+        /// <summary>The URL for an image of RGB data (aerial or satellite photo) of the region.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rgbUrl")]
         public virtual string RgbUrl { get; set; }
 
