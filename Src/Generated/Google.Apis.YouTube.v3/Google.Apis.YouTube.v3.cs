@@ -14129,6 +14129,45 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details about the gift event, this is only set if the type is 'giftEvent'.</summary>
+    public class LiveChatGiftDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The alternative text to be used for accessibility.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("altText")]
+        public virtual string AltText { get; set; }
+
+        /// <summary>The number of times the gift has been sent in a row.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comboCount")]
+        public virtual System.Nullable<int> ComboCount { get; set; }
+
+        /// <summary>The duration of the gift.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("giftDuration")]
+        public virtual object GiftDuration { get; set; }
+
+        /// <summary>The name of the gift.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("giftName")]
+        public virtual string GiftName { get; set; }
+
+        /// <summary>The URL of the gift image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("giftUrl")]
+        public virtual string GiftUrl { get; set; }
+
+        /// <summary>Whether the gift involves a visual effect.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasVisualEffect")]
+        public virtual System.Nullable<bool> HasVisualEffect { get; set; }
+
+        /// <summary>The cost of the gift in jewels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jewelsCount")]
+        public virtual System.Nullable<int> JewelsCount { get; set; }
+
+        /// <summary>The BCP-47 language code of the gift.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("language")]
+        public virtual string Language { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class LiveChatGiftMembershipReceivedDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -14347,7 +14386,7 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Next ID: 34</summary>
+    /// <summary>Next ID: 35</summary>
     public class LiveChatMessageSnippet : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -14372,6 +14411,10 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>Details about the funding event, this is only set if the type is 'fanFundingEvent'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fanFundingEventDetails")]
         public virtual LiveChatFanFundingEventDetails FanFundingEventDetails { get; set; }
+
+        /// <summary>Details about the gift event, this is only set if the type is 'giftEvent'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("giftDetails")]
+        public virtual LiveChatGiftDetails GiftDetails { get; set; }
 
         /// <summary>
         /// Details about the Gift Membership Received event, this is only set if the type is
