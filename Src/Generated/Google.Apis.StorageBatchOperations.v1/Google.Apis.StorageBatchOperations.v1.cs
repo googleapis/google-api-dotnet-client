@@ -1738,6 +1738,13 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorSummaries")]
         public virtual System.Collections.Generic.IList<ErrorSummary> ErrorSummaries { get; set; }
 
+        /// <summary>
+        /// Output only. If true, this Job operates on multiple buckets. Multibucket jobs are subject to different quota
+        /// limits than single-bucket jobs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isMultiBucketJob")]
+        public virtual System.Nullable<bool> IsMultiBucketJob { get; set; }
+
         /// <summary>Optional. Logging configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
         public virtual LoggingConfig LoggingConfig { get; set; }
