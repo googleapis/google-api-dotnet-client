@@ -1,0 +1,29 @@
+{
+  "Google.Apis.CustomerEngagementSuite.v1beta.CustomerEngagementSuiteBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CustomerEngagementSuite.v1beta.CustomerEngagementSuiteBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.CustomerEngagementSuite.v1beta.ProjectsResource+LocationsResource+AppsResource+ConversationsResource+DeleteRequest.SourceEnum": [
+    "SOURCE_UNSPECIFIED",
+    "LIVE",
+    "SIMULATOR",
+    "EVAL"
+  ],
+  "Google.Apis.CustomerEngagementSuite.v1beta.ProjectsResource+LocationsResource+AppsResource+ConversationsResource+GetRequest.SourceEnum": [
+    "SOURCE_UNSPECIFIED",
+    "LIVE",
+    "SIMULATOR",
+    "EVAL"
+  ],
+  "Google.Apis.CustomerEngagementSuite.v1beta.ProjectsResource+LocationsResource+AppsResource+ConversationsResource+ListRequest.SourceEnum": [
+    "SOURCE_UNSPECIFIED",
+    "LIVE",
+    "SIMULATOR",
+    "EVAL"
+  ]
+}
