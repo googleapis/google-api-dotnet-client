@@ -1645,6 +1645,15 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("googleMapsLinks")]
         public virtual GoogleMapsPlacesV1PlaceGoogleMapsLinks GoogleMapsLinks { get; set; }
 
+        /// <summary>
+        /// The type label of the place on Google Maps, localized to the request language if applicable, for example,
+        /// "Restaurant", "Cafe", "Airport", etc. The type label may be different from the primary type display name and
+        /// may not be a supported type in [Places API Place Types
+        /// table](https://developers.google.com/maps/documentation/places/web-service/place-types).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleMapsTypeLabel")]
+        public virtual GoogleTypeLocalizedText GoogleMapsTypeLabel { get; set; }
+
         /// <summary>A URL providing more information about this place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleMapsUri")]
         public virtual string GoogleMapsUri { get; set; }
