@@ -6588,6 +6588,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// </summary>
     public class GoogleAppsCardV1DataSourceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The minimum number of characters the user must enter before this data provider is triggered (i.e., before it
+        /// starts returning results).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minCharactersTrigger")]
+        public virtual System.Nullable<int> MinCharactersTrigger { get; set; }
+
         /// <summary>The data is from a Google Workspace application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platformDataSource")]
         public virtual GoogleAppsCardV1PlatformDataSource PlatformDataSource { get; set; }
@@ -7343,10 +7350,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// over the data source. If specified, the `multi_select_max_selected_items` field,
         /// `multi_select_min_query_length` field, `external_data_source` field and `platform_data_source` field are
         /// ignored. Available for Google Workspace add-ons that extend Google Workspace Studio. Available for the
-        /// `Dropdown widget` in Google Chat apps as part of the [Developer Preview
-        /// Program](https://developers.google.com/workspace/preview). For the `Dropdown` widget in Google Chat apps,
-        /// only one `DataSourceConfig` is supported. If multiple `DataSourceConfig`s are set, only the first one is
-        /// used.
+        /// `Dropdown widget` in Google Chat apps. For the `Dropdown` widget in Google Chat apps, only one
+        /// `DataSourceConfig` is supported. If multiple `DataSourceConfig`s are set, only the first one is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceConfigs")]
         public virtual System.Collections.Generic.IList<GoogleAppsCardV1DataSourceConfig> DataSourceConfigs { get; set; }
