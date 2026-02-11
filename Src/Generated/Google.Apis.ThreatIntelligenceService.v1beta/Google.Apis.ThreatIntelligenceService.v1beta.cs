@@ -1824,6 +1824,63 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta
                 }
             }
         }
+
+        /// <summary>Triggers the generation of a Customer Profile for a project.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Required. The name of the project to generate the profile for. Format: projects/{project}
+        /// </param>
+        public virtual GenerateOrgProfileRequest GenerateOrgProfile(Google.Apis.ThreatIntelligenceService.v1beta.Data.GenerateOrgProfileConfigurationRequest body, string name)
+        {
+            return new GenerateOrgProfileRequest(this.service, body, name);
+        }
+
+        /// <summary>Triggers the generation of a Customer Profile for a project.</summary>
+        public class GenerateOrgProfileRequest : ThreatIntelligenceServiceBaseServiceRequest<Google.Apis.ThreatIntelligenceService.v1beta.Data.Operation>
+        {
+            /// <summary>Constructs a new GenerateOrgProfile request.</summary>
+            public GenerateOrgProfileRequest(Google.Apis.Services.IClientService service, Google.Apis.ThreatIntelligenceService.v1beta.Data.GenerateOrgProfileConfigurationRequest body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the project to generate the profile for. Format: projects/{project}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ThreatIntelligenceService.v1beta.Data.GenerateOrgProfileConfigurationRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "generateOrgProfile";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta/{+name}:generateOrgProfile";
+
+            /// <summary>Initializes GenerateOrgProfile parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
+            }
+        }
     }
 }
 namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
@@ -1902,6 +1959,10 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalId")]
         public virtual string ExternalId { get; set; }
+
+        /// <summary>Output only. The number of findings associated with this alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("findingCount")]
+        public virtual System.Nullable<long> FindingCount { get; set; }
 
         /// <summary>Output only. Findings that are covered by this alert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findings")]
@@ -3373,6 +3434,21 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for GenerateOrgProfileConfiguration.</summary>
+    public class GenerateOrgProfileConfigurationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The display name of the organization to generate the profile for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Required. The domain of the organization to generate the profile for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Fleshed out vulnerability object that includes enough details to fill out a vulnerability specific view for an
     /// issue.
@@ -3792,6 +3868,49 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
+    public class Operation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed,
+        /// and either `error` or `response` is available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("done")]
+        public virtual System.Nullable<bool> Done { get; set; }
+
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>
+        /// Service-specific metadata associated with the operation. It typically contains progress information and
+        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
+        /// a long-running operation should document the metadata type, if any.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
+        /// use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Structured priority analysis for a threat.</summary>
     public class PriorityAnalysis : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3912,6 +4031,35 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         /// <summary>The level of severity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severityLevel")]
         public virtual string SeverityLevel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
