@@ -8385,6 +8385,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
     /// <summary>MaintenanceInfo to capture the maintenance details of database resource.</summary>
     public class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The date when the current maintenance version was released.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentVersionReleaseDate")]
+        public virtual GoogleTypeDate CurrentVersionReleaseDate { get; set; }
+
         /// <summary>Optional. List of Deny maintenance period for the database resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("denyMaintenanceSchedules")]
         public virtual System.Collections.Generic.IList<StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule> DenyMaintenanceSchedules { get; set; }
@@ -8416,48 +8420,6 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upcomingMaintenance")]
         public virtual StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance UpcomingMaintenance { get; set; }
-
-        private string _versionUpdateTimeRaw;
-
-        private object _versionUpdateTime;
-
-        /// <summary>
-        /// Optional. This field will contain the date when the last version update was applied to the database
-        /// resource. This will be used to calculate the age of the maintenance version.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("versionUpdateTime")]
-        public virtual string VersionUpdateTimeRaw
-        {
-            get => _versionUpdateTimeRaw;
-            set
-            {
-                _versionUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _versionUpdateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="VersionUpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use VersionUpdateTimeDateTimeOffset instead.")]
-        public virtual object VersionUpdateTime
-        {
-            get => _versionUpdateTime;
-            set
-            {
-                _versionUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _versionUpdateTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="VersionUpdateTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? VersionUpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(VersionUpdateTimeRaw);
-            set => VersionUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
