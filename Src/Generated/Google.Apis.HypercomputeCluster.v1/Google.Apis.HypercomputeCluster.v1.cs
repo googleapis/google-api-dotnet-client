@@ -1061,14 +1061,24 @@ namespace Google.Apis.HypercomputeCluster.v1
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : HypercomputeClusterBaseServiceRequest<Google.Apis.HypercomputeCluster.v1.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -2143,7 +2153,10 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
 
-        /// <summary>Optional. Specifies the termination action of the instance</summary>
+        /// <summary>
+        /// Optional. Termination action for the instance. If not specified, Compute Engine sets the termination action
+        /// to DELETE.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("terminationAction")]
         public virtual string TerminationAction { get; set; }
 
@@ -2306,7 +2319,7 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing the progress of a cluster mutation long-running operation. operation.</summary>
+    /// <summary>Message describing the progress of a cluster mutation long-running operation.</summary>
     public class OperationProgress : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Steps and status of the operation.</summary>
@@ -2526,7 +2539,7 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
     {
         /// <summary>
         /// Optional. ID of the compute resource on which this nodeset will run. Must match a key in the cluster's
-        /// [compute_resources](Cluster.compute_resources).
+        /// compute_resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeId")]
         public virtual string ComputeId { get; set; }
@@ -2596,15 +2609,16 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
         public virtual SlurmLoginNodes LoginNodes { get; set; }
 
         /// <summary>
-        /// Required. Configuration of Slurm nodesets, which define groups of compute resources that can be used by
-        /// Slurm. At least one compute node is required.
+        /// Optional. Compute resource configuration for the Slurm nodesets in your cluster. If not specified, the
+        /// cluster won't create any nodes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeSets")]
         public virtual System.Collections.Generic.IList<SlurmNodeSet> NodeSets { get; set; }
 
         /// <summary>
-        /// Required. Configuration of Slurm partitions, which group one or more nodesets. Acts as a queue against which
-        /// jobs can be submitted. At least one partition is required.
+        /// Optional. Configuration for the Slurm partitions in your cluster. Each partition can contain one or more
+        /// nodesets, and you can submit separate jobs on each partition. If you don't specify at least one partition in
+        /// your cluster, you can't submit jobs to the cluster.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitions")]
         public virtual System.Collections.Generic.IList<SlurmPartition> Partitions { get; set; }
@@ -2677,8 +2691,7 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
     public class StorageConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. ID of the storage resource to mount, which must match a key in the cluster's
-        /// [storage_resources](Cluster.storage_resources).
+        /// Required. ID of the storage resource to mount, which must match a key in the cluster's storage_resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
