@@ -1081,6 +1081,10 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>The registry in which the base image is from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("registry")]
+        public virtual string Registry { get; set; }
+
         /// <summary>The repository name in which the base image is from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repository")]
         public virtual string Repository { get; set; }
