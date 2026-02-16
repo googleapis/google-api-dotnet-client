@@ -292,11 +292,637 @@ namespace Google.Apis.WorkloadManager.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                Deployments = new DeploymentsResource(service);
                 Discoveredprofiles = new DiscoveredprofilesResource(service);
                 Evaluations = new EvaluationsResource(service);
                 Insights = new InsightsResource(service);
                 Operations = new OperationsResource(service);
                 Rules = new RulesResource(service);
+            }
+
+            /// <summary>Gets the Deployments resource.</summary>
+            public virtual DeploymentsResource Deployments { get; }
+
+            /// <summary>The "deployments" collection of methods.</summary>
+            public class DeploymentsResource
+            {
+                private const string Resource = "deployments";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DeploymentsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Actuations = new ActuationsResource(service);
+                }
+
+                /// <summary>Gets the Actuations resource.</summary>
+                public virtual ActuationsResource Actuations { get; }
+
+                /// <summary>The "actuations" collection of methods.</summary>
+                public class ActuationsResource
+                {
+                    private const string Resource = "actuations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ActuationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates a new actuation for an existing Deployment.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The resource name of the Actuation location using the form:
+                    /// 'projects/{project_id}/locations/{location}/deployments/{deployment}'
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.WorkloadManager.v1.Data.Actuation body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Creates a new actuation for an existing Deployment.</summary>
+                    public class CreateRequest : WorkloadManagerBaseServiceRequest<Google.Apis.WorkloadManager.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.WorkloadManager.v1.Data.Actuation body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the Actuation location using the form:
+                        /// 'projects/{project_id}/locations/{location}/deployments/{deployment}'
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that
+                        /// if you must retry your request, the server will know to ignore the request if it has already
+                        /// been completed. The server will guarantee that for at least 60 minutes since the first
+                        /// request. For example, consider a situation where you make an initial request and the request
+                        /// times out. If you make the request again with the same request ID, the server can check if
+                        /// original operation with the same request ID was received, and if so, will ignore the second
+                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
+                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.WorkloadManager.v1.Data.Actuation Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/actuations";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/deployments/[^/]+$",
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a single Actuation</summary>
+                    /// <param name="name">
+                    /// Required. The name of the book to delete.
+                    /// project/{project_id}/locations/{location_id}/deployments/{deployment_id}/actuations/{actuation_id}
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Deletes a single Actuation</summary>
+                    public class DeleteRequest : WorkloadManagerBaseServiceRequest<Google.Apis.WorkloadManager.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the book to delete.
+                        /// project/{project_id}/locations/{location_id}/deployments/{deployment_id}/actuations/{actuation_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/deployments/[^/]+/actuations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets details of a single Actuation.</summary>
+                    /// <param name="name">Required. Name of the resource</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets details of a single Actuation.</summary>
+                    public class GetRequest : WorkloadManagerBaseServiceRequest<Google.Apis.WorkloadManager.v1.Data.Actuation>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. Name of the resource</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/deployments/[^/]+/actuations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists Actuations in a given project, location and deployment.</summary>
+                    /// <param name="parent">
+                    /// Required. The resource prefix of the Actuation using the form:
+                    /// 'projects/{project_id}/locations/{location}/deployments/{deployment}'
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists Actuations in a given project, location and deployment.</summary>
+                    public class ListRequest : WorkloadManagerBaseServiceRequest<Google.Apis.WorkloadManager.v1.Data.ListActuationsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource prefix of the Actuation using the form:
+                        /// 'projects/{project_id}/locations/{location}/deployments/{deployment}'
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. Filtering results</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. Field to sort by. See https://google.aip.dev/132#ordering for more details.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                        /// server will pick an appropriate default.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/actuations";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/deployments/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Creates a new Deployment in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource prefix of the Deployment using the form:
+                /// `projects/{project_id}/locations/{location_id}`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.WorkloadManager.v1.Data.Deployment body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new Deployment in a given project and location.</summary>
+                public class CreateRequest : WorkloadManagerBaseServiceRequest<Google.Apis.WorkloadManager.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.WorkloadManager.v1.Data.Deployment body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource prefix of the Deployment using the form:
+                    /// `projects/{project_id}/locations/{location_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. Id of the deployment</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("deploymentId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string DeploymentId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.WorkloadManager.v1.Data.Deployment Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/deployments";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("deploymentId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "deploymentId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single Deployment.</summary>
+                /// <param name="name">Required. Name of the resource</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single Deployment.</summary>
+                public class DeleteRequest : WorkloadManagerBaseServiceRequest<Google.Apis.WorkloadManager.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the resource</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, any actuation will also be deleted. Followed the best practice from
+                    /// https://aip.dev/135#cascading-delete
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/deployments/[^/]+$",
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single Deployment.</summary>
+                /// <param name="name">
+                /// Required. Name of the resource. The format will be
+                /// 'projects/{project_id}/locations/{location_id}/deployments/{deployment_id}'
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single Deployment.</summary>
+                public class GetRequest : WorkloadManagerBaseServiceRequest<Google.Apis.WorkloadManager.v1.Data.Deployment>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the resource. The format will be
+                    /// 'projects/{project_id}/locations/{location_id}/deployments/{deployment_id}'
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/deployments/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists Deployments in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The resource prefix of the Deployment using the form:
+                /// `projects/{project_id}/locations/{location_id}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists Deployments in a given project and location.</summary>
+                public class ListRequest : WorkloadManagerBaseServiceRequest<Google.Apis.WorkloadManager.v1.Data.ListDeploymentsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource prefix of the Deployment using the form:
+                    /// `projects/{project_id}/locations/{location_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Filter resource follow https://google.aip.dev/160</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Field to sort by. See https://google.aip.dev/132#ordering for more details.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. The maximum value
+                    /// is 1000; values above 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/deployments";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Discoveredprofiles resource.</summary>
@@ -2236,6 +2862,187 @@ namespace Google.Apis.WorkloadManager.v1
 }
 namespace Google.Apis.WorkloadManager.v1.Data
 {
+    /// <summary>Active directory details</summary>
+    public class ActiveDirectory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. DNS IP address</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsAddress")]
+        public virtual string DnsAddress { get; set; }
+
+        /// <summary>Optional. human readable form of a domain such as “google.com”.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>Optional. domain username</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainUsername")]
+        public virtual string DomainUsername { get; set; }
+
+        /// <summary>Required. secret_manager_secret</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretManagerSecret")]
+        public virtual string SecretManagerSecret { get; set; }
+
+        /// <summary>Required. active directory type</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The Actuation object represents the bootstrap state and output results of deployed infrastructure and software.
+    /// </summary>
+    public class Actuation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. [Output only] Actuation output</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actuationOutput")]
+        public virtual ActuationOutput ActuationOutput { get; set; }
+
+        /// <summary>Output only. [Output only] Deployment output</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentOutput")]
+        public virtual System.Collections.Generic.IList<DeploymentOutput> DeploymentOutput { get; set; }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. [Output only] End time stamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// The name of actuation resource. The format is
+        /// projects/{project}/locations/{location}/deployments/{deployment}/actuations/{actuation}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Output only. [Output only] Start time stamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. [Output only] Actuation state</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for output of Actuation</summary>
+    public class ActuationOutput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A link to gcs file that store build logs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actuateLogs")]
+        public virtual string ActuateLogs { get; set; }
+
+        /// <summary>Output only. error message return from ansible.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ansibleError")]
+        public virtual string AnsibleError { get; set; }
+
+        /// <summary>Output only. failed task name return from ansible.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ansibleFailedTask")]
+        public virtual System.Collections.Generic.IList<string> AnsibleFailedTask { get; set; }
+
+        /// <summary>reference to Blueprint Controller deployment and revision resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blueprintId")]
+        public virtual string BlueprintId { get; set; }
+
+        /// <summary>Cloud Build instance UUID associated with this revision, without any suffix or prefix</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudbuildId")]
+        public virtual string CloudbuildId { get; set; }
+
+        /// <summary>
+        /// Output only. Code describing any errors that may have occurred. If not specified, there is no error in
+        /// actuation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
+        public virtual string ErrorCode { get; set; }
+
+        /// <summary>A link to actuation cloud build log.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorLogs")]
+        public virtual string ErrorLogs { get; set; }
+
+        /// <summary>
+        /// Output only. whether the error message is user facing. If true, the error message will be shown in the UI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasUserFacingErrorMsg")]
+        public virtual System.Nullable<bool> HasUserFacingErrorMsg { get; set; }
+
+        /// <summary>Output only. error message return from terraform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("terraformError")]
+        public virtual string TerraformError { get; set; }
+
+        /// <summary>reference to terraform template used</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("terraformTemplate")]
+        public virtual string TerraformTemplate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>* An AgentCommand specifies a one-time executable program for the agent to run.</summary>
     public class AgentCommand : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2427,6 +3234,77 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for sap instant details</summary>
+    public class AppDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. instance id for app</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appInstanceId")]
+        public virtual string AppInstanceId { get; set; }
+
+        /// <summary>Application service account - let custoemrs bring their own SA for application</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appServiceAccount")]
+        public virtual string AppServiceAccount { get; set; }
+
+        /// <summary>Optional. Customized vm names</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appVmNames")]
+        public virtual System.Collections.Generic.IList<string> AppVmNames { get; set; }
+
+        /// <summary>Required. image for ascs server</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ascsImage")]
+        public virtual string AscsImage { get; set; }
+
+        /// <summary>Optional. instance id for ascs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ascsInstanceId")]
+        public virtual string AscsInstanceId { get; set; }
+
+        /// <summary>Required. ascs_machine_type</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ascsMachineType")]
+        public virtual string AscsMachineType { get; set; }
+
+        /// <summary>ASCS service account - let custoemrs bring their own SA for ASCS</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ascsServiceAccount")]
+        public virtual string AscsServiceAccount { get; set; }
+
+        /// <summary>Optional. ASCS vm name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ascsVm")]
+        public virtual string AscsVm { get; set; }
+
+        /// <summary>Optional. instance id for ers</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ersInstanceId")]
+        public virtual string ErsInstanceId { get; set; }
+
+        /// <summary>Optional. ERS vm name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ersVm")]
+        public virtual string ErsVm { get; set; }
+
+        /// <summary>Required. image for app server and ascs server</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual string Image { get; set; }
+
+        /// <summary>Required. machine type</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
+
+        /// <summary>Required. secret_manager_secret</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretManagerSecret")]
+        public virtual string SecretManagerSecret { get; set; }
+
+        /// <summary>Optional. Storage location</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sharedStorage")]
+        public virtual string SharedStorage { get; set; }
+
+        /// <summary>Required. The SAP SID is a three-digit server-specific unique identification code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sid")]
+        public virtual string Sid { get; set; }
+
+        /// <summary>Required. vms_multiplier</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmsMultiplier")]
+        public virtual System.Nullable<int> VmsMultiplier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Backup properties.</summary>
     public class BackupProperties : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2563,6 +3441,104 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Database details</summary>
+    public class Database : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. disk_type</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
+        public virtual string DiskType { get; set; }
+
+        /// <summary>Optional. only useful for Linux High Availability setup</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floatingIpAddress")]
+        public virtual string FloatingIpAddress { get; set; }
+
+        /// <summary>Required. machine type</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
+
+        /// <summary>Optional. the name of a secondary-sole-tenant node/node group</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondarySoleTenantNode")]
+        public virtual string SecondarySoleTenantNode { get; set; }
+
+        /// <summary>
+        /// Optional. the type of a secondary-sole-tenant node/node group e.g. compute.googleapis.com/node-name
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondarySoleTenantNodeType")]
+        public virtual string SecondarySoleTenantNodeType { get; set; }
+
+        /// <summary>Required. secret_manager_secret</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretManagerSecret")]
+        public virtual string SecretManagerSecret { get; set; }
+
+        /// <summary>Required. whether simultaneous multithreading is enabled or not</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("smt")]
+        public virtual System.Nullable<bool> Smt { get; set; }
+
+        /// <summary>Optional. the name of a primary sole-tenant node/node group</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("soleTenantNode")]
+        public virtual string SoleTenantNode { get; set; }
+
+        /// <summary>
+        /// Optional. the type of a primary sole-tenant node/node group e.g. compute.googleapis.com/node-name
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("soleTenantNodeType")]
+        public virtual string SoleTenantNodeType { get; set; }
+
+        /// <summary>Required. whether to have TempDB on local SSD</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tempdbOnSsd")]
+        public virtual System.Nullable<bool> TempdbOnSsd { get; set; }
+
+        /// <summary>Required. SHARED or SOLE_TENANT</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenancyModel")]
+        public virtual string TenancyModel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for sap instant details</summary>
+    public class DatabaseDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Database service account - let custoemrs bring their own SA for database</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseServiceAccount")]
+        public virtual string DatabaseServiceAccount { get; set; }
+
+        /// <summary>Required. disk_type</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
+        public virtual string DiskType { get; set; }
+
+        /// <summary>Required. image for database server</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual string Image { get; set; }
+
+        /// <summary>Optional. instance id</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
+        public virtual string InstanceId { get; set; }
+
+        /// <summary>Required. machine type</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
+
+        /// <summary>Optional. primary db vm name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryDbVm")]
+        public virtual string PrimaryDbVm { get; set; }
+
+        /// <summary>Optional. secondary db vm name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryDbVm")]
+        public virtual string SecondaryDbVm { get; set; }
+
+        /// <summary>Required. secret_manager_secret</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretManagerSecret")]
+        public virtual string SecretManagerSecret { get; set; }
+
+        /// <summary>Required. The SID is a three-digit server-specific unique identification code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sid")]
+        public virtual string Sid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Database Properties.</summary>
     public class DatabaseProperties : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2573,6 +3549,154 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Output only. Type of the database. `HANA`, `DB2`, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseType")]
         public virtual string DatabaseType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Deployment object represents user intent for deploying a specific type of workload.</summary>
+    public class Deployment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. [Output only] Create time stamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Description of the Deployment</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// The name of deployment resource. The format will be
+        /// 'projects/{project_id}/locations/{location_id}/deployments/{deployment_id}'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>SAP system workload input</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sapSystemS4Config")]
+        public virtual SapSystemS4Config SapSystemS4Config { get; set; }
+
+        /// <summary>
+        /// User-specified Service Account (SA) credentials to be used for cloud build Format:
+        /// `projects/{projectID}/serviceAccounts/{serviceAccount}` The default Cloud Build SA will be used initially if
+        /// this field is not set during deployment creation
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>MS SQL workload input</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlServerWorkload")]
+        public virtual SqlServerWorkload SqlServerWorkload { get; set; }
+
+        /// <summary>Output only. Current state of the deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Optional. terraform_variables represents all the Terraform variables for the deployment workload. The key is
+        /// the name of the Terraform variable, and the value is the TerraformVariable. For example: { "project_id": {
+        /// "input_value": { "string_value": "my-project-id" } }, "zone": { "input_value": { "string_value":
+        /// "us-central1-a" } } }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("terraformVariables")]
+        public virtual System.Collections.Generic.IDictionary<string, TerraformVariable> TerraformVariables { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. [Output only] Update time stamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. The user-specified Cloud Build worker pool resource in which the Cloud Build job will execute.
+        /// Format: `projects/{project}/locations/{location}/workerPools/{workerPoolId}`. If this field is unspecified,
+        /// the default Cloud Build worker pool will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
+        public virtual string WorkerPool { get; set; }
+
+        /// <summary>Optional. Workload type of the deployment</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadType")]
+        public virtual string WorkloadType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for output of deployment resource</summary>
+    public class DeploymentOutput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>name of the resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>type of the resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3154,6 +4278,47 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response object from `ListActuations`.</summary>
+    public class ListActuationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of Actuation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actuations")]
+        public virtual System.Collections.Generic.IList<Actuation> Actuations { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing Deployments</summary>
+    public class ListDeploymentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of Deployment</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployments")]
+        public virtual System.Collections.Generic.IList<Deployment> Deployments { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>List discovered profile Response returns discovered profiles from agents</summary>
     public class ListDiscoveredProfilesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3332,6 +4497,66 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for sap instant details</summary>
+    public class LocationDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. create firewall, if true, create firewall for the deployment. This field provides an option to not
+        /// always create firewall for the deployment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createCommsFirewall")]
+        public virtual System.Nullable<bool> CreateCommsFirewall { get; set; }
+
+        /// <summary>Optional. network tags</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customTags")]
+        public virtual System.Collections.Generic.IList<string> CustomTags { get; set; }
+
+        /// <summary>
+        /// Optional. when user skip DNS configuration from UI, deployment_dns_enabled=false otherwise
+        /// deployment_dns_enabled=true
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentDnsEnabled")]
+        public virtual System.Nullable<bool> DeploymentDnsEnabled { get; set; }
+
+        /// <summary>Optional. dns zone name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsZone")]
+        public virtual string DnsZone { get; set; }
+
+        /// <summary>Optional. dns_zone_name_suffix</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsZoneNameSuffix")]
+        public virtual string DnsZoneNameSuffix { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("internetAccess")]
+        public virtual string InternetAccess { get; set; }
+
+        /// <summary>Optional. network project</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkProject")]
+        public virtual string NetworkProject { get; set; }
+
+        /// <summary>Required. region_name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionName")]
+        public virtual string RegionName { get; set; }
+
+        /// <summary>Required. subnet_name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetName")]
+        public virtual string SubnetName { get; set; }
+
+        /// <summary>Required. vpc_name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcName")]
+        public virtual string VpcName { get; set; }
+
+        /// <summary>Required. zone1_name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone1Name")]
+        public virtual string Zone1Name { get; set; }
+
+        /// <summary>Optional. zone2_name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone2Name")]
+        public virtual string Zone2Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for additional information generated by the execution</summary>
     public class Notice : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3503,6 +4728,37 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>pacemaker configuration</summary>
+    public class Pacemaker : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. bucket location for node certificates</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketNameNodeCertificates")]
+        public virtual string BucketNameNodeCertificates { get; set; }
+
+        /// <summary>Required. pacemaker cluster name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pacemakerCluster")]
+        public virtual string PacemakerCluster { get; set; }
+
+        /// <summary>Required. pacemaker cluster secret name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pacemakerClusterSecret")]
+        public virtual string PacemakerClusterSecret { get; set; }
+
+        /// <summary>Required. pacemaker cluster username</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pacemakerClusterUsername")]
+        public virtual string PacemakerClusterUsername { get; set; }
+
+        /// <summary>Required. sql pacemaker secret name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlPacemakerSecret")]
+        public virtual string SqlPacemakerSecret { get; set; }
+
+        /// <summary>Required. sql pacemaker username</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlPacemakerUsername")]
+        public virtual string SqlPacemakerUsername { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4243,6 +5499,67 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for sap system workload</summary>
+    public class SapSystemS4Config : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("allowStoppingForUpdate")]
+        public virtual System.Nullable<bool> AllowStoppingForUpdate { get; set; }
+
+        /// <summary>Ansible runner service account - let custoemrs bring their own SA for Ansible runner</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ansibleRunnerServiceAccount")]
+        public virtual string AnsibleRunnerServiceAccount { get; set; }
+
+        /// <summary>instance details</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("app")]
+        public virtual AppDetails App { get; set; }
+
+        /// <summary>database details</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual DatabaseDetails Database { get; set; }
+
+        /// <summary>Required. two model non-HA and HA supported</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentModel")]
+        public virtual string DeploymentModel { get; set; }
+
+        /// <summary>Required. deployment environment</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentType")]
+        public virtual string EnvironmentType { get; set; }
+
+        /// <summary>
+        /// the project that infrastructure deployed, current only support the same project where the deployment
+        /// resource exist.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpProjectId")]
+        public virtual string GcpProjectId { get; set; }
+
+        /// <summary>database details</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual LocationDetails Location { get; set; }
+
+        /// <summary>Required. media_bucket_name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaBucketName")]
+        public virtual string MediaBucketName { get; set; }
+
+        /// <summary>Optional. sap_boot_disk_image</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sapBootDiskImage")]
+        public virtual string SapBootDiskImage { get; set; }
+
+        /// <summary>Required. support scale up and scale out</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scalingMethod")]
+        public virtual string ScalingMethod { get; set; }
+
+        /// <summary>Required. sap hana version</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>vm_prefix</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmPrefix")]
+        public virtual string VmPrefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A presentation of SAP workload insight. The schema of SAP workloads validation related data.</summary>
     public class SapValidation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4357,6 +5674,138 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Location and networking details for configuring SQL server workload</summary>
+    public class SqlLocationDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. create a new DNS Zone when the field is empty, Only show for `Using an existing DNS` List of
+        /// existing DNS Zones tf variable name: existing_dns_zone_name
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsZone")]
+        public virtual string DnsZone { get; set; }
+
+        /// <summary>
+        /// Required. the project that infrastructure deployed, currently only supports the same project where the
+        /// deployment resource exists.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpProjectId")]
+        public virtual string GcpProjectId { get; set; }
+
+        /// <summary>Required. Internet Access</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internetAccess")]
+        public virtual string InternetAccess { get; set; }
+
+        /// <summary>Required. network name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>Required. primary zone</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryZone")]
+        public virtual string PrimaryZone { get; set; }
+
+        /// <summary>Required. region name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>
+        /// Optional. secondary zone can't be same as primary_zone and is only for High Availability deployment mode
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryZone")]
+        public virtual string SecondaryZone { get; set; }
+
+        /// <summary>Required. subnetwork name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
+        public virtual string Subnetwork { get; set; }
+
+        /// <summary>
+        /// Optional. teriary zone can't be same as primary_zone and secondary zone, and it is only for High
+        /// Availability deployment mode
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tertiaryZone")]
+        public virtual string TertiaryZone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for MS SQL workload</summary>
+    public class SqlServerWorkload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. active directory details</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeDirectory")]
+        public virtual ActiveDirectory ActiveDirectory { get; set; }
+
+        /// <summary>Compute engine service account - let customers bring their own SA for Compute engine</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeEngineServiceAccount")]
+        public virtual string ComputeEngineServiceAccount { get; set; }
+
+        /// <summary>Required. database details</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual Database Database { get; set; }
+
+        /// <summary>Required. HIGH_AVAILABILITY or SINGLE_INSTANCE</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentModel")]
+        public virtual string DeploymentModel { get; set; }
+
+        /// <summary>Required. deployment environment</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentType")]
+        public virtual string EnvironmentType { get; set; }
+
+        /// <summary>Optional. SHARED_DISK or S2D</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fciType")]
+        public virtual string FciType { get; set; }
+
+        /// <summary>Optional. AOAG or FCI, it is only needed for High Availability deployment mode</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("haType")]
+        public virtual string HaType { get; set; }
+
+        /// <summary>Required. SQL licensing type</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isSqlPayg")]
+        public virtual System.Nullable<bool> IsSqlPayg { get; set; }
+
+        /// <summary>Required. location details</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual SqlLocationDetails Location { get; set; }
+
+        /// <summary>Required. name of the media storing SQL server installation files</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaBucket")]
+        public virtual string MediaBucket { get; set; }
+
+        /// <summary>Required. type of the operating system the SQL server is going to run on top of</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operatingSystemType")]
+        public virtual string OperatingSystemType { get; set; }
+
+        /// <summary>Required. the image of the operating system</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osImage")]
+        public virtual string OsImage { get; set; }
+
+        /// <summary>
+        /// Optional. OS image type, it's used to create boot disks for VM instances When either Windows licensing type
+        /// or SQL licensing type is BYOL, this option is disabled and default to custom image
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osImageType")]
+        public virtual string OsImageType { get; set; }
+
+        /// <summary>Optional. pacemaker configuration, only applicable for Linux HA deployments</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pacemaker")]
+        public virtual Pacemaker Pacemaker { get; set; }
+
+        /// <summary>Optional. SQL Server Edition type, only applicable when Operating System is Linux</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlServerEdition")]
+        public virtual string SqlServerEdition { get; set; }
+
+        /// <summary>Optional. 2017 or 2019 or 2022</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlServerVersion")]
+        public virtual string SqlServerVersion { get; set; }
+
+        /// <summary>Required. should be unique in the project</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmPrefix")]
+        public virtual string VmPrefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A presentation of SQLServer workload insight. The schema of SqlServer workloads validation related data.
     /// </summary>
@@ -4455,6 +5904,21 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Output only. Number of new fixes compared to the previous execution</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newFixes")]
         public virtual System.Nullable<long> NewFixes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// In order to align with Infra Manager dependency, we create the same TerraformVariable message to represent a
+    /// Terraform input variable, by following Infra Manager's API documentation:
+    /// https://cloud.google.com/infrastructure-manager/docs/reference/rest A Terraform input variable.
+    /// </summary>
+    public class TerraformVariable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Input variable value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputValue")]
+        public virtual object InputValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
