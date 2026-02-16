@@ -400,7 +400,8 @@ namespace Google.Apis.CloudKMS.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`
+        /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig` or
+        /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
         /// </param>
         public virtual UpdateAutokeyConfigRequest UpdateAutokeyConfig(Google.Apis.CloudKMS.v1.Data.AutokeyConfig body, string name)
         {
@@ -424,7 +425,8 @@ namespace Google.Apis.CloudKMS.v1
             }
 
             /// <summary>
-            /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`
+            /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig` or
+            /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -721,6 +723,7 @@ namespace Google.Apis.CloudKMS.v1
                 KeyHandles = new KeyHandlesResource(service);
                 KeyRings = new KeyRingsResource(service);
                 Operations = new OperationsResource(service);
+                RetiredResources = new RetiredResourcesResource(service);
                 SingleTenantHsmInstances = new SingleTenantHsmInstancesResource(service);
             }
 
@@ -2112,6 +2115,63 @@ namespace Google.Apis.CloudKMS.v1
                         }
 
                         /// <summary>
+                        /// Permanently deletes the given CryptoKeyVersion. Only possible if the version has not been
+                        /// previously imported and if its state is one of DESTROYED, IMPORT_FAILED, or
+                        /// GENERATION_FAILED. Successfully imported CryptoKeyVersions cannot be deleted at this time.
+                        /// The specified version will be immediately and permanently deleted upon calling this method.
+                        /// This action cannot be undone.
+                        /// </summary>
+                        /// <param name="name">Required. The name of the CryptoKeyVersion to delete.</param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Permanently deletes the given CryptoKeyVersion. Only possible if the version has not been
+                        /// previously imported and if its state is one of DESTROYED, IMPORT_FAILED, or
+                        /// GENERATION_FAILED. Successfully imported CryptoKeyVersions cannot be deleted at this time.
+                        /// The specified version will be immediately and permanently deleted upon calling this method.
+                        /// This action cannot be undone.
+                        /// </summary>
+                        public class DeleteRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The name of the CryptoKeyVersion to delete.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
                         /// Schedule a CryptoKeyVersion for destruction. Upon calling this method,
                         /// CryptoKeyVersion.state will be set to DESTROY_SCHEDULED, and destroy_time will be set to the
                         /// time destroy_scheduled_duration in the future. At that time, the state will automatically
@@ -3082,6 +3142,59 @@ namespace Google.Apis.CloudKMS.v1
                         public override string RestPath => "v1/{+name}:decrypt";
 
                         /// <summary>Initializes Decrypt parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Permanently deletes the given CryptoKey. All child CryptoKeyVersions must have been previously
+                    /// deleted using KeyManagementService.DeleteCryptoKeyVersion. The specified crypto key will be
+                    /// immediately and permanently deleted upon calling this method. This action cannot be undone.
+                    /// </summary>
+                    /// <param name="name">Required. The name of the CryptoKey to delete.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Permanently deletes the given CryptoKey. All child CryptoKeyVersions must have been previously
+                    /// deleted using KeyManagementService.DeleteCryptoKeyVersion. The specified crypto key will be
+                    /// immediately and permanently deleted upon calling this method. This action cannot be undone.
+                    /// </summary>
+                    public class DeleteRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the CryptoKey to delete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
@@ -4688,6 +4801,162 @@ namespace Google.Apis.CloudKMS.v1
                 }
             }
 
+            /// <summary>Gets the RetiredResources resource.</summary>
+            public virtual RetiredResourcesResource RetiredResources { get; }
+
+            /// <summary>The "retiredResources" collection of methods.</summary>
+            public class RetiredResourcesResource
+            {
+                private const string Resource = "retiredResources";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public RetiredResourcesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Retrieves a specific RetiredResource resource, which represents the record of a deleted CryptoKey.
+                /// </summary>
+                /// <param name="name">Required. The name of the RetiredResource to get.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Retrieves a specific RetiredResource resource, which represents the record of a deleted CryptoKey.
+                /// </summary>
+                public class GetRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.RetiredResource>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the RetiredResource to get.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/retiredResources/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Lists the RetiredResources which are the records of deleted CryptoKeys. RetiredResources prevent the
+                /// reuse of these resource names after deletion.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The project-specific location holding the RetiredResources, in the format
+                /// `projects/*/locations/*`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// Lists the RetiredResources which are the records of deleted CryptoKeys. RetiredResources prevent the
+                /// reuse of these resource names after deletion.
+                /// </summary>
+                public class ListRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.ListRetiredResourcesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project-specific location holding the RetiredResources, in the format
+                    /// `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Optional limit on the number of RetiredResources to be included in the response.
+                    /// Further RetiredResources can subsequently be obtained by including the
+                    /// ListRetiredResourcesResponse.next_page_token in a subsequent request. If unspecified, the server
+                    /// will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. Optional pagination token, returned earlier via
+                    /// ListRetiredResourcesResponse.next_page_token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/retiredResources";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the SingleTenantHsmInstances resource.</summary>
             public virtual SingleTenantHsmInstancesResource SingleTenantHsmInstances { get; }
 
@@ -5549,14 +5818,24 @@ namespace Google.Apis.CloudKMS.v1
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -5993,7 +6272,8 @@ namespace Google.Apis.CloudKMS.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`
+        /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig` or
+        /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
         /// </param>
         public virtual UpdateAutokeyConfigRequest UpdateAutokeyConfig(Google.Apis.CloudKMS.v1.Data.AutokeyConfig body, string name)
         {
@@ -6017,7 +6297,8 @@ namespace Google.Apis.CloudKMS.v1
             }
 
             /// <summary>
-            /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`
+            /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig` or
+            /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -6425,7 +6706,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string KeyProjectResolutionMode { get; set; }
 
         /// <summary>
-        /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`
+        /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig` or
+        /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -8309,6 +8591,28 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for KeyManagementService.ListRetiredResources.</summary>
+    public class ListRetiredResourcesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token to retrieve the next page of results. Pass this value in ListRetiredResourcesRequest.page_token to
+        /// retrieve the next page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of RetiredResources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retiredResources")]
+        public virtual System.Collections.Generic.IList<RetiredResource> RetiredResources { get; set; }
+
+        /// <summary>The total number of RetiredResources that matched the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<long> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for HsmManagement.ListSingleTenantHsmInstanceProposals.</summary>
     public class ListSingleTenantHsmInstanceProposalsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9226,6 +9530,74 @@ namespace Google.Apis.CloudKMS.v1.Data
     /// <summary>Request message for KeyManagementService.RestoreCryptoKeyVersion.</summary>
     public class RestoreCryptoKeyVersionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A RetiredResource resource represents the record of a deleted CryptoKey. Its purpose is to provide visibility
+    /// into retained user data and to prevent reuse of these names for new CryptoKeys.
+    /// </summary>
+    public class RetiredResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _deleteTimeRaw;
+
+        private object _deleteTime;
+
+        /// <summary>
+        /// Output only. The time at which the original resource was deleted and this RetiredResource record was
+        /// created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual string DeleteTimeRaw
+        {
+            get => _deleteTimeRaw;
+            set
+            {
+                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deleteTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
+        public virtual object DeleteTime
+        {
+            get => _deleteTime;
+            set
+            {
+                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deleteTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Identifier. The resource name for this RetiredResource in the format
+        /// `projects/*/locations/*/retiredResources/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The full resource name of the original CryptoKey that was deleted in the format
+        /// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalResource")]
+        public virtual string OriginalResource { get; set; }
+
+        /// <summary>Output only. The resource type of the original deleted resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
