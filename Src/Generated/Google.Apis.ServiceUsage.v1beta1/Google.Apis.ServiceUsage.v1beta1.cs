@@ -2640,12 +2640,36 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
+        /// <summary>Optional. Rules of the Configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
+        public virtual System.Collections.Generic.IList<AspectRule> Rules { get; set; }
+
         /// <summary>
         /// Content of the configuration. The underlying schema should be defined by Aspect owners as protobuf message
         /// under `google/api/configaspects/proto`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
         public virtual System.Collections.Generic.IDictionary<string, object> Spec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Rule-based configuration for an aspect.</summary>
+    public class AspectRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Rules of the configuration. The underlying schema should be defined by Aspect owners as protobuf
+        /// message under `google/api/configaspects/proto`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Config { get; set; }
+
+        /// <summary>
+        /// Required. Selects the RPC methods to which this rule applies. Refer to selector for syntax details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selector")]
+        public virtual string Selector { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
