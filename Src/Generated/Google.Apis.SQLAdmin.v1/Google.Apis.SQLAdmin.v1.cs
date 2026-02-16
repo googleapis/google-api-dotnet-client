@@ -3859,75 +3859,6 @@ namespace Google.Apis.SQLAdmin.v1
             }
         }
 
-        /// <summary>Restores a backup of a Cloud SQL instance for Model Context Protocol (MCP) server.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="targetProject">Required. Project ID of the target project.</param>
-        /// <param name="targetInstance">
-        /// Required. Cloud SQL instance ID of the target. This does not include the project ID.
-        /// </param>
-        public virtual RestoreBackupMcpRequest RestoreBackupMcp(Google.Apis.SQLAdmin.v1.Data.SqlInstancesRestoreBackupMcpRequest body, string targetProject, string targetInstance)
-        {
-            return new RestoreBackupMcpRequest(this.service, body, targetProject, targetInstance);
-        }
-
-        /// <summary>Restores a backup of a Cloud SQL instance for Model Context Protocol (MCP) server.</summary>
-        public class RestoreBackupMcpRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1.Data.Operation>
-        {
-            /// <summary>Constructs a new RestoreBackupMcp request.</summary>
-            public RestoreBackupMcpRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1.Data.SqlInstancesRestoreBackupMcpRequest body, string targetProject, string targetInstance) : base(service)
-            {
-                TargetProject = targetProject;
-                TargetInstance = targetInstance;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Required. Project ID of the target project.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("targetProject", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string TargetProject { get; private set; }
-
-            /// <summary>Required. Cloud SQL instance ID of the target. This does not include the project ID.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("targetInstance", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string TargetInstance { get; private set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.SQLAdmin.v1.Data.SqlInstancesRestoreBackupMcpRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "restoreBackupMcp";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/projects/{targetProject}/instances/{targetInstance}:restoreBackupMcp";
-
-            /// <summary>Initializes RestoreBackupMcp parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("targetProject", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "targetProject",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("targetInstance", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "targetInstance",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-
         /// <summary>
         /// Rotates the server certificate to one signed by the Certificate Authority (CA) version previously added with
         /// the addServerCA method. For instances that have enabled Certificate Authority Service (CAS) based server CA,
@@ -5882,6 +5813,14 @@ namespace Google.Apis.SQLAdmin.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
 
+            /// <summary>
+            /// Optional. Specifies whether to revoke existing roles that are not present in the `database_roles` field.
+            /// If `false` or unset, the database roles specified in `database_roles` are added to the user's existing
+            /// roles.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("revokeExistingRoles", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> RevokeExistingRoles { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1.Data.User Body { get; set; }
 
@@ -5936,6 +5875,14 @@ namespace Google.Apis.SQLAdmin.v1
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("revokeExistingRoles", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "revokeExistingRoles",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -6703,6 +6650,23 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>Required. Name of the Cloud SQL instance to be created as a clone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationInstanceName")]
         public virtual string DestinationInstanceName { get; set; }
+
+        /// <summary>
+        /// Optional. The fully qualified URI of the VPC network to which the cloned instance will be connected via
+        /// Private Services Access for private IP. For
+        /// example:`projects/my-network-project/global/networks/my-network`. This field is only required for
+        /// cross-project cloning.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationNetwork")]
+        public virtual string DestinationNetwork { get; set; }
+
+        /// <summary>
+        /// Optional. The project ID of the destination project where the cloned instance will be created. To perform a
+        /// cross-project clone, this field is required. If not specified, the clone is created in the same project as
+        /// the source instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationProject")]
+        public virtual string DestinationProject { get; set; }
 
         /// <summary>This is always `sql#cloneContext`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -10796,33 +10760,6 @@ namespace Google.Apis.SQLAdmin.v1.Data
     /// <summary>Instance reset replica size request.</summary>
     public class SqlInstancesResetReplicaSizeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Instance restore backup request for MCP.</summary>
-    public class SqlInstancesRestoreBackupMcpRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The identifier of the backup to restore. This will be one of the following: 1. An int64 containing
-        /// a backup_run_id. 2. A backup name of the format 'projects/{project}/backups/{backup-uid}'. 3. A backupDR
-        /// name of the format
-        /// 'projects/{project}/locations/{location}/backupVaults/{backupvault}/dataSources/{datasource}/backups/{backup-uid}'.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("backupId")]
-        public virtual string BackupId { get; set; }
-
-        /// <summary>
-        /// Optional. The Cloud SQL instance ID of the source instance containing the backup. Only necessary if the
-        /// backup_id is a backup_run_id.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceInstance")]
-        public virtual string SourceInstance { get; set; }
-
-        /// <summary>Required. The project ID of the source instance containing the backup.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceProject")]
-        public virtual string SourceProject { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
