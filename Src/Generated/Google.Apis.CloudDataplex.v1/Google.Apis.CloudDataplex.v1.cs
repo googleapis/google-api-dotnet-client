@@ -1230,6 +1230,7 @@ namespace Google.Apis.CloudDataplex.v1
                 MetadataFeeds = new MetadataFeedsResource(service);
                 MetadataJobs = new MetadataJobsResource(service);
                 Operations = new OperationsResource(service);
+                PolicyIntents = new PolicyIntentsResource(service);
             }
 
             /// <summary>Gets the AspectTypes resource.</summary>
@@ -6332,12 +6333,7 @@ namespace Google.Apis.CloudDataplex.v1
                         }
                     }
 
-                    /// <summary>
-                    /// Gets an Entry. Caution: The Vertex AI, Bigtable, Spanner, Pub/Sub, Dataform, and Dataproc
-                    /// Metastore metadata that is stored in Dataplex Universal Catalog is changing. For more
-                    /// information, see Changes to metadata stored in Dataplex Universal Catalog
-                    /// (https://cloud.google.com/dataplex/docs/metadata-changes).
-                    /// </summary>
+                    /// <summary>Gets an Entry.</summary>
                     /// <param name="name">
                     /// Required. The resource name of the Entry:
                     /// projects/{project}/locations/{location}/entryGroups/{entry_group}/entries/{entry}.
@@ -6347,12 +6343,7 @@ namespace Google.Apis.CloudDataplex.v1
                         return new GetRequest(this.service, name);
                     }
 
-                    /// <summary>
-                    /// Gets an Entry. Caution: The Vertex AI, Bigtable, Spanner, Pub/Sub, Dataform, and Dataproc
-                    /// Metastore metadata that is stored in Dataplex Universal Catalog is changing. For more
-                    /// information, see Changes to metadata stored in Dataplex Universal Catalog
-                    /// (https://cloud.google.com/dataplex/docs/metadata-changes).
-                    /// </summary>
+                    /// <summary>Gets an Entry.</summary>
                     public class GetRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Entry>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -6471,12 +6462,7 @@ namespace Google.Apis.CloudDataplex.v1
                         }
                     }
 
-                    /// <summary>
-                    /// Lists Entries within an EntryGroup. Caution: The Vertex AI, Bigtable, Spanner, Pub/Sub,
-                    /// Dataform, and Dataproc Metastore metadata that is stored in Dataplex Universal Catalog is
-                    /// changing. For more information, see Changes to metadata stored in Dataplex Universal Catalog
-                    /// (https://cloud.google.com/dataplex/docs/metadata-changes).
-                    /// </summary>
+                    /// <summary>Lists Entries within an EntryGroup.</summary>
                     /// <param name="parent">
                     /// Required. The resource name of the parent Entry Group:
                     /// projects/{project}/locations/{location}/entryGroups/{entry_group}.
@@ -6486,12 +6472,7 @@ namespace Google.Apis.CloudDataplex.v1
                         return new ListRequest(this.service, parent);
                     }
 
-                    /// <summary>
-                    /// Lists Entries within an EntryGroup. Caution: The Vertex AI, Bigtable, Spanner, Pub/Sub,
-                    /// Dataform, and Dataproc Metastore metadata that is stored in Dataplex Universal Catalog is
-                    /// changing. For more information, see Changes to metadata stored in Dataplex Universal Catalog
-                    /// (https://cloud.google.com/dataplex/docs/metadata-changes).
-                    /// </summary>
+                    /// <summary>Lists Entries within an EntryGroup.</summary>
                     public class ListRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1ListEntriesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -17347,6 +17328,236 @@ namespace Google.Apis.CloudDataplex.v1
                 }
             }
 
+            /// <summary>Gets the PolicyIntents resource.</summary>
+            public virtual PolicyIntentsResource PolicyIntents { get; }
+
+            /// <summary>The "policyIntents" collection of methods.</summary>
+            public class PolicyIntentsResource
+            {
+                private const string Resource = "policyIntents";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public PolicyIntentsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being requested. See Resource names
+                /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                /// </param>
+                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                {
+                    return new GetIamPolicyRequest(this.service, resource);
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                public class GetIamPolicyRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleIamV1Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being requested. See Resource names
+                    /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum policy version that will be used to format the policy.Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset.The policy in the response might use the policy
+                    /// version that you specified, or it might use a lower policy version. For example, if you specify
+                    /// version 3, but the policy has no conditional role bindings, the response uses version 1.To learn
+                    /// which resources support conditions in their IAM policies, see the IAM documentation
+                    /// (https://cloud.google.com/iam/help/conditions/resource-policies).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/policyIntents/[^/]+$",
+                        });
+                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy.Can return
+                /// NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being specified. See Resource names
+                /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                /// </param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy.Can return
+                /// NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
+                /// </summary>
+                public class SetIamPolicyRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleIamV1Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being specified. See Resource names
+                    /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/policyIntents/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed
+                /// to be used for building permission-aware UIs and command-line tools, not for authorization checking.
+                /// This operation may "fail open" without warning.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy detail is being requested. See Resource names
+                /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                /// </param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
+                {
+                    return new TestIamPermissionsRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed
+                /// to be used for building permission-aware UIs and command-line tools, not for authorization checking.
+                /// This operation may "fail open" without warning.
+                /// </summary>
+                public class TestIamPermissionsRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy detail is being requested. See Resource names
+                    /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "testIamPermissions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/policyIntents/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
@@ -17506,12 +17717,7 @@ namespace Google.Apis.CloudDataplex.v1
                 }
             }
 
-            /// <summary>
-            /// Looks up an entry by name using the permission on the source system. Caution: The Vertex AI, Bigtable,
-            /// Spanner, Pub/Sub, Dataform, and Dataproc Metastore metadata that is stored in Dataplex Universal Catalog
-            /// is changing. For more information, see Changes to metadata stored in Dataplex Universal Catalog
-            /// (https://cloud.google.com/dataplex/docs/metadata-changes).
-            /// </summary>
+            /// <summary>Looks up an entry by name using the permission on the source system.</summary>
             /// <param name="name">
             /// Required. The project to which the request should be attributed in the following form:
             /// projects/{project}/locations/{location}.
@@ -17521,12 +17727,7 @@ namespace Google.Apis.CloudDataplex.v1
                 return new LookupEntryRequest(this.service, name);
             }
 
-            /// <summary>
-            /// Looks up an entry by name using the permission on the source system. Caution: The Vertex AI, Bigtable,
-            /// Spanner, Pub/Sub, Dataform, and Dataproc Metastore metadata that is stored in Dataplex Universal Catalog
-            /// is changing. For more information, see Changes to metadata stored in Dataplex Universal Catalog
-            /// (https://cloud.google.com/dataplex/docs/metadata-changes).
-            /// </summary>
+            /// <summary>Looks up an entry by name using the permission on the source system.</summary>
             public class LookupEntryRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Entry>
             {
                 /// <summary>Constructs a new LookupEntry request.</summary>
@@ -20748,7 +20949,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Required. The dimension a rule belongs to. Results are also aggregated at the dimension level. Custom
+        /// Optional. The dimension a rule belongs to. Results are also aggregated at the dimension level. Custom
         /// dimension name is supported with all uppercase letters and maximum length of 30 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
