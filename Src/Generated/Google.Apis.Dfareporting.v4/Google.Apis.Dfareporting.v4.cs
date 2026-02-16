@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -9357,14 +9357,18 @@ namespace Google.Apis.Dfareporting.v4
             }
         }
 
-        /// <summary>Retransforms a dynamic feed.</summary>
+        /// <summary>
+        /// Retransforms a dynamic feed. Only draft feeds can be retransformed (i.e. the feed has not been published).
+        /// </summary>
         /// <param name="dynamicFeedId">Required. Dynamic feed ID.</param>
         public virtual RetransformRequest Retransform(long dynamicFeedId)
         {
             return new RetransformRequest(this.service, dynamicFeedId);
         }
 
-        /// <summary>Retransforms a dynamic feed.</summary>
+        /// <summary>
+        /// Retransforms a dynamic feed. Only draft feeds can be retransformed (i.e. the feed has not been published).
+        /// </summary>
         public class RetransformRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.DynamicFeed>
         {
             /// <summary>Constructs a new Retransform request.</summary>
@@ -9402,14 +9406,20 @@ namespace Google.Apis.Dfareporting.v4
             }
         }
 
-        /// <summary>Updates a new dynamic feed.</summary>
+        /// <summary>
+        /// Updates a new dynamic feed. For draft feeds, only Element can be updated. For published feeds, only
+        /// FeedSchedule can be updated. Other fields will be ignored.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.DynamicFeed body)
         {
             return new UpdateRequest(this.service, body);
         }
 
-        /// <summary>Updates a new dynamic feed.</summary>
+        /// <summary>
+        /// Updates a new dynamic feed. For draft feeds, only Element can be updated. For published feeds, only
+        /// FeedSchedule can be updated. Other fields will be ignored.
+        /// </summary>
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.DynamicFeed>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -9456,14 +9466,14 @@ namespace Google.Apis.Dfareporting.v4
             this.service = service;
         }
 
-        /// <summary>Generates code for a dynamic profile.</summary>
+        /// <summary>Generates code for a dynamic profile, which will need unescaping.</summary>
         /// <param name="dynamicProfileId">Required. Dynamic profile ID.</param>
         public virtual GenerateCodeRequest GenerateCode(long dynamicProfileId)
         {
             return new GenerateCodeRequest(this.service, dynamicProfileId);
         }
 
-        /// <summary>Generates code for a dynamic profile.</summary>
+        /// <summary>Generates code for a dynamic profile, which will need unescaping.</summary>
         public class GenerateCodeRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.DynamicProfileGenerateCodeResponse>
         {
             /// <summary>Constructs a new GenerateCode request.</summary>
@@ -22302,9 +22312,9 @@ namespace Google.Apis.Dfareporting.v4.Data
     }
 
     /// <summary>
-    ///  *Beta:* This feature is currently in beta. Contains additional information about cart data. This field may only
-    /// be used when calling batchinsert; it is not supported by batchupdate. Cart data reporting is only supported in
-    /// SA360. [Learn more](https://support.google.com/sa360/topic/13425788)
+    /// Contains additional information about cart data. This field may only be used when calling batchinsert; it is not
+    /// supported by batchupdate. Cart data reporting is only supported in SA360. [Learn
+    /// more](https://support.google.com/sa360/topic/13425788)
     /// </summary>
     public class CartData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -25291,7 +25301,10 @@ namespace Google.Apis.Dfareporting.v4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Contains dynamic feed information.</summary>
+    /// <summary>
+    ///  *Beta:* This API resource is available only to a very limited number of customers. If you'd like to use this
+    /// resource, please reach out to your Google sales representative. Contains dynamic feed information.
+    /// </summary>
     public class DynamicFeed : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The content source of the dynamic feed. This is a required field.</summary>
@@ -25354,7 +25367,7 @@ namespace Google.Apis.Dfareporting.v4.Data
 
     /// <summary>
     /// Dynamic profile ID is required for dynamic feed insert as the current GPA API only can create a dynamic feed
-    /// under profile context,even though the dynnamic feed itself don't need the dynamic profile id. See
+    /// under profile context,even though the dynamic feed itself don't need the dynamic profile id.
     /// </summary>
     public class DynamicFeedsInsertRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -25370,7 +25383,10 @@ namespace Google.Apis.Dfareporting.v4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Contains dynamic profile information.</summary>
+    /// <summary>
+    ///  *Beta:* This API resource is available only to a very limited number of customers. If you'd like to use this
+    /// resource, please reach out to your Google sales representative. Contains dynamic profile information.
+    /// </summary>
     public class DynamicProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Active version of the dynamic profile.</summary>
@@ -25458,7 +25474,7 @@ namespace Google.Apis.Dfareporting.v4.Data
     /// <summary>Response message for DfareportingDynamicProfiles.GenerateCode.</summary>
     public class DynamicProfileGenerateCodeResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Generated code for the dynamic profile.</summary>
+        /// <summary>Generated code for the dynamic profile. The code will need to be unescaped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
 
@@ -30183,14 +30199,17 @@ namespace Google.Apis.Dfareporting.v4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Contains studio creative information.</summary>
+    /// <summary>
+    ///  *Beta:* This API resource is available only to a very limited number of customers. If you'd like to use this
+    /// resource, please reach out to your Google sales representative. Contains studio creative information.
+    /// </summary>
     public class StudioCreative : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of assets associated with this studio creative. It is a required field on insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> AssetIds { get; set; }
 
-        /// <summary>Backup image asset ID of this studio creative.</summary>
+        /// <summary>Backup image asset ID of this studio creative. It is a required field on insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupImageAssetId")]
         public virtual System.Nullable<long> BackupImageAssetId { get; set; }
 
@@ -30250,7 +30269,10 @@ namespace Google.Apis.Dfareporting.v4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Contains studio creative asset information.</summary>
+    /// <summary>
+    ///  *Beta:* This API resource is available only to a very limited number of customers. If you'd like to use this
+    /// resource, please reach out to your Google sales representative. Contains studio creative asset information.
+    /// </summary>
     public class StudioCreativeAsset : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
