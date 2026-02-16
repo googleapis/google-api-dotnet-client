@@ -1,0 +1,11 @@
+{
+  "Google.Apis.PostmasterTools.v2.PostmasterToolsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.PostmasterTools.v2.PostmasterToolsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
