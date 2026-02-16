@@ -2472,6 +2472,59 @@ namespace Google.Apis.CloudRedis.v1
                 }
             }
 
+            /// <summary>Gets the details of regional certificate authority information for Redis cluster.</summary>
+            /// <param name="name">
+            /// Required. Regional certificate authority resource name using the form:
+            /// `projects/{project_id}/locations/{location_id}/sharedRegionalCertificateAuthority` where `location_id`
+            /// refers to a Google Cloud region.
+            /// </param>
+            public virtual GetSharedRegionalCertificateAuthorityRequest GetSharedRegionalCertificateAuthority(string name)
+            {
+                return new GetSharedRegionalCertificateAuthorityRequest(this.service, name);
+            }
+
+            /// <summary>Gets the details of regional certificate authority information for Redis cluster.</summary>
+            public class GetSharedRegionalCertificateAuthorityRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.SharedRegionalCertificateAuthority>
+            {
+                /// <summary>Constructs a new GetSharedRegionalCertificateAuthority request.</summary>
+                public GetSharedRegionalCertificateAuthorityRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Regional certificate authority resource name using the form:
+                /// `projects/{project_id}/locations/{location_id}/sharedRegionalCertificateAuthority` where
+                /// `location_id` refers to a Google Cloud region.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getSharedRegionalCertificateAuthority";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes GetSharedRegionalCertificateAuthority parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/sharedRegionalCertificateAuthority$",
+                    });
+                }
+            }
+
             /// <summary>
             /// Lists information about the supported locations for this service. This method can be called in two ways:
             /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
@@ -3396,6 +3449,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("replicaCount")]
         public virtual System.Nullable<int> ReplicaCount { get; set; }
 
+        /// <summary>Optional. Input only. Rotate the server certificates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rotateServerCertificate")]
+        public virtual System.Nullable<bool> RotateServerCertificate { get; set; }
+
         /// <summary>Optional. Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
         public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
@@ -3403,6 +3460,17 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Optional. Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
+        /// <summary>Optional. Server CA mode for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverCaMode")]
+        public virtual string ServerCaMode { get; set; }
+
+        /// <summary>
+        /// Optional. Customer-managed CA pool for the cluster. Only applicable for BYOCA i.e. if server_ca_mode is
+        /// SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA. Format: "projects/{project}/locations/{region}/caPools/{ca_pool}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverCaPool")]
+        public virtual string ServerCaPool { get; set; }
 
         /// <summary>Optional. Number of shards for the Redis cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shardCount")]
@@ -6278,6 +6346,28 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The certificates that form the CA chain, from leaf to root order.</summary>
+    public class RegionalCertChain : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The certificates that form the CA chain, from leaf to root order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificates")]
+        public virtual System.Collections.Generic.IList<string> Certificates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CA certificate chains for redis managed server authentication.</summary>
+    public class RegionalManagedCertificateAuthority : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The PEM encoded CA certificate chains for redis managed server authentication</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caCerts")]
+        public virtual System.Collections.Generic.IList<RegionalCertChain> CaCerts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Details of the remote cluster associated with this cluster in a cross cluster replication setup.
     /// </summary>
@@ -6439,6 +6529,10 @@ namespace Google.Apis.CloudRedis.v1.Data
     /// <summary>MaintenanceInfo to capture the maintenance details of database resource.</summary>
     public class ResourceMaintenanceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The date when the current maintenance version was released.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentVersionReleaseDate")]
+        public virtual Date CurrentVersionReleaseDate { get; set; }
+
         /// <summary>Optional. List of Deny maintenance period for the database resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("denyMaintenanceSchedules")]
         public virtual System.Collections.Generic.IList<ResourceMaintenanceDenySchedule> DenyMaintenanceSchedules { get; set; }
@@ -6470,48 +6564,6 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upcomingMaintenance")]
         public virtual UpcomingMaintenance UpcomingMaintenance { get; set; }
-
-        private string _versionUpdateTimeRaw;
-
-        private object _versionUpdateTime;
-
-        /// <summary>
-        /// Optional. This field will contain the date when the last version update was applied to the database
-        /// resource. This will be used to calculate the age of the maintenance version.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("versionUpdateTime")]
-        public virtual string VersionUpdateTimeRaw
-        {
-            get => _versionUpdateTimeRaw;
-            set
-            {
-                _versionUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _versionUpdateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="VersionUpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use VersionUpdateTimeDateTimeOffset instead.")]
-        public virtual object VersionUpdateTime
-        {
-            get => _versionUpdateTime;
-            set
-            {
-                _versionUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _versionUpdateTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="VersionUpdateTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? VersionUpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(VersionUpdateTimeRaw);
-            set => VersionUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6598,6 +6650,24 @@ namespace Google.Apis.CloudRedis.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampBasedRetentionTimeRaw);
             set => TimestampBasedRetentionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Shared regional certificate authority</summary>
+    public class SharedRegionalCertificateAuthority : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>CA certificate chains for redis managed server authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedServerCa")]
+        public virtual RegionalManagedCertificateAuthority ManagedServerCa { get; set; }
+
+        /// <summary>
+        /// Identifier. Unique name of the resource in this scope including project and location using the form:
+        /// `projects/{project}/locations/{location}/sharedRegionalCertificateAuthority`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
