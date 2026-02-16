@@ -23256,15 +23256,15 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// <summary>Meta data of an image asset.</summary>
     public class ImageAsset : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>File size of the image asset in bytes.</summary>
+        /// <summary>Output only. File size of the image asset in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileSize")]
         public virtual System.Nullable<long> FileSize { get; set; }
 
-        /// <summary>Metadata for this image at its original size.</summary>
+        /// <summary>Output only. Metadata for this image at its original size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullSize")]
         public virtual Dimensions FullSize { get; set; }
 
-        /// <summary>MIME type of the image asset.</summary>
+        /// <summary>Output only. MIME type of the image asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
 
@@ -27708,13 +27708,17 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// <summary>Details of a YouTube video.</summary>
     public class YoutubeVideoDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The YouTube video ID which can be searched on YouTube webpage.</summary>
+        /// <summary>Output only. The YouTube video ID which can be searched on YouTube webpage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
         /// <summary>The reason why the video data is not available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unavailableReason")]
         public virtual string UnavailableReason { get; set; }
+
+        /// <summary>Required. The YouTube video asset id. This is ad_asset.ad_asset_id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoAssetId")]
+        public virtual System.Nullable<long> VideoAssetId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
