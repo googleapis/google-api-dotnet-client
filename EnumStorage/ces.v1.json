@@ -25,5 +25,11 @@
     "LIVE",
     "SIMULATOR",
     "EVAL"
+  ],
+  "Google.Apis.CustomerEngagementSuite.v1.ProjectsResource+LocationsResource+AppsResource+ConversationsResource+ListRequest.SourcesEnum": [
+    "SOURCE_UNSPECIFIED",
+    "LIVE",
+    "SIMULATOR",
+    "EVAL"
   ]
 }

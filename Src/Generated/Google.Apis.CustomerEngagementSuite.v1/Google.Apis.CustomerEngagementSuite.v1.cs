@@ -1180,16 +1180,61 @@ namespace Google.Apis.CustomerEngagementSuite.v1
 
                         /// <summary>
                         /// Optional. Indicate the source of the conversation. If not set, Source.Live will be applied
-                        /// by default.
+                        /// by default. Will be deprecated in favor of `sources` field.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<SourceEnum> Source { get; set; }
 
                         /// <summary>
                         /// Optional. Indicate the source of the conversation. If not set, Source.Live will be applied
-                        /// by default.
+                        /// by default. Will be deprecated in favor of `sources` field.
                         /// </summary>
                         public enum SourceEnum
+                        {
+                            /// <summary>Unspecified source.</summary>
+                            [Google.Apis.Util.StringValueAttribute("SOURCE_UNSPECIFIED")]
+                            SOURCEUNSPECIFIED = 0,
+
+                            /// <summary>The conversation is from the live end user.</summary>
+                            [Google.Apis.Util.StringValueAttribute("LIVE")]
+                            LIVE = 1,
+
+                            /// <summary>The conversation is from the simulator.</summary>
+                            [Google.Apis.Util.StringValueAttribute("SIMULATOR")]
+                            SIMULATOR = 2,
+
+                            /// <summary>The conversation is from the evaluation.</summary>
+                            [Google.Apis.Util.StringValueAttribute("EVAL")]
+                            EVAL = 3,
+                        }
+
+                        /// <summary>
+                        /// Optional. Indicate the sources of the conversations. If not set, all available sources will
+                        /// be applied by default.
+                        /// </summary>
+                        /// <remarks>
+                        /// Use this property to set a single value for the parameter, or <see cref="SourcesList"/> to
+                        /// set multiple values. Do not set both properties.
+                        /// </remarks>
+                        [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<SourcesEnum> Sources { get; set; }
+
+                        /// <summary>
+                        /// Optional. Indicate the sources of the conversations. If not set, all available sources will
+                        /// be applied by default.
+                        /// </summary>
+                        /// <remarks>
+                        /// Use this property to set one or more values for the parameter. Do not set both this property
+                        /// and <see cref="Sources"/>.
+                        /// </remarks>
+                        [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<SourcesEnum> SourcesList { get; set; }
+
+                        /// <summary>
+                        /// Optional. Indicate the sources of the conversations. If not set, all available sources will
+                        /// be applied by default.
+                        /// </summary>
+                        public enum SourcesEnum
                         {
                             /// <summary>Unspecified source.</summary>
                             [Google.Apis.Util.StringValueAttribute("SOURCE_UNSPECIFIED")]
@@ -1256,6 +1301,14 @@ namespace Google.Apis.CustomerEngagementSuite.v1
                             RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "source",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("sources", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "sources",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5721,6 +5774,15 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
 
+        /// <summary>
+        /// Optional. If enabled, the callback will also be executed on intermediate model outputs. This setting only
+        /// affects after model callback. **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+        /// executed after receiving all model responses. Enabling proactive execution may have negative implication on
+        /// the execution cost and latency, and should only be enabled in rare situations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proactiveExecutionEnabled")]
+        public virtual System.Nullable<bool> ProactiveExecutionEnabled { get; set; }
+
         /// <summary>Required. The python code to execute for the callback.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pythonCode")]
         public virtual string PythonCode { get; set; }
@@ -7415,6 +7477,34 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("preferredDomains")]
         public virtual System.Collections.Generic.IList<string> PreferredDomains { get; set; }
 
+        /// <summary>
+        /// Optional. Prompt instructions passed to planner on how the search results should be processed for text and
+        /// voice.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promptConfig")]
+        public virtual GoogleSearchToolPromptConfig PromptConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Prompt settings used by the model when processing or summarizing the google search results.</summary>
+    public class GoogleSearchToolPromptConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Defines the prompt used for the system instructions when interacting with the agent in chat
+        /// conversations. If not set, default prompt will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textPrompt")]
+        public virtual string TextPrompt { get; set; }
+
+        /// <summary>
+        /// Optional. Defines the prompt used for the system instructions when interacting with the agent in voice
+        /// conversations. If not set, default prompt will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("voicePrompt")]
+        public virtual string VoicePrompt { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7793,6 +7883,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
         public virtual string GcsUri { get; set; }
+
+        /// <summary>
+        /// Optional. Flag for overriding the app lock during import. If set to true, the import process will ignore the
+        /// app lock.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreAppLock")]
+        public virtual System.Nullable<bool> IgnoreAppLock { get; set; }
 
         /// <summary>Optional. Options governing the import process for the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importOptions")]
