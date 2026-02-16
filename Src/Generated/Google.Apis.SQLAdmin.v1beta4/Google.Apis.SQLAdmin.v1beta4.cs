@@ -5819,7 +5819,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
 
-            /// <summary>Optional. revoke the existing roles granted to the user.</summary>
+            /// <summary>
+            /// Optional. Specifies whether to revoke existing roles that are not present in the `database_roles` field.
+            /// If `false` or unset, the database roles specified in `database_roles` are added to the user's existing
+            /// roles.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("revokeExistingRoles", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> RevokeExistingRoles { get; set; }
 
@@ -6652,6 +6656,23 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>Name of the Cloud SQL instance to be created as a clone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationInstanceName")]
         public virtual string DestinationInstanceName { get; set; }
+
+        /// <summary>
+        /// Optional. The fully qualified URI of the VPC network to which the cloned instance will be connected via
+        /// Private Services Access for private IP. For
+        /// example:`projects/my-network-project/global/networks/my-network`. This field is only required for
+        /// cross-project cloning.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationNetwork")]
+        public virtual string DestinationNetwork { get; set; }
+
+        /// <summary>
+        /// Optional. The project ID of the destination project where the cloned instance will be created. To perform a
+        /// cross-project clone, this field is required. If not specified, the clone is created in the same project as
+        /// the source instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationProject")]
+        public virtual string DestinationProject { get; set; }
 
         /// <summary>This is always `sql#cloneContext`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
