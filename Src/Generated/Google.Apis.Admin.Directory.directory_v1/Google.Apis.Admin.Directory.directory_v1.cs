@@ -1730,6 +1730,95 @@ namespace Google.Apis.Admin.Directory.directory_v1
                     }
                 }
 
+                /// <summary>Counts ChromeOS devices matching the request.</summary>
+                /// <param name="customerId">Required. Immutable ID of the Google Workspace account.</param>
+                public virtual CountChromeOsDevicesRequest CountChromeOsDevices(string customerId)
+                {
+                    return new CountChromeOsDevicesRequest(this.service, customerId);
+                }
+
+                /// <summary>Counts ChromeOS devices matching the request.</summary>
+                public class CountChromeOsDevicesRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.CountChromeOsDevicesResponse>
+                {
+                    /// <summary>Constructs a new CountChromeOsDevices request.</summary>
+                    public CountChromeOsDevicesRequest(Google.Apis.Services.IClientService service, string customerId) : base(service)
+                    {
+                        CustomerId = customerId;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Immutable ID of the Google Workspace account.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CustomerId { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Search string in the format given at
+                    /// https://developers.google.com/workspace/admin/directory/v1/list-query-operators
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Return devices from all child orgunits, as well as the specified org unit. If this is
+                    /// set to true, 'orgUnitPath' must be provided.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("includeChildOrgunits", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IncludeChildOrgunits { get; set; }
+
+                    /// <summary>
+                    /// Optional. The full path of the organizational unit (minus the leading `/`) or its unique ID.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orgUnitPath", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrgUnitPath { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "countChromeOsDevices";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "admin/directory/v1/customer/{customerId}/devices/chromeos:countChromeOsDevices";
+
+                    /// <summary>Initializes CountChromeOsDevices parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("includeChildOrgunits", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeChildOrgunits",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orgUnitPath", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orgUnitPath",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Issues a command for the device to execute.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="customerId">Immutable. ID of the Google Workspace account.</param>
@@ -11954,6 +12043,17 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>Chrome OS devices to be moved to OU</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIds")]
         public virtual System.Collections.Generic.IList<string> DeviceIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A response for counting ChromeOS devices.</summary>
+    public class CountChromeOsDevicesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The total number of devices matching the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
