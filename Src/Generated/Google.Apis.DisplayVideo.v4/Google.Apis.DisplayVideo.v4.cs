@@ -23830,51 +23830,54 @@ namespace Google.Apis.DisplayVideo.v4.Data
     /// <summary>A single ad group associated with a line item.</summary>
     public class AdGroup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The format of the ads in the ad group.</summary>
+        /// <summary>Required. The format of the ads in the ad group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupFormat")]
         public virtual string AdGroupFormat { get; set; }
 
-        /// <summary>The unique ID of the ad group. Assigned by the system.</summary>
+        /// <summary>Output only. The unique ID of the ad group. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupId")]
         public virtual System.Nullable<long> AdGroupId { get; set; }
 
-        /// <summary>The unique ID of the advertiser the ad group belongs to.</summary>
+        /// <summary>Output only. The unique ID of the advertiser the ad group belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>
-        /// The bidding strategy used by the ad group. Only the youtubeAndPartnersBid field can be used in the bidding
-        /// strategy.
+        /// Optional. The bidding strategy used by the ad group. Only the youtubeAndPartnersBid and demandGenBid field
+        /// can be used in the bidding strategy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bidStrategy")]
         public virtual BiddingStrategy BidStrategy { get; set; }
 
-        /// <summary>The display name of the ad group. Must be UTF-8 encoded with a maximum size of 255 bytes.</summary>
+        /// <summary>
+        /// Required. The display name of the ad group. Must be UTF-8 encoded with a maximum size of 255 bytes.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Controls whether or not the ad group can spend its budget and bid on inventory. If the ad group's parent
-        /// line item is not active, the ad group can't spend its budget even if its own status is
+        /// Required. Controls whether or not the ad group can spend its budget and bid on inventory. If the ad group's
+        /// parent line item is not active, the ad group can't spend its budget even if its own status is
         /// `ENTITY_STATUS_ACTIVE`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
         public virtual string EntityStatus { get; set; }
 
-        /// <summary>The unique ID of the line item that the ad group belongs to.</summary>
+        /// <summary>Required. The unique ID of the line item that the ad group belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
         public virtual System.Nullable<long> LineItemId { get; set; }
 
-        /// <summary>The resource name of the ad group.</summary>
+        /// <summary>Output only. Identifier. The resource name of the ad group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The settings of the product feed in this ad group.</summary>
+        /// <summary>Optional. The settings of the product feed in this ad group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productFeedData")]
         public virtual ProductFeedData ProductFeedData { get; set; }
 
         /// <summary>
-        /// The [optimized targeting](//support.google.com/displayvideo/answer/12060859) settings of the ad group.
+        /// Optional. The [optimized targeting](//support.google.com/displayvideo/answer/12060859) settings of the ad
+        /// group.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingExpansion")]
         public virtual TargetingExpansionConfig TargetingExpansion { get; set; }
@@ -23890,11 +23893,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupAdId")]
         public virtual System.Nullable<long> AdGroupAdId { get; set; }
 
-        /// <summary>
-        /// The unique ID of the ad group that the ad belongs to. *Caution*: Parent ad groups for Demand Gen ads are not
-        /// currently retrieveable using `advertisers.adGroups.list` or `advertisers.adGroups.get`. Demand Gen ads can
-        /// be identified by the absence of the `ad_details` union field.
-        /// </summary>
+        /// <summary>Required. The unique ID of the ad group that the ad belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupId")]
         public virtual System.Nullable<long> AdGroupId { get; set; }
 
@@ -23902,7 +23901,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adPolicy")]
         public virtual AdPolicy AdPolicy { get; set; }
 
-        /// <summary>List of URLs used by the ad.</summary>
+        /// <summary>Output only. List of URLs used by the ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adUrls")]
         public virtual System.Collections.Generic.IList<AdUrl> AdUrls { get; set; }
 
@@ -23911,40 +23910,44 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>
-        /// Details of an [audio ad](//support.google.com/displayvideo/answer/6274216) used for reach marketing
-        /// objectives.
+        /// Output only. Details of an [audio ad](//support.google.com/displayvideo/answer/6274216) used for reach
+        /// marketing objectives.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioAd")]
         public virtual AudioAd AudioAd { get; set; }
 
         /// <summary>
-        /// Details of a [non-skippable short video ad](//support.google.com/displayvideo/answer/6274216), equal to or
-        /// less than 6 seconds, used for reach.
+        /// Output only. Details of a [non-skippable short video ad](//support.google.com/displayvideo/answer/6274216),
+        /// equal to or less than 6 seconds, used for reach.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bumperAd")]
         public virtual BumperAd BumperAd { get; set; }
 
-        /// <summary>The display name of the ad. Must be UTF-8 encoded with a maximum size of 255 bytes.</summary>
+        /// <summary>
+        /// Required. The display name of the ad. Must be UTF-8 encoded with a maximum size of 255 bytes.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Details of an ad sourced from a Display &amp; Video 360 creative.</summary>
+        /// <summary>Output only. Details of an ad sourced from a Display &amp; Video 360 creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayVideoSourceAd")]
         public virtual DisplayVideoSourceAd DisplayVideoSourceAd { get; set; }
 
-        /// <summary>The entity status of the ad.</summary>
+        /// <summary>Required. The entity status of the ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
         public virtual string EntityStatus { get; set; }
 
         /// <summary>
-        /// Details of an [in-stream ad skippable after 5 seconds](//support.google.com/displayvideo/answer/6274216),
-        /// used for brand awareness or reach marketing objectives.
+        /// Output only. Details of an [in-stream ad skippable after 5
+        /// seconds](//support.google.com/displayvideo/answer/6274216), used for brand awareness or reach marketing
+        /// objectives.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inStreamAd")]
         public virtual InStreamAd InStreamAd { get; set; }
 
         /// <summary>
-        /// Details of an [ad served on the YouTube Home feed](//support.google.com/google-ads/answer/9709826).
+        /// Output only. Details of an [ad served on the YouTube Home
+        /// feed](//support.google.com/google-ads/answer/9709826).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mastheadAd")]
         public virtual MastheadAd MastheadAd { get; set; }
@@ -23954,22 +23957,24 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Details of a [non-skippable short in-stream video ad](//support.google.com/displayvideo/answer/6274216),
-        /// between 6 and 15 seconds, used for reach marketing objectives.
+        /// Output only. Details of a [non-skippable short in-stream video
+        /// ad](//support.google.com/displayvideo/answer/6274216), between 6 and 15 seconds, used for reach marketing
+        /// objectives.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonSkippableAd")]
         public virtual NonSkippableAd NonSkippableAd { get; set; }
 
         /// <summary>
-        /// Details of an [ad promoting a video](//support.google.com/displayvideo/answer/6274216) that shows in places
-        /// of discovery.
+        /// Output only. Details of an [ad promoting a video](//support.google.com/displayvideo/answer/6274216) that
+        /// shows in places of discovery.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoDiscoverAd")]
         public virtual VideoDiscoveryAd VideoDiscoverAd { get; set; }
 
         /// <summary>
-        /// Details of an [ad used in a video action campaign](//support.google.com/google-ads/answer/10147229) to drive
-        /// actions to the business, service or product.
+        /// Output only. Details of an [ad used in a video action
+        /// campaign](//support.google.com/google-ads/answer/10147229) to drive actions to the business, service or
+        /// product.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoPerformanceAd")]
         public virtual VideoPerformanceAd VideoPerformanceAd { get; set; }
@@ -29778,15 +29783,15 @@ namespace Google.Apis.DisplayVideo.v4.Data
     /// <summary>Meta data of an image asset.</summary>
     public class ImageAsset : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>File size of the image asset in bytes.</summary>
+        /// <summary>Output only. File size of the image asset in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileSize")]
         public virtual System.Nullable<long> FileSize { get; set; }
 
-        /// <summary>Metadata for this image at its original size.</summary>
+        /// <summary>Output only. Metadata for this image at its original size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullSize")]
         public virtual Dimensions FullSize { get; set; }
 
-        /// <summary>MIME type of the image asset.</summary>
+        /// <summary>Output only. MIME type of the image asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
 
@@ -34370,13 +34375,17 @@ namespace Google.Apis.DisplayVideo.v4.Data
     /// <summary>Details of a YouTube video.</summary>
     public class YoutubeVideoDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The YouTube video ID which can be searched on YouTube webpage.</summary>
+        /// <summary>Output only. The YouTube video ID which can be searched on YouTube webpage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
         /// <summary>The reason why the video data is not available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unavailableReason")]
         public virtual string UnavailableReason { get; set; }
+
+        /// <summary>Required. The YouTube video asset id. This is ad_asset.ad_asset_id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoAssetId")]
+        public virtual System.Nullable<long> VideoAssetId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
