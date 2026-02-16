@@ -7897,8 +7897,8 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual System.Collections.Generic.IList<TextModuleData> TextModulesData { get; set; }
 
         /// <summary>
-        /// Optional value added module data. Maximum of ten on the class. For a pass only ten will be displayed,
-        /// prioritizing those from the object.
+        /// Optional value added module data. Maximum of fifteen on the class. For a pass only fifteen will be
+        /// displayed, prioritizing those from the object.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
         public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
@@ -8182,7 +8182,10 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("validTimeInterval")]
         public virtual TimeInterval ValidTimeInterval { get; set; }
 
-        /// <summary>Optional value added module data. Maximum of ten on the object.</summary>
+        /// <summary>
+        /// Optional value added module data. Maximum of fifteen on the object. For a pass only fifteen will be
+        /// displayed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
         public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
 
@@ -8636,8 +8639,8 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual System.Collections.Generic.IList<TextModuleData> TextModulesData { get; set; }
 
         /// <summary>
-        /// Optional value added module data. Maximum of ten on the class. For a pass only ten will be displayed,
-        /// prioritizing those from the object.
+        /// Optional value added module data. Maximum of fifteen on the class. For a pass only fifteen will be
+        /// displayed, prioritizing those from the object.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
         public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
@@ -8929,7 +8932,10 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("validTimeInterval")]
         public virtual TimeInterval ValidTimeInterval { get; set; }
 
-        /// <summary>Optional value added module data. Maximum of ten on the object.</summary>
+        /// <summary>
+        /// Optional value added module data. Maximum of fifteen on the object. For a pass only fifteen will be
+        /// displayed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
         public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
 
@@ -9082,8 +9088,8 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual System.Collections.Generic.IList<TextModuleData> TextModulesData { get; set; }
 
         /// <summary>
-        /// Optional value added module data. Maximum of ten on the class. For a pass only ten will be displayed,
-        /// prioritizing those from the object.
+        /// Optional value added module data. Maximum of fifteen on the class. For a pass only fifteen will be
+        /// displayed, prioritizing those from the object.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
         public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
@@ -9305,7 +9311,10 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("validTimeInterval")]
         public virtual TimeInterval ValidTimeInterval { get; set; }
 
-        /// <summary>Optional value added module data. Maximum of ten on the object.</summary>
+        /// <summary>
+        /// Optional value added module data. Maximum of fifteen on the object. For a pass only fifteen will be
+        /// displayed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
         public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
 
@@ -9584,8 +9593,8 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual System.Collections.Generic.IList<TextModuleData> TextModulesData { get; set; }
 
         /// <summary>
-        /// Optional value added module data. Maximum of ten on the class. For a pass only ten will be displayed,
-        /// prioritizing those from the object.
+        /// Optional value added module data. Maximum of fifteen on the class. For a pass only fifteen will be
+        /// displayed, prioritizing those from the object.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
         public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
@@ -9837,7 +9846,10 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("validTimeInterval")]
         public virtual TimeInterval ValidTimeInterval { get; set; }
 
-        /// <summary>Optional value added module data. Maximum of ten on the object.</summary>
+        /// <summary>
+        /// Optional value added module data. Maximum of fifteen on the object. For a pass only fifteen will be
+        /// displayed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
         public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
 
@@ -10513,8 +10525,8 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual System.Collections.Generic.IList<TextModuleData> TextModulesData { get; set; }
 
         /// <summary>
-        /// Optional value added module data. Maximum of ten on the class. For a pass only ten will be displayed,
-        /// prioritizing those from the object.
+        /// Optional value added module data. Maximum of fifteen on the class. For a pass only fifteen will be
+        /// displayed, prioritizing those from the object.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
         public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
@@ -10775,7 +10787,10 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("validTimeInterval")]
         public virtual TimeInterval ValidTimeInterval { get; set; }
 
-        /// <summary>Optional value added module data. Maximum of ten on the object.</summary>
+        /// <summary>
+        /// Optional value added module data. Maximum of fifteen on the object. For a pass only fifteen will be
+        /// displayed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
         public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
 
@@ -11521,8 +11536,8 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual Image TitleImage { get; set; }
 
         /// <summary>
-        /// Optional value added module data. Maximum of ten on the class. For a pass only ten will be displayed,
-        /// prioritizing those from the object.
+        /// Optional value added module data. Maximum of fifteen on the class. For a pass only fifteen will be
+        /// displayed, prioritizing those from the object.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
         public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
@@ -11751,7 +11766,10 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("validTimeInterval")]
         public virtual TimeInterval ValidTimeInterval { get; set; }
 
-        /// <summary>Optional value added module data. Maximum of ten on the object.</summary>
+        /// <summary>
+        /// Optional value added module data. Maximum of fifteen on the object. For a pass only fifteen will be
+        /// displayed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
         public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
 
@@ -12839,8 +12857,8 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual string TransitType { get; set; }
 
         /// <summary>
-        /// Optional value added module data. Maximum of ten on the class. For a pass only ten will be displayed,
-        /// prioritizing those from the object.
+        /// Optional value added module data. Maximum of fifteen on the class. For a pass only fifteen will be
+        /// displayed, prioritizing those from the object.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
         public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
@@ -13163,7 +13181,10 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("validTimeInterval")]
         public virtual TimeInterval ValidTimeInterval { get; set; }
 
-        /// <summary>Optional value added module data. Maximum of ten on the object.</summary>
+        /// <summary>
+        /// Optional value added module data. Maximum of fifteen on the object. For a pass only fifteen will be
+        /// displayed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
         public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
 
