@@ -5995,6 +5995,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("terminalCondition")]
         public virtual GoogleCloudRunV2Condition TerminalCondition { get; set; }
 
+        /// <summary>Optional. Duration the instance may be active before the system will shut it down.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual object Timeout { get; set; }
+
         /// <summary>
         /// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed
         /// to remain unchanged until the resource is deleted.
@@ -6759,7 +6763,7 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2Condition> Conditions { get; set; }
 
-        /// <summary>Holds the single container that defines the unit of execution for this Revision.</summary>
+        /// <summary>Containers holds the list which define the units of execution for this Revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containers")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2Container> Containers { get; set; }
 
@@ -7066,6 +7070,14 @@ namespace Google.Apis.CloudRun.v2.Data
     /// <summary>Settings for revision-level scaling settings.</summary>
     public class GoogleCloudRunV2RevisionScaling : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Determines a threshold for concurrency utilization before scaling begins.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("concurrencyUtilization")]
+        public virtual System.Nullable<float> ConcurrencyUtilization { get; set; }
+
+        /// <summary>Optional. Determines a threshold for CPU utilization before scaling begins.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuUtilization")]
+        public virtual System.Nullable<float> CpuUtilization { get; set; }
+
         /// <summary>
         /// Optional. Maximum number of serving instances that this resource should have. When unspecified, the field is
         /// set to the server default value of 100. For more information see
