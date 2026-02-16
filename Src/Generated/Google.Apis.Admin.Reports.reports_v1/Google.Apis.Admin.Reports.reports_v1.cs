@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -612,6 +612,17 @@ namespace Google.Apis.Admin.Reports.reports_v1
             [Google.Apis.Util.RequestParameterAttribute("actorIpAddress", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ActorIpAddress { get; set; }
 
+            /// <summary>
+            /// Optional. Used to filter on the `oAuthClientId` field present in [`ApplicationInfo`](#applicationinfo)
+            /// message. **Usage**
+            /// ```
+            /// GET...&amp;amp;applicationInfoFilter=oAuthClientId="clientId"
+            /// GET...&amp;amp;applicationInfoFilter=oAuthClientId=%22clientId%22
+            /// ```
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("applicationInfoFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ApplicationInfoFilter { get; set; }
+
             /// <summary>The unique ID of the customer to retrieve data for.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; set; }
@@ -694,6 +705,17 @@ namespace Google.Apis.Admin.Reports.reports_v1
             public virtual System.Nullable<int> MaxResults { get; set; }
 
             /// <summary>
+            /// Optional. Used to filter on the `regionCode` field present in [`NetworkInfo`](#networkinfo) message.
+            /// **Usage**
+            /// ```
+            /// GET...&amp;amp;networkInfoFilter=regionCode="IN"
+            /// GET...&amp;amp;networkInfoFilter=regionCode=%22IN%22
+            /// ```
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("networkInfoFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string NetworkInfoFilter { get; set; }
+
+            /// <summary>
             /// ID of the organizational unit to report on. Activity records will be shown only for users who belong to
             /// the specified organizational unit. Data before Dec 17, 2018 doesn't appear in the filtered results.
             /// </summary>
@@ -766,6 +788,15 @@ namespace Google.Apis.Admin.Reports.reports_v1
             [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string StartTime { get; set; }
 
+            /// <summary>
+            /// Optional. Used to filter on the `statusCode` field present in [`Status`](#status) message. **Usage**
+            /// ```
+            /// GET...&amp;amp;statusFilter=statusCode="200" GET...&amp;amp;statusFilter=statusCode=%22200%22
+            /// ```
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("statusFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string StatusFilter { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -798,6 +829,14 @@ namespace Google.Apis.Admin.Reports.reports_v1
                 RequestParameters.Add("actorIpAddress", new Google.Apis.Discovery.Parameter
                 {
                     Name = "actorIpAddress",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("applicationInfoFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "applicationInfoFilter",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -851,6 +890,14 @@ namespace Google.Apis.Admin.Reports.reports_v1
                     DefaultValue = "1000",
                     Pattern = null,
                 });
+                RequestParameters.Add("networkInfoFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "networkInfoFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("orgUnitID", new Google.Apis.Discovery.Parameter
                 {
                     Name = "orgUnitID",
@@ -882,6 +929,14 @@ namespace Google.Apis.Admin.Reports.reports_v1
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = @"(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))",
+                });
+                RequestParameters.Add("statusFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "statusFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -2079,6 +2134,10 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("resourceIds")]
             public virtual System.Collections.Generic.IList<string> ResourceIds { get; set; }
 
+            /// <summary>Status of the event. Note: Not all events have status.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("status")]
+            public virtual ActivityEventsStatus Status { get; set; }
+
             /// <summary>
             /// Type of event. The Google Workspace service or feature that an administrator changes is identified in
             /// the `type` property which identifies an event using the `eventName` property. For a full list of the
@@ -2191,6 +2250,32 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("uniqueQualifier")]
             public virtual System.Nullable<long> UniqueQualifier { get; set; }
         }
+    }
+
+    /// <summary>Status of the event. Note: Not all events have status.</summary>
+    public class ActivityEventsStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Error code of the event. Note: Field can be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
+        public virtual string ErrorCode { get; set; }
+
+        /// <summary>Error message of the event. Note: Field can be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>
+        /// * Status of the event. Possible values if not empty: - UNKNOWN_EVENT_STATUS - SUCCEEDED -
+        /// SUCCEEDED_WITH_WARNINGS - FAILED - SKIPPED
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventStatus")]
+        public virtual string EventStatus { get; set; }
+
+        /// <summary>Status code of the event. Note: Field can be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpStatusCode")]
+        public virtual System.Nullable<int> HttpStatusCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Network information of the user doing the action.</summary>
