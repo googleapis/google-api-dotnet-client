@@ -275,17 +275,21 @@ namespace Google.Apis.GSuiteMarketplaceAPI.v2
         }
 
         /// <summary>
-        /// Gets the status of a license for a customer to determine if they have access for a given app.
+        /// Gets the customer's licensing status to determine if they have access to a given app. For more information,
+        /// see [Getting app installation and licensing
+        /// details](https://developers.google.com/workspace/marketplace/example-calls-marketplace-api).
         /// </summary>
-        /// <param name="applicationId">Application Id</param>
-        /// <param name="customerId">Customer Id</param>
+        /// <param name="applicationId">The ID of the application.</param>
+        /// <param name="customerId">The ID of the customer.</param>
         public virtual GetRequest Get(string applicationId, string customerId)
         {
             return new GetRequest(this.service, applicationId, customerId);
         }
 
         /// <summary>
-        /// Gets the status of a license for a customer to determine if they have access for a given app.
+        /// Gets the customer's licensing status to determine if they have access to a given app. For more information,
+        /// see [Getting app installation and licensing
+        /// details](https://developers.google.com/workspace/marketplace/example-calls-marketplace-api).
         /// </summary>
         public class GetRequest : GSuiteMarketplaceAPIBaseServiceRequest<Google.Apis.GSuiteMarketplaceAPI.v2.Data.CustomerLicense>
         {
@@ -297,11 +301,11 @@ namespace Google.Apis.GSuiteMarketplaceAPI.v2
                 InitParameters();
             }
 
-            /// <summary>Application Id</summary>
+            /// <summary>The ID of the application.</summary>
             [Google.Apis.Util.RequestParameterAttribute("applicationId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ApplicationId { get; private set; }
 
-            /// <summary>Customer Id</summary>
+            /// <summary>The ID of the customer.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
@@ -352,15 +356,23 @@ namespace Google.Apis.GSuiteMarketplaceAPI.v2
             this.service = service;
         }
 
-        /// <summary>Gets the user's licensing status for their permission to use a given app.</summary>
-        /// <param name="applicationId">Application Id</param>
-        /// <param name="userId">User Id</param>
+        /// <summary>
+        /// Gets the user's licensing status to determine if they have permission to use a given app. For more
+        /// information, see [Getting app installation and licensing
+        /// details](https://developers.google.com/workspace/marketplace/example-calls-marketplace-api).
+        /// </summary>
+        /// <param name="applicationId">The ID of the application.</param>
+        /// <param name="userId">The ID of the user.</param>
         public virtual GetRequest Get(string applicationId, string userId)
         {
             return new GetRequest(this.service, applicationId, userId);
         }
 
-        /// <summary>Gets the user's licensing status for their permission to use a given app.</summary>
+        /// <summary>
+        /// Gets the user's licensing status to determine if they have permission to use a given app. For more
+        /// information, see [Getting app installation and licensing
+        /// details](https://developers.google.com/workspace/marketplace/example-calls-marketplace-api).
+        /// </summary>
         public class GetRequest : GSuiteMarketplaceAPIBaseServiceRequest<Google.Apis.GSuiteMarketplaceAPI.v2.Data.UserLicense>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -371,11 +383,11 @@ namespace Google.Apis.GSuiteMarketplaceAPI.v2
                 InitParameters();
             }
 
-            /// <summary>Application Id</summary>
+            /// <summary>The ID of the application.</summary>
             [Google.Apis.Util.RequestParameterAttribute("applicationId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ApplicationId { get; private set; }
 
-            /// <summary>User Id</summary>
+            /// <summary>The ID of the user.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserId { get; private set; }
 
@@ -432,13 +444,13 @@ namespace Google.Apis.GSuiteMarketplaceAPI.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>The type of API resource. This is always appsmarket#customerLicense.</summary>
+        /// <summary>The type of API resource. This is always `appsmarket#customerLicense`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
         /// <summary>
         /// The customer's license status. One of: - `ACTIVE`: The customer has a valid license. - `UNLICENSED`: There
-        /// is no license: either this customer has never installed your application, or else has deleted it.
+        /// is no license. Either this customer has never installed your application or has deleted it.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -483,11 +495,11 @@ namespace Google.Apis.GSuiteMarketplaceAPI.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
-        /// <summary>The ID of user license.</summary>
+        /// <summary>The ID of the user license.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>The type of API resource. This is always appsmarket#userLicense.</summary>
+        /// <summary>The type of API resource. This is always `appsmarket#userLicense`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
