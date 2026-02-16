@@ -485,6 +485,28 @@
     "ASCENDING",
     "DESCENDING"
   ],
+  "Google.Apis.Dfareporting.v5.TvCampaignDetailsResource+GetRequest.TvDataProviderEnum": [
+    "INVALID_TV_DATA_PROVIDER",
+    "IBOPE_AR",
+    "IBOPE_BR",
+    "IBOPE_CL",
+    "IBOPE_CO",
+    "TNS_VN",
+    "COMSCORE_NATIONAL_US",
+    "COMSCORE_CA",
+    "SAMBA_AU"
+  ],
+  "Google.Apis.Dfareporting.v5.TvCampaignSummariesResource+ListRequest.TvDataProviderEnum": [
+    "INVALID_TV_DATA_PROVIDER",
+    "IBOPE_AR",
+    "IBOPE_BR",
+    "IBOPE_CL",
+    "IBOPE_CO",
+    "TNS_VN",
+    "COMSCORE_NATIONAL_US",
+    "COMSCORE_CA",
+    "SAMBA_AU"
+  ],
   "Google.Apis.Dfareporting.v5.UserRolesResource+ListRequest.SortFieldEnum": [
     "ID",
     "NAME"
