@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2144,6 +2144,24 @@ namespace Google.Apis.CloudIAP.v1.Data
     /// <summary>Configuration for OAuth login&amp;consent flow behavior as well as for OAuth Credentials.</summary>
     public class OAuthSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. OAuth 2.0 client ID used in the OAuth flow to generate an access token. If this field is set, you
+        /// can skip obtaining the OAuth credentials in this step:
+        /// https://developers.google.com/identity/protocols/OAuth2?hl=en_US#1.-obtain-oauth-2.0-credentials-from-the-google-api-console.
+        /// However, this could allow for client sharing. The risks of client sharing are outlined here:
+        /// https://cloud.google.com/iap/docs/sharing-oauth-clients#risks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>Optional. Input only. OAuth secret paired with client ID</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual string ClientSecret { get; set; }
+
+        /// <summary>Output only. OAuth secret sha256 paired with client ID</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecretSha256")]
+        public virtual string ClientSecretSha256 { get; set; }
+
         /// <summary>
         /// Domain hint to send as hd=? parameter in OAuth request flow. Enables redirect to primary IDP by skipping
         /// Google's login screen. https://developers.google.com/identity/protocols/OpenIDConnect#hd-param Note: IAP
