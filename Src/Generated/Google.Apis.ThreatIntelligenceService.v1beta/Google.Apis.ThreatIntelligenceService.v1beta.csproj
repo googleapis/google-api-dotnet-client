@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.ThreatIntelligenceService.v1beta Client Library</Title>
-    <Version>1.73.0.4052</Version>
+    <Version>1.73.0.4059</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2026 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -17,7 +17,7 @@
       Google APIs Client Library for working with Threatintelligence v1beta.
 
       Product documentation is available at:
-      https://cloud.google.com/threatintelligence/docs/reference/rest
+      https://docs.cloud.google.com/threatintelligence/
 
       API reference documentation for this package is available at:
       https://googleapis.dev/dotnet/Google.Apis.ThreatIntelligenceService.v1beta/latest/api/Google.Apis.ThreatIntelligenceService.v1beta.html
