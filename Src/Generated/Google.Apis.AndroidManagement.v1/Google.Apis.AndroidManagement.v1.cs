@@ -6730,7 +6730,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
 
         /// <summary>
         /// Provides telephony information associated with each SIM card on the device. Only supported on fully managed
-        /// devices starting from Android API level 23.
+        /// devices starting from Android 6.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("telephonyInfos")]
         public virtual System.Collections.Generic.IList<TelephonyInfo> TelephonyInfos { get; set; }
@@ -8662,15 +8662,16 @@ namespace Google.Apis.AndroidManagement.v1.Data
     }
 
     /// <summary>
-    /// Telephony information associated with a given SIM card on the device. Only supported on fully managed devices
-    /// starting from Android API level 23.
+    /// Telephony information associated with a given SIM card on the device. This is supported for all SIM cards on
+    /// fully managed devices on Android 6 and above. In addition, this is supported for admin-added eSIMs on all
+    /// devices for Android 15 and above.
     /// </summary>
     public class TelephonyInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Output only. Activation state of the SIM card on the device. This is applicable for eSIMs only. This is
-        /// supported on all devices for API level 35 and above. This is always ACTIVATION_STATE_UNSPECIFIED for
-        /// physical SIMs and for devices below API level 35.
+        /// supported on all devices for Android 15 and above. This is always ACTIVATION_STATE_UNSPECIFIED for physical
+        /// SIMs and for devices below Android 15.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activationState")]
         public virtual string ActivationState { get; set; }
@@ -8681,8 +8682,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
 
         /// <summary>
         /// Output only. The configuration mode of the SIM card on the device. This is applicable for eSIMs only. This
-        /// is supported on all devices for API level 35 and above. This is always CONFIG_MODE_UNSPECIFIED for physical
-        /// SIMs and for devices below API level 35.
+        /// is supported on all devices for Android 15 and above. This is always CONFIG_MODE_UNSPECIFIED for physical
+        /// SIMs and for devices below Android 15.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configMode")]
         public virtual string ConfigMode { get; set; }
