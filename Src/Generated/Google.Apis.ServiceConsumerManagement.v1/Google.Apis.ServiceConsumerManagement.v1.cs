@@ -1282,8 +1282,8 @@ namespace Google.Apis.ServiceConsumerManagement.v1
 
             /// <summary>
             /// Optional. The maximum number of results returned by this request. Currently, the default maximum is set
-            /// to 1000. If `page_size` isn't provided or the size provided is a number larger than 1000, it's
-            /// automatically set to 1000.
+            /// to 256. If `page_size` &amp;lt;= 256, the request proceeds. Else, the request fails with an
+            /// `TU_INVALID_PAGE_SIZE` error.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -1460,12 +1460,36 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
+        /// <summary>Optional. Rules of the Configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
+        public virtual System.Collections.Generic.IList<AspectRule> Rules { get; set; }
+
         /// <summary>
         /// Content of the configuration. The underlying schema should be defined by Aspect owners as protobuf message
         /// under `google/api/configaspects/proto`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
         public virtual System.Collections.Generic.IDictionary<string, object> Spec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Rule-based configuration for an aspect.</summary>
+    public class AspectRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Rules of the configuration. The underlying schema should be defined by Aspect owners as protobuf
+        /// message under `google/api/configaspects/proto`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Config { get; set; }
+
+        /// <summary>
+        /// Required. Selects the RPC methods to which this rule applies. Refer to selector for syntax details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selector")]
+        public virtual string Selector { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
