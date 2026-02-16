@@ -7358,6 +7358,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Indicates whether the job can be paused.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pausable")]
+        public virtual System.Nullable<bool> Pausable { get; set; }
+
         /// <summary>
         /// Preliminary field: The format of this data may change at any time. A description of the user pipeline and
         /// stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with
@@ -9247,10 +9251,18 @@ namespace Google.Apis.Dataflow.v1b3.Data
     public class RuntimeUpdatableParams : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The backlog threshold duration in seconds for autoscaling. Value must be non-negative.
+        /// Optional. Deprecated: Use `autoscaling_tier` instead. The backlog threshold duration in seconds for
+        /// autoscaling. Value must be non-negative.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceptableBacklogDuration")]
         public virtual object AcceptableBacklogDuration { get; set; }
+
+        /// <summary>
+        /// Optional. The backlog threshold tier for autoscaling. Value must be one of "low-latency", "medium-latency",
+        /// or "high-latency".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscalingTier")]
+        public virtual string AutoscalingTier { get; set; }
 
         /// <summary>
         /// The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming
