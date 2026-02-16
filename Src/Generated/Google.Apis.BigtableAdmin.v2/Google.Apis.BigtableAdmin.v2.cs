@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -6346,14 +6346,24 @@ namespace Google.Apis.BigtableAdmin.v2
                 this.service = service;
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -8782,6 +8792,16 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A geography type, representing a point or region on Earth. The value is stored in `Value.bytes_value` as
+    /// Well-Known Binary (WKB) bytes.
+    /// </summary>
+    public class GoogleBigtableAdminV2TypeGeography : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Int64 Values of type `Int64` are stored in `Value.int_value`.</summary>
     public class GoogleBigtableAdminV2TypeInt64 : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10567,6 +10587,10 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>Float64</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("float64Type")]
         public virtual GoogleBigtableAdminV2TypeFloat64 Float64Type { get; set; }
+
+        /// <summary>Geography</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geographyType")]
+        public virtual GoogleBigtableAdminV2TypeGeography GeographyType { get; set; }
 
         /// <summary>Int64</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("int64Type")]
