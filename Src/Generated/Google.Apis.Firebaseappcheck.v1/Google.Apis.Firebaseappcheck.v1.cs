@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -5193,8 +5193,8 @@ namespace Google.Apis.Firebaseappcheck.v1.Data
     public class GoogleFirebaseAppcheckV1ResourcePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The App Check enforcement mode for this resource. This will override the EnforcementMode setting
-        /// on the service.
+        /// Required. The App Check enforcement mode for this resource. This will override the App Check overall
+        /// EnforcementMode setting on the service.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enforcementMode")]
         public virtual string EnforcementMode { get; set; }
