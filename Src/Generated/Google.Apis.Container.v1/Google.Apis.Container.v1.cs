@@ -7340,7 +7340,11 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clusterIpv4Cidr")]
         public virtual string ClusterIpv4Cidr { get; set; }
 
-        /// <summary>Enable/Disable Compliance Posture features for the cluster.</summary>
+        /// <summary>
+        /// Optional. Deprecated: Compliance Posture is no longer supported. For more details, see
+        /// https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-management-deprecation. Enable/Disable
+        /// Compliance Posture features for the cluster.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compliancePostureConfig")]
         public virtual CompliancePostureConfig CompliancePostureConfig { get; set; }
 
@@ -7707,7 +7711,7 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("secretManagerConfig")]
         public virtual SecretManagerConfig SecretManagerConfig { get; set; }
 
-        /// <summary>Enable/Disable Security Posture API features for the cluster.</summary>
+        /// <summary>Optional. Enable/Disable Security Posture API features for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityPostureConfig")]
         public virtual SecurityPostureConfig SecurityPostureConfig { get; set; }
 
@@ -7875,7 +7879,11 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredClusterAutoscaling")]
         public virtual ClusterAutoscaling DesiredClusterAutoscaling { get; set; }
 
-        /// <summary>Enable/Disable Compliance Posture features for the cluster.</summary>
+        /// <summary>
+        /// Deprecated: Compliance Posture is no longer supported. For more details, see
+        /// https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-management-deprecation. Enable/Disable
+        /// Compliance Posture features for the cluster.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredCompliancePostureConfig")]
         public virtual CompliancePostureConfig DesiredCompliancePostureConfig { get; set; }
 
@@ -8304,6 +8312,8 @@ namespace Google.Apis.Container.v1.Data
     }
 
     /// <summary>
+    /// Deprecated: Compliance Posture is no longer supported. For more details, see
+    /// https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-management-deprecation.
     /// CompliancePostureConfig defines the settings needed to enable/disable features for the Compliance Posture.
     /// </summary>
     public class CompliancePostureConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -8419,6 +8429,24 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Whether the feature is enabled or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains config to modify node-level parameters for container restart behavior.</summary>
+    public class CrashLoopBackOffConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The maximum duration the backoff delay can accrue to for container restarts, minimum 1 second,
+        /// maximum 300 seconds. If not set, defaults to the internal crashloopbackoff maximum. The string must be a
+        /// sequence of decimal numbers, each with optional fraction and a unit suffix, such as "300ms". Valid time
+        /// units are "ns", "us" (or "µs"), "ms", "s", "m", "h". See
+        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#configurable-container-restart-delay for
+        /// more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxContainerRestartPeriod")]
+        public virtual string MaxContainerRestartPeriod { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8669,6 +8697,101 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>desired_tier specifies the desired tier of the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredTier")]
         public virtual string DesiredTier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DisruptionBudget defines the upgrade disruption budget for the cluster control plane.</summary>
+    public class DisruptionBudget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _lastDisruptionTimeRaw;
+
+        private object _lastDisruptionTime;
+
+        /// <summary>Output only. The last time a disruption was performed on the control plane.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastDisruptionTime")]
+        public virtual string LastDisruptionTimeRaw
+        {
+            get => _lastDisruptionTimeRaw;
+            set
+            {
+                _lastDisruptionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastDisruptionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastDisruptionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastDisruptionTimeDateTimeOffset instead.")]
+        public virtual object LastDisruptionTime
+        {
+            get => _lastDisruptionTime;
+            set
+            {
+                _lastDisruptionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastDisruptionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastDisruptionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastDisruptionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastDisruptionTimeRaw);
+            set => LastDisruptionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _lastMinorVersionDisruptionTimeRaw;
+
+        private object _lastMinorVersionDisruptionTime;
+
+        /// <summary>Output only. The last time a minor version upgrade was performed on the control plane.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastMinorVersionDisruptionTime")]
+        public virtual string LastMinorVersionDisruptionTimeRaw
+        {
+            get => _lastMinorVersionDisruptionTimeRaw;
+            set
+            {
+                _lastMinorVersionDisruptionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastMinorVersionDisruptionTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="LastMinorVersionDisruptionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastMinorVersionDisruptionTimeDateTimeOffset instead.")]
+        public virtual object LastMinorVersionDisruptionTime
+        {
+            get => _lastMinorVersionDisruptionTime;
+            set
+            {
+                _lastMinorVersionDisruptionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastMinorVersionDisruptionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastMinorVersionDisruptionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastMinorVersionDisruptionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastMinorVersionDisruptionTimeRaw);
+            set => LastMinorVersionDisruptionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. The minimum duration between two minor version upgrades of the control plane.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minorVersionDisruptionInterval")]
+        public virtual object MinorVersionDisruptionInterval { get; set; }
+
+        /// <summary>Optional. The minimum duration between two patch version upgrades of the control plane.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("patchVersionDisruptionInterval")]
+        public virtual object PatchVersionDisruptionInterval { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9913,6 +10036,10 @@ namespace Google.Apis.Container.v1.Data
     /// <summary>MaintenancePolicy defines the maintenance policy to be used for the cluster.</summary>
     public class MaintenancePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The upgrade disruption budget for the cluster control plane.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disruptionBudget")]
+        public virtual DisruptionBudget DisruptionBudget { get; set; }
+
         /// <summary>
         /// A hash identifying the version of this policy, so that updates to fields of the policy won't accidentally
         /// undo intermediate changes (and so that users of the API unaware of some fields won't accidentally remove
@@ -10753,6 +10880,12 @@ namespace Google.Apis.Container.v1.Data
         public virtual string CpuManagerPolicy { get; set; }
 
         /// <summary>
+        /// Optional. Contains configuration options to modify node-level parameters for container restart behavior.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crashLoopBackOff")]
+        public virtual CrashLoopBackOffConfig CrashLoopBackOff { get; set; }
+
+        /// <summary>
         /// Optional. eviction_max_pod_grace_period_seconds is the maximum allowed grace period (in seconds) to use when
         /// terminating pods in response to a soft eviction threshold being met. This value effectively caps the Pod's
         /// terminationGracePeriodSeconds value during soft evictions. Default: 0. Range: [0, 300].
@@ -10845,6 +10978,25 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("podPidsLimit")]
         public virtual System.Nullable<long> PodPidsLimit { get; set; }
+
+        /// <summary>
+        /// Optional. shutdown_grace_period_critical_pods_seconds is the maximum allowed grace period (in seconds) used
+        /// to terminate critical pods during a node shutdown. This value should be &amp;lt;=
+        /// shutdown_grace_period_seconds, and is only valid if shutdown_grace_period_seconds is set.
+        /// https://kubernetes.io/docs/concepts/cluster-administration/node-shutdown/ Range: [0, 120].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shutdownGracePeriodCriticalPodsSeconds")]
+        public virtual System.Nullable<int> ShutdownGracePeriodCriticalPodsSeconds { get; set; }
+
+        /// <summary>
+        /// Optional. shutdown_grace_period_seconds is the maximum allowed grace period (in seconds) the total duration
+        /// that the node should delay the shutdown during a graceful shutdown. This is the total grace period for pod
+        /// termination for both regular and critical pods.
+        /// https://kubernetes.io/docs/concepts/cluster-administration/node-shutdown/ If set to 0, node will not enable
+        /// the graceful node shutdown functionality. This field is only valid for Spot VMs. Allowed values: 0, 30, 120.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shutdownGracePeriodSeconds")]
+        public virtual System.Nullable<int> ShutdownGracePeriodSeconds { get; set; }
 
         /// <summary>
         /// Optional. Defines whether to enable single process OOM killer. If true, will prevent the memory.oom.group
@@ -10990,9 +11142,11 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>
         /// Optional. The subnetwork name/path for the node pool. Format:
         /// projects/{project}/regions/{region}/subnetworks/{subnetwork} If the cluster is associated with multiple
-        /// subnetworks, the subnetwork can be either: 1. A user supplied subnetwork name/full path during node pool
-        /// creation. Example1: my-subnet Example2: projects/gke-project/regions/us-central1/subnetworks/my-subnet 2. A
-        /// subnetwork path picked based on the IP utilization during node pool creation and is immutable.
+        /// subnetworks, the subnetwork can be either: - A user supplied subnetwork name during node pool creation
+        /// (e.g., `my-subnet`). The name must be between 1 and 63 characters long, start with a letter, contain only
+        /// letters, numbers, and hyphens, and end with a letter or a number. - A full subnetwork path during node pool
+        /// creation, such as `projects/gke-project/regions/us-central1/subnetworks/my-subnet` - A subnetwork path
+        /// picked based on the IP utilization during node pool creation and is immutable.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; }
