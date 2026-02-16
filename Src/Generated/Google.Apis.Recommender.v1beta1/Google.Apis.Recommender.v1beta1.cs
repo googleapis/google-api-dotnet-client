@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4957,13 +4957,6 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// <summary>Use with CategoryType.COST</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("costProjection")]
         public virtual GoogleCloudRecommenderV1beta1CostProjection CostProjection { get; set; }
-
-        /// <summary>
-        /// If populated, the impact contains multiple components. In this case, the top-level impact contains
-        /// aggregated values and each component contains per-service details.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("impactComponents")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1beta1Impact> ImpactComponents { get; set; }
 
         /// <summary>Use with CategoryType.RELIABILITY</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reliabilityProjection")]
