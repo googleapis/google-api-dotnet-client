@@ -66,6 +66,15 @@ namespace Google.Apis.CloudRun.v1
             /// Account.
             /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud Run data and see the email address for your Google
+            /// Account
+            /// </summary>
+            public static string Run = "https://www.googleapis.com/auth/run";
+
+            /// <summary>See your Google Cloud Run data and the email address of your Google Account</summary>
+            public static string RunReadonly = "https://www.googleapis.com/auth/run.readonly";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Run Admin API.</summary>
@@ -76,6 +85,15 @@ namespace Google.Apis.CloudRun.v1
             /// Account.
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud Run data and see the email address for your Google
+            /// Account
+            /// </summary>
+            public const string Run = "https://www.googleapis.com/auth/run";
+
+            /// <summary>See your Google Cloud Run data and the email address of your Google Account</summary>
+            public const string RunReadonly = "https://www.googleapis.com/auth/run.readonly";
         }
 
         /// <summary>Gets the Namespaces resource.</summary>
@@ -10276,6 +10294,10 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountName")]
         public virtual string ServiceAccountName { get; set; }
 
+        /// <summary>Optional. Duration the instance may be active before the system will shut it down.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual object Timeout { get; set; }
+
         /// <summary>Optional. List of volumes that can be mounted by containers belonging to the Instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
         public virtual System.Collections.Generic.IList<Volume> Volumes { get; set; }
@@ -11302,9 +11324,8 @@ namespace Google.Apis.CloudRun.v1.Data
     }
 
     /// <summary>
-    /// Revision is an immutable snapshot of code and configuration. A revision references a container image. Revisions
-    /// are created by updates to a Configuration. See also:
-    /// https://github.com/knative/specs/blob/main/specs/serving/overview.md#revision
+    /// Revision is an immutable snapshot of code and configuration. A revision references one or more container images.
+    /// Revisions are created by updates to a Service.
     /// </summary>
     public class Revision : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11346,8 +11367,7 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual System.Nullable<int> ContainerConcurrency { get; set; }
 
         /// <summary>
-        /// Required. Containers holds the list which define the units of execution for this Revision. In the context of
-        /// a Revision, we disallow a number of fields on this Container, including: name and lifecycle.
+        /// Required. Containers holds the list which define the units of execution for this Revision.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containers")]
         public virtual System.Collections.Generic.IList<Container> Containers { get; set; }
