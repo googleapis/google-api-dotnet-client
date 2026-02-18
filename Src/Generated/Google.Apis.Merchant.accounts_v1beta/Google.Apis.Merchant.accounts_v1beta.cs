@@ -5494,8 +5494,8 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>
-        /// Required. A human-readable name of the account. See [store
-        /// name](https://support.google.com/merchants/answer/160556) and [business
+        /// Required. A human-readable name of the account. Don't use punctuation, capitalization, or non-alphanumeric
+        /// symbols such as the "/" or "_" symbols. See [Adding a business
         /// name](https://support.google.com/merchants/answer/12159159) for more information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountName")]
@@ -6230,9 +6230,9 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual UriSettings EffectiveUriSettings { get; set; }
 
         /// <summary>
-        /// Optional. The destinations (also known as [Marketing
-        /// methods](https://support.google.com/merchants/answer/15130232)) to which the checkout program applies, valid
-        /// destination values are `SHOPPING_ADS`, `FREE_LISTINGS`
+        /// Optional. Required for the create operation. The destinations (also known as [Marketing
+        /// methods](https://support.google.com/merchants/answer/15130232)) to which the checkout program applies. Valid
+        /// destination values are `SHOPPING_ADS` and `FREE_LISTINGS`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eligibleDestinations")]
         public virtual System.Collections.Generic.IList<string> EligibleDestinations { get; set; }
