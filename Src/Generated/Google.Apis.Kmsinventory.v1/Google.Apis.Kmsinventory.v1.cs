@@ -304,7 +304,7 @@ namespace Google.Apis.Kmsinventory.v1
             /// </summary>
             /// <param name="scope">
             /// Required. A scope can be an organization or a project. Resources protected by the crypto key in provided
-            /// scope will be returned. The allowed values are: * organizations/{ORGANIZATION_NUMBER} (e.g.,
+            /// scope will be returned. The following values are allowed: * organizations/{ORGANIZATION_NUMBER} (e.g.,
             /// "organizations/12345678") * projects/{PROJECT_ID} (e.g., "projects/foo-bar") * projects/{PROJECT_NUMBER}
             /// (e.g., "projects/12345678")
             /// </param>
@@ -328,9 +328,9 @@ namespace Google.Apis.Kmsinventory.v1
 
                 /// <summary>
                 /// Required. A scope can be an organization or a project. Resources protected by the crypto key in
-                /// provided scope will be returned. The allowed values are: * organizations/{ORGANIZATION_NUMBER}
-                /// (e.g., "organizations/12345678") * projects/{PROJECT_ID} (e.g., "projects/foo-bar") *
-                /// projects/{PROJECT_NUMBER} (e.g., "projects/12345678")
+                /// provided scope will be returned. The following values are allowed: *
+                /// organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/12345678") * projects/{PROJECT_ID} (e.g.,
+                /// "projects/foo-bar") * projects/{PROJECT_NUMBER} (e.g., "projects/12345678")
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Scope { get; private set; }
@@ -717,7 +717,7 @@ namespace Google.Apis.Kmsinventory.v1
             /// </summary>
             /// <param name="scope">
             /// Required. A scope can be an organization or a project. Resources protected by the crypto key in provided
-            /// scope will be returned. The allowed values are: * organizations/{ORGANIZATION_NUMBER} (e.g.,
+            /// scope will be returned. The following values are allowed: * organizations/{ORGANIZATION_NUMBER} (e.g.,
             /// "organizations/12345678") * projects/{PROJECT_ID} (e.g., "projects/foo-bar") * projects/{PROJECT_NUMBER}
             /// (e.g., "projects/12345678")
             /// </param>
@@ -741,9 +741,9 @@ namespace Google.Apis.Kmsinventory.v1
 
                 /// <summary>
                 /// Required. A scope can be an organization or a project. Resources protected by the crypto key in
-                /// provided scope will be returned. The allowed values are: * organizations/{ORGANIZATION_NUMBER}
-                /// (e.g., "organizations/12345678") * projects/{PROJECT_ID} (e.g., "projects/foo-bar") *
-                /// projects/{PROJECT_NUMBER} (e.g., "projects/12345678")
+                /// provided scope will be returned. The following values are allowed: *
+                /// organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/12345678") * projects/{PROJECT_ID} (e.g.,
+                /// "projects/foo-bar") * projects/{PROJECT_NUMBER} (e.g., "projects/12345678")
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Scope { get; private set; }
@@ -1019,9 +1019,7 @@ namespace Google.Apis.Kmsinventory.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Warning message specifying various states of response data that might indicate incomplete or partial results.
-    /// </summary>
+    /// <summary>A warning message that indicates potential problems with the response data.</summary>
     public class GoogleCloudKmsInventoryV1Warning : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The literal message providing context and details about the warnings.</summary>
