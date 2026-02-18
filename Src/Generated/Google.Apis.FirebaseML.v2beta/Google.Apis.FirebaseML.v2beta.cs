@@ -1285,6 +1285,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
+        /// <summary>
+        /// Optional. Specifies how the response should be scheduled in the conversation. Only applicable to
+        /// NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduling")]
+        public virtual string Scheduling { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1909,8 +1916,8 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     }
 
     /// <summary>
-    /// A `Maps` chunk is a piece of evidence that comes from Google Maps. It contains information about a place, such
-    /// as its name, address, and reviews. This is used to provide the user with rich, location-based information.
+    /// A `Maps` chunk is a piece of evidence that comes from Google Maps, containing information about places or
+    /// routes. This is used to provide the user with rich, location-based information.
     /// </summary>
     public class GoogleCloudAiplatformV1beta1GroundingChunkMaps : Google.Apis.Requests.IDirectResponseSchema
     {
