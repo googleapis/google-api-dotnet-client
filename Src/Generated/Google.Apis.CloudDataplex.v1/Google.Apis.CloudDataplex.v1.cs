@@ -17853,6 +17853,151 @@ namespace Google.Apis.CloudDataplex.v1
                 }
             }
 
+            /// <summary>Looks up Entry Links referencing the specified Entry.</summary>
+            /// <param name="name">
+            /// Required. The project to which the request should be attributed to Format:
+            /// projects/{project_id_or_number}/locations/{location_id}.
+            /// </param>
+            public virtual LookupEntryLinksRequest LookupEntryLinks(string name)
+            {
+                return new LookupEntryLinksRequest(this.service, name);
+            }
+
+            /// <summary>Looks up Entry Links referencing the specified Entry.</summary>
+            public class LookupEntryLinksRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1LookupEntryLinksResponse>
+            {
+                /// <summary>Constructs a new LookupEntryLinks request.</summary>
+                public LookupEntryLinksRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The project to which the request should be attributed to Format:
+                /// projects/{project_id_or_number}/locations/{location_id}.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Required. The resource name of the referred Entry. Format:
+                /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}.
+                /// Entry Links which references this entry will be returned in the response.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("entry", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Entry { get; set; }
+
+                /// <summary>
+                /// Entry link types to filter the response by. If empty, all entry link types will be returned. At most
+                /// 10 entry link types can be specified.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("entryLinkTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> EntryLinkTypes { get; set; }
+
+                /// <summary>Mode of entry reference.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("entryMode", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<EntryModeEnum> EntryMode { get; set; }
+
+                /// <summary>Mode of entry reference.</summary>
+                public enum EntryModeEnum
+                {
+                    /// <summary>
+                    /// Unspecified entry mode. Returns both directional and non-directional entry links which
+                    /// references the entry.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ENTRY_MODE_UNSPECIFIED")]
+                    ENTRYMODEUNSPECIFIED = 0,
+
+                    /// <summary>Returns all directed entry links which references the entry as source.</summary>
+                    [Google.Apis.Util.StringValueAttribute("SOURCE")]
+                    SOURCE = 1,
+
+                    /// <summary>Return all directed entry links which references the entry as target.</summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGET")]
+                    TARGET = 2,
+                }
+
+                /// <summary>
+                /// Maximum number of EntryLinks to return. The service may return fewer than this value. If
+                /// unspecified, at most 10 EntryLinks will be returned. The maximum value is 10; values above 10 will
+                /// be coerced to 10.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Page token received from a previous LookupEntryLinks call. Provide this to retrieve the subsequent
+                /// page. When paginating, all other parameters that are provided to the LookupEntryLinks request must
+                /// match the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "lookupEntryLinks";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:lookupEntryLinks";
+
+                /// <summary>Initializes LookupEntryLinks parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                    RequestParameters.Add("entry", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "entry",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("entryLinkTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "entryLinkTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("entryMode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "entryMode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
             /// <summary>Searches for Entries matching the given query and scope.</summary>
             /// <param name="name">
             /// Required. The project to which the request should be attributed in the following form:
@@ -20944,6 +21089,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("column")]
         public virtual string Column { get; set; }
 
+        /// <summary>
+        /// Optional. Specifies the debug queries for this rule. Currently, only one query is supported, but this may be
+        /// expanded in the future.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("debugQueries")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataQualityRuleDebugQuery> DebugQueries { get; set; }
+
         /// <summary>Optional. Description of the rule. The maximum length is 1,024 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -21029,6 +21181,34 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Specifies a SQL statement that is evaluated to return up to 10 scalar values that are used to debug rules. If
+    /// the rule fails, the values can help diagnose the cause of the failure.The SQL statement must use GoogleSQL
+    /// syntax (https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax), and must not contain any
+    /// semicolons.You can use the data reference parameter ${data()} to reference the source table with all of its
+    /// precondition filters applied. Examples of precondition filters include row filters, incremental data filters,
+    /// and sampling. For more information, see Data reference parameter
+    /// (https://cloud.google.com/dataplex/docs/auto-data-quality-overview#data-reference-parameter).You can also name
+    /// results with an explicit alias using [AS] alias. For more information, see BigQuery explicit aliases
+    /// (https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#explicit_alias_syntax).Example:
+    /// SELECT MIN(col1) AS min_col1, MAX(col1) AS max_col1 FROM ${data()}
+    /// </summary>
+    public class GoogleCloudDataplexV1DataQualityRuleDebugQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies the description of the debug query. The maximum length is 1,024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. Specifies the SQL statement to be executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlStatement")]
+        public virtual string SqlStatement { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Evaluates whether each column value is null.</summary>
     public class GoogleCloudDataplexV1DataQualityRuleNonNullExpectation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -21093,6 +21273,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual System.Nullable<long> AssertionRowCount { get; set; }
 
         /// <summary>
+        /// Output only. Contains the results of all debug queries for this rule. The number of result sets will
+        /// correspond to the number of debug_queries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("debugQueriesResultSets")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet> DebugQueriesResultSets { get; set; }
+
+        /// <summary>
         /// Output only. The number of rows a rule was evaluated against.This field is only valid for row-level type
         /// rules.Evaluated count can be configured to either include all rows (default) - with null rows automatically
         /// failing rule evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.This
@@ -21132,6 +21319,41 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>Output only. The rule specified in the DataQualitySpec, as is.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rule")]
         public virtual GoogleCloudDataplexV1DataQualityRule Rule { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains a single result from the debug query.</summary>
+    public class GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies the name of the result. Available if provided with an explicit alias using [AS] alias.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Indicates the data type of the result. For more information, see BigQuery data types
+        /// (https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Represents the value of the result as a string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains all results from a debug query.</summary>
+    public class GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Contains all results. Up to 10 results can be returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult> Results { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25279,6 +25501,23 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>Zones under the given parent lake.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zones")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1Zone> Zones { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for LookupEntryLinks.</summary>
+    public class GoogleCloudDataplexV1LookupEntryLinksResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of entry links that reference the specified entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryLinks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1EntryLink> EntryLinks { get; set; }
+
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

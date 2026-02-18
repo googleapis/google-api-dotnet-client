@@ -46,6 +46,11 @@
     "TABLES",
     "FILESETS"
   ],
+  "Google.Apis.CloudDataplex.v1.ProjectsResource+LocationsResource+LookupEntryLinksRequest.EntryModeEnum": [
+    "ENTRY_MODE_UNSPECIFIED",
+    "SOURCE",
+    "TARGET"
+  ],
   "Google.Apis.CloudDataplex.v1.ProjectsResource+LocationsResource+LookupEntryRequest.ViewEnum": [
     "ENTRY_VIEW_UNSPECIFIED",
     "BASIC",
