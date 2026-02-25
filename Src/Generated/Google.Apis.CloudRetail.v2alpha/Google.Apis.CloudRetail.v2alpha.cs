@@ -9516,11 +9516,11 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
         /// <summary>
         /// Optional. The categories associated with a category page. Must be set for category navigation queries to
-        /// achieve good search quality. The format should be the same as UserEvent.page_categories; To represent full
-        /// path of category, use '&amp;gt;' sign to separate different hierarchies. If '&amp;gt;' is part of the
-        /// category name, replace it with other character(s). Category pages include special pages such as sales or
-        /// promotions. For instance, a special sale page may have the category hierarchy: "pageCategories" : ["Sales
-        /// &amp;gt; 2017 Black Friday Deals"].
+        /// achieve good search quality. The format should be the same as UserEvent.page_categories; To represent the
+        /// full path of category, use the '&amp;gt;' sign, with one space on each side, to separate different
+        /// hierarchies. If '&amp;gt;' is part of the category name, replace it with other character(s). Category pages
+        /// include special pages such as sales or promotions. For instance, a special sale page may have the category
+        /// hierarchy: "pageCategories" : ["Sales &amp;gt; 2017 Black Friday Deals"].
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageCategories")]
         public virtual System.Collections.Generic.IList<string> PageCategories { get; set; }
@@ -12187,18 +12187,19 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual System.Collections.Generic.IList<string> Brands { get; set; }
 
         /// <summary>
-        /// Product categories. This field is repeated for supporting one product belonging to several parallel
-        /// categories. Strongly recommended using the full path for better search / recommendation quality. To
-        /// represent full path of category, use '&amp;gt;' sign to separate different hierarchies. If '&amp;gt;' is
-        /// part of the category name, replace it with other character(s). For example, if a shoes product belongs to
-        /// both ["Shoes &amp;amp; Accessories" -&amp;gt; "Shoes"] and ["Sports &amp;amp; Fitness" -&amp;gt; "Athletic
-        /// Clothing" -&amp;gt; "Shoes"], it could be represented as: "categories": [ "Shoes &amp;amp; Accessories
-        /// &amp;gt; Shoes", "Sports &amp;amp; Fitness &amp;gt; Athletic Clothing &amp;gt; Shoes" ] Must be set for
-        /// Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per
-        /// Product unless overridden through the Google Cloud console. Empty values are not allowed. Each value must be
-        /// a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is
-        /// returned. Corresponding properties: Google Merchant Center property google_product_category. Schema.org
-        /// property [Product.category] (https://schema.org/category). [mc_google_product_category]:
+        /// Optional. Product categories. This field is repeated for supporting one product belonging to several
+        /// parallel categories. Strongly recommended using the full path for better search / recommendation quality. To
+        /// represent the full path of category, use the '&amp;gt;' sign, with one space on each side, to separate
+        /// different hierarchies. If '&amp;gt;' is part of the category name, replace it with other character(s). For
+        /// example, if a shoes product belongs to both ["Shoes &amp;amp; Accessories" -&amp;gt; "Shoes"] and ["Sports
+        /// &amp;amp; Fitness" -&amp;gt; "Athletic Clothing" -&amp;gt; "Shoes"], it could be represented as:
+        /// "categories": [ "Shoes &amp;amp; Accessories &amp;gt; Shoes", "Sports &amp;amp; Fitness &amp;gt; Athletic
+        /// Clothing &amp;gt; Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is
+        /// returned. At most 250 values are allowed per Product unless overridden through the Google Cloud console.
+        /// Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000
+        /// characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant
+        /// Center property google_product_category. Schema.org property [Product.category]
+        /// (https://schema.org/category). [mc_google_product_category]:
         /// https://support.google.com/merchants/answer/6324436
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categories")]
@@ -13671,12 +13672,12 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string OrderBy { get; set; }
 
         /// <summary>
-        /// The categories associated with a category page. Must be set for category navigation queries to achieve good
-        /// search quality. The format should be the same as UserEvent.page_categories; To represent full path of
-        /// category, use '&amp;gt;' sign to separate different hierarchies. If '&amp;gt;' is part of the category name,
-        /// replace it with other character(s). Category pages include special pages such as sales or promotions. For
-        /// instance, a special sale page may have the category hierarchy: "pageCategories" : ["Sales &amp;gt; 2017
-        /// Black Friday Deals"].
+        /// Optional. The categories associated with a category page. Must be set for category navigation queries to
+        /// achieve good search quality. The format should be the same as UserEvent.page_categories; To represent the
+        /// full path of category, use '&amp;gt;' sign, with one space on each side, to separate different hierarchies.
+        /// If '&amp;gt;' is part of the category name, replace it with other character(s). Category pages include
+        /// special pages such as sales or promotions. For instance, a special sale page may have the category
+        /// hierarchy: "pageCategories" : ["Sales &amp;gt; 2017 Black Friday Deals"].
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageCategories")]
         public virtual System.Collections.Generic.IList<string> PageCategories { get; set; }
@@ -15028,13 +15029,13 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string OrderBy { get; set; }
 
         /// <summary>
-        /// The categories associated with a category page. To represent full path of category, use '&amp;gt;' sign to
-        /// separate different hierarchies. If '&amp;gt;' is part of the category name, replace it with other
-        /// character(s). Category pages include special pages such as sales or promotions. For instance, a special sale
-        /// page may have the category hierarchy: "pageCategories" : ["Sales &amp;gt; 2017 Black Friday Deals"].
-        /// Required for `category-page-view` events. At least one of search_query or page_categories is required for
-        /// `search` events. Other event types should not set this field. Otherwise, an INVALID_ARGUMENT error is
-        /// returned.
+        /// Optional. The categories associated with a category page. To represent the full path of category, use the
+        /// '&amp;gt;' sign, with one space on each side, to separate different hierarchies. If '&amp;gt;' is part of
+        /// the category name, replace it with other character(s). Category pages include special pages such as sales or
+        /// promotions. For instance, a special sale page may have the category hierarchy: "pageCategories" : ["Sales
+        /// &amp;gt; 2017 Black Friday Deals"]. Required for `category-page-view` events. At least one of search_query
+        /// or page_categories is required for `search` events. Other event types should not set this field. Otherwise,
+        /// an INVALID_ARGUMENT error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageCategories")]
         public virtual System.Collections.Generic.IList<string> PageCategories { get; set; }
