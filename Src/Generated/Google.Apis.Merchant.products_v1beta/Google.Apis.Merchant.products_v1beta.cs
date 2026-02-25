@@ -1630,7 +1630,9 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The destination status of the product status.</summary>
+    /// <summary>
+    /// The destination status of the product status. Equivalent to `StatusPerReportingContext` in Reports API.
+    /// </summary>
     public class DestinationStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of country codes (ISO 3166-1 alpha-2) where the offer is approved.</summary>
