@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -320,7 +320,8 @@ namespace Google.Apis.Sheets.v4
 
             /// <summary>
             /// Returns the developer metadata with the specified ID. The caller must specify the spreadsheet ID and the
-            /// developer metadata's unique metadataId.
+            /// developer metadata's unique metadataId. For more information, see [Read, write, and search
+            /// metadata](https://developers.google.com/workspace/sheets/api/guides/metadata).
             /// </summary>
             /// <param name="spreadsheetId">The ID of the spreadsheet to retrieve metadata from.</param>
             /// <param name="metadataId">The ID of the developer metadata to retrieve.</param>
@@ -331,7 +332,8 @@ namespace Google.Apis.Sheets.v4
 
             /// <summary>
             /// Returns the developer metadata with the specified ID. The caller must specify the spreadsheet ID and the
-            /// developer metadata's unique metadataId.
+            /// developer metadata's unique metadataId. For more information, see [Read, write, and search
+            /// metadata](https://developers.google.com/workspace/sheets/api/guides/metadata).
             /// </summary>
             public class GetRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.DeveloperMetadata>
             {
@@ -384,10 +386,11 @@ namespace Google.Apis.Sheets.v4
             }
 
             /// <summary>
-            /// Returns all developer metadata matching the specified DataFilter. If the provided DataFilter represents
-            /// a DeveloperMetadataLookup object, this will return all DeveloperMetadata entries selected by it. If the
-            /// DataFilter represents a location in a spreadsheet, this will return all developer metadata associated
-            /// with locations intersecting that region.
+            /// Returns all developer metadata matching the specified DataFilter. For more information, see [Read,
+            /// write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). If the
+            /// provided DataFilter represents a DeveloperMetadataLookup object, this will return all DeveloperMetadata
+            /// entries selected by it. If the DataFilter represents a location in a spreadsheet, this will return all
+            /// developer metadata associated with locations intersecting that region.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="spreadsheetId">The ID of the spreadsheet to retrieve metadata from.</param>
@@ -397,10 +400,11 @@ namespace Google.Apis.Sheets.v4
             }
 
             /// <summary>
-            /// Returns all developer metadata matching the specified DataFilter. If the provided DataFilter represents
-            /// a DeveloperMetadataLookup object, this will return all DeveloperMetadata entries selected by it. If the
-            /// DataFilter represents a location in a spreadsheet, this will return all developer metadata associated
-            /// with locations intersecting that region.
+            /// Returns all developer metadata matching the specified DataFilter. For more information, see [Read,
+            /// write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). If the
+            /// provided DataFilter represents a DeveloperMetadataLookup object, this will return all DeveloperMetadata
+            /// entries selected by it. If the DataFilter represents a location in a spreadsheet, this will return all
+            /// developer metadata associated with locations intersecting that region.
             /// </summary>
             public class SearchRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.SearchDeveloperMetadataResponse>
             {
@@ -872,9 +876,11 @@ namespace Google.Apis.Sheets.v4
             }
 
             /// <summary>
-            /// Clears one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet ID and
-            /// one or more DataFilters. Ranges matching any of the specified data filters will be cleared. Only values
-            /// are cleared -- all other properties of the cell (such as formatting, data validation, etc..) are kept.
+            /// Clears one or more ranges of values from a spreadsheet. For more information, see [Read, write, and
+            /// search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). The caller must
+            /// specify the spreadsheet ID and one or more DataFilters. Ranges matching any of the specified data
+            /// filters will be cleared. Only values are cleared -- all other properties of the cell (such as
+            /// formatting, data validation, etc.) are kept.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="spreadsheetId">The ID of the spreadsheet to update.</param>
@@ -884,9 +890,11 @@ namespace Google.Apis.Sheets.v4
             }
 
             /// <summary>
-            /// Clears one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet ID and
-            /// one or more DataFilters. Ranges matching any of the specified data filters will be cleared. Only values
-            /// are cleared -- all other properties of the cell (such as formatting, data validation, etc..) are kept.
+            /// Clears one or more ranges of values from a spreadsheet. For more information, see [Read, write, and
+            /// search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). The caller must
+            /// specify the spreadsheet ID and one or more DataFilters. Ranges matching any of the specified data
+            /// filters will be cleared. Only values are cleared -- all other properties of the cell (such as
+            /// formatting, data validation, etc.) are kept.
             /// </summary>
             public class BatchClearByDataFilterRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.BatchClearValuesByDataFilterResponse>
             {
@@ -1126,9 +1134,10 @@ namespace Google.Apis.Sheets.v4
             }
 
             /// <summary>
-            /// Returns one or more ranges of values that match the specified data filters. The caller must specify the
-            /// spreadsheet ID and one or more DataFilters. Ranges that match any of the data filters in the request
-            /// will be returned.
+            /// Returns one or more ranges of values that match the specified data filters. For more information, see
+            /// [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata).
+            /// The caller must specify the spreadsheet ID and one or more DataFilters. Ranges that match any of the
+            /// data filters in the request will be returned.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="spreadsheetId">The ID of the spreadsheet to retrieve data from.</param>
@@ -1138,9 +1147,10 @@ namespace Google.Apis.Sheets.v4
             }
 
             /// <summary>
-            /// Returns one or more ranges of values that match the specified data filters. The caller must specify the
-            /// spreadsheet ID and one or more DataFilters. Ranges that match any of the data filters in the request
-            /// will be returned.
+            /// Returns one or more ranges of values that match the specified data filters. For more information, see
+            /// [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata).
+            /// The caller must specify the spreadsheet ID and one or more DataFilters. Ranges that match any of the
+            /// data filters in the request will be returned.
             /// </summary>
             public class BatchGetByDataFilterRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.BatchGetValuesByDataFilterResponse>
             {
@@ -1246,8 +1256,9 @@ namespace Google.Apis.Sheets.v4
             }
 
             /// <summary>
-            /// Sets values in one or more ranges of a spreadsheet. The caller must specify the spreadsheet ID, a
-            /// valueInputOption, and one or more DataFilterValueRanges.
+            /// Sets values in one or more ranges of a spreadsheet. For more information, see [Read, write, and search
+            /// metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). The caller must specify
+            /// the spreadsheet ID, a valueInputOption, and one or more DataFilterValueRanges.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="spreadsheetId">The ID of the spreadsheet to update.</param>
@@ -1257,8 +1268,9 @@ namespace Google.Apis.Sheets.v4
             }
 
             /// <summary>
-            /// Sets values in one or more ranges of a spreadsheet. The caller must specify the spreadsheet ID, a
-            /// valueInputOption, and one or more DataFilterValueRanges.
+            /// Sets values in one or more ranges of a spreadsheet. For more information, see [Read, write, and search
+            /// metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). The caller must specify
+            /// the spreadsheet ID, a valueInputOption, and one or more DataFilterValueRanges.
             /// </summary>
             public class BatchUpdateByDataFilterRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.BatchUpdateValuesByDataFilterResponse>
             {
@@ -2021,14 +2033,15 @@ namespace Google.Apis.Sheets.v4
         }
 
         /// <summary>
-        /// Returns the spreadsheet at the given ID. The caller must specify the spreadsheet ID. This method differs
-        /// from GetSpreadsheet in that it allows selecting which subsets of spreadsheet data to return by specifying a
-        /// dataFilters parameter. Multiple DataFilters can be specified. Specifying one or more data filters returns
-        /// the portions of the spreadsheet that intersect ranges matched by any of the filters. By default, data within
-        /// grids is not returned. You can include grid data one of 2 ways: * Specify a [field
+        /// Returns the spreadsheet at the given ID. The caller must specify the spreadsheet ID. For more information,
+        /// see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata).
+        /// This method differs from GetSpreadsheet in that it allows selecting which subsets of spreadsheet data to
+        /// return by specifying a dataFilters parameter. Multiple DataFilters can be specified. Specifying one or more
+        /// data filters returns the portions of the spreadsheet that intersect ranges matched by any of the filters. By
+        /// default, data within grids is not returned. You can include grid data in one of two ways: * Specify a [field
         /// mask](https://developers.google.com/workspace/sheets/api/guides/field-masks) listing your desired fields
-        /// using the `fields` URL parameter in HTTP * Set the includeGridData parameter to true. If a field mask is
-        /// set, the `includeGridData` parameter is ignored For large spreadsheets, as a best practice, retrieve only
+        /// using the `fields` URL parameter in HTTP. * Set the includeGridData parameter to `true`. If a field mask is
+        /// set, the `includeGridData` parameter is ignored. For large spreadsheets, as a best practice, retrieve only
         /// the specific spreadsheet fields that you want.
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -2039,14 +2052,15 @@ namespace Google.Apis.Sheets.v4
         }
 
         /// <summary>
-        /// Returns the spreadsheet at the given ID. The caller must specify the spreadsheet ID. This method differs
-        /// from GetSpreadsheet in that it allows selecting which subsets of spreadsheet data to return by specifying a
-        /// dataFilters parameter. Multiple DataFilters can be specified. Specifying one or more data filters returns
-        /// the portions of the spreadsheet that intersect ranges matched by any of the filters. By default, data within
-        /// grids is not returned. You can include grid data one of 2 ways: * Specify a [field
+        /// Returns the spreadsheet at the given ID. The caller must specify the spreadsheet ID. For more information,
+        /// see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata).
+        /// This method differs from GetSpreadsheet in that it allows selecting which subsets of spreadsheet data to
+        /// return by specifying a dataFilters parameter. Multiple DataFilters can be specified. Specifying one or more
+        /// data filters returns the portions of the spreadsheet that intersect ranges matched by any of the filters. By
+        /// default, data within grids is not returned. You can include grid data in one of two ways: * Specify a [field
         /// mask](https://developers.google.com/workspace/sheets/api/guides/field-masks) listing your desired fields
-        /// using the `fields` URL parameter in HTTP * Set the includeGridData parameter to true. If a field mask is
-        /// set, the `includeGridData` parameter is ignored For large spreadsheets, as a best practice, retrieve only
+        /// using the `fields` URL parameter in HTTP. * Set the includeGridData parameter to `true`. If a field mask is
+        /// set, the `includeGridData` parameter is ignored. For large spreadsheets, as a best practice, retrieve only
         /// the specific spreadsheet fields that you want.
         /// </summary>
         public class GetByDataFilterRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.Spreadsheet>
@@ -2230,7 +2244,7 @@ namespace Google.Apis.Sheets.v4.Data
     public class AddFilterViewRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The filter to add. The filterViewId field is optional; if one is not set, an id will be randomly generated.
+        /// The filter to add. The filterViewId field is optional. If one is not set, an ID will be randomly generated.
         /// (It is an error to specify the ID of a filter that already exists.)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
@@ -2853,7 +2867,10 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The default filter associated with a sheet.</summary>
+    /// <summary>
+    /// The default filter associated with a sheet. For more information, see [Manage data visibility with
+    /// filters](https://developers.google.com/workspace/sheets/api/guides/filters).
+    /// </summary>
     public class BasicFilter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2939,7 +2956,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>
         /// The ranges that were cleared, in [A1
         /// notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell). If the requests are for
-        /// an unbounded range or a ranger larger than the bounds of the sheet, this is the actual ranges that were
+        /// an unbounded range or a range larger than the bounds of the sheet, this is the actual ranges that were
         /// cleared, bounded to the sheet's limits.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clearedRanges")]
@@ -2971,7 +2988,7 @@ namespace Google.Apis.Sheets.v4.Data
     public class BatchClearValuesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The ranges that were cleared, in A1 notation. If the requests are for an unbounded range or a ranger larger
+        /// The ranges that were cleared, in A1 notation. If the requests are for an unbounded range or a range larger
         /// than the bounds of the sheet, this is the actual ranges that were cleared, bounded to the sheet's limits.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clearedRanges")]
@@ -4097,7 +4114,7 @@ namespace Google.Apis.Sheets.v4.Data
     public class ClearValuesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The range (in A1 notation) that was cleared. (If the request was for an unbounded range or a ranger larger
+        /// The range (in A1 notation) that was cleared. (If the request was for an unbounded range or a range larger
         /// than the bounds of the sheet, this will be the actual range that was cleared, bounded to the sheet's
         /// limits.)
         /// </summary>
@@ -4386,7 +4403,10 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Filter that describes what data should be selected or returned from a request.</summary>
+    /// <summary>
+    /// Filter that describes what data should be selected or returned from a request. For more information, see [Read,
+    /// write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata).
+    /// </summary>
     public class DataFilter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Selects data that matches the specified A1 range.</summary>
@@ -5083,12 +5103,13 @@ namespace Google.Apis.Sheets.v4.Data
     }
 
     /// <summary>
-    /// Developer metadata associated with a location or object in a spreadsheet. Developer metadata may be used to
-    /// associate arbitrary data with various parts of a spreadsheet and will remain associated at those locations as
-    /// they move around and the spreadsheet is edited. For example, if developer metadata is associated with row 5 and
-    /// another row is then subsequently inserted above row 5, that original metadata will still be associated with the
-    /// row it was first associated with (what is now row 6). If the associated object is deleted its metadata is
-    /// deleted too.
+    /// Developer metadata associated with a location or object in a spreadsheet. For more information, see [Read,
+    /// write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). Developer
+    /// metadata may be used to associate arbitrary data with various parts of a spreadsheet and it will remain
+    /// associated at those locations as they move around and the spreadsheet is edited. For example, if developer
+    /// metadata is associated with row 5 and another row is then subsequently inserted above row 5, that original
+    /// metadata is still associated with the row it was first associated with (what is now row 6). If the associated
+    /// object is deleted then its metadata is deleted too.
     /// </summary>
     public class DeveloperMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5114,7 +5135,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadataValue")]
         public virtual string MetadataValue { get; set; }
 
-        /// <summary>The metadata visibility. Developer metadata must always have a visibility specified.</summary>
+        /// <summary>The metadata visibility. Developer metadata must always have visibility specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
         public virtual string Visibility { get; set; }
 
@@ -5127,7 +5148,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>
         /// Represents the row or column when metadata is associated with a dimension. The specified DimensionRange must
-        /// represent a single row or column; it cannot be unbounded or span multiple rows or columns.
+        /// represent a single row or column. It cannot be unbounded or span multiple rows or columns.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionRange")]
         public virtual DimensionRange DimensionRange { get; set; }
@@ -5153,7 +5174,7 @@ namespace Google.Apis.Sheets.v4.Data
     /// specified this considers the DeveloperMetadata with that particular unique ID. If a metadata key is specified,
     /// this considers all developer metadata with that key. If a key, visibility, and location type are all specified,
     /// this considers all developer metadata with that key and visibility that are associated with a location of that
-    /// type. In general, this selects all DeveloperMetadata that matches the intersection of all the specified fields;
+    /// type. In general, this selects all DeveloperMetadata that match the intersection of all the specified fields;
     /// any field or combination of fields may be specified.
     /// </summary>
     public class DeveloperMetadataLookup : Google.Apis.Requests.IDirectResponseSchema
@@ -5173,7 +5194,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// type. For example, when this field is specified as ROW this lookup only considers developer metadata
         /// associated on rows. If the field is left unspecified, all location types are considered. This field cannot
         /// be specified as SPREADSHEET when the locationMatchingStrategy is specified as INTERSECTING or when the
-        /// metadataLocation is specified as a non-spreadsheet location: spreadsheet metadata cannot intersect any other
+        /// metadataLocation is specified as a non-spreadsheet location. Spreadsheet metadata cannot intersect any other
         /// developer metadata location. This field also must be left unspecified when the locationMatchingStrategy is
         /// specified as EXACT.
         /// </summary>
@@ -5498,12 +5519,12 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Criteria for showing/hiding rows in a filter or filter view.</summary>
+    /// <summary>Criteria for showing or hiding rows in a filter or filter view.</summary>
     public class FilterCriteria : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A condition that must be true for values to be shown. (This does not override hidden_values -- if a value is
-        /// listed there, it will still be hidden.)
+        /// A condition that must be `true` for values to be shown. (This does not override hidden_values -- if a value
+        /// is listed there, it will still be hidden.)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual BooleanCondition Condition { get; set; }
@@ -5565,7 +5586,10 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A filter view.</summary>
+    /// <summary>
+    /// A filter view. For more information, see [Manage data visibility with
+    /// filters](https://developers.google.com/workspace/sheets/api/guides/filters).
+    /// </summary>
     public class FilterView : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5576,7 +5600,7 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual System.Collections.Generic.IDictionary<string, FilterCriteria> Criteria { get; set; }
 
         /// <summary>
-        /// The filter criteria for showing/hiding values per column. Both criteria and filter_specs are populated in
+        /// The filter criteria for showing or hiding values per column. Both criteria and filter_specs are populated in
         /// responses. If both fields are specified in an update request, this field takes precedence.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterSpecs")]
@@ -5587,14 +5611,14 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual System.Nullable<int> FilterViewId { get; set; }
 
         /// <summary>
-        /// The named range this filter view is backed by, if any. When writing, only one of range or named_range_id or
+        /// The named range this filter view is backed by, if any. When writing, only one of range, named_range_id, or
         /// table_id may be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedRangeId")]
         public virtual string NamedRangeId { get; set; }
 
         /// <summary>
-        /// The range this filter view covers. When writing, only one of range or named_range_id or table_id may be set.
+        /// The range this filter view covers. When writing, only one of range, named_range_id, or table_id may be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual GridRange Range { get; set; }
@@ -5607,7 +5631,7 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual System.Collections.Generic.IList<SortSpec> SortSpecs { get; set; }
 
         /// <summary>
-        /// The table this filter view is backed by, if any. When writing, only one of range or named_range_id or
+        /// The table this filter view is backed by, if any. When writing, only one of range, named_range_id, or
         /// table_id may be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
