@@ -2050,6 +2050,24 @@ namespace Google.Apis.Monitoring.v1.Data
     }
 
     /// <summary>
+    /// A widget that contains two widget visualizations that are coordinated in display. Currently, we only support the
+    /// primary widget of TimeSeriesTable with the secondary widget of XyChart.
+    /// </summary>
+    public class CoordinatedWidget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The primary visualization. Must be set. Must contain a data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primary")]
+        public virtual Widget Primary { get; set; }
+
+        /// <summary>Required. The secondary visualization. Must be set. Must contain a data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondary")]
+        public virtual Widget Secondary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A Google Stackdriver dashboard. Dashboards define the content and layout of pages in the Stackdriver web
     /// application.
     /// </summary>
@@ -4090,6 +4108,10 @@ namespace Google.Apis.Monitoring.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collapsibleGroup")]
         public virtual CollapsibleGroup CollapsibleGroup { get; set; }
+
+        /// <summary>A widget that contains two widget visualizations that are coordinated in display.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coordinatedWidget")]
+        public virtual CoordinatedWidget CoordinatedWidget { get; set; }
 
         /// <summary>A widget that displays a list of error groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorReportingPanel")]
