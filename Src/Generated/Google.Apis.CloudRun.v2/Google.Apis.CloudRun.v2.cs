@@ -65,6 +65,15 @@ namespace Google.Apis.CloudRun.v2
             /// Account.
             /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud Run data and see the email address for your Google
+            /// Account
+            /// </summary>
+            public static string Run = "https://www.googleapis.com/auth/run";
+
+            /// <summary>See your Google Cloud Run data and the email address of your Google Account</summary>
+            public static string RunReadonly = "https://www.googleapis.com/auth/run.readonly";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Run Admin API.</summary>
@@ -75,6 +84,15 @@ namespace Google.Apis.CloudRun.v2
             /// Account.
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud Run data and see the email address for your Google
+            /// Account
+            /// </summary>
+            public const string Run = "https://www.googleapis.com/auth/run";
+
+            /// <summary>See your Google Cloud Run data and the email address of your Google Account</summary>
+            public const string RunReadonly = "https://www.googleapis.com/auth/run.readonly";
         }
 
         /// <summary>Gets the Projects resource.</summary>
@@ -3138,6 +3156,16 @@ namespace Google.Apis.CloudRun.v2
                     [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> AllowMissing { get; set; }
 
+                    /// <summary>
+                    /// Optional. If set to true, a new revision will be created from the template even if the system
+                    /// doesn't detect any changes from the previously deployed revision. This may be useful for cases
+                    /// where the underlying resources need to be recreated or reinitialized. For example if the image
+                    /// is specified by label, but the underlying image digest has changed) or if the container performs
+                    /// deployment initialization work that needs to be performed again.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("forceNewRevision", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ForceNewRevision { get; set; }
+
                     /// <summary>Optional. The list of fields to be updated.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -3179,6 +3207,14 @@ namespace Google.Apis.CloudRun.v2
                         RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
                         {
                             Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("forceNewRevision", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "forceNewRevision",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4658,9 +4694,18 @@ namespace Google.Apis.CloudRun.v2.Data
     public class GoogleCloudRunV2CloudSqlInstance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances.
-        /// Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL
-        /// and Cloud Run. Format: {project}:{location}:{instance}
+        /// A list of Cloud SQL instance connection names. Cloud Run uses these to establish connections to the
+        /// specified Cloud SQL instances. While the SQL instance name itself is unique within a project, the full
+        /// connection name requires the location for proper routing. Format: `{project}:{location}:{instance}` Example:
+        /// `my-project:us-central1:my-instance` You can find this value on the instance's **Overview** page in the
+        /// Google Cloud console or by using the following `gcloud` command:
+        /// ```
+        /// sh gcloud sql instances describe
+        /// INSTANCE_NAME \ --format='value(connectionName)'
+        /// ```
+        /// Visit
+        /// https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and
+        /// Cloud Run.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<string> Instances { get; set; }
@@ -6763,7 +6808,7 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2Condition> Conditions { get; set; }
 
-        /// <summary>Containers holds the list which define the units of execution for this Revision.</summary>
+        /// <summary>Holds the list which define the units of execution for this Revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containers")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2Container> Containers { get; set; }
 
@@ -7070,11 +7115,17 @@ namespace Google.Apis.CloudRun.v2.Data
     /// <summary>Settings for revision-level scaling settings.</summary>
     public class GoogleCloudRunV2RevisionScaling : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Determines a threshold for concurrency utilization before scaling begins.</summary>
+        /// <summary>
+        /// Optional. Determines a threshold for concurrency utilization before scaling begins. Accepted values are
+        /// between `0.4` and `0.95` (inclusive) or `0.0` to disable concurrency utilization as threshold for scaling.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("concurrencyUtilization")]
         public virtual System.Nullable<float> ConcurrencyUtilization { get; set; }
 
-        /// <summary>Optional. Determines a threshold for CPU utilization before scaling begins.</summary>
+        /// <summary>
+        /// Optional. Determines a threshold for CPU utilization before scaling begins. Accepted values are between
+        /// `0.4` and `0.95` (inclusive) or `0.0` to disable CPU utilization as threshold for scaling.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuUtilization")]
         public virtual System.Nullable<float> CpuUtilization { get; set; }
 
@@ -7127,7 +7178,7 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientVersion")]
         public virtual string ClientVersion { get; set; }
 
-        /// <summary>Holds the single container that defines the unit of execution for this Revision.</summary>
+        /// <summary>Holds the list which define the units of execution for this Revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containers")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2Container> Containers { get; set; }
 
