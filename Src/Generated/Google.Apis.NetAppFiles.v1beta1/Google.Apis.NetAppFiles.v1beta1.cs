@@ -2921,6 +2921,277 @@ namespace Google.Apis.NetAppFiles.v1beta1
                 public StoragePoolsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Ontap = new OntapResource(service);
+                }
+
+                /// <summary>Gets the Ontap resource.</summary>
+                public virtual OntapResource Ontap { get; }
+
+                /// <summary>The "ontap" collection of methods.</summary>
+                public class OntapResource
+                {
+                    private const string Resource = "ontap";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public OntapResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// `ExecuteOntapDelete` dispatches the ONTAP `DELETE` request to the `StoragePool` cluster.
+                    /// </summary>
+                    /// <param name="ontapPath">
+                    /// Required. The resource path of the ONTAP resource. Format:
+                    /// `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`.
+                    /// For example:
+                    /// `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`.
+                    /// </param>
+                    public virtual ExecuteOntapDeleteRequest ExecuteOntapDelete(string ontapPath)
+                    {
+                        return new ExecuteOntapDeleteRequest(this.service, ontapPath);
+                    }
+
+                    /// <summary>
+                    /// `ExecuteOntapDelete` dispatches the ONTAP `DELETE` request to the `StoragePool` cluster.
+                    /// </summary>
+                    public class ExecuteOntapDeleteRequest : NetAppFilesBaseServiceRequest<Google.Apis.NetAppFiles.v1beta1.Data.ExecuteOntapDeleteResponse>
+                    {
+                        /// <summary>Constructs a new ExecuteOntapDelete request.</summary>
+                        public ExecuteOntapDeleteRequest(Google.Apis.Services.IClientService service, string ontapPath) : base(service)
+                        {
+                            OntapPath = ontapPath;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource path of the ONTAP resource. Format:
+                        /// `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`.
+                        /// For example:
+                        /// `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("ontapPath", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string OntapPath { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "executeOntapDelete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+ontapPath}";
+
+                        /// <summary>Initializes ExecuteOntapDelete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("ontapPath", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "ontapPath",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/storagePools/[^/]+/ontap/.*$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// `ExecuteOntapGet` dispatches the ONTAP `GET` request to the `StoragePool` cluster.
+                    /// </summary>
+                    /// <param name="ontapPath">
+                    /// Required. The resource path of the ONTAP resource. Format:
+                    /// `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`.
+                    /// For example:
+                    /// `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`.
+                    /// </param>
+                    public virtual ExecuteOntapGetRequest ExecuteOntapGet(string ontapPath)
+                    {
+                        return new ExecuteOntapGetRequest(this.service, ontapPath);
+                    }
+
+                    /// <summary>
+                    /// `ExecuteOntapGet` dispatches the ONTAP `GET` request to the `StoragePool` cluster.
+                    /// </summary>
+                    public class ExecuteOntapGetRequest : NetAppFilesBaseServiceRequest<Google.Apis.NetAppFiles.v1beta1.Data.ExecuteOntapGetResponse>
+                    {
+                        /// <summary>Constructs a new ExecuteOntapGet request.</summary>
+                        public ExecuteOntapGetRequest(Google.Apis.Services.IClientService service, string ontapPath) : base(service)
+                        {
+                            OntapPath = ontapPath;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource path of the ONTAP resource. Format:
+                        /// `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`.
+                        /// For example:
+                        /// `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("ontapPath", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string OntapPath { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "executeOntapGet";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+ontapPath}";
+
+                        /// <summary>Initializes ExecuteOntapGet parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("ontapPath", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "ontapPath",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/storagePools/[^/]+/ontap/.*$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// `ExecuteOntapPatch` dispatches the ONTAP `PATCH` request to the `StoragePool` cluster.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="ontapPath">
+                    /// Required. The resource path of the ONTAP resource. Format:
+                    /// `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`.
+                    /// For example:
+                    /// `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`.
+                    /// </param>
+                    public virtual ExecuteOntapPatchRequest ExecuteOntapPatch(Google.Apis.NetAppFiles.v1beta1.Data.ExecuteOntapPatchRequest body, string ontapPath)
+                    {
+                        return new ExecuteOntapPatchRequest(this.service, body, ontapPath);
+                    }
+
+                    /// <summary>
+                    /// `ExecuteOntapPatch` dispatches the ONTAP `PATCH` request to the `StoragePool` cluster.
+                    /// </summary>
+                    public class ExecuteOntapPatchRequest : NetAppFilesBaseServiceRequest<Google.Apis.NetAppFiles.v1beta1.Data.ExecuteOntapPatchResponse>
+                    {
+                        /// <summary>Constructs a new ExecuteOntapPatch request.</summary>
+                        public ExecuteOntapPatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetAppFiles.v1beta1.Data.ExecuteOntapPatchRequest body, string ontapPath) : base(service)
+                        {
+                            OntapPath = ontapPath;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource path of the ONTAP resource. Format:
+                        /// `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`.
+                        /// For example:
+                        /// `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("ontapPath", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string OntapPath { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.NetAppFiles.v1beta1.Data.ExecuteOntapPatchRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "executeOntapPatch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+ontapPath}";
+
+                        /// <summary>Initializes ExecuteOntapPatch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("ontapPath", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "ontapPath",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/storagePools/[^/]+/ontap/.*$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// `ExecuteOntapPost` dispatches the ONTAP `POST` request to the `StoragePool` cluster.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="ontapPath">
+                    /// Required. The resource path of the ONTAP resource. Format:
+                    /// `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`.
+                    /// For example:
+                    /// `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`.
+                    /// </param>
+                    public virtual ExecuteOntapPostRequest ExecuteOntapPost(Google.Apis.NetAppFiles.v1beta1.Data.ExecuteOntapPostRequest body, string ontapPath)
+                    {
+                        return new ExecuteOntapPostRequest(this.service, body, ontapPath);
+                    }
+
+                    /// <summary>
+                    /// `ExecuteOntapPost` dispatches the ONTAP `POST` request to the `StoragePool` cluster.
+                    /// </summary>
+                    public class ExecuteOntapPostRequest : NetAppFilesBaseServiceRequest<Google.Apis.NetAppFiles.v1beta1.Data.ExecuteOntapPostResponse>
+                    {
+                        /// <summary>Constructs a new ExecuteOntapPost request.</summary>
+                        public ExecuteOntapPostRequest(Google.Apis.Services.IClientService service, Google.Apis.NetAppFiles.v1beta1.Data.ExecuteOntapPostRequest body, string ontapPath) : base(service)
+                        {
+                            OntapPath = ontapPath;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource path of the ONTAP resource. Format:
+                        /// `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`.
+                        /// For example:
+                        /// `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("ontapPath", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string OntapPath { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.NetAppFiles.v1beta1.Data.ExecuteOntapPostRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "executeOntapPost";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+ontapPath}";
+
+                        /// <summary>Initializes ExecuteOntapPost parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("ontapPath", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "ontapPath",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/storagePools/[^/]+/ontap/.*$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Creates a new storage pool.</summary>
@@ -6239,6 +6510,33 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details about a clone volume.</summary>
+    public class CloneDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Shared space in GiB. Determined at volume creation time based on size of source snapshot.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sharedSpaceGib")]
+        public virtual System.Nullable<long> SharedSpaceGib { get; set; }
+
+        /// <summary>
+        /// Output only. Specifies the full resource name of the source snapshot from which this volume was cloned.
+        /// Format: projects/{project}/locations/{location}/volumes/{volume}/snapshots/{snapshot}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshot")]
+        public virtual string SourceSnapshot { get; set; }
+
+        /// <summary>
+        /// Output only. Full name of the source volume resource. Format:
+        /// projects/{project}/locations/{location}/volumes/{volume}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceVolume")]
+        public virtual string SourceVolume { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Make a snapshot every day e.g. at 04:00, 05:20, 23:50</summary>
     public class DailySchedule : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6358,6 +6656,84 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerVolumeName")]
         public virtual string PeerVolumeName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for `ExecuteOntapDelete` API.</summary>
+    public class ExecuteOntapDeleteResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The raw `JSON` body of the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("body")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Body { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for `ExecuteOntapGet` API.</summary>
+    public class ExecuteOntapGetResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The raw `JSON` body of the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("body")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Body { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for `ExecuteOntapPatch` API.</summary>
+    public class ExecuteOntapPatchRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The raw `JSON` body of the request. The body should be in the format of the ONTAP resource. For
+        /// example:
+        /// ```
+        /// { "body": { "field1": "value1", "field2": "value2", } }
+        /// ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("body")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Body { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for `ExecuteOntapPatch` API.</summary>
+    public class ExecuteOntapPatchResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The raw `JSON` body of the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("body")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Body { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for `ExecuteOntapPost` API.</summary>
+    public class ExecuteOntapPostRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The raw `JSON` body of the request. The body should be in the format of the ONTAP resource. For
+        /// example:
+        /// ```
+        /// { "body": { "field1": "value1", "field2": "value2", } }
+        /// ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("body")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Body { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for `ExecuteOntapPost` API.</summary>
+    public class ExecuteOntapPostResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The raw `JSON` body of the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("body")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Body { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6697,6 +7073,23 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         /// <summary>Output only. State details of the KmsConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateDetails")]
         public virtual string StateDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for a Large Capacity Volume. A Large Capacity Volume supports sizes ranging from 12 TiB to 20 PiB,
+    /// it is composed of multiple internal constituents, and must be created in a large capacity pool.
+    /// </summary>
+    public class LargeCapacityConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The number of internal constituents (e.g., FlexVols) for this large volume. The minimum number of
+        /// constituents is 2.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constituentCount")]
+        public virtual System.Nullable<int> ConstituentCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7865,6 +8258,14 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ldapEnabled")]
         public virtual System.Nullable<bool> LdapEnabled { get; set; }
 
+        /// <summary>
+        /// Optional. Mode of the storage pool. This field is used to control whether the user can perform the ONTAP
+        /// operations on the storage pool using the GCNV ONTAP Mode APIs. If not specified during creation, it defaults
+        /// to `DEFAULT`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
         /// <summary>Identifier. Name of the storage pool</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7892,6 +8293,13 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         /// <summary>Output only. Reserved for future use</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
+        /// <summary>
+        /// Optional. The effective scale tier of the storage pool. If `scale_tier` is not specified during creation,
+        /// this defaults to `SCALE_TIER_STANDARD`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scaleTier")]
+        public virtual string ScaleTier { get; set; }
 
         /// <summary>Required. Service level of the storage pool</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceLevel")]
@@ -8168,6 +8576,10 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("capacityGib")]
         public virtual System.Nullable<long> CapacityGib { get; set; }
 
+        /// <summary>Output only. If this volume is a clone, this field contains details about the clone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloneDetails")]
+        public virtual CloneDetails CloneDetails { get; set; }
+
         /// <summary>Output only. Size of the volume cold tier data rounded down to the nearest GiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coldTierSizeGib")]
         public virtual System.Nullable<long> ColdTierSizeGib { get; set; }
@@ -8256,6 +8668,10 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("largeCapacity")]
         public virtual System.Nullable<bool> LargeCapacity { get; set; }
+
+        /// <summary>Optional. Large capacity config for the volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("largeCapacityConfig")]
+        public virtual LargeCapacityConfig LargeCapacityConfig { get; set; }
 
         /// <summary>Output only. Flag indicating if the volume is NFS LDAP enabled or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ldapEnabled")]
