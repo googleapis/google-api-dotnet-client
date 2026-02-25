@@ -11748,6 +11748,14 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultPackageSet")]
         public virtual string DefaultPackageSet { get; set; }
 
+        /// <summary>Optional. IOPS provisioned for the root disk for VMs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskProvisionedIops")]
+        public virtual System.Nullable<long> DiskProvisionedIops { get; set; }
+
+        /// <summary>Optional. Throughput provisioned for the root disk for VMs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskProvisionedThroughputMibps")]
+        public virtual System.Nullable<long> DiskProvisionedThroughputMibps { get; set; }
+
         /// <summary>
         /// Size of root disk for VMs, in GB. If zero or unspecified, the service will attempt to choose a reasonable
         /// default.
