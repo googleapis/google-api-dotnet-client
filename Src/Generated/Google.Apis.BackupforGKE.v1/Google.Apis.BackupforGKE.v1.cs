@@ -6098,6 +6098,10 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. The total number of user managed namespaces contained in the Backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespaceCount")]
+        public virtual System.Nullable<int> NamespaceCount { get; set; }
+
         /// <summary>
         /// Output only. If false, Backup will fail when Backup for GKE detects Kubernetes configuration that is
         /// non-standard or requires additional setup to restore. Inherited from the parent BackupPlan's permissive_mode
@@ -6624,6 +6628,13 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The number of user managed namespaces backed up in the last successful Backup created via this
+        /// BackupPlan.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectedNamespaceCount")]
+        public virtual System.Nullable<int> ProtectedNamespaceCount { get; set; }
 
         /// <summary>
         /// Output only. The number of Kubernetes Pods backed up in the last successful Backup created via this
