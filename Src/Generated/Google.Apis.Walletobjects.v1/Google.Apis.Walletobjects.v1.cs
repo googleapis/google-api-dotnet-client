@@ -10096,10 +10096,11 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A JWT representation of a pass.</summary>
     public class JwtResource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A string representing a JWT of the format described at
+        /// Required. A string representing a JWT of the format described at
         /// https://developers.google.com/wallet/reference/rest/v1/Jwt
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jwt")]
