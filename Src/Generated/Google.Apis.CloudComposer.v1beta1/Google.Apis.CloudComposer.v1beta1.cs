@@ -65,6 +65,12 @@ namespace Google.Apis.CloudComposer.v1beta1
             /// Account.
             /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud Composer data and see the email address for your
+            /// Google Account
+            /// </summary>
+            public static string Cloudcomposer = "https://www.googleapis.com/auth/cloudcomposer";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Composer API.</summary>
@@ -75,6 +81,12 @@ namespace Google.Apis.CloudComposer.v1beta1
             /// Account.
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud Composer data and see the email address for your
+            /// Google Account
+            /// </summary>
+            public const string Cloudcomposer = "https://www.googleapis.com/auth/cloudcomposer";
         }
 
         /// <summary>Gets the Projects resource.</summary>
@@ -3837,6 +3849,10 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// <summary>Optional. Configuration for the network connections configuration in the environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkingConfig")]
         public virtual NetworkingConfig NetworkingConfig { get; set; }
+
+        /// <summary>Optional. Networking type for the environment, either private or public.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkingType")]
+        public virtual string NetworkingType { get; set; }
 
         /// <summary>
         /// Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
