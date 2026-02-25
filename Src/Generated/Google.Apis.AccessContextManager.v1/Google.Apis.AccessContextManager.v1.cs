@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -37,6 +37,7 @@ namespace Google.Apis.AccessContextManager.v1
             AccessPolicies = new AccessPoliciesResource(this);
             Operations = new OperationsResource(this);
             Organizations = new OrganizationsResource(this);
+            Permissions = new PermissionsResource(this);
             Services = new ServicesResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://accesscontextmanager.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://accesscontextmanager.googleapis.com/batch");
@@ -88,6 +89,9 @@ namespace Google.Apis.AccessContextManager.v1
 
         /// <summary>Gets the Organizations resource.</summary>
         public virtual OrganizationsResource Organizations { get; }
+
+        /// <summary>Gets the Permissions resource.</summary>
+        public virtual PermissionsResource Permissions { get; }
 
         /// <summary>Gets the Services resource.</summary>
         public virtual ServicesResource Services { get; }
@@ -2954,6 +2958,78 @@ namespace Google.Apis.AccessContextManager.v1
         }
     }
 
+    /// <summary>The "permissions" collection of methods.</summary>
+    public class PermissionsResource
+    {
+        private const string Resource = "permissions";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public PermissionsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Lists all supported permissions in VPCSC Granular Controls.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(this.service);
+        }
+
+        /// <summary>Lists all supported permissions in VPCSC Granular Controls.</summary>
+        public class ListRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.ListSupportedPermissionsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Optional. This flag specifies the maximum number of services to return per page. Default is 100.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional. Token to start on a later page. Default is the first page.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/permissions";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
     /// <summary>The "services" collection of methods.</summary>
     public class ServicesResource
     {
@@ -4130,6 +4206,23 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// <summary>List of the Service Perimeter instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicePerimeters")]
         public virtual System.Collections.Generic.IList<ServicePerimeter> ServicePerimeters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A response to `ListSupportedPermissionsRequest`.</summary>
+    public class ListSupportedPermissionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The pagination token to retrieve the next page of results. If the value is empty, no further results remain.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of VPC-SC supported permissions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedPermissions")]
+        public virtual System.Collections.Generic.IList<string> SupportedPermissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
