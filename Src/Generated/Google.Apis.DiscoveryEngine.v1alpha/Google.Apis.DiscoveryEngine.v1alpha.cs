@@ -31974,6 +31974,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingApproach")]
         public virtual string ConfigurableBillingApproach { get; set; }
 
+        /// <summary>
+        /// Optional. Maps a connector ID (e.g., "hybrid-github", "shopify") to tenant-specific information required for
+        /// that connector. The structure of the tenant information string is connector-dependent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorTenantInfo")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ConnectorTenantInfo { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -43862,6 +43869,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingApproach")]
         public virtual string ConfigurableBillingApproach { get; set; }
 
+        /// <summary>
+        /// Optional. Maps a connector ID (e.g., "hybrid-github", "shopify") to tenant-specific information required for
+        /// that connector. The structure of the tenant information string is connector-dependent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorTenantInfo")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ConnectorTenantInfo { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -50427,7 +50441,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
         /// <summary>
         /// Optional. The maximum number of results to retrieve from each data store. If not specified, it will use the
-        /// SearchRequest.data_store_specs.num_results if provided, otherwise there is no limit.
+        /// SearchRequest.DataStoreSpec.num_results if provided, otherwise there is no limit.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numResultsPerDataStore")]
         public virtual System.Nullable<int> NumResultsPerDataStore { get; set; }
@@ -57870,6 +57884,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingApproach")]
         public virtual string ConfigurableBillingApproach { get; set; }
 
+        /// <summary>
+        /// Optional. Maps a connector ID (e.g., "hybrid-github", "shopify") to tenant-specific information required for
+        /// that connector. The structure of the tenant information string is connector-dependent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorTenantInfo")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ConnectorTenantInfo { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -60419,7 +60440,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
         /// <summary>
         /// Optional. The maximum number of results to retrieve from each data store. If not specified, it will use the
-        /// SearchRequest.data_store_specs.num_results if provided, otherwise there is no limit.
+        /// SearchRequest.DataStoreSpec.num_results if provided, otherwise there is no limit.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numResultsPerDataStore")]
         public virtual System.Nullable<int> NumResultsPerDataStore { get; set; }
