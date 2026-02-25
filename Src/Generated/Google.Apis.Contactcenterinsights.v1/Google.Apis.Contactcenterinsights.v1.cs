@@ -7156,7 +7156,8 @@ namespace Google.Apis.Contactcenterinsights.v1
 
                     /// <summary>
                     /// Optional. List of fields to be updated. All possible fields can be updated by passing `*`, or a
-                    /// subset of the following updateable fields can be provided: * `display_name` * `root_container`
+                    /// subset of the following updateable fields can be provided: * `display_name` * `root_container` *
+                    /// `description`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
