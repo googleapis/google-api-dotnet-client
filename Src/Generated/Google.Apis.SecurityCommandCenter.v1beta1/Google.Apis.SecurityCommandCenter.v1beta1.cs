@@ -4357,6 +4357,82 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details about the externally exposed resource associated with the finding.</summary>
+    public class ExternalExposure : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The full resource name of load balancer backend service, for example,
+        /// "//compute.googleapis.com/projects/{project-id}/global/backendServices/{name}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backendService")]
+        public virtual string BackendService { get; set; }
+
+        /// <summary>
+        /// The resource which is running the exposed service, for example,
+        /// "//compute.googleapis.com/projects/{project-id}/zones/{zone}/instances/{instance}.”
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exposedEndpoint")]
+        public virtual string ExposedEndpoint { get; set; }
+
+        /// <summary>The name and version of the service, for example, "Jupyter Notebook 6.14.0".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exposedService")]
+        public virtual string ExposedService { get; set; }
+
+        /// <summary>
+        /// The full resource name of the forwarding rule, for example,
+        /// "//compute.googleapis.com/projects/{project-id}/global/forwardingRules/{forwarding-rule-name}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forwardingRule")]
+        public virtual string ForwardingRule { get; set; }
+
+        /// <summary>
+        /// The full resource name of the instance group, for example,
+        /// "//compute.googleapis.com/projects/{project-id}/global/instanceGroups/{name}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceGroup")]
+        public virtual string InstanceGroup { get; set; }
+
+        /// <summary>
+        /// The full resource name of the load balancer firewall policy, for example,
+        /// "//compute.googleapis.com/projects/{project-id}/global/firewallPolicies/{policy-name}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancerFirewallPolicy")]
+        public virtual string LoadBalancerFirewallPolicy { get; set; }
+
+        /// <summary>
+        /// The full resource name of the network endpoint group, for example,
+        /// "//compute.googleapis.com/projects/{project-id}/global/networkEndpointGroups/{name}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkEndpointGroup")]
+        public virtual string NetworkEndpointGroup { get; set; }
+
+        /// <summary>Private IP address of the exposed endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateIpAddress")]
+        public virtual string PrivateIpAddress { get; set; }
+
+        /// <summary>Port number associated with private IP address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privatePort")]
+        public virtual string PrivatePort { get; set; }
+
+        /// <summary>Public IP address of the exposed endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicIpAddress")]
+        public virtual string PublicIpAddress { get; set; }
+
+        /// <summary>Public port number of the exposed endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicPort")]
+        public virtual string PublicPort { get; set; }
+
+        /// <summary>
+        /// The full resource name of the firewall policy of the exposed service, for example,
+        /// "//compute.googleapis.com/projects/{project-id}/global/firewallPolicies/{policy-name}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceFirewallPolicy")]
+        public virtual string ServiceFirewallPolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// File information about the related binary/library used by an executable, or the script used by a script
     /// interpreter
@@ -4634,6 +4710,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// <summary>Represents exfiltrations associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exfiltration")]
         public virtual Exfiltration Exfiltration { get; set; }
+
+        /// <summary>External exposure associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalExposure")]
+        public virtual ExternalExposure ExternalExposure { get; set; }
 
         /// <summary>
         /// Output only. Third party SIEM/SOAR fields within SCC, contains external system information and external
@@ -8555,6 +8635,82 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details about the externally exposed resource associated with the finding.</summary>
+    public class GoogleCloudSecuritycenterV2ExternalExposure : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The full resource name of load balancer backend service, for example,
+        /// "//compute.googleapis.com/projects/{project-id}/global/backendServices/{name}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backendService")]
+        public virtual string BackendService { get; set; }
+
+        /// <summary>
+        /// The resource which is running the exposed service, for example,
+        /// "//compute.googleapis.com/projects/{project-id}/zones/{zone}/instances/{instance}.”
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exposedEndpoint")]
+        public virtual string ExposedEndpoint { get; set; }
+
+        /// <summary>The name and version of the service, for example, "Jupyter Notebook 6.14.0".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exposedService")]
+        public virtual string ExposedService { get; set; }
+
+        /// <summary>
+        /// The full resource name of the forwarding rule, for example,
+        /// "//compute.googleapis.com/projects/{project-id}/global/forwardingRules/{forwarding-rule-name}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forwardingRule")]
+        public virtual string ForwardingRule { get; set; }
+
+        /// <summary>
+        /// The full resource name of the instance group, for example,
+        /// "//compute.googleapis.com/projects/{project-id}/global/instanceGroups/{name}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceGroup")]
+        public virtual string InstanceGroup { get; set; }
+
+        /// <summary>
+        /// The full resource name of the load balancer firewall policy, for example,
+        /// "//compute.googleapis.com/projects/{project-id}/global/firewallPolicies/{policy-name}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancerFirewallPolicy")]
+        public virtual string LoadBalancerFirewallPolicy { get; set; }
+
+        /// <summary>
+        /// The full resource name of the network endpoint group, for example,
+        /// "//compute.googleapis.com/projects/{project-id}/global/networkEndpointGroups/{name}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkEndpointGroup")]
+        public virtual string NetworkEndpointGroup { get; set; }
+
+        /// <summary>Private IP address of the exposed endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateIpAddress")]
+        public virtual string PrivateIpAddress { get; set; }
+
+        /// <summary>Port number associated with private IP address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privatePort")]
+        public virtual string PrivatePort { get; set; }
+
+        /// <summary>Public IP address of the exposed endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicIpAddress")]
+        public virtual string PublicIpAddress { get; set; }
+
+        /// <summary>Public port number of the exposed endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicPort")]
+        public virtual string PublicPort { get; set; }
+
+        /// <summary>
+        /// The full resource name of the firewall policy of the exposed service, for example,
+        /// "//compute.googleapis.com/projects/{project-id}/global/firewallPolicies/{policy-name}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceFirewallPolicy")]
+        public virtual string ServiceFirewallPolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Representation of third party SIEM/SOAR fields within SCC.</summary>
     public class GoogleCloudSecuritycenterV2ExternalSystem : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9037,6 +9193,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// <summary>Represents exfiltrations associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exfiltration")]
         public virtual GoogleCloudSecuritycenterV2Exfiltration Exfiltration { get; set; }
+
+        /// <summary>External exposure associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalExposure")]
+        public virtual GoogleCloudSecuritycenterV2ExternalExposure ExternalExposure { get; set; }
 
         /// <summary>
         /// Output only. Third party SIEM/SOAR fields within SCC, contains external system information and external
