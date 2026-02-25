@@ -24007,6 +24007,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("useBidiStreaming")]
+        public virtual System.Nullable<bool> UseBidiStreaming { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
