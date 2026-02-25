@@ -7851,45 +7851,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
     /// <summary>A type of analysis that can be done for a resource.</summary>
     public class Note : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _advisoryPublishTimeRaw;
-
-        private object _advisoryPublishTime;
-
-        /// <summary>The timestamp when the advisory was first published by the source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("advisoryPublishTime")]
-        public virtual string AdvisoryPublishTimeRaw
-        {
-            get => _advisoryPublishTimeRaw;
-            set
-            {
-                _advisoryPublishTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _advisoryPublishTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="AdvisoryPublishTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use AdvisoryPublishTimeDateTimeOffset instead.")]
-        public virtual object AdvisoryPublishTime
-        {
-            get => _advisoryPublishTime;
-            set
-            {
-                _advisoryPublishTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _advisoryPublishTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="AdvisoryPublishTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? AdvisoryPublishTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AdvisoryPublishTimeRaw);
-            set => AdvisoryPublishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
         /// <summary>A note describing an attestation role.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attestationAuthority")]
         public virtual Authority AttestationAuthority { get; set; }
@@ -9549,6 +9510,45 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
     /// <summary>Vulnerability provides metadata about a security vulnerability in a Note.</summary>
     public class Vulnerability : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _advisoryPublishTimeRaw;
+
+        private object _advisoryPublishTime;
+
+        /// <summary>The time this advisory was published by the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advisoryPublishTime")]
+        public virtual string AdvisoryPublishTimeRaw
+        {
+            get => _advisoryPublishTimeRaw;
+            set
+            {
+                _advisoryPublishTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _advisoryPublishTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="AdvisoryPublishTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use AdvisoryPublishTimeDateTimeOffset instead.")]
+        public virtual object AdvisoryPublishTime
+        {
+            get => _advisoryPublishTime;
+            set
+            {
+                _advisoryPublishTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _advisoryPublishTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="AdvisoryPublishTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? AdvisoryPublishTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AdvisoryPublishTimeRaw);
+            set => AdvisoryPublishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>The CVSS score for this vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cvssScore")]
         public virtual System.Nullable<float> CvssScore { get; set; }
