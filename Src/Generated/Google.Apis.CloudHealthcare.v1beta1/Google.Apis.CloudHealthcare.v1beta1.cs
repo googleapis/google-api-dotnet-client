@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -10680,6 +10680,75 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     }
 
                     /// <summary>
+                    /// Bulk deletes the FHIR resources from the given FHIR store. This method returns an Operation that
+                    /// can be used to track the progress of the deletion by calling GetOperation. The success and
+                    /// secondary_success counters correspond to the deleted current version and historical versions,
+                    /// respectively.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the FHIR store to bulk delete resources from, in the format of
+                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+                    /// </param>
+                    public virtual BulkDeleteRequest BulkDelete(Google.Apis.CloudHealthcare.v1beta1.Data.BulkDeleteResourcesRequest body, string name)
+                    {
+                        return new BulkDeleteRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Bulk deletes the FHIR resources from the given FHIR store. This method returns an Operation that
+                    /// can be used to track the progress of the deletion by calling GetOperation. The success and
+                    /// secondary_success counters correspond to the deleted current version and historical versions,
+                    /// respectively.
+                    /// </summary>
+                    public class BulkDeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new BulkDelete request.</summary>
+                        public BulkDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.BulkDeleteResourcesRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the FHIR store to bulk delete resources from, in the format of
+                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1beta1.Data.BulkDeleteResourcesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "bulkDelete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:bulkDelete";
+
+                        /// <summary>Initializes BulkDelete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
                     /// Configure the search parameters for the FHIR store and reindex resources in the FHIR store
                     /// according to the defined search parameters. The search parameters provided in this request will
                     /// replace any previous search configuration. The target SearchParameter resources need to exist in
@@ -14574,14 +14643,24 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -15325,6 +15404,41 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>The Storage class in which the Blob data is stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blobStorageClass")]
         public virtual string BlobStorageClass { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to bulk delete FHIR resources.</summary>
+    public class BulkDeleteResourcesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The Cloud Storage output destination. The Healthcare Service Agent account requires the
+        /// `roles/storage.objectAdmin` role on the Cloud Storage location. The deleted resources outputs are organized
+        /// by FHIR resource types. The server creates one or more objects per resource type. Each object contains
+        /// newline delimited strings in the format {resourceType}/{resourceId}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
+        public virtual GoogleCloudHealthcareV1beta1FhirGcsDestination GcsDestination { get; set; }
+
+        /// <summary>
+        /// Optional. String of comma-delimited FHIR resource types. If provided, only resources of the specified
+        /// resource type(s) will be deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>
+        /// Optional. If provided, only resources updated before or atthis time are deleted. The time uses the format
+        /// YYYY-MM-DDThh:mm:ss.sss+zz:zz. For example, `2015-02-07T13:28:17.239+02:00` or `2017-01-01T00:00:00Z`. The
+        /// time must be specified to the second and include a time zone.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("until")]
+        public virtual string Until { get; set; }
+
+        /// <summary>Optional. Specifies which version of the resources to delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionConfig")]
+        public virtual string VersionConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16081,11 +16195,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual DeidentifyConfig Config { get; set; }
 
         /// <summary>
-        /// Required. The name of the DICOM store to create and write the redacted data to. For example,
+        /// Required. The name of the DICOM store to write the redacted data to. For example,
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`. * The
-        /// destination dataset must exist. * The source dataset and destination dataset must both reside in the same
-        /// location. De-identifying data across multiple locations is not supported. * The destination DICOM store must
-        /// not exist. * The caller must have the necessary permissions to create the destination DICOM store.
+        /// destination dataset and DICOM store must exist. * The source dataset and destination dataset must both
+        /// reside in the same location. De-identifying data across multiple locations is not supported. * The caller
+        /// must have the healthcare.dicomStores.dicomWebWrite permission to write to the destination DICOM store.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationStore")]
         public virtual string DestinationStore { get; set; }
@@ -16115,12 +16229,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual DeidentifyConfig Config { get; set; }
 
         /// <summary>
-        /// Required. The name of the FHIR store to create and write the redacted data to. For example,
+        /// Required. The name of the FHIR store to write the redacted data to. For example,
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`. * The
-        /// destination dataset must exist. * The source dataset and destination dataset must both reside in the same
-        /// location. De-identifying data across multiple locations is not supported. * The destination FHIR store must
-        /// exist. * The caller must have the healthcare.fhirResources.update permission to write to the destination
-        /// FHIR store.
+        /// destination dataset and FHIR store must exist. * The source dataset and destination dataset must both reside
+        /// in the same location. De-identifying data across multiple locations is not supported. * The caller must have
+        /// the healthcare.fhirResources.update permission to write to the destination FHIR store.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationStore")]
         public virtual string DestinationStore { get; set; }
@@ -17655,17 +17768,32 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// `.../{study_id}/{series_id}/{instance_id}[/{frame_number}].{extension}` The frame_number component exists
         /// only for multi-frame instances. Supported MIME types are consistent with supported formats in DICOMweb:
         /// https://cloud.google.com/healthcare/docs/dicom#retrieve_transaction. Specifically, the following are
-        /// supported: - application/dicom; transfer-syntax=1.2.840.10008.1.2.1 (uncompressed DICOM) -
+        /// supported: - application/dicom; transfer-syntax=1.2.840.10008.1.2 (DICOM Implicit VR Little Endian) -
+        /// application/dicom; transfer-syntax=1.2.840.10008.1.2.1 (DICOM Explicit VR Little Endian) -
+        /// application/dicom; transfer-syntax=1.2.840.10008.1.2.1.99 (DICOM Deflated Explicit VR Little Endian) -
         /// application/dicom; transfer-syntax=1.2.840.10008.1.2.4.50 (DICOM with embedded JPEG Baseline) -
-        /// application/dicom; transfer-syntax=1.2.840.10008.1.2.4.90 (DICOM with embedded JPEG 2000 Lossless Only) -
-        /// application/dicom; transfer-syntax=1.2.840.10008.1.2.4.91 (DICOM with embedded JPEG 2000)h -
-        /// application/dicom; transfer-syntax=* (DICOM with no transcoding) - application/octet-stream;
-        /// transfer-syntax=1.2.840.10008.1.2.1 (raw uncompressed PixelData) - application/octet-stream;
-        /// transfer-syntax=* (raw PixelData in whatever format it was uploaded in) - image/jpeg;
-        /// transfer-syntax=1.2.840.10008.1.2.4.50 (Consumer JPEG) - image/png The following extensions are used for
-        /// output files: - application/dicom -&amp;gt; .dcm - image/jpeg -&amp;gt; .jpg - image/png -&amp;gt; .png -
-        /// application/octet-stream -&amp;gt; no extension If unspecified, the instances are exported in the original
-        /// DICOM format they were uploaded in.
+        /// application/dicom; transfer-syntax=1.2.840.10008.1.2.4.51 (DICOM with embedded JPEG Extended) -
+        /// application/dicom; transfer-syntax=1.2.840.10008.1.2.4.57 (DICOM with embedded JPEG Lossless) -
+        /// application/dicom; transfer-syntax=1.2.840.10008.1.2.4.70 (DICOM with embedded JPEG Lossless First-Order
+        /// Prediction) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.80 (DICOM with embedded JPEG-LS
+        /// Lossless) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.81 (DICOM with embedded JPEG-LS Lossy
+        /// (Near-Lossless)) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.90 (DICOM with embedded JPEG 2000
+        /// Lossless Only) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.91 (DICOM with embedded JPEG 2000) -
+        /// application/dicom; transfer-syntax=1.2.840.10008.1.2.4.110 (DICOM with embedded JPEG XL Lossless) -
+        /// application/dicom; transfer-syntax=1.2.840.10008.1.2.4.111 (DICOM with embedded JPEG XL JPEG Recompression)
+        /// - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.112 (DICOM with embedded JPEG XL) -
+        /// application/dicom; transfer-syntax=1.2.840.10008.1.2.4.201 (DICOM with embedded High-Throughput JPEG 2000
+        /// Lossless) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.202 (DICOM with embedded High-Throughput
+        /// JPEG 2000 with RPCL Options Lossless) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.203 (DICOM
+        /// with embedded High-Throughput JPEG 2000) - application/dicom; transfer-syntax=1.2.840.10008.1.2.5 (DICOM
+        /// with embedded RLE Lossless) - application/dicom; transfer-syntax=1.2.840.10008.1.2.8.1 (DICOM with embedded
+        /// Deflated Image Frame Compression) - application/dicom; transfer-syntax=* (DICOM with no transcoding) -
+        /// application/octet-stream; transfer-syntax=1.2.840.10008.1.2.1 (raw uncompressed PixelData) -
+        /// application/octet-stream; transfer-syntax=* (raw PixelData in whatever format it was uploaded in) -
+        /// image/jpeg; transfer-syntax=1.2.840.10008.1.2.4.50 (Consumer JPEG) - image/png The following extensions are
+        /// used for output files: - application/dicom -&amp;gt; .dcm - image/jpeg -&amp;gt; .jpg - image/png -&amp;gt;
+        /// .png - application/octet-stream -&amp;gt; no extension If unspecified, the instances are exported in the
+        /// original DICOM format they were uploaded in.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
