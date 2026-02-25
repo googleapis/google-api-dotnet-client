@@ -5678,7 +5678,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// specify if Google authentication is enabled for the enterprise for knowledge worker devices. This value can
         /// be set only via the Google Admin Console. Google authentication can be used with signin_url In the case
         /// where Google authentication is required and a signin_url is specified, Google authentication will be
-        /// launched before signin_url.
+        /// launched before signin_url. This value is overridden by EnrollmentToken.googleAuthenticationOptions and
+        /// SigninDetail.googleAuthenticationOptions, if they are set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleAuthenticationRequired")]
         public virtual string GoogleAuthenticationRequired { get; set; }
