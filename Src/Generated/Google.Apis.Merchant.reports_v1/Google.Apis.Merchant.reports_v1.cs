@@ -861,13 +861,17 @@ namespace Google.Apis.Merchant.reports_v1.Data
     public class ItemIssueSeverity : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Aggregated severity of the issue for all reporting contexts it affects. **This field can be used for
-        /// filtering the results.**
+        /// Aggregated severity of the issue for all reporting contexts it affects. Reporting contexts included in the
+        /// computation of the aggregated severity can be restricted using a filter on the `reporting_context` field.
+        /// **This field can be used for filtering the results.**
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregatedSeverity")]
         public virtual string AggregatedSeverity { get; set; }
 
-        /// <summary>Issue severity per reporting context.</summary>
+        /// <summary>
+        /// Issue severity per reporting context. Reporting contexts included in this list can be restricted using a
+        /// filter on the `reporting_context` field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severityPerReportingContext")]
         public virtual System.Collections.Generic.IList<IssueSeverityPerReportingContext> SeverityPerReportingContext { get; set; }
 
@@ -1547,14 +1551,19 @@ namespace Google.Apis.Merchant.reports_v1.Data
 
     /// <summary>
     /// Fields available for query in `product_view` table. Products in the current inventory. Products in this table
-    /// are the same as in Products sub-API but not all product attributes from Products sub-API are available for query
-    /// in this table. In contrast to Products sub-API, this table allows to filter the returned list of products by
-    /// product attributes. To retrieve a single product by `id` or list all products, Products sub-API should be used.
-    /// Values are only set for fields requested explicitly in the request's search query.
+    /// are the same as a [Product resource in Products
+    /// sub-API](https://developers.google.com/merchant/api/reference/rest/products_v1/accounts.products) but not all
+    /// product attributes from Products sub-API are available for query in this table. In contrast to Products sub-API,
+    /// this table allows to filter the returned list of products by product attributes. To retrieve a single product by
+    /// `id` or list all products, Products sub-API should be used. Values are only set for fields requested explicitly
+    /// in the request's search query.
     /// </summary>
     public class ProductView : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Aggregated status.</summary>
+        /// <summary>
+        /// Aggregated status across all reporting contexts. Reporting contexts included in the computation of the
+        /// aggregated status can be restricted using a filter on the `reporting_context` field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregatedReportingContextStatus")]
         public virtual string AggregatedReportingContextStatus { get; set; }
 
@@ -1736,11 +1745,27 @@ namespace Google.Apis.Merchant.reports_v1.Data
         public virtual string ProductTypeL5 { get; set; }
 
         /// <summary>
+        /// Reporting context to restrict the query to. Restricts the reporting contexts returned in
+        /// `status_per_reporting_context` and `item_issues`, and used to compute `aggregated_reporting_context_status`.
+        /// **This field can only be used in the `WHERE` clause and cannot be selected in the `SELECT` clause.**
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportingContext")]
+        public virtual string ReportingContext { get; set; }
+
+        /// <summary>
         /// Normalized [shipping label](https://support.google.com/merchants/answer/6324504) specified in the data
         /// source.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingLabel")]
         public virtual string ShippingLabel { get; set; }
+
+        /// <summary>
+        /// Detailed product status per reporting context. Reporting contexts included in this list can be restricted
+        /// using a filter on the `reporting_context` field. Equivalent to `ProductStatus.destination_statuses` in
+        /// Products API. **This field cannot be used for sorting or filtering the results.**
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusPerReportingContext")]
+        public virtual System.Collections.Generic.IList<StatusPerReportingContext> StatusPerReportingContext { get; set; }
 
         /// <summary>Link to the processed image of the product, hosted on the Google infrastructure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailLink")]
@@ -1808,8 +1833,8 @@ namespace Google.Apis.Merchant.reports_v1.Data
     public class SearchRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Number of `ReportRows` to retrieve in a single page. Defaults to 1000. Values above 5000 are
-        /// coerced to 5000.
+        /// Optional. Number of `ReportRows` to retrieve in a single page. Defaults to 1000. Values above 100,000 are
+        /// coerced to 100,000.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
@@ -1825,7 +1850,7 @@ namespace Google.Apis.Merchant.reports_v1.Data
         /// <summary>
         /// Required. Query that defines a report to be retrieved. For details on how to construct your query, see the
         /// [Query Language guide](/merchant/api/guides/reports/query-language). For the full list of available tables
-        /// and fields, see the [Available fields](/merchant/api/reference/rest/reports_{api_version}/accounts.reports).
+        /// and fields, see the Available fields.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
@@ -1847,6 +1872,40 @@ namespace Google.Apis.Merchant.reports_v1.Data
         /// <summary>Rows that matched the search query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<ReportRow> Results { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Status of the product for a specific reporting context. Equivalent to `DestinationStatus` in Products API.
+    /// </summary>
+    public class StatusPerReportingContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of approved countries in the reporting context, represented in [ISO
+        /// 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format, for example, `US`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approvedCountries")]
+        public virtual System.Collections.Generic.IList<string> ApprovedCountries { get; set; }
+
+        /// <summary>
+        /// List of disapproved countries in the reporting context, represented in [ISO
+        /// 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format, for example, `US`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disapprovedCountries")]
+        public virtual System.Collections.Generic.IList<string> DisapprovedCountries { get; set; }
+
+        /// <summary>
+        /// List of pending countries in the reporting context, represented in [ISO
+        /// 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format, for example, `US`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingCountries")]
+        public virtual System.Collections.Generic.IList<string> PendingCountries { get; set; }
+
+        /// <summary>Reporting context the status applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportingContext")]
+        public virtual string ReportingContext { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
