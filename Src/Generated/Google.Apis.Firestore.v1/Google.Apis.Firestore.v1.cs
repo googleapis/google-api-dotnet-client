@@ -5932,7 +5932,9 @@ namespace Google.Apis.Firestore.v1.Data
 
         /// <summary>
         /// Output only. The unique resource name of the Backup. Format is
-        /// `projects/{project}/locations/{location}/backups/{backup}`.
+        /// `projects/{project}/locations/{location}/backups/{backup}`. The location in the name will be the Standard
+        /// Managed Multi-Region (SMMR) location (e.g. `us`) if the backup was created with an SMMR location, or the
+        /// Google Managed Multi-Region (GMMR) location (e.g. `nam5`) if the backup was created with a GMMR location.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7697,14 +7699,6 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>The metadata message for google.cloud.location.Location.metadata.</summary>
     public class GoogleFirestoreAdminV1LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The storage placements available in the location. When the location represents a Standard Managed
-        /// Multi-Region (SMMR) like "us", this field lists the available Google-Managed Multi-Regions (GMMRs) within
-        /// it, such as "nam5" or "eur3".
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("availableStoragePlacements")]
-        public virtual System.Collections.Generic.IList<string> AvailableStoragePlacements { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
