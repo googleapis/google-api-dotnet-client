@@ -6239,6 +6239,33 @@ namespace Google.Apis.NetAppFiles.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details about a clone volume.</summary>
+    public class CloneDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Shared space in GiB. Determined at volume creation time based on size of source snapshot.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sharedSpaceGib")]
+        public virtual System.Nullable<long> SharedSpaceGib { get; set; }
+
+        /// <summary>
+        /// Output only. Specifies the full resource name of the source snapshot from which this volume was cloned.
+        /// Format: projects/{project}/locations/{location}/volumes/{volume}/snapshots/{snapshot}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshot")]
+        public virtual string SourceSnapshot { get; set; }
+
+        /// <summary>
+        /// Output only. Full name of the source volume resource. Format:
+        /// projects/{project}/locations/{location}/volumes/{volume}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceVolume")]
+        public virtual string SourceVolume { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Make a snapshot every day e.g. at 04:00, 05:20, 23:50</summary>
     public class DailySchedule : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8167,6 +8194,10 @@ namespace Google.Apis.NetAppFiles.v1.Data
         /// <summary>Required. Capacity in GIB of the volume</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capacityGib")]
         public virtual System.Nullable<long> CapacityGib { get; set; }
+
+        /// <summary>Output only. If this volume is a clone, this field contains details about the clone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloneDetails")]
+        public virtual CloneDetails CloneDetails { get; set; }
 
         /// <summary>Output only. Size of the volume cold tier data rounded down to the nearest GiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coldTierSizeGib")]
