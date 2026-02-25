@@ -6054,14 +6054,24 @@ namespace Google.Apis.Dataform.v1beta1
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -7999,8 +8009,8 @@ namespace Google.Apis.Dataform.v1beta1.Data
     public class MoveFolderRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The name of the Folder, TeamFolder, or root location to move the Folder to. Can be in the format
-        /// of: - "" to move into the root User folder - `projects/*/locations/*/folders/*` -
+        /// Optional. The name of the Folder, TeamFolder, or root location to move the Folder to. Can be in the format
+        /// of: "" to move into the root User folder, `projects/*/locations/*/folders/*`,
         /// `projects/*/locations/*/teamFolders/*`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationContainingFolder")]
@@ -8014,8 +8024,8 @@ namespace Google.Apis.Dataform.v1beta1.Data
     public class MoveRepositoryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The name of the Folder, TeamFolder, or root location to move the repository to. Can be in the
-        /// format of: - "" to move into the root User folder - `projects/*/locations/*/folders/*` -
+        /// Optional. The name of the Folder, TeamFolder, or root location to move the repository to. Can be in the
+        /// format of: "" to move into the root User folder, `projects/*/locations/*/folders/*`,
         /// `projects/*/locations/*/teamFolders/*`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationContainingFolder")]
@@ -8601,7 +8611,7 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// <summary>
         /// Optional. The connection specifying the credentials to be used to read and write to external storage, such
         /// as Cloud Storage. The connection can have the form `{project}.{location}.{connection_id}` or
-        /// `projects/{project}/locations/{location}/connections/{connection_id}", or be set to DEFAULT.
+        /// `projects/{project}/locations/{location}/connections/{connection_id}`, or be set to DEFAULT.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connection")]
         public virtual string Connection { get; set; }
