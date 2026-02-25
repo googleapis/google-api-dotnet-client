@@ -1131,63 +1131,6 @@ namespace Google.Apis.Looker.v1
                         });
                     }
                 }
-
-                /// <summary>Undeletes Looker instance.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">
-                /// Required. Format: projects/{project}/locations/{location}/instances/{instance}
-                /// </param>
-                public virtual UndeleteRequest Undelete(Google.Apis.Looker.v1.Data.UndeleteInstanceRequest body, string name)
-                {
-                    return new UndeleteRequest(this.service, body, name);
-                }
-
-                /// <summary>Undeletes Looker instance.</summary>
-                public class UndeleteRequest : LookerBaseServiceRequest<Google.Apis.Looker.v1.Data.Operation>
-                {
-                    /// <summary>Constructs a new Undelete request.</summary>
-                    public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Looker.v1.Data.UndeleteInstanceRequest body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. Format: projects/{project}/locations/{location}/instances/{instance}
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Looker.v1.Data.UndeleteInstanceRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "undelete";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+name}:undelete";
-
-                    /// <summary>Initializes Undelete parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
-                        });
-                    }
-                }
             }
 
             /// <summary>Gets the Operations resource.</summary>
@@ -1530,14 +1473,24 @@ namespace Google.Apis.Looker.v1
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : LookerBaseServiceRequest<Google.Apis.Looker.v1.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1886,10 +1839,6 @@ namespace Google.Apis.Looker.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adminSettings")]
         public virtual AdminSettings AdminSettings { get; set; }
 
-        /// <summary>Optional. Indicates whether catalog integration is enabled for the Looker instance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("catalogIntegrationEnabled")]
-        public virtual System.Nullable<bool> CatalogIntegrationEnabled { get; set; }
-
         /// <summary>Optional. Storage class of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("classType")]
         public virtual string ClassType { get; set; }
@@ -2053,50 +2002,9 @@ namespace Google.Apis.Looker.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
-        /// <summary>Output only. The reason for the instance being in a soft-deleted state.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("softDeleteReason")]
-        public virtual string SoftDeleteReason { get; set; }
-
         /// <summary>Output only. The state of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
-
-        private string _suspendedTimeRaw;
-
-        private object _suspendedTime;
-
-        /// <summary>Output only. The time when the Looker instance was suspended (soft deleted).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("suspendedTime")]
-        public virtual string SuspendedTimeRaw
-        {
-            get => _suspendedTimeRaw;
-            set
-            {
-                _suspendedTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _suspendedTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="SuspendedTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SuspendedTimeDateTimeOffset instead.")]
-        public virtual object SuspendedTime
-        {
-            get => _suspendedTime;
-            set
-            {
-                _suspendedTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _suspendedTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="SuspendedTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? SuspendedTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SuspendedTimeRaw);
-            set => SuspendedTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
 
         private string _updateTimeRaw;
 
@@ -2470,6 +2378,13 @@ namespace Google.Apis.Looker.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
         public virtual string ClientSecret { get; set; }
 
+        /// <summary>
+        /// Optional. Whether to use the shared OAuth client. Instances specifying this field do not need to provide
+        /// client_id and client_secret.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sharedOauthClientEnabled")]
+        public virtual System.Nullable<bool> SharedOauthClientEnabled { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2786,13 +2701,6 @@ namespace Google.Apis.Looker.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
         public virtual System.Nullable<int> Seconds { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request options for undeleting an instance.</summary>
-    public class UndeleteInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
