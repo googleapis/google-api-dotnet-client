@@ -7666,7 +7666,157 @@ namespace Google.Apis.DiscoveryEngine.v1
                             public AgentsResource(Google.Apis.Services.IClientService service)
                             {
                                 this.service = service;
+                                Message = new MessageResource(service);
                                 Operations = new OperationsResource(service);
+                                Tasks = new TasksResource(service);
+                            }
+
+                            /// <summary>Gets the Message resource.</summary>
+                            public virtual MessageResource Message { get; }
+
+                            /// <summary>The "message" collection of methods.</summary>
+                            public class MessageResource
+                            {
+                                private const string Resource = "message";
+
+                                /// <summary>The service which this resource belongs to.</summary>
+                                private readonly Google.Apis.Services.IClientService service;
+
+                                /// <summary>Constructs a new resource.</summary>
+                                public MessageResource(Google.Apis.Services.IClientService service)
+                                {
+                                    this.service = service;
+                                }
+
+                                /// <summary>
+                                /// Send a message to the agent. This is a blocking call that will return the task once
+                                /// it is completed, or a LRO if requested.
+                                /// </summary>
+                                /// <param name="body">The body of the request.</param>
+                                /// <param name="tenant">
+                                /// Optional tenant, provided as a path parameter. Experimental, might still change for
+                                /// 1.0 release.
+                                /// </param>
+                                public virtual SendRequest Send(Google.Apis.DiscoveryEngine.v1.Data.A2aV1SendMessageRequest body, string tenant)
+                                {
+                                    return new SendRequest(this.service, body, tenant);
+                                }
+
+                                /// <summary>
+                                /// Send a message to the agent. This is a blocking call that will return the task once
+                                /// it is completed, or a LRO if requested.
+                                /// </summary>
+                                public class SendRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1SendMessageResponse>
+                                {
+                                    /// <summary>Constructs a new Send request.</summary>
+                                    public SendRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1.Data.A2aV1SendMessageRequest body, string tenant) : base(service)
+                                    {
+                                        Tenant = tenant;
+                                        Body = body;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>
+                                    /// Optional tenant, provided as a path parameter. Experimental, might still change
+                                    /// for 1.0 release.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Tenant { get; private set; }
+
+                                    /// <summary>Gets or sets the body of this request.</summary>
+                                    Google.Apis.DiscoveryEngine.v1.Data.A2aV1SendMessageRequest Body { get; set; }
+
+                                    /// <summary>Returns the body of the request.</summary>
+                                    protected override object GetBody() => Body;
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "send";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "POST";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "{+tenant}/message:send";
+
+                                    /// <summary>Initializes Send parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "tenant",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                        });
+                                    }
+                                }
+
+                                /// <summary>
+                                /// SendStreamingMessage is a streaming call that will return a stream of task update
+                                /// events until the Task is in an interrupted or terminal state.
+                                /// </summary>
+                                /// <param name="body">The body of the request.</param>
+                                /// <param name="tenant">
+                                /// Optional tenant, provided as a path parameter. Experimental, might still change for
+                                /// 1.0 release.
+                                /// </param>
+                                public virtual StreamRequest Stream(Google.Apis.DiscoveryEngine.v1.Data.A2aV1SendMessageRequest body, string tenant)
+                                {
+                                    return new StreamRequest(this.service, body, tenant);
+                                }
+
+                                /// <summary>
+                                /// SendStreamingMessage is a streaming call that will return a stream of task update
+                                /// events until the Task is in an interrupted or terminal state.
+                                /// </summary>
+                                public class StreamRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1StreamResponse>
+                                {
+                                    /// <summary>Constructs a new Stream request.</summary>
+                                    public StreamRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1.Data.A2aV1SendMessageRequest body, string tenant) : base(service)
+                                    {
+                                        Tenant = tenant;
+                                        Body = body;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>
+                                    /// Optional tenant, provided as a path parameter. Experimental, might still change
+                                    /// for 1.0 release.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Tenant { get; private set; }
+
+                                    /// <summary>Gets or sets the body of this request.</summary>
+                                    Google.Apis.DiscoveryEngine.v1.Data.A2aV1SendMessageRequest Body { get; set; }
+
+                                    /// <summary>Returns the body of the request.</summary>
+                                    protected override object GetBody() => Body;
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "stream";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "POST";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "{+tenant}/message:stream";
+
+                                    /// <summary>Initializes Stream parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "tenant",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                        });
+                                    }
+                                }
                             }
 
                             /// <summary>Gets the Operations resource.</summary>
@@ -7735,6 +7885,668 @@ namespace Google.Apis.DiscoveryEngine.v1
                                             Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+/operations/[^/]+$",
                                         });
                                     }
+                                }
+                            }
+
+                            /// <summary>Gets the Tasks resource.</summary>
+                            public virtual TasksResource Tasks { get; }
+
+                            /// <summary>The "tasks" collection of methods.</summary>
+                            public class TasksResource
+                            {
+                                private const string Resource = "tasks";
+
+                                /// <summary>The service which this resource belongs to.</summary>
+                                private readonly Google.Apis.Services.IClientService service;
+
+                                /// <summary>Constructs a new resource.</summary>
+                                public TasksResource(Google.Apis.Services.IClientService service)
+                                {
+                                    this.service = service;
+                                    PushNotificationConfigs = new PushNotificationConfigsResource(service);
+                                }
+
+                                /// <summary>Gets the PushNotificationConfigs resource.</summary>
+                                public virtual PushNotificationConfigsResource PushNotificationConfigs { get; }
+
+                                /// <summary>The "pushNotificationConfigs" collection of methods.</summary>
+                                public class PushNotificationConfigsResource
+                                {
+                                    private const string Resource = "pushNotificationConfigs";
+
+                                    /// <summary>The service which this resource belongs to.</summary>
+                                    private readonly Google.Apis.Services.IClientService service;
+
+                                    /// <summary>Constructs a new resource.</summary>
+                                    public PushNotificationConfigsResource(Google.Apis.Services.IClientService service)
+                                    {
+                                        this.service = service;
+                                    }
+
+                                    /// <summary>Set a push notification config for a task.</summary>
+                                    /// <param name="body">The body of the request.</param>
+                                    /// <param name="tenant">
+                                    /// Optional tenant, provided as a path parameter. Experimental, might still change
+                                    /// for 1.0 release.
+                                    /// </param>
+                                    /// <param name="parent">
+                                    /// Required. The parent task resource for this config. Format: tasks/{task_id}
+                                    /// </param>
+                                    public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1.Data.A2aV1TaskPushNotificationConfig body, string tenant, string parent)
+                                    {
+                                        return new CreateRequest(this.service, body, tenant, parent);
+                                    }
+
+                                    /// <summary>Set a push notification config for a task.</summary>
+                                    public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1TaskPushNotificationConfig>
+                                    {
+                                        /// <summary>Constructs a new Create request.</summary>
+                                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1.Data.A2aV1TaskPushNotificationConfig body, string tenant, string parent) : base(service)
+                                        {
+                                            Tenant = tenant;
+                                            Parent = parent;
+                                            Body = body;
+                                            InitParameters();
+                                        }
+
+                                        /// <summary>
+                                        /// Optional tenant, provided as a path parameter. Experimental, might still
+                                        /// change for 1.0 release.
+                                        /// </summary>
+                                        [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                                        public virtual string Tenant { get; private set; }
+
+                                        /// <summary>
+                                        /// Required. The parent task resource for this config. Format: tasks/{task_id}
+                                        /// </summary>
+                                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                        public virtual string Parent { get; private set; }
+
+                                        /// <summary>Required. The ID for the new config.</summary>
+                                        [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
+                                        public virtual string ConfigId { get; set; }
+
+                                        /// <summary>Gets or sets the body of this request.</summary>
+                                        Google.Apis.DiscoveryEngine.v1.Data.A2aV1TaskPushNotificationConfig Body { get; set; }
+
+                                        /// <summary>Returns the body of the request.</summary>
+                                        protected override object GetBody() => Body;
+
+                                        /// <summary>Gets the method name.</summary>
+                                        public override string MethodName => "create";
+
+                                        /// <summary>Gets the HTTP method.</summary>
+                                        public override string HttpMethod => "POST";
+
+                                        /// <summary>Gets the REST path.</summary>
+                                        public override string RestPath => "{+tenant}/{+parent}";
+
+                                        /// <summary>Initializes Create parameter list.</summary>
+                                        protected override void InitParameters()
+                                        {
+                                            base.InitParameters();
+                                            RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                                            {
+                                                Name = "tenant",
+                                                IsRequired = true,
+                                                ParameterType = "path",
+                                                DefaultValue = null,
+                                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                            });
+                                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                            {
+                                                Name = "parent",
+                                                IsRequired = true,
+                                                ParameterType = "path",
+                                                DefaultValue = null,
+                                                Pattern = @"^tasks/[^/]+/pushNotificationConfigs$",
+                                            });
+                                            RequestParameters.Add("configId", new Google.Apis.Discovery.Parameter
+                                            {
+                                                Name = "configId",
+                                                IsRequired = false,
+                                                ParameterType = "query",
+                                                DefaultValue = null,
+                                                Pattern = null,
+                                            });
+                                        }
+                                    }
+
+                                    /// <summary>Delete a push notification config for a task.</summary>
+                                    /// <param name="tenant">
+                                    /// Optional tenant, provided as a path parameter. Experimental, might still change
+                                    /// for 1.0 release.
+                                    /// </param>
+                                    /// <param name="name">
+                                    /// The resource name of the config to delete. Format:
+                                    /// tasks/{task_id}/pushNotificationConfigs/{config_id}
+                                    /// </param>
+                                    public virtual DeleteRequest Delete(string tenant, string name)
+                                    {
+                                        return new DeleteRequest(this.service, tenant, name);
+                                    }
+
+                                    /// <summary>Delete a push notification config for a task.</summary>
+                                    public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleProtobufEmpty>
+                                    {
+                                        /// <summary>Constructs a new Delete request.</summary>
+                                        public DeleteRequest(Google.Apis.Services.IClientService service, string tenant, string name) : base(service)
+                                        {
+                                            Tenant = tenant;
+                                            Name = name;
+                                            InitParameters();
+                                        }
+
+                                        /// <summary>
+                                        /// Optional tenant, provided as a path parameter. Experimental, might still
+                                        /// change for 1.0 release.
+                                        /// </summary>
+                                        [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                                        public virtual string Tenant { get; private set; }
+
+                                        /// <summary>
+                                        /// The resource name of the config to delete. Format:
+                                        /// tasks/{task_id}/pushNotificationConfigs/{config_id}
+                                        /// </summary>
+                                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                        public virtual string Name { get; private set; }
+
+                                        /// <summary>Gets the method name.</summary>
+                                        public override string MethodName => "delete";
+
+                                        /// <summary>Gets the HTTP method.</summary>
+                                        public override string HttpMethod => "DELETE";
+
+                                        /// <summary>Gets the REST path.</summary>
+                                        public override string RestPath => "{+tenant}/{+name}";
+
+                                        /// <summary>Initializes Delete parameter list.</summary>
+                                        protected override void InitParameters()
+                                        {
+                                            base.InitParameters();
+                                            RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                                            {
+                                                Name = "tenant",
+                                                IsRequired = true,
+                                                ParameterType = "path",
+                                                DefaultValue = null,
+                                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                            });
+                                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                            {
+                                                Name = "name",
+                                                IsRequired = true,
+                                                ParameterType = "path",
+                                                DefaultValue = null,
+                                                Pattern = @"^tasks/[^/]+/pushNotificationConfigs/[^/]+$",
+                                            });
+                                        }
+                                    }
+
+                                    /// <summary>Get a push notification config for a task.</summary>
+                                    /// <param name="tenant">
+                                    /// Optional tenant, provided as a path parameter. Experimental, might still change
+                                    /// for 1.0 release.
+                                    /// </param>
+                                    /// <param name="name">
+                                    /// The resource name of the config to retrieve. Format:
+                                    /// tasks/{task_id}/pushNotificationConfigs/{config_id}
+                                    /// </param>
+                                    public virtual GetRequest Get(string tenant, string name)
+                                    {
+                                        return new GetRequest(this.service, tenant, name);
+                                    }
+
+                                    /// <summary>Get a push notification config for a task.</summary>
+                                    public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1TaskPushNotificationConfig>
+                                    {
+                                        /// <summary>Constructs a new Get request.</summary>
+                                        public GetRequest(Google.Apis.Services.IClientService service, string tenant, string name) : base(service)
+                                        {
+                                            Tenant = tenant;
+                                            Name = name;
+                                            InitParameters();
+                                        }
+
+                                        /// <summary>
+                                        /// Optional tenant, provided as a path parameter. Experimental, might still
+                                        /// change for 1.0 release.
+                                        /// </summary>
+                                        [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                                        public virtual string Tenant { get; private set; }
+
+                                        /// <summary>
+                                        /// The resource name of the config to retrieve. Format:
+                                        /// tasks/{task_id}/pushNotificationConfigs/{config_id}
+                                        /// </summary>
+                                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                        public virtual string Name { get; private set; }
+
+                                        /// <summary>Gets the method name.</summary>
+                                        public override string MethodName => "get";
+
+                                        /// <summary>Gets the HTTP method.</summary>
+                                        public override string HttpMethod => "GET";
+
+                                        /// <summary>Gets the REST path.</summary>
+                                        public override string RestPath => "{+tenant}/{+name}";
+
+                                        /// <summary>Initializes Get parameter list.</summary>
+                                        protected override void InitParameters()
+                                        {
+                                            base.InitParameters();
+                                            RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                                            {
+                                                Name = "tenant",
+                                                IsRequired = true,
+                                                ParameterType = "path",
+                                                DefaultValue = null,
+                                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                            });
+                                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                            {
+                                                Name = "name",
+                                                IsRequired = true,
+                                                ParameterType = "path",
+                                                DefaultValue = null,
+                                                Pattern = @"^tasks/[^/]+/pushNotificationConfigs/[^/]+$",
+                                            });
+                                        }
+                                    }
+
+                                    /// <summary>Get a list of push notifications configured for a task.</summary>
+                                    /// <param name="tenant">
+                                    /// Optional tenant, provided as a path parameter. Experimental, might still change
+                                    /// for 1.0 release.
+                                    /// </param>
+                                    /// <param name="parent">The parent task resource. Format: tasks/{task_id}</param>
+                                    public virtual ListRequest List(string tenant, string parent)
+                                    {
+                                        return new ListRequest(this.service, tenant, parent);
+                                    }
+
+                                    /// <summary>Get a list of push notifications configured for a task.</summary>
+                                    public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1ListTaskPushNotificationConfigResponse>
+                                    {
+                                        /// <summary>Constructs a new List request.</summary>
+                                        public ListRequest(Google.Apis.Services.IClientService service, string tenant, string parent) : base(service)
+                                        {
+                                            Tenant = tenant;
+                                            Parent = parent;
+                                            InitParameters();
+                                        }
+
+                                        /// <summary>
+                                        /// Optional tenant, provided as a path parameter. Experimental, might still
+                                        /// change for 1.0 release.
+                                        /// </summary>
+                                        [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                                        public virtual string Tenant { get; private set; }
+
+                                        /// <summary>The parent task resource. Format: tasks/{task_id}</summary>
+                                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                        public virtual string Parent { get; private set; }
+
+                                        /// <summary>
+                                        /// For AIP-158 these fields are present. Usually not used/needed. The maximum
+                                        /// number of configurations to return. If unspecified, all configs will be
+                                        /// returned.
+                                        /// </summary>
+                                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                                        /// <summary>
+                                        /// A page token received from a previous ListTaskPushNotificationConfigRequest
+                                        /// call. Provide this to retrieve the subsequent page. When paginating, all
+                                        /// other parameters provided to `ListTaskPushNotificationConfigRequest` must
+                                        /// match the call that provided the page token.
+                                        /// </summary>
+                                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                                        public virtual string PageToken { get; set; }
+
+                                        /// <summary>Gets the method name.</summary>
+                                        public override string MethodName => "list";
+
+                                        /// <summary>Gets the HTTP method.</summary>
+                                        public override string HttpMethod => "GET";
+
+                                        /// <summary>Gets the REST path.</summary>
+                                        public override string RestPath => "{+tenant}/{+parent}/pushNotificationConfigs";
+
+                                        /// <summary>Initializes List parameter list.</summary>
+                                        protected override void InitParameters()
+                                        {
+                                            base.InitParameters();
+                                            RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                                            {
+                                                Name = "tenant",
+                                                IsRequired = true,
+                                                ParameterType = "path",
+                                                DefaultValue = null,
+                                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                            });
+                                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                            {
+                                                Name = "parent",
+                                                IsRequired = true,
+                                                ParameterType = "path",
+                                                DefaultValue = null,
+                                                Pattern = @"^tasks/[^/]+$",
+                                            });
+                                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                            {
+                                                Name = "pageSize",
+                                                IsRequired = false,
+                                                ParameterType = "query",
+                                                DefaultValue = null,
+                                                Pattern = null,
+                                            });
+                                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                            {
+                                                Name = "pageToken",
+                                                IsRequired = false,
+                                                ParameterType = "query",
+                                                DefaultValue = null,
+                                                Pattern = null,
+                                            });
+                                        }
+                                    }
+                                }
+
+                                /// <summary>
+                                /// Cancel a task from the agent. If supported one should expect no more task updates
+                                /// for the task.
+                                /// </summary>
+                                /// <param name="body">The body of the request.</param>
+                                /// <param name="tenant">
+                                /// Optional tenant, provided as a path parameter. Experimental, might still change for
+                                /// 1.0 release.
+                                /// </param>
+                                /// <param name="name">
+                                /// The resource name of the task to cancel. Format: tasks/{task_id}
+                                /// </param>
+                                public virtual CancelRequest Cancel(Google.Apis.DiscoveryEngine.v1.Data.A2aV1CancelTaskRequest body, string tenant, string name)
+                                {
+                                    return new CancelRequest(this.service, body, tenant, name);
+                                }
+
+                                /// <summary>
+                                /// Cancel a task from the agent. If supported one should expect no more task updates
+                                /// for the task.
+                                /// </summary>
+                                public class CancelRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1Task>
+                                {
+                                    /// <summary>Constructs a new Cancel request.</summary>
+                                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1.Data.A2aV1CancelTaskRequest body, string tenant, string name) : base(service)
+                                    {
+                                        Tenant = tenant;
+                                        Name = name;
+                                        Body = body;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>
+                                    /// Optional tenant, provided as a path parameter. Experimental, might still change
+                                    /// for 1.0 release.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Tenant { get; private set; }
+
+                                    /// <summary>
+                                    /// The resource name of the task to cancel. Format: tasks/{task_id}
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Name { get; private set; }
+
+                                    /// <summary>Gets or sets the body of this request.</summary>
+                                    Google.Apis.DiscoveryEngine.v1.Data.A2aV1CancelTaskRequest Body { get; set; }
+
+                                    /// <summary>Returns the body of the request.</summary>
+                                    protected override object GetBody() => Body;
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "cancel";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "POST";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "{+tenant}/{+name}:cancel";
+
+                                    /// <summary>Initializes Cancel parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "tenant",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                        });
+                                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "name",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^tasks/[^/]+$",
+                                        });
+                                    }
+                                }
+
+                                /// <summary>Get the current state of a task from the agent.</summary>
+                                /// <param name="tenant">
+                                /// Optional tenant, provided as a path parameter. Experimental, might still change for
+                                /// 1.0 release.
+                                /// </param>
+                                /// <param name="name">
+                                /// Required. The resource name of the task. Format: tasks/{task_id}
+                                /// </param>
+                                public virtual GetRequest Get(string tenant, string name)
+                                {
+                                    return new GetRequest(this.service, tenant, name);
+                                }
+
+                                /// <summary>Get the current state of a task from the agent.</summary>
+                                public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1Task>
+                                {
+                                    /// <summary>Constructs a new Get request.</summary>
+                                    public GetRequest(Google.Apis.Services.IClientService service, string tenant, string name) : base(service)
+                                    {
+                                        Tenant = tenant;
+                                        Name = name;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>
+                                    /// Optional tenant, provided as a path parameter. Experimental, might still change
+                                    /// for 1.0 release.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Tenant { get; private set; }
+
+                                    /// <summary>
+                                    /// Required. The resource name of the task. Format: tasks/{task_id}
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Name { get; private set; }
+
+                                    /// <summary>
+                                    /// The number of most recent messages from the task's history to retrieve.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("historyLength", Google.Apis.Util.RequestParameterType.Query)]
+                                    public virtual System.Nullable<int> HistoryLength { get; set; }
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "get";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "GET";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "{+tenant}/{+name}";
+
+                                    /// <summary>Initializes Get parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "tenant",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                        });
+                                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "name",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^tasks/[^/]+$",
+                                        });
+                                        RequestParameters.Add("historyLength", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "historyLength",
+                                            IsRequired = false,
+                                            ParameterType = "query",
+                                            DefaultValue = null,
+                                            Pattern = null,
+                                        });
+                                    }
+                                }
+
+                                /// <summary>
+                                /// TaskSubscription is a streaming call that will return a stream of task update
+                                /// events. This attaches the stream to an existing in process task. If the task is
+                                /// complete the stream will return the completed task (like GetTask) and close the
+                                /// stream.
+                                /// </summary>
+                                /// <param name="tenant">
+                                /// Optional tenant, provided as a path parameter. Experimental, might still change for
+                                /// 1.0 release.
+                                /// </param>
+                                /// <param name="name">
+                                /// The resource name of the task to subscribe to. Format: tasks/{task_id}
+                                /// </param>
+                                public virtual SubscribeRequest Subscribe(string tenant, string name)
+                                {
+                                    return new SubscribeRequest(this.service, tenant, name);
+                                }
+
+                                /// <summary>
+                                /// TaskSubscription is a streaming call that will return a stream of task update
+                                /// events. This attaches the stream to an existing in process task. If the task is
+                                /// complete the stream will return the completed task (like GetTask) and close the
+                                /// stream.
+                                /// </summary>
+                                public class SubscribeRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1StreamResponse>
+                                {
+                                    /// <summary>Constructs a new Subscribe request.</summary>
+                                    public SubscribeRequest(Google.Apis.Services.IClientService service, string tenant, string name) : base(service)
+                                    {
+                                        Tenant = tenant;
+                                        Name = name;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>
+                                    /// Optional tenant, provided as a path parameter. Experimental, might still change
+                                    /// for 1.0 release.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Tenant { get; private set; }
+
+                                    /// <summary>
+                                    /// The resource name of the task to subscribe to. Format: tasks/{task_id}
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Name { get; private set; }
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "subscribe";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "GET";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "{+tenant}/{+name}:subscribe";
+
+                                    /// <summary>Initializes Subscribe parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "tenant",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                        });
+                                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "name",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^tasks/[^/]+$",
+                                        });
+                                    }
+                                }
+                            }
+
+                            /// <summary>GetAgentCard returns the agent card for the agent.</summary>
+                            /// <param name="tenant">
+                            /// Optional tenant, provided as a path parameter. Experimental, might still change for 1.0
+                            /// release.
+                            /// </param>
+                            public virtual GetCardRequest GetCard(string tenant)
+                            {
+                                return new GetCardRequest(this.service, tenant);
+                            }
+
+                            /// <summary>GetAgentCard returns the agent card for the agent.</summary>
+                            public class GetCardRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1AgentCard>
+                            {
+                                /// <summary>Constructs a new GetCard request.</summary>
+                                public GetCardRequest(Google.Apis.Services.IClientService service, string tenant) : base(service)
+                                {
+                                    Tenant = tenant;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Optional tenant, provided as a path parameter. Experimental, might still change for
+                                /// 1.0 release.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Tenant { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "getCard";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "{+tenant}/card";
+
+                                /// <summary>Initializes GetCard parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "tenant",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                    });
                                 }
                             }
                         }
@@ -20364,6 +21176,994 @@ namespace Google.Apis.DiscoveryEngine.v1
 }
 namespace Google.Apis.DiscoveryEngine.v1.Data
 {
+    public class A2aV1APIKeySecurityScheme : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description of this security scheme.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Location of the API key, valid values are "query", "header", or "cookie"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>Name of the header, query or cookie parameter to be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the A2A feature set supported by the agent</summary>
+    public class A2aV1AgentCapabilities : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Extensions supported by this agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
+        public virtual System.Collections.Generic.IList<A2aV1AgentExtension> Extensions { get; set; }
+
+        /// <summary>If the agent can send push notifications to the clients webhook</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pushNotifications")]
+        public virtual System.Nullable<bool> PushNotifications { get; set; }
+
+        /// <summary>If the agent will support streaming responses</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streaming")]
+        public virtual System.Nullable<bool> Streaming { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// AgentCard conveys key information: - Overall details (version, name, description, uses) - Skills; a set of
+    /// actions/solutions the agent can perform - Default modalities/content types supported by the agent. -
+    /// Authentication requirements Next ID: 19
+    /// </summary>
+    public class A2aV1AgentCard : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Announcement of additional supported transports. Client can use any of the supported transports.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalInterfaces")]
+        public virtual System.Collections.Generic.IList<A2aV1AgentInterface> AdditionalInterfaces { get; set; }
+
+        /// <summary>A2A Capability set supported by the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capabilities")]
+        public virtual A2aV1AgentCapabilities Capabilities { get; set; }
+
+        /// <summary>
+        /// protolint:enable REPEATED_FIELD_NAMES_PLURALIZED The set of interaction modes that the agent supports across
+        /// all skills. This can be overridden per skill. Defined as mime types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultInputModes")]
+        public virtual System.Collections.Generic.IList<string> DefaultInputModes { get; set; }
+
+        /// <summary>The mime types supported as outputs from this agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultOutputModes")]
+        public virtual System.Collections.Generic.IList<string> DefaultOutputModes { get; set; }
+
+        /// <summary>
+        /// A description of the agent's domain of action/solution space. Example: "Agent that helps users with recipes
+        /// and cooking."
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>A url to provide additional documentation about the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentationUrl")]
+        public virtual string DocumentationUrl { get; set; }
+
+        /// <summary>An optional URL to an icon for the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
+        public virtual string IconUrl { get; set; }
+
+        /// <summary>A human readable name for the agent. Example: "Recipe Agent"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The transport of the preferred endpoint. If empty, defaults to JSONRPC.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preferredTransport")]
+        public virtual string PreferredTransport { get; set; }
+
+        /// <summary>The version of the A2A protocol this agent supports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocolVersion")]
+        public virtual string ProtocolVersion { get; set; }
+
+        /// <summary>The service provider of the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provider")]
+        public virtual A2aV1AgentProvider Provider { get; set; }
+
+        /// <summary>
+        /// protolint:disable REPEATED_FIELD_NAMES_PLURALIZED Security requirements for contacting the agent. This list
+        /// can be seen as an OR of ANDs. Each object in the list describes one possible set of security requirements
+        /// that must be present on a request. This allows specifying, for example, "callers must either use OAuth OR an
+        /// API Key AND mTLS." Example: security { schemes { key: "oauth" value { list: ["read"] } } } security {
+        /// schemes { key: "api-key" } schemes { key: "mtls" } }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("security")]
+        public virtual System.Collections.Generic.IList<A2aV1Security> Security { get; set; }
+
+        /// <summary>The security scheme details used for authenticating with this agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securitySchemes")]
+        public virtual System.Collections.Generic.IDictionary<string, A2aV1SecurityScheme> SecuritySchemes { get; set; }
+
+        /// <summary>JSON Web Signatures computed for this AgentCard.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signatures")]
+        public virtual System.Collections.Generic.IList<A2aV1AgentCardSignature> Signatures { get; set; }
+
+        /// <summary>
+        /// Skills represent a unit of ability an agent can perform. This may somewhat abstract but represents a more
+        /// focused set of actions that the agent is highly likely to succeed at.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skills")]
+        public virtual System.Collections.Generic.IList<A2aV1AgentSkill> Skills { get; set; }
+
+        /// <summary>
+        /// Whether the agent supports providing an extended agent card when the user is authenticated, i.e. is the card
+        /// from .well-known different than the card from GetAgentCard.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportsAuthenticatedExtendedCard")]
+        public virtual System.Nullable<bool> SupportsAuthenticatedExtendedCard { get; set; }
+
+        /// <summary>
+        /// A URL to the address the agent is hosted at. This represents the preferred endpoint as declared by the
+        /// agent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The version of the agent. Example: "1.0.0"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// AgentCardSignature represents a JWS signature of an AgentCard. This follows the JSON format of an RFC 7515 JSON
+    /// Web Signature (JWS).
+    /// </summary>
+    public class A2aV1AgentCardSignature : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unprotected JWS header values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("header")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Header { get; set; }
+
+        /// <summary>
+        /// Required. The protected JWS header for the signature. This is always a base64url-encoded JSON object.
+        /// Required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protected")]
+        public virtual string Protected__ { get; set; }
+
+        /// <summary>Required. The computed signature, base64url-encoded. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signature")]
+        public virtual string Signature { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A declaration of an extension supported by an Agent.</summary>
+    public class A2aV1AgentExtension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A description of how this agent uses this extension. Example: "Google OAuth 2.0 authentication"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional configuration for the extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("params")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
+
+        /// <summary>Whether the client must follow specific requirements of the extension. Example: false</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("required")]
+        public virtual System.Nullable<bool> Required { get; set; }
+
+        /// <summary>
+        /// The URI of the extension. Example: "https://developers.google.com/identity/protocols/oauth2"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines additional transport information for the agent.</summary>
+    public class A2aV1AgentInterface : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Tenant to be set in the request when calling the agent. Experimental, might still change for 1.0 release.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenant")]
+        public virtual string Tenant { get; set; }
+
+        /// <summary>
+        /// The transport supported this url. This is an open form string, to be easily extended for many transport
+        /// protocols. The core ones officially supported are JSONRPC, GRPC and HTTP+JSON.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transport")]
+        public virtual string Transport { get; set; }
+
+        /// <summary>The url this interface is found at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents information about the service provider of an agent.</summary>
+    public class A2aV1AgentProvider : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The providers organization name Example: "Google"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organization")]
+        public virtual string Organization { get; set; }
+
+        /// <summary>The providers reference url Example: "https://ai.google.dev"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// AgentSkill represents a unit of action/solution that the agent can perform. One can think of this as a type of
+    /// highly reliable solution that an agent can be tasked to provide. Agents have the autonomy to choose how and when
+    /// to use specific skills, but clients should have confidence that if the skill is defined that unit of action can
+    /// be reliably performed.
+    /// </summary>
+    public class A2aV1AgentSkill : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A human (or llm) readable description of the skill details and behaviors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// A set of example queries that this skill is designed to address. These examples should help the caller to
+        /// understand how to craft requests to the agent to achieve specific goals. Example: ["I need a recipe for
+        /// bread"]
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("examples")]
+        public virtual System.Collections.Generic.IList<string> Examples { get; set; }
+
+        /// <summary>Unique identifier of the skill within this agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Possible input modalities supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputModes")]
+        public virtual System.Collections.Generic.IList<string> InputModes { get; set; }
+
+        /// <summary>A human readable name for the skill.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Possible output modalities produced</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputModes")]
+        public virtual System.Collections.Generic.IList<string> OutputModes { get; set; }
+
+        /// <summary>
+        /// protolint:disable REPEATED_FIELD_NAMES_PLURALIZED Security schemes necessary for the agent to leverage this
+        /// skill. As in the overall AgentCard.security, this list represents a logical OR of security requirement
+        /// objects. Each object is a set of security schemes that must be used together (a logical AND).
+        /// protolint:enable REPEATED_FIELD_NAMES_PLURALIZED
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("security")]
+        public virtual System.Collections.Generic.IList<A2aV1Security> Security { get; set; }
+
+        /// <summary>
+        /// A set of tags for the skill to enhance categorization/utilization. Example: ["cooking", "customer support",
+        /// "billing"]
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Artifacts are the container for task completed results. These are similar to Messages but are intended to be the
+    /// product of a task, as opposed to point-to-point communication.
+    /// </summary>
+    public class A2aV1Artifact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unique identifier (e.g. UUID) for the artifact. It must be at least unique within a task.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactId")]
+        public virtual string ArtifactId { get; set; }
+
+        /// <summary>A human readable description of the artifact, optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The URIs of extensions that are present or contributed to this Artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
+        public virtual System.Collections.Generic.IList<string> Extensions { get; set; }
+
+        /// <summary>Optional metadata included with the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>A human readable name for the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The content of the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parts")]
+        public virtual System.Collections.Generic.IList<A2aV1Part> Parts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines authentication details, used for push notifications.</summary>
+    public class A2aV1AuthenticationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional credentials</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("credentials")]
+        public virtual string Credentials { get; set; }
+
+        /// <summary>Supported authentication schemes - e.g. Basic, Bearer, etc</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemes")]
+        public virtual System.Collections.Generic.IList<string> Schemes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class A2aV1AuthorizationCodeOAuthFlow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The authorization URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard
+        /// requires the use of TLS
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizationUrl")]
+        public virtual string AuthorizationUrl { get; set; }
+
+        /// <summary>
+        /// The URL to be used for obtaining refresh tokens. This MUST be in the form of a URL. The OAuth2 standard
+        /// requires the use of TLS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshUrl")]
+        public virtual string RefreshUrl { get; set; }
+
+        /// <summary>
+        /// The available scopes for the OAuth2 security scheme. A map between the scope name and a short description
+        /// for it. The map MAY be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Scopes { get; set; }
+
+        /// <summary>
+        /// The token URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard requires the
+        /// use of TLS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenUrl")]
+        public virtual string TokenUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class A2aV1CancelTaskRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class A2aV1ClientCredentialsOAuthFlow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The URL to be used for obtaining refresh tokens. This MUST be in the form of a URL. The OAuth2 standard
+        /// requires the use of TLS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshUrl")]
+        public virtual string RefreshUrl { get; set; }
+
+        /// <summary>
+        /// The available scopes for the OAuth2 security scheme. A map between the scope name and a short description
+        /// for it. The map MAY be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Scopes { get; set; }
+
+        /// <summary>
+        /// The token URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard requires the
+        /// use of TLS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenUrl")]
+        public virtual string TokenUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DataPart represents a structured blob. This is most commonly a JSON payload.</summary>
+    public class A2aV1DataPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Data { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// FilePart represents the different ways files can be provided. If files are small, directly feeding the bytes is
+    /// supported via file_with_bytes. If the file is large, the agent should read the content as appropriate directly
+    /// from the file_with_uri source.
+    /// </summary>
+    public class A2aV1FilePart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("fileWithBytes")]
+        public virtual string FileWithBytes { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("fileWithUri")]
+        public virtual string FileWithUri { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class A2aV1HTTPAuthSecurityScheme : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A hint to the client to identify how the bearer token is formatted. Bearer tokens are usually generated by
+        /// an authorization server, so this information is primarily for documentation purposes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bearerFormat")]
+        public virtual string BearerFormat { get; set; }
+
+        /// <summary>Description of this security scheme.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// The name of the HTTP Authentication scheme to be used in the Authorization header as defined in RFC7235. The
+        /// values used SHOULD be registered in the IANA Authentication Scheme registry. The value is case-insensitive,
+        /// as defined in RFC7235.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheme")]
+        public virtual string Scheme { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class A2aV1ImplicitOAuthFlow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The authorization URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard
+        /// requires the use of TLS
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizationUrl")]
+        public virtual string AuthorizationUrl { get; set; }
+
+        /// <summary>
+        /// The URL to be used for obtaining refresh tokens. This MUST be in the form of a URL. The OAuth2 standard
+        /// requires the use of TLS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshUrl")]
+        public virtual string RefreshUrl { get; set; }
+
+        /// <summary>
+        /// The available scopes for the OAuth2 security scheme. A map between the scope name and a short description
+        /// for it. The map MAY be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Scopes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class A2aV1ListTaskPushNotificationConfigResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of push notification configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configs")]
+        public virtual System.Collections.Generic.IList<A2aV1TaskPushNotificationConfig> Configs { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Message is one unit of communication between client and server. It is associated with a context and optionally a
+    /// task. Since the server is responsible for the context definition, it must always provide a context_id in its
+    /// messages. The client can optionally provide the context_id if it knows the context to associate the message to.
+    /// Similarly for task_id, except the server decides if a task is created and whether to include the task_id.
+    /// </summary>
+    public class A2aV1Message : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// protolint:disable REPEATED_FIELD_NAMES_PLURALIZED Content is the container of the message content.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual System.Collections.Generic.IList<A2aV1Part> Content { get; set; }
+
+        /// <summary>
+        /// The context id of the message. This is optional and if set, the message will be associated with the given
+        /// context.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextId")]
+        public virtual string ContextId { get; set; }
+
+        /// <summary>The URIs of extensions that are present or contributed to this Message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
+        public virtual System.Collections.Generic.IList<string> Extensions { get; set; }
+
+        /// <summary>
+        /// The unique identifier (e.g. UUID)of the message. This is required and created by the message creator.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
+        public virtual string MessageId { get; set; }
+
+        /// <summary>
+        /// protolint:enable REPEATED_FIELD_NAMES_PLURALIZED Any optional metadata to provide along with the message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>A role for the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
+
+        /// <summary>
+        /// The task id of the message. This is optional and if set, the message will be associated with the given task.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskId")]
+        public virtual string TaskId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class A2aV1MutualTlsSecurityScheme : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description of this security scheme.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class A2aV1OAuth2SecurityScheme : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description of this security scheme.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>An object containing configuration information for the flow types supported</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flows")]
+        public virtual A2aV1OAuthFlows Flows { get; set; }
+
+        /// <summary>
+        /// URL to the oauth2 authorization server metadata [RFC8414](https://datatracker.ietf.org/doc/html/rfc8414).
+        /// TLS is required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauth2MetadataUrl")]
+        public virtual string Oauth2MetadataUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class A2aV1OAuthFlows : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizationCode")]
+        public virtual A2aV1AuthorizationCodeOAuthFlow AuthorizationCode { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("clientCredentials")]
+        public virtual A2aV1ClientCredentialsOAuthFlow ClientCredentials { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("implicit")]
+        public virtual A2aV1ImplicitOAuthFlow Implicit__ { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual A2aV1PasswordOAuthFlow Password { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class A2aV1OpenIdConnectSecurityScheme : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description of this security scheme.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Well-known URL to discover the [[OpenID-Connect-Discovery]] provider metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("openIdConnectUrl")]
+        public virtual string OpenIdConnectUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Part represents a container for a section of communication content. Parts can be purely textual, some sort of
+    /// file (image, video, etc) or a structured data blob (i.e. JSON).
+    /// </summary>
+    public class A2aV1Part : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual A2aV1DataPart Data { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("file")]
+        public virtual A2aV1FilePart File { get; set; }
+
+        /// <summary>Optional metadata associated with this part.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class A2aV1PasswordOAuthFlow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The URL to be used for obtaining refresh tokens. This MUST be in the form of a URL. The OAuth2 standard
+        /// requires the use of TLS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshUrl")]
+        public virtual string RefreshUrl { get; set; }
+
+        /// <summary>
+        /// The available scopes for the OAuth2 security scheme. A map between the scope name and a short description
+        /// for it. The map MAY be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Scopes { get; set; }
+
+        /// <summary>
+        /// The token URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard requires the
+        /// use of TLS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenUrl")]
+        public virtual string TokenUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for setting up push notifications for task updates.</summary>
+    public class A2aV1PushNotificationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Information about the authentication to sent with the notification</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authentication")]
+        public virtual A2aV1AuthenticationInfo Authentication { get; set; }
+
+        /// <summary>A unique identifier (e.g. UUID) for this push notification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Token unique for this task/session</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("token")]
+        public virtual string Token { get; set; }
+
+        /// <summary>Url to send the notification too</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class A2aV1Security : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("schemes")]
+        public virtual System.Collections.Generic.IDictionary<string, A2aV1StringList> Schemes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class A2aV1SecurityScheme : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKeySecurityScheme")]
+        public virtual A2aV1APIKeySecurityScheme ApiKeySecurityScheme { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("httpAuthSecurityScheme")]
+        public virtual A2aV1HTTPAuthSecurityScheme HttpAuthSecurityScheme { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("mtlsSecurityScheme")]
+        public virtual A2aV1MutualTlsSecurityScheme MtlsSecurityScheme { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("oauth2SecurityScheme")]
+        public virtual A2aV1OAuth2SecurityScheme Oauth2SecurityScheme { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("openIdConnectSecurityScheme")]
+        public virtual A2aV1OpenIdConnectSecurityScheme OpenIdConnectSecurityScheme { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration of a send message request.</summary>
+    public class A2aV1SendMessageConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The output modes that the agent is expected to respond with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceptedOutputModes")]
+        public virtual System.Collections.Generic.IList<string> AcceptedOutputModes { get; set; }
+
+        /// <summary>
+        /// If true, the message will be blocking until the task is completed. If false, the message will be
+        /// non-blocking and the task will be returned immediately. It is the caller's responsibility to check for any
+        /// task updates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blocking")]
+        public virtual System.Nullable<bool> Blocking { get; set; }
+
+        /// <summary>
+        /// The maximum number of messages to include in the history. if 0, the history will be unlimited.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("historyLength")]
+        public virtual System.Nullable<int> HistoryLength { get; set; }
+
+        /// <summary>A configuration of a webhook that can be used to receive updates</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pushNotification")]
+        public virtual A2aV1PushNotificationConfig PushNotification { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>/////////// Request Messages ///////////</summary>
+    public class A2aV1SendMessageRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration for the send request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configuration")]
+        public virtual A2aV1SendMessageConfiguration Configuration { get; set; }
+
+        /// <summary>Required. The message to send to the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual A2aV1Message Message { get; set; }
+
+        /// <summary>Optional metadata for the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>////// Response Messages ///////////</summary>
+    public class A2aV1SendMessageResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual A2aV1Message Message { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("task")]
+        public virtual A2aV1Task Task { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The stream response for a message. The stream should be one of the following sequences: If the response is a
+    /// message, the stream should contain one, and only one, message and then close If the response is a task
+    /// lifecycle, the first response should be a Task object followed by zero or more TaskStatusUpdateEvents and
+    /// TaskArtifactUpdateEvents. The stream should complete when the Task if in an interrupted or terminal state. A
+    /// stream that ends before these conditions are met are
+    /// </summary>
+    public class A2aV1StreamResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactUpdate")]
+        public virtual A2aV1TaskArtifactUpdateEvent ArtifactUpdate { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual A2aV1Message Message { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("statusUpdate")]
+        public virtual A2aV1TaskStatusUpdateEvent StatusUpdate { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("task")]
+        public virtual A2aV1Task Task { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>protolint:disable REPEATED_FIELD_NAMES_PLURALIZED</summary>
+    public class A2aV1StringList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("list")]
+        public virtual System.Collections.Generic.IList<string> List { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Task is the core unit of action for A2A. It has a current status and when results are created for the task they
+    /// are stored in the artifact. If there are multiple turns for a task, these are stored in history.
+    /// </summary>
+    public class A2aV1Task : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A set of output artifacts for a Task.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifacts")]
+        public virtual System.Collections.Generic.IList<A2aV1Artifact> Artifacts { get; set; }
+
+        /// <summary>
+        /// Unique identifier (e.g. UUID) for the contextual collection of interactions (tasks and messages). Created by
+        /// the A2A server.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextId")]
+        public virtual string ContextId { get; set; }
+
+        /// <summary>
+        /// protolint:disable REPEATED_FIELD_NAMES_PLURALIZED The history of interactions from a task.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("history")]
+        public virtual System.Collections.Generic.IList<A2aV1Message> History { get; set; }
+
+        /// <summary>Unique identifier (e.g. UUID) for the task, generated by the server for a new task.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// protolint:enable REPEATED_FIELD_NAMES_PLURALIZED A key/value object to store custom metadata about a task.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>The current status of a Task, including state and a message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual A2aV1TaskStatus Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>TaskArtifactUpdateEvent represents a task delta where an artifact has been generated.</summary>
+    public class A2aV1TaskArtifactUpdateEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether this should be appended to a prior one produced</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("append")]
+        public virtual System.Nullable<bool> Append { get; set; }
+
+        /// <summary>The artifact itself</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifact")]
+        public virtual A2aV1Artifact Artifact { get; set; }
+
+        /// <summary>The id of the context that this task belongs too</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextId")]
+        public virtual string ContextId { get; set; }
+
+        /// <summary>Whether this represents the last part of an artifact</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastChunk")]
+        public virtual System.Nullable<bool> LastChunk { get; set; }
+
+        /// <summary>Optional metadata associated with the artifact update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>The id of the task for this artifact</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskId")]
+        public virtual string TaskId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class A2aV1TaskPushNotificationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the config. Format: tasks/{task_id}/pushNotificationConfigs/{config_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The push notification configuration details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pushNotificationConfig")]
+        public virtual A2aV1PushNotificationConfig PushNotificationConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A container for the status of a task</summary>
+    public class A2aV1TaskStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A message associated with the status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual A2aV1Message Message { get; set; }
+
+        /// <summary>The current state of this task</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _timestampRaw;
+
+        private object _timestamp;
+
+        /// <summary>Timestamp when the status was recorded. Example: "2023-10-27T10:00:00Z"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual string TimestampRaw
+        {
+            get => _timestampRaw;
+            set
+            {
+                _timestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimestampDateTimeOffset instead.")]
+        public virtual object Timestamp
+        {
+            get => _timestamp;
+            set
+            {
+                _timestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _timestamp = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampRaw);
+            set => TimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>TaskStatusUpdateEvent is a delta even on a task indicating that a task has changed.</summary>
+    public class A2aV1TaskStatusUpdateEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The id of the context that the task belongs to</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextId")]
+        public virtual string ContextId { get; set; }
+
+        /// <summary>Whether this is the last status update expected for this task.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("final")]
+        public virtual System.Nullable<bool> Final { get; set; }
+
+        /// <summary>Optional metadata to associate with the task update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>The new status of the task.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual A2aV1TaskStatus Status { get; set; }
+
+        /// <summary>The id of the task that is changed</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskId")]
+        public virtual string TaskId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// `Distribution` contains summary statistics for a population of values. It optionally contains a histogram
     /// representing the distribution of those values across a set of buckets. The summary statistics are the count,
@@ -27739,6 +29539,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Optional. Configuration for configurable billing approach.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingApproach")]
         public virtual string ConfigurableBillingApproach { get; set; }
+
+        /// <summary>
+        /// Optional. Maps a connector ID (e.g., "hybrid-github", "shopify") to tenant-specific information required for
+        /// that connector. The structure of the tenant information string is connector-dependent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorTenantInfo")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ConnectorTenantInfo { get; set; }
 
         private string _createTimeRaw;
 
@@ -40245,6 +42052,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingApproach")]
         public virtual string ConfigurableBillingApproach { get; set; }
 
+        /// <summary>
+        /// Optional. Maps a connector ID (e.g., "hybrid-github", "shopify") to tenant-specific information required for
+        /// that connector. The structure of the tenant information string is connector-dependent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorTenantInfo")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ConnectorTenantInfo { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -44064,7 +45878,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
 
         /// <summary>
         /// Optional. The maximum number of results to retrieve from each data store. If not specified, it will use the
-        /// SearchRequest.data_store_specs.num_results if provided, otherwise there is no limit.
+        /// SearchRequest.DataStoreSpec.num_results if provided, otherwise there is no limit.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numResultsPerDataStore")]
         public virtual System.Nullable<int> NumResultsPerDataStore { get; set; }
@@ -48826,6 +50640,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingApproach")]
         public virtual string ConfigurableBillingApproach { get; set; }
 
+        /// <summary>
+        /// Optional. Maps a connector ID (e.g., "hybrid-github", "shopify") to tenant-specific information required for
+        /// that connector. The structure of the tenant information string is connector-dependent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorTenantInfo")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ConnectorTenantInfo { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -51375,7 +53196,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
 
         /// <summary>
         /// Optional. The maximum number of results to retrieve from each data store. If not specified, it will use the
-        /// SearchRequest.data_store_specs.num_results if provided, otherwise there is no limit.
+        /// SearchRequest.DataStoreSpec.num_results if provided, otherwise there is no limit.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numResultsPerDataStore")]
         public virtual System.Nullable<int> NumResultsPerDataStore { get; set; }
