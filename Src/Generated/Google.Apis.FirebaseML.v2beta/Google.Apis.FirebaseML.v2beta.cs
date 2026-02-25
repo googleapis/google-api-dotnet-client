@@ -1935,6 +1935,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("placeId")]
         public virtual string PlaceId { get; set; }
 
+        /// <summary>Output only. Route information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("route")]
+        public virtual GoogleCloudAiplatformV1beta1GroundingChunkMapsRoute Route { get; set; }
+
         /// <summary>The text of the place answer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
@@ -1979,6 +1983,28 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>The title of the review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Route information from Google Maps.</summary>
+    public class GoogleCloudAiplatformV1beta1GroundingChunkMapsRoute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The total distance of the route, in meters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distanceMeters")]
+        public virtual System.Nullable<int> DistanceMeters { get; set; }
+
+        /// <summary>The total duration of the route.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
+
+        /// <summary>
+        /// An encoded polyline of the route. See
+        /// https://developers.google.com/maps/documentation/utilities/polylinealgorithm
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encodedPolyline")]
+        public virtual string EncodedPolyline { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2127,7 +2153,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A collection of supporting references for a segment of the model's response.</summary>
+    /// <summary>A collection of supporting references for a segment or part of the model's response.</summary>
     public class GoogleCloudAiplatformV1beta1GroundingSupport : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
