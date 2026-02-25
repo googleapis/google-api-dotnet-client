@@ -7629,6 +7629,14 @@ namespace Google.Apis.CloudKMS.v1.Data
     /// <summary>A Digest holds a cryptographic message digest.</summary>
     public class Digest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// A message digest produced with SHAKE-256, to be used with ML-DSA external-μ algorithms only. See "message
+        /// representative" note in section 6.2, algorithm 7 of the FIPS-204 standard:
+        /// https://doi.org/10.6028/nist.fips.204
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalMu")]
+        public virtual string ExternalMu { get; set; }
+
         /// <summary>A message digest produced with the SHA-256 algorithm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha256")]
         public virtual string Sha256 { get; set; }
