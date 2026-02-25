@@ -5666,6 +5666,8 @@ namespace Google.Apis.GKEHub.v1.Data
     }
 
     /// <summary>
+    /// Deprecated: Compliance Posture is no longer supported. For more details, see
+    /// https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-management-deprecation.
     /// CompliancePostureConfig defines the settings needed to enable/disable features for the Compliance Posture.
     /// </summary>
     public class CompliancePostureConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -6614,13 +6616,15 @@ namespace Google.Apis.GKEHub.v1.Data
         public virtual BinaryAuthorizationConfig BinaryAuthorizationConfig { get; set; }
 
         /// <summary>
-        /// Optional. Enable/Disable Compliance Posture features for the cluster. Note that on UpdateFleet, only full
-        /// replacement of this field is allowed. Users are not allowed for partial updates through field mask.
+        /// Optional. Deprecated: Compliance Posture is no longer supported. For more details, see
+        /// https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-management-deprecation. Enable/Disable
+        /// Compliance Posture features for the cluster. Note that on UpdateFleet, only full replacement of this field
+        /// is allowed. Users are not allowed for partial updates through field mask.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compliancePostureConfig")]
         public virtual CompliancePostureConfig CompliancePostureConfig { get; set; }
 
-        /// <summary>Enable/Disable Security Posture features for the cluster.</summary>
+        /// <summary>Optional. Enable/Disable Security Posture features for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityPostureConfig")]
         public virtual SecurityPostureConfig SecurityPostureConfig { get; set; }
 
