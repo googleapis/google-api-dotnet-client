@@ -6195,6 +6195,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("postConditions")]
         public virtual ClusterUpgradePostConditions PostConditions { get; set; }
 
+        /// <summary>Output only. The effective upgrade engine for the fleet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeEngine")]
+        public virtual string UpgradeEngine { get; set; }
+
         /// <summary>
         /// This fleet consumes upgrades that have COMPLETE status code in the upstream fleets. See UpgradeStatus.Code
         /// for code definitions. The fleet name should be either fleet project number or id. This is defined as
@@ -6686,6 +6690,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     }
 
     /// <summary>
+    /// Deprecated: Compliance Posture is no longer supported. For more details, see
+    /// https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-management-deprecation.
     /// CompliancePostureConfig defines the settings needed to enable/disable features for the Compliance Posture.
     /// </summary>
     public class CompliancePostureConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -7679,13 +7685,15 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual BinaryAuthorizationConfig BinaryAuthorizationConfig { get; set; }
 
         /// <summary>
-        /// Optional. Enable/Disable Compliance Posture features for the cluster. Note that on UpdateFleet, only full
-        /// replacement of this field is allowed. Users are not allowed for partial updates through field mask.
+        /// Optional. Deprecated: Compliance Posture is no longer supported. For more details, see
+        /// https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-management-deprecation. Enable/Disable
+        /// Compliance Posture features for the cluster. Note that on UpdateFleet, only full replacement of this field
+        /// is allowed. Users are not allowed for partial updates through field mask.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compliancePostureConfig")]
         public virtual CompliancePostureConfig CompliancePostureConfig { get; set; }
 
-        /// <summary>Enable/Disable Security Posture features for the cluster.</summary>
+        /// <summary>Optional. Enable/Disable Security Posture features for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityPostureConfig")]
         public virtual SecurityPostureConfig SecurityPostureConfig { get; set; }
 
@@ -7714,23 +7722,6 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>An excluded cluster from the rollout.</summary>
-    public class ExcludedCluster : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Output only. The name of the fleet Membership resource associated to the excluded cluster.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("membership")]
-        public virtual string Membership { get; set; }
-
-        /// <summary>Output only. The reason for excluding the cluster from the rollout.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8055,21 +8046,6 @@ namespace Google.Apis.GKEHub.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Feature config to use for Rollout.</summary>
-    public class FeatureUpdate : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. Configuration for Binary Authorization.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("binaryAuthorizationConfig")]
-        public virtual BinaryAuthorizationConfig BinaryAuthorizationConfig { get; set; }
-
-        /// <summary>Optional. Configuration for Security Posture.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("securityPostureConfig")]
-        public virtual SecurityPostureConfig SecurityPostureConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11205,14 +11181,6 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Optional. Output only. The excluded clusters from the rollout.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("excludedClusters")]
-        public virtual System.Collections.Generic.IList<ExcludedCluster> ExcludedClusters { get; set; }
-
-        /// <summary>Optional. Feature config to use for Rollout.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("feature")]
-        public virtual FeatureUpdate Feature { get; set; }
-
         /// <summary>Optional. Labels for this Rollout.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -11238,10 +11206,6 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rolloutSequence")]
         public virtual string RolloutSequence { get; set; }
-
-        /// <summary>Output only. The schedule of the Rollout.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
-        public virtual Schedule Schedule { get; set; }
 
         /// <summary>Output only. The stages of the Rollout.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stages")]
@@ -11464,6 +11428,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stages")]
         public virtual System.Collections.Generic.IList<Stage> Stages { get; set; }
 
+        /// <summary>Output only. State of the Rollout Sequence as a whole.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual RolloutSequenceState State { get; set; }
+
         /// <summary>
         /// Output only. Google-generated UUID for this resource. This is unique across all Rollout Sequence resources.
         /// If a Rollout Sequence resource is deleted and another resource with the same name is created, it gets a
@@ -11508,6 +11476,21 @@ namespace Google.Apis.GKEHub.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+    }
+
+    /// <summary>State and reasons of the Rollout Sequence.</summary>
+    public class RolloutSequenceState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Lifecycle state of the Rollout Sequence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
+        public virtual string LifecycleState { get; set; }
+
+        /// <summary>Output only. StateReason represents the reason for the Rollout Sequence state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateReasons")]
+        public virtual System.Collections.Generic.IList<string> StateReasons { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Stage represents a single stage in the Rollout.</summary>
@@ -11632,17 +11615,6 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Output only. The high-level, machine-readable status of this Rollout for the target.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Schedule represents the schedule of the Rollout.</summary>
-    public class Schedule : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The schedule of each wave in the Rollout.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("waves")]
-        public virtual System.Collections.Generic.IList<WaveSchedule> Waves { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12271,91 +12243,6 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Optional. Type of version upgrade specifies which component should be upgraded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>WaveSchedule represents the schedule of a single rollout wave.</summary>
-    public class WaveSchedule : Google.Apis.Requests.IDirectResponseSchema
-    {
-        private string _waveEndTimeRaw;
-
-        private object _waveEndTime;
-
-        /// <summary>Output only. The time at which the wave ends.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("waveEndTime")]
-        public virtual string WaveEndTimeRaw
-        {
-            get => _waveEndTimeRaw;
-            set
-            {
-                _waveEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _waveEndTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="WaveEndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use WaveEndTimeDateTimeOffset instead.")]
-        public virtual object WaveEndTime
-        {
-            get => _waveEndTime;
-            set
-            {
-                _waveEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _waveEndTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="WaveEndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? WaveEndTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(WaveEndTimeRaw);
-            set => WaveEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>Output only. The wave number to which this schedule applies.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("waveNumber")]
-        public virtual System.Nullable<int> WaveNumber { get; set; }
-
-        private string _waveStartTimeRaw;
-
-        private object _waveStartTime;
-
-        /// <summary>Output only. The time at which the wave starts.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("waveStartTime")]
-        public virtual string WaveStartTimeRaw
-        {
-            get => _waveStartTimeRaw;
-            set
-            {
-                _waveStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _waveStartTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="WaveStartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use WaveStartTimeDateTimeOffset instead.")]
-        public virtual object WaveStartTime
-        {
-            get => _waveStartTime;
-            set
-            {
-                _waveStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _waveStartTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="WaveStartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? WaveStartTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(WaveStartTimeRaw);
-            set => WaveStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
