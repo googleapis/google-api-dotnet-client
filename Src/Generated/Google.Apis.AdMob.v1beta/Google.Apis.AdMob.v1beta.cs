@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2815,7 +2815,7 @@ namespace Google.Apis.AdMob.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("excludedRegionCodes")]
         public virtual System.Collections.Generic.IList<string> ExcludedRegionCodes { get; set; }
 
-        /// <summary>Ad format targeted by this mediation group. Examples: "banner", "native".</summary>
+        /// <summary>Ad format targeted by this mediation group. Examples: "BANNER", "NATIVE".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
         public virtual string Format { get; set; }
 
