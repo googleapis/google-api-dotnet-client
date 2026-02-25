@@ -4627,6 +4627,17 @@ namespace Google.Apis.NetworkManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>For display only. Metadata associated with a layer 7 packet inspection by the firewall.</summary>
+    public class NgfwPacketInspectionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URI of the security profile group associated with this firewall packet inspection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityProfileGroupUri")]
+        public virtual string SecurityProfileGroupUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5520,6 +5531,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// <summary>Display information of a Google Cloud network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual NetworkInfo Network { get; set; }
+
+        /// <summary>Display information of a layer 7 packet inspection by the firewall.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ngfwPacketInspection")]
+        public virtual NgfwPacketInspectionInfo NgfwPacketInspection { get; set; }
 
         /// <summary>Project ID that contains the configuration this step is validating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
