@@ -9868,11 +9868,13 @@ namespace Google.Apis.Dataproc.v1
 
                     /// <summary>
                     /// Optional. A filter constraining the jobs to list. Filters are case-sensitive and have the
-                    /// following syntax:field = value AND field = value ...where field is status.state or labels.[KEY],
-                    /// and [KEY] is a label key. value can be * to match all values. status.state can be either ACTIVE
-                    /// or NON_ACTIVE. Only the logical AND operator is supported; space-separated items are treated as
-                    /// having an implicit AND operator.Example filter:status.state = ACTIVE AND labels.env = staging
-                    /// AND labels.starred = *
+                    /// following syntax:field = value AND field = value ...where field is status.state or insertTime,
+                    /// or labels.[KEY], and [KEY] is a label key. value can be * to match all values. status.state can
+                    /// be either ACTIVE or NON_ACTIVE. Allows insertTime to be a timestamp in RFC 3339 format in double
+                    /// quotes, such as 2025-01-01T00:00:00Z. Only the logical AND operator is supported;
+                    /// space-separated items are treated as having an implicit AND operator.Example filter:status.state
+                    /// = ACTIVE AND labels.env = staging AND labels.starred = * AND insertTime &amp;lt;=
+                    /// "2025-01-01T00:00:00Z"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -12180,6 +12182,37 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specifies the config of attached disk options for single VM instance.</summary>
+    public class AttachedDiskConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Disk size in GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
+        public virtual System.Nullable<int> DiskSizeGb { get; set; }
+
+        /// <summary>Optional. Disk type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
+        public virtual string DiskType { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates how many IOPS to provision for the attached disk. This sets the number of I/O operations
+        /// per second that the disk can handle. See
+        /// https://cloud.google.com/compute/docs/disks/hyperdisks#hyperdisk-features
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisionedIops")]
+        public virtual System.Nullable<long> ProvisionedIops { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates how much throughput to provision for the attached disk. This sets the number of
+        /// throughput mb per second that the disk can handle. See
+        /// https://cloud.google.com/compute/docs/disks/hyperdisks#hyperdisk-features
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisionedThroughput")]
+        public virtual System.Nullable<long> ProvisionedThroughput { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Authentication configuration for a workload is used to set the default identity for the workload execution. The
     /// config specifies the type of identity (service account or user) that will be used by workloads to access
@@ -13298,6 +13331,10 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>Specifies the config of boot disk and attached disk options for a group of VM instances.</summary>
     public class DiskConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. A list of attached disk configs for a group of VM instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachedDiskConfigs")]
+        public virtual System.Collections.Generic.IList<AttachedDiskConfig> AttachedDiskConfigs { get; set; }
+
         /// <summary>
         /// Optional. Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per
         /// second that the disk can handle. This field is supported only if boot_disk_type is hyperdisk-balanced.
