@@ -7092,7 +7092,7 @@ namespace Google.Apis.Drive.v3.Data
 
         private object _completeTime;
 
-        /// <summary>Output only. The time time the approval was completed.</summary>
+        /// <summary>Output only. The time the approval was completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
         public virtual string CompleteTimeRaw
         {
