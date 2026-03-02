@@ -613,7 +613,7 @@ namespace Google.Apis.DataManager.v1
                     /// of each condition (for example: `partner_link_id = 123456789`). Supported operations: - `AND` -
                     /// `=` - `!=` Supported fields: - `partner_link_id` - `owning_account.account_type` -
                     /// `owning_account.account_id` - `partner_account.account_type` - `partner_account.account_id`
-                    /// Example: `owning_account.account_type = "GOOGLE_ADS" OR partner_account.account_id = 987654321`
+                    /// Example: `owning_account.account_type = "GOOGLE_ADS" AND partner_account.account_id = 987654321`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -3264,7 +3264,7 @@ namespace Google.Apis.DataManager.v1.Data
     public class PairIdInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. The count of the advertiser's first party data records that have been uploaded to a clean room
+        /// Optional. The count of the advertiser's first party data records that have been uploaded to a clean room
         /// provider. This does not signify the size of a PAIR user list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserIdentifierCount")]
@@ -3278,7 +3278,7 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string CleanRoomIdentifier { get; set; }
 
         /// <summary>
-        /// Output only. This field denotes the percentage of membership match of this user list with the corresponding
+        /// Optional. This field denotes the percentage of membership match of this user list with the corresponding
         /// publisher's first party data. Must be between 0 and 100 inclusive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchRatePercentage")]
@@ -3293,7 +3293,7 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual System.Nullable<long> PublisherId { get; set; }
 
         /// <summary>
-        /// Optional. Descriptive name of the publisher to be displayed in the UI for a better targeting experience.
+        /// Required. Descriptive name of the publisher to be displayed in the UI for a better targeting experience.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisherName")]
         public virtual string PublisherName { get; set; }
