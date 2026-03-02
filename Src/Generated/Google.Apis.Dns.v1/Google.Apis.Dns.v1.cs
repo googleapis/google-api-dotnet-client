@@ -2674,6 +2674,17 @@ namespace Google.Apis.Dns.v1
             public virtual string ManagedZone { get; private set; }
 
             /// <summary>
+            /// Specify a filter expression to view records that exactly match the specified domain. Both the name and
+            /// type parameters are not supported when you use filter and must be omitted. Your filter expression must
+            /// conform to AIP-160 and you must specify a domain in the name field. Optionally, you can include the type
+            /// field to filter records by type. You can also include the has_suffix function to view records that match
+            /// by domain suffix. Examples: - name="example.com." - name="example.com." AND type="A" -
+            /// name=has_suffix("example.com.") - name=has_suffix("example.com.") AND type="A"
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
             /// Optional. Maximum number of results to be returned. If unspecified, the server decides how many results
             /// to return.
             /// </summary>
@@ -2727,6 +2738,14 @@ namespace Google.Apis.Dns.v1
                     Name = "managedZone",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
