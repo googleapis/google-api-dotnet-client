@@ -2264,7 +2264,7 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         public virtual string ErrorMessage { get; set; }
 
         /// <summary>
-        /// * Status of the event. Possible values if not empty: - UNKNOWN_EVENT_STATUS - SUCCEEDED -
+        /// Status of the event. Possible values if not empty: - UNKNOWN_EVENT_STATUS - SUCCEEDED -
         /// SUCCEEDED_WITH_WARNINGS - FAILED - SKIPPED
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventStatus")]
