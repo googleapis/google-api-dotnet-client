@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -524,10 +524,7 @@ namespace Google.Apis.VMwareEngine.v1
                     this.service = service;
                 }
 
-                /// <summary>
-                /// Creates a new `Datastore` resource in a given project and location. Datastores are regional
-                /// resources
-                /// </summary>
+                /// <summary>Creates a new `Datastore` resource in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The resource name of the location to create the new datastore in. Resource names are
@@ -539,10 +536,7 @@ namespace Google.Apis.VMwareEngine.v1
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>
-                /// Creates a new `Datastore` resource in a given project and location. Datastores are regional
-                /// resources
-                /// </summary>
+                /// <summary>Creates a new `Datastore` resource in a given project and location.</summary>
                 public class CreateRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -923,10 +917,7 @@ namespace Google.Apis.VMwareEngine.v1
                     }
                 }
 
-                /// <summary>
-                /// Modifies a Datastore resource. Only the following fields can be updated: `description`. Only fields
-                /// specified in `updateMask` are applied.
-                /// </summary>
+                /// <summary>Modifies a Datastore resource. Only fields specified in `updateMask` are applied.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Output only. Identifier. The resource name of this datastore. Resource names are schemeless URIs
@@ -938,10 +929,7 @@ namespace Google.Apis.VMwareEngine.v1
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>
-                /// Modifies a Datastore resource. Only the following fields can be updated: `description`. Only fields
-                /// specified in `updateMask` are applied.
-                /// </summary>
+                /// <summary>Modifies a Datastore resource. Only fields specified in `updateMask` are applied.</summary>
                 public class PatchRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -971,8 +959,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// Optional. Field mask is used to specify the fields to be overwritten in the Datastore resource
                     /// by the update. The fields specified in the `update_mask` are relative to the resource, not the
                     /// full request. A field will be overwritten if it is in the mask. If the user does not provide a
-                    /// mask then all fields will be overwritten. Only the following fields can be updated:
-                    /// `description`.
+                    /// mask then all fields will be overwritten.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -4002,7 +3989,7 @@ namespace Google.Apis.VMwareEngine.v1
                         }
                     }
 
-                    /// <summary>Mounts a `Datastore` on a cluster resource Datastores are zonal resources</summary>
+                    /// <summary>Mounts a `Datastore` on a cluster resource</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Required. The resource name of the cluster to mount the datastore. Resource names are schemeless
@@ -4015,7 +4002,7 @@ namespace Google.Apis.VMwareEngine.v1
                         return new MountDatastoreRequest(this.service, body, name);
                     }
 
-                    /// <summary>Mounts a `Datastore` on a cluster resource Datastores are zonal resources</summary>
+                    /// <summary>Mounts a `Datastore` on a cluster resource</summary>
                     public class MountDatastoreRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new MountDatastore request.</summary>
@@ -4321,7 +4308,7 @@ namespace Google.Apis.VMwareEngine.v1
                         }
                     }
 
-                    /// <summary>Mounts a `Datastore` on a cluster resource Datastores are zonal resources</summary>
+                    /// <summary>Unmounts a `Datastore` on a cluster resource</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Required. The resource name of the cluster to unmount the datastore. Resource names are
@@ -4334,7 +4321,7 @@ namespace Google.Apis.VMwareEngine.v1
                         return new UnmountDatastoreRequest(this.service, body, name);
                     }
 
-                    /// <summary>Mounts a `Datastore` on a cluster resource Datastores are zonal resources</summary>
+                    /// <summary>Unmounts a `Datastore` on a cluster resource</summary>
                     public class UnmountDatastoreRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new UnmountDatastore request.</summary>
@@ -9565,14 +9552,24 @@ namespace Google.Apis.VMwareEngine.v1
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -10325,15 +10322,14 @@ namespace Google.Apis.VMwareEngine.v1.Data
     public class DatastoreMountConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. NFS is accessed by hosts in read mode Optional. Default value used will be READ_WRITE
+        /// Optional. The access mode of the NFS volume. Optional. Default value used will be READ_WRITE
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessMode")]
         public virtual string AccessMode { get; set; }
 
         /// <summary>
-        /// Required. The resource name of the datastore to unmount. The datastore requested to be mounted should be in
-        /// same region/zone as the cluster. Resource names are schemeless URIs that follow the conventions in
-        /// https://cloud.google.com/apis/design/resource_names. For example:
+        /// Required. The resource name of the datastore to mount. Resource names are schemeless URIs that follow the
+        /// conventions in https://cloud.google.com/apis/design/resource_names. For example:
         /// `projects/my-project/locations/us-central1/datastores/my-datastore`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datastore")]
@@ -10351,10 +10347,6 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nfsVersion")]
         public virtual string NfsVersion { get; set; }
 
-        /// <summary>Optional. ONLY required when NFS 4.1 version is used</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("securityType")]
-        public virtual string SecurityType { get; set; }
-
         /// <summary>
         /// Output only. Server IP addresses of the NFS volume. For NFS 3, you can only provide a single server IP
         /// address or DNS names.
@@ -10369,14 +10361,20 @@ namespace Google.Apis.VMwareEngine.v1.Data
     /// <summary>The network configuration for the datastore.</summary>
     public class DatastoreNetwork : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The number of connections of the NFS volume. Spported from vsphere 8.0u1</summary>
+        /// <summary>
+        /// Optional. connection_count is used to set multiple connections from NFS client on ESXi host to NFS server. A
+        /// higher number of connections results in better performance on datastores. In MountDatastore API by default
+        /// max 4 connections are configured. User can set value of connection_count between 1 to 4. Connection_count is
+        /// supported from vsphere 8.0u1 for earlier version 1 connection count is set on the ESXi hosts.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionCount")]
         public virtual System.Nullable<int> ConnectionCount { get; set; }
 
         /// <summary>
-        /// Optional. The Maximal Transmission Unit (MTU) of the datastore. System sets default MTU size. It prefers the
-        /// VPC peering MTU, falling back to the VEN MTU if no peering MTU is found. when detected, and falling back to
-        /// the VEN MTU otherwise.
+        /// Optional. MTU value is set on the VMKernel adapter for the NFS traffic. By default standard 1500 MTU size is
+        /// set in MountDatastore API which is good for typical setups. However google VPC networks supports jumbo MTU
+        /// 8896. We recommend to tune this value based on the NFS traffic performance. Performance can be determined
+        /// using benchmarking I/O tools like fio (Flexible I/O Tester) utility.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mtu")]
         public virtual System.Nullable<int> Mtu { get; set; }
@@ -12305,7 +12303,7 @@ namespace Google.Apis.VMwareEngine.v1.Data
     /// <summary>The NFS datastore configuration.</summary>
     public class NfsDatastore : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Google service file service configuration</summary>
+        /// <summary>Google file service configuration</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleFileService")]
         public virtual GoogleFileService GoogleFileService { get; set; }
 
