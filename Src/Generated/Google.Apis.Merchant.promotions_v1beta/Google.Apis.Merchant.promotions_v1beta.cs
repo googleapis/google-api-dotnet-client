@@ -505,6 +505,10 @@ namespace Google.Apis.Merchant.promotions_v1beta.Data
     /// <summary>Attributes.</summary>
     public class Attributes : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. This field defines the audience a promotion will be visible to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audience")]
+        public virtual string Audience { get; set; }
+
         /// <summary>
         /// Optional. Product filter by [brand
         /// exclusion](https://support.google.com/merchants/answer/13861679?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC)
@@ -767,6 +771,14 @@ namespace Google.Apis.Merchant.promotions_v1beta.Data
         /// <summary>Optional. A restriction customers must meet before they can redeem the promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redemptionRestriction")]
         public virtual string RedemptionRestriction { get; set; }
+
+        /// <summary>
+        /// Optional. A list of
+        /// [regions](https://support.google.com/merchants/answer/15406457?hl=en&amp;amp;sjid=8815806704218720187-NC#howregionswork)
+        /// where the promotion is applicable. Must be set if `audience` is set to `LOCATION`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionIdInclusion")]
+        public virtual System.Collections.Generic.IList<string> RegionIdInclusion { get; set; }
 
         /// <summary>
         /// Optional. Whether the promotion applies to [all stores, or only specified
