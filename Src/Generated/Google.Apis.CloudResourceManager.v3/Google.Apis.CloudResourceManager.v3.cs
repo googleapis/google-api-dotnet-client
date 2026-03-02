@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -6487,7 +6487,7 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     }
 
     /// <summary>
-    /// A TagBinding represents a connection between a TagValue and a cloud resource Once a TagBinding is created, the
+    /// A TagBinding represents a connection between a TagValue and a cloud resource. When a TagBinding is created, the
     /// TagValue is applied to all the descendants of the Google Cloud resource.
     /// </summary>
     public class TagBinding : Google.Apis.Requests.IDirectResponseSchema
@@ -6495,7 +6495,9 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         /// <summary>
         /// Output only. The name of the TagBinding. This is a String of the form:
         /// `tagBindings/{full-resource-name}/{tag-value-name}` (e.g.
-        /// `tagBindings/%2F%2Fcloudresourcemanager.googleapis.com%2Fprojects%2F123/tagValues/456`).
+        /// `tagBindings/%2F%2Fcloudresourcemanager.googleapis.com%2Fprojects%2F123/tagValues/456`) or
+        /// `tagBindings/{full-resource-name}/{tag-key-name}` (e.g.
+        /// `tagBindings/%2F%2Fcloudresourcemanager.googleapis.com%2Fprojects%2F123/tagKeys/123`).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
