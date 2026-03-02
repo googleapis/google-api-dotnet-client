@@ -6068,7 +6068,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
     /// <summary>Piece of cited information.</summary>
     public class CitationsCitedChunk : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Text used for citaiton.</summary>
+        /// <summary>Text used for citation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
 
@@ -7050,6 +7050,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expectationLevelMetricsThresholds")]
         public virtual EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds ExpectationLevelMetricsThresholds { get; set; }
 
+        /// <summary>
+        /// Optional. The tool matching settings. An extra tool call is a tool call that is present in the execution but
+        /// does not match any tool call in the golden expectation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolMatchingSettings")]
+        public virtual EvaluationMetricsThresholdsToolMatchingSettings ToolMatchingSettings { get; set; }
+
         /// <summary>Optional. The turn level metrics thresholds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("turnLevelMetricsThresholds")]
         public virtual EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds TurnLevelMetricsThresholds { get; set; }
@@ -7092,6 +7099,17 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("semanticSimilaritySuccessThreshold")]
         public virtual System.Nullable<int> SemanticSimilaritySuccessThreshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for matching tool calls.</summary>
+    public class EvaluationMetricsThresholdsToolMatchingSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Behavior for extra tool calls. Defaults to FAIL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extraToolCallBehavior")]
+        public virtual string ExtraToolCallBehavior { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7248,6 +7266,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("toolsetTool")]
         public virtual ToolsetTool ToolsetTool { get; set; }
 
+        /// <summary>Optional. The variables that are available for the tool execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variables")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Variables { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7256,9 +7278,9 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
     public class ExecuteToolResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The tool execution result in JSON object format. Use "output" key to specify tool response and
-        /// "error" key to specify error details (if any). If "output" and "error" keys are not specified, then whole
-        /// "response" is treated as tool execution result.
+        /// The tool execution result in JSON object format. Use "output" key to specify tool response and "error" key
+        /// to specify error details (if any). If "output" and "error" keys are not specified, then whole "response" is
+        /// treated as tool execution result.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
@@ -7273,6 +7295,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// <summary>The toolset tool that got executed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolsetTool")]
         public virtual ToolsetTool ToolsetTool { get; set; }
+
+        /// <summary>The variable values at the end of the tool execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variables")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Variables { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9133,11 +9159,11 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
     /// <summary>Response message for ToolService.RetrieveToolSchema.</summary>
     public class RetrieveToolSchemaResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The schema of the tool input parameters.</summary>
+        /// <summary>The schema of the tool input parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputSchema")]
         public virtual Schema InputSchema { get; set; }
 
-        /// <summary>Required. The schema of the tool output parameters.</summary>
+        /// <summary>The schema of the tool output parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputSchema")]
         public virtual Schema OutputSchema { get; set; }
 
@@ -9173,7 +9199,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
     /// <summary>Response message for ToolService.RetrieveTools.</summary>
     public class RetrieveToolsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The list of tools that are included in the specified toolset.</summary>
+        /// <summary>The list of tools that are included in the specified toolset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tools")]
         public virtual System.Collections.Generic.IList<Tool> Tools { get; set; }
 
@@ -9277,7 +9303,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// <summary>
         /// Optional. Allows indirect references between schema nodes. The value should be a valid reference to a child
         /// of the root `defs`. For example, the following schema defines a reference to a schema node named "Pet":
-        /// type: object properties: pet: ref: #/defs/Pet defs: Pet: type: object properties: name: type: string The
+        /// ```
+        /// type: object properties: pet: ref: #/defs/Pet defs: Pet: type: object properties: name: type: string
+        /// ```
+        /// The
         /// value of the "pet" property is a reference to the schema node named "Pet". See details in
         /// https://json-schema.org/understanding-json-schema/structuring.
         /// </summary>
@@ -9482,9 +9511,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
 
         /// <summary>
         /// Optional. A flag to indicate if the current message is a fragment of a larger input in the bidi streaming
-        /// session. When `true`, the agent will defer processing until a subsequent message with `will_continue` set to
-        /// `false` is received. Note: This flag has no effect on audio and DTMF inputs, which are always processed in
-        /// real-time.
+        /// session. When set to `true`, the agent defers processing until it receives a subsequent message where
+        /// `will_continue` is `false`, or until the system detects an endpoint in the audio input. NOTE: This field
+        /// does not apply to audio and DTMF inputs, as they are always processed automatically based on the endpointing
+        /// signal.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("willContinue")]
         public virtual System.Nullable<bool> WillContinue { get; set; }
