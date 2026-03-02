@@ -7143,9 +7143,10 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Required. All backend services and forwarding rules referenced by this extension must share the same load
-        /// balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to
-        /// [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
+        /// Optional. All backend services and forwarding rules referenced by this extension must share the same load
+        /// balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. Can be omitted for
+        /// AuthzExtensions that do not reference a backend service. For more information, refer to [Backend services
+        /// overview](https://cloud.google.com/load-balancing/docs/backend-service).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingScheme")]
         public virtual string LoadBalancingScheme { get; set; }
