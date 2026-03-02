@@ -2389,6 +2389,10 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedNetwork")]
         public virtual string AuthorizedNetwork { get; set; }
 
+        /// <summary>Output only. The available maintenance versions that can be applied to the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableMaintenanceVersions")]
+        public virtual System.Collections.Generic.IList<string> AvailableMaintenanceVersions { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -2437,6 +2441,10 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Output only. The effective maintenance version of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveMaintenanceVersion")]
+        public virtual string EffectiveMaintenanceVersion { get; set; }
+
         /// <summary>List of messages that describe the current state of the Memcached instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceMessages")]
         public virtual System.Collections.Generic.IList<InstanceMessage> InstanceMessages { get; set; }
@@ -2458,6 +2466,13 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
         /// <summary>Output only. Published maintenance schedule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSchedule")]
         public virtual MaintenanceSchedule MaintenanceSchedule { get; set; }
+
+        /// <summary>
+        /// Optional. Last self service update maintenance version triggered by the customer. If it is empty, it means
+        /// that the maintenance version is not set by the user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceVersion")]
+        public virtual string MaintenanceVersion { get; set; }
 
         /// <summary>
         /// Output only. The full version of memcached server running on this instance. System automatically determines
