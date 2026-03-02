@@ -10285,6 +10285,13 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     public class Settings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Configures whether the replica is in accelerated mode. This feature is in private preview and
+        /// requires allowlisting to take effect.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratedReplicaMode")]
+        public virtual System.Nullable<bool> AcceleratedReplicaMode { get; set; }
+
+        /// <summary>
         /// The activation policy specifies when the instance is activated; it is applicable only when the instance
         /// state is RUNNABLE. Valid values: * `ALWAYS`: The instance is on, and remains so even in the absence of
         /// connection requests. * `NEVER`: The instance is off; it is not activated, even if a connection request
