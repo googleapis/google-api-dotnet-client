@@ -1507,6 +1507,10 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>Update object custom context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateObjectCustomContext")]
+        public virtual UpdateObjectCustomContext UpdateObjectCustomContext { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1562,6 +1566,23 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
         /// <summary>Output only. Number of objects listed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalObjectCount")]
         public virtual System.Nullable<long> TotalObjectCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a collection of updates to apply to custom contexts identified by key.</summary>
+    public class CustomContextUpdates : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Custom contexts to clear by key. A key cannot be present in both `updates` and `keys_to_clear`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keysToClear")]
+        public virtual System.Collections.Generic.IList<string> KeysToClear { get; set; }
+
+        /// <summary>Optional. Insert or update the existing custom contexts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updates")]
+        public virtual System.Collections.Generic.IDictionary<string, ObjectCustomContextPayload> Updates { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1813,6 +1834,10 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>Update object custom context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateObjectCustomContext")]
+        public virtual UpdateObjectCustomContext UpdateObjectCustomContext { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1954,6 +1979,21 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manifestLocation")]
         public virtual string ManifestLocation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the payload of a user defined object custom context.</summary>
+    public class ObjectCustomContextPayload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The value of the object custom context. If set, `value` must NOT be an empty string since it is a required
+        /// field in custom context. If unset, `value` will be ignored and no changes will be made to the `value` field
+        /// of the custom context payload.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2272,6 +2312,24 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes options to update object custom contexts.</summary>
+    public class UpdateObjectCustomContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set, must be set to true and all existing object custom contexts will be deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clearAll")]
+        public virtual System.Nullable<bool> ClearAll { get; set; }
+
+        /// <summary>
+        /// A collection of updates to apply to specific custom contexts. Use this to add, update or delete individual
+        /// contexts by key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customContextUpdates")]
+        public virtual CustomContextUpdates CustomContextUpdates { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
