@@ -1894,6 +1894,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// </summary>
     public class GoogleCloudAiplatformV1beta1GroundingChunk : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A grounding chunk from an image search result. See the `Image` message for details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual GoogleCloudAiplatformV1beta1GroundingChunkImage Image { get; set; }
+
         /// <summary>A grounding chunk from Google Maps. See the `Maps` message for details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maps")]
         public virtual GoogleCloudAiplatformV1beta1GroundingChunkMaps Maps { get; set; }
@@ -1910,6 +1914,33 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("web")]
         public virtual GoogleCloudAiplatformV1beta1GroundingChunkWeb Web { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An `Image` chunk is a piece of evidence that comes from an image search result. It contains the URI of the image
+    /// search result and the URI of the image. This is used to provide the user with a link to the source of the
+    /// information.
+    /// </summary>
+    public class GoogleCloudAiplatformV1beta1GroundingChunkImage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The domain of the image search result page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>The URI of the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
+        public virtual string ImageUri { get; set; }
+
+        /// <summary>The URI of the image search result page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceUri")]
+        public virtual string SourceUri { get; set; }
+
+        /// <summary>The title of the image search result page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2099,6 +2130,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("groundingSupports")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1GroundingSupport> GroundingSupports { get; set; }
 
+        /// <summary>
+        /// Optional. The image search queries that were used to generate the content. This field is populated only when
+        /// the grounding source is Google Search with the Image Search search_type enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageSearchQueries")]
+        public virtual System.Collections.Generic.IList<string> ImageSearchQueries { get; set; }
+
         /// <summary>Optional. Output only. Metadata related to the retrieval grounding source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retrievalMetadata")]
         public virtual GoogleCloudAiplatformV1beta1RetrievalMetadata RetrievalMetadata { get; set; }
@@ -2173,6 +2211,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groundingChunkIndices")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> GroundingChunkIndices { get; set; }
+
+        /// <summary>
+        /// Indices into the `rendered_parts` field of the `GroundingMetadata` message. These indices specify which
+        /// rendered parts are associated with this support message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("renderedParts")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> RenderedParts { get; set; }
 
         /// <summary>The content segment that this support message applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segment")]
@@ -2803,7 +2848,11 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defs")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudAiplatformV1beta1Schema> Defs { get; set; }
 
-        /// <summary>Optional. Description of the schema.</summary>
+        /// <summary>
+        /// Optional. Describes the data. The model uses this field to understand the purpose of the schema and how to
+        /// use it. It is a best practice to provide a clear and descriptive explanation for the schema and its
+        /// properties here, rather than in the prompt.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -3163,6 +3212,41 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("excludeDomains")]
         public virtual System.Collections.Generic.IList<string> ExcludeDomains { get; set; }
 
+        /// <summary>
+        /// Optional. The set of search types to enable. If not set, web search is enabled by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchTypes")]
+        public virtual GoogleCloudAiplatformV1beta1ToolGoogleSearchSearchTypes SearchTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Image search for grounding and related configurations.</summary>
+    public class GoogleCloudAiplatformV1beta1ToolGoogleSearchImageSearch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Different types of search that can be enabled on the GoogleSearch tool.</summary>
+    public class GoogleCloudAiplatformV1beta1ToolGoogleSearchSearchTypes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Setting this field enables image search. Image bytes are returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageSearch")]
+        public virtual GoogleCloudAiplatformV1beta1ToolGoogleSearchImageSearch ImageSearch { get; set; }
+
+        /// <summary>Optional. Setting this field enables web search. Only text results are returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webSearch")]
+        public virtual GoogleCloudAiplatformV1beta1ToolGoogleSearchWebSearch WebSearch { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Standard web search for grounding and related configurations. Only text results are returned.</summary>
+    public class GoogleCloudAiplatformV1beta1ToolGoogleSearchWebSearch : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
