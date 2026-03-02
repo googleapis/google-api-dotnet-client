@@ -19981,7 +19981,11 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual FixedBidStrategy FixedBid { get; set; }
 
         /// <summary>
-        /// * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA`, `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC`, and
+        /// A strategy that automatically adjusts the bid to optimize to your performance goal while spending the full
+        /// budget. At insertion order level, the markup_type of line items cannot be set to
+        /// `PARTNER_REVENUE_MODEL_MARKUP_TYPE_CPM`. In addition, the performance_goal_type value assigned to an
+        /// insertion order determines the possible line_item_type values available for line items under that insertion
+        /// order: * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA`, `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC`, and
         /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED` only allow for `LINE_ITEM_TYPE_DISPLAY_DEFAULT` or
         /// `LINE_ITEM_TYPE_VIDEO_DEFAULT` line items. * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA` and
         /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN` only allow for `LINE_ITEM_TYPE_VIDEO_DEFAULT` line items. *
@@ -23294,7 +23298,13 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-        /// <summary>Optional. The bidding strategy of the insertion order. By default, fixed_bid is set.</summary>
+        /// <summary>
+        /// Optional. The bidding strategy of the insertion order. By default, fixed_bid is set. If the budget field
+        /// automationType is set to `INSERTION_ORDER_AUTOMATION_TYPE_BUDGET` or
+        /// `INSERTION_ORDER_AUTOMATION_TYPE_BID_BUDGET`, the insertion order will impose this bidding strategy on its
+        /// line items. If an imposed bidding strategy is not compatible with a line item's enableOptimizedTargeting
+        /// setting, the optimized targeting setting will be updated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bidStrategy")]
         public virtual BiddingStrategy BidStrategy { get; set; }
 
