@@ -6170,11 +6170,12 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for connections to SSM instance</summary>
+    /// <summary>Configuration for connections to Secure Source Manager instance</summary>
     public class SecureSourceManagerInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Immutable. SSM instance resource, formatted as `projects/*/locations/*/instances/*`
+        /// Required. Immutable. Secure Source Manager instance resource, formatted as
+        /// `projects/*/locations/*/instances/*`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
         public virtual string Instance { get; set; }
