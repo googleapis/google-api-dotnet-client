@@ -4990,6 +4990,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("preferentialNetworkServiceSettings")]
         public virtual PreferentialNetworkServiceSettings PreferentialNetworkServiceSettings { get; set; }
 
+        /// <summary>Optional. The global private DNS settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateDnsSettings")]
+        public virtual PrivateDnsSettings PrivateDnsSettings { get; set; }
+
         /// <summary>
         /// Controls tethering settings. Based on the value set, the user is partially or fully disallowed from using
         /// different forms of tethering.
@@ -7242,11 +7246,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoTimeRequired")]
         public virtual System.Nullable<bool> AutoTimeRequired { get; set; }
 
-        /// <summary>
-        /// Whether applications other than the ones configured in applications are blocked from being installed. When
-        /// set, applications that were installed under a previous policy but no longer appear in the policy are
-        /// automatically uninstalled.
-        /// </summary>
+        /// <summary>This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blockApplicationsEnabled")]
         public virtual System.Nullable<bool> BlockApplicationsEnabled { get; set; }
 
@@ -7917,6 +7917,33 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preferentialNetworkServiceConfigs")]
         public virtual System.Collections.Generic.IList<PreferentialNetworkServiceConfig> PreferentialNetworkServiceConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Controls the device's private DNS settings.</summary>
+    public class PrivateDnsSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The hostname of the DNS server. This must be set if and only if private_dns_mode is set to
+        /// PRIVATE_DNS_SPECIFIED_HOST. Supported on Android 10 and above on fully managed devices. A
+        /// NonComplianceDetail with MANAGEMENT_MODE is reported on other management modes. A NonComplianceDetail with
+        /// API_LEVEL is reported if the Android version is less than 10. A NonComplianceDetail with PENDING is reported
+        /// if the device is not connected to a network. A NonComplianceDetail with nonComplianceReason INVALID_VALUE
+        /// and specificNonComplianceReason PRIVATE_DNS_HOST_NOT_SERVING is reported if the specified host is not a DNS
+        /// server or not supported on Android. A NonComplianceReason with nonComplianceReason INVALID_VALUE is reported
+        /// if applying this setting fails for any other reason.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateDnsHost")]
+        public virtual string PrivateDnsHost { get; set; }
+
+        /// <summary>
+        /// Optional. The configuration mode for device's global private DNS settings. If this is set to
+        /// PRIVATE_DNS_SPECIFIED_HOST, then private_dns_host must be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateDnsMode")]
+        public virtual string PrivateDnsMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
