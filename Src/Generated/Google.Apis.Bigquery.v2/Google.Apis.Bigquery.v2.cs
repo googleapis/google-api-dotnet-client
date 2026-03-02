@@ -6097,7 +6097,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
     /// <summary>
     /// Data policy option. For more information, see [Mask data by applying data policies to a
-    /// column](https://cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column/).
+    /// column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
     /// </summary>
     public class DataPolicyOption : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7924,6 +7924,98 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Output only. Reason why incremental query results are/were not written by the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabledReason")]
         public virtual string DisabledReason { get; set; }
+
+        /// <summary>Output only. Additional human-readable clarification, if available, for DisabledReason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabledReasonDetails")]
+        public virtual string DisabledReasonDetails { get; set; }
+
+        private string _firstIncrementalRowTimeRaw;
+
+        private object _firstIncrementalRowTime;
+
+        /// <summary>
+        /// Output only. The time at which the first incremental result was written. If the query needed to restart
+        /// internally, this only describes the final attempt.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstIncrementalRowTime")]
+        public virtual string FirstIncrementalRowTimeRaw
+        {
+            get => _firstIncrementalRowTimeRaw;
+            set
+            {
+                _firstIncrementalRowTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _firstIncrementalRowTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FirstIncrementalRowTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FirstIncrementalRowTimeDateTimeOffset instead.")]
+        public virtual object FirstIncrementalRowTime
+        {
+            get => _firstIncrementalRowTime;
+            set
+            {
+                _firstIncrementalRowTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _firstIncrementalRowTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="FirstIncrementalRowTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FirstIncrementalRowTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FirstIncrementalRowTimeRaw);
+            set => FirstIncrementalRowTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Number of rows that were in the latest result set before query completion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("incrementalRowCount")]
+        public virtual System.Nullable<long> IncrementalRowCount { get; set; }
+
+        private string _lastIncrementalRowTimeRaw;
+
+        private object _lastIncrementalRowTime;
+
+        /// <summary>
+        /// Output only. The time at which the last incremental result was written. Does not include the final result
+        /// written after query completion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastIncrementalRowTime")]
+        public virtual string LastIncrementalRowTimeRaw
+        {
+            get => _lastIncrementalRowTimeRaw;
+            set
+            {
+                _lastIncrementalRowTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastIncrementalRowTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastIncrementalRowTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastIncrementalRowTimeDateTimeOffset instead.")]
+        public virtual object LastIncrementalRowTime
+        {
+            get => _lastIncrementalRowTime;
+            set
+            {
+                _lastIncrementalRowTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastIncrementalRowTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastIncrementalRowTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastIncrementalRowTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastIncrementalRowTimeRaw);
+            set => LastIncrementalRowTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         private string _resultSetLastModifyTimeRaw;
 
