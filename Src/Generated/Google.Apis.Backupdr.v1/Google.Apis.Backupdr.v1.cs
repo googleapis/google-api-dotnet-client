@@ -5006,7 +5006,8 @@ namespace Google.Apis.Backupdr.v1
                 /// <summary>Initializes the service related config for a project.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. The resource name of the serviceConfig used to initialize the service. Format:
+                /// Required. The resource name of the serviceConfig used to initialize the service. The location must
+                /// be the location of the BackupVault. Format:
                 /// `projects/{project_id}/locations/{location}/serviceConfig`.
                 /// </param>
                 public virtual InitializeRequest Initialize(Google.Apis.Backupdr.v1.Data.InitializeServiceRequest body, string name)
@@ -5026,7 +5027,8 @@ namespace Google.Apis.Backupdr.v1
                     }
 
                     /// <summary>
-                    /// Required. The resource name of the serviceConfig used to initialize the service. Format:
+                    /// Required. The resource name of the serviceConfig used to initialize the service. The location
+                    /// must be the location of the BackupVault. Format:
                     /// `projects/{project_id}/locations/{location}/serviceConfig`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -9272,6 +9274,15 @@ namespace Google.Apis.Backupdr.v1.Data
     /// <summary>Request message for initializing the service.</summary>
     public class InitializeServiceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The location where the BackupPlan will be created. This field is required for multi-region
+        /// BackupVaults and is optional for regional BackupVaults. It is useful when creating a Backup Vault in a
+        /// multi-region, allowing the BackupPlan to reside in a specific region within that multi-region. If this field
+        /// is not provided, the BackupPlan will be created in the same location as specified in the `name` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlanLocation")]
+        public virtual string BackupPlanLocation { get; set; }
+
         /// <summary>Optional. The configuration for initializing a Cloud SQL instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlInstanceInitializationConfig")]
         public virtual CloudSqlInstanceInitializationConfig CloudSqlInstanceInitializationConfig { get; set; }
