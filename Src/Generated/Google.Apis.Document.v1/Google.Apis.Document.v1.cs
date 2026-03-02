@@ -6969,6 +6969,13 @@ namespace Google.Apis.Document.v1.Data
     /// </summary>
     public class GoogleCloudDocumentaiV1DocumentShardInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The index of the first page in Document.pages in the overall document global pages. Available for document
+        /// shards created by the document splitter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageOffset")]
+        public virtual System.Nullable<int> PageOffset { get; set; }
+
         /// <summary>Total number of shards.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shardCount")]
         public virtual System.Nullable<long> ShardCount { get; set; }
