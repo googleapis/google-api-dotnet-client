@@ -17120,6 +17120,13 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxRetentionAllowed")]
         public virtual object MaxRetentionAllowed { get; set; }
 
+        /// <summary>
+        /// Min duration of retention allowed from the DSPM retention control. This field is only populated when event
+        /// type is set to EVENT_TYPE_MIN_TTL_FROM_CREATION.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minRetentionAllowed")]
+        public virtual object MinRetentionAllowed { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -21477,6 +21484,13 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRetentionAllowed")]
         public virtual object MaxRetentionAllowed { get; set; }
+
+        /// <summary>
+        /// Min duration of retention allowed from the DSPM retention control. This field is only populated when event
+        /// type is set to EVENT_TYPE_MIN_TTL_FROM_CREATION.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minRetentionAllowed")]
+        public virtual object MinRetentionAllowed { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
