@@ -4791,9 +4791,11 @@ namespace Google.Apis.DiscoveryEngine.v1
                             /// <summary>
                             /// A comma-separated list of fields to filter by, in EBNF grammar. The supported fields
                             /// are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels`
-                            /// * `create_time` * `update_time` Examples: * `user_pseudo_id = some_id` * `display_name =
-                            /// "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` *
-                            /// `create_time &amp;gt; "1970-01-01T12:00:00Z"`
+                            /// * `create_time` * `update_time` * `collaborative_project` Examples: * `user_pseudo_id =
+                            /// some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT
+                            /// labels:hidden)` * `create_time &amp;gt; "1970-01-01T12:00:00Z"` * `collaborative_project
+                            /// = "projects/123/locations/global/collections/default_collection/engines/"
+                            /// "default_engine/collaborative_projects/cp1"`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
@@ -11155,9 +11157,11 @@ namespace Google.Apis.DiscoveryEngine.v1
                             /// <summary>
                             /// A comma-separated list of fields to filter by, in EBNF grammar. The supported fields
                             /// are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels`
-                            /// * `create_time` * `update_time` Examples: * `user_pseudo_id = some_id` * `display_name =
-                            /// "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` *
-                            /// `create_time &amp;gt; "1970-01-01T12:00:00Z"`
+                            /// * `create_time` * `update_time` * `collaborative_project` Examples: * `user_pseudo_id =
+                            /// some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT
+                            /// labels:hidden)` * `create_time &amp;gt; "1970-01-01T12:00:00Z"` * `collaborative_project
+                            /// = "projects/123/locations/global/collections/default_collection/engines/"
+                            /// "default_engine/collaborative_projects/cp1"`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
@@ -16096,9 +16100,11 @@ namespace Google.Apis.DiscoveryEngine.v1
                         /// <summary>
                         /// A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: *
                         /// `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` *
-                        /// `create_time` * `update_time` Examples: * `user_pseudo_id = some_id` * `display_name =
-                        /// "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time
-                        /// &amp;gt; "1970-01-01T12:00:00Z"`
+                        /// `create_time` * `update_time` * `collaborative_project` Examples: * `user_pseudo_id =
+                        /// some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT
+                        /// labels:hidden)` * `create_time &amp;gt; "1970-01-01T12:00:00Z"` * `collaborative_project =
+                        /// "projects/123/locations/global/collections/default_collection/engines/"
+                        /// "default_engine/collaborative_projects/cp1"`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -19107,7 +19113,10 @@ namespace Google.Apis.DiscoveryEngine.v1
                     this.service = service;
                 }
 
-                /// <summary>Creates a LicenseConfig</summary>
+                /// <summary>
+                /// Creates a LicenseConfig This method should only be used for creating NotebookLm licenses or Gemini
+                /// Enterprise free trial licenses.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The parent resource name, such as `projects/{project}/locations/{location}`.
@@ -19117,7 +19126,10 @@ namespace Google.Apis.DiscoveryEngine.v1
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a LicenseConfig</summary>
+                /// <summary>
+                /// Creates a LicenseConfig This method should only be used for creating NotebookLm licenses or Gemini
+                /// Enterprise free trial licenses.
+                /// </summary>
                 public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1LicenseConfig>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -27396,6 +27408,15 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destinationConfigs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1DestinationConfig> DestinationConfigs { get; set; }
 
+        /// <summary>
+        /// Output only. The list of FQDNs of the data connector can egress to. This includes both FQDN derived from the
+        /// customer provided instance URL and default per connector type FQDNs. Note: This field is derived from both
+        /// the DataConnector.params, and connector source spec. It should only be used for CAIS and Org Policy
+        /// evaluation purposes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("egressFqdns")]
+        public virtual System.Collections.Generic.IList<string> EgressFqdns { get; set; }
+
         /// <summary>Optional. Any params and credentials used specifically for EUA connectors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endUserConfig")]
         public virtual GoogleCloudDiscoveryengineV1DataConnectorEndUserConfig EndUserConfig { get; set; }
@@ -27652,6 +27673,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Output only. Whether the connector is created with VPC-SC enabled. This is only used for CuOP evaluation
+        /// purpose.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcscEnabled")]
+        public virtual System.Nullable<bool> VpcscEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -29630,6 +29658,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("knowledgeGraphConfig")]
         public virtual GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfig KnowledgeGraphConfig { get; set; }
 
+        /// <summary>Optional. The visibility of marketplace agents in the agent gallery.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("marketplaceAgentVisibility")]
+        public virtual string MarketplaceAgentVisibility { get; set; }
+
         /// <summary>
         /// Configurations for the Media Engine. Only applicable on the data stores with solution_type
         /// SOLUTION_TYPE_RECOMMENDATION and IndustryVertical.MEDIA vertical.
@@ -29659,6 +29691,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Optional. Observability config for the engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observabilityConfig")]
         public virtual GoogleCloudDiscoveryengineV1ObservabilityConfig ObservabilityConfig { get; set; }
+
+        /// <summary>Optional. The email of the procurement contact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("procurementContactEmail")]
+        public virtual string ProcurementContactEmail { get; set; }
 
         /// <summary>
         /// Configurations for the Search Engine. Only applicable if solution_type is SOLUTION_TYPE_SEARCH.
@@ -40024,6 +40060,15 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destinationConfigs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaDestinationConfig> DestinationConfigs { get; set; }
 
+        /// <summary>
+        /// Output only. The list of FQDNs of the data connector can egress to. This includes both FQDN derived from the
+        /// customer provided instance URL and default per connector type FQDNs. Note: This field is derived from both
+        /// the DataConnector.params, and connector source spec. It should only be used for CAIS and Org Policy
+        /// evaluation purposes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("egressFqdns")]
+        public virtual System.Collections.Generic.IList<string> EgressFqdns { get; set; }
+
         /// <summary>Optional. Any params and credentials used specifically for EUA connectors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endUserConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaDataConnectorEndUserConfig EndUserConfig { get; set; }
@@ -40280,6 +40325,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Output only. Whether the connector is created with VPC-SC enabled. This is only used for CuOP evaluation
+        /// purpose.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcscEnabled")]
+        public virtual System.Nullable<bool> VpcscEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -42142,6 +42194,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("knowledgeGraphConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfig KnowledgeGraphConfig { get; set; }
 
+        /// <summary>Optional. The visibility of marketplace agents in the agent gallery.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("marketplaceAgentVisibility")]
+        public virtual string MarketplaceAgentVisibility { get; set; }
+
         /// <summary>
         /// Configurations for the Media Engine. Only applicable on the data stores with solution_type
         /// SOLUTION_TYPE_RECOMMENDATION and IndustryVertical.MEDIA vertical.
@@ -42171,6 +42227,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Optional. Observability config for the engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observabilityConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaObservabilityConfig ObservabilityConfig { get; set; }
+
+        /// <summary>Optional. The email of the procurement contact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("procurementContactEmail")]
+        public virtual string ProcurementContactEmail { get; set; }
 
         /// <summary>
         /// Output only. Additional information of a recommendation engine. Only applicable if solution_type is
@@ -43931,9 +43991,11 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     {
         /// <summary>
         /// A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id`
-        /// * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples: *
-        /// `user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT
-        /// labels:hidden)` * `create_time &amp;gt; "1970-01-01T12:00:00Z"`
+        /// * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` *
+        /// `collaborative_project` Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `starred =
+        /// true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time &amp;gt; "1970-01-01T12:00:00Z"` *
+        /// `collaborative_project = "projects/123/locations/global/collections/default_collection/engines/"
+        /// "default_engine/collaborative_projects/cp1"`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -50730,6 +50792,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("knowledgeGraphConfig")]
         public virtual GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfig KnowledgeGraphConfig { get; set; }
 
+        /// <summary>Optional. The visibility of marketplace agents in the agent gallery.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("marketplaceAgentVisibility")]
+        public virtual string MarketplaceAgentVisibility { get; set; }
+
         /// <summary>
         /// Configurations for the Media Engine. Only applicable on the data stores with solution_type
         /// SOLUTION_TYPE_RECOMMENDATION and IndustryVertical.MEDIA vertical.
@@ -50759,6 +50825,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Optional. Observability config for the engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observabilityConfig")]
         public virtual GoogleCloudDiscoveryengineV1betaObservabilityConfig ObservabilityConfig { get; set; }
+
+        /// <summary>Optional. The email of the procurement contact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("procurementContactEmail")]
+        public virtual string ProcurementContactEmail { get; set; }
 
         /// <summary>
         /// Configurations for the Search Engine. Only applicable if solution_type is SOLUTION_TYPE_SEARCH.
