@@ -2720,7 +2720,9 @@ namespace Google.Apis.FirebaseAppHosting.v1beta.Data
     /// <summary>The URI of an storage archive or a signed URL to use as the build source.</summary>
     public class ArchiveSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The author contained in the metadata of a version control change.</summary>
+        /// <summary>
+        /// Optional. Deprecated: Not used. The author contained in the metadata of a version control change.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("author")]
         public virtual SourceUserMetadata Author { get; set; }
 
@@ -2732,7 +2734,12 @@ namespace Google.Apis.FirebaseAppHosting.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("externalSignedUri")]
         public virtual string ExternalSignedUri { get; set; }
 
-        /// <summary>Optional. Relative path in the archive.</summary>
+        /// <summary>
+        /// Optional. The directory relative to the root of the archive to use as the root for the deployed web app.
+        /// Defaults to use the root of the repository if not provided. If deploying a
+        /// [monorepo](https://firebase.google.com/docs/app-hosting/monorepos), this should be the directory that
+        /// contains the `package.json` or `apphosting.yaml` file.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootDirectory")]
         public virtual string RootDirectory { get; set; }
 
@@ -3070,15 +3077,15 @@ namespace Google.Apis.FirebaseAppHosting.v1beta.Data
         public virtual string Environment { get; set; }
 
         /// <summary>
-        /// Output only. A status and (human readable) error message for the build, if in a `FAILED` state. Deprecated:
-        /// Use `errors` instead.
+        /// Output only. Deprecated: Use `errors` instead. A status and (human readable) error message for the build, if
+        /// in a `FAILED` state.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; }
 
         /// <summary>
-        /// Output only. The source of the error for the build, if in a `FAILED` state. Deprecated: Use `errors`
-        /// instead.
+        /// Output only. Deprecated: Use `errors` instead. The source of the error for the build, if in a `FAILED`
+        /// state.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorSource")]
         public virtual string ErrorSource { get; set; }
@@ -3206,7 +3213,9 @@ namespace Google.Apis.FirebaseAppHosting.v1beta.Data
 
         /// <summary>
         /// Optional. If `repository` is provided, the directory relative to the root of the repository to use as the
-        /// root for the deployed web app.
+        /// root for the deployed web app. Defaults to use the root of the repository if not provided. If deploying a
+        /// [monorepo](https://firebase.google.com/docs/app-hosting/monorepos), this should be the directory that
+        /// contains the `package.json` or `apphosting.yaml` file.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootDirectory")]
         public virtual string RootDirectory { get; set; }
@@ -3283,6 +3292,15 @@ namespace Google.Apis.FirebaseAppHosting.v1beta.Data
         public virtual string Hash { get; set; }
 
         /// <summary>
+        /// Output only. The resource name for the Developer Connect
+        /// [`gitRepositoryLink`](https://cloud.google.com/developer-connect/docs/api/reference/rest/v1/projects.locations.connections.gitRepositoryLinks)
+        /// used for this build, in the format:
+        /// `projects/{project}/locations/{location}/connections/{connection}/gitRepositoryLinks/{repositoryLink}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repository")]
+        public virtual string Repository { get; set; }
+
+        /// <summary>
         /// Output only. A URI linking to the codebase on an hosting provider's website. May not be valid if the commit
         /// has been rebased or force-pushed out of existence in the linked repository.
         /// </summary>
@@ -3307,7 +3325,7 @@ namespace Google.Apis.FirebaseAppHosting.v1beta.Data
         /// <summary>
         /// Optional. Supplied environment variables for a specific build. Provided at Build creation time and immutable
         /// afterwards. This field is only applicable for Builds using a build image - (e.g., ContainerSource or
-        /// ArchiveSource with locally_build_source) Attempts to set this for other build types will result in an error
+        /// ArchiveSource with locally_built_source) Attempts to set this for other build types will result in an error
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
         public virtual System.Collections.Generic.IList<EnvironmentVariable> Env { get; set; }
@@ -4586,7 +4604,7 @@ namespace Google.Apis.FirebaseAppHosting.v1beta.Data
     }
 
     /// <summary>
-    /// Additional configuration to apply to the Cloud Run
+    /// Configuration applied to the Cloud Run
     /// [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service).
     /// </summary>
     public class RunConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -4668,21 +4686,24 @@ namespace Google.Apis.FirebaseAppHosting.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for the user who started the build.</summary>
+    /// <summary>Deprecated: Not used. Metadata for the user who started the build.</summary>
     public class SourceUserMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The user-chosen displayname. May be empty.</summary>
+        /// <summary>Output only. Deprecated: Not used. The user-chosen displayname. May be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Output only. The account email linked to the EUC that created the build. May be a service account or other
-        /// robot account.
+        /// Output only. Deprecated: Not used. The account email linked to the EUC that created the build. May be a
+        /// service account or other robot account.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
 
-        /// <summary>Output only. The URI of a profile photo associated with the user who created the build.</summary>
+        /// <summary>
+        /// Output only. Deprecated: Not used. The URI of a profile photo associated with the user who created the
+        /// build.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
         public virtual string ImageUri { get; set; }
 
