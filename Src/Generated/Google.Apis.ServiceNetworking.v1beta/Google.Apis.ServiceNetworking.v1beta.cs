@@ -1534,6 +1534,10 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("consumerImportSubnetRoutesWithPublicIp")]
         public virtual System.Nullable<bool> ConsumerImportSubnetRoutesWithPublicIp { get; set; }
 
+        /// <summary>Output only. If this is true, consumer peering is active.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerPeeringActive")]
+        public virtual System.Nullable<bool> ConsumerPeeringActive { get; set; }
+
         /// <summary>Export custom routes flag value for peering from producer to consumer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("producerExportCustomRoutes")]
         public virtual System.Nullable<bool> ProducerExportCustomRoutes { get; set; }
