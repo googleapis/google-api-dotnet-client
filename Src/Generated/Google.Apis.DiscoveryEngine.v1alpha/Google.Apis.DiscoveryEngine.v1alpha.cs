@@ -28635,6 +28635,24 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("useStaticSecrets")]
         public virtual System.Nullable<bool> UseStaticSecrets { get; set; }
 
+        /// <summary>
+        /// Optional. Mapping from operation name to the list of scopes. Only be populated if there are user specified
+        /// scopes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userDefinedScopesMapping")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1ActionConfigScopeList> UserDefinedScopesMapping { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stores a list of scopes.</summary>
+    public class GoogleCloudDiscoveryengineV1ActionConfigScopeList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The list of scopes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -30150,7 +30168,16 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         }
 
         /// <summary>
-        /// Required. The name of the data source. Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+        /// Required. The identifier for the data source. This is a partial list of supported connectors. Please refer
+        /// to the
+        /// [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+        /// for the full list of connectors. Supported first-party connectors include: * `gcs` * `bigquery` * `gcp_fhir`
+        /// * `google_mail` * `google_drive` * `google_calendar` * `google_chat` Supported third-party connectors
+        /// include: Generally available (GA) connectors: * `onedrive` * `outlook` * `confluence` * `jira` *
+        /// `servicenow` * `sharepoint` Preview connectors: * `asana` * `azure_active_directory` * `box` * `canva` *
+        /// `confluence_server` * `custom_connector` * `docusign` * `dropbox` * `dynamics365` * `github` * `gitlab` *
+        /// `hubspot` * `jira_server` * `linear` * `native_cloud_identity` * `notion` * `okta` * `pagerduty` *
+        /// `peoplesoft` * `salesforce` * `shopify` * `slack` * `snowflake` * `teams` * `trello` * `workday` * `zendesk`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
         public virtual string DataSource { get; set; }
@@ -30697,6 +30724,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentProcessingConfig")]
         public virtual GoogleCloudDiscoveryengineV1DocumentProcessingConfig DocumentProcessingConfig { get; set; }
 
+        /// <summary>Optional. If set, this DataStore is a federated search DataStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("federatedSearchConfig")]
+        public virtual GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfig FederatedSearchConfig { get; set; }
+
         /// <summary>Optional. Configuration for `HEALTHCARE_FHIR` vertical.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthcareFhirConfig")]
         public virtual GoogleCloudDiscoveryengineV1HealthcareFhirConfig HealthcareFhirConfig { get; set; }
@@ -30902,6 +30933,130 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(WebsiteDataUpdateTimeRaw);
             set => WebsiteDataUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stores information for federated search.</summary>
+    public class GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>AlloyDB config. If set, this DataStore is connected to AlloyDB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alloyDbConfig")]
+        public virtual GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfig AlloyDbConfig { get; set; }
+
+        /// <summary>NotebookLM config. If set, this DataStore is connected to NotebookLM Enterprise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebooklmConfig")]
+        public virtual GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigNotebooklmConfig NotebooklmConfig { get; set; }
+
+        /// <summary>
+        /// Third Party OAuth config. If set, this DataStore is connected to a third party application.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyOauthConfig")]
+        public virtual GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigThirdPartyOauthConfig ThirdPartyOauthConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stores information for connecting to AlloyDB.</summary>
+    public class GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Configuration for Magic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alloydbAiNlConfig")]
+        public virtual GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig AlloydbAiNlConfig { get; set; }
+
+        /// <summary>Required. Configuration for connecting to AlloyDB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alloydbConnectionConfig")]
+        public virtual GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig AlloydbConnectionConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Fields to be returned in the search results. If empty, all fields will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnedFields")]
+        public virtual System.Collections.Generic.IList<string> ReturnedFields { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for AlloyDB AI Natural Language.</summary>
+    public class GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. AlloyDb AI NL config id, i.e. the value that was used for calling `SELECT
+        /// alloydb_ai_nl.g_create_configuration(...)`. Can be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nlConfigId")]
+        public virtual string NlConfigId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for connecting to AlloyDB.</summary>
+    public class GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Auth mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authMode")]
+        public virtual string AuthMode { get; set; }
+
+        /// <summary>Required. The AlloyDB database to connect to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>Optional. If true, enable PSVS for AlloyDB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePsvs")]
+        public virtual System.Nullable<bool> EnablePsvs { get; set; }
+
+        /// <summary>Required. The AlloyDB instance to connect to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instance")]
+        public virtual string Instance { get; set; }
+
+        /// <summary>
+        /// Required. Database password. If auth_mode = END_USER_ACCOUNT, it can be unset. In that case, the password
+        /// will be inferred on the AlloyDB side, based on the authenticated user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>
+        /// Required. Database user. If auth_mode = END_USER_ACCOUNT, it can be unset. In that case, the user will be
+        /// inferred on the AlloyDB side, based on the authenticated user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual string User { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config for connecting to NotebookLM Enterprise.</summary>
+    public class GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigNotebooklmConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Search config name. Format: projects/*/locations/global/notebookLmSearchConfigs/*
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchConfig")]
+        public virtual string SearchConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stores information for third party applicationOAuth.</summary>
+    public class GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigThirdPartyOauthConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The type of the application. E.g., "jira", "box", etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appName")]
+        public virtual string AppName { get; set; }
+
+        /// <summary>
+        /// Optional. The instance name identifying the 3P app, e.g., "vaissptbots-my". This is different from the
+        /// instance_uri which is the full URL of the 3P app e.g., "https://vaissptbots-my.sharepoint.com".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceName")]
+        public virtual string InstanceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -35519,6 +35674,24 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("useStaticSecrets")]
         public virtual System.Nullable<bool> UseStaticSecrets { get; set; }
 
+        /// <summary>
+        /// Optional. Mapping from operation name to the list of scopes. Only be populated if there are user specified
+        /// scopes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userDefinedScopesMapping")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1alphaActionConfigScopeList> UserDefinedScopesMapping { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stores a list of scopes.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaActionConfigScopeList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The list of scopes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -37239,6 +37412,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Chunk information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chunkInfo")]
         public virtual GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfo ChunkInfo { get; set; }
+
+        /// <summary>Output only. The search queries that produced this reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queries")]
+        public virtual System.Collections.Generic.IList<string> Queries { get; set; }
 
         /// <summary>Structured document information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structuredDocumentInfo")]
@@ -41489,7 +41666,16 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual GoogleCloudDiscoveryengineV1alphaDataProtectionPolicy DataProtectionPolicy { get; set; }
 
         /// <summary>
-        /// Required. The name of the data source. Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+        /// Required. The identifier for the data source. This is a partial list of supported connectors. Please refer
+        /// to the
+        /// [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+        /// for the full list of connectors. Supported first-party connectors include: * `gcs` * `bigquery` * `gcp_fhir`
+        /// * `google_mail` * `google_drive` * `google_calendar` * `google_chat` Supported third-party connectors
+        /// include: Generally available (GA) connectors: * `onedrive` * `outlook` * `confluence` * `jira` *
+        /// `servicenow` * `sharepoint` Preview connectors: * `asana` * `azure_active_directory` * `box` * `canva` *
+        /// `confluence_server` * `custom_connector` * `docusign` * `dropbox` * `dynamics365` * `github` * `gitlab` *
+        /// `hubspot` * `jira_server` * `linear` * `native_cloud_identity` * `notion` * `okta` * `pagerduty` *
+        /// `peoplesoft` * `salesforce` * `shopify` * `slack` * `snowflake` * `teams` * `trello` * `workday` * `zendesk`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
         public virtual string DataSource { get; set; }
@@ -42061,6 +42247,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentProcessingConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig DocumentProcessingConfig { get; set; }
 
+        /// <summary>Optional. If set, this DataStore is a federated search DataStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("federatedSearchConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfig FederatedSearchConfig { get; set; }
+
         /// <summary>Optional. Configuration for `HEALTHCARE_FHIR` vertical.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthcareFhirConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaHealthcareFhirConfig HealthcareFhirConfig { get; set; }
@@ -42274,6 +42464,130 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(WebsiteDataUpdateTimeRaw);
             set => WebsiteDataUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stores information for federated search.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>AlloyDB config. If set, this DataStore is connected to AlloyDB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alloyDbConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfig AlloyDbConfig { get; set; }
+
+        /// <summary>NotebookLM config. If set, this DataStore is connected to NotebookLM Enterprise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebooklmConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigNotebooklmConfig NotebooklmConfig { get; set; }
+
+        /// <summary>
+        /// Third Party OAuth config. If set, this DataStore is connected to a third party application.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyOauthConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigThirdPartyOauthConfig ThirdPartyOauthConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stores information for connecting to AlloyDB.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Configuration for Magic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alloydbAiNlConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig AlloydbAiNlConfig { get; set; }
+
+        /// <summary>Required. Configuration for connecting to AlloyDB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alloydbConnectionConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig AlloydbConnectionConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Fields to be returned in the search results. If empty, all fields will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnedFields")]
+        public virtual System.Collections.Generic.IList<string> ReturnedFields { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for AlloyDB AI Natural Language.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. AlloyDb AI NL config id, i.e. the value that was used for calling `SELECT
+        /// alloydb_ai_nl.g_create_configuration(...)`. Can be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nlConfigId")]
+        public virtual string NlConfigId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for connecting to AlloyDB.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Auth mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authMode")]
+        public virtual string AuthMode { get; set; }
+
+        /// <summary>Required. The AlloyDB database to connect to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>Optional. If true, enable PSVS for AlloyDB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePsvs")]
+        public virtual System.Nullable<bool> EnablePsvs { get; set; }
+
+        /// <summary>Required. The AlloyDB instance to connect to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instance")]
+        public virtual string Instance { get; set; }
+
+        /// <summary>
+        /// Required. Database password. If auth_mode = END_USER_ACCOUNT, it can be unset. In that case, the password
+        /// will be inferred on the AlloyDB side, based on the authenticated user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>
+        /// Required. Database user. If auth_mode = END_USER_ACCOUNT, it can be unset. In that case, the user will be
+        /// inferred on the AlloyDB side, based on the authenticated user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual string User { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config for connecting to NotebookLM Enterprise.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigNotebooklmConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Search config name. Format: projects/*/locations/global/notebookLmSearchConfigs/*
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchConfig")]
+        public virtual string SearchConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stores information for third party applicationOAuth.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigThirdPartyOauthConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The type of the application. E.g., "jira", "box", etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appName")]
+        public virtual string AppName { get; set; }
+
+        /// <summary>
+        /// Optional. The instance name identifying the 3P app, e.g., "vaissptbots-my". This is different from the
+        /// instance_uri which is the full URL of the 3P app e.g., "https://vaissptbots-my.sharepoint.com".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceName")]
+        public virtual string InstanceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -50704,8 +51018,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// 2023?", the current query will be interpreted as "How did Alphabet do in 2023?". Example #2 (coordination
         /// between /search API calls and /answer API calls): Call /answer API with the session ID generated in the
         /// first call. Here, the answer generation happens in the context of the search results from the first search
-        /// call. Multi-turn Search feature is currently at private GA stage. Please use v1alpha or v1beta version
-        /// instead before we launch this feature to public GA. Or ask for allowlisting through Google Support team.
+        /// call.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("session")]
         public virtual string Session { get; set; }
@@ -51552,10 +51865,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Session specification. Multi-turn Search feature is currently at private GA stage. Please use v1alpha or v1beta
-    /// version instead before we launch this feature to public GA. Or ask for allowlisting through Google Support team.
-    /// </summary>
+    /// <summary>Session specification.</summary>
     public class GoogleCloudDiscoveryengineV1alphaSearchRequestSessionSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -54374,6 +54684,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("engine")]
         public virtual string Engine { get; set; }
 
+        /// <summary>
+        /// Optional. Represents the entity for customers that may run multiple different entities, domains, sites or
+        /// regions, for example, `Google US`, `Google Ads`, `Waymo`, `google.com`, `youtube.com`, etc. We recommend
+        /// that you set `entity` to get better per-entity search, completion, and prediction results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entity")]
+        public virtual string Entity { get; set; }
+
         private string _eventTimeRaw;
 
         private object _eventTime;
@@ -54532,7 +54850,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// for anonymous users. Always use a hashed value for this ID. Don't set the field to the same fixed ID for
         /// different users. This mixes the event history of those users together, which results in degraded model
         /// quality. The field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an
-        /// `INVALID_ARGUMENT` error is returned.
+        /// `INVALID_ARGUMENT` error is returned. Represents an opaque ID to the Search API. The Search API doesn't
+        /// interpret the value in any way. This field is used to associate events with a user across sessions if the
+        /// events are being uploaded.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; }
@@ -56809,6 +57129,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentProcessingConfig")]
         public virtual GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig DocumentProcessingConfig { get; set; }
 
+        /// <summary>Optional. If set, this DataStore is a federated search DataStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("federatedSearchConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfig FederatedSearchConfig { get; set; }
+
         /// <summary>Optional. Configuration for `HEALTHCARE_FHIR` vertical.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthcareFhirConfig")]
         public virtual GoogleCloudDiscoveryengineV1betaHealthcareFhirConfig HealthcareFhirConfig { get; set; }
@@ -57018,6 +57342,130 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(WebsiteDataUpdateTimeRaw);
             set => WebsiteDataUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stores information for federated search.</summary>
+    public class GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>AlloyDB config. If set, this DataStore is connected to AlloyDB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alloyDbConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfig AlloyDbConfig { get; set; }
+
+        /// <summary>NotebookLM config. If set, this DataStore is connected to NotebookLM Enterprise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebooklmConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigNotebooklmConfig NotebooklmConfig { get; set; }
+
+        /// <summary>
+        /// Third Party OAuth config. If set, this DataStore is connected to a third party application.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyOauthConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigThirdPartyOauthConfig ThirdPartyOauthConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stores information for connecting to AlloyDB.</summary>
+    public class GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Configuration for Magic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alloydbAiNlConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig AlloydbAiNlConfig { get; set; }
+
+        /// <summary>Required. Configuration for connecting to AlloyDB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alloydbConnectionConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig AlloydbConnectionConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Fields to be returned in the search results. If empty, all fields will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnedFields")]
+        public virtual System.Collections.Generic.IList<string> ReturnedFields { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for AlloyDB AI Natural Language.</summary>
+    public class GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. AlloyDb AI NL config id, i.e. the value that was used for calling `SELECT
+        /// alloydb_ai_nl.g_create_configuration(...)`. Can be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nlConfigId")]
+        public virtual string NlConfigId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for connecting to AlloyDB.</summary>
+    public class GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Auth mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authMode")]
+        public virtual string AuthMode { get; set; }
+
+        /// <summary>Required. The AlloyDB database to connect to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>Optional. If true, enable PSVS for AlloyDB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePsvs")]
+        public virtual System.Nullable<bool> EnablePsvs { get; set; }
+
+        /// <summary>Required. The AlloyDB instance to connect to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instance")]
+        public virtual string Instance { get; set; }
+
+        /// <summary>
+        /// Required. Database password. If auth_mode = END_USER_ACCOUNT, it can be unset. In that case, the password
+        /// will be inferred on the AlloyDB side, based on the authenticated user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>
+        /// Required. Database user. If auth_mode = END_USER_ACCOUNT, it can be unset. In that case, the user will be
+        /// inferred on the AlloyDB side, based on the authenticated user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual string User { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config for connecting to NotebookLM Enterprise.</summary>
+    public class GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigNotebooklmConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Search config name. Format: projects/*/locations/global/notebookLmSearchConfigs/*
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchConfig")]
+        public virtual string SearchConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stores information for third party applicationOAuth.</summary>
+    public class GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigThirdPartyOauthConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The type of the application. E.g., "jira", "box", etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appName")]
+        public virtual string AppName { get; set; }
+
+        /// <summary>
+        /// Optional. The instance name identifying the 3P app, e.g., "vaissptbots-my". This is different from the
+        /// instance_uri which is the full URL of the 3P app e.g., "https://vaissptbots-my.sharepoint.com".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceName")]
+        public virtual string InstanceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -60711,8 +61159,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// 2023?", the current query will be interpreted as "How did Alphabet do in 2023?". Example #2 (coordination
         /// between /search API calls and /answer API calls): Call /answer API with the session ID generated in the
         /// first call. Here, the answer generation happens in the context of the search results from the first search
-        /// call. Multi-turn Search feature is currently at private GA stage. Please use v1alpha or v1beta version
-        /// instead before we launch this feature to public GA. Or ask for allowlisting through Google Support team.
+        /// call.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("session")]
         public virtual string Session { get; set; }
@@ -61551,10 +61998,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Session specification. Multi-turn Search feature is currently at private GA stage. Please use v1alpha or v1beta
-    /// version instead before we launch this feature to public GA. Or ask for allowlisting through Google Support team.
-    /// </summary>
+    /// <summary>Session specification.</summary>
     public class GoogleCloudDiscoveryengineV1betaSearchRequestSessionSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -62258,7 +62702,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// for anonymous users. Always use a hashed value for this ID. Don't set the field to the same fixed ID for
         /// different users. This mixes the event history of those users together, which results in degraded model
         /// quality. The field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an
-        /// `INVALID_ARGUMENT` error is returned.
+        /// `INVALID_ARGUMENT` error is returned. Represents an opaque ID to the Search API. The Search API doesn't
+        /// interpret the value in any way. This field is used to associate events with a user across sessions if the
+        /// events are being uploaded.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; }
