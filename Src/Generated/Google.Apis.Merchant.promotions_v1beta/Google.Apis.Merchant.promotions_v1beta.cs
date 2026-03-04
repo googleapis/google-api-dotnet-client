@@ -511,10 +511,10 @@ namespace Google.Apis.Merchant.promotions_v1beta.Data
 
         /// <summary>
         /// Optional. Product filter by [brand
-        /// exclusion](https://support.google.com/merchants/answer/13861679?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC)
-        /// for the promotion. The product filter attributes only applies when the products eligible for promotion
-        /// product applicability `product_applicability` attribute is set to
-        /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC).
+        /// exclusion](https://support.google.com/merchants/answer/13861679?ref_topic=13773355) for the promotion. The
+        /// product filter attributes only applies when the products eligible for promotion product applicability
+        /// `product_applicability` attribute is set to
+        /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brandExclusion")]
         public virtual System.Collections.Generic.IList<string> BrandExclusion { get; set; }
@@ -522,14 +522,13 @@ namespace Google.Apis.Merchant.promotions_v1beta.Data
         /// <summary>
         /// Optional. Product filter by brand for the promotion. The product filter attributes only applies when the
         /// products eligible for promotion product applicability `product_applicability` attribute is set to
-        /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC).
+        /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brandInclusion")]
         public virtual System.Collections.Generic.IList<string> BrandInclusion { get; set; }
 
         /// <summary>
-        /// Required. The [coupon value type]
-        /// (https://support.google.com/merchants/answer/13861986?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC)
+        /// Required. The [coupon value type] (https://support.google.com/merchants/answer/13861986?ref_topic=13773355)
         /// attribute to signal the type of promotion that you are running. Depending on type of the selected coupon
         /// value [some attributes are required](https://support.google.com/merchants/answer/6393006?ref_topic=7322920).
         /// </summary>
@@ -545,41 +544,36 @@ namespace Google.Apis.Merchant.promotions_v1beta.Data
 
         /// <summary>
         /// Optional. Event applicability for this promotion. When present, this field indicates you are creating a
-        /// [sales
-        /// event](https://support.google.com/merchants/answer/15523289?hl=en&amp;amp;sjid=11099988466404504696-NC) and
-        /// not a product promotion. Exactly one of `product_applicability` or `event_applicability` must be set.
+        /// [sales event](https://support.google.com/merchants/answer/15523289) and not a product promotion. Exactly one
+        /// of `product_applicability` or `event_applicability` must be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventApplicability")]
         public virtual string EventApplicability { get; set; }
 
         /// <summary>
-        /// Optional. [Free gift
-        /// description](https://support.google.com/merchants/answer/13847245?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC)
+        /// Optional. [Free gift description](https://support.google.com/merchants/answer/13847245?ref_topic=13773355)
         /// for the promotion.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freeGiftDescription")]
         public virtual string FreeGiftDescription { get; set; }
 
         /// <summary>
-        /// Optional. [Free gift item
-        /// ID](https://support.google.com/merchants/answer/13857152?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC)
-        /// for the promotion.
+        /// Optional. [Free gift item ID](https://support.google.com/merchants/answer/13857152?ref_topic=13773355) for
+        /// the promotion.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freeGiftItemId")]
         public virtual string FreeGiftItemId { get; set; }
 
         /// <summary>
-        /// Optional. [Free gift
-        /// value](https://support.google.com/merchants/answer/13844477?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC)
-        /// for the promotion.
+        /// Optional. [Free gift value](https://support.google.com/merchants/answer/13844477?ref_topic=13773355) for the
+        /// promotion.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freeGiftValue")]
         public virtual Price FreeGiftValue { get; set; }
 
         /// <summary>
         /// Optional. Generic redemption code for the promotion. To be used with the `offerType` field and must meet the
-        /// [minimum
-        /// requirements](https://support.google.com/merchants/answer/13837405?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC).
+        /// [minimum requirements](https://support.google.com/merchants/answer/13837405?ref_topic=13773355).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("genericRedemptionCode")]
         public virtual string GenericRedemptionCode { get; set; }
@@ -595,18 +589,18 @@ namespace Google.Apis.Merchant.promotions_v1beta.Data
         /// Optional. A list of Google product categories for this promotion. Set if `EventApplicability` is
         /// `SPECIFIC_CATEGORIES`. Up to 5 product categories can be specified. For more details on eligible values for
         /// product categories, checkout the `google_product_category` attribute in the [Promotion data
-        /// specification](https://support.google.com/merchants/answer/2906014?hl=en).
+        /// specification](https://support.google.com/merchants/answer/2906014).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleProductCategories")]
         public virtual System.Collections.Generic.IList<string> GoogleProductCategories { get; set; }
 
         /// <summary>
         /// Optional. Product filter by [item group
-        /// ID](https://support.google.com/merchants/answer/13837298?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC).
-        /// The product filter attributes only applies when the products eligible for promotion product applicability
-        /// `product_applicability` attribute is set to
-        /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC).
-        /// exclusion for the promotion.
+        /// ID](https://support.google.com/merchants/answer/13837298?ref_topic=13773355). The product filter attributes
+        /// only applies when the products eligible for promotion product applicability `product_applicability`
+        /// attribute is set to
+        /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355). exclusion for
+        /// the promotion.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemGroupIdExclusion")]
         public virtual System.Collections.Generic.IList<string> ItemGroupIdExclusion { get; set; }
@@ -614,35 +608,34 @@ namespace Google.Apis.Merchant.promotions_v1beta.Data
         /// <summary>
         /// Optional. Product filter by item group ID for the promotion. The product filter attributes only applies when
         /// the products eligible for promotion product applicability [product_applicability] attribute is set to
-        /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC).
+        /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemGroupIdInclusion")]
         public virtual System.Collections.Generic.IList<string> ItemGroupIdInclusion { get; set; }
 
         /// <summary>
         /// Optional. Product filter by [item ID
-        /// exclusion](https://support.google.com/merchants/answer/13863524?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC)
-        /// for the promotion. The product filter attributes only applies when the products eligible for promotion
-        /// product applicability `product_applicability` attribute is set to
-        /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC).
+        /// exclusion](https://support.google.com/merchants/answer/13863524?ref_topic=13773355) for the promotion. The
+        /// product filter attributes only applies when the products eligible for promotion product applicability
+        /// `product_applicability` attribute is set to
+        /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemIdExclusion")]
         public virtual System.Collections.Generic.IList<string> ItemIdExclusion { get; set; }
 
         /// <summary>
         /// Optional. Product filter by [item
-        /// ID](https://support.google.com/merchants/answer/13861565?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC)
-        /// for the promotion. The product filter attributes only applies when the products eligible for promotion
-        /// product applicability `product_applicability` attribute is set to
-        /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC).
+        /// ID](https://support.google.com/merchants/answer/13861565?ref_topic=13773355) for the promotion. The product
+        /// filter attributes only applies when the products eligible for promotion product applicability
+        /// `product_applicability` attribute is set to
+        /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemIdInclusion")]
         public virtual System.Collections.Generic.IList<string> ItemIdInclusion { get; set; }
 
         /// <summary>
         /// Optional. [Maximum purchase
-        /// quantity](https://support.google.com/merchants/answer/13861564?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC)
-        /// for the promotion.
+        /// quantity](https://support.google.com/merchants/answer/13861564?ref_topic=13773355) for the promotion.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limitQuantity")]
         public virtual System.Nullable<long> LimitQuantity { get; set; }
@@ -654,9 +647,8 @@ namespace Google.Apis.Merchant.promotions_v1beta.Data
         public virtual Price LimitValue { get; set; }
 
         /// <summary>
-        /// Required. [Long
-        /// title](https://support.google.com/merchants/answer/13838102?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC)
-        /// for the promotion.
+        /// Required. [Long title](https://support.google.com/merchants/answer/13838102?ref_topic=13773355) for the
+        /// promotion.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longTitle")]
         public virtual string LongTitle { get; set; }
@@ -669,8 +661,41 @@ namespace Google.Apis.Merchant.promotions_v1beta.Data
         public virtual Price MaxDiscountAmount { get; set; }
 
         /// <summary>
-        /// Optional. [Minimum purchase
-        /// amount](https://support.google.com/merchants/answer/13837705?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC)
+        /// Optional. Maximum money off amount for a promotion with `MONEY_OFF_RANGE` coupon value type. At least one of
+        /// `min_money_off_amount` or `max_money_off_amount` must be present when the coupon value type is
+        /// `MONEY_OFF_RANGE`. If neither is provided an `INVALID_PROMOTION_MISSING_BENEFIT_OR_RESTRICTION` error is
+        /// returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxMoneyOffAmount")]
+        public virtual Price MaxMoneyOffAmount { get; set; }
+
+        /// <summary>
+        /// Optional. Maximum percent off for a promotion with `PERCENT_OFF_RANGE` coupon value type. At least one of
+        /// `min_percent_off` or `max_percent_off` must be present when the coupon value type is `PERCENT_OFF_RANGE`. If
+        /// neither is provided an `INVALID_PROMOTION_MISSING_BENEFIT_OR_RESTRICTION` error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxPercentOff")]
+        public virtual System.Nullable<long> MaxPercentOff { get; set; }
+
+        /// <summary>
+        /// Optional. Minimum money off amount for a promotion with `MONEY_OFF_RANGE` coupon value type. At least one of
+        /// `min_money_off_amount` or `max_money_off_amount` must be present when the coupon value type is
+        /// `MONEY_OFF_RANGE`. If neither is provided an `INVALID_PROMOTION_MISSING_BENEFIT_OR_RESTRICTION` error is
+        /// returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minMoneyOffAmount")]
+        public virtual Price MinMoneyOffAmount { get; set; }
+
+        /// <summary>
+        /// Optional. Minimum percent off for a promotion with `PERCENT_OFF_RANGE` coupon value type. At least one of
+        /// `min_percent_off` or `max_percent_off` must be present when the coupon value type is `PERCENT_OFF_RANGE`. If
+        /// neither is provided an `INVALID_PROMOTION_MISSING_BENEFIT_OR_RESTRICTION` error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minPercentOff")]
+        public virtual System.Nullable<long> MinPercentOff { get; set; }
+
+        /// <summary>
+        /// Optional. [Minimum purchase amount](https://support.google.com/merchants/answer/13837705?ref_topic=13773355)
         /// for the promotion.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumPurchaseAmount")]
@@ -680,18 +705,15 @@ namespace Google.Apis.Merchant.promotions_v1beta.Data
         public virtual System.Nullable<long> MinimumPurchaseQuantity { get; set; }
 
         /// <summary>
-        /// Optional. The [money off
-        /// amount](https://support.google.com/merchants/answer/13838101?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC)
+        /// Optional. The [money off amount](https://support.google.com/merchants/answer/13838101?ref_topic=13773355)
         /// offered in the promotion.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("moneyOffAmount")]
         public virtual Price MoneyOffAmount { get; set; }
 
         /// <summary>
-        /// Required.
-        /// [Type](https://support.google.com/merchants/answer/13837405?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC)
-        /// of the promotion. Use this attribute to indicate whether or not customers need a coupon code to redeem your
-        /// promotion.
+        /// Required. [Type](https://support.google.com/merchants/answer/13837405?ref_topic=13773355) of the promotion.
+        /// Use this attribute to indicate whether or not customers need a coupon code to redeem your promotion.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offerType")]
         public virtual string OfferType { get; set; }
@@ -706,18 +728,18 @@ namespace Google.Apis.Merchant.promotions_v1beta.Data
 
         /// <summary>
         /// Optional. Applicability of the promotion to either all products or [only specific
-        /// products](https://support.google.com/merchants/answer/6396257?ref_topic=6396150&amp;amp;sjid=17642868584668136159-NC).
-        /// Exactly one of `product_applicability` or `event_applicability` must be set.
+        /// products](https://support.google.com/merchants/answer/6396257). Exactly one of `product_applicability` or
+        /// `event_applicability` must be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productApplicability")]
         public virtual string ProductApplicability { get; set; }
 
         /// <summary>
         /// Optional. Product filter by [product type
-        /// exclusion](https://support.google.com/merchants/answer/13863746?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC)
-        /// for the promotion. The product filter attributes only applies when the products eligible for promotion
-        /// product applicability `product_applicability` attribute is set to
-        /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC).
+        /// exclusion](https://support.google.com/merchants/answer/13863746?ref_topic=13773355) for the promotion. The
+        /// product filter attributes only applies when the products eligible for promotion product applicability
+        /// `product_applicability` attribute is set to
+        /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productTypeExclusion")]
         public virtual System.Collections.Generic.IList<string> ProductTypeExclusion { get; set; }
@@ -725,7 +747,7 @@ namespace Google.Apis.Merchant.promotions_v1beta.Data
         /// <summary>
         /// Optional. Product filter by product type for the promotion. The product filter attributes only applies when
         /// the products eligible for promotion product applicability `product_applicability` attribute is set to
-        /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC).
+        /// [specific_products](https://support.google.com/merchants/answer/13837299?ref_topic=13773355).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productTypeInclusion")]
         public virtual System.Collections.Generic.IList<string> ProductTypeInclusion { get; set; }
@@ -737,8 +759,7 @@ namespace Google.Apis.Merchant.promotions_v1beta.Data
         /// Shopping ads and free listings by default. You may have previously submitted the following values as
         /// destinations for your products: Shopping Actions, Surfaces across Google, Local surfaces across Google. To
         /// represent these values use `FREE_LISTINGS`, `FREE_LOCAL_LISTINGS`, `LOCAL_INVENTORY_ADS`. For more details
-        /// see [Promotion
-        /// destination](https://support.google.com/merchants/answer/13837465?sjid=5155774230887277618-NC)
+        /// see [Promotion destination](https://support.google.com/merchants/answer/13837465)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionDestinations")]
         public virtual System.Collections.Generic.IList<string> PromotionDestinations { get; set; }
@@ -773,9 +794,8 @@ namespace Google.Apis.Merchant.promotions_v1beta.Data
         public virtual string RedemptionRestriction { get; set; }
 
         /// <summary>
-        /// Optional. A list of
-        /// [regions](https://support.google.com/merchants/answer/15406457?hl=en&amp;amp;sjid=8815806704218720187-NC#howregionswork)
-        /// where the promotion is applicable. Must be set if `audience` is set to `LOCATION`.
+        /// Optional. A list of [regions](https://support.google.com/merchants/answer/15406457?#howregionswork) where
+        /// the promotion is applicable. Must be set if `audience` is set to `LOCATION`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionIdInclusion")]
         public virtual System.Collections.Generic.IList<string> RegionIdInclusion { get; set; }
@@ -791,23 +811,19 @@ namespace Google.Apis.Merchant.promotions_v1beta.Data
         public virtual string StoreApplicability { get; set; }
 
         /// <summary>
-        /// Optional. [Store codes to
-        /// exclude](https://support.google.com/merchants/answer/13859586?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC)
+        /// Optional. [Store codes to exclude](https://support.google.com/merchants/answer/13859586?ref_topic=13773355)
         /// for the promotion. The store filter attributes only applies when the `store_applicability` attribute is set
-        /// to
-        /// [specific_stores](https://support.google.com/merchants/answer/13857563?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC).
+        /// to [specific_stores](https://support.google.com/merchants/answer/13857563?ref_topic=13773355).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCodesExclusion")]
         public virtual System.Collections.Generic.IList<string> StoreCodesExclusion { get; set; }
 
         /// <summary>
-        /// Optional. [Store codes to
-        /// include](https://support.google.com/merchants/answer/13857470?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC)
+        /// Optional. [Store codes to include](https://support.google.com/merchants/answer/13857470?ref_topic=13773355)
         /// for the promotion. The store filter attributes only applies when the `store_applicability` attribute is set
-        /// to
-        /// [specific_stores](https://support.google.com/merchants/answer/13857563?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC).
-        /// Store code (the store ID from your Business Profile) of the physical store the product is sold in. See the
-        /// [Local product inventory data specification](https://support.google.com/merchants/answer/3061342) for more
+        /// to [specific_stores](https://support.google.com/merchants/answer/13857563?ref_topic=13773355). Store code
+        /// (the store ID from your Business Profile) of the physical store the product is sold in. See the [Local
+        /// product inventory data specification](https://support.google.com/merchants/answer/3061342) for more
         /// information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCodesInclusion")]
