@@ -3069,8 +3069,8 @@ namespace Google.Apis.PolicySimulator.v1beta.Data
         /// <summary>
         /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be *
         /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example:
-        /// `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters and the
-        /// minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/` is not
+        /// `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 71 characters and the
+        /// minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/custom.` is not
         /// counted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
