@@ -1625,7 +1625,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Identifier. The resource name of the deployment. Format:
-                    /// projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}
+                    /// `projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}`
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CustomerEngagementSuite.v1.Data.Deployment body, string name)
                     {
@@ -1645,7 +1645,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1
 
                         /// <summary>
                         /// Identifier. The resource name of the deployment. Format:
-                        /// projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}
+                        /// `projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -2910,10 +2910,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1
                     /// <summary>Updates the specified tool.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Identifier. The unique identifier of the tool. Format: -
-                    /// `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` for ## standalone tools.
+                    /// Identifier. The resource name of the tool. Format: *
+                    /// `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` for standalone tools. *
                     /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}/tools/{tool}` for tools
-                    /// retrieved from a toolset. These tools are dynamic and output-only, they cannot be referenced
+                    /// retrieved from a toolset. These tools are dynamic and output-only; they cannot be referenced
                     /// directly where a tool is expected.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CustomerEngagementSuite.v1.Data.Tool body, string name)
@@ -2933,10 +2933,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1
                         }
 
                         /// <summary>
-                        /// Identifier. The unique identifier of the tool. Format: -
-                        /// `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` for ## standalone tools.
+                        /// Identifier. The resource name of the tool. Format: *
+                        /// `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` for standalone tools. *
                         /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}/tools/{tool}` for
-                        /// tools retrieved from a toolset. These tools are dynamic and output-only, they cannot be
+                        /// tools retrieved from a toolset. These tools are dynamic and output-only; they cannot be
                         /// referenced directly where a tool is expected.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -5368,6 +5368,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Optional. Error handling settings of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorHandlingSettings")]
+        public virtual ErrorHandlingSettings ErrorHandlingSettings { get; set; }
+
         /// <summary>
         /// Output only. Etag used to ensure the object hasn't changed during a read-modify-write operation. If the etag
         /// is empty, the update will overwrite any concurrent changes.
@@ -6013,6 +6017,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// <summary>Optional. Agent transfer event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentTransfer")]
         public virtual AgentTransfer AgentTransfer { get; set; }
+
+        /// <summary>Optional. Blob data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blob")]
+        public virtual Blob Blob { get; set; }
 
         /// <summary>
         /// A struct represents default variables at the start of the conversation, keyed by variable names.
@@ -6829,8 +6837,9 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
     public class Deployment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The resource name of the app version to deploy. Format:
-        /// projects/{project}/locations/{location}/apps/{app}/versions/{version}
+        /// Optional. The resource name of the app version to deploy. Format:
+        /// `projects/{project}/locations/{location}/apps/{app}/versions/{version}` Use
+        /// `projects/{project}/locations/{location}/apps/{app}/versions/-` to use the draft app.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appVersion")]
         public virtual string AppVersion { get; set; }
@@ -6889,7 +6898,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
 
         /// <summary>
         /// Identifier. The resource name of the deployment. Format:
-        /// projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}
+        /// `projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7012,6 +7021,38 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subject")]
         public virtual string Subject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines project/location level endpoint control policy.</summary>
+    public class EndpointControlPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The allowed HTTP(s) origins that tools in the App are able to directly call. The enforcement
+        /// depends on the value of enforcement_scope and the VPC-SC status of the project. If a port number is not
+        /// provided, all ports will be allowed. Otherwise, the port number must match exactly. For example,
+        /// "https://example.com" will match "https://example.com:443" and any other port. "https://example.com:443"
+        /// will only match "https://example.com:443".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedOrigins")]
+        public virtual System.Collections.Generic.IList<string> AllowedOrigins { get; set; }
+
+        /// <summary>Optional. The scope in which this policy's allowed_origins list is enforced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enforcementScope")]
+        public virtual string EnforcementScope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings to describe how errors should be handled in the app.</summary>
+    public class ErrorHandlingSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The strategy to use for error handling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorHandlingStrategy")]
+        public virtual string ErrorHandlingStrategy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9333,6 +9374,99 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Project/Location level security settings for CES.</summary>
+    public class SecuritySettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Create time of the security settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Endpoint control related settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointControlPolicy")]
+        public virtual EndpointControlPolicy EndpointControlPolicy { get; set; }
+
+        /// <summary>Output only. Etag of the security settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Identifier. The unique identifier of the security settings. Format:
+        /// `projects/{project}/locations/{location}/securitySettings`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Last update time of the security settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
     /// <summary>Configurations for authentication using a custom service account.</summary>
     public class ServiceAccountAuthConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9393,7 +9527,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
 
         /// <summary>
         /// Optional. The entry agent to handle the session. If not specified, the session will be handled by the root
-        /// agent of the app. Format: `projects/{project}/locations/{location}/agents/{agent}`
+        /// agent of the app. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryAgent")]
         public virtual string EntryAgent { get; set; }
@@ -9432,6 +9566,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to use tool fakes for the session. If this field is set, the agent will attempt use tool
+        /// fakes instead of calling the real tools.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useToolFakes")]
+        public virtual System.Nullable<bool> UseToolFakes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9792,9 +9933,12 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// Required. The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the
         /// default SSL trust store. If this is empty or unspecified, CES will use Google's default trust store to
         /// verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For
-        /// instance a certificate can be self-signed using the following command, openssl x509 -req -days 200 -in
+        /// instance a certificate can be self-signed using the following command:
+        /// ```
+        /// openssl x509 -req -days 200 -in
         /// example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile &amp;lt;(printf
         /// "\nsubjectAltName='DNS:www.example.com'")
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cert")]
         public virtual string Cert { get; set; }
@@ -9902,10 +10046,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         public virtual McpTool McpTool { get; set; }
 
         /// <summary>
-        /// Identifier. The unique identifier of the tool. Format: -
-        /// `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` for ## standalone tools.
+        /// Identifier. The resource name of the tool. Format: *
+        /// `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` for standalone tools. *
         /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}/tools/{tool}` for tools retrieved
-        /// from a toolset. These tools are dynamic and output-only, they cannot be referenced directly where a tool is
+        /// from a toolset. These tools are dynamic and output-only; they cannot be referenced directly where a tool is
         /// expected.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
