@@ -10350,9 +10350,9 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual System.Nullable<bool> DeletionProtection { get; set; }
 
         /// <summary>
-        /// Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not
-        /// matching the granularity will be rejected. If unspecified at creation time, the value will be set to
-        /// `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
+        /// Immutable. The granularity at which timestamps are stored in this table. Timestamps not matching the
+        /// granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views:
+        /// `SCHEMA_VIEW`, `FULL`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("granularity")]
         public virtual string Granularity { get; set; }
