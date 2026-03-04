@@ -7816,6 +7816,20 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("opsInsightsStatus")]
         public virtual string OpsInsightsStatus { get; set; }
 
+        /// <summary>
+        /// Optional. The ID of the pluggable database associated with the Database. The ID must be unique within the
+        /// project and location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pluggableDatabaseId")]
+        public virtual string PluggableDatabaseId { get; set; }
+
+        /// <summary>
+        /// Optional. The pluggable database associated with the Database. The name must begin with an alphabetic
+        /// character and can contain a maximum of thirty alphanumeric characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pluggableDatabaseName")]
+        public virtual string PluggableDatabaseName { get; set; }
+
         /// <summary>Optional. The properties of the Database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual DatabaseProperties Properties { get; set; }
