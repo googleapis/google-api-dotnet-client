@@ -1689,7 +1689,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Identifier. The resource name of the deployment. Format:
-                    /// projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}
+                    /// `projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}`
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CustomerEngagementSuite.v1beta.Data.Deployment body, string name)
                     {
@@ -1709,7 +1709,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
 
                         /// <summary>
                         /// Identifier. The resource name of the deployment. Format:
-                        /// projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}
+                        /// `projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -3408,6 +3408,73 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                             });
                         }
                     }
+
+                    /// <summary>
+                    /// Uploads audio for use in Golden Evaluations. Stores the audio in the Cloud Storage bucket
+                    /// defined in 'App.logging_settings.evaluation_audio_recording_config.gcs_bucket' and returns a
+                    /// transcript.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The resource name of the Evaluation for which to upload the evaluation audio. Format:
+                    /// `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}`
+                    /// </param>
+                    public virtual UploadEvaluationAudioRequest UploadEvaluationAudio(Google.Apis.CustomerEngagementSuite.v1beta.Data.UploadEvaluationAudioRequest body, string name)
+                    {
+                        return new UploadEvaluationAudioRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Uploads audio for use in Golden Evaluations. Stores the audio in the Cloud Storage bucket
+                    /// defined in 'App.logging_settings.evaluation_audio_recording_config.gcs_bucket' and returns a
+                    /// transcript.
+                    /// </summary>
+                    public class UploadEvaluationAudioRequest : CustomerEngagementSuiteBaseServiceRequest<Google.Apis.CustomerEngagementSuite.v1beta.Data.UploadEvaluationAudioResponse>
+                    {
+                        /// <summary>Constructs a new UploadEvaluationAudio request.</summary>
+                        public UploadEvaluationAudioRequest(Google.Apis.Services.IClientService service, Google.Apis.CustomerEngagementSuite.v1beta.Data.UploadEvaluationAudioRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the Evaluation for which to upload the evaluation audio.
+                        /// Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CustomerEngagementSuite.v1beta.Data.UploadEvaluationAudioRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "uploadEvaluationAudio";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta/{+name}:uploadEvaluationAudio";
+
+                        /// <summary>Initializes UploadEvaluationAudio parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/apps/[^/]+/evaluations/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the Examples resource.</summary>
@@ -5015,10 +5082,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                     /// <summary>Updates the specified tool.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Identifier. The unique identifier of the tool. Format: -
-                    /// `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` for ## standalone tools.
+                    /// Identifier. The resource name of the tool. Format: *
+                    /// `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` for standalone tools. *
                     /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}/tools/{tool}` for tools
-                    /// retrieved from a toolset. These tools are dynamic and output-only, they cannot be referenced
+                    /// retrieved from a toolset. These tools are dynamic and output-only; they cannot be referenced
                     /// directly where a tool is expected.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CustomerEngagementSuite.v1beta.Data.Tool body, string name)
@@ -5038,10 +5105,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                         }
 
                         /// <summary>
-                        /// Identifier. The unique identifier of the tool. Format: -
-                        /// `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` for ## standalone tools.
+                        /// Identifier. The resource name of the tool. Format: *
+                        /// `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` for standalone tools. *
                         /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}/tools/{tool}` for
-                        /// tools retrieved from a toolset. These tools are dynamic and output-only, they cannot be
+                        /// tools retrieved from a toolset. These tools are dynamic and output-only; they cannot be
                         /// referenced directly where a tool is expected.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -6998,6 +7065,57 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                 }
             }
 
+            /// <summary>Retrieves the security settings for the project and location.</summary>
+            /// <param name="name">
+            /// Required. The resource name of the security settings to retrieve. Format:
+            /// `projects/{project}/locations/{location}/securitySettings`
+            /// </param>
+            public virtual GetSecuritySettingsRequest GetSecuritySettings(string name)
+            {
+                return new GetSecuritySettingsRequest(this.service, name);
+            }
+
+            /// <summary>Retrieves the security settings for the project and location.</summary>
+            public class GetSecuritySettingsRequest : CustomerEngagementSuiteBaseServiceRequest<Google.Apis.CustomerEngagementSuite.v1beta.Data.SecuritySettings>
+            {
+                /// <summary>Constructs a new GetSecuritySettings request.</summary>
+                public GetSecuritySettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the security settings to retrieve. Format:
+                /// `projects/{project}/locations/{location}/securitySettings`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getSecuritySettings";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+name}";
+
+                /// <summary>Initializes GetSecuritySettings parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/securitySettings$",
+                    });
+                }
+            }
+
             /// <summary>
             /// Lists information about the supported locations for this service. This method can be called in two ways:
             /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
@@ -7104,6 +7222,80 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates the security settings for the project and location.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The unique identifier of the security settings. Format:
+            /// `projects/{project}/locations/{location}/securitySettings`
+            /// </param>
+            public virtual UpdateSecuritySettingsRequest UpdateSecuritySettings(Google.Apis.CustomerEngagementSuite.v1beta.Data.SecuritySettings body, string name)
+            {
+                return new UpdateSecuritySettingsRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates the security settings for the project and location.</summary>
+            public class UpdateSecuritySettingsRequest : CustomerEngagementSuiteBaseServiceRequest<Google.Apis.CustomerEngagementSuite.v1beta.Data.SecuritySettings>
+            {
+                /// <summary>Constructs a new UpdateSecuritySettings request.</summary>
+                public UpdateSecuritySettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.CustomerEngagementSuite.v1beta.Data.SecuritySettings body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The unique identifier of the security settings. Format:
+                /// `projects/{project}/locations/{location}/securitySettings`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Optional. Field mask is used to control which fields get updated. If the mask is not present, all
+                /// fields will be updated.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CustomerEngagementSuite.v1beta.Data.SecuritySettings Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateSecuritySettings";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+name}";
+
+                /// <summary>Initializes UpdateSecuritySettings parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/securitySettings$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -7800,6 +7992,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Optional. Error handling settings of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorHandlingSettings")]
+        public virtual ErrorHandlingSettings ErrorHandlingSettings { get; set; }
+
         /// <summary>
         /// Output only. Etag used to ensure the object hasn't changed during a read-modify-write operation. If the etag
         /// is empty, the update will overwrite any concurrent changes.
@@ -8477,6 +8673,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// <summary>Optional. Agent transfer event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentTransfer")]
         public virtual AgentTransfer AgentTransfer { get; set; }
+
+        /// <summary>Optional. Blob data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blob")]
+        public virtual Blob Blob { get; set; }
 
         /// <summary>
         /// A struct represents default variables at the start of the conversation, keyed by variable names.
@@ -9300,8 +9500,9 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
     public class Deployment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The resource name of the app version to deploy. Format:
-        /// projects/{project}/locations/{location}/apps/{app}/versions/{version}
+        /// Optional. The resource name of the app version to deploy. Format:
+        /// `projects/{project}/locations/{location}/apps/{app}/versions/{version}` Use
+        /// `projects/{project}/locations/{location}/apps/{app}/versions/-` to use the draft app.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appVersion")]
         public virtual string AppVersion { get; set; }
@@ -9360,7 +9561,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
 
         /// <summary>
         /// Identifier. The resource name of the deployment. Format:
-        /// projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}
+        /// `projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -9483,6 +9684,38 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subject")]
         public virtual string Subject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines project/location level endpoint control policy.</summary>
+    public class EndpointControlPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The allowed HTTP(s) origins that tools in the App are able to directly call. The enforcement
+        /// depends on the value of enforcement_scope and the VPC-SC status of the project. If a port number is not
+        /// provided, all ports will be allowed. Otherwise, the port number must match exactly. For example,
+        /// "https://example.com" will match "https://example.com:443" and any other port. "https://example.com:443"
+        /// will only match "https://example.com:443".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedOrigins")]
+        public virtual System.Collections.Generic.IList<string> AllowedOrigins { get; set; }
+
+        /// <summary>Optional. The scope in which this policy's allowed_origins list is enforced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enforcementScope")]
+        public virtual string EnforcementScope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings to describe how errors should be handled in the app.</summary>
+    public class ErrorHandlingSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The strategy to use for error handling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorHandlingStrategy")]
+        public virtual string ErrorHandlingStrategy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14416,6 +14649,99 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Project/Location level security settings for CES.</summary>
+    public class SecuritySettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Create time of the security settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Endpoint control related settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointControlPolicy")]
+        public virtual EndpointControlPolicy EndpointControlPolicy { get; set; }
+
+        /// <summary>Output only. Etag of the security settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Identifier. The unique identifier of the security settings. Format:
+        /// `projects/{project}/locations/{location}/securitySettings`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Last update time of the security settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
     /// <summary>Configurations for authentication using a custom service account.</summary>
     public class ServiceAccountAuthConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14476,7 +14802,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
 
         /// <summary>
         /// Optional. The entry agent to handle the session. If not specified, the session will be handled by the root
-        /// agent of the app. Format: `projects/{project}/locations/{location}/agents/{agent}`
+        /// agent of the app. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryAgent")]
         public virtual string EntryAgent { get; set; }
@@ -14515,6 +14841,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to use tool fakes for the session. If this field is set, the agent will attempt use tool
+        /// fakes instead of calling the real tools.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useToolFakes")]
+        public virtual System.Nullable<bool> UseToolFakes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14901,9 +15234,12 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// Required. The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the
         /// default SSL trust store. If this is empty or unspecified, CES will use Google's default trust store to
         /// verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For
-        /// instance a certificate can be self-signed using the following command, openssl x509 -req -days 200 -in
+        /// instance a certificate can be self-signed using the following command:
+        /// ```
+        /// openssl x509 -req -days 200 -in
         /// example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile &amp;lt;(printf
         /// "\nsubjectAltName='DNS:www.example.com'")
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cert")]
         public virtual string Cert { get; set; }
@@ -15011,10 +15347,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         public virtual McpTool McpTool { get; set; }
 
         /// <summary>
-        /// Identifier. The unique identifier of the tool. Format: -
-        /// `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` for ## standalone tools.
+        /// Identifier. The resource name of the tool. Format: *
+        /// `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` for standalone tools. *
         /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}/tools/{tool}` for tools retrieved
-        /// from a toolset. These tools are dynamic and output-only, they cannot be referenced directly where a tool is
+        /// from a toolset. These tools are dynamic and output-only; they cannot be referenced directly where a tool is
         /// expected.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -15451,6 +15787,45 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agent")]
         public virtual string Agent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for EvaluationService.UploadEvaluationAudio.</summary>
+    public class UploadEvaluationAudioRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The raw audio bytes. The format of the audio must be single-channel LINEAR16 with a sample rate of
+        /// 16kHz (default InputAudioConfig).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioContent")]
+        public virtual string AudioContent { get; set; }
+
+        /// <summary>
+        /// Optional. The Google Cloud Storage URI of the previously uploaded audio file to be deleted. Format: `gs:///`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previousAudioGcsUri")]
+        public virtual string PreviousAudioGcsUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for EvaluationService.UploadEvaluationAudio.</summary>
+    public class UploadEvaluationAudioResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Google Cloud Storage URI where the uploaded audio file is stored. Format: `gs:///`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioGcsUri")]
+        public virtual string AudioGcsUri { get; set; }
+
+        /// <summary>The duration of the audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
+
+        /// <summary>The transcript of the audio, generated by Cloud Speech-to-Text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
+        public virtual string Transcript { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
