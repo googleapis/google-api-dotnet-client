@@ -7932,8 +7932,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// API_LEVEL is reported if the Android version is less than 10. A NonComplianceDetail with PENDING is reported
         /// if the device is not connected to a network. A NonComplianceDetail with nonComplianceReason INVALID_VALUE
         /// and specificNonComplianceReason PRIVATE_DNS_HOST_NOT_SERVING is reported if the specified host is not a DNS
-        /// server or not supported on Android. A NonComplianceReason with nonComplianceReason INVALID_VALUE is reported
-        /// if applying this setting fails for any other reason.
+        /// server or not supported on Android. A NonComplianceDetail with INVALID_VALUE is reported if applying this
+        /// setting fails for any other reason.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateDnsHost")]
         public virtual string PrivateDnsHost { get; set; }
