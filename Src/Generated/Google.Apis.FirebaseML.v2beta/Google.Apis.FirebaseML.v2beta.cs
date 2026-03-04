@@ -2255,6 +2255,15 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("personGeneration")]
         public virtual string PersonGeneration { get; set; }
 
+        /// <summary>
+        /// Optional. Controls whether prominent people (celebrities) generation is allowed. If used with
+        /// personGeneration, personGeneration enum would take precedence. For instance, if ALLOW_NONE is set, all
+        /// person generation would be blocked. If this field is unspecified, the default behavior is to allow prominent
+        /// people.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prominentPeople")]
+        public virtual string ProminentPeople { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
