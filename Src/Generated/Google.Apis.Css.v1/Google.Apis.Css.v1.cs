@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1643,7 +1643,7 @@ namespace Google.Apis.Css.v1.Data
 
         /// <summary>
         /// The cut of the item. It can be used to represent combined size types for apparel items. Maximum two of size
-        /// types can be provided (see [https://support.google.com/merchants/answer/6324497](size type)).
+        /// types can be provided (see [size type](https://support.google.com/merchants/answer/6324497).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeTypes")]
         public virtual System.Collections.Generic.IList<string> SizeTypes { get; set; }
