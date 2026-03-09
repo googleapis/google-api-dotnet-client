@@ -381,6 +381,118 @@ namespace Google.Apis.DisplayVideo.v3
                 this.service = service;
             }
 
+            /// <summary>Creates an ad group ad.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="advertiserId">Output only. The unique ID of the advertiser the ad belongs to.</param>
+            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.AdGroupAd body, long advertiserId)
+            {
+                return new CreateRequest(this.service, body, advertiserId);
+            }
+
+            /// <summary>Creates an ad group ad.</summary>
+            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AdGroupAd>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.AdGroupAd body, long advertiserId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Output only. The unique ID of the advertiser the ad belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v3.Data.AdGroupAd Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/advertisers/{+advertiserId}/adGroupAds";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Deletes an ad group ad.</summary>
+            /// <param name="advertiserId">Required. The ID of the advertiser the ad belongs to.</param>
+            /// <param name="adGroupAdId">Required. The ID of the ad to delete.</param>
+            public virtual DeleteRequest Delete(long advertiserId, long adGroupAdId)
+            {
+                return new DeleteRequest(this.service, advertiserId, adGroupAdId);
+            }
+
+            /// <summary>Deletes an ad group ad.</summary>
+            public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long adGroupAdId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    AdGroupAdId = adGroupAdId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the advertiser the ad belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Required. The ID of the ad to delete.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("adGroupAdId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdGroupAdId { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/advertisers/{+advertiserId}/adGroupAds/{+adGroupAdId}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("adGroupAdId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "adGroupAdId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Gets an ad group ad.</summary>
             /// <param name="advertiserId">Required. The ID of the advertiser this ad group ad belongs to.</param>
             /// <param name="adGroupAdId">Required. The ID of the ad to fetch.</param>
@@ -554,6 +666,85 @@ namespace Google.Apis.DisplayVideo.v3
                     });
                 }
             }
+
+            /// <summary>Updates an ad group ad.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="advertiserId">Output only. The unique ID of the advertiser the ad belongs to.</param>
+            /// <param name="adGroupAdId">Output only. The unique ID of the ad. Assigned by the system.</param>
+            public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.AdGroupAd body, long advertiserId, long adGroupAdId)
+            {
+                return new PatchRequest(this.service, body, advertiserId, adGroupAdId);
+            }
+
+            /// <summary>Updates an ad group ad.</summary>
+            public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AdGroupAd>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.AdGroupAd body, long advertiserId, long adGroupAdId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    AdGroupAdId = adGroupAdId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Output only. The unique ID of the advertiser the ad belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Output only. The unique ID of the ad. Assigned by the system.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("adGroupAdId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdGroupAdId { get; private set; }
+
+                /// <summary>Required. The mask to control which fields to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v3.Data.AdGroupAd Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/advertisers/{+advertiserId}/adGroupAds/{+adGroupAdId}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("adGroupAdId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "adGroupAdId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the AdGroups resource.</summary>
@@ -607,6 +798,761 @@ namespace Google.Apis.DisplayVideo.v3
                     public AssignedTargetingOptionsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Assigns a targeting option to an ad group. Returns the assigned targeting option if successful.
+                    /// Only ad groups under a line item of line_item_type `LINE_ITEM_TYPE_DEMAND_GEN` are supported for
+                    /// this method.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="advertiserId">Required. The ID of the advertiser the ad group belongs to.</param>
+                    /// <param name="adGroupId">
+                    /// Required. The ID of the ad group the assigned targeting option will belong to.
+                    /// </param>
+                    /// <param name="targetingType">
+                    /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
+                    /// `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
+                    /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` *
+                    /// `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` *
+                    /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_PARENTAL_STATUS` *
+                    /// `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_URL` *
+                    /// `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption body, long advertiserId, long adGroupId, CreateRequest.TargetingTypeEnum targetingType)
+                    {
+                        return new CreateRequest(this.service, body, advertiserId, adGroupId, targetingType);
+                    }
+
+                    /// <summary>
+                    /// Assigns a targeting option to an ad group. Returns the assigned targeting option if successful.
+                    /// Only ad groups under a line item of line_item_type `LINE_ITEM_TYPE_DEMAND_GEN` are supported for
+                    /// this method.
+                    /// </summary>
+                    public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption body, long advertiserId, long adGroupId, TargetingTypeEnum targetingType) : base(service)
+                        {
+                            AdvertiserId = advertiserId;
+                            AdGroupId = adGroupId;
+                            TargetingType = targetingType;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The ID of the advertiser the ad group belongs to.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long AdvertiserId { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID of the ad group the assigned targeting option will belong to.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("adGroupId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long AdGroupId { get; private set; }
+
+                        /// <summary>
+                        /// Required. Identifies the type of this assigned targeting option. Supported targeting types:
+                        /// * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
+                        /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` *
+                        /// `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` *
+                        /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_PARENTAL_STATUS` *
+                        /// `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_URL` *
+                        /// `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual TargetingTypeEnum TargetingType { get; private set; }
+
+                        /// <summary>
+                        /// Required. Identifies the type of this assigned targeting option. Supported targeting types:
+                        /// * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
+                        /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` *
+                        /// `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` *
+                        /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_PARENTAL_STATUS` *
+                        /// `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_URL` *
+                        /// `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
+                        /// </summary>
+                        public enum TargetingTypeEnum
+                        {
+                            /// <summary>
+                            /// Default value when type is not specified or is unknown in this version.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
+                            TARGETINGTYPEUNSPECIFIED = 0,
+
+                            /// <summary>Target a channel (a custom group of related websites or apps).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
+                            TARGETINGTYPECHANNEL = 1,
+
+                            /// <summary>Target an app category (for example, education or puzzle games).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
+                            TARGETINGTYPEAPPCATEGORY = 2,
+
+                            /// <summary>Target a specific app (for example, Angry Birds).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
+                            TARGETINGTYPEAPP = 3,
+
+                            /// <summary>Target a specific url (for example, quora.com).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
+                            TARGETINGTYPEURL = 4,
+
+                            /// <summary>Target ads during a chosen time period on a specific day.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
+                            TARGETINGTYPEDAYANDTIME = 5,
+
+                            /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
+                            TARGETINGTYPEAGERANGE = 6,
+
+                            /// <summary>Target ads to the specified regions on a regional location list.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
+                            TARGETINGTYPEREGIONALLOCATIONLIST = 7,
+
+                            /// <summary>
+                            /// Target ads to the specified points of interest on a proximity location list.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
+                            TARGETINGTYPEPROXIMITYLOCATIONLIST = 8,
+
+                            /// <summary>Target ads to a specific gender (for example, female or male).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
+                            TARGETINGTYPEGENDER = 9,
+
+                            /// <summary>Target a specific video player size for video ads.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
+                            TARGETINGTYPEVIDEOPLAYERSIZE = 10,
+
+                            /// <summary>Target user rewarded content for video ads.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
+                            TARGETINGTYPEUSERREWARDEDCONTENT = 11,
+
+                            /// <summary>
+                            /// Target ads to a specific parental status (for example, parent or not a parent).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
+                            TARGETINGTYPEPARENTALSTATUS = 12,
+
+                            /// <summary>
+                            /// Target video or audio ads in a specific content instream position (for example,
+                            /// pre-roll, mid-roll, or post-roll).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
+                            TARGETINGTYPECONTENTINSTREAMPOSITION = 13,
+
+                            /// <summary>Target ads in a specific content outstream position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
+                            TARGETINGTYPECONTENTOUTSTREAMPOSITION = 14,
+
+                            /// <summary>
+                            /// Target ads to a specific device type (for example, tablet or connected TV).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
+                            TARGETINGTYPEDEVICETYPE = 15,
+
+                            /// <summary>
+                            /// Target ads to an audience or groups of audiences. Singleton field, at most one can exist
+                            /// on a single Lineitem at a time.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
+                            TARGETINGTYPEAUDIENCEGROUP = 16,
+
+                            /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
+                            TARGETINGTYPEBROWSER = 17,
+
+                            /// <summary>
+                            /// Target ads to a specific household income range (for example, top 10%).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
+                            TARGETINGTYPEHOUSEHOLDINCOME = 18,
+
+                            /// <summary>Target ads in a specific on screen position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
+                            TARGETINGTYPEONSCREENPOSITION = 19,
+
+                            /// <summary>
+                            /// Filter web sites through third party verification (for example, IAS or DoubleVerify).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
+                            TARGETINGTYPETHIRDPARTYVERIFIER = 20,
+
+                            /// <summary>
+                            /// Filter web sites by specific digital content label ratings (for example, DL-MA: suitable
+                            /// only for mature audiences).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
+                            TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
+
+                            /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
+                            TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
+
+                            /// <summary>Target ads to a specific environment (for example, web or app).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
+                            TARGETINGTYPEENVIRONMENT = 23,
+
+                            /// <summary>
+                            /// Target ads to a specific network carrier or internet service provider (ISP) (for
+                            /// example, Comcast or Orange).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
+                            TARGETINGTYPECARRIERANDISP = 24,
+
+                            /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
+                            TARGETINGTYPEOPERATINGSYSTEM = 25,
+
+                            /// <summary>
+                            /// Target ads to a specific device make or model (for example, Roku or Samsung).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
+                            TARGETINGTYPEDEVICEMAKEMODEL = 26,
+
+                            /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
+                            TARGETINGTYPEKEYWORD = 27,
+
+                            /// <summary>Target ads to a specific negative keyword list.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
+                            TARGETINGTYPENEGATIVEKEYWORDLIST = 28,
+
+                            /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
+                            TARGETINGTYPEVIEWABILITY = 29,
+
+                            /// <summary>
+                            /// Target ads to a specific content category (for example, arts &amp;amp; entertainment).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
+                            TARGETINGTYPECATEGORY = 30,
+
+                            /// <summary>Purchase impressions from specific deals and auction packages.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
+                            TARGETINGTYPEINVENTORYSOURCE = 31,
+
+                            /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
+                            TARGETINGTYPELANGUAGE = 32,
+
+                            /// <summary>
+                            /// Target ads to ads.txt authorized sellers. If no targeting option of this type is
+                            /// assigned, the resource uses the "Authorized Direct Sellers and Resellers" option by
+                            /// default.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
+                            TARGETINGTYPEAUTHORIZEDSELLERSTATUS = 33,
+
+                            /// <summary>
+                            /// Target ads to a specific regional location (for example, a city or state).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
+                            TARGETINGTYPEGEOREGION = 34,
+
+                            /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
+                            TARGETINGTYPEINVENTORYSOURCEGROUP = 35,
+
+                            /// <summary>Purchase impressions from specific exchanges.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
+                            TARGETINGTYPEEXCHANGE = 36,
+
+                            /// <summary>Purchase impressions from specific sub-exchanges.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
+                            TARGETINGTYPESUBEXCHANGE = 37,
+
+                            /// <summary>
+                            /// Target ads around a specific point of interest, such as a notable building, a street
+                            /// address, or latitude/longitude coordinates.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                            TARGETINGTYPEPOI = 38,
+
+                            /// <summary>
+                            /// Target ads around locations of a business chain within a specific geo region.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                            TARGETINGTYPEBUSINESSCHAIN = 39,
+
+                            /// <summary>Target ads to a specific video content duration.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                            TARGETINGTYPECONTENTDURATION = 40,
+
+                            /// <summary>Target ads to a specific video content stream type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                            TARGETINGTYPECONTENTSTREAMTYPE = 41,
+
+                            /// <summary>Target ads to a specific native content position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                            TARGETINGTYPENATIVECONTENTPOSITION = 42,
+
+                            /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
+                            TARGETINGTYPEOMID = 43,
+
+                            /// <summary>Target ads to a specific audio content type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                            TARGETINGTYPEAUDIOCONTENTTYPE = 44,
+
+                            /// <summary>Target ads to a specific content genre.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                            TARGETINGTYPECONTENTGENRE = 45,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube video. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_VIDEO")]
+                            TARGETINGTYPEYOUTUBEVIDEO = 46,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube channel. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL")]
+                            TARGETINGTYPEYOUTUBECHANNEL = 47,
+
+                            /// <summary>
+                            /// Target ads to a serve it in a certain position of a session. Only supported for Ad Group
+                            /// resources under YouTube Programmatic Reservation line items. Targeting of this type
+                            /// cannot be created or updated using the API.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
+                            TARGETINGTYPESESSIONPOSITION = 48,
+
+                            /// <summary>
+                            /// Filter website content by content themes (for example, religion). Only supported for
+                            /// Advertiser resources. Targeting of this type cannot be created or updated using the API.
+                            /// This targeting is only inherited by child YouTube and Demand Gen line item resources.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
+                            TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
+                        }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("adGroupId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "adGroupId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("targetingType", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "targetingType",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes an assigned targeting option from an ad group. Only ad groups under a line item of
+                    /// line_item_type `LINE_ITEM_TYPE_DEMAND_GEN` are supported for this method.
+                    /// </summary>
+                    /// <param name="advertiserId">Required. The ID of the advertiser the ad group belongs to.</param>
+                    /// <param name="adGroupId">
+                    /// Required. The ID of the ad group the assigned targeting option belongs to.
+                    /// </param>
+                    /// <param name="targetingType">
+                    /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
+                    /// `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
+                    /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` *
+                    /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_PARENTAL_STATUS`
+                    /// * `TARGETING_TYPE_SESSION_POSITION` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_YOUTUBE_CHANNEL` *
+                    /// `TARGETING_TYPE_YOUTUBE_VIDEO`
+                    /// </param>
+                    /// <param name="assignedTargetingOptionId">
+                    /// Required. The ID of the assigned targeting option to delete.
+                    /// </param>
+                    public virtual DeleteRequest Delete(long advertiserId, long adGroupId, DeleteRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId)
+                    {
+                        return new DeleteRequest(this.service, advertiserId, adGroupId, targetingType, assignedTargetingOptionId);
+                    }
+
+                    /// <summary>
+                    /// Deletes an assigned targeting option from an ad group. Only ad groups under a line item of
+                    /// line_item_type `LINE_ITEM_TYPE_DEMAND_GEN` are supported for this method.
+                    /// </summary>
+                    public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long adGroupId, TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
+                        {
+                            AdvertiserId = advertiserId;
+                            AdGroupId = adGroupId;
+                            TargetingType = targetingType;
+                            AssignedTargetingOptionId = assignedTargetingOptionId;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The ID of the advertiser the ad group belongs to.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long AdvertiserId { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID of the ad group the assigned targeting option belongs to.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("adGroupId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long AdGroupId { get; private set; }
+
+                        /// <summary>
+                        /// Required. Identifies the type of this assigned targeting option. Supported targeting types:
+                        /// * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
+                        /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` *
+                        /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` *
+                        /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SESSION_POSITION` * `TARGETING_TYPE_URL`
+                        /// * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual TargetingTypeEnum TargetingType { get; private set; }
+
+                        /// <summary>
+                        /// Required. Identifies the type of this assigned targeting option. Supported targeting types:
+                        /// * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
+                        /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` *
+                        /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` *
+                        /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SESSION_POSITION` * `TARGETING_TYPE_URL`
+                        /// * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
+                        /// </summary>
+                        public enum TargetingTypeEnum
+                        {
+                            /// <summary>
+                            /// Default value when type is not specified or is unknown in this version.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
+                            TARGETINGTYPEUNSPECIFIED = 0,
+
+                            /// <summary>Target a channel (a custom group of related websites or apps).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
+                            TARGETINGTYPECHANNEL = 1,
+
+                            /// <summary>Target an app category (for example, education or puzzle games).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
+                            TARGETINGTYPEAPPCATEGORY = 2,
+
+                            /// <summary>Target a specific app (for example, Angry Birds).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
+                            TARGETINGTYPEAPP = 3,
+
+                            /// <summary>Target a specific url (for example, quora.com).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
+                            TARGETINGTYPEURL = 4,
+
+                            /// <summary>Target ads during a chosen time period on a specific day.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
+                            TARGETINGTYPEDAYANDTIME = 5,
+
+                            /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
+                            TARGETINGTYPEAGERANGE = 6,
+
+                            /// <summary>Target ads to the specified regions on a regional location list.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
+                            TARGETINGTYPEREGIONALLOCATIONLIST = 7,
+
+                            /// <summary>
+                            /// Target ads to the specified points of interest on a proximity location list.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
+                            TARGETINGTYPEPROXIMITYLOCATIONLIST = 8,
+
+                            /// <summary>Target ads to a specific gender (for example, female or male).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
+                            TARGETINGTYPEGENDER = 9,
+
+                            /// <summary>Target a specific video player size for video ads.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
+                            TARGETINGTYPEVIDEOPLAYERSIZE = 10,
+
+                            /// <summary>Target user rewarded content for video ads.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
+                            TARGETINGTYPEUSERREWARDEDCONTENT = 11,
+
+                            /// <summary>
+                            /// Target ads to a specific parental status (for example, parent or not a parent).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
+                            TARGETINGTYPEPARENTALSTATUS = 12,
+
+                            /// <summary>
+                            /// Target video or audio ads in a specific content instream position (for example,
+                            /// pre-roll, mid-roll, or post-roll).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
+                            TARGETINGTYPECONTENTINSTREAMPOSITION = 13,
+
+                            /// <summary>Target ads in a specific content outstream position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
+                            TARGETINGTYPECONTENTOUTSTREAMPOSITION = 14,
+
+                            /// <summary>
+                            /// Target ads to a specific device type (for example, tablet or connected TV).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
+                            TARGETINGTYPEDEVICETYPE = 15,
+
+                            /// <summary>
+                            /// Target ads to an audience or groups of audiences. Singleton field, at most one can exist
+                            /// on a single Lineitem at a time.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
+                            TARGETINGTYPEAUDIENCEGROUP = 16,
+
+                            /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
+                            TARGETINGTYPEBROWSER = 17,
+
+                            /// <summary>
+                            /// Target ads to a specific household income range (for example, top 10%).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
+                            TARGETINGTYPEHOUSEHOLDINCOME = 18,
+
+                            /// <summary>Target ads in a specific on screen position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
+                            TARGETINGTYPEONSCREENPOSITION = 19,
+
+                            /// <summary>
+                            /// Filter web sites through third party verification (for example, IAS or DoubleVerify).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
+                            TARGETINGTYPETHIRDPARTYVERIFIER = 20,
+
+                            /// <summary>
+                            /// Filter web sites by specific digital content label ratings (for example, DL-MA: suitable
+                            /// only for mature audiences).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
+                            TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
+
+                            /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
+                            TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
+
+                            /// <summary>Target ads to a specific environment (for example, web or app).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
+                            TARGETINGTYPEENVIRONMENT = 23,
+
+                            /// <summary>
+                            /// Target ads to a specific network carrier or internet service provider (ISP) (for
+                            /// example, Comcast or Orange).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
+                            TARGETINGTYPECARRIERANDISP = 24,
+
+                            /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
+                            TARGETINGTYPEOPERATINGSYSTEM = 25,
+
+                            /// <summary>
+                            /// Target ads to a specific device make or model (for example, Roku or Samsung).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
+                            TARGETINGTYPEDEVICEMAKEMODEL = 26,
+
+                            /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
+                            TARGETINGTYPEKEYWORD = 27,
+
+                            /// <summary>Target ads to a specific negative keyword list.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
+                            TARGETINGTYPENEGATIVEKEYWORDLIST = 28,
+
+                            /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
+                            TARGETINGTYPEVIEWABILITY = 29,
+
+                            /// <summary>
+                            /// Target ads to a specific content category (for example, arts &amp;amp; entertainment).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
+                            TARGETINGTYPECATEGORY = 30,
+
+                            /// <summary>Purchase impressions from specific deals and auction packages.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
+                            TARGETINGTYPEINVENTORYSOURCE = 31,
+
+                            /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
+                            TARGETINGTYPELANGUAGE = 32,
+
+                            /// <summary>
+                            /// Target ads to ads.txt authorized sellers. If no targeting option of this type is
+                            /// assigned, the resource uses the "Authorized Direct Sellers and Resellers" option by
+                            /// default.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
+                            TARGETINGTYPEAUTHORIZEDSELLERSTATUS = 33,
+
+                            /// <summary>
+                            /// Target ads to a specific regional location (for example, a city or state).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
+                            TARGETINGTYPEGEOREGION = 34,
+
+                            /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
+                            TARGETINGTYPEINVENTORYSOURCEGROUP = 35,
+
+                            /// <summary>Purchase impressions from specific exchanges.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
+                            TARGETINGTYPEEXCHANGE = 36,
+
+                            /// <summary>Purchase impressions from specific sub-exchanges.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
+                            TARGETINGTYPESUBEXCHANGE = 37,
+
+                            /// <summary>
+                            /// Target ads around a specific point of interest, such as a notable building, a street
+                            /// address, or latitude/longitude coordinates.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                            TARGETINGTYPEPOI = 38,
+
+                            /// <summary>
+                            /// Target ads around locations of a business chain within a specific geo region.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                            TARGETINGTYPEBUSINESSCHAIN = 39,
+
+                            /// <summary>Target ads to a specific video content duration.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                            TARGETINGTYPECONTENTDURATION = 40,
+
+                            /// <summary>Target ads to a specific video content stream type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                            TARGETINGTYPECONTENTSTREAMTYPE = 41,
+
+                            /// <summary>Target ads to a specific native content position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                            TARGETINGTYPENATIVECONTENTPOSITION = 42,
+
+                            /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
+                            TARGETINGTYPEOMID = 43,
+
+                            /// <summary>Target ads to a specific audio content type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                            TARGETINGTYPEAUDIOCONTENTTYPE = 44,
+
+                            /// <summary>Target ads to a specific content genre.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                            TARGETINGTYPECONTENTGENRE = 45,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube video. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_VIDEO")]
+                            TARGETINGTYPEYOUTUBEVIDEO = 46,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube channel. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL")]
+                            TARGETINGTYPEYOUTUBECHANNEL = 47,
+
+                            /// <summary>
+                            /// Target ads to a serve it in a certain position of a session. Only supported for Ad Group
+                            /// resources under YouTube Programmatic Reservation line items. Targeting of this type
+                            /// cannot be created or updated using the API.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
+                            TARGETINGTYPESESSIONPOSITION = 48,
+
+                            /// <summary>
+                            /// Filter website content by content themes (for example, religion). Only supported for
+                            /// Advertiser resources. Targeting of this type cannot be created or updated using the API.
+                            /// This targeting is only inherited by child YouTube and Demand Gen line item resources.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
+                            TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
+                        }
+
+                        /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("assignedTargetingOptionId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string AssignedTargetingOptionId { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("adGroupId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "adGroupId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("targetingType", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "targetingType",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("assignedTargetingOptionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "assignedTargetingOptionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        }
                     }
 
                     /// <summary>
@@ -1426,6 +2372,73 @@ namespace Google.Apis.DisplayVideo.v3
             }
 
             /// <summary>
+            /// Bulk edits targeting options for multiple ad groups. The same set of delete and create requests will be
+            /// applied to all specified ad groups. Specifically, the operation will delete the assigned targeting
+            /// options provided in BulkEditAdGroupAssignedTargetingOptionsRequest.delete_requests from each ad group,
+            /// and then create the assigned targeting options provided in
+            /// BulkEditAdGroupAssignedTargetingOptionsRequest.create_requests. Only ad groups under a line item of
+            /// line_item_type `LINE_ITEM_TYPE_DEMAND_GEN` are supported for this method.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="advertiserId">Required. The ID of the advertiser the ad groups belong to.</param>
+            public virtual BulkEditAssignedTargetingOptionsRequest BulkEditAssignedTargetingOptions(Google.Apis.DisplayVideo.v3.Data.BulkEditAdGroupAssignedTargetingOptionsRequest body, long advertiserId)
+            {
+                return new BulkEditAssignedTargetingOptionsRequest(this.service, body, advertiserId);
+            }
+
+            /// <summary>
+            /// Bulk edits targeting options for multiple ad groups. The same set of delete and create requests will be
+            /// applied to all specified ad groups. Specifically, the operation will delete the assigned targeting
+            /// options provided in BulkEditAdGroupAssignedTargetingOptionsRequest.delete_requests from each ad group,
+            /// and then create the assigned targeting options provided in
+            /// BulkEditAdGroupAssignedTargetingOptionsRequest.create_requests. Only ad groups under a line item of
+            /// line_item_type `LINE_ITEM_TYPE_DEMAND_GEN` are supported for this method.
+            /// </summary>
+            public class BulkEditAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.BulkEditAdGroupAssignedTargetingOptionsResponse>
+            {
+                /// <summary>Constructs a new BulkEditAssignedTargetingOptions request.</summary>
+                public BulkEditAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.BulkEditAdGroupAssignedTargetingOptionsRequest body, long advertiserId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the advertiser the ad groups belong to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v3.Data.BulkEditAdGroupAssignedTargetingOptionsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "bulkEditAssignedTargetingOptions";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/advertisers/{+advertiserId}/adGroups:bulkEditAssignedTargetingOptions";
+
+                /// <summary>Initializes BulkEditAssignedTargetingOptions parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
             /// Lists assigned targeting options for multiple ad groups across targeting types. Inherited assigned
             /// targeting options are not included.
             /// </summary>
@@ -1553,6 +2566,118 @@ namespace Google.Apis.DisplayVideo.v3
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Creates a new ad group. Returns the newly created ad group if successful.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="advertiserId">Output only. The unique ID of the advertiser the ad group belongs to.</param>
+            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.AdGroup body, long advertiserId)
+            {
+                return new CreateRequest(this.service, body, advertiserId);
+            }
+
+            /// <summary>Creates a new ad group. Returns the newly created ad group if successful.</summary>
+            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AdGroup>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.AdGroup body, long advertiserId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Output only. The unique ID of the advertiser the ad group belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v3.Data.AdGroup Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/advertisers/{+advertiserId}/adGroups";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Deletes a AdGroup. Returns error code `NOT_FOUND` if the ad group does not exist.</summary>
+            /// <param name="advertiserId">Required. The ID of the advertiser this ad group belongs to.</param>
+            /// <param name="adGroupId">Required. The ID of the ad group to delete.</param>
+            public virtual DeleteRequest Delete(long advertiserId, long adGroupId)
+            {
+                return new DeleteRequest(this.service, advertiserId, adGroupId);
+            }
+
+            /// <summary>Deletes a AdGroup. Returns error code `NOT_FOUND` if the ad group does not exist.</summary>
+            public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long adGroupId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    AdGroupId = adGroupId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the advertiser this ad group belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Required. The ID of the ad group to delete.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("adGroupId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdGroupId { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("adGroupId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "adGroupId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
                     });
                 }
             }
@@ -1723,6 +2848,85 @@ namespace Google.Apis.DisplayVideo.v3
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates an existing ad group. Returns the updated ad group if successful.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="advertiserId">Output only. The unique ID of the advertiser the ad group belongs to.</param>
+            /// <param name="adGroupId">Output only. The unique ID of the ad group. Assigned by the system.</param>
+            public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.AdGroup body, long advertiserId, long adGroupId)
+            {
+                return new PatchRequest(this.service, body, advertiserId, adGroupId);
+            }
+
+            /// <summary>Updates an existing ad group. Returns the updated ad group if successful.</summary>
+            public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AdGroup>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.AdGroup body, long advertiserId, long adGroupId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    AdGroupId = adGroupId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Output only. The unique ID of the advertiser the ad group belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Output only. The unique ID of the ad group. Assigned by the system.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("adGroupId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdGroupId { get; private set; }
+
+                /// <summary>Required. The mask to control which fields to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v3.Data.AdGroup Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("adGroupId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "adGroupId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -19337,6 +20541,12 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupId")]
         public virtual System.Nullable<long> AdGroupId { get; set; }
 
+        /// <summary>
+        /// Optional. Specifies the inventory control of the ad group. This field is required for Demand Gen ad groups.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupInventoryControl")]
+        public virtual AdGroupInventoryControl AdGroupInventoryControl { get; set; }
+
         /// <summary>Output only. The unique ID of the advertiser the ad group belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Nullable<long> AdvertiserId { get; set; }
@@ -19423,6 +20633,34 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual BumperAd BumperAd { get; set; }
 
         /// <summary>
+        /// Details of a [Demand Gen carousel
+        /// ad](//support.google.com/displayvideo/answer/15598924?&amp;amp;sjid=11207068802760924844-NC#CarouselAd).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("demandGenCarouselAd")]
+        public virtual DemandGenCarouselAd DemandGenCarouselAd { get; set; }
+
+        /// <summary>
+        /// Details of a [Demand Gen image
+        /// ad](//support.google.com/displayvideo/answer/15598924?&amp;amp;sjid=11207068802760924844-NC#ImageAd).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("demandGenImageAd")]
+        public virtual DemandGenImageAd DemandGenImageAd { get; set; }
+
+        /// <summary>
+        /// Details of a [Demand Gen product
+        /// ad](//support.google.com/displayvideo/answer/15598924?&amp;amp;sjid=11207068802760924844-NC#Product-onlyAd).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("demandGenProductAd")]
+        public virtual DemandGenProductAd DemandGenProductAd { get; set; }
+
+        /// <summary>
+        /// Details of a [Demand Gen video
+        /// ad](//support.google.com/displayvideo/answer/15598924?&amp;amp;sjid=11207068802760924844-NC#VideoAd).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("demandGenVideoAd")]
+        public virtual DemandGenVideoAd DemandGenVideoAd { get; set; }
+
+        /// <summary>
         /// Required. The display name of the ad. Must be UTF-8 encoded with a maximum size of 255 bytes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
@@ -19494,6 +20732,21 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// <summary>The assigned targeting option resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOption")]
         public virtual AssignedTargetingOption AssignedTargetingOption { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The inventory control of the ad group.</summary>
+    public class AdGroupInventoryControl : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The inventory strategy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupInventoryStrategy")]
+        public virtual string AdGroupInventoryStrategy { get; set; }
+
+        /// <summary>The selected inventories.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedInventories")]
+        public virtual SelectedInventories SelectedInventories { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21414,6 +22667,13 @@ namespace Google.Apis.DisplayVideo.v3.Data
     /// <summary>Settings that control the bid strategy. Bid strategy determines the bid price.</summary>
     public class BiddingStrategy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// A bid strategy used by Demand Gen resources. It can only be used for a Demand Gen line item or ad group
+        /// entity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("demandGenBid")]
+        public virtual DemandGenBiddingStrategy DemandGenBid { get; set; }
+
         /// <summary>A strategy that uses a fixed bid price.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixedBid")]
         public virtual FixedBidStrategy FixedBid { get; set; }
@@ -21527,6 +22787,63 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalAmountMicros")]
         public virtual System.Nullable<long> TotalAmountMicros { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for BulkEditAdGroupAssignedTargetingOptions.</summary>
+    public class BulkEditAdGroupAssignedTargetingOptionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The IDs of the ad groups the assigned targeting options will belong to. A maximum of 25 ad group
+        /// IDs can be specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> AdGroupIds { get; set; }
+
+        /// <summary>
+        /// Optional. The assigned targeting options to create in batch, specified as a list of
+        /// `CreateAssignedTargetingOptionRequest`. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` *
+        /// `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` *
+        /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
+        /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` *
+        /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_URL` *
+        /// `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createRequests")]
+        public virtual System.Collections.Generic.IList<CreateAssignedTargetingOptionsRequest> CreateRequests { get; set; }
+
+        /// <summary>
+        /// Optional. The assigned targeting options to delete in batch, specified as a list of
+        /// `DeleteAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` *
+        /// `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` *
+        /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
+        /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` *
+        /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_URL` *
+        /// `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteRequests")]
+        public virtual System.Collections.Generic.IList<DeleteAssignedTargetingOptionsRequest> DeleteRequests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for BulkEditAssignedTargetingOptions.</summary>
+    public class BulkEditAdGroupAssignedTargetingOptionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The error information for each ad group that failed to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<Status> Errors { get; set; }
+
+        /// <summary>Output only. The IDs of the ad groups which failed to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedAdGroupIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> FailedAdGroupIds { get; set; }
+
+        /// <summary>Output only. The IDs of the ad groups which were successfully updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updatedAdGroupIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> UpdatedAdGroupIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22253,6 +23570,43 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details for a Demand Gen carousel card.</summary>
+    public class CarouselCard : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The call-to-action button shown on the card. Must use 10 characters or less.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callToAction")]
+        public virtual string CallToAction { get; set; }
+
+        /// <summary>
+        /// Optional. The URL address of the webpage that people reach after they click the card on a mobile device.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalMobileUrl")]
+        public virtual string FinalMobileUrl { get; set; }
+
+        /// <summary>Required. The URL address of the webpage that people reach after they click the card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalUrl")]
+        public virtual string FinalUrl { get; set; }
+
+        /// <summary>Required. The headline of the card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headline")]
+        public virtual string Headline { get; set; }
+
+        /// <summary>Optional. The marketing image shown on the card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("marketingImage")]
+        public virtual ImageAsset MarketingImage { get; set; }
+
+        /// <summary>Optional. The portrait marketing image shown on the card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("portraitMarketingImage")]
+        public virtual ImageAsset PortraitMarketingImage { get; set; }
+
+        /// <summary>Optional. The square marketing image shown on the card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("squareMarketingImage")]
+        public virtual ImageAsset SquareMarketingImage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Details for assigned carrier and ISP targeting option. This will be populated in the details field of an
     /// AssignedTargetingOption when targeting_type is `TARGETING_TYPE_CARRIER_AND_ISP`.
@@ -22878,6 +24232,14 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postViewCountPercentageMillis")]
         public virtual System.Nullable<long> PostViewCountPercentageMillis { get; set; }
+
+        /// <summary>
+        /// Optional. The attribution model to use for conversion measurement. This attribution model will determine how
+        /// conversions are counted. The Primary model can be set by you for a floodlight config or group. More details
+        /// [here](https://support.google.com/displayvideo/answer/7409983). Only applicable to Demand Gen line items.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryAttributionModelId")]
+        public virtual System.Nullable<long> PrimaryAttributionModelId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23851,7 +25213,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual System.Nullable<int> StartHour { get; set; }
 
         /// <summary>
-        /// Required. The mechanism used to determine which timezone to use for this day and time targeting setting.
+        /// Required. The mechanism used to determine which timezone to use for this day and time targeting setting. For
+        /// demand gen line items, this field is always TIME_ZONE_RESOLUTION_ADVERTISER.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZoneResolution")]
         public virtual string TimeZoneResolution { get; set; }
@@ -23872,6 +25235,309 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// <summary>Required. Identifies the type of this assigned targeting option.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingType")]
         public virtual string TargetingType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings that control the bid strategy for Demand Gen resources.</summary>
+    public class DemandGenBiddingStrategy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. If AG doesn't set value for tCPA or tROAS, line item bidding value will be the
+        /// effective_bidding_value, if the bidding strategy type is not tCPA or tROAS, effective_bidding_value is
+        /// always 0. For line item, it will be the same as the value field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveBiddingValue")]
+        public virtual System.Nullable<long> EffectiveBiddingValue { get; set; }
+
+        /// <summary>Output only. Source of the effective bidding value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveBiddingValueSource")]
+        public virtual string EffectiveBiddingValueSource { get; set; }
+
+        /// <summary>Optional. The type of the bidding strategy. This can only be set at the line item level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>
+        /// Optional. The value used by the bidding strategy. This can be set at the line item and ad group level. This
+        /// field is only applicable for the following strategy types: * `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPA` *
+        /// `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_ROAS` Value of this field is in micros of the advertiser's currency
+        /// or ROAS value. For example, 1000000 represents 1.0 standard units of the currency or 100% ROAS value. If not
+        /// using an applicable strategy, the value of this field will be 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<long> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details for a Demand Gen carousel ad.</summary>
+    public class DemandGenCarouselAd : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The business name shown on the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessName")]
+        public virtual string BusinessName { get; set; }
+
+        /// <summary>Required. The list of cards shown on the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cards")]
+        public virtual System.Collections.Generic.IList<CarouselCard> Cards { get; set; }
+
+        /// <summary>Optional. The custom parameters to pass custom values to tracking URL template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customParameters")]
+        public virtual System.Collections.Generic.IDictionary<string, string> CustomParameters { get; set; }
+
+        /// <summary>Required. The description of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. The URL address of the webpage that people reach after they click the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalUrl")]
+        public virtual string FinalUrl { get; set; }
+
+        /// <summary>Optional. The suffix to append to landing page URLs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalUrlSuffix")]
+        public virtual string FinalUrlSuffix { get; set; }
+
+        /// <summary>Required. The headline of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headline")]
+        public virtual string Headline { get; set; }
+
+        /// <summary>Required. The logo image used by this ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logo")]
+        public virtual ImageAsset Logo { get; set; }
+
+        /// <summary>Output only. The URL address loaded in the background for tracking purposes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackingUrl")]
+        public virtual string TrackingUrl { get; set; }
+
+        /// <summary>Optional. The tracking URL specified by the user manually.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userSpecifiedTrackingUrl")]
+        public virtual string UserSpecifiedTrackingUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details for a Demand Gen image ad.</summary>
+    public class DemandGenImageAd : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The business name shown on the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessName")]
+        public virtual string BusinessName { get; set; }
+
+        /// <summary>Required. The call-to-action button shown on the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callToAction")]
+        public virtual string CallToAction { get; set; }
+
+        /// <summary>Optional. The custom parameters to pass custom values to tracking URL template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customParameters")]
+        public virtual System.Collections.Generic.IDictionary<string, string> CustomParameters { get; set; }
+
+        /// <summary>Required. The list of descriptions shown on the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("descriptions")]
+        public virtual System.Collections.Generic.IList<string> Descriptions { get; set; }
+
+        /// <summary>
+        /// Optional. The URL address of the webpage that people reach after they click the ad on a mobile device.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalMobileUrl")]
+        public virtual string FinalMobileUrl { get; set; }
+
+        /// <summary>Required. The URL address of the webpage that people reach after they click the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalUrl")]
+        public virtual string FinalUrl { get; set; }
+
+        /// <summary>Optional. The suffix to append to landing page URLs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalUrlSuffix")]
+        public virtual string FinalUrlSuffix { get; set; }
+
+        /// <summary>Required. The list of headlines shown on the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headlines")]
+        public virtual System.Collections.Generic.IList<string> Headlines { get; set; }
+
+        /// <summary>The list of logo images shown on the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logoImages")]
+        public virtual System.Collections.Generic.IList<ImageAsset> LogoImages { get; set; }
+
+        /// <summary>The list of marketing images shown on the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("marketingImages")]
+        public virtual System.Collections.Generic.IList<ImageAsset> MarketingImages { get; set; }
+
+        /// <summary>The list of portrait marketing images shown on the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("portraitMarketingImages")]
+        public virtual System.Collections.Generic.IList<ImageAsset> PortraitMarketingImages { get; set; }
+
+        /// <summary>The list of square marketing images shown on the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("squareMarketingImages")]
+        public virtual System.Collections.Generic.IList<ImageAsset> SquareMarketingImages { get; set; }
+
+        /// <summary>Output only. The URL address loaded in the background for tracking purposes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackingUrl")]
+        public virtual string TrackingUrl { get; set; }
+
+        /// <summary>Optional. The tracking URL specified by the user manually.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userSpecifiedTrackingUrl")]
+        public virtual string UserSpecifiedTrackingUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details for a Demand Gen product ad.</summary>
+    public class DemandGenProductAd : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The business name shown on the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessName")]
+        public virtual string BusinessName { get; set; }
+
+        /// <summary>
+        /// Required. The call-to-action button shown on the ad. The supported values are: * `AUTOMATED` * `APPLY_NOW` *
+        /// `BOOK_NOW` * `CONTACT_US` * `DOWNLOAD` * `GET_QUOTE` * `LEARN_MORE` * `SHOP_NOW` * `SIGN_UP` * `SUBSCRIBE`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callToAction")]
+        public virtual string CallToAction { get; set; }
+
+        /// <summary>Optional. The custom parameters to pass custom values to tracking URL template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customParameters")]
+        public virtual System.Collections.Generic.IDictionary<string, string> CustomParameters { get; set; }
+
+        /// <summary>Required. The description of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. The first piece after the domain in the display URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayUrlBreadcrumb1")]
+        public virtual string DisplayUrlBreadcrumb1 { get; set; }
+
+        /// <summary>Optional. The second piece after the domain in the display URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayUrlBreadcrumb2")]
+        public virtual string DisplayUrlBreadcrumb2 { get; set; }
+
+        /// <summary>Required. The URL address of the webpage that people reach after they click the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalUrl")]
+        public virtual string FinalUrl { get; set; }
+
+        /// <summary>Optional. The suffix to append to landing page URLs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalUrlSuffix")]
+        public virtual string FinalUrlSuffix { get; set; }
+
+        /// <summary>Required. The headline of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headline")]
+        public virtual string Headline { get; set; }
+
+        /// <summary>Required. The logo image used by this ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logo")]
+        public virtual ImageAsset Logo { get; set; }
+
+        /// <summary>Output only. The URL address loaded in the background for tracking purposes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackingUrl")]
+        public virtual string TrackingUrl { get; set; }
+
+        /// <summary>Optional. The tracking URL specified by the user manually.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userSpecifiedTrackingUrl")]
+        public virtual string UserSpecifiedTrackingUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for Demand Gen line items.</summary>
+    public class DemandGenSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Immutable. Whether location and language targeting can be set at the line item level. Otherwise,
+        /// relevant targeting types must be assigned directly to the ad groups.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geoLanguageTargetingEnabled")]
+        public virtual System.Nullable<bool> GeoLanguageTargetingEnabled { get; set; }
+
+        /// <summary>Optional. The ID of the merchant which is linked to the line item for product feed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedMerchantId")]
+        public virtual System.Nullable<long> LinkedMerchantId { get; set; }
+
+        /// <summary>Optional. The third party measurement settings for the Demand Gen line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyMeasurementConfigs")]
+        public virtual ThirdPartyMeasurementConfigs ThirdPartyMeasurementConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details for a Demand Gen video ad.</summary>
+    public class DemandGenVideoAd : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The business name shown on the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessName")]
+        public virtual string BusinessName { get; set; }
+
+        /// <summary>
+        /// Required. The call-to-action button shown on the ad. The supported values are: * `AUTOMATED` * `LEARN_MORE`
+        /// * `GET_QUOTE` * `APPLY_NOW` * `SIGN_UP` * `CONTACT_US` * `SUBSCRIBE` * `DOWNLOAD` * `BOOK_NOW` * `SHOP_NOW`
+        /// * `BUY_NOW` * `DONATE_NOW` * `ORDER_NOW` * `PLAY_NOW` * `SEE_MORE` * `START_NOW` * `VISIT_SITE` *
+        /// `WATCH_NOW`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callToAction")]
+        public virtual string CallToAction { get; set; }
+
+        /// <summary>Optional. The companion banner used by this ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("companionBanner")]
+        public virtual ImageAsset CompanionBanner { get; set; }
+
+        /// <summary>Optional. The custom parameters to pass custom values to tracking URL template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customParameters")]
+        public virtual System.Collections.Generic.IDictionary<string, string> CustomParameters { get; set; }
+
+        /// <summary>Required. The list of descriptions shown on the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("descriptions")]
+        public virtual System.Collections.Generic.IList<string> Descriptions { get; set; }
+
+        /// <summary>Optional. The first piece after the domain in the display URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayUrlBreadcrumb1")]
+        public virtual string DisplayUrlBreadcrumb1 { get; set; }
+
+        /// <summary>Optional. The second piece after the domain in the display URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayUrlBreadcrumb2")]
+        public virtual string DisplayUrlBreadcrumb2 { get; set; }
+
+        /// <summary>
+        /// Optional. The URL address of the webpage that people reach after they click the ad on a mobile device.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalMobileUrl")]
+        public virtual string FinalMobileUrl { get; set; }
+
+        /// <summary>Required. The URL address of the webpage that people reach after they click the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalUrl")]
+        public virtual string FinalUrl { get; set; }
+
+        /// <summary>Optional. The suffix to append to landing page URLs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalUrlSuffix")]
+        public virtual string FinalUrlSuffix { get; set; }
+
+        /// <summary>Required. The list of headlines shown on the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headlines")]
+        public virtual System.Collections.Generic.IList<string> Headlines { get; set; }
+
+        /// <summary>Required. The logo image used by this ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logo")]
+        public virtual ImageAsset Logo { get; set; }
+
+        /// <summary>Required. The list of lone headlines shown on the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longHeadlines")]
+        public virtual System.Collections.Generic.IList<string> LongHeadlines { get; set; }
+
+        /// <summary>Output only. The URL address loaded in the background for tracking purposes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackingUrl")]
+        public virtual string TrackingUrl { get; set; }
+
+        /// <summary>Optional. The tracking URL specified by the user manually.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userSpecifiedTrackingUrl")]
+        public virtual string UserSpecifiedTrackingUrl { get; set; }
+
+        /// <summary>Required. The list of YouTube video assets used by this ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videos")]
+        public virtual System.Collections.Generic.IList<YoutubeVideoDetails> Videos { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25166,6 +26832,10 @@ namespace Google.Apis.DisplayVideo.v3.Data
     /// <summary>Meta data of an image asset.</summary>
     public class ImageAsset : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Required. The unique ID of the asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetId")]
+        public virtual System.Nullable<long> AssetId { get; set; }
+
         /// <summary>Output only. File size of the image asset in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileSize")]
         public virtual System.Nullable<long> FileSize { get; set; }
@@ -25942,6 +27612,13 @@ namespace Google.Apis.DisplayVideo.v3.Data
     public class KeywordAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. The policy names to exempt the keyword from. This field is only applicable for Demand Gen
+        /// keywords, which are positively targeted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exemptedPolicyNames")]
+        public virtual System.Collections.Generic.IList<string> ExemptedPolicyNames { get; set; }
+
+        /// <summary>
         /// Required. The keyword, for example `car insurance`. Positive keyword cannot be offensive word. Must be UTF-8
         /// encoded with a maximum size of 255 bytes. Maximum number of characters is 80. Maximum number of words is 10.
         /// </summary>
@@ -26074,6 +27751,10 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creativeIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> CreativeIds { get; set; }
 
+        /// <summary>Optional. Settings specific to Demand Gen line items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("demandGenSettings")]
+        public virtual DemandGenSettings DemandGenSettings { get; set; }
+
         /// <summary>
         /// Required. The display name of the line item. Must be UTF-8 encoded with a maximum size of 240 bytes.
         /// </summary>
@@ -26102,8 +27783,9 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual LineItemFlight Flight { get; set; }
 
         /// <summary>
-        /// Required. The impression frequency cap settings of the line item. The max_impressions field in this settings
-        /// object must be used if assigning a limited cap.
+        /// Optional. The impression frequency cap settings of the line item. The max_impressions field in this settings
+        /// object must be used if assigning a limited cap. This field is REQUIRED for all line item types excluding
+        /// LINE_ITEM_TYPE_DEMAND_GEN.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frequencyCap")]
         public virtual FrequencyCap FrequencyCap { get; set; }
@@ -26236,7 +27918,9 @@ namespace Google.Apis.DisplayVideo.v3.Data
     {
         /// <summary>
         /// Required. The type of the budget allocation. `LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC` is only applicable
-        /// when automatic budget allocation is enabled for the parent insertion order.
+        /// when automatic budget allocation is enabled for the parent insertion order. For demand gen line items,
+        /// budget allocation type must be `LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED`. Demand Gen line items do not
+        /// support other budget allocation types.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("budgetAllocationType")]
         public virtual string BudgetAllocationType { get; set; }
@@ -27702,7 +29386,10 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("markupAmount")]
         public virtual System.Nullable<long> MarkupAmount { get; set; }
 
-        /// <summary>Required. The markup type of the partner revenue model.</summary>
+        /// <summary>
+        /// Required. The markup type of the partner revenue model. Demand Gen line items only support
+        /// `PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("markupType")]
         public virtual string MarkupType { get; set; }
 
@@ -28363,6 +30050,37 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The inventory control of the ad group.</summary>
+    public class SelectedInventories : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the ad group is opted-in to Discover inventory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowDiscover")]
+        public virtual System.Nullable<bool> AllowDiscover { get; set; }
+
+        /// <summary>Whether the ad group is opted-in to Gmail inventory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowGmail")]
+        public virtual System.Nullable<bool> AllowGmail { get; set; }
+
+        /// <summary>Whether the ad group is opted-in to Google Display Network inventory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowGoogleDisplayNetwork")]
+        public virtual System.Nullable<bool> AllowGoogleDisplayNetwork { get; set; }
+
+        /// <summary>Whether the ad group is opted-in to YouTube in-feed inventory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowYoutubeFeed")]
+        public virtual System.Nullable<bool> AllowYoutubeFeed { get; set; }
+
+        /// <summary>Whether the ad group is opted-in to YouTube shorts inventory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowYoutubeShorts")]
+        public virtual System.Nullable<bool> AllowYoutubeShorts { get; set; }
+
+        /// <summary>Whether the ad group is opted-in to YouTube in-stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowYoutubeStream")]
+        public virtual System.Nullable<bool> AllowYoutubeStream { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Targeting details for sensitive category. This will be populated in the details field of an
     /// AssignedTargetingOption when targeting_type is `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`.
@@ -28714,17 +30432,15 @@ namespace Google.Apis.DisplayVideo.v3.Data
     {
         /// <summary>
         /// Optional. The third-party vendors measuring brand lift. The following third-party vendors are applicable: *
-        /// `THIRD_PARTY_VENDOR_DYNATA` * `THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_KANTAR_MILLWARD_BROWN` *
-        /// `THIRD_PARTY_VENDOR_GOOGLE_INTERNAL` * `THIRD_PARTY_VENDOR_INTAGE` * `THIRD_PARTY_VENDOR_NIELSEN` *
-        /// `THIRD_PARTY_VENDOR_MACROMILL`
+        /// `THIRD_PARTY_VENDOR_DYNATA` * `THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_INTAGE` *
+        /// `THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_MACROMILL`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brandLiftVendorConfigs")]
         public virtual System.Collections.Generic.IList<ThirdPartyVendorConfig> BrandLiftVendorConfigs { get; set; }
 
         /// <summary>
         /// Optional. The third-party vendors measuring brand safety. The following third-party vendors are applicable:
-        /// * `THIRD_PARTY_VENDOR_ZERF` * `THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE`
-        /// * `THIRD_PARTY_VENDOR_GOOGLE_INTERNAL` * `THIRD_PARTY_VENDOR_ZEFR`
+        /// * `THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE` * `THIRD_PARTY_VENDOR_ZEFR`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brandSafetyVendorConfigs")]
         public virtual System.Collections.Generic.IList<ThirdPartyVendorConfig> BrandSafetyVendorConfigs { get; set; }
@@ -28732,9 +30448,9 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// <summary>
         /// Optional. The third-party vendors measuring reach. The following third-party vendors are applicable: *
         /// `THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_KANTAR` *
-        /// `THIRD_PARTY_VENDOR_GOOGLE_INTERNAL` * `THIRD_PARTY_VENDOR_KANTAR_MILLWARD_BROWN` *
         /// `THIRD_PARTY_VENDOR_VIDEO_RESEARCH` * `THIRD_PARTY_VENDOR_MEDIA_SCOPE` *
-        /// `THIRD_PARTY_VENDOR_AUDIENCE_PROJECT` * `THIRD_PARTY_VENDOR_VIDEO_AMP` * `THIRD_PARTY_VENDOR_ISPOT_TV`
+        /// `THIRD_PARTY_VENDOR_AUDIENCE_PROJECT` * `THIRD_PARTY_VENDOR_VIDEO_AMP` * `THIRD_PARTY_VENDOR_ISPOT_TV` *
+        /// `THIRD_PARTY_VENDOR_GEMIUS`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reachVendorConfigs")]
         public virtual System.Collections.Generic.IList<ThirdPartyVendorConfig> ReachVendorConfigs { get; set; }
@@ -28742,8 +30458,7 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// <summary>
         /// Optional. The third-party vendors measuring viewability. The following third-party vendors are applicable: *
         /// `THIRD_PARTY_VENDOR_MOAT` * `THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE` *
-        /// `THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_TELEMETRY` * `THIRD_PARTY_VENDOR_MEETRICS` *
-        /// `THIRD_PARTY_VENDOR_GOOGLE_INTERNAL`
+        /// `THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_TELEMETRY` * `THIRD_PARTY_VENDOR_MEETRICS`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewabilityVendorConfigs")]
         public virtual System.Collections.Generic.IList<ThirdPartyVendorConfig> ViewabilityVendorConfigs { get; set; }
