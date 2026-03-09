@@ -19976,6 +19976,13 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// <summary>Settings that control the bid strategy. Bid strategy determines the bid price.</summary>
     public class BiddingStrategy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// A bid strategy used by Demand Gen resources. It can only be used for a Demand Gen line item or ad group
+        /// entity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("demandGenBid")]
+        public virtual DemandGenBiddingStrategy DemandGenBid { get; set; }
+
         /// <summary>A strategy that uses a fixed bid price.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixedBid")]
         public virtual FixedBidStrategy FixedBid { get; set; }
@@ -21312,6 +21319,14 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("postViewCountPercentageMillis")]
         public virtual System.Nullable<long> PostViewCountPercentageMillis { get; set; }
 
+        /// <summary>
+        /// Optional. The attribution model to use for conversion measurement. This attribution model will determine how
+        /// conversions are counted. The Primary model can be set by you for a floodlight config or group. More details
+        /// [here](https://support.google.com/displayvideo/answer/7409983). Only applicable to Demand Gen line items.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryAttributionModelId")]
+        public virtual System.Nullable<long> PrimaryAttributionModelId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -22157,7 +22172,8 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual System.Nullable<int> StartHour { get; set; }
 
         /// <summary>
-        /// Required. The mechanism used to determine which timezone to use for this day and time targeting setting.
+        /// Required. The mechanism used to determine which timezone to use for this day and time targeting setting. For
+        /// demand gen line items, this field is always TIME_ZONE_RESOLUTION_ADVERTISER.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZoneResolution")]
         public virtual string TimeZoneResolution { get; set; }
@@ -22185,6 +22201,61 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// <summary>Required. Identifies the type of this assigned targeting option.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingType")]
         public virtual string TargetingType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings that control the bid strategy for Demand Gen resources.</summary>
+    public class DemandGenBiddingStrategy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. If AG doesn't set value for tCPA or tROAS, line item bidding value will be the
+        /// effective_bidding_value, if the bidding strategy type is not tCPA or tROAS, effective_bidding_value is
+        /// always 0. For line item, it will be the same as the value field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveBiddingValue")]
+        public virtual System.Nullable<long> EffectiveBiddingValue { get; set; }
+
+        /// <summary>Output only. Source of the effective bidding value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveBiddingValueSource")]
+        public virtual string EffectiveBiddingValueSource { get; set; }
+
+        /// <summary>Optional. The type of the bidding strategy. This can only be set at the line item level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>
+        /// Optional. The value used by the bidding strategy. This can be set at the line item and ad group level. This
+        /// field is only applicable for the following strategy types: * `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPA` *
+        /// `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_ROAS` Value of this field is in micros of the advertiser's currency
+        /// or ROAS value. For example, 1000000 represents 1.0 standard units of the currency or 100% ROAS value. If not
+        /// using an applicable strategy, the value of this field will be 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<long> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for Demand Gen line items.</summary>
+    public class DemandGenSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Immutable. Whether location and language targeting can be set at the line item level. Otherwise,
+        /// relevant targeting types must be assigned directly to the ad groups.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geoLanguageTargetingEnabled")]
+        public virtual System.Nullable<bool> GeoLanguageTargetingEnabled { get; set; }
+
+        /// <summary>Optional. The ID of the merchant which is linked to the line item for product feed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedMerchantId")]
+        public virtual System.Nullable<long> LinkedMerchantId { get; set; }
+
+        /// <summary>Optional. The third party measurement settings for the Demand Gen line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyMeasurementConfigs")]
+        public virtual ThirdPartyMeasurementConfigs ThirdPartyMeasurementConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23260,6 +23331,10 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// <summary>Meta data of an image asset.</summary>
     public class ImageAsset : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Required. The unique ID of the asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetId")]
+        public virtual System.Nullable<long> AssetId { get; set; }
+
         /// <summary>Output only. File size of the image asset in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileSize")]
         public virtual System.Nullable<long> FileSize { get; set; }
@@ -24029,6 +24104,13 @@ namespace Google.Apis.DisplayVideo.v2.Data
     public class KeywordAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. The policy names to exempt the keyword from. This field is only applicable for Demand Gen
+        /// keywords, which are positively targeted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exemptedPolicyNames")]
+        public virtual System.Collections.Generic.IList<string> ExemptedPolicyNames { get; set; }
+
+        /// <summary>
         /// Required. The keyword, for example `car insurance`. Positive keyword cannot be offensive word. Must be UTF-8
         /// encoded with a maximum size of 255 bytes. Maximum number of characters is 80. Maximum number of words is 10.
         /// </summary>
@@ -24119,6 +24201,10 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creativeIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> CreativeIds { get; set; }
 
+        /// <summary>Optional. Settings specific to Demand Gen line items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("demandGenSettings")]
+        public virtual DemandGenSettings DemandGenSettings { get; set; }
+
         /// <summary>
         /// Required. The display name of the line item. Must be UTF-8 encoded with a maximum size of 240 bytes.
         /// </summary>
@@ -24147,8 +24233,9 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual LineItemFlight Flight { get; set; }
 
         /// <summary>
-        /// Required. The impression frequency cap settings of the line item. The max_impressions field in this settings
-        /// object must be used if assigning a limited cap.
+        /// Optional. The impression frequency cap settings of the line item. The max_impressions field in this settings
+        /// object must be used if assigning a limited cap. This field is REQUIRED for all line item types excluding
+        /// LINE_ITEM_TYPE_DEMAND_GEN.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frequencyCap")]
         public virtual FrequencyCap FrequencyCap { get; set; }
@@ -24281,7 +24368,9 @@ namespace Google.Apis.DisplayVideo.v2.Data
     {
         /// <summary>
         /// Required. The type of the budget allocation. `LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC` is only applicable
-        /// when automatic budget allocation is enabled for the parent insertion order.
+        /// when automatic budget allocation is enabled for the parent insertion order. For demand gen line items,
+        /// budget allocation type must be `LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED`. Demand Gen line items do not
+        /// support other budget allocation types.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("budgetAllocationType")]
         public virtual string BudgetAllocationType { get; set; }
@@ -25770,7 +25859,10 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("markupAmount")]
         public virtual System.Nullable<long> MarkupAmount { get; set; }
 
-        /// <summary>Required. The markup type of the partner revenue model.</summary>
+        /// <summary>
+        /// Required. The markup type of the partner revenue model. Demand Gen line items only support
+        /// `PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("markupType")]
         public virtual string MarkupType { get; set; }
 
@@ -26758,6 +26850,46 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// <summary>Viewability resource details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewabilityDetails")]
         public virtual ViewabilityTargetingOptionDetails ViewabilityDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings that control what third-party vendors are measuring specific line item metrics.</summary>
+    public class ThirdPartyMeasurementConfigs : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The third-party vendors measuring brand lift. The following third-party vendors are applicable: *
+        /// `THIRD_PARTY_VENDOR_DYNATA` * `THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_INTAGE` *
+        /// `THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_MACROMILL`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brandLiftVendorConfigs")]
+        public virtual System.Collections.Generic.IList<ThirdPartyVendorConfig> BrandLiftVendorConfigs { get; set; }
+
+        /// <summary>
+        /// Optional. The third-party vendors measuring brand safety. The following third-party vendors are applicable:
+        /// * `THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE` * `THIRD_PARTY_VENDOR_ZEFR`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brandSafetyVendorConfigs")]
+        public virtual System.Collections.Generic.IList<ThirdPartyVendorConfig> BrandSafetyVendorConfigs { get; set; }
+
+        /// <summary>
+        /// Optional. The third-party vendors measuring reach. The following third-party vendors are applicable: *
+        /// `THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_KANTAR` *
+        /// `THIRD_PARTY_VENDOR_VIDEO_RESEARCH` * `THIRD_PARTY_VENDOR_MEDIA_SCOPE` *
+        /// `THIRD_PARTY_VENDOR_AUDIENCE_PROJECT` * `THIRD_PARTY_VENDOR_VIDEO_AMP` * `THIRD_PARTY_VENDOR_ISPOT_TV` *
+        /// `THIRD_PARTY_VENDOR_GEMIUS`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reachVendorConfigs")]
+        public virtual System.Collections.Generic.IList<ThirdPartyVendorConfig> ReachVendorConfigs { get; set; }
+
+        /// <summary>
+        /// Optional. The third-party vendors measuring viewability. The following third-party vendors are applicable: *
+        /// `THIRD_PARTY_VENDOR_MOAT` * `THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE` *
+        /// `THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_TELEMETRY` * `THIRD_PARTY_VENDOR_MEETRICS`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("viewabilityVendorConfigs")]
+        public virtual System.Collections.Generic.IList<ThirdPartyVendorConfig> ViewabilityVendorConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
