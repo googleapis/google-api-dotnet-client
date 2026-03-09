@@ -7129,6 +7129,17 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual System.Nullable<bool> FailOpen { get; set; }
 
         /// <summary>
+        /// Optional. List of the Envoy attributes to forward to the extension server. The attributes provided here are
+        /// included as part of the `ProcessingRequest.attributes` field (of type `map`), where the keys are the
+        /// attribute names. Refer to the
+        /// [documentation](https://cloud.google.com/service-extensions/docs/cel-matcher-language-reference#attributes)
+        /// for the names of attributes that can be forwarded. If omitted, no attributes are sent. Each element is a
+        /// string indicating the attribute name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forwardAttributes")]
+        public virtual System.Collections.Generic.IList<string> ForwardAttributes { get; set; }
+
+        /// <summary>
         /// Optional. List of the HTTP headers to forward to the extension (from the client). If omitted, all headers
         /// are sent. Each element is a string indicating the header name.
         /// </summary>
@@ -7475,6 +7486,17 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failOpen")]
         public virtual System.Nullable<bool> FailOpen { get; set; }
+
+        /// <summary>
+        /// Optional. List of the Envoy attributes to forward to the extension server. The attributes provided here are
+        /// included as part of the `ProcessingRequest.attributes` field (of type `map`), where the keys are the
+        /// attribute names. Refer to the
+        /// [documentation](https://cloud.google.com/service-extensions/docs/cel-matcher-language-reference#attributes)
+        /// for the names of attributes that can be forwarded. If omitted, no attributes are sent. Each element is a
+        /// string indicating the attribute name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forwardAttributes")]
+        public virtual System.Collections.Generic.IList<string> ForwardAttributes { get; set; }
 
         /// <summary>
         /// Optional. List of the HTTP headers to forward to the extension (from the client or backend). If omitted, all
