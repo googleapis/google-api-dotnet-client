@@ -3076,7 +3076,7 @@ namespace Google.Apis.GKEHub.v2beta.Data
             set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>GCP labels for this MembershipFeature.</summary>
+        /// <summary>Google Cloud labels for this MembershipFeature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
