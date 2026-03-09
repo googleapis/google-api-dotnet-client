@@ -8417,8 +8417,8 @@ namespace Google.Apis.GKEHub.v1beta.Data
 
         /// <summary>
         /// Output only. Node providerID as reported by the first node in the list of nodes on the Kubernetes endpoint.
-        /// On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the node_count will be zero and
-        /// the node_provider_id will be empty.
+        /// On Kubernetes platforms that support zero-node clusters (like GKE on Google Cloud), the node_count will be
+        /// zero and the node_provider_id will be empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeProviderId")]
         public virtual string NodeProviderId { get; set; }
@@ -9216,7 +9216,7 @@ namespace Google.Apis.GKEHub.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("edgeCluster")]
         public virtual EdgeCluster EdgeCluster { get; set; }
 
-        /// <summary>Optional. Specific information for a GKE-on-GCP cluster.</summary>
+        /// <summary>Optional. Specific information for a GKE on Google Cloud cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeCluster")]
         public virtual GkeCluster GkeCluster { get; set; }
 
