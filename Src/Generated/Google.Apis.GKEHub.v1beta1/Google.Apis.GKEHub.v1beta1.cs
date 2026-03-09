@@ -1790,7 +1790,7 @@ namespace Google.Apis.GKEHub.v1beta1.Data
     public class ApplianceCluster : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Immutable. Self-link of the GCP resource for the Appliance Cluster. For example:
+        /// Immutable. Self-link of the Google Cloud resource for the Appliance Cluster. For example:
         /// //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLink")]
@@ -2007,7 +2007,7 @@ namespace Google.Apis.GKEHub.v1beta1.Data
     public class EdgeCluster : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Immutable. Self-link of the GCP resource for the Edge Cluster. For example:
+        /// Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example:
         /// //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLink")]
@@ -2120,7 +2120,7 @@ namespace Google.Apis.GKEHub.v1beta1.Data
         public virtual System.Nullable<bool> ClusterMissing { get; set; }
 
         /// <summary>
-        /// Immutable. Self-link of the GCP resource for the GKE cluster. For example:
+        /// Immutable. Self-link of the Google Cloud resource for the GKE cluster. For example:
         /// //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are
         /// also supported.
         /// </summary>
@@ -2182,8 +2182,8 @@ namespace Google.Apis.GKEHub.v1beta1.Data
 
         /// <summary>
         /// Output only. Node providerID as reported by the first node in the list of nodes on the Kubernetes endpoint.
-        /// On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the node_count will be zero and
-        /// the node_provider_id will be empty.
+        /// On Kubernetes platforms that support zero-node clusters (like GKE-on-Google Cloud), the node_count will be
+        /// zero and the node_provider_id will be empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeProviderId")]
         public virtual string NodeProviderId { get; set; }
@@ -2478,8 +2478,8 @@ namespace Google.Apis.GKEHub.v1beta1.Data
         public virtual string InfrastructureType { get; set; }
 
         /// <summary>
-        /// Optional. GCP labels for this membership. These labels are not leveraged by multi-cluster features, instead,
-        /// we prefer cluster labels, which can be set on GKE cluster or other cluster types.
+        /// Optional. Google Cloud labels for this membership. These labels are not leveraged by multi-cluster features,
+        /// instead, we prefer cluster labels, which can be set on GKE cluster or other cluster types.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -2612,7 +2612,7 @@ namespace Google.Apis.GKEHub.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("edgeCluster")]
         public virtual EdgeCluster EdgeCluster { get; set; }
 
-        /// <summary>Optional. Specific information for a GKE-on-GCP cluster.</summary>
+        /// <summary>Optional. Specific information for a GKE-on-Google Cloud cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeCluster")]
         public virtual GkeCluster GkeCluster { get; set; }
 
@@ -2748,7 +2748,7 @@ namespace Google.Apis.GKEHub.v1beta1.Data
         public virtual System.Nullable<bool> ClusterMissing { get; set; }
 
         /// <summary>
-        /// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example:
+        /// Immutable. Self-link of the Google Cloud resource for the GKE Multi-Cloud cluster. For example:
         /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster
         /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
         /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
@@ -2779,7 +2779,7 @@ namespace Google.Apis.GKEHub.v1beta1.Data
         public virtual string ClusterType { get; set; }
 
         /// <summary>
-        /// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example:
+        /// Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster. For example:
         /// //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster
         /// //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
         /// </summary>
