@@ -1150,8 +1150,7 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
 
         /// <summary>
         /// Required. Immutable. The feed label of the offers to which the local inventory is provided. Must be less
-        /// than or equal to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-). See also [migration to feed
-        /// labels](https://developers.google.com/shopping-content/guides/products/feed-labels).
+        /// than or equal to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feedLabel")]
         public virtual string FeedLabel { get; set; }
@@ -1210,11 +1209,12 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
 
         /// <summary>
         /// Optional. Immutable. The feed label that is specified on the data source level. Must be less than or equal
-        /// to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-). See also [migration to feed
-        /// labels](https://developers.google.com/shopping-content/guides/products/feed-labels). `feedLabel` and
-        /// `contentLanguage` must be either both set or unset for data sources with product content type. They must be
-        /// set for data sources with a file input. If set, the data source will only accept products matching this
-        /// combination. If unset, the data source will accept products without that restriction.
+        /// to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-). For more information about feed label, see
+        /// [Create a primary data source for
+        /// products](https://developers.google.com/merchant/api/guides/data-sources/api-sources#create-primary-data-source).
+        /// `feedLabel` and `contentLanguage` must be either both set or unset for data sources with product content
+        /// type. They must be set for data sources with a file input. If set, the data source will only accept products
+        /// matching this combination. If unset, the data source will accept products without that restriction.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feedLabel")]
         public virtual string FeedLabel { get; set; }
@@ -1416,8 +1416,7 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
 
         /// <summary>
         /// Required. Immutable. The feed label of the offers to which the regional inventory is provided. Must be less
-        /// than or equal to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-). See also [migration to feed
-        /// labels](https://developers.google.com/shopping-content/guides/products/feed-labels).
+        /// than or equal to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feedLabel")]
         public virtual string FeedLabel { get; set; }
@@ -1445,12 +1444,11 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
 
         /// <summary>
         /// Optional. Immutable. The feed label that is specified on the data source level. Must be less than or equal
-        /// to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-). See also [migration to feed
-        /// labels](https://developers.google.com/shopping-content/guides/products/feed-labels). `feedLabel` and
-        /// `contentLanguage` must be either both set or unset for data sources with product content type. They must be
-        /// set for data sources with a file input. The fields must be unset for data sources without file input. If
-        /// set, the data source will only accept products matching this combination. If unset, the data source will
-        /// accept produts without that restriction.
+        /// to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-). `feedLabel` and `contentLanguage` must be
+        /// either both set or unset for data sources with product content type. They must be set for data sources with
+        /// a file input. The fields must be unset for data sources without file input. If set, the data source will
+        /// only accept products matching this combination. If unset, the data source will accept produts without that
+        /// restriction.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feedLabel")]
         public virtual string FeedLabel { get; set; }
