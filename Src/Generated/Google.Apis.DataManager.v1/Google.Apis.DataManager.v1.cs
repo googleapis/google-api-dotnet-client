@@ -3278,7 +3278,7 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string CleanRoomIdentifier { get; set; }
 
         /// <summary>
-        /// Optional. This field denotes the percentage of membership match of this user list with the corresponding
+        /// Required. This field denotes the percentage of membership match of this user list with the corresponding
         /// publisher's first party data. Must be between 0 and 100 inclusive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchRatePercentage")]
