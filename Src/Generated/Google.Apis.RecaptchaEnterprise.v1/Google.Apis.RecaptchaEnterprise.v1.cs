@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1810,9 +1810,62 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>Account defender risk assessment.</summary>
     public class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Account takeover risk assessment for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountTakeoverVerdict")]
+        public virtual GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict AccountTakeoverVerdict { get; set; }
+
         /// <summary>Output only. Labels for this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<string> Labels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Risk explainability reasons for account defender.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A risk reason associated with this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Account takeover risk assessment.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Account takeover attempt probability. Values are from 0.0 (lowest risk) to 1.0 (highest risk).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("risk")]
+        public virtual System.Nullable<float> Risk { get; set; }
+
+        /// <summary>
+        /// Output only. Unordered list. Reasons why the request appears risky. Risk reasons can be returned even if the
+        /// risk is low, as trustworthy requests can still have some risk signals.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("riskReasons")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason> RiskReasons { get; set; }
+
+        /// <summary>
+        /// Output only. Unordered list. Reasons why the request appears trustworthy. Trust reasons can be returned even
+        /// if the risk is high, as risky requests can still have some trust signals.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustReasons")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason> TrustReasons { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Trust explainability reasons for account defender.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A trust reason associated with this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3115,8 +3168,9 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string Challenge { get; set; }
 
         /// <summary>
-        /// Output only. Extended verdict reasons to be used for experimentation only. The set of possible reasons is
-        /// subject to change.
+        /// Output only. Advanced reasons contributing to the risk analysis verdict. These reasons are available to
+        /// Enterprise tier projects only. Contact sales for more information. The set of possible reasons is subject to
+        /// change.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extendedVerdictReasons")]
         public virtual System.Collections.Generic.IList<string> ExtendedVerdictReasons { get; set; }
