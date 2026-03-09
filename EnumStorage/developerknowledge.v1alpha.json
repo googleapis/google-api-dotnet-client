@@ -1,0 +1,11 @@
+{
+  "Google.Apis.DeveloperKnowledge.v1alpha.DeveloperKnowledgeBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.DeveloperKnowledge.v1alpha.DeveloperKnowledgeBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
