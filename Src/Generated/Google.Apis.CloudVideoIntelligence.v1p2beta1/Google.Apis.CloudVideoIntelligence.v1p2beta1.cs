@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1171,6 +1171,13 @@ namespace Google.Apis.CloudVideoIntelligence.v1p2beta1.Data
         public virtual object EndTime { get; set; }
 
         /// <summary>
+        /// Output only. A distinct string value is assigned for every speaker within the audio. This field specifies
+        /// which one of those speakers was detected to have spoken this word.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speakerLabel")]
+        public virtual string SpeakerLabel { get; set; }
+
+        /// <summary>
         /// Output only. A distinct integer value is assigned for every speaker within the audio. This field specifies
         /// which one of those speakers was detected to have spoken this word. Value ranges from 1 up to
         /// diarization_speaker_count, and is only set if speaker diarization is enabled.
@@ -2037,6 +2044,13 @@ namespace Google.Apis.CloudVideoIntelligence.v1p2beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
+
+        /// <summary>
+        /// Output only. A distinct string value is assigned for every speaker within the audio. This field specifies
+        /// which one of those speakers was detected to have spoken this word.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speakerLabel")]
+        public virtual string SpeakerLabel { get; set; }
 
         /// <summary>
         /// Output only. A distinct integer value is assigned for every speaker within the audio. This field specifies
@@ -2907,6 +2921,13 @@ namespace Google.Apis.CloudVideoIntelligence.v1p2beta1.Data
         public virtual object EndTime { get; set; }
 
         /// <summary>
+        /// Output only. A distinct string value is assigned for every speaker within the audio. This field specifies
+        /// which one of those speakers was detected to have spoken this word.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speakerLabel")]
+        public virtual string SpeakerLabel { get; set; }
+
+        /// <summary>
         /// Output only. A distinct integer value is assigned for every speaker within the audio. This field specifies
         /// which one of those speakers was detected to have spoken this word. Value ranges from 1 up to
         /// diarization_speaker_count, and is only set if speaker diarization is enabled.
@@ -3628,6 +3649,12 @@ namespace Google.Apis.CloudVideoIntelligence.v1p2beta1.Data
     public class GoogleCloudVideointelligenceV1p2beta1SpeechTranscriptionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Legacy field. This field must be a Cloud Storage URI prefix. (e.g., `gs://bucket/path/`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioOutputUriPrefix")]
+        public virtual string AudioOutputUriPrefix { get; set; }
+
+        /// <summary>
         /// Optional. For file formats, such as MXF or MKV, supporting multiple audio tracks, specify up to two tracks.
         /// Default: track 0.
         /// </summary>
@@ -4123,6 +4150,13 @@ namespace Google.Apis.CloudVideoIntelligence.v1p2beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
+
+        /// <summary>
+        /// Output only. A distinct string value is assigned for every speaker within the audio. This field specifies
+        /// which one of those speakers was detected to have spoken this word.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speakerLabel")]
+        public virtual string SpeakerLabel { get; set; }
 
         /// <summary>
         /// Output only. A distinct integer value is assigned for every speaker within the audio. This field specifies
@@ -5123,6 +5157,13 @@ namespace Google.Apis.CloudVideoIntelligence.v1p2beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
+
+        /// <summary>
+        /// Output only. A distinct string value is assigned for every speaker within the audio. This field specifies
+        /// which one of those speakers was detected to have spoken this word.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speakerLabel")]
+        public virtual string SpeakerLabel { get; set; }
 
         /// <summary>
         /// Output only. A distinct integer value is assigned for every speaker within the audio. This field specifies
