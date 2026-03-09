@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2282,8 +2282,9 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         public virtual string Hint { get; set; }
 
         /// <summary>
-        /// Optional. A description of criteria the agent should use to determine if the goal has been successfully
-        /// completed
+        /// Optional. A visual description of the screen's expected state after the step has been successfully
+        /// completed. This is referred to as the "final screen assertion" in the Firebase console and CLI tools. This
+        /// field must be provided for the last step in a test case, and is optional for all other steps.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successCriteria")]
         public virtual string SuccessCriteria { get; set; }
@@ -2977,7 +2978,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
 
         /// <summary>Optional. Are these credentials for Google?</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("google")]
-        public virtual System.Nullable<bool> Google { get; set; }
+        public virtual System.Nullable<bool> Google__ { get; set; }
 
         /// <summary>Optional. Password for automated tests</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
