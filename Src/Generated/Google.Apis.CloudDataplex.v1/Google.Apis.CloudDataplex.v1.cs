@@ -6888,6 +6888,97 @@ namespace Google.Apis.CloudDataplex.v1
                             });
                         }
                     }
+
+                    /// <summary>Updates an Entry Link.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Output only. Immutable. Identifier. The relative resource name of the Entry Link, of the form:
+                    /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id}
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1EntryLink body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Updates an Entry Link.</summary>
+                    public class PatchRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1EntryLink>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1EntryLink body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Output only. Immutable. Identifier. The relative resource name of the Entry Link, of the
+                        /// form:
+                        /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. If set to true and the entry link doesn't exist, the service will create it.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                        /// <summary>
+                        /// Optional. The map keys of the Aspects which the service should modify. It should be the
+                        /// aspect type reference in the format {project_id_or_number}.{location_id}.{aspect_type_id}.If
+                        /// this field is left empty, the service treats it as specifying exactly those Aspects present
+                        /// in the request.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("aspectKeys", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<string> AspectKeys { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1EntryLink Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/entryLinks/.*$",
+                            });
+                            RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "allowMissing",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("aspectKeys", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "aspectKeys",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Creates an EntryGroup.</summary>
@@ -23342,6 +23433,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>EntryLink represents a link between two Entries.</summary>
     public class GoogleCloudDataplexV1EntryLink : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The aspects that are attached to the entry link. The format of the aspect key has to be the
+        /// following: {project_id_or_number}.{location_id}.{aspect_type_id} Currently, only a single aspect of a
+        /// Dataplex-owned Aspect Type is allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aspects")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDataplexV1Aspect> Aspects { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -23390,7 +23489,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string EntryLinkType { get; set; }
 
         /// <summary>
-        /// Required. Specifies the Entries referenced in the Entry Link. There should be exactly two entry references.
+        /// Required. Immutable. Specifies the Entries referenced in the Entry Link. There should be exactly two entry
+        /// references.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryReferences")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1EntryLinkEntryReference> EntryReferences { get; set; }
