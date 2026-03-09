@@ -4116,6 +4116,44 @@ namespace Google.Apis.NetworkManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>For display only. Metadata associated with a GKE Network Policy.</summary>
+    public class GkeNetworkPolicyInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Possible values: ALLOW, DENY</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>Possible values: INGRESS, EGRESS</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("direction")]
+        public virtual string Direction { get; set; }
+
+        /// <summary>The name of the Network Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The URI of the Network Policy. Format for a Network Policy in a zonal cluster:
+        /// `projects//zones//clusters//k8s/namespaces//networking.k8s.io/networkpolicies/` Format for a Network Policy
+        /// in a regional cluster: `projects//locations//clusters//k8s/namespaces//networking.k8s.io/networkpolicies/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>For display only. Contains information about why GKE Network Policy evaluation was skipped.</summary>
+    public class GkeNetworkPolicySkippedInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Reason why Network Policy evaluation was skipped.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>For display only. Metadata associated with a Google Kubernetes Engine (GKE) Pod.</summary>
     public class GkePodInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5488,6 +5526,14 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// <summary>Display information of a Google Kubernetes Engine cluster master.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeMaster")]
         public virtual GKEMasterInfo GkeMaster { get; set; }
+
+        /// <summary>Display information of a GKE Network Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeNetworkPolicy")]
+        public virtual GkeNetworkPolicyInfo GkeNetworkPolicy { get; set; }
+
+        /// <summary>Display information of the reason why GKE Network Policy evaluation was skipped.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeNetworkPolicySkipped")]
+        public virtual GkeNetworkPolicySkippedInfo GkeNetworkPolicySkipped { get; set; }
 
         /// <summary>Display information of a Google Kubernetes Engine Pod.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkePod")]
