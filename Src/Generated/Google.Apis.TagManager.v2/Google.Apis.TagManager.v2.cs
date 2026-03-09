@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -10091,6 +10091,14 @@ namespace Google.Apis.TagManager.v2.Data
         /// <summary>The value to convert if a variable value is null.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("convertNullToValue")]
         public virtual Parameter ConvertNullToValue { get; set; }
+
+        /// <summary>The option to convert a variable value to a boolean.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("convertToBoolean")]
+        public virtual System.Nullable<bool> ConvertToBoolean { get; set; }
+
+        /// <summary>The option to convert a variable value to a number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("convertToNumber")]
+        public virtual string ConvertToNumber { get; set; }
 
         /// <summary>The value to convert if a variable value is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("convertTrueToValue")]
