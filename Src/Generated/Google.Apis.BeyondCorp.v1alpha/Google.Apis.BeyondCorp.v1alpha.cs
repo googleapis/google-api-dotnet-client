@@ -11732,6 +11732,13 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for Cloud Logging.</summary>
+    public class GoogleCloudBeyondcorpSecuritygatewaysV1alphaLoggingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The configuration for the proxy.</summary>
     public class GoogleCloudBeyondcorpSecuritygatewaysV1alphaProxyProtocolConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11824,6 +11831,12 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hubs")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub> Hubs { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration for Cloud Logging. If this field is present, the logging will be enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logging")]
+        public virtual GoogleCloudBeyondcorpSecuritygatewaysV1alphaLoggingConfig Logging { get; set; }
 
         /// <summary>Identifier. Name of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
