@@ -1097,8 +1097,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
             /// <summary>
-            /// Search string in the format given at
-            /// https://developers.google.com/workspace/admin/directory/v1/list-query-operators
+            /// Search string in the format given at [List query
+            /// operators](https://developers.google.com/workspace/admin/directory/v1/list-query-operators).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -1752,8 +1752,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
                     public virtual string CustomerId { get; private set; }
 
                     /// <summary>
-                    /// Optional. Search string in the format given at
-                    /// https://developers.google.com/workspace/admin/directory/v1/list-query-operators
+                    /// Optional. Search string in the format given at [List query
+                    /// operators](https://developers.google.com/workspace/admin/directory/v1/list-query-operators).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -9380,8 +9380,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>
         /// Create a guest user with access to a [subset of Workspace
-        /// capabilities](https://support.google.com/a/answer/16558545?hl=en). This feature is currently in Alpha.
-        /// Please reach out to support if you are interested in trying this feature.
+        /// capabilities](https://support.google.com/a/answer/16558545). This feature is currently in Alpha. Please
+        /// reach out to support if you are interested in trying this feature.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateGuestRequest CreateGuest(Google.Apis.Admin.Directory.directory_v1.Data.DirectoryUsersCreateGuestRequest body)
@@ -9391,8 +9391,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>
         /// Create a guest user with access to a [subset of Workspace
-        /// capabilities](https://support.google.com/a/answer/16558545?hl=en). This feature is currently in Alpha.
-        /// Please reach out to support if you are interested in trying this feature.
+        /// capabilities](https://support.google.com/a/answer/16558545). This feature is currently in Alpha. Please
+        /// reach out to support if you are interested in trying this feature.
         /// </summary>
         public class CreateGuestRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.User>
         {
