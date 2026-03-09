@@ -155,10 +155,7 @@ namespace Google.Apis.Requests.Parameters
         /// <see cref="Google.Apis.Util.RequestParameterAttribute"/> attribute. Those properties will be set in the
         /// given request builder object
         /// </param>
-        /// <remarks>
-        /// This method is internal and is called from the Google.Apis assembly via <c>InternalsVisibleTo</c>.
-        /// </remarks>
-        internal static void InitParametersWithExpansion(RequestBuilder builder, object request)
+        public static void InitParametersWithExpansion(RequestBuilder builder, object request)
         {
             // Use typed methods to preserve RequestParameterType information
             var parametersWithTypes = CreateParameterDictionaryWithTypes(request);

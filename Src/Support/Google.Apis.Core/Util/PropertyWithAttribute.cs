@@ -19,25 +19,43 @@ using System.Reflection;
 namespace Google.Apis.Util
 {
     /// <summary>
-    /// Represents a property with its associated RequestParameterAttribute.
+    /// Pairs a <see cref="PropertyInfo"/> with its associated <see cref="RequestParameterAttribute"/>.
     /// </summary>
-    internal readonly struct PropertyWithAttribute
+    /// <remarks>
+    /// Instances of this struct are produced by <see cref="ReflectionCache.GetRequestParameterProperties"/>
+    /// and consumed by <c>ParameterUtils</c> when building request URLs and form bodies. Only properties
+    /// that are decorated with <see cref="RequestParameterAttribute"/> are represented; properties without
+    /// the attribute are filtered out before any <see cref="PropertyWithAttribute"/> value is created.
+    /// </remarks>
+    public readonly struct PropertyWithAttribute
     {
         /// <summary>
-        /// The PropertyInfo for the property.
+        /// Gets the <see cref="PropertyInfo"/> for the request parameter property.
         /// </summary>
+        /// <value>
+        /// The <see cref="PropertyInfo"/> that describes the request parameter property on the request type.
+        /// </value>
         public PropertyInfo Property { get; }
 
         /// <summary>
-        /// The RequestParameterAttribute associated with this property.
+        /// Gets the <see cref="RequestParameterAttribute"/> applied to <see cref="Property"/>.
         /// </summary>
+        /// <value>
+        /// The <see cref="RequestParameterAttribute"/> that annotates <see cref="Property"/>, providing the
+        /// parameter name and <see cref="RequestParameterType"/> used when serializing the request.
+        /// </value>
+        /// <remarks>
+        /// This value is never <c>null</c> on instances returned by
+        /// <see cref="ReflectionCache.GetRequestParameterProperties"/>; properties without the attribute
+        /// are excluded from the results.
+        /// </remarks>
         public RequestParameterAttribute Attribute { get; }
 
         /// <summary>
-        /// Initializes a new instance of PropertyWithAttribute.
+        /// Initializes a new instance of <see cref="PropertyWithAttribute"/>.
         /// </summary>
-        /// <param name="property">The property info.</param>
-        /// <param name="attribute">The associated <see cref="RequestParameterAttribute"/>.</param>
+        /// <param name="property">The <see cref="PropertyInfo"/> of the request parameter property.</param>
+        /// <param name="attribute">The <see cref="RequestParameterAttribute"/> applied to <paramref name="property"/>.</param>
         public PropertyWithAttribute(PropertyInfo property, RequestParameterAttribute attribute)
         {
             Property = property;
