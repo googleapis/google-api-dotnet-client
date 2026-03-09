@@ -3802,6 +3802,10 @@ namespace Google.Apis.FirebaseDataConnect.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ephemeral")]
         public virtual System.Nullable<bool> Ephemeral { get; set; }
 
+        /// <summary>Optional. User-configured PostgreSQL schema. Defaults to "public" if not specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual string Schema { get; set; }
+
         /// <summary>Optional. Configure how to perform Postgresql schema migration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaMigration")]
         public virtual string SchemaMigration { get; set; }
