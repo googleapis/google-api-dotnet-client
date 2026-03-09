@@ -4431,7 +4431,8 @@ namespace Google.Apis.DeveloperConnect.v1.Data
 
         /// <summary>
         /// Optional. Configuration for the git proxy feature. Enabling the git proxy allows clients to perform git
-        /// operations on the repositories linked in the connection.
+        /// operations on the repositories linked in the connection. [Learn
+        /// more](https://docs.cloud.google.com/developer-connect/docs/configure-git-proxy).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gitProxyConfig")]
         public virtual GitProxyConfig GitProxyConfig { get; set; }
