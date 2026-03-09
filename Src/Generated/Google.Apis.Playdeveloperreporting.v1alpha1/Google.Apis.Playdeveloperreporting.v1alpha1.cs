@@ -2358,25 +2358,6 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
 namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
 {
     /// <summary>
-    /// Profile describing the data handling characteristics of an MCP tool. When used within the McpTool.meta field,
-    /// this message should be packed into a google.protobuf.Any and associated with the key:
-    /// "google.com/tool.profiles/data_handling"
-    /// </summary>
-    public class ApiservingMcpMcpToolDataHandlingProfile : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>// The data access level of the tool's inputs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inputDataAccessLevel")]
-        public virtual string InputDataAccessLevel { get; set; }
-
-        /// <summary>The data access level of the tool's outputs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("outputDataAccessLevel")]
-        public virtual string OutputDataAccessLevel { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
     /// Represents an anomaly detected in a dataset. Our anomaly detection systems flag datapoints in a time series that
     /// fall outside of and expected range derived from historical data. Although those expected ranges have an upper
     /// and a lower bound, we only flag anomalies when the data has become unexpectedly _worse_, which usually
