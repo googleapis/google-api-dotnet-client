@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -928,7 +928,7 @@ namespace Google.Apis.CloudAsset.v1p7beta1.Data
     public class GoogleCloudAssetV1p7beta1GcsDestination : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The URI of the Cloud Storage object. It's the same URI that is used by gsutil. Example:
+        /// The URI of the Cloud Storage object. It's the same URI that is used by gcloud storage. Example:
         /// "gs://bucket_name/object_name". See [Viewing and Editing Object
         /// Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata) for more information.
         /// </summary>
