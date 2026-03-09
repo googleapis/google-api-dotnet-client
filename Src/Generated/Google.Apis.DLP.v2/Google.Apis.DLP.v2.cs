@@ -12733,9 +12733,9 @@ namespace Google.Apis.DLP.v2.Data
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoType> InfoTypes { get; set; }
 
         /// <summary>
-        /// How the adjustment rule is applied. Only MATCHING_TYPE_PARTIAL_MATCH is supported: - Partial match: adjusts
-        /// the findings of infoTypes specified in the inspection rule when they have a nonempty intersection with a
-        /// finding of an infoType specified in this adjustment rule.
+        /// How the adjustment rule is applied. Only `MATCHING_TYPE_PARTIAL_MATCH` is supported: - Partial match:
+        /// adjusts the findings of infoTypes specified in the inspection rule when they have a nonempty intersection
+        /// with a finding of an infoType specified in this adjustment rule.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchingType")]
         public virtual string MatchingType { get; set; }
@@ -14418,6 +14418,10 @@ namespace Google.Apis.DLP.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("likelihood")]
         public virtual string Likelihood { get; set; }
+
+        /// <summary>key-value pairs to detect in the metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataKeyValueExpression")]
+        public virtual GooglePrivacyDlpV2MetadataKeyValueExpression MetadataKeyValueExpression { get; set; }
 
         /// <summary>Regular expression based CustomInfoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regex")]
@@ -17965,7 +17969,8 @@ namespace Google.Apis.DLP.v2.Data
 
         /// <summary>
         /// Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are
-        /// executed in the end, other rules are executed in the order they are specified for each info type.
+        /// executed in the end, other rules are executed in the order they are specified for each info type. Not
+        /// supported for the `metadata_key_value_expression` CustomInfoType.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ruleSet")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InspectionRuleSet> RuleSet { get; set; }
@@ -18601,6 +18606,23 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The metadata key that contains a finding.</summary>
+    public class GooglePrivacyDlpV2KeyValueMetadataLabel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The metadata key. The format depends on the source of the metadata. Examples: - Microsoft Purview
+        /// Information Protection keys look like 'MSIP_Label_122709e3-8f6b-4860-985f-7f722a94f61e_Enabled',
+        /// 'MSIP_Label_122709e3-8f6b-4860-985f-7f722a94f61e_Method',
+        /// 'MSIP_Label_122709e3-8f6b-4860-985f-7f722a94f61e_Name'. - General metadata keys look like 'Author', 'Title',
+        /// 'Description'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A representation of a Datastore kind.</summary>
     public class GooglePrivacyDlpV2KindExpression : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19041,9 +19063,30 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Configuration for a custom infoType that detects given expression of key-value pair in the metadata.
+    /// </summary>
+    public class GooglePrivacyDlpV2MetadataKeyValueExpression : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The regular expression for the key. Key should be non-empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyRegex")]
+        public virtual string KeyRegex { get; set; }
+
+        /// <summary>The regular expression for the value. Value should be non-empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueRegex")]
+        public virtual string ValueRegex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata Location</summary>
     public class GooglePrivacyDlpV2MetadataLocation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Metadata key that contains the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyValueMetadataLabel")]
+        public virtual GooglePrivacyDlpV2KeyValueMetadataLabel KeyValueMetadataLabel { get; set; }
+
         /// <summary>Storage metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageLabel")]
         public virtual GooglePrivacyDlpV2StorageMetadataLabel StorageLabel { get; set; }
