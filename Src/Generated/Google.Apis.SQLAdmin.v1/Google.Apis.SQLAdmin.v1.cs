@@ -9817,9 +9817,30 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateNetwork")]
         public virtual string PrivateNetwork { get; set; }
 
+        /// <summary>
+        /// Optional. The region of the target instance where the datasource will be restored. For example:
+        /// "us-central1".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
         /// <summary>Target instance name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetInstance")]
         public virtual string TargetInstance { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the instance settings that will be cleared from the source instance. This field is only
+        /// applicable for cross project PITRs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetInstanceClearSettingsFieldNames")]
+        public virtual System.Collections.Generic.IList<string> TargetInstanceClearSettingsFieldNames { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the instance settings that will be overridden from the source instance. This field is
+        /// only applicable for cross project PITRs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetInstanceSettings")]
+        public virtual DatabaseInstance TargetInstanceSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
