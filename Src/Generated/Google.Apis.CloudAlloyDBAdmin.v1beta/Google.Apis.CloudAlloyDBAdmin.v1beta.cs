@@ -6413,6 +6413,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("trackActiveQueries")]
         public virtual System.Nullable<bool> TrackActiveQueries { get; set; }
 
+        /// <summary>
+        /// Indicates whether to track active query plans for an instance. If not set, the default value is "off". Can
+        /// only be enabled if track_active_queries is enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackActiveQueryPlan")]
+        public virtual System.Nullable<bool> TrackActiveQueryPlan { get; set; }
+
         /// <summary>Track client address for an instance. If not set, default value is "off".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackClientAddress")]
         public virtual System.Nullable<bool> TrackClientAddress { get; set; }
@@ -8070,10 +8077,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
     /// <summary>
     /// Database resource signal data. This is used to send signals to Condor which are based on the DB/Instance/Fleet
-    /// level configurations. These will be used to send signals for all inventory types. Next ID: 7
+    /// level configurations. These will be used to send signals for all inventory types. Next ID: 9
     /// </summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Deprecated: Use signal_metadata_list instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupRun")]
+        public virtual StorageDatabasecenterPartnerapiV1mainBackupRun BackupRun { get; set; }
+
         /// <summary>Required. Full Resource name of the source resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
         public virtual string FullResourceName { get; set; }
@@ -8121,9 +8132,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceId ResourceId { get; set; }
 
-        /// <summary>Signal data for boolean signals.</summary>
+        /// <summary>Deprecated: Use signal_metadata_list instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signalBoolValue")]
         public virtual System.Nullable<bool> SignalBoolValue { get; set; }
+
+        /// <summary>This will support array of OneOf signal metadata information for a given signal type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signalMetadataList")]
+        public virtual System.Collections.Generic.IList<StorageDatabasecenterPartnerapiV1mainSignalMetadata> SignalMetadataList { get; set; }
 
         /// <summary>Required. Output only. Signal state of the signal</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signalState")]
@@ -8479,6 +8494,24 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampBasedRetentionTimeRaw);
             set => TimestampBasedRetentionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// SignalMetadata contains one of the signal metadata proto messages associated with a SignalType. This proto will
+    /// be mapped to SignalMetadata message in storage.proto. Next ID: 3
+    /// </summary>
+    public class StorageDatabasecenterPartnerapiV1mainSignalMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Signal data for backup runs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupRun")]
+        public virtual StorageDatabasecenterPartnerapiV1mainBackupRun BackupRun { get; set; }
+
+        /// <summary>Signal data for boolean signals.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signalBoolValue")]
+        public virtual System.Nullable<bool> SignalBoolValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
