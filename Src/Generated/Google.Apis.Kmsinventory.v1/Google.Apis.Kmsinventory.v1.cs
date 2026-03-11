@@ -1105,7 +1105,9 @@ namespace Google.Apis.Kmsinventory.v1.Data
         /// encrypt, decrypt, and sign operations, and the operation will fail if rejected by the policy. The policy is
         /// defined by specifying zero or more allowed justification codes.
         /// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes By default,
-        /// this field is absent, and all justification codes are allowed.
+        /// this field is absent, and all justification codes are allowed. If the
+        /// `key_access_justifications_policy.allowed_access_reasons` is empty (zero allowed justification code), all
+        /// encrypt, decrypt, and sign operations will fail.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyAccessJustificationsPolicy")]
         public virtual GoogleCloudKmsV1KeyAccessJustificationsPolicy KeyAccessJustificationsPolicy { get; set; }
@@ -1525,13 +1527,15 @@ namespace Google.Apis.Kmsinventory.v1.Data
 
     /// <summary>
     /// A KeyAccessJustificationsPolicy specifies zero or more allowed AccessReason values for encrypt, decrypt, and
-    /// sign operations on a CryptoKey.
+    /// sign operations on a CryptoKey or KeyAccessJustificationsPolicyConfig (the default Key Access Justifications
+    /// policy).
     /// </summary>
     public class GoogleCloudKmsV1KeyAccessJustificationsPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The list of allowed reasons for access to a CryptoKey. Zero allowed access reasons means all encrypt,
-        /// decrypt, and sign operations for the CryptoKey associated with this policy will fail.
+        /// The list of allowed reasons for access to a CryptoKey. Note that empty allowed_access_reasons has a
+        /// different meaning depending on where this message appears. If this is under
+        /// KeyAccessJustificationsPolicyConfig, it means allow-all. If this is under CryptoKey, it means deny-all.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedAccessReasons")]
         public virtual System.Collections.Generic.IList<string> AllowedAccessReasons { get; set; }
