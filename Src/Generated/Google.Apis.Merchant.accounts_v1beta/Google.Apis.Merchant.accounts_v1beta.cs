@@ -5374,7 +5374,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 [Google.Apis.Util.StringValueAttribute("TERMS_OF_SERVICE_KIND_UNSPECIFIED")]
                 TERMSOFSERVICEKINDUNSPECIFIED = 0,
 
-                /// <summary>Merchant Center application.</summary>
+                /// <summary>Terms of service for the Merchant Center application.</summary>
                 [Google.Apis.Util.StringValueAttribute("MERCHANT_CENTER")]
                 MERCHANTCENTER = 1,
             }
