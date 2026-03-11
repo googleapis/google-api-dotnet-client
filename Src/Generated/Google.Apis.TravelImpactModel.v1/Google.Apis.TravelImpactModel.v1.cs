@@ -732,39 +732,6 @@ namespace Google.Apis.TravelImpactModel.v1.Data
     }
 
     /// <summary>
-    /// Profile describing the data handling characteristics of an MCP tool. When used within the McpTool.meta field,
-    /// this message should be packed into a google.protobuf.Any and associated with the key:
-    /// "google.com/tool.profiles/data_handling"
-    /// </summary>
-    public class McpToolDataHandlingProfile : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>// The data access level of the tool's inputs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inputDataAccessLevel")]
-        public virtual string InputDataAccessLevel { get; set; }
-
-        /// <summary>The data access level of the tool's outputs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("outputDataAccessLevel")]
-        public virtual string OutputDataAccessLevel { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Profile describing the lifecycle stage of an MCP tool. When used within the McpTool.meta field, this message
-    /// should be packed into a google.protobuf.Any and associated with the key: "google.com/tool.profiles/lifecycle"
-    /// </summary>
-    public class McpToolLifecycleProfile : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The current launch state of the MCP tool.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("launchState")]
-        public virtual string LaunchState { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
     /// Travel Impact Model version. For more information about the model versioning see
     /// [GitHub](https://github.com/google/travel-impact-model/#versioning).
     /// </summary>
