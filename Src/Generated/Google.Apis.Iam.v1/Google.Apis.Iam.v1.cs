@@ -10894,6 +10894,16 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rotationWindowPercentage")]
         public virtual System.Nullable<int> RotationWindowPercentage { get; set; }
 
+        /// <summary>
+        /// Optional. If set to true, the trust domain will utilize the GCP-provisioned default CA. A default CA in the
+        /// same region as the workload will be selected to issue the certificate. Enabling this will clear any existing
+        /// `ca_pools` configuration to provision the certificates. NOTE: This field is mutually exclusive with
+        /// `ca_pools`. If this flag is enabled, certificates will be automatically provisioned from the default shared
+        /// CAs. This flag should not be set if you want to use your own CA pools to provision the certificates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useDefaultSharedCa")]
+        public virtual System.Nullable<bool> UseDefaultSharedCa { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -12526,6 +12536,14 @@ namespace Google.Apis.Iam.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trustAnchors")]
         public virtual System.Collections.Generic.IList<TrustAnchor> TrustAnchors { get; set; }
+
+        /// <summary>
+        /// Optional. If set to True, the trust bundle will include the private ca managed identity regional root public
+        /// certificates. Important: `trust_default_shared_ca` is only supported for managed identity trust domain
+        /// resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustDefaultSharedCa")]
+        public virtual System.Nullable<bool> TrustDefaultSharedCa { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
