@@ -15443,6 +15443,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadataUri")]
         public virtual string MetadataUri { get; set; }
 
+        /// <summary>
+        /// Cloud Storage URIs that points to files that contain the conversation audio for each turn. Assume the order
+        /// of the URIs is the same as the order of the transcript turns.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("turnLevelAudios")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio> TurnLevelAudios { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -15738,6 +15745,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>The text of this segment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
+
+        /// <summary>Turn level audio for this transcript segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("turnLevelAudio")]
+        public virtual GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio TurnLevelAudio { get; set; }
 
         /// <summary>A list of the word-specific information for each word in the segment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("words")]
@@ -21969,6 +21980,15 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("speechConfig")]
         public virtual GoogleCloudContactcenterinsightsV1SpeechConfig SpeechConfig { get; set; }
 
+        /// <summary>
+        /// Optional. The time zone applied to the project. This is a string representation of the time zone, for
+        /// example, "America/New_York". This field follows the IANA TZ database format. See
+        /// https://www.iana.org/time-zones for a list of valid values. If no value is set the user time zone will be
+        /// used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -23984,6 +24004,28 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadataUri")]
         public virtual string MetadataUri { get; set; }
 
+        /// <summary>
+        /// Cloud Storage URIs that points to files that contain the conversation audio for each turn. Assume the order
+        /// of the URIs is the same as the order of the transcript turns.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("turnLevelAudios")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio> TurnLevelAudios { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A wrapper for holding the audio for any given turn.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The duration of the audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioDuration")]
+        public virtual object AudioDuration { get; set; }
+
+        /// <summary>The Cloud Storage URI of the audio for any given turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioGcsUri")]
+        public virtual string AudioGcsUri { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -24264,6 +24306,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>The text of this segment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
+
+        /// <summary>Turn level audio for this transcript segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("turnLevelAudio")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio TurnLevelAudio { get; set; }
 
         /// <summary>A list of the word-specific information for each word in the segment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("words")]
@@ -30245,6 +30291,28 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadataUri")]
         public virtual string MetadataUri { get; set; }
 
+        /// <summary>
+        /// Cloud Storage URIs that points to files that contain the conversation audio for each turn. Assume the order
+        /// of the URIs is the same as the order of the transcript turns.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("turnLevelAudios")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio> TurnLevelAudios { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A wrapper for holding the audio for any given turn.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The duration of the audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioDuration")]
+        public virtual object AudioDuration { get; set; }
+
+        /// <summary>The Cloud Storage URI of the audio for any given turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioGcsUri")]
+        public virtual string AudioGcsUri { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -30525,6 +30593,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>The text of this segment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
+
+        /// <summary>Turn level audio for this transcript segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("turnLevelAudio")]
+        public virtual GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio TurnLevelAudio { get; set; }
 
         /// <summary>A list of the word-specific information for each word in the segment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("words")]
