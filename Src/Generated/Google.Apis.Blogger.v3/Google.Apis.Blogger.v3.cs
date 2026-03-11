@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -410,9 +410,11 @@ namespace Google.Apis.Blogger.v3
             [Google.Apis.Util.RequestParameterAttribute("maxPosts", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxPosts { get; set; }
 
+            /// <summary>Unspecified is interpreted as READER.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
 
+            /// <summary>Unspecified is interpreted as READER.</summary>
             public enum ViewEnum
             {
                 /// <summary></summary>
@@ -492,9 +494,11 @@ namespace Google.Apis.Blogger.v3
             [Google.Apis.Util.RequestParameterAttribute("url", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Url { get; private set; }
 
+            /// <summary>Unspecified is interpreted as READER.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
 
+            /// <summary>Unspecified is interpreted as READER.</summary>
             public enum ViewEnum
             {
                 /// <summary></summary>
@@ -622,9 +626,11 @@ namespace Google.Apis.Blogger.v3
                 DELETED = 1,
             }
 
+            /// <summary>Unspecified is interpreted as the user's role on the blog.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
 
+            /// <summary>Unspecified is interpreted as the user's role on the blog.</summary>
             public enum ViewEnum
             {
                 /// <summary></summary>
