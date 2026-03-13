@@ -577,6 +577,47 @@ namespace Google.Apis.Tests.Apis.Upload
             }
         }
 
+        private class TestResumableUploadWithRepeatableParameters : TestResumableUpload
+        {
+            public TestResumableUploadWithRepeatableParameters(IClientService service, string path, string method, Stream stream,
+                string contentType, int chunkSize)
+                : base(service, path, method, stream, contentType, chunkSize) { }
+
+            [RequestParameter("id", RequestParameterType.Path)]
+            public int Id { get; set; }
+
+            [RequestParameter("part", RequestParameterType.Query)]
+            public Repeatable<string> Part { get; set; }
+
+            [RequestParameter("tag", RequestParameterType.Query)]
+            public Repeatable<string> Tag { get; set; }
+        }
+
+        /// <summary>
+        /// Uploader correctly adds repeatable (IEnumerable) query parameters to initial server call.
+        /// </summary>
+        [Fact]
+        public void TestUploadWithRepeatableParameters()
+        {
+            var id = 456;
+            // Repeatable parameters should be sent multiple times with the same key
+            var pathAndQuery = $"testPath/{id}?uploadType=resumable&part=snippet&part=contentDetails&tag=important&tag=urgent";
+            using (var server = new MultiChunkQueriedServer(_server, pathAndQuery))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = new MemoryStream(UploadTestBytes);
+                var uploader = new TestResumableUploadWithRepeatableParameters(service, "testPath/{id}", "POST", content, "text/plain", 100)
+                {
+                    Id = id,
+                    Part = new[] { "snippet", "contentDetails" },
+                    Tag = new[] { "important", "urgent" }
+                };
+                var progress = uploader.Upload();
+                Assert.Equal(UploadStatus.Completed, progress.Status);
+                Assert.Equal(6, server.Requests.Count);
+            }
+        }
+
         /// <summary>A mock request object.</summary>
         private class TestRequest : IEquatable<TestRequest>
         {
