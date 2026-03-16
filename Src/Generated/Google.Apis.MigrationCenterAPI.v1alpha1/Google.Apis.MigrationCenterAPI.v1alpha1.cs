@@ -6224,6 +6224,26 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string, string> Attributes { get; set; }
 
+        /// <summary>Output only. Asset information specific for AWS API Gateway REST APIs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsApiGatewayRestApiDetails")]
+        public virtual AwsApiGatewayRestApiDetails AwsApiGatewayRestApiDetails { get; set; }
+
+        /// <summary>Output only. Asset information specific for AWS AppSync GraphQL APIs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsAppSyncGraphqlApiDetails")]
+        public virtual AwsAppSyncGraphqlApiDetails AwsAppSyncGraphqlApiDetails { get; set; }
+
+        /// <summary>Output only. Asset information specific for AWS Application Load Balancers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsApplicationLoadBalancerDetails")]
+        public virtual AwsApplicationLoadBalancerDetails AwsApplicationLoadBalancerDetails { get; set; }
+
+        /// <summary>Output only. Asset information specific for AwsAutoscalingGroupDetails</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsAutoscalingGroupDetails")]
+        public virtual AwsAutoscalingGroupDetails AwsAutoscalingGroupDetails { get; set; }
+
+        /// <summary>Output only. Asset information specific for AWS Batch Compute Environments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsBatchComputeEnvironmentDetails")]
+        public virtual AwsBatchComputeEnvironmentDetails AwsBatchComputeEnvironmentDetails { get; set; }
+
         /// <summary>Output only. Asset information specific for AWS CloudFront distributions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsCloudFrontDistributionDetails")]
         public virtual AwsCloudFrontDistributionDetails AwsCloudFrontDistributionDetails { get; set; }
@@ -6231,6 +6251,14 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Output only. Asset information specific for AWS DynamoDB tables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsDynamodbTableDetails")]
         public virtual AwsDynamoDBTableDetails AwsDynamodbTableDetails { get; set; }
+
+        /// <summary>Output only. Asset information specific for AWS EBS Volumes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsEbsVolumeDetails")]
+        public virtual AwsEbsVolumeDetails AwsEbsVolumeDetails { get; set; }
+
+        /// <summary>Output only. Asset information specific for AwsEcrRepositoryDetails</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsEcrRepositoryDetails")]
+        public virtual AwsEcrRepositoryDetails AwsEcrRepositoryDetails { get; set; }
 
         /// <summary>Output only. Asset information specific for AWS ECS clusters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsEcsClusterDetails")]
@@ -6244,9 +6272,21 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("awsEksClusterDetails")]
         public virtual AwsEksClusterDetails AwsEksClusterDetails { get; set; }
 
+        /// <summary>Output only. Asset information specific for AWS Elastic IP Addresses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsElasticIpAddressDetails")]
+        public virtual AwsElasticIpAddressDetails AwsElasticIpAddressDetails { get; set; }
+
+        /// <summary>Output only. Asset information specific for AWS Elastic Network Interfaces.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsElasticNetworkInterfaceDetails")]
+        public virtual AwsElasticNetworkInterfaceDetails AwsElasticNetworkInterfaceDetails { get; set; }
+
         /// <summary>Output only. Asset information specific for AWS Load Balancers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsElbLoadBalancerDetails")]
         public virtual AwsElbLoadBalancerDetails AwsElbLoadBalancerDetails { get; set; }
+
+        /// <summary>Output only. Asset information specific for AWS Internet Gateways.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsInternetGatewayDetails")]
+        public virtual AwsInternetGatewayDetails AwsInternetGatewayDetails { get; set; }
 
         /// <summary>Output only. Asset information specific for AWS Lambda functions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsLambdaFunctionDetails")]
@@ -6267,6 +6307,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Output only. Asset information specific for AWS S3 buckets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsS3BucketDetails")]
         public virtual AwsS3BucketDetails AwsS3BucketDetails { get; set; }
+
+        /// <summary>Output only. Asset information specific for AWS SNS Topics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsSnsTopicDetails")]
+        public virtual AwsSnsTopicDetails AwsSnsTopicDetails { get; set; }
 
         /// <summary>Output only. Asset information specific for AWS VPCs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsVpcDetails")]
@@ -6450,6 +6494,26 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string, string> Attributes { get; set; }
 
+        /// <summary>Optional. Asset information specific for AWS API Gateway REST APIs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsApiGatewayRestApiDetails")]
+        public virtual AwsApiGatewayRestApiDetails AwsApiGatewayRestApiDetails { get; set; }
+
+        /// <summary>Optional. Asset information specific for AWS AppSync GraphQL APIs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsAppSyncGraphqlApiDetails")]
+        public virtual AwsAppSyncGraphqlApiDetails AwsAppSyncGraphqlApiDetails { get; set; }
+
+        /// <summary>Optional. Asset information specific for AWS Application Load Balancers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsApplicationLoadBalancerDetails")]
+        public virtual AwsApplicationLoadBalancerDetails AwsApplicationLoadBalancerDetails { get; set; }
+
+        /// <summary>Optional. Asset information specific for AwsAutoscalingGroupDetails</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsAutoscalingGroupDetails")]
+        public virtual AwsAutoscalingGroupDetails AwsAutoscalingGroupDetails { get; set; }
+
+        /// <summary>Optional. Asset information specific for AWS Batch Compute Environments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsBatchComputeEnvironmentDetails")]
+        public virtual AwsBatchComputeEnvironmentDetails AwsBatchComputeEnvironmentDetails { get; set; }
+
         /// <summary>Asset information specific for AWS CloudFront distributions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsCloudFrontDistributionDetails")]
         public virtual AwsCloudFrontDistributionDetails AwsCloudFrontDistributionDetails { get; set; }
@@ -6457,6 +6521,14 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Asset information specific for AWS DynamoDB tables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsDynamodbTableDetails")]
         public virtual AwsDynamoDBTableDetails AwsDynamodbTableDetails { get; set; }
+
+        /// <summary>Optional. Asset information specific for AWS EBS Volumes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsEbsVolumeDetails")]
+        public virtual AwsEbsVolumeDetails AwsEbsVolumeDetails { get; set; }
+
+        /// <summary>Asset information specific for AwsEcrRepositoryDetails</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsEcrRepositoryDetails")]
+        public virtual AwsEcrRepositoryDetails AwsEcrRepositoryDetails { get; set; }
 
         /// <summary>Asset information specific for AWS ECS clusters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsEcsClusterDetails")]
@@ -6470,9 +6542,21 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("awsEksClusterDetails")]
         public virtual AwsEksClusterDetails AwsEksClusterDetails { get; set; }
 
+        /// <summary>Optional. Asset information specific for AWS Elastic IP Addresses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsElasticIpAddressDetails")]
+        public virtual AwsElasticIpAddressDetails AwsElasticIpAddressDetails { get; set; }
+
+        /// <summary>Optional. Asset information specific for AWS Elastic Network Interfaces.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsElasticNetworkInterfaceDetails")]
+        public virtual AwsElasticNetworkInterfaceDetails AwsElasticNetworkInterfaceDetails { get; set; }
+
         /// <summary>Asset information specific for AWS Load Balancers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsElbLoadBalancerDetails")]
         public virtual AwsElbLoadBalancerDetails AwsElbLoadBalancerDetails { get; set; }
+
+        /// <summary>Optional. Asset information specific for AWS Internet Gateways.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsInternetGatewayDetails")]
+        public virtual AwsInternetGatewayDetails AwsInternetGatewayDetails { get; set; }
 
         /// <summary>Asset information specific for AWS Lambda functions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsLambdaFunctionDetails")]
@@ -6493,6 +6577,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Asset information specific for AWS S3 buckets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsS3BucketDetails")]
         public virtual AwsS3BucketDetails AwsS3BucketDetails { get; set; }
+
+        /// <summary>Optional. Asset information specific for AWS SNS Topics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsSnsTopicDetails")]
+        public virtual AwsSnsTopicDetails AwsSnsTopicDetails { get; set; }
 
         /// <summary>Asset information specific for AWS VPCs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsVpcDetails")]
@@ -6925,6 +7013,41 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Asset information specific for AWS API Gateway REST APIs.</summary>
+    public class AwsApiGatewayRestApiDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Asset information specific for AWS AppSync GraphQL APIs.</summary>
+    public class AwsAppSyncGraphqlApiDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Asset information specific for AWS Application Load Balancers.</summary>
+    public class AwsApplicationLoadBalancerDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Asset information specific for AWS Autoscaling Group.</summary>
+    public class AwsAutoscalingGroupDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Asset information specific for AWS Batch Compute Environments.</summary>
+    public class AwsBatchComputeEnvironmentDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details of an AWS CloudFront distribution.</summary>
     public class AwsCloudFrontDistributionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6934,6 +7057,13 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
 
     /// <summary>Details of an AWS DynamoDB table.</summary>
     public class AwsDynamoDBTableDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Asset information specific for AWS EBS Volumes.</summary>
+    public class AwsEbsVolumeDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6954,6 +7084,13 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("machineTypeLabel")]
         public virtual string MachineTypeLabel { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Asset information specific for AWS ECR Repository.</summary>
+    public class AwsEcrRepositoryDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6979,8 +7116,29 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Asset information specific for AWS Elastic IP Addresses.</summary>
+    public class AwsElasticIpAddressDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Asset information specific for AWS Elastic Network Interfaces.</summary>
+    public class AwsElasticNetworkInterfaceDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Asset information specific for AWS Load Balancers.</summary>
     public class AwsElbLoadBalancerDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Asset information specific for AWS Internet Gateways.</summary>
+    public class AwsInternetGatewayDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7084,6 +7242,13 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Asset information specific for AWS SNS Topics.</summary>
+    public class AwsSnsTopicDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8559,6 +8724,25 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Output only. All the violations that were detected for the frame.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violations")]
         public virtual System.Collections.Generic.IList<FrameViolationEntry> Violations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Estimated usage data.</summary>
+    public class EstimatedUsage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Estimated CPU utilization percentage. Must be in the range [1, 100].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedCpuPercentage")]
+        public virtual System.Nullable<float> EstimatedCpuPercentage { get; set; }
+
+        /// <summary>Optional. Estimated disk utilization percentage. Must be in the range [1, 100].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedDiskPercentage")]
+        public virtual System.Nullable<float> EstimatedDiskPercentage { get; set; }
+
+        /// <summary>Optional. Estimated memory utilization percentage. Must be in the range [1, 100].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedMemoryPercentage")]
+        public virtual System.Nullable<float> EstimatedMemoryPercentage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11624,6 +11808,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("databaseTypes")]
         public virtual ReportSummaryChartData DatabaseTypes { get; set; }
 
+        /// <summary>Output only. Estimated usage stats for the assets in this collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedUsageStats")]
+        public virtual ReportSummaryAssetAggregateStatsEstimatedUsageStats EstimatedUsageStats { get; set; }
+
         /// <summary>Histogram showing a distribution of memory sizes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memoryBytesHistogram")]
         public virtual ReportSummaryHistogramChartData MemoryBytesHistogram { get; set; }
@@ -11671,6 +11859,26 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Sum of persistent storage in bytes of all the assets in this collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalStorageBytes")]
         public virtual System.Nullable<long> TotalStorageBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Estimated usage stats for the assets in this collection.</summary>
+    public class ReportSummaryAssetAggregateStatsEstimatedUsageStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The number of assets that are using at least one estimated usage metric for rightsizing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalAssetsUsingEstimatedUsage")]
+        public virtual System.Nullable<long> TotalAssetsUsingEstimatedUsage { get; set; }
+
+        /// <summary>
+        /// Output only. The number of virtual machines in this finding that are using at least one estimated usage
+        /// metric for rightsizing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalVirtualMachinesUsingEstimatedUsage")]
+        public virtual System.Nullable<long> TotalVirtualMachinesUsingEstimatedUsage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13072,6 +13280,13 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeEnginePreferences")]
         public virtual ComputeEnginePreferences ComputeEnginePreferences { get; set; }
+
+        /// <summary>
+        /// Optional. Estimated usage data for missing usage data. If performance data is available, it overrides this
+        /// field. If not set, default values will be used for the usage data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedUsage")]
+        public virtual EstimatedUsage EstimatedUsage { get; set; }
 
         /// <summary>
         /// Optional. Parameters that affect network cost estimations. If not set, default values will be used for the
