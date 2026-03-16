@@ -10284,6 +10284,24 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     public class LinkedInterconnectAttachments : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeExportRanges")]
+        public virtual System.Collections.Generic.IList<string> ExcludeExportRanges { get; set; }
+
+        /// <summary>
+        /// Optional. Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeImportRanges")]
+        public virtual System.Collections.Generic.IList<string> ExcludeImportRanges { get; set; }
+
+        /// <summary>
+        /// Optional. Dynamic routes fully encompassed by include export ranges are included during export to hub.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeExportRanges")]
+        public virtual System.Collections.Generic.IList<string> IncludeExportRanges { get; set; }
+
+        /// <summary>
         /// Optional. Hub routes fully encompassed by include import ranges are included during import from hub.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeImportRanges")]
@@ -10362,6 +10380,24 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     public class LinkedRouterApplianceInstances : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeExportRanges")]
+        public virtual System.Collections.Generic.IList<string> ExcludeExportRanges { get; set; }
+
+        /// <summary>
+        /// Optional. Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeImportRanges")]
+        public virtual System.Collections.Generic.IList<string> ExcludeImportRanges { get; set; }
+
+        /// <summary>
+        /// Optional. Dynamic routes fully encompassed by include export ranges are included during export to hub.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeExportRanges")]
+        public virtual System.Collections.Generic.IList<string> IncludeExportRanges { get; set; }
+
+        /// <summary>
         /// Optional. Hub routes fully encompassed by include import ranges are included during import from hub.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeImportRanges")]
@@ -10435,6 +10471,24 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     /// </summary>
     public class LinkedVpnTunnels : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeExportRanges")]
+        public virtual System.Collections.Generic.IList<string> ExcludeExportRanges { get; set; }
+
+        /// <summary>
+        /// Optional. Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeImportRanges")]
+        public virtual System.Collections.Generic.IList<string> ExcludeImportRanges { get; set; }
+
+        /// <summary>
+        /// Optional. Dynamic routes fully encompassed by include export ranges are included during export to hub.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeExportRanges")]
+        public virtual System.Collections.Generic.IList<string> IncludeExportRanges { get; set; }
+
         /// <summary>
         /// Optional. Hub routes fully encompassed by include import ranges are included during import from hub.
         /// </summary>
