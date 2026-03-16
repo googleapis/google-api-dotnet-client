@@ -14164,6 +14164,27 @@ namespace Google.Apis.Dfareporting.v5
                 PLACEMENTTAGTRACKINGTHIRDPARTYMEASUREMENT = 19,
             }
 
+            /// <summary>
+            /// Optional. Indicates whether to include the dc_dbm macro in the generated tags. [Learn
+            /// more](https://support.google.com/campaignmanager/answer/9280273) about this macro.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("tagProperties.dcDbmMacroIncluded", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> TagPropertiesDcDbmMacroIncluded { get; set; }
+
+            /// <summary>
+            /// Optional. Indicates whether to include the GPP macro in the generated tags. [Learn
+            /// more](https://support.google.com/campaignmanager/answer/10031693) about this macro.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("tagProperties.gppMacrosIncluded", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> TagPropertiesGppMacrosIncluded { get; set; }
+
+            /// <summary>
+            /// Optional. Indicates whether to include the TCF macro in the generated tags. Default true. [Learn
+            /// more](https://support.google.com/campaignmanager/answer/10031693) about this macro.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("tagProperties.tcfGdprMacrosIncluded", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> TagPropertiesTcfGdprMacrosIncluded { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "generatetags";
 
@@ -14207,6 +14228,30 @@ namespace Google.Apis.Dfareporting.v5
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("tagProperties.dcDbmMacroIncluded", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tagProperties.dcDbmMacroIncluded",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("tagProperties.gppMacrosIncluded", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tagProperties.gppMacrosIncluded",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("tagProperties.tcfGdprMacrosIncluded", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tagProperties.tcfGdprMacrosIncluded",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "true",
                     Pattern = null,
                 });
             }
@@ -18883,6 +18928,10 @@ namespace Google.Apis.Dfareporting.v5
                 INVALIDTVDATAPROVIDER = 0,
 
                 /// <summary></summary>
+                [Google.Apis.Util.StringValueAttribute("INTAGE_JP")]
+                INTAGEJP = 9,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("IBOPE_AR")]
                 IBOPEAR = 1,
 
@@ -19032,6 +19081,10 @@ namespace Google.Apis.Dfareporting.v5
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("INVALID_TV_DATA_PROVIDER")]
                 INVALIDTVDATAPROVIDER = 0,
+
+                /// <summary></summary>
+                [Google.Apis.Util.StringValueAttribute("INTAGE_JP")]
+                INTAGEJP = 9,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("IBOPE_AR")]

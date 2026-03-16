@@ -494,7 +494,8 @@
     "TNS_VN",
     "COMSCORE_NATIONAL_US",
     "COMSCORE_CA",
-    "SAMBA_AU"
+    "SAMBA_AU",
+    "INTAGE_JP"
   ],
   "Google.Apis.Dfareporting.v5.TvCampaignSummariesResource+ListRequest.TvDataProviderEnum": [
     "INVALID_TV_DATA_PROVIDER",
@@ -505,7 +506,8 @@
     "TNS_VN",
     "COMSCORE_NATIONAL_US",
     "COMSCORE_CA",
-    "SAMBA_AU"
+    "SAMBA_AU",
+    "INTAGE_JP"
   ],
   "Google.Apis.Dfareporting.v5.UserRolesResource+ListRequest.SortFieldEnum": [
     "ID",
