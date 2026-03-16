@@ -1192,7 +1192,7 @@ namespace Google.Apis.WorkloadManager.v1
 
                         /// <summary>Lists the result of a single evaluation.</summary>
                         /// <param name="parent">
-                        /// Required. The execution results. Format: {parent}/evaluations/*/executions/*/results
+                        /// Required. The execution results. Format: {parent}/evaluations/*/executions/*/results.
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -1210,12 +1210,12 @@ namespace Google.Apis.WorkloadManager.v1
                             }
 
                             /// <summary>
-                            /// Required. The execution results. Format: {parent}/evaluations/*/executions/*/results
+                            /// Required. The execution results. Format: {parent}/evaluations/*/executions/*/results.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
-                            /// <summary>Filtering results</summary>
+                            /// <summary>Filtering results.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
 
@@ -1297,7 +1297,7 @@ namespace Google.Apis.WorkloadManager.v1
                         }
 
                         /// <summary>List all scanned resources for a single Execution.</summary>
-                        /// <param name="parent">Required. parent for ListScannedResourcesRequest</param>
+                        /// <param name="parent">Required. Parent for ListScannedResourcesRequest.</param>
                         public virtual ListRequest List(string parent)
                         {
                             return new ListRequest(this.service, parent);
@@ -1313,11 +1313,11 @@ namespace Google.Apis.WorkloadManager.v1
                                 InitParameters();
                             }
 
-                            /// <summary>Required. parent for ListScannedResourcesRequest</summary>
+                            /// <summary>Required. Parent for ListScannedResourcesRequest.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
-                            /// <summary>Filtering results</summary>
+                            /// <summary>Filtering results.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
 
@@ -1338,7 +1338,7 @@ namespace Google.Apis.WorkloadManager.v1
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
 
-                            /// <summary>rule name</summary>
+                            /// <summary>Rule name.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("rule", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Rule { get; set; }
 
@@ -1408,7 +1408,7 @@ namespace Google.Apis.WorkloadManager.v1
                     }
 
                     /// <summary>Deletes a single Execution.</summary>
-                    /// <param name="name">Required. Name of the resource</param>
+                    /// <param name="name">Required. Name of the resource.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(this.service, name);
@@ -1424,7 +1424,7 @@ namespace Google.Apis.WorkloadManager.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. Name of the resource</summary>
+                        /// <summary>Required. Name of the resource.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -1475,7 +1475,7 @@ namespace Google.Apis.WorkloadManager.v1
                     }
 
                     /// <summary>Gets details of a single Execution.</summary>
-                    /// <param name="name">Required. Name of the resource</param>
+                    /// <param name="name">Required. Name of the resource.</param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(this.service, name);
@@ -1491,7 +1491,7 @@ namespace Google.Apis.WorkloadManager.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. Name of the resource</summary>
+                        /// <summary>Required. Name of the resource.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -1522,7 +1522,7 @@ namespace Google.Apis.WorkloadManager.v1
                     /// <summary>Lists Executions in a given project and location.</summary>
                     /// <param name="parent">
                     /// Required. The resource prefix of the Execution using the form:
-                    /// 'projects/{project}/locations/{location}/evaluations/{evaluation}'
+                    /// `projects/{project}/locations/{location}/evaluations/{evaluation}`.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -1541,12 +1541,12 @@ namespace Google.Apis.WorkloadManager.v1
 
                         /// <summary>
                         /// Required. The resource prefix of the Execution using the form:
-                        /// 'projects/{project}/locations/{location}/evaluations/{evaluation}'
+                        /// `projects/{project}/locations/{location}/evaluations/{evaluation}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Filtering results</summary>
+                        /// <summary>Filtering results.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
@@ -1626,8 +1626,8 @@ namespace Google.Apis.WorkloadManager.v1
                     /// <summary>Creates a new Execution in a given project and location.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Required. The resource name of the Execution using the form:
-                    /// 'projects/{project}/locations/{location}/evaluations/{evaluation}/executions/{execution}'
+                    /// Required. The resource name of the Evaluation using the form:
+                    /// `projects/{project}/locations/{location}/evaluations/{evaluation}`.
                     /// </param>
                     public virtual RunRequest Run(Google.Apis.WorkloadManager.v1.Data.RunEvaluationRequest body, string name)
                     {
@@ -1646,8 +1646,8 @@ namespace Google.Apis.WorkloadManager.v1
                         }
 
                         /// <summary>
-                        /// Required. The resource name of the Execution using the form:
-                        /// 'projects/{project}/locations/{location}/evaluations/{evaluation}/executions/{execution}'
+                        /// Required. The resource name of the Evaluation using the form:
+                        /// `projects/{project}/locations/{location}/evaluations/{evaluation}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1687,7 +1687,7 @@ namespace Google.Apis.WorkloadManager.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The resource prefix of the evaluation location using the form:
-                /// `projects/{project_id}/locations/{location_id}`
+                /// `projects/{project_id}/locations/{location_id}`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.WorkloadManager.v1.Data.Evaluation body, string parent)
                 {
@@ -1707,12 +1707,12 @@ namespace Google.Apis.WorkloadManager.v1
 
                     /// <summary>
                     /// Required. The resource prefix of the evaluation location using the form:
-                    /// `projects/{project_id}/locations/{location_id}`
+                    /// `projects/{project_id}/locations/{location_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Required. Id of the requesting object</summary>
+                    /// <summary>Required. Id of the requesting object.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("evaluationId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string EvaluationId { get; set; }
 
@@ -1776,7 +1776,7 @@ namespace Google.Apis.WorkloadManager.v1
                 }
 
                 /// <summary>Deletes a single Evaluation.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <param name="name">Required. Name of the resource.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
@@ -1792,12 +1792,12 @@ namespace Google.Apis.WorkloadManager.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. Name of the resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. Followed the best practice from https://aip.dev/135#cascading-delete
+                    /// Optional. Followed the best practice from https://aip.dev/135#cascading-delete.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Force { get; set; }
@@ -1856,7 +1856,7 @@ namespace Google.Apis.WorkloadManager.v1
                 }
 
                 /// <summary>Gets details of a single Evaluation.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <param name="name">Required. Name of the resource.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
@@ -1872,7 +1872,7 @@ namespace Google.Apis.WorkloadManager.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. Name of the resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1901,7 +1901,7 @@ namespace Google.Apis.WorkloadManager.v1
                 }
 
                 /// <summary>Lists Evaluations in a given project and location.</summary>
-                /// <param name="parent">Required. Parent value for ListEvaluationsRequest</param>
+                /// <param name="parent">Required. Parent value for ListEvaluationsRequest.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
@@ -1917,7 +1917,7 @@ namespace Google.Apis.WorkloadManager.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent value for ListEvaluationsRequest</summary>
+                    /// <summary>Required. Parent value for ListEvaluationsRequest.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1925,7 +1925,7 @@ namespace Google.Apis.WorkloadManager.v1
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Hint for how to order the results</summary>
+                    /// <summary>Hint for how to order the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -1999,8 +1999,8 @@ namespace Google.Apis.WorkloadManager.v1
                 /// <summary>Updates the parameters of a single Evaluation.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// name of resource names have the form
-                /// 'projects/{project_id}/locations/{location_id}/evaluations/{evaluation_id}'
+                /// Name of resource that has the form
+                /// `projects/{project_id}/locations/{location_id}/evaluations/{evaluation_id}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.WorkloadManager.v1.Data.Evaluation body, string name)
                 {
@@ -2019,8 +2019,8 @@ namespace Google.Apis.WorkloadManager.v1
                     }
 
                     /// <summary>
-                    /// name of resource names have the form
-                    /// 'projects/{project_id}/locations/{location_id}/evaluations/{evaluation_id}'
+                    /// Name of resource that has the form
+                    /// `projects/{project_id}/locations/{location_id}/evaluations/{evaluation_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2556,7 +2556,7 @@ namespace Google.Apis.WorkloadManager.v1
                 /// <param name="parent">
                 /// Required. The [project] on which to execute the request. The format is:
                 /// projects/{project_id}/locations/{location} Currently, the pre-defined rules are global available to
-                /// all projects and all regions
+                /// all projects and all regions.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -2576,7 +2576,7 @@ namespace Google.Apis.WorkloadManager.v1
                     /// <summary>
                     /// Required. The [project] on which to execute the request. The format is:
                     /// projects/{project_id}/locations/{location} Currently, the pre-defined rules are global available
-                    /// to all projects and all regions
+                    /// to all projects and all regions.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2598,28 +2598,24 @@ namespace Google.Apis.WorkloadManager.v1
                     /// </summary>
                     public enum EvaluationTypeEnum
                     {
-                        /// <summary>Not specified</summary>
+                        /// <summary>Not specified.</summary>
                         [Google.Apis.Util.StringValueAttribute("EVALUATION_TYPE_UNSPECIFIED")]
                         EVALUATIONTYPEUNSPECIFIED = 0,
 
-                        /// <summary>SAP best practices</summary>
+                        /// <summary>SAP best practices.</summary>
                         [Google.Apis.Util.StringValueAttribute("SAP")]
                         SAP = 1,
 
-                        /// <summary>SQL best practices</summary>
+                        /// <summary>SQL best practices.</summary>
                         [Google.Apis.Util.StringValueAttribute("SQL_SERVER")]
                         SQLSERVER = 2,
 
-                        /// <summary>Customized best practices</summary>
+                        /// <summary>Customized best practices.</summary>
                         [Google.Apis.Util.StringValueAttribute("OTHER")]
                         OTHER = 3,
-
-                        /// <summary>SCC IaC (Infra as Code) best practices.</summary>
-                        [Google.Apis.Util.StringValueAttribute("SCC_IAC")]
-                        SCCIAC = 4,
                     }
 
-                    /// <summary>Filter based on primary_category, secondary_category</summary>
+                    /// <summary>Filter based on primary_category, secondary_category.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -3043,15 +3039,15 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>* An AgentCommand specifies a one-time executable program for the agent to run.</summary>
+    /// <summary>An AgentCommand specifies a one-time executable program for the agent to run.</summary>
     public class AgentCommand : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>command is the name of the agent one-time executable that will be invoked.</summary>
+        /// <summary>The name of the agent one-time executable that will be invoked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("command")]
         public virtual string Command { get; set; }
 
         /// <summary>
-        /// parameters is a map of key/value pairs that can be used to specify additional one-time executable settings.
+        /// A map of key/value pairs that can be used to specify additional one-time executable settings.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, string> Parameters { get; set; }
@@ -3355,14 +3351,14 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing big query destination</summary>
+    /// <summary>BigQuery destination for evaluation results.</summary>
     public class BigQueryDestination : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. determine if results will be saved in a new table</summary>
+        /// <summary>Optional. Determines if a new results table will be created when an Execution is created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createNewResultsTable")]
         public virtual System.Nullable<bool> CreateNewResultsTable { get; set; }
 
-        /// <summary>Optional. destination dataset to save evaluation results</summary>
+        /// <summary>Optional. Destination dataset to save evaluation results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationDataset")]
         public virtual string DestinationDataset { get; set; }
 
@@ -3399,7 +3395,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>* Command specifies the type of command to execute.</summary>
+    /// <summary>Command specifies the type of command to execute.</summary>
     public class Command : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>AgentCommand specifies a one-time executable program for the agent to run.</summary>
@@ -3713,10 +3709,16 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing Evaluation object</summary>
+    /// <summary>
+    /// Represents a Workload Manager Evaluation configuration. An Evaluation defines a set of rules to be validated
+    /// against a scope of Cloud resources.
+    /// </summary>
     public class Evaluation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. BigQuery destination</summary>
+        /// <summary>
+        /// Optional. The BigQuery destination for detailed evaluation results. If this field is specified, the results
+        /// of each evaluation execution are exported to BigQuery.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigQueryDestination")]
         public virtual BigQueryDestination BigQueryDestination { get; set; }
 
@@ -3724,7 +3726,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. [Output only] Create time stamp</summary>
+        /// <summary>Output only. [Output only] Create time stamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -3761,51 +3763,49 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customRulesBucket")]
         public virtual string CustomRulesBucket { get; set; }
 
-        /// <summary>Description of the Evaluation</summary>
+        /// <summary>Description of the Evaluation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Evaluation type</summary>
+        /// <summary>Evaluation type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationType")]
         public virtual string EvaluationType { get; set; }
 
         /// <summary>
         /// Optional. Immutable. Customer-managed encryption key name, in the format
-        /// projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        /// projects/*/locations/*/keyRings/*/cryptoKeys/*. The key will be used for CMEK encryption of the evaluation
+        /// resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
         public virtual string KmsKey { get; set; }
 
-        /// <summary>Labels as key value pairs</summary>
+        /// <summary>Labels as key value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// name of resource names have the form
-        /// 'projects/{project_id}/locations/{location_id}/evaluations/{evaluation_id}'
+        /// Name of resource that has the form
+        /// `projects/{project_id}/locations/{location_id}/evaluations/{evaluation_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>annotations as key value pairs</summary>
+        /// <summary>Resource filter for an evaluation defining the scope of resources to be evaluated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceFilter")]
         public virtual ResourceFilter ResourceFilter { get; set; }
 
-        /// <summary>Output only. [Output only] The updated rule ids if exist.</summary>
+        /// <summary>Output only. [Output only] The current lifecycle state of the evaluation resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceStatus")]
         public virtual ResourceStatus ResourceStatus { get; set; }
 
-        /// <summary>the name of the rule</summary>
+        /// <summary>The names of the rules used for this evaluation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ruleNames")]
         public virtual System.Collections.Generic.IList<string> RuleNames { get; set; }
 
-        /// <summary>Output only. [Output only] The updated rule ids if exist.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ruleVersions")]
-        public virtual System.Collections.Generic.IList<string> RuleVersions { get; set; }
-
         /// <summary>
-        /// crontab format schedule for scheduled evaluation, currently only support the following schedule: "0 */1 * *
-        /// *", "0 */6 * * *", "0 */12 * * *", "0 0 */1 * *", "0 0 */7 * *",
+        /// Crontab format schedule for scheduled evaluation, currently only supports the following fixed schedules: *
+        /// `0 */1 * * *` # Hourly * `0 */6 * * *` # Every 6 hours * `0 */12 * * *` # Every 12 hours * `0 0 */1 * *` #
+        /// Daily * `0 0 */7 * *` # Weekly * `0 0 */14 * *` # Every 14 days * `0 0 1 */1 *` # Monthly
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
         public virtual string Schedule { get; set; }
@@ -3814,7 +3814,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. [Output only] Update time stamp</summary>
+        /// <summary>Output only. [Output only] Update time stamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -3851,14 +3851,14 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing Execution object</summary>
+    /// <summary>Execution that represents a single run of an Evaluation.</summary>
     public class Execution : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _endTimeRaw;
 
         private object _endTime;
 
-        /// <summary>Output only. [Output only] End time stamp</summary>
+        /// <summary>Output only. [Output only] End time stamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual string EndTimeRaw
         {
@@ -3891,15 +3891,15 @@ namespace Google.Apis.WorkloadManager.v1.Data
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. Engine</summary>
+        /// <summary>Optional. Engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("engine")]
         public virtual string Engine { get; set; }
 
-        /// <summary>Output only. [Output only] Evaluation ID</summary>
+        /// <summary>Output only. [Output only] Evaluation ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationId")]
         public virtual string EvaluationId { get; set; }
 
-        /// <summary>Optional. External data sources</summary>
+        /// <summary>Optional. External data sources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalDataSources")]
         public virtual System.Collections.Generic.IList<ExternalDataSources> ExternalDataSources { get; set; }
 
@@ -3907,7 +3907,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
 
         private object _inventoryTime;
 
-        /// <summary>Output only. [Output only] Inventory time stamp</summary>
+        /// <summary>Output only. [Output only] Inventory time stamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventoryTime")]
         public virtual string InventoryTimeRaw
         {
@@ -3940,32 +3940,32 @@ namespace Google.Apis.WorkloadManager.v1.Data
             set => InventoryTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Labels as key value pairs</summary>
+        /// <summary>Labels as key value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
         /// The name of execution resource. The format is
-        /// projects/{project}/locations/{location}/evaluations/{evaluation}/executions/{execution}
+        /// projects/{project}/locations/{location}/evaluations/{evaluation}/executions/{execution}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. Additional information generated by the execution</summary>
+        /// <summary>Output only. Additional information generated by the execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notices")]
         public virtual System.Collections.Generic.IList<Notice> Notices { get; set; }
 
-        /// <summary>Output only. [Output only] Result summary for the execution</summary>
+        /// <summary>Output only. [Output only] Result summary for the execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultSummary")]
         public virtual Summary ResultSummary { get; set; }
 
-        /// <summary>Output only. execution result summary per rule</summary>
+        /// <summary>Output only. Execution result summary per rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ruleResults")]
         public virtual System.Collections.Generic.IList<RuleExecutionResult> RuleResults { get; set; }
 
         /// <summary>
-        /// type represent whether the execution executed directly by user or scheduled according evaluation.schedule
-        /// field.
+        /// Type which represents whether the execution executed directly by user or scheduled according to the
+        /// `Evaluation.schedule` field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runType")]
         public virtual string RunType { get; set; }
@@ -3974,7 +3974,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
 
         private object _startTime;
 
-        /// <summary>Output only. [Output only] Start time stamp</summary>
+        /// <summary>Output only. [Output only] Start time stamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTimeRaw
         {
@@ -4007,7 +4007,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Output only. [Output only] State</summary>
+        /// <summary>Output only. [Output only] State.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -4015,7 +4015,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing the result of an execution</summary>
+    /// <summary>The result of an execution.</summary>
     public class ExecutionResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The commands to remediate the violation.</summary>
@@ -4038,7 +4038,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; }
 
-        /// <summary>Execution result type of the scanned resource</summary>
+        /// <summary>Execution result type of the scanned resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -4054,7 +4054,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for external data sources</summary>
+    /// <summary>External data sources for an execution.</summary>
     public class ExternalDataSources : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4066,17 +4066,18 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string AssetType { get; set; }
 
         /// <summary>
-        /// Optional. Name of external data source. The name will be used inside the rego/sql to refer the external data
+        /// Optional. Name of external data source. The name will be used inside the rego/sql to refer the external
+        /// data.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. Type of external data source</summary>
+        /// <summary>Required. Type of external data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>
-        /// Required. URI of external data source. example of bq table {project_ID}.{dataset_ID}.{table_ID}
+        /// Required. URI of external data source. example of bq table {project_ID}.{dataset_ID}.{table_ID}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -4085,10 +4086,13 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing compute engine instance filter</summary>
+    /// <summary>A filter for matching Compute Engine instances.</summary>
     public class GceInstanceFilter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Service account of compute engine</summary>
+        /// <summary>
+        /// If non-empty, only Compute Engine instances associated with at least one of the provided service accounts
+        /// will be included in the evaluation.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccounts")]
         public virtual System.Collections.Generic.IList<string> ServiceAccounts { get; set; }
 
@@ -4244,40 +4248,6 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message represent an rule that failed to be validated.</summary>
-    public class InvalidRule : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>display name of the invalid rule</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>cloud storage destination of the invalid rule</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
-        public virtual string GcsUri { get; set; }
-
-        /// <summary>name of the invalid rule</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The error message of valdating rule formats.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("valiadtionError")]
-        public virtual string ValiadtionError { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Message wrappes a list of invalid rules.</summary>
-    public class InvalidRulesWrapper : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The invalid rules that failed to be validated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("invalidRules")]
-        public virtual System.Collections.Generic.IList<InvalidRule> InvalidRules { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>The response object from `ListActuations`.</summary>
     public class ListActuationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4338,10 +4308,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing Evaluations</summary>
+    /// <summary>Response message for the ListEvaluations RPC.</summary>
     public class ListEvaluationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of Evaluation</summary>
+        /// <summary>The list of evaluations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluations")]
         public virtual System.Collections.Generic.IList<Evaluation> Evaluations { get; set; }
 
@@ -4357,7 +4327,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response of list execution results</summary>
+    /// <summary>Response message for the ListExecutionResults RPC.</summary>
     public class ListExecutionResultsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The versions from the specified publisher.</summary>
@@ -4375,10 +4345,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing Executions</summary>
+    /// <summary>Response message for the ListExecutions RPC.</summary>
     public class ListExecutionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of Execution</summary>
+        /// <summary>The list of Execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executions")]
         public virtual System.Collections.Generic.IList<Execution> Executions { get; set; }
 
@@ -4432,14 +4402,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Mesesage of response of list rules</summary>
+    /// <summary>Response message for the ListRules RPC.</summary>
     public class ListRulesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A wrapper of the invalid rules that failed to be validated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("invalidRulesWrapper")]
-        public virtual InvalidRulesWrapper InvalidRulesWrapper { get; set; }
-
-        /// <summary>all rules in response</summary>
+        /// <summary>All rules in response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
         public virtual System.Collections.Generic.IList<Rule> Rules { get; set; }
 
@@ -4447,7 +4413,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to list scanned resources</summary>
+    /// <summary>Response message for the ListScannedResources RPC.</summary>
     public class ListScannedResourcesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4457,7 +4423,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>All scanned resources in response</summary>
+        /// <summary>All scanned resources in response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scannedResources")]
         public virtual System.Collections.Generic.IList<ScannedResource> ScannedResources { get; set; }
 
@@ -4557,10 +4523,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for additional information generated by the execution</summary>
+    /// <summary>Additional information generated by an execution.</summary>
     public class Notice : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Message of the notice</summary>
+        /// <summary>Output only. Message of the notice.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
@@ -4779,7 +4745,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message represent resource in execution result</summary>
+    /// <summary>Resource in execution result.</summary>
     public class Resource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The name of the resource.</summary>
@@ -4798,22 +4764,32 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing resource filters</summary>
+    /// <summary>Resource filter for an evaluation defining the scope of resources to be evaluated.</summary>
     public class ResourceFilter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Filter compute engine resource</summary>
+        /// <summary>Filter compute engine resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gceInstanceFilter")]
         public virtual GceInstanceFilter GceInstanceFilter { get; set; }
 
-        /// <summary>The label used for filter resource</summary>
+        /// <summary>
+        /// Labels to filter resources by. Each key-value pair in the map must exist on the resource for it to be
+        /// included (e.g. VM instance labels). For example, specifying `{ "env": "prod", "database": "nosql" }` will
+        /// only include resources that have labels `env=prod` and `database=nosql`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inclusionLabels")]
         public virtual System.Collections.Generic.IDictionary<string, string> InclusionLabels { get; set; }
 
-        /// <summary>The id pattern for filter resource</summary>
+        /// <summary>
+        /// The pattern to filter resources by their id For example, a pattern of ".*prod-cluster.*" will match all
+        /// resources that contain "prod-cluster" in their ID.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceIdPatterns")]
         public virtual System.Collections.Generic.IList<string> ResourceIdPatterns { get; set; }
 
-        /// <summary>The scopes of evaluation resource</summary>
+        /// <summary>
+        /// The scopes of evaluation resource. Format: * `projects/{project_id}` * `folders/{folder_id}` *
+        /// `organizations/{organization_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
         public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
 
@@ -4821,14 +4797,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing resource status</summary>
+    /// <summary>The lifecycle status of an Evaluation resource.</summary>
     public class ResourceStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Historical: Used before 2023-05-22 the new version of rule id if exists</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rulesNewerVersions")]
-        public virtual System.Collections.Generic.IList<string> RulesNewerVersions { get; set; }
-
-        /// <summary>State of the resource</summary>
+        /// <summary>State of the Evaluation resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -4836,7 +4808,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message represent a rule</summary>
+    /// <summary>A rule to be evaluated.</summary>
     public class Rule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4846,31 +4818,31 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
         public virtual string AssetType { get; set; }
 
-        /// <summary>descrite rule in plain language</summary>
+        /// <summary>Describe rule in plain language.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>the name display in UI</summary>
+        /// <summary>The name display in UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>the message template for rule</summary>
+        /// <summary>The message template for rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
         public virtual string ErrorMessage { get; set; }
 
-        /// <summary>rule name</summary>
+        /// <summary>Rule name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>the primary category</summary>
+        /// <summary>The primary category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryCategory")]
         public virtual string PrimaryCategory { get; set; }
 
-        /// <summary>the remediation for the rule</summary>
+        /// <summary>The remediation for the rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remediation")]
         public virtual string Remediation { get; set; }
 
-        /// <summary>Output only. the version of the rule</summary>
+        /// <summary>Output only. The version of the rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
         public virtual string RevisionId { get; set; }
 
@@ -4878,19 +4850,19 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ruleType")]
         public virtual string RuleType { get; set; }
 
-        /// <summary>the secondary category</summary>
+        /// <summary>The secondary category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryCategory")]
         public virtual string SecondaryCategory { get; set; }
 
-        /// <summary>the severity of the rule</summary>
+        /// <summary>The severity of the rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; }
 
-        /// <summary>List of user-defined tags</summary>
+        /// <summary>List of user-defined tags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
-        /// <summary>the docuement url for the rule</summary>
+        /// <summary>The document url for the rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -4898,26 +4870,26 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for execution result summary per rule</summary>
+    /// <summary>Execution result summary per rule.</summary>
     public class RuleExecutionResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Execution message, if any</summary>
+        /// <summary>Execution message, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
-        /// <summary>Number of violations</summary>
+        /// <summary>Number of violations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultCount")]
         public virtual System.Nullable<long> ResultCount { get; set; }
 
-        /// <summary>rule name</summary>
+        /// <summary>Rule name as plain text like `sap-hana-configured`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rule")]
         public virtual string Rule { get; set; }
 
-        /// <summary>Number of total scanned resources</summary>
+        /// <summary>Number of total scanned resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scannedResourceCount")]
         public virtual System.Nullable<long> ScannedResourceCount { get; set; }
 
-        /// <summary>Output only. The execution status</summary>
+        /// <summary>Output only. The execution status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -4940,17 +4912,14 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for creating a Execution</summary>
+    /// <summary>Request message for the RunEvaluation RPC.</summary>
     public class RunEvaluationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The resource being created</summary>
+        /// <summary>Required. The resource being created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("execution")]
         public virtual Execution Execution { get; set; }
 
-        /// <summary>
-        /// Required. Id of the requesting object If auto-generating Id server-side, remove this field and execution_id
-        /// from the method_signature of Create RPC
-        /// </summary>
+        /// <summary>Required. ID of the execution which will be created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
         public virtual string ExecutionId { get; set; }
 
@@ -5625,14 +5594,14 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message of scanned resource</summary>
+    /// <summary>A scanned resource.</summary>
     public class ScannedResource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>resource name</summary>
+        /// <summary>Resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
 
-        /// <summary>resource type</summary>
+        /// <summary>Resource type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -5655,14 +5624,14 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>* A ShellCommand is invoked via the agent's command line executor</summary>
+    /// <summary>A ShellCommand is invoked via the agent's command line executor.</summary>
     public class ShellCommand : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>args is a string of arguments to be passed to the command.</summary>
+        /// <summary>Arguments to be passed to the command.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual string Args { get; set; }
 
-        /// <summary>command is the name of the command to be executed.</summary>
+        /// <summary>The name of the command to be executed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("command")]
         public virtual string Command { get; set; }
 
@@ -5890,18 +5859,18 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for execution summary</summary>
+    /// <summary>Execution summary.</summary>
     public class Summary : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Number of failures</summary>
+        /// <summary>Output only. Number of failures.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failures")]
         public virtual System.Nullable<long> Failures { get; set; }
 
-        /// <summary>Output only. Number of new failures compared to the previous execution</summary>
+        /// <summary>Output only. Number of new failures compared to the previous execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newFailures")]
         public virtual System.Nullable<long> NewFailures { get; set; }
 
-        /// <summary>Output only. Number of new fixes compared to the previous execution</summary>
+        /// <summary>Output only. Number of new fixes compared to the previous execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newFixes")]
         public virtual System.Nullable<long> NewFixes { get; set; }
 
@@ -6048,7 +6017,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing the violation in an evaluation result.</summary>
+    /// <summary>The violation in an evaluation result.</summary>
     public class ViolationDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The name of the asset.</summary>
