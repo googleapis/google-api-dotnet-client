@@ -6738,6 +6738,14 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deletedRowCount")]
         public virtual System.Nullable<long> DeletedRowCount { get; set; }
 
+        /// <summary>Output only. DML mode used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dmlMode")]
+        public virtual string DmlMode { get; set; }
+
+        /// <summary>Output only. Reason for disabling fine-grained DML if applicable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fineGrainedDmlUnusedReason")]
+        public virtual string FineGrainedDmlUnusedReason { get; set; }
+
         /// <summary>Output only. Number of inserted Rows. Populated by DML INSERT and MERGE statements</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertedRowCount")]
         public virtual System.Nullable<long> InsertedRowCount { get; set; }
@@ -9576,6 +9584,13 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("queryPlan")]
         public virtual System.Collections.Generic.IList<ExplainQueryStage> QueryPlan { get; set; }
 
+        /// <summary>
+        /// Output only. Referenced property graphs for the job. Queries that reference more than 50 property graphs
+        /// will not have a complete list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referencedPropertyGraphs")]
+        public virtual System.Collections.Generic.IList<PropertyGraphReference> ReferencedPropertyGraphs { get; set; }
+
         /// <summary>Output only. Referenced routines for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referencedRoutines")]
         public virtual System.Collections.Generic.IList<RoutineReference> ReferencedRoutines { get; set; }
@@ -10750,6 +10765,28 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Id path of a property graph.</summary>
+    public class PropertyGraphReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The ID of the dataset containing this property graph.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
+        public virtual string DatasetId { get; set; }
+
+        /// <summary>Required. The ID of the project containing this property graph.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>
+        /// Required. The ID of the property graph. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
+        /// underscores (_). The maximum length is 256 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertyGraphId")]
+        public virtual string PropertyGraphId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
