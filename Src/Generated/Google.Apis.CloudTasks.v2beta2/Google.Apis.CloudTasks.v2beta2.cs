@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2202,14 +2202,24 @@ namespace Google.Apis.CloudTasks.v2beta2
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -2307,7 +2317,7 @@ namespace Google.Apis.CloudTasks.v2beta2
             }
 
             /// <summary>
-            /// Creates or Updates a CMEK config. Updates the Customer Managed Encryption Key assotiated with the Cloud
+            /// Creates or Updates a CMEK config. Updates the Customer Managed Encryption Key associated with the Cloud
             /// Tasks location (Creates if the key does not already exist). All new tasks created in the location will
             /// be encrypted at-rest with the KMS-key provided in the config.
             /// </summary>
@@ -2322,7 +2332,7 @@ namespace Google.Apis.CloudTasks.v2beta2
             }
 
             /// <summary>
-            /// Creates or Updates a CMEK config. Updates the Customer Managed Encryption Key assotiated with the Cloud
+            /// Creates or Updates a CMEK config. Updates the Customer Managed Encryption Key associated with the Cloud
             /// Tasks location (Creates if the key does not already exist). All new tasks created in the location will
             /// be encrypted at-rest with the KMS-key provided in the config.
             /// </summary>
