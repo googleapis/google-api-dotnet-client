@@ -408,7 +408,7 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
 
         /// <summary>
         /// Message priority. Can take "normal" and "high" values. For more information, see [Setting the priority of a
-        /// message](https://goo.gl/GjONJv).
+        /// message](https://firebase.google.com/docs/cloud-messaging/customize-messages/setting-message-priority).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual string Priority { get; set; }
@@ -479,12 +479,6 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bodyLocKey")]
         public virtual string BodyLocKey { get; set; }
-
-        /// <summary>
-        /// If set, display notifications delivered to the device will be handled by the app instead of the proxy.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bypassProxyNotification")]
-        public virtual System.Nullable<bool> BypassProxyNotification { get; set; }
 
         /// <summary>
         /// The [notification's channel
@@ -620,10 +614,12 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         /// <summary>
         /// Set the relative priority for this notification. Priority is an indication of how much of the user's
         /// attention should be consumed by this notification. Low-priority notifications may be hidden from the user in
-        /// certain situations, while the user might be interrupted for a higher-priority notification. The effect of
-        /// setting the same priorities may differ slightly on different platforms. Note this priority differs from
-        /// `AndroidMessagePriority`. This priority is processed by the client after the message has been delivered,
-        /// whereas
+        /// certain situations, while the user might be interrupted for a higher-priority notification. This parameter
+        /// affects notification priority only on devices running Android 7.1 (API level 25) and lower. On Android 8.0
+        /// (API level 26) and higher, priority is ignored in favor of channel
+        /// [importance](https://developer.android.com/develop/ui/views/notifications/channels#importance). Note this
+        /// priority differs from `AndroidMessagePriority`. This priority is processed by the client after the message
+        /// has been delivered, whereas
         /// [AndroidMessagePriority](https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#androidmessagepriority)
         /// is an FCM concept that controls when the message is delivered.
         /// </summary>
