@@ -321,6 +321,7 @@ namespace Google.Apis.AndroidPublisher.v3
         {
             this.service = service;
             DeviceTierConfigs = new DeviceTierConfigsResource(service);
+            Tracks = new TracksResource(service);
         }
 
         /// <summary>Gets the DeviceTierConfigs resource.</summary>
@@ -540,6 +541,98 @@ namespace Google.Apis.AndroidPublisher.v3
                         DefaultValue = null,
                         Pattern = null,
                     });
+                }
+            }
+        }
+
+        /// <summary>Gets the Tracks resource.</summary>
+        public virtual TracksResource Tracks { get; }
+
+        /// <summary>The "tracks" collection of methods.</summary>
+        public class TracksResource
+        {
+            private const string Resource = "tracks";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public TracksResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Releases = new ReleasesResource(service);
+            }
+
+            /// <summary>Gets the Releases resource.</summary>
+            public virtual ReleasesResource Releases { get; }
+
+            /// <summary>The "releases" collection of methods.</summary>
+            public class ReleasesResource
+            {
+                private const string Resource = "releases";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ReleasesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Returns the list of all releases for a given track. This excludes any releases that are obsolete.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The parent track, which owns this collection of releases. Format:
+                /// applications/{package_name}/tracks/{track}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// Returns the list of all releases for a given track. This excludes any releases that are obsolete.
+                /// </summary>
+                public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ListReleaseSummariesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent track, which owns this collection of releases. Format:
+                    /// applications/{package_name}/tracks/{track}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "androidpublisher/v3/{+parent}/releases";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^applications/[^/]+/tracks/[^/]+$",
+                        });
+                    }
                 }
             }
         }
@@ -4869,6 +4962,41 @@ namespace Google.Apis.AndroidPublisher.v3
             public virtual string EditId { get; private set; }
 
             /// <summary>
+            /// Optional. Specify how the API should behave if there are changes currently in review. If this value is
+            /// not set, it will default to "CANCEL_IN_REVIEW_AND_SUBMIT", which will cancel the changes in review and
+            /// then send all the changes for publishing.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("changesInReviewBehavior", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ChangesInReviewBehaviorEnum> ChangesInReviewBehavior { get; set; }
+
+            /// <summary>
+            /// Optional. Specify how the API should behave if there are changes currently in review. If this value is
+            /// not set, it will default to "CANCEL_IN_REVIEW_AND_SUBMIT", which will cancel the changes in review and
+            /// then send all the changes for publishing.
+            /// </summary>
+            public enum ChangesInReviewBehaviorEnum
+            {
+                /// <summary>Defaults to CANCEL_IN_REVIEW_AND_SUBMIT.</summary>
+                [Google.Apis.Util.StringValueAttribute("CHANGES_IN_REVIEW_BEHAVIOR_TYPE_UNSPECIFIED")]
+                CHANGESINREVIEWBEHAVIORTYPEUNSPECIFIED = 0,
+
+                /// <summary>
+                /// If there are changes already in review, then this will cancel that review first and then send all
+                /// the changes for publishing.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("CANCEL_IN_REVIEW_AND_SUBMIT")]
+                CANCELINREVIEWANDSUBMIT = 1,
+
+                /// <summary>
+                /// If there are changes in review, then this will return an error. Please refer to the error message
+                /// sample that is returned when this happens. Note that this won't invalidate the edit. If there aren't
+                /// any changes in review, then this will continue and send the new changes for publishing.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("ERROR_IF_IN_REVIEW")]
+                ERRORIFINREVIEW = 2,
+            }
+
+            /// <summary>
             /// When a rejection happens, the parameter will make sure that the changes in this edit won't be reviewed
             /// until they are explicitly sent for review from within the Google Play Console UI. These changes will be
             /// added to any other changes that are not yet sent for review.
@@ -4902,6 +5030,14 @@ namespace Google.Apis.AndroidPublisher.v3
                     Name = "editId",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("changesInReviewBehavior", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "changesInReviewBehavior",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -14354,6 +14490,17 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Summary of an artifact.</summary>
+    public class ArtifactSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The version code of the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
+        public virtual System.Nullable<int> VersionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata of an asset module.</summary>
     public class AssetModuleMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17143,6 +17290,20 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Response listing all releases for a given track that are either ready to be sent for review, in review,
+    /// approved, not approved or available.
+    /// </summary>
+    public class ListReleaseSummariesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of releases for this track. There will be a maximum of 20 releases returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releases")]
+        public virtual System.Collections.Generic.IList<ReleaseSummary> Releases { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ListSubscriptionOffers.</summary>
     public class ListSubscriptionOffersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19704,6 +19865,31 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Summary of a release.</summary>
+    public class ReleaseSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of active artifacts on this release.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeArtifacts")]
+        public virtual System.Collections.Generic.IList<ArtifactSummary> ActiveArtifacts { get; set; }
+
+        /// <summary>The lifecycle state of a release.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseLifecycleState")]
+        public virtual string ReleaseLifecycleState { get; set; }
+
+        /// <summary>Name of the release.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseName")]
+        public virtual string ReleaseName { get; set; }
+
+        /// <summary>
+        /// Identifier of the track. More on [track name](https://developers.google.com/android-publisher/tracks).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("track")]
+        public virtual string Track { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
