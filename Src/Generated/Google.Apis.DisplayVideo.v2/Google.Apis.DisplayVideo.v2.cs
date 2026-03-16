@@ -26679,6 +26679,13 @@ namespace Google.Apis.DisplayVideo.v2.Data
     public class TargetingExpansionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Whether to exclude demographic expansion for Optimized Targeting. This field only applies to
+        /// Demand Gen ad groups.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeDemographicExpansion")]
+        public virtual System.Nullable<bool> ExcludeDemographicExpansion { get; set; }
+
+        /// <summary>
         /// Whether to exclude first-party audiences from use in targeting expansion. This field was deprecated with the
         /// launch of [optimized targeting](//support.google.com/displayvideo/answer/12060859). This field will be set
         /// to `false`. If this field is set to `true` when deprecated, all positive first-party audience targeting
