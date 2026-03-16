@@ -7485,7 +7485,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkEscapeHatchEnabled")]
         public virtual System.Nullable<bool> NetworkEscapeHatchEnabled { get; set; }
 
-        /// <summary>Whether resetting network settings is disabled.</summary>
+        /// <summary>
+        /// Whether resetting network settings is disabled. This applies only on fully managed devices. A
+        /// NonComplianceDetail with MANAGEMENT_MODE is reported for other management modes.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkResetDisabled")]
         public virtual System.Nullable<bool> NetworkResetDisabled { get; set; }
 
