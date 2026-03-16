@@ -6780,6 +6780,13 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
+        /// Optional. Defines optional properties specific to backups of disk-based resources, such as Compute Engine
+        /// Persistent Disks. This includes settings like whether to perform a guest flush.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskBackupPlanProperties")]
+        public virtual DiskBackupPlanProperties DiskBackupPlanProperties { get; set; }
+
+        /// <summary>
         /// Optional. `etag` is returned from the service in the response. As a user of the service, you may provide an
         /// etag value in this field to prevent stale resources.
         /// </summary>
@@ -8436,6 +8443,20 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>--- DiskBackupPlanProperties Message ---</summary>
+    public class DiskBackupPlanProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Indicates whether to perform a guest flush operation before taking a disk backup. When set to
+        /// false, the system will create crash-consistent backups. Default value is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestFlush")]
+        public virtual System.Nullable<bool> GuestFlush { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>DiskBackupProperties represents the properties of a Disk backup.</summary>
     public class DiskBackupProperties : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8454,6 +8475,12 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>Indicates whether the source disk is using confidential compute mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableConfidentialCompute")]
         public virtual System.Nullable<bool> EnableConfidentialCompute { get; set; }
+
+        /// <summary>
+        /// Optional. Defines if the guest flush is enabled for the source disk. Default value is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestFlush")]
+        public virtual System.Nullable<bool> GuestFlush { get; set; }
 
         /// <summary>A list of guest OS features that are applicable to this backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestOsFeature")]
@@ -9757,6 +9784,7 @@ namespace Google.Apis.Backupdr.v1.Data
 
     public class LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>List of features that are not supported in the location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unsupportedFeatures")]
         public virtual System.Collections.Generic.IList<string> UnsupportedFeatures { get; set; }
 
