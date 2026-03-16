@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1105,7 +1105,7 @@ namespace Google.Apis.SA360.v0.Data
         public virtual System.Nullable<double> AllConversionsByConversionDate { get; set; }
 
         /// <summary>
-        /// The number of times people clicked the "Call" button to call a store during or after clicking an ad. This
+        /// The number of times people clicked the "Call" button to call a business during or after clicking an ad. This
         /// number doesn't include whether or not calls were connected, or the duration of any calls. This metric
         /// applies to feed items only.
         /// </summary>
@@ -1113,7 +1113,7 @@ namespace Google.Apis.SA360.v0.Data
         public virtual System.Nullable<double> AllConversionsFromClickToCall { get; set; }
 
         /// <summary>
-        /// The number of times people clicked a "Get directions" button to navigate to a store after clicking an ad.
+        /// The number of times people clicked a "Get directions" button to navigate to a business after clicking an ad.
         /// This metric applies to feed items only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allConversionsFromDirections")]
@@ -1133,35 +1133,35 @@ namespace Google.Apis.SA360.v0.Data
         public virtual System.Nullable<double> AllConversionsFromInteractionsValuePerInteraction { get; set; }
 
         /// <summary>
-        /// The number of times people clicked a link to view a store's menu after clicking an ad. This metric applies
-        /// to feed items only.
+        /// The number of times people clicked a link to view a business's menu after clicking an ad. This metric
+        /// applies to feed items only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allConversionsFromMenu")]
         public virtual System.Nullable<double> AllConversionsFromMenu { get; set; }
 
         /// <summary>
-        /// The number of times people placed an order at a store after clicking an ad. This metric applies to feed
+        /// The number of times people placed an order at a business after clicking an ad. This metric applies to feed
         /// items only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allConversionsFromOrder")]
         public virtual System.Nullable<double> AllConversionsFromOrder { get; set; }
 
         /// <summary>
-        /// The number of other conversions (for example, posting a review or saving a location for a store) that
+        /// The number of other conversions (for example, posting a review or saving a location for a business) that
         /// occurred after people clicked an ad. This metric applies to feed items only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allConversionsFromOtherEngagement")]
         public virtual System.Nullable<double> AllConversionsFromOtherEngagement { get; set; }
 
         /// <summary>
-        /// Estimated number of times people visited a store after clicking an ad. This metric applies to feed items
+        /// Estimated number of times people visited a business after clicking an ad. This metric applies to feed items
         /// only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allConversionsFromStoreVisit")]
         public virtual System.Nullable<double> AllConversionsFromStoreVisit { get; set; }
 
         /// <summary>
-        /// The number of times that people were taken to a store's URL after clicking an ad. This metric applies to
+        /// The number of times that people were taken to a business's URL after clicking an ad. This metric applies to
         /// feed items only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allConversionsFromStoreWebsite")]
@@ -2118,6 +2118,10 @@ namespace Google.Apis.SA360.v0.Data
     /// <summary>Segment only fields.</summary>
     public class GoogleAdsSearchads360V0CommonSegments : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Ad Format type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adFormatType")]
+        public virtual string AdFormatType { get; set; }
+
         /// <summary>Ad network type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adNetworkType")]
         public virtual string AdNetworkType { get; set; }
@@ -2375,6 +2379,55 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>The raw event conversion dimensions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rawEventConversionDimensions")]
         public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0CommonValue> RawEventConversionDimensions { get; set; }
+
+        /// <summary>
+        /// The display names of participants in an event listing, like performers, speakers, or teams.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verticalAdsEventParticipantDisplayNames")]
+        public virtual string VerticalAdsEventParticipantDisplayNames { get; set; }
+
+        /// <summary>
+        /// The class of the hotel. Generally in the range of 1 to 5 stars, but fully customizable in the hotel feed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verticalAdsHotelClass")]
+        public virtual System.Nullable<long> VerticalAdsHotelClass { get; set; }
+
+        /// <summary>The listing associated with a listing impression, click or conversion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verticalAdsListing")]
+        public virtual string VerticalAdsListing { get; set; }
+
+        /// <summary>
+        /// The brand associated with a specific listing within a Vertical Ads context, for example, the brand of a car
+        /// rental, a vacation home, or an event.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verticalAdsListingBrand")]
+        public virtual string VerticalAdsListingBrand { get; set; }
+
+        /// <summary>The city where the vertical ads listing is located.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verticalAdsListingCity")]
+        public virtual string VerticalAdsListingCity { get; set; }
+
+        /// <summary>The country where the vertical ads listing is located.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verticalAdsListingCountry")]
+        public virtual string VerticalAdsListingCountry { get; set; }
+
+        /// <summary>The region where the vertical ads listing is located.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verticalAdsListingRegion")]
+        public virtual string VerticalAdsListingRegion { get; set; }
+
+        /// <summary>
+        /// A specific partner account within a Partner Center (for example, Hotel Center) that supplies inventory feed
+        /// data for Vertical Ads.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verticalAdsPartnerAccount")]
+        public virtual System.Nullable<long> VerticalAdsPartnerAccount { get; set; }
+
+        /// <summary>
+        /// Type of vertical ad, such as Vacation Rentals, Car Rentals, or Events, used to categorize and segment data
+        /// in the context of Vertical Ads.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verticalAdsVertical")]
+        public virtual string VerticalAdsVertical { get; set; }
 
         /// <summary>
         /// Week as defined as Monday through Sunday, and represented by the date of Monday. Formatted as yyyy-MM-dd.
@@ -3358,7 +3411,11 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adRotationMode")]
         public virtual string AdRotationMode { get; set; }
 
-        /// <summary>The maximum CPC (cost-per-click) bid.</summary>
+        /// <summary>
+        /// The maximum CPC (cost-per-click) bid. This field is used when the ad group's effective bidding strategy is
+        /// Manual CPC. This field is not applicable and will be ignored if the ad group's campaign is using a portfolio
+        /// bidding strategy.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpcBidMicros")]
         public virtual System.Nullable<long> CpcBidMicros { get; set; }
 
@@ -4887,8 +4944,11 @@ namespace Google.Apis.SA360.v0.Data
     public class GoogleAdsSearchads360V0ResourcesCampaignBudget : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The amount of the budget, in the local currency for the account. Amount is specified in micros, where one
-        /// million is equivalent to one currency unit. Monthly spend is capped at 30.4 times this amount.
+        /// The average daily amount to be spent by the campaign. This field is used when the CampaignBudget `period` is
+        /// set to `DAILY`, which is the default. Amount is specified in micros in the account's local currency. One
+        /// million micros is equivalent to one currency unit. The effective monthly spend is capped at 30.4 times this
+        /// daily amount. This field is mutually exclusive with 'total_amount_micros'. Only one of 'amount_micros' or
+        /// 'total_amount_micros' should be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amountMicros")]
         public virtual System.Nullable<long> AmountMicros { get; set; }
@@ -5106,15 +5166,17 @@ namespace Google.Apis.SA360.v0.Data
         public virtual System.Nullable<bool> TargetGoogleSearch { get; set; }
 
         /// <summary>
-        /// Whether ads will be served on the Google Partner Network. This is available only to some select Google
-        /// partner accounts.
+        /// Whether ads will be served on the partner network. This is available only to some select partner accounts.
+        /// Unless you have been instructed to use this field, it likely does not apply to your account. This does not
+        /// control whether ads will be served on Google Search Partners Network; use `target_search_network` for that
+        /// instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetPartnerSearchNetwork")]
         public virtual System.Nullable<bool> TargetPartnerSearchNetwork { get; set; }
 
         /// <summary>
-        /// Whether ads will be served on partner sites in the Google Search Network (requires `target_google_search` to
-        /// also be `true`).
+        /// Whether ads will be served on sites in the Google Search Partners Network (requires `target_google_search`
+        /// to also be `true`).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetSearchNetwork")]
         public virtual System.Nullable<bool> TargetSearchNetwork { get; set; }
@@ -5206,7 +5268,13 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Cart data sales view.</summary>
+    /// <summary>
+    /// Cart data sales view. Provides information about the products which were purchased if conversions with cart data
+    /// is implemented. Performance metrics like revenue, gross profit, lead/cross-sell metrics etc. and Merchant Center
+    /// attributes such as brand, category etc. are available for products defined in an inventory feed and sold as a
+    /// result of Google ads. For purchases attributed to clicks on Shopping ads, dimensions of both clicked and sold
+    /// products can be viewed together.
+    /// </summary>
     public class GoogleAdsSearchads360V0ResourcesCartDataSalesView : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6510,7 +6578,12 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A user list. This is a list of users a customer may target.</summary>
+    /// <summary>
+    /// A user list. This is a list of users a customer may target. The unique key of a user list consists of the
+    /// following fields: `id`. Note that the `name` must also be unique for user lists owned by a given customer,
+    /// except in some cases where `access_reason` is set to `SHARED`. Violating the unique name constraint produces
+    /// error: `UserListError.INVALID_NAME`.
+    /// </summary>
     public class GoogleAdsSearchads360V0ResourcesUserList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Id of the user list.</summary>
@@ -6518,8 +6591,8 @@ namespace Google.Apis.SA360.v0.Data
         public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>
-        /// Name of this user list. Depending on its access_reason, the user list name may not be unique (for example,
-        /// if access_reason=SHARED)
+        /// Name of this user list. Unique per user list, except in some cases where a user list of the same name has
+        /// `access_reason` set to `SHARED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
