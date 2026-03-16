@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.CustomerEngagementSuite.v1beta Client Library</Title>
-    <Version>1.73.0.4075</Version>
+    <Version>1.73.0.4088</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2026 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -17,7 +17,7 @@
       Google APIs Client Library for working with Ces v1beta.
 
       Product documentation is available at:
-      https://cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference
+      https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps
 
       API reference documentation for this package is available at:
       https://googleapis.dev/dotnet/Google.Apis.CustomerEngagementSuite.v1beta/latest/api/Google.Apis.CustomerEngagementSuite.v1beta.html
