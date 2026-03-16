@@ -5756,6 +5756,17 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Inlined source.</summary>
+    public class GoogleCloudRunV2InlinedSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Input only. The source code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sources")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2SourceFile> Sources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A Cloud Run Instance represents a single group of containers running in a region.</summary>
     public class GoogleCloudRunV2Instance : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7799,6 +7810,33 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageSource")]
         public virtual GoogleCloudRunV2CloudStorageSource CloudStorageSource { get; set; }
 
+        /// <summary>
+        /// Optional. Input only. Source code inlined in the request. Cloud Run will store the inlined_source to Cloud
+        /// Storage and replace the field with cloud_storage_source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlinedSource")]
+        public virtual GoogleCloudRunV2InlinedSource InlinedSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Source file.</summary>
+    public class GoogleCloudRunV2SourceFile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Input only. The source code as raw text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>
+        /// Required. Input only. The file name for the source code. e.g., `"index.js"` or
+        /// `"node_modules/dependency.js"`. The filename must be less than 255 characters and cannot contain `..`, `./`,
+        /// `//`, or end with a `/`. Cloud Run will place the files in the container subdirectories, please use relative
+        /// path to access the file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filename")]
+        public virtual string Filename { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8618,7 +8656,7 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>
         /// Optional. Path within the volume from which the container's volume should be mounted. Defaults to ""
-        /// (volume's root).
+        /// (volume's root). This field is currently ignored for Secret volumes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subPath")]
         public virtual string SubPath { get; set; }
