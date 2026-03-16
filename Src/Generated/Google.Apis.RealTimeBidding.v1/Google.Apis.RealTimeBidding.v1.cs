@@ -1260,7 +1260,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// <summary>Updates a pretargeting configuration.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Output only. Name of the pretargeting configuration that must follow the pattern
+            /// Output only. Name of the pretargeting config that must follow the pattern
             /// `bidders/{bidder_account_id}/pretargetingConfigs/{config_id}`
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.RealTimeBidding.v1.Data.PretargetingConfig body, string name)
@@ -1280,7 +1280,7 @@ namespace Google.Apis.RealTimeBidding.v1
                 }
 
                 /// <summary>
-                /// Output only. Name of the pretargeting configuration that must follow the pattern
+                /// Output only. Name of the pretargeting config that must follow the pattern
                 /// `bidders/{bidder_account_id}/pretargetingConfigs/{config_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -4282,11 +4282,11 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     /// </summary>
     public class NumericTargetingDimension : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The IDs excluded in a configuration.</summary>
+        /// <summary>The IDs excluded in a config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> ExcludedIds { get; set; }
 
-        /// <summary>The IDs included in a configuration.</summary>
+        /// <summary>The IDs included in a config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> IncludedIds { get; set; }
 
@@ -4392,14 +4392,14 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     }
 
     /// <summary>
-    /// Pretargeting configuration: a set of targeting dimensions applied at the pretargeting stage of the RTB funnel.
-    /// These control which inventory a bidder will receive bid requests for.
+    /// Pretargeting config: a set of targeting dimensions applied at the pretargeting stage of the RTB funnel. These
+    /// control which inventory a bidder will receive bid requests for.
     /// </summary>
     public class PretargetingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Targeting modes included by this configuration. A bid request must allow all the specified targeting modes.
-        /// An unset value allows all bid requests to be sent, regardless of which targeting modes they allow.
+        /// Targeting modes included by this config. A bid request must allow all the specified targeting modes. An
+        /// unset value allows all bid requests to be sent, regardless of which targeting modes they allow.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedUserTargetingModes")]
         public virtual System.Collections.Generic.IList<string> AllowedUserTargetingModes { get; set; }
@@ -4415,39 +4415,39 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         public virtual AppTargeting AppTargeting { get; set; }
 
         /// <summary>
-        /// Output only. The identifier that corresponds to this pretargeting configuration that helps buyers track and
-        /// attribute their spend across their own arbitrary divisions. If a bid request matches more than one
-        /// configuration, the buyer chooses which billing_id to attribute each of their bids.
+        /// Output only. The identifier that corresponds to this pretargeting config that helps buyers track and
+        /// attribute their spend across their own arbitrary divisions. If a bid request matches more than one config,
+        /// the buyer chooses which billing_id to attribute each of their bids.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingId")]
         public virtual System.Nullable<long> BillingId { get; set; }
 
         /// <summary>
-        /// The diplay name associated with this configuration. This name must be unique among all the pretargeting
-        /// configurations a bidder has.
+        /// The diplay name associated with this config. This name must be unique among all the pretargeting configs a
+        /// bidder has.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// The sensitive content category label IDs excluded in this configuration. Bid requests for inventory with any
-        /// of the specified content label IDs will not be sent. Refer to this file
+        /// The sensitive content category label IDs excluded in this config. Bid requests for inventory with any of the
+        /// specified content label IDs will not be sent. Refer to this file
         /// https://storage.googleapis.com/adx-rtb-dictionaries/content-labels.txt for category IDs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedContentLabelIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> ExcludedContentLabelIds { get; set; }
 
         /// <summary>
-        /// The geos included or excluded in this configuration defined in
+        /// The geos included or excluded in this config defined in
         /// https://storage.googleapis.com/adx-rtb-dictionaries/geo-table.csv
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoTargeting")]
         public virtual NumericTargetingDimension GeoTargeting { get; set; }
 
         /// <summary>
-        /// Creative dimensions included by this configuration. Only bid requests eligible for at least one of the
-        /// specified creative dimensions will be sent. An unset value allows all bid requests to be sent, regardless of
-        /// creative dimension.
+        /// Creative dimensions included by this config. Only bid requests eligible for at least one of the specified
+        /// creative dimensions will be sent. An unset value allows all bid requests to be sent, regardless of creative
+        /// dimension.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedCreativeDimensions")]
         public virtual System.Collections.Generic.IList<CreativeDimensions> IncludedCreativeDimensions { get; set; }
@@ -4461,44 +4461,43 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         public virtual System.Collections.Generic.IList<string> IncludedEnvironments { get; set; }
 
         /// <summary>
-        /// Creative formats included by this configuration. Only bid requests eligible for at least one of the
-        /// specified creative formats will be sent. An unset value will allow all bid requests to be sent, regardless
-        /// of format.
+        /// Creative formats included by this config. Only bid requests eligible for at least one of the specified
+        /// creative formats will be sent. An unset value will allow all bid requests to be sent, regardless of format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedFormats")]
         public virtual System.Collections.Generic.IList<string> IncludedFormats { get; set; }
 
         /// <summary>
-        /// The languages included in this configuration, represented by their language code. See
+        /// The languages included in this config, represented by their language code. See
         /// https://developers.google.com/adwords/api/docs/appendix/languagecodes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedLanguages")]
         public virtual System.Collections.Generic.IList<string> IncludedLanguages { get; set; }
 
         /// <summary>
-        /// The mobile operating systems included in this configuration as defined in
+        /// The mobile operating systems included in this config as defined in
         /// https://storage.googleapis.com/adx-rtb-dictionaries/mobile-os.csv
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedMobileOperatingSystemIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> IncludedMobileOperatingSystemIds { get; set; }
 
         /// <summary>
-        /// The platforms included by this configration. Bid requests for devices with the specified platform types will
-        /// be sent. An unset value allows all bid requests to be sent, regardless of platform.
+        /// The platforms included by this config. Bid requests for devices with the specified platform types will be
+        /// sent. An unset value allows all bid requests to be sent, regardless of platform.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedPlatforms")]
         public virtual System.Collections.Generic.IList<string> IncludedPlatforms { get; set; }
 
         /// <summary>
-        /// User identifier types included in this configuration. At least one of the user identifier types specified in
-        /// this list must be available for the bid request to be sent.
+        /// User identifier types included in this config. At least one of the user identifier types specified in this
+        /// list must be available for the bid request to be sent.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedUserIdTypes")]
         public virtual System.Collections.Generic.IList<string> IncludedUserIdTypes { get; set; }
 
         /// <summary>
-        /// The interstitial targeting specified for this configuration. The unset value will allow bid requests to be
-        /// sent regardless of whether they are for interstitials or not.
+        /// The interstitial targeting specified for this config. The unset value will allow bid requests to be sent
+        /// regardless of whether they are for interstitials or not.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interstitialTargeting")]
         public virtual string InterstitialTargeting { get; set; }
@@ -4511,24 +4510,23 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         public virtual System.Collections.Generic.IList<System.Nullable<long>> InvalidGeoIds { get; set; }
 
         /// <summary>
-        /// The maximum QPS threshold for this configuration. The bidder should receive no more than this number of bid
-        /// requests matching this configuration per second across all their bidding endpoints among all trading
-        /// locations. Further information available at https://developers.google.com/authorized-buyers/rtb/peer-guide
+        /// The maximum QPS threshold for this config. The bidder should receive no more than this number of bid
+        /// requests matching this config per second across all their bidding endpoints among all trading locations.
+        /// Further information available at https://developers.google.com/authorized-buyers/rtb/peer-guide
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximumQps")]
         public virtual System.Nullable<long> MaximumQps { get; set; }
 
         /// <summary>
-        /// The targeted minimum viewability decile, ranging in values [0, 10]. A value of 5 means that the
-        /// configuration will only match adslots for which we predict at least 50% viewability. Values &amp;gt; 10 will
-        /// be rounded down to 10. An unset value or a value of 0 indicates that bid requests will be sent regardless of
-        /// viewability.
+        /// The targeted minimum viewability decile, ranging in values [0, 10]. A value of 5 means that the config will
+        /// only match adslots for which we predict at least 50% viewability. Values &amp;gt; 10 will be rounded down to
+        /// 10. An unset value or a value of 0 indicates that bid requests will be sent regardless of viewability.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumViewabilityDecile")]
         public virtual System.Nullable<int> MinimumViewabilityDecile { get; set; }
 
         /// <summary>
-        /// Output only. Name of the pretargeting configuration that must follow the pattern
+        /// Output only. Name of the pretargeting config that must follow the pattern
         /// `bidders/{bidder_account_id}/pretargetingConfigs/{config_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -4549,16 +4547,16 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publisherTargeting")]
         public virtual StringTargetingDimension PublisherTargeting { get; set; }
 
-        /// <summary>Output only. The state of this pretargeting configuration.</summary>
+        /// <summary>Output only. The state of this pretargeting config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>The remarketing lists included or excluded in this configuration as defined in UserList.</summary>
+        /// <summary>The remarketing lists included or excluded in this config as defined in UserList.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userListTargeting")]
         public virtual NumericTargetingDimension UserListTargeting { get; set; }
 
         /// <summary>
-        /// The verticals included or excluded in this configuration as defined in
+        /// The verticals included or excluded in this config as defined in
         /// https://developers.google.com/authorized-buyers/rtb/downloads/publisher-verticals
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verticalTargeting")]
@@ -4569,7 +4567,7 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// is applied. A maximum of 50,000 site URLs can be targeted. An unset value for targeting allows all web-based
         /// bid requests to be sent. Sites can either be targeting positively (bid requests will be sent only if the
         /// destination site is listed in the targeting dimension) or negatively (bid requests will be sent only if the
-        /// destination site is not listed in the pretargeting configuration).
+        /// destination site is not listed in the pretargeting config).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webTargeting")]
         public virtual StringTargetingDimension WebTargeting { get; set; }
