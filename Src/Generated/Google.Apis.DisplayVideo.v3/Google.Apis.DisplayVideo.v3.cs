@@ -20533,7 +20533,7 @@ namespace Google.Apis.DisplayVideo.v3.Data
     /// <summary>A single ad group associated with a line item.</summary>
     public class AdGroup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The format of the ads in the ad group.</summary>
+        /// <summary>Required. Immutable. The format of the ads in the ad group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupFormat")]
         public virtual string AdGroupFormat { get; set; }
 
@@ -20572,7 +20572,7 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
         public virtual string EntityStatus { get; set; }
 
-        /// <summary>Required. The unique ID of the line item that the ad group belongs to.</summary>
+        /// <summary>Required. Immutable. The unique ID of the line item that the ad group belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
         public virtual System.Nullable<long> LineItemId { get; set; }
 
@@ -20602,7 +20602,7 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupAdId")]
         public virtual System.Nullable<long> AdGroupAdId { get; set; }
 
-        /// <summary>Required. The unique ID of the ad group that the ad belongs to.</summary>
+        /// <summary>Required. Immutable. The unique ID of the ad group that the ad belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupId")]
         public virtual System.Nullable<long> AdGroupId { get; set; }
 
@@ -30264,6 +30264,13 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableOptimizedTargeting")]
         public virtual System.Nullable<bool> EnableOptimizedTargeting { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to exclude demographic expansion for Optimized Targeting. This field only applies to
+        /// Demand Gen ad groups.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeDemographicExpansion")]
+        public virtual System.Nullable<bool> ExcludeDemographicExpansion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
