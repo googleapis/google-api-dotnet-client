@@ -12379,6 +12379,7 @@ namespace Google.Apis.CloudRun.v1.Data
 
         /// <summary>
         /// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+        /// This field is currently ignored for Secret volumes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subPath")]
         public virtual string SubPath { get; set; }
