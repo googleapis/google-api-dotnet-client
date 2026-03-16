@@ -11219,6 +11219,13 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("postSubmissionState")]
         public virtual string PostSubmissionState { get; set; }
 
+        /// <summary>
+        /// Identifier for the student that owns this submission. Requires the user to be a teacher in the course and
+        /// have permission to read student submissions. Read-only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
