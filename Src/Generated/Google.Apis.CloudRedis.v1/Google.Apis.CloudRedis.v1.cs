@@ -3261,6 +3261,10 @@ namespace Google.Apis.CloudRedis.v1.Data
     /// <summary>A cluster instance.</summary>
     public class Cluster : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The ACL policy to be applied to the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aclPolicy")]
+        public virtual string AclPolicy { get; set; }
+
         /// <summary>Optional. Immutable. Deprecated, do not use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowFewerZonesDeployment")]
         public virtual System.Nullable<bool> AllowFewerZonesDeployment { get; set; }
@@ -4483,10 +4487,14 @@ namespace Google.Apis.CloudRedis.v1.Data
 
     /// <summary>
     /// Database resource signal data. This is used to send signals to Condor which are based on the DB/Instance/Fleet
-    /// level configurations. These will be used to send signals for all inventory types. Next ID: 7
+    /// level configurations. These will be used to send signals for all inventory types. Next ID: 10
     /// </summary>
     public class DatabaseResourceSignalData : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Deprecated: Use signal_metadata_list instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupRun")]
+        public virtual BackupRun BackupRun { get; set; }
+
         /// <summary>Required. Full Resource name of the source resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
         public virtual string FullResourceName { get; set; }
@@ -4530,13 +4538,21 @@ namespace Google.Apis.CloudRedis.v1.Data
             set => LastRefreshTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Resource location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
         /// <summary>Database resource id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual DatabaseResourceId ResourceId { get; set; }
 
-        /// <summary>Signal data for boolean signals.</summary>
+        /// <summary>Deprecated: Use signal_metadata_list instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signalBoolValue")]
         public virtual System.Nullable<bool> SignalBoolValue { get; set; }
+
+        /// <summary>This will support array of OneOf signal metadata information for a given signal type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signalMetadataList")]
+        public virtual System.Collections.Generic.IList<SignalMetadata> SignalMetadataList { get; set; }
 
         /// <summary>Required. Output only. Signal state of the signal</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signalState")]
@@ -5123,7 +5139,8 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ReadReplicasMode { get; set; }
 
         /// <summary>
-        /// Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently, the only
+        /// Optional. Redis configuration parameters, according to [Redis
+        /// configuration](https://redis.io/docs/latest/operate/oss_and_stack/management/config/). Currently, the only
         /// supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis
         /// version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and
         /// newer: * stream-node-max-bytes * stream-node-max-entries
@@ -6668,6 +6685,24 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// SignalMetadata contains one of the signal metadata proto messages associated with a SignalType. This proto will
+    /// be mapped to SignalMetadata message in storage.proto. Next ID: 3
+    /// </summary>
+    public class SignalMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Signal data for backup runs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupRun")]
+        public virtual BackupRun BackupRun { get; set; }
+
+        /// <summary>Signal data for boolean signals.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signalBoolValue")]
+        public virtual System.Nullable<bool> SignalBoolValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
