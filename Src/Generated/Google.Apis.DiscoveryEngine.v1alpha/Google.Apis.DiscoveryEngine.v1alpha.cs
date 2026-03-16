@@ -26175,8 +26175,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                         /// <summary>
                         /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-                        /// defaults to 10. The maximum value is 50; values above 50 will be coerced to 50. If this
-                        /// field is negative, an INVALID_ARGUMENT error is returned.
+                        /// defaults to 1000. The maximum value is 1000; values above 1000 will be coerced to 1000. If
+                        /// this field is negative, an INVALID_ARGUMENT error is returned.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
@@ -28667,6 +28667,38 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>If set true, initial indexing is disabled for the DataStore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableInitialIndex")]
         public virtual System.Nullable<bool> DisableInitialIndex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Agent Gateway setting, which may be attached to Gemini Enterprise resources for egress control of Gemini
+    /// Enterprise agents to agents and tools outside of Gemini Enterprise.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1AgentGatewaySetting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The default egress agent gateway to use, when this setting is applied to a Gemini Enterprise
+        /// resource. The deployment mode must be GOOGLE_MANAGED, and the governed access path must be
+        /// AGENT_TO_ANYWHERE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultEgressAgentGateway")]
+        public virtual GoogleCloudDiscoveryengineV1AgentGatewaySettingAgentGatewayReference DefaultEgressAgentGateway { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Reference to an Agent Gateway resource.</summary>
+    public class GoogleCloudDiscoveryengineV1AgentGatewaySettingAgentGatewayReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Immutable. The resource name of the agent gateway. Expected format:
+        /// `projects/{project_number}/locations/{location}/agentGateways/{agent_gateway}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -32125,6 +32157,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Metadata that describes the training and serving parameters of an Engine.</summary>
     public class GoogleCloudDiscoveryengineV1Engine : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The agent gateway setting for the engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentGatewaySetting")]
+        public virtual GoogleCloudDiscoveryengineV1AgentGatewaySetting AgentGatewaySetting { get; set; }
+
         /// <summary>
         /// Optional. Immutable. This the application type which this engine resource represents. NOTE: this is a new
         /// concept independ of existing industry vertical or solution type.
@@ -32281,9 +32317,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("observabilityConfig")]
         public virtual GoogleCloudDiscoveryengineV1ObservabilityConfig ObservabilityConfig { get; set; }
 
-        /// <summary>Optional. The email of the procurement contact.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("procurementContactEmail")]
-        public virtual string ProcurementContactEmail { get; set; }
+        /// <summary>Optional. The emails of the procurement contacts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("procurementContactEmails")]
+        public virtual System.Collections.Generic.IList<string> ProcurementContactEmails { get; set; }
 
         /// <summary>
         /// Configurations for the Search Engine. Only applicable if solution_type is SOLUTION_TYPE_SEARCH.
@@ -33289,13 +33325,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Observability config for a resource.</summary>
     public class GoogleCloudDiscoveryengineV1ObservabilityConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Enables observability. If false, all other flags are ignored.</summary>
+        /// <summary>Optional. Enables observability. If `false`, all other flags are ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observabilityEnabled")]
         public virtual System.Nullable<bool> ObservabilityEnabled { get; set; }
 
         /// <summary>
         /// Optional. Enables sensitive logging. Sensitive logging includes customer core content (e.g. prompts,
-        /// responses). If false, will sanitize all sensitive fields.
+        /// responses). If `false`, will sanitize all sensitive fields.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitiveLoggingEnabled")]
         public virtual System.Nullable<bool> SensitiveLoggingEnabled { get; set; }
@@ -36278,6 +36314,38 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>
         /// Identifier. The resource name of the file. Format:
         /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/agents/{agent}/files/{file}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Agent Gateway setting, which may be attached to Gemini Enterprise resources for egress control of Gemini
+    /// Enterprise agents to agents and tools outside of Gemini Enterprise.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaAgentGatewaySetting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The default egress agent gateway to use, when this setting is applied to a Gemini Enterprise
+        /// resource. The deployment mode must be GOOGLE_MANAGED, and the governed access path must be
+        /// AGENT_TO_ANYWHERE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultEgressAgentGateway")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAgentGatewaySettingAgentGatewayReference DefaultEgressAgentGateway { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Reference to an Agent Gateway resource.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAgentGatewaySettingAgentGatewayReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Immutable. The resource name of the agent gateway. Expected format:
+        /// `projects/{project_number}/locations/{location}/agentGateways/{agent_gateway}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -42092,10 +42160,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Data protection policy config for a connector.</summary>
+    /// <summary>Contains the data protection policy config for a DataStore or a connector.</summary>
     public class GoogleCloudDiscoveryengineV1alphaDataProtectionPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The sensitive data protection policy for the connector source.</summary>
+        /// <summary>Optional. Specifies the sensitive data protection policy for the connector source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitiveDataProtectionPolicy")]
         public virtual GoogleCloudDiscoveryengineV1alphaDataProtectionPolicySensitiveDataProtectionPolicy SensitiveDataProtectionPolicy { get; set; }
 
@@ -42109,7 +42177,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaDataProtectionPolicySensitiveDataProtectionPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The Sensitive Data Protection content policy resource name.</summary>
+        /// <summary>Optional. Specifies the resource name of the Sensitive Data Protection content policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual string Policy { get; set; }
 
@@ -44203,6 +44271,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Metadata that describes the training and serving parameters of an Engine.</summary>
     public class GoogleCloudDiscoveryengineV1alphaEngine : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The agent gateway setting for the engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentGatewaySetting")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAgentGatewaySetting AgentGatewaySetting { get; set; }
+
         /// <summary>
         /// Optional. Immutable. This the application type which this engine resource represents. NOTE: this is a new
         /// concept independ of existing industry vertical or solution type.
@@ -44359,9 +44431,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("observabilityConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaObservabilityConfig ObservabilityConfig { get; set; }
 
-        /// <summary>Optional. The email of the procurement contact.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("procurementContactEmail")]
-        public virtual string ProcurementContactEmail { get; set; }
+        /// <summary>Optional. The emails of the procurement contacts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("procurementContactEmails")]
+        public virtual System.Collections.Generic.IList<string> ProcurementContactEmails { get; set; }
 
         /// <summary>
         /// Output only. Additional information of a recommendation engine. Only applicable if solution_type is
@@ -45505,6 +45577,15 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaOrgPaths")]
         public virtual System.Collections.Generic.IList<string> SchemaOrgPaths { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the importance of the field when `searchable_option` is `SEARCHABLE_ENABLED`. If
+        /// `searchable_option` is `SEARCHABLE_DISABLED`, this field is ignored. If `searchable_option` is
+        /// `SEARCHABLE_ENABLED` and this is `SEARCHABLE_FIELD_IMPORTANCE_UNSPECIFIED`, it behaves as
+        /// `DEFAULT_IMPORTANCE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchableFieldImportance")]
+        public virtual string SearchableFieldImportance { get; set; }
 
         /// <summary>
         /// If searchable_option is SEARCHABLE_ENABLED, field values are searchable by text queries in
@@ -47729,13 +47810,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Observability config for a resource.</summary>
     public class GoogleCloudDiscoveryengineV1alphaObservabilityConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Enables observability. If false, all other flags are ignored.</summary>
+        /// <summary>Optional. Enables observability. If `false`, all other flags are ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observabilityEnabled")]
         public virtual System.Nullable<bool> ObservabilityEnabled { get; set; }
 
         /// <summary>
         /// Optional. Enables sensitive logging. Sensitive logging includes customer core content (e.g. prompts,
-        /// responses). If false, will sanitize all sensitive fields.
+        /// responses). If `false`, will sanitize all sensitive fields.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitiveLoggingEnabled")]
         public virtual System.Nullable<bool> SensitiveLoggingEnabled { get; set; }
@@ -55948,6 +56029,38 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     }
 
     /// <summary>
+    /// Agent Gateway setting, which may be attached to Gemini Enterprise resources for egress control of Gemini
+    /// Enterprise agents to agents and tools outside of Gemini Enterprise.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaAgentGatewaySetting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The default egress agent gateway to use, when this setting is applied to a Gemini Enterprise
+        /// resource. The deployment mode must be GOOGLE_MANAGED, and the governed access path must be
+        /// AGENT_TO_ANYWHERE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultEgressAgentGateway")]
+        public virtual GoogleCloudDiscoveryengineV1betaAgentGatewaySettingAgentGatewayReference DefaultEgressAgentGateway { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Reference to an Agent Gateway resource.</summary>
+    public class GoogleCloudDiscoveryengineV1betaAgentGatewaySettingAgentGatewayReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Immutable. The resource name of the agent gateway. Expected format:
+        /// `projects/{project_number}/locations/{location}/agentGateways/{agent_gateway}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Metadata related to the progress of the SiteSearchEngineService.BatchCreateTargetSites operation. This will be
     /// returned by the google.longrunning.Operation.metadata field.
     /// </summary>
@@ -58362,6 +58475,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Metadata that describes the training and serving parameters of an Engine.</summary>
     public class GoogleCloudDiscoveryengineV1betaEngine : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The agent gateway setting for the engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentGatewaySetting")]
+        public virtual GoogleCloudDiscoveryengineV1betaAgentGatewaySetting AgentGatewaySetting { get; set; }
+
         /// <summary>
         /// Optional. Immutable. This the application type which this engine resource represents. NOTE: this is a new
         /// concept independ of existing industry vertical or solution type.
@@ -58518,9 +58635,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("observabilityConfig")]
         public virtual GoogleCloudDiscoveryengineV1betaObservabilityConfig ObservabilityConfig { get; set; }
 
-        /// <summary>Optional. The email of the procurement contact.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("procurementContactEmail")]
-        public virtual string ProcurementContactEmail { get; set; }
+        /// <summary>Optional. The emails of the procurement contacts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("procurementContactEmails")]
+        public virtual System.Collections.Generic.IList<string> ProcurementContactEmails { get; set; }
 
         /// <summary>
         /// Configurations for the Search Engine. Only applicable if solution_type is SOLUTION_TYPE_SEARCH.
@@ -59827,13 +59944,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Observability config for a resource.</summary>
     public class GoogleCloudDiscoveryengineV1betaObservabilityConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Enables observability. If false, all other flags are ignored.</summary>
+        /// <summary>Optional. Enables observability. If `false`, all other flags are ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observabilityEnabled")]
         public virtual System.Nullable<bool> ObservabilityEnabled { get; set; }
 
         /// <summary>
         /// Optional. Enables sensitive logging. Sensitive logging includes customer core content (e.g. prompts,
-        /// responses). If false, will sanitize all sensitive fields.
+        /// responses). If `false`, will sanitize all sensitive fields.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitiveLoggingEnabled")]
         public virtual System.Nullable<bool> SensitiveLoggingEnabled { get; set; }
