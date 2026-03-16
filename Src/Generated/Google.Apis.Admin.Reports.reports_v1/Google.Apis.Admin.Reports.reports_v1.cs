@@ -2385,6 +2385,17 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Identity of the Google Workspace customer who owns the resource.</summary>
+    public class CustomerIdentity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Customer id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
     /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
@@ -2540,6 +2551,21 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Identity of the group who owns the resource.</summary>
+    public class GroupIdentity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Group email.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupEmail")]
+        public virtual string GroupEmail { get; set; }
+
+        /// <summary>Group gaia id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>JSON template for a parameter used in various reports.</summary>
     public class NestedParameter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2575,6 +2601,40 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details of the owner of the resource.</summary>
+    public class OwnerDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identity details of the owner(s) of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerIdentity")]
+        public virtual System.Collections.Generic.IList<OwnerIdentity> OwnerIdentity { get; set; }
+
+        /// <summary>Type of the owner of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerType")]
+        public virtual string OwnerType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Identity details of the owner of the resource.</summary>
+    public class OwnerIdentity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identity of the Google Workspace customer who owns the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerIdentity")]
+        public virtual CustomerIdentity CustomerIdentity { get; set; }
+
+        /// <summary>Identity of the group who owns the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupIdentity")]
+        public virtual GroupIdentity GroupIdentity { get; set; }
+
+        /// <summary>Identity of the user who owns the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userIdentity")]
+        public virtual UserIdentity UserIdentity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The reason why the label/field was applied.</summary>
     public class Reason : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2593,9 +2653,16 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appliedLabels")]
         public virtual System.Collections.Generic.IList<AppliedLabel> AppliedLabels { get; set; }
 
-        /// <summary>Identifier of the resource.</summary>
+        /// <summary>
+        /// Identifier of the resource, such as a doc_id for a Drive document, a conference_id for a Meet conference, or
+        /// a "gaia_id/rfc2822_message_id" for an email.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
+
+        /// <summary>Owner details of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerDetails")]
+        public virtual OwnerDetails OwnerDetails { get; set; }
 
         /// <summary>Defines relationship of the resource to the events</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relation")]
@@ -2785,5 +2852,20 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
                 public virtual string Value { get; set; }
             }
         }
+    }
+
+    /// <summary>Identity of the user who owns the resource.</summary>
+    public class UserIdentity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>User gaia id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>User email.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
+        public virtual string UserEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 }
