@@ -13360,6 +13360,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("qaConfig")]
         public virtual GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig QaConfig { get; set; }
 
+        /// <summary>
+        /// Optional. Whether to run the auto-labeling annotator. If true, the auto-labeling annotator will be run. This
+        /// is a non-billable operation designed for fixing or backfilling custom labels.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runAutoLabelingAnnotator")]
+        public virtual System.Nullable<bool> RunAutoLabelingAnnotator { get; set; }
+
         /// <summary>Whether to run the entity annotator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runEntityAnnotator")]
         public virtual System.Nullable<bool> RunEntityAnnotator { get; set; }
@@ -14150,6 +14157,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
 
+        /// <summary>Output only. If true, the labeling rules will be re-evaluated for the conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relabel")]
+        public virtual System.Nullable<bool> Relabel { get; set; }
+
         /// <summary>The original request for bulk analyze.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("request")]
         public virtual GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest Request { get; set; }
@@ -14186,6 +14197,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Required. The parent resource to create analyses in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
+
+        /// <summary>Optional. If true, the labeling rules will be re-evaluated for the conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relabel")]
+        public virtual System.Nullable<bool> Relabel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23099,6 +23114,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("qaConfig")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfig QaConfig { get; set; }
 
+        /// <summary>
+        /// Optional. Whether to run the auto-labeling annotator. If true, the auto-labeling annotator will be run. This
+        /// is a non-billable operation designed for fixing or backfilling custom labels.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runAutoLabelingAnnotator")]
+        public virtual System.Nullable<bool> RunAutoLabelingAnnotator { get; set; }
+
         /// <summary>Whether to run the entity annotator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runEntityAnnotator")]
         public virtual System.Nullable<bool> RunEntityAnnotator { get; set; }
@@ -23345,6 +23367,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
 
+        /// <summary>Output only. If true, the labeling rules will be re-evaluated for the conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relabel")]
+        public virtual System.Nullable<bool> Relabel { get; set; }
+
         /// <summary>The original request for bulk analyze.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("request")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest Request { get; set; }
@@ -23381,6 +23407,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Required. The parent resource to create analyses in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
+
+        /// <summary>Optional. If true, the labeling rules will be re-evaluated for the conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relabel")]
+        public virtual System.Nullable<bool> Relabel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -29147,6 +29177,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("qaConfig")]
         public virtual GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfig QaConfig { get; set; }
 
+        /// <summary>
+        /// Optional. Whether to run the auto-labeling annotator. If true, the auto-labeling annotator will be run. This
+        /// is a non-billable operation designed for fixing or backfilling custom labels.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runAutoLabelingAnnotator")]
+        public virtual System.Nullable<bool> RunAutoLabelingAnnotator { get; set; }
+
         /// <summary>Whether to run the entity annotator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runEntityAnnotator")]
         public virtual System.Nullable<bool> RunEntityAnnotator { get; set; }
@@ -29393,6 +29430,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
 
+        /// <summary>Output only. If true, the labeling rules will be re-evaluated for the conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relabel")]
+        public virtual System.Nullable<bool> Relabel { get; set; }
+
         /// <summary>The original request for bulk analyze.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("request")]
         public virtual GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsRequest Request { get; set; }
@@ -29429,6 +29470,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Required. The parent resource to create analyses in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
+
+        /// <summary>Optional. If true, the labeling rules will be re-evaluated for the conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relabel")]
+        public virtual System.Nullable<bool> Relabel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
