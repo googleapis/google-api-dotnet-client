@@ -5706,15 +5706,15 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     }
 
     /// <summary>
-    /// Contains information about browser profiles reported by the [Endpoint Verification
-    /// extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
+    /// Contains information about browser profiles reported by the Clients on the device (e.g. [Endpoint Verification
+    /// extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1)).
     /// </summary>
     public class BrowserAttributes : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Represents the current state of the [Chrome browser
-        /// attributes](https://cloud.google.com/access-context-manager/docs/browser-attributes) sent by the [Endpoint
-        /// Verification
+        /// attributes](https://cloud.google.com/access-context-manager/docs/browser-attributes) sent by the clients on
+        /// the device, such as [Endpoint Verification
         /// extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chromeBrowserInfo")]
@@ -5768,7 +5768,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     }
 
     /// <summary>
-    /// Browser-specific fields reported by the [Endpoint Verification
+    /// Browser-specific fields reported by clients on the device, such as [Endpoint Verification
     /// extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
     /// </summary>
     public class BrowserInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -5859,6 +5859,14 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordProtectionWarningTrigger")]
         public virtual string PasswordProtectionWarningTrigger { get; set; }
+
+        /// <summary>
+        /// Output only. Chrome policies information for the browser as can be seen in chrome://policy. Full
+        /// possibilities of policies can be consulted in [Chrome Enterprise Policy
+        /// List](https://chromeenterprise.google/policies/).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policies")]
+        public virtual System.Collections.Generic.IList<ChromePolicy> Policies { get; set; }
 
         /// <summary>
         /// Current state of [Safe Browsing protection
@@ -6079,6 +6087,42 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasMembership")]
         public virtual System.Nullable<bool> HasMembership { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a Chrome policy and its current state.</summary>
+    public class ChromePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. A list of other policy values for the same policy name that were not applied due to lower
+        /// precedence. This field is empty if there were no conflicts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conflicts")]
+        public virtual System.Collections.Generic.IList<PolicyConflict> Conflicts { get; set; }
+
+        /// <summary>
+        /// Output only. The unique name of the Chrome policy. These names correspond to the policy names listed in
+        /// [Chrome Enterprise Policy List](https://chromeenterprise.google/policies/)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The scope at which the *applied* policy value is set (USER or MACHINE).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>Output only. The source from which the *applied* policy value originated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>
+        /// Output only. The currently applied value of the policy. The format depends on the policy type (e.g.,
+        /// boolean, string, JSON array/object).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6356,6 +6400,14 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// <summary>Output only. Device brand. Example: Samsung.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brand")]
         public virtual string Brand { get; set; }
+
+        /// <summary>
+        /// Browser profiles on the device. This is a copy of the BrowserAttributes message defined in
+        /// EndpointVerificationSpecificAttributes. We are replicating it here since EndpointVerification isn't the only
+        /// client reporting browser profiles.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("browserProfiles")]
+        public virtual System.Collections.Generic.IList<BrowserAttributes> BrowserProfiles { get; set; }
 
         /// <summary>Output only. Build number of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildNumber")]
@@ -9206,6 +9258,27 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// <summary>Output only. The type of the policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a policy value from a source that was not applied because a higher-priority source took precedence.
+    /// </summary>
+    public class PolicyConflict : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The scope at which this lower-priority policy is set (USER or MACHINE).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>Output only. The source from which this lower-priority policy value originated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>Output only. The policy value from this lower-priority source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
