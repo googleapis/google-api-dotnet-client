@@ -14385,9 +14385,8 @@ namespace Google.Apis.DLP.v2.Data
     public class GooglePrivacyDlpV2CustomInfoType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Set of detection rules to apply to all findings of this CustomInfoType. Rules are applied in order that they
-        /// are specified. Not supported for the `surrogate_type`, `metadata_key_value_expression`, and `prompt`
-        /// CustomInfoType.
+        /// Set of detection rules to apply to all findings of this CustomInfoType. Rules are applied in the order that
+        /// they are specified. Only supported for the `dictionary`, `regex`, and `stored_type` CustomInfoTypes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectionRules")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2DetectionRule> DetectionRules { get; set; }
@@ -14398,7 +14397,7 @@ namespace Google.Apis.DLP.v2.Data
 
         /// <summary>
         /// If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used
-        /// for rules matching. Not supported for the `metadata_key_value_expression` and `prompt` CustomInfoType.
+        /// for rules matching. Only supported for the `dictionary`, `regex`, and `stored_type` CustomInfoTypes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusionType")]
         public virtual string ExclusionType { get; set; }
@@ -14419,7 +14418,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("likelihood")]
         public virtual string Likelihood { get; set; }
 
-        /// <summary>key-value pairs to detect in the metadata.</summary>
+        /// <summary>Key-value pair to detect in the metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadataKeyValueExpression")]
         public virtual GooglePrivacyDlpV2MetadataKeyValueExpression MetadataKeyValueExpression { get; set; }
 
@@ -18610,11 +18609,9 @@ namespace Google.Apis.DLP.v2.Data
     public class GooglePrivacyDlpV2KeyValueMetadataLabel : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The metadata key. The format depends on the source of the metadata. Examples: - Microsoft Purview
-        /// Information Protection keys look like 'MSIP_Label_122709e3-8f6b-4860-985f-7f722a94f61e_Enabled',
-        /// 'MSIP_Label_122709e3-8f6b-4860-985f-7f722a94f61e_Method',
-        /// 'MSIP_Label_122709e3-8f6b-4860-985f-7f722a94f61e_Name'. - General metadata keys look like 'Author', 'Title',
-        /// 'Description'.
+        /// The metadata key. The format depends on the source of the metadata. Example: -
+        /// `MSIP_Label_122709e3-8f6b-4860-985f-7f722a94f61e_Enabled` (a Microsoft Purview Information Protection key
+        /// example)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
@@ -19064,7 +19061,8 @@ namespace Google.Apis.DLP.v2.Data
     }
 
     /// <summary>
-    /// Configuration for a custom infoType that detects given expression of key-value pair in the metadata.
+    /// Configuration for a custom infoType that detects key-value pairs in the metadata matching the specified regular
+    /// expressions.
     /// </summary>
     public class GooglePrivacyDlpV2MetadataKeyValueExpression : Google.Apis.Requests.IDirectResponseSchema
     {
