@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1789,14 +1789,24 @@ namespace Google.Apis.CloudTasks.v2
                 }
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(this.service, name);
             }
 
-            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <summary>
+            /// Lists information about the supported locations for this service. This method can be called in two ways:
+            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
+            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
+            /// private or other locations specifically visible to the project.
+            /// </summary>
             public class ListRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1894,7 +1904,7 @@ namespace Google.Apis.CloudTasks.v2
             }
 
             /// <summary>
-            /// Creates or Updates a CMEK config. Updates the Customer Managed Encryption Key assotiated with the Cloud
+            /// Creates or Updates a CMEK config. Updates the Customer Managed Encryption Key associated with the Cloud
             /// Tasks location (Creates if the key does not already exist). All new tasks created in the location will
             /// be encrypted at-rest with the KMS-key provided in the config.
             /// </summary>
@@ -1909,7 +1919,7 @@ namespace Google.Apis.CloudTasks.v2
             }
 
             /// <summary>
-            /// Creates or Updates a CMEK config. Updates the Customer Managed Encryption Key assotiated with the Cloud
+            /// Creates or Updates a CMEK config. Updates the Customer Managed Encryption Key associated with the Cloud
             /// Tasks location (Creates if the key does not already exist). All new tasks created in the location will
             /// be encrypted at-rest with the KMS-key provided in the config.
             /// </summary>
@@ -3070,13 +3080,15 @@ namespace Google.Apis.CloudTasks.v2.Data
         /// rate of task dispatches. Each queue has a token bucket that holds tokens, up to the maximum specified by
         /// `max_burst_size`. Each time a task is dispatched, a token is removed from the bucket. Tasks will be
         /// dispatched until the queue's bucket runs out of tokens. The bucket will be continuously refilled with new
-        /// tokens based on max_dispatches_per_second. Cloud Tasks will pick the value of `max_burst_size` based on the
-        /// value of max_dispatches_per_second. For queues that were created or updated using `queue.yaml/xml`,
+        /// tokens based on `max_dispatches_per_second`. Cloud Tasks automatically sets an appropriate `max_burst_size`
+        /// based on the value of `max_dispatches_per_second`. The value is dynamically optimized to ensure queue
+        /// stability and throughput. It is generally at least equal to `max_dispatches_per_second` but might be higher
+        /// to accommodate bursts of traffic. For queues that were created or updated using `queue.yaml/xml`,
         /// `max_burst_size` is equal to
         /// [bucket_size](https://cloud.google.com/appengine/docs/standard/python/config/queueref#bucket_size). Since
         /// `max_burst_size` is output only, if UpdateQueue is called on a queue created by `queue.yaml/xml`,
-        /// `max_burst_size` will be reset based on the value of max_dispatches_per_second, regardless of whether
-        /// max_dispatches_per_second is updated.
+        /// `max_burst_size` will be reset based on the value of `max_dispatches_per_second`, regardless of whether
+        /// `max_dispatches_per_second` is updated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxBurstSize")]
         public virtual System.Nullable<int> MaxBurstSize { get; set; }
