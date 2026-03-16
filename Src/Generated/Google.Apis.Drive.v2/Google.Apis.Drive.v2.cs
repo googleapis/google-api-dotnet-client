@@ -6102,7 +6102,7 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("permissionId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PermissionId { get; private set; }
 
-            /// <summary>Whether the request should enforce expansive access rules.</summary>
+            /// <summary>Deprecated: All requests use the expansive access rules.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enforceExpansiveAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceExpansiveAccess { get; set; }
 
@@ -6363,7 +6363,7 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("emailMessage", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string EmailMessage { get; set; }
 
-            /// <summary>Whether the request should enforce expansive access rules.</summary>
+            /// <summary>Deprecated: All requests use the expansive access rules.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enforceExpansiveAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceExpansiveAccess { get; set; }
 
@@ -6661,7 +6661,7 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("permissionId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PermissionId { get; private set; }
 
-            /// <summary>Whether the request should enforce expansive access rules.</summary>
+            /// <summary>Deprecated: All requests use the expansive access rules.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enforceExpansiveAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceExpansiveAccess { get; set; }
 
@@ -6813,7 +6813,7 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("permissionId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PermissionId { get; private set; }
 
-            /// <summary>Whether the request should enforce expansive access rules.</summary>
+            /// <summary>Deprecated: All requests use the expansive access rules.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enforceExpansiveAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceExpansiveAccess { get; set; }
 
