@@ -609,11 +609,14 @@ namespace Google.Apis.DataManager.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. A [filter string](//google.aip.dev/160). All fields need to be on the left hand side
-                    /// of each condition (for example: `partner_link_id = 123456789`). Supported operations: - `AND` -
-                    /// `=` - `!=` Supported fields: - `partner_link_id` - `owning_account.account_type` -
-                    /// `owning_account.account_id` - `partner_account.account_type` - `partner_account.account_id`
-                    /// Example: `owning_account.account_type = "GOOGLE_ADS" AND partner_account.account_id = 987654321`
+                    /// Optional. A [filter string](https://google.aip.dev/160). All fields need to be on the left hand
+                    /// side of each condition (for example: `partner_link_id = 123456789`). Fields must be specified
+                    /// using either all [camel case](https://en.wikipedia.org/wiki/Camel_case) or all [snake
+                    /// case](https://en.wikipedia.org/wiki/Snake_case). Don't use a combination of camel case and snake
+                    /// case. Supported operations: - `AND` - `=` - `!=` Supported fields: - `partner_link_id` -
+                    /// `owning_account.account_type` - `owning_account.account_id` - `partner_account.account_type` -
+                    /// `partner_account.account_id` Example: `owning_account.account_type = "GOOGLE_ADS" AND
+                    /// partner_account.account_id = 987654321`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -846,11 +849,13 @@ namespace Google.Apis.DataManager.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. Filters to apply to the list request. All fields need to be on the left hand side of
-                    /// each condition (for example: user_list_id = 123). **Supported Operations:** - `AND` - `=` - `!=`
-                    /// - `&amp;gt;` - `&amp;gt;=` - `&amp;lt;` - `&amp;lt;=` **Unsupported Fields:** - `name` (use get
-                    /// method instead) - `historical_pricings` and all its subfields - `pricing.start_time` -
-                    /// `pricing.end_time`
+                    /// Optional. A [filter string](https://google.aip.dev/160) to apply to the list request. All fields
+                    /// need to be on the left hand side of each condition (for example: `user_list_id = 123`). Fields
+                    /// must be specified using either all [camel case](https://en.wikipedia.org/wiki/Camel_case) or all
+                    /// [snake case](https://en.wikipedia.org/wiki/Snake_case). Don't use a combination of camel case
+                    /// and snake case. **Supported Operations:** - `AND` - `=` - `!=` - `&amp;gt;` - `&amp;gt;=` -
+                    /// `&amp;lt;` - `&amp;lt;=` **Unsupported Fields:** - `name` (use get method instead) -
+                    /// `historical_pricings` and all its subfields - `pricing.start_time` - `pricing.end_time`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -1066,11 +1071,14 @@ namespace Google.Apis.DataManager.v1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. Filters to apply to the list request. All fields need to be on the left hand side
-                        /// of each condition (for example: user_list_id = 123). **Supported Operations:** - `AND` - `=`
-                        /// - `!=` - `&amp;gt;` - `&amp;gt;=` - `&amp;lt;` - `&amp;lt;=` **Unsupported Fields:** -
-                        /// `name` (use get method instead) - `historical_pricings` and all its subfields -
-                        /// `pricing.start_time` - `pricing.end_time`
+                        /// Optional. A [filter string](https://google.aip.dev/160) to apply to the list request. All
+                        /// fields need to be on the left hand side of each condition (for example: `user_list_id =
+                        /// 123`). Fields must be specified using either all [camel
+                        /// case](https://en.wikipedia.org/wiki/Camel_case) or all [snake
+                        /// case](https://en.wikipedia.org/wiki/Snake_case). Don't use a combination of camel case and
+                        /// snake case. **Supported Operations:** - `AND` - `=` - `!=` - `&amp;gt;` - `&amp;gt;=` -
+                        /// `&amp;lt;` - `&amp;lt;=` **Unsupported Fields:** - `name` (use get method instead) -
+                        /// `historical_pricings` and all its subfields - `pricing.start_time` - `pricing.end_time`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -1286,11 +1294,13 @@ namespace Google.Apis.DataManager.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. Filters to apply to the list request. All fields need to be on the left hand side of
-                    /// each condition (for example: user_list_id = 123). **Supported Operations:** - `AND` - `=` - `!=`
-                    /// - `&amp;gt;` - `&amp;gt;=` - `&amp;lt;` - `&amp;lt;=` **Unsupported Fields:** - `name` (use get
-                    /// method instead) - `historical_pricings` and all its subfields - `pricing.start_time` -
-                    /// `pricing.end_time`
+                    /// Optional. A [filter string](https://google.aip.dev/160) to apply to the list request. All fields
+                    /// need to be on the left hand side of each condition (for example: `user_list_id = 123`). Fields
+                    /// must be specified using either all [camel case](https://en.wikipedia.org/wiki/Camel_case) or all
+                    /// [snake case](https://en.wikipedia.org/wiki/Snake_case). Don't use a combination of camel case
+                    /// and snake case. **Supported Operations:** - `AND` - `=` - `!=` - `&amp;gt;` - `&amp;gt;=` -
+                    /// `&amp;lt;` - `&amp;lt;=` **Unsupported Fields:** - `name` (use get method instead) -
+                    /// `historical_pricings` and all its subfields - `pricing.start_time` - `pricing.end_time`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -1718,11 +1728,14 @@ namespace Google.Apis.DataManager.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. A [filter string](//google.aip.dev/160). All fields need to be on the left hand side
-                    /// of each condition (for example: `display_name = "list 1"`). Supported operations: - `AND` - `=`
-                    /// - `!=` - `&amp;gt;` - `&amp;gt;=` - `&amp;lt;` - `&amp;lt;=` - `:` (has) Supported fields: -
-                    /// `id` - `display_name` - `description` - `membership_status` - `integration_code` -
-                    /// `access_reason` - `ingested_user_list_info.upload_key_types`
+                    /// Optional. A [filter string](https://google.aip.dev/160). All fields need to be on the left hand
+                    /// side of each condition (for example: `display_name = "list 1"`). Fields must be specified using
+                    /// either all [camel case](https://en.wikipedia.org/wiki/Camel_case) or all [snake
+                    /// case](https://en.wikipedia.org/wiki/Snake_case). Don't use a combination of camel case and snake
+                    /// case. Supported operations: - `AND` - `=` - `!=` - `&amp;gt;` - `&amp;gt;=` - `&amp;lt;` -
+                    /// `&amp;lt;=` - `:` (has) Supported fields: - `id` - `display_name` - `description` -
+                    /// `membership_status` - `integration_code` - `access_reason` -
+                    /// `ingested_user_list_info.upload_key_types`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
