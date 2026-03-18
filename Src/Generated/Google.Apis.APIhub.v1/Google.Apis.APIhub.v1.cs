@@ -799,6 +799,83 @@ namespace Google.Apis.APIhub.v1
                         });
                     }
                 }
+
+                /// <summary>
+                /// Update an Api Hub instance. The following fields in the ApiHubInstance can be updated: *
+                /// disable_search * vertex_location * agent_registry_sync_config The update_mask should be used to
+                /// specify the fields being updated.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. Format: `projects/{project}/locations/{location}/apiHubInstances/{apiHubInstance}`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1ApiHubInstance body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Update an Api Hub instance. The following fields in the ApiHubInstance can be updated: *
+                /// disable_search * vertex_location * agent_registry_sync_config The update_mask should be used to
+                /// specify the fields being updated.
+                /// </summary>
+                public class PatchRequest : APIhubBaseServiceRequest<Google.Apis.APIhub.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1ApiHubInstance body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. Format: `projects/{project}/locations/{location}/apiHubInstances/{apiHubInstance}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. The list of fields to update.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1ApiHubInstance Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/apiHubInstances/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Apis resource.</summary>
@@ -8199,6 +8276,19 @@ namespace Google.Apis.APIhub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The configuration for Agent Registry sync.</summary>
+    public class GoogleCloudApihubV1AgentRegistrySyncConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If true, the MCP data sync to the Agent Registry will be disabled. The default value is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Configuration for addons which act on all data in the API hub. This is used to specify if the addon is enabled
     /// for all data in the API hub.
@@ -8798,11 +8888,11 @@ namespace Google.Apis.APIhub.v1.Data
     /// <summary>The view of an API.</summary>
     public class GoogleCloudApihubV1ApiView : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. MCP server view.</summary>
+        /// <summary>MCP server view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mcpServerView")]
         public virtual GoogleCloudApihubV1FlattenedApiVersionDeploymentView McpServerView { get; set; }
 
-        /// <summary>Output only. MCP tools view.</summary>
+        /// <summary>MCP tools view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mcpToolView")]
         public virtual GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView McpToolView { get; set; }
 
@@ -9134,6 +9224,12 @@ namespace Google.Apis.APIhub.v1.Data
     /// <summary>Available configurations to provision an ApiHub Instance.</summary>
     public class GoogleCloudApihubV1Config : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The configuration for syncing MCP data in the API Hub instance to the Agent Registry.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentRegistrySyncConfig")]
+        public virtual GoogleCloudApihubV1AgentRegistrySyncConfig AgentRegistrySyncConfig { get; set; }
+
         /// <summary>
         /// Optional. The Customer Managed Encryption Key (CMEK) used for data encryption. The CMEK name should follow
         /// the format of `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`, where the location
@@ -10659,15 +10755,15 @@ namespace Google.Apis.APIhub.v1.Data
     /// <summary>A flattened view of an API, its version and one of the linked deployments.</summary>
     public class GoogleCloudApihubV1FlattenedApiVersionDeploymentView : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The API.</summary>
+        /// <summary>Optional. The API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("api")]
         public virtual GoogleCloudApihubV1Api Api { get; set; }
 
-        /// <summary>The deployment.</summary>
+        /// <summary>Optional. The deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
         public virtual GoogleCloudApihubV1Deployment Deployment { get; set; }
 
-        /// <summary>The version.</summary>
+        /// <summary>Optional. The version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual GoogleCloudApihubV1Version Version { get; set; }
 
@@ -10681,19 +10777,19 @@ namespace Google.Apis.APIhub.v1.Data
     /// </summary>
     public class GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The API.</summary>
+        /// <summary>Optional. The API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("api")]
         public virtual GoogleCloudApihubV1Api Api { get; set; }
 
-        /// <summary>The API operation.</summary>
+        /// <summary>Optional. The API operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiOperation")]
         public virtual GoogleCloudApihubV1ApiOperation ApiOperation { get; set; }
 
-        /// <summary>The deployment.</summary>
+        /// <summary>Optional. The deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
         public virtual GoogleCloudApihubV1Deployment Deployment { get; set; }
 
-        /// <summary>The version.</summary>
+        /// <summary>Optional. The version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual GoogleCloudApihubV1Version Version { get; set; }
 
@@ -12299,7 +12395,7 @@ namespace Google.Apis.APIhub.v1.Data
     /// <summary>The RetrieveApiViews method's response.</summary>
     public class GoogleCloudApihubV1RetrieveApiViewsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of API views.</summary>
+        /// <summary>Output only. The list of API views.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiViews")]
         public virtual System.Collections.Generic.IList<GoogleCloudApihubV1ApiView> ApiViews { get; set; }
 
