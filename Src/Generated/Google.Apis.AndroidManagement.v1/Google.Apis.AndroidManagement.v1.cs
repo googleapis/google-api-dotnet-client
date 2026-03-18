@@ -7157,7 +7157,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateSpacePolicy")]
         public virtual string PrivateSpacePolicy { get; set; }
 
-        /// <summary>If true, screen capture is disabled for all users.</summary>
+        /// <summary>
+        /// If true, screen capture is disabled for all users. This also blocks Circle to Search
+        /// (https://support.google.com/android/answer/14508957).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenCaptureDisabled")]
         public virtual System.Nullable<bool> ScreenCaptureDisabled { get; set; }
 
@@ -7608,7 +7611,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("safeBootDisabled")]
         public virtual System.Nullable<bool> SafeBootDisabled { get; set; }
 
-        /// <summary>Whether screen capture is disabled.</summary>
+        /// <summary>
+        /// Whether screen capture is disabled. This also blocks Circle to Search
+        /// (https://support.google.com/android/answer/14508957).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenCaptureDisabled")]
         public virtual System.Nullable<bool> ScreenCaptureDisabled { get; set; }
 
