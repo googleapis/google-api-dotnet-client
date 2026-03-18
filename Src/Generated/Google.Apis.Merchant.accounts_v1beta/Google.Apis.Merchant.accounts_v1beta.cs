@@ -4832,6 +4832,79 @@ namespace Google.Apis.Merchant.accounts_v1beta
         }
 
         /// <summary>
+        /// Creates a Merchant Center test account. Test accounts are intended for development and testing purposes,
+        /// such as validating API integrations or new feature behavior. Key characteristics and limitations of test
+        /// accounts: - Immutable Type: A test account cannot be converted into a regular (live) Merchant Center
+        /// account. Likewise, a regular account cannot be converted into a test account. - Non-Serving Products: Any
+        /// products, offers, or data created within a test account will not be published or made visible to end-users
+        /// on any Google surfaces. They are strictly for testing environments. - Separate Environment: Test accounts
+        /// operate in a sandbox-like manner, isolated from live serving and real user traffic.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">
+        /// Required. The account resource name to create the test account under. Format: accounts/{account}
+        /// </param>
+        public virtual CreateTestAccountRequest CreateTestAccount(Google.Apis.Merchant.accounts_v1beta.Data.Account body, string parent)
+        {
+            return new CreateTestAccountRequest(this.service, body, parent);
+        }
+
+        /// <summary>
+        /// Creates a Merchant Center test account. Test accounts are intended for development and testing purposes,
+        /// such as validating API integrations or new feature behavior. Key characteristics and limitations of test
+        /// accounts: - Immutable Type: A test account cannot be converted into a regular (live) Merchant Center
+        /// account. Likewise, a regular account cannot be converted into a test account. - Non-Serving Products: Any
+        /// products, offers, or data created within a test account will not be published or made visible to end-users
+        /// on any Google surfaces. They are strictly for testing environments. - Separate Environment: Test accounts
+        /// operate in a sandbox-like manner, isolated from live serving and real user traffic.
+        /// </summary>
+        public class CreateTestAccountRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Account>
+        {
+            /// <summary>Constructs a new CreateTestAccount request.</summary>
+            public CreateTestAccountRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.Account body, string parent) : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The account resource name to create the test account under. Format: accounts/{account}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Merchant.accounts_v1beta.Data.Account Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "createTestAccount";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "accounts/v1beta/{+parent}:createTestAccount";
+
+            /// <summary>Initializes CreateTestAccount parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^accounts/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
         /// Deletes the specified account regardless of its type: standalone, advanced account or sub-account. Deleting
         /// an advanced account leads to the deletion of all of its sub-accounts. This also deletes the account's
         /// [developer registration entity](/merchant/api/reference/rest/accounts_v1beta/accounts.developerRegistration)
