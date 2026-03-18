@@ -1687,8 +1687,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>
         /// Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this
         /// MIME type. Supported values include 'text/plain' (default) and 'application/json'. The model needs to be
-        /// prompted to output the appropriate response type, otherwise the behavior is undefined. This is a preview
-        /// feature.
+        /// prompted to output the appropriate response type, otherwise the behavior is undefined.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseMimeType")]
         public virtual string ResponseMimeType { get; set; }
