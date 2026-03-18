@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1955,6 +1955,21 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Alerts for client-side encryption outages.</summary>
+    public class ClientSideEncryptionServiceUnavailable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identity providers impacted by an outage or misconfiguration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idpError")]
+        public virtual System.Collections.Generic.IList<IdentityProviderError> IdpError { get; set; }
+
+        /// <summary>External key services impacted by an outage or misconfiguration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyServiceError")]
+        public virtual System.Collections.Generic.IList<KeyServiceError> KeyServiceError { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A reference to a Cloud Pubsub topic. To register for notifications, the owner of the topic must grant
     /// `alerts-api-push-notifications@system.gserviceaccount.com` the `projects.topics.publish` permission.
@@ -2342,6 +2357,48 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// <summary>A one-line incident description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Error related to an identity provider.</summary>
+    public class IdentityProviderError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Authorization base url of the identity provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizationBaseUrl")]
+        public virtual string AuthorizationBaseUrl { get; set; }
+
+        /// <summary>Number of similar errors encountered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCount")]
+        public virtual System.Nullable<long> ErrorCount { get; set; }
+
+        /// <summary>Info on the identity provider error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorInfo")]
+        public virtual string ErrorInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Error related to an external key service.</summary>
+    public class KeyServiceError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of similar errors encountered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCount")]
+        public virtual System.Nullable<long> ErrorCount { get; set; }
+
+        /// <summary>Info on the key service error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorInfo")]
+        public virtual string ErrorInfo { get; set; }
+
+        /// <summary>HTTP response status code from the key service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpResponseCode")]
+        public virtual System.Nullable<long> HttpResponseCode { get; set; }
+
+        /// <summary>Url of the external key service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyServiceUrl")]
+        public virtual string KeyServiceUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
