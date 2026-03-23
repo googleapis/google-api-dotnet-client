@@ -4144,8 +4144,8 @@ namespace Google.Apis.Logging.v2
 
         /// <summary>
         /// Lists log entries. Use this method to retrieve log entries that originated from a
-        /// project/folder/organization/billing account. For ways to export log entries, see Exporting Logs
-        /// (https://cloud.google.com/logging/docs/export).
+        /// project/folder/organization/billing account. For ways to export log entries, see Routing overview
+        /// (https://docs.cloud.google.com/logging/docs/routing/overview).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual ListRequest List(Google.Apis.Logging.v2.Data.ListLogEntriesRequest body)
@@ -4155,8 +4155,8 @@ namespace Google.Apis.Logging.v2
 
         /// <summary>
         /// Lists log entries. Use this method to retrieve log entries that originated from a
-        /// project/folder/organization/billing account. For ways to export log entries, see Exporting Logs
-        /// (https://cloud.google.com/logging/docs/export).
+        /// project/folder/organization/billing account. For ways to export log entries, see Routing overview
+        /// (https://docs.cloud.google.com/logging/docs/routing/overview).
         /// </summary>
         public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListLogEntriesResponse>
         {
@@ -22610,14 +22610,13 @@ namespace Google.Apis.Logging.v2.Data
     {
         /// <summary>
         /// Optional. A filter that chooses which log entries to return. For more information, see Logging query
-        /// language
-        /// (https://{$universe.dns_names.final_documentation_domain}/logging/docs/view/logging-query-language).Only log
-        /// entries that match the filter are returned. An empty filter matches all log entries in the resources listed
-        /// in resource_names. Referencing a parent resource that is not listed in resource_names will cause the filter
-        /// to return no results. The maximum length of a filter is 20,000 characters.To make queries faster, you can
-        /// make the filter more selective by using restrictions on indexed fields
-        /// (https://{$universe.dns_names.final_documentation_domain}/logging/docs/view/logging-query-language#indexed-fields)
-        /// as well as limit the time range of the query by adding range restrictions on the timestamp field.
+        /// language (https://docs.cloud.google.com/logging/docs/view/logging-query-language).Only log entries that
+        /// match the filter are returned. An empty filter matches all log entries in the resources listed in
+        /// resource_names. Referencing a parent resource that is not listed in resource_names will cause the filter to
+        /// return no results. The maximum length of a filter is 20,000 characters.To make queries faster, you can make
+        /// the filter more selective by using restrictions on indexed fields
+        /// (https://docs.cloud.google.com/logging/docs/view/logging-query-language#indexed-fields) as well as limit the
+        /// time range of the query by adding range restrictions on the timestamp field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -25362,11 +25361,10 @@ namespace Google.Apis.Logging.v2.Data
 
         /// <summary>
         /// Optional. A filter that chooses which log entries to return. For more information, see Logging query
-        /// language
-        /// (https://{$universe.dns_names.final_documentation_domain}/logging/docs/view/logging-query-language).Only log
-        /// entries that match the filter are returned. An empty filter matches all log entries in the resources listed
-        /// in resource_names. Referencing a parent resource that is not listed in resource_names will cause the filter
-        /// to return no results. The maximum length of a filter is 20,000 characters.
+        /// language (https://docs.cloud.google.com/logging/docs/view/logging-query-language).Only log entries that
+        /// match the filter are returned. An empty filter matches all log entries in the resources listed in
+        /// resource_names. Referencing a parent resource that is not listed in resource_names will cause the filter to
+        /// return no results. The maximum length of a filter is 20,000 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -25492,12 +25490,11 @@ namespace Google.Apis.Logging.v2.Data
         /// time or a unique identifier, respectively. The supplied values are chosen so that, among the log entries
         /// that did not supply their own values, the entries earlier in the list will sort before the entries later in
         /// the list. See the entries.list method.Log entries with timestamps that are more than the logs retention
-        /// period (https://cloud.google.com/logging/quotas) in the past or more than 24 hours in the future will not be
-        /// available when calling entries.list. However, those log entries can still be exported with LogSinks
-        /// (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).To improve throughput and to avoid
-        /// exceeding the quota limit (https://cloud.google.com/logging/quotas) for calls to entries.write, you should
-        /// try to include several log entries in this list, rather than calling this method for each individual log
-        /// entry.
+        /// period (https://docs.cloud.google.com/logging/quotas) in the past or more than 24 hours in the future will
+        /// not be available when calling entries.list. However, those log entries can still be exported with LogSinks
+        /// (https://docs.cloud.google.com/logging/docs/routing/overview).To improve throughput and to avoid exceeding
+        /// the quota limit (https://docs.cloud.google.com/logging/quotas) for calls to entries.write, you should try to
+        /// include several log entries in this list, rather than calling this method for each individual log entry.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
         public virtual System.Collections.Generic.IList<LogEntry> Entries { get; set; }
