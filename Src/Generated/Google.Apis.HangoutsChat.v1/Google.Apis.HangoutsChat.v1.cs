@@ -8768,8 +8768,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         }
 
         /// <summary>
-        /// Output only. A URL in `spaces.messages.text` that matches a link preview pattern. For more information, see
-        /// [Preview links](https://developers.google.com/workspace/chat/preview-links).
+        /// Output only. A URL in the Chat message `text` field that matches a link preview pattern. For more
+        /// information, see [Preview links](https://developers.google.com/workspace/chat/preview-links).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchedUrl")]
         public virtual MatchedUrl MatchedUrl { get; set; }
