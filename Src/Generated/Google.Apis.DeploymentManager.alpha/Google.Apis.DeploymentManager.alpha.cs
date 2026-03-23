@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4340,6 +4340,34 @@ namespace Google.Apis.DeploymentManager.alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GetVersionOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineSbomInfo")]
+        public virtual GetVersionOperationMetadataSbomInfo InlineSbomInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GetVersionOperationMetadataSbomInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// SBOM versions currently applied to the resource. The key is the component name and the value is the version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentComponentVersions")]
+        public virtual System.Collections.Generic.IDictionary<string, string> CurrentComponentVersions { get; set; }
+
+        /// <summary>
+        /// SBOM versions scheduled for the next maintenance. The key is the component name and the value is the
+        /// version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetComponentVersions")]
+        public virtual System.Collections.Generic.IDictionary<string, string> TargetComponentVersions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GlobalSetPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4610,6 +4638,9 @@ namespace Google.Apis.DeploymentManager.alpha.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("firewallPolicyRuleOperationMetadata")]
         public virtual FirewallPolicyRuleOperationMetadata FirewallPolicyRuleOperationMetadata { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("getVersionOperationMetadata")]
+        public virtual GetVersionOperationMetadata GetVersionOperationMetadata { get; set; }
 
         /// <summary>
         /// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as
