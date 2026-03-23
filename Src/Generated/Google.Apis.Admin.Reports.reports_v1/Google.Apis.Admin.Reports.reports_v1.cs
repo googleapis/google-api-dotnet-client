@@ -696,6 +696,14 @@ namespace Google.Apis.Admin.Reports.reports_v1
             public virtual string GroupIdFilter { get; set; }
 
             /// <summary>
+            /// Optional. When set to `true`, this field allows sensitive user-generated content to be included in the
+            /// returned audit logs. This parameter is supported only for Rules (DLP) and Chat applications; using it
+            /// with any other application will result in a permission error.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeSensitiveData", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IncludeSensitiveData { get; set; }
+
+            /// <summary>
             /// Determines how many activity records are shown on each response page. For example, if the request sets
             /// `maxResults=1` and the report has two activities, the report has two pages. The response's
             /// `nextPageToken` property has the token to the second page. The `maxResults` query string is optional in
@@ -881,6 +889,14 @@ namespace Google.Apis.Admin.Reports.reports_v1
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = @"(id:[a-z0-9]+(,id:[a-z0-9]+)*)",
+                });
+                RequestParameters.Add("includeSensitiveData", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeSensitiveData",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
                 RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
                 {
@@ -2134,6 +2150,10 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("resourceIds")]
             public virtual System.Collections.Generic.IList<string> ResourceIds { get; set; }
 
+            /// <summary>Includes sensitive parameter value pairs for various applications.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("sensitiveParameters")]
+            public virtual System.Collections.Generic.IList<SensitiveParametersData> SensitiveParameters { get; set; }
+
             /// <summary>Status of the event. Note: Not all events have status.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("status")]
             public virtual ActivityEventsStatus Status { get; set; }
@@ -2152,6 +2172,66 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
             /// the list of event names for various applications above in `applicationName`.
             /// </summary>
             public class ParametersData
+            {
+                /// <summary>Boolean value of the parameter.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+                public virtual System.Nullable<bool> BoolValue { get; set; }
+
+                /// <summary>Integer value of the parameter.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
+                public virtual System.Nullable<long> IntValue { get; set; }
+
+                /// <summary>
+                /// Nested parameter value pairs associated with this parameter. Complex value type for a parameter are
+                /// returned as a list of parameter values. For example, the address parameter may have a value as
+                /// `[{parameter: [{name: city, value: abc}]}]`
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("messageValue")]
+                public virtual MessageValueData MessageValue { get; set; }
+
+                /// <summary>Integer values of the parameter.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("multiIntValue")]
+                public virtual System.Collections.Generic.IList<System.Nullable<long>> MultiIntValue { get; set; }
+
+                /// <summary>List of `messageValue` objects.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("multiMessageValue")]
+                public virtual System.Collections.Generic.IList<MultiMessageValueData> MultiMessageValue { get; set; }
+
+                /// <summary>String values of the parameter.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("multiValue")]
+                public virtual System.Collections.Generic.IList<string> MultiValue { get; set; }
+
+                /// <summary>The name of the parameter.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("name")]
+                public virtual string Name { get; set; }
+
+                /// <summary>String value of the parameter.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; }
+
+                /// <summary>
+                /// Nested parameter value pairs associated with this parameter. Complex value type for a parameter are
+                /// returned as a list of parameter values. For example, the address parameter may have a value as
+                /// `[{parameter: [{name: city, value: abc}]}]`
+                /// </summary>
+                public class MessageValueData
+                {
+                    /// <summary>Parameter values</summary>
+                    [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
+                    public virtual System.Collections.Generic.IList<NestedParameter> Parameter { get; set; }
+                }
+
+                /// <summary>List of `messageValue` objects.</summary>
+                public class MultiMessageValueData
+                {
+                    /// <summary>Parameter values</summary>
+                    [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
+                    public virtual System.Collections.Generic.IList<NestedParameter> Parameter { get; set; }
+                }
+            }
+
+            /// <summary>Includes sensitive parameter value pairs for various applications.</summary>
+            public class SensitiveParametersData
             {
                 /// <summary>Boolean value of the parameter.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
