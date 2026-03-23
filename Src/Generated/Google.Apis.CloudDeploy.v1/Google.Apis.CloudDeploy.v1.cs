@@ -5848,6 +5848,144 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// AlertPolicyCheck configures a set of Cloud Monitoring alerting policies that will be periodically polled for
+    /// alerts. If any of the listed policies have an active alert, the analysis check will fail.
+    /// </summary>
+    public class AlertPolicyCheck : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The Cloud Monitoring Alert Policies to check for active alerts. Format is
+        /// `projects/{project}/alertPolicies/{alert_policy}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertPolicies")]
+        public virtual System.Collections.Generic.IList<string> AlertPolicies { get; set; }
+
+        /// <summary>Required. The ID of the analysis check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Optional. A set of labels to filter active alerts. If set, only alerts having all of the specified labels
+        /// will be considered. Otherwise, all active alerts will be considered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// AlertPolicyCheckStatus contains information specific to a single run of an alert policy check.
+    /// </summary>
+    public class AlertPolicyCheckStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The alert policies that this analysis monitors. Format is
+        /// `projects/{project}/locations/{location}/alertPolicies/{alertPolicy}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertPolicies")]
+        public virtual System.Collections.Generic.IList<string> AlertPolicies { get; set; }
+
+        /// <summary>
+        /// Output only. The alert policies that were found to be firing during this check. This will be empty if no
+        /// incidents were found.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedAlertPolicies")]
+        public virtual System.Collections.Generic.IList<FailedAlertPolicy> FailedAlertPolicies { get; set; }
+
+        /// <summary>
+        /// Output only. Additional information about the alert policy check failure, if available. This will be empty
+        /// if the alert policy check succeeded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureMessage")]
+        public virtual string FailureMessage { get; set; }
+
+        /// <summary>Output only. The ID of this analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Output only. The resolved labels used to filter for specific incidents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Analysis contains the configuration for the set of analyses to be performed on the target.</summary>
+    public class Analysis : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Custom analysis checks from 3P metric providers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customChecks")]
+        public virtual System.Collections.Generic.IList<CustomCheck> CustomChecks { get; set; }
+
+        /// <summary>
+        /// Required. The amount of time in minutes the analysis on the target will last. If all analysis checks have
+        /// successfully completed before the specified duration, the analysis is successful. If a check is still
+        /// running while the specified duration passes, it will wait for that check to complete to determine if the
+        /// analysis is successful. The maximum duration is 48 hours.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
+
+        /// <summary>Optional. Google Cloud - based analysis checks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleCloud")]
+        public virtual GoogleCloudAnalysis GoogleCloud { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An analysis Job.</summary>
+    public class AnalysisJob : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Custom analysis checks from 3P metric providers that are run as part of the analysis Job.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customChecks")]
+        public virtual System.Collections.Generic.IList<CustomCheck> CustomChecks { get; set; }
+
+        /// <summary>
+        /// Output only. The amount of time in minutes the analysis Job will run, up to a maximum of 48 hours. If any
+        /// check in this Job is still running when the duration ends, the Job keeps running until that check completes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
+
+        /// <summary>
+        /// Output only. Google Cloud - based analysis checks that are run as part of the analysis Job.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleCloud")]
+        public virtual GoogleCloudAnalysis GoogleCloud { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AnalysisJobRun contains information specific to an analysis `JobRun`.</summary>
+    public class AnalysisJobRun : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The status of the running alert policy checks configured for this analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertPolicyAnalyses")]
+        public virtual System.Collections.Generic.IList<AlertPolicyCheckStatus> AlertPolicyAnalyses { get; set; }
+
+        /// <summary>Output only. The status of the running custom checks configured for this analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customCheckAnalyses")]
+        public virtual System.Collections.Generic.IList<CustomCheckStatus> CustomCheckAnalyses { get; set; }
+
+        /// <summary>
+        /// Output only. The ID of the configured check that failed. This will always be blank while the analysis is in
+        /// progress or if it succeeded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedCheckId")]
+        public virtual string FailedCheckId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information specifying an Anthos Cluster.</summary>
     public class AnthosCluster : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6619,6 +6757,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
     public class CanaryDeployment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Configuration for the analysis job. If configured, the analysis will run after each percentage
+        /// deployment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysis")]
+        public virtual Analysis Analysis { get; set; }
+
+        /// <summary>
         /// Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in
         /// ascending order and each integer n is 0 &amp;lt;= n &amp;lt; 100. If the GatewayServiceMesh is configured
         /// for Kubernetes, then the range for n is 0 &amp;lt;= n &amp;lt;= 100.
@@ -6645,6 +6790,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verify")]
         public virtual System.Nullable<bool> Verify { get; set; }
+
+        /// <summary>Optional. Configuration for the verify job. Cannot be set if `verify` is set to true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifyConfig")]
+        public virtual Verify VerifyConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6763,6 +6912,15 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("job")]
         public virtual string Job { get; set; }
 
+        /// <summary>
+        /// Output only. The previous Cloud Run Revision name associated with a `Rollout`. Only set when a canary
+        /// deployment strategy is configured. Format for service is
+        /// projects/{project}/locations/{location}/services/{service}/revisions/{revision}. Format for worker pool is
+        /// projects/{project}/locations/{location}/workerPools/{workerpool}/revisions/{revision}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previousRevision")]
+        public virtual string PreviousRevision { get; set; }
+
         /// <summary>Output only. The Cloud Run Revision id associated with a `Rollout`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revision")]
         public virtual string Revision { get; set; }
@@ -6792,6 +6950,20 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>CloudRunRenderMetadata contains Cloud Run information associated with a `Release` render.</summary>
     public class CloudRunRenderMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. The name of the Cloud Run Job in the rendered manifest. Format is
+        /// `projects/{project}/locations/{location}/jobs/{job}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("job")]
+        public virtual string Job { get; set; }
+
+        /// <summary>
+        /// Output only. The name of the Cloud Run Revision in the rendered manifest. Format is
+        /// `projects/{project}/locations/{location}/services/{service}/revisions/{revision}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual string Revision { get; set; }
+
         /// <summary>
         /// Output only. The name of the Cloud Run Service in the rendered manifest. Format is
         /// `projects/{project}/locations/{location}/services/{service}`.
@@ -6838,6 +7010,37 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// This task is represented by a container that is executed in the Cloud Build execution environment.
+    /// </summary>
+    public class ContainerTask : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Args is the container arguments to use. This overrides the default arguments defined in the
+        /// container image.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("args")]
+        public virtual System.Collections.Generic.IList<string> Args { get; set; }
+
+        /// <summary>
+        /// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the
+        /// container image.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("command")]
+        public virtual System.Collections.Generic.IList<string> Command { get; set; }
+
+        /// <summary>Optional. Environment variables that are set in the container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("env")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Env { get; set; }
+
+        /// <summary>Required. Image is the container image to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual string Image { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A createChildRollout Job.</summary>
     public class CreateChildRolloutJob : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6869,6 +7072,73 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Required. Configuration for each phase in the canary deployment in the order executed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phaseConfigs")]
         public virtual System.Collections.Generic.IList<PhaseConfig> PhaseConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// CustomCheck configures a third-party metric provider to run the analysis, via a Task that runs at a specified
+    /// frequency.
+    /// </summary>
+    public class CustomCheck : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The frequency at which the custom check will be run, with a minimum and default of 5 minutes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequency")]
+        public virtual object Frequency { get; set; }
+
+        /// <summary>Required. The ID of the custom Analysis check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Required. The Task to be run for this custom check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("task")]
+        public virtual Task Task { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// CustomCheckStatus contains information specific to a single iteration of a custom analysis job.
+    /// </summary>
+    public class CustomCheckStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The reason the analysis failed. This will always be unspecified while the analysis is in
+        /// progress or if it succeeded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCause")]
+        public virtual string FailureCause { get; set; }
+
+        /// <summary>Output only. Additional information about the analysis failure, if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureMessage")]
+        public virtual string FailureMessage { get; set; }
+
+        /// <summary>Output only. The frequency in minutes at which the custom check is run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequency")]
+        public virtual object Frequency { get; set; }
+
+        /// <summary>Output only. The ID of the custom check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the Cloud Build `Build` object that was used to execute the latest run of
+        /// this custom action check. Format is `projects/{project}/locations/{location}/builds/{build}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestBuild")]
+        public virtual string LatestBuild { get; set; }
+
+        /// <summary>Output only. Custom metadata provided by the user-defined custom check operation. result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual CustomMetadata Metadata { get; set; }
+
+        /// <summary>Output only. The task that ran for this custom check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("task")]
+        public virtual Task Task { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6932,6 +7202,24 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("renderAction")]
         public virtual string RenderAction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CustomTargetTasks represents the `CustomTargetType` configuration using tasks.</summary>
+    public class CustomTargetTasks : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The task responsible for deploy operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploy")]
+        public virtual Task Deploy { get; set; }
+
+        /// <summary>
+        /// Optional. The task responsible for render operations. If not provided then Cloud Deploy will perform its
+        /// default rendering operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("render")]
+        public virtual Task Render { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7026,6 +7314,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Optional. Configures render and deploy for the `CustomTargetType` using tasks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tasks")]
+        public virtual CustomTargetTasks Tasks { get; set; }
 
         /// <summary>Output only. Unique identifier of the `CustomTargetType`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
@@ -7691,6 +7983,12 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>Deployment job composition.</summary>
     public class DeploymentJobs : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. The analysis Job. Runs after a verify if there is a verify job and the verify job succeeds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisJob")]
+        public virtual Job AnalysisJob { get; set; }
+
         /// <summary>Output only. The deploy Job. This is the deploy job in the phase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployJob")]
         public virtual Job DeployJob { get; set; }
@@ -7821,6 +8119,29 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// FailedAlertPolicy contains information about an alert policy that was found to be firing during an alert policy
+    /// check.
+    /// </summary>
+    public class FailedAlertPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The name of the alert policy that was found to be firing. Format is
+        /// `projects/{project}/locations/{location}/alertPolicies/{alertPolicy}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertPolicy")]
+        public virtual string AlertPolicy { get; set; }
+
+        /// <summary>
+        /// Output only. Open alerts for the alerting policies that matched the alert policy check configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alerts")]
+        public virtual System.Collections.Generic.IList<string> Alerts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information about the Kubernetes Gateway API service mesh configuration.</summary>
     public class GatewayServiceMesh : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7913,6 +8234,19 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>GoogleCloudAnalysis is a set of Google Cloud-based checks to perform on the deployment.</summary>
+    public class GoogleCloudAnalysis : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertPolicyChecks")]
+        public virtual System.Collections.Generic.IList<AlertPolicyCheck> AlertPolicyChecks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request object used by `IgnoreJob`.</summary>
     public class IgnoreJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7948,6 +8282,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Output only. An advanceChildRollout Job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advanceChildRolloutJob")]
         public virtual AdvanceChildRolloutJob AdvanceChildRolloutJob { get; set; }
+
+        /// <summary>Output only. An analysis Job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisJob")]
+        public virtual AnalysisJob AnalysisJob { get; set; }
 
         /// <summary>Output only. A createChildRollout Job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createChildRolloutJob")]
@@ -8000,6 +8338,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Output only. Information specific to an advanceChildRollout `JobRun`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advanceChildRolloutJobRun")]
         public virtual AdvanceChildRolloutJobRun AdvanceChildRolloutJobRun { get; set; }
+
+        /// <summary>Output only. Information specific to an analysis `JobRun`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisJobRun")]
+        public virtual AnalysisJobRun AnalysisJobRun { get; set; }
 
         /// <summary>Output only. Information specific to a createChildRollout `JobRun`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createChildRolloutJobRun")]
@@ -8219,6 +8561,34 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Optional. Kubernetes Service networking configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceNetworking")]
         public virtual ServiceNetworking ServiceNetworking { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>KubernetesRenderMetadata contains Kubernetes information associated with a `Release` render.</summary>
+    public class KubernetesRenderMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Name of the canary version of the Kubernetes Deployment that will be applied to the GKE
+        /// cluster. Only set if a canary deployment strategy was configured.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canaryDeployment")]
+        public virtual string CanaryDeployment { get; set; }
+
+        /// <summary>
+        /// Output only. Name of the Kubernetes Deployment that will be applied to the GKE cluster. Only set if a single
+        /// Deployment was provided in the rendered manifest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
+        public virtual string Deployment { get; set; }
+
+        /// <summary>
+        /// Output only. Namespace the Kubernetes resources will be applied to in the GKE cluster. Only set if applying
+        /// resources to a single namespace.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubernetesNamespace")]
+        public virtual string KubernetesNamespace { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8751,6 +9121,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>PhaseConfig represents the configuration for a phase in the custom canary deployment.</summary>
     public class PhaseConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Configuration for the analysis job of this phase. If this is not configured, there will be no
+        /// analysis job for this phase.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysis")]
+        public virtual Analysis Analysis { get; set; }
+
         /// <summary>Required. Percentage deployment for the phase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percentage")]
         public virtual System.Nullable<int> Percentage { get; set; }
@@ -8787,6 +9164,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Optional. Whether to run verify tests after the deployment via `skaffold verify`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verify")]
         public virtual System.Nullable<bool> Verify { get; set; }
+
+        /// <summary>Optional. Configuration for the verify job. Cannot be set if `verify` is set to true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifyConfig")]
+        public virtual Verify VerifyConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8998,6 +9379,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("actions")]
         public virtual System.Collections.Generic.IList<string> Actions { get; set; }
 
+        /// <summary>
+        /// Optional. The tasks that will run as a part of the postdeploy job. The tasks are executed sequentially in
+        /// the order specified. Only one of `actions` or `tasks` can be specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tasks")]
+        public virtual System.Collections.Generic.IList<Task> Tasks { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9008,6 +9396,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Output only. The custom actions that the postdeploy Job executes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actions")]
         public virtual System.Collections.Generic.IList<string> Actions { get; set; }
+
+        /// <summary>Output only. The tasks that are executed as part of the postdeploy Job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tasks")]
+        public virtual System.Collections.Generic.IList<Task> Tasks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9034,6 +9426,21 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("failureMessage")]
         public virtual string FailureMessage { get; set; }
 
+        /// <summary>Output only. Metadata containing information about the postdeploy `JobRun`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual PostdeployJobRunMetadata Metadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PostdeployJobRunMetadata contains metadata about the postdeploy `JobRun`.</summary>
+    public class PostdeployJobRunMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Custom metadata provided by user-defined postdeploy operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("custom")]
+        public virtual CustomMetadata Custom { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9047,6 +9454,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("actions")]
         public virtual System.Collections.Generic.IList<string> Actions { get; set; }
 
+        /// <summary>
+        /// Optional. The tasks that will run as a part of the predeploy job. The tasks are executed sequentially in the
+        /// order specified. Only one of `actions` or `tasks` can be specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tasks")]
+        public virtual System.Collections.Generic.IList<Task> Tasks { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9057,6 +9471,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Output only. The custom actions that the predeploy Job executes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actions")]
         public virtual System.Collections.Generic.IList<string> Actions { get; set; }
+
+        /// <summary>Output only. The tasks that are executed as part of the predeploy Job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tasks")]
+        public virtual System.Collections.Generic.IList<Task> Tasks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9082,6 +9500,21 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Output only. Additional information about the predeploy failure, if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureMessage")]
         public virtual string FailureMessage { get; set; }
+
+        /// <summary>Output only. Metadata containing information about the predeploy `JobRun`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual PredeployJobRunMetadata Metadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PredeployJobRunMetadata contains metadata about the predeploy `JobRun`.</summary>
+    public class PredeployJobRunMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Custom metadata provided by user-defined predeploy operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("custom")]
+        public virtual CustomMetadata Custom { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9540,6 +9973,12 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Output only. Custom metadata provided by user-defined render operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("custom")]
         public virtual CustomMetadata Custom { get; set; }
+
+        /// <summary>
+        /// Output only. Metadata associated with rendering for a Kubernetes cluster (GKE or GKE Enterprise target).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubernetes")]
+        public virtual KubernetesRenderMetadata Kubernetes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10686,6 +11125,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
     public class Standard : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Configuration for the analysis job. If this is not configured, the analysis job will not be
+        /// present.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysis")]
+        public virtual Analysis Analysis { get; set; }
+
+        /// <summary>
         /// Optional. Configuration for the postdeploy job. If this is not configured, the postdeploy job will not be
         /// present.
         /// </summary>
@@ -10702,6 +11148,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Optional. Whether to verify a deployment via `skaffold verify`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verify")]
         public virtual System.Nullable<bool> Verify { get; set; }
+
+        /// <summary>Optional. Configuration for the verify job. Cannot be set if `verify` is set to true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifyConfig")]
+        public virtual Verify VerifyConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11125,6 +11575,19 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A Task represents a unit of work that is executed as part of a Job.</summary>
+    public class Task : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("container")]
+        public virtual ContainerTask Container { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request object used by `TerminateJobRun`.</summary>
     public class TerminateJobRunRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11484,9 +11947,27 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Verify contains the verify job configuration information.</summary>
+    public class Verify : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the
+        /// order specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tasks")]
+        public virtual System.Collections.Generic.IList<Task> Tasks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A verify Job.</summary>
     public class VerifyJob : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The tasks that are executed as part of the verify Job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tasks")]
+        public virtual System.Collections.Generic.IList<Task> Tasks { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -11521,6 +12002,21 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Output only. Additional information about the verify failure, if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureMessage")]
         public virtual string FailureMessage { get; set; }
+
+        /// <summary>Output only. Metadata containing information about the verify `JobRun`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual VerifyJobRunMetadata Metadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>VerifyJobRunMetadata contains metadata about the verify `JobRun`.</summary>
+    public class VerifyJobRunMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Custom metadata provided by user-defined verify operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("custom")]
+        public virtual CustomMetadata Custom { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
