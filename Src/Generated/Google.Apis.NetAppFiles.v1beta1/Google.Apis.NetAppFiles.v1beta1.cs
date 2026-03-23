@@ -6010,7 +6010,7 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         public virtual string SourceSnapshot { get; set; }
 
         /// <summary>
-        /// Volume full name of this backup belongs to. Format:
+        /// Volume full name of this backup belongs to. Either source_volume or ontap_source should be provided. Format:
         /// `projects/{projects_id}/locations/{location}/volumes/{volume_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceVolume")]
@@ -6263,6 +6263,10 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. Indicates if the backup vault is a cross project vault.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossProjectVault")]
+        public virtual System.Nullable<bool> CrossProjectVault { get; set; }
 
         /// <summary>Description of the backup vault.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -7858,8 +7862,10 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
     public class RestoreParameters : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Full name of the backup resource. Format:
-        /// projects/{project}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id}
+        /// Full name of the backup resource. Format for standard backup:
+        /// projects/{project}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id} Format for
+        /// BackupDR backup:
+        /// projects/{project}/locations/{location}/backupVaults/{backup_vault}/dataSources/{data_source}/backups/{backup}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceBackup")]
         public virtual string SourceBackup { get; set; }
@@ -8326,8 +8332,8 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
 
         /// <summary>
         /// Optional. Type of the storage pool. This field is used to control whether the pool supports `FILE` based
-        /// volumes only or `UNIFIED` (both `FILE` and `BLOCK`) volumes or `UNIFIED_LARGE_CAPACITY` (both `FILE` and
-        /// `BLOCK`) volumes with large capacity. If not specified during creation, it defaults to `FILE`.
+        /// volumes only or `UNIFIED` (both `FILE` and `BLOCK`) volumes. If not specified during creation, it defaults
+        /// to `FILE`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
