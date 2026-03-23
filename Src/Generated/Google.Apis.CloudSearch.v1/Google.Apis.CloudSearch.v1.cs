@@ -9252,6 +9252,47 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// </summary>
     public class QuerySuggestion : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _lastQueryTimeRaw;
+
+        private object _lastQueryTime;
+
+        /// <summary>Last query time of the suggestion for query history suggestions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastQueryTime")]
+        public virtual string LastQueryTimeRaw
+        {
+            get => _lastQueryTimeRaw;
+            set
+            {
+                _lastQueryTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastQueryTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastQueryTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastQueryTimeDateTimeOffset instead.")]
+        public virtual object LastQueryTime
+        {
+            get => _lastQueryTime;
+            set
+            {
+                _lastQueryTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastQueryTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastQueryTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastQueryTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastQueryTimeRaw);
+            set => LastQueryTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Source corpus of the suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceCorpus")]
+        public virtual string SourceCorpus { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9704,7 +9745,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The search API request. NEXT ID: 24</summary>
+    /// <summary>The search API request. NEXT ID: 25</summary>
     public class SearchRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
