@@ -11059,7 +11059,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Rollout contains the Rollout metadata and configuration.</summary>
+    /// <summary>Rollout contains the Rollout metadata and configuration. Next ID: 28</summary>
     public class Rollout : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _completeTimeRaw;
@@ -11218,6 +11218,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Output only. A human-readable description explaining the reason for the current state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateReason")]
         public virtual string StateReason { get; set; }
+
+        /// <summary>Output only. StateReasonType specifies the reason type of the Rollout state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateReasonType")]
+        public virtual string StateReasonType { get; set; }
 
         /// <summary>
         /// Output only. Google-generated UUID for this resource. This is unique across all Rollout resources. If a
@@ -11481,6 +11485,48 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>State and reasons of the Rollout Sequence.</summary>
     public class RolloutSequenceState : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _lastStateChangeTimeRaw;
+
+        private object _lastStateChangeTime;
+
+        /// <summary>
+        /// Output only. The timestamp at which the LifecycleState was last changed. Used to track how long it has been
+        /// in the current state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastStateChangeTime")]
+        public virtual string LastStateChangeTimeRaw
+        {
+            get => _lastStateChangeTimeRaw;
+            set
+            {
+                _lastStateChangeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastStateChangeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastStateChangeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastStateChangeTimeDateTimeOffset instead.")]
+        public virtual object LastStateChangeTime
+        {
+            get => _lastStateChangeTime;
+            set
+            {
+                _lastStateChangeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastStateChangeTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastStateChangeTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastStateChangeTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastStateChangeTimeRaw);
+            set => LastStateChangeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>Output only. Lifecycle state of the Rollout Sequence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
         public virtual string LifecycleState { get; set; }
@@ -11500,7 +11546,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
 
         private object _endTime;
 
-        /// <summary>Optional. Output only. The time at which the wave ended.</summary>
+        /// <summary>Optional. Output only. The time at which the stage ended.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual string EndTimeRaw
         {
@@ -11533,11 +11579,11 @@ namespace Google.Apis.GKEHub.v1alpha.Data
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. Duration to soak after this wave before starting the next wave.</summary>
+        /// <summary>Optional. Duration to soak after this stage before starting the next stage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("soakDuration")]
         public virtual object SoakDuration { get; set; }
 
-        /// <summary>Output only. The wave number to which this status applies.</summary>
+        /// <summary>Output only. The stage number to which this status applies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stageNumber")]
         public virtual System.Nullable<int> StageNumber { get; set; }
 
@@ -11545,7 +11591,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
 
         private object _startTime;
 
-        /// <summary>Optional. Output only. The time at which the wave started.</summary>
+        /// <summary>Optional. Output only. The time at which the stage started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTimeRaw
         {
@@ -11578,7 +11624,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Output only. The state of the wave.</summary>
+        /// <summary>Output only. The state of the stage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
