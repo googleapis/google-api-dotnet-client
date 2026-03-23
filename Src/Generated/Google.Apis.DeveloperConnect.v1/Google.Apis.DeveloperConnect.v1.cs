@@ -1051,6 +1051,103 @@ namespace Google.Apis.DeveloperConnect.v1
                     }
                 }
 
+                /// <summary>
+                /// FetchUserRepositories returns a list of UserRepos that are available for an account connector
+                /// resource.
+                /// </summary>
+                /// <param name="accountConnector">
+                /// Required. The name of the Account Connector resource in the format:
+                /// `projects/*/locations/*/accountConnectors/*`.
+                /// </param>
+                public virtual FetchUserRepositoriesRequest FetchUserRepositories(string accountConnector)
+                {
+                    return new FetchUserRepositoriesRequest(this.service, accountConnector);
+                }
+
+                /// <summary>
+                /// FetchUserRepositories returns a list of UserRepos that are available for an account connector
+                /// resource.
+                /// </summary>
+                public class FetchUserRepositoriesRequest : DeveloperConnectBaseServiceRequest<Google.Apis.DeveloperConnect.v1.Data.FetchUserRepositoriesResponse>
+                {
+                    /// <summary>Constructs a new FetchUserRepositories request.</summary>
+                    public FetchUserRepositoriesRequest(Google.Apis.Services.IClientService service, string accountConnector) : base(service)
+                    {
+                        AccountConnector = accountConnector;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Account Connector resource in the format:
+                    /// `projects/*/locations/*/accountConnectors/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("accountConnector", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string AccountConnector { get; private set; }
+
+                    /// <summary>Optional. Number of results to return in the list. Defaults to 20.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. Page start.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>
+                    /// Optional. The name of the repository. When specified, only the UserRepository with this name
+                    /// will be returned if the repository is accessible under this Account Connector for the calling
+                    /// user.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("repository", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Repository { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "fetchUserRepositories";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+accountConnector}:fetchUserRepositories";
+
+                    /// <summary>Initializes FetchUserRepositories parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("accountConnector", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountConnector",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/accountConnectors/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("repository", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "repository",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Gets details of a single AccountConnector.</summary>
                 /// <param name="name">Required. Name of the resource</param>
                 public virtual GetRequest Get(string name)
@@ -3955,6 +4052,10 @@ namespace Google.Apis.DeveloperConnect.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Custom OAuth config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customOauthConfig")]
+        public virtual CustomOAuthConfig CustomOauthConfig { get; set; }
+
         /// <summary>
         /// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on
         /// update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -3980,6 +4081,10 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         /// <summary>Optional. Provider OAuth config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("providerOauthConfig")]
         public virtual ProviderOAuthConfig ProviderOauthConfig { get; set; }
+
+        /// <summary>Optional. Configuration for the http and git proxy features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxyConfig")]
+        public virtual ProxyConfig ProxyConfig { get; set; }
 
         private string _updateTimeRaw;
 
@@ -4540,6 +4645,60 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for a customized OAuth config.</summary>
+    public class CustomOAuthConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Immutable. The OAuth2 authorization server URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authUri")]
+        public virtual string AuthUri { get; set; }
+
+        /// <summary>Required. The client ID of the OAuth application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>
+        /// Required. Input only. The client secret of the OAuth application. It will be provided as plain text, but
+        /// encrypted and stored in developer connect. As INPUT_ONLY field, it will not be included in the output.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual string ClientSecret { get; set; }
+
+        /// <summary>Required. The host URI of the OAuth application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostUri")]
+        public virtual string HostUri { get; set; }
+
+        /// <summary>Optional. Disable PKCE for this OAuth config. PKCE is enabled by default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pkceDisabled")]
+        public virtual System.Nullable<bool> PkceDisabled { get; set; }
+
+        /// <summary>Required. The type of the SCM provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scmProvider")]
+        public virtual string ScmProvider { get; set; }
+
+        /// <summary>Required. The scopes to be requested during OAuth.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
+
+        /// <summary>Output only. SCM server version installed at the host URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverVersion")]
+        public virtual string ServerVersion { get; set; }
+
+        /// <summary>Optional. Configuration for using Service Directory to connect to a private service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceDirectoryConfig")]
+        public virtual ServiceDirectoryConfig ServiceDirectoryConfig { get; set; }
+
+        /// <summary>Optional. SSL certificate to use for requests to a private service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslCaCertificate")]
+        public virtual string SslCaCertificate { get; set; }
+
+        /// <summary>Required. Immutable. The OAuth2 token request URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenUri")]
+        public virtual string TokenUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The DeploymentEvent resource represents the deployment of the artifact within the InsightsConfig resource.
     /// </summary>
@@ -4994,6 +5153,21 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         /// <summary>The token content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual string Token { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for FetchUserRepositories.</summary>
+    public class FetchUserRepositoriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The repositories that the user can access with this account connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userRepos")]
+        public virtual System.Collections.Generic.IList<UserRepository> UserRepos { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6137,6 +6311,20 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The proxy configuration.</summary>
+    public class ProxyConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Setting this to true allows the git and http proxies to perform actions on behalf of the user
+        /// configured under the account connector.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>RuntimeConfig represents the runtimes where the application is deployed.</summary>
     public class RuntimeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6373,6 +6561,35 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         /// <summary>Output only. The username associated with this token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A user repository that can be linked to the account connector. Consists of the repo name and the git proxy URL
+    /// to forward requests to this repo.
+    /// </summary>
+    public class UserRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The git clone URL of the repo. For example: https://github.com/myuser/myrepo.git
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloneUri")]
+        public virtual string CloneUri { get; set; }
+
+        /// <summary>Output only. The user friendly repo name (e.g., myuser/myrepo)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. The Git proxy URL for this repo. For example:
+        /// https://us-west1-git.developerconnect.dev/a/my-proj/my-ac/myuser/myrepo.git. Populated only when
+        /// `proxy_config.enabled` is set to `true` in the Account Connector. This URL is used by other Google services
+        /// that integrate with Developer Connect.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitProxyUri")]
+        public virtual string GitProxyUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
