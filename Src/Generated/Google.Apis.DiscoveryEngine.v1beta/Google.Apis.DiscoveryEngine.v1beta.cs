@@ -20137,130 +20137,6 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     }
                 }
 
-                /// <summary>Creates a new User Store.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">
-                /// Required. The parent collection resource name, such as `projects/{project}/locations/{location}`.
-                /// </param>
-                public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaUserStore body, string parent)
-                {
-                    return new CreateRequest(this.service, body, parent);
-                }
-
-                /// <summary>Creates a new User Store.</summary>
-                public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaUserStore>
-                {
-                    /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaUserStore body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The parent collection resource name, such as
-                    /// `projects/{project}/locations/{location}`.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>
-                    /// Required. The ID of the User Store to create. The ID must contain only letters (a-z, A-Z),
-                    /// numbers (0-9), underscores (_), and hyphens (-). The maximum length is 63 characters.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("userStoreId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string UserStoreId { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaUserStore Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "create";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta/{+parent}/userStores";
-
-                    /// <summary>Initializes Create parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("userStoreId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userStoreId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Deletes the User Store.</summary>
-                /// <param name="name">
-                /// Required. The name of the User Store to delete. Format:
-                /// `projects/{project}/locations/{location}/userStores/{user_store_id}`
-                /// </param>
-                public virtual DeleteRequest Delete(string name)
-                {
-                    return new DeleteRequest(this.service, name);
-                }
-
-                /// <summary>Deletes the User Store.</summary>
-                public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleLongrunningOperation>
-                {
-                    /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The name of the User Store to delete. Format:
-                    /// `projects/{project}/locations/{location}/userStores/{user_store_id}`
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "delete";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "DELETE";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta/{+name}";
-
-                    /// <summary>Initializes Delete parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/userStores/[^/]+$",
-                        });
-                    }
-                }
-
                 /// <summary>Gets the User Store.</summary>
                 /// <param name="name">
                 /// Required. The name of the User Store to get. Format:
@@ -23326,6 +23202,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destinationConfigs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1DestinationConfig> DestinationConfigs { get; set; }
 
+        /// <summary>Output only. The dynamic tools fetched for this connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicTools")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1DynamicTool> DynamicTools { get; set; }
+
         /// <summary>
         /// Output only. The list of FQDNs of the data connector can egress to. This includes both FQDN derived from the
         /// customer provided instance URL and default per connector type FQDNs. Note: This field is derived from both
@@ -25166,6 +25046,29 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>If true, will use native text instead of OCR text on pages containing native text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useNativeText")]
         public virtual System.Nullable<bool> UseNativeText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for dynamic tools.</summary>
+    public class GoogleCloudDiscoveryengineV1DynamicTool : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The description of the tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. The display name of the tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. Whether the tool is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Required. The name of the tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -29215,10 +29118,6 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("chunkInfo")]
         public virtual GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfo ChunkInfo { get; set; }
 
-        /// <summary>Output only. The search queries that produced this reference.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("queries")]
-        public virtual System.Collections.Generic.IList<string> Queries { get; set; }
-
         /// <summary>Structured document information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structuredDocumentInfo")]
         public virtual GoogleCloudDiscoveryengineV1alphaAnswerReferenceStructuredDocumentInfo StructuredDocumentInfo { get; set; }
@@ -31523,6 +31422,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destinationConfigs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaDestinationConfig> DestinationConfigs { get; set; }
 
+        /// <summary>Output only. The dynamic tools fetched for this connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicTools")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaDynamicTool> DynamicTools { get; set; }
+
         /// <summary>
         /// Output only. The list of FQDNs of the data connector can egress to. This includes both FQDN derived from the
         /// customer provided instance URL and default per connector type FQDNs. Note: This field is derived from both
@@ -33564,6 +33467,29 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>If true, will use native text instead of OCR text on pages containing native text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useNativeText")]
         public virtual System.Nullable<bool> UseNativeText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for dynamic tools.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDynamicTool : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The description of the tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. The display name of the tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. Whether the tool is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Required. The name of the tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -41324,10 +41250,6 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Chunk information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chunkInfo")]
         public virtual GoogleCloudDiscoveryengineV1betaAnswerReferenceChunkInfo ChunkInfo { get; set; }
-
-        /// <summary>Output only. The search queries that produced this reference.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("queries")]
-        public virtual System.Collections.Generic.IList<string> Queries { get; set; }
 
         /// <summary>Structured document information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structuredDocumentInfo")]
