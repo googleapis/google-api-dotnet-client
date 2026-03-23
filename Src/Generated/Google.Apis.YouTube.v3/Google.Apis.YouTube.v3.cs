@@ -14156,9 +14156,9 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hasVisualEffect")]
         public virtual System.Nullable<bool> HasVisualEffect { get; set; }
 
-        /// <summary>The cost of the gift in jewels.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("jewelsCount")]
-        public virtual System.Nullable<int> JewelsCount { get; set; }
+        /// <summary>The value of the gift in jewels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jewelsAmount")]
+        public virtual System.Nullable<int> JewelsAmount { get; set; }
 
         /// <summary>The BCP-47 language code of the gift.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
