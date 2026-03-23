@@ -779,6 +779,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 {
                     this.service = service;
                     Runs = new RunsResource(service);
+                    TransferResources = new TransferResourcesResource(service);
                 }
 
                 /// <summary>Gets the Runs resource.</summary>
@@ -1227,6 +1228,186 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                             RequestParameters.Add("states", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "states",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the TransferResources resource.</summary>
+                public virtual TransferResourcesResource TransferResources { get; }
+
+                /// <summary>The "transferResources" collection of methods.</summary>
+                public class TransferResourcesResource
+                {
+                    private const string Resource = "transferResources";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public TransferResourcesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Returns a transfer resource.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the transfer resource in the form of: *
+                    /// `projects/{project}/transferConfigs/{transfer_config}/transferResources/{transfer_resource}` *
+                    /// `projects/{project}/locations/{location}/transferConfigs/{transfer_config}/transferResources/{transfer_resource}`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Returns a transfer resource.</summary>
+                    public class GetRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.TransferResource>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the transfer resource in the form of: *
+                        /// `projects/{project}/transferConfigs/{transfer_config}/transferResources/{transfer_resource}`
+                        /// *
+                        /// `projects/{project}/locations/{location}/transferConfigs/{transfer_config}/transferResources/{transfer_resource}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+/transferResources/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Returns information about transfer resources.</summary>
+                    /// <param name="parent">
+                    /// Required. Name of transfer configuration for which transfer resources should be retrieved. The
+                    /// name should be in one of the following form: *
+                    /// `projects/{project_id}/transferConfigs/{config_id}` *
+                    /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Returns information about transfer resources.</summary>
+                    public class ListRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.ListTransferResourcesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of transfer configuration for which transfer resources should be retrieved.
+                        /// The name should be in one of the following form: *
+                        /// `projects/{project_id}/transferConfigs/{config_id}` *
+                        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Filter for the transfer resources. Currently supported filters include: * Resource
+                        /// name: `name` - Wildcard supported * Resource type: `type` * Resource destination:
+                        /// `destination` * Latest resource state: `latest_status_detail.state` * Last update time:
+                        /// `update_time` - RFC-3339 format * Parent table name:
+                        /// `hierarchy_detail.partition_detail.table` Multiple filters can be applied using the `AND/OR`
+                        /// operator. Examples: * `name="*123" AND (type="TABLE" OR
+                        /// latest_status_detail.state="SUCCEEDED")` * `update_time &amp;gt;=
+                        /// "2012-04-21T11:30:00-04:00` * `hierarchy_detail.partition_detail.table = "table1"`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of transfer resources to return. The maximum value is 1000;
+                        /// values above 1000 will be coerced to 1000. The default page size is the maximum value of
+                        /// 1000 results.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListTransferResources` call. Provide this
+                        /// to retrieve the subsequent page. When paginating, all other parameters provided to
+                        /// `ListTransferResources` must match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/transferResources";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2178,6 +2359,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             {
                 this.service = service;
                 Runs = new RunsResource(service);
+                TransferResources = new TransferResourcesResource(service);
             }
 
             /// <summary>Gets the Runs resource.</summary>
@@ -2620,6 +2802,182 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         RequestParameters.Add("states", new Google.Apis.Discovery.Parameter
                         {
                             Name = "states",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the TransferResources resource.</summary>
+            public virtual TransferResourcesResource TransferResources { get; }
+
+            /// <summary>The "transferResources" collection of methods.</summary>
+            public class TransferResourcesResource
+            {
+                private const string Resource = "transferResources";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public TransferResourcesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Returns a transfer resource.</summary>
+                /// <param name="name">
+                /// Required. The name of the transfer resource in the form of: *
+                /// `projects/{project}/transferConfigs/{transfer_config}/transferResources/{transfer_resource}` *
+                /// `projects/{project}/locations/{location}/transferConfigs/{transfer_config}/transferResources/{transfer_resource}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Returns a transfer resource.</summary>
+                public class GetRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.TransferResource>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the transfer resource in the form of: *
+                    /// `projects/{project}/transferConfigs/{transfer_config}/transferResources/{transfer_resource}` *
+                    /// `projects/{project}/locations/{location}/transferConfigs/{transfer_config}/transferResources/{transfer_resource}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/transferConfigs/[^/]+/transferResources/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Returns information about transfer resources.</summary>
+                /// <param name="parent">
+                /// Required. Name of transfer configuration for which transfer resources should be retrieved. The name
+                /// should be in one of the following form: * `projects/{project_id}/transferConfigs/{config_id}` *
+                /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Returns information about transfer resources.</summary>
+                public class ListRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.ListTransferResourcesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of transfer configuration for which transfer resources should be retrieved. The
+                    /// name should be in one of the following form: *
+                    /// `projects/{project_id}/transferConfigs/{config_id}` *
+                    /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Filter for the transfer resources. Currently supported filters include: * Resource
+                    /// name: `name` - Wildcard supported * Resource type: `type` * Resource destination: `destination`
+                    /// * Latest resource state: `latest_status_detail.state` * Last update time: `update_time` -
+                    /// RFC-3339 format * Parent table name: `hierarchy_detail.partition_detail.table` Multiple filters
+                    /// can be applied using the `AND/OR` operator. Examples: * `name="*123" AND (type="TABLE" OR
+                    /// latest_status_detail.state="SUCCEEDED")` * `update_time &amp;gt;= "2012-04-21T11:30:00-04:00` *
+                    /// `hierarchy_detail.partition_detail.table = "table1"`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of transfer resources to return. The maximum value is 1000; values
+                    /// above 1000 will be coerced to 1000. The default page size is the maximum value of 1000 results.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListTransferResources` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListTransferResources` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/transferResources";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/transferConfigs/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3583,6 +3941,21 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details about the hierarchy.</summary>
+    public class HierarchyDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Partition details related to hierarchy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionDetail")]
+        public virtual PartitionDetail PartitionDetail { get; set; }
+
+        /// <summary>Optional. Table details related to hierarchy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableDetail")]
+        public virtual TableDetail TableDetail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Returns list of supported data sources and their metadata.</summary>
     public class ListDataSourcesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3652,6 +4025,24 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for the ListTransferResources RPC.</summary>
+    public class ListTransferResourcesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
+        /// there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. The transfer resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transferResources")]
+        public virtual System.Collections.Generic.IList<TransferResource> TransferResources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The returned list of pipelines in the project.</summary>
     public class ListTransferRunsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3705,6 +4096,17 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
     /// <summary>Options customizing manual transfers schedule.</summary>
     public class ManualSchedule : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Partition details related to hierarchy.</summary>
+    public class PartitionDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Name of the table which has the partitions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual string Table { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4022,6 +4424,17 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Table details related to hierarchy.</summary>
+    public class TableDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Total number of partitions being tracked within the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionCount")]
+        public virtual System.Nullable<long> PartitionCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4483,6 +4896,101 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Resource(table/partition) that is being transferred.</summary>
+    public class TransferResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Resource destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual string Destination { get; set; }
+
+        /// <summary>Optional. Details about the hierarchy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hierarchyDetail")]
+        public virtual HierarchyDetail HierarchyDetail { get; set; }
+
+        /// <summary>Output only. Run details for the last successful run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastSuccessfulRun")]
+        public virtual TransferRunBrief LastSuccessfulRun { get; set; }
+
+        /// <summary>Optional. Run details for the latest run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestRun")]
+        public virtual TransferRunBrief LatestRun { get; set; }
+
+        /// <summary>Optional. Status details for the latest run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestStatusDetail")]
+        public virtual TransferResourceStatusDetail LatestStatusDetail { get; set; }
+
+        /// <summary>Identifier. Resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Resource type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Time when the resource was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Status details of the resource being transferred.</summary>
+    public class TransferResourceStatusDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Percentage of the transfer completed. Valid values: 0-100.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completedPercentage")]
+        public virtual System.Nullable<double> CompletedPercentage { get; set; }
+
+        /// <summary>Optional. Transfer error details for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>Optional. Transfer state of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Optional. Transfer status summary of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
+        public virtual TransferStatusSummary Summary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a data transfer run.</summary>
     public class TransferRun : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4732,6 +5240,98 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         /// <summary>Deprecated. Unique ID of the user on whose behalf transfer is done.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual System.Nullable<long> UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Basic information about a transfer run.</summary>
+    public class TransferRunBrief : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Run URI. Format projects/{project}/locations/{location}/transferConfigs/{config}/run/{run}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("run")]
+        public virtual string Run { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Optional. Start time of the transfer run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metrics for tracking the transfer status.</summary>
+    public class TransferStatusMetric : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Number of units transferred successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completed")]
+        public virtual System.Nullable<long> Completed { get; set; }
+
+        /// <summary>Optional. Number of units that failed to transfer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failed")]
+        public virtual System.Nullable<long> Failed { get; set; }
+
+        /// <summary>Optional. Number of units pending transfer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pending")]
+        public virtual System.Nullable<long> Pending { get; set; }
+
+        /// <summary>Optional. Total number of units for the transfer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("total")]
+        public virtual System.Nullable<long> Total { get; set; }
+
+        /// <summary>Optional. Unit for measuring progress (e.g., BYTES).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual string Unit { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Status summary of the resource being transferred.</summary>
+    public class TransferStatusSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of transfer status metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<TransferStatusMetric> Metrics { get; set; }
+
+        /// <summary>Input only. Unit based on which transfer status progress should be calculated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressUnit")]
+        public virtual string ProgressUnit { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
