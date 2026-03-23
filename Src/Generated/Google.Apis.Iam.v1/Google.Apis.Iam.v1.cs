@@ -1404,71 +1404,6 @@ namespace Google.Apis.Iam.v1
                                 });
                             }
                         }
-
-                        /// <summary>
-                        /// Gemini Enterprise only. Undeletes a WorkforcePoolProviderScimToken,that was deleted fewer
-                        /// than 30 days ago.
-                        /// </summary>
-                        /// <param name="body">The body of the request.</param>
-                        /// <param name="name">
-                        /// Required. Gemini Enterprise only. The name of the SCIM token to undelete. Format:
-                        /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}/tokens/{token}`
-                        /// </param>
-                        public virtual UndeleteRequest Undelete(Google.Apis.Iam.v1.Data.UndeleteWorkforcePoolProviderScimTokenRequest body, string name)
-                        {
-                            return new UndeleteRequest(this.service, body, name);
-                        }
-
-                        /// <summary>
-                        /// Gemini Enterprise only. Undeletes a WorkforcePoolProviderScimToken,that was deleted fewer
-                        /// than 30 days ago.
-                        /// </summary>
-                        public class UndeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimToken>
-                        {
-                            /// <summary>Constructs a new Undelete request.</summary>
-                            public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.UndeleteWorkforcePoolProviderScimTokenRequest body, string name) : base(service)
-                            {
-                                Name = name;
-                                Body = body;
-                                InitParameters();
-                            }
-
-                            /// <summary>
-                            /// Required. Gemini Enterprise only. The name of the SCIM token to undelete. Format:
-                            /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}/tokens/{token}`
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Name { get; private set; }
-
-                            /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.Iam.v1.Data.UndeleteWorkforcePoolProviderScimTokenRequest Body { get; set; }
-
-                            /// <summary>Returns the body of the request.</summary>
-                            protected override object GetBody() => Body;
-
-                            /// <summary>Gets the method name.</summary>
-                            public override string MethodName => "undelete";
-
-                            /// <summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod => "POST";
-
-                            /// <summary>Gets the REST path.</summary>
-                            public override string RestPath => "v1/{+name}:undelete";
-
-                            /// <summary>Initializes Undelete parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^locations/[^/]+/workforcePools/[^/]+/providers/[^/]+/scimTenants/[^/]+/tokens/[^/]+$",
-                                });
-                            }
-                        }
                     }
 
                     /// <summary>
@@ -12597,13 +12532,6 @@ namespace Google.Apis.Iam.v1.Data
 
     /// <summary>Gemini Enterprise only. Request message for UndeleteWorkforcePoolProviderScimTenant.</summary>
     public class UndeleteWorkforcePoolProviderScimTenantRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Gemini Enterprise only. Request message for UndeleteWorkforcePoolProviderScimToken.</summary>
-    public class UndeleteWorkforcePoolProviderScimTokenRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
