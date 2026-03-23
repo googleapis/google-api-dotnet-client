@@ -14493,7 +14493,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>Summary of an artifact.</summary>
     public class ArtifactSummary : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The version code of the artifact.</summary>
+        /// <summary>Artifact's version code</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
         public virtual System.Nullable<int> VersionCode { get; set; }
 
@@ -17296,7 +17296,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// </summary>
     public class ListReleaseSummariesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of releases for this track. There will be a maximum of 20 releases returned.</summary>
+        /// <summary>List of releases for this track. A maximum of 20 releases can be returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releases")]
         public virtual System.Collections.Generic.IList<ReleaseSummary> Releases { get; set; }
 
@@ -19873,7 +19873,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>Summary of a release.</summary>
     public class ReleaseSummary : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of active artifacts on this release.</summary>
+        /// <summary>List of active artifacts on this release</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeArtifacts")]
         public virtual System.Collections.Generic.IList<ArtifactSummary> ActiveArtifacts { get; set; }
 
@@ -19886,7 +19886,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ReleaseName { get; set; }
 
         /// <summary>
-        /// Identifier of the track. More on [track name](https://developers.google.com/android-publisher/tracks).
+        /// Identifier for the track. [Learn more about track
+        /// names.](https://developers.google.com/android-publisher/tracks).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("track")]
         public virtual string Track { get; set; }
