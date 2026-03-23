@@ -2114,6 +2114,13 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("layerDetails")]
         public virtual GrafeasV1LayerDetails LayerDetails { get; set; }
 
+        /// <summary>
+        /// Line number in the file where the package was found. Optional field that only applies to source repository
+        /// scanning.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineNumber")]
+        public virtual System.Nullable<int> LineNumber { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
