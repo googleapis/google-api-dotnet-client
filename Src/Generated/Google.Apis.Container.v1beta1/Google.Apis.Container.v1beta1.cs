@@ -7015,6 +7015,10 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>Autopilot is the configuration for Autopilot settings on the cluster.</summary>
     public class Autopilot : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>ClusterPolicyConfig denotes cluster level policies that are enforced for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterPolicyConfig")]
+        public virtual ClusterPolicyConfig ClusterPolicyConfig { get; set; }
+
         /// <summary>Output only. ConversionStatus shows conversion status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionStatus")]
         public virtual AutopilotConversionStatus ConversionStatus { get; set; }
@@ -7802,6 +7806,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicy")]
         public virtual MaintenancePolicy MaintenancePolicy { get; set; }
 
+        /// <summary>Configuration for managed machine learning diagnostics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedMachineLearningDiagnosticsConfig")]
+        public virtual ManagedMachineLearningDiagnosticsConfig ManagedMachineLearningDiagnosticsConfig { get; set; }
+
         /// <summary>Configuration for Managed OpenTelemetry pipeline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedOpentelemetryConfig")]
         public virtual ManagedOpenTelemetryConfig ManagedOpentelemetryConfig { get; set; }
@@ -7996,6 +8004,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
+        /// <summary>Optional. Configuration for scheduled upgrades.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduleUpgradeConfig")]
+        public virtual ScheduleUpgradeConfig ScheduleUpgradeConfig { get; set; }
+
         /// <summary>Secret CSI driver configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretManagerConfig")]
         public virtual SecretManagerConfig SecretManagerConfig { get; set; }
@@ -8145,6 +8157,32 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>ClusterPolicyConfig stores the configuration for cluster wide policies.</summary>
+    public class ClusterPolicyConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Denotes preventing standard node pools and requiring only autopilot node pools.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noStandardNodePools")]
+        public virtual System.Nullable<bool> NoStandardNodePools { get; set; }
+
+        /// <summary>Denotes preventing impersonation and CSRs for GKE System users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noSystemImpersonation")]
+        public virtual System.Nullable<bool> NoSystemImpersonation { get; set; }
+
+        /// <summary>
+        /// Denotes that preventing creation and mutation of resources in GKE managed namespaces and cluster-scoped GKE
+        /// managed resources .
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noSystemMutation")]
+        public virtual System.Nullable<bool> NoSystemMutation { get; set; }
+
+        /// <summary>Denotes preventing unsafe webhooks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noUnsafeWebhooks")]
+        public virtual System.Nullable<bool> NoUnsafeWebhooks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Telemetry integration for the cluster.</summary>
     public class ClusterTelemetry : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8188,6 +8226,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>AutoIpamConfig contains all information related to Auto IPAM</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredAutoIpamConfig")]
         public virtual AutoIpamConfig DesiredAutoIpamConfig { get; set; }
+
+        /// <summary>The desired autopilot cluster policies that to be enforced in the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredAutopilotClusterPolicyConfig")]
+        public virtual ClusterPolicyConfig DesiredAutopilotClusterPolicyConfig { get; set; }
 
         /// <summary>WorkloadPolicyConfig is the configuration related to GCW workload policy</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredAutopilotWorkloadPolicyConfig")]
@@ -8348,6 +8390,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredLoggingService")]
         public virtual string DesiredLoggingService { get; set; }
+
+        /// <summary>The desired managed machine learning diagnostics configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredManagedMachineLearningDiagnosticsConfig")]
+        public virtual ManagedMachineLearningDiagnosticsConfig DesiredManagedMachineLearningDiagnosticsConfig { get; set; }
 
         /// <summary>The desired managed open telemetry configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredManagedOpentelemetryConfig")]
@@ -8518,6 +8564,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>The desired rollback safe upgrade configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredRollbackSafeUpgrade")]
         public virtual RollbackSafeUpgrade DesiredRollbackSafeUpgrade { get; set; }
+
+        /// <summary>Optional. The desired scheduled upgrades configuration for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredScheduleUpgradeConfig")]
+        public virtual ScheduleUpgradeConfig DesiredScheduleUpgradeConfig { get; set; }
 
         /// <summary>Enable/Disable Secret Manager Config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredSecretManagerConfig")]
@@ -10595,6 +10645,14 @@ namespace Google.Apis.Container.v1beta1.Data
     public class LustreCsiDriverConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// When set to true, this disables multi-NIC support for the Lustre CSI driver. By default, GKE enables
+        /// multi-NIC support, which allows the Lustre CSI driver to automatically detect and configure all suitable
+        /// network interfaces on a node to maximize I/O performance for demanding workloads.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableMultiNic")]
+        public virtual System.Nullable<bool> DisableMultiNic { get; set; }
+
+        /// <summary>
         /// If set to true, the Lustre CSI driver will install Lustre kernel modules using port 6988. This serves as a
         /// workaround for a port conflict with the gke-metadata-server. This field is required ONLY under the following
         /// conditions: 1. The GKE node version is older than 1.33.2-gke.4655000. 2. You're connecting to a Lustre
@@ -10671,6 +10729,20 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurringWindow")]
         public virtual RecurringTimeWindow RecurringWindow { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// ManagedMachineLearningDiagnosticsConfig is the configuration for the GKE Managed Machine Learning Diagnostics
+    /// pipeline.
+    /// </summary>
+    public class ManagedMachineLearningDiagnosticsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enable/Disable Managed Machine Learning Diagnostics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11378,6 +11450,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
+        /// <summary>Optional. The taint configuration for the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taintConfig")]
+        public virtual TaintConfig TaintConfig { get; set; }
 
         /// <summary>
         /// List of kubernetes taints to be applied to each node. For more information, including usage and the valid
@@ -13070,6 +13146,17 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for scheduled upgrades on the cluster.</summary>
+    public class ScheduleUpgradeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether or not scheduled upgrades are enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// SecondaryBootDisk represents a persistent disk attached to a node with special configurations based on its mode.
     /// </summary>
@@ -14032,6 +14119,17 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>The interval between two consecutive rotations. Default rotation interval is 2 minutes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rotationInterval")]
         public virtual object RotationInterval { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>TaintConfig contains the configuration for the taints of the node pool.</summary>
+    public class TaintConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Controls architecture tainting behavior.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("architectureTaintBehavior")]
+        public virtual string ArchitectureTaintBehavior { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
