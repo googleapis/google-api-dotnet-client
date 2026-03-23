@@ -7070,7 +7070,8 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
     public class AuthzExtension : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The `:authority` header in the gRPC request sent from Envoy to the extension service.
+        /// Optional. The `:authority` header in the gRPC request sent from Envoy to the extension service. It is
+        /// required when the `service` field points to a backend service or a wasm plugin.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authority")]
         public virtual string Authority { get; set; }
@@ -7532,13 +7533,10 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Optional. When set to `TRUE`, enables `observability_mode` on the `ext_proc` filter. This makes `ext_proc`
-        /// calls asynchronous. Envoy doesn't check for the response from `ext_proc` calls. For more information about
-        /// the filter, see:
-        /// https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto#extensions-filters-http-ext-proc-v3-externalprocessor
-        /// This field is helpful when you want to try out the extension in async log-only mode. Supported by regional
-        /// `LbTrafficExtension` and `LbRouteExtension` resources. Only `STREAMED` (default) body processing mode is
-        /// supported.
+        /// Optional. When set to `true`, the calls to the extension backend are performed asynchronously, without
+        /// pausing the processing of the ongoing request. In this mode, only `STREAMED` (default) body processing is
+        /// supported. Responses, if any, are ignored. Supported by regional `LbTrafficExtension` and `LbRouteExtension`
+        /// resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observabilityMode")]
         public virtual System.Nullable<bool> ObservabilityMode { get; set; }
@@ -7634,6 +7632,13 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addresses")]
         public virtual System.Collections.Generic.IList<string> Addresses { get; set; }
+
+        /// <summary>
+        /// Optional. If true, the gateway will allow traffic from clients outside of the region where the gateway is
+        /// located. This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowGlobalAccess")]
+        public virtual System.Nullable<bool> AllowGlobalAccess { get; set; }
 
         /// <summary>
         /// Optional. A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on
