@@ -2019,6 +2019,14 @@ namespace Google.Apis.Merchant.products_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("promotionIds")]
         public virtual System.Collections.Generic.IList<string> PromotionIds { get; set; }
 
+        /// <summary>
+        /// The return label of the product, used to group products in account-level return policies. Max. 100
+        /// characters. For more information, see [Return policy
+        /// label](https://support.google.com/merchants/answer/9445425).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnPolicyLabel")]
+        public virtual string ReturnPolicyLabel { get; set; }
+
         /// <summary>Advertised sale price of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salePrice")]
         public virtual Price SalePrice { get; set; }
@@ -2051,7 +2059,10 @@ namespace Google.Apis.Merchant.products_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shippingHeight")]
         public virtual ShippingDimension ShippingHeight { get; set; }
 
-        /// <summary>The shipping label of the product, used to group product in account-level shipping rules.</summary>
+        /// <summary>
+        /// The shipping label of the product, used to group products in account-level shipping rules. Max. 100
+        /// characters. For more information, see [Shipping label](https://support.google.com/merchants/answer/6324504).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingLabel")]
         public virtual string ShippingLabel { get; set; }
 
