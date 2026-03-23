@@ -1279,7 +1279,7 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. User-provided description of the cluster.</summary>
+        /// <summary>Optional. User-provided description of the cluster. Maximum of 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
