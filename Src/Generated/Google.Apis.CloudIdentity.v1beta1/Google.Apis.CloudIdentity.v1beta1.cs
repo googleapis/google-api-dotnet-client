@@ -5633,7 +5633,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string OwnershipPrivilege { get; set; }
 
         /// <summary>
-        /// Whether device supports Android work profiles. If false, this service will not block access to corp data
+        /// Whether the device supports Android work profiles. If false, this service will not block access to corp data
         /// even if an administrator turns on the "Enforce Work Profile" policy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportsWorkProfile")]
@@ -5706,7 +5706,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     }
 
     /// <summary>
-    /// Contains information about browser profiles reported by the Clients on the device (e.g. [Endpoint Verification
+    /// Contains information about browser profiles reported by the clients on the device (e.g. [Endpoint Verification
     /// extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1)).
     /// </summary>
     public class BrowserAttributes : Google.Apis.Requests.IDirectResponseSchema
