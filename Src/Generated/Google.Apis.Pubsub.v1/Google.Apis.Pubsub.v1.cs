@@ -3893,6 +3893,55 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Configuration for a Bigtable subscription. The Pub/Sub message will be written to a Bigtable row as follows: -
+    /// row key: subscription name and message ID delimited by #. - columns: message bytes written to a single column
+    /// family "data" with an empty-string column qualifier. - cell timestamp: the message publish timestamp.
+    /// </summary>
+    public class BigtableConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The app profile to use for the Bigtable writes. If not specified, the "default" application
+        /// profile will be used. The app profile must use single-cluster routing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appProfileId")]
+        public virtual string AppProfileId { get; set; }
+
+        /// <summary>
+        /// Optional. The service account to use to write to Bigtable. The subscription creator or updater that
+        /// specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not
+        /// specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents),
+        /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
+        public virtual string ServiceAccountEmail { get; set; }
+
+        /// <summary>
+        /// Output only. An output-only field that indicates whether or not the subscription can receive messages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Optional. The unique name of the table to write messages to. Values are of the form
+        /// `projects//instances//tables/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual string Table { get; set; }
+
+        /// <summary>
+        /// Optional. When true, write the subscription name, message_id, publish_time, attributes, and ordering_key to
+        /// additional columns in the table under the pubsub_metadata column family. The subscription name, message_id,
+        /// and publish_time fields are put in their own columns while all other message properties (other than data)
+        /// are written to a JSON object in the attributes column.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeMetadata")]
+        public virtual System.Nullable<bool> WriteMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5292,6 +5341,12 @@ namespace Google.Apis.Pubsub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryConfig")]
         public virtual BigQueryConfig BigqueryConfig { get; set; }
+
+        /// <summary>
+        /// Optional. If delivery to Bigtable is used with this subscription, this field is used to configure it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigtableConfig")]
+        public virtual BigtableConfig BigtableConfig { get; set; }
 
         /// <summary>
         /// Optional. If delivery to Google Cloud Storage is used with this subscription, this field is used to
