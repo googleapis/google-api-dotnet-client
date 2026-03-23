@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2246,10 +2246,8 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
     {
         /// <summary>
         /// A list of identities that are allowed access through [EgressPolicy]. Identities can be an individual user,
-        /// service account, Google group, or third-party identity. For third-party identity, only single identities are
-        /// supported and other identity types are not supported. The `v1` identities that have the prefix `user`,
-        /// `group`, `serviceAccount`, and `principal` in https://cloud.google.com/iam/docs/principal-identifiers#v1 are
-        /// supported.
+        /// service account, Google group, or third-party identity. For the list of supported identity types, see
+        /// https://docs.cloud.google.com/vpc-service-controls/docs/supported-identities.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identities")]
         public virtual System.Collections.Generic.IList<string> Identities { get; set; }
@@ -2397,10 +2395,8 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
     {
         /// <summary>
         /// A list of identities that are allowed access through [IngressPolicy]. Identities can be an individual user,
-        /// service account, Google group, or third-party identity. For third-party identity, only single identities are
-        /// supported and other identity types are not supported. The `v1` identities that have the prefix `user`,
-        /// `group`, `serviceAccount`, and `principal` in https://cloud.google.com/iam/docs/principal-identifiers#v1 are
-        /// supported.
+        /// service account, Google group, or third-party identity. For the list of supported identity types, see
+        /// https://docs.cloud.google.com/vpc-service-controls/docs/supported-identities.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identities")]
         public virtual System.Collections.Generic.IList<string> Identities { get; set; }
