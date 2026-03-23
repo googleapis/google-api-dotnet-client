@@ -1785,8 +1785,7 @@ namespace Google.Apis.PolicySimulator.v1alpha.Data
     }
 
     /// <summary>
-    /// Defines an organization policy which is used to specify constraints for configurations of Google Cloud
-    /// resources.
+    /// Defines an organization policy that is used to specify constraints for configurations of Google Cloud resources.
     /// </summary>
     public class GoogleCloudOrgpolicyV2Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1803,15 +1802,15 @@ namespace Google.Apis.PolicySimulator.v1alpha.Data
 
         /// <summary>
         /// Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This
-        /// 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete
-        /// requests to ensure the client has an up-to-date value before proceeding.
+        /// entity tag (ETag) is computed by the server based on the value of other fields, and may be sent on update
+        /// and delete requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
         /// <summary>
         /// Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is
-        /// the name of the constraint which this policy configures: *
+        /// the name of the constraint that this policy configures: *
         /// `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` *
         /// `organizations/{organization_id}/policies/{constraint_name}` For example,
         /// `projects/123/policies/compute.disableSerialPortAccess`. Note:
@@ -1827,7 +1826,7 @@ namespace Google.Apis.PolicySimulator.v1alpha.Data
     }
 
     /// <summary>
-    /// Defines a Google Cloud policy specification which is used to specify constraints for configurations of Google
+    /// Defines a Google Cloud policy specification that is used to specify constraints for configurations of Google
     /// Cloud resources.
     /// </summary>
     public class GoogleCloudOrgpolicyV2PolicySpec : Google.Apis.Requests.IDirectResponseSchema
@@ -1835,9 +1834,9 @@ namespace Google.Apis.PolicySimulator.v1alpha.Data
         /// <summary>
         /// An opaque tag indicating the current version of the policySpec, used for concurrency control. This field is
         /// ignored if used in a `CreatePolicy` request. When the policy is returned from either a `GetPolicy` or a
-        /// `ListPolicies` request, this `etag` indicates the version of the current policySpec to use when executing a
-        /// read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be
-        /// unset.
+        /// `ListPolicies` request, this entity tag (ETag) indicates the version of the current policySpec to use when
+        /// executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the
+        /// ETag will be unset.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -1846,7 +1845,7 @@ namespace Google.Apis.PolicySimulator.v1alpha.Data
         /// Determines the inheritance behavior for this policy. If `inherit_from_parent` is true, policy rules set
         /// higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it
         /// is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can
-        /// be set only for policies which configure list constraints.
+        /// be set only for policies that configure list constraints.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inheritFromParent")]
         public virtual System.Nullable<bool> InheritFromParent { get; set; }
@@ -1860,10 +1859,10 @@ namespace Google.Apis.PolicySimulator.v1alpha.Data
         public virtual System.Nullable<bool> Reset { get; set; }
 
         /// <summary>
-        /// In policies for boolean constraints, the following requirements apply: - There must be one and only one
-        /// policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the
-        /// opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions
-        /// that are true for a target resource take precedence.
+        /// In policies for boolean constraints, the following requirements apply: - There must be exactly one policy
+        /// rule where a condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite
+        /// of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are
+        /// true for a target resource take precedence.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
         public virtual System.Collections.Generic.IList<GoogleCloudOrgpolicyV2PolicySpecPolicyRule> Rules { get; set; }
