@@ -8562,8 +8562,11 @@ namespace Google.Apis.Drive.v2.Data
         public virtual System.Nullable<bool> CanCreateTeamDrives { get; set; }
 
         /// <summary>
-        /// The domain sharing policy for the current user. Possible values are: * `allowed` * `allowedWithWarning` *
-        /// `incomingOnly` * `disallowed`
+        /// Deprecated: Does not granularly represent allowlisted domains or Trust Rules. The domain sharing policy for
+        /// the current user. Possible values are: * `allowed` * `allowedWithWarning` * `incomingOnly` * `disallowed`
+        /// Note that if the user is enrolled in Trust Rules, `disallowed` will always be returned. If sharing is
+        /// restricted to allowlisted domains, either `incomingOnly` or `allowedWithWarning` will be returned, depending
+        /// on whether receiving files from outside the allowlisted domains is permitted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainSharingPolicy")]
         public virtual string DomainSharingPolicy { get; set; }
