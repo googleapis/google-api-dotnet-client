@@ -635,8 +635,8 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         public virtual GoogleIdentityStsV1AccessBoundary AccessBoundary { get; set; }
 
         /// <summary>
-        /// The unpadded, base64url-encoded SHA-256 hash of the certificate's DER encoding and it must be 43 characters
-        /// long. The resulting token will be bound to this value.
+        /// The unpadded, url-escaped, base64-encoded SHA-256 hash of the certificate's DER encoding. It must be 43
+        /// characters long. The resulting token will be bound to this value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindCertFingerprint")]
         public virtual string BindCertFingerprint { get; set; }
