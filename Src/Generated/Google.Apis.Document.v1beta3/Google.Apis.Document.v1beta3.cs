@@ -10684,6 +10684,15 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual System.Nullable<float> LearningRateMultiplier { get; set; }
 
         /// <summary>
+        /// Optional. Resource name of a previously fine tuned version id to copy the overwritten configs from. The
+        /// base_processor_version should be newer than the base processor version used to fine tune this provided
+        /// processor version. Format:
+        /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previousFineTunedProcessorVersionName")]
+        public virtual string PreviousFineTunedProcessorVersionName { get; set; }
+
+        /// <summary>
         /// Optional. The number of steps to run for model tuning. Valid values are between 1 and 400. If not provided,
         /// recommended steps will be used.
         /// </summary>
