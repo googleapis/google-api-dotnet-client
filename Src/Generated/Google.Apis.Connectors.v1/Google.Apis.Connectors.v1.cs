@@ -1937,6 +1937,69 @@ namespace Google.Apis.Connectors.v1
                 }
 
                 /// <summary>
+                /// Fetches Toolspec Override for a connection for the given list of tools. Returns results from the db
+                /// if the tool is already present.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Resource name format: projects/{project}/locations/{location}/connections/{connection}
+                /// </param>
+                public virtual FetchToolspecOverrideRequest FetchToolspecOverride(Google.Apis.Connectors.v1.Data.FetchConnectionToolspecOverrideRequest body, string name)
+                {
+                    return new FetchToolspecOverrideRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Fetches Toolspec Override for a connection for the given list of tools. Returns results from the db
+                /// if the tool is already present.
+                /// </summary>
+                public class FetchToolspecOverrideRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.FetchConnectionToolspecOverrideResponse>
+                {
+                    /// <summary>Constructs a new FetchToolspecOverride request.</summary>
+                    public FetchToolspecOverrideRequest(Google.Apis.Services.IClientService service, Google.Apis.Connectors.v1.Data.FetchConnectionToolspecOverrideRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name format: projects/{project}/locations/{location}/connections/{connection}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Connectors.v1.Data.FetchConnectionToolspecOverrideRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "fetchToolspecOverride";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:fetchToolspecOverride";
+
+                    /// <summary>Initializes FetchToolspecOverride parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Generates Toolspec Override for a connection for the given list of entityTypes and operations.
                 /// Returns results from the db if the entityType and operation are already present.
                 /// </summary>
@@ -6682,15 +6745,15 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>ConfigVariable represents a configuration variable present in a Connection. or AuthConfig.</summary>
     public class ConfigVariable : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Value is a bool.</summary>
+        /// <summary>Optional. Value is a bool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
         public virtual System.Nullable<bool> BoolValue { get; set; }
 
-        /// <summary>Value is a Encryption Key.</summary>
+        /// <summary>Optional. Value is a Encryption Key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionKeyValue")]
         public virtual EncryptionKey EncryptionKeyValue { get; set; }
 
-        /// <summary>Value is an integer</summary>
+        /// <summary>Optional. Value is an integer</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
         public virtual System.Nullable<long> IntValue { get; set; }
 
@@ -6698,11 +6761,11 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
-        /// <summary>Value is a secret.</summary>
+        /// <summary>Optional. Value is a secret.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretValue")]
         public virtual Secret SecretValue { get; set; }
 
-        /// <summary>Value is a string.</summary>
+        /// <summary>Optional. Value is a string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
         public virtual string StringValue { get; set; }
 
@@ -8054,7 +8117,7 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
 
-        /// <summary>The port is the target port number that is accepted by the destination.</summary>
+        /// <summary>Optional. The port is the target port number that is accepted by the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }
 
@@ -8069,11 +8132,11 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>Define the Connectors target endpoint.</summary>
     public class DestinationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The destinations for the key.</summary>
+        /// <summary>Optional. The destinations for the key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
         public virtual System.Collections.Generic.IList<Destination> Destinations { get; set; }
 
-        /// <summary>The key is the destination identifier that is supported by the Connector.</summary>
+        /// <summary>Optional. The key is the destination identifier that is supported by the Connector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
@@ -8226,7 +8289,7 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; }
 
-        /// <summary>Type.</summary>
+        /// <summary>Optional. Specifies the type of the encryption key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -8869,6 +8932,12 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eventTypeId")]
         public virtual string EventTypeId { get; set; }
 
+        /// <summary>
+        /// Optional. Filter for the event subscription. Incoming events are filtered based on the filter expression.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
         /// <summary>Optional. JMS is the source for the event listener.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jms")]
         public virtual JMS Jms { get; set; }
@@ -9089,12 +9158,16 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Eventing Configuration of a connection next: 19</summary>
+    /// <summary>Eventing Configuration of a connection next: 20</summary>
     public class EventingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Additional eventing related field values</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalVariables")]
         public virtual System.Collections.Generic.IList<ConfigVariable> AdditionalVariables { get; set; }
+
+        /// <summary>Optional. List of allowed event types for the connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedEventTypes")]
+        public virtual System.Collections.Generic.IList<string> AllowedEventTypes { get; set; }
 
         /// <summary>Optional. Auth details for the webhook adapter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authConfig")]
@@ -9113,7 +9186,7 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual System.Nullable<bool> EnrichmentEnabled { get; set; }
 
         /// <summary>
-        /// Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
+        /// Output only. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventsListenerIngressEndpoint")]
         public virtual string EventsListenerIngressEndpoint { get; set; }
@@ -9388,6 +9461,28 @@ namespace Google.Apis.Connectors.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jsonSchema")]
         public virtual JsonAuthSchema JsonSchema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for FetchConnectionToolspecOverride API.</summary>
+    public class FetchConnectionToolspecOverrideRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. List of tools for which the tool spec override is to be generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolNames")]
+        public virtual System.Collections.Generic.IList<ToolName> ToolNames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for FetchConnectionToolspecOverride API.</summary>
+    public class FetchConnectionToolspecOverrideResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Toolspec overrides for the connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolspecOverride")]
+        public virtual ToolspecOverride ToolspecOverride { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9830,6 +9925,14 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enum")]
         public virtual System.Collections.Generic.IList<object> Enum__ { get; set; }
 
+        /// <summary>Whether the maximum number value is exclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusiveMaximum")]
+        public virtual System.Nullable<bool> ExclusiveMaximum { get; set; }
+
+        /// <summary>Whether the minimum number value is exclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusiveMinimum")]
+        public virtual System.Nullable<bool> ExclusiveMinimum { get; set; }
+
         /// <summary>
         /// Format of the value as per https://json-schema.org/understanding-json-schema/reference/string.html#format
         /// </summary>
@@ -9843,6 +9946,37 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>JDBC datatype of the field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jdbcType")]
         public virtual string JdbcType { get; set; }
+
+        /// <summary>Maximum number of items in the array field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxItems")]
+        public virtual System.Nullable<int> MaxItems { get; set; }
+
+        /// <summary>Maximum length of the string field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxLength")]
+        public virtual System.Nullable<int> MaxLength { get; set; }
+
+        /// <summary>Maximum value of the number field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximum")]
+        public virtual object Maximum { get; set; }
+
+        /// <summary>Minimum number of items in the array field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minItems")]
+        public virtual System.Nullable<int> MinItems { get; set; }
+
+        /// <summary>Minimum length of the string field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minLength")]
+        public virtual System.Nullable<int> MinLength { get; set; }
+
+        /// <summary>Minimum value of the number field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimum")]
+        public virtual object Minimum { get; set; }
+
+        /// <summary>
+        /// Regex pattern of the string field. This is a string value that describes the regular expression that the
+        /// string value should match.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
+        public virtual string Pattern { get; set; }
 
         /// <summary>
         /// The child schemas, applicable only if this is of type `object`. The key is the name of the property and the
@@ -9858,6 +9992,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>JSON Schema Validation: A Vocabulary for Structural Validation of JSON</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual System.Collections.Generic.IList<string> Type { get; set; }
+
+        /// <summary>Whether the items in the array field are unique.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uniqueItems")]
+        public virtual System.Nullable<bool> UniqueItems { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12466,13 +12604,13 @@ namespace Google.Apis.Connectors.v1.Data
     public class TrafficShapingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. * The duration over which the API call quota limits are calculated. This duration is used to
-        /// define the time window for evaluating if the number of API calls made by a user is within the allowed quota
-        /// limits. For example: - To define a quota sampled over 16 seconds, set `seconds` to 16 - To define a quota
-        /// sampled over 5 minutes, set `seconds` to 300 (5 * 60) - To define a quota sampled over 1 day, set `seconds`
-        /// to 86400 (24 * 60 * 60) and so on. It is important to note that this duration is not the time the quota is
-        /// valid for, but rather the time window over which the quota is evaluated. For example, if the quota is 100
-        /// calls per 10 seconds, then this duration field would be set to 10 seconds.
+        /// Required. Specifies the duration over which the API call quota limits are calculated. This duration is used
+        /// to define the time window for evaluating if the number of API calls made by a user is within the allowed
+        /// quota limits. For example: - To define a quota sampled over 16 seconds, set `seconds` to 16 - To define a
+        /// quota sampled over 5 minutes, set `seconds` to 300 (5 * 60) - To define a quota sampled over 1 day, set
+        /// `seconds` to 86400 (24 * 60 * 60) and so on. It is important to note that this duration is not the time the
+        /// quota is valid for, but rather the time window over which the quota is evaluated. For example, if the quota
+        /// is 100 calls per 10 seconds, then this duration field would be set to 10 seconds.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual object Duration { get; set; }
