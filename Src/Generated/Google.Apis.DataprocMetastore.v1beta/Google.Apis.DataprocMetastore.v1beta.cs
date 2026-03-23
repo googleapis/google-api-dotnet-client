@@ -4845,6 +4845,7 @@ namespace Google.Apis.DataprocMetastore.v1beta.Data
     }
 
     /// <summary>
+    /// Deprecated: Migrations to Dataproc Metastore are no longer supported. Use BigLake Metastore migration instead.
     /// Configuration information for migrating from self-managed hive metastore on Google Cloud using Cloud SQL as the
     /// backend database to Dataproc Metastore.
     /// </summary>
@@ -5962,8 +5963,9 @@ namespace Google.Apis.DataprocMetastore.v1beta.Data
     public class MigrationExecution : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Configuration information specific to migrating from self-managed hive metastore on Google Cloud using Cloud
-        /// SQL as the backend database to Dataproc Metastore.
+        /// Deprecated: Migrations to Dataproc Metastore are no longer supported. Use BigLake Metastore migration
+        /// instead. Configuration information specific to migrating from self-managed hive metastore on Google Cloud
+        /// using Cloud SQL as the backend database to Dataproc Metastore.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlMigrationConfig")]
         public virtual CloudSQLMigrationConfig CloudSqlMigrationConfig { get; set; }
@@ -6049,7 +6051,10 @@ namespace Google.Apis.DataprocMetastore.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. The current phase of the migration execution.</summary>
+        /// <summary>
+        /// Output only. Deprecated: Phase was designed for incoming migrations to Dataproc Metastore, not applicable
+        /// when migrating away from it. The current phase of the migration execution.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phase")]
         public virtual string Phase { get; set; }
 
