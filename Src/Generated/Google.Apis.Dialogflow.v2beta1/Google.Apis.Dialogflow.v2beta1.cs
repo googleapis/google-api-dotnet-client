@@ -17353,6 +17353,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("dtmfPattern")]
+        public virtual string DtmfPattern { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("isFallback")]
         public virtual System.Nullable<bool> IsFallback { get; set; }
 
@@ -19128,6 +19131,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("dtmfPattern")]
+        public virtual string DtmfPattern { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("isFallback")]
         public virtual System.Nullable<bool> IsFallback { get; set; }
@@ -23695,6 +23701,12 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ingestedContextReferences")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDialogflowV2beta1ConversationContextReference> IngestedContextReferences { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("initialConversationProfile")]
+        public virtual GoogleCloudDialogflowV2beta1ConversationProfile InitialConversationProfile { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("initialGeneratorContexts")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDialogflowV2beta1ConversationGeneratorContext> InitialGeneratorContexts { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
         public virtual string LifecycleState { get; set; }
 
@@ -23874,6 +23886,15 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1ConversationGeneratorContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("generatorType")]
+        public virtual string GeneratorType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
