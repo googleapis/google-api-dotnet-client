@@ -1,0 +1,11 @@
+{
+  "Google.Apis.AgentRegistry.v1alpha.AgentRegistryBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AgentRegistry.v1alpha.AgentRegistryBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
