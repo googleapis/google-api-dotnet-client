@@ -2145,20 +2145,17 @@ namespace Google.Apis.CloudIAP.v1.Data
     public class OAuthSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. OAuth 2.0 client ID used in the OAuth flow to generate an access token. If this field is set, you
-        /// can skip obtaining the OAuth credentials in this step:
-        /// https://developers.google.com/identity/protocols/OAuth2?hl=en_US#1.-obtain-oauth-2.0-credentials-from-the-google-api-console.
-        /// However, this could allow for client sharing. The risks of client sharing are outlined here:
-        /// https://cloud.google.com/iap/docs/sharing-oauth-clients#risks.
+        /// Optional. OAuth 2.0 client ID used in the OAuth flow. This allows for client sharing. The risks of client
+        /// sharing are outlined here: https://cloud.google.com/iap/docs/sharing-oauth-clients#risks.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; }
 
-        /// <summary>Optional. Input only. OAuth secret paired with client ID</summary>
+        /// <summary>Optional. Input only. OAuth secret paired with client ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
         public virtual string ClientSecret { get; set; }
 
-        /// <summary>Output only. OAuth secret sha256 paired with client ID</summary>
+        /// <summary>Output only. OAuth secret SHA256 paired with client ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientSecretSha256")]
         public virtual string ClientSecretSha256 { get; set; }
 
