@@ -346,7 +346,7 @@ namespace Google.Apis.CloudKMS.v1
         /// <summary>
         /// Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
         /// </summary>
-        /// <param name="name">Required. The name of the KeyAccessJustificationsPolicyConfig to get.</param>
+        /// <param name="name">Required. Specifies the name of the KeyAccessJustificationsPolicyConfig to get.</param>
         public virtual GetKajPolicyConfigRequest GetKajPolicyConfig(string name)
         {
             return new GetKajPolicyConfigRequest(this.service, name);
@@ -364,7 +364,7 @@ namespace Google.Apis.CloudKMS.v1
                 InitParameters();
             }
 
-            /// <summary>Required. The name of the KeyAccessJustificationsPolicyConfig to get.</summary>
+            /// <summary>Required. Specifies the name of the KeyAccessJustificationsPolicyConfig to get.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -478,7 +478,7 @@ namespace Google.Apis.CloudKMS.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of
+        /// Identifier. Represents the resource name for this KeyAccessJustificationsPolicyConfig in the format of
         /// "{organizations|folders|projects}/*/kajPolicyConfig".
         /// </param>
         public virtual UpdateKajPolicyConfigRequest UpdateKajPolicyConfig(Google.Apis.CloudKMS.v1.Data.KeyAccessJustificationsPolicyConfig body, string name)
@@ -500,13 +500,13 @@ namespace Google.Apis.CloudKMS.v1
             }
 
             /// <summary>
-            /// Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of
+            /// Identifier. Represents the resource name for this KeyAccessJustificationsPolicyConfig in the format of
             /// "{organizations|folders|projects}/*/kajPolicyConfig".
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>Optional. The list of fields to update.</summary>
+            /// <summary>Optional. Specifies the list of fields to update.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
 
@@ -566,7 +566,7 @@ namespace Google.Apis.CloudKMS.v1
         /// <summary>
         /// Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
         /// </summary>
-        /// <param name="name">Required. The name of the KeyAccessJustificationsPolicyConfig to get.</param>
+        /// <param name="name">Required. Specifies the name of the KeyAccessJustificationsPolicyConfig to get.</param>
         public virtual GetKajPolicyConfigRequest GetKajPolicyConfig(string name)
         {
             return new GetKajPolicyConfigRequest(this.service, name);
@@ -584,7 +584,7 @@ namespace Google.Apis.CloudKMS.v1
                 InitParameters();
             }
 
-            /// <summary>Required. The name of the KeyAccessJustificationsPolicyConfig to get.</summary>
+            /// <summary>Required. Specifies the name of the KeyAccessJustificationsPolicyConfig to get.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -617,7 +617,7 @@ namespace Google.Apis.CloudKMS.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of
+        /// Identifier. Represents the resource name for this KeyAccessJustificationsPolicyConfig in the format of
         /// "{organizations|folders|projects}/*/kajPolicyConfig".
         /// </param>
         public virtual UpdateKajPolicyConfigRequest UpdateKajPolicyConfig(Google.Apis.CloudKMS.v1.Data.KeyAccessJustificationsPolicyConfig body, string name)
@@ -639,13 +639,13 @@ namespace Google.Apis.CloudKMS.v1
             }
 
             /// <summary>
-            /// Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of
+            /// Identifier. Represents the resource name for this KeyAccessJustificationsPolicyConfig in the format of
             /// "{organizations|folders|projects}/*/kajPolicyConfig".
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>Optional. The list of fields to update.</summary>
+            /// <summary>Optional. Specifies the list of fields to update.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
 
@@ -6056,7 +6056,7 @@ namespace Google.Apis.CloudKMS.v1
         /// <summary>
         /// Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
         /// </summary>
-        /// <param name="name">Required. The name of the KeyAccessJustificationsPolicyConfig to get.</param>
+        /// <param name="name">Required. Specifies the name of the KeyAccessJustificationsPolicyConfig to get.</param>
         public virtual GetKajPolicyConfigRequest GetKajPolicyConfig(string name)
         {
             return new GetKajPolicyConfigRequest(this.service, name);
@@ -6074,7 +6074,7 @@ namespace Google.Apis.CloudKMS.v1
                 InitParameters();
             }
 
-            /// <summary>Required. The name of the KeyAccessJustificationsPolicyConfig to get.</summary>
+            /// <summary>Required. Specifies the name of the KeyAccessJustificationsPolicyConfig to get.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -6158,7 +6158,8 @@ namespace Google.Apis.CloudKMS.v1
         /// hierarchy.
         /// </summary>
         /// <param name="project">
-        /// Required. The number or id of the project to get the effective KeyAccessJustificationsEnrollmentConfig for.
+        /// Required. Specifies the number or id of the project to get the effective
+        /// KeyAccessJustificationsEnrollmentConfig for.
         /// </param>
         public virtual ShowEffectiveKeyAccessJustificationsEnrollmentConfigRequest ShowEffectiveKeyAccessJustificationsEnrollmentConfig(string project)
         {
@@ -6179,8 +6180,8 @@ namespace Google.Apis.CloudKMS.v1
             }
 
             /// <summary>
-            /// Required. The number or id of the project to get the effective KeyAccessJustificationsEnrollmentConfig
-            /// for.
+            /// Required. Specifies the number or id of the project to get the effective
+            /// KeyAccessJustificationsEnrollmentConfig for.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
@@ -6213,8 +6214,8 @@ namespace Google.Apis.CloudKMS.v1
         /// Returns the KeyAccessJustificationsPolicyConfig of the resource closest to the given project in hierarchy.
         /// </summary>
         /// <param name="project">
-        /// Required. The number or id of the project to get the effective KeyAccessJustificationsPolicyConfig. In the
-        /// format of "projects/{|}"
+        /// Required. Specifies the number or id of the project to get the effective
+        /// KeyAccessJustificationsPolicyConfig. In the format of "projects/{|}"
         /// </param>
         public virtual ShowEffectiveKeyAccessJustificationsPolicyConfigRequest ShowEffectiveKeyAccessJustificationsPolicyConfig(string project)
         {
@@ -6234,8 +6235,8 @@ namespace Google.Apis.CloudKMS.v1
             }
 
             /// <summary>
-            /// Required. The number or id of the project to get the effective KeyAccessJustificationsPolicyConfig. In
-            /// the format of "projects/{|}"
+            /// Required. Specifies the number or id of the project to get the effective
+            /// KeyAccessJustificationsPolicyConfig. In the format of "projects/{|}"
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
@@ -6350,7 +6351,7 @@ namespace Google.Apis.CloudKMS.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of
+        /// Identifier. Represents the resource name for this KeyAccessJustificationsPolicyConfig in the format of
         /// "{organizations|folders|projects}/*/kajPolicyConfig".
         /// </param>
         public virtual UpdateKajPolicyConfigRequest UpdateKajPolicyConfig(Google.Apis.CloudKMS.v1.Data.KeyAccessJustificationsPolicyConfig body, string name)
@@ -6372,13 +6373,13 @@ namespace Google.Apis.CloudKMS.v1
             }
 
             /// <summary>
-            /// Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of
+            /// Identifier. Represents the resource name for this KeyAccessJustificationsPolicyConfig in the format of
             /// "{organizations|folders|projects}/*/kajPolicyConfig".
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>Optional. The list of fields to update.</summary>
+            /// <summary>Optional. Specifies the list of fields to update.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
 
@@ -7062,7 +7063,9 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// encrypt, decrypt, and sign operations, and the operation will fail if rejected by the policy. The policy is
         /// defined by specifying zero or more allowed justification codes.
         /// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes By default,
-        /// this field is absent, and all justification codes are allowed.
+        /// this field is absent, and all justification codes are allowed. If the
+        /// `key_access_justifications_policy.allowed_access_reasons` is empty (zero allowed justification code), all
+        /// encrypt, decrypt, and sign operations will fail.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyAccessJustificationsPolicy")]
         public virtual KeyAccessJustificationsPolicy KeyAccessJustificationsPolicy { get; set; }
@@ -8279,14 +8282,16 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The configuration of a protection level for a project's Key Access Justifications enrollment.</summary>
+    /// <summary>
+    /// Represents the configuration of a protection level for a project's Key Access Justifications enrollment.
+    /// </summary>
     public class KeyAccessJustificationsEnrollmentConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether the project has KAJ logging enabled.</summary>
+        /// <summary>Indicates whether the project has KAJ logging enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogging")]
         public virtual System.Nullable<bool> AuditLogging { get; set; }
 
-        /// <summary>Whether the project is enrolled in KAJ policy enforcement.</summary>
+        /// <summary>Indicates whether the project is enrolled in KAJ policy enforcement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyEnforcement")]
         public virtual System.Nullable<bool> PolicyEnforcement { get; set; }
 
@@ -8296,13 +8301,15 @@ namespace Google.Apis.CloudKMS.v1.Data
 
     /// <summary>
     /// A KeyAccessJustificationsPolicy specifies zero or more allowed AccessReason values for encrypt, decrypt, and
-    /// sign operations on a CryptoKey.
+    /// sign operations on a CryptoKey or KeyAccessJustificationsPolicyConfig (the default Key Access Justifications
+    /// policy).
     /// </summary>
     public class KeyAccessJustificationsPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The list of allowed reasons for access to a CryptoKey. Zero allowed access reasons means all encrypt,
-        /// decrypt, and sign operations for the CryptoKey associated with this policy will fail.
+        /// The list of allowed reasons for access to a CryptoKey. Note that empty allowed_access_reasons has a
+        /// different meaning depending on where this message appears. If this is under
+        /// KeyAccessJustificationsPolicyConfig, it means allow-all. If this is under CryptoKey, it means deny-all.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedAccessReasons")]
         public virtual System.Collections.Generic.IList<string> AllowedAccessReasons { get; set; }
@@ -8311,19 +8318,21 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A singleton configuration for Key Access Justifications policies.</summary>
+    /// <summary>Represents a singleton configuration for Key Access Justifications policies.</summary>
     public class KeyAccessJustificationsPolicyConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The default key access justification policy used when a CryptoKey is created in this folder. This
-        /// is only used when a Key Access Justifications policy is not provided in the CreateCryptoKeyRequest. This
-        /// overrides any default policies in its ancestry.
+        /// Optional. Specifies the default key access justifications (KAJ) policy used when a CryptoKey is created in
+        /// this folder. This is only used when a Key Access Justifications policy is not provided in the
+        /// CreateCryptoKeyRequest. This overrides any default policies in its ancestry. If this field is unset, or is
+        /// set but contains an empty allowed_access_reasons list, no default Key Access Justifications (KAJ) policy
+        /// configuration is active. In this scenario, all newly created keys will default to an "allow-all" policy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultKeyAccessJustificationPolicy")]
         public virtual KeyAccessJustificationsPolicy DefaultKeyAccessJustificationPolicy { get; set; }
 
         /// <summary>
-        /// Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of
+        /// Identifier. Represents the resource name for this KeyAccessJustificationsPolicyConfig in the format of
         /// "{organizations|folders|projects}/*/kajPolicyConfig".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -9678,19 +9687,20 @@ namespace Google.Apis.CloudKMS.v1.Data
     }
 
     /// <summary>
-    /// Response message for KeyAccessJustificationsConfig.ShowEffectiveKeyAccessJustificationsEnrollmentConfig
+    /// Represents a response message for
+    /// KeyAccessJustificationsConfig.ShowEffectiveKeyAccessJustificationsEnrollmentConfig
     /// </summary>
     public class ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The effective KeyAccessJustificationsEnrollmentConfig for external keys.</summary>
+        /// <summary>Contains the effective KeyAccessJustificationsEnrollmentConfig for external keys.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalConfig")]
         public virtual KeyAccessJustificationsEnrollmentConfig ExternalConfig { get; set; }
 
-        /// <summary>The effective KeyAccessJustificationsEnrollmentConfig for hardware keys.</summary>
+        /// <summary>Contains the effective KeyAccessJustificationsEnrollmentConfig for hardware keys.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hardwareConfig")]
         public virtual KeyAccessJustificationsEnrollmentConfig HardwareConfig { get; set; }
 
-        /// <summary>The effective KeyAccessJustificationsEnrollmentConfig for software keys.</summary>
+        /// <summary>Contains the effective KeyAccessJustificationsEnrollmentConfig for software keys.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("softwareConfig")]
         public virtual KeyAccessJustificationsEnrollmentConfig SoftwareConfig { get; set; }
 
@@ -9699,11 +9709,12 @@ namespace Google.Apis.CloudKMS.v1.Data
     }
 
     /// <summary>
-    /// Response message for KeyAccessJustificationsConfig.ShowEffectiveKeyAccessJustificationsPolicyConfig.
+    /// Represents a response message for
+    /// KeyAccessJustificationsConfig.ShowEffectiveKeyAccessJustificationsPolicyConfig.
     /// </summary>
     public class ShowEffectiveKeyAccessJustificationsPolicyConfigResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The effective KeyAccessJustificationsPolicyConfig.</summary>
+        /// <summary>Contains the effective KeyAccessJustificationsPolicyConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveKajPolicy")]
         public virtual KeyAccessJustificationsPolicyConfig EffectiveKajPolicy { get; set; }
 
