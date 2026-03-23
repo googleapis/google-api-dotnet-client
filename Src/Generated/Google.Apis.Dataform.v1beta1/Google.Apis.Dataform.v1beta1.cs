@@ -3632,6 +3632,39 @@ namespace Google.Apis.Dataform.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Path { get; set; }
 
+                        /// <summary>
+                        /// Optional. Specifies the metadata to return for each directory entry. If unspecified, the
+                        /// default is `DIRECTORY_CONTENTS_VIEW_BASIC`. Currently the `DIRECTORY_CONTENTS_VIEW_METADATA`
+                        /// view is not supported by CMEK-protected workspaces.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// Optional. Specifies the metadata to return for each directory entry. If unspecified, the
+                        /// default is `DIRECTORY_CONTENTS_VIEW_BASIC`. Currently the `DIRECTORY_CONTENTS_VIEW_METADATA`
+                        /// view is not supported by CMEK-protected workspaces.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>The default / unset value. Defaults to DIRECTORY_CONTENTS_VIEW_BASIC.</summary>
+                            [Google.Apis.Util.StringValueAttribute("DIRECTORY_CONTENTS_VIEW_UNSPECIFIED")]
+                            DIRECTORYCONTENTSVIEWUNSPECIFIED = 0,
+
+                            /// <summary>
+                            /// Includes only the file or directory name. This is the default behavior.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("DIRECTORY_CONTENTS_VIEW_BASIC")]
+                            DIRECTORYCONTENTSVIEWBASIC = 1,
+
+                            /// <summary>
+                            /// Includes all metadata for each file or directory. Currently not supported by
+                            /// CMEK-protected workspaces.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("DIRECTORY_CONTENTS_VIEW_METADATA")]
+                            DIRECTORYCONTENTSVIEWMETADATA = 2,
+                        }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "queryDirectoryContents";
 
@@ -3672,6 +3705,14 @@ namespace Google.Apis.Dataform.v1beta1
                             RequestParameters.Add("path", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "path",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -7142,6 +7183,10 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("file")]
         public virtual string File { get; set; }
 
+        /// <summary>Entry with metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual FilesystemEntryMetadata Metadata { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7317,6 +7362,54 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// <summary>File system path relative to the workspace root.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents metadata for a single entry in a filesystem.</summary>
+    public class FilesystemEntryMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Provides the size of the entry in bytes. For directories, this will be 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
+        public virtual System.Nullable<long> SizeBytes { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Represents the time of the last modification of the entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
