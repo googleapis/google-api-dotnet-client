@@ -7,5 +7,10 @@
   "Google.Apis.Dataform.v1.DataformBaseServiceRequest<<TResponse>>.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.Dataform.v1.ProjectsResource+LocationsResource+RepositoriesResource+WorkspacesResource+QueryDirectoryContentsRequest.ViewEnum": [
+    "DIRECTORY_CONTENTS_VIEW_UNSPECIFIED",
+    "DIRECTORY_CONTENTS_VIEW_BASIC",
+    "DIRECTORY_CONTENTS_VIEW_METADATA"
   ]
 }
