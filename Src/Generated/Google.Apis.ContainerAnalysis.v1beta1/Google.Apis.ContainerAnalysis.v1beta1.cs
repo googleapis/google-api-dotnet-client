@@ -4680,6 +4680,15 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsArtifactObjects Objects { get; set; }
 
         /// <summary>
+        /// Optional. A list of OCI images to be uploaded to Artifact Registry upon successful completion of all build
+        /// steps. OCI images in the specified paths will be uploaded to the specified Artifact Registry repository
+        /// using the builder service account's credentials. If any images fail to be pushed, the build is marked
+        /// FAILURE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oci")]
+        public virtual System.Collections.Generic.IList<ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsOci> Oci { get; set; }
+
+        /// <summary>
         /// A list of Python packages to be uploaded to Artifact Registry upon successful completion of all build steps.
         /// The build service account credentials will be used to perform the upload. If any objects fail to be pushed,
         /// the build is marked FAILURE.
@@ -4823,6 +4832,29 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repository")]
         public virtual string Repository { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>OCI image to upload to Artifact Registry upon successful completion of all build steps.</summary>
+    public class ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsOci : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Path on the local file system where to find the container to upload. e.g. /workspace/my-image.tar
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("file")]
+        public virtual string File { get; set; }
+
+        /// <summary>
+        /// Required. Registry path to upload the container to. e.g. us-east1-docker.pkg.dev/my-project/my-repo/my-image
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("registryPath")]
+        public virtual string RegistryPath { get; set; }
+
+        /// <summary>Optional. Tags to apply to the uploaded image. e.g. latest, 1.0.0</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5457,6 +5489,13 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The OCI media type of the artifact. Non-OCI images, such as Docker images, will have an
+        /// unspecified value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ociMediaType")]
+        public virtual string OciMediaType { get; set; }
 
         /// <summary>Output only. Stores timing information for pushing the specified image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pushTiming")]
