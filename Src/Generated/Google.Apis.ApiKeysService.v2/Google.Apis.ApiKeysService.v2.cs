@@ -467,7 +467,10 @@ namespace Google.Apis.ApiKeysService.v2
                 /// is `global`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The project in which the API key is created.</param>
+                /// <param name="parent">
+                /// Required. The project in which the API key is created. The parent field must be in format of
+                /// "projects//locations/global".
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.ApiKeysService.v2.Data.V2Key body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
@@ -487,7 +490,10 @@ namespace Google.Apis.ApiKeysService.v2
                         InitParameters();
                     }
 
-                    /// <summary>Required. The project in which the API key is created.</summary>
+                    /// <summary>
+                    /// Required. The project in which the API key is created. The parent field must be in format of
+                    /// "projects//locations/global".
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -713,7 +719,10 @@ namespace Google.Apis.ApiKeysService.v2
                 /// Lists the API keys owned by a project. The key string of the API key isn't included in the response.
                 /// NOTE: Key is a global resource; hence the only supported value for location is `global`.
                 /// </summary>
-                /// <param name="parent">Required. Lists all API keys associated with this project.</param>
+                /// <param name="parent">
+                /// Required. Lists all API keys associated with this project. The parent field must be in format of
+                /// "projects//locations/global".
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
@@ -732,7 +741,10 @@ namespace Google.Apis.ApiKeysService.v2
                         InitParameters();
                     }
 
-                    /// <summary>Required. Lists all API keys associated with this project.</summary>
+                    /// <summary>
+                    /// Required. Lists all API keys associated with this project. The parent field must be in format of
+                    /// "projects//locations/global".
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -804,7 +816,7 @@ namespace Google.Apis.ApiKeysService.v2
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. The resource name of the key. The `name` has the form:
+                /// Identifier. The resource name of the key. The `name` has the form:
                 /// `projects//locations/global/keys/`. For example:
                 /// `projects/123456867718/locations/global/keys/b7ff1f9f-8275-410a-94dd-3855ee9b5dd2` NOTE: Key is a
                 /// global resource; hence the only supported value for location is `global`.
@@ -829,7 +841,7 @@ namespace Google.Apis.ApiKeysService.v2
                     }
 
                     /// <summary>
-                    /// Output only. The resource name of the key. The `name` has the form:
+                    /// Identifier. The resource name of the key. The `name` has the form:
                     /// `projects//locations/global/keys/`. For example:
                     /// `projects/123456867718/locations/global/keys/b7ff1f9f-8275-410a-94dd-3855ee9b5dd2` NOTE: Key is
                     /// a global resource; hence the only supported value for location is `global`.
@@ -1222,7 +1234,7 @@ namespace Google.Apis.ApiKeysService.v2.Data
         public virtual string KeyString { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of the key. The `name` has the form: `projects//locations/global/keys/`. For
+        /// Identifier. The resource name of the key. The `name` has the form: `projects//locations/global/keys/`. For
         /// example: `projects/123456867718/locations/global/keys/b7ff1f9f-8275-410a-94dd-3855ee9b5dd2` NOTE: Key is a
         /// global resource; hence the only supported value for location is `global`.
         /// </summary>
