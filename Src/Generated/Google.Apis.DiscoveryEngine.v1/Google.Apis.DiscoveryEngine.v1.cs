@@ -7668,155 +7668,864 @@ namespace Google.Apis.DiscoveryEngine.v1
                             public AgentsResource(Google.Apis.Services.IClientService service)
                             {
                                 this.service = service;
-                                Message = new MessageResource(service);
+                                A2a = new A2aResource(service);
                                 Operations = new OperationsResource(service);
-                                Tasks = new TasksResource(service);
                             }
 
-                            /// <summary>Gets the Message resource.</summary>
-                            public virtual MessageResource Message { get; }
+                            /// <summary>Gets the A2a resource.</summary>
+                            public virtual A2aResource A2a { get; }
 
-                            /// <summary>The "message" collection of methods.</summary>
-                            public class MessageResource
+                            /// <summary>The "a2a" collection of methods.</summary>
+                            public class A2aResource
                             {
-                                private const string Resource = "message";
+                                private const string Resource = "a2a";
 
                                 /// <summary>The service which this resource belongs to.</summary>
                                 private readonly Google.Apis.Services.IClientService service;
 
                                 /// <summary>Constructs a new resource.</summary>
-                                public MessageResource(Google.Apis.Services.IClientService service)
+                                public A2aResource(Google.Apis.Services.IClientService service)
                                 {
                                     this.service = service;
+                                    V1 = new V1Resource(service);
                                 }
 
-                                /// <summary>
-                                /// Send a message to the agent. This is a blocking call that will return the task once
-                                /// it is completed, or a LRO if requested.
-                                /// </summary>
-                                /// <param name="body">The body of the request.</param>
-                                /// <param name="tenant">
-                                /// Optional tenant, provided as a path parameter. Experimental, might still change for
-                                /// 1.0 release.
-                                /// </param>
-                                public virtual SendRequest Send(Google.Apis.DiscoveryEngine.v1.Data.A2aV1SendMessageRequest body, string tenant)
-                                {
-                                    return new SendRequest(this.service, body, tenant);
-                                }
+                                /// <summary>Gets the V1 resource.</summary>
+                                public virtual V1Resource V1 { get; }
 
-                                /// <summary>
-                                /// Send a message to the agent. This is a blocking call that will return the task once
-                                /// it is completed, or a LRO if requested.
-                                /// </summary>
-                                public class SendRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1SendMessageResponse>
+                                /// <summary>The "v1" collection of methods.</summary>
+                                public class V1Resource
                                 {
-                                    /// <summary>Constructs a new Send request.</summary>
-                                    public SendRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1.Data.A2aV1SendMessageRequest body, string tenant) : base(service)
+                                    private const string Resource = "v1";
+
+                                    /// <summary>The service which this resource belongs to.</summary>
+                                    private readonly Google.Apis.Services.IClientService service;
+
+                                    /// <summary>Constructs a new resource.</summary>
+                                    public V1Resource(Google.Apis.Services.IClientService service)
                                     {
-                                        Tenant = tenant;
-                                        Body = body;
-                                        InitParameters();
+                                        this.service = service;
+                                        Message = new MessageResource(service);
+                                        Tasks = new TasksResource(service);
                                     }
 
-                                    /// <summary>
+                                    /// <summary>Gets the Message resource.</summary>
+                                    public virtual MessageResource Message { get; }
+
+                                    /// <summary>The "message" collection of methods.</summary>
+                                    public class MessageResource
+                                    {
+                                        private const string Resource = "message";
+
+                                        /// <summary>The service which this resource belongs to.</summary>
+                                        private readonly Google.Apis.Services.IClientService service;
+
+                                        /// <summary>Constructs a new resource.</summary>
+                                        public MessageResource(Google.Apis.Services.IClientService service)
+                                        {
+                                            this.service = service;
+                                        }
+
+                                        /// <summary>
+                                        /// Send a message to the agent. This is a blocking call that will return the
+                                        /// task once it is completed, or a LRO if requested.
+                                        /// </summary>
+                                        /// <param name="body">The body of the request.</param>
+                                        /// <param name="tenant">
+                                        /// Optional tenant, provided as a path parameter. Experimental, might still
+                                        /// change for 1.0 release.
+                                        /// </param>
+                                        public virtual SendRequest Send(Google.Apis.DiscoveryEngine.v1.Data.A2aV1SendMessageRequest body, string tenant)
+                                        {
+                                            return new SendRequest(this.service, body, tenant);
+                                        }
+
+                                        /// <summary>
+                                        /// Send a message to the agent. This is a blocking call that will return the
+                                        /// task once it is completed, or a LRO if requested.
+                                        /// </summary>
+                                        public class SendRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1SendMessageResponse>
+                                        {
+                                            /// <summary>Constructs a new Send request.</summary>
+                                            public SendRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1.Data.A2aV1SendMessageRequest body, string tenant) : base(service)
+                                            {
+                                                Tenant = tenant;
+                                                Body = body;
+                                                InitParameters();
+                                            }
+
+                                            /// <summary>
+                                            /// Optional tenant, provided as a path parameter. Experimental, might still
+                                            /// change for 1.0 release.
+                                            /// </summary>
+                                            [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                                            public virtual string Tenant { get; private set; }
+
+                                            /// <summary>Gets or sets the body of this request.</summary>
+                                            Google.Apis.DiscoveryEngine.v1.Data.A2aV1SendMessageRequest Body { get; set; }
+
+                                            /// <summary>Returns the body of the request.</summary>
+                                            protected override object GetBody() => Body;
+
+                                            /// <summary>Gets the method name.</summary>
+                                            public override string MethodName => "send";
+
+                                            /// <summary>Gets the HTTP method.</summary>
+                                            public override string HttpMethod => "POST";
+
+                                            /// <summary>Gets the REST path.</summary>
+                                            public override string RestPath => "v1/{+tenant}/a2a/v1/message:send";
+
+                                            /// <summary>Initializes Send parameter list.</summary>
+                                            protected override void InitParameters()
+                                            {
+                                                base.InitParameters();
+                                                RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                                                {
+                                                    Name = "tenant",
+                                                    IsRequired = true,
+                                                    ParameterType = "path",
+                                                    DefaultValue = null,
+                                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                                });
+                                            }
+                                        }
+
+                                        /// <summary>
+                                        /// SendStreamingMessage is a streaming call that will return a stream of task
+                                        /// update events until the Task is in an interrupted or terminal state.
+                                        /// </summary>
+                                        /// <param name="body">The body of the request.</param>
+                                        /// <param name="tenant">
+                                        /// Optional tenant, provided as a path parameter. Experimental, might still
+                                        /// change for 1.0 release.
+                                        /// </param>
+                                        public virtual StreamRequest Stream(Google.Apis.DiscoveryEngine.v1.Data.A2aV1SendMessageRequest body, string tenant)
+                                        {
+                                            return new StreamRequest(this.service, body, tenant);
+                                        }
+
+                                        /// <summary>
+                                        /// SendStreamingMessage is a streaming call that will return a stream of task
+                                        /// update events until the Task is in an interrupted or terminal state.
+                                        /// </summary>
+                                        public class StreamRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1StreamResponse>
+                                        {
+                                            /// <summary>Constructs a new Stream request.</summary>
+                                            public StreamRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1.Data.A2aV1SendMessageRequest body, string tenant) : base(service)
+                                            {
+                                                Tenant = tenant;
+                                                Body = body;
+                                                InitParameters();
+                                            }
+
+                                            /// <summary>
+                                            /// Optional tenant, provided as a path parameter. Experimental, might still
+                                            /// change for 1.0 release.
+                                            /// </summary>
+                                            [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                                            public virtual string Tenant { get; private set; }
+
+                                            /// <summary>Gets or sets the body of this request.</summary>
+                                            Google.Apis.DiscoveryEngine.v1.Data.A2aV1SendMessageRequest Body { get; set; }
+
+                                            /// <summary>Returns the body of the request.</summary>
+                                            protected override object GetBody() => Body;
+
+                                            /// <summary>Gets the method name.</summary>
+                                            public override string MethodName => "stream";
+
+                                            /// <summary>Gets the HTTP method.</summary>
+                                            public override string HttpMethod => "POST";
+
+                                            /// <summary>Gets the REST path.</summary>
+                                            public override string RestPath => "v1/{+tenant}/a2a/v1/message:stream";
+
+                                            /// <summary>Initializes Stream parameter list.</summary>
+                                            protected override void InitParameters()
+                                            {
+                                                base.InitParameters();
+                                                RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                                                {
+                                                    Name = "tenant",
+                                                    IsRequired = true,
+                                                    ParameterType = "path",
+                                                    DefaultValue = null,
+                                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                                });
+                                            }
+                                        }
+                                    }
+
+                                    /// <summary>Gets the Tasks resource.</summary>
+                                    public virtual TasksResource Tasks { get; }
+
+                                    /// <summary>The "tasks" collection of methods.</summary>
+                                    public class TasksResource
+                                    {
+                                        private const string Resource = "tasks";
+
+                                        /// <summary>The service which this resource belongs to.</summary>
+                                        private readonly Google.Apis.Services.IClientService service;
+
+                                        /// <summary>Constructs a new resource.</summary>
+                                        public TasksResource(Google.Apis.Services.IClientService service)
+                                        {
+                                            this.service = service;
+                                            PushNotificationConfigs = new PushNotificationConfigsResource(service);
+                                        }
+
+                                        /// <summary>Gets the PushNotificationConfigs resource.</summary>
+                                        public virtual PushNotificationConfigsResource PushNotificationConfigs { get; }
+
+                                        /// <summary>The "pushNotificationConfigs" collection of methods.</summary>
+                                        public class PushNotificationConfigsResource
+                                        {
+                                            private const string Resource = "pushNotificationConfigs";
+
+                                            /// <summary>The service which this resource belongs to.</summary>
+                                            private readonly Google.Apis.Services.IClientService service;
+
+                                            /// <summary>Constructs a new resource.</summary>
+                                            public PushNotificationConfigsResource(Google.Apis.Services.IClientService service)
+                                            {
+                                                this.service = service;
+                                            }
+
+                                            /// <summary>Set a push notification config for a task.</summary>
+                                            /// <param name="body">The body of the request.</param>
+                                            /// <param name="tenant">
+                                            /// Optional tenant, provided as a path parameter. Experimental, might still
+                                            /// change for 1.0 release.
+                                            /// </param>
+                                            /// <param name="parent">
+                                            /// Required. The parent task resource for this config. Format:
+                                            /// tasks/{task_id}
+                                            /// </param>
+                                            public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1.Data.A2aV1TaskPushNotificationConfig body, string tenant, string parent)
+                                            {
+                                                return new CreateRequest(this.service, body, tenant, parent);
+                                            }
+
+                                            /// <summary>Set a push notification config for a task.</summary>
+                                            public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1TaskPushNotificationConfig>
+                                            {
+                                                /// <summary>Constructs a new Create request.</summary>
+                                                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1.Data.A2aV1TaskPushNotificationConfig body, string tenant, string parent) : base(service)
+                                                {
+                                                    Tenant = tenant;
+                                                    Parent = parent;
+                                                    Body = body;
+                                                    InitParameters();
+                                                }
+
+                                                /// <summary>
+                                                /// Optional tenant, provided as a path parameter. Experimental, might
+                                                /// still change for 1.0 release.
+                                                /// </summary>
+                                                [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                                                public virtual string Tenant { get; private set; }
+
+                                                /// <summary>
+                                                /// Required. The parent task resource for this config. Format:
+                                                /// tasks/{task_id}
+                                                /// </summary>
+                                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                                public virtual string Parent { get; private set; }
+
+                                                /// <summary>Required. The ID for the new config.</summary>
+                                                [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
+                                                public virtual string ConfigId { get; set; }
+
+                                                /// <summary>Gets or sets the body of this request.</summary>
+                                                Google.Apis.DiscoveryEngine.v1.Data.A2aV1TaskPushNotificationConfig Body { get; set; }
+
+                                                /// <summary>Returns the body of the request.</summary>
+                                                protected override object GetBody() => Body;
+
+                                                /// <summary>Gets the method name.</summary>
+                                                public override string MethodName => "create";
+
+                                                /// <summary>Gets the HTTP method.</summary>
+                                                public override string HttpMethod => "POST";
+
+                                                /// <summary>Gets the REST path.</summary>
+                                                public override string RestPath => "v1/{+tenant}/a2a/v1/{+parent}";
+
+                                                /// <summary>Initializes Create parameter list.</summary>
+                                                protected override void InitParameters()
+                                                {
+                                                    base.InitParameters();
+                                                    RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                                                    {
+                                                        Name = "tenant",
+                                                        IsRequired = true,
+                                                        ParameterType = "path",
+                                                        DefaultValue = null,
+                                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                                    });
+                                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                                    {
+                                                        Name = "parent",
+                                                        IsRequired = true,
+                                                        ParameterType = "path",
+                                                        DefaultValue = null,
+                                                        Pattern = @"^tasks/[^/]+/pushNotificationConfigs$",
+                                                    });
+                                                    RequestParameters.Add("configId", new Google.Apis.Discovery.Parameter
+                                                    {
+                                                        Name = "configId",
+                                                        IsRequired = false,
+                                                        ParameterType = "query",
+                                                        DefaultValue = null,
+                                                        Pattern = null,
+                                                    });
+                                                }
+                                            }
+
+                                            /// <summary>Delete a push notification config for a task.</summary>
+                                            /// <param name="tenant">
+                                            /// Optional tenant, provided as a path parameter. Experimental, might still
+                                            /// change for 1.0 release.
+                                            /// </param>
+                                            /// <param name="name">
+                                            /// The resource name of the config to delete. Format:
+                                            /// tasks/{task_id}/pushNotificationConfigs/{config_id}
+                                            /// </param>
+                                            public virtual DeleteRequest Delete(string tenant, string name)
+                                            {
+                                                return new DeleteRequest(this.service, tenant, name);
+                                            }
+
+                                            /// <summary>Delete a push notification config for a task.</summary>
+                                            public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleProtobufEmpty>
+                                            {
+                                                /// <summary>Constructs a new Delete request.</summary>
+                                                public DeleteRequest(Google.Apis.Services.IClientService service, string tenant, string name) : base(service)
+                                                {
+                                                    Tenant = tenant;
+                                                    Name = name;
+                                                    InitParameters();
+                                                }
+
+                                                /// <summary>
+                                                /// Optional tenant, provided as a path parameter. Experimental, might
+                                                /// still change for 1.0 release.
+                                                /// </summary>
+                                                [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                                                public virtual string Tenant { get; private set; }
+
+                                                /// <summary>
+                                                /// The resource name of the config to delete. Format:
+                                                /// tasks/{task_id}/pushNotificationConfigs/{config_id}
+                                                /// </summary>
+                                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                                public virtual string Name { get; private set; }
+
+                                                /// <summary>Gets the method name.</summary>
+                                                public override string MethodName => "delete";
+
+                                                /// <summary>Gets the HTTP method.</summary>
+                                                public override string HttpMethod => "DELETE";
+
+                                                /// <summary>Gets the REST path.</summary>
+                                                public override string RestPath => "v1/{+tenant}/a2a/v1/{+name}";
+
+                                                /// <summary>Initializes Delete parameter list.</summary>
+                                                protected override void InitParameters()
+                                                {
+                                                    base.InitParameters();
+                                                    RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                                                    {
+                                                        Name = "tenant",
+                                                        IsRequired = true,
+                                                        ParameterType = "path",
+                                                        DefaultValue = null,
+                                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                                    });
+                                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                                    {
+                                                        Name = "name",
+                                                        IsRequired = true,
+                                                        ParameterType = "path",
+                                                        DefaultValue = null,
+                                                        Pattern = @"^tasks/[^/]+/pushNotificationConfigs/[^/]+$",
+                                                    });
+                                                }
+                                            }
+
+                                            /// <summary>Get a push notification config for a task.</summary>
+                                            /// <param name="tenant">
+                                            /// Optional tenant, provided as a path parameter. Experimental, might still
+                                            /// change for 1.0 release.
+                                            /// </param>
+                                            /// <param name="name">
+                                            /// The resource name of the config to retrieve. Format:
+                                            /// tasks/{task_id}/pushNotificationConfigs/{config_id}
+                                            /// </param>
+                                            public virtual GetRequest Get(string tenant, string name)
+                                            {
+                                                return new GetRequest(this.service, tenant, name);
+                                            }
+
+                                            /// <summary>Get a push notification config for a task.</summary>
+                                            public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1TaskPushNotificationConfig>
+                                            {
+                                                /// <summary>Constructs a new Get request.</summary>
+                                                public GetRequest(Google.Apis.Services.IClientService service, string tenant, string name) : base(service)
+                                                {
+                                                    Tenant = tenant;
+                                                    Name = name;
+                                                    InitParameters();
+                                                }
+
+                                                /// <summary>
+                                                /// Optional tenant, provided as a path parameter. Experimental, might
+                                                /// still change for 1.0 release.
+                                                /// </summary>
+                                                [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                                                public virtual string Tenant { get; private set; }
+
+                                                /// <summary>
+                                                /// The resource name of the config to retrieve. Format:
+                                                /// tasks/{task_id}/pushNotificationConfigs/{config_id}
+                                                /// </summary>
+                                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                                public virtual string Name { get; private set; }
+
+                                                /// <summary>Gets the method name.</summary>
+                                                public override string MethodName => "get";
+
+                                                /// <summary>Gets the HTTP method.</summary>
+                                                public override string HttpMethod => "GET";
+
+                                                /// <summary>Gets the REST path.</summary>
+                                                public override string RestPath => "v1/{+tenant}/a2a/v1/{+name}";
+
+                                                /// <summary>Initializes Get parameter list.</summary>
+                                                protected override void InitParameters()
+                                                {
+                                                    base.InitParameters();
+                                                    RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                                                    {
+                                                        Name = "tenant",
+                                                        IsRequired = true,
+                                                        ParameterType = "path",
+                                                        DefaultValue = null,
+                                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                                    });
+                                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                                    {
+                                                        Name = "name",
+                                                        IsRequired = true,
+                                                        ParameterType = "path",
+                                                        DefaultValue = null,
+                                                        Pattern = @"^tasks/[^/]+/pushNotificationConfigs/[^/]+$",
+                                                    });
+                                                }
+                                            }
+
+                                            /// <summary>
+                                            /// Get a list of push notifications configured for a task.
+                                            /// </summary>
+                                            /// <param name="tenant">
+                                            /// Optional tenant, provided as a path parameter. Experimental, might still
+                                            /// change for 1.0 release.
+                                            /// </param>
+                                            /// <param name="parent">
+                                            /// The parent task resource. Format: tasks/{task_id}
+                                            /// </param>
+                                            public virtual ListRequest List(string tenant, string parent)
+                                            {
+                                                return new ListRequest(this.service, tenant, parent);
+                                            }
+
+                                            /// <summary>
+                                            /// Get a list of push notifications configured for a task.
+                                            /// </summary>
+                                            public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1ListTaskPushNotificationConfigResponse>
+                                            {
+                                                /// <summary>Constructs a new List request.</summary>
+                                                public ListRequest(Google.Apis.Services.IClientService service, string tenant, string parent) : base(service)
+                                                {
+                                                    Tenant = tenant;
+                                                    Parent = parent;
+                                                    InitParameters();
+                                                }
+
+                                                /// <summary>
+                                                /// Optional tenant, provided as a path parameter. Experimental, might
+                                                /// still change for 1.0 release.
+                                                /// </summary>
+                                                [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                                                public virtual string Tenant { get; private set; }
+
+                                                /// <summary>The parent task resource. Format: tasks/{task_id}</summary>
+                                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                                public virtual string Parent { get; private set; }
+
+                                                /// <summary>
+                                                /// For AIP-158 these fields are present. Usually not used/needed. The
+                                                /// maximum number of configurations to return. If unspecified, all
+                                                /// configs will be returned.
+                                                /// </summary>
+                                                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                                                public virtual System.Nullable<int> PageSize { get; set; }
+
+                                                /// <summary>
+                                                /// A page token received from a previous
+                                                /// ListTaskPushNotificationConfigRequest call. Provide this to retrieve
+                                                /// the subsequent page. When paginating, all other parameters provided
+                                                /// to `ListTaskPushNotificationConfigRequest` must match the call that
+                                                /// provided the page token.
+                                                /// </summary>
+                                                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                                                public virtual string PageToken { get; set; }
+
+                                                /// <summary>Gets the method name.</summary>
+                                                public override string MethodName => "list";
+
+                                                /// <summary>Gets the HTTP method.</summary>
+                                                public override string HttpMethod => "GET";
+
+                                                /// <summary>Gets the REST path.</summary>
+                                                public override string RestPath => "v1/{+tenant}/a2a/v1/{+parent}/pushNotificationConfigs";
+
+                                                /// <summary>Initializes List parameter list.</summary>
+                                                protected override void InitParameters()
+                                                {
+                                                    base.InitParameters();
+                                                    RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                                                    {
+                                                        Name = "tenant",
+                                                        IsRequired = true,
+                                                        ParameterType = "path",
+                                                        DefaultValue = null,
+                                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                                    });
+                                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                                    {
+                                                        Name = "parent",
+                                                        IsRequired = true,
+                                                        ParameterType = "path",
+                                                        DefaultValue = null,
+                                                        Pattern = @"^tasks/[^/]+$",
+                                                    });
+                                                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                                    {
+                                                        Name = "pageSize",
+                                                        IsRequired = false,
+                                                        ParameterType = "query",
+                                                        DefaultValue = null,
+                                                        Pattern = null,
+                                                    });
+                                                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                                    {
+                                                        Name = "pageToken",
+                                                        IsRequired = false,
+                                                        ParameterType = "query",
+                                                        DefaultValue = null,
+                                                        Pattern = null,
+                                                    });
+                                                }
+                                            }
+                                        }
+
+                                        /// <summary>
+                                        /// Cancel a task from the agent. If supported one should expect no more task
+                                        /// updates for the task.
+                                        /// </summary>
+                                        /// <param name="body">The body of the request.</param>
+                                        /// <param name="tenant">
+                                        /// Optional tenant, provided as a path parameter. Experimental, might still
+                                        /// change for 1.0 release.
+                                        /// </param>
+                                        /// <param name="name">
+                                        /// The resource name of the task to cancel. Format: tasks/{task_id}
+                                        /// </param>
+                                        public virtual CancelRequest Cancel(Google.Apis.DiscoveryEngine.v1.Data.A2aV1CancelTaskRequest body, string tenant, string name)
+                                        {
+                                            return new CancelRequest(this.service, body, tenant, name);
+                                        }
+
+                                        /// <summary>
+                                        /// Cancel a task from the agent. If supported one should expect no more task
+                                        /// updates for the task.
+                                        /// </summary>
+                                        public class CancelRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1Task>
+                                        {
+                                            /// <summary>Constructs a new Cancel request.</summary>
+                                            public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1.Data.A2aV1CancelTaskRequest body, string tenant, string name) : base(service)
+                                            {
+                                                Tenant = tenant;
+                                                Name = name;
+                                                Body = body;
+                                                InitParameters();
+                                            }
+
+                                            /// <summary>
+                                            /// Optional tenant, provided as a path parameter. Experimental, might still
+                                            /// change for 1.0 release.
+                                            /// </summary>
+                                            [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                                            public virtual string Tenant { get; private set; }
+
+                                            /// <summary>
+                                            /// The resource name of the task to cancel. Format: tasks/{task_id}
+                                            /// </summary>
+                                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                            public virtual string Name { get; private set; }
+
+                                            /// <summary>Gets or sets the body of this request.</summary>
+                                            Google.Apis.DiscoveryEngine.v1.Data.A2aV1CancelTaskRequest Body { get; set; }
+
+                                            /// <summary>Returns the body of the request.</summary>
+                                            protected override object GetBody() => Body;
+
+                                            /// <summary>Gets the method name.</summary>
+                                            public override string MethodName => "cancel";
+
+                                            /// <summary>Gets the HTTP method.</summary>
+                                            public override string HttpMethod => "POST";
+
+                                            /// <summary>Gets the REST path.</summary>
+                                            public override string RestPath => "v1/{+tenant}/a2a/v1/{+name}:cancel";
+
+                                            /// <summary>Initializes Cancel parameter list.</summary>
+                                            protected override void InitParameters()
+                                            {
+                                                base.InitParameters();
+                                                RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                                                {
+                                                    Name = "tenant",
+                                                    IsRequired = true,
+                                                    ParameterType = "path",
+                                                    DefaultValue = null,
+                                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                                });
+                                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                                {
+                                                    Name = "name",
+                                                    IsRequired = true,
+                                                    ParameterType = "path",
+                                                    DefaultValue = null,
+                                                    Pattern = @"^tasks/[^/]+$",
+                                                });
+                                            }
+                                        }
+
+                                        /// <summary>Get the current state of a task from the agent.</summary>
+                                        /// <param name="tenant">
+                                        /// Optional tenant, provided as a path parameter. Experimental, might still
+                                        /// change for 1.0 release.
+                                        /// </param>
+                                        /// <param name="name">
+                                        /// Required. The resource name of the task. Format: tasks/{task_id}
+                                        /// </param>
+                                        public virtual GetRequest Get(string tenant, string name)
+                                        {
+                                            return new GetRequest(this.service, tenant, name);
+                                        }
+
+                                        /// <summary>Get the current state of a task from the agent.</summary>
+                                        public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1Task>
+                                        {
+                                            /// <summary>Constructs a new Get request.</summary>
+                                            public GetRequest(Google.Apis.Services.IClientService service, string tenant, string name) : base(service)
+                                            {
+                                                Tenant = tenant;
+                                                Name = name;
+                                                InitParameters();
+                                            }
+
+                                            /// <summary>
+                                            /// Optional tenant, provided as a path parameter. Experimental, might still
+                                            /// change for 1.0 release.
+                                            /// </summary>
+                                            [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                                            public virtual string Tenant { get; private set; }
+
+                                            /// <summary>
+                                            /// Required. The resource name of the task. Format: tasks/{task_id}
+                                            /// </summary>
+                                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                            public virtual string Name { get; private set; }
+
+                                            /// <summary>
+                                            /// The number of most recent messages from the task's history to retrieve.
+                                            /// </summary>
+                                            [Google.Apis.Util.RequestParameterAttribute("historyLength", Google.Apis.Util.RequestParameterType.Query)]
+                                            public virtual System.Nullable<int> HistoryLength { get; set; }
+
+                                            /// <summary>Gets the method name.</summary>
+                                            public override string MethodName => "get";
+
+                                            /// <summary>Gets the HTTP method.</summary>
+                                            public override string HttpMethod => "GET";
+
+                                            /// <summary>Gets the REST path.</summary>
+                                            public override string RestPath => "v1/{+tenant}/a2a/v1/{+name}";
+
+                                            /// <summary>Initializes Get parameter list.</summary>
+                                            protected override void InitParameters()
+                                            {
+                                                base.InitParameters();
+                                                RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                                                {
+                                                    Name = "tenant",
+                                                    IsRequired = true,
+                                                    ParameterType = "path",
+                                                    DefaultValue = null,
+                                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                                });
+                                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                                {
+                                                    Name = "name",
+                                                    IsRequired = true,
+                                                    ParameterType = "path",
+                                                    DefaultValue = null,
+                                                    Pattern = @"^tasks/[^/]+$",
+                                                });
+                                                RequestParameters.Add("historyLength", new Google.Apis.Discovery.Parameter
+                                                {
+                                                    Name = "historyLength",
+                                                    IsRequired = false,
+                                                    ParameterType = "query",
+                                                    DefaultValue = null,
+                                                    Pattern = null,
+                                                });
+                                            }
+                                        }
+
+                                        /// <summary>
+                                        /// TaskSubscription is a streaming call that will return a stream of task
+                                        /// update events. This attaches the stream to an existing in process task. If
+                                        /// the task is complete the stream will return the completed task (like
+                                        /// GetTask) and close the stream.
+                                        /// </summary>
+                                        /// <param name="tenant">
+                                        /// Optional tenant, provided as a path parameter. Experimental, might still
+                                        /// change for 1.0 release.
+                                        /// </param>
+                                        /// <param name="name">
+                                        /// The resource name of the task to subscribe to. Format: tasks/{task_id}
+                                        /// </param>
+                                        public virtual SubscribeRequest Subscribe(string tenant, string name)
+                                        {
+                                            return new SubscribeRequest(this.service, tenant, name);
+                                        }
+
+                                        /// <summary>
+                                        /// TaskSubscription is a streaming call that will return a stream of task
+                                        /// update events. This attaches the stream to an existing in process task. If
+                                        /// the task is complete the stream will return the completed task (like
+                                        /// GetTask) and close the stream.
+                                        /// </summary>
+                                        public class SubscribeRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1StreamResponse>
+                                        {
+                                            /// <summary>Constructs a new Subscribe request.</summary>
+                                            public SubscribeRequest(Google.Apis.Services.IClientService service, string tenant, string name) : base(service)
+                                            {
+                                                Tenant = tenant;
+                                                Name = name;
+                                                InitParameters();
+                                            }
+
+                                            /// <summary>
+                                            /// Optional tenant, provided as a path parameter. Experimental, might still
+                                            /// change for 1.0 release.
+                                            /// </summary>
+                                            [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                                            public virtual string Tenant { get; private set; }
+
+                                            /// <summary>
+                                            /// The resource name of the task to subscribe to. Format: tasks/{task_id}
+                                            /// </summary>
+                                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                            public virtual string Name { get; private set; }
+
+                                            /// <summary>Gets the method name.</summary>
+                                            public override string MethodName => "subscribe";
+
+                                            /// <summary>Gets the HTTP method.</summary>
+                                            public override string HttpMethod => "GET";
+
+                                            /// <summary>Gets the REST path.</summary>
+                                            public override string RestPath => "v1/{+tenant}/a2a/v1/{+name}:subscribe";
+
+                                            /// <summary>Initializes Subscribe parameter list.</summary>
+                                            protected override void InitParameters()
+                                            {
+                                                base.InitParameters();
+                                                RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                                                {
+                                                    Name = "tenant",
+                                                    IsRequired = true,
+                                                    ParameterType = "path",
+                                                    DefaultValue = null,
+                                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                                });
+                                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                                {
+                                                    Name = "name",
+                                                    IsRequired = true,
+                                                    ParameterType = "path",
+                                                    DefaultValue = null,
+                                                    Pattern = @"^tasks/[^/]+$",
+                                                });
+                                            }
+                                        }
+                                    }
+
+                                    /// <summary>GetAgentCard returns the agent card for the agent.</summary>
+                                    /// <param name="tenant">
                                     /// Optional tenant, provided as a path parameter. Experimental, might still change
                                     /// for 1.0 release.
-                                    /// </summary>
-                                    [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
-                                    public virtual string Tenant { get; private set; }
-
-                                    /// <summary>Gets or sets the body of this request.</summary>
-                                    Google.Apis.DiscoveryEngine.v1.Data.A2aV1SendMessageRequest Body { get; set; }
-
-                                    /// <summary>Returns the body of the request.</summary>
-                                    protected override object GetBody() => Body;
-
-                                    /// <summary>Gets the method name.</summary>
-                                    public override string MethodName => "send";
-
-                                    /// <summary>Gets the HTTP method.</summary>
-                                    public override string HttpMethod => "POST";
-
-                                    /// <summary>Gets the REST path.</summary>
-                                    public override string RestPath => "v1/{+tenant}/message:send";
-
-                                    /// <summary>Initializes Send parameter list.</summary>
-                                    protected override void InitParameters()
+                                    /// </param>
+                                    public virtual GetCardRequest GetCard(string tenant)
                                     {
-                                        base.InitParameters();
-                                        RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "tenant",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
-                                        });
-                                    }
-                                }
-
-                                /// <summary>
-                                /// SendStreamingMessage is a streaming call that will return a stream of task update
-                                /// events until the Task is in an interrupted or terminal state.
-                                /// </summary>
-                                /// <param name="body">The body of the request.</param>
-                                /// <param name="tenant">
-                                /// Optional tenant, provided as a path parameter. Experimental, might still change for
-                                /// 1.0 release.
-                                /// </param>
-                                public virtual StreamRequest Stream(Google.Apis.DiscoveryEngine.v1.Data.A2aV1SendMessageRequest body, string tenant)
-                                {
-                                    return new StreamRequest(this.service, body, tenant);
-                                }
-
-                                /// <summary>
-                                /// SendStreamingMessage is a streaming call that will return a stream of task update
-                                /// events until the Task is in an interrupted or terminal state.
-                                /// </summary>
-                                public class StreamRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1StreamResponse>
-                                {
-                                    /// <summary>Constructs a new Stream request.</summary>
-                                    public StreamRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1.Data.A2aV1SendMessageRequest body, string tenant) : base(service)
-                                    {
-                                        Tenant = tenant;
-                                        Body = body;
-                                        InitParameters();
+                                        return new GetCardRequest(this.service, tenant);
                                     }
 
-                                    /// <summary>
-                                    /// Optional tenant, provided as a path parameter. Experimental, might still change
-                                    /// for 1.0 release.
-                                    /// </summary>
-                                    [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
-                                    public virtual string Tenant { get; private set; }
-
-                                    /// <summary>Gets or sets the body of this request.</summary>
-                                    Google.Apis.DiscoveryEngine.v1.Data.A2aV1SendMessageRequest Body { get; set; }
-
-                                    /// <summary>Returns the body of the request.</summary>
-                                    protected override object GetBody() => Body;
-
-                                    /// <summary>Gets the method name.</summary>
-                                    public override string MethodName => "stream";
-
-                                    /// <summary>Gets the HTTP method.</summary>
-                                    public override string HttpMethod => "POST";
-
-                                    /// <summary>Gets the REST path.</summary>
-                                    public override string RestPath => "v1/{+tenant}/message:stream";
-
-                                    /// <summary>Initializes Stream parameter list.</summary>
-                                    protected override void InitParameters()
+                                    /// <summary>GetAgentCard returns the agent card for the agent.</summary>
+                                    public class GetCardRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1AgentCard>
                                     {
-                                        base.InitParameters();
-                                        RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                                        /// <summary>Constructs a new GetCard request.</summary>
+                                        public GetCardRequest(Google.Apis.Services.IClientService service, string tenant) : base(service)
                                         {
-                                            Name = "tenant",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
-                                        });
+                                            Tenant = tenant;
+                                            InitParameters();
+                                        }
+
+                                        /// <summary>
+                                        /// Optional tenant, provided as a path parameter. Experimental, might still
+                                        /// change for 1.0 release.
+                                        /// </summary>
+                                        [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                                        public virtual string Tenant { get; private set; }
+
+                                        /// <summary>Gets the method name.</summary>
+                                        public override string MethodName => "getCard";
+
+                                        /// <summary>Gets the HTTP method.</summary>
+                                        public override string HttpMethod => "GET";
+
+                                        /// <summary>Gets the REST path.</summary>
+                                        public override string RestPath => "v1/{+tenant}/a2a/v1/card";
+
+                                        /// <summary>Initializes GetCard parameter list.</summary>
+                                        protected override void InitParameters()
+                                        {
+                                            base.InitParameters();
+                                            RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                                            {
+                                                Name = "tenant",
+                                                IsRequired = true,
+                                                ParameterType = "path",
+                                                DefaultValue = null,
+                                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                            });
+                                        }
                                     }
                                 }
                             }
@@ -7887,668 +8596,6 @@ namespace Google.Apis.DiscoveryEngine.v1
                                             Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+/operations/[^/]+$",
                                         });
                                     }
-                                }
-                            }
-
-                            /// <summary>Gets the Tasks resource.</summary>
-                            public virtual TasksResource Tasks { get; }
-
-                            /// <summary>The "tasks" collection of methods.</summary>
-                            public class TasksResource
-                            {
-                                private const string Resource = "tasks";
-
-                                /// <summary>The service which this resource belongs to.</summary>
-                                private readonly Google.Apis.Services.IClientService service;
-
-                                /// <summary>Constructs a new resource.</summary>
-                                public TasksResource(Google.Apis.Services.IClientService service)
-                                {
-                                    this.service = service;
-                                    PushNotificationConfigs = new PushNotificationConfigsResource(service);
-                                }
-
-                                /// <summary>Gets the PushNotificationConfigs resource.</summary>
-                                public virtual PushNotificationConfigsResource PushNotificationConfigs { get; }
-
-                                /// <summary>The "pushNotificationConfigs" collection of methods.</summary>
-                                public class PushNotificationConfigsResource
-                                {
-                                    private const string Resource = "pushNotificationConfigs";
-
-                                    /// <summary>The service which this resource belongs to.</summary>
-                                    private readonly Google.Apis.Services.IClientService service;
-
-                                    /// <summary>Constructs a new resource.</summary>
-                                    public PushNotificationConfigsResource(Google.Apis.Services.IClientService service)
-                                    {
-                                        this.service = service;
-                                    }
-
-                                    /// <summary>Set a push notification config for a task.</summary>
-                                    /// <param name="body">The body of the request.</param>
-                                    /// <param name="tenant">
-                                    /// Optional tenant, provided as a path parameter. Experimental, might still change
-                                    /// for 1.0 release.
-                                    /// </param>
-                                    /// <param name="parent">
-                                    /// Required. The parent task resource for this config. Format: tasks/{task_id}
-                                    /// </param>
-                                    public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1.Data.A2aV1TaskPushNotificationConfig body, string tenant, string parent)
-                                    {
-                                        return new CreateRequest(this.service, body, tenant, parent);
-                                    }
-
-                                    /// <summary>Set a push notification config for a task.</summary>
-                                    public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1TaskPushNotificationConfig>
-                                    {
-                                        /// <summary>Constructs a new Create request.</summary>
-                                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1.Data.A2aV1TaskPushNotificationConfig body, string tenant, string parent) : base(service)
-                                        {
-                                            Tenant = tenant;
-                                            Parent = parent;
-                                            Body = body;
-                                            InitParameters();
-                                        }
-
-                                        /// <summary>
-                                        /// Optional tenant, provided as a path parameter. Experimental, might still
-                                        /// change for 1.0 release.
-                                        /// </summary>
-                                        [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
-                                        public virtual string Tenant { get; private set; }
-
-                                        /// <summary>
-                                        /// Required. The parent task resource for this config. Format: tasks/{task_id}
-                                        /// </summary>
-                                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                                        public virtual string Parent { get; private set; }
-
-                                        /// <summary>Required. The ID for the new config.</summary>
-                                        [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
-                                        public virtual string ConfigId { get; set; }
-
-                                        /// <summary>Gets or sets the body of this request.</summary>
-                                        Google.Apis.DiscoveryEngine.v1.Data.A2aV1TaskPushNotificationConfig Body { get; set; }
-
-                                        /// <summary>Returns the body of the request.</summary>
-                                        protected override object GetBody() => Body;
-
-                                        /// <summary>Gets the method name.</summary>
-                                        public override string MethodName => "create";
-
-                                        /// <summary>Gets the HTTP method.</summary>
-                                        public override string HttpMethod => "POST";
-
-                                        /// <summary>Gets the REST path.</summary>
-                                        public override string RestPath => "v1/{+tenant}/{+parent}";
-
-                                        /// <summary>Initializes Create parameter list.</summary>
-                                        protected override void InitParameters()
-                                        {
-                                            base.InitParameters();
-                                            RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
-                                            {
-                                                Name = "tenant",
-                                                IsRequired = true,
-                                                ParameterType = "path",
-                                                DefaultValue = null,
-                                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
-                                            });
-                                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                                            {
-                                                Name = "parent",
-                                                IsRequired = true,
-                                                ParameterType = "path",
-                                                DefaultValue = null,
-                                                Pattern = @"^tasks/[^/]+/pushNotificationConfigs$",
-                                            });
-                                            RequestParameters.Add("configId", new Google.Apis.Discovery.Parameter
-                                            {
-                                                Name = "configId",
-                                                IsRequired = false,
-                                                ParameterType = "query",
-                                                DefaultValue = null,
-                                                Pattern = null,
-                                            });
-                                        }
-                                    }
-
-                                    /// <summary>Delete a push notification config for a task.</summary>
-                                    /// <param name="tenant">
-                                    /// Optional tenant, provided as a path parameter. Experimental, might still change
-                                    /// for 1.0 release.
-                                    /// </param>
-                                    /// <param name="name">
-                                    /// The resource name of the config to delete. Format:
-                                    /// tasks/{task_id}/pushNotificationConfigs/{config_id}
-                                    /// </param>
-                                    public virtual DeleteRequest Delete(string tenant, string name)
-                                    {
-                                        return new DeleteRequest(this.service, tenant, name);
-                                    }
-
-                                    /// <summary>Delete a push notification config for a task.</summary>
-                                    public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleProtobufEmpty>
-                                    {
-                                        /// <summary>Constructs a new Delete request.</summary>
-                                        public DeleteRequest(Google.Apis.Services.IClientService service, string tenant, string name) : base(service)
-                                        {
-                                            Tenant = tenant;
-                                            Name = name;
-                                            InitParameters();
-                                        }
-
-                                        /// <summary>
-                                        /// Optional tenant, provided as a path parameter. Experimental, might still
-                                        /// change for 1.0 release.
-                                        /// </summary>
-                                        [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
-                                        public virtual string Tenant { get; private set; }
-
-                                        /// <summary>
-                                        /// The resource name of the config to delete. Format:
-                                        /// tasks/{task_id}/pushNotificationConfigs/{config_id}
-                                        /// </summary>
-                                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                                        public virtual string Name { get; private set; }
-
-                                        /// <summary>Gets the method name.</summary>
-                                        public override string MethodName => "delete";
-
-                                        /// <summary>Gets the HTTP method.</summary>
-                                        public override string HttpMethod => "DELETE";
-
-                                        /// <summary>Gets the REST path.</summary>
-                                        public override string RestPath => "v1/{+tenant}/{+name}";
-
-                                        /// <summary>Initializes Delete parameter list.</summary>
-                                        protected override void InitParameters()
-                                        {
-                                            base.InitParameters();
-                                            RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
-                                            {
-                                                Name = "tenant",
-                                                IsRequired = true,
-                                                ParameterType = "path",
-                                                DefaultValue = null,
-                                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
-                                            });
-                                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                                            {
-                                                Name = "name",
-                                                IsRequired = true,
-                                                ParameterType = "path",
-                                                DefaultValue = null,
-                                                Pattern = @"^tasks/[^/]+/pushNotificationConfigs/[^/]+$",
-                                            });
-                                        }
-                                    }
-
-                                    /// <summary>Get a push notification config for a task.</summary>
-                                    /// <param name="tenant">
-                                    /// Optional tenant, provided as a path parameter. Experimental, might still change
-                                    /// for 1.0 release.
-                                    /// </param>
-                                    /// <param name="name">
-                                    /// The resource name of the config to retrieve. Format:
-                                    /// tasks/{task_id}/pushNotificationConfigs/{config_id}
-                                    /// </param>
-                                    public virtual GetRequest Get(string tenant, string name)
-                                    {
-                                        return new GetRequest(this.service, tenant, name);
-                                    }
-
-                                    /// <summary>Get a push notification config for a task.</summary>
-                                    public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1TaskPushNotificationConfig>
-                                    {
-                                        /// <summary>Constructs a new Get request.</summary>
-                                        public GetRequest(Google.Apis.Services.IClientService service, string tenant, string name) : base(service)
-                                        {
-                                            Tenant = tenant;
-                                            Name = name;
-                                            InitParameters();
-                                        }
-
-                                        /// <summary>
-                                        /// Optional tenant, provided as a path parameter. Experimental, might still
-                                        /// change for 1.0 release.
-                                        /// </summary>
-                                        [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
-                                        public virtual string Tenant { get; private set; }
-
-                                        /// <summary>
-                                        /// The resource name of the config to retrieve. Format:
-                                        /// tasks/{task_id}/pushNotificationConfigs/{config_id}
-                                        /// </summary>
-                                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                                        public virtual string Name { get; private set; }
-
-                                        /// <summary>Gets the method name.</summary>
-                                        public override string MethodName => "get";
-
-                                        /// <summary>Gets the HTTP method.</summary>
-                                        public override string HttpMethod => "GET";
-
-                                        /// <summary>Gets the REST path.</summary>
-                                        public override string RestPath => "v1/{+tenant}/{+name}";
-
-                                        /// <summary>Initializes Get parameter list.</summary>
-                                        protected override void InitParameters()
-                                        {
-                                            base.InitParameters();
-                                            RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
-                                            {
-                                                Name = "tenant",
-                                                IsRequired = true,
-                                                ParameterType = "path",
-                                                DefaultValue = null,
-                                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
-                                            });
-                                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                                            {
-                                                Name = "name",
-                                                IsRequired = true,
-                                                ParameterType = "path",
-                                                DefaultValue = null,
-                                                Pattern = @"^tasks/[^/]+/pushNotificationConfigs/[^/]+$",
-                                            });
-                                        }
-                                    }
-
-                                    /// <summary>Get a list of push notifications configured for a task.</summary>
-                                    /// <param name="tenant">
-                                    /// Optional tenant, provided as a path parameter. Experimental, might still change
-                                    /// for 1.0 release.
-                                    /// </param>
-                                    /// <param name="parent">The parent task resource. Format: tasks/{task_id}</param>
-                                    public virtual ListRequest List(string tenant, string parent)
-                                    {
-                                        return new ListRequest(this.service, tenant, parent);
-                                    }
-
-                                    /// <summary>Get a list of push notifications configured for a task.</summary>
-                                    public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1ListTaskPushNotificationConfigResponse>
-                                    {
-                                        /// <summary>Constructs a new List request.</summary>
-                                        public ListRequest(Google.Apis.Services.IClientService service, string tenant, string parent) : base(service)
-                                        {
-                                            Tenant = tenant;
-                                            Parent = parent;
-                                            InitParameters();
-                                        }
-
-                                        /// <summary>
-                                        /// Optional tenant, provided as a path parameter. Experimental, might still
-                                        /// change for 1.0 release.
-                                        /// </summary>
-                                        [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
-                                        public virtual string Tenant { get; private set; }
-
-                                        /// <summary>The parent task resource. Format: tasks/{task_id}</summary>
-                                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                                        public virtual string Parent { get; private set; }
-
-                                        /// <summary>
-                                        /// For AIP-158 these fields are present. Usually not used/needed. The maximum
-                                        /// number of configurations to return. If unspecified, all configs will be
-                                        /// returned.
-                                        /// </summary>
-                                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                                        public virtual System.Nullable<int> PageSize { get; set; }
-
-                                        /// <summary>
-                                        /// A page token received from a previous ListTaskPushNotificationConfigRequest
-                                        /// call. Provide this to retrieve the subsequent page. When paginating, all
-                                        /// other parameters provided to `ListTaskPushNotificationConfigRequest` must
-                                        /// match the call that provided the page token.
-                                        /// </summary>
-                                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                                        public virtual string PageToken { get; set; }
-
-                                        /// <summary>Gets the method name.</summary>
-                                        public override string MethodName => "list";
-
-                                        /// <summary>Gets the HTTP method.</summary>
-                                        public override string HttpMethod => "GET";
-
-                                        /// <summary>Gets the REST path.</summary>
-                                        public override string RestPath => "v1/{+tenant}/{+parent}/pushNotificationConfigs";
-
-                                        /// <summary>Initializes List parameter list.</summary>
-                                        protected override void InitParameters()
-                                        {
-                                            base.InitParameters();
-                                            RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
-                                            {
-                                                Name = "tenant",
-                                                IsRequired = true,
-                                                ParameterType = "path",
-                                                DefaultValue = null,
-                                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
-                                            });
-                                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                                            {
-                                                Name = "parent",
-                                                IsRequired = true,
-                                                ParameterType = "path",
-                                                DefaultValue = null,
-                                                Pattern = @"^tasks/[^/]+$",
-                                            });
-                                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                                            {
-                                                Name = "pageSize",
-                                                IsRequired = false,
-                                                ParameterType = "query",
-                                                DefaultValue = null,
-                                                Pattern = null,
-                                            });
-                                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                                            {
-                                                Name = "pageToken",
-                                                IsRequired = false,
-                                                ParameterType = "query",
-                                                DefaultValue = null,
-                                                Pattern = null,
-                                            });
-                                        }
-                                    }
-                                }
-
-                                /// <summary>
-                                /// Cancel a task from the agent. If supported one should expect no more task updates
-                                /// for the task.
-                                /// </summary>
-                                /// <param name="body">The body of the request.</param>
-                                /// <param name="tenant">
-                                /// Optional tenant, provided as a path parameter. Experimental, might still change for
-                                /// 1.0 release.
-                                /// </param>
-                                /// <param name="name">
-                                /// The resource name of the task to cancel. Format: tasks/{task_id}
-                                /// </param>
-                                public virtual CancelRequest Cancel(Google.Apis.DiscoveryEngine.v1.Data.A2aV1CancelTaskRequest body, string tenant, string name)
-                                {
-                                    return new CancelRequest(this.service, body, tenant, name);
-                                }
-
-                                /// <summary>
-                                /// Cancel a task from the agent. If supported one should expect no more task updates
-                                /// for the task.
-                                /// </summary>
-                                public class CancelRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1Task>
-                                {
-                                    /// <summary>Constructs a new Cancel request.</summary>
-                                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1.Data.A2aV1CancelTaskRequest body, string tenant, string name) : base(service)
-                                    {
-                                        Tenant = tenant;
-                                        Name = name;
-                                        Body = body;
-                                        InitParameters();
-                                    }
-
-                                    /// <summary>
-                                    /// Optional tenant, provided as a path parameter. Experimental, might still change
-                                    /// for 1.0 release.
-                                    /// </summary>
-                                    [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
-                                    public virtual string Tenant { get; private set; }
-
-                                    /// <summary>
-                                    /// The resource name of the task to cancel. Format: tasks/{task_id}
-                                    /// </summary>
-                                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                                    public virtual string Name { get; private set; }
-
-                                    /// <summary>Gets or sets the body of this request.</summary>
-                                    Google.Apis.DiscoveryEngine.v1.Data.A2aV1CancelTaskRequest Body { get; set; }
-
-                                    /// <summary>Returns the body of the request.</summary>
-                                    protected override object GetBody() => Body;
-
-                                    /// <summary>Gets the method name.</summary>
-                                    public override string MethodName => "cancel";
-
-                                    /// <summary>Gets the HTTP method.</summary>
-                                    public override string HttpMethod => "POST";
-
-                                    /// <summary>Gets the REST path.</summary>
-                                    public override string RestPath => "v1/{+tenant}/{+name}:cancel";
-
-                                    /// <summary>Initializes Cancel parameter list.</summary>
-                                    protected override void InitParameters()
-                                    {
-                                        base.InitParameters();
-                                        RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "tenant",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
-                                        });
-                                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "name",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^tasks/[^/]+$",
-                                        });
-                                    }
-                                }
-
-                                /// <summary>Get the current state of a task from the agent.</summary>
-                                /// <param name="tenant">
-                                /// Optional tenant, provided as a path parameter. Experimental, might still change for
-                                /// 1.0 release.
-                                /// </param>
-                                /// <param name="name">
-                                /// Required. The resource name of the task. Format: tasks/{task_id}
-                                /// </param>
-                                public virtual GetRequest Get(string tenant, string name)
-                                {
-                                    return new GetRequest(this.service, tenant, name);
-                                }
-
-                                /// <summary>Get the current state of a task from the agent.</summary>
-                                public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1Task>
-                                {
-                                    /// <summary>Constructs a new Get request.</summary>
-                                    public GetRequest(Google.Apis.Services.IClientService service, string tenant, string name) : base(service)
-                                    {
-                                        Tenant = tenant;
-                                        Name = name;
-                                        InitParameters();
-                                    }
-
-                                    /// <summary>
-                                    /// Optional tenant, provided as a path parameter. Experimental, might still change
-                                    /// for 1.0 release.
-                                    /// </summary>
-                                    [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
-                                    public virtual string Tenant { get; private set; }
-
-                                    /// <summary>
-                                    /// Required. The resource name of the task. Format: tasks/{task_id}
-                                    /// </summary>
-                                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                                    public virtual string Name { get; private set; }
-
-                                    /// <summary>
-                                    /// The number of most recent messages from the task's history to retrieve.
-                                    /// </summary>
-                                    [Google.Apis.Util.RequestParameterAttribute("historyLength", Google.Apis.Util.RequestParameterType.Query)]
-                                    public virtual System.Nullable<int> HistoryLength { get; set; }
-
-                                    /// <summary>Gets the method name.</summary>
-                                    public override string MethodName => "get";
-
-                                    /// <summary>Gets the HTTP method.</summary>
-                                    public override string HttpMethod => "GET";
-
-                                    /// <summary>Gets the REST path.</summary>
-                                    public override string RestPath => "v1/{+tenant}/{+name}";
-
-                                    /// <summary>Initializes Get parameter list.</summary>
-                                    protected override void InitParameters()
-                                    {
-                                        base.InitParameters();
-                                        RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "tenant",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
-                                        });
-                                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "name",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^tasks/[^/]+$",
-                                        });
-                                        RequestParameters.Add("historyLength", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "historyLength",
-                                            IsRequired = false,
-                                            ParameterType = "query",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
-                                    }
-                                }
-
-                                /// <summary>
-                                /// TaskSubscription is a streaming call that will return a stream of task update
-                                /// events. This attaches the stream to an existing in process task. If the task is
-                                /// complete the stream will return the completed task (like GetTask) and close the
-                                /// stream.
-                                /// </summary>
-                                /// <param name="tenant">
-                                /// Optional tenant, provided as a path parameter. Experimental, might still change for
-                                /// 1.0 release.
-                                /// </param>
-                                /// <param name="name">
-                                /// The resource name of the task to subscribe to. Format: tasks/{task_id}
-                                /// </param>
-                                public virtual SubscribeRequest Subscribe(string tenant, string name)
-                                {
-                                    return new SubscribeRequest(this.service, tenant, name);
-                                }
-
-                                /// <summary>
-                                /// TaskSubscription is a streaming call that will return a stream of task update
-                                /// events. This attaches the stream to an existing in process task. If the task is
-                                /// complete the stream will return the completed task (like GetTask) and close the
-                                /// stream.
-                                /// </summary>
-                                public class SubscribeRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1StreamResponse>
-                                {
-                                    /// <summary>Constructs a new Subscribe request.</summary>
-                                    public SubscribeRequest(Google.Apis.Services.IClientService service, string tenant, string name) : base(service)
-                                    {
-                                        Tenant = tenant;
-                                        Name = name;
-                                        InitParameters();
-                                    }
-
-                                    /// <summary>
-                                    /// Optional tenant, provided as a path parameter. Experimental, might still change
-                                    /// for 1.0 release.
-                                    /// </summary>
-                                    [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
-                                    public virtual string Tenant { get; private set; }
-
-                                    /// <summary>
-                                    /// The resource name of the task to subscribe to. Format: tasks/{task_id}
-                                    /// </summary>
-                                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                                    public virtual string Name { get; private set; }
-
-                                    /// <summary>Gets the method name.</summary>
-                                    public override string MethodName => "subscribe";
-
-                                    /// <summary>Gets the HTTP method.</summary>
-                                    public override string HttpMethod => "GET";
-
-                                    /// <summary>Gets the REST path.</summary>
-                                    public override string RestPath => "v1/{+tenant}/{+name}:subscribe";
-
-                                    /// <summary>Initializes Subscribe parameter list.</summary>
-                                    protected override void InitParameters()
-                                    {
-                                        base.InitParameters();
-                                        RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "tenant",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
-                                        });
-                                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "name",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^tasks/[^/]+$",
-                                        });
-                                    }
-                                }
-                            }
-
-                            /// <summary>GetAgentCard returns the agent card for the agent.</summary>
-                            /// <param name="tenant">
-                            /// Optional tenant, provided as a path parameter. Experimental, might still change for 1.0
-                            /// release.
-                            /// </param>
-                            public virtual GetCardRequest GetCard(string tenant)
-                            {
-                                return new GetCardRequest(this.service, tenant);
-                            }
-
-                            /// <summary>GetAgentCard returns the agent card for the agent.</summary>
-                            public class GetCardRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.A2aV1AgentCard>
-                            {
-                                /// <summary>Constructs a new GetCard request.</summary>
-                                public GetCardRequest(Google.Apis.Services.IClientService service, string tenant) : base(service)
-                                {
-                                    Tenant = tenant;
-                                    InitParameters();
-                                }
-
-                                /// <summary>
-                                /// Optional tenant, provided as a path parameter. Experimental, might still change for
-                                /// 1.0 release.
-                                /// </summary>
-                                [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
-                                public virtual string Tenant { get; private set; }
-
-                                /// <summary>Gets the method name.</summary>
-                                public override string MethodName => "getCard";
-
-                                /// <summary>Gets the HTTP method.</summary>
-                                public override string HttpMethod => "GET";
-
-                                /// <summary>Gets the REST path.</summary>
-                                public override string RestPath => "v1/{+tenant}/card";
-
-                                /// <summary>Initializes GetCard parameter list.</summary>
-                                protected override void InitParameters()
-                                {
-                                    base.InitParameters();
-                                    RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "tenant",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
-                                    });
                                 }
                             }
                         }
@@ -12305,7 +12352,7 @@ namespace Google.Apis.DiscoveryEngine.v1
                 /// <summary>Updates a DataConnector.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. The full resource name of the Data Connector. Format:
+                /// Identifier. The full resource name of the Data Connector. Format:
                 /// `projects/*/locations/*/collections/*/dataConnector`.
                 /// </param>
                 public virtual UpdateDataConnectorRequest UpdateDataConnector(Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1DataConnector body, string name)
@@ -12325,7 +12372,7 @@ namespace Google.Apis.DiscoveryEngine.v1
                     }
 
                     /// <summary>
-                    /// Output only. The full resource name of the Data Connector. Format:
+                    /// Identifier. The full resource name of the Data Connector. Format:
                     /// `projects/*/locations/*/collections/*/dataConnector`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -20076,22 +20123,18 @@ namespace Google.Apis.DiscoveryEngine.v1
                         /// Optional. The order in which the UserLicenses are listed. The value must be a
                         /// comma-separated list of fields. Default sorting order is ascending. To specify descending
                         /// order for a field, append a " desc" suffix. Redundant space characters in the syntax are
-                        /// insignificant. Supported fields: * `license_assignment_state` * `user_principal` *
-                        /// `user_profile` * `last_login_date` * `update_time` If not set, the default ordering is by
-                        /// `user_principal`. Examples: * `user_principal desc` to order by `user_principal` in
-                        /// descending order. * `license_assignment_state` to order by `license_assignment_state` in
-                        /// ascending order. * `last_login_date desc` to order by `last_login_date` in descending order.
-                        /// * `update_time desc` to order by `update_time` in descending order. * `last_login_date desc,
-                        /// user_principal` to order by `last_login_date` in descending order and then by
-                        /// `user_principal` in ascending order.
+                        /// insignificant. Supported fields (only `user_principal` is supported for now): *
+                        /// `user_principal` If not set, the default ordering is by `user_principal`. Examples: *
+                        /// `user_principal` to order by `user_principal` in ascending order. * `user_principal desc` to
+                        /// order by `user_principal` in descending order.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
                         /// <summary>
                         /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-                        /// defaults to 1000. The maximum value is 1000; values above 1000 will be coerced to 1000. If
-                        /// this field is negative, an INVALID_ARGUMENT error is returned.
+                        /// defaults to 10. The maximum value is 50; values above 50 will be coerced to 50. If this
+                        /// field is negative, an INVALID_ARGUMENT error is returned.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
@@ -27349,9 +27392,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
 
         /// <summary>
         /// Output only. The list of FQDNs of the data connector can egress to. This includes both FQDN derived from the
-        /// customer provided instance URL and default per connector type FQDNs. Note: This field is derived from both
-        /// the DataConnector.params, and connector source spec. It should only be used for CAIS and Org Policy
-        /// evaluation purposes.
+        /// customer provided instance URL and default per connector type FQDNs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("egressFqdns")]
         public virtual System.Collections.Generic.IList<string> EgressFqdns { get; set; }
@@ -27509,7 +27550,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         }
 
         /// <summary>
-        /// Output only. The full resource name of the Data Connector. Format:
+        /// Identifier. The full resource name of the Data Connector. Format:
         /// `projects/*/locations/*/collections/*/dataConnector`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -27613,10 +27654,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>
-        /// Output only. Whether the connector is created with VPC-SC enabled. This is only used for CuOP evaluation
-        /// purpose.
-        /// </summary>
+        /// <summary>Output only. Whether the connector is created with VPC-SC enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcscEnabled")]
         public virtual System.Nullable<bool> VpcscEnabled { get; set; }
 
@@ -29080,9 +29118,9 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         private object _indexTime;
 
         /// <summary>
-        /// Output only. The last time the document was indexed. If this field is set, the document could be returned in
-        /// search results. This field is OUTPUT_ONLY. If this field is not populated, it means the document has never
-        /// been indexed.
+        /// Output only. The time when the document was last indexed. If this field is populated, it means the document
+        /// has been indexed. While documents typically become searchable within seconds of indexing, it can sometimes
+        /// take up to a few hours. If this field is not populated, it means the document has never been indexed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexTime")]
         public virtual string IndexTimeRaw
@@ -29239,6 +29277,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
 
         /// <summary>
         /// The time when the document was indexed. If this field is populated, it means the document has been indexed.
+        /// While documents typically become searchable within seconds of indexing, it can sometimes take up to a few
+        /// hours.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexTime")]
         public virtual string IndexTimeRaw
@@ -31113,7 +31153,9 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        /// <summary>
+        /// Output only. Operation last update time. If the operation is done, this is also the finish time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -40240,9 +40282,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
 
         /// <summary>
         /// Output only. The list of FQDNs of the data connector can egress to. This includes both FQDN derived from the
-        /// customer provided instance URL and default per connector type FQDNs. Note: This field is derived from both
-        /// the DataConnector.params, and connector source spec. It should only be used for CAIS and Org Policy
-        /// evaluation purposes.
+        /// customer provided instance URL and default per connector type FQDNs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("egressFqdns")]
         public virtual System.Collections.Generic.IList<string> EgressFqdns { get; set; }
@@ -40400,7 +40440,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         }
 
         /// <summary>
-        /// Output only. The full resource name of the Data Connector. Format:
+        /// Identifier. The full resource name of the Data Connector. Format:
         /// `projects/*/locations/*/collections/*/dataConnector`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -40504,10 +40544,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>
-        /// Output only. Whether the connector is created with VPC-SC enabled. This is only used for CuOP evaluation
-        /// purpose.
-        /// </summary>
+        /// <summary>Output only. Whether the connector is created with VPC-SC enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcscEnabled")]
         public virtual System.Nullable<bool> VpcscEnabled { get; set; }
 
@@ -44141,7 +44178,9 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        /// <summary>
+        /// Output only. Operation last update time. If the operation is done, this is also the finish time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -52439,7 +52478,9 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        /// <summary>
+        /// Output only. Operation last update time. If the operation is done, this is also the finish time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
