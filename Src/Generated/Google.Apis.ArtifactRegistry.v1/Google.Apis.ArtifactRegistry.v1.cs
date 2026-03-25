@@ -324,6 +324,73 @@ namespace Google.Apis.ArtifactRegistry.v1
                 }
 
                 /// <summary>
+                /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+                /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it
+                /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
+                /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
+                /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">The name of the operation resource to be cancelled.</param>
+                public virtual CancelRequest Cancel(Google.Apis.ArtifactRegistry.v1.Data.CancelOperationRequest body, string name)
+                {
+                    return new CancelRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+                /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it
+                /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
+                /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
+                /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+                /// </summary>
+                public class CancelRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Cancel request.</summary>
+                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.ArtifactRegistry.v1.Data.CancelOperationRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource to be cancelled.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.ArtifactRegistry.v1.Data.CancelOperationRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "cancel";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:cancel";
+
+                    /// <summary>Initializes Cancel parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
                 /// result at intervals as recommended by the API service.
                 /// </summary>
@@ -5593,6 +5660,57 @@ namespace Google.Apis.ArtifactRegistry.v1
                 }
             }
 
+            /// <summary>Retrieves the project configuration.</summary>
+            /// <param name="name">
+            /// Required. The name of the project's logging configuration:
+            /// projects/{project}/locations/{location}/projectConfig
+            /// </param>
+            public virtual GetProjectConfigRequest GetProjectConfig(string name)
+            {
+                return new GetProjectConfigRequest(this.service, name);
+            }
+
+            /// <summary>Retrieves the project configuration.</summary>
+            public class GetProjectConfigRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.ProjectConfig>
+            {
+                /// <summary>Constructs a new GetProjectConfig request.</summary>
+                public GetProjectConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the project's logging configuration:
+                /// projects/{project}/locations/{location}/projectConfig
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getProjectConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes GetProjectConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/projectConfig$",
+                    });
+                }
+            }
+
             /// <summary>Retrieves the VPCSC Config for the Project.</summary>
             /// <param name="name">Required. The name of the VPCSCConfig resource.</param>
             public virtual GetVpcscConfigRequest GetVpcscConfig(string name)
@@ -5744,6 +5862,80 @@ namespace Google.Apis.ArtifactRegistry.v1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates the project configuration.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The name of the project's configuration. Always of the form:
+            /// projects/{project}/locations/{location}/projectConfig
+            /// </param>
+            public virtual UpdateProjectConfigRequest UpdateProjectConfig(Google.Apis.ArtifactRegistry.v1.Data.ProjectConfig body, string name)
+            {
+                return new UpdateProjectConfigRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates the project configuration.</summary>
+            public class UpdateProjectConfigRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.ProjectConfig>
+            {
+                /// <summary>Constructs a new UpdateProjectConfig request.</summary>
+                public UpdateProjectConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.ArtifactRegistry.v1.Data.ProjectConfig body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The name of the project's configuration. Always of the form:
+                /// projects/{project}/locations/{location}/projectConfig
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Optional. Field mask to support partial updates. See
+                /// https://protobuf.dev/reference/protobuf/google.protobuf/#field-mask for more details.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ArtifactRegistry.v1.Data.ProjectConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateProjectConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes UpdateProjectConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/projectConfig$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -6221,6 +6413,13 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for Operations.CancelOperation.</summary>
+    public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8067,6 +8266,24 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The platform logs config for a project or a repository.</summary>
+    public class PlatformLogsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The state of the platform logs: enabled or disabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingState")]
+        public virtual string LoggingState { get; set; }
+
+        /// <summary>
+        /// Optional. The severity level for the logs. Logs will be generated if their severity level is &amp;gt;= than
+        /// the value of the severity level mentioned here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severityLevel")]
+        public virtual string SeverityLevel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A
     /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single
@@ -8138,6 +8355,24 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>The Artifact Registry logging configurations that apply to a Project.</summary>
+    public class ProjectConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Identifier. The name of the project's configuration. Always of the form:
+        /// projects/{project}/locations/{location}/projectConfig
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Configuration for platform logs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platformLogsConfig")]
+        public virtual PlatformLogsConfig PlatformLogsConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>The Artifact Registry settings that apply to a Project.</summary>
@@ -8440,6 +8675,10 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Optional. Configuration for platform logs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platformLogsConfig")]
+        public virtual PlatformLogsConfig PlatformLogsConfig { get; set; }
 
         /// <summary>Output only. The repository endpoint, for example: `us-docker.pkg.dev/my-proj/my-repo`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("registryUri")]
