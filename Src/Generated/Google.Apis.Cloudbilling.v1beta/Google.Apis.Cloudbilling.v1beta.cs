@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -37,6 +37,7 @@ namespace Google.Apis.Cloudbilling.v1beta
             BillingAccounts = new BillingAccountsResource(this);
             SkuGroups = new SkuGroupsResource(this);
             Skus = new SkusResource(this);
+            V1beta = new V1betaResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://cloudbilling.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://cloudbilling.googleapis.com/batch");
         }
@@ -99,6 +100,9 @@ namespace Google.Apis.Cloudbilling.v1beta
 
         /// <summary>Gets the Skus resource.</summary>
         public virtual SkusResource Skus { get; }
+
+        /// <summary>Gets the V1beta resource.</summary>
+        public virtual V1betaResource V1beta { get; }
     }
 
     /// <summary>A base abstract class for Cloudbilling requests.</summary>
@@ -1591,9 +1595,205 @@ namespace Google.Apis.Cloudbilling.v1beta
             }
         }
     }
+
+    /// <summary>The "v1beta" collection of methods.</summary>
+    public class V1betaResource
+    {
+        private const string Resource = "v1beta";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public V1betaResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Analyzes cost data for a billing account and/or specific projects. Returns a natural language summary and
+        /// supporting datasets.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual GenerateInsightsRequest GenerateInsights(Google.Apis.Cloudbilling.v1beta.Data.GenerateInsightsRequest body)
+        {
+            return new GenerateInsightsRequest(this.service, body);
+        }
+
+        /// <summary>
+        /// Analyzes cost data for a billing account and/or specific projects. Returns a natural language summary and
+        /// supporting datasets.
+        /// </summary>
+        public class GenerateInsightsRequest : CloudbillingBaseServiceRequest<Google.Apis.Cloudbilling.v1beta.Data.GenerateInsightsResponse>
+        {
+            /// <summary>Constructs a new GenerateInsights request.</summary>
+            public GenerateInsightsRequest(Google.Apis.Services.IClientService service, Google.Apis.Cloudbilling.v1beta.Data.GenerateInsightsRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Cloudbilling.v1beta.Data.GenerateInsightsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "generateInsights";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta:generateInsights";
+
+            /// <summary>Initializes GenerateInsights parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+    }
 }
 namespace Google.Apis.Cloudbilling.v1beta.Data
 {
+    /// <summary>
+    /// A local representation of the query used to fetch the data. This is used instead of the raw
+    /// QueryBillingDataRequest to avoid pulling in Cloud Policy Enforcement (CPE) resource_type annotations into the
+    /// response payload, which causes ESF validation failures.
+    /// </summary>
+    public class AgenticQueryInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The columns queried.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columns")]
+        public virtual string Columns { get; set; }
+
+        /// <summary>The filter applied to the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>The group-by clause applied to the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupBy")]
+        public virtual string GroupBy { get; set; }
+
+        /// <summary>The row limit applied to the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("limit")]
+        public virtual System.Nullable<int> Limit { get; set; }
+
+        /// <summary>The order-by clause applied to the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
+        public virtual string OrderBy { get; set; }
+
+        /// <summary>The parents (e.g. projects, billing accounts) queried.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parents")]
+        public virtual System.Collections.Generic.IList<string> Parents { get; set; }
+
+        /// <summary>The view queried.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("view")]
+        public virtual string View { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An ordered collection of elements of arbitrary count.</summary>
+    public class Array : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The elements of the array.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("element")]
+        public virtual System.Collections.Generic.IList<ValueProto> Element { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Encapsulates billing data.</summary>
+    public class BillingData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Information about columns.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnInfo")]
+        public virtual System.Collections.Generic.IList<ColumnInfo> ColumnInfo { get; set; }
+
+        /// <summary>Rows.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<Row> Rows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies a Billing data resource that can be used for authorization to access billing data.</summary>
+    public class BillingDataResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If not provided the billing account currently associated with the resource will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingAccount")]
+        public virtual string BillingAccount { get; set; }
+
+        /// <summary>
+        /// Required. Resource name for an entitity that can be used for authorization to access billing data such as
+        /// `projects/{project}` or `billingAccounts/{billing_account}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a column header.</summary>
+    public class ColumnInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("column")]
+        public virtual string Column { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A dataset used to support an insight, suitable for UI rendering (tables/charts).</summary>
+    public class DataSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Actual billing data returned from the Data Mart. Uses the formal message from the Billing Data
+        /// Service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingData")]
+        public virtual BillingData BillingData { get; set; }
+
+        /// <summary>Output only. The query used to fetch this data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryInfo")]
+        public virtual AgenticQueryInfo QueryInfo { get; set; }
+
+        /// <summary>Output only. A suggested chart for the data set, used for UI rendering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedChart")]
+        public virtual SuggestedChart SuggestedChart { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A datetime value.</summary>
+    public class Datetime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Represents bit field encoding of year/month/day/hour/minute/second. See class DatetimeValue in civil_time.h
+        /// for details of encoding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitFieldDatetimeSeconds")]
+        public virtual System.Nullable<long> BitFieldDatetimeSeconds { get; set; }
+
+        /// <summary>Non-negative fractions of a second at nanosecond resolution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal
     /// formats, such as Java's
@@ -1632,6 +1832,104 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Encapsulates all structured data and the completed summary.</summary>
+    public class FinalResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Data sets used to support the insights, suitable for UI rendering (tables/charts).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSets")]
+        public virtual System.Collections.Generic.IList<DataSet> DataSets { get; set; }
+
+        /// <summary>
+        /// Output only. Contains the full natural language analysis, including thoughts, reasoning, and references.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullAnalysis")]
+        public virtual string FullAnalysis { get; set; }
+
+        /// <summary>Output only. A list of discrete insights gleaned from the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insights")]
+        public virtual System.Collections.Generic.IList<Insight> Insights { get; set; }
+
+        /// <summary>
+        /// Output only. Links to interoperable tools (e.g., pre-filtered Cost Reports or BQE queries).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interopLinks")]
+        public virtual System.Collections.Generic.IList<InteropLink> InteropLinks { get; set; }
+
+        /// <summary>Output only. A list of suggested follow-up queries for the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedQueries")]
+        public virtual System.Collections.Generic.IList<SuggestedQuery> SuggestedQueries { get; set; }
+
+        /// <summary>Output only. The full natural language summary (re-sent for consistency).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
+        public virtual string Summary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for GenerateInsights.</summary>
+    public class GenerateInsightsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Filters cost data by service id. Follows https://google.aip.dev/160 for the filter syntax. eg.
+        /// filter: "service = 'C7E2-9256-1C43'"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>Optional. Overrides the maximum iterations for any selected strategy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overriddenMaxIterationCounts")]
+        public virtual System.Nullable<int> OverriddenMaxIterationCounts { get; set; }
+
+        /// <summary>Optional. The billing account or projects to analyze.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parents")]
+        public virtual System.Collections.Generic.IList<BillingDataResource> Parents { get; set; }
+
+        /// <summary>Required. The natural language prompt from the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prompt")]
+        public virtual string Prompt { get; set; }
+
+        /// <summary>Optional. Additional context for personalization (e.g., user persona, role).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userContext")]
+        public virtual UserContext UserContext { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for GenerateInsights.</summary>
+    public class GenerateInsightsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The final structured results and metadata. Usually sent as the final message in the stream.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalResult")]
+        public virtual FinalResult FinalResult { get; set; }
+
+        /// <summary>Output only. The request was rejected (e.g. out of scope).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rejection")]
+        public virtual Rejection Rejection { get; set; }
+
+        /// <summary>
+        /// Output only. A chunk of the natural language summary (customer-facing). The UI can append these chunks to
+        /// provide a real-time "typing" effect.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summaryChunk")]
+        public virtual string SummaryChunk { get; set; }
+
+        /// <summary>
+        /// Output only. A chunk of the agent's internal reasoning process. The UI can use this to render a
+        /// "Thinking..." log or status.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thoughtChunk")]
+        public virtual string ThoughtChunk { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2649,6 +2947,73 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// e.g. insight: title: "Cost Increase (The Explanation)" description: "Your cost increase was driven by Vertex AI
+    /// Online Prediction in us-central1..." severity: INFO
+    /// </summary>
+    public class Insight : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The description of the insight.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. The severity of the insight, used for UI rendering (e.g., color-coding).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>Output only. The title of the insight.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A link to interoperable tools (e.g., pre-filtered Cost Reports, BQE queries).</summary>
+    public class InteropLink : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The label of the link, suitable for UI rendering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>Output only. The type of the interop link, e.g., "COST_REPORT", "BQE_QUERY", etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkType")]
+        public virtual string LinkType { get; set; }
+
+        /// <summary>Output only. The URL of the link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An unordered mapping from key to value, represented as a collection of map entries.</summary>
+    public class Map : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Represents the map entries in the map.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entry")]
+        public virtual System.Collections.Generic.IList<MapEntry> Entry { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single entry in a Map, representing the mapping between `key` and `value`.</summary>
+    public class MapEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Represents the serialized map key for the entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual ValueProto Key { get; set; }
+
+        /// <summary>Represents the serialized map value of the entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual ValueProto Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents an amount of money with its currency type.</summary>
     public class Money : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2670,6 +3035,310 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("units")]
         public virtual System.Nullable<long> Units { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A range of values, bounded by the values 'start' (inclusive) and 'end' (exclusive). A range has an element type,
+    /// and values must be of this element type. A range is contiguous, ie it contains all values of the given element
+    /// type starting at 'start' and ending before 'end'. A "null" value on start or end represents an unbounded start
+    /// or end value respectively. Start and end values must always be present.
+    /// </summary>
+    public class Range : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Represents the end of the range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("end")]
+        public virtual ValueProto End { get; set; }
+
+        /// <summary>Represents the start of the range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("start")]
+        public virtual ValueProto Start { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Encapsulates details about why a request was rejected.</summary>
+    public class Rejection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A user-facing message explaining the rejection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayMessage")]
+        public virtual string DisplayMessage { get; set; }
+
+        /// <summary>Output only. The reason for the rejection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a row in the query result.</summary>
+    public class Row : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Values for a row in the column order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<ValueProto> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A collection of fields. The count, order, and type of the fields is determined by the type associated with this
+    /// value.
+    /// </summary>
+    public class Struct : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fields in the struct</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual System.Collections.Generic.IList<ValueProto> Field { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A suggested chart for the data set, used for UI rendering.</summary>
+    public class SuggestedChart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The title of the chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chartTitle")]
+        public virtual string ChartTitle { get; set; }
+
+        /// <summary>The type of the chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chartType")]
+        public virtual string ChartType { get; set; }
+
+        /// <summary>
+        /// The field used for the series (e.g., color-coding). Optional, but recommended for time-series data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seriesField")]
+        public virtual string SeriesField { get; set; }
+
+        /// <summary>The field used for the x-axis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xAxisField")]
+        public virtual string XAxisField { get; set; }
+
+        /// <summary>The label of the x-axis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xAxisLabel")]
+        public virtual string XAxisLabel { get; set; }
+
+        /// <summary>The field used for the y-axis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yAxisField")]
+        public virtual string YAxisField { get; set; }
+
+        /// <summary>The label of the y-axis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yAxisLabel")]
+        public virtual string YAxisLabel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A suggested follow-up query for the user.</summary>
+    public class SuggestedQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The natural language query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional context for personalization (e.g., user persona, role).</summary>
+    public class UserContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The user's persona (e.g., FinOps Manager, Developer).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("persona")]
+        public virtual string Persona { get; set; }
+
+        /// <summary>Optional. The user's role (e.g., Billing Admin, Project Owner, etc.).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This is a copy of storage/googlesql/public/value.proto. ValueProto represents the serialized form of the
+    /// googlesql::Value. The intention is to support multiple languages including Java and C++, so we must be sensitive
+    /// to the distinction between Java Strings and byte arrays or ByteStrings. We also want to support use-cases which
+    /// do not want to serialize a copy of the GoogleSQL type for every instance (which might be very repetitive).
+    /// Therefore, unlike googlesql::Value, ValueProto does not carry full type information with every instance, and can
+    /// only be fully interpreted with an associated TypeProto.
+    /// </summary>
+    public class ValueProto : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// User code that switches on this oneoff enum must have a default case so builds won't break when new fields
+        /// are added.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ValueProtoSwitchMustHaveADefault")]
+        public virtual System.Nullable<bool> ValueProtoSwitchMustHaveADefault { get; set; }
+
+        /// <summary>An array of value</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arrayValue")]
+        public virtual Array ArrayValue { get; set; }
+
+        /// <summary>
+        /// Encoded bignumeric value. For the encoding format see documentation for
+        /// BigNumericValue::SerializeAsProtoBytes().
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bignumericValue")]
+        public virtual string BignumericValue { get; set; }
+
+        /// <summary>Primitive for bool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; }
+
+        /// <summary>Primitive for bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bytesValue")]
+        public virtual string BytesValue { get; set; }
+
+        /// <summary>Primitive for date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateValue")]
+        public virtual System.Nullable<int> DateValue { get; set; }
+
+        /// <summary>primitive for datetime</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datetimeValue")]
+        public virtual Datetime DatetimeValue { get; set; }
+
+        /// <summary>Primitive for double.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
+        public virtual System.Nullable<double> DoubleValue { get; set; }
+
+        /// <summary>Tag 11 was used for specifying micros timestamps as int64, now obsolete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enumValue")]
+        public virtual System.Nullable<int> EnumValue { get; set; }
+
+        /// <summary>Primitive for float.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floatValue")]
+        public virtual System.Nullable<float> FloatValue { get; set; }
+
+        /// <summary>Geography encoded using ::stlib::STGeographyEncoder</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geographyValue")]
+        public virtual string GeographyValue { get; set; }
+
+        /// <summary>Primitive value for int32.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("int32Value")]
+        public virtual System.Nullable<int> Int32Value { get; set; }
+
+        /// <summary>Primitive for int64.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("int64Value")]
+        public virtual System.Nullable<long> Int64Value { get; set; }
+
+        /// <summary>
+        /// Encoded interval value. For the encoding format see documentation for IntervalValue::SerializeAsBytes().
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intervalValue")]
+        public virtual string IntervalValue { get; set; }
+
+        /// <summary>
+        /// Tag 22 was used for json value as bytes, now obsolete. Json value represented as a string document.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonValue")]
+        public virtual string JsonValue { get; set; }
+
+        /// <summary>Encoded map value. See go/googlesql_map.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mapValue")]
+        public virtual Map MapValue { get; set; }
+
+        /// <summary>
+        /// Encoded numeric value. For the encoding format see documentation for NumericValue::SerializeAsProtoBytes().
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numericValue")]
+        public virtual string NumericValue { get; set; }
+
+        /// <summary>Stores a serialized protocol message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protoValue")]
+        public virtual string ProtoValue { get; set; }
+
+        /// <summary>Encoded range value. See go/googlesql_range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rangeValue")]
+        public virtual Range RangeValue { get; set; }
+
+        /// <summary>Primitive for string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
+
+        /// <summary>A struct of values</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structValue")]
+        public virtual Struct StructValue { get; set; }
+
+        /// <summary>Bit field encoding of hour/minute/second/nanos. See TimeValue class for details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeValue")]
+        public virtual System.Nullable<long> TimeValue { get; set; }
+
+        /// <summary>
+        /// Encoded timestamp_pico value. For the encoding format see documentation for
+        /// googlesql::TimestampPico::SerializeAsBytes().
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestampPicoValue")]
+        public virtual string TimestampPicoValue { get; set; }
+
+        private string _timestampValueRaw;
+
+        private object _timestampValue;
+
+        /// <summary>primitive for timestamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestampValue")]
+        public virtual string TimestampValueRaw
+        {
+            get => _timestampValueRaw;
+            set
+            {
+                _timestampValue = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timestampValueRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimestampValueRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimestampValueDateTimeOffset instead.")]
+        public virtual object TimestampValue
+        {
+            get => _timestampValue;
+            set
+            {
+                _timestampValueRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _timestampValue = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TimestampValueRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimestampValueDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampValueRaw);
+            set => TimestampValueRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Encoded tokenlist value. copybara:strip_begin(internal-comment) See //search/tokens:token_list.
+        /// copybara:strip_end
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenlistValue")]
+        public virtual string TokenlistValue { get; set; }
+
+        /// <summary>Primitive for uint32.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uint32Value")]
+        public virtual System.Nullable<long> Uint32Value { get; set; }
+
+        /// <summary>Primitive for uint64.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uint64Value")]
+        public virtual System.Nullable<ulong> Uint64Value { get; set; }
+
+        /// <summary>
+        /// Encoded uuid value. For the encoding format see documentation for UuidValue::SerializeAsBytes().
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uuidValue")]
+        public virtual string UuidValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
