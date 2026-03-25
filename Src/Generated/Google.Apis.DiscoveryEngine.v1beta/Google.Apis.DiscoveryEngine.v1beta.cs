@@ -19997,22 +19997,18 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// Optional. The order in which the UserLicenses are listed. The value must be a
                         /// comma-separated list of fields. Default sorting order is ascending. To specify descending
                         /// order for a field, append a " desc" suffix. Redundant space characters in the syntax are
-                        /// insignificant. Supported fields: * `license_assignment_state` * `user_principal` *
-                        /// `user_profile` * `last_login_date` * `update_time` If not set, the default ordering is by
-                        /// `user_principal`. Examples: * `user_principal desc` to order by `user_principal` in
-                        /// descending order. * `license_assignment_state` to order by `license_assignment_state` in
-                        /// ascending order. * `last_login_date desc` to order by `last_login_date` in descending order.
-                        /// * `update_time desc` to order by `update_time` in descending order. * `last_login_date desc,
-                        /// user_principal` to order by `last_login_date` in descending order and then by
-                        /// `user_principal` in ascending order.
+                        /// insignificant. Supported fields (only `user_principal` is supported for now): *
+                        /// `user_principal` If not set, the default ordering is by `user_principal`. Examples: *
+                        /// `user_principal` to order by `user_principal` in ascending order. * `user_principal desc` to
+                        /// order by `user_principal` in descending order.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
                         /// <summary>
                         /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-                        /// defaults to 1000. The maximum value is 1000; values above 1000 will be coerced to 1000. If
-                        /// this field is negative, an INVALID_ARGUMENT error is returned.
+                        /// defaults to 10. The maximum value is 50; values above 50 will be coerced to 50. If this
+                        /// field is negative, an INVALID_ARGUMENT error is returned.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
@@ -23208,9 +23204,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Output only. The list of FQDNs of the data connector can egress to. This includes both FQDN derived from the
-        /// customer provided instance URL and default per connector type FQDNs. Note: This field is derived from both
-        /// the DataConnector.params, and connector source spec. It should only be used for CAIS and Org Policy
-        /// evaluation purposes.
+        /// customer provided instance URL and default per connector type FQDNs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("egressFqdns")]
         public virtual System.Collections.Generic.IList<string> EgressFqdns { get; set; }
@@ -23368,7 +23362,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         }
 
         /// <summary>
-        /// Output only. The full resource name of the Data Connector. Format:
+        /// Identifier. The full resource name of the Data Connector. Format:
         /// `projects/*/locations/*/collections/*/dataConnector`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -23472,10 +23466,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>
-        /// Output only. Whether the connector is created with VPC-SC enabled. This is only used for CuOP evaluation
-        /// purpose.
-        /// </summary>
+        /// <summary>Output only. Whether the connector is created with VPC-SC enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcscEnabled")]
         public virtual System.Nullable<bool> VpcscEnabled { get; set; }
 
@@ -26191,7 +26182,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         private object _updateTime;
 
-        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        /// <summary>
+        /// Output only. Operation last update time. If the operation is done, this is also the finish time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -31428,9 +31421,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Output only. The list of FQDNs of the data connector can egress to. This includes both FQDN derived from the
-        /// customer provided instance URL and default per connector type FQDNs. Note: This field is derived from both
-        /// the DataConnector.params, and connector source spec. It should only be used for CAIS and Org Policy
-        /// evaluation purposes.
+        /// customer provided instance URL and default per connector type FQDNs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("egressFqdns")]
         public virtual System.Collections.Generic.IList<string> EgressFqdns { get; set; }
@@ -31588,7 +31579,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         }
 
         /// <summary>
-        /// Output only. The full resource name of the Data Connector. Format:
+        /// Identifier. The full resource name of the Data Connector. Format:
         /// `projects/*/locations/*/collections/*/dataConnector`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -31692,10 +31683,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>
-        /// Output only. Whether the connector is created with VPC-SC enabled. This is only used for CuOP evaluation
-        /// purpose.
-        /// </summary>
+        /// <summary>Output only. Whether the connector is created with VPC-SC enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcscEnabled")]
         public virtual System.Nullable<bool> VpcscEnabled { get; set; }
 
@@ -35329,7 +35317,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         private object _updateTime;
 
-        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        /// <summary>
+        /// Output only. Operation last update time. If the operation is done, this is also the finish time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -45531,9 +45521,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         private object _indexTime;
 
         /// <summary>
-        /// Output only. The last time the document was indexed. If this field is set, the document could be returned in
-        /// search results. This field is OUTPUT_ONLY. If this field is not populated, it means the document has never
-        /// been indexed.
+        /// Output only. The time when the document was last indexed. If this field is populated, it means the document
+        /// has been indexed. While documents typically become searchable within seconds of indexing, it can sometimes
+        /// take up to a few hours. If this field is not populated, it means the document has never been indexed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexTime")]
         public virtual string IndexTimeRaw
@@ -45690,6 +45680,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// The time when the document was indexed. If this field is populated, it means the document has been indexed.
+        /// While documents typically become searchable within seconds of indexing, it can sometimes take up to a few
+        /// hours.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexTime")]
         public virtual string IndexTimeRaw
@@ -47832,7 +47824,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         private object _updateTime;
 
-        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        /// <summary>
+        /// Output only. Operation last update time. If the operation is done, this is also the finish time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
