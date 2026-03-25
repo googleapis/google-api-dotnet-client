@@ -8641,6 +8641,9 @@ namespace Google.Apis.YouTube.v3
             [Google.Apis.Util.RequestParameterAttribute("externalChannelId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ExternalChannelId { get; set; }
 
+            [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwnerChannel", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OnBehalfOfContentOwnerChannel { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.YouTube.v3.Data.TestItem Body { get; set; }
 
@@ -8671,6 +8674,14 @@ namespace Google.Apis.YouTube.v3
                 RequestParameters.Add("externalChannelId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "externalChannelId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("onBehalfOfContentOwnerChannel", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "onBehalfOfContentOwnerChannel",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
