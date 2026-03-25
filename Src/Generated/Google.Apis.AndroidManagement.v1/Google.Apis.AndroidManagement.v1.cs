@@ -7308,8 +7308,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Nullable<bool> CreateWindowsDisabled { get; set; }
 
         /// <summary>
-        /// Controls which apps are allowed to act as credential providers on Android 14 and above. These apps store
-        /// credentials, see this (https://developer.android.com/training/sign-in/passkeys) and this
+        /// Optional. Controls which apps are allowed to act as credential providers on Android 14 and above. These apps
+        /// store credentials, see this (https://developer.android.com/training/sign-in/passkeys) and this
         /// (https://developer.android.com/reference/androidx/credentials/CredentialManager) for details. See also
         /// credentialProviderPolicy.
         /// </summary>
