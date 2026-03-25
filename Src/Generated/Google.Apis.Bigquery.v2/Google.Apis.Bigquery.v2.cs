@@ -6150,6 +6150,13 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("access")]
         public virtual System.Collections.Generic.IList<AccessData> Access { get; set; }
 
+        /// <summary>
+        /// Output only. The origin of the dataset, one of: * (Unset) - Native BigQuery Dataset * BIGLAKE - Dataset is
+        /// backed by a namespace stored natively in Biglake
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalogSource")]
+        public virtual string CatalogSource { get; set; }
+
         /// <summary>Output only. The time when this dataset was created, in milliseconds since the epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual System.Nullable<long> CreationTime { get; set; }
@@ -6346,7 +6353,8 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>
         /// Output only. Same as `type` in `ListFormatDataset`. The type of the dataset, one of: * DEFAULT - only
         /// accessible by owner and authorized accounts, * PUBLIC - accessible by everyone, * LINKED - linked dataset, *
-        /// EXTERNAL - dataset with definition in external metadata catalog.
+        /// EXTERNAL - dataset with definition in external metadata catalog, * BIGLAKE_ICEBERG - a Biglake dataset
+        /// accessible through the Iceberg API, * BIGLAKE_HIVE - a Biglake dataset accessible through the Hive API.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -6530,6 +6538,13 @@ namespace Google.Apis.Bigquery.v2.Data
         public class DatasetsData
         {
             /// <summary>
+            /// Output only. The origin of the dataset, one of: * (Unset) - Native BigQuery Dataset. * BIGLAKE - Dataset
+            /// is backed by a namespace stored natively in Biglake.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("catalogSource")]
+            public virtual string CatalogSource { get; set; }
+
+            /// <summary>
             /// The dataset reference. Use this property to access specific parts of the dataset's ID, such as project
             /// ID or dataset ID.
             /// </summary>
@@ -6564,6 +6579,15 @@ namespace Google.Apis.Bigquery.v2.Data
             /// <summary>The geographic location where the dataset resides.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("location")]
             public virtual string Location { get; set; }
+
+            /// <summary>
+            /// Output only. Same as `type` in `Dataset`. The type of the dataset, one of: * DEFAULT - only accessible
+            /// by owner and authorized accounts, * PUBLIC - accessible by everyone, * LINKED - linked dataset, *
+            /// EXTERNAL - dataset with definition in external metadata catalog, * BIGLAKE_ICEBERG - a Biglake dataset
+            /// accessible through the Iceberg API, * BIGLAKE_HIVE - a Biglake dataset accessible through the Hive API.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("type")]
+            public virtual string Type { get; set; }
         }
     }
 
@@ -7359,7 +7383,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>
         /// Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to
-        /// the destination table for autodetection mode. Available for the formats: CSV. For the CSV Format, Possible
+        /// the destination table for autodetection mode. Available for the formats: CSV, PARQUET, and AVRO. Possible
         /// values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]:
         /// timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds.
         /// timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]:
@@ -7526,6 +7550,132 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Required. The query that defines the view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Provides error statistics for the query job across all AI function calls.</summary>
+    public class GenAiErrorStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of unique errors at query level (up to 5, truncated to 100 chars)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<string> Errors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Provides cost optimization statistics for a GenAi function call.</summary>
+    public class GenAiFunctionCostOptimizationStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>System generated message to provide insights into cost optimization state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Number of rows inferred via cost optimized workflow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numCostOptimizedRows")]
+        public virtual System.Nullable<long> NumCostOptimizedRows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Provides error statistics for a GenAi function call.</summary>
+    public class GenAiFunctionErrorStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of unique errors at function level (up to 5, truncated to 100 chars).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<string> Errors { get; set; }
+
+        /// <summary>Number of failed rows processed by the function</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numFailedRows")]
+        public virtual System.Nullable<long> NumFailedRows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Provides statistics for each Ai function call within a query.</summary>
+    public class GenAiFunctionStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cost optimization stats if applied on the rows processed by the function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("costOptimizationStats")]
+        public virtual GenAiFunctionCostOptimizationStats CostOptimizationStats { get; set; }
+
+        /// <summary>Error stats for the function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorStats")]
+        public virtual GenAiFunctionErrorStats ErrorStats { get; set; }
+
+        /// <summary>Name of the function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("functionName")]
+        public virtual string FunctionName { get; set; }
+
+        /// <summary>
+        /// Number of rows processed by this GenAi function. This includes all cost_optimized, llm_inferred and
+        /// failed_rows.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numProcessedRows")]
+        public virtual System.Nullable<long> NumProcessedRows { get; set; }
+
+        /// <summary>User input prompt of the function (truncated to 20 chars).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prompt")]
+        public virtual string Prompt { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>GenAi stats for the query job.</summary>
+    public class GenAiStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Job level error stats across all GenAi functions</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorStats")]
+        public virtual GenAiErrorStats ErrorStats { get; set; }
+
+        /// <summary>
+        /// Function level stats for GenAi Functions. See
+        /// https://docs.cloud.google.com/bigquery/docs/generative-ai-overview
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("functionStats")]
+        public virtual System.Collections.Generic.IList<GenAiFunctionStats> FunctionStats { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Optional. Definition of how values are generated for the field. Only valid for top-level schema fields (not
+    /// nested fields).
+    /// </summary>
+    public class GeneratedColumn : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Definition of the expression used to generate the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedExpressionInfo")]
+        public virtual GeneratedExpressionInfo GeneratedExpressionInfo { get; set; }
+
+        /// <summary>Optional. Dictates when system generated values are used to populate the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedMode")]
+        public virtual string GeneratedMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Definition of the expression used to generate the field.</summary>
+    public class GeneratedExpressionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether the column generation is done asynchronously.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asynchronous")]
+        public virtual System.Nullable<bool> Asynchronous { get; set; }
+
+        /// <summary>Optional. The generation expression (e.g. AI.EMBED(...)) used to generated the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generationExpression")]
+        public virtual string GenerationExpression { get; set; }
+
+        /// <summary>Optional. Whether the generated column is stored in the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stored")]
+        public virtual System.Nullable<bool> Stored { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8826,7 +8976,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>
         /// Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to
-        /// the destination table for autodetection mode. Available for the formats: CSV. For the CSV Format, Possible
+        /// the destination table for autodetection mode. Available for the formats: CSV, PARQUET, and AVRO. Possible
         /// values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]:
         /// timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds.
         /// timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]:
@@ -9529,6 +9679,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Output only. Job cost breakdown as bigquery internal cost and external service costs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalServiceCosts")]
         public virtual System.Collections.Generic.IList<ExternalServiceCost> ExternalServiceCosts { get; set; }
+
+        /// <summary>Output only. Statistics related to GenAI usage in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genAiStats")]
+        public virtual GenAiStats GenAiStats { get; set; }
 
         /// <summary>
         /// Output only. Statistics related to incremental query results, if enabled for the query. This feature is not
@@ -10718,7 +10872,9 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>Projects to which the user has at least READ access.</summary>
+        /// <summary>
+        /// Projects to which the user has at least READ access. This field can be omitted if `totalItems` is 0.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projects")]
         public virtual System.Collections.Generic.IList<ProjectsData> Projects { get; set; }
 
@@ -10729,7 +10885,9 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalItems")]
         public virtual System.Nullable<int> TotalItems { get; set; }
 
-        /// <summary>Projects to which the user has at least READ access.</summary>
+        /// <summary>
+        /// Projects to which the user has at least READ access. This field can be omitted if `totalItems` is 0.
+        /// </summary>
         public class ProjectsData
         {
             /// <summary>
@@ -11533,6 +11691,13 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("arguments")]
         public virtual System.Collections.Generic.IList<Argument> Arguments { get; set; }
 
+        /// <summary>
+        /// Output only. The build status of the routine. This field is only applicable to Python UDFs.
+        /// [Preview](https://cloud.google.com/products/#product-launch-stages)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildStatus")]
+        public virtual RoutineBuildStatus BuildStatus { get; set; }
+
         /// <summary>Output only. The time when this routine was created, in milliseconds since the epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual System.Nullable<long> CreationTime { get; set; }
@@ -11659,6 +11824,70 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("strictMode")]
         public virtual System.Nullable<bool> StrictMode { get; set; }
+    }
+
+    /// <summary>The status of a routine build.</summary>
+    public class RoutineBuildStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The time taken for the image build. Populated only after the build succeeds or fails.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildDuration")]
+        public virtual object BuildDuration { get; set; }
+
+        /// <summary>Output only. The current build state of the routine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildState")]
+        public virtual string BuildState { get; set; }
+
+        private string _buildStateUpdateTimeRaw;
+
+        private object _buildStateUpdateTime;
+
+        /// <summary>Output only. The time when the build state was updated last.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildStateUpdateTime")]
+        public virtual string BuildStateUpdateTimeRaw
+        {
+            get => _buildStateUpdateTimeRaw;
+            set
+            {
+                _buildStateUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _buildStateUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="BuildStateUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use BuildStateUpdateTimeDateTimeOffset instead.")]
+        public virtual object BuildStateUpdateTime
+        {
+            get => _buildStateUpdateTime;
+            set
+            {
+                _buildStateUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _buildStateUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="BuildStateUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? BuildStateUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(BuildStateUpdateTimeRaw);
+            set => BuildStateUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. A result object that will be present only if the build has failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorResult")]
+        public virtual ErrorProto ErrorResult { get; set; }
+
+        /// <summary>Output only. The size of the image in bytes. Populated only after the build succeeds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageSizeBytes")]
+        public virtual System.Nullable<long> ImageSizeBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Id path of a routine.</summary>
@@ -12993,6 +13222,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("foreignTypeDefinition")]
         public virtual string ForeignTypeDefinition { get; set; }
+
+        /// <summary>
+        /// Optional. Definition of how values are generated for the field. Only valid for top-level schema fields (not
+        /// nested fields).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedColumn")]
+        public virtual GeneratedColumn GeneratedColumn { get; set; }
 
         /// <summary>
         /// Optional. Maximum length of values of this field for STRINGS or BYTES. If max_length is not specified, no
