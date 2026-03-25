@@ -1166,6 +1166,12 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     /// <summary>Metadata related to the action.</summary>
     public class ActionInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Google Cloud Storage location of the content that violated the rule. This field has format: "/"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evidenceLockerFilePath")]
+        public virtual string EvidenceLockerFilePath { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
