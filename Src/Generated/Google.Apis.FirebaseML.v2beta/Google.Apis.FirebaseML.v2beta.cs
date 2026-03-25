@@ -1200,7 +1200,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
 
         /// <summary>
         /// Required. The name of the function to call. Must start with a letter or an underscore. Must be a-z, A-Z,
-        /// 0-9, or contain underscores, dots, colons and dashes, with a maximum length of 64.
+        /// 0-9, or contain underscores, dots, colons and dashes, with a maximum length of 128.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
