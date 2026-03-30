@@ -7129,13 +7129,15 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>
         /// Optional. Determines a threshold for concurrency utilization before scaling begins. Accepted values are
         /// between `0.1` and `0.95` (inclusive) or `0.0` to disable concurrency utilization as threshold for scaling.
+        /// CPU and concurrency scaling cannot both be disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("concurrencyUtilization")]
         public virtual System.Nullable<float> ConcurrencyUtilization { get; set; }
 
         /// <summary>
         /// Optional. Determines a threshold for CPU utilization before scaling begins. Accepted values are between
-        /// `0.1` and `0.95` (inclusive) or `0.0` to disable CPU utilization as threshold for scaling.
+        /// `0.1` and `0.95` (inclusive) or `0.0` to disable CPU utilization as threshold for scaling. CPU and
+        /// concurrency scaling cannot both be disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuUtilization")]
         public virtual System.Nullable<float> CpuUtilization { get; set; }
@@ -8779,7 +8781,7 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creator")]
         public virtual string Creator { get; set; }
 
-        /// <summary>Not supported, and ignored by Cloud Run.</summary>
+        /// <summary>Deprecated: Not supported, and ignored by Cloud Run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customAudiences")]
         public virtual System.Collections.Generic.IList<string> CustomAudiences { get; set; }
 
