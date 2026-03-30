@@ -355,8 +355,8 @@ namespace Google.Apis.Dataform.v1beta1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// The ID to use for the Folder, which will become the final component of the Folder's resource
-                    /// name.
+                    /// Deprecated: This field is not used. The resource name is generated automatically. The ID to use
+                    /// for the Folder, which will become the final component of the Folder's resource name.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("folderId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string FolderId { get; set; }
@@ -430,6 +430,69 @@ namespace Google.Apis.Dataform.v1beta1
                     public override string RestPath => "v1beta1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/folders/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes a Folder with its contents (Folders, Repositories, Workspaces, ReleaseConfigs, and
+                /// WorkflowConfigs).
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The Folder's name. Format: projects/{project}/locations/{location}/folders/{folder}
+                /// </param>
+                public virtual DeleteTreeRequest DeleteTree(Google.Apis.Dataform.v1beta1.Data.DeleteFolderTreeRequest body, string name)
+                {
+                    return new DeleteTreeRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Deletes a Folder with its contents (Folders, Repositories, Workspaces, ReleaseConfigs, and
+                /// WorkflowConfigs).
+                /// </summary>
+                public class DeleteTreeRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new DeleteTree request.</summary>
+                    public DeleteTreeRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataform.v1beta1.Data.DeleteFolderTreeRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The Folder's name. Format: projects/{project}/locations/{location}/folders/{folder}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataform.v1beta1.Data.DeleteFolderTreeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "deleteTree";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:deleteTree";
+
+                    /// <summary>Initializes DeleteTree parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -5352,8 +5415,8 @@ namespace Google.Apis.Dataform.v1beta1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// The ID to use for the TeamFolder, which will become the final component of the TeamFolder's
-                    /// resource name.
+                    /// Deprecated: This field is not used. The resource name is generated automatically. The ID to use
+                    /// for the TeamFolder, which will become the final component of the TeamFolder's resource name.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("teamFolderId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string TeamFolderId { get; set; }
@@ -5427,6 +5490,71 @@ namespace Google.Apis.Dataform.v1beta1
                     public override string RestPath => "v1beta1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/teamFolders/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes a TeamFolder with its contents (Folders, Repositories, Workspaces, ReleaseConfigs, and
+                /// WorkflowConfigs).
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The TeamFolder's name. Format:
+                /// projects/{project}/locations/{location}/teamFolders/{team_folder}
+                /// </param>
+                public virtual DeleteTreeRequest DeleteTree(Google.Apis.Dataform.v1beta1.Data.DeleteTeamFolderTreeRequest body, string name)
+                {
+                    return new DeleteTreeRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Deletes a TeamFolder with its contents (Folders, Repositories, Workspaces, ReleaseConfigs, and
+                /// WorkflowConfigs).
+                /// </summary>
+                public class DeleteTreeRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new DeleteTree request.</summary>
+                    public DeleteTreeRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataform.v1beta1.Data.DeleteTeamFolderTreeRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The TeamFolder's name. Format:
+                    /// projects/{project}/locations/{location}/teamFolders/{team_folder}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataform.v1beta1.Data.DeleteTeamFolderTreeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "deleteTree";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:deleteTree";
+
+                    /// <summary>Initializes DeleteTree parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -6096,10 +6224,14 @@ namespace Google.Apis.Dataform.v1beta1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -6108,10 +6240,14 @@ namespace Google.Apis.Dataform.v1beta1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             public class ListRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.ListLocationsResponse>
             {
@@ -7168,6 +7304,38 @@ namespace Google.Apis.Dataform.v1beta1.Data
     /// <summary>Represents the delete file operation.</summary>
     public class DeleteFile : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>`DeleteFolderTree` request message.</summary>
+    public class DeleteFolderTreeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If `false` (default): The operation will fail if any Repository within the folder hierarchy has
+        /// associated Release Configs or Workflow Configs. If `true`: The operation will attempt to delete everything,
+        /// including any Release Configs and Workflow Configs linked to Repositories within the folder hierarchy. This
+        /// permanently removes schedules and resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>`DeleteTeamFolderTree` request message.</summary>
+    public class DeleteTeamFolderTreeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If `false` (default): The operation will fail if any Repository within the folder hierarchy has
+        /// associated Release Configs or Workflow Configs. If `true`: The operation will attempt to delete everything,
+        /// including any Release Configs and Workflow Configs linked to Repositories within the folder hierarchy. This
+        /// permanently removes schedules and resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
