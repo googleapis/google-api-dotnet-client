@@ -13182,6 +13182,21 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information about the cohort that the workload belongs to.</summary>
+    public class CohortInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Final cohort that was used to tune the workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cohort")]
+        public virtual string Cohort { get; set; }
+
+        /// <summary>Output only. Source of the cohort.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cohortSource")]
+        public virtual string CohortSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Confidential Instance Config for clusters using Confidential VMs
     /// (https://cloud.google.com/compute/confidential-vm/docs)
@@ -14532,6 +14547,14 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.</summary>
     public class InstanceFlexibilityPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. A map of instance short name to machine type. The key is the short name of the Compute Engine
+        /// instance, and the value is the full machine-type name (e.g., 'n1-standard-16'). See Machine types for more
+        /// information on valid machine type strings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceMachineTypes")]
+        public virtual System.Collections.Generic.IDictionary<string, string> InstanceMachineTypes { get; set; }
+
         /// <summary>
         /// Optional. List of instance selection options that the group will use when creating new VMs.
         /// </summary>
@@ -17245,6 +17268,10 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approximateUsage")]
         public virtual UsageMetrics ApproximateUsage { get; set; }
+
+        /// <summary>Output only. Information about the cohort that the workload belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cohortInfo")]
+        public virtual CohortInfo CohortInfo { get; set; }
 
         /// <summary>Output only. Snapshot of current workload resource usage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentUsage")]
