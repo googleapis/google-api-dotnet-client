@@ -2354,7 +2354,7 @@ namespace Google.Apis.Drive.v2
         /// <summary>
         ///  Lists the user's shared drives. This method accepts the `q` parameter, which is a search query combining
         /// one or more search terms. For more information, see the [Search for shared
-        /// drives](/workspace/drive/api/guides/search-shareddrives) guide.
+        /// drives](https://developers.google.com/workspace/drive/api/guides/search-shareddrives) guide.
         /// </summary>
         public virtual ListRequest List()
         {
@@ -2364,7 +2364,7 @@ namespace Google.Apis.Drive.v2
         /// <summary>
         ///  Lists the user's shared drives. This method accepts the `q` parameter, which is a search query combining
         /// one or more search terms. For more information, see the [Search for shared
-        /// drives](/workspace/drive/api/guides/search-shareddrives) guide.
+        /// drives](https://developers.google.com/workspace/drive/api/guides/search-shareddrives) guide.
         /// </summary>
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.DriveList>
         {
@@ -3175,8 +3175,9 @@ namespace Google.Apis.Drive.v2
         ///  Gets a file's metadata or content by ID. If you provide the URL parameter `alt=media`, then the response
         /// includes the file contents in the response body. Downloading content with `alt=media` only works if the file
         /// is stored in Drive. To download Google Docs, Sheets, and Slides use
-        /// [`files.export`](/workspace/drive/api/reference/rest/v2/files/export) instead. For more information, see
-        /// [Download &amp;amp; export files](/workspace/drive/api/guides/manage-downloads).
+        /// [`files.export`](https://developers.google.com/workspace/drive/api/reference/rest/v2/files/export) instead.
+        /// For more information, see [Download &amp;amp; export
+        /// files](https://developers.google.com/workspace/drive/api/guides/manage-downloads).
         /// </summary>
         /// <param name="fileId">The ID for the file in question.</param>
         public virtual GetRequest Get(string fileId)
@@ -3188,8 +3189,9 @@ namespace Google.Apis.Drive.v2
         ///  Gets a file's metadata or content by ID. If you provide the URL parameter `alt=media`, then the response
         /// includes the file contents in the response body. Downloading content with `alt=media` only works if the file
         /// is stored in Drive. To download Google Docs, Sheets, and Slides use
-        /// [`files.export`](/workspace/drive/api/reference/rest/v2/files/export) instead. For more information, see
-        /// [Download &amp;amp; export files](/workspace/drive/api/guides/manage-downloads).
+        /// [`files.export`](https://developers.google.com/workspace/drive/api/reference/rest/v2/files/export) instead.
+        /// For more information, see [Download &amp;amp; export
+        /// files](https://developers.google.com/workspace/drive/api/guides/manage-downloads).
         /// </summary>
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.File>
         {
@@ -3440,14 +3442,14 @@ namespace Google.Apis.Drive.v2
         /// characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid
         /// MIME type, rather than the literal `*/*` value. The literal `*/*` is only used to indicate that any valid
         /// MIME type can be uploaded. For more information on uploading files, see [Upload file
-        /// data](/workspace/drive/api/guides/manage-uploads). Apps creating shortcuts with `files.insert` must specify
-        /// the MIME type `application/vnd.google-apps.shortcut`. Apps should specify a file extension in the `title`
-        /// property when inserting files with the API. For example, an operation to insert a JPEG file should specify
-        /// something like `"title": "cat.jpg"` in the metadata. Subsequent `GET` requests include the read-only
-        /// `fileExtension` property populated with the extension originally specified in the `title` property. When a
-        /// Google Drive user requests to download a file, or when the file is downloaded through the sync client, Drive
-        /// builds a full filename (with extension) based on the title. In cases where the extension is missing, Drive
-        /// attempts to determine the extension based on the file's MIME type.
+        /// data](https://developers.google.com/workspace/drive/api/guides/manage-uploads). Apps creating shortcuts with
+        /// `files.insert` must specify the MIME type `application/vnd.google-apps.shortcut`. Apps should specify a file
+        /// extension in the `title` property when inserting files with the API. For example, an operation to insert a
+        /// JPEG file should specify something like `"title": "cat.jpg"` in the metadata. Subsequent `GET` requests
+        /// include the read-only `fileExtension` property populated with the extension originally specified in the
+        /// `title` property. When a Google Drive user requests to download a file, or when the file is downloaded
+        /// through the sync client, Drive builds a full filename (with extension) based on the title. In cases where
+        /// the extension is missing, Drive attempts to determine the extension based on the file's MIME type.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual InsertRequest Insert(Google.Apis.Drive.v2.Data.File body)
@@ -3460,14 +3462,14 @@ namespace Google.Apis.Drive.v2
         /// characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid
         /// MIME type, rather than the literal `*/*` value. The literal `*/*` is only used to indicate that any valid
         /// MIME type can be uploaded. For more information on uploading files, see [Upload file
-        /// data](/workspace/drive/api/guides/manage-uploads). Apps creating shortcuts with `files.insert` must specify
-        /// the MIME type `application/vnd.google-apps.shortcut`. Apps should specify a file extension in the `title`
-        /// property when inserting files with the API. For example, an operation to insert a JPEG file should specify
-        /// something like `"title": "cat.jpg"` in the metadata. Subsequent `GET` requests include the read-only
-        /// `fileExtension` property populated with the extension originally specified in the `title` property. When a
-        /// Google Drive user requests to download a file, or when the file is downloaded through the sync client, Drive
-        /// builds a full filename (with extension) based on the title. In cases where the extension is missing, Drive
-        /// attempts to determine the extension based on the file's MIME type.
+        /// data](https://developers.google.com/workspace/drive/api/guides/manage-uploads). Apps creating shortcuts with
+        /// `files.insert` must specify the MIME type `application/vnd.google-apps.shortcut`. Apps should specify a file
+        /// extension in the `title` property when inserting files with the API. For example, an operation to insert a
+        /// JPEG file should specify something like `"title": "cat.jpg"` in the metadata. Subsequent `GET` requests
+        /// include the read-only `fileExtension` property populated with the extension originally specified in the
+        /// `title` property. When a Google Drive user requests to download a file, or when the file is downloaded
+        /// through the sync client, Drive builds a full filename (with extension) based on the title. In cases where
+        /// the extension is missing, Drive attempts to determine the extension based on the file's MIME type.
         /// </summary>
         public class InsertRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.File>
         {
@@ -3691,14 +3693,14 @@ namespace Google.Apis.Drive.v2
         /// characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid
         /// MIME type, rather than the literal `*/*` value. The literal `*/*` is only used to indicate that any valid
         /// MIME type can be uploaded. For more information on uploading files, see [Upload file
-        /// data](/workspace/drive/api/guides/manage-uploads). Apps creating shortcuts with `files.insert` must specify
-        /// the MIME type `application/vnd.google-apps.shortcut`. Apps should specify a file extension in the `title`
-        /// property when inserting files with the API. For example, an operation to insert a JPEG file should specify
-        /// something like `"title": "cat.jpg"` in the metadata. Subsequent `GET` requests include the read-only
-        /// `fileExtension` property populated with the extension originally specified in the `title` property. When a
-        /// Google Drive user requests to download a file, or when the file is downloaded through the sync client, Drive
-        /// builds a full filename (with extension) based on the title. In cases where the extension is missing, Drive
-        /// attempts to determine the extension based on the file's MIME type.
+        /// data](https://developers.google.com/workspace/drive/api/guides/manage-uploads). Apps creating shortcuts with
+        /// `files.insert` must specify the MIME type `application/vnd.google-apps.shortcut`. Apps should specify a file
+        /// extension in the `title` property when inserting files with the API. For example, an operation to insert a
+        /// JPEG file should specify something like `"title": "cat.jpg"` in the metadata. Subsequent `GET` requests
+        /// include the read-only `fileExtension` property populated with the extension originally specified in the
+        /// `title` property. When a Google Drive user requests to download a file, or when the file is downloaded
+        /// through the sync client, Drive builds a full filename (with extension) based on the title. In cases where
+        /// the extension is missing, Drive attempts to determine the extension based on the file's MIME type.
         /// </summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
@@ -3916,10 +3918,10 @@ namespace Google.Apis.Drive.v2
 
         /// <summary>
         ///  Lists the user's files. For more information, see [Search for files and
-        /// folders](/workspace/drive/api/guides/search-files). This method accepts the `q` parameter, which is a search
-        /// query combining one or more search terms. This method returns *all* files by default, including trashed
-        /// files. If you don't want trashed files to appear in the list, use the `trashed=false` query parameter to
-        /// remove trashed files from the results.
+        /// folders](https://developers.google.com/workspace/drive/api/guides/search-files). This method accepts the `q`
+        /// parameter, which is a search query combining one or more search terms. This method returns *all* files by
+        /// default, including trashed files. If you don't want trashed files to appear in the list, use the
+        /// `trashed=false` query parameter to remove trashed files from the results.
         /// </summary>
         public virtual ListRequest List()
         {
@@ -3928,10 +3930,10 @@ namespace Google.Apis.Drive.v2
 
         /// <summary>
         ///  Lists the user's files. For more information, see [Search for files and
-        /// folders](/workspace/drive/api/guides/search-files). This method accepts the `q` parameter, which is a search
-        /// query combining one or more search terms. This method returns *all* files by default, including trashed
-        /// files. If you don't want trashed files to appear in the list, use the `trashed=false` query parameter to
-        /// remove trashed files from the results.
+        /// folders](https://developers.google.com/workspace/drive/api/guides/search-files). This method accepts the `q`
+        /// parameter, which is a search query combining one or more search terms. This method returns *all* files by
+        /// default, including trashed files. If you don't want trashed files to appear in the list, use the
+        /// `trashed=false` query parameter to remove trashed files from the results.
         /// </summary>
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.FileList>
         {
@@ -4980,8 +4982,9 @@ namespace Google.Apis.Drive.v2
         /// uploaded media with the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME
         /// types:* `*/*` (Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only
         /// used to indicate that any valid MIME type can be uploaded. For more information, see [Google Workspace and
-        /// Google Drive supported MIME types](/workspace/drive/api/guides/mime-types).) For more information on
-        /// uploading files, see [Upload file data](/workspace/drive/api/guides/manage-uploads).
+        /// Google Drive supported MIME types](https://developers.google.com/workspace/drive/api/guides/mime-types).)
+        /// For more information on uploading files, see [Upload file
+        /// data](https://developers.google.com/workspace/drive/api/guides/manage-uploads).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file to update.</param>
@@ -4997,8 +5000,9 @@ namespace Google.Apis.Drive.v2
         /// uploaded media with the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME
         /// types:* `*/*` (Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only
         /// used to indicate that any valid MIME type can be uploaded. For more information, see [Google Workspace and
-        /// Google Drive supported MIME types](/workspace/drive/api/guides/mime-types).) For more information on
-        /// uploading files, see [Upload file data](/workspace/drive/api/guides/manage-uploads).
+        /// Google Drive supported MIME types](https://developers.google.com/workspace/drive/api/guides/mime-types).)
+        /// For more information on uploading files, see [Upload file
+        /// data](https://developers.google.com/workspace/drive/api/guides/manage-uploads).
         /// </summary>
         public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.File>
         {
@@ -5325,8 +5329,9 @@ namespace Google.Apis.Drive.v2
         /// uploaded media with the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME
         /// types:* `*/*` (Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only
         /// used to indicate that any valid MIME type can be uploaded. For more information, see [Google Workspace and
-        /// Google Drive supported MIME types](/workspace/drive/api/guides/mime-types).) For more information on
-        /// uploading files, see [Upload file data](/workspace/drive/api/guides/manage-uploads).
+        /// Google Drive supported MIME types](https://developers.google.com/workspace/drive/api/guides/mime-types).)
+        /// For more information on uploading files, see [Upload file
+        /// data](https://developers.google.com/workspace/drive/api/guides/manage-uploads).
         /// </summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
