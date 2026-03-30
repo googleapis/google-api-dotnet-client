@@ -426,9 +426,7 @@ namespace Google.Apis.DataManager.v1
                 /// following optional headers to define how the API authorizes access for the request: *
                 /// `login-account`: (Optional) The resource name of the account where the Google Account of the
                 /// credentials is a user. If not set, defaults to the account of the request. Format:
-                /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}` * `linked-account`: (Optional) The
-                /// resource name of the account with an established product link to the `login-account`. Format:
-                /// `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
+                /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}`
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -445,9 +443,7 @@ namespace Google.Apis.DataManager.v1
                 /// following optional headers to define how the API authorizes access for the request: *
                 /// `login-account`: (Optional) The resource name of the account where the Google Account of the
                 /// credentials is a user. If not set, defaults to the account of the request. Format:
-                /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}` * `linked-account`: (Optional) The
-                /// resource name of the account with an established product link to the `login-account`. Format:
-                /// `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
+                /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}`
                 /// </summary>
                 public class CreateRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.PartnerLink>
                 {
@@ -501,9 +497,7 @@ namespace Google.Apis.DataManager.v1
                 /// following optional headers to define how the API authorizes access for the request: *
                 /// `login-account`: (Optional) The resource name of the account where the Google Account of the
                 /// credentials is a user. If not set, defaults to the account of the request. Format:
-                /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}` * `linked-account`: (Optional) The
-                /// resource name of the account with an established product link to the `login-account`. Format:
-                /// `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
+                /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}`
                 /// </summary>
                 /// <param name="name">
                 /// Required. The resource name of the partner link to delete. Format:
@@ -519,9 +513,7 @@ namespace Google.Apis.DataManager.v1
                 /// following optional headers to define how the API authorizes access for the request: *
                 /// `login-account`: (Optional) The resource name of the account where the Google Account of the
                 /// credentials is a user. If not set, defaults to the account of the request. Format:
-                /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}` * `linked-account`: (Optional) The
-                /// resource name of the account with an established product link to the `login-account`. Format:
-                /// `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
+                /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}`
                 /// </summary>
                 public class DeleteRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.Empty>
                 {
@@ -568,9 +560,7 @@ namespace Google.Apis.DataManager.v1
                 /// supports the following optional headers to define how the API authorizes access for the request: *
                 /// `login-account`: (Optional) The resource name of the account where the Google Account of the
                 /// credentials is a user. If not set, defaults to the account of the request. Format:
-                /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}` * `linked-account`: (Optional) The
-                /// resource name of the account with an established product link to the `login-account`. Format:
-                /// `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
+                /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}`
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Account to search for partner links. If no `filter` is specified, all partner links where
@@ -587,9 +577,7 @@ namespace Google.Apis.DataManager.v1
                 /// supports the following optional headers to define how the API authorizes access for the request: *
                 /// `login-account`: (Optional) The resource name of the account where the Google Account of the
                 /// credentials is a user. If not set, defaults to the account of the request. Format:
-                /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}` * `linked-account`: (Optional) The
-                /// resource name of the account with an established product link to the `login-account`. Format:
-                /// `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
+                /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}`
                 /// </summary>
                 public class SearchRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.SearchPartnerLinksResponse>
                 {
