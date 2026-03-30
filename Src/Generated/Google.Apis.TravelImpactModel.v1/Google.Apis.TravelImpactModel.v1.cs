@@ -703,7 +703,7 @@ namespace Google.Apis.TravelImpactModel.v1.Data
         public virtual EmissionsGramsPerPax EmissionsGramsPerPax { get; set; }
 
         /// <summary>
-        /// Required. Matches the flight identifiers in the request. Note: all IATA codes are capitalized.
+        /// Identifier. Matches the flight identifiers in the request. Note: all IATA codes are capitalized.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flight")]
         public virtual Flight Flight { get; set; }
@@ -773,7 +773,7 @@ namespace Google.Apis.TravelImpactModel.v1.Data
     /// <summary>Scope 3 flight with emission estimates.</summary>
     public class Scope3FlightEmissions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Matches the flight identifiers in the request.</summary>
+        /// <summary>Identifier. Matches the flight identifiers in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flight")]
         public virtual Scope3FlightSegment Flight { get; set; }
 
@@ -882,7 +882,7 @@ namespace Google.Apis.TravelImpactModel.v1.Data
         public virtual EmissionsGramsPerPax EmissionsGramsPerPax { get; set; }
 
         /// <summary>
-        /// Required. Matches the flight identifiers in the request. Note: all IATA codes are capitalized.
+        /// Identifier. Matches the flight identifiers in the request. Note: all IATA codes are capitalized.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("market")]
         public virtual Market Market { get; set; }
