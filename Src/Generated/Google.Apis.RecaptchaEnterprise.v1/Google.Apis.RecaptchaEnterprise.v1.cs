@@ -3168,9 +3168,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string Challenge { get; set; }
 
         /// <summary>
-        /// Output only. Advanced reasons contributing to the risk analysis verdict. These reasons are available to
-        /// Enterprise tier projects only. Contact sales for more information. The set of possible reasons is subject to
-        /// change.
+        /// Output only. Additional reasons contributing to the risk analysis verdict. These reasons are available to
+        /// Enterprise tier projects only. Contact sales for more information. The set of reasons is subject to change.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extendedVerdictReasons")]
         public virtual System.Collections.Generic.IList<string> ExtendedVerdictReasons { get; set; }
