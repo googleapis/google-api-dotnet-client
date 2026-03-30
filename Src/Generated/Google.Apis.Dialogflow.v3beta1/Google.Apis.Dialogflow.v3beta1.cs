@@ -20645,6 +20645,15 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
         public virtual string AnswerRecord { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("cesApp")]
+        public virtual string CesApp { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("cesTool")]
+        public virtual string CesTool { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("cesToolset")]
+        public virtual string CesToolset { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -20707,6 +20716,15 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
         public virtual string AnswerRecord { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("cesApp")]
+        public virtual string CesApp { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("cesTool")]
+        public virtual string CesTool { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("cesToolset")]
+        public virtual string CesToolset { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
@@ -23102,6 +23120,15 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
         public virtual string AnswerRecord { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("cesApp")]
+        public virtual string CesApp { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("cesTool")]
+        public virtual string CesTool { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("cesToolset")]
+        public virtual string CesToolset { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -23164,6 +23191,15 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
         public virtual string AnswerRecord { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("cesApp")]
+        public virtual string CesApp { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("cesTool")]
+        public virtual string CesTool { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("cesToolset")]
+        public virtual string CesToolset { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
