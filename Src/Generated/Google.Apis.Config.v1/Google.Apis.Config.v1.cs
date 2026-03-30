@@ -292,10 +292,824 @@ namespace Google.Apis.Config.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                DeploymentGroups = new DeploymentGroupsResource(service);
                 Deployments = new DeploymentsResource(service);
                 Operations = new OperationsResource(service);
                 Previews = new PreviewsResource(service);
                 TerraformVersions = new TerraformVersionsResource(service);
+            }
+
+            /// <summary>Gets the DeploymentGroups resource.</summary>
+            public virtual DeploymentGroupsResource DeploymentGroups { get; }
+
+            /// <summary>The "deploymentGroups" collection of methods.</summary>
+            public class DeploymentGroupsResource
+            {
+                private const string Resource = "deploymentGroups";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DeploymentGroupsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Revisions = new RevisionsResource(service);
+                }
+
+                /// <summary>Gets the Revisions resource.</summary>
+                public virtual RevisionsResource Revisions { get; }
+
+                /// <summary>The "revisions" collection of methods.</summary>
+                public class RevisionsResource
+                {
+                    private const string Resource = "revisions";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public RevisionsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Gets details about a DeploymentGroupRevision.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the deployment group revision to retrieve. Format:
+                    /// 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}/revisions/{revision}'.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets details about a DeploymentGroupRevision.</summary>
+                    public class GetRequest : ConfigBaseServiceRequest<Google.Apis.Config.v1.Data.DeploymentGroupRevision>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the deployment group revision to retrieve. Format:
+                        /// 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}/revisions/{revision}'.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/deploymentGroups/[^/]+/revisions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists DeploymentGroupRevisions in a given DeploymentGroup.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent, which owns this collection of deployment group revisions. Format:
+                    /// 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists DeploymentGroupRevisions in a given DeploymentGroup.</summary>
+                    public class ListRequest : ConfigBaseServiceRequest<Google.Apis.Config.v1.Data.ListDeploymentGroupRevisionsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent, which owns this collection of deployment group revisions. Format:
+                        /// 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. When requesting a page of resources, 'page_size' specifies number of resources to
+                        /// return. If unspecified, a sensible default will be used by the server. The maximum value is
+                        /// 1000; values above 1000 will be coerced to 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. Token returned by previous call to 'ListDeploymentGroupRevisions' which specifies
+                        /// the position in the list from where to continue listing the deployment group revisions. All
+                        /// other parameters provided to `ListDeploymentGroupRevisions` must match the call that
+                        /// provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/revisions";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/deploymentGroups/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>
+                /// Creates a DeploymentGroup The newly created DeploymentGroup will be in the `CREATING` state and can
+                /// be retrieved via Get and List calls.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent in whose context the Deployment Group is created. The parent value is in the
+                /// format: 'projects/{project_id}/locations/{location}'
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Config.v1.Data.DeploymentGroup body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a DeploymentGroup The newly created DeploymentGroup will be in the `CREATING` state and can
+                /// be retrieved via Get and List calls.
+                /// </summary>
+                public class CreateRequest : ConfigBaseServiceRequest<Google.Apis.Config.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Config.v1.Data.DeploymentGroup body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent in whose context the Deployment Group is created. The parent value is in
+                    /// the format: 'projects/{project_id}/locations/{location}'
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. The deployment group ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("deploymentGroupId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string DeploymentGroupId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Config.v1.Data.DeploymentGroup Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/deploymentGroups";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("deploymentGroupId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "deploymentGroupId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a DeploymentGroup</summary>
+                /// <param name="name">
+                /// Required. The name of DeploymentGroup in the format
+                /// projects/{project_id}/locations/{location_id}/deploymentGroups/{deploymentGroup}
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a DeploymentGroup</summary>
+                public class DeleteRequest : ConfigBaseServiceRequest<Google.Apis.Config.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of DeploymentGroup in the format
+                    /// projects/{project_id}/locations/{location_id}/deploymentGroups/{deploymentGroup}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Policy on how to handle referenced deployments when deleting the DeploymentGroup. If
+                    /// unspecified, the default behavior is to fail the deletion if any deployments currently
+                    /// referenced in the `deployment_units` of the DeploymentGroup or in the latest revision are not
+                    /// deleted.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("deploymentReferencePolicy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<DeploymentReferencePolicyEnum> DeploymentReferencePolicy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Policy on how to handle referenced deployments when deleting the DeploymentGroup. If
+                    /// unspecified, the default behavior is to fail the deletion if any deployments currently
+                    /// referenced in the `deployment_units` of the DeploymentGroup or in the latest revision are not
+                    /// deleted.
+                    /// </summary>
+                    public enum DeploymentReferencePolicyEnum
+                    {
+                        /// <summary>
+                        /// The default behavior. If unspecified, the system will act as if
+                        /// `FAIL_IF_ANY_REFERENCES_EXIST` is specified.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("DEPLOYMENT_REFERENCE_POLICY_UNSPECIFIED")]
+                        DEPLOYMENTREFERENCEPOLICYUNSPECIFIED = 0,
+
+                        /// <summary>
+                        /// Fail the deletion if any deployments currently referenced in the `deployment_units` of the
+                        /// DeploymentGroup or in the latest revision are not deleted.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("FAIL_IF_ANY_REFERENCES_EXIST")]
+                        FAILIFANYREFERENCESEXIST = 1,
+
+                        /// <summary>
+                        /// Fail the deletion only if any deployments currently referenced in the `deployment_units` of
+                        /// the DeploymentGroup are not deleted. The deletion will proceed even if the deployments in
+                        /// the latest revision of the DeploymentGroup are not deleted.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("FAIL_IF_METADATA_REFERENCES_EXIST")]
+                        FAILIFMETADATAREFERENCESEXIST = 2,
+
+                        /// <summary>
+                        /// Ignore any deployments currently referenced in the `deployment_units` of the DeploymentGroup
+                        /// or in the latest revision.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("IGNORE_DEPLOYMENT_REFERENCES")]
+                        IGNOREDEPLOYMENTREFERENCES = 3,
+                    }
+
+                    /// <summary>
+                    /// Optional. If set to true, any revisions for this deployment group will also be deleted.
+                    /// (Otherwise, the request will only work if the deployment group has no revisions.)
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/deploymentGroups/[^/]+$",
+                        });
+                        RequestParameters.Add("deploymentReferencePolicy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "deploymentReferencePolicy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deprovisions a deployment group. NOTE: As a first step of this operation, Infra Manager will
+                /// automatically delete any Deployments that were part of the *last successful* DeploymentGroupRevision
+                /// but are *no longer* included in the *current* DeploymentGroup definition (e.g., following an
+                /// `UpdateDeploymentGroup` call), along with their actuated resources.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the deployment group to deprovision. Format:
+                /// 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'.
+                /// </param>
+                public virtual DeprovisionRequest Deprovision(Google.Apis.Config.v1.Data.DeprovisionDeploymentGroupRequest body, string name)
+                {
+                    return new DeprovisionRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Deprovisions a deployment group. NOTE: As a first step of this operation, Infra Manager will
+                /// automatically delete any Deployments that were part of the *last successful* DeploymentGroupRevision
+                /// but are *no longer* included in the *current* DeploymentGroup definition (e.g., following an
+                /// `UpdateDeploymentGroup` call), along with their actuated resources.
+                /// </summary>
+                public class DeprovisionRequest : ConfigBaseServiceRequest<Google.Apis.Config.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Deprovision request.</summary>
+                    public DeprovisionRequest(Google.Apis.Services.IClientService service, Google.Apis.Config.v1.Data.DeprovisionDeploymentGroupRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the deployment group to deprovision. Format:
+                    /// 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Config.v1.Data.DeprovisionDeploymentGroupRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "deprovision";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:deprovision";
+
+                    /// <summary>Initializes Deprovision parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/deploymentGroups/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Get a DeploymentGroup for a given project and location.</summary>
+                /// <param name="name">
+                /// Required. The name of the deployment group to retrieve. Format:
+                /// 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Get a DeploymentGroup for a given project and location.</summary>
+                public class GetRequest : ConfigBaseServiceRequest<Google.Apis.Config.v1.Data.DeploymentGroup>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the deployment group to retrieve. Format:
+                    /// 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/deploymentGroups/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>List DeploymentGroups for a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent, which owns this collection of deployment groups. Format:
+                /// 'projects/{project_id}/locations/{location}'.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>List DeploymentGroups for a given project and location.</summary>
+                public class ListRequest : ConfigBaseServiceRequest<Google.Apis.Config.v1.Data.ListDeploymentGroupsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent, which owns this collection of deployment groups. Format:
+                    /// 'projects/{project_id}/locations/{location}'.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Lists the DeploymentGroups that match the filter expression. A filter expression
+                    /// filters the deployment groups listed in the response. The expression must be of the form
+                    /// '{field} {operator} {value}' where operators: '&amp;lt;', '&amp;gt;', '&amp;lt;=', '&amp;gt;=',
+                    /// '!=', '=', ':' are supported (colon ':' represents a HAS operator which is roughly synonymous
+                    /// with equality). {field} can refer to a proto or JSON field, or a synthetic field. Field names
+                    /// can be camelCase or snake_case. Examples: - Filter by name: name =
+                    /// "projects/foo/locations/us-central1/deploymentGroups/bar" - Filter by labels: - Resources that
+                    /// have a key called 'foo' labels.foo:* - Resources that have a key called 'foo' whose value is
+                    /// 'bar' labels.foo = bar - Filter by state: - DeploymentGroups in CREATING state. state=CREATING
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Field to use to sort the list.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. When requesting a page of resources, 'page_size' specifies number of resources to
+                    /// return. If unspecified, at most 500 will be returned. The maximum value is 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. Token returned by previous call to 'ListDeploymentGroups' which specifies the position
+                    /// in the list from where to continue listing the deployment groups.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/deploymentGroups";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a DeploymentGroup</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The name of the deployment group. Format:
+                /// 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Config.v1.Data.DeploymentGroup body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a DeploymentGroup</summary>
+                public class PatchRequest : ConfigBaseServiceRequest<Google.Apis.Config.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Config.v1.Data.DeploymentGroup body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The name of the deployment group. Format:
+                    /// 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. Field mask used to specify the fields to be overwritten in the Deployment Group
+                    /// resource by the update. The fields specified in the update_mask are relative to the resource,
+                    /// not the full request. A field will be overwritten if it is in the mask. If the user does not
+                    /// provide a mask then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Config.v1.Data.DeploymentGroup Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/deploymentGroups/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Provisions a deployment group. NOTE: As a first step of this operation, Infra Manager will
+                /// automatically delete any Deployments that were part of the *last successful* DeploymentGroupRevision
+                /// but are *no longer* included in the *current* DeploymentGroup definition (e.g., following an
+                /// `UpdateDeploymentGroup` call), along with their actuated resources.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the deployment group to provision. Format:
+                /// 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'.
+                /// </param>
+                public virtual ProvisionRequest Provision(Google.Apis.Config.v1.Data.ProvisionDeploymentGroupRequest body, string name)
+                {
+                    return new ProvisionRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Provisions a deployment group. NOTE: As a first step of this operation, Infra Manager will
+                /// automatically delete any Deployments that were part of the *last successful* DeploymentGroupRevision
+                /// but are *no longer* included in the *current* DeploymentGroup definition (e.g., following an
+                /// `UpdateDeploymentGroup` call), along with their actuated resources.
+                /// </summary>
+                public class ProvisionRequest : ConfigBaseServiceRequest<Google.Apis.Config.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Provision request.</summary>
+                    public ProvisionRequest(Google.Apis.Services.IClientService service, Google.Apis.Config.v1.Data.ProvisionDeploymentGroupRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the deployment group to provision. Format:
+                    /// 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Config.v1.Data.ProvisionDeploymentGroupRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "provision";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:provision";
+
+                    /// <summary>Initializes Provision parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/deploymentGroups/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Deployments resource.</summary>
@@ -3143,10 +3957,14 @@ namespace Google.Apis.Config.v1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -3155,10 +3973,14 @@ namespace Google.Apis.Config.v1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             public class ListRequest : ConfigBaseServiceRequest<Google.Apis.Config.v1.Data.ListLocationsResponse>
             {
@@ -3767,6 +4589,195 @@ namespace Google.Apis.Config.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A DeploymentGroup is a collection of DeploymentUnits that in a DAG-like structure.</summary>
+    public class DeploymentGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Arbitrary key-value metadata storage e.g. to help client tools identify deployment group during
+        /// automation. See https://google.aip.dev/148#annotations for details on format and size limitations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Time when the deployment group was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// The deployment units of the deployment group in a DAG like structure. When a deployment group is being
+        /// provisioned, the deployment units are deployed in a DAG order. The provided units must be in a DAG order,
+        /// otherwise an error will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentUnits")]
+        public virtual System.Collections.Generic.IList<DeploymentUnit> DeploymentUnits { get; set; }
+
+        /// <summary>Optional. User-defined metadata for the deployment group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the deployment group. Format:
+        /// 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The error status of the deployment group provisioning or deprovisioning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisioningError")]
+        public virtual Status ProvisioningError { get; set; }
+
+        /// <summary>Output only. The provisioning state of the deployment group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisioningState")]
+        public virtual string ProvisioningState { get; set; }
+
+        /// <summary>Output only. Additional information regarding the current provisioning state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisioningStateDescription")]
+        public virtual string ProvisioningStateDescription { get; set; }
+
+        /// <summary>Output only. Current state of the deployment group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Additional information regarding the current state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateDescription")]
+        public virtual string StateDescription { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Time when the deployment group was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A DeploymentGroupRevision represents a snapshot of a DeploymentGroup at a given point in time, created when a
+    /// DeploymentGroup is provisioned or deprovisioned.
+    /// </summary>
+    public class DeploymentGroupRevision : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The alternative IDs of the deployment group revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternativeIds")]
+        public virtual System.Collections.Generic.IList<string> AlternativeIds { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Time when the deployment group revision was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Identifier. The name of the deployment group revision. Format:
+        /// 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}/revisions/{revision}'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The snapshot of the deployment group at this revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshot")]
+        public virtual DeploymentGroup Snapshot { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Ephemeral metadata content describing the state of a deployment operation.</summary>
     public class DeploymentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3785,6 +4796,163 @@ namespace Google.Apis.Config.v1.Data
         /// <summary>The current step the deployment operation is running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("step")]
         public virtual string Step { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The summary of the deployment operation.</summary>
+    public class DeploymentOperationSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Location of Deployment operations artifacts in `gs://{bucket}/{object}` format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifacts")]
+        public virtual string Artifacts { get; set; }
+
+        /// <summary>Output only. Cloud Build instance UUID associated with this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("build")]
+        public virtual string Build { get; set; }
+
+        /// <summary>
+        /// Output only. Location of Deployment operations content in `gs://{bucket}/{object}` format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>Output only. The current step the deployment operation is running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentStep")]
+        public virtual string DeploymentStep { get; set; }
+
+        /// <summary>Output only. Location of Deployment operations logs in `gs://{bucket}/{object}` format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logs")]
+        public virtual string Logs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for a value sourced from a Deployment.</summary>
+    public class DeploymentSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The resource name of the source Deployment to import the output from. Format:
+        /// projects/{project}/locations/{location}/deployments/{deployment} The source deployment must be in the same
+        /// project and location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
+        public virtual string Deployment { get; set; }
+
+        /// <summary>
+        /// Required. The name of the output variable in the source deployment's latest successfully applied revision.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputName")]
+        public virtual string OutputName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Spec for a deployment to be created.</summary>
+    public class DeploymentSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The deployment to be created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
+        public virtual Deployment Deployment { get; set; }
+
+        /// <summary>
+        /// Required. The id of the deployment to be created which doesn't include the project id and location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentId")]
+        public virtual string DeploymentId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A DeploymentUnit is a container for a deployment and its dependencies. An existing deployment can be provided
+    /// directly in the unit, or the unit can act as a placeholder to define the DAG, with the deployment specs supplied
+    /// in a `provisionDeploymentRequest`.
+    /// </summary>
+    public class DeploymentUnit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The IDs of the deployment units within the deployment group that this unit depends on.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dependencies")]
+        public virtual System.Collections.Generic.IList<string> Dependencies { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the deployment to be provisioned. Format:
+        /// 'projects/{project_id}/locations/{location}/deployments/{deployment}'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
+        public virtual string Deployment { get; set; }
+
+        /// <summary>The id of the deployment unit. Must be unique within the deployment group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The progress of a deployment unit provisioning or deprovisioning.</summary>
+    public class DeploymentUnitProgress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The name of the deployment to be provisioned. Format:
+        /// 'projects/{project}/locations/{location}/deployments/{deployment}'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
+        public virtual string Deployment { get; set; }
+
+        /// <summary>Output only. The summary of the deployment operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentOperationSummary")]
+        public virtual DeploymentOperationSummary DeploymentOperationSummary { get; set; }
+
+        /// <summary>Output only. Holds the error status of the deployment unit provisioning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>Output only. The intent of the deployment unit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intent")]
+        public virtual string Intent { get; set; }
+
+        /// <summary>Output only. The current step of the deployment unit provisioning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Additional information regarding the current state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateDescription")]
+        public virtual string StateDescription { get; set; }
+
+        /// <summary>Output only. The unit id of the deployment unit to be provisioned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unitId")]
+        public virtual string UnitId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for the DeprovisionDeploymentGroup method.</summary>
+    public class DeprovisionDeploymentGroupRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Policy on how resources within each deployment should be handled during deletion. This policy is
+        /// applied globally to the deletion of all deployments in this group. This corresponds to the 'delete_policy'
+        /// field in DeleteDeploymentRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletePolicy")]
+        public virtual string DeletePolicy { get; set; }
+
+        /// <summary>
+        /// Optional. If set to true, this option is propagated to the deletion of each deployment in the group. This
+        /// corresponds to the 'force' field in DeleteDeploymentRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3884,6 +5052,17 @@ namespace Google.Apis.Config.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for a source of an external value.</summary>
+    public class ExternalValueSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A source from a Deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentSource")]
+        public virtual DeploymentSource DeploymentSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A set of files in a Git repository.</summary>
     public class GitSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3912,6 +5091,50 @@ namespace Google.Apis.Config.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lockId")]
         public virtual System.Nullable<long> LockId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for the ListDeploymentGroupRevisions method.</summary>
+    public class ListDeploymentGroupRevisionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The deployment group revisions from the specified collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentGroupRevisions")]
+        public virtual System.Collections.Generic.IList<DeploymentGroupRevision> DeploymentGroupRevisions { get; set; }
+
+        /// <summary>
+        /// Token to be supplied to the next ListDeploymentGroupRevisions request via `page_token` to obtain the next
+        /// set of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for the ListDeploymentGroups method.</summary>
+    public class ListDeploymentGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The deployment groups from the specified collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentGroups")]
+        public virtual System.Collections.Generic.IList<DeploymentGroup> DeploymentGroups { get; set; }
+
+        /// <summary>
+        /// Token to be supplied to the next ListDeploymentGroups request via `page_token` to obtain the next set of
+        /// results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4341,6 +5564,10 @@ namespace Google.Apis.Config.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("previewMetadata")]
         public virtual PreviewOperationMetadata PreviewMetadata { get; set; }
 
+        /// <summary>Output only. Metadata about ProvisionDeploymentGroup operation state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisionDeploymentGroupMetadata")]
+        public virtual ProvisionDeploymentGroupOperationMetadata ProvisionDeploymentGroupMetadata { get; set; }
+
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
         /// successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of
@@ -4720,6 +5947,40 @@ namespace Google.Apis.Config.v1.Data
         /// <summary>Optional. ProviderSource specifies the source type of the provider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
         public virtual string SourceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Operation metadata for `ProvisionDeploymentGroup` and `DeprovisionDeploymentGroup` long-running operations.
+    /// </summary>
+    public class ProvisionDeploymentGroupOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Progress information for each deployment unit within the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentUnitProgresses")]
+        public virtual System.Collections.Generic.IList<DeploymentUnitProgress> DeploymentUnitProgresses { get; set; }
+
+        /// <summary>Output only. The current step of the deployment group operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("step")]
+        public virtual string Step { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for the ProvisionDeploymentGroup method.</summary>
+    public class ProvisionDeploymentGroupRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The deployment specs of the deployment units to be created within the same project and location of
+        /// the deployment group. The key is the unit ID, and the value is the `DeploymentSpec`. Provisioning will fail
+        /// if a `deployment_spec` has a `deployment_id` that matches an existing deployment in the same project and
+        /// location. If an existing deployment was part of the last successful revision but is no longer in the current
+        /// DeploymentGroup's `deployment_units`, it will be recreated if included in `deployment_specs`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentSpecs")]
+        public virtual System.Collections.Generic.IDictionary<string, DeploymentSpec> DeploymentSpecs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5150,6 +6411,13 @@ namespace Google.Apis.Config.v1.Data
     /// </summary>
     public class TerraformBlueprint : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Map of input variable names in this blueprint to configurations for importing values from external
+        /// sources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalValues")]
+        public virtual System.Collections.Generic.IDictionary<string, ExternalValueSource> ExternalValues { get; set; }
+
         /// <summary>
         /// URI of an object in Google Cloud Storage. Format: `gs://{bucket}/{object}` URI may also specify an object
         /// version for zipped objects. Format: `gs://{bucket}/{object}#{version}`

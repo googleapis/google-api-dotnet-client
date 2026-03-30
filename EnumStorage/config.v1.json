@@ -8,6 +8,12 @@
     "1",
     "2"
   ],
+  "Google.Apis.Config.v1.ProjectsResource+LocationsResource+DeploymentGroupsResource+DeleteRequest.DeploymentReferencePolicyEnum": [
+    "DEPLOYMENT_REFERENCE_POLICY_UNSPECIFIED",
+    "FAIL_IF_ANY_REFERENCES_EXIST",
+    "FAIL_IF_METADATA_REFERENCES_EXIST",
+    "IGNORE_DEPLOYMENT_REFERENCES"
+  ],
   "Google.Apis.Config.v1.ProjectsResource+LocationsResource+DeploymentsResource+DeleteRequest.DeletePolicyEnum": [
     "DELETE_POLICY_UNSPECIFIED",
     "DELETE",
