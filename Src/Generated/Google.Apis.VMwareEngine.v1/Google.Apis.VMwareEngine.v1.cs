@@ -1385,6 +1385,13 @@ namespace Google.Apis.VMwareEngine.v1
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
+                    /// <summary>
+                    /// Optional. If set to `true`, only validates the request but doesn’t execute the request. If set
+                    /// to `false`, validates and executes the request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.VMwareEngine.v1.Data.NetworkPeering Body { get; set; }
 
@@ -1423,6 +1430,14 @@ namespace Google.Apis.VMwareEngine.v1
                         RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1776,6 +1791,13 @@ namespace Google.Apis.VMwareEngine.v1
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
+                    /// <summary>
+                    /// Optional. If set to `true`, only validates the request but doesn’t execute the request. If set
+                    /// to `false`, validates and executes the request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.VMwareEngine.v1.Data.NetworkPeering Body { get; set; }
 
@@ -1814,6 +1836,14 @@ namespace Google.Apis.VMwareEngine.v1
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
                             Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1916,6 +1946,13 @@ namespace Google.Apis.VMwareEngine.v1
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RequestId { get; set; }
 
+                        /// <summary>
+                        /// Optional. If set to `true`, only validates the request but doesn’t execute the request. If
+                        /// set to `false`, validates and executes the request.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.VMwareEngine.v1.Data.ExternalAccessRule Body { get; set; }
 
@@ -1954,6 +1991,14 @@ namespace Google.Apis.VMwareEngine.v1
                             RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "validateOnly",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2289,6 +2334,13 @@ namespace Google.Apis.VMwareEngine.v1
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
 
+                        /// <summary>
+                        /// Optional. If set to `true`, only validates the request but doesn’t execute the// request. If
+                        /// set to `false`, validates and executes the request.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.VMwareEngine.v1.Data.ExternalAccessRule Body { get; set; }
 
@@ -2327,6 +2379,14 @@ namespace Google.Apis.VMwareEngine.v1
                             RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "validateOnly",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2400,6 +2460,13 @@ namespace Google.Apis.VMwareEngine.v1
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
+                    /// <summary>
+                    /// Optional. If set to `true`, only validates the request but doesn’t execute the request. If set
+                    /// to `false`, validates and executes the request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.VMwareEngine.v1.Data.NetworkPolicy Body { get; set; }
 
@@ -2438,6 +2505,14 @@ namespace Google.Apis.VMwareEngine.v1
                         RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2876,6 +2951,13 @@ namespace Google.Apis.VMwareEngine.v1
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
+                    /// <summary>
+                    /// Optional. If set to `true`, only validates the request but doesn’t execute the request. If set
+                    /// to `false`, validates and executes the request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.VMwareEngine.v1.Data.NetworkPolicy Body { get; set; }
 
@@ -2914,6 +2996,14 @@ namespace Google.Apis.VMwareEngine.v1
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
                             Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3592,7 +3682,8 @@ namespace Google.Apis.VMwareEngine.v1
                         public virtual string RequestId { get; set; }
 
                         /// <summary>
-                        /// Optional. True if you want the request to be validated and not executed; false otherwise.
+                        /// Optional. If set to `true`, only validates the request but doesn’t execute the request. If
+                        /// set to `false`, validates and executes the request.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -4111,7 +4202,8 @@ namespace Google.Apis.VMwareEngine.v1
                         public virtual object UpdateMask { get; set; }
 
                         /// <summary>
-                        /// Optional. True if you want the request to be validated and not executed; false otherwise.
+                        /// Optional. If set to `true`, only validates the request but doesn’t execute the request. If
+                        /// set to `false`, validates and executes the request.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -4455,6 +4547,13 @@ namespace Google.Apis.VMwareEngine.v1
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RequestId { get; set; }
 
+                        /// <summary>
+                        /// Optional. If set to `true`, only validates the request but doesn’t execute the request. If
+                        /// set to `false`, validates and executes the request.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.VMwareEngine.v1.Data.ExternalAddress Body { get; set; }
 
@@ -4493,6 +4592,14 @@ namespace Google.Apis.VMwareEngine.v1
                             RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "validateOnly",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4842,6 +4949,13 @@ namespace Google.Apis.VMwareEngine.v1
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
 
+                        /// <summary>
+                        /// Optional. If set to `true`, only validates the request but doesn’t execute the request. If
+                        /// set to `false`, validates and executes the request.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.VMwareEngine.v1.Data.ExternalAddress Body { get; set; }
 
@@ -4880,6 +4994,14 @@ namespace Google.Apis.VMwareEngine.v1
                             RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "validateOnly",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -7070,7 +7192,8 @@ namespace Google.Apis.VMwareEngine.v1
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Optional. True if you want the request to be validated and not executed; false otherwise.
+                    /// Optional. If set to `true`, only validates the request but doesn’t execute the request. If set
+                    /// to `false`, validates and executes the request.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -7633,6 +7756,13 @@ namespace Google.Apis.VMwareEngine.v1
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
+                    /// <summary>
+                    /// Optional. If set to `true`, only validates the request but doesn’t execute the request. If set
+                    /// to `false`, validates and executes the request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.VMwareEngine.v1.Data.PrivateCloud Body { get; set; }
 
@@ -7671,6 +7801,14 @@ namespace Google.Apis.VMwareEngine.v1
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
                             Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -8494,6 +8632,13 @@ namespace Google.Apis.VMwareEngine.v1
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
+                    /// <summary>
+                    /// Optional. If set to `true`, only validates the request but doesn’t execute the request. If set
+                    /// to `false`, validates and executes the request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.VMwareEngine.v1.Data.PrivateConnection Body { get; set; }
 
@@ -8532,6 +8677,14 @@ namespace Google.Apis.VMwareEngine.v1
                         RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -8871,6 +9024,13 @@ namespace Google.Apis.VMwareEngine.v1
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
+                    /// <summary>
+                    /// Optional. If set to `true`, only validates the request but doesn’t execute the request. If set
+                    /// to `false`, validates and executes the request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.VMwareEngine.v1.Data.PrivateConnection Body { get; set; }
 
@@ -8909,6 +9069,14 @@ namespace Google.Apis.VMwareEngine.v1
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
                             Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -8985,6 +9153,13 @@ namespace Google.Apis.VMwareEngine.v1
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
+                    /// Optional. If set to `true`, only validates the request but doesn’t execute the request. If set
+                    /// to `false`, validates and executes the request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>
                     /// Required. The user-provided identifier of the new VMware Engine network. This identifier must be
                     /// unique among VMware Engine network resources within the parent and becomes the final token in
                     /// the name URI. The identifier must meet the following requirements: * For networks of type
@@ -9027,6 +9202,14 @@ namespace Google.Apis.VMwareEngine.v1
                         RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -9397,6 +9580,13 @@ namespace Google.Apis.VMwareEngine.v1
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
+                    /// <summary>
+                    /// Optional. If set to `true`, only validates the request but doesn’t execute the request. If set
+                    /// to `false`, validates and executes the request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.VMwareEngine.v1.Data.VmwareEngineNetwork Body { get; set; }
 
@@ -9435,6 +9625,14 @@ namespace Google.Apis.VMwareEngine.v1
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
                             Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -9553,10 +9751,14 @@ namespace Google.Apis.VMwareEngine.v1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -9565,10 +9767,14 @@ namespace Google.Apis.VMwareEngine.v1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             public class ListRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.ListLocationsResponse>
             {
@@ -11920,6 +12126,13 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
 
+        /// <summary>
+        /// Optional. If set to `true`, only validates the request but doesn’t execute the request. If set to `false`,
+        /// validates and executes the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -13544,6 +13757,13 @@ namespace Google.Apis.VMwareEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
+
+        /// <summary>
+        /// Optional. If set to `true`, only validates the request but doesn’t execute the request. If set to `false`,
+        /// validates and executes the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
