@@ -4764,6 +4764,77 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                             });
                         }
                     }
+
+                    /// <summary>
+                    /// Initiates a single-turn interaction with the CES agent. Uses server-side streaming to deliver
+                    /// incremental results and partial responses as they are generated. By default, complete responses
+                    /// (e.g., messages from callbacks or full LLM responses) are sent to the client as soon as they are
+                    /// available. To enable streaming individual text chunks directly from the model, set
+                    /// enable_text_streaming to true.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="session">
+                    /// Required. The unique identifier of the session. Format:
+                    /// `projects/{project}/locations/{location}/apps/{app}/sessions/{session}`
+                    /// </param>
+                    public virtual StreamRunSessionRequest StreamRunSession(Google.Apis.CustomerEngagementSuite.v1beta.Data.RunSessionRequest body, string session)
+                    {
+                        return new StreamRunSessionRequest(this.service, body, session);
+                    }
+
+                    /// <summary>
+                    /// Initiates a single-turn interaction with the CES agent. Uses server-side streaming to deliver
+                    /// incremental results and partial responses as they are generated. By default, complete responses
+                    /// (e.g., messages from callbacks or full LLM responses) are sent to the client as soon as they are
+                    /// available. To enable streaming individual text chunks directly from the model, set
+                    /// enable_text_streaming to true.
+                    /// </summary>
+                    public class StreamRunSessionRequest : CustomerEngagementSuiteBaseServiceRequest<Google.Apis.CustomerEngagementSuite.v1beta.Data.RunSessionResponse>
+                    {
+                        /// <summary>Constructs a new StreamRunSession request.</summary>
+                        public StreamRunSessionRequest(Google.Apis.Services.IClientService service, Google.Apis.CustomerEngagementSuite.v1beta.Data.RunSessionRequest body, string session) : base(service)
+                        {
+                            Session = session;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The unique identifier of the session. Format:
+                        /// `projects/{project}/locations/{location}/apps/{app}/sessions/{session}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("session", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Session { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CustomerEngagementSuite.v1beta.Data.RunSessionRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "streamRunSession";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta/{+session}:streamRunSession";
+
+                        /// <summary>Initializes StreamRunSession parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("session", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "session",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/apps/[^/]+/sessions/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the Tools resource.</summary>
@@ -8410,7 +8481,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
     /// <summary>Settings to describe the BigQuery export behaviors for the app.</summary>
     public class BigQueryExportSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The BigQuery dataset to export the data to.</summary>
+        /// <summary>Optional. The BigQuery **dataset ID** to export the data to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
         public virtual string Dataset { get; set; }
 
@@ -8419,8 +8490,8 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>
-        /// Optional. The project ID of the BigQuery dataset to export the data to. Note: If the BigQuery dataset is in
-        /// a different project from the app, you should grant `roles/bigquery.admin` role to the CES service agent
+        /// Optional. The **project ID** of the BigQuery dataset to export the data to. Note: If the BigQuery dataset is
+        /// in a different project from the app, you should grant `roles/bigquery.admin` role to the CES service agent
         /// `service-@gcp-sa-ces.iam.gserviceaccount.com`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
@@ -11897,6 +11968,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("generateResultInfo")]
         public virtual GenerateAppResourceResponseGenerateResultInfo GenerateResultInfo { get; set; }
 
+        /// <summary>The quality report generated by the LLM assistant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qualityReport")]
+        public virtual QualityReport QualityReport { get; set; }
+
         /// <summary>The list of tools generated by the LLM assistant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tools")]
         public virtual GenerateAppResourceResponseTools Tools { get; set; }
@@ -14168,6 +14243,65 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The report describing any identified quality issues in the app.</summary>
+    public class QualityReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A list of evaluation runs used to generate the quality report. Format:
+        /// `projects/{project}/locations/{location}/evaluationRuns/{evaluationRun}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationRuns")]
+        public virtual System.Collections.Generic.IList<string> EvaluationRuns { get; set; }
+
+        /// <summary>Optional. General issues not specific to any agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generalIssues")]
+        public virtual System.Collections.Generic.IList<QualityReportIssue> GeneralIssues { get; set; }
+
+        /// <summary>Optional. The issues grouped by agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issues")]
+        public virtual System.Collections.Generic.IList<QualityReportAgentIssues> Issues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Issues identified for a single agent.</summary>
+    public class QualityReportAgentIssues : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The name of the agent to which the issues are related. Format:
+        /// `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agent")]
+        public virtual string Agent { get; set; }
+
+        /// <summary>Optional. List of issues found for this agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issues")]
+        public virtual System.Collections.Generic.IList<QualityReportIssue> Issues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The issue identified.</summary>
+    public class QualityReportIssue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Description of the issue found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. How many times this issue occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("occurrenceCount")]
+        public virtual System.Nullable<int> OccurrenceCount { get; set; }
+
+        /// <summary>Optional. Proposed solution to fix the issue by modifying instructions or tools.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedSolution")]
+        public virtual string ProposedSolution { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration to instruct how sensitive data should be handled.</summary>
     public class RedactionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14858,6 +14992,14 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
         public virtual string Deployment { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to enable streaming text outputs from the model. By default, text outputs from the model
+        /// are collected before sending to the client. NOTE: This is only supported for text (non-voice) sessions via
+        /// StreamRunSession or BidiRunSession.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableTextStreaming")]
+        public virtual System.Nullable<bool> EnableTextStreaming { get; set; }
 
         /// <summary>
         /// Optional. The entry agent to handle the session. If not specified, the session will be handled by the root
@@ -15962,9 +16104,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         public virtual string Mode { get; set; }
 
         /// <summary>
-        /// Optional. A Python script used to transform the source tool's output into the widget's input format. This is
-        /// used when the mapping is too complex for simple field mappings.
+        /// Optional. Configuration for a Python function used to transform the source tool's output into the widget's
+        /// input format.
         /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pythonFunction")]
+        public virtual PythonFunction PythonFunction { get; set; }
+
+        /// <summary>Deprecated: Use `python_function` instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pythonScript")]
         public virtual string PythonScript { get; set; }
 
