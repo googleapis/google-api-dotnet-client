@@ -582,12 +582,13 @@ namespace Google.Apis.CloudSecurityToken.v1beta.Data
         /// `/.well-known/openid-configuration`, where `` is the value of this field. The document must be formatted
         /// according to section 4.2 of the [OIDC 1.0 Discovery
         /// specification](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse). -
-        /// `iat`: The issue time, in seconds, since the Unix epoch. Must be in the past. - `exp`: The expiration time,
-        /// in seconds, since the Unix epoch. Must be less than 48 hours after `iat`. Shorter expiration times are more
-        /// secure. If possible, we recommend setting an expiration time less than 6 hours. - `sub`: The identity
-        /// asserted in the JWT. - `aud`: For workload identity pools, this must be a value specified in the allowed
-        /// audiences for the workload identity pool provider, or one of the audiences allowed by default if no
-        /// audiences were specified. See
+        /// `iat`: The issue time, in seconds, since the Unix epoch. This timestamp must be in the past and no more than
+        /// 24 hours in the past, or the token will be rejected. Note that this implies the token is only acceptable
+        /// within a time window of at most 24 hours. - `exp`: The expiration time, in seconds, since the Unix epoch.
+        /// Shorter expiration times are more secure. If possible, we recommend setting an expiration time less than 6
+        /// hours. - `sub`: The identity asserted in the JWT. - `aud`: For workload identity pools, this must be a value
+        /// specified in the allowed audiences for the workload identity pool provider, or one of the audiences allowed
+        /// by default if no audiences were specified. See
         /// https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.providers#oidc
         /// Example header:
         /// ```
