@@ -181,6 +181,15 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>View last read time for Google Chat conversations</summary>
             public static string ChatUsersReadstateReadonly = "https://www.googleapis.com/auth/chat.users.readstate.readonly";
 
+            /// <summary>
+            /// View, create, update, and delete your sections in Google Chat; move and list your section items in
+            /// Google Chat
+            /// </summary>
+            public static string ChatUsersSections = "https://www.googleapis.com/auth/chat.users.sections";
+
+            /// <summary>View your sections and their section items in Google Chat</summary>
+            public static string ChatUsersSectionsReadonly = "https://www.googleapis.com/auth/chat.users.sections.readonly";
+
             /// <summary>Read and update your space settings</summary>
             public static string ChatUsersSpacesettings = "https://www.googleapis.com/auth/chat.users.spacesettings";
         }
@@ -305,6 +314,15 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>View last read time for Google Chat conversations</summary>
             public const string ChatUsersReadstateReadonly = "https://www.googleapis.com/auth/chat.users.readstate.readonly";
+
+            /// <summary>
+            /// View, create, update, and delete your sections in Google Chat; move and list your section items in
+            /// Google Chat
+            /// </summary>
+            public const string ChatUsersSections = "https://www.googleapis.com/auth/chat.users.sections";
+
+            /// <summary>View your sections and their section items in Google Chat</summary>
+            public const string ChatUsersSectionsReadonly = "https://www.googleapis.com/auth/chat.users.sections.readonly";
 
             /// <summary>Read and update your space settings</summary>
             public const string ChatUsersSpacesettings = "https://www.googleapis.com/auth/chat.users.spacesettings";
@@ -4441,7 +4459,660 @@ namespace Google.Apis.HangoutsChat.v1
         public UsersResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            Sections = new SectionsResource(service);
             Spaces = new SpacesResource(service);
+        }
+
+        /// <summary>Gets the Sections resource.</summary>
+        public virtual SectionsResource Sections { get; }
+
+        /// <summary>The "sections" collection of methods.</summary>
+        public class SectionsResource
+        {
+            private const string Resource = "sections";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SectionsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Items = new ItemsResource(service);
+            }
+
+            /// <summary>Gets the Items resource.</summary>
+            public virtual ItemsResource Items { get; }
+
+            /// <summary>The "items" collection of methods.</summary>
+            public class ItemsResource
+            {
+                private const string Resource = "items";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ItemsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// [Developer Preview](https://developers.google.com/workspace/preview): Lists items in a section. Only
+                /// spaces can be section items. For details, see [Create and organize sections in Google
+                /// Chat](https://support.google.com/chat/answer/16059854). Requires [user
+                /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
+                /// the [authorization
+                /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+                /// `https://www.googleapis.com/auth/chat.users.sections` -
+                /// `https://www.googleapis.com/auth/chat.users.sections.readonly`
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The parent, which is the section resource name that owns this collection of section items.
+                /// Only supports listing section items for the calling user. When you're filtering by space, use the
+                /// wildcard `-` to search across all sections. For example, `users/{user}/sections/-`. Format:
+                /// `users/{user}/sections/{section}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// [Developer Preview](https://developers.google.com/workspace/preview): Lists items in a section. Only
+                /// spaces can be section items. For details, see [Create and organize sections in Google
+                /// Chat](https://support.google.com/chat/answer/16059854). Requires [user
+                /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
+                /// the [authorization
+                /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+                /// `https://www.googleapis.com/auth/chat.users.sections` -
+                /// `https://www.googleapis.com/auth/chat.users.sections.readonly`
+                /// </summary>
+                public class ListRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.ListSectionItemsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent, which is the section resource name that owns this collection of section
+                    /// items. Only supports listing section items for the calling user. When you're filtering by space,
+                    /// use the wildcard `-` to search across all sections. For example, `users/{user}/sections/-`.
+                    /// Format: `users/{user}/sections/{section}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A query filter. Currently only supports filtering by space. For example, `space =
+                    /// spaces/{space}`. Invalid queries are rejected with an `INVALID_ARGUMENT` error.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of section items to return. The service may return fewer than this
+                    /// value. If unspecified, at most 10 section items will be returned. The maximum value is 100. If
+                    /// you use a value more than 100, it's automatically changed to 100. Negative values return an
+                    /// `INVALID_ARGUMENT` error.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous list section items call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided should match the
+                    /// call that provided the page token. Passing different values to the other parameters might lead
+                    /// to unexpected results.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/items";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^users/[^/]+/sections/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// [Developer Preview](https://developers.google.com/workspace/preview): Moves an item from one section
+                /// to another. For example, if a section contains spaces, this method can be used to move a space to a
+                /// different section. For details, see [Create and organize sections in Google
+                /// Chat](https://support.google.com/chat/answer/16059854). Requires [user
+                /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
+                /// the [authorization
+                /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+                /// `https://www.googleapis.com/auth/chat.users.sections`
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the section item to move. Format:
+                /// `users/{user}/sections/{section}/items/{item}`
+                /// </param>
+                public virtual MoveRequest Move(Google.Apis.HangoutsChat.v1.Data.MoveSectionItemRequest body, string name)
+                {
+                    return new MoveRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// [Developer Preview](https://developers.google.com/workspace/preview): Moves an item from one section
+                /// to another. For example, if a section contains spaces, this method can be used to move a space to a
+                /// different section. For details, see [Create and organize sections in Google
+                /// Chat](https://support.google.com/chat/answer/16059854). Requires [user
+                /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
+                /// the [authorization
+                /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+                /// `https://www.googleapis.com/auth/chat.users.sections`
+                /// </summary>
+                public class MoveRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.MoveSectionItemResponse>
+                {
+                    /// <summary>Constructs a new Move request.</summary>
+                    public MoveRequest(Google.Apis.Services.IClientService service, Google.Apis.HangoutsChat.v1.Data.MoveSectionItemRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the section item to move. Format:
+                    /// `users/{user}/sections/{section}/items/{item}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.HangoutsChat.v1.Data.MoveSectionItemRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "move";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:move";
+
+                    /// <summary>Initializes Move parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^users/[^/]+/sections/[^/]+/items/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>
+            /// [Developer Preview](https://developers.google.com/workspace/preview): Creates a section in Google Chat.
+            /// Sections help users group conversations and customize the list of spaces displayed in Chat navigation
+            /// panel. Only sections of type `CUSTOM_SECTION` can be created. For details, see [Create and organize
+            /// sections in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the
+            /// [authorization
+            /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+            /// `https://www.googleapis.com/auth/chat.users.sections`
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The parent resource name where the section is created. Format: `users/{user}`
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.HangoutsChat.v1.Data.GoogleChatV1Section body, string parent)
+            {
+                return new CreateRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// [Developer Preview](https://developers.google.com/workspace/preview): Creates a section in Google Chat.
+            /// Sections help users group conversations and customize the list of spaces displayed in Chat navigation
+            /// panel. Only sections of type `CUSTOM_SECTION` can be created. For details, see [Create and organize
+            /// sections in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the
+            /// [authorization
+            /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+            /// `https://www.googleapis.com/auth/chat.users.sections`
+            /// </summary>
+            public class CreateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.GoogleChatV1Section>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.HangoutsChat.v1.Data.GoogleChatV1Section body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent resource name where the section is created. Format: `users/{user}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.HangoutsChat.v1.Data.GoogleChatV1Section Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/sections";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^users/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// [Developer Preview](https://developers.google.com/workspace/preview): Deletes a section of type
+            /// `CUSTOM_SECTION`. If the section contains items, such as spaces, the items are moved to Google Chat's
+            /// default sections and are not deleted. For details, see [Create and organize sections in Google
+            /// Chat](https://support.google.com/chat/answer/16059854). Requires [user
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the
+            /// [authorization
+            /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+            /// `https://www.googleapis.com/auth/chat.users.sections`
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the section to delete. Format: `users/{user}/sections/{section}`
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// [Developer Preview](https://developers.google.com/workspace/preview): Deletes a section of type
+            /// `CUSTOM_SECTION`. If the section contains items, such as spaces, the items are moved to Google Chat's
+            /// default sections and are not deleted. For details, see [Create and organize sections in Google
+            /// Chat](https://support.google.com/chat/answer/16059854). Requires [user
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the
+            /// [authorization
+            /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+            /// `https://www.googleapis.com/auth/chat.users.sections`
+            /// </summary>
+            public class DeleteRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the section to delete. Format: `users/{user}/sections/{section}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^users/[^/]+/sections/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// [Developer Preview](https://developers.google.com/workspace/preview): Lists sections available to the
+            /// Chat user. Sections help users group their conversations and customize the list of spaces displayed in
+            /// Chat navigation panel. For details, see [Create and organize sections in Google
+            /// Chat](https://support.google.com/chat/answer/16059854). Requires [user
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the
+            /// [authorization
+            /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+            /// `https://www.googleapis.com/auth/chat.users.sections` -
+            /// `https://www.googleapis.com/auth/chat.users.sections.readonly`
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The parent, which is the user resource name that owns this collection of sections. Only
+            /// supports listing sections for the calling user. To refer to the calling user, set one of the following:
+            /// - The `me` alias. For example, `users/me`. - Their Workspace email address. For example,
+            /// `users/user@example.com`. - Their user id. For example, `users/123456789`. Format: `users/{user}`
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>
+            /// [Developer Preview](https://developers.google.com/workspace/preview): Lists sections available to the
+            /// Chat user. Sections help users group their conversations and customize the list of spaces displayed in
+            /// Chat navigation panel. For details, see [Create and organize sections in Google
+            /// Chat](https://support.google.com/chat/answer/16059854). Requires [user
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the
+            /// [authorization
+            /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+            /// `https://www.googleapis.com/auth/chat.users.sections` -
+            /// `https://www.googleapis.com/auth/chat.users.sections.readonly`
+            /// </summary>
+            public class ListRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.ListSectionsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent, which is the user resource name that owns this collection of sections. Only
+                /// supports listing sections for the calling user. To refer to the calling user, set one of the
+                /// following: - The `me` alias. For example, `users/me`. - Their Workspace email address. For example,
+                /// `users/user@example.com`. - Their user id. For example, `users/123456789`. Format: `users/{user}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of sections to return. The service may return fewer than this value. If
+                /// unspecified, at most 10 sections will be returned. The maximum value is 100. If you use a value more
+                /// than 100, it's automatically changed to 100. Negative values return an `INVALID_ARGUMENT` error.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous list sections call. Provide this to retrieve the
+                /// subsequent page. When paginating, all other parameters provided should match the call that provided
+                /// the page token. Passing different values to the other parameters might lead to unexpected results.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/sections";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^users/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// [Developer Preview](https://developers.google.com/workspace/preview): Updates a section. Only sections
+            /// of type `CUSTOM_SECTION` can be updated. For details, see [Create and organize sections in Google
+            /// Chat](https://support.google.com/chat/answer/16059854). Requires [user
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the
+            /// [authorization
+            /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+            /// `https://www.googleapis.com/auth/chat.users.sections`
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. Resource name of the section. For system sections, the section ID is a constant string: -
+            /// DEFAULT_DIRECT_MESSAGES: `users/{user}/sections/default-direct-messages` - DEFAULT_SPACES:
+            /// `users/{user}/sections/default-spaces` - DEFAULT_APPS: `users/{user}/sections/default-apps` Format:
+            /// `users/{user}/sections/{section}`
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.HangoutsChat.v1.Data.GoogleChatV1Section body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// [Developer Preview](https://developers.google.com/workspace/preview): Updates a section. Only sections
+            /// of type `CUSTOM_SECTION` can be updated. For details, see [Create and organize sections in Google
+            /// Chat](https://support.google.com/chat/answer/16059854). Requires [user
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the
+            /// [authorization
+            /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+            /// `https://www.googleapis.com/auth/chat.users.sections`
+            /// </summary>
+            public class PatchRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.GoogleChatV1Section>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.HangoutsChat.v1.Data.GoogleChatV1Section body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. Resource name of the section. For system sections, the section ID is a constant string:
+                /// - DEFAULT_DIRECT_MESSAGES: `users/{user}/sections/default-direct-messages` - DEFAULT_SPACES:
+                /// `users/{user}/sections/default-spaces` - DEFAULT_APPS: `users/{user}/sections/default-apps` Format:
+                /// `users/{user}/sections/{section}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Required. The mask to specify which fields to update. Currently supported field paths: -
+                /// `display_name`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.HangoutsChat.v1.Data.GoogleChatV1Section Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^users/[^/]+/sections/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// [Developer Preview](https://developers.google.com/workspace/preview): Changes the sort order of a
+            /// section. For details, see [Create and organize sections in Google
+            /// Chat](https://support.google.com/chat/answer/16059854). Requires [user
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the
+            /// [authorization
+            /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+            /// `https://www.googleapis.com/auth/chat.users.sections`
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The resource name of the section to position. Format: `users/{user}/sections/{section}`
+            /// </param>
+            public virtual PositionRequest Position(Google.Apis.HangoutsChat.v1.Data.PositionSectionRequest body, string name)
+            {
+                return new PositionRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// [Developer Preview](https://developers.google.com/workspace/preview): Changes the sort order of a
+            /// section. For details, see [Create and organize sections in Google
+            /// Chat](https://support.google.com/chat/answer/16059854). Requires [user
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the
+            /// [authorization
+            /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+            /// `https://www.googleapis.com/auth/chat.users.sections`
+            /// </summary>
+            public class PositionRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.PositionSectionResponse>
+            {
+                /// <summary>Constructs a new Position request.</summary>
+                public PositionRequest(Google.Apis.Services.IClientService service, Google.Apis.HangoutsChat.v1.Data.PositionSectionRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the section to position. Format: `users/{user}/sections/{section}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.HangoutsChat.v1.Data.PositionSectionRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "position";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:position";
+
+                /// <summary>Initializes Position parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^users/[^/]+/sections/[^/]+$",
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Spaces resource.</summary>
@@ -7976,6 +8647,49 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents a [section](https://support.google.com/chat/answer/16059854) in Google Chat. Sections help users
+    /// organize their spaces. There are two types of sections: 1. **System Sections:** These are predefined sections
+    /// managed by Google Chat. Their resource names are fixed, and they cannot be created, deleted, or have their
+    /// `display_name` modified. Examples include: * `users/{user}/sections/default-direct-messages` *
+    /// `users/{user}/sections/default-spaces` * `users/{user}/sections/default-apps` 2. **Custom Sections:** These are
+    /// sections created and managed by the user. Creating a custom section using `CreateSection` **requires** a
+    /// `display_name`. Custom sections can be updated using `UpdateSection` and deleted using `DeleteSection`.
+    /// [Developer Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class GoogleChatV1Section : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The section's display name. Only populated for sections of type `CUSTOM_SECTION`. Supports up to
+        /// 80 characters. Required when creating a `CUSTOM_SECTION`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Identifier. Resource name of the section. For system sections, the section ID is a constant string: -
+        /// DEFAULT_DIRECT_MESSAGES: `users/{user}/sections/default-direct-messages` - DEFAULT_SPACES:
+        /// `users/{user}/sections/default-spaces` - DEFAULT_APPS: `users/{user}/sections/default-apps` Format:
+        /// `users/{user}/sections/{section}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The order of the section in relation to other sections. Sections with a lower `sort_order`
+        /// value appear before sections with a higher value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sortOrder")]
+        public virtual System.Nullable<int> SortOrder { get; set; }
+
+        /// <summary>Required. The type of the section.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A Google Group in Google Chat.</summary>
     public class Group : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8227,6 +8941,47 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>List of reactions in the requested (or first) page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reactions")]
         public virtual System.Collections.Generic.IList<Reaction> Reactions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response message for listing section items. [Developer
+    /// Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class ListSectionItemsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The section items from the specified section.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sectionItems")]
+        public virtual System.Collections.Generic.IList<SectionItem> SectionItems { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response message for listing sections. [Developer Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class ListSectionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The sections from the specified user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sections")]
+        public virtual System.Collections.Generic.IList<GoogleChatV1Section> Sections { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8713,7 +9468,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// Output only. Contains the message `text` with markups added to communicate formatting. This field might not
         /// capture all formatting visible in the UI, but includes the following: * [Markup
         /// syntax](https://developers.google.com/workspace/chat/format-messages) for bold, italic, strikethrough,
-        /// monospace, monospace block, and bulleted list. * [User
+        /// monospace, monospace block, bulleted list, and block quote. * [User
         /// mentions](https://developers.google.com/workspace/chat/format-messages#messages-@mention) using the format
         /// ``. * Custom hyperlinks using the format `&amp;lt;{url}|{rendered_text}&amp;gt;` where the first string is
         /// the URL and the second is the rendered text—for example, ``. * Custom emoji using the format
@@ -8932,6 +9687,37 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Request message for moving a section item across sections. [Developer
+    /// Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class MoveSectionItemRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The resource name of the section to move the section item to. Format:
+        /// `users/{user}/sections/{section}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetSection")]
+        public virtual string TargetSection { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response message for moving a section item. [Developer
+    /// Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class MoveSectionItemResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated section item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sectionItem")]
+        public virtual SectionItem SectionItem { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An `onclick` action (for example, open a link).</summary>
     public class OnClick : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9015,6 +9801,42 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>Optional. Setting for using @all in a space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useAtMentionAll")]
         public virtual PermissionSetting UseAtMentionAll { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Request message for positioning a section. [Developer Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class PositionSectionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The relative position of the section in the list of sections.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relativePosition")]
+        public virtual string RelativePosition { get; set; }
+
+        /// <summary>
+        /// Optional. The absolute position of the section in the list of sections. The position must be greater than 0.
+        /// If the position is greater than the number of sections, the section will be appended to the end of the list.
+        /// This operation inserts the section at the given position and shifts the original section at that position,
+        /// and those below it, to the next position.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sortOrder")]
+        public virtual System.Nullable<int> SortOrder { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response message for positioning a section. [Developer
+    /// Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class PositionSectionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated section.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("section")]
+        public virtual GoogleChatV1Section Section { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9286,6 +10108,26 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>A section must contain at least one widget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
         public virtual System.Collections.Generic.IList<WidgetMarkup> Widgets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A user's defined section item. This is used to represent section items, such as spaces, grouped under a section.
+    /// [Developer Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class SectionItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Identifier. The resource name of the section item. Format: `users/{user}/sections/{section}/items/{item}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. The space resource name. Format: `spaces/{space}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("space")]
+        public virtual string Space { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
