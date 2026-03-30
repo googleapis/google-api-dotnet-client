@@ -6073,6 +6073,10 @@ namespace Google.Apis.Backupdr.v1.Data
             set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. Filestore specific backup properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filestoreInstanceBackupProperties")]
+        public virtual FilestoreInstanceBackupProperties FilestoreInstanceBackupProperties { get; set; }
+
         /// <summary>Output only. Configuration for a Google Cloud resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpBackupPlanInfo")]
         public virtual GCPBackupPlanInfo GcpBackupPlanInfo { get; set; }
@@ -8315,6 +8319,13 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskDatasourceProperties")]
         public virtual DiskDataSourceProperties DiskDatasourceProperties { get; set; }
 
+        /// <summary>
+        /// Output only. FilestoreInstanceDataSourceProperties has a subset of FileStore instance properties that are
+        /// useful at the Datasource level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filestoreInstanceDatasourceProperties")]
+        public virtual FilestoreInstanceDataSourceProperties FilestoreInstanceDatasourceProperties { get; set; }
+
         /// <summary>Output only. Full resource pathname URL of the source Google Cloud resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpResourcename")]
         public virtual string GcpResourcename { get; set; }
@@ -8343,6 +8354,10 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>Output only. The properties of the Cloud SQL instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlInstanceProperties")]
         public virtual CloudSqlInstanceDataSourceReferenceProperties CloudSqlInstanceProperties { get; set; }
+
+        /// <summary>Output only. The properties of the Filestore instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filestoreInstanceProperties")]
+        public virtual FilestoreInstanceDataSourceReferenceProperties FilestoreInstanceProperties { get; set; }
 
         /// <summary>
         /// Output only. The resource name of the Google Cloud resource. Ex:
@@ -9011,6 +9026,129 @@ namespace Google.Apis.Backupdr.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(InstanceCreateTimeRaw);
             set => InstanceCreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// FilestoreInstanceBackupProperties represents the properties of a Filestore instance that are backed up by the
+    /// datasource. .
+    /// </summary>
+    public class FilestoreInstanceBackupProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The source instance of the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceInstance")]
+        public virtual string SourceInstance { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// FilestoreInstanceDataSourceProperties represents the properties of a Filestore resource that are stored in the
+    /// DataSource. .
+    /// </summary>
+    public class FilestoreInstanceDataSourceProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _instanceCreateTimeRaw;
+
+        private object _instanceCreateTime;
+
+        /// <summary>Output only. The instance creation timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceCreateTime")]
+        public virtual string InstanceCreateTimeRaw
+        {
+            get => _instanceCreateTimeRaw;
+            set
+            {
+                _instanceCreateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _instanceCreateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="InstanceCreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use InstanceCreateTimeDateTimeOffset instead.")]
+        public virtual object InstanceCreateTime
+        {
+            get => _instanceCreateTime;
+            set
+            {
+                _instanceCreateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _instanceCreateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="InstanceCreateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? InstanceCreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(InstanceCreateTimeRaw);
+            set => InstanceCreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Name of the Filestore instance backed up by the datasource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// FilestoreInstanceDataSourceReferenceProperties represents the properties of a Filestore resource that are stored
+    /// in the DataSourceReference. .
+    /// </summary>
+    public class FilestoreInstanceDataSourceReferenceProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _instanceCreateTimeRaw;
+
+        private object _instanceCreateTime;
+
+        /// <summary>Output only. The instance creation timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceCreateTime")]
+        public virtual string InstanceCreateTimeRaw
+        {
+            get => _instanceCreateTimeRaw;
+            set
+            {
+                _instanceCreateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _instanceCreateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="InstanceCreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use InstanceCreateTimeDateTimeOffset instead.")]
+        public virtual object InstanceCreateTime
+        {
+            get => _instanceCreateTime;
+            set
+            {
+                _instanceCreateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _instanceCreateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="InstanceCreateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? InstanceCreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(InstanceCreateTimeRaw);
+            set => InstanceCreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Name of the Filestore instance backed up by the datasource. Format:
+        /// projects/{project}/instances/{instance}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
