@@ -22423,6 +22423,15 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
         public virtual string AnswerRecord { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("cesApp")]
+        public virtual string CesApp { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("cesTool")]
+        public virtual string CesTool { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("cesToolset")]
+        public virtual string CesToolset { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -22485,6 +22494,15 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
         public virtual string AnswerRecord { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("cesApp")]
+        public virtual string CesApp { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("cesTool")]
+        public virtual string CesTool { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("cesToolset")]
+        public virtual string CesToolset { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
@@ -23475,6 +23493,30 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("intents")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Intent> Intents { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1CesAppSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("cesApp")]
+        public virtual string CesApp { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("confirmationRequirement")]
+        public virtual string ConfirmationRequirement { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1CesToolSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("cesTool")]
+        public virtual string CesTool { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("confirmationRequirement")]
+        public virtual string ConfirmationRequirement { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24766,6 +24808,12 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agentCoachingContext")]
         public virtual GoogleCloudDialogflowV2beta1AgentCoachingContext AgentCoachingContext { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("cesAppSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1CesAppSpec> CesAppSpecs { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("cesToolSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1CesToolSpec> CesToolSpecs { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -24825,6 +24873,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("tools")]
         public virtual System.Collections.Generic.IList<string> Tools { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("toolsetTools")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1ToolsetTool> ToolsetTools { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("triggerEvent")]
         public virtual string TriggerEvent { get; set; }
@@ -27208,6 +27259,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
     public class GoogleCloudDialogflowV2beta1PhoneNumber : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedSipTrunks")]
+        public virtual GoogleCloudDialogflowV2beta1PhoneNumberAllowedSipTrunks AllowedSipTrunks { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("conversationProfile")]
         public virtual string ConversationProfile { get; set; }
 
@@ -27219,6 +27273,54 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
         public virtual string PhoneNumber { get; set; }
+
+        private string _purgeTimeRaw;
+
+        private object _purgeTime;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeTime")]
+        public virtual string PurgeTimeRaw
+        {
+            get => _purgeTimeRaw;
+            set
+            {
+                _purgeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _purgeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="PurgeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PurgeTimeDateTimeOffset instead.")]
+        public virtual object PurgeTime
+        {
+            get => _purgeTime;
+            set
+            {
+                _purgeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _purgeTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PurgeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PurgeTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PurgeTimeRaw);
+            set => PurgeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1PhoneNumberAllowedSipTrunks : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierIds")]
+        public virtual System.Collections.Generic.IList<string> CarrierIds { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("sipTrunks")]
+        public virtual System.Collections.Generic.IList<string> SipTrunks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -28963,6 +29065,15 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
         public virtual string AnswerRecord { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("cesApp")]
+        public virtual string CesApp { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("cesTool")]
+        public virtual string CesTool { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("cesToolset")]
+        public virtual string CesToolset { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -29025,6 +29136,15 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
         public virtual string AnswerRecord { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("cesApp")]
+        public virtual string CesApp { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("cesTool")]
+        public virtual string CesTool { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("cesToolset")]
+        public virtual string CesToolset { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
@@ -29196,6 +29316,21 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1ToolsetTool : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("confirmationRequirement")]
+        public virtual string ConfirmationRequirement { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
+        public virtual string OperationId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("toolset")]
+        public virtual string Toolset { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
