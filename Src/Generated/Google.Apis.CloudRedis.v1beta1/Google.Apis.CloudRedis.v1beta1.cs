@@ -294,10 +294,449 @@ namespace Google.Apis.CloudRedis.v1beta1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                AclPolicies = new AclPoliciesResource(service);
                 BackupCollections = new BackupCollectionsResource(service);
                 Clusters = new ClustersResource(service);
                 Instances = new InstancesResource(service);
                 Operations = new OperationsResource(service);
+            }
+
+            /// <summary>Gets the AclPolicies resource.</summary>
+            public virtual AclPoliciesResource AclPolicies { get; }
+
+            /// <summary>The "aclPolicies" collection of methods.</summary>
+            public class AclPoliciesResource
+            {
+                private const string Resource = "aclPolicies";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AclPoliciesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Creates an ACL Policy. The creation is executed synchronously and the policy is available for use
+                /// immediately after the RPC returns.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the cluster location using the form:
+                /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a Google Cloud region.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.CloudRedis.v1beta1.Data.AclPolicy body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates an ACL Policy. The creation is executed synchronously and the policy is available for use
+                /// immediately after the RPC returns.
+                /// </summary>
+                public class CreateRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1beta1.Data.AclPolicy>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRedis.v1beta1.Data.AclPolicy body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the cluster location using the form:
+                    /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a Google Cloud
+                    /// region.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The logical name of the ACL Policy in the customer project with the following
+                    /// restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a
+                    /// letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be
+                    /// unique within the customer project / location
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("aclPolicyId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string AclPolicyId { get; set; }
+
+                    /// <summary>Optional. Idempotent request UUID. .</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRedis.v1beta1.Data.AclPolicy Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/aclPolicies";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("aclPolicyId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "aclPolicyId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes a specific Acl Policy. This action will delete the Acl Policy and all the rules associated
+                /// with it. An ACL policy cannot be deleted if it is attached to a cluster.
+                /// </summary>
+                /// <param name="name">
+                /// Required. Redis ACL Policy resource name using the form:
+                /// `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}` where `location_id`
+                /// refers to a GCP region.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Deletes a specific Acl Policy. This action will delete the Acl Policy and all the rules associated
+                /// with it. An ACL policy cannot be deleted if it is attached to a cluster.
+                /// </summary>
+                public class DeleteRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Redis ACL Policy resource name using the form:
+                    /// `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}` where `location_id`
+                    /// refers to a GCP region.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Etag of the ACL policy. If this is different from the server's etag, the request will
+                    /// fail with an ABORTED error.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>Optional. Idempotent request UUID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/aclPolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets the details of a specific Redis Cluster ACL Policy.</summary>
+                /// <param name="name">
+                /// Required. Redis ACL Policy resource name using the form:
+                /// `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}` where `location_id`
+                /// refers to a GCP region.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets the details of a specific Redis Cluster ACL Policy.</summary>
+                public class GetRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1beta1.Data.AclPolicy>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Redis ACL Policy resource name using the form:
+                    /// `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}` where `location_id`
+                    /// refers to a GCP region.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/aclPolicies/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Lists all ACL Policies owned by a project in either the specified location (region) or all
+                /// locations. The location should have the following format: *
+                /// `projects/{project_id}/locations/{location_id}` If `location_id` is specified as `-` (wildcard),
+                /// then all regions available to the project are queried, and the results are aggregated.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The resource name of the cluster location using the form:
+                /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a Google Cloud region.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// Lists all ACL Policies owned by a project in either the specified location (region) or all
+                /// locations. The location should have the following format: *
+                /// `projects/{project_id}/locations/{location_id}` If `location_id` is specified as `-` (wildcard),
+                /// then all regions available to the project are queried, and the results are aggregated.
+                /// </summary>
+                public class ListRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1beta1.Data.ListAclPoliciesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the cluster location using the form:
+                    /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a Google Cloud
+                    /// region.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of items to return. If not specified, a default value of 1000 will
+                    /// be used by the service. Regardless of the page_size value, the response may include a partial
+                    /// list and a caller should only rely on response's `next_page_token` to determine if there are
+                    /// more ACL policies left to be queried. The maximum value is 1000; values above 1000 will be
+                    /// coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The `next_page_token` value returned from a previous ListAclPolicies request, if any.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/aclPolicies";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates the ACL policy. The operation applies the updated ACL policy to all of the linked clusters.
+                /// If Memorystore can apply the policy to all clusters, then the operation returns a SUCCESS status. If
+                /// Memorystore can't apply the policy to all clusters, then to ensure eventual consistency, Memorystore
+                /// uses reconciliation to apply the policy to the failed clusters. Completed longrunning.Operation will
+                /// contain the new ACL Policy object in the response field.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Identifier. Full resource path of the ACL policy.</param>
+                public virtual PatchRequest Patch(Google.Apis.CloudRedis.v1beta1.Data.AclPolicy body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Updates the ACL policy. The operation applies the updated ACL policy to all of the linked clusters.
+                /// If Memorystore can apply the policy to all clusters, then the operation returns a SUCCESS status. If
+                /// Memorystore can't apply the policy to all clusters, then to ensure eventual consistency, Memorystore
+                /// uses reconciliation to apply the policy to the failed clusters. Completed longrunning.Operation will
+                /// contain the new ACL Policy object in the response field.
+                /// </summary>
+                public class PatchRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRedis.v1beta1.Data.AclPolicy body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Identifier. Full resource path of the ACL policy.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. Idempotent request UUID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. Mask of fields to be updated. At least one path must be supplied in this field. The
+                    /// elements of the repeated paths field may only include these fields from AclPolicy: * `rules`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRedis.v1beta1.Data.AclPolicy Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/aclPolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the BackupCollections resource.</summary>
@@ -2526,10 +2965,14 @@ namespace Google.Apis.CloudRedis.v1beta1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -2538,10 +2981,14 @@ namespace Google.Apis.CloudRedis.v1beta1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             public class ListRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1beta1.Data.ListLocationsResponse>
             {
@@ -2649,6 +3096,51 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// <summary>Optional. fsync configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appendFsync")]
         public virtual string AppendFsync { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The ACL policy resource.</summary>
+    public class AclPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Etag for the ACL policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Identifier. Full resource path of the ACL policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The ACL rules within the ACL policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
+        public virtual System.Collections.Generic.IList<AclRule> Rules { get; set; }
+
+        /// <summary>Output only. The state of the ACL policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. The version of the ACL policy. Used in drift resolution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<long> Version { get; set; }
+    }
+
+    /// <summary>A single ACL rule which defines the policy for a user.</summary>
+    public class AclRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The rule to be applied to the username. Ex: "on &amp;gt;password123 ~* +@all" The format of the
+        /// rule is defined by Redis OSS: https://redis.io/docs/latest/operate/oss_and_stack/management/security/acl/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rule")]
+        public virtual string Rule { get; set; }
+
+        /// <summary>
+        /// Required. Specifies the IAM user or service account to be added to the ACL policy. This username will be
+        /// directly set on the Redis OSS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3264,6 +3756,13 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// <summary>Optional. The ACL policy to be applied to the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aclPolicy")]
         public virtual string AclPolicy { get; set; }
+
+        /// <summary>
+        /// Optional. Output only. Indicates whether the ACL rules applied to the cluster are in sync with the latest
+        /// ACL policy rules. This field is only applicable if the ACL policy is set for the cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aclPolicyInSync")]
+        public virtual System.Nullable<bool> AclPolicyInSync { get; set; }
 
         /// <summary>Optional. Immutable. Deprecated, do not use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowFewerZonesDeployment")]
@@ -4185,7 +4684,7 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common model for database resource instance metadata. Next ID: 31</summary>
+    /// <summary>Common model for database resource instance metadata. Next ID: 32</summary>
     public class DatabaseResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Availability configuration for this instance</summary>
@@ -4296,6 +4795,10 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// <summary>Optional. Maintenance info for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceInfo")]
         public virtual ResourceMaintenanceInfo MaintenanceInfo { get; set; }
+
+        /// <summary>Optional. The modes of the database resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modes")]
+        public virtual System.Collections.Generic.IList<string> Modes { get; set; }
 
         /// <summary>
         /// Identifier for this resource's immediate parent/primary resource if the current resource is a replica or
@@ -5276,6 +5779,31 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for ListAclPolicies.</summary>
+    public class ListAclPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of ACL policies in the project in the specified location, or across all locations. If the
+        /// `location_id` in the parent field of the request is "-", all regions available to the project are queried,
+        /// and the results aggregated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aclPolicies")]
+        public virtual System.Collections.Generic.IList<AclPolicy> AclPolicies { get; set; }
+
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
