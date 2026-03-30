@@ -8711,6 +8711,17 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// <summary>bool Values of type `Bool` are stored in `Value.bool_value`.</summary>
     public class GoogleBigtableAdminV2TypeBool : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Specifies the encoding to use when converting to or from lower level types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
+        public virtual GoogleBigtableAdminV2TypeBoolEncoding Encoding { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines rules used to convert to or from lower level types.</summary>
+    public class GoogleBigtableAdminV2TypeBoolEncoding : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9257,6 +9268,10 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. The edition of the instance. See Edition for details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edition")]
+        public virtual string Edition { get; set; }
 
         /// <summary>
         /// Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a
