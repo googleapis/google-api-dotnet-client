@@ -5296,6 +5296,65 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Details about a data access attempt made by an agent principal not authorized under applicable data security
+    /// policy.
+    /// </summary>
+    public class AgentDataAccessEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unique identifier for data access event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
+        public virtual string EventId { get; set; }
+
+        private string _eventTimeRaw;
+
+        private object _eventTime;
+
+        /// <summary>Timestamp of data access event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
+        public virtual string EventTimeRaw
+        {
+            get => _eventTimeRaw;
+            set
+            {
+                _eventTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _eventTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventTimeDateTimeOffset instead.")]
+        public virtual object EventTime
+        {
+            get => _eventTime;
+            set
+            {
+                _eventTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _eventTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EventTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The operation performed by the principal to access the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; }
+
+        /// <summary>The agent principal that accessed the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principalSubject")]
+        public virtual string PrincipalSubject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains information about the AI model associated with the finding.</summary>
     public class AiModel : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7358,6 +7417,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("affectedResources")]
         public virtual AffectedResources AffectedResources { get; set; }
 
+        /// <summary>Agent data access events associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentDataAccessEvents")]
+        public virtual System.Collections.Generic.IList<AgentDataAccessEvent> AgentDataAccessEvents { get; set; }
+
         /// <summary>The AI model associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aiModel")]
         public virtual AiModel AiModel { get; set; }
@@ -7735,6 +7798,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentDisplayName")]
         public virtual string ParentDisplayName { get; set; }
+
+        /// <summary>PolicyViolationSummary associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyViolationSummary")]
+        public virtual PolicyViolationSummary PolicyViolationSummary { get; set; }
 
         /// <summary>Represents operating system processes associated with the Finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processes")]
@@ -9550,6 +9617,65 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>The count of resources affected by the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details about a data access attempt made by an agent principal not authorized under applicable data security
+    /// policy.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV2AgentDataAccessEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unique identifier for data access event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
+        public virtual string EventId { get; set; }
+
+        private string _eventTimeRaw;
+
+        private object _eventTime;
+
+        /// <summary>Timestamp of data access event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
+        public virtual string EventTimeRaw
+        {
+            get => _eventTimeRaw;
+            set
+            {
+                _eventTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _eventTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventTimeDateTimeOffset instead.")]
+        public virtual object EventTime
+        {
+            get => _eventTime;
+            set
+            {
+                _eventTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _eventTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EventTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The operation performed by the principal to access the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; }
+
+        /// <summary>The agent principal that accessed the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principalSubject")]
+        public virtual string PrincipalSubject { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11637,6 +11763,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("affectedResources")]
         public virtual GoogleCloudSecuritycenterV2AffectedResources AffectedResources { get; set; }
 
+        /// <summary>Agent data access events associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentDataAccessEvents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2AgentDataAccessEvent> AgentDataAccessEvents { get; set; }
+
         /// <summary>The AI model associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aiModel")]
         public virtual GoogleCloudSecuritycenterV2AiModel AiModel { get; set; }
@@ -12027,6 +12157,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentDisplayName")]
         public virtual string ParentDisplayName { get; set; }
+
+        /// <summary>PolicyViolationSummary associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyViolationSummary")]
+        public virtual GoogleCloudSecuritycenterV2PolicyViolationSummary PolicyViolationSummary { get; set; }
 
         /// <summary>Represents operating system processes associated with the Finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processes")]
@@ -13582,6 +13716,38 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual string Field { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata summarizing policy violations of child resources of the affected resource. `finding_category` and
+    /// `resource` determine the exact semantics of the counts. For example, when
+    /// category=DATA_SECURITY_POSTURE_OBJECT_PUBLIC_ACCESS_VIOLATION and
+    /// resource='storage.googleapis.com/buckets/my-bucket-name' then this counts the number of Cloud Storage objects in
+    /// my-bucket-name which violate a Public Access control.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV2PolicyViolationSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Total number of child resources that conform to the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conformantResourcesCount")]
+        public virtual System.Nullable<long> ConformantResourcesCount { get; set; }
+
+        /// <summary>
+        /// Number of child resources for which errors during evaluation occurred. The evaluation result for these child
+        /// resources is effectively "unknown".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationErrorsCount")]
+        public virtual System.Nullable<long> EvaluationErrorsCount { get; set; }
+
+        /// <summary>Total count of child resources which were not in scope for evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outOfScopeResourcesCount")]
+        public virtual System.Nullable<long> OutOfScopeResourcesCount { get; set; }
+
+        /// <summary>Count of child resources in violation of the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyViolationsCount")]
+        public virtual System.Nullable<long> PolicyViolationsCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15283,6 +15449,38 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual string Field { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata summarizing policy violations of child resources of the affected resource. `finding_category` and
+    /// `resource` determine the exact semantics of the counts. For example, when
+    /// category=DATA_SECURITY_POSTURE_OBJECT_PUBLIC_ACCESS_VIOLATION and
+    /// resource='storage.googleapis.com/buckets/my-bucket-name' then this counts the number of Cloud Storage objects in
+    /// my-bucket-name which violate a Public Access control.
+    /// </summary>
+    public class PolicyViolationSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Total number of child resources that conform to the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conformantResourcesCount")]
+        public virtual System.Nullable<long> ConformantResourcesCount { get; set; }
+
+        /// <summary>
+        /// Number of child resources for which errors during evaluation occurred. The evaluation result for these child
+        /// resources is effectively "unknown".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationErrorsCount")]
+        public virtual System.Nullable<long> EvaluationErrorsCount { get; set; }
+
+        /// <summary>Total count of child resources which were not in scope for evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outOfScopeResourcesCount")]
+        public virtual System.Nullable<long> OutOfScopeResourcesCount { get; set; }
+
+        /// <summary>Count of child resources in violation of the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyViolationsCount")]
+        public virtual System.Nullable<long> PolicyViolationsCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
