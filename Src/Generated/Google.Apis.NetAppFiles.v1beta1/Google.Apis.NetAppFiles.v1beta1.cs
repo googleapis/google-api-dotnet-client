@@ -5624,10 +5624,14 @@ namespace Google.Apis.NetAppFiles.v1beta1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -5636,10 +5640,14 @@ namespace Google.Apis.NetAppFiles.v1beta1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             public class ListRequest : NetAppFilesBaseServiceRequest<Google.Apis.NetAppFiles.v1beta1.Data.ListLocationsResponse>
             {
@@ -7083,8 +7091,8 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
     }
 
     /// <summary>
-    /// Configuration for a Large Capacity Volume. A Large Capacity Volume supports sizes ranging from 12 TiB to 20 PiB,
-    /// it is composed of multiple internal constituents, and must be created in a large capacity pool.
+    /// Configuration for a Large Capacity Volume. A Large Capacity Volume supports sizes ranging from 4.8 TiB to 20
+    /// PiB, it is composed of multiple internal constituents, and must be created in a large capacity pool.
     /// </summary>
     public class LargeCapacityConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8301,11 +8309,17 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>
-        /// Optional. The effective scale tier of the storage pool. If `scale_tier` is not specified during creation,
-        /// this defaults to `SCALE_TIER_STANDARD`.
+        /// Optional. Deprecated: Use scale_type instead. The effective scale tier of the storage pool. If `scale_tier`
+        /// is not specified during creation, this defaults to `SCALE_TIER_STANDARD`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scaleTier")]
         public virtual string ScaleTier { get; set; }
+
+        /// <summary>
+        /// Optional. The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scaleType")]
+        public virtual string ScaleType { get; set; }
 
         /// <summary>Required. Service level of the storage pool</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceLevel")]
