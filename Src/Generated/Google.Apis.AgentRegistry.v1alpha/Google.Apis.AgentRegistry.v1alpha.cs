@@ -2606,6 +2606,15 @@ namespace Google.Apis.AgentRegistry.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Output only. The resource name of the resulting Agent, MCP Server, or Endpoint. Format: *
+        /// `projects/{project}/locations/{location}/mcpServers/{mcp_server}` *
+        /// `projects/{project}/locations/{location}/agents/{agent}` *
+        /// `projects/{project}/locations/{location}/endpoints/{endpoint}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("registryResource")]
+        public virtual string RegistryResource { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
