@@ -2309,7 +2309,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// instance to restart.
         /// </summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="project">Project ID of the source as well as the clone Cloud SQL instance.</param>
+        /// <param name="project">Project ID of the source Cloud SQL instance.</param>
         /// <param name="instance">
         /// The ID of the Cloud SQL instance to be cloned (source). This does not include the project ID.
         /// </param>
@@ -2333,7 +2333,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 InitParameters();
             }
 
-            /// <summary>Project ID of the source as well as the clone Cloud SQL instance.</summary>
+            /// <summary>Project ID of the source Cloud SQL instance.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
@@ -10006,9 +10006,27 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pscAutoConnections")]
         public virtual System.Collections.Generic.IList<PscAutoConnectionConfig> PscAutoConnections { get; set; }
 
+        /// <summary>
+        /// Optional. Indicates whether PSC DNS automation is enabled for this instance. When enabled, Cloud SQL
+        /// provisions a universal DNS record across all networks configured with Private Service Connect (PSC)
+        /// auto-connections. This will default to true for new instances when Private Service Connect is enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscAutoDnsEnabled")]
+        public virtual System.Nullable<bool> PscAutoDnsEnabled { get; set; }
+
         /// <summary>Whether PSC connectivity is enabled for this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscEnabled")]
         public virtual System.Nullable<bool> PscEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates whether PSC write endpoint DNS automation is enabled for this instance. When enabled,
+        /// Cloud SQL provisions a universal global DNS record across all networks configured with Private Service
+        /// Connect (PSC) auto-connections that always points to the cluster primary instance. This feature is only
+        /// supported for Enterprise Plus edition. This will default to true for new enterprise plus instances when
+        /// `psc_auto_dns_enabled` is enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscWriteEndpointDnsEnabled")]
+        public virtual System.Nullable<bool> PscWriteEndpointDnsEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
