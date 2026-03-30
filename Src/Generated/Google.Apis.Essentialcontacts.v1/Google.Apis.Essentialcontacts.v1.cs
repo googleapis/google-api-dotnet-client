@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -307,8 +307,8 @@ namespace Google.Apis.Essentialcontacts.v1
             /// including contacts inherited from any parent resources.
             /// </summary>
             /// <param name="parent">
-            /// Required. The name of the resource to compute contacts for. Format: organizations/{organization_id},
-            /// folders/{folder_id} or projects/{project_id}
+            /// Required. The name of the resource to compute contacts for. Format: organizations/{organization},
+            /// folders/{folder} or projects/{project} (where {project} is the project number)
             /// </param>
             public virtual ComputeRequest Compute(string parent)
             {
@@ -329,8 +329,8 @@ namespace Google.Apis.Essentialcontacts.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the resource to compute contacts for. Format: organizations/{organization_id},
-                /// folders/{folder_id} or projects/{project_id}
+                /// Required. The name of the resource to compute contacts for. Format: organizations/{organization},
+                /// folders/{folder} or projects/{project} (where {project} is the project number)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -483,8 +483,8 @@ namespace Google.Apis.Essentialcontacts.v1
             /// <summary>Adds a new contact for a resource.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The resource to save this contact for. Format: organizations/{organization_id},
-            /// folders/{folder_id} or projects/{project_id}
+            /// Required. The resource to save this contact for. Format: organizations/{organization}, folders/{folder}
+            /// or projects/{project} (where {project} is the project number)
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Essentialcontacts.v1.Data.GoogleCloudEssentialcontactsV1Contact body, string parent)
             {
@@ -503,8 +503,8 @@ namespace Google.Apis.Essentialcontacts.v1
                 }
 
                 /// <summary>
-                /// Required. The resource to save this contact for. Format: organizations/{organization_id},
-                /// folders/{folder_id} or projects/{project_id}
+                /// Required. The resource to save this contact for. Format: organizations/{organization},
+                /// folders/{folder} or projects/{project} (where {project} is the project number)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -541,9 +541,9 @@ namespace Google.Apis.Essentialcontacts.v1
 
             /// <summary>Deletes a contact.</summary>
             /// <param name="name">
-            /// Required. The name of the contact to delete. Format:
-            /// organizations/{organization_id}/contacts/{contact_id}, folders/{folder_id}/contacts/{contact_id} or
-            /// projects/{project_id}/contacts/{contact_id}
+            /// Required. The name of the contact to delete. Format: organizations/{organization}/contacts/{contact},
+            /// folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the
+            /// project number)
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -562,8 +562,8 @@ namespace Google.Apis.Essentialcontacts.v1
 
                 /// <summary>
                 /// Required. The name of the contact to delete. Format:
-                /// organizations/{organization_id}/contacts/{contact_id}, folders/{folder_id}/contacts/{contact_id} or
-                /// projects/{project_id}/contacts/{contact_id}
+                /// organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or
+                /// projects/{project}/contacts/{contact} (where {project} is the project number)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -594,9 +594,9 @@ namespace Google.Apis.Essentialcontacts.v1
 
             /// <summary>Gets a single contact.</summary>
             /// <param name="name">
-            /// Required. The name of the contact to retrieve. Format:
-            /// organizations/{organization_id}/contacts/{contact_id}, folders/{folder_id}/contacts/{contact_id} or
-            /// projects/{project_id}/contacts/{contact_id}
+            /// Required. The name of the contact to retrieve. Format: organizations/{organization}/contacts/{contact},
+            /// folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the
+            /// project number)
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -615,8 +615,8 @@ namespace Google.Apis.Essentialcontacts.v1
 
                 /// <summary>
                 /// Required. The name of the contact to retrieve. Format:
-                /// organizations/{organization_id}/contacts/{contact_id}, folders/{folder_id}/contacts/{contact_id} or
-                /// projects/{project_id}/contacts/{contact_id}
+                /// organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or
+                /// projects/{project}/contacts/{contact} (where {project} is the project number)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -647,8 +647,8 @@ namespace Google.Apis.Essentialcontacts.v1
 
             /// <summary>Lists the contacts that have been set on a resource.</summary>
             /// <param name="parent">
-            /// Required. The parent resource name. Format: organizations/{organization_id}, folders/{folder_id} or
-            /// projects/{project_id}
+            /// Required. The parent resource name. Format: organizations/{organization}, folders/{folder} or
+            /// projects/{project} (where {project} is the project number)
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -666,8 +666,8 @@ namespace Google.Apis.Essentialcontacts.v1
                 }
 
                 /// <summary>
-                /// Required. The parent resource name. Format: organizations/{organization_id}, folders/{folder_id} or
-                /// projects/{project_id}
+                /// Required. The parent resource name. Format: organizations/{organization}, folders/{folder} or
+                /// projects/{project} (where {project} is the project number)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -809,7 +809,8 @@ namespace Google.Apis.Essentialcontacts.v1
             /// <param name="resource">
             /// Required. The name of the resource to send the test message for. All contacts must either be set
             /// directly on this resource or inherited from another resource that is an ancestor of this one. Format:
-            /// organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
+            /// organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project
+            /// number)
             /// </param>
             public virtual SendTestMessageRequest SendTestMessage(Google.Apis.Essentialcontacts.v1.Data.GoogleCloudEssentialcontactsV1SendTestMessageRequest body, string resource)
             {
@@ -833,7 +834,8 @@ namespace Google.Apis.Essentialcontacts.v1
                 /// <summary>
                 /// Required. The name of the resource to send the test message for. All contacts must either be set
                 /// directly on this resource or inherited from another resource that is an ancestor of this one.
-                /// Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
+                /// Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the
+                /// project number)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
@@ -907,8 +909,8 @@ namespace Google.Apis.Essentialcontacts.v1
             /// including contacts inherited from any parent resources.
             /// </summary>
             /// <param name="parent">
-            /// Required. The name of the resource to compute contacts for. Format: organizations/{organization_id},
-            /// folders/{folder_id} or projects/{project_id}
+            /// Required. The name of the resource to compute contacts for. Format: organizations/{organization},
+            /// folders/{folder} or projects/{project} (where {project} is the project number)
             /// </param>
             public virtual ComputeRequest Compute(string parent)
             {
@@ -929,8 +931,8 @@ namespace Google.Apis.Essentialcontacts.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the resource to compute contacts for. Format: organizations/{organization_id},
-                /// folders/{folder_id} or projects/{project_id}
+                /// Required. The name of the resource to compute contacts for. Format: organizations/{organization},
+                /// folders/{folder} or projects/{project} (where {project} is the project number)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1083,8 +1085,8 @@ namespace Google.Apis.Essentialcontacts.v1
             /// <summary>Adds a new contact for a resource.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The resource to save this contact for. Format: organizations/{organization_id},
-            /// folders/{folder_id} or projects/{project_id}
+            /// Required. The resource to save this contact for. Format: organizations/{organization}, folders/{folder}
+            /// or projects/{project} (where {project} is the project number)
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Essentialcontacts.v1.Data.GoogleCloudEssentialcontactsV1Contact body, string parent)
             {
@@ -1103,8 +1105,8 @@ namespace Google.Apis.Essentialcontacts.v1
                 }
 
                 /// <summary>
-                /// Required. The resource to save this contact for. Format: organizations/{organization_id},
-                /// folders/{folder_id} or projects/{project_id}
+                /// Required. The resource to save this contact for. Format: organizations/{organization},
+                /// folders/{folder} or projects/{project} (where {project} is the project number)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1141,9 +1143,9 @@ namespace Google.Apis.Essentialcontacts.v1
 
             /// <summary>Deletes a contact.</summary>
             /// <param name="name">
-            /// Required. The name of the contact to delete. Format:
-            /// organizations/{organization_id}/contacts/{contact_id}, folders/{folder_id}/contacts/{contact_id} or
-            /// projects/{project_id}/contacts/{contact_id}
+            /// Required. The name of the contact to delete. Format: organizations/{organization}/contacts/{contact},
+            /// folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the
+            /// project number)
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -1162,8 +1164,8 @@ namespace Google.Apis.Essentialcontacts.v1
 
                 /// <summary>
                 /// Required. The name of the contact to delete. Format:
-                /// organizations/{organization_id}/contacts/{contact_id}, folders/{folder_id}/contacts/{contact_id} or
-                /// projects/{project_id}/contacts/{contact_id}
+                /// organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or
+                /// projects/{project}/contacts/{contact} (where {project} is the project number)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1194,9 +1196,9 @@ namespace Google.Apis.Essentialcontacts.v1
 
             /// <summary>Gets a single contact.</summary>
             /// <param name="name">
-            /// Required. The name of the contact to retrieve. Format:
-            /// organizations/{organization_id}/contacts/{contact_id}, folders/{folder_id}/contacts/{contact_id} or
-            /// projects/{project_id}/contacts/{contact_id}
+            /// Required. The name of the contact to retrieve. Format: organizations/{organization}/contacts/{contact},
+            /// folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the
+            /// project number)
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -1215,8 +1217,8 @@ namespace Google.Apis.Essentialcontacts.v1
 
                 /// <summary>
                 /// Required. The name of the contact to retrieve. Format:
-                /// organizations/{organization_id}/contacts/{contact_id}, folders/{folder_id}/contacts/{contact_id} or
-                /// projects/{project_id}/contacts/{contact_id}
+                /// organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or
+                /// projects/{project}/contacts/{contact} (where {project} is the project number)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1247,8 +1249,8 @@ namespace Google.Apis.Essentialcontacts.v1
 
             /// <summary>Lists the contacts that have been set on a resource.</summary>
             /// <param name="parent">
-            /// Required. The parent resource name. Format: organizations/{organization_id}, folders/{folder_id} or
-            /// projects/{project_id}
+            /// Required. The parent resource name. Format: organizations/{organization}, folders/{folder} or
+            /// projects/{project} (where {project} is the project number)
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -1266,8 +1268,8 @@ namespace Google.Apis.Essentialcontacts.v1
                 }
 
                 /// <summary>
-                /// Required. The parent resource name. Format: organizations/{organization_id}, folders/{folder_id} or
-                /// projects/{project_id}
+                /// Required. The parent resource name. Format: organizations/{organization}, folders/{folder} or
+                /// projects/{project} (where {project} is the project number)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1409,7 +1411,8 @@ namespace Google.Apis.Essentialcontacts.v1
             /// <param name="resource">
             /// Required. The name of the resource to send the test message for. All contacts must either be set
             /// directly on this resource or inherited from another resource that is an ancestor of this one. Format:
-            /// organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
+            /// organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project
+            /// number)
             /// </param>
             public virtual SendTestMessageRequest SendTestMessage(Google.Apis.Essentialcontacts.v1.Data.GoogleCloudEssentialcontactsV1SendTestMessageRequest body, string resource)
             {
@@ -1433,7 +1436,8 @@ namespace Google.Apis.Essentialcontacts.v1
                 /// <summary>
                 /// Required. The name of the resource to send the test message for. All contacts must either be set
                 /// directly on this resource or inherited from another resource that is an ancestor of this one.
-                /// Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
+                /// Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the
+                /// project number)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
@@ -1507,8 +1511,8 @@ namespace Google.Apis.Essentialcontacts.v1
             /// including contacts inherited from any parent resources.
             /// </summary>
             /// <param name="parent">
-            /// Required. The name of the resource to compute contacts for. Format: organizations/{organization_id},
-            /// folders/{folder_id} or projects/{project_id}
+            /// Required. The name of the resource to compute contacts for. Format: organizations/{organization},
+            /// folders/{folder} or projects/{project} (where {project} is the project number)
             /// </param>
             public virtual ComputeRequest Compute(string parent)
             {
@@ -1529,8 +1533,8 @@ namespace Google.Apis.Essentialcontacts.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the resource to compute contacts for. Format: organizations/{organization_id},
-                /// folders/{folder_id} or projects/{project_id}
+                /// Required. The name of the resource to compute contacts for. Format: organizations/{organization},
+                /// folders/{folder} or projects/{project} (where {project} is the project number)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1683,8 +1687,8 @@ namespace Google.Apis.Essentialcontacts.v1
             /// <summary>Adds a new contact for a resource.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The resource to save this contact for. Format: organizations/{organization_id},
-            /// folders/{folder_id} or projects/{project_id}
+            /// Required. The resource to save this contact for. Format: organizations/{organization}, folders/{folder}
+            /// or projects/{project} (where {project} is the project number)
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Essentialcontacts.v1.Data.GoogleCloudEssentialcontactsV1Contact body, string parent)
             {
@@ -1703,8 +1707,8 @@ namespace Google.Apis.Essentialcontacts.v1
                 }
 
                 /// <summary>
-                /// Required. The resource to save this contact for. Format: organizations/{organization_id},
-                /// folders/{folder_id} or projects/{project_id}
+                /// Required. The resource to save this contact for. Format: organizations/{organization},
+                /// folders/{folder} or projects/{project} (where {project} is the project number)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1741,9 +1745,9 @@ namespace Google.Apis.Essentialcontacts.v1
 
             /// <summary>Deletes a contact.</summary>
             /// <param name="name">
-            /// Required. The name of the contact to delete. Format:
-            /// organizations/{organization_id}/contacts/{contact_id}, folders/{folder_id}/contacts/{contact_id} or
-            /// projects/{project_id}/contacts/{contact_id}
+            /// Required. The name of the contact to delete. Format: organizations/{organization}/contacts/{contact},
+            /// folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the
+            /// project number)
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -1762,8 +1766,8 @@ namespace Google.Apis.Essentialcontacts.v1
 
                 /// <summary>
                 /// Required. The name of the contact to delete. Format:
-                /// organizations/{organization_id}/contacts/{contact_id}, folders/{folder_id}/contacts/{contact_id} or
-                /// projects/{project_id}/contacts/{contact_id}
+                /// organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or
+                /// projects/{project}/contacts/{contact} (where {project} is the project number)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1794,9 +1798,9 @@ namespace Google.Apis.Essentialcontacts.v1
 
             /// <summary>Gets a single contact.</summary>
             /// <param name="name">
-            /// Required. The name of the contact to retrieve. Format:
-            /// organizations/{organization_id}/contacts/{contact_id}, folders/{folder_id}/contacts/{contact_id} or
-            /// projects/{project_id}/contacts/{contact_id}
+            /// Required. The name of the contact to retrieve. Format: organizations/{organization}/contacts/{contact},
+            /// folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the
+            /// project number)
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -1815,8 +1819,8 @@ namespace Google.Apis.Essentialcontacts.v1
 
                 /// <summary>
                 /// Required. The name of the contact to retrieve. Format:
-                /// organizations/{organization_id}/contacts/{contact_id}, folders/{folder_id}/contacts/{contact_id} or
-                /// projects/{project_id}/contacts/{contact_id}
+                /// organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or
+                /// projects/{project}/contacts/{contact} (where {project} is the project number)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1847,8 +1851,8 @@ namespace Google.Apis.Essentialcontacts.v1
 
             /// <summary>Lists the contacts that have been set on a resource.</summary>
             /// <param name="parent">
-            /// Required. The parent resource name. Format: organizations/{organization_id}, folders/{folder_id} or
-            /// projects/{project_id}
+            /// Required. The parent resource name. Format: organizations/{organization}, folders/{folder} or
+            /// projects/{project} (where {project} is the project number)
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -1866,8 +1870,8 @@ namespace Google.Apis.Essentialcontacts.v1
                 }
 
                 /// <summary>
-                /// Required. The parent resource name. Format: organizations/{organization_id}, folders/{folder_id} or
-                /// projects/{project_id}
+                /// Required. The parent resource name. Format: organizations/{organization}, folders/{folder} or
+                /// projects/{project} (where {project} is the project number)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2009,7 +2013,8 @@ namespace Google.Apis.Essentialcontacts.v1
             /// <param name="resource">
             /// Required. The name of the resource to send the test message for. All contacts must either be set
             /// directly on this resource or inherited from another resource that is an ancestor of this one. Format:
-            /// organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
+            /// organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project
+            /// number)
             /// </param>
             public virtual SendTestMessageRequest SendTestMessage(Google.Apis.Essentialcontacts.v1.Data.GoogleCloudEssentialcontactsV1SendTestMessageRequest body, string resource)
             {
@@ -2033,7 +2038,8 @@ namespace Google.Apis.Essentialcontacts.v1
                 /// <summary>
                 /// Required. The name of the resource to send the test message for. All contacts must either be set
                 /// directly on this resource or inherited from another resource that is an ancestor of this one.
-                /// Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
+                /// Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the
+                /// project number)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
@@ -2199,8 +2205,8 @@ namespace Google.Apis.Essentialcontacts.v1.Data
     {
         /// <summary>
         /// Required. The list of names of the contacts to send a test message to. Format:
-        /// organizations/{organization_id}/contacts/{contact_id}, folders/{folder_id}/contacts/{contact_id} or
-        /// projects/{project_id}/contacts/{contact_id}
+        /// organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or
+        /// projects/{project}/contacts/{contact} (where {project} is the project number)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contacts")]
         public virtual System.Collections.Generic.IList<string> Contacts { get; set; }
