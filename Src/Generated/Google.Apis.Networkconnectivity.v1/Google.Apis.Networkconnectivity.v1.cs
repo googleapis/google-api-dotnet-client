@@ -299,11 +299,13 @@ namespace Google.Apis.Networkconnectivity.v1
                 MulticloudDataTransferSupportedServices = new MulticloudDataTransferSupportedServicesResource(service);
                 Operations = new OperationsResource(service);
                 RegionalEndpoints = new RegionalEndpointsResource(service);
+                RemoteTransportProfiles = new RemoteTransportProfilesResource(service);
                 ServiceClasses = new ServiceClassesResource(service);
                 ServiceConnectionMaps = new ServiceConnectionMapsResource(service);
                 ServiceConnectionPolicies = new ServiceConnectionPoliciesResource(service);
                 ServiceConnectionTokens = new ServiceConnectionTokensResource(service);
                 Spokes = new SpokesResource(service);
+                Transports = new TransportsResource(service);
             }
 
             /// <summary>Gets the AutomatedDnsRecords resource.</summary>
@@ -5463,6 +5465,165 @@ namespace Google.Apis.Networkconnectivity.v1
                 }
             }
 
+            /// <summary>Gets the RemoteTransportProfiles resource.</summary>
+            public virtual RemoteTransportProfilesResource RemoteTransportProfiles { get; }
+
+            /// <summary>The "remoteTransportProfiles" collection of methods.</summary>
+            public class RemoteTransportProfilesResource
+            {
+                private const string Resource = "remoteTransportProfiles";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public RemoteTransportProfilesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Gets details of a single RemoteTransportProfile.</summary>
+                /// <param name="name">Required. Name of the resource.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single RemoteTransportProfile.</summary>
+                public class GetRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.RemoteTransportProfile>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/remoteTransportProfiles/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists RemoteTransportProfiles in a given project and location.</summary>
+                /// <param name="parent">Required. Parent value for ListRemoteTransportProfilesRequest.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists RemoteTransportProfiles in a given project and location.</summary>
+                public class ListRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.ListRemoteTransportProfilesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Parent value for ListRemoteTransportProfilesRequest.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Filtering results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Hint for how to order the results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/remoteTransportProfiles";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the ServiceClasses resource.</summary>
             public virtual ServiceClassesResource ServiceClasses { get; }
 
@@ -5602,86 +5763,6 @@ namespace Google.Apis.Networkconnectivity.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/serviceClasses/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
-                /// does not have a policy set.
-                /// </summary>
-                /// <param name="resource">
-                /// REQUIRED: The resource for which the policy is being requested. See [Resource
-                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                /// field.
-                /// </param>
-                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
-                {
-                    return new GetIamPolicyRequest(this.service, resource);
-                }
-
-                /// <summary>
-                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
-                /// does not have a policy set.
-                /// </summary>
-                public class GetIamPolicyRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.Policy>
-                {
-                    /// <summary>Constructs a new GetIamPolicy request.</summary>
-                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
-                    {
-                        Resource = resource;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Resource { get; private set; }
-
-                    /// <summary>
-                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
-                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
-                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
-                    /// specify any valid value or leave the field unset. The policy in the response might use the
-                    /// policy version that you specified, or it might use a lower policy version. For example, if you
-                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
-                    /// To learn which resources support conditions in their IAM policies, see the [IAM
-                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "getIamPolicy";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+resource}:getIamPolicy";
-
-                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/serviceClasses/[^/]+$",
-                        });
-                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "options.requestedPolicyVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                     }
                 }
@@ -5876,144 +5957,6 @@ namespace Google.Apis.Networkconnectivity.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
-                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="resource">
-                /// REQUIRED: The resource for which the policy is being specified. See [Resource
-                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                /// field.
-                /// </param>
-                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Networkconnectivity.v1.Data.SetIamPolicyRequest body, string resource)
-                {
-                    return new SetIamPolicyRequest(this.service, body, resource);
-                }
-
-                /// <summary>
-                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
-                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-                /// </summary>
-                public class SetIamPolicyRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.Policy>
-                {
-                    /// <summary>Constructs a new SetIamPolicy request.</summary>
-                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
-                    {
-                        Resource = resource;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Resource { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Networkconnectivity.v1.Data.SetIamPolicyRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "setIamPolicy";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+resource}:setIamPolicy";
-
-                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/serviceClasses/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
-                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
-                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
-                /// checking. This operation may "fail open" without warning.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="resource">
-                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
-                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                /// field.
-                /// </param>
-                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Networkconnectivity.v1.Data.TestIamPermissionsRequest body, string resource)
-                {
-                    return new TestIamPermissionsRequest(this.service, body, resource);
-                }
-
-                /// <summary>
-                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
-                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
-                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
-                /// checking. This operation may "fail open" without warning.
-                /// </summary>
-                public class TestIamPermissionsRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.TestIamPermissionsResponse>
-                {
-                    /// <summary>Constructs a new TestIamPermissions request.</summary>
-                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
-                    {
-                        Resource = resource;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Resource { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Networkconnectivity.v1.Data.TestIamPermissionsRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "testIamPermissions";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+resource}:testIamPermissions";
-
-                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/serviceClasses/[^/]+$",
                         });
                     }
                 }
@@ -6258,86 +6201,6 @@ namespace Google.Apis.Networkconnectivity.v1
                     }
                 }
 
-                /// <summary>
-                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
-                /// does not have a policy set.
-                /// </summary>
-                /// <param name="resource">
-                /// REQUIRED: The resource for which the policy is being requested. See [Resource
-                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                /// field.
-                /// </param>
-                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
-                {
-                    return new GetIamPolicyRequest(this.service, resource);
-                }
-
-                /// <summary>
-                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
-                /// does not have a policy set.
-                /// </summary>
-                public class GetIamPolicyRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.Policy>
-                {
-                    /// <summary>Constructs a new GetIamPolicy request.</summary>
-                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
-                    {
-                        Resource = resource;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Resource { get; private set; }
-
-                    /// <summary>
-                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
-                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
-                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
-                    /// specify any valid value or leave the field unset. The policy in the response might use the
-                    /// policy version that you specified, or it might use a lower policy version. For example, if you
-                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
-                    /// To learn which resources support conditions in their IAM policies, see the [IAM
-                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "getIamPolicy";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+resource}:getIamPolicy";
-
-                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/serviceConnectionMaps/[^/]+$",
-                        });
-                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "options.requestedPolicyVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
                 /// <summary>Lists ServiceConnectionMaps in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The parent resource's name. ex. projects/123/locations/us-east1
@@ -6528,144 +6391,6 @@ namespace Google.Apis.Networkconnectivity.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
-                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="resource">
-                /// REQUIRED: The resource for which the policy is being specified. See [Resource
-                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                /// field.
-                /// </param>
-                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Networkconnectivity.v1.Data.SetIamPolicyRequest body, string resource)
-                {
-                    return new SetIamPolicyRequest(this.service, body, resource);
-                }
-
-                /// <summary>
-                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
-                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-                /// </summary>
-                public class SetIamPolicyRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.Policy>
-                {
-                    /// <summary>Constructs a new SetIamPolicy request.</summary>
-                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
-                    {
-                        Resource = resource;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Resource { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Networkconnectivity.v1.Data.SetIamPolicyRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "setIamPolicy";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+resource}:setIamPolicy";
-
-                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/serviceConnectionMaps/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
-                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
-                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
-                /// checking. This operation may "fail open" without warning.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="resource">
-                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
-                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                /// field.
-                /// </param>
-                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Networkconnectivity.v1.Data.TestIamPermissionsRequest body, string resource)
-                {
-                    return new TestIamPermissionsRequest(this.service, body, resource);
-                }
-
-                /// <summary>
-                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
-                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
-                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
-                /// checking. This operation may "fail open" without warning.
-                /// </summary>
-                public class TestIamPermissionsRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.TestIamPermissionsResponse>
-                {
-                    /// <summary>Constructs a new TestIamPermissions request.</summary>
-                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
-                    {
-                        Resource = resource;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Resource { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Networkconnectivity.v1.Data.TestIamPermissionsRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "testIamPermissions";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+resource}:testIamPermissions";
-
-                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/serviceConnectionMaps/[^/]+$",
                         });
                     }
                 }
@@ -7015,86 +6740,6 @@ namespace Google.Apis.Networkconnectivity.v1
                     }
                 }
 
-                /// <summary>
-                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
-                /// does not have a policy set.
-                /// </summary>
-                /// <param name="resource">
-                /// REQUIRED: The resource for which the policy is being requested. See [Resource
-                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                /// field.
-                /// </param>
-                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
-                {
-                    return new GetIamPolicyRequest(this.service, resource);
-                }
-
-                /// <summary>
-                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
-                /// does not have a policy set.
-                /// </summary>
-                public class GetIamPolicyRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.Policy>
-                {
-                    /// <summary>Constructs a new GetIamPolicy request.</summary>
-                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
-                    {
-                        Resource = resource;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Resource { get; private set; }
-
-                    /// <summary>
-                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
-                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
-                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
-                    /// specify any valid value or leave the field unset. The policy in the response might use the
-                    /// policy version that you specified, or it might use a lower policy version. For example, if you
-                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
-                    /// To learn which resources support conditions in their IAM policies, see the [IAM
-                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "getIamPolicy";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+resource}:getIamPolicy";
-
-                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/serviceConnectionPolicies/[^/]+$",
-                        });
-                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "options.requestedPolicyVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
                 /// <summary>Lists ServiceConnectionPolicies in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The parent resource's name. ex. projects/123/locations/us-east1
@@ -7285,144 +6930,6 @@ namespace Google.Apis.Networkconnectivity.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
-                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="resource">
-                /// REQUIRED: The resource for which the policy is being specified. See [Resource
-                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                /// field.
-                /// </param>
-                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Networkconnectivity.v1.Data.SetIamPolicyRequest body, string resource)
-                {
-                    return new SetIamPolicyRequest(this.service, body, resource);
-                }
-
-                /// <summary>
-                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
-                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-                /// </summary>
-                public class SetIamPolicyRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.Policy>
-                {
-                    /// <summary>Constructs a new SetIamPolicy request.</summary>
-                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
-                    {
-                        Resource = resource;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Resource { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Networkconnectivity.v1.Data.SetIamPolicyRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "setIamPolicy";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+resource}:setIamPolicy";
-
-                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/serviceConnectionPolicies/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
-                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
-                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
-                /// checking. This operation may "fail open" without warning.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="resource">
-                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
-                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                /// field.
-                /// </param>
-                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Networkconnectivity.v1.Data.TestIamPermissionsRequest body, string resource)
-                {
-                    return new TestIamPermissionsRequest(this.service, body, resource);
-                }
-
-                /// <summary>
-                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
-                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
-                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
-                /// checking. This operation may "fail open" without warning.
-                /// </summary>
-                public class TestIamPermissionsRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.TestIamPermissionsResponse>
-                {
-                    /// <summary>Constructs a new TestIamPermissions request.</summary>
-                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
-                    {
-                        Resource = resource;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Resource { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Networkconnectivity.v1.Data.TestIamPermissionsRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "testIamPermissions";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+resource}:testIamPermissions";
-
-                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/serviceConnectionPolicies/[^/]+$",
                         });
                     }
                 }
@@ -8389,6 +7896,408 @@ namespace Google.Apis.Networkconnectivity.v1
                 }
             }
 
+            /// <summary>Gets the Transports resource.</summary>
+            public virtual TransportsResource Transports { get; }
+
+            /// <summary>The "transports" collection of methods.</summary>
+            public class TransportsResource
+            {
+                private const string Resource = "transports";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public TransportsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new Transport in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Value for parent.</param>
+                public virtual CreateRequest Create(Google.Apis.Networkconnectivity.v1.Data.Transport body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new Transport in a given project and location.</summary>
+                public class CreateRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.Transport body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Value for parent.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Required. Id of the requesting object</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("transportId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string TransportId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Networkconnectivity.v1.Data.Transport Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/transports";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("transportId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "transportId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single Transport.</summary>
+                /// <param name="name">Required. Name of the resource.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single Transport.</summary>
+                public class DeleteRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/transports/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single Transport.</summary>
+                /// <param name="name">Required. Name of the resource.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single Transport.</summary>
+                public class GetRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.Transport>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/transports/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists Transports in a given project and location.</summary>
+                /// <param name="parent">Required. Parent value for ListTransportsRequest.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists Transports in a given project and location.</summary>
+                public class ListRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.ListTransportsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Parent value for ListTransportsRequest.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Filtering results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Hint for how to order the results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/transports";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single Transport.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Identifier. Name of the resource.</param>
+                public virtual PatchRequest Patch(Google.Apis.Networkconnectivity.v1.Data.Transport body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single Transport.</summary>
+                public class PatchRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.Transport body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Identifier. Name of the resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the Transport resource
+                    /// by the update. The fields specified in the update_mask are relative to the resource, not the
+                    /// full request. A field will be overwritten if it is in the mask. If the user does not provide a
+                    /// mask then all fields present in the request will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Networkconnectivity.v1.Data.Transport Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/transports/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>
             /// CheckConsumerConfig validates the consumer network and project for potential PSC connection creation.
             /// This method performs several checks, including: - Validating the existence and permissions of the
@@ -8506,10 +8415,14 @@ namespace Google.Apis.Networkconnectivity.v1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -8518,10 +8431,14 @@ namespace Google.Apis.Networkconnectivity.v1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             public class ListRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.ListLocationsResponse>
             {
@@ -10743,6 +10660,25 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for response to listing RemoteTransportProfiles</summary>
+    public class ListRemoteTransportProfilesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of RemoteTransportProfiles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteTransportProfiles")]
+        public virtual System.Collections.Generic.IList<RemoteTransportProfile> RemoteTransportProfiles { get; set; }
+
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for HubService.ListRouteTables method.</summary>
     public class ListRouteTablesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10890,6 +10826,25 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual System.Collections.Generic.IList<Spoke> Spokes { get; set; }
 
         /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing Transports.</summary>
+    public class ListTransportsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of Transport.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transports")]
+        public virtual System.Collections.Generic.IList<Transport> Transports { get; set; }
+
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
@@ -11953,6 +11908,64 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>Required. The URI of the spoke to reject update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spokeUri")]
         public virtual string SpokeUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing RemoteTransportProfile object.</summary>
+    public class RemoteTransportProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Description of the profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. Human readable name of this profile, used to identify this profile in the UI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. Type of provisioning flows supported by this profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flow")]
+        public virtual string Flow { get; set; }
+
+        /// <summary>Output only. Labels as key value pairs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Identifier. Name of the resource in the format of $provider-$site.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Order state for this profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderState")]
+        public virtual string OrderState { get; set; }
+
+        /// <summary>
+        /// Output only. Name of the provider on the other end of this profile. E.g. “Amazon Web Services” or “Microsoft
+        /// Azure”.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provider")]
+        public virtual string Provider { get; set; }
+
+        /// <summary>
+        /// Output only. If the profile is a Cloud Service Provider with compute resources, this is populated with the
+        /// region where connectivity is being established. If the profile provides facility-level selection, this is an
+        /// identity of the facility any connections on this profile are going through.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providerSite")]
+        public virtual string ProviderSite { get; set; }
+
+        /// <summary>
+        /// Output only. Availability class that will be configured for this particular RemoteTransportProfile.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sla")]
+        public virtual string Sla { get; set; }
+
+        /// <summary>Output only. List of bandwidth enum values that are supported by this profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedBandwidths")]
+        public virtual System.Collections.Generic.IList<string> SupportedBandwidths { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13220,6 +13233,168 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing Transport object.</summary>
+    public class Transport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. List of IP Prefixes that will be advertised to the remote provider. Both IPv4 and IPv6 addresses
+        /// are supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertisedRoutes")]
+        public virtual System.Collections.Generic.IList<string> AdvertisedRoutes { get; set; }
+
+        /// <summary>
+        /// Optional. Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile,
+        /// and must be set when no activation key is being provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bandwidth")]
+        public virtual string Bandwidth { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Create time stamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Description of the Transport.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. Google-generated activation key. This is only output if the selected profile supports an OUTPUT
+        /// key flow. Inputting this to the provider is only valid while the resource is in a PENDING_KEY state. Once
+        /// the provider has accepted the key, the resource will move to the CONFIGURING state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedActivationKey")]
+        public virtual string GeneratedActivationKey { get; set; }
+
+        /// <summary>Optional. Labels as key value pairs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. The maximum transmission unit (MTU) of a packet that can be sent over this transport.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mtuLimit")]
+        public virtual System.Nullable<int> MtuLimit { get; set; }
+
+        /// <summary>Identifier. Name of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. Resource URI of the Network that will be peered with this Transport. This field must be
+        /// provided during resource creation and cannot be changed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>
+        /// Output only. VPC Network URI that was created for the VPC Peering connection to the provided `network`. If
+        /// VPC Peering is disconnected, this can be used to re-establish.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peeringNetwork")]
+        public virtual string PeeringNetwork { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. Key used for establishing a connection with the remote transport. This key can only be
+        /// provided if the profile supports an INPUT key flow and the resource is in the PENDING_KEY state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providedActivationKey")]
+        public virtual string ProvidedActivationKey { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. The user supplied account id for the CSP associated with the remote profile.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteAccountId")]
+        public virtual string RemoteAccountId { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. Name of the remoteTransportProfile that this Transport is connecting to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteProfile")]
+        public virtual string RemoteProfile { get; set; }
+
+        /// <summary>Optional. IP version stack for the established connectivity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stackType")]
+        public virtual string StackType { get; set; }
+
+        /// <summary>Output only. State of the underlying connectivity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Update time stamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
