@@ -812,9 +812,20 @@ namespace Google.Apis.Texttospeech.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lowLatencyJourneySynthesis")]
         public virtual System.Nullable<bool> LowLatencyJourneySynthesis { get; set; }
 
-        /// <summary>Optional. Input only. If true, relaxes safety filters for Gemini TTS.</summary>
+        /// <summary>
+        /// Optional. Input only. Deprecated, use safety_settings instead. If true, relaxes safety filters for Gemini
+        /// TTS.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relaxSafetyFilters")]
         public virtual System.Nullable<bool> RelaxSafetyFilters { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. This applies to Gemini TTS only. If set, the category specified in the safety setting
+        /// will be blocked if the harm probability is above the threshold. Otherwise, the safety filter will be
+        /// disabled by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safetySettings")]
+        public virtual SafetySettings SafetySettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1152,6 +1163,32 @@ namespace Google.Apis.Texttospeech.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Safety setting for a single harm category.</summary>
+    public class SafetySetting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The harm category to apply the safety setting to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>The harm block threshold for the safety setting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
+        public virtual string Threshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Safety settings for the request.</summary>
+    public class SafetySettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The safety settings for the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("settings")]
+        public virtual System.Collections.Generic.IList<SafetySetting> Settings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
