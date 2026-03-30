@@ -13971,6 +13971,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("byteItem")]
         public virtual GooglePrivacyDlpV2ByteContentItem ByteItem { get; set; }
 
+        /// <summary>User provided metadata for the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentMetadata")]
+        public virtual GooglePrivacyDlpV2ContentMetadata ContentMetadata { get; set; }
+
         /// <summary>
         /// Structured content for inspection. See
         /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-text#inspecting_a_table to learn more.
@@ -14061,6 +14065,17 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Location within a row or record of a database table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordLocation")]
         public virtual GooglePrivacyDlpV2RecordLocation RecordLocation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata on content to be scanned.</summary>
+    public class GooglePrivacyDlpV2ContentMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>User provided key-value pairs of content metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2KeyValueMetadataProperty> Properties { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18615,6 +18630,21 @@ namespace Google.Apis.DLP.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A key-value pair in the Metadata.</summary>
+    public class GooglePrivacyDlpV2KeyValueMetadataProperty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The key of the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>The value of the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
