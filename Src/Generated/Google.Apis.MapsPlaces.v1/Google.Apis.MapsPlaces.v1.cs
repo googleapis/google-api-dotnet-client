@@ -816,6 +816,10 @@ namespace Google.Apis.MapsPlaces.v1.Data
     /// <summary>Request proto for AutocompletePlaces.</summary>
     public class GoogleMapsPlacesV1AutocompletePlacesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. If true, include businesses that are not yet open but will open in the future.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeFutureOpeningBusinesses")]
+        public virtual System.Nullable<bool> IncludeFutureOpeningBusinesses { get; set; }
+
         /// <summary>
         /// Optional. Include pure service area businesses if the field is set to true. Pure service area business is a
         /// business that visits or delivers to customers directly but does not serve customers at their business
@@ -1718,6 +1722,13 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>A summary of points of interest near the place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("neighborhoodSummary")]
         public virtual GoogleMapsPlacesV1PlaceNeighborhoodSummary NeighborhoodSummary { get; set; }
+
+        /// <summary>
+        /// The date this place will open in the future. This field is only populated if the business status is
+        /// FUTURE_OPENING.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("openingDate")]
+        public virtual GoogleTypeDate OpeningDate { get; set; }
 
         /// <summary>Place provides outdoor seating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outdoorSeating")]
@@ -2774,6 +2785,10 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("excludedTypes")]
         public virtual System.Collections.Generic.IList<string> ExcludedTypes { get; set; }
 
+        /// <summary>Optional. If true, include businesses that are not yet open but will open in the future.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeFutureOpeningBusinesses")]
+        public virtual System.Nullable<bool> IncludeFutureOpeningBusinesses { get; set; }
+
         /// <summary>
         /// Included primary Place type (e.g. "restaurant" or "gas_station") from
         /// https://developers.google.com/maps/documentation/places/web-service/place-types. A place can only have a
@@ -2883,6 +2898,10 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>Optional. Set the searchable EV options of a place search request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evOptions")]
         public virtual GoogleMapsPlacesV1SearchTextRequestEVOptions EvOptions { get; set; }
+
+        /// <summary>Optional. If true, include businesses that are not yet open but will open in the future.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeFutureOpeningBusinesses")]
+        public virtual System.Nullable<bool> IncludeFutureOpeningBusinesses { get; set; }
 
         /// <summary>
         /// Optional. Include pure service area businesses if the field is set to true. Pure service area business is a
