@@ -5283,13 +5283,6 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Optional. Value among strict (enforcing maintenance policy and only looking at Units with maintenance
-        /// policy), ignore (ignoring maintenance policy) and skip (skipping Units with maintenance policy)
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicyEnforcement")]
-        public virtual string MaintenancePolicyEnforcement { get; set; }
-
-        /// <summary>
         /// Identifier. The resource name (full URI of the resource) following the standard naming scheme:
         /// "projects/{project}/locations/{location}/rolloutKinds/{rollout_kind_id}"
         /// </summary>
@@ -5381,6 +5374,13 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
     /// <summary>RolloutStats contains information about the progress of a rollout.</summary>
     public class RolloutStats : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Output only. Estimated number of units based. The estimation is computed upon creation of the
+        /// rollout.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedTotalUnitCount")]
+        public virtual System.Nullable<long> EstimatedTotalUnitCount { get; set; }
+
         /// <summary>
         /// Optional. Output only. Unordered list. A breakdown of the progress of operations triggered by the rollout.
         /// Provides a count of Operations by their state. This can be used to determine the number of units which have
@@ -5870,6 +5870,17 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         /// <summary>Optional. Output only. The current Release object for this Unit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("release")]
         public virtual string Release { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>
+        /// Output only. Indicates whether the resource location satisfies Zone Separation constraints. This is false by
+        /// default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>Optional. Output only. List of scheduled UnitOperations for this unit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledOperations")]
