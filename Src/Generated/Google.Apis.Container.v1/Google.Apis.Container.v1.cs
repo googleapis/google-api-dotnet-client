@@ -6505,6 +6505,17 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>AccurateTimeConfig contains configuration for the accurate time synchronization feature.</summary>
+    public class AccurateTimeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enables enhanced time synchronization using PTP-KVM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePtpKvmTimeSync")]
+        public virtual System.Nullable<bool> EnablePtpKvmTimeSync { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// AdditionalIPRangesConfig is the configuration for individual additional subnetwork attached to the cluster
     /// </summary>
@@ -7199,7 +7210,7 @@ namespace Google.Apis.Container.v1.Data
     {
         /// <summary>
         /// List of fully qualified domain names (FQDN). Specifying port is supported. Wildcards are NOT supported.
-        /// Examples: - my.customdomain.com - 10.0.1.2:5000
+        /// Examples: - `my.customdomain.com` - `10.0.1.2:5000`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fqdns")]
         public virtual System.Collections.Generic.IList<string> Fqdns { get; set; }
@@ -7361,6 +7372,10 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidentialNodes")]
         public virtual ConfidentialNodes ConfidentialNodes { get; set; }
+
+        /// <summary>Configuration for control plane egress control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneEgress")]
+        public virtual ControlPlaneEgress ControlPlaneEgress { get; set; }
 
         /// <summary>Configuration for all cluster's control plane endpoints.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneEndpointsConfig")]
@@ -7723,6 +7738,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("secretManagerConfig")]
         public virtual SecretManagerConfig SecretManagerConfig { get; set; }
 
+        /// <summary>Configuration for sync Secret Manager secrets as k8s secrets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretSyncConfig")]
+        public virtual SecretSyncConfig SecretSyncConfig { get; set; }
+
         /// <summary>Optional. Enable/Disable Security Posture API features for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityPostureConfig")]
         public virtual SecurityPostureConfig SecurityPostureConfig { get; set; }
@@ -7932,6 +7951,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The desired containerd config for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredContainerdConfig")]
         public virtual ContainerdConfig DesiredContainerdConfig { get; set; }
+
+        /// <summary>The desired control plane egress control config for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredControlPlaneEgress")]
+        public virtual ControlPlaneEgress DesiredControlPlaneEgress { get; set; }
 
         /// <summary>Control plane endpoints configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredControlPlaneEndpointsConfig")]
@@ -8216,6 +8239,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredSecretManagerConfig")]
         public virtual SecretManagerConfig DesiredSecretManagerConfig { get; set; }
 
+        /// <summary>Configuration for sync Secret Manager secrets as k8s secrets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredSecretSyncConfig")]
+        public virtual SecretSyncConfig DesiredSecretSyncConfig { get; set; }
+
         /// <summary>Enable/Disable Security Posture API features for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredSecurityPostureConfig")]
         public virtual SecurityPostureConfig DesiredSecurityPostureConfig { get; set; }
@@ -8449,6 +8476,17 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Optional. WritableCgroups defines writable cgroups configuration for the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writableCgroups")]
         public virtual WritableCgroups WritableCgroups { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ControlPlaneEgress defines the settings needed to enable control plane egress control.</summary>
+    public class ControlPlaneEgress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Defines the mode of control plane egress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9452,8 +9490,9 @@ namespace Google.Apis.Container.v1.Data
         public virtual System.Collections.Generic.IList<RegistryHeader> Header { get; set; }
 
         /// <summary>
-        /// Host configures the registry host/mirror. It supports fully qualified domain names (FQDN) and IP addresses:
-        /// Specifying port is supported. Wildcards are NOT supported. Examples: - my.customdomain.com - 10.0.1.2:5000
+        /// Host configures the registry host/mirror. It supports fully qualified domain names (FQDNs) and IP addresses.
+        /// Specifying scheme, port or path is supported. Scheme can only be http or https. Wildcards are NOT supported.
+        /// Examples: - `my.customdomain.com` - `https://my.customdomain.com/path` - `10.0.1.2:5000`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
@@ -9866,6 +9905,10 @@ namespace Google.Apis.Container.v1.Data
     /// <summary>Parameters that can be configured on Linux nodes.</summary>
     public class LinuxNodeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The accurate time configuration for the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accurateTimeConfig")]
+        public virtual AccurateTimeConfig AccurateTimeConfig { get; set; }
+
         /// <summary>cgroup_mode specifies the cgroup mode to be used on the node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cgroupMode")]
         public virtual string CgroupMode { get; set; }
@@ -10663,11 +10706,14 @@ namespace Google.Apis.Container.v1.Data
         public virtual NodeKubeletConfig KubeletConfig { get; set; }
 
         /// <summary>
-        /// The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to
-        /// any default label(s) that Kubernetes may apply to the node. In case of conflict in label keys, the applied
-        /// set may differ depending on the Kubernetes version -- it's best to assume the behavior is undefined and
-        /// conflicts should be avoided. For more information, including usage and the valid values, see:
-        /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+        /// The Kubernetes labels (key/value pairs) to apply to each node. The values in this field are added to the set
+        /// of default labels Kubernetes applies to nodes. This field has the following restrictions: * Labels must use
+        /// a valid Kubernetes syntax and character set, as defined in
+        /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set. * This
+        /// field supports up to 1,024 total characters in a single request. Depending on the Kubernetes version, keys
+        /// in this field might conflict with the keys of the default labels, which might change which of your labels
+        /// are applied to the nodes. Assume that the behavior is unpredictable and avoid label key conflicts. For more
+        /// information about the default labels, see: https://kubernetes.io/docs/reference/labels-annotations-taints/
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -12120,7 +12166,8 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>
         /// Defines the host name of the registry server, which will be used to create configuration file as
         /// /etc/containerd/hosts.d//hosts.toml. It supports fully qualified domain names (FQDN) and IP addresses:
-        /// Specifying port is supported. Wildcards are NOT supported. Examples: - my.customdomain.com - 10.0.1.2:5000
+        /// Specifying port is supported, while scheme and path are NOT supported. Wildcards are NOT supported.
+        /// Examples: - `my.customdomain.com` - `10.0.1.2:5000`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("server")]
         public virtual string Server { get; set; }
@@ -12394,6 +12441,21 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Rotation config for secret manager.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rotationConfig")]
         public virtual RotationConfig RotationConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for sync Secret Manager secrets as k8s secrets.</summary>
+    public class SecretSyncConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enable/Disable Secret Sync Config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Rotation config for secret manager.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rotationConfig")]
+        public virtual SyncRotationConfig RotationConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13285,6 +13347,21 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Swap on the local SSD shared with pod ephemeral storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ephemeralLocalSsdProfile")]
         public virtual EphemeralLocalSsdProfile EphemeralLocalSsdProfile { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SyncRotationConfig is config for secret manager auto rotation.</summary>
+    public class SyncRotationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the rotation is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The interval between two consecutive rotations. Default rotation interval is 2 minutes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rotationInterval")]
+        public virtual object RotationInterval { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
