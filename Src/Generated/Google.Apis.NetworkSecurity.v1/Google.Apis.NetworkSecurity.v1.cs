@@ -12031,10 +12031,14 @@ namespace Google.Apis.NetworkSecurity.v1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -12043,10 +12047,14 @@ namespace Google.Apis.NetworkSecurity.v1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.ListLocationsResponse>
             {
@@ -12508,6 +12516,13 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Optional. Immutable. Defines the type of authorization being performed. If not specified, `REQUEST_AUTHZ` is
+        /// applied. This field cannot be changed once AuthzPolicy is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyProfile")]
+        public virtual string PolicyProfile { get; set; }
+
         /// <summary>Required. Specifies the set of resources to which this policy should be applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual AuthzPolicyTarget Target { get; set; }
@@ -12806,6 +12821,14 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleStringMatch> Hosts { get; set; }
 
         /// <summary>
+        /// Optional. Defines the MCP protocol attributes to match on. If the MCP payload in the request body cannot be
+        /// successfully parsed, the request will be denied. This field can be set only for AuthzPolicies targeting
+        /// AgentGateway resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mcp")]
+        public virtual AuthzPolicyAuthzRuleToRequestOperationMCP Mcp { get; set; }
+
+        /// <summary>
         /// Optional. A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT,
         /// POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive. Limited to 10
         /// methods per Authorization Policy.
@@ -12837,6 +12860,53 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleHeaderMatch> Headers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a set of MCP protocol attributes to match against for a given MCP request.</summary>
+    public class AuthzPolicyAuthzRuleToRequestOperationMCP : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If specified, matches on the MCP protocol’s non-access specific methods namely: * initialize *
+        /// completion/ * logging/ * notifications/ * ping Defaults to SKIP_BASE_PROTOCOL_METHODS if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseProtocolMethodsOption")]
+        public virtual string BaseProtocolMethodsOption { get; set; }
+
+        /// <summary>
+        /// Optional. A list of MCP methods and associated parameters to match on. It is recommended to use this field
+        /// to match on tools, prompts and resource accesses while setting the baseProtocolMethodsOption to
+        /// MATCH_BASE_PROTOCOL_METHODS to match on all the other MCP protocol methods. Limited to 10 MCP methods per
+        /// Authorization Policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("methods")]
+        public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleToRequestOperationMCPMethod> Methods { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a set of MCP methods to match against.</summary>
+    public class AuthzPolicyAuthzRuleToRequestOperationMCPMethod : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The MCP method to match against. Allowed values are as follows: 1. `tools`, `prompts`, `resources`
+        /// - these will match against all sub methods under the respective methods. 2. `prompts/list`, `tools/list`,
+        /// `resources/list`, `resources/templates/list` 3. `prompts/get`, `tools/call`, `resources/subscribe`,
+        /// `resources/unsubscribe`, `resources/read` Params cannot be specified for categories 1 and 2.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. A list of MCP method parameters to match against. The match can be one of exact, prefix, suffix,
+        /// or contains (substring match). Matches are always case sensitive unless the ignoreCase is set. Limited to 10
+        /// MCP method parameters per Authorization Policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("params")]
+        public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleStringMatch> Params__ { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12898,7 +12968,7 @@ namespace Google.Apis.NetworkSecurity.v1.Data
     public class AuthzPolicyTarget : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. All gateways and forwarding rules referenced by this policy and extensions must share the same
+        /// Optional. All gateways and forwarding rules referenced by this policy and extensions must share the same
         /// load balancing scheme. Supported values: `INTERNAL_MANAGED` and `EXTERNAL_MANAGED`. For more information,
         /// refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
         /// </summary>
@@ -13457,7 +13527,10 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("associations")]
         public virtual System.Collections.Generic.IList<FirewallEndpointAssociationReference> Associations { get; set; }
 
-        /// <summary>Required. Project to bill on endpoint uptime usage.</summary>
+        /// <summary>
+        /// Optional. Project to charge for the deployed firewall endpoint. This field must be specified when creating
+        /// the endpoint in the organization scope, and should be omitted otherwise.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingProjectId")]
         public virtual string BillingProjectId { get; set; }
 
@@ -14783,6 +14856,13 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
+
+        /// <summary>
+        /// Output only. Identifier used by the data-path. See the NSI GENEVE format for more details:
+        /// https://docs.cloud.google.com/network-security-integration/docs/understand-geneve#network_id
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkCookie")]
+        public virtual System.Nullable<long> NetworkCookie { get; set; }
 
         /// <summary>
         /// Output only. The current state of the resource does not match the user's intended state, and the system is
