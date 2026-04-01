@@ -101,6 +101,9 @@ namespace Google.Apis.HangoutsChat.v1
             /// </summary>
             public static string ChatAppMemberships = "https://www.googleapis.com/auth/chat.app.memberships";
 
+            /// <summary>On their own behalf, apps in Google Chat can see members of conversations and spaces</summary>
+            public static string ChatAppMembershipsReadonly = "https://www.googleapis.com/auth/chat.app.memberships.readonly";
+
             /// <summary>
             /// On their own behalf, apps in Google Chat can see all messages and their associated reactions and message
             /// content
@@ -115,6 +118,12 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>On their own behalf, apps in Google Chat can create conversations and spaces</summary>
             public static string ChatAppSpacesCreate = "https://www.googleapis.com/auth/chat.app.spaces.create";
+
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can see conversations and spaces and their metadata (including
+            /// history settings and access settings)
+            /// </summary>
+            public static string ChatAppSpacesReadonly = "https://www.googleapis.com/auth/chat.app.spaces.readonly";
 
             /// <summary>Private Service: https://www.googleapis.com/auth/chat.bot</summary>
             public static string ChatBot = "https://www.googleapis.com/auth/chat.bot";
@@ -235,6 +244,9 @@ namespace Google.Apis.HangoutsChat.v1
             /// </summary>
             public const string ChatAppMemberships = "https://www.googleapis.com/auth/chat.app.memberships";
 
+            /// <summary>On their own behalf, apps in Google Chat can see members of conversations and spaces</summary>
+            public const string ChatAppMembershipsReadonly = "https://www.googleapis.com/auth/chat.app.memberships.readonly";
+
             /// <summary>
             /// On their own behalf, apps in Google Chat can see all messages and their associated reactions and message
             /// content
@@ -249,6 +261,12 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>On their own behalf, apps in Google Chat can create conversations and spaces</summary>
             public const string ChatAppSpacesCreate = "https://www.googleapis.com/auth/chat.app.spaces.create";
+
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can see conversations and spaces and their metadata (including
+            /// history settings and access settings)
+            /// </summary>
+            public const string ChatAppSpacesReadonly = "https://www.googleapis.com/auth/chat.app.spaces.readonly";
 
             /// <summary>Private Service: https://www.googleapis.com/auth/chat.bot</summary>
             public const string ChatBot = "https://www.googleapis.com/auth/chat.bot";
@@ -6854,11 +6872,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// documentation: * For Google Chat apps, see [Design the components of a card or
     /// dialog](https://developers.google.com/workspace/chat/design-components-card-dialog). * For Google Workspace
     /// add-ons, see [Card-based interfaces](https://developers.google.com/apps-script/add-ons/concepts/cards). Note:
-    /// You can add up to 100 widgets per card. Any widgets beyond this limit are ignored. This limit applies to both
-    /// card messages and dialogs in Google Chat apps, and to cards in Google Workspace add-ons. **Example: Card message
-    /// for a Google Chat app** ![Example contact
-    /// card](https://developers.google.com/workspace/chat/images/card_api_reference.png) To create the sample card
-    /// message in Google Chat, use the following JSON:
+    /// You can add up to 100 widgets per card. If a section's widgets push the total count above 100, that entire
+    /// section and all following sections are ignored. This limit applies to both card messages and dialogs in Google
+    /// Chat apps, and to cards in Google Workspace add-ons. **Example: Card message for a Google Chat app** ![Example
+    /// contact card](https://developers.google.com/workspace/chat/images/card_api_reference.png) To create the sample
+    /// card message in Google Chat, use the following JSON:
     /// ```
     /// { "cardsV2": [ { "cardId": "unique-card-id", "card": {
     /// "header": { "title": "Sasha", "subtitle": "Software Engineer", "imageUrl":
