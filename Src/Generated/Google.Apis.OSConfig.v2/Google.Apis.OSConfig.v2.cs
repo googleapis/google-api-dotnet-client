@@ -3409,9 +3409,7 @@ namespace Google.Apis.OSConfig.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("orchestrationState")]
         public virtual GoogleCloudOsconfigV2PolicyOrchestratorOrchestrationState OrchestrationState { get; set; }
 
-        /// <summary>
-        /// Output only. Set to true, if the there are ongoing changes being applied by the orchestrator.
-        /// </summary>
+        /// <summary>Output only. Set to true, if there are ongoing changes being applied by the orchestrator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
@@ -4270,7 +4268,7 @@ namespace Google.Apis.OSConfig.v2.Data
     /// <summary>A resource that manages the state of a file.</summary>
     public class OSPolicyResourceFileResource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A a file with this content. The size of the content is limited to 32KiB.</summary>
+        /// <summary>A file with this content. The size of the content is limited to 32KiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
 
