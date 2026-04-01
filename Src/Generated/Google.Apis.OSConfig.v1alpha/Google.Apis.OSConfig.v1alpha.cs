@@ -4430,7 +4430,7 @@ namespace Google.Apis.OSConfig.v1alpha.Data
     /// <summary>A resource that manages the state of a file.</summary>
     public class OSPolicyResourceFileResource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A a file with this content. The size of the content is limited to 32KiB.</summary>
+        /// <summary>A file with this content. The size of the content is limited to 32KiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
 
