@@ -1865,6 +1865,25 @@ namespace Google.Apis.Meet.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details how to join the conference via a SIP gateway.</summary>
+    public class GatewaySipAccess : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Permanent numeric code for manual entry on specially configured devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sipAccessCode")]
+        public virtual string SipAccessCode { get; set; }
+
+        /// <summary>
+        /// The SIP URI the conference can be reached through. The string is on one of the formats: "sip:@" "sips:@"
+        /// where currently is the 13-digit universal pin, and is a valid address to be resolved using a DNS SRV lookup,
+        /// or a dotted quad.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response of ListConferenceRecords method.</summary>
     public class ListConferenceRecordsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2219,6 +2238,44 @@ namespace Google.Apis.Meet.v2.Data
     }
 
     /// <summary>
+    /// Phone access contains information required to dial into a conference using a regional phone number and a PIN
+    /// that is specific to that phone number.
+    /// </summary>
+    public class PhoneAccess : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The BCP 47/LDML language code for the language associated with this phone access. To be parsed by the i18n
+        /// LanguageCode utility. Examples: "es-419" for Latin American Spanish, "fr-CA" for Canadian French.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>
+        /// The phone number to dial for this meeting space in E.164 format. Full phone number with a leading '+'
+        /// character.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumber { get; set; }
+
+        /// <summary>
+        /// The PIN that users must enter after dialing the given number. The PIN consists of only decimal digits and
+        /// the length may vary.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pin")]
+        public virtual string Pin { get; set; }
+
+        /// <summary>
+        /// The CLDR/ISO 3166 region code for the country associated with this phone access. To be parsed by the i18n
+        /// RegionCode utility. Example: "SE" for Sweden.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// User dialing in from a phone where the user's identity is unknown because they haven't signed in with a Google
     /// Account.
     /// </summary>
@@ -2500,6 +2557,12 @@ namespace Google.Apis.Meet.v2.Data
         public virtual SpaceConfig Config { get; set; }
 
         /// <summary>
+        /// Output only. The SIP based access methods that can be used to join the conference. Can be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatewaySipAccess")]
+        public virtual System.Collections.Generic.IList<GatewaySipAccess> GatewaySipAccess { get; set; }
+
+        /// <summary>
         /// Output only. Type friendly unique string used to join the meeting. Format: `[a-z]+-[a-z]+-[a-z]+`. For
         /// example, `abc-mnop-xyz`. The maximum length is 128 characters. Can only be used as an alias of the space
         /// name to get the space.
@@ -2522,6 +2585,10 @@ namespace Google.Apis.Meet.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. All regional phone access methods for this meeting space. Can be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneAccess")]
+        public virtual System.Collections.Generic.IList<PhoneAccess> PhoneAccess { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
