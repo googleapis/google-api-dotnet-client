@@ -5353,10 +5353,14 @@ namespace Google.Apis.BackupforGKE.v1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -5365,10 +5369,14 @@ namespace Google.Apis.BackupforGKE.v1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             public class ListRequest : BackupforGKEBaseServiceRequest<Google.Apis.BackupforGKE.v1.Data.ListLocationsResponse>
             {
@@ -5666,7 +5674,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
     }
 
     /// <summary>
-    /// Log entry for Backup and Restore Job for resources using BackupPlan based protection. Next Id: 23
+    /// Log entry for Backup and Restore Job for resources using BackupPlan based protection. Next Id: 24
     /// </summary>
     public class BDRBackupRestoreJobLog : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5730,6 +5738,10 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// <summary>Full resource name backup vault name</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupVaultName")]
         public virtual string BackupVaultName { get; set; }
+
+        /// <summary>Canonical Data Source Name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceName")]
+        public virtual string DataSourceName { get; set; }
 
         private string _endTimeRaw;
 
