@@ -2504,7 +2504,7 @@
       }
     }
   },
-  "revision": "20260320",
+  "revision": "20260330",
   "rootUrl": "https://oracledatabase.googleapis.com/",
   "schemas": {
     "AllConnectionStrings": {
@@ -3119,7 +3119,8 @@
           "type": "boolean"
         },
         "isLocalDataGuardEnabled": {
-          "description": "Output only. This field indicates whether the Autonomous Database has local (in-region) Data Guard enabled.",
+          "deprecated": true,
+          "description": "Output only. Deprecated: Please use `local_data_guard_enabled` instead. This field indicates whether the Autonomous Database has local (in-region) Data Guard enabled.",
           "readOnly": true,
           "type": "boolean"
         },
@@ -3147,10 +3148,20 @@
           "type": "string"
         },
         "localAdgAutoFailoverMaxDataLossLimit": {
-          "description": "Output only. This field indicates the maximum data loss limit for an Autonomous Database, in seconds.",
+          "deprecated": true,
+          "description": "Output only. Deprecated: Please use `local_adg_auto_failover_max_data_loss_limit_duration` instead. This field indicates the maximum data loss limit for an Autonomous Database, in seconds.",
           "format": "int32",
           "readOnly": true,
           "type": "integer"
+        },
+        "localAdgAutoFailoverMaxDataLossLimitDuration": {
+          "description": "Optional. This field indicates the maximum data loss limit for an Autonomous Database, in seconds.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "localDataGuardEnabled": {
+          "description": "Optional. Indicates whether the Autonomous Database has a local (in-region) standby database. Not applicable to cross-region Data Guard or dedicated Exadata infrastructure.",
+          "type": "boolean"
         },
         "localDisasterRecoveryType": {
           "description": "Output only. This field indicates the local disaster recovery (DR) type of an Autonomous Database.",

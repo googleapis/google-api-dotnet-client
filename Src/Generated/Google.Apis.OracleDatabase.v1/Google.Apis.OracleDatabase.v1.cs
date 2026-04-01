@@ -6623,7 +6623,8 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual System.Nullable<bool> IsAutoScalingEnabled { get; set; }
 
         /// <summary>
-        /// Output only. This field indicates whether the Autonomous Database has local (in-region) Data Guard enabled.
+        /// Output only. Deprecated: Please use `local_data_guard_enabled` instead. This field indicates whether the
+        /// Autonomous Database has local (in-region) Data Guard enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isLocalDataGuardEnabled")]
         public virtual System.Nullable<bool> IsLocalDataGuardEnabled { get; set; }
@@ -6643,10 +6644,24 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string LifecycleDetails { get; set; }
 
         /// <summary>
-        /// Output only. This field indicates the maximum data loss limit for an Autonomous Database, in seconds.
+        /// Output only. Deprecated: Please use `local_adg_auto_failover_max_data_loss_limit_duration` instead. This
+        /// field indicates the maximum data loss limit for an Autonomous Database, in seconds.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localAdgAutoFailoverMaxDataLossLimit")]
         public virtual System.Nullable<int> LocalAdgAutoFailoverMaxDataLossLimit { get; set; }
+
+        /// <summary>
+        /// Optional. This field indicates the maximum data loss limit for an Autonomous Database, in seconds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localAdgAutoFailoverMaxDataLossLimitDuration")]
+        public virtual System.Nullable<int> LocalAdgAutoFailoverMaxDataLossLimitDuration { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates whether the Autonomous Database has a local (in-region) standby database. Not applicable
+        /// to cross-region Data Guard or dedicated Exadata infrastructure.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localDataGuardEnabled")]
+        public virtual System.Nullable<bool> LocalDataGuardEnabled { get; set; }
 
         /// <summary>
         /// Output only. This field indicates the local disaster recovery (DR) type of an Autonomous Database.
