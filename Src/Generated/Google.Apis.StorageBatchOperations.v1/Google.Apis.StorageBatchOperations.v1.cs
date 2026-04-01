@@ -1193,10 +1193,14 @@ namespace Google.Apis.StorageBatchOperations.v1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -1205,10 +1209,14 @@ namespace Google.Apis.StorageBatchOperations.v1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             public class ListRequest : StorageBatchOperationsBaseServiceRequest<Google.Apis.StorageBatchOperations.v1.Data.ListLocationsResponse>
             {
@@ -1548,9 +1556,31 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
     /// <summary>Describes details about the progress of the job.</summary>
     public class Counters : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Number of objects failed.</summary>
+        /// <summary>Output only. The number of objects that failed due to user errors or service errors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failedObjectCount")]
         public virtual System.Nullable<long> FailedObjectCount { get; set; }
+
+        /// <summary>
+        /// Output only. Number of object custom contexts created. This field is only populated for jobs with the
+        /// UpdateObjectCustomContext transformation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectCustomContextsCreated")]
+        public virtual System.Nullable<long> ObjectCustomContextsCreated { get; set; }
+
+        /// <summary>
+        /// Output only. Number of object custom contexts deleted. This field is only populated for jobs with the
+        /// UpdateObjectCustomContext transformation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectCustomContextsDeleted")]
+        public virtual System.Nullable<long> ObjectCustomContextsDeleted { get; set; }
+
+        /// <summary>
+        /// Output only. Number of object custom contexts updated. This counter tracks custom contexts where the key
+        /// already existed, but the payload was modified. This field is only populated for jobs with the
+        /// UpdateObjectCustomContext transformation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectCustomContextsUpdated")]
+        public virtual System.Nullable<long> ObjectCustomContextsUpdated { get; set; }
 
         /// <summary>Output only. Number of objects completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("succeededObjectCount")]
