@@ -6943,6 +6943,35 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents discovered, customer managed workload that is not registered with the respective GCP service.
+    /// </summary>
+    public class DiscoveredWorkload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The confidence in detection of this workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual string Confidence { get; set; }
+
+        /// <summary>A boolean flag set to true if associated hardware strongly predicts the workload type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedRelevantHardware")]
+        public virtual System.Nullable<bool> DetectedRelevantHardware { get; set; }
+
+        /// <summary>A boolean flag set to true if associated keywords strongly predict the workload type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedRelevantKeywords")]
+        public virtual System.Nullable<bool> DetectedRelevantKeywords { get; set; }
+
+        /// <summary>A boolean flag set to true if installed packages strongly predict the workload type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedRelevantPackages")]
+        public virtual System.Nullable<bool> DetectedRelevantPackages { get; set; }
+
+        /// <summary>The type of workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadType")]
+        public virtual string WorkloadType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains information about the disk associated with the finding.</summary>
     public class Disk : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7565,6 +7594,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>Contains more details about the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>DiscoveredWorkload associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discoveredWorkload")]
+        public virtual DiscoveredWorkload DiscoveredWorkload { get; set; }
 
         /// <summary>Disk associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disk")]
@@ -11254,6 +11287,35 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents discovered, customer managed workload that is not registered with the respective GCP service.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV2DiscoveredWorkload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The confidence in detection of this workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual string Confidence { get; set; }
+
+        /// <summary>A boolean flag set to true if associated hardware strongly predicts the workload type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedRelevantHardware")]
+        public virtual System.Nullable<bool> DetectedRelevantHardware { get; set; }
+
+        /// <summary>A boolean flag set to true if associated keywords strongly predict the workload type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedRelevantKeywords")]
+        public virtual System.Nullable<bool> DetectedRelevantKeywords { get; set; }
+
+        /// <summary>A boolean flag set to true if installed packages strongly predict the workload type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedRelevantPackages")]
+        public virtual System.Nullable<bool> DetectedRelevantPackages { get; set; }
+
+        /// <summary>The type of workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadType")]
+        public virtual string WorkloadType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains information about the disk associated with the finding.</summary>
     public class GoogleCloudSecuritycenterV2Disk : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11914,6 +11976,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>Contains more details about the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>DiscoveredWorkload associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discoveredWorkload")]
+        public virtual GoogleCloudSecuritycenterV2DiscoveredWorkload DiscoveredWorkload { get; set; }
 
         /// <summary>Disk associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disk")]
