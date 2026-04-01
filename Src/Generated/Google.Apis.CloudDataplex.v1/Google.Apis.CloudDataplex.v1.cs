@@ -1246,6 +1246,7 @@ namespace Google.Apis.CloudDataplex.v1
                 AspectTypes = new AspectTypesResource(service);
                 ChangeRequests = new ChangeRequestsResource(service);
                 DataAttributeBindings = new DataAttributeBindingsResource(service);
+                DataDomains = new DataDomainsResource(service);
                 DataProducts = new DataProductsResource(service);
                 DataScans = new DataScansResource(service);
                 DataTaxonomies = new DataTaxonomiesResource(service);
@@ -2757,6 +2758,236 @@ namespace Google.Apis.CloudDataplex.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/dataAttributeBindings/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the DataDomains resource.</summary>
+            public virtual DataDomainsResource DataDomains { get; }
+
+            /// <summary>The "dataDomains" collection of methods.</summary>
+            public class DataDomainsResource
+            {
+                private const string Resource = "dataDomains";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DataDomainsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being requested. See Resource names
+                /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                /// </param>
+                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                {
+                    return new GetIamPolicyRequest(this.service, resource);
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                public class GetIamPolicyRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleIamV1Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being requested. See Resource names
+                    /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum policy version that will be used to format the policy.Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset.The policy in the response might use the policy
+                    /// version that you specified, or it might use a lower policy version. For example, if you specify
+                    /// version 3, but the policy has no conditional role bindings, the response uses version 1.To learn
+                    /// which resources support conditions in their IAM policies, see the IAM documentation
+                    /// (https://cloud.google.com/iam/help/conditions/resource-policies).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dataDomains/[^/]+$",
+                        });
+                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy.Can return
+                /// NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being specified. See Resource names
+                /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                /// </param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy.Can return
+                /// NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
+                /// </summary>
+                public class SetIamPolicyRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleIamV1Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being specified. See Resource names
+                    /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dataDomains/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed
+                /// to be used for building permission-aware UIs and command-line tools, not for authorization checking.
+                /// This operation may "fail open" without warning.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy detail is being requested. See Resource names
+                /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                /// </param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
+                {
+                    return new TestIamPermissionsRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed
+                /// to be used for building permission-aware UIs and command-line tools, not for authorization checking.
+                /// This operation may "fail open" without warning.
+                /// </summary>
+                public class TestIamPermissionsRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy detail is being requested. See Resource names
+                    /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "testIamPermissions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dataDomains/[^/]+$",
                         });
                     }
                 }
@@ -15955,10 +16186,14 @@ namespace Google.Apis.CloudDataplex.v1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// List all public locations: Use the path GET /v1/locations. List project-visible locations: Use the path
-            /// GET /v1/projects/{project_id}/locations. This may include public locations as well as private or other
-            /// locations specifically visible to the project.
+            /// Lists information about the supported locations for this service.This method lists locations based on
+            /// the resource scope provided in the ListLocationsRequest.name field: Global locations: If name is empty,
+            /// the method lists the public locations available to all projects. Project-specific locations: If name
+            /// follows the format projects/{project}, the method lists locations visible to that specific project. This
+            /// includes public, private, or other project-specific locations enabled for the project.For gRPC and
+            /// client library implementations, the resource name is passed as the name field. For direct service calls,
+            /// the resource name is incorporated into the request path based on the specific service implementation and
+            /// version.
             /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -15967,10 +16202,14 @@ namespace Google.Apis.CloudDataplex.v1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// List all public locations: Use the path GET /v1/locations. List project-visible locations: Use the path
-            /// GET /v1/projects/{project_id}/locations. This may include public locations as well as private or other
-            /// locations specifically visible to the project.
+            /// Lists information about the supported locations for this service.This method lists locations based on
+            /// the resource scope provided in the ListLocationsRequest.name field: Global locations: If name is empty,
+            /// the method lists the public locations available to all projects. Project-specific locations: If name
+            /// follows the format projects/{project}, the method lists locations visible to that specific project. This
+            /// includes public, private, or other project-specific locations enabled for the project.For gRPC and
+            /// client library implementations, the resource name is passed as the name field. For direct service calls,
+            /// the resource name is incorporated into the request path based on the specific service implementation and
+            /// version.
             /// </summary>
             public class ListRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudLocationListLocationsResponse>
             {
@@ -18537,9 +18776,39 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>The output of a DataDocumentation scan.</summary>
     public class GoogleCloudDataplexV1DataDocumentationResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Table result for insights.</summary>
+        /// <summary>Output only. Insights for a Dataset resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetResult")]
+        public virtual GoogleCloudDataplexV1DataDocumentationResultDatasetResult DatasetResult { get; set; }
+
+        /// <summary>Output only. Insights for a Table resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableResult")]
         public virtual GoogleCloudDataplexV1DataDocumentationResultTableResult TableResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Insights for a dataset resource.</summary>
+    public class GoogleCloudDataplexV1DataDocumentationResultDatasetResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Generated Dataset description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overview")]
+        public virtual string Overview { get; set; }
+
+        /// <summary>Output only. Sample SQL queries for the dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queries")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataDocumentationResultQuery> Queries { get; set; }
+
+        /// <summary>
+        /// Output only. Relationships suggesting how tables in the dataset are related to each other, based on their
+        /// schema.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaRelationships")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship> SchemaRelationships { get; set; }
+
+        /// <summary>Output only. Generated table and column descriptions for each table in the dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataDocumentationResultTableResult> TableResults { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18590,7 +18859,60 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Generated metadata about the table.</summary>
+    /// <summary>Details of the relationship between the schema of two resources.</summary>
+    public class GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. An ordered list of fields for the join from the first table. The size of this list must be the
+        /// same as right_schema_paths. Each field at index i in this list must correspond to a field at the same index
+        /// in the right_schema_paths list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("leftSchemaPaths")]
+        public virtual GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths LeftSchemaPaths { get; set; }
+
+        /// <summary>
+        /// Output only. An ordered list of fields for the join from the second table. The size of this list must be the
+        /// same as left_schema_paths. Each field at index i in this list must correspond to a field at the same index
+        /// in the left_schema_paths list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rightSchemaPaths")]
+        public virtual GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths RightSchemaPaths { get; set; }
+
+        /// <summary>Output only. Sources which generated the schema relation edge.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sources")]
+        public virtual System.Collections.Generic.IList<string> Sources { get; set; }
+
+        /// <summary>Output only. The type of relationship between the schema paths.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an ordered set of paths within a table's schema.</summary>
+    public class GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. An ordered set of Paths to fields within the schema of the table. For fields nested within a
+        /// top level field of type record, use '.' to separate field names. Examples: Top level field - top_level
+        /// Nested field - top_level.child.sub_field
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paths")]
+        public virtual System.Collections.Generic.IList<string> Paths { get; set; }
+
+        /// <summary>
+        /// Output only. The service-qualified full resource name of the table Ex:
+        /// //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableFqn")]
+        public virtual string TableFqn { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Insights for a table resource.</summary>
     public class GoogleCloudDataplexV1DataDocumentationResultTableResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -19943,9 +20265,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// (such as null percent, cardinality, min/max/mean, etc). For more information, see About data profiling
     /// (https://cloud.google.com/dataplex/docs/data-profiling-overview). Data discovery: scans data in Cloud Storage
     /// buckets to extract and then catalog metadata. For more information, see Discover and catalog Cloud Storage data
-    /// (https://cloud.google.com/bigquery/docs/automatic-discovery). Data documentation: analyzes the table details and
-    /// generates insights including descriptions and sample SQL queries for the table. For more information, see
-    /// Generate data insights in BigQuery (https://cloud.google.com/bigquery/docs/data-insights).
+    /// (https://cloud.google.com/bigquery/docs/automatic-discovery). Data documentation: analyzes the table or dataset
+    /// metadata and generates insights. For tables, insights include descriptions and sample SQL queries. For datasets,
+    /// insights include descriptions, schema relationships and sample SQL queries. For more information, see Generate
+    /// data insights in BigQuery (https://cloud.google.com/bigquery/docs/data-insights).
     /// </summary>
     public class GoogleCloudDataplexV1DataScan : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -20754,7 +21077,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// against. The field could either be: Cloud Storage bucket for DataDiscoveryScan Format:
         /// //storage.googleapis.com/projects/PROJECT_ID/buckets/BUCKET_ID or BigQuery table of type "TABLE" for
         /// DataProfileScan/DataQualityScan/DataDocumentationScan Format:
-        /// //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        /// //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID or BigQuery dataset for
+        /// DataDocumentationScan only Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
@@ -23492,8 +23816,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Options { get; set; }
 
         /// <summary>
-        /// Required. The entry names to lookup context for. The request should have max 10 of
-        /// those.Examples:projects/{project}/locations/{location}/entryGroups/{entry_group}/entries/{entry}
+        /// Required. The entry names to look up the context for. The maximum number of resources for a request is
+        /// limited to 10.Examples:projects/{project}/locations/{location}/entryGroups/{entry_group}/entries/{entry}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<string> Resources { get; set; }
