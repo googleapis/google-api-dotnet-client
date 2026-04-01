@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -69,6 +69,9 @@ namespace Google.Apis.WorkspaceEvents.v1
             /// </summary>
             public static string ChatAppMemberships = "https://www.googleapis.com/auth/chat.app.memberships";
 
+            /// <summary>On their own behalf, apps in Google Chat can see members of conversations and spaces</summary>
+            public static string ChatAppMembershipsReadonly = "https://www.googleapis.com/auth/chat.app.memberships.readonly";
+
             /// <summary>
             /// On their own behalf, apps in Google Chat can see all messages and their associated reactions and message
             /// content
@@ -80,6 +83,12 @@ namespace Google.Apis.WorkspaceEvents.v1
             /// metadata (including history settings and access settings)
             /// </summary>
             public static string ChatAppSpaces = "https://www.googleapis.com/auth/chat.app.spaces";
+
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can see conversations and spaces and their metadata (including
+            /// history settings and access settings)
+            /// </summary>
+            public static string ChatAppSpacesReadonly = "https://www.googleapis.com/auth/chat.app.spaces.readonly";
 
             /// <summary>Private Service: https://www.googleapis.com/auth/chat.bot</summary>
             public static string ChatBot = "https://www.googleapis.com/auth/chat.bot";
@@ -151,6 +160,9 @@ namespace Google.Apis.WorkspaceEvents.v1
             /// </summary>
             public const string ChatAppMemberships = "https://www.googleapis.com/auth/chat.app.memberships";
 
+            /// <summary>On their own behalf, apps in Google Chat can see members of conversations and spaces</summary>
+            public const string ChatAppMembershipsReadonly = "https://www.googleapis.com/auth/chat.app.memberships.readonly";
+
             /// <summary>
             /// On their own behalf, apps in Google Chat can see all messages and their associated reactions and message
             /// content
@@ -162,6 +174,12 @@ namespace Google.Apis.WorkspaceEvents.v1
             /// metadata (including history settings and access settings)
             /// </summary>
             public const string ChatAppSpaces = "https://www.googleapis.com/auth/chat.app.spaces";
+
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can see conversations and spaces and their metadata (including
+            /// history settings and access settings)
+            /// </summary>
+            public const string ChatAppSpacesReadonly = "https://www.googleapis.com/auth/chat.app.spaces.readonly";
 
             /// <summary>Private Service: https://www.googleapis.com/auth/chat.bot</summary>
             public const string ChatBot = "https://www.googleapis.com/auth/chat.bot";
@@ -2179,6 +2197,15 @@ namespace Google.Apis.WorkspaceEvents.v1.Data
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
         /// <summary>
+        /// Output only. The service account that was used to authorize the creation of the subscription. This service
+        /// account must be owned by the same Google Cloud project where you create this subscription. Format:
+        /// `projects/{project_id}/serviceAccounts/{service_account_id}` [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountAuthority")]
+        public virtual string ServiceAccountAuthority { get; set; }
+
+        /// <summary>
         /// Output only. The state of the subscription. Determines whether the subscription can receive events and
         /// deliver them to the notification endpoint.
         /// </summary>
@@ -2250,6 +2277,16 @@ namespace Google.Apis.WorkspaceEvents.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Output only. The user who authorized the creation of the subscription. The user must be able to view the
+        /// `target_resource`. For Google Workspace users, the `{user}` value is the
+        /// [`user.id`](https://developers.google.com/workspace/admin/directory/reference/rest/v1/users#User.FIELDS.id)
+        /// field from the Directory API. Format: `users/{user}` [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAuthority")]
+        public virtual string UserAuthority { get; set; }
     }
 
     /// <summary>
