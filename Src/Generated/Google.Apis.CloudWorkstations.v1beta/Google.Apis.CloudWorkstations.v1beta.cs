@@ -668,7 +668,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// Optional. If set, validate the request and preview the review, but do not actually apply
+                            /// Optional. If set, validate the request and preview the result, but do not actually apply
                             /// it.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
@@ -753,7 +753,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                             public virtual string Etag { get; set; }
 
                             /// <summary>
-                            /// Optional. If set, validate the request and preview the review, but do not actually apply
+                            /// Optional. If set, validate the request and preview the result, but do not actually apply
                             /// it.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
@@ -1177,21 +1177,20 @@ namespace Google.Apis.CloudWorkstations.v1beta
                             public virtual string Name { get; private set; }
 
                             /// <summary>
-                            /// Optional. If set and the workstation configuration is not found, a new workstation
-                            /// configuration is created. In this situation, update_mask is ignored.
+                            /// Optional. If set and the workstation is not found, a new workstation is created. In this
+                            /// situation, update_mask is ignored.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<bool> AllowMissing { get; set; }
 
                             /// <summary>
-                            /// Required. Mask specifying which fields in the workstation configuration should be
-                            /// updated.
+                            /// Required. Mask specifying which fields in the workstation should be updated.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual object UpdateMask { get; set; }
 
                             /// <summary>
-                            /// Optional. If set, validate the request and preview the review, but do not actually apply
+                            /// Optional. If set, validate the request and preview the result, but do not actually apply
                             /// it.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
@@ -1520,7 +1519,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. If set, validate the request and preview the review, but do not actually apply it.
+                        /// Optional. If set, validate the request and preview the result, but do not actually apply it.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -1611,7 +1610,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         public virtual System.Nullable<bool> Force { get; set; }
 
                         /// <summary>
-                        /// Optional. If set, validate the request and preview the review, but do not actually apply it.
+                        /// Optional. If set, validate the request and preview the result, but do not actually apply it.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -1990,7 +1989,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         public virtual object UpdateMask { get; set; }
 
                         /// <summary>
-                        /// Optional. If set, validate the request and preview the review, but do not actually apply it.
+                        /// Optional. If set, validate the request and preview the result, but do not actually apply it.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -2212,7 +2211,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. If set, validate the request and preview the review, but do not actually apply it.
+                    /// Optional. If set, validate the request and preview the result, but do not actually apply it.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -2304,7 +2303,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     public virtual System.Nullable<bool> Force { get; set; }
 
                     /// <summary>
-                    /// Optional. If set, validate the request and preview the review, but do not apply it.
+                    /// Optional. If set, validate the request and preview the result, but do not apply it.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -2525,7 +2524,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     public virtual object UpdateMask { get; set; }
 
                     /// <summary>
-                    /// Optional. If set, validate the request and preview the review, but do not actually apply it.
+                    /// Optional. If set, validate the request and preview the result, but do not actually apply it.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -3995,7 +3994,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Optional. If set, validate the request and preview the review, but do not actually apply it.
+        /// Optional. If set, validate the request and preview the result, but do not actually apply it.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -4041,7 +4040,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Optional. If set, validate the request and preview the review, but do not actually apply it.
+        /// Optional. If set, validate the request and preview the result, but do not actually apply it.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -4556,6 +4555,25 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Optional. Specifies the redirect URL for unauthorized requests received by workstation VMs in this cluster.
+        /// Redirects to this endpoint will send a base64 encoded `state` query param containing the target workstation
+        /// name and original request hostname. The endpoint is responsible for retrieving a token using
+        /// `GenerateAccessToken` and redirecting back to the original hostname with the token.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workstationAuthorizationUrl")]
+        public virtual string WorkstationAuthorizationUrl { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the launch URL for workstations in this cluster. Requests sent to unstarted workstations
+        /// will be redirected to this URL. Requests redirected to the launch endpoint will be sent with a `workstation`
+        /// and `project` query parameter containing the full workstation resource name and project ID, respectively.
+        /// The launch endpoint is responsible for starting the workstation, polling it until it reaches
+        /// `STATE_RUNNING`, and then issuing a redirect to the workstation's host URL.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workstationLaunchUrl")]
+        public virtual string WorkstationLaunchUrl { get; set; }
     }
 
     /// <summary>
@@ -4799,16 +4817,16 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual System.Collections.Generic.IList<string> ReplicaZones { get; set; }
 
         /// <summary>
-        /// Optional. Number of seconds that a workstation can run until it is automatically shut down. We recommend
-        /// that workstations be shut down daily to reduce costs and so that security updates can be applied upon
-        /// restart. The idle_timeout and running_timeout fields are independent of each other. Note that the
-        /// running_timeout field shuts down VMs after the specified time, regardless of whether or not the VMs are
-        /// idle. Provide duration terminated by `s` for seconds—for example, `"54000s"` (15 hours). Defaults to
-        /// `"43200s"` (12 hours). A value of `"0s"` indicates that workstations using this configuration should never
-        /// time out. If encryption_key is set, it must be greater than `"0s"` and less than `"86400s"` (24 hours).
-        /// Warning: A value of `"0s"` indicates that Cloud Workstations VMs created with this configuration have no
-        /// maximum running time. This is strongly discouraged because you incur costs and will not pick up security
-        /// updates.
+        /// Optional. Number of seconds that a workstation can run until it is automatically shut down. This field
+        /// applies to workstations in both STATE_RUNNING and STATE_SUSPENDED. We recommend that workstations be shut
+        /// down daily to reduce costs and so that security updates can be applied upon restart. The idle_timeout and
+        /// running_timeout fields are independent of each other. Note that the running_timeout field shuts down VMs
+        /// after the specified time, regardless of whether or not the VMs are idle. Provide duration terminated by `s`
+        /// for seconds—for example, `"54000s"` (15 hours). Defaults to `"43200s"` (12 hours). A value of `"0s"`
+        /// indicates that workstations using this configuration should never time out. If encryption_key is set, it
+        /// must be greater than `"0s"` and less than `"86400s"` (24 hours). Warning: A value of `"0s"` indicates that
+        /// Cloud Workstations VMs created with this configuration have no maximum running time. This is strongly
+        /// discouraged because you incur costs and will not pick up security updates.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runningTimeout")]
         public virtual object RunningTimeout { get; set; }
