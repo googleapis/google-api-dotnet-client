@@ -71,6 +71,9 @@ namespace Google.Apis.CloudComposer.v1beta1
             /// Google Account
             /// </summary>
             public static string Cloudcomposer = "https://www.googleapis.com/auth/cloudcomposer";
+
+            /// <summary>See your Google Cloud Composer data and the email address of your Google Account</summary>
+            public static string CloudcomposerReadonly = "https://www.googleapis.com/auth/cloudcomposer.readonly";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Composer API.</summary>
@@ -87,6 +90,9 @@ namespace Google.Apis.CloudComposer.v1beta1
             /// Google Account
             /// </summary>
             public const string Cloudcomposer = "https://www.googleapis.com/auth/cloudcomposer";
+
+            /// <summary>See your Google Cloud Composer data and the email address of your Google Account</summary>
+            public const string CloudcomposerReadonly = "https://www.googleapis.com/auth/cloudcomposer.readonly";
         }
 
         /// <summary>Gets the Projects resource.</summary>
