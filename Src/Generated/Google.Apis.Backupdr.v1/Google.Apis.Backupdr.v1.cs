@@ -5298,10 +5298,14 @@ namespace Google.Apis.Backupdr.v1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -5310,10 +5314,14 @@ namespace Google.Apis.Backupdr.v1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             public class ListRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.ListLocationsResponse>
             {
@@ -6737,6 +6745,13 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backupVaultServiceAccount")]
         public virtual string BackupVaultServiceAccount { get; set; }
 
+        /// <summary>
+        /// Optional. Defines optional properties specific to backups of disk-based resources, such as Compute Engine.
+        /// This includes settings like whether to perform a guest flush.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeInstanceBackupPlanProperties")]
+        public virtual ComputeInstanceBackupPlanProperties ComputeInstanceBackupPlanProperties { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -7732,6 +7747,20 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>--- ComputeInstanceBackupPlanProperties Message ---</summary>
+    public class ComputeInstanceBackupPlanProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Indicates whether to perform a guest flush operation before taking a compute backup. When set to
+        /// false, the system will create crash-consistent backups. Default value is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestFlush")]
+        public virtual System.Nullable<bool> GuestFlush { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>ComputeInstanceBackupProperties represents Compute Engine instance backup properties.</summary>
     public class ComputeInstanceBackupProperties : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7760,6 +7789,13 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestAccelerator")]
         public virtual System.Collections.Generic.IList<AcceleratorConfig> GuestAccelerator { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates whether to perform a guest flush operation before taking a compute backup. When set to
+        /// false, the system will create crash-consistent backups. Default value is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestFlush")]
+        public virtual System.Nullable<bool> GuestFlush { get; set; }
 
         /// <summary>
         /// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is
