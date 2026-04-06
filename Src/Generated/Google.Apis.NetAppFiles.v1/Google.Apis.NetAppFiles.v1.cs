@@ -7086,6 +7086,23 @@ namespace Google.Apis.NetAppFiles.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Configuration for a Large Capacity Volume. A Large Capacity Volume supports sizes ranging from 4.8 TiB to 20
+    /// PiB, it is composed of multiple internal constituents, and must be created in a large capacity pool.
+    /// </summary>
+    public class LargeCapacityConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The number of internal constituents (e.g., FlexVols) for this large volume. The minimum number of
+        /// constituents is 2.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constituentCount")]
+        public virtual System.Nullable<int> ConstituentCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>ListActiveDirectoriesResponse contains all the active directories requested.</summary>
     public class ListActiveDirectoriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8287,6 +8304,12 @@ namespace Google.Apis.NetAppFiles.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
+        /// <summary>
+        /// Optional. The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scaleType")]
+        public virtual string ScaleType { get; set; }
+
         /// <summary>Required. Service level of the storage pool</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceLevel")]
         public virtual string ServiceLevel { get; set; }
@@ -8650,10 +8673,20 @@ namespace Google.Apis.NetAppFiles.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+        /// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume. This field is
+        /// used for legacy FILE pools. For Unified pools, use the `large_capacity_config` field instead. This field and
+        /// `large_capacity_config` are mutually exclusive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("largeCapacity")]
         public virtual System.Nullable<bool> LargeCapacity { get; set; }
+
+        /// <summary>
+        /// Optional. Large capacity config for the volume. Enables and configures large capacity for volumes in Unified
+        /// pools with File protocols. Not applicable for Block protocols in Unified pools. This field and the legacy
+        /// `large_capacity` boolean field are mutually exclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("largeCapacityConfig")]
+        public virtual LargeCapacityConfig LargeCapacityConfig { get; set; }
 
         /// <summary>Output only. Flag indicating if the volume is NFS LDAP enabled or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ldapEnabled")]
