@@ -7642,6 +7642,13 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> Addresses { get; set; }
 
         /// <summary>
+        /// Optional. If true, the Gateway will listen on all ports. This is mutually exclusive with the `ports` field.
+        /// This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allPorts")]
+        public virtual System.Nullable<bool> AllPorts { get; set; }
+
+        /// <summary>
         /// Optional. If true, the gateway will allow traffic from clients outside of the region where the gateway is
         /// located. This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
         /// </summary>
