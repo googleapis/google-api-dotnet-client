@@ -9269,6 +9269,13 @@ namespace Google.Apis.CloudRun.v2.Data
     public class GoogleDevtoolsCloudbuildV1Artifacts : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. A list of generic artifacts to be uploaded to Artifact Registry upon successful completion of all
+        /// build steps. If any artifacts fail to be pushed, the build is marked FAILURE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericArtifacts")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1GenericArtifact> GenericArtifacts { get; set; }
+
+        /// <summary>
         /// Optional. A list of Go modules to be uploaded to Artifact Registry upon successful completion of all build
         /// steps. If any objects fail to be pushed, the build is marked FAILURE.
         /// </summary>
@@ -9947,6 +9954,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("empty")]
         public virtual System.Nullable<bool> Empty { get; set; }
 
+        /// <summary>Represents a generic artifact as a build dependency.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericArtifact")]
+        public virtual GoogleDevtoolsCloudbuildV1GenericArtifactDependency GenericArtifact { get; set; }
+
         /// <summary>Represents a git repository as a build dependency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gitSource")]
         public virtual GoogleDevtoolsCloudbuildV1GitSourceDependency GitSource { get; set; }
@@ -10004,6 +10015,46 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Collection of file hashes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHash")]
         public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1Hash> FileHash { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Generic artifact to upload to Artifact Registry upon successful completion of all build steps.
+    /// </summary>
+    public class GoogleDevtoolsCloudbuildV1GenericArtifact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Path to the generic artifact in the build's workspace to be uploaded to Artifact Registry.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("folder")]
+        public virtual string Folder { get; set; }
+
+        /// <summary>
+        /// Required. Registry path to upload the generic artifact to, in the form
+        /// projects/$PROJECT/locations/$LOCATION/repositories/$REPO/packages/$PACKAGE/versions/$VERSION
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("registryPath")]
+        public virtual string RegistryPath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a generic artifact as a build dependency.</summary>
+    public class GoogleDevtoolsCloudbuildV1GenericArtifactDependency : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Where the artifact files should be placed on the worker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destPath")]
+        public virtual string DestPath { get; set; }
+
+        /// <summary>
+        /// Required. The location to download the artifact files from. Ex:
+        /// projects/p1/locations/us/repositories/r1/packages/p1/versions/v1
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10409,6 +10460,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("buildStepOutputs")]
         public virtual System.Collections.Generic.IList<string> BuildStepOutputs { get; set; }
 
+        /// <summary>Output only. Generic artifacts uploaded to Artifact Registry at the end of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericArtifacts")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1UploadedGenericArtifact> GenericArtifacts { get; set; }
+
         /// <summary>Optional. Go module artifacts uploaded to Artifact Registry at the end of the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("goModules")]
         public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1UploadedGoModule> GoModules { get; set; }
@@ -10715,6 +10770,36 @@ namespace Google.Apis.CloudRun.v2.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A generic artifact uploaded to Artifact Registry using the GenericArtifact directive.</summary>
+    public class GoogleDevtoolsCloudbuildV1UploadedGenericArtifact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The hash of the whole artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactFingerprint")]
+        public virtual GoogleDevtoolsCloudbuildV1FileHashes ArtifactFingerprint { get; set; }
+
+        /// <summary>Output only. Path to the artifact in Artifact Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactRegistryPackage")]
+        public virtual string ArtifactRegistryPackage { get; set; }
+
+        /// <summary>Output only. The file hashes that make up the generic artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleDevtoolsCloudbuildV1FileHashes> FileHashes { get; set; }
+
+        /// <summary>Output only. Stores timing information for pushing the specified artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pushTiming")]
+        public virtual GoogleDevtoolsCloudbuildV1TimeSpan PushTiming { get; set; }
+
+        /// <summary>
+        /// Output only. URI of the uploaded artifact. Ex:
+        /// projects/p1/locations/us/repositories/r1/packages/p1/versions/v1
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
