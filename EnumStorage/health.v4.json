@@ -1,0 +1,11 @@
+{
+  "Google.Apis.GoogleHealthAPI.v4.GoogleHealthAPIBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.GoogleHealthAPI.v4.GoogleHealthAPIBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
