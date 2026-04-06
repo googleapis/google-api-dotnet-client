@@ -970,6 +970,7 @@ namespace Google.Apis.BigtableAdmin.v2
                     this.service = service;
                     Backups = new BackupsResource(service);
                     HotTablets = new HotTabletsResource(service);
+                    MemoryLayers = new MemoryLayersResource(service);
                 }
 
                 /// <summary>Gets the Backups resource.</summary>
@@ -1842,6 +1843,110 @@ namespace Google.Apis.BigtableAdmin.v2
                     }
                 }
 
+                /// <summary>Gets the MemoryLayers resource.</summary>
+                public virtual MemoryLayersResource MemoryLayers { get; }
+
+                /// <summary>The "memoryLayers" collection of methods.</summary>
+                public class MemoryLayersResource
+                {
+                    private const string Resource = "memoryLayers";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public MemoryLayersResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Lists information about memory layers.</summary>
+                    /// <param name="parent">
+                    /// Required. The unique name of the cluster for which a list of memory layers is requested. Values
+                    /// are of the form `projects/{project}/instances/{instance}/clusters/{cluster}`. Use `{cluster} =
+                    /// '-'` to list MemoryLayers for all Clusters in an instance, e.g.,
+                    /// `projects/myproject/instances/myinstance/clusters/-`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists information about memory layers.</summary>
+                    public class ListRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.ListMemoryLayersResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The unique name of the cluster for which a list of memory layers is requested.
+                        /// Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}`. Use
+                        /// `{cluster} = '-'` to list MemoryLayers for all Clusters in an instance, e.g.,
+                        /// `projects/myproject/instances/myinstance/clusters/-`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of memory layers to return. The service may return fewer than
+                        /// this value.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListMemoryLayers` call. Provide this to
+                        /// retrieve the subsequent page. When paginating, all other parameters provided to
+                        /// `ListMemoryLayers` must match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/memoryLayers";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/clusters/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
                 /// <summary>
                 /// Creates a cluster within an instance. Note that exactly one of Cluster.serve_nodes and
                 /// Cluster.cluster_config.cluster_autoscaling_config can be set. If serve_nodes is set to non-zero,
@@ -2024,6 +2129,57 @@ namespace Google.Apis.BigtableAdmin.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/instances/[^/]+/clusters/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets information about the memory layer of a cluster.</summary>
+                /// <param name="name">
+                /// Required. The unique name of the requested cluster's memory layer. Values are of the form
+                /// `projects/{project}/instances/{instance}/clusters/{cluster}/memoryLayer`.
+                /// </param>
+                public virtual GetMemoryLayerRequest GetMemoryLayer(string name)
+                {
+                    return new GetMemoryLayerRequest(this.service, name);
+                }
+
+                /// <summary>Gets information about the memory layer of a cluster.</summary>
+                public class GetMemoryLayerRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.MemoryLayer>
+                {
+                    /// <summary>Constructs a new GetMemoryLayer request.</summary>
+                    public GetMemoryLayerRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The unique name of the requested cluster's memory layer. Values are of the form
+                    /// `projects/{project}/instances/{instance}/clusters/{cluster}/memoryLayer`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getMemoryLayer";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes GetMemoryLayer parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/instances/[^/]+/clusters/[^/]+/memoryLayer$",
                         });
                     }
                 }
@@ -2241,6 +2397,83 @@ namespace Google.Apis.BigtableAdmin.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/instances/[^/]+/clusters/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates the memory layer of a cluster. To enable the memory layer, set the memory_config. To disable
+                /// the memory layer, unset the memory_config.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. Name of the memory layer. This is always:
+                /// "projects/{project}/instances/{instance}/clusters/{cluster}/memoryLayer".
+                /// </param>
+                public virtual UpdateMemoryLayerRequest UpdateMemoryLayer(Google.Apis.BigtableAdmin.v2.Data.MemoryLayer body, string name)
+                {
+                    return new UpdateMemoryLayerRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Updates the memory layer of a cluster. To enable the memory layer, set the memory_config. To disable
+                /// the memory layer, unset the memory_config.
+                /// </summary>
+                public class UpdateMemoryLayerRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new UpdateMemoryLayer request.</summary>
+                    public UpdateMemoryLayerRequest(Google.Apis.Services.IClientService service, Google.Apis.BigtableAdmin.v2.Data.MemoryLayer body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. Name of the memory layer. This is always:
+                    /// "projects/{project}/instances/{instance}/clusters/{cluster}/memoryLayer".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. The list of fields to update.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BigtableAdmin.v2.Data.MemoryLayer Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateMemoryLayer";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes UpdateMemoryLayer parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/instances/[^/]+/clusters/[^/]+/memoryLayer$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -6347,10 +6580,14 @@ namespace Google.Apis.BigtableAdmin.v2
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -6359,10 +6596,14 @@ namespace Google.Apis.BigtableAdmin.v2
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             public class ListRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.ListLocationsResponse>
             {
@@ -6607,6 +6848,14 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frequency")]
         public virtual object Frequency { get; set; }
+
+        /// <summary>
+        /// Optional. A list of Cloud Bigtable zones where automated backups are allowed to be created. If empty,
+        /// automated backups will be created in all zones of the instance. Locations are in the format
+        /// `projects/{project}/locations/{zone}`. This field can only set for tables in Enterprise Plus instances.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<string> Locations { get; set; }
 
         /// <summary>
         /// Required. How long the automated backups should be retained. Values must be at least 3 days and at most 90
@@ -8621,6 +8870,17 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration of a memory layer.</summary>
+    public class GoogleBigtableAdminV2MemoryLayerMemoryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Reporting the current size of the memory layer in GiB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageSizeGib")]
+        public virtual System.Nullable<int> StorageSizeGib { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A value that combines incremental updates into a summarized value. Data is never directly written or read using
     /// type `Aggregate`. Writes provide either the `input_type` or `state_type`, and reads always return the
@@ -8808,6 +9068,53 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// Well-Known Binary (WKB) bytes.
     /// </summary>
     public class GoogleBigtableAdminV2TypeGeography : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Int32 Values of type `Int32` are stored in `Value.int_value`.</summary>
+    public class GoogleBigtableAdminV2TypeInt32 : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The encoding to use when converting to or from lower level types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
+        public virtual GoogleBigtableAdminV2TypeInt32Encoding Encoding { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Rules used to convert to or from lower level types.</summary>
+    public class GoogleBigtableAdminV2TypeInt32Encoding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Use `BigEndianBytes` encoding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigEndianBytes")]
+        public virtual GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes BigEndianBytes { get; set; }
+
+        /// <summary>Use `OrderedCodeBytes` encoding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderedCodeBytes")]
+        public virtual GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes OrderedCodeBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Encodes the value as a 4-byte big-endian two's complement value. Sorted mode: non-negative values are supported.
+    /// Distinct mode: all values are supported. Compatible with: - BigQuery `BINARY` encoding - HBase `Bytes.toBytes` -
+    /// Java `ByteBuffer.putInt()` with `ByteOrder.BIG_ENDIAN`
+    /// </summary>
+    public class GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Encodes the value in a variable length binary format of up to 5 bytes. Values that are closer to zero use fewer
+    /// bytes. Sorted mode: all values are supported. Distinct mode: all values are supported.
+    /// </summary>
+    public class GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9513,6 +9820,32 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for BigtableInstanceAdmin.ListMemoryLayers.</summary>
+    public class ListMemoryLayersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Locations from which MemoryLayer information could not be retrieved, due to an outage or some other
+        /// transient condition. MemoryLayers from these locations may be missing from `memory_layers`, or may only have
+        /// partial information returned. Values are of the form `projects//locations/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedLocations")]
+        public virtual System.Collections.Generic.IList<string> FailedLocations { get; set; }
+
+        /// <summary>The list of requested memory layers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryLayers")]
+        public virtual System.Collections.Generic.IList<MemoryLayer> MemoryLayers { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Operations.ListOperations.</summary>
     public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9668,6 +10001,49 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>Required. Immutable. The materialized view's select query. Views: `SCHEMA_VIEW`, `FULL`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
+    }
+
+    /// <summary>
+    /// If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to
+    /// the memory layer. All eligible writes populate the memory layer. MemoryConfig can only be set if the AppProfile
+    /// uses single cluster routing and the configured cluster has a memory layer enabled.
+    /// </summary>
+    public class MemoryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The memory layer of a cluster. A memory layer serves reads from memory without hitting the backing persistent
+    /// data store.
+    /// </summary>
+    public class MemoryLayer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The etag for this memory layer. This may be sent on update requests to ensure that the client has
+        /// an up-to-date value before proceeding. The server returns an ABORTED error on a mismatched etag.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// The configuration of this memory layer. Set an empty `memory_config` to enable the memory layer. Unset this
+        /// to disable the memory layer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryConfig")]
+        public virtual GoogleBigtableAdminV2MemoryLayerMemoryConfig MemoryConfig { get; set; }
+
+        /// <summary>
+        /// Identifier. Name of the memory layer. This is always:
+        /// "projects/{project}/instances/{instance}/clusters/{cluster}/memoryLayer".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The current state of the memory layer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
     }
 
     /// <summary>A create, update, or delete of a particular column family.</summary>
@@ -10275,6 +10651,10 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// <summary>Standard options for isolating this app profile's traffic from other use cases.</summary>
     public class StandardIsolation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The memory config to use for requests sent using this app profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryConfig")]
+        public virtual MemoryConfig MemoryConfig { get; set; }
+
         /// <summary>The priority of requests sent using this app profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual string Priority { get; set; }
@@ -10606,6 +10986,10 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>Geography</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geographyType")]
         public virtual GoogleBigtableAdminV2TypeGeography GeographyType { get; set; }
+
+        /// <summary>Int32</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("int32Type")]
+        public virtual GoogleBigtableAdminV2TypeInt32 Int32Type { get; set; }
 
         /// <summary>Int64</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("int64Type")]
@@ -11274,6 +11658,109 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logicalView")]
         public virtual LogicalView LogicalView { get; set; }
+
+        /// <summary>Optional. The list of fields to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata for the Operation returned by UpdateMemoryLayer.</summary>
+    public class UpdateMemoryLayerMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _finishTimeRaw;
+
+        private object _finishTime;
+
+        /// <summary>The time at which the operation failed or was completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finishTime")]
+        public virtual string FinishTimeRaw
+        {
+            get => _finishTimeRaw;
+            set
+            {
+                _finishTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _finishTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FinishTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FinishTimeDateTimeOffset instead.")]
+        public virtual object FinishTime
+        {
+            get => _finishTime;
+            set
+            {
+                _finishTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _finishTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="FinishTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FinishTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FinishTimeRaw);
+            set => FinishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The request that prompted the initiation of this UpdateMemoryLayer operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalRequest")]
+        public virtual UpdateMemoryLayerRequest OriginalRequest { get; set; }
+
+        private string _requestTimeRaw;
+
+        private object _requestTime;
+
+        /// <summary>The time at which the original request was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestTime")]
+        public virtual string RequestTimeRaw
+        {
+            get => _requestTimeRaw;
+            set
+            {
+                _requestTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _requestTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RequestTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RequestTimeDateTimeOffset instead.")]
+        public virtual object RequestTime
+        {
+            get => _requestTime;
+            set
+            {
+                _requestTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _requestTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RequestTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RequestTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RequestTimeRaw);
+            set => RequestTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for BigtableInstanceAdmin.UpdateMemoryLayer.</summary>
+    public class UpdateMemoryLayerRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The memory layer to update. The memory layer's `name` format is as follows:
+        /// `projects/{project}/instances/{instance}/clusters/{cluster}/memoryLayer`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryLayer")]
+        public virtual MemoryLayer MemoryLayer { get; set; }
 
         /// <summary>Optional. The list of fields to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
