@@ -4116,10 +4116,14 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -4128,10 +4132,14 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             public class ListRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.ListLocationsResponse>
             {
@@ -4251,6 +4259,25 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>AppParams contains the parameters for creating an AppHub Application.</summary>
+    public class AppParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Grouping used to construct the name of the AppHub Application. Multiple UnitKinds can specify the same group
+        /// to use the same Application across their respective units. Corresponds to the app_boundary_id in the ADC
+        /// composite ApplicationTemplate. Defaults to UnitKind.name
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("group")]
+        public virtual string Group { get; set; }
+
+        /// <summary>Corresponds to the scope in the ADC composite ApplicationTemplate. Defaults to REGIONAL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual Scope Scope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Blueprints are OCI Images that contain all of the artifacts needed to provision a unit. Metadata such as, type
     /// of the engine used to actuate the blueprint (e.g. terraform, helm etc) and version will come from the image
@@ -4272,6 +4299,53 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         /// <summary>Output only. Version metadata if present on the blueprint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ComponentRef represents a reference to a component resource. Next ID: 4</summary>
+    public class ComponentRef : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the component in composite.Components</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("component")]
+        public virtual string Component { get; set; }
+
+        /// <summary>Reference to the Composite ApplicationTemplate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compositeRef")]
+        public virtual CompositeRef CompositeRef { get; set; }
+
+        /// <summary>
+        /// Revision of the component. If the component does not have a revision, this field will be explicitly set to
+        /// the revision of the composite ApplicationTemplate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual string Revision { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CompositeRef represents a reference to a composite resource. Next ID: 4</summary>
+    public class CompositeRef : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Reference to the ApplicationTemplate resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationTemplate")]
+        public virtual string ApplicationTemplate { get; set; }
+
+        /// <summary>
+        /// Revision of the ApplicationTemplate to use. Changes to revision will trigger manual resynchronization. If
+        /// empty, ApplicationTemplate will be ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual string Revision { get; set; }
+
+        /// <summary>
+        /// Output only. Reference to on-going AppTemplate import and replication operation (i.e. the operation_id for
+        /// the long-running operation). This field is opaque for external usage.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncOperation")]
+        public virtual string SyncOperation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4671,6 +4745,10 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
+        /// <summary>Output only. Reference to component and revision in a composite ApplicationTemplate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationTemplateComponent")]
+        public virtual ComponentRef ApplicationTemplateComponent { get; set; }
+
         /// <summary>
         /// Optional. Blueprints are OCI Images that contain all of the artifacts needed to provision a unit.
         /// </summary>
@@ -5014,7 +5092,7 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         public virtual string Release { get; set; }
 
         /// <summary>
-        /// Optional. Immutable. Name of the RolloutKind this rollout is stemming from and adhering to.
+        /// Required. Immutable. Name of the RolloutKind this rollout is stemming from and adhering to.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rolloutKind")]
         public virtual string RolloutKind { get; set; }
@@ -5421,6 +5499,27 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
+        /// <summary>
+        /// Reference to composite ApplicationTemplate. When specified, the template components will be imported into
+        /// their equivalent UnitKind, Release and Blueprint resources. Deleted references will not delete imported
+        /// resources. Should only be specified on source regions, and be unspecified on replica regions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationTemplate")]
+        public virtual CompositeRef ApplicationTemplate { get; set; }
+
+        /// <summary>
+        /// Output only. Name of repository in Artifact Registry for system-generated Blueprints, eg. Blueprints of
+        /// imported ApplicationTemplates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blueprintRepo")]
+        public virtual string BlueprintRepo { get; set; }
+
+        /// <summary>
+        /// Output only. A set of conditions which indicate the various conditions this resource can have.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual System.Collections.Generic.IList<SaasCondition> Conditions { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -5459,6 +5558,13 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         }
 
         /// <summary>
+        /// Output only. If the state is FAILED, the corresponding error code and message. Defaults to code=OK for all
+        /// other states.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>
         /// Output only. An opaque value that uniquely identifies a version or generation of a resource. It can be used
         /// to confirm that the client and server agree on the ordering of a resource being written.
         /// </summary>
@@ -5485,6 +5591,12 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. State of the Saas. It is always in ACTIVE state if the application_template is empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>
         /// Output only. The unique identifier of the resource. UID is unique in the time and space for this resource
@@ -5536,6 +5648,68 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         }
     }
 
+    /// <summary>SaasCondition describes the status of a Saas.</summary>
+    public class SaasCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _lastTransitionTimeRaw;
+
+        private object _lastTransitionTime;
+
+        /// <summary>Required. Last time the condition transited from one status to another.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastTransitionTime")]
+        public virtual string LastTransitionTimeRaw
+        {
+            get => _lastTransitionTimeRaw;
+            set
+            {
+                _lastTransitionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastTransitionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastTransitionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastTransitionTimeDateTimeOffset instead.")]
+        public virtual object LastTransitionTime
+        {
+            get => _lastTransitionTime;
+            set
+            {
+                _lastTransitionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastTransitionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastTransitionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastTransitionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastTransitionTimeRaw);
+            set => LastTransitionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. Human readable message indicating details about the last transition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Required. Brief reason for the condition's last transition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>Required. Status of the condition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>Required. Type of the condition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A time specification to schedule the maintenance.</summary>
     public class Schedule : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5577,6 +5751,46 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Scope of an application.</summary>
+    public class Scope : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Scope Type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5754,6 +5968,13 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        /// <summary>
+        /// Optional. Reference to the AppHub Application this unit belongs to. All resources deployed in this Unit will
+        /// be associated with the specified Application.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("application")]
+        public virtual string Application { get; set; }
 
         /// <summary>
         /// Optional. Output only. A set of conditions which indicate the various conditions this resource can have.
@@ -6091,6 +6312,14 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        /// <summary>AppParams contains the parameters for creating an AppHub Application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appParams")]
+        public virtual AppParams AppParams { get; set; }
+
+        /// <summary>Output only. Reference to component and revision in a composite ApplicationTemplate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationTemplateComponent")]
+        public virtual ComponentRef ApplicationTemplateComponent { get; set; }
 
         private string _createTimeRaw;
 
