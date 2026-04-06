@@ -11179,6 +11179,14 @@ namespace Google.Apis.Container.v1.Data
     public class NodeNetworkConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Immutable. The accelerator network profile for the node pool. For now the only valid value is "auto". If
+        /// specified, the network configuration of the nodes in this node pool will be managed by this profile for the
+        /// supported machine types, zone, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorNetworkProfile")]
+        public virtual string AcceleratorNetworkProfile { get; set; }
+
+        /// <summary>
         /// We specify the additional node networks for this node pool using this list. Each node network corresponds to
         /// an additional interface
         /// </summary>
