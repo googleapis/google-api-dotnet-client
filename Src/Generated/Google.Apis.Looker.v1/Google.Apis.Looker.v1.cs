@@ -1474,10 +1474,14 @@ namespace Google.Apis.Looker.v1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -1486,10 +1490,14 @@ namespace Google.Apis.Looker.v1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             public class ListRequest : LookerBaseServiceRequest<Google.Apis.Looker.v1.Data.ListLocationsResponse>
             {
@@ -1832,12 +1840,50 @@ namespace Google.Apis.Looker.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Ingress IP allowlist configuration.</summary>
+    public class IngressIpAllowlistConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of IP range rules to allow ingress traffic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowlistRules")]
+        public virtual System.Collections.Generic.IList<IngressIpAllowlistRule> AllowlistRules { get; set; }
+
+        /// <summary>Optional. Whether ingress IP allowlist functionality is enabled on the Looker instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Optional. Whether google service connections are enabled for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleServicesEnabled")]
+        public virtual System.Nullable<bool> GoogleServicesEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Ingress IP allowlist rule.</summary>
+    public class IngressIpAllowlistRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Description for the IP range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. The IP range to allow ingress traffic from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipRange")]
+        public virtual string IpRange { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A Looker instance.</summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Looker Instance Admin settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adminSettings")]
         public virtual AdminSettings AdminSettings { get; set; }
+
+        /// <summary>Optional. Indicates whether catalog integration is disabled for the Looker instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalogIntegrationOptOut")]
+        public virtual System.Nullable<bool> CatalogIntegrationOptOut { get; set; }
 
         /// <summary>Optional. Storage class of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("classType")]
@@ -1919,6 +1965,10 @@ namespace Google.Apis.Looker.v1.Data
         /// <summary>Optional. Whether Gemini feature is enabled on the Looker instance or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geminiEnabled")]
         public virtual System.Nullable<bool> GeminiEnabled { get; set; }
+
+        /// <summary>Optional. Ingress IP allowlist configuration for the Looker instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingressIpAllowlistConfig")]
+        public virtual IngressIpAllowlistConfig IngressIpAllowlistConfig { get; set; }
 
         /// <summary>Output only. Private Ingress IP (IPv4).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ingressPrivateIp")]
