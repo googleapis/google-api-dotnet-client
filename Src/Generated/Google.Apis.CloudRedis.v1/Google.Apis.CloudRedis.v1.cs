@@ -65,6 +65,17 @@ namespace Google.Apis.CloudRedis.v1
             /// Account.
             /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>
+            /// See your Google Cloud Memorystore for Redis data and the email address of your Google Account
+            /// </summary>
+            public static string RedisReadOnly = "https://www.googleapis.com/auth/redis.read-only";
+
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud Memorystore for Redis data and see the email address
+            /// for your Google Account
+            /// </summary>
+            public static string RedisReadWrite = "https://www.googleapis.com/auth/redis.read-write";
         }
 
         /// <summary>
@@ -77,6 +88,17 @@ namespace Google.Apis.CloudRedis.v1
             /// Account.
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>
+            /// See your Google Cloud Memorystore for Redis data and the email address of your Google Account
+            /// </summary>
+            public const string RedisReadOnly = "https://www.googleapis.com/auth/redis.read-only";
+
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud Memorystore for Redis data and see the email address
+            /// for your Google Account
+            /// </summary>
+            public const string RedisReadWrite = "https://www.googleapis.com/auth/redis.read-write";
         }
 
         /// <summary>Gets the Projects resource.</summary>
@@ -1192,6 +1214,623 @@ namespace Google.Apis.CloudRedis.v1
                 public ClustersResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    TokenAuthUsers = new TokenAuthUsersResource(service);
+                }
+
+                /// <summary>Gets the TokenAuthUsers resource.</summary>
+                public virtual TokenAuthUsersResource TokenAuthUsers { get; }
+
+                /// <summary>The "tokenAuthUsers" collection of methods.</summary>
+                public class TokenAuthUsersResource
+                {
+                    private const string Resource = "tokenAuthUsers";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public TokenAuthUsersResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        AuthTokens = new AuthTokensResource(service);
+                    }
+
+                    /// <summary>Gets the AuthTokens resource.</summary>
+                    public virtual AuthTokensResource AuthTokens { get; }
+
+                    /// <summary>The "authTokens" collection of methods.</summary>
+                    public class AuthTokensResource
+                    {
+                        private const string Resource = "authTokens";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public AuthTokensResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Removes a auth token for a user of a token based auth enabled instance.</summary>
+                        /// <param name="name">
+                        /// Required. The name of the token auth user resource that this auth token will be deleted
+                        /// from. Format:
+                        /// projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}/authTokens/{auth_token}
+                        /// </param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(this.service, name);
+                        }
+
+                        /// <summary>Removes a auth token for a user of a token based auth enabled instance.</summary>
+                        public class DeleteRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the token auth user resource that this auth token will be deleted
+                            /// from. Format:
+                            /// projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}/authTokens/{auth_token}
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/tokenAuthUsers/[^/]+/authTokens/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Gets a specific auth token for a specific token auth user.</summary>
+                        /// <param name="name">
+                        /// Required. The name of auth token for a token based auth enabled cluster. Format:
+                        /// projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}/authTokens/{auth_token}
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>Gets a specific auth token for a specific token auth user.</summary>
+                        public class GetRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.AuthToken>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of auth token for a token based auth enabled cluster. Format:
+                            /// projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}/authTokens/{auth_token}
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/tokenAuthUsers/[^/]+/authTokens/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Lists all the auth tokens for a specific token auth user.</summary>
+                        /// <param name="parent">
+                        /// Required. The parent resource that this auth token will be listed for. Format:
+                        /// projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(this.service, parent);
+                        }
+
+                        /// <summary>Lists all the auth tokens for a specific token auth user.</summary>
+                        public class ListRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.ListAuthTokensResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The parent resource that this auth token will be listed for. Format:
+                            /// projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Optional. Expression for filtering results.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>Optional. Sort results by a defined order.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string OrderBy { get; set; }
+
+                            /// <summary>
+                            /// Optional. The maximum number of items to return. The maximum value is 1000; values above
+                            /// 1000 will be coerced to 1000. If not specified, a default value of 1000 will be used by
+                            /// the service. Regardless of the page_size value, the response may include a partial list
+                            /// and a caller should only rely on response's `next_page_token` to determine if there are
+                            /// more clusters left to be queried.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// Optional. The `next_page_token` value returned from a previous [ListTokenAuthUsers]
+                            /// request, if any.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/authTokens";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/tokenAuthUsers/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "orderBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Adds a auth token for a user of a token based auth enabled cluster.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="tokenAuthUser">
+                    /// Required. The name of the token auth user resource that this auth token will be added for.
+                    /// Format:
+                    /// projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}
+                    /// </param>
+                    public virtual AddAuthTokenRequest AddAuthToken(Google.Apis.CloudRedis.v1.Data.AddAuthTokenRequest body, string tokenAuthUser)
+                    {
+                        return new AddAuthTokenRequest(this.service, body, tokenAuthUser);
+                    }
+
+                    /// <summary>Adds a auth token for a user of a token based auth enabled cluster.</summary>
+                    public class AddAuthTokenRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new AddAuthToken request.</summary>
+                        public AddAuthTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRedis.v1.Data.AddAuthTokenRequest body, string tokenAuthUser) : base(service)
+                        {
+                            TokenAuthUser = tokenAuthUser;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the token auth user resource that this auth token will be added for.
+                        /// Format:
+                        /// projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("tokenAuthUser", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string TokenAuthUser { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRedis.v1.Data.AddAuthTokenRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "addAuthToken";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+tokenAuthUser}:addAuthToken";
+
+                        /// <summary>Initializes AddAuthToken parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("tokenAuthUser", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "tokenAuthUser",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/tokenAuthUsers/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a token auth user for a token based auth enabled cluster.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the token auth user to delete. Format:
+                    /// projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Deletes a token auth user for a token based auth enabled cluster.</summary>
+                    public class DeleteRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the token auth user to delete. Format:
+                        /// projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. If set to true, any child auth tokens of this user will also be deleted.
+                        /// Otherwise, the request will only work if the user has no auth tokens.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> Force { get; set; }
+
+                        /// <summary>
+                        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that
+                        /// if you must retry your request, the server will know to ignore the request if it has already
+                        /// been completed. The server will guarantee that for at least 60 minutes after the first
+                        /// request. For example, consider a situation where you make an initial request and the request
+                        /// times out. If you make the request again with the same request ID, the server can check if
+                        /// original operation with the same request ID was received, and if so, will ignore the second
+                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
+                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/tokenAuthUsers/[^/]+$",
+                            });
+                            RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "force",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets a specific token auth user for a basic auth enabled cluster.</summary>
+                    /// <param name="name">
+                    /// Required. The name of token auth user for a token based auth enabled cluster. Format:
+                    /// projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets a specific token auth user for a basic auth enabled cluster.</summary>
+                    public class GetRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.TokenAuthUser>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of token auth user for a token based auth enabled cluster. Format:
+                        /// projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/tokenAuthUsers/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all the token auth users for a token based auth enabled cluster.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent resource that this token based auth user will be listed for. Format:
+                    /// projects/{project}/locations/{location}/clusters/{cluster}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists all the token auth users for a token based auth enabled cluster.</summary>
+                    public class ListRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.ListTokenAuthUsersResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent resource that this token based auth user will be listed for. Format:
+                        /// projects/{project}/locations/{location}/clusters/{cluster}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. Expression for filtering results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Optional. Sort results by a defined order.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of items to return. If not specified, a default value of 1000
+                        /// will be used by the service. Regardless of the page_size value, the response may include a
+                        /// partial list and a caller should only rely on response's The maximum value is 1000; values
+                        /// above 1000 will be coerced to 1000. `next_page_token` to determine if there are more
+                        /// clusters left to be queried.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. The `next_page_token` value returned from a previous [ListTokenAuthUsers] request,
+                        /// if any.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/tokenAuthUsers";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Adds a token auth user for a token based auth enabled cluster.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="cluster">
+                /// Required. The cluster resource that this token auth user will be added for. Format:
+                /// projects/{project}/locations/{location}/clusters/{cluster}
+                /// </param>
+                public virtual AddTokenAuthUserRequest AddTokenAuthUser(Google.Apis.CloudRedis.v1.Data.AddTokenAuthUserRequest body, string cluster)
+                {
+                    return new AddTokenAuthUserRequest(this.service, body, cluster);
+                }
+
+                /// <summary>Adds a token auth user for a token based auth enabled cluster.</summary>
+                public class AddTokenAuthUserRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new AddTokenAuthUser request.</summary>
+                    public AddTokenAuthUserRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRedis.v1.Data.AddTokenAuthUserRequest body, string cluster) : base(service)
+                    {
+                        Cluster = cluster;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The cluster resource that this token auth user will be added for. Format:
+                    /// projects/{project}/locations/{location}/clusters/{cluster}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("cluster", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Cluster { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRedis.v1.Data.AddTokenAuthUserRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "addTokenAuthUser";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+cluster}:addTokenAuthUser";
+
+                    /// <summary>Initializes AddTokenAuthUser parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("cluster", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "cluster",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
+                    }
                 }
 
                 /// <summary>
@@ -3141,6 +3780,89 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for AddAuthToken.</summary>
+    public class AddAuthTokenRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The auth token to add.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authToken")]
+        public virtual AuthToken AuthToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for AddTokenAuthUser.</summary>
+    public class AddTokenAuthUserRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The id of the token auth user to add.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenAuthUser")]
+        public virtual string TokenAuthUser { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Auth token for the cluster.</summary>
+    public class AuthToken : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Create time of the auth token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Identifier. Name of the auth token. Format:
+        /// projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}/authTokens/{auth_token}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. State of the auth token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. The service generated authentication token used to connect to the Redis cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("token")]
+        public virtual string Token { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5805,6 +6527,27 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListAuthTokens.</summary>
+    public class ListAuthTokensResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of auth tokens in the project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authTokens")]
+        public virtual System.Collections.Generic.IList<AuthToken> AuthTokens { get; set; }
+
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Unordered list. Auth tokens that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for [ListBackupCollections].</summary>
     public class ListBackupCollectionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5941,6 +6684,27 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
         /// list all resources across all supported locations.
         /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListTokenAuthUsers.</summary>
+    public class ListTokenAuthUsersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of token auth users in the project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenAuthUsers")]
+        public virtual System.Collections.Generic.IList<TokenAuthUser> TokenAuthUsers { get; set; }
+
+        /// <summary>Unordered list. Token auth users that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
@@ -7419,6 +8183,24 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Sha1 Fingerprint of the certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha1Fingerprint")]
         public virtual string Sha1Fingerprint { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a token based auth user for the cluster.</summary>
+    public class TokenAuthUser : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Identifier. The resource name of the token based auth user. Format:
+        /// projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The state of the token based auth user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
