@@ -22206,6 +22206,14 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual BumperAd BumperAd { get; set; }
 
         /// <summary>
+        /// Optional. The DCM tracking ad info. Only valid for Demand Gen ads. To remove the DCM tracking ad info,
+        /// please leave this field empty. Retrieval and management of Demand Gen resources is currently in beta. This
+        /// field is only available to allowlisted users.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dcmTrackingInfo")]
+        public virtual DcmTrackingInfo DcmTrackingInfo { get; set; }
+
+        /// <summary>
         /// Details of a [Demand Gen carousel
         /// ad](//support.google.com/displayvideo/answer/15598924?&amp;amp;sjid=11207068802760924844-NC#CarouselAd).
         /// </summary>
@@ -26839,6 +26847,25 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details on the DCM tracking.</summary>
+    public class DcmTrackingInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The DCM creative id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creativeId")]
+        public virtual System.Nullable<long> CreativeId { get; set; }
+
+        /// <summary>Required. The DCM placement id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placementId")]
+        public virtual System.Nullable<long> PlacementId { get; set; }
+
+        /// <summary>Required. The DCM tracking ad id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackingAdId")]
+        public virtual System.Nullable<long> TrackingAdId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A request listing which assigned targeting options of a given targeting type should be deleted.
     /// </summary>
@@ -26878,9 +26905,10 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// <summary>
         /// Optional. The value used by the bidding strategy. This can be set at the line item and ad group level. This
         /// field is only applicable for the following strategy types: * `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPA` *
-        /// `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_ROAS` Value of this field is in micros of the advertiser's currency
-        /// or ROAS value. For example, 1000000 represents 1.0 standard units of the currency or 100% ROAS value. If not
-        /// using an applicable strategy, the value of this field will be 0.
+        /// `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPC` * `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_ROAS` Value of this
+        /// field is in micros of the advertiser's currency or ROAS value. For example, 1000000 represents 1.0 standard
+        /// units of the currency or 100% ROAS value. If not using an applicable strategy, the value of this field will
+        /// be 0.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<long> Value { get; set; }
