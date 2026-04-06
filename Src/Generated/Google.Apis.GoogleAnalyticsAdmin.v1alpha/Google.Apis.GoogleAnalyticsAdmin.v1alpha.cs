@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -312,17 +312,17 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
 
             /// <summary>
-            /// The maximum number of AccountSummary resources to return. The service may return fewer than this value,
-            /// even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum
-            /// value is 200; (higher values will be coerced to the maximum)
+            /// Optional. The maximum number of AccountSummary resources to return. The service may return fewer than
+            /// this value, even if there are additional pages. If unspecified, at most 50 resources will be returned.
+            /// The maximum value is 200; (higher values will be coerced to the maximum)
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>
-            /// A page token, received from a previous `ListAccountSummaries` call. Provide this to retrieve the
-            /// subsequent page. When paginating, all other parameters provided to `ListAccountSummaries` must match the
-            /// call that provided the page token.
+            /// Optional. A page token, received from a previous `ListAccountSummaries` call. Provide this to retrieve
+            /// the subsequent page. When paginating, all other parameters provided to `ListAccountSummaries` must match
+            /// the call that provided the page token.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -1127,17 +1127,17 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
 
             /// <summary>
-            /// The maximum number of resources to return. The service may return fewer than this value, even if there
-            /// are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200;
-            /// (higher values will be coerced to the maximum)
+            /// Optional. The maximum number of resources to return. The service may return fewer than this value, even
+            /// if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value
+            /// is 200; (higher values will be coerced to the maximum)
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>
-            /// A page token, received from a previous `ListAccounts` call. Provide this to retrieve the subsequent
-            /// page. When paginating, all other parameters provided to `ListAccounts` must match the call that provided
-            /// the page token.
+            /// Optional. A page token, received from a previous `ListAccounts` call. Provide this to retrieve the
+            /// subsequent page. When paginating, all other parameters provided to `ListAccounts` must match the call
+            /// that provided the page token.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -1192,7 +1192,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// <summary>Updates an account.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Output only. Resource name of this account. Format: accounts/{account} Example: "accounts/100"
+        /// Identifier. Resource name of this account. Format: accounts/{account} Example: "accounts/100"
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAccount body, string name)
         {
@@ -1211,7 +1211,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
 
             /// <summary>
-            /// Output only. Resource name of this account. Format: accounts/{account} Example: "accounts/100"
+            /// Identifier. Resource name of this account. Format: accounts/{account} Example: "accounts/100"
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -3260,7 +3260,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <summary>Updates a CalculatedMetric on a property.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Output only. Resource name for this CalculatedMetric. Format:
+            /// Identifier. Resource name for this CalculatedMetric. Format:
             /// 'properties/{property_id}/calculatedMetrics/{calculated_metric_id}'
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCalculatedMetric body, string name)
@@ -3280,7 +3280,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 }
 
                 /// <summary>
-                /// Output only. Resource name for this CalculatedMetric. Format:
+                /// Identifier. Resource name for this CalculatedMetric. Format:
                 /// 'properties/{property_id}/calculatedMetrics/{calculated_metric_id}'
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -3874,16 +3874,16 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// The maximum number of resources to return. If unspecified, at most 50 resources will be returned.
-                /// The maximum value is 200; (higher values will be coerced to the maximum)
+                /// Optional. The maximum number of resources to return. If unspecified, at most 50 resources will be
+                /// returned. The maximum value is 200; (higher values will be coerced to the maximum)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// A page token, received from a previous `ListConversionEvents` call. Provide this to retrieve the
-                /// subsequent page. When paginating, all other parameters provided to `ListConversionEvents` must match
-                /// the call that provided the page token.
+                /// Optional. A page token, received from a previous `ListConversionEvents` call. Provide this to
+                /// retrieve the subsequent page. When paginating, all other parameters provided to
+                /// `ListConversionEvents` must match the call that provided the page token.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -3933,7 +3933,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Output only. Resource name of this conversion event. Format:
+            /// Identifier. Resource name of this conversion event. Format:
             /// properties/{property}/conversionEvents/{conversion_event}
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaConversionEvent body, string name)
@@ -3955,7 +3955,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 }
 
                 /// <summary>
-                /// Output only. Resource name of this conversion event. Format:
+                /// Identifier. Resource name of this conversion event. Format:
                 /// properties/{property}/conversionEvents/{conversion_event}
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -4209,16 +4209,16 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// The maximum number of resources to return. If unspecified, at most 50 resources will be returned.
-                /// The maximum value is 200 (higher values will be coerced to the maximum).
+                /// Optional. The maximum number of resources to return. If unspecified, at most 50 resources will be
+                /// returned. The maximum value is 200 (higher values will be coerced to the maximum).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// A page token, received from a previous `ListCustomDimensions` call. Provide this to retrieve the
-                /// subsequent page. When paginating, all other parameters provided to `ListCustomDimensions` must match
-                /// the call that provided the page token.
+                /// Optional. A page token, received from a previous `ListCustomDimensions` call. Provide this to
+                /// retrieve the subsequent page. When paginating, all other parameters provided to
+                /// `ListCustomDimensions` must match the call that provided the page token.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -4266,7 +4266,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <summary>Updates a CustomDimension on a property.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Output only. Resource name for this CustomDimension resource. Format:
+            /// Identifier. Resource name for this CustomDimension resource. Format:
             /// properties/{property}/customDimensions/{customDimension}
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCustomDimension body, string name)
@@ -4286,7 +4286,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 }
 
                 /// <summary>
-                /// Output only. Resource name for this CustomDimension resource. Format:
+                /// Identifier. Resource name for this CustomDimension resource. Format:
                 /// properties/{property}/customDimensions/{customDimension}
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -4594,7 +4594,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <summary>Updates a CustomMetric on a property.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Output only. Resource name for this CustomMetric resource. Format:
+            /// Identifier. Resource name for this CustomMetric resource. Format:
             /// properties/{property}/customMetrics/{customMetric}
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCustomMetric body, string name)
@@ -4614,7 +4614,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 }
 
                 /// <summary>
-                /// Output only. Resource name for this CustomMetric resource. Format:
+                /// Identifier. Resource name for this CustomMetric resource. Format:
                 /// properties/{property}/customMetrics/{customMetric}
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -5586,15 +5586,15 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// The maximum number of resources to return. If unspecified, at most 10 resources will be
-                    /// returned. The maximum value is 10. Higher values will be coerced to the maximum.
+                    /// Optional. The maximum number of resources to return. If unspecified, at most 10 resources will
+                    /// be returned. The maximum value is 10. Higher values will be coerced to the maximum.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// A page token, received from a previous `ListMeasurementProtocolSecrets` call. Provide this to
-                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// Optional. A page token, received from a previous `ListMeasurementProtocolSecrets` call. Provide
+                    /// this to retrieve the subsequent page. When paginating, all other parameters provided to
                     /// `ListMeasurementProtocolSecrets` must match the call that provided the page token.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -5643,7 +5643,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 /// <summary>Updates a measurement protocol secret.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. Resource name of this secret. This secret may be a child of any type of stream. Format:
+                /// Identifier. Resource name of this secret. This secret may be a child of any type of stream. Format:
                 /// properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret body, string name)
@@ -5663,7 +5663,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     }
 
                     /// <summary>
-                    /// Output only. Resource name of this secret. This secret may be a child of any type of stream.
+                    /// Identifier. Resource name of this secret. This secret may be a child of any type of stream.
                     /// Format:
                     /// properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
                     /// </summary>
@@ -5927,16 +5927,16 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// The maximum number of resources to return. The service may return fewer than this value, even if
-                    /// there are additional pages. If unspecified, at most 50 resources will be returned. The maximum
-                    /// value is 200; (higher values will be coerced to the maximum)
+                    /// Optional. The maximum number of resources to return. The service may return fewer than this
+                    /// value, even if there are additional pages. If unspecified, at most 50 resources will be
+                    /// returned. The maximum value is 200; (higher values will be coerced to the maximum)
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// A page token, received from a previous `ListSKAdNetworkConversionValueSchemas` call. Provide
-                    /// this to retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// Optional. A page token, received from a previous `ListSKAdNetworkConversionValueSchemas` call.
+                    /// Provide this to retrieve the subsequent page. When paginating, all other parameters provided to
                     /// `ListSKAdNetworkConversionValueSchema` must match the call that provided the page token.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -5985,7 +5985,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 /// <summary>Updates a SKAdNetworkConversionValueSchema.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. Resource name of the schema. This will be child of ONLY an iOS stream, and there can be
+                /// Identifier. Resource name of the schema. This will be child of ONLY an iOS stream, and there can be
                 /// at most one such child under an iOS stream. Format:
                 /// properties/{property}/dataStreams/{dataStream}/sKAdNetworkConversionValueSchema
                 /// </param>
@@ -6006,8 +6006,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     }
 
                     /// <summary>
-                    /// Output only. Resource name of the schema. This will be child of ONLY an iOS stream, and there
-                    /// can be at most one such child under an iOS stream. Format:
+                    /// Identifier. Resource name of the schema. This will be child of ONLY an iOS stream, and there can
+                    /// be at most one such child under an iOS stream. Format:
                     /// properties/{property}/dataStreams/{dataStream}/sKAdNetworkConversionValueSchema
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -6457,7 +6457,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <summary>Updates a DataStream on a property.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Output only. Resource name of this Data Stream. Format: properties/{property_id}/dataStreams/{stream_id}
+            /// Identifier. Resource name of this Data Stream. Format: properties/{property_id}/dataStreams/{stream_id}
             /// Example: "properties/1000/dataStreams/2000"
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDataStream body, string name)
@@ -6477,7 +6477,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 }
 
                 /// <summary>
-                /// Output only. Resource name of this Data Stream. Format:
+                /// Identifier. Resource name of this Data Stream. Format:
                 /// properties/{property_id}/dataStreams/{stream_id} Example: "properties/1000/dataStreams/2000"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -7337,7 +7337,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <summary>Updates a DisplayVideo360AdvertiserLink on a property.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Output only. The resource name for this DisplayVideo360AdvertiserLink resource. Format:
+            /// Identifier. The resource name for this DisplayVideo360AdvertiserLink resource. Format:
             /// properties/{propertyId}/displayVideo360AdvertiserLinks/{linkId} Note: linkId is not the Display
             /// &amp;amp; Video 360 Advertiser ID
             /// </param>
@@ -7358,7 +7358,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 }
 
                 /// <summary>
-                /// Output only. The resource name for this DisplayVideo360AdvertiserLink resource. Format:
+                /// Identifier. The resource name for this DisplayVideo360AdvertiserLink resource. Format:
                 /// properties/{propertyId}/displayVideo360AdvertiserLinks/{linkId} Note: linkId is not the Display
                 /// &amp;amp; Video 360 Advertiser ID
                 /// </summary>
@@ -7871,17 +7871,17 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// The maximum number of resources to return. The service may return fewer than this value, even if
-                /// there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value
-                /// is 200; (higher values will be coerced to the maximum)
+                /// Optional. The maximum number of resources to return. The service may return fewer than this value,
+                /// even if there are additional pages. If unspecified, at most 50 resources will be returned. The
+                /// maximum value is 200; (higher values will be coerced to the maximum)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// A page token, received from a previous `ListFirebaseLinks` call. Provide this to retrieve the
-                /// subsequent page. When paginating, all other parameters provided to `ListFirebaseLinks` must match
-                /// the call that provided the page token.
+                /// Optional. A page token, received from a previous `ListFirebaseLinks` call. Provide this to retrieve
+                /// the subsequent page. When paginating, all other parameters provided to `ListFirebaseLinks` must
+                /// match the call that provided the page token.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -8064,16 +8064,16 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// The maximum number of resources to return. If unspecified, at most 50 resources will be returned.
-                /// The maximum value is 200 (higher values will be coerced to the maximum).
+                /// Optional. The maximum number of resources to return. If unspecified, at most 50 resources will be
+                /// returned. The maximum value is 200 (higher values will be coerced to the maximum).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// A page token, received from a previous `ListGoogleAdsLinks` call. Provide this to retrieve the
-                /// subsequent page. When paginating, all other parameters provided to `ListGoogleAdsLinks` must match
-                /// the call that provided the page token.
+                /// Optional. A page token, received from a previous `ListGoogleAdsLinks` call. Provide this to retrieve
+                /// the subsequent page. When paginating, all other parameters provided to `ListGoogleAdsLinks` must
+                /// match the call that provided the page token.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -8121,7 +8121,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <summary>Updates a GoogleAdsLink on a property</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Output only. Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note: googleAdsLinkId is
+            /// Identifier. Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note: googleAdsLinkId is
             /// not the Google Ads customer ID.
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaGoogleAdsLink body, string name)
@@ -8141,7 +8141,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 }
 
                 /// <summary>
-                /// Output only. Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note: googleAdsLinkId
+                /// Identifier. Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note: googleAdsLinkId
                 /// is not the Google Ads customer ID.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -8402,16 +8402,16 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// The maximum number of resources to return. If unspecified, at most 50 resources will be returned.
-                /// The maximum value is 200; (higher values will be coerced to the maximum)
+                /// Optional. The maximum number of resources to return. If unspecified, at most 50 resources will be
+                /// returned. The maximum value is 200; (higher values will be coerced to the maximum)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// A page token, received from a previous `ListKeyEvents` call. Provide this to retrieve the subsequent
-                /// page. When paginating, all other parameters provided to `ListKeyEvents` must match the call that
-                /// provided the page token.
+                /// Optional. A page token, received from a previous `ListKeyEvents` call. Provide this to retrieve the
+                /// subsequent page. When paginating, all other parameters provided to `ListKeyEvents` must match the
+                /// call that provided the page token.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -9432,7 +9432,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <summary>Updates a SearchAds360Link on a property.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Output only. The resource name for this SearchAds360Link resource. Format:
+            /// Identifier. The resource name for this SearchAds360Link resource. Format:
             /// properties/{propertyId}/searchAds360Links/{linkId} Note: linkId is not the Search Ads 360 advertiser ID
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSearchAds360Link body, string name)
@@ -9452,7 +9452,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 }
 
                 /// <summary>
-                /// Output only. The resource name for this SearchAds360Link resource. Format:
+                /// Identifier. The resource name for this SearchAds360Link resource. Format:
                 /// properties/{propertyId}/searchAds360Links/{linkId} Note: linkId is not the Search Ads 360 advertiser
                 /// ID
                 /// </summary>
@@ -10572,17 +10572,17 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             public virtual string Filter { get; set; }
 
             /// <summary>
-            /// The maximum number of resources to return. The service may return fewer than this value, even if there
-            /// are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200;
-            /// (higher values will be coerced to the maximum)
+            /// Optional. The maximum number of resources to return. The service may return fewer than this value, even
+            /// if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value
+            /// is 200; (higher values will be coerced to the maximum)
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>
-            /// A page token, received from a previous `ListProperties` call. Provide this to retrieve the subsequent
-            /// page. When paginating, all other parameters provided to `ListProperties` must match the call that
-            /// provided the page token.
+            /// Optional. A page token, received from a previous `ListProperties` call. Provide this to retrieve the
+            /// subsequent page. When paginating, all other parameters provided to `ListProperties` must match the call
+            /// that provided the page token.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -10645,7 +10645,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// <summary>Updates a property.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Output only. Resource name of this property. Format: properties/{property_id} Example: "properties/1000"
+        /// Identifier. Resource name of this property. Format: properties/{property_id} Example: "properties/1000"
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaProperty body, string name)
         {
@@ -10664,7 +10664,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
 
             /// <summary>
-            /// Output only. Resource name of this property. Format: properties/{property_id} Example: "properties/1000"
+            /// Identifier. Resource name of this property. Format: properties/{property_id} Example: "properties/1000"
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -10980,7 +10980,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// <summary>Updates the singleton data retention settings for this property.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Output only. Resource name for this DataRetentionSetting resource. Format:
+        /// Identifier. Resource name for this DataRetentionSetting resource. Format:
         /// properties/{property}/dataRetentionSettings
         /// </param>
         public virtual UpdateDataRetentionSettingsRequest UpdateDataRetentionSettings(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDataRetentionSettings body, string name)
@@ -11000,7 +11000,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
 
             /// <summary>
-            /// Output only. Resource name for this DataRetentionSetting resource. Format:
+            /// Identifier. Resource name for this DataRetentionSetting resource. Format:
             /// properties/{property}/dataRetentionSettings
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -11573,7 +11573,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string GmpOrganization { get; set; }
 
         /// <summary>
-        /// Output only. Resource name of this account. Format: accounts/{account} Example: "accounts/100"
+        /// Identifier. Resource name of this account. Format: accounts/{account} Example: "accounts/100"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -11640,7 +11640,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Resource name for this account summary. Format: accountSummaries/{account_id} Example:
+        /// Identifier. Resource name for this account summary. Format: accountSummaries/{account_id} Example:
         /// "accountSummaries/1000"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -12400,7 +12400,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string MetricUnit { get; set; }
 
         /// <summary>
-        /// Output only. Resource name for this CalculatedMetric. Format:
+        /// Identifier. Resource name for this CalculatedMetric. Format:
         /// 'properties/{property_id}/calculatedMetrics/{calculated_metric_id}'
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -12854,7 +12854,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string EventName { get; set; }
 
         /// <summary>
-        /// Output only. Resource name of this conversion event. Format:
+        /// Identifier. Resource name of this conversion event. Format:
         /// properties/{property}/conversionEvents/{conversion_event}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -12996,7 +12996,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Output only. Resource name for this CustomDimension resource. Format:
+        /// Identifier. Resource name for this CustomDimension resource. Format:
         /// properties/{property}/customDimensions/{customDimension}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -13040,7 +13040,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string MeasurementUnit { get; set; }
 
         /// <summary>
-        /// Output only. Resource name for this CustomMetric resource. Format:
+        /// Identifier. Resource name for this CustomMetric resource. Format:
         /// properties/{property}/customMetrics/{customMetric}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -13114,7 +13114,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string EventDataRetention { get; set; }
 
         /// <summary>
-        /// Output only. Resource name for this DataRetentionSetting resource. Format:
+        /// Identifier. Resource name for this DataRetentionSetting resource. Format:
         /// properties/{property}/dataRetentionSettings
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -13138,7 +13138,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     public class GoogleAnalyticsAdminV1alphaDataSharingSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Resource name. Format: accounts/{account}/dataSharingSettings Example:
+        /// Identifier. Resource name. Format: accounts/{account}/dataSharingSettings Example:
         /// "accounts/1000/dataSharingSettings"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -13245,7 +13245,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData IosAppStreamData { get; set; }
 
         /// <summary>
-        /// Output only. Resource name of this Data Stream. Format: properties/{property_id}/dataStreams/{stream_id}
+        /// Identifier. Resource name of this Data Stream. Format: properties/{property_id}/dataStreams/{stream_id}
         /// Example: "properties/1000/dataStreams/2000"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -13415,7 +13415,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual System.Nullable<bool> CostDataSharingEnabled { get; set; }
 
         /// <summary>
-        /// Output only. The resource name for this DisplayVideo360AdvertiserLink resource. Format:
+        /// Identifier. The resource name for this DisplayVideo360AdvertiserLink resource. Format:
         /// properties/{propertyId}/displayVideo360AdvertiserLinks/{linkId} Note: linkId is not the Display &amp;amp;
         /// Video 360 Advertiser ID
         /// </summary>
@@ -13470,7 +13470,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails LinkProposalStatusDetails { get; set; }
 
         /// <summary>
-        /// Output only. The resource name for this DisplayVideo360AdvertiserLinkProposal resource. Format:
+        /// Identifier. The resource name for this DisplayVideo360AdvertiserLinkProposal resource. Format:
         /// properties/{propertyId}/displayVideo360AdvertiserLinkProposals/{proposalId} Note: proposalId is not the
         /// Display &amp;amp; Video 360 Advertiser ID
         /// </summary>
@@ -13927,7 +13927,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Output only. Example format: properties/1234/firebaseLinks/5678</summary>
+        /// <summary>Identifier. Example format: properties/1234/firebaseLinks/5678</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -13951,7 +13951,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     public class GoogleAnalyticsAdminV1alphaGlobalSiteTag : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Resource name for this GlobalSiteTag resource. Format:
+        /// Identifier. Resource name for this GlobalSiteTag resource. Format:
         /// properties/{property_id}/dataStreams/{stream_id}/globalSiteTag Example:
         /// "properties/123/dataStreams/456/globalSiteTag"
         /// </summary>
@@ -14033,7 +14033,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string CustomerId { get; set; }
 
         /// <summary>
-        /// Output only. Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note: googleAdsLinkId is not
+        /// Identifier. Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note: googleAdsLinkId is not
         /// the Google Ads customer ID.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -14782,7 +14782,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Output only. Resource name of this secret. This secret may be a child of any type of stream. Format:
+        /// Identifier. Resource name of this secret. This secret may be a child of any type of stream. Format:
         /// properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -15008,7 +15008,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string IndustryCategory { get; set; }
 
         /// <summary>
-        /// Output only. Resource name of this property. Format: properties/{property_id} Example: "properties/1000"
+        /// Identifier. Resource name of this property. Format: properties/{property_id} Example: "properties/1000"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -15450,7 +15450,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual System.Nullable<bool> ApplyConversionValues { get; set; }
 
         /// <summary>
-        /// Output only. Resource name of the schema. This will be child of ONLY an iOS stream, and there can be at most
+        /// Identifier. Resource name of the schema. This will be child of ONLY an iOS stream, and there can be at most
         /// one such child under an iOS stream. Format:
         /// properties/{property}/dataStreams/{dataStream}/sKAdNetworkConversionValueSchema
         /// </summary>
@@ -15527,7 +15527,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual System.Nullable<bool> CostDataSharingEnabled { get; set; }
 
         /// <summary>
-        /// Output only. The resource name for this SearchAds360Link resource. Format:
+        /// Identifier. The resource name for this SearchAds360Link resource. Format:
         /// properties/{propertyId}/searchAds360Links/{linkId} Note: linkId is not the Search Ads 360 advertiser ID
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
