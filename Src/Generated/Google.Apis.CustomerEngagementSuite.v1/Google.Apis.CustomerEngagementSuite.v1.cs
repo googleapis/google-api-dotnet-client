@@ -4790,10 +4790,14 @@ namespace Google.Apis.CustomerEngagementSuite.v1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -4802,10 +4806,14 @@ namespace Google.Apis.CustomerEngagementSuite.v1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             public class ListRequest : CustomerEngagementSuiteBaseServiceRequest<Google.Apis.CustomerEngagementSuite.v1.Data.ListLocationsResponse>
             {
@@ -8147,10 +8155,11 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         public virtual System.Nullable<bool> EnableMultilingualSupport { get; set; }
 
         /// <summary>
-        /// Optional. The action to perform when an agent receives input in an unsupported language. This can be a
-        /// predefined action or a custom tool call. Valid values are: - A tool's full resource name, which triggers a
-        /// specific tool execution. - A predefined system action, such as "escalate" or "exit", which triggers an
-        /// EndSession signal with corresponding metadata to terminate the conversation.
+        /// Optional. Deprecated: This feature is no longer supported. Use `enable_multilingual_support` instead to
+        /// improve handling of multilingual input. The action to perform when an agent receives input in an unsupported
+        /// language. This can be a predefined action or a custom tool call. Valid values are: - A tool's full resource
+        /// name, which triggers a specific tool execution. - A predefined system action, such as "escalate" or "exit",
+        /// which triggers an EndSession signal with corresponding metadata to terminate the conversation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fallbackAction")]
         public virtual string FallbackAction { get; set; }
