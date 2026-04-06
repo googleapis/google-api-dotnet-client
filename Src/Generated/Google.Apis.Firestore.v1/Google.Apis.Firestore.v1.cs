@@ -7408,6 +7408,13 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("queryScope")]
         public virtual string QueryScope { get; set; }
 
+        /// <summary>
+        /// Optional. Options for search indexes that are at the index definition level. This field is only currently
+        /// supported for indexes with MONGODB_COMPATIBLE_API ApiScope.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchIndexOptions")]
+        public virtual GoogleFirestoreAdminV1SearchIndexOptions SearchIndexOptions { get; set; }
+
         /// <summary>Optional. The number of shards for the index.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shardCount")]
         public virtual System.Nullable<int> ShardCount { get; set; }
@@ -7498,6 +7505,13 @@ namespace Google.Apis.Firestore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("order")]
         public virtual string Order { get; set; }
+
+        /// <summary>
+        /// Indicates that this field supports search operations. This field is only currently supported for indexes
+        /// with MONGODB_COMPATIBLE_API ApiScope.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchConfig")]
+        public virtual GoogleFirestoreAdminV1SearchConfig SearchConfig { get; set; }
 
         /// <summary>Indicates that this field supports nearest neighbor and distance operations on vector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vectorConfig")]
@@ -7944,6 +7958,111 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The configuration for how to index a field for search.</summary>
+    public class GoogleFirestoreAdminV1SearchConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The specification for building a geo search index for a field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geoSpec")]
+        public virtual GoogleFirestoreAdminV1SearchGeoSpec GeoSpec { get; set; }
+
+        /// <summary>Optional. The specification for building a number search index for a field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numberSpec")]
+        public virtual GoogleFirestoreAdminV1SearchNumberSpec NumberSpec { get; set; }
+
+        /// <summary>Optional. The specification for building a text search index for a field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textSpec")]
+        public virtual GoogleFirestoreAdminV1SearchTextSpec TextSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The specification for how to build a geo search index for a field.</summary>
+    public class GoogleFirestoreAdminV1SearchGeoSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Disables geoJSON indexing for the field. By default, geoJSON points are indexed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geoJsonIndexingDisabled")]
+        public virtual System.Nullable<bool> GeoJsonIndexingDisabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Options for search indexes at the definition level.</summary>
+    public class GoogleFirestoreAdminV1SearchIndexOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Custom partition fields to use for the search index. If unspecified, all indexed fields will be in
+        /// the same default partition. If a search index is created specifying custom partition fields, all search
+        /// queries using that index will be required to filter on the partition. For indexes with
+        /// MONGODB_COMPATIBLE_API ApiScope: This must refer to a top level field name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customPartitionFieldPaths")]
+        public virtual System.Collections.Generic.IList<string> CustomPartitionFieldPaths { get; set; }
+
+        /// <summary>
+        /// Optional. The language to use for text search indexes. Used as the default language if not overridden at the
+        /// document level by specifying the `text_language_override_field`. The language is specified as a BCP 47
+        /// language code. For indexes with MONGODB_COMPATIBLE_API ApiScope: If unspecified, the default language is
+        /// English. For indexes with `ANY_API` ApiScope: If unspecified, the default behavior is autodetect.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textLanguage")]
+        public virtual string TextLanguage { get; set; }
+
+        /// <summary>
+        /// Optional. The field in the document that specifies which language to use for that specific document. For
+        /// indexes with MONGODB_COMPATIBLE_API ApiScope: if unspecified, the language is taken from the "language"
+        /// field if it exists or from `text_language` if it does not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textLanguageOverrideFieldPath")]
+        public virtual string TextLanguageOverrideFieldPath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The specification for how to build a number search index for a field.</summary>
+    public class GoogleFirestoreAdminV1SearchNumberSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. How to index the number field value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexType")]
+        public virtual string IndexType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification of how the field should be indexed for search text indexes.</summary>
+    public class GoogleFirestoreAdminV1SearchTextIndexSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. How to index the text field value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexType")]
+        public virtual string IndexType { get; set; }
+
+        /// <summary>Required. How to match the text field value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchType")]
+        public virtual string MatchType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The specification for how to build a text search index for a field.</summary>
+    public class GoogleFirestoreAdminV1SearchTextSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Specifications for how the field should be indexed. Repeated so that the field can be indexed in
+        /// multiple ways.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleFirestoreAdminV1SearchTextIndexSpec> IndexSpecs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The configuration options for using the same encryption method as the source.</summary>
     public class GoogleFirestoreAdminV1SourceEncryptionOptions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7991,14 +8110,24 @@ namespace Google.Apis.Firestore.v1.Data
     }
 
     /// <summary>
-    /// The TTL (time-to-live) configuration for documents that have this `Field` set. Storing a timestamp value into a
-    /// TTL-enabled field will be treated as the document's absolute expiration time. For Enterprise edition databases,
-    /// the timestamp value may also be stored in an array value in the TTL-enabled field. Timestamp values in the past
-    /// indicate that the document is eligible for immediate expiration. Using any other data type or leaving the field
-    /// absent will disable expiration for the individual document.
+    /// The TTL (time-to-live) configuration for documents that have this `Field` set. A timestamp stored in a
+    /// TTL-enabled field will be used to determine the expiration time of the document. The expiration time is the sum
+    /// of the timestamp value and the `expiration_offset`. For Enterprise edition databases, the timestamp value may
+    /// alternatively be stored in an array value in the TTL-enabled field. An expiration time in the past indicates
+    /// that the document is eligible for immediate expiration. Using any other data type or leaving the field absent
+    /// will disable expiration for the individual document.
     /// </summary>
     public class GoogleFirestoreAdminV1TtlConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The offset, relative to the timestamp value from the TTL-enabled field, used to determine the
+        /// document's expiration time. `expiration_offset.seconds` must be between 0 and 2,147,483,647 inclusive.
+        /// Values more precise than seconds are rejected. If unset, defaults to 0, in which case the expiration time is
+        /// the same as the timestamp value from the TTL-enabled field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expirationOffset")]
+        public virtual object ExpirationOffset { get; set; }
+
         /// <summary>Output only. The state of the TTL configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -8013,6 +8142,13 @@ namespace Google.Apis.Firestore.v1.Data
         /// <summary>Specifies how the TTL configuration is changing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("changeType")]
         public virtual string ChangeType { get; set; }
+
+        /// <summary>
+        /// The offset, relative to the timestamp value in the TTL-enabled field, used determine the document's
+        /// expiration time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expirationOffset")]
+        public virtual object ExpirationOffset { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
