@@ -3826,10 +3826,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -3838,10 +3842,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             public class ListRequest : CloudAlloyDBAdminBaseServiceRequest<Google.Apis.CloudAlloyDBAdmin.v1.Data.GoogleCloudLocationListLocationsResponse>
             {
@@ -6293,6 +6301,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ip")]
         public virtual string Ip { get; set; }
 
+        /// <summary>Output only. Indicates whether the node set up to be configured as a hot standby.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isHotStandby")]
+        public virtual System.Nullable<bool> IsHotStandby { get; set; }
+
         /// <summary>
         /// Output only. Determined by state of the compute VM and postgres-service health. Compute VM state can have
         /// values listed in https://cloud.google.com/compute/docs/instances/instance-life-cycle and postgres-service
@@ -7618,7 +7630,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common model for database resource instance metadata. Next ID: 31</summary>
+    /// <summary>Common model for database resource instance metadata. Next ID: 32</summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Availability configuration for this instance</summary>
@@ -7729,6 +7741,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// <summary>Optional. Maintenance info for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceInfo")]
         public virtual StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo MaintenanceInfo { get; set; }
+
+        /// <summary>Optional. The modes of the database resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modes")]
+        public virtual System.Collections.Generic.IList<string> Modes { get; set; }
 
         /// <summary>
         /// Identifier for this resource's immediate parent/primary resource if the current resource is a replica or
@@ -7920,7 +7936,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
 
     /// <summary>
     /// Database resource signal data. This is used to send signals to Condor which are based on the DB/Instance/Fleet
-    /// level configurations. These will be used to send signals for all inventory types. Next ID: 9
+    /// level configurations. These will be used to send signals for all inventory types. Next ID: 10
     /// </summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7970,6 +7986,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastRefreshTimeRaw);
             set => LastRefreshTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Resource location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
 
         /// <summary>Database resource id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
