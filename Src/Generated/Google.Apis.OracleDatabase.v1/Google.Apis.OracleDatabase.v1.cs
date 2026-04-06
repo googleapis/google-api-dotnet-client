@@ -5907,9 +5907,20 @@ namespace Google.Apis.OracleDatabase.v1.Data
     /// </summary>
     public class AutonomousDatabase : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Immutable. The password for the default ADMIN user.</summary>
+        /// <summary>
+        /// Optional. Immutable. The password for the default ADMIN user. Note: Only one of
+        /// `admin_password_secret_version` or `admin_password` can be populated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adminPassword")]
         public virtual string AdminPassword { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. The resource name of a secret version in Secret Manager which contains the database
+        /// admin user's password. Format: projects/{project}/secrets/{secret}/versions/{version}. Note: Only one of
+        /// `admin_password_secret_version` or `admin_password` can be populated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminPasswordSecretVersion")]
+        public virtual string AdminPasswordSecretVersion { get; set; }
 
         /// <summary>Optional. Immutable. The subnet CIDR range for the Autonomous Database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cidr")]
@@ -7752,9 +7763,20 @@ namespace Google.Apis.OracleDatabase.v1.Data
     /// </summary>
     public class Database : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The password for the default ADMIN user.</summary>
+        /// <summary>
+        /// Optional. The password for the default ADMIN user. Note: Only one of `admin_password_secret_version` or
+        /// `admin_password` can be populated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adminPassword")]
         public virtual string AdminPassword { get; set; }
+
+        /// <summary>
+        /// Optional. The resource name of a secret version in Secret Manager which contains the database admin user's
+        /// password. Format: projects/{project}/secrets/{secret}/versions/{version}. Note: Only one of
+        /// `admin_password_secret_version` or `admin_password` can be populated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminPasswordSecretVersion")]
+        public virtual string AdminPasswordSecretVersion { get; set; }
 
         /// <summary>Optional. The character set for the database. The default is AL32UTF8.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("characterSet")]
@@ -7857,9 +7879,20 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual DatabaseProperties Properties { get; set; }
 
-        /// <summary>Optional. The TDE wallet password for the database.</summary>
+        /// <summary>
+        /// Optional. The TDE wallet password for the database. Note: Only one of `tde_wallet_password_secret_version`
+        /// or `tde_wallet_password` can be populated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tdeWalletPassword")]
         public virtual string TdeWalletPassword { get; set; }
+
+        /// <summary>
+        /// Optional. The resource name of a secret version in Secret Manager which contains the TDE wallet password for
+        /// the database. Format: projects/{project}/secrets/{secret}/versions/{version}. Note: Only one of
+        /// `tde_wallet_password_secret_version` or `tde_wallet_password` can be populated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tdeWalletPasswordSecretVersion")]
+        public virtual string TdeWalletPasswordSecretVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
