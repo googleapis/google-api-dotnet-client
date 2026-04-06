@@ -294,6 +294,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
                 this.service = service;
                 Backups = new BackupsResource(service);
                 Clusters = new ClustersResource(service);
+                Endpoints = new EndpointsResource(service);
                 Operations = new OperationsResource(service);
                 SupportedDatabaseFlags = new SupportedDatabaseFlagsResource(service);
             }
@@ -3351,6 +3352,525 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
                 }
             }
 
+            /// <summary>Gets the Endpoints resource.</summary>
+            public virtual EndpointsResource Endpoints { get; }
+
+            /// <summary>The "endpoints" collection of methods.</summary>
+            public class EndpointsResource
+            {
+                private const string Resource = "endpoints";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public EndpointsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new Endpoint in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The location of the new endpoint. For the required format, see the comment on the
+                /// Endpoint.name field.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.CloudAlloyDBAdmin.v1alpha.Data.Endpoint body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new Endpoint in a given project and location.</summary>
+                public class CreateRequest : CloudAlloyDBAdminBaseServiceRequest<Google.Apis.CloudAlloyDBAdmin.v1alpha.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAlloyDBAdmin.v1alpha.Data.Endpoint body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The location of the new endpoint. For the required format, see the comment on the
+                    /// Endpoint.name field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. ID of the requesting object.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("endpointId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string EndpointId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server ignores the request if it has already been completed.
+                    /// The server guarantees that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if the original operation with
+                    /// the same request ID was received, and if so, ignores the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. If set, the backend validates the request, but doesn't actually execute it.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudAlloyDBAdmin.v1alpha.Data.Endpoint Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/endpoints";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("endpointId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "endpointId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single Endpoint.</summary>
+                /// <param name="name">
+                /// Required. The name of the resource. For the required format, see the comment on the Endpoint.name
+                /// field.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single Endpoint.</summary>
+                public class DeleteRequest : CloudAlloyDBAdminBaseServiceRequest<Google.Apis.CloudAlloyDBAdmin.v1alpha.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the resource. For the required format, see the comment on the
+                    /// Endpoint.name field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The current etag of the Endpoint. If an etag is provided and does not match the
+                    /// current etag of the Endpoint, deletion will be blocked and an ABORTED error will be returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server ignores the request if it has already been completed.
+                    /// The server guarantees that for at least 60 minutes after the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if the original operation with
+                    /// the same request ID was received, and if so, ignores the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. If set, the backend validates the request, but doesn't actually execute it.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/endpoints/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single Endpoint.</summary>
+                /// <param name="name">
+                /// Required. The name of the resource. For the required format, see the comment on the Endpoint.name
+                /// field.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single Endpoint.</summary>
+                public class GetRequest : CloudAlloyDBAdminBaseServiceRequest<Google.Apis.CloudAlloyDBAdmin.v1alpha.Data.Endpoint>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the resource. For the required format, see the comment on the
+                    /// Endpoint.name field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/endpoints/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists Endpoints in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The name of the parent resource. For the required format, see the comment on the
+                /// Endpoint.name field. Additionally, you can perform an aggregated list operation by specifying a
+                /// value with the following format: * projects/{project}/locations/-
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists Endpoints in a given project and location.</summary>
+                public class ListRequest : CloudAlloyDBAdminBaseServiceRequest<Google.Apis.CloudAlloyDBAdmin.v1alpha.Data.ListEndpointsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the parent resource. For the required format, see the comment on the
+                    /// Endpoint.name field. Additionally, you can perform an aggregated list operation by specifying a
+                    /// value with the following format: * projects/{project}/locations/-
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Filtering results. This field is currently not supported, its value will be ignored if
+                    /// passed.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Hint for how to order the results</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListEndpoints` call. This should be provided
+                    /// to retrieve the subsequent page. This field is currently not supported, its value will be
+                    /// ignored if passed.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/endpoints";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single Endpoint.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. Identifier. The name of the endpoint resource with the format: *
+                /// projects/{project}/locations/{region}/endpoints/{endpoint_id} where the endpoint ID segment should
+                /// satisfy the regex expression `[a-z0-9-]+`. For more details see https://google.aip.dev/122. The
+                /// prefix of the endpoint resource name is the name of the parent resource: *
+                /// projects/{project}/locations/{region}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.CloudAlloyDBAdmin.v1alpha.Data.Endpoint body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single Endpoint.</summary>
+                public class PatchRequest : CloudAlloyDBAdminBaseServiceRequest<Google.Apis.CloudAlloyDBAdmin.v1alpha.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAlloyDBAdmin.v1alpha.Data.Endpoint body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. Identifier. The name of the endpoint resource with the format: *
+                    /// projects/{project}/locations/{region}/endpoints/{endpoint_id} where the endpoint ID segment
+                    /// should satisfy the regex expression `[a-z0-9-]+`. For more details see
+                    /// https://google.aip.dev/122. The prefix of the endpoint resource name is the name of the parent
+                    /// resource: * projects/{project}/locations/{region}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, update succeeds even if endpoint is not found. In that case, a new
+                    /// endpoint is created and `update_mask` is ignored.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server ignores the request if it has already been completed.
+                    /// The server guarantees that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if the original operation with
+                    /// the same request ID was received, and if so, ignores the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the Endpoint resource by
+                    /// the update. The fields specified in the update_mask are relative to the resource, not the full
+                    /// request. A field will be overwritten if it is in the mask. If the user does not provide a mask
+                    /// then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>
+                    /// Optional. If set, the backend validates the request, but doesn't actually execute it.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudAlloyDBAdmin.v1alpha.Data.Endpoint Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/endpoints/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the Operations resource.</summary>
             public virtual OperationsResource Operations { get; }
 
@@ -3826,10 +4346,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -3838,10 +4362,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             public class ListRequest : CloudAlloyDBAdminBaseServiceRequest<Google.Apis.CloudAlloyDBAdmin.v1alpha.Data.GoogleCloudLocationListLocationsResponse>
             {
@@ -5358,6 +5886,23 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The DNS config for the endpoint, containing the DNS record name, type and targets.</summary>
+    public class DNSConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The fully qualified domain name (FQDN) of the DNS record, e.g., ".location.alloydb-psa.goog".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsName")]
+        public virtual string DnsName { get; set; }
+
+        /// <summary>The type of the DNS record, e.g., "A", "AAAA", "CNAME".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsRecordType")]
+        public virtual string DnsRecordType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for Dataplex integration.</summary>
     public class DataplexConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5446,6 +5991,202 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Endpoint resource.</summary>
+    public class Endpoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+        /// https://google.aip.dev/128
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Create time stamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _deleteTimeRaw;
+
+        private object _deleteTime;
+
+        /// <summary>Output only. Delete time stamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual string DeleteTimeRaw
+        {
+            get => _deleteTimeRaw;
+            set
+            {
+                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deleteTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
+        public virtual object DeleteTime
+        {
+            get => _deleteTime;
+            set
+            {
+                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deleteTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>User-settable and human-readable display name for the Endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. The DNS config for the endpoint. Each endpoint is associated with a specific DNS name and the
+        /// DNS type. The DNS targets are the IP addresses of the target instances. The dns_type is the type of the DNS
+        /// record, eg. Type "A" or Type "CNAME". This field is not configurable by the user, and it is updated when
+        /// user specifies the target instances.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsConfig")]
+        public virtual DNSConfig DnsConfig { get; set; }
+
+        /// <summary>
+        /// Output only. The effective target instances that the endpoint is associated with. This is a list of target
+        /// instance names, e.g.
+        /// projects/{project_number}/locations/{location}/clusters/{cluster_id}/instances/{instance_id} For write
+        /// endpoint, there is only one effective target instance which has to be a primary instance. Effective target
+        /// instances are only different from target instances after a switchover or cross-region failover operation.
+        /// Otherwise, effective_target_instances are the same as target_instances. Note that after a cross-region
+        /// failover operation, the effective_target_instances can be stale until the operation to update the endpoint
+        /// is complete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveTargetInstances")]
+        public virtual System.Collections.Generic.IList<string> EffectiveTargetInstances { get; set; }
+
+        /// <summary>The type of the endpoint, either write or read.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointType")]
+        public virtual string EndpointType { get; set; }
+
+        /// <summary>For Resource freshness validation (https://google.aip.dev/154)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Output only. Identifier. The name of the endpoint resource with the format: *
+        /// projects/{project}/locations/{region}/endpoints/{endpoint_id} where the endpoint ID segment should satisfy
+        /// the regex expression `[a-z0-9-]+`. For more details see https://google.aip.dev/122. The prefix of the
+        /// endpoint resource name is the name of the parent resource: * projects/{project}/locations/{region}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of
+        /// Endpoint does not match the user's intended state, and the service is actively updating the Endpoint to
+        /// reconcile them. This can happen due to user-triggered updates or system actions like failover or
+        /// maintenance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
+        public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>Output only. The state of the endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// The names of the target instances for the endpoint, should be of format
+        /// projects/{project}/locations/{region}/clusters/{cluster}/instances/{instance}. For write endpoint, there is
+        /// only one target instance which has to be a primary instance. For read endpoint, there can be multiple target
+        /// instances which can be read or secondary instances. After a cross-region failover or switchover operation,
+        /// the endpoint will be associated with a different target instance. This change will be reflected in the
+        /// effective_target_instances field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetInstances")]
+        public virtual System.Collections.Generic.IList<string> TargetInstances { get; set; }
+
+        /// <summary>
+        /// Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and
+        /// it is retained until it is deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Update time stamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
     }
 
     /// <summary>Export cluster request.</summary>
@@ -6150,6 +6891,25 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for response to listing Endpoints</summary>
+    public class ListEndpointsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of Endpoints</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoints")]
+        public virtual System.Collections.Generic.IList<Endpoint> Endpoints { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for response to listing Instances</summary>
     public class ListInstancesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6387,6 +7147,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// <summary>Output only. The private IP address of the VM e.g. "10.57.0.34".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ip")]
         public virtual string Ip { get; set; }
+
+        /// <summary>Output only. Indicates whether the node set up to be configured as a hot standby.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isHotStandby")]
+        public virtual System.Nullable<bool> IsHotStandby { get; set; }
 
         /// <summary>
         /// Output only. Determined by state of the compute VM and postgres-service health. Compute VM state can have
@@ -6671,6 +7435,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. If set, the promote operation will attempt to recreate the original primary cluster as a secondary
+        /// cluster when it comes back online. Otherwise, the promoted cluster will be a standalone cluster. Currently
+        /// only supported when there is a single secondary cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failover")]
+        public virtual System.Nullable<bool> Failover { get; set; }
 
         /// <summary>
         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
@@ -7802,7 +8574,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common model for database resource instance metadata. Next ID: 31</summary>
+    /// <summary>Common model for database resource instance metadata. Next ID: 32</summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Availability configuration for this instance</summary>
@@ -7913,6 +8685,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// <summary>Optional. Maintenance info for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceInfo")]
         public virtual StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo MaintenanceInfo { get; set; }
+
+        /// <summary>Optional. The modes of the database resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modes")]
+        public virtual System.Collections.Generic.IList<string> Modes { get; set; }
 
         /// <summary>
         /// Identifier for this resource's immediate parent/primary resource if the current resource is a replica or
@@ -8104,7 +8880,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
 
     /// <summary>
     /// Database resource signal data. This is used to send signals to Condor which are based on the DB/Instance/Fleet
-    /// level configurations. These will be used to send signals for all inventory types. Next ID: 9
+    /// level configurations. These will be used to send signals for all inventory types. Next ID: 10
     /// </summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8154,6 +8930,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastRefreshTimeRaw);
             set => LastRefreshTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Resource location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
 
         /// <summary>Database resource id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
