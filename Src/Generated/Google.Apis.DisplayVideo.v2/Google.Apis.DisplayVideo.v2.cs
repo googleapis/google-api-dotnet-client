@@ -22228,9 +22228,10 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// <summary>
         /// Optional. The value used by the bidding strategy. This can be set at the line item and ad group level. This
         /// field is only applicable for the following strategy types: * `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPA` *
-        /// `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_ROAS` Value of this field is in micros of the advertiser's currency
-        /// or ROAS value. For example, 1000000 represents 1.0 standard units of the currency or 100% ROAS value. If not
-        /// using an applicable strategy, the value of this field will be 0.
+        /// `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPC` * `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_ROAS` Value of this
+        /// field is in micros of the advertiser's currency or ROAS value. For example, 1000000 represents 1.0 standard
+        /// units of the currency or 100% ROAS value. If not using an applicable strategy, the value of this field will
+        /// be 0.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<long> Value { get; set; }
