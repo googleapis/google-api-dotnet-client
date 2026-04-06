@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -299,7 +299,9 @@ namespace Google.Apis.IAMCredentials.v1
             }
 
             /// <summary>Returns the trust boundary info for a given workforce pool.</summary>
-            /// <param name="name">Required. Resource name of workforce pool.</param>
+            /// <param name="name">
+            /// Required. Resource name of workforce pool. Format: `locations/global/workforcePools/{pool_id}`
+            /// </param>
             public virtual GetAllowedLocationsRequest GetAllowedLocations(string name)
             {
                 return new GetAllowedLocationsRequest(this.service, name);
@@ -315,7 +317,9 @@ namespace Google.Apis.IAMCredentials.v1
                     InitParameters();
                 }
 
-                /// <summary>Required. Resource name of workforce pool.</summary>
+                /// <summary>
+                /// Required. Resource name of workforce pool. Format: `locations/global/workforcePools/{pool_id}`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -397,7 +401,10 @@ namespace Google.Apis.IAMCredentials.v1
                 }
 
                 /// <summary>Returns the trust boundary info for a given workload identity pool.</summary>
-                /// <param name="name">Required. Resource name of workload identity pool.</param>
+                /// <param name="name">
+                /// Required. Resource name of workload identity pool. Format:
+                /// `projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}`
+                /// </param>
                 public virtual GetAllowedLocationsRequest GetAllowedLocations(string name)
                 {
                     return new GetAllowedLocationsRequest(this.service, name);
@@ -413,7 +420,10 @@ namespace Google.Apis.IAMCredentials.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Resource name of workload identity pool.</summary>
+                    /// <summary>
+                    /// Required. Resource name of workload identity pool. Format:
+                    /// `projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}`
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -583,7 +593,9 @@ namespace Google.Apis.IAMCredentials.v1
             }
 
             /// <summary>Returns the trust boundary info for a given service account.</summary>
-            /// <param name="name">Required. Resource name of service account.</param>
+            /// <param name="name">
+            /// Required. Resource name of service account. Format: `projects/-/serviceAccounts/{service_account_email}`
+            /// </param>
             public virtual GetAllowedLocationsRequest GetAllowedLocations(string name)
             {
                 return new GetAllowedLocationsRequest(this.service, name);
@@ -599,7 +611,10 @@ namespace Google.Apis.IAMCredentials.v1
                     InitParameters();
                 }
 
-                /// <summary>Required. Resource name of service account.</summary>
+                /// <summary>
+                /// Required. Resource name of service account. Format:
+                /// `projects/-/serviceAccounts/{service_account_email}`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
