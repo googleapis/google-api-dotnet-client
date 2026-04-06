@@ -8684,12 +8684,18 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+        /// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume. This field is
+        /// used for legacy FILE pools. For Unified pools, use the `large_capacity_config` field instead. This field and
+        /// `large_capacity_config` are mutually exclusive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("largeCapacity")]
         public virtual System.Nullable<bool> LargeCapacity { get; set; }
 
-        /// <summary>Optional. Large capacity config for the volume.</summary>
+        /// <summary>
+        /// Optional. Large capacity config for the volume. Enables and configures large capacity for volumes in Unified
+        /// pools with File protocols. Not applicable for Block protocols in Unified pools. This field and the legacy
+        /// `large_capacity` boolean field are mutually exclusive.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("largeCapacityConfig")]
         public virtual LargeCapacityConfig LargeCapacityConfig { get; set; }
 
