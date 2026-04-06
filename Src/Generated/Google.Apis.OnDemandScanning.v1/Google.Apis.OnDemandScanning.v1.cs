@@ -835,6 +835,21 @@ namespace Google.Apis.OnDemandScanning.v1
 }
 namespace Google.Apis.OnDemandScanning.v1.Data
 {
+    /// <summary>AISkillAnalysisOccurrence provides the results of an AI-based skill analysis.</summary>
+    public class AISkillAnalysisOccurrence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Findings produced by the analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("findings")]
+        public virtual System.Collections.Generic.IList<Finding> Findings { get; set; }
+
+        /// <summary>Name of the skill that produced this analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skillName")]
+        public virtual string SkillName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An alias to a repo revision.</summary>
     public class AliasContext : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2016,6 +2031,41 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Finding provides details for a single finding within an AISkillAnalysisOccurrence.</summary>
+    public class Finding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Category of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>Detailed description of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Path to the file where the finding was detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
+        public virtual string FilePath { get; set; }
+
+        /// <summary>Unique identifier of the rule that produced this finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleId")]
+        public virtual string RuleId { get; set; }
+
+        /// <summary>Severity of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>Code snippet relevant to the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
+        public virtual string Snippet { get; set; }
+
+        /// <summary>Title of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A set of properties that uniquely identify a given Docker image.</summary>
     public class Fingerprint : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2847,6 +2897,10 @@ namespace Google.Apis.OnDemandScanning.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AdvisoryPublishTimeRaw);
             set => AdvisoryPublishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Describes an AI skill analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiSkillAnalysis")]
+        public virtual AISkillAnalysisOccurrence AiSkillAnalysis { get; set; }
 
         /// <summary>Describes an attestation of an artifact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attestation")]
