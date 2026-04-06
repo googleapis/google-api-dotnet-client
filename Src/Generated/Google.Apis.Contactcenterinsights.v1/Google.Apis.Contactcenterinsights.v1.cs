@@ -14892,6 +14892,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>Configurable dashboard's widget that displays data as a chart.</summary>
     public class GoogleCloudContactcenterinsightsV1Chart : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional action to be taken when the chart is clicked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual GoogleCloudContactcenterinsightsV1ChartAction Action { get; set; }
+
         /// <summary>Output only. Chart type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chartType")]
         public virtual string ChartType { get; set; }
@@ -15007,6 +15011,17 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>The width of the chart in grid units.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
         public virtual System.Nullable<int> Width { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The action to be taken when the chart is clicked.</summary>
+    public class GoogleCloudContactcenterinsightsV1ChartAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Redirect action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redirectAction")]
+        public virtual GoogleCloudContactcenterinsightsV1RedirectAction RedirectAction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15600,6 +15615,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>A user-provided string indicating the outcome of the agent's segment of the call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dispositionCode")]
         public virtual string DispositionCode { get; set; }
+
+        /// <summary>The entry subagent's display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entrySubagentDisplayName")]
+        public virtual string EntrySubagentDisplayName { get; set; }
 
         /// <summary>The agent's location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
@@ -21458,6 +21477,17 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The redirect action to be taken when the chart is clicked.</summary>
+    public class GoogleCloudContactcenterinsightsV1RedirectAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The relative path to redirect to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relativePath")]
+        public virtual string RelativePath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Regex match configuration.</summary>
     public class GoogleCloudContactcenterinsightsV1RegexMatchConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -24176,6 +24206,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>A user-provided string indicating the outcome of the agent's segment of the call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dispositionCode")]
         public virtual string DispositionCode { get; set; }
+
+        /// <summary>The entry subagent's display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entrySubagentDisplayName")]
+        public virtual string EntrySubagentDisplayName { get; set; }
 
         /// <summary>The agent's location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
@@ -30478,6 +30512,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>A user-provided string indicating the outcome of the agent's segment of the call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dispositionCode")]
         public virtual string DispositionCode { get; set; }
+
+        /// <summary>The entry subagent's display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entrySubagentDisplayName")]
+        public virtual string EntrySubagentDisplayName { get; set; }
 
         /// <summary>The agent's location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
