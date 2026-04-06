@@ -65,6 +65,15 @@ namespace Google.Apis.Dataproc.v1
             /// Account.
             /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud Dataproc data and see the email address for your
+            /// Google Account
+            /// </summary>
+            public static string Dataproc = "https://www.googleapis.com/auth/dataproc";
+
+            /// <summary>See your Google Cloud Dataproc data and the email address of your Google Account</summary>
+            public static string DataprocReadOnly = "https://www.googleapis.com/auth/dataproc.read-only";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Dataproc API.</summary>
@@ -75,6 +84,15 @@ namespace Google.Apis.Dataproc.v1
             /// Account.
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud Dataproc data and see the email address for your
+            /// Google Account
+            /// </summary>
+            public const string Dataproc = "https://www.googleapis.com/auth/dataproc";
+
+            /// <summary>See your Google Cloud Dataproc data and the email address of your Google Account</summary>
+            public const string DataprocReadOnly = "https://www.googleapis.com/auth/dataproc.read-only";
         }
 
         /// <summary>Gets the Projects resource.</summary>
@@ -8884,11 +8902,17 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. The standard List page size.</summary>
+                    /// <summary>
+                    /// Optional. The maximum number of clusters to return in each response. The service may return
+                    /// fewer than this value. If unspecified, the default value is 200. The maximum value is 1000.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>Optional. The standard List page token.</summary>
+                    /// <summary>
+                    /// Optional. A page token received from a previous ListClusters call. Provide this token to
+                    /// retrieve the subsequent page.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -12886,6 +12910,10 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>Optional. Port/endpoint configuration for this cluster</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpointConfig")]
         public virtual EndpointConfig EndpointConfig { get; set; }
+
+        /// <summary>Optional. The cluster engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("engine")]
+        public virtual string Engine { get; set; }
 
         /// <summary>Optional. The shared Compute Engine config settings for all instances in a cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gceClusterConfig")]
@@ -18563,6 +18591,10 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desc")]
         public virtual string Desc { get; set; }
 
+        /// <summary>Optional. Additional metadata for the spark plan graph cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<SqlPlanMetric> Metrics { get; set; }
 
@@ -18597,6 +18629,10 @@ namespace Google.Apis.Dataproc.v1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("desc")]
         public virtual string Desc { get; set; }
+
+        /// <summary>Optional. Additional metadata for the spark plan graph cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<SqlPlanMetric> Metrics { get; set; }
