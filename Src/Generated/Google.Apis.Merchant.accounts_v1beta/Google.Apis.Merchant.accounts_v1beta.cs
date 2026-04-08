@@ -963,7 +963,8 @@ namespace Google.Apis.Merchant.accounts_v1beta
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. The name of the developer registration to be created for the merchant account that the GCP
-            /// will be registered with. Format: `accounts/{account}/developerRegistration`
+            /// will be registered with. Format: `accounts/{account}/developerRegistration` The {account} used must be
+            /// the same account where user calling this API method is directly added to.
             /// </param>
             public virtual RegisterGcpRequest RegisterGcp(Google.Apis.Merchant.accounts_v1beta.Data.RegisterGcpRequest body, string name)
             {
@@ -987,7 +988,8 @@ namespace Google.Apis.Merchant.accounts_v1beta
 
                 /// <summary>
                 /// Required. The name of the developer registration to be created for the merchant account that the GCP
-                /// will be registered with. Format: `accounts/{account}/developerRegistration`
+                /// will be registered with. Format: `accounts/{account}/developerRegistration` The {account} used must
+                /// be the same account where user calling this API method is directly added to.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
