@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1124,7 +1124,10 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
                 this.service = service;
             }
 
-            /// <summary>Gets the Google-updated version of the specified location.</summary>
+            /// <summary>
+            /// Gets the version of the specified location, returning an `Attributes` message that provides the
+            /// attributes view as it appears to consumers, which may be different than the merchant's information.
+            /// </summary>
             /// <param name="name">
             /// Required. Google identifier for this location in the form of `locations/{location_id}/attributes`.
             /// </param>
@@ -1133,7 +1136,10 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
                 return new GetGoogleUpdatedRequest(this.service, name);
             }
 
-            /// <summary>Gets the Google-updated version of the specified location.</summary>
+            /// <summary>
+            /// Gets the version of the specified location, returning an `Attributes` message that provides the
+            /// attributes view as it appears to consumers, which may be different than the merchant's information.
+            /// </summary>
             public class GetGoogleUpdatedRequest : MyBusinessBusinessInformationBaseServiceRequest<Google.Apis.MyBusinessBusinessInformation.v1.Data.Attributes>
             {
                 /// <summary>Constructs a new GetGoogleUpdated request.</summary>
@@ -1333,14 +1339,22 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
             }
         }
 
-        /// <summary>Gets the Google-updated version of the specified location.</summary>
+        /// <summary>
+        /// Gets the version of the specified location, returning a `GoogleUpdatedLocation` that provides the location
+        /// view as it appears to consumers and masks indicating which fields are different than the merchant's
+        /// information.
+        /// </summary>
         /// <param name="name">Required. The name of the location to fetch.</param>
         public virtual GetGoogleUpdatedRequest GetGoogleUpdated(string name)
         {
             return new GetGoogleUpdatedRequest(this.service, name);
         }
 
-        /// <summary>Gets the Google-updated version of the specified location.</summary>
+        /// <summary>
+        /// Gets the version of the specified location, returning a `GoogleUpdatedLocation` that provides the location
+        /// view as it appears to consumers and masks indicating which fields are different than the merchant's
+        /// information.
+        /// </summary>
         public class GetGoogleUpdatedRequest : MyBusinessBusinessInformationBaseServiceRequest<Google.Apis.MyBusinessBusinessInformation.v1.Data.GoogleUpdatedLocation>
         {
             /// <summary>Constructs a new GetGoogleUpdated request.</summary>
@@ -1878,7 +1892,7 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
 
     /// <summary>
     /// Represents a free-form service offered by the merchant. These are services that are not exposed as part of our
-    /// structure service data. The merchant manually enters the names for of such services via a geomerchant surface.
+    /// structure service data. The merchant manually enters the names for such services using a geomerchant surface.
     /// </summary>
     public class FreeFormServiceItem : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1892,7 +1906,7 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
         /// <summary>
         /// Required. Language-tagged labels for the item. We recommend that item names be 140 characters or less, and
         /// descriptions 250 characters or less. This field should only be set if the input is a custom service item.
-        /// Standardized service types should be updated via service_type_id.
+        /// Standardized service types should be updated using service_type_id.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
         public virtual Label Label { get; set; }
@@ -1929,10 +1943,16 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a location that was modified by Google.</summary>
+    /// <summary>
+    /// Represents the view of a location as it appears to consumers, which includes updates that are currently serving
+    /// on Google Maps and Search.
+    /// </summary>
     public class GoogleUpdatedLocation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The fields that Google updated.</summary>
+        /// <summary>
+        /// The fields where the values in the view as it appears to consumers are different than the merchant's
+        /// information. To accept these changes, patch the location. To reject, patch with your preferred values.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diffMask")]
         public virtual object DiffMask { get; set; }
 
@@ -1940,7 +1960,11 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual Location Location { get; set; }
 
-        /// <summary>The fields that have pending edits that haven't yet been pushed to Maps and Search.</summary>
+        /// <summary>
+        /// The fields where the merchant has provided an update that is currently in flight and hasn't yet been
+        /// published to Maps and Search. This mask only tracks the status of the merchant's own edits, not external
+        /// changes.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pendingMask")]
         public virtual object PendingMask { get; set; }
 
@@ -2227,7 +2251,7 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
         /// <summary>
         /// Output only. Indicates whether the place ID associated with this location has updates that need to be
         /// updated or rejected by the client. If this boolean is set, you should call the `getGoogleUpdated` method to
-        /// lookup information that's needs to be verified.
+        /// look up information that's needs to be verified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasGoogleUpdated")]
         public virtual System.Nullable<bool> HasGoogleUpdated { get; set; }
