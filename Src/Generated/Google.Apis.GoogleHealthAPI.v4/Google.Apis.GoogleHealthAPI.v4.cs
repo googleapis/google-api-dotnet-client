@@ -802,8 +802,8 @@ namespace Google.Apis.GoogleHealthAPI.v4
                 /// majority of the data types, individual data points do not need to be identified and this field would
                 /// be empty. Format: `users/{user}/dataTypes/{data_type}/dataPoints/{data_point}` Example:
                 /// `users/abcd1234/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef` The `{user}` ID is
-                /// a system-generated identifier, as described in Profile.encoded_id. The `{data_type}` ID corresponds
-                /// to the kebab-case version of the field names in the DataPoint data union field, e.g.
+                /// a system-generated identifier, as described in Identity.health_user_id. The `{data_type}` ID
+                /// corresponds to the kebab-case version of the field names in the DataPoint data union field, e.g.
                 /// `total-calories` for the `total_calories` field. The `{data_point}` ID can be client-provided or
                 /// system-generated. If client-provided, it must be a string of 4-63 characters, containing only
                 /// lowercase letters, numbers, and hyphens.
@@ -832,7 +832,7 @@ namespace Google.Apis.GoogleHealthAPI.v4
                     /// majority of the data types, individual data points do not need to be identified and this field
                     /// would be empty. Format: `users/{user}/dataTypes/{data_type}/dataPoints/{data_point}` Example:
                     /// `users/abcd1234/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef` The `{user}` ID
-                    /// is a system-generated identifier, as described in Profile.encoded_id. The `{data_type}` ID
+                    /// is a system-generated identifier, as described in Identity.health_user_id. The `{data_type}` ID
                     /// corresponds to the kebab-case version of the field names in the DataPoint data union field, e.g.
                     /// `total-calories` for the `total_calories` field. The `{data_point}` ID can be client-provided or
                     /// system-generated. If client-provided, it must be a string of 4-63 characters, containing only
@@ -840,10 +840,6 @@ namespace Google.Apis.GoogleHealthAPI.v4
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
-                    /// <summary>Optional. The list of fields to update.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object UpdateMask { get; set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.GoogleHealthAPI.v4.Data.DataPoint Body { get; set; }
@@ -871,14 +867,6 @@ namespace Google.Apis.GoogleHealthAPI.v4
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^users/[^/]+/dataTypes/[^/]+/dataPoints/[^/]+$",
-                        });
-                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                     }
                 }
@@ -1530,18 +1518,29 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     /// <summary>Optional metadata for the application that provided this data.</summary>
     public class Application : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Captures the client ID of the entity that recorded the data.</summary>
+        /// <summary>
+        /// Output only. The Google OAuth 2.0 client ID of the web application or service that recorded the data. This
+        /// is the client ID used during the Google OAuth flow to obtain user credentials. This field is
+        /// system-populated when the data is uploaded from Google Web API.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleWebClientId")]
         public virtual string GoogleWebClientId { get; set; }
 
         /// <summary>
-        /// Output only. A unique ID from an external data source. A unique identifier of the mobile application, e.g.
-        /// `com.google.fitbit`
+        /// Output only. A unique identifier for the mobile application that was the source of the data. This is
+        /// typically the application's package name on Android (e.g., `com.google.fitbit`) or the bundle ID on iOS.
+        /// This field is informational and helps trace data origin. This field is system-populated when the data is
+        /// uploaded from the Fitbit mobile application, Health Connect or Health Kit.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
         public virtual string PackageName { get; set; }
 
-        /// <summary>Output only. Captures the client ID of the web application that recorded the data.</summary>
+        /// <summary>
+        /// Output only. The client ID of the application that recorded the data. This ID is a legacy Fitbit API client
+        /// ID, which is different from a Google OAuth client ID. Example format: `ABC123`. This field is
+        /// system-populated and used for tracing data from legacy Fitbit API integrations. This field is
+        /// system-populated when the data is uploaded from a legacy Fitbit API integration.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webClientId")]
         public virtual string WebClientId { get; set; }
 
@@ -2141,8 +2140,8 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// the data types, individual data points do not need to be identified and this field would be empty. Format:
         /// `users/{user}/dataTypes/{data_type}/dataPoints/{data_point}` Example:
         /// `users/abcd1234/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef` The `{user}` ID is a
-        /// system-generated identifier, as described in Profile.encoded_id. The `{data_type}` ID corresponds to the
-        /// kebab-case version of the field names in the DataPoint data union field, e.g. `total-calories` for the
+        /// system-generated identifier, as described in Identity.health_user_id. The `{data_type}` ID corresponds to
+        /// the kebab-case version of the field names in the DataPoint data union field, e.g. `total-calories` for the
         /// `total_calories` field. The `{data_point}` ID can be client-provided or system-generated. If
         /// client-provided, it must be a string of 4-63 characters, containing only lowercase letters, numbers, and
         /// hyphens.
@@ -3449,8 +3448,8 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// the data types, individual data points do not need to be identified and this field would be empty. Format:
         /// `users/{user}/dataTypes/{data_type}/dataPoints/{data_point}` Example:
         /// `users/abcd1234/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef` The `{user}` ID is a
-        /// system-generated identifier, as described in Profile.encoded_id. The `{data_type}` ID corresponds to the
-        /// kebab-case version of the field names in the DataPoint data union field, e.g. `total-calories` for the
+        /// system-generated identifier, as described in Identity.health_user_id. The `{data_type}` ID corresponds to
+        /// the kebab-case version of the field names in the DataPoint data union field, e.g. `total-calories` for the
         /// `total_calories` field. The `{data_point}` ID can be client-provided or system-generated. If
         /// client-provided, it must be a string of 4-63 characters, containing only lowercase letters, numbers, and
         /// hyphens.
@@ -4081,8 +4080,7 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         public virtual string TimeZone { get; set; }
 
         /// <summary>
-        /// Optional. The duration of the offset from UTC in milliseconds. This offset is the difference between the
-        /// user's current local time and UTC. Updates to this field are currently not supported.
+        /// Optional. The user's timezone offset relative to UTC. Updates to this field are currently not supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utcOffset")]
         public virtual object UtcOffset { get; set; }
