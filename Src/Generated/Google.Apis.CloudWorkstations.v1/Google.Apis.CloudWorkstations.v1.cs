@@ -4630,6 +4630,25 @@ namespace Google.Apis.CloudWorkstations.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Optional. Specifies the redirect URL for unauthorized requests received by workstation VMs in this cluster.
+        /// Redirects to this endpoint will send a base64 encoded `state` query param containing the target workstation
+        /// name and original request hostname. The endpoint is responsible for retrieving a token using
+        /// `GenerateAccessToken` and redirecting back to the original hostname with the token.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workstationAuthorizationUrl")]
+        public virtual string WorkstationAuthorizationUrl { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the launch URL for workstations in this cluster. Requests sent to unstarted workstations
+        /// will be redirected to this URL. Requests redirected to the launch endpoint will be sent with a `workstation`
+        /// and `project` query parameter containing the full workstation resource name and project ID, respectively.
+        /// The launch endpoint is responsible for starting the workstation, polling it until it reaches
+        /// `STATE_RUNNING`, and then issuing a redirect to the workstation's host URL.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workstationLaunchUrl")]
+        public virtual string WorkstationLaunchUrl { get; set; }
     }
 
     /// <summary>
