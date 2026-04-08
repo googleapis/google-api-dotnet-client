@@ -488,6 +488,64 @@ namespace Google.Apis.AgentRegistry.v1alpha
                         });
                     }
                 }
+
+                /// <summary>Searches Agents in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. Parent value for SearchAgentsRequest. Format: `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual SearchRequest Search(Google.Apis.AgentRegistry.v1alpha.Data.SearchAgentsRequest body, string parent)
+                {
+                    return new SearchRequest(this.service, body, parent);
+                }
+
+                /// <summary>Searches Agents in a given project and location.</summary>
+                public class SearchRequest : AgentRegistryBaseServiceRequest<Google.Apis.AgentRegistry.v1alpha.Data.SearchAgentsResponse>
+                {
+                    /// <summary>Constructs a new Search request.</summary>
+                    public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.AgentRegistry.v1alpha.Data.SearchAgentsRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent value for SearchAgentsRequest. Format:
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AgentRegistry.v1alpha.Data.SearchAgentsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "search";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/agents:search";
+
+                    /// <summary>Initializes Search parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Endpoints resource.</summary>
@@ -814,6 +872,65 @@ namespace Google.Apis.AgentRegistry.v1alpha
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Searches McpServers in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. Parent value for SearchMcpServersRequest. Format:
+                /// `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual SearchRequest Search(Google.Apis.AgentRegistry.v1alpha.Data.SearchMcpServersRequest body, string parent)
+                {
+                    return new SearchRequest(this.service, body, parent);
+                }
+
+                /// <summary>Searches McpServers in a given project and location.</summary>
+                public class SearchRequest : AgentRegistryBaseServiceRequest<Google.Apis.AgentRegistry.v1alpha.Data.SearchMcpServersResponse>
+                {
+                    /// <summary>Constructs a new Search request.</summary>
+                    public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.AgentRegistry.v1alpha.Data.SearchMcpServersRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent value for SearchMcpServersRequest. Format:
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AgentRegistry.v1alpha.Data.SearchMcpServersRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "search";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/mcpServers:search";
+
+                    /// <summary>Initializes Search parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
                         });
                     }
                 }
@@ -2520,6 +2637,127 @@ namespace Google.Apis.AgentRegistry.v1alpha.Data
         /// <summary>Output only. The type of the protocol.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for searching Agents</summary>
+    public class SearchAgentsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The maximum number of search results to return per page. The page size is capped at `100`, even if
+        /// a larger value is specified. A negative value will result in an `INVALID_ARGUMENT` error. If unspecified or
+        /// set to `0`, a default value of `20` will be used. The server may return fewer results than requested.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; }
+
+        /// <summary>
+        /// Optional. If present, retrieve the next batch of results from the preceding call to this method.
+        /// `page_token` must be the value of `next_page_token` from the previous response. The values of all other
+        /// method parameters, must be identical to those in the previous call.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; }
+
+        /// <summary>
+        /// Optional. Search criteria used to select the Agents to return. If no search criteria is specified then all
+        /// accessible Agents will be returned. Search expressions can be used to restrict results based upon searchable
+        /// fields, where the operators can be used along with the suffix wildcard symbol `*`. See
+        /// [instructions](https://docs.cloud.google.com/agent-registry/search-agents-and-tools) for more details.
+        /// Allowed operators: `=`, `:`, `NOT`, `AND`, `OR`, and `()`. Searchable fields: | Field | `=` | `:` | `*` |
+        /// Keyword Search | |--------------------|-----|-----|-----|----------------| | agentId | Yes | Yes | Yes |
+        /// Included | | name | No | Yes | Yes | Included | | displayName | No | Yes | Yes | Included | | description |
+        /// No | Yes | No | Included | | skills | No | Yes | No | Included | | skills.id | No | Yes | No | Included | |
+        /// skills.name | No | Yes | No | Included | | skills.description | No | Yes | No | Included | | skills.tags |
+        /// No | Yes | No | Included | | skills.examples | No | Yes | No | Included | Examples: *
+        /// `agentId=urn:agent:projects-123:projects:123:locations:us-central1:reasoningEngines:1234` to find the agent
+        /// with the specified agent ID. * `name:important` to find agents whose name contains `important` as a word. *
+        /// `displayName:works*` to find agents whose display name contains words that start with `works`. *
+        /// `skills.tags:test` to find agents whose skills tags contain `test`. * `planner OR booking` to find agents
+        /// whose metadata contains the words `planner` or `booking`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchString")]
+        public virtual string SearchString { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to searching Agents</summary>
+    public class SearchAgentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of Agents that match the `search_string`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agents")]
+        public virtual System.Collections.Generic.IList<Agent> Agents { get; set; }
+
+        /// <summary>
+        /// If there are more results than those appearing in this response, then `next_page_token` is included. To get
+        /// the next set of results, call this method again using the value of `next_page_token` as `page_token`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for searching MCP Servers</summary>
+    public class SearchMcpServersRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The maximum number of search results to return per page. The page size is capped at `100`, even if
+        /// a larger value is specified. A negative value will result in an `INVALID_ARGUMENT` error. If unspecified or
+        /// set to `0`, a default value of `20` will be used. The server may return fewer results than requested.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; }
+
+        /// <summary>
+        /// Optional. If present, retrieve the next batch of results from the preceding call to this method.
+        /// `page_token` must be the value of `next_page_token` from the previous response. The values of all other
+        /// method parameters, must be identical to those in the previous call.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; }
+
+        /// <summary>
+        /// Optional. Search criteria used to select the MCP Servers to return. If no search criteria is specified then
+        /// all accessible MCP Servers will be returned. Search expressions can be used to restrict results based upon
+        /// searchable fields, where the operators can be used along with the suffix wildcard symbol `*`. See
+        /// [instructions](https://docs.cloud.google.com/agent-registry/search-agents-and-tools) for more details.
+        /// Allowed operators: `=`, `:`, `NOT`, `AND`, `OR`, and `()`. Searchable fields: | Field | `=` | `:` | `*` |
+        /// Keyword Search | |--------------------|-----|-----|-----|----------------| | mcpServerId | Yes | Yes | Yes |
+        /// Included | | name | No | Yes | Yes | Included | | displayName | No | Yes | Yes | Included | Examples: *
+        /// `mcpServerId=urn:mcp:projects-123:projects:123:locations:us-central1:agentregistry:services:service-id` to
+        /// find the MCP Server with the specified MCP Server ID. * `name:important` to find MCP Servers whose name
+        /// contains `important` as a word. * `displayName:works*` to find MCP Servers whose display name contains words
+        /// that start with `works`. * `planner OR booking` to find MCP Servers whose metadata contains the words
+        /// `planner` or `booking`. * `mcpServerId:service-id AND (displayName:planner OR displayName:booking)` to find
+        /// MCP Servers whose MCP Server ID contains `service-id` and whose display name contains `planner` or
+        /// `booking`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchString")]
+        public virtual string SearchString { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to searching MCP Servers</summary>
+    public class SearchMcpServersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of McpServers that match the `search_string`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mcpServers")]
+        public virtual System.Collections.Generic.IList<McpServer> McpServers { get; set; }
+
+        /// <summary>
+        /// If there are more results than those appearing in this response, then `next_page_token` is included. To get
+        /// the next set of results, call this method again using the value of `next_page_token` as `page_token`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
