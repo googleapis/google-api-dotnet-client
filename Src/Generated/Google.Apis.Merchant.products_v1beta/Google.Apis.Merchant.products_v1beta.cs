@@ -304,14 +304,14 @@ namespace Google.Apis.Merchant.products_v1beta
             /// (RFC 4648 Section 5). The decoded string must result in the `content_language~feed_label~offer_id`
             /// structure. This encoding MUST be used if any part of the product identifier (like `offer_id`) contains
             /// characters such as `/`, `%`, or `~`. * Example: To represent the product ID `en~US~sku/123`, the
-            /// `{productInput}` segment must be the base64url encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`.
-            /// The full resource name for the product would be `accounts/123/productInputs/ZW5-VVN-c2t1LzEyMw`. 2.
-            /// **Plain Format**: The `{productInput}` segment is the tilde-separated string
-            /// `content_language~feed_label~offer_id`. This format is suitable only when `content_language`,
-            /// `feed_label`, and `offer_id` do not contain URL-problematic characters like `/`, `%`, or `~`. We
-            /// recommend using the **Encoded Format** for all product IDs to ensure correct parsing, especially those
-            /// containing special characters. The presence of tilde (`~`) characters in the `{productInput}` segment is
-            /// used to differentiate between the two formats.
+            /// `{productInput}` segment must be the unpadded base64url encoding of this string, which is
+            /// `ZW5-VVN-c2t1LzEyMw`. The full resource name for the product would be
+            /// `accounts/123/productInputs/ZW5-VVN-c2t1LzEyMw`. 2. **Plain Format**: The `{productInput}` segment is
+            /// the tilde-separated string `content_language~feed_label~offer_id`. This format is suitable only when
+            /// `content_language`, `feed_label`, and `offer_id` do not contain URL-problematic characters like `/`,
+            /// `%`, or `~`. We recommend using the **Encoded Format** for all product IDs to ensure correct parsing,
+            /// especially those containing special characters. The presence of tilde (`~`) characters in the
+            /// `{productInput}` segment is used to differentiate between the two formats.
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -342,14 +342,15 @@ namespace Google.Apis.Merchant.products_v1beta
                 /// unpadded base64url encoded string (RFC 4648 Section 5). The decoded string must result in the
                 /// `content_language~feed_label~offer_id` structure. This encoding MUST be used if any part of the
                 /// product identifier (like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To
-                /// represent the product ID `en~US~sku/123`, the `{productInput}` segment must be the base64url
-                /// encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`. The full resource name for the product would
-                /// be `accounts/123/productInputs/ZW5-VVN-c2t1LzEyMw`. 2. **Plain Format**: The `{productInput}`
-                /// segment is the tilde-separated string `content_language~feed_label~offer_id`. This format is
-                /// suitable only when `content_language`, `feed_label`, and `offer_id` do not contain URL-problematic
-                /// characters like `/`, `%`, or `~`. We recommend using the **Encoded Format** for all product IDs to
-                /// ensure correct parsing, especially those containing special characters. The presence of tilde (`~`)
-                /// characters in the `{productInput}` segment is used to differentiate between the two formats.
+                /// represent the product ID `en~US~sku/123`, the `{productInput}` segment must be the unpadded
+                /// base64url encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`. The full resource name for the
+                /// product would be `accounts/123/productInputs/ZW5-VVN-c2t1LzEyMw`. 2. **Plain Format**: The
+                /// `{productInput}` segment is the tilde-separated string `content_language~feed_label~offer_id`. This
+                /// format is suitable only when `content_language`, `feed_label`, and `offer_id` do not contain
+                /// URL-problematic characters like `/`, `%`, or `~`. We recommend using the **Encoded Format** for all
+                /// product IDs to ensure correct parsing, especially those containing special characters. The presence
+                /// of tilde (`~`) characters in the `{productInput}` segment is used to differentiate between the two
+                /// formats.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -503,13 +504,14 @@ namespace Google.Apis.Merchant.products_v1beta
             /// Section 5). The decoded string must result in the `content_language~feed_label~offer_id` structure. This
             /// encoding MUST be used if any part of the product identifier (like `offer_id`) contains characters such
             /// as `/`, `%`, or `~`. * Example: To represent the product ID `en~US~sku/123`, the `{productinput}`
-            /// segment must be the base64url encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`. The full resource
-            /// name for the product would be `accounts/123/productInputs/ZW5-VVN-c2t1LzEyMw`. 2. **Plain Format**: The
-            /// `{productinput}` segment is the tilde-separated string `content_language~feed_label~offer_id`. This
-            /// format is suitable only when `content_language`, `feed_label`, and `offer_id` do not contain
-            /// URL-problematic characters like `/`, `%`, or `~`. We recommend using the **Encoded Format** for all
-            /// product IDs to ensure correct parsing, especially those containing special characters. The presence of
-            /// tilde (`~`) characters in the `{productinput}` segment is used to differentiate between the two formats.
+            /// segment must be the unpadded base64url encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`. The full
+            /// resource name for the product would be `accounts/123/productInputs/ZW5-VVN-c2t1LzEyMw`. 2. **Plain
+            /// Format**: The `{productinput}` segment is the tilde-separated string
+            /// `content_language~feed_label~offer_id`. This format is suitable only when `content_language`,
+            /// `feed_label`, and `offer_id` do not contain URL-problematic characters like `/`, `%`, or `~`. We
+            /// recommend using the **Encoded Format** for all product IDs to ensure correct parsing, especially those
+            /// containing special characters. The presence of tilde (`~`) characters in the `{productinput}` segment is
+            /// used to differentiate between the two formats.
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Merchant.products_v1beta.Data.ProductInput body, string name)
             {
@@ -542,8 +544,8 @@ namespace Google.Apis.Merchant.products_v1beta
                 /// 4648 Section 5). The decoded string must result in the `content_language~feed_label~offer_id`
                 /// structure. This encoding MUST be used if any part of the product identifier (like `offer_id`)
                 /// contains characters such as `/`, `%`, or `~`. * Example: To represent the product ID
-                /// `en~US~sku/123`, the `{productinput}` segment must be the base64url encoding of this string, which
-                /// is `ZW5-VVN-c2t1LzEyMw`. The full resource name for the product would be
+                /// `en~US~sku/123`, the `{productinput}` segment must be the unpadded base64url encoding of this
+                /// string, which is `ZW5-VVN-c2t1LzEyMw`. The full resource name for the product would be
                 /// `accounts/123/productInputs/ZW5-VVN-c2t1LzEyMw`. 2. **Plain Format**: The `{productinput}` segment
                 /// is the tilde-separated string `content_language~feed_label~offer_id`. This format is suitable only
                 /// when `content_language`, `feed_label`, and `offer_id` do not contain URL-problematic characters like
@@ -2181,8 +2183,8 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         /// base64url encoded string (RFC 4648 Section 5). The decoded string must result in the
         /// `content_language~feed_label~offer_id` structure. This encoding MUST be used if any part of the product
         /// identifier (like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To represent the
-        /// product ID `en~US~sku/123`, the `{productinput}` segment must be the base64url encoding of this string,
-        /// which is `ZW5-VVN-c2t1LzEyMw`. The full resource name for the product would be
+        /// product ID `en~US~sku/123`, the `{productinput}` segment must be the unpadded base64url encoding of this
+        /// string, which is `ZW5-VVN-c2t1LzEyMw`. The full resource name for the product would be
         /// `accounts/123/productInputs/ZW5-VVN-c2t1LzEyMw`. 2. **Plain Format**: The `{productinput}` segment is the
         /// tilde-separated string `content_language~feed_label~offer_id`. This format is suitable only when
         /// `content_language`, `feed_label`, and `offer_id` do not contain URL-problematic characters like `/`, `%`, or
