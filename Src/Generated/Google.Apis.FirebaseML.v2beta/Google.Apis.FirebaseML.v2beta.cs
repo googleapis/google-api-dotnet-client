@@ -2550,6 +2550,14 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>A RagChunk includes the content of a chunk of a RagFile, and associated metadata.</summary>
     public class GoogleCloudAiplatformV1beta1RagChunk : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ID of the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkId")]
+        public virtual string ChunkId { get; set; }
+
+        /// <summary>The ID of the file that the chunk belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileId")]
+        public virtual string FileId { get; set; }
+
         /// <summary>If populated, represents where the chunk starts and ends in the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSpan")]
         public virtual GoogleCloudAiplatformV1beta1RagChunkPageSpan PageSpan { get; set; }
