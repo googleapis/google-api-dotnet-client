@@ -1306,7 +1306,7 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Optional. Network resources available to the cluster. Must contain at most one value. Keys specify the ID of
+        /// Optional. Network resources available to the cluster. Must contain exactly one value. Keys specify the ID of
         /// the network resource by which it can be referenced elsewhere, and must conform to
         /// [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case, alphanumeric, and at most 63
         /// characters).
@@ -1923,7 +1923,7 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual NetworkResourceConfig Config { get; set; }
 
-        /// <summary>Reference to a network in Google Compute Engine.</summary>
+        /// <summary>Output only. Reference to a network in Google Compute Engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual NetworkReference Network { get; set; }
 
@@ -2546,7 +2546,7 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
     public class SlurmNodeSet : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. ID of the compute resource on which this nodeset will run. Must match a key in the cluster's
+        /// Required. ID of the compute resource on which this nodeset will run. Must match a key in the cluster's
         /// compute_resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeId")]
@@ -2721,8 +2721,8 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
     public class StorageResource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Reference to a Google Cloud Storage bucket. Populated if and only if the storage resource was configured to
-        /// use Google Cloud Storage.
+        /// Output only. Reference to a Google Cloud Storage bucket. Populated if and only if the storage resource was
+        /// configured to use Google Cloud Storage.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
         public virtual BucketReference Bucket { get; set; }
@@ -2737,15 +2737,15 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
         public virtual StorageResourceConfig Config { get; set; }
 
         /// <summary>
-        /// Reference to a Filestore instance. Populated if and only if the storage resource was configured to use
-        /// Filestore.
+        /// Output only. Reference to a Filestore instance. Populated if and only if the storage resource was configured
+        /// to use Filestore.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filestore")]
         public virtual FilestoreReference Filestore { get; set; }
 
         /// <summary>
-        /// Reference to a Managed Lustre instance. Populated if and only if the storage resource was configured to use
-        /// Managed Lustre.
+        /// Output only. Reference to a Managed Lustre instance. Populated if and only if the storage resource was
+        /// configured to use Managed Lustre.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lustre")]
         public virtual LustreReference Lustre { get; set; }
