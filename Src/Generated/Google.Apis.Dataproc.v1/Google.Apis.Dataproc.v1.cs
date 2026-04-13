@@ -12509,6 +12509,10 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pysparkBatch")]
         public virtual PySparkBatch PysparkBatch { get; set; }
 
+        /// <summary>Optional. PySpark notebook batch config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pysparkNotebookBatch")]
+        public virtual PySparkNotebookBatch PysparkNotebookBatch { get; set; }
+
         /// <summary>Optional. Runtime configuration for the batch execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeConfig")]
         public virtual RuntimeConfig RuntimeConfig { get; set; }
@@ -16824,6 +16828,40 @@ namespace Google.Apis.Dataproc.v1.Data
         /// Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg,
         /// and .zip.
         /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pythonFileUris")]
+        public virtual System.Collections.Generic.IList<string> PythonFileUris { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A configuration for running a PySpark Notebook batch workload.</summary>
+    public class PySparkNotebookBatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file
+        /// types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archiveUris")]
+        public virtual System.Collections.Generic.IList<string> ArchiveUris { get; set; }
+
+        /// <summary>Optional. HCFS URIs of files to be placed in the working directory of each executor</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileUris")]
+        public virtual System.Collections.Generic.IList<string> FileUris { get; set; }
+
+        /// <summary>Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jarFileUris")]
+        public virtual System.Collections.Generic.IList<string> JarFileUris { get; set; }
+
+        /// <summary>Required. The HCFS URI of the notebook file to execute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebookFileUri")]
+        public virtual string NotebookFileUri { get; set; }
+
+        /// <summary>Optional. The parameters to pass to the notebook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("params")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Params__ { get; set; }
+
+        /// <summary>Optional. HCFS URIs of Python files to pass to the PySpark framework.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pythonFileUris")]
         public virtual System.Collections.Generic.IList<string> PythonFileUris { get; set; }
 
