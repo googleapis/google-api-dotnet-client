@@ -623,7 +623,8 @@ namespace Google.Apis.CloudRedis.v1
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Optional. The `next_page_token` value returned from a previous ListAclPolicies request, if any.
+                    /// Optional. The `next_page_token` value returned from a previous `ListAclPolicies` request, if
+                    /// any.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -709,7 +710,7 @@ namespace Google.Apis.CloudRedis.v1
 
                     /// <summary>
                     /// Optional. Mask of fields to be updated. At least one path must be supplied in this field. The
-                    /// elements of the repeated paths field may only include these fields from AclPolicy: * `rules`
+                    /// elements of the repeated paths field may only include these fields from `AclPolicy`: * `rules`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -2232,7 +2233,7 @@ namespace Google.Apis.CloudRedis.v1
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// The `next_page_token` value returned from a previous ListClusters request, if any.
+                    /// The `next_page_token` value returned from a previous `ListClusters` request, if any.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -4063,7 +4064,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request for [BackupCluster].</summary>
+    /// <summary>Request for `BackupCluster`.</summary>
     public class BackupClusterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5929,7 +5930,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request for [ExportBackup].</summary>
+    /// <summary>Request for `ExportBackup`.</summary>
     public class ExportBackupRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Google Cloud Storage bucket, like "my-bucket".</summary>
@@ -6502,7 +6503,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response for ListAclPolicies.</summary>
+    /// <summary>Response for `ListAclPolicies`.</summary>
     public class ListAclPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6548,7 +6549,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response for [ListBackupCollections].</summary>
+    /// <summary>Response for `ListBackupCollections`.</summary>
     public class ListBackupCollectionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6576,7 +6577,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response for [ListBackups].</summary>
+    /// <summary>Response for `ListBackups`.</summary>
     public class ListBackupsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of backups in the project.</summary>
@@ -6597,7 +6598,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response for ListClusters.</summary>
+    /// <summary>Response for `ListClusters`.</summary>
     public class ListClustersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
