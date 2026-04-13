@@ -14211,7 +14211,7 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("multiplexedSessionPreviousTransactionId")]
         public virtual string MultiplexedSessionPreviousTransactionId { get; set; }
 
-        /// <summary>Read lock mode for the transaction.</summary>
+        /// <summary>The read lock mode for the transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readLockMode")]
         public virtual string ReadLockMode { get; set; }
 
