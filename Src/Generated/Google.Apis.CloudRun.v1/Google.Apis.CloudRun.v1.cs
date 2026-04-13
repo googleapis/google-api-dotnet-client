@@ -1718,6 +1718,65 @@ namespace Google.Apis.CloudRun.v1
                 }
             }
 
+            /// <summary>Replace an Instance.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the Instance being replaced. Replace {namespace} with the project ID or number. It
+            /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+            /// </param>
+            public virtual ReplaceInstanceRequest ReplaceInstance(Google.Apis.CloudRun.v1.Data.Instance body, string name)
+            {
+                return new ReplaceInstanceRequest(this.service, body, name);
+            }
+
+            /// <summary>Replace an Instance.</summary>
+            public class ReplaceInstanceRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Instance>
+            {
+                /// <summary>Constructs a new ReplaceInstance request.</summary>
+                public ReplaceInstanceRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1.Data.Instance body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the Instance being replaced. Replace {namespace} with the project ID or
+                /// number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudRun.v1.Data.Instance Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "replaceInstance";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PUT";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "apis/run.googleapis.com/v1/{+name}";
+
+                /// <summary>Initializes ReplaceInstance parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^namespaces/[^/]+/instances/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Start an Instance which has been stopped.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -12511,7 +12570,7 @@ namespace Google.Apis.CloudRun.v1.Data
 
         /// <summary>
         /// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
-        /// This field is currently ignored for Secret volumes.
+        /// This field is currently rejected in Secret volume mounts.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subPath")]
         public virtual string SubPath { get; set; }
