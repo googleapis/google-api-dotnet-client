@@ -34,6 +34,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
         /// <param name="initializer">The service initializer.</param>
         public DiscoveryEngineService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            BillingAccounts = new BillingAccountsResource(this);
             Projects = new ProjectsResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://discoveryengine.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://discoveryengine.googleapis.com/batch");
@@ -81,6 +82,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta
             /// or configuration data.
             /// </summary>
             public static string DiscoveryengineReadwrite = "https://www.googleapis.com/auth/discoveryengine.readwrite";
+
+            /// <summary>
+            /// Interact with Discovery Engine API products, such as Agentspace, Vertex AI Search, or NotebookLM
+            /// Enterprise, on your behalf. It will also allow the app to view all data that you have access to when you
+            /// use or interact with a Discovery Engine API product.
+            /// </summary>
+            public static string DiscoveryengineServingReadwrite = "https://www.googleapis.com/auth/discoveryengine.serving.readwrite";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Discovery Engine API.</summary>
@@ -107,7 +115,17 @@ namespace Google.Apis.DiscoveryEngine.v1beta
             /// or configuration data.
             /// </summary>
             public const string DiscoveryengineReadwrite = "https://www.googleapis.com/auth/discoveryengine.readwrite";
+
+            /// <summary>
+            /// Interact with Discovery Engine API products, such as Agentspace, Vertex AI Search, or NotebookLM
+            /// Enterprise, on your behalf. It will also allow the app to view all data that you have access to when you
+            /// use or interact with a Discovery Engine API product.
+            /// </summary>
+            public const string DiscoveryengineServingReadwrite = "https://www.googleapis.com/auth/discoveryengine.serving.readwrite";
         }
+
+        /// <summary>Gets the BillingAccounts resource.</summary>
+        public virtual BillingAccountsResource BillingAccounts { get; }
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -291,6 +309,164 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "billingAccounts" collection of methods.</summary>
+    public class BillingAccountsResource
+    {
+        private const string Resource = "billingAccounts";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public BillingAccountsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            BillingAccountLicenseConfigs = new BillingAccountLicenseConfigsResource(service);
+        }
+
+        /// <summary>Gets the BillingAccountLicenseConfigs resource.</summary>
+        public virtual BillingAccountLicenseConfigsResource BillingAccountLicenseConfigs { get; }
+
+        /// <summary>The "billingAccountLicenseConfigs" collection of methods.</summary>
+        public class BillingAccountLicenseConfigsResource
+        {
+            private const string Resource = "billingAccountLicenseConfigs";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public BillingAccountLicenseConfigsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Distributes a LicenseConfig from billing account level to project level.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="billingAccountLicenseConfig">
+            /// Required. Full resource name of BillingAccountLicenseConfig. Format:
+            /// `billingAccounts/{billing_account}/billingAccountLicenseConfigs/{billing_account_license_config_id}`.
+            /// </param>
+            public virtual DistributeLicenseConfigRequest DistributeLicenseConfig(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaDistributeLicenseConfigRequest body, string billingAccountLicenseConfig)
+            {
+                return new DistributeLicenseConfigRequest(this.service, body, billingAccountLicenseConfig);
+            }
+
+            /// <summary>Distributes a LicenseConfig from billing account level to project level.</summary>
+            public class DistributeLicenseConfigRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaDistributeLicenseConfigResponse>
+            {
+                /// <summary>Constructs a new DistributeLicenseConfig request.</summary>
+                public DistributeLicenseConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaDistributeLicenseConfigRequest body, string billingAccountLicenseConfig) : base(service)
+                {
+                    BillingAccountLicenseConfig = billingAccountLicenseConfig;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Full resource name of BillingAccountLicenseConfig. Format:
+                /// `billingAccounts/{billing_account}/billingAccountLicenseConfigs/{billing_account_license_config_id}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("billingAccountLicenseConfig", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string BillingAccountLicenseConfig { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaDistributeLicenseConfigRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "distributeLicenseConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+billingAccountLicenseConfig}:distributeLicenseConfig";
+
+                /// <summary>Initializes DistributeLicenseConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("billingAccountLicenseConfig", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "billingAccountLicenseConfig",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+/billingAccountLicenseConfigs/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// This method is called from the billing account side to retract the LicenseConfig from the given project
+            /// back to the billing account.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="billingAccountLicenseConfig">
+            /// Required. Full resource name of BillingAccountLicenseConfig. Format:
+            /// `billingAccounts/{billing_account}/billingAccountLicenseConfigs/{billing_account_license_config_id}`.
+            /// </param>
+            public virtual RetractLicenseConfigRequest RetractLicenseConfig(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaRetractLicenseConfigRequest body, string billingAccountLicenseConfig)
+            {
+                return new RetractLicenseConfigRequest(this.service, body, billingAccountLicenseConfig);
+            }
+
+            /// <summary>
+            /// This method is called from the billing account side to retract the LicenseConfig from the given project
+            /// back to the billing account.
+            /// </summary>
+            public class RetractLicenseConfigRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaRetractLicenseConfigResponse>
+            {
+                /// <summary>Constructs a new RetractLicenseConfig request.</summary>
+                public RetractLicenseConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaRetractLicenseConfigRequest body, string billingAccountLicenseConfig) : base(service)
+                {
+                    BillingAccountLicenseConfig = billingAccountLicenseConfig;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Full resource name of BillingAccountLicenseConfig. Format:
+                /// `billingAccounts/{billing_account}/billingAccountLicenseConfigs/{billing_account_license_config_id}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("billingAccountLicenseConfig", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string BillingAccountLicenseConfig { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaRetractLicenseConfigRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "retractLicenseConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+billingAccountLicenseConfig}:retractLicenseConfig";
+
+                /// <summary>Initializes RetractLicenseConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("billingAccountLicenseConfig", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "billingAccountLicenseConfig",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+/billingAccountLicenseConfigs/[^/]+$",
+                    });
+                }
+            }
         }
     }
 
@@ -3780,8 +3956,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
                         /// or
                         /// `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`.
-                        /// This field is used to identify the serving configuration name, set of models used to make
-                        /// the search.
+                        /// Or the resource name of the agent engine serving config, such as:
+                        /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_agent_answer`.
+                        /// (use when `enable_agent_invocation` set to true, and you have custom `AI_MODE` agent engine
+                        /// configured) This field is used to identify the serving configuration name, set of models
+                        /// used to make the search.
                         /// </param>
                         public virtual AnswerRequest Answer(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaAnswerQueryRequest body, string servingConfig)
                         {
@@ -3804,8 +3983,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
                             /// or
                             /// `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`.
-                            /// This field is used to identify the serving configuration name, set of models used to
-                            /// make the search.
+                            /// Or the resource name of the agent engine serving config, such as:
+                            /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_agent_answer`.
+                            /// (use when `enable_agent_invocation` set to true, and you have custom `AI_MODE` agent
+                            /// engine configured) This field is used to identify the serving configuration name, set of
+                            /// models used to make the search.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string ServingConfig { get; private set; }
@@ -4425,8 +4607,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
                         /// or
                         /// `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`.
-                        /// This field is used to identify the serving configuration name, set of models used to make
-                        /// the search.
+                        /// Or the resource name of the agent engine serving config, such as:
+                        /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_agent_answer`.
+                        /// (use when `enable_agent_invocation` set to true, and you have custom `AI_MODE` agent engine
+                        /// configured) This field is used to identify the serving configuration name, set of models
+                        /// used to make the search.
                         /// </param>
                         public virtual StreamAnswerRequest StreamAnswer(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaAnswerQueryRequest body, string servingConfig)
                         {
@@ -4452,8 +4637,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
                             /// or
                             /// `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`.
-                            /// This field is used to identify the serving configuration name, set of models used to
-                            /// make the search.
+                            /// Or the resource name of the agent engine serving config, such as:
+                            /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_agent_answer`.
+                            /// (use when `enable_agent_invocation` set to true, and you have custom `AI_MODE` agent
+                            /// engine configured) This field is used to identify the serving configuration name, set of
+                            /// models used to make the search.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string ServingConfig { get; private set; }
@@ -4611,6 +4799,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
+                            /// <summary>
+                            /// Optional. The ID to use for the session, which will become the final component of the
+                            /// session's resource name. This value should be 1-63 characters, and valid characters are
+                            /// /a-z0-9{0,61}[a-z0-9]/. If not specified, a unique ID will be generated.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("sessionId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string SessionId { get; set; }
+
                             /// <summary>Gets or sets the body of this request.</summary>
                             Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaSession Body { get; set; }
 
@@ -4637,6 +4833,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
+                                });
+                                RequestParameters.Add("sessionId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "sessionId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                             }
                         }
@@ -9156,8 +9360,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
                         /// or
                         /// `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`.
-                        /// This field is used to identify the serving configuration name, set of models used to make
-                        /// the search.
+                        /// Or the resource name of the agent engine serving config, such as:
+                        /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_agent_answer`.
+                        /// (use when `enable_agent_invocation` set to true, and you have custom `AI_MODE` agent engine
+                        /// configured) This field is used to identify the serving configuration name, set of models
+                        /// used to make the search.
                         /// </param>
                         public virtual AnswerRequest Answer(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaAnswerQueryRequest body, string servingConfig)
                         {
@@ -9180,8 +9387,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
                             /// or
                             /// `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`.
-                            /// This field is used to identify the serving configuration name, set of models used to
-                            /// make the search.
+                            /// Or the resource name of the agent engine serving config, such as:
+                            /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_agent_answer`.
+                            /// (use when `enable_agent_invocation` set to true, and you have custom `AI_MODE` agent
+                            /// engine configured) This field is used to identify the serving configuration name, set of
+                            /// models used to make the search.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string ServingConfig { get; private set; }
@@ -9801,8 +10011,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
                         /// or
                         /// `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`.
-                        /// This field is used to identify the serving configuration name, set of models used to make
-                        /// the search.
+                        /// Or the resource name of the agent engine serving config, such as:
+                        /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_agent_answer`.
+                        /// (use when `enable_agent_invocation` set to true, and you have custom `AI_MODE` agent engine
+                        /// configured) This field is used to identify the serving configuration name, set of models
+                        /// used to make the search.
                         /// </param>
                         public virtual StreamAnswerRequest StreamAnswer(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaAnswerQueryRequest body, string servingConfig)
                         {
@@ -9828,8 +10041,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
                             /// or
                             /// `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`.
-                            /// This field is used to identify the serving configuration name, set of models used to
-                            /// make the search.
+                            /// Or the resource name of the agent engine serving config, such as:
+                            /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_agent_answer`.
+                            /// (use when `enable_agent_invocation` set to true, and you have custom `AI_MODE` agent
+                            /// engine configured) This field is used to identify the serving configuration name, set of
+                            /// models used to make the search.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string ServingConfig { get; private set; }
@@ -9987,6 +10203,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
+                            /// <summary>
+                            /// Optional. The ID to use for the session, which will become the final component of the
+                            /// session's resource name. This value should be 1-63 characters, and valid characters are
+                            /// /a-z0-9{0,61}[a-z0-9]/. If not specified, a unique ID will be generated.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("sessionId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string SessionId { get; set; }
+
                             /// <summary>Gets or sets the body of this request.</summary>
                             Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaSession Body { get; set; }
 
@@ -10013,6 +10237,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+$",
+                                });
+                                RequestParameters.Add("sessionId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "sessionId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                             }
                         }
@@ -13926,8 +14158,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
                     /// or
                     /// `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`.
-                    /// This field is used to identify the serving configuration name, set of models used to make the
-                    /// search.
+                    /// Or the resource name of the agent engine serving config, such as:
+                    /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_agent_answer`.
+                    /// (use when `enable_agent_invocation` set to true, and you have custom `AI_MODE` agent engine
+                    /// configured) This field is used to identify the serving configuration name, set of models used to
+                    /// make the search.
                     /// </param>
                     public virtual AnswerRequest Answer(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaAnswerQueryRequest body, string servingConfig)
                     {
@@ -13950,8 +14185,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
                         /// or
                         /// `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`.
-                        /// This field is used to identify the serving configuration name, set of models used to make
-                        /// the search.
+                        /// Or the resource name of the agent engine serving config, such as:
+                        /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_agent_answer`.
+                        /// (use when `enable_agent_invocation` set to true, and you have custom `AI_MODE` agent engine
+                        /// configured) This field is used to identify the serving configuration name, set of models
+                        /// used to make the search.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ServingConfig { get; private set; }
@@ -14569,8 +14807,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
                     /// or
                     /// `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`.
-                    /// This field is used to identify the serving configuration name, set of models used to make the
-                    /// search.
+                    /// Or the resource name of the agent engine serving config, such as:
+                    /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_agent_answer`.
+                    /// (use when `enable_agent_invocation` set to true, and you have custom `AI_MODE` agent engine
+                    /// configured) This field is used to identify the serving configuration name, set of models used to
+                    /// make the search.
                     /// </param>
                     public virtual StreamAnswerRequest StreamAnswer(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaAnswerQueryRequest body, string servingConfig)
                     {
@@ -14596,8 +14837,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
                         /// or
                         /// `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`.
-                        /// This field is used to identify the serving configuration name, set of models used to make
-                        /// the search.
+                        /// Or the resource name of the agent engine serving config, such as:
+                        /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_agent_answer`.
+                        /// (use when `enable_agent_invocation` set to true, and you have custom `AI_MODE` agent engine
+                        /// configured) This field is used to identify the serving configuration name, set of models
+                        /// used to make the search.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ServingConfig { get; private set; }
@@ -14753,6 +14997,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>
+                        /// Optional. The ID to use for the session, which will become the final component of the
+                        /// session's resource name. This value should be 1-63 characters, and valid characters are
+                        /// /a-z0-9{0,61}[a-z0-9]/. If not specified, a unique ID will be generated.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("sessionId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string SessionId { get; set; }
+
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaSession Body { get; set; }
 
@@ -14779,6 +15031,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+$",
+                            });
+                            RequestParameters.Add("sessionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "sessionId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -19994,6 +20254,18 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
+                        /// Optional. Filter for the list request. Supported fields: * `license_assignment_state` *
+                        /// `user_principal` * Examples: * `license_assignment_state = ASSIGNED` to list assigned user
+                        /// licenses. * `license_assignment_state = NO_LICENSE` to list not licensed users. *
+                        /// `license_assignment_state = NO_LICENSE_ATTEMPTED_LOGIN` to list users who attempted login
+                        /// but no license assigned. * `license_assignment_state != NO_LICENSE_ATTEMPTED_LOGIN` to
+                        /// filter out users who attempted login but no license assigned. * `user_principal =
+                        /// user1@abc.com` to list user license for `user1@abc.com`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
                         /// Optional. The order in which the UserLicenses are listed. The value must be a
                         /// comma-separated list of fields. Default sorting order is ascending. To specify descending
                         /// order for a field, append a " desc" suffix. Redundant space characters in the syntax are
@@ -20041,6 +20313,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/userStores/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                             RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
                             {
@@ -21589,6 +21869,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Optional. Action parameters in structured json format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionParams")]
         public virtual System.Collections.Generic.IDictionary<string, object> ActionParams { get; set; }
+
+        /// <summary>Optional. Whether to create a BAP connection for the connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createBapConnection")]
+        public virtual System.Nullable<bool> CreateBapConnection { get; set; }
 
         /// <summary>
         /// Output only. The connector contains the necessary parameters and is configured to support actions.
@@ -25267,7 +25551,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
         /// `personalization-memory` * `personalization-suggested-highlights` * `disable-agent-sharing` *
         /// `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` *
-        /// `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails`
+        /// `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` *
+        /// `disable-canvas-workspace`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -26292,6 +26577,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. Scheduled update configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduledUpdate")]
+        public virtual GoogleCloudDiscoveryengineV1LicenseConfigScheduledUpdate ScheduledUpdate { get; set; }
+
         /// <summary>Required. The start date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual GoogleTypeDate StartDate { get; set; }
@@ -26307,6 +26596,21 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Required. Subscription tier information for the license config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptionTier")]
         public virtual string SubscriptionTier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message containing data for a scheduled update.</summary>
+    public class GoogleCloudDiscoveryengineV1LicenseConfigScheduledUpdate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The effective date for the next update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveDate")]
+        public virtual GoogleTypeDate EffectiveDate { get; set; }
+
+        /// <summary>The seat count scheduled for the next update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seatCount")]
+        public virtual System.Nullable<long> SeatCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -28631,6 +28935,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("actionParams")]
         public virtual System.Collections.Generic.IDictionary<string, object> ActionParams { get; set; }
 
+        /// <summary>Optional. Whether to create a BAP connection for the connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createBapConnection")]
+        public virtual System.Nullable<bool> CreateBapConnection { get; set; }
+
         /// <summary>
         /// Output only. The connector contains the necessary parameters and is configured to support actions.
         /// </summary>
@@ -28851,7 +29159,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("answerText")]
         public virtual string AnswerText { get; set; }
 
-        /// <summary>List of blob attachments in the answer.</summary>
+        /// <summary>Output only. List of blob attachments in the answer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blobAttachments")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachment> BlobAttachments { get; set; }
 
@@ -29501,6 +29809,43 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>One part of the multi-part response of the assist call.</summary>
     public class GoogleCloudDiscoveryengineV1alphaAssistAnswerReply : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>The time when the reply was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>Possibly grounded response text or media from the assistant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groundedContent")]
         public virtual GoogleCloudDiscoveryengineV1alphaAssistantGroundedContent GroundedContent { get; set; }
@@ -31962,6 +32307,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. Specifies the data protection policy for the data store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataProtectionPolicy")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDataProtectionPolicy DataProtectionPolicy { get; set; }
+
         /// <summary>Output only. The id of the default Schema associated to this data store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultSchemaId")]
         public virtual string DefaultSchemaId { get; set; }
@@ -33685,7 +34034,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
         /// `personalization-memory` * `personalization-suggested-highlights` * `disable-agent-sharing` *
         /// `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` *
-        /// `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails`
+        /// `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` *
+        /// `disable-canvas-workspace`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -35486,6 +35836,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. Scheduled update configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduledUpdate")]
+        public virtual GoogleCloudDiscoveryengineV1alphaLicenseConfigScheduledUpdate ScheduledUpdate { get; set; }
+
         /// <summary>Required. The start date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual GoogleTypeDate StartDate { get; set; }
@@ -35501,6 +35855,21 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Required. Subscription tier information for the license config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptionTier")]
         public virtual string SubscriptionTier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message containing data for a scheduled update.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaLicenseConfigScheduledUpdate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The effective date for the next update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveDate")]
+        public virtual GoogleTypeDate EffectiveDate { get; set; }
+
+        /// <summary>The seat count scheduled for the next update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seatCount")]
+        public virtual System.Nullable<long> SeatCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -37393,6 +37762,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customFineTuningSpec")]
         public virtual GoogleCloudDiscoveryengineV1alphaCustomFineTuningSpec CustomFineTuningSpec { get; set; }
 
+        /// <summary>Optional. Optional configuration for the Custom Ranking feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customRankingParams")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestCustomRankingParams CustomRankingParams { get; set; }
+
         /// <summary>
         /// Specifications that define the specific DataStores to be searched, along with configurations for those data
         /// stores. This is only considered for Engines with multiple data stores. For engines with a single data store,
@@ -37414,6 +37787,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("embeddingSpec")]
         public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpec EmbeddingSpec { get; set; }
+
+        /// <summary>
+        /// Optional. The entity for customers that may run multiple different entities, domains, sites or regions, for
+        /// example, "Google US", "Google Ads", "Waymo", "google.com", "youtube.com", etc. If this is set, it should be
+        /// exactly matched with UserEvent.entity to get search results boosted by entity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entity")]
+        public virtual string Entity { get; set; }
 
         /// <summary>
         /// Facet specifications for faceted search. If empty, no facets are returned. A maximum of 100 values are
@@ -38133,6 +38514,21 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration parameters for the Custom Ranking feature.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestCustomRankingParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A list of ranking expressions (see `ranking_expression` for the syntax documentation) to evaluate.
+        /// The evaluation results will be returned in
+        /// `SearchResponse.SearchResult.rank_signals.precomputed_expression_values` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expressionsToPrecompute")]
+        public virtual System.Collections.Generic.IList<string> ExpressionsToPrecompute { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A struct to define data stores to filter on in a search call and configurations for those data stores.
     /// Otherwise, an `INVALID_ARGUMENT` error is returned.
@@ -38384,8 +38780,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Field names used for location-based filtering, where geolocation filters are detected in natural language
-        /// search queries. Only valid when the FilterExtractionCondition is set to `ENABLED`. If this field is set, it
-        /// overrides the field names set in ServingConfig.geo_search_query_detection_field_names.
+        /// search queries. Only valid when the FilterExtractionCondition is set to `ENABLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoSearchQueryDetectionFieldNames")]
         public virtual System.Collections.Generic.IList<string> GeoSearchQueryDetectionFieldNames { get; set; }
@@ -39664,6 +40059,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Information of an end user.</summary>
     public class GoogleCloudDiscoveryengineV1alphaUserInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Input only. Precise location of the user. It is used in Custom Ranking to calculate the distance
+        /// between the user and the relevant documents.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preciseLocation")]
+        public virtual GoogleCloudDiscoveryengineV1alphaUserInfoPreciseLocation PreciseLocation { get; set; }
+
         /// <summary>Optional. IANA time zone, e.g. Europe/Budapest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
@@ -39688,6 +40090,27 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Precise location info with multiple representation options. Currently only latitude and longitude point is
+    /// supported.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaUserInfoPreciseLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Location represented by a natural language address. Will later be geocoded and converted to either
+        /// a point or a polygon.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("address")]
+        public virtual string Address { get; set; }
+
+        /// <summary>Optional. Location represented by a latitude/longitude point.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("point")]
+        public virtual GoogleTypeLatLng Point { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -40314,7 +40737,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("answerText")]
         public virtual string AnswerText { get; set; }
 
-        /// <summary>List of blob attachments in the answer.</summary>
+        /// <summary>Output only. List of blob attachments in the answer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blobAttachments")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaAnswerBlobAttachment> BlobAttachments { get; set; }
 
@@ -41631,6 +42054,43 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>One part of the multi-part response of the assist call.</summary>
     public class GoogleCloudDiscoveryengineV1betaAssistAnswerReply : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>The time when the reply was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>Possibly grounded response text or media from the assistant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groundedContent")]
         public virtual GoogleCloudDiscoveryengineV1betaAssistantGroundedContent GroundedContent { get; set; }
@@ -45480,6 +45940,43 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for LicenseConfigService.DistributeLicenseConfig method.</summary>
+    public class GoogleCloudDiscoveryengineV1betaDistributeLicenseConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Distribute seats to this license config instead of creating a new one. If not specified, a new
+        /// license config will be created from the billing account license config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseConfigId")]
+        public virtual string LicenseConfigId { get; set; }
+
+        /// <summary>Required. The number of licenses to distribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseCount")]
+        public virtual System.Nullable<long> LicenseCount { get; set; }
+
+        /// <summary>Required. The target GCP project region to distribute the license config to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>Required. The target GCP project number to distribute the license config to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
+        public virtual System.Nullable<long> ProjectNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for LicenseConfigService.DistributeLicenseConfig method.</summary>
+    public class GoogleCloudDiscoveryengineV1betaDistributeLicenseConfigResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated or created LicenseConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaLicenseConfig LicenseConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Document captures all raw metadata information of items to be recommended or searched.</summary>
     public class GoogleCloudDiscoveryengineV1betaDocument : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -46165,7 +46662,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
         /// `personalization-memory` * `personalization-suggested-highlights` * `disable-agent-sharing` *
         /// `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` *
-        /// `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails`
+        /// `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` *
+        /// `disable-canvas-workspace`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -48025,6 +48523,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. Scheduled update configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduledUpdate")]
+        public virtual GoogleCloudDiscoveryengineV1betaLicenseConfigScheduledUpdate ScheduledUpdate { get; set; }
+
         /// <summary>Required. The start date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual GoogleTypeDate StartDate { get; set; }
@@ -48040,6 +48542,21 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Required. Subscription tier information for the license config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptionTier")]
         public virtual string SubscriptionTier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message containing data for a scheduled update.</summary>
+    public class GoogleCloudDiscoveryengineV1betaLicenseConfigScheduledUpdate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The effective date for the next update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveDate")]
+        public virtual GoogleTypeDate EffectiveDate { get; set; }
+
+        /// <summary>The seat count scheduled for the next update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seatCount")]
+        public virtual System.Nullable<long> SeatCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -50125,6 +50642,41 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for LicenseConfigService.RetractLicenseConfig method.</summary>
+    public class GoogleCloudDiscoveryengineV1betaRetractLicenseConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If set to true, retract the entire license config. Otherwise, retract the specified license count.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullRetract")]
+        public virtual System.Nullable<bool> FullRetract { get; set; }
+
+        /// <summary>
+        /// Required. Full resource name of LicenseConfig. Format:
+        /// `projects/{project}/locations/{location}/licenseConfigs/{license_config_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseConfig")]
+        public virtual string LicenseConfig { get; set; }
+
+        /// <summary>Optional. The number of licenses to retract. Only used when full_retract is false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseCount")]
+        public virtual System.Nullable<long> LicenseCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for LicenseConfigService.RetractLicenseConfig method.</summary>
+    public class GoogleCloudDiscoveryengineV1betaRetractLicenseConfigResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated LicenseConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaLicenseConfig LicenseConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Safety rating corresponding to the generated content.</summary>
     public class GoogleCloudDiscoveryengineV1betaSafetyRating : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -50456,6 +51008,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("crowdingSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpec> CrowdingSpecs { get; set; }
 
+        /// <summary>Optional. Optional configuration for the Custom Ranking feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customRankingParams")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestCustomRankingParams CustomRankingParams { get; set; }
+
         /// <summary>
         /// Specifications that define the specific DataStores to be searched, along with configurations for those data
         /// stores. This is only considered for Engines with multiple data stores. For engines with a single data store,
@@ -50477,6 +51033,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("embeddingSpec")]
         public virtual GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpec EmbeddingSpec { get; set; }
+
+        /// <summary>
+        /// Optional. The entity for customers that may run multiple different entities, domains, sites or regions, for
+        /// example, "Google US", "Google Ads", "Waymo", "google.com", "youtube.com", etc. If this is set, it should be
+        /// exactly matched with UserEvent.entity to get search results boosted by entity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entity")]
+        public virtual string Entity { get; set; }
 
         /// <summary>
         /// Facet specifications for faceted search. If empty, no facets are returned. A maximum of 100 values are
@@ -51188,6 +51752,21 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration parameters for the Custom Ranking feature.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestCustomRankingParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A list of ranking expressions (see `ranking_expression` for the syntax documentation) to evaluate.
+        /// The evaluation results will be returned in
+        /// `SearchResponse.SearchResult.rank_signals.precomputed_expression_values` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expressionsToPrecompute")]
+        public virtual System.Collections.Generic.IList<string> ExpressionsToPrecompute { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A struct to define data stores to filter on in a search call and configurations for those data stores.
     /// Otherwise, an `INVALID_ARGUMENT` error is returned.
@@ -51439,8 +52018,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Field names used for location-based filtering, where geolocation filters are detected in natural language
-        /// search queries. Only valid when the FilterExtractionCondition is set to `ENABLED`. If this field is set, it
-        /// overrides the field names set in ServingConfig.geo_search_query_detection_field_names.
+        /// search queries. Only valid when the FilterExtractionCondition is set to `ENABLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoSearchQueryDetectionFieldNames")]
         public virtual System.Collections.Generic.IList<string> GeoSearchQueryDetectionFieldNames { get; set; }
@@ -52064,6 +52642,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Optional. Predicted conversion rate adjustment as a rank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pctrRank")]
         public virtual System.Nullable<float> PctrRank { get; set; }
+
+        /// <summary>
+        /// Optional. A list of precomputed expression results for a given document, in the same order as requested in
+        /// `SearchRequest.custom_ranking_params.expressions_to_precompute`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("precomputedExpressionValues")]
+        public virtual System.Collections.Generic.IList<System.Nullable<float>> PrecomputedExpressionValues { get; set; }
 
         /// <summary>Optional. Semantic relevance adjustment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relevanceScore")]
@@ -54058,6 +54643,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Information of an end user.</summary>
     public class GoogleCloudDiscoveryengineV1betaUserInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Input only. Precise location of the user. It is used in Custom Ranking to calculate the distance
+        /// between the user and the relevant documents.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preciseLocation")]
+        public virtual GoogleCloudDiscoveryengineV1betaUserInfoPreciseLocation PreciseLocation { get; set; }
+
         /// <summary>Optional. IANA time zone, e.g. Europe/Budapest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
@@ -54082,6 +54674,27 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Precise location info with multiple representation options. Currently only latitude and longitude point is
+    /// supported.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaUserInfoPreciseLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Location represented by a natural language address. Will later be geocoded and converted to either
+        /// a point or a polygon.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("address")]
+        public virtual string Address { get; set; }
+
+        /// <summary>Optional. Location represented by a latitude/longitude point.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("point")]
+        public virtual GoogleTypeLatLng Point { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -54934,6 +55547,25 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees
+    /// latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard.
+    /// Values must be within normalized ranges.
+    /// </summary>
+    public class GoogleTypeLatLng : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The latitude in degrees. It must be in the range [-90.0, +90.0].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latitude")]
+        public virtual System.Nullable<double> Latitude { get; set; }
+
+        /// <summary>The longitude in degrees. It must be in the range [-180.0, +180.0].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
+        public virtual System.Nullable<double> Longitude { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
