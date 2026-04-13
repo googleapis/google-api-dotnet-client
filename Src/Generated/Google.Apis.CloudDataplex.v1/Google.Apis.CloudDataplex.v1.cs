@@ -4134,6 +4134,69 @@ namespace Google.Apis.CloudDataplex.v1
                         this.service = service;
                     }
 
+                    /// <summary>Cancels a running/pending DataScan job.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The resource name of the DataScanJob:
+                    /// projects/{project_id_or_number}/locations/{location_id}/dataScans/{data_scan_id}/jobs/{data_scan_job_id}
+                    /// where project_id_or_number refers to a project_id or project_number and location_id refers to a
+                    /// Google Cloud region.
+                    /// </param>
+                    public virtual CancelRequest Cancel(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1CancelDataScanJobRequest body, string name)
+                    {
+                        return new CancelRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Cancels a running/pending DataScan job.</summary>
+                    public class CancelRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1CancelDataScanJobResponse>
+                    {
+                        /// <summary>Constructs a new Cancel request.</summary>
+                        public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1CancelDataScanJobRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the DataScanJob:
+                        /// projects/{project_id_or_number}/locations/{location_id}/dataScans/{data_scan_id}/jobs/{data_scan_job_id}
+                        /// where project_id_or_number refers to a project_id or project_number and location_id refers
+                        /// to a Google Cloud region.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1CancelDataScanJobRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "cancel";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:cancel";
+
+                        /// <summary>Initializes Cancel parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataScans/[^/]+/jobs/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>
                     /// Generates recommended data quality rules based on the results of a data profiling scan.Use the
                     /// recommendations to build rules for a data quality scan.
@@ -17904,6 +17967,20 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for the CancelDataScanJob method.</summary>
+    public class GoogleCloudDataplexV1CancelDataScanJobRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the CancelDataScanJob method.</summary>
+    public class GoogleCloudDataplexV1CancelDataScanJobResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Cancel task jobs.</summary>
     public class GoogleCloudDataplexV1CancelJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19522,6 +19599,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>A rule captures data quality intent about a data source.</summary>
     public class GoogleCloudDataplexV1DataQualityRule : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Map of attribute name and value linked to the rule. The rules to evaluate can be filtered based on
+        /// attributes provided here and a filter expression provided in the DataQualitySpec.filter field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Attributes { get; set; }
+
         /// <summary>Optional. The unnested column which this rule is evaluated against.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("column")]
         public virtual string Column { get; set; }
@@ -19578,6 +19662,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rowConditionExpectation")]
         public virtual GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation RowConditionExpectation { get; set; }
 
+        /// <summary>
+        /// Output only. Contains information about the source of the rule and its relationship with the BigQuery table,
+        /// where applicable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleSource")]
+        public virtual GoogleCloudDataplexV1DataQualityRuleRuleSource RuleSource { get; set; }
+
         /// <summary>Row-level rule which evaluates whether each column value is contained by a specified set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setExpectation")]
         public virtual GoogleCloudDataplexV1DataQualityRuleSetExpectation SetExpectation { get; set; }
@@ -19602,6 +19693,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>Aggregate rule which evaluates whether the provided expression is true for a table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableConditionExpectation")]
         public virtual GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation TableConditionExpectation { get; set; }
+
+        /// <summary>
+        /// Aggregate rule which references a rule template and provides the parameters to be substituted in the
+        /// template. If any rows are returned, this rule fails.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templateReference")]
+        public virtual GoogleCloudDataplexV1DataQualityRuleTemplateReference TemplateReference { get; set; }
 
         /// <summary>
         /// Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0,
@@ -19811,6 +19909,87 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents the rule source information from Catalog.</summary>
+    public class GoogleCloudDataplexV1DataQualityRuleRuleSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Rule path elements represent information about the individual items in the relationship path
+        /// between the scan resource and rule origin in that order.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rulePathElements")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement> RulePathElements { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Path Element represents the direct relationship between the rule origin (aspects) to the BigQuery Entry.
+    /// Ordering of the rule relationship will be maintained such that the first entry in the list is the closest
+    /// ancestor (BigQuery table itself). A blank source denotes that the rule is derived directly from the DataScan
+    /// itself.
+    /// </summary>
+    public class GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Entry link source represents information about the entry link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryLinkSource")]
+        public virtual GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource EntryLinkSource { get; set; }
+
+        /// <summary>Output only. Entry source represents information about the related source entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entrySource")]
+        public virtual GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource EntrySource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Entry link source represents information about the entry link.</summary>
+    public class GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The entry link name in the form of:
+        /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryLink")]
+        public virtual string EntryLink { get; set; }
+
+        /// <summary>
+        /// Output only. The entry link type to represent the current relationship between the entry and the next entry
+        /// in the path. In the form of:
+        /// projects/{project_id_or_number}/locations/{location_id}/entryLinkTypes/{entry_link_type_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryLinkType")]
+        public virtual string EntryLinkType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Entry source represents information about the related source entry.</summary>
+    public class GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The display name of the entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. The entry name in the form of:
+        /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entry")]
+        public virtual string Entry { get; set; }
+
+        /// <summary>
+        /// Output only. The entry type to represent the current characteristics of the entry in the form of:
+        /// projects/{project_id_or_number}/locations/{location_id}/entryTypes/{entry-type-id}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryType")]
+        public virtual string EntryType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Evaluates whether each column value is contained by a specified set.</summary>
     public class GoogleCloudDataplexV1DataQualityRuleSetExpectation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19891,6 +20070,128 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>Optional. The SQL expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlExpression")]
         public virtual string SqlExpression { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// DataQualityRuleTemplate represents a template which can be reused across multiple data quality rules.
+    /// </summary>
+    public class GoogleCloudDataplexV1DataQualityRuleTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A list of features or properties supported by this rule template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capabilities")]
+        public virtual System.Collections.Generic.IList<string> Capabilities { get; set; }
+
+        /// <summary>
+        /// Output only. The dimension a rule template belongs to. Rule level results are also aggregated at the
+        /// dimension level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
+        public virtual string Dimension { get; set; }
+
+        /// <summary>Output only. Description for input parameters</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputParameters")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription> InputParameters { get; set; }
+
+        /// <summary>
+        /// Output only. The name of the rule template in the format:
+        /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Collection of SQLs for data quality rules. Currently only one SQL is supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlCollection")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataQualityRuleTemplateSql> SqlCollection { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Description of the input parameter. It can include the type(s) supported by the parameter and intended usage. It
+    /// is for information purposes only and does not affect the behavior of the rule template.
+    /// </summary>
+    public class GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The default value for the parameter if no value is provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
+        public virtual string DefaultValue { get; set; }
+
+        /// <summary>
+        /// Output only. Description of the input parameter. It can include the type(s) supported by the parameter and
+        /// intended usage. It is for information purposes only and does not affect the behavior of the rule template.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A rule that constructs a SQL statement to evaluate using a rule template and parameter values. If the
+    /// constructed statement returns any rows, this rule fails
+    /// </summary>
+    public class GoogleCloudDataplexV1DataQualityRuleTemplateReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The template entry name. Entry must be of EntryType
+        /// projects/dataplex-types/locations/global/entryTypes/data-quality-rule-template and contains top-level aspect
+        /// of AspectType projects/dataplex-types/locations/global/aspectTypes/data-quality-rule-template. The format
+        /// is: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The resolved SQL statement generated from the template with parameters substituted. It is only
+        /// populated in the result.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedSql")]
+        public virtual string ResolvedSql { get; set; }
+
+        /// <summary>
+        /// Output only. The rule template used to resolve the rule. It is only populated in the result.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleTemplate")]
+        public virtual GoogleCloudDataplexV1DataQualityRuleTemplate RuleTemplate { get; set; }
+
+        /// <summary>
+        /// Optional. Provides the map of parameter name and value. The maximum size of the field is 120KB (encoded as
+        /// UTF-8).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a parameter value.</summary>
+    public class GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Represents the string value of the parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Templatized SQL query for data quality rules. It can have parameters that can be substituted with values when a
+    /// rule is created using this template.
+    /// </summary>
+    public class GoogleCloudDataplexV1DataQualityRuleTemplateSql : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Templatized SQL query for data quality rules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19981,6 +20282,28 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("catalogPublishingEnabled")]
         public virtual System.Nullable<bool> CatalogPublishingEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. If enabled, the data scan will retrieve rules defined in the dataplex-types.global.data-rules
+        /// aspect on all paths of the catalog entry corresponding to the BigQuery table resource and all attached
+        /// glossary terms. The path that data-rules aspect is attached on the table entry defines the column that the
+        /// rule will be evaluated against. For glossary terms, the path that the terms are attached on the table entry
+        /// defines the column that the rule will be evaluated against. At the start of scan execution, the rules
+        /// reflect the latest state retrieved from the catalog entry and any updates on the rules thereafter are
+        /// ignored for that execution. The updates will be reflected from the next execution. Rules defined in the
+        /// datascan must be empty if this field is enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableCatalogBasedRules")]
+        public virtual System.Nullable<bool> EnableCatalogBasedRules { get; set; }
+
+        /// <summary>
+        /// Optional. Filter for selectively running a subset of rules. You can filter the request by the name or
+        /// attribute key-value pairs defined on the rule. If not specified, all rules are run. The filter is applicable
+        /// to both, the rules retrieved from catalog and explicitly defined rules in the scan. Please see filter syntax
+        /// (https://docs.cloud.google.com/dataplex/docs/auto-data-quality-overview#rule-filtering) for more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
 
         /// <summary>Optional. Actions to take upon job completion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postScanActions")]
