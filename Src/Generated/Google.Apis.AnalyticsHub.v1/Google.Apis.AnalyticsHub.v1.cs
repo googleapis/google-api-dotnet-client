@@ -3693,7 +3693,9 @@ namespace Google.Apis.AnalyticsHub.v1.Data
 
         /// <summary>
         /// Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example:
-        /// "123/environment": "production", "123/costCenter": "marketing"
+        /// "123/environment": "production", "123/costCenter": "marketing" See
+        /// https://{$universe.dns_names.final_documentation_domain}/pubsub/docs/tags for more information on using tags
+        /// with Pub/Sub resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
