@@ -3476,6 +3476,68 @@ namespace Google.Apis.Drive.v3
             }
         }
 
+        /// <summary>Generates a CSE token which can be used to create or update CSE files.</summary>
+        public virtual GenerateCseTokenRequest GenerateCseToken()
+        {
+            return new GenerateCseTokenRequest(this.service);
+        }
+
+        /// <summary>Generates a CSE token which can be used to create or update CSE files.</summary>
+        public class GenerateCseTokenRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.GenerateCseTokenResponse>
+        {
+            /// <summary>Constructs a new GenerateCseToken request.</summary>
+            public GenerateCseTokenRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// The ID of the file for which the JWT should be generated. If not provided, an id will be generated.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string FileId { get; set; }
+
+            /// <summary>
+            /// The ID of the expected parent of the file. Used when generating a JWT for a new CSE file. If specified,
+            /// the parent will be fetched, and if the parent is a shared drive item, the shared drive's policy will be
+            /// used to determine the KACLS that should be used. It is invalid to specify both file_id and parent in a
+            /// single request.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "generateCseToken";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "files/generateCseToken";
+
+            /// <summary>Initializes GenerateCseToken parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>
         /// Generates a set of file IDs which can be provided in create or copy requests. For more information, see
         /// [Create and manage files](https://developers.google.com/workspace/drive/api/guides/create-file).
@@ -7467,6 +7529,23 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details about the client-side encryption applied to the file.</summary>
+    public class ClientEncryptionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The metadata used for client-side operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("decryptionMetadata")]
+        public virtual DecryptionMetadata DecryptionMetadata { get; set; }
+
+        /// <summary>
+        /// The encryption state of the file. The values expected here are: - encrypted - unencrypted
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionState")]
+        public virtual string EncryptionState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A comment on a file. Some resource methods (such as `comments.update`) require a `commentId`. Use the
     /// `comments.list` method to retrieve the ID for a comment in a file.
@@ -7695,6 +7774,50 @@ namespace Google.Apis.Drive.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Representation of the CSE DecryptionMetadata.</summary>
+    public class DecryptionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Chunk size used if content was encrypted with the AES 256 GCM Cipher. Possible values are: - default - small
+        /// 
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aes256GcmChunkSize")]
+        public virtual string Aes256GcmChunkSize { get; set; }
+
+        /// <summary>
+        /// The URL-safe Base64 encoded HMAC-SHA256 digest of the resource metadata with its DEK (Data Encryption Key);
+        /// see https://developers.google.com/workspace/cse/reference
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionResourceKeyHash")]
+        public virtual string EncryptionResourceKeyHash { get; set; }
+
+        /// <summary>
+        /// The signed JSON Web Token (JWT) which can be used to authorize the requesting user with the Key ACL Service
+        /// (KACLS). The JWT asserts that the requesting user has at least read permissions on the file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jwt")]
+        public virtual string Jwt { get; set; }
+
+        /// <summary>The ID of the KACLS (Key ACL Service) used to encrypt the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kaclsId")]
+        public virtual System.Nullable<long> KaclsId { get; set; }
+
+        /// <summary>The name of the KACLS (Key ACL Service) used to encrypt the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kaclsName")]
+        public virtual string KaclsName { get; set; }
+
+        /// <summary>Key format for the unwrapped key. Must be `tinkAesGcmKey`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyFormat")]
+        public virtual string KeyFormat { get; set; }
+
+        /// <summary>The URL-safe Base64 encoded wrapped key used to encrypt the contents of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wrappedKey")]
+        public virtual string WrappedKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8093,6 +8216,14 @@ namespace Google.Apis.Drive.v3.Data
         public virtual CapabilitiesData Capabilities { get; set; }
 
         /// <summary>
+        /// Client Side Encryption related details. Contains details about the encryption state of the file and details
+        /// regarding the encryption mechanism that clients need to use when decrypting the contents of this item. This
+        /// will only be present on files and not on folders or shortcuts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientEncryptionDetails")]
+        public virtual ClientEncryptionDetails ClientEncryptionDetails { get; set; }
+
+        /// <summary>
         /// Additional information about the content of the file. These fields are never populated in responses.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentHints")]
@@ -8466,7 +8597,7 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>
         /// Whether the file has been trashed, either explicitly or from a trashed parent folder. Only the owner may
-        /// trash a file, and other users cannot see files in the owner's trash.
+        /// trash a file, but other users can still access the file in the owner's trash until it's permanently deleted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trashed")]
         public virtual System.Nullable<bool> Trashed { get; set; }
@@ -9072,6 +9203,36 @@ namespace Google.Apis.Drive.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>JWT and associated metadata used to generate CSE files.</summary>
+    public class GenerateCseTokenResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The current Key ACL Service (KACLS) ID associated with the JWT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentKaclsId")]
+        public virtual System.Nullable<long> CurrentKaclsId { get; set; }
+
+        /// <summary>Name of the KACLs that the returned KACLs ID points to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentKaclsName")]
+        public virtual string CurrentKaclsName { get; set; }
+
+        /// <summary>The fileId for which the JWT was generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileId")]
+        public virtual string FileId { get; set; }
+
+        /// <summary>The signed JSON Web Token (JWT) for the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jwt")]
+        public virtual string Jwt { get; set; }
+
+        /// <summary>
+        /// Output only. Identifies what kind of resource this is. Value: the fixed string
+        /// `"drive#generateCseTokenResponse"`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
