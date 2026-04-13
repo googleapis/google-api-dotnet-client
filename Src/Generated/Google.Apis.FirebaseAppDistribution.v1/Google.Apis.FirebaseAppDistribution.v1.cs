@@ -2472,6 +2472,10 @@ namespace Google.Apis.FirebaseAppDistribution.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fromFileName")]
         public virtual string FromFileName { get; set; }
 
+        /// <summary>The content type of the file detected by Fusion ID. go/fusionid</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fromFusionId")]
+        public virtual string FromFusionId { get; set; }
+
         /// <summary>
         /// The content type of the file as specified in the request headers, multipart headers, or RUPIO start request.
         /// </summary>
@@ -2484,6 +2488,13 @@ namespace Google.Apis.FirebaseAppDistribution.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fromUrlPath")]
         public virtual string FromUrlPath { get; set; }
+
+        /// <summary>
+        /// Metadata information from Fusion ID detection. Serialized FusionIdDetectionMetadata proto. Only set if
+        /// from_fusion_id is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fusionIdDetectionMetadata")]
+        public virtual string FusionIdDetectionMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
