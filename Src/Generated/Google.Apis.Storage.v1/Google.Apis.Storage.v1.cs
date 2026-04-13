@@ -645,7 +645,7 @@ namespace Google.Apis.Storage.v1
             }
         }
 
-        /// <summary>Updates the config(ttl and admissionPolicy) of an Anywhere Cache instance.</summary>
+        /// <summary>Updates the config of an Anywhere Cache instance.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="bucket">Name of the parent bucket.</param>
         /// <param name="anywhereCacheId">The ID of requested Anywhere Cache instance.</param>
@@ -654,7 +654,7 @@ namespace Google.Apis.Storage.v1
             return new UpdateRequest(this.service, body, bucket, anywhereCacheId);
         }
 
-        /// <summary>Updates the config(ttl and admissionPolicy) of an Anywhere Cache instance.</summary>
+        /// <summary>Updates the config of an Anywhere Cache instance.</summary>
         public class UpdateRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.GoogleLongrunningOperation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -9889,6 +9889,10 @@ namespace Google.Apis.Storage.v1.Data
         /// <summary>The ID of the resource, including the project number, bucket name and anywhere cache ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
+
+        /// <summary>Specifies whether objects are ingested into the cache upon write.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingestOnWrite")]
+        public virtual System.Nullable<bool> IngestOnWrite { get; set; }
 
         /// <summary>The kind of item this is. For Anywhere Cache, this is always storage#anywhereCache.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
