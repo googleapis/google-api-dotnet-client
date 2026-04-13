@@ -4094,6 +4094,10 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("proxyConfig")]
         public virtual ProxyConfig ProxyConfig { get; set; }
 
+        /// <summary>Output only. A system-assigned unique identifier for the Account Connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -6328,6 +6332,14 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>
+        /// Output only. The base URI for the HTTP proxy endpoint. Has the format
+        /// `https://{generatedID}-a-h-{shortRegion}.developerconnect.dev` Populated only when `enabled` is set to
+        /// `true`. This endpoint is used by other Google services that integrate with Developer Connect.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpProxyBaseUri")]
+        public virtual string HttpProxyBaseUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
