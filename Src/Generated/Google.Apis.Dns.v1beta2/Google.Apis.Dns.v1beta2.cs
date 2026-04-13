@@ -2674,12 +2674,12 @@ namespace Google.Apis.Dns.v1beta2
             public virtual string ManagedZone { get; private set; }
 
             /// <summary>
-            /// Specify a filter expression to view records that exactly match the specified domain. Both the name and
-            /// type parameters are not supported when you use filter and must be omitted. Your filter expression must
-            /// conform to AIP-160 and you must specify a domain in the name field. Optionally, you can include the type
-            /// field to filter records by type. You can also include the has_suffix function to view records that match
-            /// by domain suffix. Examples: - name="example.com." - name="example.com." AND type="A" -
-            /// name=has_suffix("example.com.") - name=has_suffix("example.com.") AND type="A"
+            /// Specify a filter expression to view records that exactly match the specified domain. Both the `name` and
+            /// `type` parameters are not supported and must be omitted when you use `filter`. Your `filter` expression
+            /// must conform to AIP-160 and you must specify a domain in the `name` field. Optionally, you can include
+            /// the `type` field to filter records by type. You can also include the `has_suffix` function to view
+            /// records that match by domain suffix. Examples: * `name`="example.com." * `name`="example.com." AND
+            /// type="A" * `name`=`has_suffix`("example.com.") * `name`=`has_suffix`("example.com.") AND type="A"
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -2692,8 +2692,8 @@ namespace Google.Apis.Dns.v1beta2
             public virtual System.Nullable<int> MaxResults { get; set; }
 
             /// <summary>
-            /// Specify a fully qualified domain name to view only those records. The name parameter is not supported
-            /// and must be omitted when you use filter.
+            /// Specify a fully qualified domain name to view only those records. The `name` parameter is not supported
+            /// and must be omitted when you use `filter`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
@@ -2706,8 +2706,8 @@ namespace Google.Apis.Dns.v1beta2
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Specify a record type to view only those records. You must also specify the name parameter. The type
-            /// parameter is not supported and must be omitted when you use filter.
+            /// Specify a record type to view only those records. You must also specify the `name` parameter. The `type`
+            /// parameter is not supported and must be omitted when you use `filter`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Type { get; set; }
