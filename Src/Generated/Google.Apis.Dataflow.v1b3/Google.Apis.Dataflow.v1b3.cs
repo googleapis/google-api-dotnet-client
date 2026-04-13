@@ -6675,7 +6675,9 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; }
 
-        /// <summary>The machine type to use for launching the job. The default is n1-standard-1.</summary>
+        /// <summary>
+        /// The machine type to use for launching the job. If not set, Dataflow will select a default machine type.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("launcherMachineType")]
         public virtual string LauncherMachineType { get; set; }
 
@@ -9251,18 +9253,25 @@ namespace Google.Apis.Dataflow.v1b3.Data
     public class RuntimeUpdatableParams : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Deprecated: Use `autoscaling_tier` instead. The backlog threshold duration in seconds for
-        /// autoscaling. Value must be non-negative.
+        /// Optional. Deprecated: Use `latency_tier` instead. The backlog threshold duration in seconds for autoscaling.
+        /// Value must be non-negative.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceptableBacklogDuration")]
         public virtual object AcceptableBacklogDuration { get; set; }
 
         /// <summary>
-        /// Optional. The backlog threshold tier for autoscaling. Value must be one of "low-latency", "medium-latency",
-        /// or "high-latency".
+        /// Optional. Deprecated: Use `latency_tier` instead. The backlog threshold tier for autoscaling. Value must be
+        /// one of "low-latency", "medium-latency", or "high-latency".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoscalingTier")]
         public virtual string AutoscalingTier { get; set; }
+
+        /// <summary>
+        /// Optional. The backlog threshold tier for autoscaling. Value must be one of "low-latency", "medium-latency",
+        /// or "high-latency".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latencyTier")]
+        public virtual string LatencyTier { get; set; }
 
         /// <summary>
         /// The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming
