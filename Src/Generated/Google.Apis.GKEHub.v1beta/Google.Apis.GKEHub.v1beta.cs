@@ -10847,6 +10847,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
+        /// <summary>Optional. Selector for clusters to exclude from the Rollout Sequence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoredClustersSelector")]
+        public virtual ClusterSelector IgnoredClustersSelector { get; set; }
+
         /// <summary>Optional. Labels for this Rollout Sequence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
