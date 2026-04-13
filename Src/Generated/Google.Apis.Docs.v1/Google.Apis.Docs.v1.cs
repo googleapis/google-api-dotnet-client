@@ -1084,7 +1084,7 @@ namespace Google.Apis.Docs.v1.Data
 
         /// <summary>
         /// The time zone of the DateElement, as defined by the Unicode Common Locale Data Repository (CLDR) project.
-        /// For example, `America/New York`. If unset, the default time zone is `etc/UTC`.
+        /// For example, `America/New_York`. If unset, the default time zone is `etc/UTC`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZoneId")]
         public virtual string TimeZoneId { get; set; }
@@ -1098,7 +1098,7 @@ namespace Google.Apis.Docs.v1.Data
         /// UTC. Timestamp is expected to be in UTC. If time_zone_id is set, the timestamp is adjusted according to the
         /// time zone. For example, a timestamp of `18000` with a date format of `DATE_FORMAT_ISO8601` and time format
         /// of `TIME_FORMAT_HOUR_MINUTE` would be displayed as `1970-01-01 5:00 AM`. A timestamp of `18000` with date
-        /// format of `DATE_FORMAT_8SO8601`, time format of `TIME_FORMAT_HOUR_MINUTE`, and time zone set to
+        /// format of `DATE_FORMAT_ISO8601`, time format of `TIME_FORMAT_HOUR_MINUTE`, and time zone set to
         /// `America/New_York` will instead be `1970-01-01 12:00 AM`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
