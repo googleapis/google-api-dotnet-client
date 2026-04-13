@@ -12,24 +12,28 @@
     "SOURCE_UNSPECIFIED",
     "LIVE",
     "SIMULATOR",
-    "EVAL"
+    "EVAL",
+    "AGENT_TOOL"
   ],
   "Google.Apis.CustomerEngagementSuite.v1.ProjectsResource+LocationsResource+AppsResource+ConversationsResource+GetRequest.SourceEnum": [
     "SOURCE_UNSPECIFIED",
     "LIVE",
     "SIMULATOR",
-    "EVAL"
+    "EVAL",
+    "AGENT_TOOL"
   ],
   "Google.Apis.CustomerEngagementSuite.v1.ProjectsResource+LocationsResource+AppsResource+ConversationsResource+ListRequest.SourceEnum": [
     "SOURCE_UNSPECIFIED",
     "LIVE",
     "SIMULATOR",
-    "EVAL"
+    "EVAL",
+    "AGENT_TOOL"
   ],
   "Google.Apis.CustomerEngagementSuite.v1.ProjectsResource+LocationsResource+AppsResource+ConversationsResource+ListRequest.SourcesEnum": [
     "SOURCE_UNSPECIFIED",
     "LIVE",
     "SIMULATOR",
-    "EVAL"
+    "EVAL",
+    "AGENT_TOOL"
   ]
 }

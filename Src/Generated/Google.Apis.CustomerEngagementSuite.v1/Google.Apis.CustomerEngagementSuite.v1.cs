@@ -1021,6 +1021,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1
                             /// <summary>The conversation is from the evaluation.</summary>
                             [Google.Apis.Util.StringValueAttribute("EVAL")]
                             EVAL = 3,
+
+                            /// <summary>
+                            /// The conversation is from an agent tool. Agent tool runs the agent in a separate session,
+                            /// which is persisted for testing and debugging purposes.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("AGENT_TOOL")]
+                            AGENTTOOL = 4,
                         }
 
                         /// <summary>Gets the method name.</summary>
@@ -1102,6 +1109,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1
                             /// <summary>The conversation is from the evaluation.</summary>
                             [Google.Apis.Util.StringValueAttribute("EVAL")]
                             EVAL = 3,
+
+                            /// <summary>
+                            /// The conversation is from an agent tool. Agent tool runs the agent in a separate session,
+                            /// which is persisted for testing and debugging purposes.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("AGENT_TOOL")]
+                            AGENTTOOL = 4,
                         }
 
                         /// <summary>Gets the method name.</summary>
@@ -1206,6 +1220,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1
                             /// <summary>The conversation is from the evaluation.</summary>
                             [Google.Apis.Util.StringValueAttribute("EVAL")]
                             EVAL = 3,
+
+                            /// <summary>
+                            /// The conversation is from an agent tool. Agent tool runs the agent in a separate session,
+                            /// which is persisted for testing and debugging purposes.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("AGENT_TOOL")]
+                            AGENTTOOL = 4,
                         }
 
                         /// <summary>
@@ -1251,6 +1272,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1
                             /// <summary>The conversation is from the evaluation.</summary>
                             [Google.Apis.Util.StringValueAttribute("EVAL")]
                             EVAL = 3,
+
+                            /// <summary>
+                            /// The conversation is from an agent tool. Agent tool runs the agent in a separate session,
+                            /// which is persisted for testing and debugging purposes.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("AGENT_TOOL")]
+                            AGENTTOOL = 4,
                         }
 
                         /// <summary>Gets the method name.</summary>
@@ -5262,6 +5290,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
     /// <summary>Represents a tool that allows the agent to call another agent.</summary>
     public class AgentTool : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The resource name of the agent that is the entry point of the tool. Format:
+        /// `projects/{project}/locations/{location}/agents/{agent}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agent")]
+        public virtual string Agent { get; set; }
+
         /// <summary>Optional. Description of the tool's purpose.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -5271,8 +5306,8 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Optional. The resource name of the root agent that is the entry point of the tool. Format:
-        /// `projects/{project}/locations/{location}/agents/{agent}`
+        /// Optional. Deprecated: Use `agent` instead. The resource name of the root agent that is the entry point of
+        /// the tool. Format: `projects/{project}/locations/{location}/agents/{agent}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootAgent")]
         public virtual string RootAgent { get; set; }
@@ -6494,6 +6529,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disableConversationLogging")]
         public virtual System.Nullable<bool> DisableConversationLogging { get; set; }
 
+        /// <summary>
+        /// Optional. Controls the retention window for the conversation. If not set, the conversation will be retained
+        /// for 365 days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionWindow")]
+        public virtual object RetentionWindow { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7151,9 +7193,55 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
     /// <summary>Settings to describe how errors should be handled in the app.</summary>
     public class ErrorHandlingSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Configuration for ending the session in case of system errors (e.g. LLM errors).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endSessionConfig")]
+        public virtual ErrorHandlingSettingsEndSessionConfig EndSessionConfig { get; set; }
+
         /// <summary>Optional. The strategy to use for error handling.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorHandlingStrategy")]
         public virtual string ErrorHandlingStrategy { get; set; }
+
+        /// <summary>Optional. Configuration for handling fallback responses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fallbackResponseConfig")]
+        public virtual ErrorHandlingSettingsFallbackResponseConfig FallbackResponseConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for ending the session in case of system errors (e.g. LLM errors).</summary>
+    public class ErrorHandlingSettingsEndSessionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Whether to escalate the session in EndSession. If session is escalated, metadata in EndSession
+        /// will contain `session_escalated = true`. See
+        /// https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/deploy/google-telephony-platform#transfer_a_call_to_a_human_agent
+        /// for details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("escalateSession")]
+        public virtual System.Nullable<bool> EscalateSession { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for handling fallback responses.</summary>
+    public class ErrorHandlingSettingsFallbackResponseConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The fallback messages in case of system errors (e.g. LLM errors), mapped by [supported language
+        /// code](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/language).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customFallbackMessages")]
+        public virtual System.Collections.Generic.IDictionary<string, string> CustomFallbackMessages { get; set; }
+
+        /// <summary>
+        /// Optional. The maximum number of fallback attempts to make before the agent emitting EndSession Signal.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxFallbackAttempts")]
+        public virtual System.Nullable<int> MaxFallbackAttempts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7401,6 +7489,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
         public virtual System.Collections.Generic.IDictionary<string, object> Context { get; set; }
+
+        /// <summary>
+        /// Optional. Mock configuration for the tool execution. If this field is set, tools that call other tools will
+        /// be mocked based on the provided patterns and responses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mockConfig")]
+        public virtual MockConfig MockConfig { get; set; }
 
         /// <summary>
         /// Optional. The name of the tool to execute. Format:
@@ -8646,6 +8741,61 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("llmMetricsOptedOut")]
         public virtual System.Nullable<bool> LlmMetricsOptedOut { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Mock tool calls configuration for the session.</summary>
+    public class MockConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. All tool calls to mock for the duration of the session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mockedToolCalls")]
+        public virtual System.Collections.Generic.IList<MockedToolCall> MockedToolCalls { get; set; }
+
+        /// <summary>
+        /// Required. Beavhior for tool calls that don't match any args patterns in mocked_tool_calls.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unmatchedToolCallBehavior")]
+        public virtual string UnmatchedToolCallBehavior { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A mocked tool call. Expresses the target tool + a pattern to match against that tool's args / inputs. If the
+    /// pattern matches, then the mock response will be returned.
+    /// </summary>
+    public class MockedToolCall : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A pattern to match against the args / inputs of all dispatched tool calls. If the tool call inputs
+        /// match this pattern, then mock output will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expectedArgsPattern")]
+        public virtual System.Collections.Generic.IDictionary<string, object> ExpectedArgsPattern { get; set; }
+
+        /// <summary>
+        /// Optional. The mock response / output to return if the tool call args / inputs match the pattern.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mockResponse")]
+        public virtual System.Collections.Generic.IDictionary<string, object> MockResponse { get; set; }
+
+        /// <summary>Required. Deprecated. Use tool_identifier instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tool")]
+        public virtual string Tool { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the tool to mock. Format:
+        /// `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolId")]
+        public virtual string ToolId { get; set; }
+
+        /// <summary>Optional. The toolset to mock.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolset")]
+        public virtual ToolsetTool Toolset { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
