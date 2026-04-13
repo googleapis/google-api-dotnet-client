@@ -7965,10 +7965,6 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("geoSpec")]
         public virtual GoogleFirestoreAdminV1SearchGeoSpec GeoSpec { get; set; }
 
-        /// <summary>Optional. The specification for building a number search index for a field.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("numberSpec")]
-        public virtual GoogleFirestoreAdminV1SearchNumberSpec NumberSpec { get; set; }
-
         /// <summary>Optional. The specification for building a text search index for a field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textSpec")]
         public virtual GoogleFirestoreAdminV1SearchTextSpec TextSpec { get; set; }
@@ -7994,15 +7990,6 @@ namespace Google.Apis.Firestore.v1.Data
     public class GoogleFirestoreAdminV1SearchIndexOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Custom partition fields to use for the search index. If unspecified, all indexed fields will be in
-        /// the same default partition. If a search index is created specifying custom partition fields, all search
-        /// queries using that index will be required to filter on the partition. For indexes with
-        /// MONGODB_COMPATIBLE_API ApiScope: This must refer to a top level field name.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("customPartitionFieldPaths")]
-        public virtual System.Collections.Generic.IList<string> CustomPartitionFieldPaths { get; set; }
-
-        /// <summary>
         /// Optional. The language to use for text search indexes. Used as the default language if not overridden at the
         /// document level by specifying the `text_language_override_field`. The language is specified as a BCP 47
         /// language code. For indexes with MONGODB_COMPATIBLE_API ApiScope: If unspecified, the default language is
@@ -8018,17 +8005,6 @@ namespace Google.Apis.Firestore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textLanguageOverrideFieldPath")]
         public virtual string TextLanguageOverrideFieldPath { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The specification for how to build a number search index for a field.</summary>
-    public class GoogleFirestoreAdminV1SearchNumberSpec : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. How to index the number field value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("indexType")]
-        public virtual string IndexType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
