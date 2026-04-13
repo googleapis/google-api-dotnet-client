@@ -47,6 +47,11 @@
     "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD",
     "REPLY_MESSAGE_OR_FAIL"
   ],
+  "Google.Apis.HangoutsChat.v1.SpacesResource+FindGroupChatsRequest.SpaceViewEnum": [
+    "SPACE_VIEW_UNSPECIFIED",
+    "SPACE_VIEW_RESOURCE_NAME_ONLY",
+    "SPACE_VIEW_EXPANDED"
+  ],
   "Google.Apis.HangoutsChat.v1.SpacesResource+MessagesResource+CreateRequest.MessageReplyOptionEnum": [
     "MESSAGE_REPLY_OPTION_UNSPECIFIED",
     "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD",

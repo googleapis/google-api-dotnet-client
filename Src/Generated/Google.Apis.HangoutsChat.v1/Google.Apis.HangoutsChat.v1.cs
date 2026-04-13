@@ -2669,8 +2669,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// authorization scope, this method returns details about a message the Chat app has access to, like direct
             /// messages and [slash commands](https://developers.google.com/workspace/chat/slash-commands) that invoke
             /// the Chat app. - `https://www.googleapis.com/auth/chat.app.messages.readonly` with [administrator
-            /// approval](https://support.google.com/a?p=chat-app-auth) (available in [Developer
-            /// Preview](https://developers.google.com/workspace/preview)). When using this authentication scope, this
+            /// approval](https://support.google.com/a?p=chat-app-auth). When using this authentication scope, this
             /// method returns details about a public message in a space. - [User
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one
             /// of the following authorization scopes: - `https://www.googleapis.com/auth/chat.messages.readonly` -
@@ -2697,8 +2696,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// authorization scope, this method returns details about a message the Chat app has access to, like direct
             /// messages and [slash commands](https://developers.google.com/workspace/chat/slash-commands) that invoke
             /// the Chat app. - `https://www.googleapis.com/auth/chat.app.messages.readonly` with [administrator
-            /// approval](https://support.google.com/a?p=chat-app-auth) (available in [Developer
-            /// Preview](https://developers.google.com/workspace/preview)). When using this authentication scope, this
+            /// approval](https://support.google.com/a?p=chat-app-auth). When using this authentication scope, this
             /// method returns details about a public message in a space. - [User
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one
             /// of the following authorization scopes: - `https://www.googleapis.com/auth/chat.messages.readonly` -
@@ -2756,8 +2754,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// following types of
             /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
-            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
-            /// Preview](https://developers.google.com/workspace/preview) with the authorization scope: -
+            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) with the authorization scope: -
             /// `https://www.googleapis.com/auth/chat.app.messages.readonly`. When using this authentication scope, this
             /// method only returns public messages in a space. It doesn't include private messages. - [User
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one
@@ -2782,8 +2779,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// following types of
             /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
-            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
-            /// Preview](https://developers.google.com/workspace/preview) with the authorization scope: -
+            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) with the authorization scope: -
             /// `https://www.googleapis.com/auth/chat.app.messages.readonly`. When using this authentication scope, this
             /// method only returns public messages in a space. It doesn't include private messages. - [User
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one
@@ -3213,11 +3209,12 @@ namespace Google.Apis.HangoutsChat.v1
             /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes) appropriate
             /// for reading the requested data: - [App
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
-            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
-            /// Preview](https://developers.google.com/workspace/preview) with one of the following authorization
-            /// scopes: - `https://www.googleapis.com/auth/chat.app.spaces` -
+            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) with one of the following
+            /// authorization scopes: - `https://www.googleapis.com/auth/chat.app.spaces` -
+            /// `https://www.googleapis.com/auth/chat.app.spaces.readonly` -
             /// `https://www.googleapis.com/auth/chat.app.messages.readonly` -
-            /// `https://www.googleapis.com/auth/chat.app.memberships` - [User
+            /// `https://www.googleapis.com/auth/chat.app.memberships` -
+            /// `https://www.googleapis.com/auth/chat.app.memberships.readonly` - [User
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one
             /// of the following authorization scopes: - `https://www.googleapis.com/auth/chat.spaces.readonly` -
             /// `https://www.googleapis.com/auth/chat.spaces` - `https://www.googleapis.com/auth/chat.messages.readonly`
@@ -3249,11 +3246,12 @@ namespace Google.Apis.HangoutsChat.v1
             /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes) appropriate
             /// for reading the requested data: - [App
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
-            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
-            /// Preview](https://developers.google.com/workspace/preview) with one of the following authorization
-            /// scopes: - `https://www.googleapis.com/auth/chat.app.spaces` -
+            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) with one of the following
+            /// authorization scopes: - `https://www.googleapis.com/auth/chat.app.spaces` -
+            /// `https://www.googleapis.com/auth/chat.app.spaces.readonly` -
             /// `https://www.googleapis.com/auth/chat.app.messages.readonly` -
-            /// `https://www.googleapis.com/auth/chat.app.memberships` - [User
+            /// `https://www.googleapis.com/auth/chat.app.memberships` -
+            /// `https://www.googleapis.com/auth/chat.app.memberships.readonly` - [User
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one
             /// of the following authorization scopes: - `https://www.googleapis.com/auth/chat.spaces.readonly` -
             /// `https://www.googleapis.com/auth/chat.spaces` - `https://www.googleapis.com/auth/chat.messages.readonly`
@@ -3316,11 +3314,12 @@ namespace Google.Apis.HangoutsChat.v1
             /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes) appropriate
             /// for reading the requested data: - [App
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
-            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
-            /// Preview](https://developers.google.com/workspace/preview) with one of the following authorization
-            /// scopes: - `https://www.googleapis.com/auth/chat.app.spaces` -
+            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) with one of the following
+            /// authorization scopes: - `https://www.googleapis.com/auth/chat.app.spaces` -
+            /// `https://www.googleapis.com/auth/chat.app.spaces.readonly` -
             /// `https://www.googleapis.com/auth/chat.app.messages.readonly` -
-            /// `https://www.googleapis.com/auth/chat.app.memberships` - [User
+            /// `https://www.googleapis.com/auth/chat.app.memberships` -
+            /// `https://www.googleapis.com/auth/chat.app.memberships.readonly` - [User
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one
             /// of the following authorization scopes: - `https://www.googleapis.com/auth/chat.spaces.readonly` -
             /// `https://www.googleapis.com/auth/chat.spaces` - `https://www.googleapis.com/auth/chat.messages.readonly`
@@ -3354,11 +3353,12 @@ namespace Google.Apis.HangoutsChat.v1
             /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes) appropriate
             /// for reading the requested data: - [App
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
-            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
-            /// Preview](https://developers.google.com/workspace/preview) with one of the following authorization
-            /// scopes: - `https://www.googleapis.com/auth/chat.app.spaces` -
+            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) with one of the following
+            /// authorization scopes: - `https://www.googleapis.com/auth/chat.app.spaces` -
+            /// `https://www.googleapis.com/auth/chat.app.spaces.readonly` -
             /// `https://www.googleapis.com/auth/chat.app.messages.readonly` -
-            /// `https://www.googleapis.com/auth/chat.app.memberships` - [User
+            /// `https://www.googleapis.com/auth/chat.app.memberships` -
+            /// `https://www.googleapis.com/auth/chat.app.memberships.readonly` - [User
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one
             /// of the following authorization scopes: - `https://www.googleapis.com/auth/chat.spaces.readonly` -
             /// `https://www.googleapis.com/auth/chat.spaces` - `https://www.googleapis.com/auth/chat.messages.readonly`
@@ -3815,6 +3815,160 @@ namespace Google.Apis.HangoutsChat.v1
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// [Developer Preview](https://developers.google.com/workspace/preview): Returns all spaces with `spaceType ==
+        /// GROUP_CHAT`, whose human memberships contain exactly the calling user, and the users specified in
+        /// `FindGroupChatsRequest.users`. Only members that have joined the conversation are supported. For an example,
+        /// see [Find group chats](https://developers.google.com/workspace/chat/find-group-chats). If the calling user
+        /// blocks, or is blocked by, some users, and no spaces with the entire specified set of users are found, this
+        /// method returns spaces that don't include the blocked or blocking users. The specified set of users must
+        /// contain only human (non-app) memberships. A request that contains non-human users doesn't return any spaces.
+        /// Requires [user
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of
+        /// the following [authorization
+        /// scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+        /// `https://www.googleapis.com/auth/chat.memberships.readonly` -
+        /// `https://www.googleapis.com/auth/chat.memberships`
+        /// </summary>
+        public virtual FindGroupChatsRequest FindGroupChats()
+        {
+            return new FindGroupChatsRequest(this.service);
+        }
+
+        /// <summary>
+        /// [Developer Preview](https://developers.google.com/workspace/preview): Returns all spaces with `spaceType ==
+        /// GROUP_CHAT`, whose human memberships contain exactly the calling user, and the users specified in
+        /// `FindGroupChatsRequest.users`. Only members that have joined the conversation are supported. For an example,
+        /// see [Find group chats](https://developers.google.com/workspace/chat/find-group-chats). If the calling user
+        /// blocks, or is blocked by, some users, and no spaces with the entire specified set of users are found, this
+        /// method returns spaces that don't include the blocked or blocking users. The specified set of users must
+        /// contain only human (non-app) memberships. A request that contains non-human users doesn't return any spaces.
+        /// Requires [user
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of
+        /// the following [authorization
+        /// scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+        /// `https://www.googleapis.com/auth/chat.memberships.readonly` -
+        /// `https://www.googleapis.com/auth/chat.memberships`
+        /// </summary>
+        public class FindGroupChatsRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.FindGroupChatsResponse>
+        {
+            /// <summary>Constructs a new FindGroupChats request.</summary>
+            public FindGroupChatsRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Optional. The maximum number of spaces to return. The service might return fewer than this value. If
+            /// unspecified, at most 10 spaces are returned. The maximum value is 30. If you use a value more than 30,
+            /// it's automatically changed to 30. Negative values return an `INVALID_ARGUMENT` error.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Optional. A page token, received from a previous call to find group chats. Provide this parameter to
+            /// retrieve the subsequent page. When paginating, all other parameters provided should match the call that
+            /// provided the token. Passing different values may lead to unexpected results.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>
+            /// Requested space view type. If unset, defaults to `SPACE_VIEW_RESOURCE_NAME_ONLY`. Requests that specify
+            /// `SPACE_VIEW_EXPANDED` must include scopes that allow reading space data, for example,
+            /// https://www.googleapis.com/auth/chat.spaces or https://www.googleapis.com/auth/chat.spaces.readonly.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("spaceView", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<SpaceViewEnum> SpaceView { get; set; }
+
+            /// <summary>
+            /// Requested space view type. If unset, defaults to `SPACE_VIEW_RESOURCE_NAME_ONLY`. Requests that specify
+            /// `SPACE_VIEW_EXPANDED` must include scopes that allow reading space data, for example,
+            /// https://www.googleapis.com/auth/chat.spaces or https://www.googleapis.com/auth/chat.spaces.readonly.
+            /// </summary>
+            public enum SpaceViewEnum
+            {
+                /// <summary>The default / unset value.</summary>
+                [Google.Apis.Util.StringValueAttribute("SPACE_VIEW_UNSPECIFIED")]
+                SPACEVIEWUNSPECIFIED = 0,
+
+                /// <summary>Populates only the Space resource name.</summary>
+                [Google.Apis.Util.StringValueAttribute("SPACE_VIEW_RESOURCE_NAME_ONLY")]
+                SPACEVIEWRESOURCENAMEONLY = 1,
+
+                /// <summary>
+                /// Populates Space resource fields. Note: the `permissionSettings` field will not be populated.
+                /// Requests that specify SPACE_VIEW_EXPANDED must include scopes that allow reading space data, for
+                /// example, https://www.googleapis.com/auth/chat.spaces or
+                /// https://www.googleapis.com/auth/chat.spaces.readonly.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("SPACE_VIEW_EXPANDED")]
+                SPACEVIEWEXPANDED = 2,
+            }
+
+            /// <summary>
+            /// Optional. Resource names of all human users in group chat with the calling user. Chat apps can't be
+            /// included in the request. The maximum number of users that can be specified in a single request is `49`.
+            /// Format: `users/{user}`, where `{user}` is either the `id` for the
+            /// [person](https://developers.google.com/people/api/rest/v1/people) from the People API, or the `id` for
+            /// the [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users) in the Directory
+            /// API. For example, to find all group chats with the calling user and two other users, with People API
+            /// profile IDs `123456789` and `987654321`, you can use `users/123456789` and `users/987654321`. You can
+            /// also use the email as an alias for `{user}`. For example, `users/example@gmail.com` where
+            /// `example@gmail.com` is the email of the Google Chat user.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("users", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Users { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "findGroupChats";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/spaces:findGroupChats";
+
+            /// <summary>Initializes FindGroupChats parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("spaceView", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "spaceView",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("users", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "users",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -4517,9 +4671,8 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// [Developer Preview](https://developers.google.com/workspace/preview): Lists items in a section. Only
-                /// spaces can be section items. For details, see [Create and organize sections in Google
-                /// Chat](https://support.google.com/chat/answer/16059854). Requires [user
+                /// Lists items in a section. Only spaces can be section items. For details, see [Create and organize
+                /// sections in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user
                 /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
                 /// the [authorization
                 /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
@@ -4538,9 +4691,8 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// [Developer Preview](https://developers.google.com/workspace/preview): Lists items in a section. Only
-                /// spaces can be section items. For details, see [Create and organize sections in Google
-                /// Chat](https://support.google.com/chat/answer/16059854). Requires [user
+                /// Lists items in a section. Only spaces can be section items. For details, see [Create and organize
+                /// sections in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user
                 /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
                 /// the [authorization
                 /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
@@ -4639,10 +4791,9 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// [Developer Preview](https://developers.google.com/workspace/preview): Moves an item from one section
-                /// to another. For example, if a section contains spaces, this method can be used to move a space to a
-                /// different section. For details, see [Create and organize sections in Google
-                /// Chat](https://support.google.com/chat/answer/16059854). Requires [user
+                /// Moves an item from one section to another. For example, if a section contains spaces, this method
+                /// can be used to move a space to a different section. For details, see [Create and organize sections
+                /// in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user
                 /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
                 /// the [authorization
                 /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
@@ -4659,10 +4810,9 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// [Developer Preview](https://developers.google.com/workspace/preview): Moves an item from one section
-                /// to another. For example, if a section contains spaces, this method can be used to move a space to a
-                /// different section. For details, see [Create and organize sections in Google
-                /// Chat](https://support.google.com/chat/answer/16059854). Requires [user
+                /// Moves an item from one section to another. For example, if a section contains spaces, this method
+                /// can be used to move a space to a different section. For details, see [Create and organize sections
+                /// in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user
                 /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
                 /// the [authorization
                 /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
@@ -4717,10 +4867,10 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// [Developer Preview](https://developers.google.com/workspace/preview): Creates a section in Google Chat.
-            /// Sections help users group conversations and customize the list of spaces displayed in Chat navigation
-            /// panel. Only sections of type `CUSTOM_SECTION` can be created. For details, see [Create and organize
-            /// sections in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user
+            /// Creates a section in Google Chat. Sections help users group conversations and customize the list of
+            /// spaces displayed in Chat navigation panel. Only sections of type `CUSTOM_SECTION` can be created. For
+            /// details, see [Create and organize sections in Google
+            /// Chat](https://support.google.com/chat/answer/16059854). Requires [user
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the
             /// [authorization
             /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
@@ -4736,10 +4886,10 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// [Developer Preview](https://developers.google.com/workspace/preview): Creates a section in Google Chat.
-            /// Sections help users group conversations and customize the list of spaces displayed in Chat navigation
-            /// panel. Only sections of type `CUSTOM_SECTION` can be created. For details, see [Create and organize
-            /// sections in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user
+            /// Creates a section in Google Chat. Sections help users group conversations and customize the list of
+            /// spaces displayed in Chat navigation panel. Only sections of type `CUSTOM_SECTION` can be created. For
+            /// details, see [Create and organize sections in Google
+            /// Chat](https://support.google.com/chat/answer/16059854). Requires [user
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the
             /// [authorization
             /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
@@ -4792,10 +4942,9 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// [Developer Preview](https://developers.google.com/workspace/preview): Deletes a section of type
-            /// `CUSTOM_SECTION`. If the section contains items, such as spaces, the items are moved to Google Chat's
-            /// default sections and are not deleted. For details, see [Create and organize sections in Google
-            /// Chat](https://support.google.com/chat/answer/16059854). Requires [user
+            /// Deletes a section of type `CUSTOM_SECTION`. If the section contains items, such as spaces, the items are
+            /// moved to Google Chat's default sections and are not deleted. For details, see [Create and organize
+            /// sections in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the
             /// [authorization
             /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
@@ -4810,10 +4959,9 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// [Developer Preview](https://developers.google.com/workspace/preview): Deletes a section of type
-            /// `CUSTOM_SECTION`. If the section contains items, such as spaces, the items are moved to Google Chat's
-            /// default sections and are not deleted. For details, see [Create and organize sections in Google
-            /// Chat](https://support.google.com/chat/answer/16059854). Requires [user
+            /// Deletes a section of type `CUSTOM_SECTION`. If the section contains items, such as spaces, the items are
+            /// moved to Google Chat's default sections and are not deleted. For details, see [Create and organize
+            /// sections in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the
             /// [authorization
             /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
@@ -4859,10 +5007,9 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// [Developer Preview](https://developers.google.com/workspace/preview): Lists sections available to the
-            /// Chat user. Sections help users group their conversations and customize the list of spaces displayed in
-            /// Chat navigation panel. For details, see [Create and organize sections in Google
-            /// Chat](https://support.google.com/chat/answer/16059854). Requires [user
+            /// Lists sections available to the Chat user. Sections help users group their conversations and customize
+            /// the list of spaces displayed in Chat navigation panel. For details, see [Create and organize sections in
+            /// Google Chat](https://support.google.com/chat/answer/16059854). Requires [user
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the
             /// [authorization
             /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
@@ -4881,10 +5028,9 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// [Developer Preview](https://developers.google.com/workspace/preview): Lists sections available to the
-            /// Chat user. Sections help users group their conversations and customize the list of spaces displayed in
-            /// Chat navigation panel. For details, see [Create and organize sections in Google
-            /// Chat](https://support.google.com/chat/answer/16059854). Requires [user
+            /// Lists sections available to the Chat user. Sections help users group their conversations and customize
+            /// the list of spaces displayed in Chat navigation panel. For details, see [Create and organize sections in
+            /// Google Chat](https://support.google.com/chat/answer/16059854). Requires [user
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the
             /// [authorization
             /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
@@ -4966,9 +5112,8 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// [Developer Preview](https://developers.google.com/workspace/preview): Updates a section. Only sections
-            /// of type `CUSTOM_SECTION` can be updated. For details, see [Create and organize sections in Google
-            /// Chat](https://support.google.com/chat/answer/16059854). Requires [user
+            /// Updates a section. Only sections of type `CUSTOM_SECTION` can be updated. For details, see [Create and
+            /// organize sections in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the
             /// [authorization
             /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
@@ -4987,9 +5132,8 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// [Developer Preview](https://developers.google.com/workspace/preview): Updates a section. Only sections
-            /// of type `CUSTOM_SECTION` can be updated. For details, see [Create and organize sections in Google
-            /// Chat](https://support.google.com/chat/answer/16059854). Requires [user
+            /// Updates a section. Only sections of type `CUSTOM_SECTION` can be updated. For details, see [Create and
+            /// organize sections in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the
             /// [authorization
             /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
@@ -5060,8 +5204,7 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// [Developer Preview](https://developers.google.com/workspace/preview): Changes the sort order of a
-            /// section. For details, see [Create and organize sections in Google
+            /// Changes the sort order of a section. For details, see [Create and organize sections in Google
             /// Chat](https://support.google.com/chat/answer/16059854). Requires [user
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the
             /// [authorization
@@ -5078,8 +5221,7 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// [Developer Preview](https://developers.google.com/workspace/preview): Changes the sort order of a
-            /// section. For details, see [Create and organize sections in Google
+            /// Changes the sort order of a section. For details, see [Create and organize sections in Google
             /// Chat](https://support.google.com/chat/answer/16059854). Requires [user
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the
             /// [authorization
@@ -6607,6 +6749,27 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A response containing group chat spaces with exactly the calling user and the requested users. [Developer
+    /// Preview](https://developers.google.com/workspace/preview):
+    /// </summary>
+    public class FindGroupChatsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token that you can send as `pageToken` to retrieve the next page of results. If empty, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of spaces in the requested (or first) page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spaces")]
+        public virtual System.Collections.Generic.IList<Space> Spaces { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8673,7 +8836,6 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// `users/{user}/sections/default-spaces` * `users/{user}/sections/default-apps` 2. **Custom Sections:** These are
     /// sections created and managed by the user. Creating a custom section using `CreateSection` **requires** a
     /// `display_name`. Custom sections can be updated using `UpdateSection` and deleted using `DeleteSection`.
-    /// [Developer Preview](https://developers.google.com/workspace/preview).
     /// </summary>
     public class GoogleChatV1Section : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8964,10 +9126,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Response message for listing section items. [Developer
-    /// Preview](https://developers.google.com/workspace/preview).
-    /// </summary>
+    /// <summary>Response message for listing section items.</summary>
     public class ListSectionItemsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -8985,9 +9144,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Response message for listing sections. [Developer Preview](https://developers.google.com/workspace/preview).
-    /// </summary>
+    /// <summary>Response message for listing sections.</summary>
     public class ListSectionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -9705,10 +9862,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Request message for moving a section item across sections. [Developer
-    /// Preview](https://developers.google.com/workspace/preview).
-    /// </summary>
+    /// <summary>Request message for moving a section item across sections.</summary>
     public class MoveSectionItemRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -9722,10 +9876,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Response message for moving a section item. [Developer
-    /// Preview](https://developers.google.com/workspace/preview).
-    /// </summary>
+    /// <summary>Response message for moving a section item.</summary>
     public class MoveSectionItemResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The updated section item.</summary>
@@ -9824,9 +9975,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Request message for positioning a section. [Developer Preview](https://developers.google.com/workspace/preview).
-    /// </summary>
+    /// <summary>Request message for positioning a section.</summary>
     public class PositionSectionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The relative position of the section in the list of sections.</summary>
@@ -9846,10 +9995,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Response message for positioning a section. [Developer
-    /// Preview](https://developers.google.com/workspace/preview).
-    /// </summary>
+    /// <summary>Response message for positioning a section.</summary>
     public class PositionSectionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The updated section.</summary>
@@ -10133,7 +10279,6 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// A user's defined section item. This is used to represent section items, such as spaces, grouped under a section.
-    /// [Developer Preview](https://developers.google.com/workspace/preview).
     /// </summary>
     public class SectionItem : Google.Apis.Requests.IDirectResponseSchema
     {
