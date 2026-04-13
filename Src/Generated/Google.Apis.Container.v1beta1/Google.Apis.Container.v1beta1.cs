@@ -703,9 +703,9 @@ namespace Google.Apis.Container.v1beta1
                         }
                     }
 
-                    /// <summary>Fetch upgrade information of a specific nodepool.</summary>
+                    /// <summary>Fetch upgrade information of a specific node pool.</summary>
                     /// <param name="name">
-                    /// Required. The name (project, location, cluster, nodepool) of the nodepool to get. Specified in
+                    /// Required. The name (project, location, cluster, node pool) of the node pool to get. Specified in
                     /// the format `projects/*/locations/*/clusters/*/nodePools/*` or
                     /// `projects/*/zones/*/clusters/*/nodePools/*`.
                     /// </param>
@@ -714,7 +714,7 @@ namespace Google.Apis.Container.v1beta1
                         return new FetchNodePoolUpgradeInfoRequest(this.service, name);
                     }
 
-                    /// <summary>Fetch upgrade information of a specific nodepool.</summary>
+                    /// <summary>Fetch upgrade information of a specific node pool.</summary>
                     public class FetchNodePoolUpgradeInfoRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1beta1.Data.NodePoolUpgradeInfo>
                     {
                         /// <summary>Constructs a new FetchNodePoolUpgradeInfo request.</summary>
@@ -725,8 +725,8 @@ namespace Google.Apis.Container.v1beta1
                         }
 
                         /// <summary>
-                        /// Required. The name (project, location, cluster, nodepool) of the nodepool to get. Specified
-                        /// in the format `projects/*/locations/*/clusters/*/nodePools/*` or
+                        /// Required. The name (project, location, cluster, node pool) of the node pool to get.
+                        /// Specified in the format `projects/*/locations/*/clusters/*/nodePools/*` or
                         /// `projects/*/zones/*/clusters/*/nodePools/*`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -3541,9 +3541,9 @@ namespace Google.Apis.Container.v1beta1
                         }
                     }
 
-                    /// <summary>Fetch upgrade information of a specific nodepool.</summary>
+                    /// <summary>Fetch upgrade information of a specific node pool.</summary>
                     /// <param name="name">
-                    /// Required. The name (project, location, cluster, nodepool) of the nodepool to get. Specified in
+                    /// Required. The name (project, location, cluster, node pool) of the node pool to get. Specified in
                     /// the format `projects/*/locations/*/clusters/*/nodePools/*` or
                     /// `projects/*/zones/*/clusters/*/nodePools/*`.
                     /// </param>
@@ -3552,7 +3552,7 @@ namespace Google.Apis.Container.v1beta1
                         return new FetchNodePoolUpgradeInfoRequest(this.service, name);
                     }
 
-                    /// <summary>Fetch upgrade information of a specific nodepool.</summary>
+                    /// <summary>Fetch upgrade information of a specific node pool.</summary>
                     public class FetchNodePoolUpgradeInfoRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1beta1.Data.NodePoolUpgradeInfo>
                     {
                         /// <summary>Constructs a new FetchNodePoolUpgradeInfo request.</summary>
@@ -3563,8 +3563,8 @@ namespace Google.Apis.Container.v1beta1
                         }
 
                         /// <summary>
-                        /// Required. The name (project, location, cluster, nodepool) of the nodepool to get. Specified
-                        /// in the format `projects/*/locations/*/clusters/*/nodePools/*` or
+                        /// Required. The name (project, location, cluster, node pool) of the node pool to get.
+                        /// Specified in the format `projects/*/locations/*/clusters/*/nodePools/*` or
                         /// `projects/*/zones/*/clusters/*/nodePools/*`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -7133,7 +7133,7 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>AutopilotConfig contains configuration of autopilot feature for this nodepool.</summary>
+    /// <summary>AutopilotConfig contains configuration of autopilot feature for this node pool.</summary>
     public class AutopilotConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Denotes that nodes belonging to this node pool are Autopilot nodes.</summary>
@@ -7382,7 +7382,7 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>BootDisk specifies the boot disk configuration for nodepools.</summary>
+    /// <summary>BootDisk specifies the boot disk configuration for node pools.</summary>
     public class BootDisk : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Disk type of the boot disk. (i.e. Hyperdisk-Balanced, PD-Balanced, etc.)</summary>
@@ -11559,7 +11559,7 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>NodeDrainConfig contains the node drain related configurations for this nodepool.</summary>
+    /// <summary>NodeDrainConfig contains the node drain related configurations for this node pool.</summary>
     public class NodeDrainConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether to respect PDB during node pool deletion.</summary>
@@ -11866,7 +11866,7 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual NetworkTierConfig NetworkTierConfig { get; set; }
 
         /// <summary>
-        /// [PRIVATE FIELD] Pod CIDR size overprovisioning config for the nodepool. Pod CIDR size per node depends on
+        /// [PRIVATE FIELD] Pod CIDR size overprovisioning config for the node pool. Pod CIDR size per node depends on
         /// max_pods_per_node. By default, the value of max_pods_per_node is rounded off to next power of 2 and we then
         /// double that to get the size of pod CIDR block per node. Example: max_pods_per_node of 30 would result in 64
         /// IPs (/26). This config can disable the doubling of IPs (we still round off to next power of 2) Example:
@@ -12102,7 +12102,7 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
-        /// <summary>Location policy used when scaling up a nodepool.</summary>
+        /// <summary>Location policy used when scaling up a node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationPolicy")]
         public virtual string LocationPolicy { get; set; }
 
@@ -12150,7 +12150,7 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>NodePoolLoggingConfig specifies logging configuration for nodepools.</summary>
+    /// <summary>NodePoolLoggingConfig specifies logging configuration for node pools.</summary>
     public class NodePoolLoggingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Logging variant configuration.</summary>
@@ -12161,18 +12161,18 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>NodePoolUpgradeInfo contains the upgrade information of a nodepool.</summary>
+    /// <summary>NodePoolUpgradeInfo contains the upgrade information of a node pool.</summary>
     public class NodePoolUpgradeInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The auto upgrade status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoUpgradeStatus")]
         public virtual System.Collections.Generic.IList<string> AutoUpgradeStatus { get; set; }
 
-        /// <summary>The nodepool's current minor version's end of extended support timestamp.</summary>
+        /// <summary>The node pool's current minor version's end of extended support timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endOfExtendedSupportTimestamp")]
         public virtual string EndOfExtendedSupportTimestamp { get; set; }
 
-        /// <summary>The nodepool's current minor version's end of standard support timestamp.</summary>
+        /// <summary>The node pool's current minor version's end of standard support timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endOfStandardSupportTimestamp")]
         public virtual string EndOfStandardSupportTimestamp { get; set; }
 
@@ -12739,7 +12739,7 @@ namespace Google.Apis.Container.v1beta1.Data
     public class QueuedProvisioning : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Denotes that this nodepool is QRM specific, meaning nodes can be only obtained through queuing via the
+        /// Denotes that this node pool is QRM specific, meaning nodes can be only obtained through queuing via the
         /// Cluster Autoscaler ProvisioningRequest API.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
