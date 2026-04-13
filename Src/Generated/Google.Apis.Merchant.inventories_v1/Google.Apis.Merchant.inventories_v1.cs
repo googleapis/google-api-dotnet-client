@@ -1184,6 +1184,19 @@ namespace Google.Apis.Merchant.inventories_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("account")]
         public virtual System.Nullable<long> Account { get; set; }
 
+        /// <summary>
+        /// Output only. The unpadded base64url encoded name of the `LocalInventory` resource. Format:
+        /// `accounts/{account}/products/{product}/localInventories/{store_code}` where the `{product}` segment is the
+        /// unpadded base64url encoded value of the identifier of the form `content_language~feed_label~offer_id`.
+        /// Example: `accounts/123/products/ZW5-VVN-c2t1LzEyMw/localInventories/store123` for the decoded product ID
+        /// `en~US~sku/123` and `store_code` "store123". Can be used directly as input to the API methods that require
+        /// the local product identifier within the local inventory name to be encoded if it contains special
+        /// characters, for example
+        /// [`GetLocalInventory`](https://developers.google.com/merchant/api/reference/rest/inventories_v1/accounts.products.localInventories/get).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("base64EncodedName")]
+        public virtual string Base64EncodedName { get; set; }
+
         /// <summary>Optional. A list of local inventory attributes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localInventoryAttributes")]
         public virtual LocalInventoryAttributes LocalInventoryAttributes { get; set; }
@@ -1476,6 +1489,19 @@ namespace Google.Apis.Merchant.inventories_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("account")]
         public virtual System.Nullable<long> Account { get; set; }
+
+        /// <summary>
+        /// Output only. The unpadded base64url encoded name of the `RegionalInventory` resource. Format:
+        /// `accounts/{account}/products/{product}/regionalInventories/{region}` where the `{product}` segment is the
+        /// unpadded base64url encoded value of the identifier of the form `content_language~feed_label~offer_id`.
+        /// Example: `accounts/123/products/ZW5-VVN-c2t1LzEyMw/regionalInventories/region123` for the decoded product ID
+        /// `en~US~sku/123` and `region` "region123". Can be used directly as input to the API methods that require the
+        /// product identifier within the regional inventory name to be encoded if it contains special characters, for
+        /// example
+        /// [`GetRegionalInventory`](https://developers.google.com/merchant/api/reference/rest/inventories_v1/accounts.products.regionalInventories/get).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("base64EncodedName")]
+        public virtual string Base64EncodedName { get; set; }
 
         /// <summary>
         /// Output only. The name of the `RegionalInventory` resource. Format:
