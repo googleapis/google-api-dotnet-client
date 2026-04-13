@@ -1741,7 +1741,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("overridesByRequestProtocol")]
         public virtual System.Collections.Generic.IDictionary<string, BackendRule> OverridesByRequestProtocol { get; set; }
 
-        /// <summary>no-lint</summary>
+        /// <summary>
+        /// Path translation specifies how to combine the backend address with the request path in order to produce the
+        /// appropriate forwarding URL for the request. See PathTranslation for more details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathTranslation")]
         public virtual string PathTranslation { get; set; }
 
@@ -1996,7 +1999,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("referenceDocsUri")]
         public virtual string ReferenceDocsUri { get; set; }
 
-        /// <summary>Configuration for which RPCs should be generated in the GAPIC client.</summary>
+        /// <summary>
+        /// Configuration for which RPCs should be generated in the GAPIC client. Note: This field should not be used in
+        /// most cases.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectiveGapicGeneration")]
         public virtual SelectiveGapicGeneration SelectiveGapicGeneration { get; set; }
 
@@ -3892,6 +3898,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
 
     /// <summary>
     /// This message is used to configure the generation of a subset of the RPCs in a service for client libraries.
+    /// Note: This feature should not be used in most cases.
     /// </summary>
     public class SelectiveGapicGeneration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3981,11 +3988,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
 
         /// <summary>
         /// Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is
-        /// automatically generated to service all defined APIs. WARNING: Defining any entries in the `endpoints` list
-        /// disables the automatic generation of default endpoint variations (e.g., `{service}.clients6.google.com`,
-        /// `content-{service}.googleapis.com`, and mTLS variants like `{service}.mtls.googleapis.com`). To retain these
-        /// default variations, you are required to explicitly include your main service endpoint (e.g.,
-        /// `myservice.googleapis.com`) in this list alongside any other custom endpoints (like REP, GFE, etc.).
+        /// automatically generated to service all defined APIs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpoints")]
         public virtual System.Collections.Generic.IList<Endpoint> Endpoints { get; set; }
@@ -4482,7 +4485,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
     public class UsageRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        ///  Use this rule to configure unregistered calls for the service. Unregistered calls are calls that do not
+        /// Use this rule to configure unregistered calls for the service. Unregistered calls are calls that do not
         /// contain consumer project identity. (Example: calls that do not contain an API key). WARNING: By default, API
         /// methods do not allow unregistered calls, and each method call must be identified by a consumer project
         /// identity.
