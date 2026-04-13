@@ -1026,6 +1026,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                             /// <summary>The conversation is from the evaluation.</summary>
                             [Google.Apis.Util.StringValueAttribute("EVAL")]
                             EVAL = 3,
+
+                            /// <summary>
+                            /// The conversation is from an agent tool. Agent tool runs the agent in a separate session,
+                            /// which is persisted for testing and debugging purposes.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("AGENT_TOOL")]
+                            AGENTTOOL = 4,
                         }
 
                         /// <summary>Gets the method name.</summary>
@@ -1166,6 +1173,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                             /// <summary>The conversation is from the evaluation.</summary>
                             [Google.Apis.Util.StringValueAttribute("EVAL")]
                             EVAL = 3,
+
+                            /// <summary>
+                            /// The conversation is from an agent tool. Agent tool runs the agent in a separate session,
+                            /// which is persisted for testing and debugging purposes.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("AGENT_TOOL")]
+                            AGENTTOOL = 4,
                         }
 
                         /// <summary>Gets the method name.</summary>
@@ -1270,6 +1284,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                             /// <summary>The conversation is from the evaluation.</summary>
                             [Google.Apis.Util.StringValueAttribute("EVAL")]
                             EVAL = 3,
+
+                            /// <summary>
+                            /// The conversation is from an agent tool. Agent tool runs the agent in a separate session,
+                            /// which is persisted for testing and debugging purposes.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("AGENT_TOOL")]
+                            AGENTTOOL = 4,
                         }
 
                         /// <summary>
@@ -1315,6 +1336,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                             /// <summary>The conversation is from the evaluation.</summary>
                             [Google.Apis.Util.StringValueAttribute("EVAL")]
                             EVAL = 3,
+
+                            /// <summary>
+                            /// The conversation is from an agent tool. Agent tool runs the agent in a separate session,
+                            /// which is persisted for testing and debugging purposes.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("AGENT_TOOL")]
+                            AGENTTOOL = 4,
                         }
 
                         /// <summary>Gets the method name.</summary>
@@ -3134,6 +3162,65 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Exports evaluations.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The resource name of the app to export evaluations from. Format:
+                    /// `projects/{project}/locations/{location}/apps/{app}`
+                    /// </param>
+                    public virtual ExportRequest Export(Google.Apis.CustomerEngagementSuite.v1beta.Data.ExportEvaluationsRequest body, string parent)
+                    {
+                        return new ExportRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Exports evaluations.</summary>
+                    public class ExportRequest : CustomerEngagementSuiteBaseServiceRequest<Google.Apis.CustomerEngagementSuite.v1beta.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Export request.</summary>
+                        public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.CustomerEngagementSuite.v1beta.Data.ExportEvaluationsRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the app to export evaluations from. Format:
+                        /// `projects/{project}/locations/{location}/apps/{app}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CustomerEngagementSuite.v1beta.Data.ExportEvaluationsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "export";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta/{+parent}/evaluations:export";
+
+                        /// <summary>Initializes Export parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/apps/[^/]+$",
                             });
                         }
                     }
@@ -7787,6 +7874,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
     /// <summary>Represents a tool that allows the agent to call another agent.</summary>
     public class AgentTool : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The resource name of the agent that is the entry point of the tool. Format:
+        /// `projects/{project}/locations/{location}/agents/{agent}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agent")]
+        public virtual string Agent { get; set; }
+
         /// <summary>Optional. Description of the tool's purpose.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -7796,8 +7890,8 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Optional. The resource name of the root agent that is the entry point of the tool. Format:
-        /// `projects/{project}/locations/{location}/agents/{agent}`
+        /// Optional. Deprecated: Use `agent` instead. The resource name of the root agent that is the entry point of
+        /// the tool. Format: `projects/{project}/locations/{location}/agents/{agent}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootAgent")]
         public virtual string RootAgent { get; set; }
@@ -9203,6 +9297,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disableConversationLogging")]
         public virtual System.Nullable<bool> DisableConversationLogging { get; set; }
 
+        /// <summary>
+        /// Optional. Controls the retention window for the conversation. If not set, the conversation will be retained
+        /// for 365 days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionWindow")]
+        public virtual object RetentionWindow { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9867,9 +9968,55 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
     /// <summary>Settings to describe how errors should be handled in the app.</summary>
     public class ErrorHandlingSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Configuration for ending the session in case of system errors (e.g. LLM errors).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endSessionConfig")]
+        public virtual ErrorHandlingSettingsEndSessionConfig EndSessionConfig { get; set; }
+
         /// <summary>Optional. The strategy to use for error handling.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorHandlingStrategy")]
         public virtual string ErrorHandlingStrategy { get; set; }
+
+        /// <summary>Optional. Configuration for handling fallback responses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fallbackResponseConfig")]
+        public virtual ErrorHandlingSettingsFallbackResponseConfig FallbackResponseConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for ending the session in case of system errors (e.g. LLM errors).</summary>
+    public class ErrorHandlingSettingsEndSessionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Whether to escalate the session in EndSession. If session is escalated, metadata in EndSession
+        /// will contain `session_escalated = true`. See
+        /// https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/deploy/google-telephony-platform#transfer_a_call_to_a_human_agent
+        /// for details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("escalateSession")]
+        public virtual System.Nullable<bool> EscalateSession { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for handling fallback responses.</summary>
+    public class ErrorHandlingSettingsFallbackResponseConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The fallback messages in case of system errors (e.g. LLM errors), mapped by [supported language
+        /// code](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/language).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customFallbackMessages")]
+        public virtual System.Collections.Generic.IDictionary<string, string> CustomFallbackMessages { get; set; }
+
+        /// <summary>
+        /// Optional. The maximum number of fallback attempts to make before the agent emitting EndSession Signal.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxFallbackAttempts")]
+        public virtual System.Nullable<int> MaxFallbackAttempts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11868,6 +12015,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         public virtual System.Collections.Generic.IDictionary<string, object> Context { get; set; }
 
         /// <summary>
+        /// Optional. Mock configuration for the tool execution. If this field is set, tools that call other tools will
+        /// be mocked based on the provided patterns and responses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mockConfig")]
+        public virtual MockConfig MockConfig { get; set; }
+
+        /// <summary>
         /// Optional. The name of the tool to execute. Format:
         /// projects/{project}/locations/{location}/apps/{app}/tools/{tool}
         /// </summary>
@@ -11957,6 +12111,78 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appUri")]
         public virtual string AppUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for EvaluationService.ExportEvaluations.</summary>
+    public class ExportEvaluationsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The export options for the evaluations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportOptions")]
+        public virtual ExportOptions ExportOptions { get; set; }
+
+        /// <summary>
+        /// Optional. Includes evaluation results in the export. At least one of include_evaluation_results or
+        /// include_evaluations must be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeEvaluationResults")]
+        public virtual System.Nullable<bool> IncludeEvaluationResults { get; set; }
+
+        /// <summary>
+        /// Optional. Includes evaluations in the export. At least one of include_evaluation_results or
+        /// include_evaluations must be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeEvaluations")]
+        public virtual System.Nullable<bool> IncludeEvaluations { get; set; }
+
+        /// <summary>Required. The resource names of the evaluations to export.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for EvaluationService.ExportEvaluations.</summary>
+    public class ExportEvaluationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The content of the exported Evaluations. This will be populated if gcs_uri was not specified in the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationsContent")]
+        public virtual string EvaluationsContent { get; set; }
+
+        /// <summary>
+        /// The Google Cloud Storage URI folder where the exported evaluations were written. This will be populated if
+        /// gcs_uri was specified in the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationsUri")]
+        public virtual string EvaluationsUri { get; set; }
+
+        /// <summary>
+        /// Output only. A map of evaluation resource names that could not be exported, to the reason why they failed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedEvaluations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> FailedEvaluations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Options for exporting CES evaluation resources.</summary>
+    public class ExportOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The format to export the evaluation results in. Defaults to JSON if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportFormat")]
+        public virtual string ExportFormat { get; set; }
+
+        /// <summary>Optional. The Google Cloud Storage URI to write the exported Evaluation Results to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
+        public virtual string GcsUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13104,11 +13330,35 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessages")]
         public virtual System.Collections.Generic.IList<string> ErrorMessages { get; set; }
 
+        /// <summary>
+        /// The number of evaluation results that either failed to import entirely or completed import with one or more
+        /// errors.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationResultImportFailureCount")]
+        public virtual System.Nullable<int> EvaluationResultImportFailureCount { get; set; }
+
+        /// <summary>The list of evaluation results that were imported into the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationResults")]
+        public virtual System.Collections.Generic.IList<EvaluationResult> EvaluationResults { get; set; }
+
+        /// <summary>
+        /// The number of evaluation runs that either failed to import entirely or completed import with one or more
+        /// errors.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationRunImportFailureCount")]
+        public virtual System.Nullable<int> EvaluationRunImportFailureCount { get; set; }
+
+        /// <summary>The list of evaluation runs that were imported into the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationRuns")]
+        public virtual System.Collections.Generic.IList<EvaluationRun> EvaluationRuns { get; set; }
+
         /// <summary>The list of evaluations that were imported into the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluations")]
         public virtual System.Collections.Generic.IList<Evaluation> Evaluations { get; set; }
 
-        /// <summary>The number of evaluations that were not imported due to errors.</summary>
+        /// <summary>
+        /// The number of evaluations that either failed to import entirely or completed import with one or more errors.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importFailureCount")]
         public virtual System.Nullable<int> ImportFailureCount { get; set; }
 
@@ -13877,6 +14127,61 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("llmMetricsOptedOut")]
         public virtual System.Nullable<bool> LlmMetricsOptedOut { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Mock tool calls configuration for the session.</summary>
+    public class MockConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. All tool calls to mock for the duration of the session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mockedToolCalls")]
+        public virtual System.Collections.Generic.IList<MockedToolCall> MockedToolCalls { get; set; }
+
+        /// <summary>
+        /// Required. Beavhior for tool calls that don't match any args patterns in mocked_tool_calls.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unmatchedToolCallBehavior")]
+        public virtual string UnmatchedToolCallBehavior { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A mocked tool call. Expresses the target tool + a pattern to match against that tool's args / inputs. If the
+    /// pattern matches, then the mock response will be returned.
+    /// </summary>
+    public class MockedToolCall : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A pattern to match against the args / inputs of all dispatched tool calls. If the tool call inputs
+        /// match this pattern, then mock output will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expectedArgsPattern")]
+        public virtual System.Collections.Generic.IDictionary<string, object> ExpectedArgsPattern { get; set; }
+
+        /// <summary>
+        /// Optional. The mock response / output to return if the tool call args / inputs match the pattern.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mockResponse")]
+        public virtual System.Collections.Generic.IDictionary<string, object> MockResponse { get; set; }
+
+        /// <summary>Required. Deprecated. Use tool_identifier instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tool")]
+        public virtual string Tool { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the tool to mock. Format:
+        /// `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolId")]
+        public virtual string ToolId { get; set; }
+
+        /// <summary>Optional. The toolset to mock.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolset")]
+        public virtual ToolsetTool Toolset { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
