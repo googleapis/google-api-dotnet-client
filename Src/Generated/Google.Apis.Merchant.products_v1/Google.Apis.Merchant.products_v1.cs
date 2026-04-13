@@ -1406,6 +1406,17 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual AutomatedDiscounts AutomatedDiscounts { get; set; }
 
         /// <summary>
+        /// Output only. The **unpadded base64url encoded name** of the product. Format:
+        /// `accounts/{account}/products/{product}` where the last section `product` is the unpadded base64url encoding
+        /// of the `content_language~feed_label~offer_id` name. Example: `accounts/123/products/ZW5-VVN-c2t1LzEyMw` for
+        /// the decoded product name `accounts/123/products/en~US~sku/123`. This field can be used directly as input to
+        /// the API methods that require the product name to be encoded if it contains special characters, for example
+        /// [`GetProduct`](https://developers.google.com/merchant/api/reference/rest/products_v1/accounts.products/get).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("base64EncodedName")]
+        public virtual string Base64EncodedName { get; set; }
+
+        /// <summary>
         /// Output only. The two-letter [ISO 639-1](http://en.wikipedia.org/wiki/ISO_639-1) language code for the
         /// product.
         /// </summary>
@@ -2275,6 +2286,29 @@ namespace Google.Apis.Merchant.products_v1.Data
     /// </summary>
     public class ProductInput : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. The **unpadded base64url encoded name** of the product input. Format:
+        /// `accounts/{account}/productInputs/{productinput}` where the last section `productinput` is the unpadded
+        /// base64url encoding of the `content_language~feed_label~offer_id` name. Example:
+        /// `accounts/123/productInputs/ZW5-VVN-c2t1LzEyMw` for the decoded product input name
+        /// `accounts/123/productInputs/en~US~sku/123`. This field can be used directly as input to the API methods that
+        /// require the product input name to be encoded if it contains special characters, for example
+        /// [`GetProductInput`](https://developers.google.com/merchant/api/reference/rest/products_v1/accounts.productInputs/get).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("base64EncodedName")]
+        public virtual string Base64EncodedName { get; set; }
+
+        /// <summary>
+        /// Output only. The **unpadded base64url encoded name** of the processed product. Format:
+        /// `accounts/{account}/products/{product}` where the last section `product` is the unpadded base64url encoding
+        /// of the `content_language~feed_label~offer_id` name. Example: `accounts/123/products/ZW5-VVN-c2t1LzEyMw` for
+        /// the decoded product name `accounts/123/products/en~US~sku/123`. This field can be used directly as input to
+        /// the API methods that require the product name to be encoded if it contains special characters, for example
+        /// [`GetProduct`](https://developers.google.com/merchant/api/reference/rest/products_v1/accounts.products/get).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("base64EncodedProduct")]
+        public virtual string Base64EncodedProduct { get; set; }
+
         /// <summary>
         /// Required. Immutable. The two-letter [ISO 639-1](http://en.wikipedia.org/wiki/ISO_639-1) language code for
         /// the product.
