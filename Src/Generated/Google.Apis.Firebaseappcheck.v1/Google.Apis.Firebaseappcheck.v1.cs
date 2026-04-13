@@ -1075,6 +1075,16 @@ namespace Google.Apis.Firebaseappcheck.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// Optional. The checksum to be validated against the current DebugToken, to ensure the client has
+                    /// an up-to-date value before proceeding. This checksum is computed by the server based on the
+                    /// values of fields in the DebugToken object, and can be obtained from the DebugToken object
+                    /// received from the last CreateDebugToken, GetDebugToken, ListDebugTokens, or UpdateDebugToken
+                    /// call. This etag is strongly validated as defined by RFC 7232.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
@@ -1095,6 +1105,14 @@ namespace Google.Apis.Firebaseappcheck.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/apps/[^/]+/debugTokens/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -4427,6 +4445,14 @@ namespace Google.Apis.Firebaseappcheck.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
+        /// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on
+        /// update and delete requests to ensure the client has an up-to-date value before proceeding. This etag is
+        /// strongly validated as defined by RFC 7232.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
         /// Required. The relative resource name of the debug token, in the format:
         /// ```
         /// projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id}
@@ -4480,9 +4506,6 @@ namespace Google.Apis.Firebaseappcheck.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>
@@ -5308,6 +5331,14 @@ namespace Google.Apis.Firebaseappcheck.v1.Data
         public virtual string EnforcementMode { get; set; }
 
         /// <summary>
+        /// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on
+        /// update and delete requests to ensure the client has an up-to-date value before proceeding. This etag is
+        /// strongly validated as defined by RFC 7232.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
         /// Required. The relative resource name of the service configuration object, in the format:
         /// ```
         /// projects/{project_number}/services/{service_id}
@@ -5320,8 +5351,54 @@ namespace Google.Apis.Firebaseappcheck.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
+        /// <summary>
+        /// Optional. The replay protection enforcement mode for this service. Note that this field cannot be set to a
+        /// level higher than the overall App Check enforcement mode. For example, if the overall App Check enforcement
+        /// mode is set to `UNENFORCED`, this field cannot be set to `ENFORCED`. In order to enforce replay protection,
+        /// you must first enforce App Check. An HTTP 400 error will be returned in this case. By default, this field is
+        /// set to `OFF`. Setting this field to `UNENFORCED` or `ENFORCED` is considered opting into replay protection.
+        /// Once opted in, requests to your protected services may experience higher latency. To opt out of replay
+        /// protection after opting in, set this field to `OFF`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replayProtection")]
+        public virtual string ReplayProtection { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp when this service configuration object was most recently updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
     }
 
     /// <summary>
