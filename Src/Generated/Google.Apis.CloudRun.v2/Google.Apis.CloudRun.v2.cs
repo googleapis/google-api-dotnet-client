@@ -707,6 +707,110 @@ namespace Google.Apis.CloudRun.v2
                     }
                 }
 
+                /// <summary>Updates an Instance.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// The fully qualified name of this Instance. In CreateInstanceRequest, this field is ignored, and
+                /// instead composed from CreateInstanceRequest.parent and CreateInstanceRequest.instance_id. Format:
+                /// projects/{project}/locations/{location}/instances/{instance_id}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Instance body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates an Instance.</summary>
+                public class PatchRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Instance body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// The fully qualified name of this Instance. In CreateInstanceRequest, this field is ignored, and
+                    /// instead composed from CreateInstanceRequest.parent and CreateInstanceRequest.instance_id.
+                    /// Format: projects/{project}/locations/{location}/instances/{instance_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, and if the Instance does not exist, it will create a new one. The
+                    /// caller must have 'run.instances.create' permissions if this is set to true and the Instance does
+                    /// not exist.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>Optional. The list of fields to be updated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>
+                    /// Optional. Indicates that the request should be validated and default values populated, without
+                    /// persisting the request or updating any resources.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Instance Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Starts an Instance.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -8662,7 +8766,7 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>
         /// Optional. Path within the volume from which the container's volume should be mounted. Defaults to ""
-        /// (volume's root). This field is currently ignored for Secret volumes.
+        /// (volume's root). This field is currently rejected in Secret volume mounts.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subPath")]
         public virtual string SubPath { get; set; }
