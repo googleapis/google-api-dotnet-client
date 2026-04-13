@@ -1224,12 +1224,20 @@ namespace Google.Apis.YouTubeReporting.v1.Data
         public virtual string FromFileName { get; set; }
 
         /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fromFusionId")]
+        public virtual string FromFusionId { get; set; }
+
+        /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fromHeader")]
         public virtual string FromHeader { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fromUrlPath")]
         public virtual string FromUrlPath { get; set; }
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fusionIdDetectionMetadata")]
+        public virtual string FusionIdDetectionMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
