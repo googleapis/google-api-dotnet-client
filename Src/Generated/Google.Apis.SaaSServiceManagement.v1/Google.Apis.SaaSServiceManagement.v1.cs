@@ -57,7 +57,7 @@ namespace Google.Apis.SaaSServiceManagement.v1
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
 
-        /// <summary>Available OAuth 2.0 scopes for use with the SaaS Runtime API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the App Lifecycle Manager API.</summary>
         public class Scope
         {
             /// <summary>
@@ -67,7 +67,7 @@ namespace Google.Apis.SaaSServiceManagement.v1
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the SaaS Runtime API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the App Lifecycle Manager API.</summary>
         public static class ScopeConstants
         {
             /// <summary>
@@ -4344,6 +4344,17 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>FlagUpdate is a UnitOperation that pushes new flag values to Units.</summary>
+    public class FlagUpdate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Flag release being applied by UnitOperation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagRelease")]
+        public virtual string FlagRelease { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Output variables whose values will be passed on to dependencies</summary>
     public class FromMapping : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4991,6 +5002,14 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. Name of the FlagRelease to be rolled out to the target Units. Release and FlagRelease
+        /// are mutually exclusive. Note: `release` comment needs to be adjusted to mention that "Release and
+        /// FlagRelease are mutually exclusive" when visibility restriction will be lifted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagRelease")]
+        public virtual string FlagRelease { get; set; }
 
         /// <summary>
         /// Optional. The labels on the resource, which can be used for categorization. similar to Kubernetes resource
@@ -5718,8 +5737,8 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
 
         /// <summary>
         /// Optional. Immutable. A reference to the consumer resource this SaaS Tenant is representing. The relationship
-        /// with a consumer resource can be used by SaaS Runtime for retrieving consumer-defined settings and policies
-        /// such as maintenance policies (using Unified Maintenance Policy API).
+        /// with a consumer resource can be used by App Lifecycle Manager for retrieving consumer-defined settings and
+        /// policies such as maintenance policies (using Unified Maintenance Policy API).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerResource")]
         public virtual string ConsumerResource { get; set; }
@@ -5784,7 +5803,7 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
 
         /// <summary>
         /// Required. Immutable. A reference to the Saas that defines the product (managed service) that the producer
-        /// wants to manage with SaaS Runtime. Part of the SaaS Runtime common data model.
+        /// wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager common data model.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("saas")]
         public virtual string Saas { get; set; }
@@ -5846,7 +5865,7 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dependency")]
         public virtual string Dependency { get; set; }
 
-        /// <summary>Optional. Tells SaaS Runtime if this mapping should be used during lookup or not</summary>
+        /// <summary>Optional. Tells App Lifecycle Manager if this mapping should be used during lookup or not</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreForLookup")]
         public virtual System.Nullable<bool> IgnoreForLookup { get; set; }
 
@@ -5933,6 +5952,10 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        /// <summary>Optional. Output only. Flag revisions used by this Unit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagRevisions")]
+        public virtual System.Collections.Generic.IList<string> FlagRevisions { get; set; }
 
         /// <summary>Optional. Output only. Indicates the current input variables deployed by the unit</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputVariables")]
@@ -6248,6 +6271,13 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         }
 
         /// <summary>
+        /// Optional. Default revisions of flags for this UnitKind. Newly created units will use the flag
+        /// default_flag_revisions present at the time of creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultFlagRevisions")]
+        public virtual System.Collections.Generic.IList<string> DefaultFlagRevisions { get; set; }
+
+        /// <summary>
         /// Optional. A reference to the Release object to use as default for creating new units of this UnitKind
         /// (optional). If not specified, a new unit must explicitly reference which release to use for its creation.
         /// </summary>
@@ -6298,7 +6328,8 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
 
         /// <summary>
         /// Required. Immutable. A reference to the Saas that defines the product (managed service) that the producer
-        /// wants to manage with SaaS Runtime. Part of the SaaS Runtime common data model. Immutable once set.
+        /// wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager common data model. Immutable
+        /// once set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("saas")]
         public virtual string Saas { get; set; }
@@ -6480,6 +6511,9 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("flagUpdate")]
+        public virtual FlagUpdate FlagUpdate { get; set; }
 
         /// <summary>
         /// Optional. The labels on the resource, which can be used for categorization. similar to Kubernetes resource
