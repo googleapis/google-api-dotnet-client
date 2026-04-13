@@ -57,7 +57,7 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
 
-        /// <summary>Available OAuth 2.0 scopes for use with the SaaS Runtime API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the App Lifecycle Manager API.</summary>
         public class Scope
         {
             /// <summary>
@@ -67,7 +67,7 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the SaaS Runtime API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the App Lifecycle Manager API.</summary>
         public static class ScopeConstants
         {
             /// <summary>
@@ -292,6 +292,10 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                FlagAttributes = new FlagAttributesResource(service);
+                FlagReleases = new FlagReleasesResource(service);
+                FlagRevisions = new FlagRevisionsResource(service);
+                Flags = new FlagsResource(service);
                 Releases = new ReleasesResource(service);
                 RolloutKinds = new RolloutKindsResource(service);
                 Rollouts = new RolloutsResource(service);
@@ -300,6 +304,1890 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1
                 UnitKinds = new UnitKindsResource(service);
                 UnitOperations = new UnitOperationsResource(service);
                 Units = new UnitsResource(service);
+            }
+
+            /// <summary>Gets the FlagAttributes resource.</summary>
+            public virtual FlagAttributesResource FlagAttributes { get; }
+
+            /// <summary>The "flagAttributes" collection of methods.</summary>
+            public class FlagAttributesResource
+            {
+                private const string Resource = "flagAttributes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public FlagAttributesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Create a new flag attribute.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent of the flag attribute.</param>
+                public virtual CreateRequest Create(Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagAttribute body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Create a new flag attribute.</summary>
+                public class CreateRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagAttribute>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagAttribute body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent of the flag attribute.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. The ID value for the new flag attribute.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("flagAttributeId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string FlagAttributeId { get; set; }
+
+                    /// <summary>
+                    /// An optional request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server will guarantee that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// If "validate_only" is set to true, the service will try to validate that this request would
+                    /// succeed, but will not actually make changes.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagAttribute Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/flagAttributes";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("flagAttributeId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "flagAttributeId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Delete a single flag attribute.</summary>
+                /// <param name="name">Required. The resource name of the resource within a service.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Delete a single flag attribute.</summary>
+                public class DeleteRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The resource name of the resource within a service.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// The etag known to the client for the expected state of the flag attribute. This is used with
+                    /// state-changing methods to prevent accidental overwrites when multiple user agents might be
+                    /// acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based
+                    /// on the expected existence of the flag attribute. The Any wildcard (`*`) requires that the
+                    /// resource must already exists, and the Not Any wildcard (`!*`) requires that it must not.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>
+                    /// An optional request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server will guarantee that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// If "validate_only" is set to true, the service will try to validate that this request would
+                    /// succeed, but will not actually make changes.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/flagAttributes/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Retrieve a single flag attribute.</summary>
+                /// <param name="name">Required. The resource name of the resource within a service.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Retrieve a single flag attribute.</summary>
+                public class GetRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagAttribute>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The resource name of the resource within a service.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/flagAttributes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Retrieve a collection of flag attributes.</summary>
+                /// <param name="parent">Required. The parent of the flag attribute.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Retrieve a collection of flag attributes.</summary>
+                public class ListRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.ListFlagAttributesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent of the flag attribute.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Filter the list as specified in https://google.aip.dev/160.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Order results as specified in https://google.aip.dev/132.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>The maximum number of flag attributes to send per page.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The page token: If the next_page_token from a previous response is provided, this request will
+                    /// send the subsequent page.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/flagAttributes";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Update a single flag attribute.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The resource name (full URI of the resource) following the standard naming scheme:
+                /// "projects/{project}/locations/{location}/flagAttributes/{flag_attribute_id}"
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagAttribute body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Update a single flag attribute.</summary>
+                public class PatchRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagAttribute>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagAttribute body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The resource name (full URI of the resource) following the standard naming scheme:
+                    /// "projects/{project}/locations/{location}/flagAttributes/{flag_attribute_id}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// An optional request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server will guarantee that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Field mask is used to specify the fields to be overwritten in the FlagAttribute resource by the
+                    /// update. The fields specified in the update_mask are relative to the resource, not the full
+                    /// request. A field will be overwritten if it is in the mask. If the user does not provide a mask
+                    /// then all fields in the FlagAttribute will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>
+                    /// If "validate_only" is set to true, the service will try to validate that this request would
+                    /// succeed, but will not actually make changes.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagAttribute Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/flagAttributes/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the FlagReleases resource.</summary>
+            public virtual FlagReleasesResource FlagReleases { get; }
+
+            /// <summary>The "flagReleases" collection of methods.</summary>
+            public class FlagReleasesResource
+            {
+                private const string Resource = "flagReleases";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public FlagReleasesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Create a new flag release.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent of the flag release.</param>
+                public virtual CreateRequest Create(Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagRelease body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Create a new flag release.</summary>
+                public class CreateRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagRelease>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagRelease body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent of the flag release.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. The ID value for the new flag release.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("flagReleaseId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string FlagReleaseId { get; set; }
+
+                    /// <summary>
+                    /// An optional request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server will guarantee that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// If "validate_only" is set to true, the service will try to validate that this request would
+                    /// succeed, but will not actually make changes.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagRelease Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/flagReleases";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("flagReleaseId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "flagReleaseId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Delete a single flag release.</summary>
+                /// <param name="name">Required. The resource name of the resource within a service.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Delete a single flag release.</summary>
+                public class DeleteRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The resource name of the resource within a service.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// The etag known to the client for the expected state of the flag release. This is used with
+                    /// state-changing methods to prevent accidental overwrites when multiple user agents might be
+                    /// acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based
+                    /// on the expected existence of the flag release. The Any wildcard (`*`) requires that the resource
+                    /// must already exists, and the Not Any wildcard (`!*`) requires that it must not.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>
+                    /// An optional request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server will guarantee that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// If "validate_only" is set to true, the service will try to validate that this request would
+                    /// succeed, but will not actually make changes.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/flagReleases/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Retrieve a single flag release.</summary>
+                /// <param name="name">Required. The resource name of the resource within a service.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Retrieve a single flag release.</summary>
+                public class GetRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagRelease>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The resource name of the resource within a service.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/flagReleases/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Retrieve a collection of flag releases.</summary>
+                /// <param name="parent">Required. The parent of the flag release.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Retrieve a collection of flag releases.</summary>
+                public class ListRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.ListFlagReleasesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent of the flag release.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Filter the list as specified in https://google.aip.dev/160.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Order results as specified in https://google.aip.dev/132.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>The maximum number of flag releases to send per page.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The page token: If the next_page_token from a previous response is provided, this request will
+                    /// send the subsequent page.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/flagReleases";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Update a single flag release.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The resource name (full URI of the resource) following the standard naming scheme:
+                /// "projects/{project}/locations/{location}/flagReleases/{flag_release_id}"
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagRelease body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Update a single flag release.</summary>
+                public class PatchRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagRelease>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagRelease body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The resource name (full URI of the resource) following the standard naming scheme:
+                    /// "projects/{project}/locations/{location}/flagReleases/{flag_release_id}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// An optional request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server will guarantee that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Field mask is used to specify the fields to be overwritten in the FlagRelease resource by the
+                    /// update. The fields specified in the update_mask are relative to the resource, not the full
+                    /// request. A field will be overwritten if it is in the mask. If the user does not provide a mask
+                    /// then all fields in the FlagRelease will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>
+                    /// If "validate_only" is set to true, the service will try to validate that this request would
+                    /// succeed, but will not actually make changes.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagRelease Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/flagReleases/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the FlagRevisions resource.</summary>
+            public virtual FlagRevisionsResource FlagRevisions { get; }
+
+            /// <summary>The "flagRevisions" collection of methods.</summary>
+            public class FlagRevisionsResource
+            {
+                private const string Resource = "flagRevisions";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public FlagRevisionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Create a new flag revision.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent of the flag revision.</param>
+                public virtual CreateRequest Create(Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagRevision body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Create a new flag revision.</summary>
+                public class CreateRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagRevision>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagRevision body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent of the flag revision.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. The ID value for the new flag revision.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("flagRevisionId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string FlagRevisionId { get; set; }
+
+                    /// <summary>
+                    /// An optional request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server will guarantee that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// If "validate_only" is set to true, the service will try to validate that this request would
+                    /// succeed, but will not actually make changes.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagRevision Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/flagRevisions";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("flagRevisionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "flagRevisionId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Delete a single flag revision.</summary>
+                /// <param name="name">Required. The resource name of the resource within a service.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Delete a single flag revision.</summary>
+                public class DeleteRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The resource name of the resource within a service.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// The etag known to the client for the expected state of the flag revision. This is used with
+                    /// state-changing methods to prevent accidental overwrites when multiple user agents might be
+                    /// acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based
+                    /// on the expected existence of the flag revision. The Any wildcard (`*`) requires that the
+                    /// resource must already exists, and the Not Any wildcard (`!*`) requires that it must not.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>
+                    /// An optional request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server will guarantee that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// If "validate_only" is set to true, the service will try to validate that this request would
+                    /// succeed, but will not actually make changes.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/flagRevisions/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Retrieve a single flag revision.</summary>
+                /// <param name="name">Required. The resource name of the resource within a service.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Retrieve a single flag revision.</summary>
+                public class GetRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagRevision>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The resource name of the resource within a service.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/flagRevisions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Retrieve a collection of flag revisions.</summary>
+                /// <param name="parent">Required. The parent of the flag revision.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Retrieve a collection of flag revisions.</summary>
+                public class ListRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.ListFlagRevisionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent of the flag revision.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Filter the list as specified in https://google.aip.dev/160.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Order results as specified in https://google.aip.dev/132.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>The maximum number of flag revisions to send per page.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The page token: If the next_page_token from a previous response is provided, this request will
+                    /// send the subsequent page.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/flagRevisions";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Update a single flag revision.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The resource name (full URI of the resource) following the standard naming scheme:
+                /// "projects/{project}/locations/{location}/flagRevisions/{flag_revision_id}"
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagRevision body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Update a single flag revision.</summary>
+                public class PatchRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagRevision>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagRevision body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The resource name (full URI of the resource) following the standard naming scheme:
+                    /// "projects/{project}/locations/{location}/flagRevisions/{flag_revision_id}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// An optional request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server will guarantee that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Field mask is used to specify the fields to be overwritten in the FlagRevision resource by the
+                    /// update. The fields specified in the update_mask are relative to the resource, not the full
+                    /// request. A field will be overwritten if it is in the mask. If the user does not provide a mask
+                    /// then all fields in the FlagRevision will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>
+                    /// If "validate_only" is set to true, the service will try to validate that this request would
+                    /// succeed, but will not actually make changes.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SaaSServiceManagement.v1beta1.Data.FlagRevision Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/flagRevisions/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Flags resource.</summary>
+            public virtual FlagsResource Flags { get; }
+
+            /// <summary>The "flags" collection of methods.</summary>
+            public class FlagsResource
+            {
+                private const string Resource = "flags";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public FlagsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Create a new flag.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent of the flag.</param>
+                public virtual CreateRequest Create(Google.Apis.SaaSServiceManagement.v1beta1.Data.Flag body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Create a new flag.</summary>
+                public class CreateRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.Flag>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.SaaSServiceManagement.v1beta1.Data.Flag body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent of the flag.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. The ID value for the new flag.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("flagId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string FlagId { get; set; }
+
+                    /// <summary>
+                    /// An optional request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server will guarantee that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// If "validate_only" is set to true, the service will try to validate that this request would
+                    /// succeed, but will not actually make changes.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SaaSServiceManagement.v1beta1.Data.Flag Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/flags";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("flagId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "flagId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Delete a single flag.</summary>
+                /// <param name="name">Required. The resource name of the resource within a service.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Delete a single flag.</summary>
+                public class DeleteRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The resource name of the resource within a service.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// The etag known to the client for the expected state of the flag. This is used with
+                    /// state-changing methods to prevent accidental overwrites when multiple user agents might be
+                    /// acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based
+                    /// on the expected existence of the flag. The Any wildcard (`*`) requires that the resource must
+                    /// already exists, and the Not Any wildcard (`!*`) requires that it must not.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>
+                    /// An optional request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server will guarantee that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// If "validate_only" is set to true, the service will try to validate that this request would
+                    /// succeed, but will not actually make changes.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/flags/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Retrieve a single flag.</summary>
+                /// <param name="name">Required. The resource name of the resource within a service.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Retrieve a single flag.</summary>
+                public class GetRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.Flag>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The resource name of the resource within a service.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/flags/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Retrieve a collection of flags.</summary>
+                /// <param name="parent">Required. The parent of the flag.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Retrieve a collection of flags.</summary>
+                public class ListRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.ListFlagsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent of the flag.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Filter the list as specified in https://google.aip.dev/160.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Order results as specified in https://google.aip.dev/132.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>The maximum number of flags to send per page.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The page token: If the next_page_token from a previous response is provided, this request will
+                    /// send the subsequent page.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/flags";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Update a single flag.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The resource name (full URI of the resource) following the standard naming scheme:
+                /// "projects/{project}/locations/{location}/flags/{flag_id}"
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.SaaSServiceManagement.v1beta1.Data.Flag body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Update a single flag.</summary>
+                public class PatchRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.Flag>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SaaSServiceManagement.v1beta1.Data.Flag body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The resource name (full URI of the resource) following the standard naming scheme:
+                    /// "projects/{project}/locations/{location}/flags/{flag_id}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// An optional request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server will guarantee that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Field mask is used to specify the fields to be overwritten in the Flag resource by the update.
+                    /// The fields specified in the update_mask are relative to the resource, not the full request. A
+                    /// field will be overwritten if it is in the mask. If the user does not provide a mask then all
+                    /// fields in the Flag will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>
+                    /// If "validate_only" is set to true, the service will try to validate that this request would
+                    /// succeed, but will not actually make changes.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SaaSServiceManagement.v1beta1.Data.Flag Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/flags/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Releases resource.</summary>
@@ -4259,6 +6147,50 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Allocation defines a set of weighted flag variants, specifying how traffic is split based on the randomization
+    /// unit.
+    /// </summary>
+    public class Allocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Description of the allocation. Max length: 500 bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. Allocation ID. Max length: 128 bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Required. Key of the context attribute that is used for traffic splitting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("randomizedOn")]
+        public virtual string RandomizedOn { get; set; }
+
+        /// <summary>Required. Slots defines the weighted distribution of variants.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("slots")]
+        public virtual System.Collections.Generic.IList<AllocationSlot> Slots { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AllocationSlot specifies a variant and the proportion of traffic allocated to it.</summary>
+    public class AllocationSlot : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Variant of the allocation slot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variant")]
+        public virtual string Variant { get; set; }
+
+        /// <summary>
+        /// Required. Weight defines the proportion of traffic to allocate to the variant, relative to other slots in
+        /// the same allocation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weight")]
+        public virtual System.Nullable<int> Weight { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>AppParams contains the parameters for creating an AppHub Application.</summary>
     public class AppParams : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4270,7 +6202,9 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
         public virtual string Group { get; set; }
 
-        /// <summary>Corresponds to the scope in the ADC composite ApplicationTemplate. Defaults to REGIONAL.</summary>
+        /// <summary>
+        /// Corresponds to the scope in the ADC composite ApplicationTemplate. Defaults to TYPE_REGIONAL.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual Scope Scope { get; set; }
 
@@ -4410,6 +6344,741 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// EvaluationRule defines a single rule for evaluating a feature flag. A rule consists of a condition that, if met,
+    /// assigns a specific variant or allocation to the user.
+    /// </summary>
+    public class EvaluationRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A Common Expression Language (CEL) expression that evaluates to a boolean. The expression is
+        /// evaluated against the provided context. If it returns true, the rule's target is applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>Required. Evaluation rule ID. Max length: 128 bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Required. The target variant or allocation to apply if the condition is met. This should match the name of a
+        /// defined variant or allocation's ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>EvaluationSpec holds rules for evaluating the value of a flag.</summary>
+    public class EvaluationSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A list of allocations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocations")]
+        public virtual System.Collections.Generic.IList<Allocation> Allocations { get; set; }
+
+        /// <summary>
+        /// Optional. Names of the context attributes that are used in the evaluation rules and allocations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual System.Collections.Generic.IList<string> Attributes { get; set; }
+
+        /// <summary>Required. Default variant or allocation of the flag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultTarget")]
+        public virtual string DefaultTarget { get; set; }
+
+        /// <summary>
+        /// Optional. Evaluation rules define the logic for evaluating the flag against a given context. The rules are
+        /// evaluated sequentially in their specified order.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
+        public virtual System.Collections.Generic.IList<EvaluationRule> Rules { get; set; }
+
+        /// <summary>Optional. A list of variants.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variants")]
+        public virtual System.Collections.Generic.IList<Variant> Variants { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a single Flag.</summary>
+    public class Flag : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Annotations is an unstructured key-value map stored with a resource that may be set by external
+        /// tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when
+        /// modifying objects. More info: https://kubernetes.io/docs/user-guide/annotations
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Description of the flag. Max length: 500 bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. An opaque value that uniquely identifies a version or generation of a resource. It can be used
+        /// to confirm that the client and server agree on the ordering of a resource being written.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. Specification of how the flag value should be evaluated. If a bool flag is created without an
+        /// evaluation_spec specified, two default variants, "Enabled" (with bool_value = true) and "Disabled" (with
+        /// bool_value = false), are created by default, and "Disabled" is set as the default_target.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationSpec")]
+        public virtual EvaluationSpec EvaluationSpec { get; set; }
+
+        /// <summary>Optional. Flag set this flag belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagSet")]
+        public virtual string FlagSet { get; set; }
+
+        /// <summary>Optional. Immutable. Flag value type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagValueType")]
+        public virtual string FlagValueType { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. Flag key used in runtime evaluation APIs (OpenFeature). Max length: 256 bytes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>
+        /// Optional. The labels on the resource, which can be used for categorization. similar to Kubernetes resource
+        /// labels.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name (full URI of the resource) following the standard naming scheme:
+        /// "projects/{project}/locations/{location}/flags/{flag_id}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Current state of the flag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. The unique identifier of the resource. UID is unique in the time and space for this resource
+        /// within the scope of the service. It is typically generated by the server on successful creation of a
+        /// resource and must not be changed. UID is used to uniquely identify resources with resource name reuses. This
+        /// should be a UUID4.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        /// <summary>Required. Immutable. UnitKind that can consume this flag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unitKind")]
+        public virtual string UnitKind { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>
+        /// Output only. The timestamp when the resource was last updated. Any change to the resource made by users must
+        /// refresh this value. Changes to a resource made by the service should refresh this value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Immutable. Deprecated: Use `flag_value_type` instead. Flag value type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
+        public virtual string ValueType { get; set; }
+
+        /// <summary>Optional. A list of variants.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variants")]
+        public virtual System.Collections.Generic.IList<FlagVariant> Variants { get; set; }
+    }
+
+    /// <summary>FlagAttribute defines a custom property in the evaluation context.</summary>
+    public class FlagAttribute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Annotations is an unstructured key-value map stored with a resource that may be set by external
+        /// tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when
+        /// modifying objects. More info: https://kubernetes.io/docs/user-guide/annotations
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        /// <summary>Optional. Immutable. Type of the attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeValueType")]
+        public virtual string AttributeValueType { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. An opaque value that uniquely identifies a version or generation of a resource. It can be used
+        /// to confirm that the client and server agree on the ordering of a resource being written.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The identifier for the attribute, used as the key in the evaluation context. The
+        /// attribute key is referenced in the evaluation rules and used in the OpenFeature evaluation API to specify
+        /// the attribute context.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>
+        /// Optional. The labels on the resource, which can be used for categorization. similar to Kubernetes resource
+        /// labels.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name (full URI of the resource) following the standard naming scheme:
+        /// "projects/{project}/locations/{location}/flagAttributes/{flag_attribute_id}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The unique identifier of the resource. UID is unique in the time and space for this resource
+        /// within the scope of the service. It is typically generated by the server on successful creation of a
+        /// resource and must not be changed. UID is used to uniquely identify resources with resource name reuses. This
+        /// should be a UUID4.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>
+        /// Output only. The timestamp when the resource was last updated. Any change to the resource made by users must
+        /// refresh this value. Changes to a resource made by the service should refresh this value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. Immutable. Deprecated: Use `attribute_value_type` instead. Type of the attribute.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
+        public virtual string ValueType { get; set; }
+    }
+
+    /// <summary>A collection of FlagRevisions.</summary>
+    public class FlagRelease : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Immutable. DEPRECATED: Use all_flags_release instead. Rollout all flags in the provided UnitKind.
+        /// Only one of flag_revisions, all_flags, or flag_sets can be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allFlags")]
+        public virtual System.Nullable<bool> AllFlags { get; set; }
+
+        /// <summary>Optional. Immutable. Specifies the release includes all flags.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allFlagsRelease")]
+        public virtual System.Nullable<bool> AllFlagsRelease { get; set; }
+
+        /// <summary>
+        /// Optional. Annotations is an unstructured key-value map stored with a resource that may be set by external
+        /// tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when
+        /// modifying objects. More info: https://kubernetes.io/docs/user-guide/annotations
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. An OUTPUT_ONLY field that contains FlagRevisions to be rolled out. This is the ultimate source
+        /// of truth of what a Rollout or a UnitOperation carries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveFlagRevisions")]
+        public virtual System.Collections.Generic.IList<string> EffectiveFlagRevisions { get; set; }
+
+        /// <summary>
+        /// Output only. An opaque value that uniquely identifies a version or generation of a resource. It can be used
+        /// to confirm that the client and server agree on the ordering of a resource being written.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. DEPRECATED: Use flag_revisions_release instead. FlagRevisions to be rolled out. Only
+        /// one of flag_revisions, all_flags, or flag_sets can be set. It used to be the ultimate source to truth and
+        /// has been moved to effective_flag_revisions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagRevisions")]
+        public virtual System.Collections.Generic.IList<string> FlagRevisions { get; set; }
+
+        /// <summary>Optional. Immutable. Specifies the release consists of a list of flag revisions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagRevisionsRelease")]
+        public virtual FlagRevisionList FlagRevisionsRelease { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. DEPRECATED: Use flag_sets_release instead. Flag sets to be rolled out. Only one of
+        /// flag_revisions, all_flags, or flag_sets can be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagSets")]
+        public virtual System.Collections.Generic.IList<string> FlagSets { get; set; }
+
+        /// <summary>Optional. Immutable. Specifies the release consists of a list of flag sets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagSetsRelease")]
+        public virtual FlagSetList FlagSetsRelease { get; set; }
+
+        /// <summary>
+        /// Optional. The labels on the resource, which can be used for categorization. similar to Kubernetes resource
+        /// labels.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name (full URI of the resource) following the standard naming scheme:
+        /// "projects/{project}/locations/{location}/flagReleases/{flag_release_id}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. Deprecated: Use the 'state' field in the 'Flag' resource to manage the cleanup of flag
+        /// lifecycles including removal from UnitKind and Units. Flags to be removed from given UnitKind and all
+        /// related Units. If Flag is provided here, its FlagRevisions will be removed from UnitKind and Units.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("obsoleteFlags")]
+        public virtual System.Collections.Generic.IList<string> ObsoleteFlags { get; set; }
+
+        /// <summary>
+        /// Output only. The unique identifier of the resource. UID is unique in the time and space for this resource
+        /// within the scope of the service. It is typically generated by the server on successful creation of a
+        /// resource and must not be changed. UID is used to uniquely identify resources with resource name reuses. This
+        /// should be a UUID4.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        /// <summary>Required. Immutable. The UnitKind this FlagRelease applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unitKind")]
+        public virtual string UnitKind { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>
+        /// Output only. The timestamp when the resource was last updated. Any change to the resource made by users must
+        /// refresh this value. Changes to a resource made by the service should refresh this value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
+    /// <summary>A snapshot of the EvaluationSpec for the Flag.</summary>
+    public class FlagRevision : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Annotations is an unstructured key-value map stored with a resource that may be set by external
+        /// tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when
+        /// modifying objects. More info: https://kubernetes.io/docs/user-guide/annotations
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. An opaque value that uniquely identifies a version or generation of a resource. It can be used
+        /// to confirm that the client and server agree on the ordering of a resource being written.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Output only. Immutable. Snapshot of the EvaluationSpec for the flag. DEPRECATED: Use snapshot instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationSpec")]
+        public virtual EvaluationSpec EvaluationSpec { get; set; }
+
+        /// <summary>Required. Immutable. Name of the Flag this is a revision of.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flag")]
+        public virtual string Flag { get; set; }
+
+        /// <summary>
+        /// Optional. The labels on the resource, which can be used for categorization. similar to Kubernetes resource
+        /// labels.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name (full URI of the resource) following the standard naming scheme:
+        /// "projects/{project}/locations/{location}/flagRevisions/{flag_revision_id}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Immutable. Snapshot of the Flag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshot")]
+        public virtual Flag Snapshot { get; set; }
+
+        /// <summary>
+        /// Output only. The unique identifier of the resource. UID is unique in the time and space for this resource
+        /// within the scope of the service. It is typically generated by the server on successful creation of a
+        /// resource and must not be changed. UID is used to uniquely identify resources with resource name reuses. This
+        /// should be a UUID4.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>
+        /// Output only. The timestamp when the resource was last updated. Any change to the resource made by users must
+        /// refresh this value. Changes to a resource made by the service should refresh this value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
+    /// <summary>Wrapper for a list of flag revisions.</summary>
+    public class FlagRevisionList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. FlagRevisions to be rolled out.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisions")]
+        public virtual System.Collections.Generic.IList<string> Revisions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wrapper for a list of flag sets.</summary>
+    public class FlagSetList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Flag sets to be rolled out.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sets")]
+        public virtual System.Collections.Generic.IList<string> Sets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>FlagUpdate is a UnitOperation that pushes new flag values to Units.</summary>
+    public class FlagUpdate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Flag release being applied by UnitOperation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagRelease")]
+        public virtual string FlagRelease { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Variant is an identifier for a value (name assigned to a value).</summary>
+    public class FlagVariant : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Boolean variant value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("booleanValue")]
+        public virtual System.Nullable<bool> BooleanValue { get; set; }
+
+        /// <summary>Optional. A human-readable description of what this variant does or represents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. Double variant value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
+        public virtual System.Nullable<double> DoubleValue { get; set; }
+
+        /// <summary>Required. Variant ID. Max length: 128 bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Optional. Integer variant value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integerValue")]
+        public virtual System.Nullable<long> IntegerValue { get; set; }
+
+        /// <summary>Optional. String variant value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
+
+        /// <summary>
+        /// Optional. trackingId is unique depending on name and value of the variant within the scope of the service.
+        /// It is typically generated by the server and must not be changed. trackingId is used to uniquely identify and
+        /// track variants.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackingId")]
+        public virtual string TrackingId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Output variables whose values will be passed on to dependencies</summary>
     public class FromMapping : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4452,6 +7121,94 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response structure for the ListFlagAttributes method.</summary>
+    public class ListFlagAttributesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resulting flag attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagAttributes")]
+        public virtual System.Collections.Generic.IList<FlagAttribute> FlagAttributes { get; set; }
+
+        /// <summary>
+        /// If present, the next page token can be provided to a subsequent ListFlagAttributes call to list the next
+        /// page. If empty, there are no more pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response structure for the ListFlagReleases method.</summary>
+    public class ListFlagReleasesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resulting flag releases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagReleases")]
+        public virtual System.Collections.Generic.IList<FlagRelease> FlagReleases { get; set; }
+
+        /// <summary>
+        /// If present, the next page token can be provided to a subsequent ListFlagReleases call to list the next page.
+        /// If empty, there are no more pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response structure for the ListFlagRevisions method.</summary>
+    public class ListFlagRevisionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resulting flag revisions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagRevisions")]
+        public virtual System.Collections.Generic.IList<FlagRevision> FlagRevisions { get; set; }
+
+        /// <summary>
+        /// If present, the next page token can be provided to a subsequent ListFlagRevisions call to list the next
+        /// page. If empty, there are no more pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response structure for the ListFlags method.</summary>
+    public class ListFlagsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resulting flags.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flags")]
+        public virtual System.Collections.Generic.IList<Flag> Flags { get; set; }
+
+        /// <summary>
+        /// If present, the next page token can be provided to a subsequent ListFlags call to list the next page. If
+        /// empty, there are no more pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5061,6 +7818,14 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. Name of the FlagRelease to be rolled out to the target Units. Release and FlagRelease
+        /// are mutually exclusive. Note: `release` comment needs to be adjusted to mention that "Release and
+        /// FlagRelease are mutually exclusive" when visibility restriction will be lifted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagRelease")]
+        public virtual string FlagRelease { get; set; }
 
         /// <summary>
         /// Optional. The labels on the resource, which can be used for categorization. similar to Kubernetes resource
@@ -5814,8 +8579,8 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
 
         /// <summary>
         /// Optional. Immutable. A reference to the consumer resource this SaaS Tenant is representing. The relationship
-        /// with a consumer resource can be used by SaaS Runtime for retrieving consumer-defined settings and policies
-        /// such as maintenance policies (using Unified Maintenance Policy API).
+        /// with a consumer resource can be used by App Lifecycle Manager for retrieving consumer-defined settings and
+        /// policies such as maintenance policies (using Unified Maintenance Policy API).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerResource")]
         public virtual string ConsumerResource { get; set; }
@@ -5880,7 +8645,7 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
 
         /// <summary>
         /// Required. Immutable. A reference to the Saas that defines the product (managed service) that the producer
-        /// wants to manage with SaaS Runtime. Part of the SaaS Runtime common data model.
+        /// wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager common data model.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("saas")]
         public virtual string Saas { get; set; }
@@ -5942,7 +8707,7 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dependency")]
         public virtual string Dependency { get; set; }
 
-        /// <summary>Optional. Tells SaaS Runtime if this mapping should be used during lookup or not</summary>
+        /// <summary>Optional. Tells App Lifecycle Manager if this mapping should be used during lookup or not</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreForLookup")]
         public virtual System.Nullable<bool> IgnoreForLookup { get; set; }
 
@@ -6036,6 +8801,16 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Output only. This field stores the unique identifier for the flag configuration to be used by this Unit.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagConfigName")]
+        public virtual string FlagConfigName { get; set; }
+
+        /// <summary>Optional. Output only. Flag revisions used by this Unit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagRevisions")]
+        public virtual System.Collections.Generic.IList<string> FlagRevisions { get; set; }
 
         /// <summary>Optional. Output only. Indicates the current input variables deployed by the unit</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputVariables")]
@@ -6359,6 +9134,13 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         }
 
         /// <summary>
+        /// Optional. Default revisions of flags for this UnitKind. Newly created units will use the flag
+        /// default_flag_revisions present at the time of creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultFlagRevisions")]
+        public virtual System.Collections.Generic.IList<string> DefaultFlagRevisions { get; set; }
+
+        /// <summary>
         /// Optional. A reference to the Release object to use as default for creating new units of this UnitKind
         /// (optional). If not specified, a new unit must explicitly reference which release to use for its creation.
         /// </summary>
@@ -6409,7 +9191,8 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
 
         /// <summary>
         /// Required. Immutable. A reference to the Saas that defines the product (managed service) that the producer
-        /// wants to manage with SaaS Runtime. Part of the SaaS Runtime common data model. Immutable once set.
+        /// wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager common data model. Immutable
+        /// once set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("saas")]
         public virtual string Saas { get; set; }
@@ -6591,6 +9374,9 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("flagUpdate")]
+        public virtual FlagUpdate FlagUpdate { get; set; }
 
         /// <summary>
         /// Optional. The labels on the resource, which can be used for categorization. similar to Kubernetes resource
@@ -6810,6 +9596,35 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         /// <summary>Required. name of the variable</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variable")]
         public virtual string Variable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Variant is an identifier for a value (name assigned to a value). DEPRECATED: Use Flag.Variants instead.
+    /// </summary>
+    public class Variant : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Boolean flag value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; }
+
+        /// <summary>Optional. Double flag value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
+        public virtual System.Nullable<double> DoubleValue { get; set; }
+
+        /// <summary>Optional. Integer flag value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
+        public virtual System.Nullable<long> IntValue { get; set; }
+
+        /// <summary>Required. Name of the variant. Max length: 128 bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. String flag value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
