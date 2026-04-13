@@ -9489,7 +9489,7 @@ namespace Google.Apis.Classroom.v1
             /// <summary>
             /// Restricts returned courses to those having a student with the specified identifier. The identifier can
             /// be one of the following: * the numeric identifier for the user * the email address of the user * the
-            /// string literal `"me"`, indicating the requesting user
+            /// string literal `"me"`, indicating the requesting user If specified, `teacher_id` must be empty.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("studentId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string StudentId { get; set; }
@@ -9497,7 +9497,7 @@ namespace Google.Apis.Classroom.v1
             /// <summary>
             /// Restricts returned courses to those having a teacher with the specified identifier. The identifier can
             /// be one of the following: * the numeric identifier for the user * the email address of the user * the
-            /// string literal `"me"`, indicating the requesting user
+            /// string literal `"me"`, indicating the requesting user If specified, `student_id` must be empty.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("teacherId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string TeacherId { get; set; }
