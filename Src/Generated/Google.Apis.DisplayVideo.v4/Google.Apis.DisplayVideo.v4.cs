@@ -912,7 +912,10 @@ namespace Google.Apis.DisplayVideo.v4
                 this.service = service;
             }
 
-            /// <summary>Creates an ad group ad.</summary>
+            /// <summary>
+            /// Creates an ad group ad. This method is only supported for Demand Gen ads. Retrieval and management of
+            /// Demand Gen resources is currently in beta. This method is only available to allowlisted users.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Output only. The unique ID of the advertiser the ad belongs to.</param>
             public virtual CreateRequest Create(Google.Apis.DisplayVideo.v4.Data.AdGroupAd body, long advertiserId)
@@ -920,7 +923,10 @@ namespace Google.Apis.DisplayVideo.v4
                 return new CreateRequest(this.service, body, advertiserId);
             }
 
-            /// <summary>Creates an ad group ad.</summary>
+            /// <summary>
+            /// Creates an ad group ad. This method is only supported for Demand Gen ads. Retrieval and management of
+            /// Demand Gen resources is currently in beta. This method is only available to allowlisted users.
+            /// </summary>
             public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.AdGroupAd>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -965,15 +971,23 @@ namespace Google.Apis.DisplayVideo.v4
                 }
             }
 
-            /// <summary>Deletes an ad group ad.</summary>
+            /// <summary>
+            /// Deletes an ad group ad. This method is only supported for Demand Gen ads. Retrieval and management of
+            /// Demand Gen resources is currently in beta. This method is only available to allowlisted users.
+            /// </summary>
             /// <param name="advertiserId">Required. The ID of the advertiser the ad belongs to.</param>
-            /// <param name="adGroupAdId">Required. The ID of the ad to delete.</param>
+            /// <param name="adGroupAdId">
+            /// Required. The ID of the ad to delete. Only Demand Gen ads are supported.
+            /// </param>
             public virtual DeleteRequest Delete(long advertiserId, long adGroupAdId)
             {
                 return new DeleteRequest(this.service, advertiserId, adGroupAdId);
             }
 
-            /// <summary>Deletes an ad group ad.</summary>
+            /// <summary>
+            /// Deletes an ad group ad. This method is only supported for Demand Gen ads. Retrieval and management of
+            /// Demand Gen resources is currently in beta. This method is only available to allowlisted users.
+            /// </summary>
             public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -988,7 +1002,7 @@ namespace Google.Apis.DisplayVideo.v4
                 [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long AdvertiserId { get; private set; }
 
-                /// <summary>Required. The ID of the ad to delete.</summary>
+                /// <summary>Required. The ID of the ad to delete. Only Demand Gen ads are supported.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("adGroupAdId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long AdGroupAdId { get; private set; }
 
@@ -1198,7 +1212,10 @@ namespace Google.Apis.DisplayVideo.v4
                 }
             }
 
-            /// <summary>Updates an ad group ad.</summary>
+            /// <summary>
+            /// Updates an ad group ad. This method is only supported for Demand Gen ads. Retrieval and management of
+            /// Demand Gen resources is currently in beta. This method is only available to allowlisted users.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Output only. The unique ID of the advertiser the ad belongs to.</param>
             /// <param name="adGroupAdId">Output only. The unique ID of the ad. Assigned by the system.</param>
@@ -1207,7 +1224,10 @@ namespace Google.Apis.DisplayVideo.v4
                 return new PatchRequest(this.service, body, advertiserId, adGroupAdId);
             }
 
-            /// <summary>Updates an ad group ad.</summary>
+            /// <summary>
+            /// Updates an ad group ad. This method is only supported for Demand Gen ads. Retrieval and management of
+            /// Demand Gen resources is currently in beta. This method is only available to allowlisted users.
+            /// </summary>
             public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.AdGroupAd>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -1334,8 +1354,8 @@ namespace Google.Apis.DisplayVideo.v4
 
                     /// <summary>
                     /// Assigns a targeting option to an ad group. Returns the assigned targeting option if successful.
-                    /// Only ad groups under a line item of line_item_type `LINE_ITEM_TYPE_DEMAND_GEN` are supported for
-                    /// this method.
+                    /// This method is only supported for Demand Gen ad groups. Retrieval and management of Demand Gen
+                    /// resources is currently in beta. This method is only available to allowlisted users.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="advertiserId">Required. The ID of the advertiser the ad group belongs to.</param>
@@ -1358,8 +1378,8 @@ namespace Google.Apis.DisplayVideo.v4
 
                     /// <summary>
                     /// Assigns a targeting option to an ad group. Returns the assigned targeting option if successful.
-                    /// Only ad groups under a line item of line_item_type `LINE_ITEM_TYPE_DEMAND_GEN` are supported for
-                    /// this method.
+                    /// This method is only supported for Demand Gen ad groups. Retrieval and management of Demand Gen
+                    /// resources is currently in beta. This method is only available to allowlisted users.
                     /// </summary>
                     public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.AssignedTargetingOption>
                     {
@@ -1709,8 +1729,9 @@ namespace Google.Apis.DisplayVideo.v4
                     }
 
                     /// <summary>
-                    /// Deletes an assigned targeting option from an ad group. Only ad groups under a line item of
-                    /// line_item_type `LINE_ITEM_TYPE_DEMAND_GEN` are supported for this method.
+                    /// Deletes an assigned targeting option from an ad group. This method is only supported for Demand
+                    /// Gen ad groups with the AdGroupFormat `AD_GROUP_FORMAT_DEMAND_GEN`. Retrieval and management of
+                    /// Demand Gen resources is currently in beta. This method is only available to allowlisted users.
                     /// </summary>
                     /// <param name="advertiserId">Required. The ID of the advertiser the ad group belongs to.</param>
                     /// <param name="adGroupId">
@@ -1733,8 +1754,9 @@ namespace Google.Apis.DisplayVideo.v4
                     }
 
                     /// <summary>
-                    /// Deletes an assigned targeting option from an ad group. Only ad groups under a line item of
-                    /// line_item_type `LINE_ITEM_TYPE_DEMAND_GEN` are supported for this method.
+                    /// Deletes an assigned targeting option from an ad group. This method is only supported for Demand
+                    /// Gen ad groups with the AdGroupFormat `AD_GROUP_FORMAT_DEMAND_GEN`. Retrieval and management of
+                    /// Demand Gen resources is currently in beta. This method is only available to allowlisted users.
                     /// </summary>
                     public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.Empty>
                     {
@@ -3370,8 +3392,9 @@ namespace Google.Apis.DisplayVideo.v4
             /// applied to all specified ad groups. Specifically, the operation will delete the assigned targeting
             /// options provided in BulkEditAdGroupAssignedTargetingOptionsRequest.delete_requests from each ad group,
             /// and then create the assigned targeting options provided in
-            /// BulkEditAdGroupAssignedTargetingOptionsRequest.create_requests. Only ad groups under a line item of
-            /// line_item_type `LINE_ITEM_TYPE_DEMAND_GEN` are supported for this method.
+            /// BulkEditAdGroupAssignedTargetingOptionsRequest.create_requests. This method is only supported for Demand
+            /// Gen ad groups. Retrieval and management of Demand Gen resources is currently in beta. This method is
+            /// only available to allowlisted users.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Required. The ID of the advertiser the ad groups belong to.</param>
@@ -3385,8 +3408,9 @@ namespace Google.Apis.DisplayVideo.v4
             /// applied to all specified ad groups. Specifically, the operation will delete the assigned targeting
             /// options provided in BulkEditAdGroupAssignedTargetingOptionsRequest.delete_requests from each ad group,
             /// and then create the assigned targeting options provided in
-            /// BulkEditAdGroupAssignedTargetingOptionsRequest.create_requests. Only ad groups under a line item of
-            /// line_item_type `LINE_ITEM_TYPE_DEMAND_GEN` are supported for this method.
+            /// BulkEditAdGroupAssignedTargetingOptionsRequest.create_requests. This method is only supported for Demand
+            /// Gen ad groups. Retrieval and management of Demand Gen resources is currently in beta. This method is
+            /// only available to allowlisted users.
             /// </summary>
             public class BulkEditAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.BulkEditAdGroupAssignedTargetingOptionsResponse>
             {
@@ -3564,7 +3588,11 @@ namespace Google.Apis.DisplayVideo.v4
                 }
             }
 
-            /// <summary>Creates a new ad group. Returns the newly created ad group if successful.</summary>
+            /// <summary>
+            /// Creates a new ad group. Returns the newly created ad group if successful. This method is only supported
+            /// for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently in beta. This
+            /// method is only available to allowlisted users.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Output only. The unique ID of the advertiser the ad group belongs to.</param>
             public virtual CreateRequest Create(Google.Apis.DisplayVideo.v4.Data.AdGroup body, long advertiserId)
@@ -3572,7 +3600,11 @@ namespace Google.Apis.DisplayVideo.v4
                 return new CreateRequest(this.service, body, advertiserId);
             }
 
-            /// <summary>Creates a new ad group. Returns the newly created ad group if successful.</summary>
+            /// <summary>
+            /// Creates a new ad group. Returns the newly created ad group if successful. This method is only supported
+            /// for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently in beta. This
+            /// method is only available to allowlisted users.
+            /// </summary>
             public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.AdGroup>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -3617,7 +3649,11 @@ namespace Google.Apis.DisplayVideo.v4
                 }
             }
 
-            /// <summary>Deletes a AdGroup. Returns error code `NOT_FOUND` if the ad group does not exist.</summary>
+            /// <summary>
+            /// Deletes a AdGroup. Returns error code `NOT_FOUND` if the ad group does not exist. This method is only
+            /// supported for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently in
+            /// beta. This method is only available to allowlisted users.
+            /// </summary>
             /// <param name="advertiserId">Required. The ID of the advertiser this ad group belongs to.</param>
             /// <param name="adGroupId">Required. The ID of the ad group to delete.</param>
             public virtual DeleteRequest Delete(long advertiserId, long adGroupId)
@@ -3625,7 +3661,11 @@ namespace Google.Apis.DisplayVideo.v4
                 return new DeleteRequest(this.service, advertiserId, adGroupId);
             }
 
-            /// <summary>Deletes a AdGroup. Returns error code `NOT_FOUND` if the ad group does not exist.</summary>
+            /// <summary>
+            /// Deletes a AdGroup. Returns error code `NOT_FOUND` if the ad group does not exist. This method is only
+            /// supported for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently in
+            /// beta. This method is only available to allowlisted users.
+            /// </summary>
             public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -3850,7 +3890,11 @@ namespace Google.Apis.DisplayVideo.v4
                 }
             }
 
-            /// <summary>Updates an existing ad group. Returns the updated ad group if successful.</summary>
+            /// <summary>
+            /// Updates an existing ad group. Returns the updated ad group if successful. This method is only supported
+            /// for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently in beta. This
+            /// method is only available to allowlisted users.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Output only. The unique ID of the advertiser the ad group belongs to.</param>
             /// <param name="adGroupId">Output only. The unique ID of the ad group. Assigned by the system.</param>
@@ -3859,7 +3903,11 @@ namespace Google.Apis.DisplayVideo.v4
                 return new PatchRequest(this.service, body, advertiserId, adGroupId);
             }
 
-            /// <summary>Updates an existing ad group. Returns the updated ad group if successful.</summary>
+            /// <summary>
+            /// Updates an existing ad group. Returns the updated ad group if successful. This method is only supported
+            /// for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently in beta. This
+            /// method is only available to allowlisted users.
+            /// </summary>
             public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.AdGroup>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -7409,10 +7457,10 @@ namespace Google.Apis.DisplayVideo.v4
                     /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` *
                     /// `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` *
                     /// `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` *
-                    /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_INVENTORY_MODE` *
-                    /// `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE`
-                    /// line items) * `TARGETING_TYPE_YOUTUBE_VIDEO` (only for
-                    /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
+                    /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
+                    /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) *
+                    /// `TARGETING_TYPE_YOUTUBE_VIDEO` (only for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE`
+                    /// line items)
                     /// </param>
                     /// <param name="assignedTargetingOptionId">
                     /// Required. An identifier unique to the targeting type in this line item that identifies the
@@ -7468,8 +7516,7 @@ namespace Google.Apis.DisplayVideo.v4
                         /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` *
                         /// `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` *
                         /// `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` *
-                        /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_INVENTORY_MODE` *
-                        /// `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
+                        /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
                         /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) *
                         /// `TARGETING_TYPE_YOUTUBE_VIDEO` (only for
                         /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
@@ -7499,8 +7546,7 @@ namespace Google.Apis.DisplayVideo.v4
                         /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` *
                         /// `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` *
                         /// `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` *
-                        /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_INVENTORY_MODE` *
-                        /// `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
+                        /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
                         /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) *
                         /// `TARGETING_TYPE_YOUTUBE_VIDEO` (only for
                         /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
@@ -7844,10 +7890,10 @@ namespace Google.Apis.DisplayVideo.v4
                     /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` *
                     /// `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` *
                     /// `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` *
-                    /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_INVENTORY_MODE` *
-                    /// `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE`
-                    /// line items) * `TARGETING_TYPE_YOUTUBE_VIDEO` (only for
-                    /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
+                    /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
+                    /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) *
+                    /// `TARGETING_TYPE_YOUTUBE_VIDEO` (only for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE`
+                    /// line items)
                     /// </param>
                     public virtual ListRequest List(long advertiserId, long lineItemId, ListRequest.TargetingTypeEnum targetingType)
                     {
@@ -7897,8 +7943,7 @@ namespace Google.Apis.DisplayVideo.v4
                         /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` *
                         /// `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` *
                         /// `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` *
-                        /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_INVENTORY_MODE` *
-                        /// `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
+                        /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
                         /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) *
                         /// `TARGETING_TYPE_YOUTUBE_VIDEO` (only for
                         /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
@@ -7929,8 +7974,7 @@ namespace Google.Apis.DisplayVideo.v4
                         /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` *
                         /// `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` *
                         /// `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` *
-                        /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_INVENTORY_MODE` *
-                        /// `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
+                        /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
                         /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) *
                         /// `TARGETING_TYPE_YOUTUBE_VIDEO` (only for
                         /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
@@ -11137,8 +11181,7 @@ namespace Google.Apis.DisplayVideo.v4
                 /// <param name="targetingType">
                 /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                 /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID`
-                /// * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` *
-                /// `TARGETING_TYPE_INVENTORY_MODE`
+                /// * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DisplayVideo.v4.Data.AssignedTargetingOption body, long advertiserId, CreateRequest.TargetingTypeEnum targetingType)
                 {
@@ -11167,7 +11210,6 @@ namespace Google.Apis.DisplayVideo.v4
                     /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                     /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
                     /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
-                    /// * `TARGETING_TYPE_INVENTORY_MODE`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual TargetingTypeEnum TargetingType { get; private set; }
@@ -11176,7 +11218,6 @@ namespace Google.Apis.DisplayVideo.v4
                     /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                     /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
                     /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
-                    /// * `TARGETING_TYPE_INVENTORY_MODE`
                     /// </summary>
                     public enum TargetingTypeEnum
                     {
@@ -11474,8 +11515,7 @@ namespace Google.Apis.DisplayVideo.v4
                 /// <param name="targetingType">
                 /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                 /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID`
-                /// * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` *
-                /// `TARGETING_TYPE_INVENTORY_MODE`
+                /// * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
                 /// </param>
                 /// <param name="assignedTargetingOptionId">
                 /// Required. The ID of the assigned targeting option to delete.
@@ -11505,7 +11545,6 @@ namespace Google.Apis.DisplayVideo.v4
                     /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                     /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
                     /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
-                    /// * `TARGETING_TYPE_INVENTORY_MODE`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual TargetingTypeEnum TargetingType { get; private set; }
@@ -11514,7 +11553,6 @@ namespace Google.Apis.DisplayVideo.v4
                     /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                     /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
                     /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
-                    /// * `TARGETING_TYPE_INVENTORY_MODE`
                     /// </summary>
                     public enum TargetingTypeEnum
                     {
@@ -22115,7 +22153,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual System.Nullable<long> AdGroupId { get; set; }
 
         /// <summary>
-        /// Optional. Specifies the inventory control of the ad group. This field is required for Demand Gen ad groups.
+        /// Optional. Required for Demand Gen ad groups. Specifies the inventory control of the ad group.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupInventoryControl")]
         public virtual AdGroupInventoryControl AdGroupInventoryControl { get; set; }
@@ -22216,6 +22254,8 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// <summary>
         /// Details of a [Demand Gen carousel
         /// ad](//support.google.com/displayvideo/answer/15598924?&amp;amp;sjid=11207068802760924844-NC#CarouselAd).
+        /// Retrieval and management of Demand Gen resources is currently in beta. This field is only available to
+        /// allowlisted users.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("demandGenCarouselAd")]
         public virtual DemandGenCarouselAd DemandGenCarouselAd { get; set; }
@@ -22223,6 +22263,8 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// <summary>
         /// Details of a [Demand Gen image
         /// ad](//support.google.com/displayvideo/answer/15598924?&amp;amp;sjid=11207068802760924844-NC#ImageAd).
+        /// Retrieval and management of Demand Gen resources is currently in beta. This field is only available to
+        /// allowlisted users.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("demandGenImageAd")]
         public virtual DemandGenImageAd DemandGenImageAd { get; set; }
@@ -22230,6 +22272,8 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// <summary>
         /// Details of a [Demand Gen product
         /// ad](//support.google.com/displayvideo/answer/15598924?&amp;amp;sjid=11207068802760924844-NC#Product-onlyAd).
+        /// Retrieval and management of Demand Gen resources is currently in beta. This field is only available to
+        /// allowlisted users.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("demandGenProductAd")]
         public virtual DemandGenProductAd DemandGenProductAd { get; set; }
@@ -22237,6 +22281,8 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// <summary>
         /// Details of a [Demand Gen video
         /// ad](//support.google.com/displayvideo/answer/15598924?&amp;amp;sjid=11207068802760924844-NC#VideoAd).
+        /// Retrieval and management of Demand Gen resources is currently in beta. This field is only available to
+        /// allowlisted users.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("demandGenVideoAd")]
         public virtual DemandGenVideoAd DemandGenVideoAd { get; set; }
@@ -24461,7 +24507,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// The assigned targeting options to create in batch, specified as a list of
         /// `CreateAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
         /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-        /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_INVENTORY_MODE`
+        /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createRequests")]
         public virtual System.Collections.Generic.IList<CreateAssignedTargetingOptionsRequest> CreateRequests { get; set; }
@@ -24470,7 +24516,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// The assigned targeting options to delete in batch, specified as a list of
         /// `DeleteAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
         /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-        /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_INVENTORY_MODE`
+        /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteRequests")]
         public virtual System.Collections.Generic.IList<DeleteAssignedTargetingOptionsRequest> DeleteRequests { get; set; }
@@ -25178,7 +25224,9 @@ namespace Google.Apis.DisplayVideo.v4.Data
     /// <summary>Details for a Demand Gen carousel card.</summary>
     public class CarouselCard : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The call-to-action button shown on the card. Must use 10 characters or less.</summary>
+        /// <summary>
+        /// Required. The text on the call-to-action button shown on the card. Must use 10 characters or less.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("callToAction")]
         public virtual string CallToAction { get; set; }
 
@@ -25842,6 +25890,8 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// Optional. The attribution model to use for conversion measurement. This attribution model will determine how
         /// conversions are counted. The Primary model can be set by you for a floodlight config or group. More details
         /// [here](https://support.google.com/displayvideo/answer/7409983). Only applicable to Demand Gen line items.
+        /// Retrieval and management of Demand Gen resources is currently in beta. This field is only available to
+        /// allowlisted users.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryAttributionModelId")]
         public virtual System.Nullable<long> PrimaryAttributionModelId { get; set; }
@@ -26838,7 +26888,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
 
         /// <summary>
         /// Required. The mechanism used to determine which timezone to use for this day and time targeting setting. For
-        /// demand gen line items, this field is always TIME_ZONE_RESOLUTION_ADVERTISER.
+        /// Demand Gen line items, this field is always `TIME_ZONE_RESOLUTION_ADVERTISER`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZoneResolution")]
         public virtual string TimeZoneResolution { get; set; }
@@ -26887,9 +26937,10 @@ namespace Google.Apis.DisplayVideo.v4.Data
     public class DemandGenBiddingStrategy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. If AG doesn't set value for tCPA or tROAS, line item bidding value will be the
-        /// effective_bidding_value, if the bidding strategy type is not tCPA or tROAS, effective_bidding_value is
-        /// always 0. For line item, it will be the same as the value field.
+        /// Output only. The value effectively used by the bidding strategy. This field will be the same as value if
+        /// set. If value is not set and the strategy is assigned to an ad group, this field will be inherited from the
+        /// line item's bidding strategy. If type is not `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPA` or
+        /// `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_ROAS`, this field will be 0.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveBiddingValue")]
         public virtual System.Nullable<long> EffectiveBiddingValue { get; set; }
@@ -26898,17 +26949,20 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveBiddingValueSource")]
         public virtual string EffectiveBiddingValueSource { get; set; }
 
-        /// <summary>Optional. The type of the bidding strategy. This can only be set at the line item level.</summary>
+        /// <summary>
+        /// Optional. The type of the bidding strategy. This can only be set when assigned to a line item. Ad groups
+        /// will inherit this value from their line item.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>
-        /// Optional. The value used by the bidding strategy. This can be set at the line item and ad group level. This
-        /// field is only applicable for the following strategy types: * `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPA` *
-        /// `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPC` * `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_ROAS` Value of this
-        /// field is in micros of the advertiser's currency or ROAS value. For example, 1000000 represents 1.0 standard
-        /// units of the currency or 100% ROAS value. If not using an applicable strategy, the value of this field will
-        /// be 0.
+        /// Optional. The value used by the bidding strategy. This can be set when assigned to line items or ad groups.
+        /// This field is only applicable for the following strategy types: *
+        /// `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPA` * `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPC` *
+        /// `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_ROAS` Value of this field is in micros of the advertiser's currency
+        /// or ROAS value. For example, 1000000 represents 1.0 standard units of the currency or 100% ROAS value. If not
+        /// using an applicable strategy, the value of this field will be 0.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<long> Value { get; set; }
@@ -26928,7 +26982,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cards")]
         public virtual System.Collections.Generic.IList<CarouselCard> Cards { get; set; }
 
-        /// <summary>Optional. The custom parameters to pass custom values to tracking URL template.</summary>
+        /// <summary>Optional. The custom parameters and accompanying values to add to the tracking URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customParameters")]
         public virtual System.Collections.Generic.IDictionary<string, string> CustomParameters { get; set; }
 
@@ -26975,7 +27029,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("callToAction")]
         public virtual string CallToAction { get; set; }
 
-        /// <summary>Optional. The custom parameters to pass custom values to tracking URL template.</summary>
+        /// <summary>Optional. The custom parameters and accompanying values to add to the tracking URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customParameters")]
         public virtual System.Collections.Generic.IDictionary<string, string> CustomParameters { get; set; }
 
@@ -27043,7 +27097,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("callToAction")]
         public virtual string CallToAction { get; set; }
 
-        /// <summary>Optional. The custom parameters to pass custom values to tracking URL template.</summary>
+        /// <summary>Optional. The custom parameters and accompanying values to add to the tracking URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customParameters")]
         public virtual System.Collections.Generic.IDictionary<string, string> CustomParameters { get; set; }
 
@@ -27092,12 +27146,15 @@ namespace Google.Apis.DisplayVideo.v4.Data
     {
         /// <summary>
         /// Optional. Immutable. Whether location and language targeting can be set at the line item level. Otherwise,
-        /// relevant targeting types must be assigned directly to the ad groups.
+        /// relevant targeting types must be assigned directly to ad groups.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoLanguageTargetingEnabled")]
         public virtual System.Nullable<bool> GeoLanguageTargetingEnabled { get; set; }
 
-        /// <summary>Optional. The ID of the merchant which is linked to the line item for product feed.</summary>
+        /// <summary>
+        /// Optional. The ID of the Merchant Center account used to provide a product feed. This Merchant Center account
+        /// must already be linked to the advertiser.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedMerchantId")]
         public virtual System.Nullable<long> LinkedMerchantId { get; set; }
 
@@ -27129,7 +27186,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("companionBanner")]
         public virtual ImageAsset CompanionBanner { get; set; }
 
-        /// <summary>Optional. The custom parameters to pass custom values to tracking URL template.</summary>
+        /// <summary>Optional. The custom parameters and accompanying values to add to the tracking URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customParameters")]
         public virtual System.Collections.Generic.IDictionary<string, string> CustomParameters { get; set; }
 
@@ -27167,7 +27224,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("logo")]
         public virtual ImageAsset Logo { get; set; }
 
-        /// <summary>Required. The list of lone headlines shown on the ad.</summary>
+        /// <summary>Required. The list of long headlines shown on the ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longHeadlines")]
         public virtual System.Collections.Generic.IList<string> LongHeadlines { get; set; }
 
@@ -28506,7 +28563,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commonInStreamAttribute")]
         public virtual CommonInStreamAttribute CommonInStreamAttribute { get; set; }
 
-        /// <summary>The custom parameters to pass custom values to tracking URL template.</summary>
+        /// <summary>The custom parameters and accompanying values to add to the tracking URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customParameters")]
         public virtual System.Collections.Generic.IDictionary<string, string> CustomParameters { get; set; }
 
@@ -28808,7 +28865,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An inventory source. Next ID: 22</summary>
+    /// <summary>An inventory source.</summary>
     public class InventorySource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether the inventory source has a guaranteed or non-guaranteed delivery.</summary>
@@ -29259,8 +29316,11 @@ namespace Google.Apis.DisplayVideo.v4.Data
     public class KeywordAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The policy names to exempt the keyword from. This field is only applicable for Demand Gen
-        /// keywords, which are positively targeted.
+        /// Optional. The policy names to exempt the keyword from. When attempting to target a keyword that violates a
+        /// policy, the error returned will include the name of the relevant policy. Use that name in this field to
+        /// exempt the targeted keyword from the policy. This field is only applicable for positively-targeted keywords
+        /// assigned to Demand Gen resources. Retrieval and management of Demand Gen resources is currently in beta.
+        /// This field is only available to allowlisted users.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedPolicyNames")]
         public virtual System.Collections.Generic.IList<string> ExemptedPolicyNames { get; set; }
@@ -29430,9 +29490,9 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual LineItemFlight Flight { get; set; }
 
         /// <summary>
-        /// Optional. The impression frequency cap settings of the line item. The max_impressions field in this settings
-        /// object must be used if assigning a limited cap. This field is REQUIRED for all line item types excluding
-        /// LINE_ITEM_TYPE_DEMAND_GEN.
+        /// Optional. Required if the line item type is not `LINE_ITEM_TYPE_DEMAND_GEN`. The impression frequency cap
+        /// settings of the line item. The max_impressions field in this settings object must be used if assigning a
+        /// limited cap.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frequencyCap")]
         public virtual FrequencyCap FrequencyCap { get; set; }
@@ -29565,9 +29625,8 @@ namespace Google.Apis.DisplayVideo.v4.Data
     {
         /// <summary>
         /// Required. The type of the budget allocation. `LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC` is only applicable
-        /// when automatic budget allocation is enabled for the parent insertion order. For demand gen line items,
-        /// budget allocation type must be `LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED`. Demand Gen line items do not
-        /// support other budget allocation types.
+        /// when automatic budget allocation is enabled for the parent insertion order. This field must be set to
+        /// `LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED` for Demand Gen line items.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("budgetAllocationType")]
         public virtual string BudgetAllocationType { get; set; }
@@ -30579,7 +30638,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commonInStreamAttribute")]
         public virtual CommonInStreamAttribute CommonInStreamAttribute { get; set; }
 
-        /// <summary>The custom parameters to pass custom values to tracking URL template.</summary>
+        /// <summary>The custom parameters and accompanying values to add to the tracking URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customParameters")]
         public virtual System.Collections.Generic.IDictionary<string, string> CustomParameters { get; set; }
 
@@ -31073,8 +31132,8 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual System.Nullable<long> MarkupAmount { get; set; }
 
         /// <summary>
-        /// Required. The markup type of the partner revenue model. Demand Gen line items only support
-        /// `PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP`.
+        /// Required. The markup type of the partner revenue model. This field must be set to
+        /// `PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP` for Demand Gen line items.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("markupType")]
         public virtual string MarkupType { get; set; }
@@ -31740,7 +31799,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowYoutubeShorts")]
         public virtual System.Nullable<bool> AllowYoutubeShorts { get; set; }
 
-        /// <summary>Whether the ad group is opted-in to YouTube in-stream.</summary>
+        /// <summary>Whether the ad group is opted-in to YouTube in-stream inventory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowYoutubeStream")]
         public virtual System.Nullable<bool> AllowYoutubeStream { get; set; }
 
@@ -31933,8 +31992,9 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual System.Nullable<bool> EnableOptimizedTargeting { get; set; }
 
         /// <summary>
-        /// Optional. Whether to exclude demographic expansion for Optimized Targeting. This field only applies to
-        /// Demand Gen ad groups.
+        /// Optional. Whether to exclude demographic expansion for Optimized Targeting. This field can only be set for
+        /// Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently in beta. This field is
+        /// only available to allowlisted users.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeDemographicExpansion")]
         public virtual System.Nullable<bool> ExcludeDemographicExpansion { get; set; }
@@ -32114,7 +32174,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
 
         /// <summary>
         /// Optional. The third-party vendors measuring brand safety. The following third-party vendors are applicable:
-        /// * `THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE` * `THIRD_PARTY_VENDOR_ZEFR`
+        /// * `THIRD_PARTY_VENDOR_ZEFR` * `THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brandSafetyVendorConfigs")]
         public virtual System.Collections.Generic.IList<ThirdPartyVendorConfig> BrandSafetyVendorConfigs { get; set; }
@@ -32649,7 +32709,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("companionBanners")]
         public virtual System.Collections.Generic.IList<ImageAsset> CompanionBanners { get; set; }
 
-        /// <summary>The custom parameters to pass custom values to tracking URL template.</summary>
+        /// <summary>The custom parameters and accompanying values to add to the tracking URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customParameters")]
         public virtual System.Collections.Generic.IDictionary<string, string> CustomParameters { get; set; }
 
@@ -32677,7 +32737,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("headlines")]
         public virtual System.Collections.Generic.IList<string> Headlines { get; set; }
 
-        /// <summary>The list of lone headlines shown on the call-to-action banner.</summary>
+        /// <summary>The list of long headlines shown on the call-to-action banner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longHeadlines")]
         public virtual System.Collections.Generic.IList<string> LongHeadlines { get; set; }
 
@@ -32839,7 +32899,10 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("leadFormId")]
         public virtual System.Nullable<long> LeadFormId { get; set; }
 
-        /// <summary>Optional. The ID of the merchant which is linked to the line item for product feed.</summary>
+        /// <summary>
+        /// Optional. The ID of the Merchant Center account used to provide a product feed. This Merchant Center account
+        /// must already be linked to the advertiser.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedMerchantId")]
         public virtual System.Nullable<long> LinkedMerchantId { get; set; }
 
@@ -33107,7 +33170,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("unavailableReason")]
         public virtual string UnavailableReason { get; set; }
 
-        /// <summary>Required. The YouTube video asset id. This is ad_asset.ad_asset_id.</summary>
+        /// <summary>Required. The YouTube video asset id. This is the adAssetId of an AdAsset resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoAssetId")]
         public virtual System.Nullable<long> VideoAssetId { get; set; }
 
