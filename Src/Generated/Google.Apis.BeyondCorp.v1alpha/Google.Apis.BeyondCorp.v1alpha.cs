@@ -1839,10 +1839,11 @@ namespace Google.Apis.BeyondCorp.v1alpha
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes since the first request. For
                     /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// you make the request again with the same request ID, the server can check if the original
+                    /// operation with the same request ID was received, and if so, will ignore the second request. This
+                    /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                    /// valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -1940,10 +1941,11 @@ namespace Google.Apis.BeyondCorp.v1alpha
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes after the first request. For
                     /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// you make the request again with the same request ID, the server can check if the original
+                    /// operation with the same request ID was received, and if so, will ignore the second request. This
+                    /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                    /// valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -2273,10 +2275,11 @@ namespace Google.Apis.BeyondCorp.v1alpha
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes since the first request. For
                     /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// you make the request again with the same request ID, the server can check if the original
+                    /// operation with the same request ID was received, and if so, will ignore the second request. This
+                    /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                    /// valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -7022,7 +7025,7 @@ namespace Google.Apis.BeyondCorp.v1alpha
 
                         /// <summary>
                         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that
-                        /// if you must retry your request, the server will know to ignore request if it has already
+                        /// if you must retry your request, the server will know to ignore the request if it has already
                         /// been completed. The server will guarantee that for at least 60 minutes since the first
                         /// request.
                         /// </summary>
@@ -8324,10 +8327,14 @@ namespace Google.Apis.BeyondCorp.v1alpha
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -8336,10 +8343,14 @@ namespace Google.Apis.BeyondCorp.v1alpha
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             public class ListRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudLocationListLocationsResponse>
             {
@@ -9492,7 +9503,7 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
     /// <summary>
     /// A BeyondCorp AppConnection resource represents a BeyondCorp protected AppConnection to a remote application. It
     /// creates all the necessary GCP components needed for creating a BeyondCorp protected AppConnection. Multiple
-    /// connectors can be authorised for a single AppConnection.
+    /// connectors can be authorized for a single AppConnection.
     /// </summary>
     public class GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnection : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9501,7 +9512,7 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         public virtual GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpoint ApplicationEndpoint { get; set; }
 
         /// <summary>
-        /// Optional. List of [google.cloud.beyondcorp.v1main.Connector.name] that are authorised to be associated with
+        /// Optional. List of [google.cloud.beyondcorp.v1main.Connector.name] that are authorized to be associated with
         /// this AppConnection.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectors")]
@@ -10382,8 +10393,9 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
     }
 
     /// <summary>
-    /// ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container
-    /// - runtime - appgateway - appconnector - appconnection - tunnel - logagent
+    /// ResourceInfo represents the information or status of an app connector resource component that's used to report
+    /// on various parts of the system. For example, ResourceInfo can be used to convey the status of a remote_agent,
+    /// including the status of an appgateway for an runtime environment in a container instance.
     /// </summary>
     public class GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12003,7 +12015,7 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
     /// <summary>Settings related to the Service Discovery.</summary>
     public class GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscovery : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. External API configuration.</summary>
+        /// <summary>Optional. External API configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiGateway")]
         public virtual GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApiGateway ApiGateway { get; set; }
 
@@ -12015,7 +12027,7 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
     public class GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApiGateway : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Enables fetching resource model updates to alter service behavior per Chrome profile.
+        /// Optional. Enables fetching resource model updates to alter service behavior per Chrome profile.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceOverride")]
         public virtual GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApiGatewayOperationDescriptor ResourceOverride { get; set; }
@@ -12027,7 +12039,7 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
     /// <summary>API operation descriptor.</summary>
     public class GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApiGatewayOperationDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Contains the URI path fragment where HTTP request is sent.</summary>
+        /// <summary>Optional. Contains the URI path fragment where HTTP request is sent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
