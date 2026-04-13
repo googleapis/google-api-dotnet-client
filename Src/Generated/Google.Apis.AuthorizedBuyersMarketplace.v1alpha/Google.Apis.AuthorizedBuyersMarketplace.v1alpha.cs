@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -484,7 +484,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1alpha
                 /// Optional query string using the [Cloud API list filtering
                 /// syntax](https://developers.google.com/authorized-buyers/apis/guides/list-filters) Supported columns
                 /// for filtering are: * deal.displayName * deal.dealType * deal.createTime * deal.updateTime *
-                /// deal.flightStartTime * deal.flightEndTime * deal.eligibleSeatIds * dealServingStatus
+                /// deal.flightStartTime * deal.flightEndTime * deal.eligibleSeatIds * dealServingStatus * readyToServe
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -2514,7 +2514,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1alpha
                 /// Optional query string using the [Cloud API list filtering
                 /// syntax](https://developers.google.com/authorized-buyers/apis/guides/list-filters) Supported columns
                 /// for filtering are: * deal.displayName * deal.dealType * deal.createTime * deal.updateTime *
-                /// deal.flightStartTime * deal.flightEndTime * deal.eligibleSeatIds * dealServingStatus
+                /// deal.flightStartTime * deal.flightEndTime * deal.eligibleSeatIds * dealServingStatus * readyToServe
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
