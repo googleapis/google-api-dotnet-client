@@ -29524,6 +29524,16 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Optional. Whether to enable DV360's bid optimization for fixed bid line items. By default, DV360 optimizes
+        /// your fixed bid by automatically lowering bids for impressions that are less likely to perform well. This
+        /// optimization is enabled by default (value is true). When this field is set to `false`, this optimization is
+        /// disabled, and the bid will not be lowered for any reason. This setting only applies to line items with a
+        /// `bidding_strategy` of type `FIXED_BID`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optimizeFixedBidding")]
+        public virtual System.Nullable<bool> OptimizeFixedBidding { get; set; }
+
         /// <summary>Required. The budget spending speed setting of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pacing")]
         public virtual Pacing Pacing { get; set; }
