@@ -2486,6 +2486,29 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Inserts a RichLink at the specified location.</summary>
+    public class InsertRichLinkRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Inserts the rich link at the end of a header, footer, footnote or the document body.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endOfSegmentLocation")]
+        public virtual EndOfSegmentLocation EndOfSegmentLocation { get; set; }
+
+        /// <summary>
+        /// Inserts the rich link at a specific index in the document. The rich link must be inserted inside the bounds
+        /// of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e. between the
+        /// table and its preceding paragraph). The rich link cannot be inserted inside an equation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual Location Location { get; set; }
+
+        /// <summary>The properties of the rich link to insert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("richLinkProperties")]
+        public virtual RichLinkProperties RichLinkProperties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Inserts a section break at the given location. A newline character will be inserted before the section break.
     /// </summary>
@@ -3922,6 +3945,10 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>Inserts a person mention.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertPerson")]
         public virtual InsertPersonRequest InsertPerson { get; set; }
+
+        /// <summary>Insert a rich link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insertRichLink")]
+        public virtual InsertRichLinkRequest InsertRichLink { get; set; }
 
         /// <summary>Inserts a section break at the specified location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertSectionBreak")]
