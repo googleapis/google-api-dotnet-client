@@ -2170,6 +2170,66 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     }
 
     /// <summary>
+    /// Alerts for when a user is restricted from syncing content from clients such as Drive for Desktop.
+    /// </summary>
+    public class DriveSyncStateChanged : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Email of the user affected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        private string _syncPauseStartTimeRaw;
+
+        private object _syncPauseStartTime;
+
+        /// <summary>Time at which sync was paused.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncPauseStartTime")]
+        public virtual string SyncPauseStartTimeRaw
+        {
+            get => _syncPauseStartTimeRaw;
+            set
+            {
+                _syncPauseStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _syncPauseStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="SyncPauseStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SyncPauseStartTimeDateTimeOffset instead.")]
+        public virtual object SyncPauseStartTime
+        {
+            get => _syncPauseStartTime;
+            set
+            {
+                _syncPauseStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _syncPauseStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SyncPauseStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SyncPauseStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SyncPauseStartTimeRaw);
+            set => SyncPauseStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The current sync state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncState")]
+        public virtual string SyncState { get; set; }
+
+        /// <summary>The reason for the sync state change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncStateChangeReason")]
+        public virtual string SyncStateChangeReason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
