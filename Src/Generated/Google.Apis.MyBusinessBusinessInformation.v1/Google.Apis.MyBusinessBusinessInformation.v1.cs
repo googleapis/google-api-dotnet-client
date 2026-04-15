@@ -2135,7 +2135,7 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
 
         /// <summary>
         /// Optional. Describes your business in your own voice and shares with users the unique story of your business
-        /// and offerings. This field is required for all categories except lodging categories (e.g. hotels, motels,
+        /// and offerings. This field is required for all categories except lodging categories (e.g., hotels, motels,
         /// inns).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profile")]
