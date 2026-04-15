@@ -6,7 +6,8 @@
     "THUMBNAIL_SIZE_UNSPECIFIED",
     "LARGE",
     "MEDIUM",
-    "SMALL"
+    "SMALL",
+    "WIDTH2000_PX"
   ],
   "Google.Apis.Slides.v1.SlidesBaseServiceRequest<<TResponse>>.AltEnum": [
     "json",
