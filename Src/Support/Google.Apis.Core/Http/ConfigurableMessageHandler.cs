@@ -38,8 +38,6 @@ namespace Google.Apis.Http
     /// </summary>
     public class ConfigurableMessageHandler : DelegatingHandler
     {
-        private const string QuotaProjectHeaderName = "x-goog-user-project";
-
         /// <summary>The class logger.</summary>
         private static readonly ILogger Logger = ApplicationContext.Logger.ForType<ConfigurableMessageHandler>();
 
@@ -464,10 +462,6 @@ namespace Google.Apis.Http
                     await interceptor.InterceptAsync(request, cancellationToken).ConfigureAwait(false);
                 }
 
-                // Before having the credential intercept the call, check that quota project hasn't
-                // been added as a header. Quota project cannot be added except through the credential.
-                CheckValidAfterInterceptors(request);
-
                 await CredentialInterceptAsync(request, cancellationToken).ConfigureAwait(false);
 
                 if (loggable)
@@ -655,14 +649,6 @@ namespace Google.Apis.Http
             }
 
             return response;
-        }
-
-        private void CheckValidAfterInterceptors(HttpRequestMessage request)
-        {
-            if (request.Headers.Contains(QuotaProjectHeaderName))
-            {
-                throw new InvalidOperationException($"{QuotaProjectHeaderName} header can only be added through the credential or through the <Product>ClientBuilder.");
-            }
         }
 
         private async Task CredentialInterceptAsync(HttpRequestMessage request, CancellationToken cancellationToken)

@@ -54,5 +54,72 @@ namespace Google.Apis.Auth.Tests.OAuth2
             Assert.Single(values);
             Assert.Contains("FAKE_QUOTA_PROJECT", values);
         }
+
+        [Fact]
+        public void AddHeaders_SucceedsOnRetry()
+        {
+            var token = new AccessTokenWithHeaders.Builder { QuotaProject = "RETRY_QUOTA_PROJECT" }.Build("FAKE_TOKEN");
+            var request = new System.Net.Http.HttpRequestMessage();
+
+            // First call (first try)
+            token.AddHeaders(request);
+
+            // Second call (retry) - should not throw and should not duplicate the header
+            token.AddHeaders(request);
+
+            var values = request.Headers.GetValues("x-goog-user-project");
+            Assert.Single(values);
+            Assert.Contains("RETRY_QUOTA_PROJECT", values);
+        }
+
+        [Fact]
+        public void AddHeaders_ConflictThrows()
+        {
+            var token = new AccessTokenWithHeaders.Builder { QuotaProject = "NEW_QUOTA_PROJECT" }.Build("FAKE_TOKEN");
+            var request = new System.Net.Http.HttpRequestMessage();
+            request.Headers.Add("x-goog-user-project", "OLD_QUOTA_PROJECT");
+
+            Assert.Throws<System.InvalidOperationException>(() => token.AddHeaders(request));
+        }
+
+        [Fact]
+        public void AddHeaders_MatchingSucceeds()
+        {
+            var token = new AccessTokenWithHeaders.Builder { QuotaProject = "SAME_QUOTA_PROJECT" }.Build("FAKE_TOKEN");
+            var request = new System.Net.Http.HttpRequestMessage();
+            request.Headers.Add("x-goog-user-project", "SAME_QUOTA_PROJECT");
+
+            // Should not throw
+            token.AddHeaders(request);
+
+            var values = request.Headers.GetValues("x-goog-user-project");
+            Assert.Single(values);
+            Assert.Contains("SAME_QUOTA_PROJECT", values);
+        }
+
+        [Fact]
+        public void AddHeaders_MultipleExistingValuesThrows()
+        {
+            var token = new AccessTokenWithHeaders.Builder { QuotaProject = "NEW_PROJECT" }.Build("TOKEN");
+            var request = new System.Net.Http.HttpRequestMessage();
+            request.Headers.Add("x-goog-user-project", "VAL1");
+            request.Headers.Add("x-goog-user-project", "VAL2");
+
+            Assert.Throws<System.InvalidOperationException>(() => token.AddHeaders(request));
+        }
+
+        [Fact]
+        public void AddHeaders_MultipleIncomingValuesThrows()
+        {
+            var headers = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IReadOnlyList<string>>
+            {
+                { "x-goog-user-project", new System.Collections.Generic.List<string> { "VAL1", "VAL2" }.AsReadOnly() }
+            };
+            var token = new AccessTokenWithHeaders("TOKEN", new System.Collections.ObjectModel.ReadOnlyDictionary<string, System.Collections.Generic.IReadOnlyList<string>>(headers));
+            var request = new System.Net.Http.HttpRequestMessage();
+            request.Headers.Add("x-goog-user-project", "VAL1");
+
+            Assert.Throws<System.InvalidOperationException>(() => token.AddHeaders(request));
+        }
     }
 }

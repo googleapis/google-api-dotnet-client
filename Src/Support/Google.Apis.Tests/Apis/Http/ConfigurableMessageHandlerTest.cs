@@ -1101,18 +1101,6 @@ namespace Google.Apis.Tests.Apis.Http
         }
 
         [Fact]
-        public async Task FailsIfQuotaProjectSetWithInterceptors()
-        {
-            var configurableHandler = new ConfigurableMessageHandler(new HttpClientHandler());
-            configurableHandler.AddExecuteInterceptor(new AddsQuotaProject());
-
-            using (var client = new HttpClient(configurableHandler))
-            {
-               await Assert.ThrowsAsync<InvalidOperationException>(() => client.GetAsync("http://will.be.ignored"));
-            }
-        }
-
-        [Fact]
         public async Task AcceptsQuotaProjectFromCredential()
         {
             var fakeHandler = new FakeHandler();

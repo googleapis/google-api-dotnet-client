@@ -15,8 +15,11 @@ limitations under the License.
 */
 
 using Google.Apis.Util;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 
@@ -75,10 +78,31 @@ namespace Google.Apis.Auth.OAuth2
         public void AddHeaders(HttpRequestHeaders requestHeaders)
         {
             requestHeaders.ThrowIfNull(nameof(requestHeaders));
-
             foreach (var header in Headers)
             {
-                requestHeaders.Add(header.Key, header.Value);
+                // In the case it's a single value header we will not add it if already present, just validate we match
+                // what's already there.
+                if (IsSingleValueHeader(header.Key) && requestHeaders.TryGetValues(header.Key, out var existingValues))
+                {
+                    ValidateSingleValueHeader(header.Key, existingValues, header.Value);
+                    continue;
+                }
+                else
+                {
+                    requestHeaders.Add(header.Key, header.Value);
+                }
+            }
+
+            bool IsSingleValueHeader(string key) => key == QuotaProjectHeaderName;
+
+            void ValidateSingleValueHeader(string key, IEnumerable<string> existing, IEnumerable<string> incoming)
+            {
+                bool isValidInitialization = !existing.Any() && incoming.Count() == 1;
+                bool isNoChange = existing.Count() == 1 && incoming.Count() == 1 && existing.First() == incoming.First();
+                if (!(isValidInitialization || isNoChange))
+                {
+                    throw new InvalidOperationException($"Only a single header value may be specified for key {key}.");
+                }
             }
         }
 
