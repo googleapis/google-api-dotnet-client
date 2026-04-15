@@ -42,7 +42,6 @@ namespace Google.Apis.DisplayVideo.v2
             GoogleAudiences = new GoogleAudiencesResource(this);
             GuaranteedOrders = new GuaranteedOrdersResource(this);
             InventorySourceGroups = new InventorySourceGroupsResource(this);
-            InventorySources = new InventorySourcesResource(this);
             Media = new MediaResource(this);
             Partners = new PartnersResource(this);
             Sdfdownloadtasks = new SdfdownloadtasksResource(this);
@@ -133,9 +132,6 @@ namespace Google.Apis.DisplayVideo.v2
 
         /// <summary>Gets the InventorySourceGroups resource.</summary>
         public virtual InventorySourceGroupsResource InventorySourceGroups { get; }
-
-        /// <summary>Gets the InventorySources resource.</summary>
-        public virtual InventorySourcesResource InventorySources { get; }
 
         /// <summary>Gets the Media resource.</summary>
         public virtual MediaResource Media { get; }
@@ -13918,424 +13914,6 @@ namespace Google.Apis.DisplayVideo.v2
         }
     }
 
-    /// <summary>The "inventorySources" collection of methods.</summary>
-    public class InventorySourcesResource
-    {
-        private const string Resource = "inventorySources";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public InventorySourcesResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-        }
-
-        /// <summary>Creates a new inventory source. Returns the newly created inventory source if successful.</summary>
-        /// <param name="body">The body of the request.</param>
-        public virtual CreateRequest Create(Google.Apis.DisplayVideo.v2.Data.InventorySource body)
-        {
-            return new CreateRequest(this.service, body);
-        }
-
-        /// <summary>Creates a new inventory source. Returns the newly created inventory source if successful.</summary>
-        public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v2.Data.InventorySource>
-        {
-            /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v2.Data.InventorySource body) : base(service)
-            {
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>The ID of the advertiser that the request is being made within.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> AdvertiserId { get; set; }
-
-            /// <summary>The ID of the partner that the request is being made within.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> PartnerId { get; set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v2.Data.InventorySource Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "create";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v2/inventorySources";
-
-            /// <summary>Initializes Create parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "advertiserId",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "partnerId",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-
-        /// <summary>
-        /// Edits read/write accessors of an inventory source. Returns the updated read_write_accessors for the
-        /// inventory source.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="inventorySourceId">Required. The ID of inventory source to update.</param>
-        public virtual EditInventorySourceReadWriteAccessorsRequest EditInventorySourceReadWriteAccessors(Google.Apis.DisplayVideo.v2.Data.EditInventorySourceReadWriteAccessorsRequest body, long inventorySourceId)
-        {
-            return new EditInventorySourceReadWriteAccessorsRequest(this.service, body, inventorySourceId);
-        }
-
-        /// <summary>
-        /// Edits read/write accessors of an inventory source. Returns the updated read_write_accessors for the
-        /// inventory source.
-        /// </summary>
-        public class EditInventorySourceReadWriteAccessorsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v2.Data.InventorySourceAccessors>
-        {
-            /// <summary>Constructs a new EditInventorySourceReadWriteAccessors request.</summary>
-            public EditInventorySourceReadWriteAccessorsRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v2.Data.EditInventorySourceReadWriteAccessorsRequest body, long inventorySourceId) : base(service)
-            {
-                InventorySourceId = inventorySourceId;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Required. The ID of inventory source to update.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("inventorySourceId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual long InventorySourceId { get; private set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v2.Data.EditInventorySourceReadWriteAccessorsRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "editInventorySourceReadWriteAccessors";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v2/inventorySources/{+inventorySourceId}:editInventorySourceReadWriteAccessors";
-
-            /// <summary>Initializes EditInventorySourceReadWriteAccessors parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("inventorySourceId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "inventorySourceId",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^[^/]+$",
-                });
-            }
-        }
-
-        /// <summary>Gets an inventory source.</summary>
-        /// <param name="inventorySourceId">Required. The ID of the inventory source to fetch.</param>
-        public virtual GetRequest Get(long inventorySourceId)
-        {
-            return new GetRequest(this.service, inventorySourceId);
-        }
-
-        /// <summary>Gets an inventory source.</summary>
-        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v2.Data.InventorySource>
-        {
-            /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long inventorySourceId) : base(service)
-            {
-                InventorySourceId = inventorySourceId;
-                InitParameters();
-            }
-
-            /// <summary>Required. The ID of the inventory source to fetch.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("inventorySourceId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual long InventorySourceId { get; private set; }
-
-            /// <summary>
-            /// Required. The ID of the DV360 partner to which the fetched inventory source is permissioned.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> PartnerId { get; set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "get";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v2/inventorySources/{+inventorySourceId}";
-
-            /// <summary>Initializes Get parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("inventorySourceId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "inventorySourceId",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^[^/]+$",
-                });
-                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "partnerId",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-
-        /// <summary>
-        /// Lists inventory sources that are accessible to the current user. The order is defined by the order_by
-        /// parameter. If a filter by entity_status is not specified, inventory sources with entity status
-        /// `ENTITY_STATUS_ARCHIVED` will not be included in the results.
-        /// </summary>
-        public virtual ListRequest List()
-        {
-            return new ListRequest(this.service);
-        }
-
-        /// <summary>
-        /// Lists inventory sources that are accessible to the current user. The order is defined by the order_by
-        /// parameter. If a filter by entity_status is not specified, inventory sources with entity status
-        /// `ENTITY_STATUS_ARCHIVED` will not be included in the results.
-        /// </summary>
-        public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v2.Data.ListInventorySourcesResponse>
-        {
-            /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
-            {
-                InitParameters();
-            }
-
-            /// <summary>The ID of the advertiser that has access to the inventory source.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> AdvertiserId { get; set; }
-
-            /// <summary>
-            /// Allows filtering by inventory source fields. Supported syntax: * Filter expressions are made up of one
-            /// or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of
-            /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * All
-            /// fields must use the `EQUALS (=)` operator. Supported fields: * `status.entityStatus` * `commitment` *
-            /// `deliveryMethod` * `rateDetails.rateType` * `exchange` Examples: * All active inventory sources:
-            /// `status.entityStatus="ENTITY_STATUS_ACTIVE"` * Inventory sources belonging to Google Ad Manager or
-            /// Rubicon exchanges: `exchange="EXCHANGE_GOOGLE_AD_MANAGER" OR exchange="EXCHANGE_RUBICON"` The length of
-            /// this field should be no more than 500 characters. Reference our [filter `LIST`
-            /// requests](/display-video/api/guides/how-tos/filters) guide for more information.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
-            /// <summary>
-            /// Field by which to sort the list. Acceptable values are: * `displayName` (default) The default sorting
-            /// order is ascending. To specify descending order for a field, a suffix "desc" should be added to the
-            /// field name. For example, `displayName desc`.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string OrderBy { get; set; }
-
-            /// <summary>
-            /// Requested page size. Must be between `1` and `200`. If unspecified will default to `100`.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>
-            /// A token identifying a page of results the server should return. Typically, this is the value of
-            /// next_page_token returned from the previous call to `ListInventorySources` method. If not specified, the
-            /// first page of results will be returned.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The ID of the partner that has access to the inventory source.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> PartnerId { get; set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "list";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v2/inventorySources";
-
-            /// <summary>Initializes List parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "advertiserId",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "filter",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "orderBy",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "pageSize",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "pageToken",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "partnerId",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-
-        /// <summary>Updates an existing inventory source. Returns the updated inventory source if successful.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="inventorySourceId">
-        /// Output only. The unique ID of the inventory source. Assigned by the system.
-        /// </param>
-        public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v2.Data.InventorySource body, long inventorySourceId)
-        {
-            return new PatchRequest(this.service, body, inventorySourceId);
-        }
-
-        /// <summary>Updates an existing inventory source. Returns the updated inventory source if successful.</summary>
-        public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v2.Data.InventorySource>
-        {
-            /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v2.Data.InventorySource body, long inventorySourceId) : base(service)
-            {
-                InventorySourceId = inventorySourceId;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Output only. The unique ID of the inventory source. Assigned by the system.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("inventorySourceId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual long InventorySourceId { get; private set; }
-
-            /// <summary>The ID of the advertiser that the request is being made within.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> AdvertiserId { get; set; }
-
-            /// <summary>The ID of the partner that the request is being made within.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> PartnerId { get; set; }
-
-            /// <summary>Required. The mask to control which fields to update.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object UpdateMask { get; set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v2.Data.InventorySource Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "patch";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "PATCH";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v2/inventorySources/{+inventorySourceId}";
-
-            /// <summary>Initializes Patch parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("inventorySourceId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "inventorySourceId",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^[^/]+$",
-                });
-                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "advertiserId",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "partnerId",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "updateMask",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-    }
-
     /// <summary>The "media" collection of methods.</summary>
     public class MediaResource
     {
@@ -21832,32 +21410,6 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Creative requirements configuration for the inventory source.</summary>
-    public class CreativeConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The type of creative that can be assigned to the inventory source. Only the following types are supported: *
-        /// `CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_VIDEO`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("creativeType")]
-        public virtual string CreativeType { get; set; }
-
-        /// <summary>
-        /// The configuration for display creatives. Applicable when creative_type is `CREATIVE_TYPE_STANDARD`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayCreativeConfig")]
-        public virtual InventorySourceDisplayCreativeConfig DisplayCreativeConfig { get; set; }
-
-        /// <summary>
-        /// The configuration for video creatives. Applicable when creative_type is `CREATIVE_TYPE_VIDEO`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("videoCreativeConfig")]
-        public virtual InventorySourceVideoCreativeConfig VideoCreativeConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>A single custom bidding algorithm.</summary>
     public class CustomBiddingAlgorithm : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -22584,46 +22136,6 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// <summary>The IDs of advertisers with read access to the guaranteed order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readAdvertiserIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> ReadAdvertiserIds { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for InventorySourceService.EditInventorySourceReadWriteAccessors.</summary>
-    public class EditInventorySourceReadWriteAccessorsRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The advertisers to add or remove from the list of advertisers that have read/write access to the inventory
-        /// source. This change will remove an existing partner read/write accessor.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("advertisersUpdate")]
-        public virtual EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate AdvertisersUpdate { get; set; }
-
-        /// <summary>
-        /// Set the partner context as read/write accessor of the inventory source. This will remove all other current
-        /// read/write advertiser accessors.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("assignPartner")]
-        public virtual System.Nullable<bool> AssignPartner { get; set; }
-
-        /// <summary>Required. The partner context by which the accessors change is being made.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("partnerId")]
-        public virtual System.Nullable<long> PartnerId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Update to the list of advertisers with read/write access to the inventory source.</summary>
-    public class EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The advertisers to add.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("addedAdvertisers")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> AddedAdvertisers { get; set; }
-
-        /// <summary>The advertisers to remove.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("removedAdvertisers")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> RemovedAdvertisers { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23653,187 +23165,6 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An inventory source.</summary>
-    public class InventorySource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Whether the inventory source has a guaranteed or non-guaranteed delivery.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("commitment")]
-        public virtual string Commitment { get; set; }
-
-        /// <summary>The creative requirements of the inventory source. Not applicable for auction packages.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("creativeConfigs")]
-        public virtual System.Collections.Generic.IList<CreativeConfig> CreativeConfigs { get; set; }
-
-        /// <summary>
-        /// The ID in the exchange space that uniquely identifies the inventory source. Must be unique across buyers
-        /// within each exchange but not necessarily unique across exchanges.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dealId")]
-        public virtual string DealId { get; set; }
-
-        /// <summary>
-        /// The delivery method of the inventory source. * For non-guaranteed inventory sources, the only acceptable
-        /// value is `INVENTORY_SOURCE_DELIVERY_METHOD_PROGRAMMATIC`. * For guaranteed inventory sources, acceptable
-        /// values are `INVENTORY_SOURCE_DELIVERY_METHOD_TAG` and `INVENTORY_SOURCE_DELIVERY_METHOD_PROGRAMMATIC`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deliveryMethod")]
-        public virtual string DeliveryMethod { get; set; }
-
-        /// <summary>
-        /// The display name of the inventory source. Must be UTF-8 encoded with a maximum size of 240 bytes.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>The exchange to which the inventory source belongs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("exchange")]
-        public virtual string Exchange { get; set; }
-
-        /// <summary>
-        /// Immutable. The ID of the guaranteed order that this inventory source belongs to. Only applicable when
-        /// commitment is `INVENTORY_SOURCE_COMMITMENT_GUARANTEED`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("guaranteedOrderId")]
-        public virtual string GuaranteedOrderId { get; set; }
-
-        /// <summary>Output only. The unique ID of the inventory source. Assigned by the system.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceId")]
-        public virtual System.Nullable<long> InventorySourceId { get; set; }
-
-        /// <summary>
-        /// Output only. The product type of the inventory source, denoting the way through which it sells inventory.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceProductType")]
-        public virtual string InventorySourceProductType { get; set; }
-
-        /// <summary>Denotes the type of the inventory source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceType")]
-        public virtual string InventorySourceType { get; set; }
-
-        /// <summary>Output only. The resource name of the inventory source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The publisher/seller name of the inventory source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("publisherName")]
-        public virtual string PublisherName { get; set; }
-
-        /// <summary>Required. The rate details of the inventory source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rateDetails")]
-        public virtual RateDetails RateDetails { get; set; }
-
-        /// <summary>Output only. The IDs of advertisers with read-only access to the inventory source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("readAdvertiserIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> ReadAdvertiserIds { get; set; }
-
-        /// <summary>
-        /// Output only. The IDs of partners with read-only access to the inventory source. All advertisers of partners
-        /// in this field inherit read-only access to the inventory source.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("readPartnerIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> ReadPartnerIds { get; set; }
-
-        /// <summary>
-        /// The partner or advertisers that have read/write access to the inventory source. Output only when commitment
-        /// is `INVENTORY_SOURCE_COMMITMENT_GUARANTEED`, in which case the read/write accessors are inherited from the
-        /// parent guaranteed order. Required when commitment is `INVENTORY_SOURCE_COMMITMENT_NON_GUARANTEED`. If
-        /// commitment is `INVENTORY_SOURCE_COMMITMENT_NON_GUARANTEED` and a partner is set in this field, all
-        /// advertisers under this partner will automatically have read-only access to the inventory source. These
-        /// advertisers will not be included in read_advertiser_ids.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("readWriteAccessors")]
-        public virtual InventorySourceAccessors ReadWriteAccessors { get; set; }
-
-        /// <summary>The status settings of the inventory source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual InventorySourceStatus Status { get; set; }
-
-        /// <summary>The time range when this inventory source starts and stops serving.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("timeRange")]
-        public virtual TimeRange TimeRange { get; set; }
-
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
-        /// <summary>
-        /// Output only. The timestamp when the inventory source was last updated. Assigned by the system.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The partner or advertisers with access to the inventory source.</summary>
-    public class InventorySourceAccessors : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The advertisers with access to the inventory source. All advertisers must belong to the same partner.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("advertisers")]
-        public virtual InventorySourceAccessorsAdvertiserAccessors Advertisers { get; set; }
-
-        /// <summary>The partner with access to the inventory source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("partner")]
-        public virtual InventorySourceAccessorsPartnerAccessor Partner { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The advertisers with access to the inventory source.</summary>
-    public class InventorySourceAccessorsAdvertiserAccessors : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The IDs of the advertisers.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("advertiserIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> AdvertiserIds { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The partner with access to the inventory source.</summary>
-    public class InventorySourceAccessorsPartnerAccessor : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ID of the partner.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("partnerId")]
-        public virtual System.Nullable<long> PartnerId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Targeting details for inventory source. This will be populated in the details field of an
     /// AssignedTargetingOption when targeting_type is `TARGETING_TYPE_INVENTORY_SOURCE`.
@@ -23846,17 +23177,6 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceId")]
         public virtual System.Nullable<long> InventorySourceId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The configuration for display creatives.</summary>
-    public class InventorySourceDisplayCreativeConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The size requirements for display creatives that can be assigned to the inventory source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("creativeSize")]
-        public virtual Dimensions CreativeSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23911,64 +23231,6 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceGroupId")]
         public virtual System.Nullable<long> InventorySourceGroupId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The status related settings of the inventory source.</summary>
-    public class InventorySourceStatus : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Output only. The configuration status of the inventory source. Only applicable for guaranteed inventory
-        /// sources. Acceptable values are `INVENTORY_SOURCE_CONFIG_STATUS_PENDING` and
-        /// `INVENTORY_SOURCE_CONFIG_STATUS_COMPLETED`. An inventory source must be configured (fill in the required
-        /// fields, choose creatives, and select a default campaign) before it can serve.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("configStatus")]
-        public virtual string ConfigStatus { get; set; }
-
-        /// <summary>
-        /// The user-provided reason for pausing this inventory source. Must not exceed 100 characters. Only applicable
-        /// when entity_status is set to `ENTITY_STATUS_PAUSED`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entityPauseReason")]
-        public virtual string EntityPauseReason { get; set; }
-
-        /// <summary>
-        /// Whether or not the inventory source is servable. Acceptable values are `ENTITY_STATUS_ACTIVE`,
-        /// `ENTITY_STATUS_ARCHIVED`, and `ENTITY_STATUS_PAUSED`. Default value is `ENTITY_STATUS_ACTIVE`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
-        public virtual string EntityStatus { get; set; }
-
-        /// <summary>
-        /// Output only. The seller-provided reason for pausing this inventory source. Only applicable for inventory
-        /// sources synced directly from the publishers and when seller_status is set to `ENTITY_STATUS_PAUSED`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sellerPauseReason")]
-        public virtual string SellerPauseReason { get; set; }
-
-        /// <summary>
-        /// Output only. The status set by the seller for the inventory source. Only applicable for inventory sources
-        /// synced directly from the publishers. Acceptable values are `ENTITY_STATUS_ACTIVE` and
-        /// `ENTITY_STATUS_PAUSED`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sellerStatus")]
-        public virtual string SellerStatus { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The configuration for video creatives.</summary>
-    public class InventorySourceVideoCreativeConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The duration requirements for the video creatives that can be assigned to the inventory source.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual object Duration { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24269,6 +23531,16 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// <summary>Output only. The resource name of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to enable DV360's bid optimization for fixed bid line items. By default, DV360 optimizes
+        /// your fixed bid by automatically lowering bids for impressions that are less likely to perform well. This
+        /// optimization is enabled by default (value is true). When this field is set to `false`, this optimization is
+        /// disabled, and the bid will not be lowered for any reason. This setting only applies to line items with a
+        /// `bidding_strategy` of type `FIXED_BID`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optimizeFixedBidding")]
+        public virtual System.Nullable<bool> OptimizeFixedBidding { get; set; }
 
         /// <summary>Required. The budget spending speed setting of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pacing")]
@@ -24693,23 +23965,6 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// <summary>
         /// A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call
         /// to `ListInventorySourceGroups` method to retrieve the next page of results.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class ListInventorySourcesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The list of inventory sources. This list will be absent if empty.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inventorySources")]
-        public virtual System.Collections.Generic.IList<InventorySource> InventorySources { get; set; }
-
-        /// <summary>
-        /// A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call
-        /// to `ListInventorySources` method to retrieve the next page of results.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -25248,32 +24503,6 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// <summary>Output only. The app publisher.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisher")]
         public virtual string Publisher { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents an amount of money with its currency type.</summary>
-    public class Money : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The three-letter currency code defined in ISO 4217.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
-        public virtual string CurrencyCode { get; set; }
-
-        /// <summary>
-        /// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999
-        /// inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be
-        /// positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is
-        /// represented as `units`=-1 and `nanos`=-750,000,000.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
-        public virtual System.Nullable<int> Nanos { get; set; }
-
-        /// <summary>
-        /// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("units")]
-        public virtual System.Nullable<long> Units { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26164,37 +25393,6 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The rate related settings of the inventory source.</summary>
-    public class RateDetails : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The rate type. Acceptable values are `INVENTORY_SOURCE_RATE_TYPE_CPM_FIXED`,
-        /// `INVENTORY_SOURCE_RATE_TYPE_CPM_FLOOR`, and `INVENTORY_SOURCE_RATE_TYPE_CPD`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceRateType")]
-        public virtual string InventorySourceRateType { get; set; }
-
-        /// <summary>
-        /// Output only. The amount that the buyer has committed to spending on the inventory source up front. Only
-        /// applicable for guaranteed inventory sources.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("minimumSpend")]
-        public virtual Money MinimumSpend { get; set; }
-
-        /// <summary>The rate for the inventory source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rate")]
-        public virtual Money Rate { get; set; }
-
-        /// <summary>
-        /// Required for guaranteed inventory sources. The number of impressions guaranteed by the seller.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unitsPurchased")]
-        public virtual System.Nullable<long> UnitsPurchased { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Targeting details for regional location list. This will be populated in the details field of an
     /// AssignedTargetingOption when targeting_type is `TARGETING_TYPE_REGIONAL_LOCATION_LIST`.
@@ -26968,87 +26166,6 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// <summary>Third party brand verifier -- Integral Ad Science.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integralAdScience")]
         public virtual IntegralAdScience IntegralAdScience { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A time range.</summary>
-    public class TimeRange : Google.Apis.Requests.IDirectResponseSchema
-    {
-        private string _endTimeRaw;
-
-        private object _endTime;
-
-        /// <summary>Required. The upper bound of a time range, inclusive.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTimeRaw
-        {
-            get => _endTimeRaw;
-            set
-            {
-                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _endTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
-        public virtual object EndTime
-        {
-            get => _endTime;
-            set
-            {
-                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _endTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        private string _startTimeRaw;
-
-        private object _startTime;
-
-        /// <summary>Required. The lower bound of a time range, inclusive.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTimeRaw
-        {
-            get => _startTimeRaw;
-            set
-            {
-                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _startTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
-        public virtual object StartTime
-        {
-            get => _startTime;
-            set
-            {
-                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _startTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
