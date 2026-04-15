@@ -10532,6 +10532,57 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
         }
 
+        /// <summary>Looks up settings related to user-provided data for a property.</summary>
+        /// <param name="name">
+        /// Required. The name of the user provided data settings to retrieve. Format:
+        /// properties/{property}/userProvidedDataSettings
+        /// </param>
+        public virtual GetUserProvidedDataSettingsRequest GetUserProvidedDataSettings(string name)
+        {
+            return new GetUserProvidedDataSettingsRequest(this.service, name);
+        }
+
+        /// <summary>Looks up settings related to user-provided data for a property.</summary>
+        public class GetUserProvidedDataSettingsRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserProvidedDataSettings>
+        {
+            /// <summary>Constructs a new GetUserProvidedDataSettings request.</summary>
+            public GetUserProvidedDataSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the user provided data settings to retrieve. Format:
+            /// properties/{property}/userProvidedDataSettings
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getUserProvidedDataSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/{+name}";
+
+            /// <summary>Initializes GetUserProvidedDataSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^properties/[^/]+/userProvidedDataSettings$",
+                });
+            }
+        }
+
         /// <summary>
         /// Returns child Properties under the specified parent Account. Properties will be excluded if the caller does
         /// not have access. Soft-deleted (ie: "trashed") properties are excluded by default. Returns an empty list if
@@ -12568,6 +12619,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>A snapshot of a SubpropertySyncConfig resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subpropertySyncConfig")]
         public virtual GoogleAnalyticsAdminV1alphaSubpropertySyncConfig SubpropertySyncConfig { get; set; }
+
+        /// <summary>A snapshot of a UserProvidedDataSettings resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userProvidedDataSettings")]
+        public virtual GoogleAnalyticsAdminV1alphaUserProvidedDataSettings UserProvidedDataSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15925,6 +15980,33 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>Required. The access binding to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessBinding")]
         public virtual GoogleAnalyticsAdminV1alphaAccessBinding AccessBinding { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for user-provided data collection. This is a singleton resource for a Google Analytics property.
+    /// </summary>
+    public class GoogleAnalyticsAdminV1alphaUserProvidedDataSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Whether this property allows a Google Tag to automatically collect user-provided data from your
+        /// website. This setting only takes effect if `user_provided_data_collection_enabled` is also true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automaticallyDetectedDataCollectionEnabled")]
+        public virtual System.Nullable<bool> AutomaticallyDetectedDataCollectionEnabled { get; set; }
+
+        /// <summary>
+        /// Identifier. Resource name of this setting. Format: properties/{property}/userProvidedDataSettings Example:
+        /// "properties/1000/userProvidedDataSettings"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Whether this property accepts user-provided data sent to it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userProvidedDataCollectionEnabled")]
+        public virtual System.Nullable<bool> UserProvidedDataCollectionEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
