@@ -1417,6 +1417,13 @@ namespace Google.Apis.Merchant.reports_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productTypeL5")]
         public virtual string ProductTypeL5 { get; set; }
 
+        /// <summary>
+        /// Store type to which metrics apply. Can be `ONLINE_STORE` or `LOCAL_STORES`. Segment. For `LOCAL_STORES`
+        /// store type, further segmentation by a specific store is not available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeType")]
+        public virtual string StoreType { get; set; }
+
         /// <summary>Title of the product. Segment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
