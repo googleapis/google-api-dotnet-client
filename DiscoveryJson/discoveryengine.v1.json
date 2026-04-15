@@ -9594,7 +9594,7 @@
       }
     }
   },
-  "revision": "20260406",
+  "revision": "20260413",
   "rootUrl": "https://discoveryengine.googleapis.com/",
   "schemas": {
     "A2aV1APIKeySecurityScheme": {
@@ -12819,6 +12819,12 @@
       "description": "Discovery Engine Assistant resource.",
       "id": "GoogleCloudDiscoveryengineV1Assistant",
       "properties": {
+        "createTime": {
+          "description": "Output only. Represents the time when this Assistant was created.",
+          "format": "google-datetime",
+          "readOnly": true,
+          "type": "string"
+        },
         "customerPolicy": {
           "$ref": "GoogleCloudDiscoveryengineV1AssistantCustomerPolicy",
           "description": "Optional. Customer policy for the assistant."
@@ -12848,6 +12854,12 @@
         },
         "name": {
           "description": "Immutable. Resource name of the assistant. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}` It must be a UTF-8 encoded string with a length limit of 1024 characters.",
+          "type": "string"
+        },
+        "updateTime": {
+          "description": "Output only. Represents the time when this Assistant was most recently updated.",
+          "format": "google-datetime",
+          "readOnly": true,
           "type": "string"
         },
         "webGroundingType": {
@@ -14011,6 +14023,20 @@
       },
       "type": "object"
     },
+    "GoogleCloudDiscoveryengineV1CliConfig": {
+      "description": "The configuration for the CLI execution based connectors.",
+      "id": "GoogleCloudDiscoveryengineV1CliConfig",
+      "properties": {
+        "enabledActions": {
+          "description": "Optional. The actions enabled on the associated CLI connection.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudDiscoveryengineV1CloudSqlSource": {
       "description": "Cloud SQL source import data from.",
       "id": "GoogleCloudDiscoveryengineV1CloudSqlSource",
@@ -14940,6 +14966,10 @@
           },
           "readOnly": true,
           "type": "array"
+        },
+        "cliConfig": {
+          "$ref": "GoogleCloudDiscoveryengineV1CliConfig",
+          "description": "Optional. The configuration for establishing a CLI connection."
         },
         "connectorModes": {
           "description": "Optional. The modes enabled for this connector. Default state is CONNECTOR_MODE_UNSPECIFIED.",
@@ -16441,7 +16471,7 @@
             ],
             "type": "string"
           },
-          "description": "Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all features, if it's present, all other feature state settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace`",
+          "description": "Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all features, if it's present, all other feature state settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills`",
           "type": "object"
         },
         "industryVertical": {
@@ -17649,10 +17679,6 @@
           "description": "Immutable. Identifier. The fully qualified resource name of the license config. Format: `projects/{project}/locations/{location}/licenseConfigs/{license_config}`",
           "type": "string"
         },
-        "scheduledUpdate": {
-          "$ref": "GoogleCloudDiscoveryengineV1LicenseConfigScheduledUpdate",
-          "description": "Optional. Scheduled update configuration."
-        },
         "startDate": {
           "$ref": "GoogleTypeDate",
           "description": "Required. The start date."
@@ -17730,22 +17756,6 @@
             "Gemini Enterprise EDU Pro tier for emerging market.",
             "Gemini Frontline Starter tier."
           ],
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "GoogleCloudDiscoveryengineV1LicenseConfigScheduledUpdate": {
-      "description": "Message containing data for a scheduled update.",
-      "id": "GoogleCloudDiscoveryengineV1LicenseConfigScheduledUpdate",
-      "properties": {
-        "effectiveDate": {
-          "$ref": "GoogleTypeDate",
-          "description": "The effective date for the next update."
-        },
-        "seatCount": {
-          "description": "The seat count scheduled for the next update.",
-          "format": "int64",
           "type": "string"
         }
       },
@@ -22264,7 +22274,7 @@
             ],
             "type": "string"
           },
-          "description": "Output only. Feature config for the engine to opt in or opt out of features. Supported keys: * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace`",
+          "description": "Output only. Feature config for the engine to opt in or opt out of features. Supported keys: * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills`",
           "readOnly": true,
           "type": "object"
         },
@@ -23829,6 +23839,20 @@
       },
       "type": "object"
     },
+    "GoogleCloudDiscoveryengineV1alphaCliConfig": {
+      "description": "The configuration for the CLI execution based connectors.",
+      "id": "GoogleCloudDiscoveryengineV1alphaCliConfig",
+      "properties": {
+        "enabledActions": {
+          "description": "Optional. The actions enabled on the associated CLI connection.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudDiscoveryengineV1alphaCmekConfig": {
       "description": "Configurations used to enable CMEK data encryption with Cloud KMS keys.",
       "id": "GoogleCloudDiscoveryengineV1alphaCmekConfig",
@@ -24647,6 +24671,10 @@
           },
           "readOnly": true,
           "type": "array"
+        },
+        "cliConfig": {
+          "$ref": "GoogleCloudDiscoveryengineV1alphaCliConfig",
+          "description": "Optional. The configuration for establishing a CLI connection."
         },
         "connectorModes": {
           "description": "Optional. The modes enabled for this connector. Default state is CONNECTOR_MODE_UNSPECIFIED.",
@@ -26024,7 +26052,7 @@
             ],
             "type": "string"
           },
-          "description": "Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all features, if it's present, all other feature state settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace`",
+          "description": "Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all features, if it's present, all other feature state settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills`",
           "type": "object"
         },
         "industryVertical": {
@@ -27300,10 +27328,6 @@
           "description": "Immutable. Identifier. The fully qualified resource name of the license config. Format: `projects/{project}/locations/{location}/licenseConfigs/{license_config}`",
           "type": "string"
         },
-        "scheduledUpdate": {
-          "$ref": "GoogleCloudDiscoveryengineV1alphaLicenseConfigScheduledUpdate",
-          "description": "Optional. Scheduled update configuration."
-        },
         "startDate": {
           "$ref": "GoogleTypeDate",
           "description": "Required. The start date."
@@ -27381,22 +27405,6 @@
             "Gemini Enterprise EDU Pro tier for emerging market.",
             "Gemini Frontline Starter tier."
           ],
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "GoogleCloudDiscoveryengineV1alphaLicenseConfigScheduledUpdate": {
-      "description": "Message containing data for a scheduled update.",
-      "id": "GoogleCloudDiscoveryengineV1alphaLicenseConfigScheduledUpdate",
-      "properties": {
-        "effectiveDate": {
-          "$ref": "GoogleTypeDate",
-          "description": "The effective date for the next update."
-        },
-        "seatCount": {
-          "description": "The seat count scheduled for the next update.",
-          "format": "int64",
           "type": "string"
         }
       },
@@ -31461,7 +31469,7 @@
             ],
             "type": "string"
           },
-          "description": "Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all features, if it's present, all other feature state settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace`",
+          "description": "Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all features, if it's present, all other feature state settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills`",
           "type": "object"
         },
         "industryVertical": {
@@ -32384,10 +32392,6 @@
           "description": "Immutable. Identifier. The fully qualified resource name of the license config. Format: `projects/{project}/locations/{location}/licenseConfigs/{license_config}`",
           "type": "string"
         },
-        "scheduledUpdate": {
-          "$ref": "GoogleCloudDiscoveryengineV1betaLicenseConfigScheduledUpdate",
-          "description": "Optional. Scheduled update configuration."
-        },
         "startDate": {
           "$ref": "GoogleTypeDate",
           "description": "Required. The start date."
@@ -32465,22 +32469,6 @@
             "Gemini Enterprise EDU Pro tier for emerging market.",
             "Gemini Frontline Starter tier."
           ],
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "GoogleCloudDiscoveryengineV1betaLicenseConfigScheduledUpdate": {
-      "description": "Message containing data for a scheduled update.",
-      "id": "GoogleCloudDiscoveryengineV1betaLicenseConfigScheduledUpdate",
-      "properties": {
-        "effectiveDate": {
-          "$ref": "GoogleTypeDate",
-          "description": "The effective date for the next update."
-        },
-        "seatCount": {
-          "description": "The seat count scheduled for the next update.",
-          "format": "int64",
           "type": "string"
         }
       },

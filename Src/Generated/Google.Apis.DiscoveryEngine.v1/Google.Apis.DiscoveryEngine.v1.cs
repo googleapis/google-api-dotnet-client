@@ -24942,6 +24942,43 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Discovery Engine Assistant resource.</summary>
     public class GoogleCloudDiscoveryengineV1Assistant : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Represents the time when this Assistant was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>Optional. Customer policy for the assistant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerPolicy")]
         public virtual GoogleCloudDiscoveryengineV1AssistantCustomerPolicy CustomerPolicy { get; set; }
@@ -24993,6 +25030,43 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Represents the time when this Assistant was most recently updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>Optional. The type of web grounding to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webGroundingType")]
@@ -26245,6 +26319,17 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Output only. List of citations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("citations")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1Citation> Citations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration for the CLI execution based connectors.</summary>
+    public class GoogleCloudDiscoveryengineV1CliConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The actions enabled on the associated CLI connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledActions")]
+        public virtual System.Collections.Generic.IList<string> EnabledActions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27744,6 +27829,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blockingReasons")]
         public virtual System.Collections.Generic.IList<string> BlockingReasons { get; set; }
+
+        /// <summary>Optional. The configuration for establishing a CLI connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cliConfig")]
+        public virtual GoogleCloudDiscoveryengineV1CliConfig CliConfig { get; set; }
 
         /// <summary>
         /// Optional. The modes enabled for this connector. Default state is CONNECTOR_MODE_UNSPECIFIED.
@@ -30244,7 +30333,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// `personalization-memory` * `personalization-suggested-highlights` * `disable-agent-sharing` *
         /// `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` *
         /// `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` *
-        /// `disable-canvas-workspace`
+        /// `disable-canvas-workspace` * `disable-skills`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -31792,10 +31881,6 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Optional. Scheduled update configuration.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scheduledUpdate")]
-        public virtual GoogleCloudDiscoveryengineV1LicenseConfigScheduledUpdate ScheduledUpdate { get; set; }
-
         /// <summary>Required. The start date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual GoogleTypeDate StartDate { get; set; }
@@ -31811,21 +31896,6 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Required. Subscription tier information for the license config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptionTier")]
         public virtual string SubscriptionTier { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Message containing data for a scheduled update.</summary>
-    public class GoogleCloudDiscoveryengineV1LicenseConfigScheduledUpdate : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The effective date for the next update.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("effectiveDate")]
-        public virtual GoogleTypeDate EffectiveDate { get; set; }
-
-        /// <summary>The seat count scheduled for the next update.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("seatCount")]
-        public virtual System.Nullable<long> SeatCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -37932,7 +38002,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// `personalization-memory` * `personalization-suggested-highlights` * `disable-agent-sharing` *
         /// `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` *
         /// `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` *
-        /// `disable-canvas-workspace`
+        /// `disable-canvas-workspace` * `disable-skills`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -39479,6 +39549,17 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The configuration for the CLI execution based connectors.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCliConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The actions enabled on the associated CLI connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledActions")]
+        public virtual System.Collections.Generic.IList<string> EnabledActions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configurations used to enable CMEK data encryption with Cloud KMS keys.</summary>
     public class GoogleCloudDiscoveryengineV1alphaCmekConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -40825,6 +40906,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blockingReasons")]
         public virtual System.Collections.Generic.IList<string> BlockingReasons { get; set; }
+
+        /// <summary>Optional. The configuration for establishing a CLI connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cliConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaCliConfig CliConfig { get; set; }
 
         /// <summary>
         /// Optional. The modes enabled for this connector. Default state is CONNECTOR_MODE_UNSPECIFIED.
@@ -43178,7 +43263,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// `personalization-memory` * `personalization-suggested-highlights` * `disable-agent-sharing` *
         /// `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` *
         /// `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` *
-        /// `disable-canvas-workspace`
+        /// `disable-canvas-workspace` * `disable-skills`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -44979,10 +45064,6 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Optional. Scheduled update configuration.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scheduledUpdate")]
-        public virtual GoogleCloudDiscoveryengineV1alphaLicenseConfigScheduledUpdate ScheduledUpdate { get; set; }
-
         /// <summary>Required. The start date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual GoogleTypeDate StartDate { get; set; }
@@ -44998,21 +45079,6 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Required. Subscription tier information for the license config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptionTier")]
         public virtual string SubscriptionTier { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Message containing data for a scheduled update.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaLicenseConfigScheduledUpdate : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The effective date for the next update.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("effectiveDate")]
-        public virtual GoogleTypeDate EffectiveDate { get; set; }
-
-        /// <summary>The seat count scheduled for the next update.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("seatCount")]
-        public virtual System.Nullable<long> SeatCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -52023,7 +52089,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// `personalization-memory` * `personalization-suggested-highlights` * `disable-agent-sharing` *
         /// `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` *
         /// `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` *
-        /// `disable-canvas-workspace`
+        /// `disable-canvas-workspace` * `disable-skills`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -53349,10 +53415,6 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Optional. Scheduled update configuration.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scheduledUpdate")]
-        public virtual GoogleCloudDiscoveryengineV1betaLicenseConfigScheduledUpdate ScheduledUpdate { get; set; }
-
         /// <summary>Required. The start date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual GoogleTypeDate StartDate { get; set; }
@@ -53368,21 +53430,6 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Required. Subscription tier information for the license config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptionTier")]
         public virtual string SubscriptionTier { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Message containing data for a scheduled update.</summary>
-    public class GoogleCloudDiscoveryengineV1betaLicenseConfigScheduledUpdate : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The effective date for the next update.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("effectiveDate")]
-        public virtual GoogleTypeDate EffectiveDate { get; set; }
-
-        /// <summary>The seat count scheduled for the next update.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("seatCount")]
-        public virtual System.Nullable<long> SeatCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
