@@ -1311,9 +1311,9 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     /// <summary>Returns information about transfer resources.</summary>
                     /// <param name="parent">
                     /// Required. Name of transfer configuration for which transfer resources should be retrieved. The
-                    /// name should be in one of the following form: *
-                    /// `projects/{project_id}/transferConfigs/{config_id}` *
-                    /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
+                    /// name should be in one of the following forms: *
+                    /// `projects/{project}/transferConfigs/{transfer_config}` *
+                    /// `projects/{project}/locations/{location_id}/transferConfigs/{transfer_config}`
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -1332,9 +1332,9 @@ namespace Google.Apis.BigQueryDataTransfer.v1
 
                         /// <summary>
                         /// Required. Name of transfer configuration for which transfer resources should be retrieved.
-                        /// The name should be in one of the following form: *
-                        /// `projects/{project_id}/transferConfigs/{config_id}` *
-                        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
+                        /// The name should be in one of the following forms: *
+                        /// `projects/{project}/transferConfigs/{transfer_config}` *
+                        /// `projects/{project}/locations/{location_id}/transferConfigs/{transfer_config}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1347,7 +1347,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         /// `hierarchy_detail.partition_detail.table` Multiple filters can be applied using the `AND/OR`
                         /// operator. Examples: * `name="*123" AND (type="TABLE" OR
                         /// latest_status_detail.state="SUCCEEDED")` * `update_time &amp;gt;=
-                        /// "2012-04-21T11:30:00-04:00` * `hierarchy_detail.partition_detail.table = "table1"`
+                        /// "2012-04-21T11:30:00-04:00"` * `hierarchy_detail.partition_detail.table = "table1"`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -2892,8 +2892,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// <summary>Returns information about transfer resources.</summary>
                 /// <param name="parent">
                 /// Required. Name of transfer configuration for which transfer resources should be retrieved. The name
-                /// should be in one of the following form: * `projects/{project_id}/transferConfigs/{config_id}` *
-                /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
+                /// should be in one of the following forms: * `projects/{project}/transferConfigs/{transfer_config}` *
+                /// `projects/{project}/locations/{location_id}/transferConfigs/{transfer_config}`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -2912,9 +2912,9 @@ namespace Google.Apis.BigQueryDataTransfer.v1
 
                     /// <summary>
                     /// Required. Name of transfer configuration for which transfer resources should be retrieved. The
-                    /// name should be in one of the following form: *
-                    /// `projects/{project_id}/transferConfigs/{config_id}` *
-                    /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
+                    /// name should be in one of the following forms: *
+                    /// `projects/{project}/transferConfigs/{transfer_config}` *
+                    /// `projects/{project}/locations/{location_id}/transferConfigs/{transfer_config}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2925,7 +2925,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     /// * Latest resource state: `latest_status_detail.state` * Last update time: `update_time` -
                     /// RFC-3339 format * Parent table name: `hierarchy_detail.partition_detail.table` Multiple filters
                     /// can be applied using the `AND/OR` operator. Examples: * `name="*123" AND (type="TABLE" OR
-                    /// latest_status_detail.state="SUCCEEDED")` * `update_time &amp;gt;= "2012-04-21T11:30:00-04:00` *
+                    /// latest_status_detail.state="SUCCEEDED")` * `update_time &amp;gt;= "2012-04-21T11:30:00-04:00"` *
                     /// `hierarchy_detail.partition_detail.table = "table1"`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
@@ -4033,7 +4033,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response for the ListTransferResources RPC.</summary>
+    /// <summary>Response for the `ListTransferResources` RPC.</summary>
     public class ListTransferResourcesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4904,7 +4904,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Resource(table/partition) that is being transferred.</summary>
+    /// <summary>Resource (table/partition) that is being transferred.</summary>
     public class TransferResource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Resource destination.</summary>
@@ -5257,7 +5257,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
     public class TransferRunBrief : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Run URI. Format projects/{project}/locations/{location}/transferConfigs/{config}/run/{run}
+        /// Optional. Run URI. The format must be:
+        /// `projects/{project}/locations/{location}/transferConfigs/{transfer_config}/run/{run}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("run")]
         public virtual string Run { get; set; }
