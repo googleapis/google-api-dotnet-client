@@ -6928,7 +6928,7 @@ namespace Google.Apis.Merchant.accounts_v1.Data
     }
 
     /// <summary>
-    /// The current status of establishing of the service. (for example, pending approval or approved).
+    /// The current status of establishing of the service. (for example, pending approval, approved, established).
     /// </summary>
     public class Handshake : Google.Apis.Requests.IDirectResponseSchema
     {
