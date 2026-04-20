@@ -20584,7 +20584,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual System.Collections.Generic.IList<string> Benefits { get; set; }
 
         /// <summary>
-        /// The description of this subscription in the language of this listing. Maximum length - 80 characters. Plain
+        /// The description of this subscription in the language of this listing. Maximum length - 200 characters. Plain
         /// text.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
