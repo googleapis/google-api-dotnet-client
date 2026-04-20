@@ -756,7 +756,7 @@ namespace Google.Apis.Dataform.v1beta1
 
                 /// <summary>Returns the contents of a given Folder.</summary>
                 /// <param name="folder">
-                /// Required. Name of the folder whose contents to list. Format: projects/*/locations/*/folders/*
+                /// Required. Resource name of the Folder to list contents for. Format: projects/*/locations/*/folders/*
                 /// </param>
                 public virtual QueryFolderContentsRequest QueryFolderContents(string folder)
                 {
@@ -774,14 +774,15 @@ namespace Google.Apis.Dataform.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. Name of the folder whose contents to list. Format: projects/*/locations/*/folders/*
+                    /// Required. Resource name of the Folder to list contents for. Format:
+                    /// projects/*/locations/*/folders/*
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Folder { get; private set; }
 
                     /// <summary>
                     /// Optional. Optional filtering for the returned list. Filtering is currently only supported on the
-                    /// `display_name` field. Example: - `filter="display_name="MyFolder""`
+                    /// `display_name` field. Example: * `filter="display_name="MyFolder""`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -789,7 +790,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <summary>
                     /// Optional. Field to additionally sort results by. Will order Folders before Repositories, and
                     /// then by `order_by` in ascending order. Supported keywords: display_name (default), create_time,
-                    /// last_modified_time. Examples: - `orderBy="display_name"` - `orderBy="display_name desc"`
+                    /// last_modified_time. Examples: * `orderBy="display_name"` * `orderBy="display_name desc"`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
@@ -3710,7 +3711,7 @@ namespace Google.Apis.Dataform.v1beta1
                         /// </summary>
                         public enum ViewEnum
                         {
-                            /// <summary>The default / unset value. Defaults to DIRECTORY_CONTENTS_VIEW_BASIC.</summary>
+                            /// <summary>The default unset value. Defaults to DIRECTORY_CONTENTS_VIEW_BASIC.</summary>
                             [Google.Apis.Util.StringValueAttribute("DIRECTORY_CONTENTS_VIEW_UNSPECIFIED")]
                             DIRECTORYCONTENTSVIEWUNSPECIFIED = 0,
 
@@ -5764,7 +5765,7 @@ namespace Google.Apis.Dataform.v1beta1
 
                 /// <summary>Returns the contents of a given TeamFolder.</summary>
                 /// <param name="teamFolder">
-                /// Required. Name of the team_folder whose contents to list. Format:
+                /// Required. Resource name of the TeamFolder to list contents for. Format:
                 /// `projects/*/locations/*/teamFolders/*`.
                 /// </param>
                 public virtual QueryContentsRequest QueryContents(string teamFolder)
@@ -5783,7 +5784,7 @@ namespace Google.Apis.Dataform.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. Name of the team_folder whose contents to list. Format:
+                    /// Required. Resource name of the TeamFolder to list contents for. Format:
                     /// `projects/*/locations/*/teamFolders/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("teamFolder", Google.Apis.Util.RequestParameterType.Path)]
@@ -5791,7 +5792,7 @@ namespace Google.Apis.Dataform.v1beta1
 
                     /// <summary>
                     /// Optional. Optional filtering for the returned list. Filtering is currently only supported on the
-                    /// `display_name` field. Example: - `filter="display_name="MyFolder""`
+                    /// `display_name` field. Example: * `filter="display_name="MyFolder""`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -5799,7 +5800,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <summary>
                     /// Optional. Field to additionally sort results by. Will order Folders before Repositories, and
                     /// then by `order_by` in ascending order. Supported keywords: `display_name` (default),
-                    /// `create_time`, last_modified_time. Examples: - `orderBy="display_name"` - `orderBy="display_name
+                    /// `create_time`, last_modified_time. Examples: * `orderBy="display_name"` * `orderBy="display_name
                     /// desc"`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
@@ -5910,14 +5911,14 @@ namespace Google.Apis.Dataform.v1beta1
 
                     /// <summary>
                     /// Optional. Optional filtering for the returned list. Filtering is currently only supported on the
-                    /// `display_name` field. Example: - `filter="display_name="MyFolder""`
+                    /// `display_name` field. Example: * `filter="display_name="MyFolder""`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
                     /// <summary>
                     /// Optional. Field to additionally sort results by. Supported keywords: `display_name` (default),
-                    /// `create_time`, `last_modified_time`. Examples: - `orderBy="display_name"` -
+                    /// `create_time`, `last_modified_time`. Examples: * `orderBy="display_name"` *
                     /// `orderBy="display_name desc"`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
@@ -6350,7 +6351,7 @@ namespace Google.Apis.Dataform.v1beta1
             /// resources that are created by the user and not contained in any other folder.
             /// </summary>
             /// <param name="location">
-            /// Required. Location of the user root folder whose contents to list. Format: projects/*/locations/*
+            /// Required. Location of the user root folder to list contents for. Format: projects/*/locations/*
             /// </param>
             public virtual QueryUserRootContentsRequest QueryUserRootContents(string location)
             {
@@ -6371,14 +6372,14 @@ namespace Google.Apis.Dataform.v1beta1
                 }
 
                 /// <summary>
-                /// Required. Location of the user root folder whose contents to list. Format: projects/*/locations/*
+                /// Required. Location of the user root folder to list contents for. Format: projects/*/locations/*
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Location { get; private set; }
 
                 /// <summary>
                 /// Optional. Optional filtering for the returned list. Filtering is currently only supported on the
-                /// `display_name` field. Example: - `filter="display_name="MyFolder""`
+                /// `display_name` field. Example: * `filter="display_name="MyFolder""`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -6386,7 +6387,7 @@ namespace Google.Apis.Dataform.v1beta1
                 /// <summary>
                 /// Optional. Field to additionally sort results by. Will order Folders before Repositories, and then by
                 /// `order_by` in ascending order. Supported keywords: display_name (default), created_at,
-                /// last_modified_at. Examples: - `orderBy="display_name"` - `orderBy="display_name desc"`
+                /// last_modified_at. Examples: * `orderBy="display_name"` * `orderBy="display_name desc"`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
@@ -7592,9 +7593,8 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// <summary>
         /// Optional. The containing Folder resource name. This should take the format:
         /// projects/{project}/locations/{location}/folders/{folder},
-        /// projects/{project}/locations/{location}/teamFolders/{teamFolder}, or just
-        /// projects/{project}/locations/{location} if this is a root Folder. This field can only be updated through
-        /// MoveFolder.
+        /// projects/{project}/locations/{location}/teamFolders/{teamFolder}, or just "" if this is a root Folder. This
+        /// field can only be updated through MoveFolder.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containingFolder")]
         public virtual string ContainingFolder { get; set; }
@@ -7729,7 +7729,10 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authenticationTokenSecretVersion")]
         public virtual string AuthenticationTokenSecretVersion { get; set; }
 
-        /// <summary>Required. The Git remote's default branch name.</summary>
+        /// <summary>
+        /// Required. The Git remote's default branch name. If not set, `main` will be used and stored for the
+        /// repository.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultBranch")]
         public virtual string DefaultBranch { get; set; }
 
