@@ -9405,8 +9405,8 @@ namespace Google.Apis.Classroom.v1
             }
 
             /// <summary>
-            /// Restricts returned courses to those in one of the specified states The default value is ACTIVE,
-            /// ARCHIVED, PROVISIONED, DECLINED.
+            /// Restricts returned courses to those in one of the specified states. If unspecified, Courses in any state
+            /// are returned.
             /// </summary>
             /// <remarks>
             /// Use this property to set a single value for the parameter, or <see cref="CourseStatesList"/> to set
@@ -9416,8 +9416,8 @@ namespace Google.Apis.Classroom.v1
             public virtual System.Nullable<CourseStatesEnum> CourseStates { get; set; }
 
             /// <summary>
-            /// Restricts returned courses to those in one of the specified states The default value is ACTIVE,
-            /// ARCHIVED, PROVISIONED, DECLINED.
+            /// Restricts returned courses to those in one of the specified states. If unspecified, Courses in any state
+            /// are returned.
             /// </summary>
             /// <remarks>
             /// Use this property to set one or more values for the parameter. Do not set both this property and
@@ -9427,8 +9427,8 @@ namespace Google.Apis.Classroom.v1
             public virtual Google.Apis.Util.Repeatable<CourseStatesEnum> CourseStatesList { get; set; }
 
             /// <summary>
-            /// Restricts returned courses to those in one of the specified states The default value is ACTIVE,
-            /// ARCHIVED, PROVISIONED, DECLINED.
+            /// Restricts returned courses to those in one of the specified states. If unspecified, Courses in any state
+            /// are returned.
             /// </summary>
             public enum CourseStatesEnum
             {
