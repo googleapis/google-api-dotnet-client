@@ -49,7 +49,8 @@ namespace IntegrationTests
             // We sometimes get:
             // Le temps froid sera bientôt fini
             // Le froid sera bientôt terminé
-            Assert.Contains("froid sera bientôt", response.Translations[0].TranslatedText);
+            // Le froid va bientôt disparaître
+            Assert.Contains("froid", response.Translations[0].TranslatedText);
         }
 
         [Fact]
@@ -69,7 +70,8 @@ namespace IntegrationTests
             // We sometimes get:
             // Le temps froid sera bientôt fini
             // Le froid sera bientôt terminé
-            Assert.Contains("froid sera bientôt", response.Translations[0].TranslatedText);
+            // Le froid va bientôt disparaître
+            Assert.Contains("froid", response.Translations[0].TranslatedText);
         }
 
         [Fact]
