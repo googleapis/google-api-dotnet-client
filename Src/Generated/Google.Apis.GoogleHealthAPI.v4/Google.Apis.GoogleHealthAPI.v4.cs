@@ -34,6 +34,7 @@ namespace Google.Apis.GoogleHealthAPI.v4
         /// <param name="initializer">The service initializer.</param>
         public GoogleHealthAPIService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Projects = new ProjectsResource(this);
             Users = new UsersResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://health.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://health.googleapis.com/batch");
@@ -56,6 +57,29 @@ namespace Google.Apis.GoogleHealthAPI.v4
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
+
+        /// <summary>Available OAuth 2.0 scopes for use with the Google Health API.</summary>
+        public class Scope
+        {
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
+            public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+        }
+
+        /// <summary>Available OAuth 2.0 scope constants for use with the Google Health API.</summary>
+        public static class ScopeConstants
+        {
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
+            public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+        }
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects { get; }
 
         /// <summary>Gets the Users resource.</summary>
         public virtual UsersResource Users { get; }
@@ -239,6 +263,401 @@ namespace Google.Apis.GoogleHealthAPI.v4
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "projects" collection of methods.</summary>
+    public class ProjectsResource
+    {
+        private const string Resource = "projects";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ProjectsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Subscribers = new SubscribersResource(service);
+        }
+
+        /// <summary>Gets the Subscribers resource.</summary>
+        public virtual SubscribersResource Subscribers { get; }
+
+        /// <summary>The "subscribers" collection of methods.</summary>
+        public class SubscribersResource
+        {
+            private const string Resource = "subscribers";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SubscribersResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Registers a new subscriber endpoint to receive notifications. A subscriber represents an application or
+            /// service that wishes to receive data change notifications for users who have granted consent. **Endpoint
+            /// Verification:** For a subscriber to be successfully created, the provided `endpoint_uri` must be a valid
+            /// HTTPS endpoint and must pass an automated verification check. The backend will send two HTTP POST
+            /// requests to the `endpoint_uri`: 1. **Verification with Authorization:** * **Headers:** Includes
+            /// `Content-Type: application/json` and `Authorization` (with the exact value from
+            /// `CreateSubscriberPayload.endpoint_authorization.secret`). * **Body:** `{"type": "verification"}` *
+            /// **Expected Response:** HTTP `201 Created`. 2. **Verification without Authorization:** * **Headers:**
+            /// Includes `Content-Type: application/json`. The `Authorization` header is OMITTED. * **Body:** `{"type":
+            /// "verification"}` * **Expected Response:** HTTP `401 Unauthorized` or `403 Forbidden`. Both tests must
+            /// pass for the subscriber creation to succeed. If verification fails, the operation will not be completed
+            /// and an error will be returned. This process ensures the endpoint is reachable and correctly validates
+            /// the `Authorization` header.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The parent resource where this subscriber will be created. Format: projects/{project} Example:
+            /// projects/my-project-123
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.GoogleHealthAPI.v4.Data.CreateSubscriberPayload body, string parent)
+            {
+                return new CreateRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Registers a new subscriber endpoint to receive notifications. A subscriber represents an application or
+            /// service that wishes to receive data change notifications for users who have granted consent. **Endpoint
+            /// Verification:** For a subscriber to be successfully created, the provided `endpoint_uri` must be a valid
+            /// HTTPS endpoint and must pass an automated verification check. The backend will send two HTTP POST
+            /// requests to the `endpoint_uri`: 1. **Verification with Authorization:** * **Headers:** Includes
+            /// `Content-Type: application/json` and `Authorization` (with the exact value from
+            /// `CreateSubscriberPayload.endpoint_authorization.secret`). * **Body:** `{"type": "verification"}` *
+            /// **Expected Response:** HTTP `201 Created`. 2. **Verification without Authorization:** * **Headers:**
+            /// Includes `Content-Type: application/json`. The `Authorization` header is OMITTED. * **Body:** `{"type":
+            /// "verification"}` * **Expected Response:** HTTP `401 Unauthorized` or `403 Forbidden`. Both tests must
+            /// pass for the subscriber creation to succeed. If verification fails, the operation will not be completed
+            /// and an error will be returned. This process ensures the endpoint is reachable and correctly validates
+            /// the `Authorization` header.
+            /// </summary>
+            public class CreateRequest : GoogleHealthAPIBaseServiceRequest<Google.Apis.GoogleHealthAPI.v4.Data.Operation>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleHealthAPI.v4.Data.CreateSubscriberPayload body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent resource where this subscriber will be created. Format: projects/{project}
+                /// Example: projects/my-project-123
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The ID to use for the subscriber, which will become the final component of the
+                /// subscriber's resource name. This value should be 4-36 characters, and valid characters are
+                /// /[a-z]([a-z0-9-]{2,34}[a-z0-9])/.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("subscriberId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string SubscriberId { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleHealthAPI.v4.Data.CreateSubscriberPayload Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v4/{+parent}/subscribers";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("subscriberId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "subscriberId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Deletes a subscriber registration. This will stop all notifications to the subscriber's endpoint.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the subscriber to delete. Format: projects/{project}/subscribers/{subscriber}
+            /// Example: projects/my-project/subscribers/my-subscriber-123 The {subscriber} ID is user-settable (4-36
+            /// characters, matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) or system-generated if not provided during
+            /// creation.
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Deletes a subscriber registration. This will stop all notifications to the subscriber's endpoint.
+            /// </summary>
+            public class DeleteRequest : GoogleHealthAPIBaseServiceRequest<Google.Apis.GoogleHealthAPI.v4.Data.Operation>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the subscriber to delete. Format: projects/{project}/subscribers/{subscriber}
+                /// Example: projects/my-project/subscribers/my-subscriber-123 The {subscriber} ID is user-settable
+                /// (4-36 characters, matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) or system-generated if not provided
+                /// during creation.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Optional. If set to true, any child resources (e.g., subscriptions) will also be deleted. If false
+                /// (default) and child resources exist, the request will fail.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> Force { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v4/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/subscribers/[^/]+$",
+                    });
+                    RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "force",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Lists all subscribers registered within the owned Google Cloud Project.</summary>
+            /// <param name="parent">
+            /// Required. The parent, which owns this collection of subscribers. Format: projects/{project}
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>Lists all subscribers registered within the owned Google Cloud Project.</summary>
+            public class ListRequest : GoogleHealthAPIBaseServiceRequest<Google.Apis.GoogleHealthAPI.v4.Data.ListSubscribersResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent, which owns this collection of subscribers. Format: projects/{project}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of subscribers to return. The service may return fewer than this value.
+                /// If unspecified, at most 50 subscribers will be returned. The maximum value is 1000; values above
+                /// 1000 will be coerced to 1000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `ListSubscribers` call. Provide this to retrieve
+                /// the subsequent page. When paginating, all other parameters provided to `ListSubscribers` must match
+                /// the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v4/{+parent}/subscribers";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Updates the configuration of an existing subscriber, such as the endpoint URI or the data types it's
+            /// interested in. **Endpoint Verification:** If the `endpoint_uri` or `endpoint_authorization` field is
+            /// included in the `update_mask`, the backend will re-verify the endpoint. The verification process is the
+            /// same as described in `CreateSubscriber`: 1. **Verification with Authorization:** POST to the new or
+            /// existing `endpoint_uri` with the new or existing `Authorization` secret. Expects HTTP `201 Created`. 2.
+            /// **Verification without Authorization:** POST to the `endpoint_uri` without the `Authorization` header.
+            /// Expects HTTP `401 Unauthorized` or `403 Forbidden`. Both tests must pass using the potentially updated
+            /// values for the subscriber update to succeed. If verification fails, the update will not be applied, and
+            /// an error will be returned.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The resource name of the Subscriber. Format: projects/{project}/subscribers/{subscriber} The
+            /// {project} ID is a Google Cloud Project ID or Project Number. The {subscriber} ID is user-settable (4-36
+            /// characters, matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) if provided during creation, or system-generated
+            /// otherwise (e.g., a UUID). Example (User-settable subscriber ID):
+            /// projects/my-project/subscribers/my-sub-123 Example (System-generated subscriber ID):
+            /// projects/my-project/subscribers/a1b2c3d4-e5f6-7890-1234-567890abcdef
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.GoogleHealthAPI.v4.Data.Subscriber body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Updates the configuration of an existing subscriber, such as the endpoint URI or the data types it's
+            /// interested in. **Endpoint Verification:** If the `endpoint_uri` or `endpoint_authorization` field is
+            /// included in the `update_mask`, the backend will re-verify the endpoint. The verification process is the
+            /// same as described in `CreateSubscriber`: 1. **Verification with Authorization:** POST to the new or
+            /// existing `endpoint_uri` with the new or existing `Authorization` secret. Expects HTTP `201 Created`. 2.
+            /// **Verification without Authorization:** POST to the `endpoint_uri` without the `Authorization` header.
+            /// Expects HTTP `401 Unauthorized` or `403 Forbidden`. Both tests must pass using the potentially updated
+            /// values for the subscriber update to succeed. If verification fails, the update will not be applied, and
+            /// an error will be returned.
+            /// </summary>
+            public class PatchRequest : GoogleHealthAPIBaseServiceRequest<Google.Apis.GoogleHealthAPI.v4.Data.Operation>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleHealthAPI.v4.Data.Subscriber body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The resource name of the Subscriber. Format: projects/{project}/subscribers/{subscriber}
+                /// The {project} ID is a Google Cloud Project ID or Project Number. The {subscriber} ID is
+                /// user-settable (4-36 characters, matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) if provided during
+                /// creation, or system-generated otherwise (e.g., a UUID). Example (User-settable subscriber ID):
+                /// projects/my-project/subscribers/my-sub-123 Example (System-generated subscriber ID):
+                /// projects/my-project/subscribers/a1b2c3d4-e5f6-7890-1234-567890abcdef
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Optional. A field mask that specifies which fields of the Subscriber message are to be updated. This
+                /// allows for partial updates. Supported fields: - endpoint_uri - subscriber_configs -
+                /// endpoint_authorization
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleHealthAPI.v4.Data.Subscriber Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v4/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/subscribers/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
     }
 
@@ -652,6 +1071,59 @@ namespace Google.Apis.GoogleHealthAPI.v4
                         var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
                         mediaDownloader.Range = range;
                         return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
+                    }
+                }
+
+                /// <summary>Get a single identifyable data point.</summary>
+                /// <param name="name">
+                /// Required. The name of the data point to retrieve. Format:
+                /// `users/{user}/dataTypes/{data_type}/dataPoints/{data_point}` See DataPoint.name for examples and
+                /// possible values.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Get a single identifyable data point.</summary>
+                public class GetRequest : GoogleHealthAPIBaseServiceRequest<Google.Apis.GoogleHealthAPI.v4.Data.DataPoint>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the data point to retrieve. Format:
+                    /// `users/{user}/dataTypes/{data_type}/dataPoints/{data_point}` See DataPoint.name for examples and
+                    /// possible values.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v4/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^users/[^/]+/dataTypes/[^/]+/dataPoints/[^/]+$",
+                        });
                     }
                 }
 
@@ -1647,6 +2119,32 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Payload for creating a subscriber.</summary>
+    public class CreateSubscriberPayload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Authorization mechanism for the subscriber endpoint. The `secret` within this message is crucial
+        /// for endpoint verification and for securing webhook notifications.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointAuthorization")]
+        public virtual EndpointAuthorization EndpointAuthorization { get; set; }
+
+        /// <summary>
+        /// Required. The full HTTPS URI where update notifications will be sent. The URI must be a valid URL and use
+        /// HTTPS as the scheme. This endpoint will be verified during the `CreateSubscriber` call. See CreateSubscriber
+        /// RPC documentation for verification details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointUri")]
+        public virtual string EndpointUri { get; set; }
+
+        /// <summary>Optional. Configuration for the subscriber.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriberConfigs")]
+        public virtual System.Collections.Generic.IList<SubscriberConfig> SubscriberConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents the daily heart rate variability data type. At least one of the following fields must be set: -
     /// `average_heart_rate_variability_milliseconds` - `non_rem_heart_rate_beats_per_minute` - `entropy` -
@@ -1956,6 +2454,13 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         public virtual StepsRollupValue Steps { get; set; }
 
         /// <summary>
+        /// Returned by default when rolling up data points from the `swim-lengths-data` data type, or when requested
+        /// explicitly using the `swim-lengths-data` rollup type identifier.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("swimLengthsData")]
+        public virtual SwimLengthsDataRollupValue SwimLengthsData { get; set; }
+
+        /// <summary>
         /// Returned by default when rolling up data points from the `time-in-heart-rate-zone` data type, or when
         /// requested explicitly using the `time-in-heart-rate-zone` rollup type identifier.
         /// </summary>
@@ -2131,6 +2636,10 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("heartRateVariability")]
         public virtual HeartRateVariability HeartRateVariability { get; set; }
 
+        /// <summary>Optional. Data for points in the `height` sample data type collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("height")]
+        public virtual Height Height { get; set; }
+
         /// <summary>Optional. Data for points in the `hydration-log` session data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hydrationLog")]
         public virtual HydrationLog HydrationLog { get; set; }
@@ -2174,6 +2683,10 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>Optional. Data for points in the `steps` interval data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
         public virtual Steps Steps { get; set; }
+
+        /// <summary>Optional. Data for points in the `swim-lengths-data` interval data type collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("swimLengthsData")]
+        public virtual SwimLengthsData SwimLengthsData { get; set; }
 
         /// <summary>Optional. Data for points in the `time-in-heart-rate-zone` interval data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeInHeartRateZone")]
@@ -2362,6 +2875,32 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>Sum of the distance in millimeters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("millimetersSum")]
         public virtual System.Nullable<long> MillimetersSum { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Authorization mechanism for a subscriber endpoint. For all requests sent by the Webhooks service, the JSON
+    /// payload is cryptographically signed. The signature is delivered in the `X-HEALTHAPI-SIGNATURE` HTTP header. This
+    /// is an ECDSA (NIST P256) signature of the JSON payload. Clients must verify this signature using Google Health
+    /// API's public key to confirm the payload was sent by the Health API.
+    /// </summary>
+    public class EndpointAuthorization : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Input only. Provides a client-provided secret that will be sent with each notification to the
+        /// subscriber endpoint using the "Authorization" header. The value must include the authorization scheme, e.g.,
+        /// "Bearer " or "Basic ", as it will be used as the full Authorization header value. This secret is used by the
+        /// API to test the endpoint during `CreateSubscriber` and `UpdateSubscriber` calls, and will be sent in the
+        /// `Authorization` header for all subsequent webhook notifications to this endpoint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secret")]
+        public virtual string Secret { get; set; }
+
+        /// <summary>Output only. Whether the secret is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretSet")]
+        public virtual System.Nullable<bool> SecretSet { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2732,6 +3271,62 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Body height measurement.</summary>
+    public class Height : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Height of the user in millimeters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("heightMillimeters")]
+        public virtual System.Nullable<long> HeightMillimeters { get; set; }
+
+        /// <summary>Required. The time at which the height was recorded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleTime")]
+        public virtual ObservationSampleTime SampleTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an HTTP header.</summary>
+    public class HttpHeader : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The HTTP header key. It is case insensitive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>The HTTP header value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an HTTP response.</summary>
+    public class HttpResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The HTTP response body. If the body is not expected, it should be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("body")]
+        public virtual string Body { get; set; }
+
+        /// <summary>
+        /// The HTTP response headers. The ordering of the headers is significant. Multiple headers with the same key
+        /// may present for the response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headers")]
+        public virtual System.Collections.Generic.IList<HttpHeader> Headers { get; set; }
+
+        /// <summary>The HTTP reason phrase, such as "OK" or "Not Found".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>The HTTP status code, such as 200 or 404.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual System.Nullable<int> Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Holds information about a user logged hydration.</summary>
     public class HydrationLog : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2888,6 +3483,28 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>Next page token, empty if the response is complete</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListSubscribers.</summary>
+    public class ListSubscribersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Subscribers from the specified project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscribers")]
+        public virtual System.Collections.Generic.IList<Subscriber> Subscribers { get; set; }
+
+        /// <summary>The total number of subscribers matching the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<int> TotalSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3477,6 +4094,10 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("heartRateVariability")]
         public virtual HeartRateVariability HeartRateVariability { get; set; }
 
+        /// <summary>Data for points in the `height` sample data type collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("height")]
+        public virtual Height Height { get; set; }
+
         /// <summary>Data for points in the `hydration-log` session data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hydrationLog")]
         public virtual HydrationLog HydrationLog { get; set; }
@@ -3504,6 +4125,10 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>Data for points in the `steps` interval data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
         public virtual Steps Steps { get; set; }
+
+        /// <summary>Data for points in the `swim-lengths-data` interval data type collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("swimLengthsData")]
+        public virtual SwimLengthsData SwimLengthsData { get; set; }
 
         /// <summary>Data for points in the `time-in-heart-rate-zone` interval data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeInHeartRateZone")]
@@ -3813,6 +4438,13 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
         public virtual StepsRollupValue Steps { get; set; }
+
+        /// <summary>
+        /// Returned by default when rolling up data points from the `swim-lengths-data` data type, or when requested
+        /// explicitly using the `swim-lengths-data` rollup type identifier.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("swimLengthsData")]
+        public virtual SwimLengthsDataRollupValue SwimLengthsData { get; set; }
 
         /// <summary>
         /// Returned by default when rolling up data points from the `time-in-heart-rate-zone` data type, or when
@@ -4621,6 +5253,172 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>-- Resource Messages -- A subscriber receives notifications from Google Health API.</summary>
+    public class Subscriber : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time at which the subscriber was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Required. Authorization mechanism for a subscriber endpoint. This is required to ensure the endpoint can be
+        /// verified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointAuthorization")]
+        public virtual EndpointAuthorization EndpointAuthorization { get; set; }
+
+        /// <summary>
+        /// Required. The full HTTPS URI where update notifications will be sent. The URI must be a valid URL and use
+        /// HTTPS as the scheme. This endpoint will be verified during CreateSubscriber and UpdateSubscriber calls. See
+        /// RPC documentation for verification details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointUri")]
+        public virtual string EndpointUri { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the Subscriber. Format: projects/{project}/subscribers/{subscriber} The
+        /// {project} ID is a Google Cloud Project ID or Project Number. The {subscriber} ID is user-settable (4-36
+        /// characters, matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) if provided during creation, or system-generated
+        /// otherwise (e.g., a UUID). Example (User-settable subscriber ID): projects/my-project/subscribers/my-sub-123
+        /// Example (System-generated subscriber ID):
+        /// projects/my-project/subscribers/a1b2c3d4-e5f6-7890-1234-567890abcdef
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The state of the subscriber.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Optional. Configuration for the subscriber.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriberConfigs")]
+        public virtual System.Collections.Generic.IList<SubscriberConfig> SubscriberConfigs { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time at which the subscriber was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for a subscriber. A notification is sent to a subscription ONLY if the subscriber has a config for
+    /// the data type.
+    /// </summary>
+    public class SubscriberConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Supported data types are: "altitude", "distance", "floors", "sleep", "steps", "weight". Values
+        /// should be in kebab-case.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataTypes")]
+        public virtual System.Collections.Generic.IList<string> DataTypes { get; set; }
+
+        /// <summary>Required. Policy for subscription creation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionCreatePolicy")]
+        public virtual string SubscriptionCreatePolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Swim lengths data over the time interval.</summary>
+    public class SwimLengthsData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Observed interval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interval")]
+        public virtual ObservationTimeInterval Interval { get; set; }
+
+        /// <summary>Required. Number of strokes in the lap.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("strokeCount")]
+        public virtual System.Nullable<long> StrokeCount { get; set; }
+
+        /// <summary>Required. Swim stroke type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("swimStrokeType")]
+        public virtual string SwimStrokeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the result of the rollup of the swim lengths data type.</summary>
+    public class SwimLengthsDataRollupValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Total number of swim strokes in the interval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("strokeCountSum")]
+        public virtual System.Nullable<long> StrokeCountSum { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Time in heart rate zone record. It's an interval spent in specific heart rate zone.</summary>
     public class TimeInHeartRateZone : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4790,6 +5588,23 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>Optional. The user provided unit on the last element.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userProvidedUnitLast")]
         public virtual string UserProvidedUnitLast { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Log message for a webhook notification sent by the Google Health API to a subscriber's endpoint. Includes the
+    /// HTTP response received from the endpoint.
+    /// </summary>
+    public class WebhookNotificationCloudLog : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Represents the HTTP response. This message includes the status code, reason phrase, headers, and
+        /// body.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpResponse")]
+        public virtual HttpResponse HttpResponse { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
