@@ -7,5 +7,17 @@
   "Google.Apis.DeveloperKnowledge.v1alpha.DeveloperKnowledgeBaseServiceRequest<<TResponse>>.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.DeveloperKnowledge.v1alpha.DocumentsResource+BatchGetRequest.ViewEnum": [
+    "DOCUMENT_VIEW_UNSPECIFIED",
+    "DOCUMENT_VIEW_BASIC",
+    "DOCUMENT_VIEW_FULL",
+    "DOCUMENT_VIEW_CONTENT"
+  ],
+  "Google.Apis.DeveloperKnowledge.v1alpha.DocumentsResource+GetRequest.ViewEnum": [
+    "DOCUMENT_VIEW_UNSPECIFIED",
+    "DOCUMENT_VIEW_BASIC",
+    "DOCUMENT_VIEW_FULL",
+    "DOCUMENT_VIEW_CONTENT"
   ]
 }
