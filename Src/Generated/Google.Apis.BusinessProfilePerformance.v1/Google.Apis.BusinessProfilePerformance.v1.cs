@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -486,8 +486,8 @@ namespace Google.Apis.BusinessProfilePerformance.v1
         }
 
         /// <summary>
-        ///  Returns the values for each date from a given time range and optionally the sub entity type, where
-        /// applicable, that are associated with the specific daily metrics. Example request: `GET
+        ///  Returns the values for each date from a given time range that are associated with the specific daily
+        /// metrics. Note: Only daily data is available. Hourly metrics are not supported. Example request: `GET
         /// https://businessprofileperformance.googleapis.com/v1/locations/12345:fetchMultiDailyMetricsTimeSeries?dailyMetrics=WEBSITE_CLICKS&amp;amp;dailyMetrics=CALL_CLICKS&amp;amp;daily_range.start_date.year=2022&amp;amp;daily_range.start_date.month=1&amp;amp;daily_range.start_date.day=1&amp;amp;daily_range.end_date.year=2022&amp;amp;daily_range.end_date.month=3&amp;amp;daily_range.end_date.day=31`
         /// </summary>
         /// <param name="location">
@@ -500,8 +500,8 @@ namespace Google.Apis.BusinessProfilePerformance.v1
         }
 
         /// <summary>
-        ///  Returns the values for each date from a given time range and optionally the sub entity type, where
-        /// applicable, that are associated with the specific daily metrics. Example request: `GET
+        ///  Returns the values for each date from a given time range that are associated with the specific daily
+        /// metrics. Note: Only daily data is available. Hourly metrics are not supported. Example request: `GET
         /// https://businessprofileperformance.googleapis.com/v1/locations/12345:fetchMultiDailyMetricsTimeSeries?dailyMetrics=WEBSITE_CLICKS&amp;amp;dailyMetrics=CALL_CLICKS&amp;amp;daily_range.start_date.year=2022&amp;amp;daily_range.start_date.month=1&amp;amp;daily_range.start_date.day=1&amp;amp;daily_range.end_date.year=2022&amp;amp;daily_range.end_date.month=3&amp;amp;daily_range.end_date.day=31`
         /// </summary>
         public class FetchMultiDailyMetricsTimeSeriesRequest : BusinessProfilePerformanceBaseServiceRequest<Google.Apis.BusinessProfilePerformance.v1.Data.FetchMultiDailyMetricsTimeSeriesResponse>
@@ -719,7 +719,7 @@ namespace Google.Apis.BusinessProfilePerformance.v1
 
         /// <summary>
         ///  Returns the values for each date from a given time range that are associated with the specific daily
-        /// metric. Example request: `GET
+        /// metric. Note: Only daily data is available. Hourly metrics are not supported. Example request: `GET
         /// https://businessprofileperformance.googleapis.com/v1/locations/12345:getDailyMetricsTimeSeries?dailyMetric=WEBSITE_CLICKS&amp;amp;daily_range.start_date.year=2022&amp;amp;daily_range.start_date.month=1&amp;amp;daily_range.start_date.day=1&amp;amp;daily_range.end_date.year=2022&amp;amp;daily_range.end_date.month=3&amp;amp;daily_range.end_date.day=31`
         /// </summary>
         /// <param name="name">
@@ -733,7 +733,7 @@ namespace Google.Apis.BusinessProfilePerformance.v1
 
         /// <summary>
         ///  Returns the values for each date from a given time range that are associated with the specific daily
-        /// metric. Example request: `GET
+        /// metric. Note: Only daily data is available. Hourly metrics are not supported. Example request: `GET
         /// https://businessprofileperformance.googleapis.com/v1/locations/12345:getDailyMetricsTimeSeries?dailyMetric=WEBSITE_CLICKS&amp;amp;daily_range.start_date.year=2022&amp;amp;daily_range.start_date.month=1&amp;amp;daily_range.start_date.day=1&amp;amp;daily_range.end_date.year=2022&amp;amp;daily_range.end_date.month=3&amp;amp;daily_range.end_date.day=31`
         /// </summary>
         public class GetDailyMetricsTimeSeriesRequest : BusinessProfilePerformanceBaseServiceRequest<Google.Apis.BusinessProfilePerformance.v1.Data.GetDailyMetricsTimeSeriesResponse>
@@ -1068,7 +1068,10 @@ namespace Google.Apis.BusinessProfilePerformance.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents all possible subentity types that are associated with DailyMetrics.</summary>
+    /// <summary>
+    /// Represents all possible subentity types that are associated with DailyMetrics. Note: Currently, all metrics are
+    /// returned as daily aggregates and sub-entity breakdowns are not supported.
+    /// </summary>
     public class DailySubEntityType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Represents the day of the week. Eg: MONDAY. Currently supported DailyMetrics = NONE.</summary>
