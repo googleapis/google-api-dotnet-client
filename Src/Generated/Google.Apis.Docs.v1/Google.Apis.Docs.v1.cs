@@ -4002,6 +4002,10 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateDocumentTabProperties")]
         public virtual UpdateDocumentTabPropertiesRequest UpdateDocumentTabProperties { get; set; }
 
+        /// <summary>Updates a named style.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateNamedStyle")]
+        public virtual UpdateNamedStyleRequest UpdateNamedStyle { get; set; }
+
         /// <summary>Updates the paragraph style at the specified range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateParagraphStyle")]
         public virtual UpdateParagraphStyleRequest UpdateParagraphStyle { get; set; }
@@ -5464,6 +5468,33 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>The tab properties to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tabProperties")]
         public virtual TabProperties TabProperties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Updates a named style.</summary>
+    public class UpdateNamedStyleRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The NamedStyle fields that should be updated. At least `named_style_type must be specified. The root
+        /// `named_style` is implied and should not be specified. A single `"*"` can be used as short-hand for listing
+        /// every field. For example, to update the text style to bold, set `fields` to include `"text_style"` and
+        /// `"text_style.bold"`. To update the paragraph style's alignment property, set `fields` to include
+        /// `"paragraph_style"` and `"paragraph_style.alignment"`. To reset a property to its default value, include its
+        /// field name in the field mask but leave the field itself unset. Specifying `"text_style"` or
+        /// `"paragraph_style"` with an empty TextStyle or ParagraphStyle will reset all of its nested fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual object Fields { get; set; }
+
+        /// <summary>The document style to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namedStyle")]
+        public virtual NamedStyle NamedStyle { get; set; }
+
+        /// <summary>The document tab to update. By default, the update is applied to the first tab.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabId")]
+        public virtual string TabId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
