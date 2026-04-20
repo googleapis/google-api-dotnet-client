@@ -405,7 +405,8 @@ namespace Google.Apis.SA360.v0
 
             /// <summary>
             /// Returns all rows that match the search query. List of thrown errors: [AuthenticationError]()
-            /// [AuthorizationError]() [HeaderError]() [InternalError]() [QueryError]() [QuotaError]() [RequestError]()
+            /// [AuthorizationError]() [ChangeEventError]() [ChangeStatusError]() [ClickViewError]() [HeaderError]()
+            /// [InternalError]() [QueryError]() [QuotaError]() [RequestError]()
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="customerId">Required. The ID of the customer being queried.</param>
@@ -416,7 +417,8 @@ namespace Google.Apis.SA360.v0
 
             /// <summary>
             /// Returns all rows that match the search query. List of thrown errors: [AuthenticationError]()
-            /// [AuthorizationError]() [HeaderError]() [InternalError]() [QueryError]() [QuotaError]() [RequestError]()
+            /// [AuthorizationError]() [ChangeEventError]() [ChangeStatusError]() [ClickViewError]() [HeaderError]()
+            /// [InternalError]() [QueryError]() [QuotaError]() [RequestError]()
             /// </summary>
             public class SearchRequest : SA360BaseServiceRequest<Google.Apis.SA360.v0.Data.GoogleAdsSearchads360V0ServicesSearchSearchAds360Response>
             {
@@ -7220,6 +7222,1292 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>Total number of results that match the query ignoring the LIMIT clause.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResultsCount")]
         public virtual System.Nullable<long> TotalResultsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the effect on serving that a policy topic entry will have.</summary>
+    public class GoogleAdsSearchads360V23CommonPolicyTopicConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Countries where the resource's domain is not covered by the certificates associated with it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateDomainMismatchInCountryList")]
+        public virtual GoogleAdsSearchads360V23CommonPolicyTopicConstraintCountryConstraintList CertificateDomainMismatchInCountryList { get; set; }
+
+        /// <summary>Countries where a certificate is required for serving.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateMissingInCountryList")]
+        public virtual GoogleAdsSearchads360V23CommonPolicyTopicConstraintCountryConstraintList CertificateMissingInCountryList { get; set; }
+
+        /// <summary>Countries where the resource cannot serve.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryConstraintList")]
+        public virtual GoogleAdsSearchads360V23CommonPolicyTopicConstraintCountryConstraintList CountryConstraintList { get; set; }
+
+        /// <summary>Reseller constraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resellerConstraint")]
+        public virtual GoogleAdsSearchads360V23CommonPolicyTopicConstraintResellerConstraint ResellerConstraint { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Indicates that a resource's ability to serve in a particular country is constrained.</summary>
+    public class GoogleAdsSearchads360V23CommonPolicyTopicConstraintCountryConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Geo target constant resource name of the country in which serving is constrained.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryCriterion")]
+        public virtual string CountryCriterion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of countries where a resource's serving is constrained.</summary>
+    public class GoogleAdsSearchads360V23CommonPolicyTopicConstraintCountryConstraintList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Countries in which serving is restricted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countries")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V23CommonPolicyTopicConstraintCountryConstraint> Countries { get; set; }
+
+        /// <summary>Total number of countries targeted by the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalTargetedCountries")]
+        public virtual System.Nullable<int> TotalTargetedCountries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Indicates that a policy topic was constrained due to disapproval of the website for reseller purposes.
+    /// </summary>
+    public class GoogleAdsSearchads360V23CommonPolicyTopicConstraintResellerConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Policy finding attached to a resource (for example, alcohol policy associated with a site that sells alcohol).
+    /// Each PolicyTopicEntry has a topic that indicates the specific ads policy the entry is about and a type to
+    /// indicate the effect that the entry will have on serving. It may optionally have one or more evidences that
+    /// indicate the reason for the finding. It may also optionally have one or more constraints that provide details
+    /// about how serving may be restricted.
+    /// </summary>
+    public class GoogleAdsSearchads360V23CommonPolicyTopicEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Indicates how serving of this resource may be affected (for example, not serving in a country).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constraints")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V23CommonPolicyTopicConstraint> Constraints { get; set; }
+
+        /// <summary>
+        /// Additional information that explains policy finding (for example, the brand name for a trademark finding).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evidences")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V23CommonPolicyTopicEvidence> Evidences { get; set; }
+
+        /// <summary>
+        /// Policy topic this finding refers to. For example, "ALCOHOL", "TRADEMARKS_IN_AD_TEXT", or
+        /// "DESTINATION_NOT_WORKING". The set of possible policy topics is not fixed for a particular API version and
+        /// may change at any time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topic")]
+        public virtual string Topic { get; set; }
+
+        /// <summary>Describes the negative or positive effect this policy will have on serving.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional information that explains a policy finding.</summary>
+    public class GoogleAdsSearchads360V23CommonPolicyTopicEvidence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Mismatch between the destinations of a resource's URLs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationMismatch")]
+        public virtual GoogleAdsSearchads360V23CommonPolicyTopicEvidenceDestinationMismatch DestinationMismatch { get; set; }
+
+        /// <summary>
+        /// Details when the destination is returning an HTTP error code or isn't functional in all locations for
+        /// commonly used devices.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationNotWorking")]
+        public virtual GoogleAdsSearchads360V23CommonPolicyTopicEvidenceDestinationNotWorking DestinationNotWorking { get; set; }
+
+        /// <summary>The text in the destination of the resource that is causing a policy finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationTextList")]
+        public virtual GoogleAdsSearchads360V23CommonPolicyTopicEvidenceDestinationTextList DestinationTextList { get; set; }
+
+        /// <summary>
+        /// The language the resource was detected to be written in. This is an IETF language tag such as "en-US".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>List of evidence found in the text of a resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textList")]
+        public virtual GoogleAdsSearchads360V23CommonPolicyTopicEvidenceTextList TextList { get; set; }
+
+        /// <summary>List of websites linked with this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("websiteList")]
+        public virtual GoogleAdsSearchads360V23CommonPolicyTopicEvidenceWebsiteList WebsiteList { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Evidence of mismatches between the URLs of a resource.</summary>
+    public class GoogleAdsSearchads360V23CommonPolicyTopicEvidenceDestinationMismatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The set of URLs that did not match each other.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urlTypes")]
+        public virtual System.Collections.Generic.IList<string> UrlTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Evidence details when the destination is returning an HTTP error code or isn't functional in all locations for
+    /// commonly used devices.
+    /// </summary>
+    public class GoogleAdsSearchads360V23CommonPolicyTopicEvidenceDestinationNotWorking : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of device that failed to load the URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("device")]
+        public virtual string Device { get; set; }
+
+        /// <summary>The type of DNS error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsErrorType")]
+        public virtual string DnsErrorType { get; set; }
+
+        /// <summary>The full URL that didn't work.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expandedUrl")]
+        public virtual string ExpandedUrl { get; set; }
+
+        /// <summary>The HTTP error code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpErrorCode")]
+        public virtual System.Nullable<long> HttpErrorCode { get; set; }
+
+        /// <summary>
+        /// The time the URL was last checked. The format is "YYYY-MM-DD HH:MM:SS". Examples: "2018-03-05 09:15:00" or
+        /// "2018-02-01 14:34:30"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastCheckedDateTime")]
+        public virtual string LastCheckedDateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of strings found in a destination page that caused a policy finding.</summary>
+    public class GoogleAdsSearchads360V23CommonPolicyTopicEvidenceDestinationTextList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of text found in the resource's destination page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationTexts")]
+        public virtual System.Collections.Generic.IList<string> DestinationTexts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of fragments of text that violated a policy.</summary>
+    public class GoogleAdsSearchads360V23CommonPolicyTopicEvidenceTextList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fragments of text from the resource that caused the policy finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("texts")]
+        public virtual System.Collections.Generic.IList<string> Texts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A list of websites that caused a policy finding. Used for ONE_WEBSITE_PER_AD_GROUP policy topic, for example. In
+    /// case there are more than five websites, only the top five (those that appear in resources the most) will be
+    /// listed here.
+    /// </summary>
+    public class GoogleAdsSearchads360V23CommonPolicyTopicEvidenceWebsiteList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Websites that caused the policy finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("websites")]
+        public virtual System.Collections.Generic.IList<string> Websites { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Key of the violation. The key is used for referring to a violation when filing an exemption request.
+    /// </summary>
+    public class GoogleAdsSearchads360V23CommonPolicyViolationKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unique ID of the violated policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyName")]
+        public virtual string PolicyName { get; set; }
+
+        /// <summary>
+        /// The text that violates the policy if specified. Otherwise, refers to the policy in general (for example,
+        /// when requesting to be exempt from the whole policy). If not specified for criterion exemptions, the whole
+        /// policy is implied. Must be specified for ad exemptions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("violatingText")]
+        public virtual string ViolatingText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A generic data container.</summary>
+    public class GoogleAdsSearchads360V23CommonValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A boolean.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("booleanValue")]
+        public virtual System.Nullable<bool> BooleanValue { get; set; }
+
+        /// <summary>A double.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
+        public virtual System.Nullable<double> DoubleValue { get; set; }
+
+        /// <summary>A float.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floatValue")]
+        public virtual System.Nullable<float> FloatValue { get; set; }
+
+        /// <summary>An int64.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("int64Value")]
+        public virtual System.Nullable<long> Int64Value { get; set; }
+
+        /// <summary>A string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Error details for a budget below per-day minimum error.</summary>
+    public class GoogleAdsSearchads360V23ErrorsBudgetPerDayMinimumErrorDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The minimum budget required by the campaign per day, in micros of the advertiser currency. Applies to both
+        /// daily and custom budgets.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("budgetPerDayMinimumMicros")]
+        public virtual System.Nullable<long> BudgetPerDayMinimumMicros { get; set; }
+
+        /// <summary>
+        /// The advertiser's currency, represented as a three-letter ISO 4217 currency code (such as "USD").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>
+        /// The budget amount value that was rejected as too low, in micros of the advertiser currency. Only set if this
+        /// error is caused by the amount field value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedBudgetAmountMicros")]
+        public virtual System.Nullable<long> FailedBudgetAmountMicros { get; set; }
+
+        /// <summary>
+        /// The budget total_amount value that was rejected as too low, in micros of the advertiser currency. Only set
+        /// if this error is caused by the total_amount field value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedBudgetTotalAmountMicros")]
+        public virtual System.Nullable<long> FailedBudgetTotalAmountMicros { get; set; }
+
+        /// <summary>
+        /// The minimum value for the budget's amount field required by the campaign, in micros of the advertiser
+        /// currency. Only set if this error is caused by the amount field value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumBudgetAmountMicros")]
+        public virtual System.Nullable<long> MinimumBudgetAmountMicros { get; set; }
+
+        /// <summary>
+        /// The minimum value for the budget's total_amount field required by the campaign given its configured start
+        /// and end time, in micros of the advertiser currency. Only set if this error is caused by the total_amount
+        /// field value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumBudgetTotalAmountMicros")]
+        public virtual System.Nullable<long> MinimumBudgetTotalAmountMicros { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The error reason represented by type and enum.</summary>
+    public class GoogleAdsSearchads360V23ErrorsErrorCode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The reasons for the access invitation error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessInvitationError")]
+        public virtual string AccessInvitationError { get; set; }
+
+        /// <summary>The reasons for account budget proposal errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountBudgetProposalError")]
+        public virtual string AccountBudgetProposalError { get; set; }
+
+        /// <summary>The reasons for the account link status change error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountLinkError")]
+        public virtual string AccountLinkError { get; set; }
+
+        /// <summary>The reasons for the ad customizer error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adCustomizerError")]
+        public virtual string AdCustomizerError { get; set; }
+
+        /// <summary>An error with an Ad Group Ad mutate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adError")]
+        public virtual string AdError { get; set; }
+
+        /// <summary>The reasons for the ad group ad error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupAdError")]
+        public virtual string AdGroupAdError { get; set; }
+
+        /// <summary>The reasons for the ad group bid modifier error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupBidModifierError")]
+        public virtual string AdGroupBidModifierError { get; set; }
+
+        /// <summary>The reasons for the ad group criterion customizer error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupCriterionCustomizerError")]
+        public virtual string AdGroupCriterionCustomizerError { get; set; }
+
+        /// <summary>Indicates failure to properly authenticate user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupCriterionError")]
+        public virtual string AdGroupCriterionError { get; set; }
+
+        /// <summary>The reasons for the ad group customizer error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupCustomizerError")]
+        public virtual string AdGroupCustomizerError { get; set; }
+
+        /// <summary>An error with an Ad Group mutate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupError")]
+        public virtual string AdGroupError { get; set; }
+
+        /// <summary>The reasons for the ad group feed error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupFeedError")]
+        public virtual string AdGroupFeedError { get; set; }
+
+        /// <summary>The reasons for the ad parameter error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adParameterError")]
+        public virtual string AdParameterError { get; set; }
+
+        /// <summary>The reasons for the ad sharing error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adSharingError")]
+        public virtual string AdSharingError { get; set; }
+
+        /// <summary>The reasons for the adx error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adxError")]
+        public virtual string AdxError { get; set; }
+
+        /// <summary>The reasons for the asset error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetError")]
+        public virtual string AssetError { get; set; }
+
+        /// <summary>The reasons for the GenAI asset generation error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetGenerationError")]
+        public virtual string AssetGenerationError { get; set; }
+
+        /// <summary>The reasons for the asset group asset error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetGroupAssetError")]
+        public virtual string AssetGroupAssetError { get; set; }
+
+        /// <summary>The reasons for the asset group error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetGroupError")]
+        public virtual string AssetGroupError { get; set; }
+
+        /// <summary>The reasons for the asset group listing group filter error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetGroupListingGroupFilterError")]
+        public virtual string AssetGroupListingGroupFilterError { get; set; }
+
+        /// <summary>The reasons for the asset group hint error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetGroupSignalError")]
+        public virtual string AssetGroupSignalError { get; set; }
+
+        /// <summary>The reasons for the asset link error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetLinkError")]
+        public virtual string AssetLinkError { get; set; }
+
+        /// <summary>The reasons for the asset set asset error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetSetAssetError")]
+        public virtual string AssetSetAssetError { get; set; }
+
+        /// <summary>The reasons for the asset set error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetSetError")]
+        public virtual string AssetSetError { get; set; }
+
+        /// <summary>The reasons for the asset set link error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetSetLinkError")]
+        public virtual string AssetSetLinkError { get; set; }
+
+        /// <summary>The reasons for the audience error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audienceError")]
+        public virtual string AudienceError { get; set; }
+
+        /// <summary>The reasons for the Audience Insights error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audienceInsightsError")]
+        public virtual string AudienceInsightsError { get; set; }
+
+        /// <summary>Indicates failure to properly authenticate user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authenticationError")]
+        public virtual string AuthenticationError { get; set; }
+
+        /// <summary>An error encountered when trying to authorize a user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizationError")]
+        public virtual string AuthorizationError { get; set; }
+
+        /// <summary>The reasons for error in automatically created asset removal action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automaticallyCreatedAssetRemovalError")]
+        public virtual string AutomaticallyCreatedAssetRemovalError { get; set; }
+
+        /// <summary>The reasons for the batch job error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchJobError")]
+        public virtual string BatchJobError { get; set; }
+
+        /// <summary>The reasons for the Benchmarks error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("benchmarksError")]
+        public virtual string BenchmarksError { get; set; }
+
+        /// <summary>The reasons for the bidding errors</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("biddingError")]
+        public virtual string BiddingError { get; set; }
+
+        /// <summary>An error with a Bidding Strategy mutate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("biddingStrategyError")]
+        public virtual string BiddingStrategyError { get; set; }
+
+        /// <summary>The reasons for the billing setup error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingSetupError")]
+        public virtual string BillingSetupError { get; set; }
+
+        /// <summary>The reasons for the brand guidelines migration error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brandGuidelinesMigrationError")]
+        public virtual string BrandGuidelinesMigrationError { get; set; }
+
+        /// <summary>An error with a Campaign Budget mutate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignBudgetError")]
+        public virtual string CampaignBudgetError { get; set; }
+
+        /// <summary>The reasons for the campaign conversion goal error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignConversionGoalError")]
+        public virtual string CampaignConversionGoalError { get; set; }
+
+        /// <summary>The reasons for the campaign criterion error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignCriterionError")]
+        public virtual string CampaignCriterionError { get; set; }
+
+        /// <summary>The reasons for the campaign customizer error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignCustomizerError")]
+        public virtual string CampaignCustomizerError { get; set; }
+
+        /// <summary>The reasons for the campaign draft error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignDraftError")]
+        public virtual string CampaignDraftError { get; set; }
+
+        /// <summary>An error with a Campaign mutate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignError")]
+        public virtual string CampaignError { get; set; }
+
+        /// <summary>The reasons for the campaign experiment error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignExperimentError")]
+        public virtual string CampaignExperimentError { get; set; }
+
+        /// <summary>The reasons for the campaign feed error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignFeedError")]
+        public virtual string CampaignFeedError { get; set; }
+
+        /// <summary>The reasons for the campaign goal config error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignGoalConfigError")]
+        public virtual string CampaignGoalConfigError { get; set; }
+
+        /// <summary>The reasons for the campaign lifecycle goal error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignLifecycleGoalError")]
+        public virtual string CampaignLifecycleGoalError { get; set; }
+
+        /// <summary>The reasons for the campaign shared set error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignSharedSetError")]
+        public virtual string CampaignSharedSetError { get; set; }
+
+        /// <summary>The reasons for the change event error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeEventError")]
+        public virtual string ChangeEventError { get; set; }
+
+        /// <summary>The reasons for the change status error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeStatusError")]
+        public virtual string ChangeStatusError { get; set; }
+
+        /// <summary>The reasons for the click view error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clickViewError")]
+        public virtual string ClickViewError { get; set; }
+
+        /// <summary>The reasons for the collection size error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collectionSizeError")]
+        public virtual string CollectionSizeError { get; set; }
+
+        /// <summary>The reasons for the context error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextError")]
+        public virtual string ContextError { get; set; }
+
+        /// <summary>The reasons for the conversion action error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionActionError")]
+        public virtual string ConversionActionError { get; set; }
+
+        /// <summary>The reasons for the conversion adjustment upload error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionAdjustmentUploadError")]
+        public virtual string ConversionAdjustmentUploadError { get; set; }
+
+        /// <summary>The reasons for the conversion custom variable error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionCustomVariableError")]
+        public virtual string ConversionCustomVariableError { get; set; }
+
+        /// <summary>The reasons for the conversion goal campaign config error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionGoalCampaignConfigError")]
+        public virtual string ConversionGoalCampaignConfigError { get; set; }
+
+        /// <summary>The reasons for the conversion upload error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionUploadError")]
+        public virtual string ConversionUploadError { get; set; }
+
+        /// <summary>The reasons for the conversion value rule error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionValueRuleError")]
+        public virtual string ConversionValueRuleError { get; set; }
+
+        /// <summary>The reasons for the conversion value rule set error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionValueRuleSetError")]
+        public virtual string ConversionValueRuleSetError { get; set; }
+
+        /// <summary>The reasons for the country code error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryCodeError")]
+        public virtual string CountryCodeError { get; set; }
+
+        /// <summary>The reasons for the criterion error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("criterionError")]
+        public virtual string CriterionError { get; set; }
+
+        /// <summary>The reasons for the currency code error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCodeError")]
+        public virtual string CurrencyCodeError { get; set; }
+
+        /// <summary>The reasons for the currency errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyError")]
+        public virtual string CurrencyError { get; set; }
+
+        /// <summary>The reasons for the custom audience error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customAudienceError")]
+        public virtual string CustomAudienceError { get; set; }
+
+        /// <summary>The reasons for the custom column error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customColumnError")]
+        public virtual string CustomColumnError { get; set; }
+
+        /// <summary>The reasons for the custom conversion goal error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customConversionGoalError")]
+        public virtual string CustomConversionGoalError { get; set; }
+
+        /// <summary>The reasons for the custom interest error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customInterestError")]
+        public virtual string CustomInterestError { get; set; }
+
+        /// <summary>The reasons for the customer client link error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerClientLinkError")]
+        public virtual string CustomerClientLinkError { get; set; }
+
+        /// <summary>The reasons for the customer customizer error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerCustomizerError")]
+        public virtual string CustomerCustomizerError { get; set; }
+
+        /// <summary>The reasons for the customer error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerError")]
+        public virtual string CustomerError { get; set; }
+
+        /// <summary>The reasons for the customer feed error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerFeedError")]
+        public virtual string CustomerFeedError { get; set; }
+
+        /// <summary>The reasons for the customer lifecycle goal error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerLifecycleGoalError")]
+        public virtual string CustomerLifecycleGoalError { get; set; }
+
+        /// <summary>The reasons for the customer manager link error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerManagerLinkError")]
+        public virtual string CustomerManagerLinkError { get; set; }
+
+        /// <summary>The reasons for the customer SK Ad network conversion value schema error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerSkAdNetworkConversionValueSchemaError")]
+        public virtual string CustomerSkAdNetworkConversionValueSchemaError { get; set; }
+
+        /// <summary>The reasons for the customer user access mutate error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerUserAccessError")]
+        public virtual string CustomerUserAccessError { get; set; }
+
+        /// <summary>The reasons for the customizer attribute error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customizerAttributeError")]
+        public virtual string CustomizerAttributeError { get; set; }
+
+        /// <summary>The reasons for the data link error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataLinkError")]
+        public virtual string DataLinkError { get; set; }
+
+        /// <summary>The reasons for the database error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseError")]
+        public virtual string DatabaseError { get; set; }
+
+        /// <summary>The reasons for the date error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateError")]
+        public virtual string DateError { get; set; }
+
+        /// <summary>The reasons for the date range error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateRangeError")]
+        public virtual string DateRangeError { get; set; }
+
+        /// <summary>The reasons for the distinct error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distinctError")]
+        public virtual string DistinctError { get; set; }
+
+        /// <summary>The reason for enum error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enumError")]
+        public virtual string EnumError { get; set; }
+
+        /// <summary>The reasons for the experiment arm error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("experimentArmError")]
+        public virtual string ExperimentArmError { get; set; }
+
+        /// <summary>The reasons for the experiment error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("experimentError")]
+        public virtual string ExperimentError { get; set; }
+
+        /// <summary>The reasons for the extension feed item error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensionFeedItemError")]
+        public virtual string ExtensionFeedItemError { get; set; }
+
+        /// <summary>The reasons for the extension setting error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensionSettingError")]
+        public virtual string ExtensionSettingError { get; set; }
+
+        /// <summary>The reasons for the feed attribute reference error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedAttributeReferenceError")]
+        public virtual string FeedAttributeReferenceError { get; set; }
+
+        /// <summary>The reasons for the feed error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedError")]
+        public virtual string FeedError { get; set; }
+
+        /// <summary>The reasons for the feed item error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedItemError")]
+        public virtual string FeedItemError { get; set; }
+
+        /// <summary>The reasons for the feed item set error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedItemSetError")]
+        public virtual string FeedItemSetError { get; set; }
+
+        /// <summary>The reasons for the feed item set link error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedItemSetLinkError")]
+        public virtual string FeedItemSetLinkError { get; set; }
+
+        /// <summary>The reasons for the feed item target error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedItemTargetError")]
+        public virtual string FeedItemTargetError { get; set; }
+
+        /// <summary>The reasons for the feed item validation error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedItemValidationError")]
+        public virtual string FeedItemValidationError { get; set; }
+
+        /// <summary>The reasons for the feed mapping error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedMappingError")]
+        public virtual string FeedMappingError { get; set; }
+
+        /// <summary>The reasons for the field error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldError")]
+        public virtual string FieldError { get; set; }
+
+        /// <summary>An error with a field mask</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldMaskError")]
+        public virtual string FieldMaskError { get; set; }
+
+        /// <summary>The reasons for the final url expansion asset view error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalUrlExpansionAssetViewError")]
+        public virtual string FinalUrlExpansionAssetViewError { get; set; }
+
+        /// <summary>The reasons for the function error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("functionError")]
+        public virtual string FunctionError { get; set; }
+
+        /// <summary>The reasons for the function parsing error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("functionParsingError")]
+        public virtual string FunctionParsingError { get; set; }
+
+        /// <summary>The reasons for the geo target constant suggestion error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geoTargetConstantSuggestionError")]
+        public virtual string GeoTargetConstantSuggestionError { get; set; }
+
+        /// <summary>The reasons for the goal error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goalError")]
+        public virtual string GoalError { get; set; }
+
+        /// <summary>The reasons for the header error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headerError")]
+        public virtual string HeaderError { get; set; }
+
+        /// <summary>The reasons for the id error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idError")]
+        public virtual string IdError { get; set; }
+
+        /// <summary>The reasons for an identity verification error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityVerificationError")]
+        public virtual string IdentityVerificationError { get; set; }
+
+        /// <summary>The reasons for the image error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageError")]
+        public virtual string ImageError { get; set; }
+
+        /// <summary>The reasons for the incentive error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("incentiveError")]
+        public virtual string IncentiveError { get; set; }
+
+        /// <summary>An unexpected server-side error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalError")]
+        public virtual string InternalError { get; set; }
+
+        /// <summary>The reasons for invalid parameter errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invalidParameterError")]
+        public virtual string InvalidParameterError { get; set; }
+
+        /// <summary>The reasons for the invoice error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invoiceError")]
+        public virtual string InvoiceError { get; set; }
+
+        /// <summary>The reason for keyword plan ad group error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keywordPlanAdGroupError")]
+        public virtual string KeywordPlanAdGroupError { get; set; }
+
+        /// <summary>The reason for keyword plan ad group keyword error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keywordPlanAdGroupKeywordError")]
+        public virtual string KeywordPlanAdGroupKeywordError { get; set; }
+
+        /// <summary>The reason for keyword plan campaign error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keywordPlanCampaignError")]
+        public virtual string KeywordPlanCampaignError { get; set; }
+
+        /// <summary>The reason for keyword plan campaign keyword error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keywordPlanCampaignKeywordError")]
+        public virtual string KeywordPlanCampaignKeywordError { get; set; }
+
+        /// <summary>The reason for keyword plan error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keywordPlanError")]
+        public virtual string KeywordPlanError { get; set; }
+
+        /// <summary>The reason for keyword idea error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keywordPlanIdeaError")]
+        public virtual string KeywordPlanIdeaError { get; set; }
+
+        /// <summary>The reason for the label error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelError")]
+        public virtual string LabelError { get; set; }
+
+        /// <summary>The reasons for the language code error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCodeError")]
+        public virtual string LanguageCodeError { get; set; }
+
+        /// <summary>An error with a list operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listOperationError")]
+        public virtual string ListOperationError { get; set; }
+
+        /// <summary>The reasons for the manager link error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managerLinkError")]
+        public virtual string ManagerLinkError { get; set; }
+
+        /// <summary>The reasons for the media bundle error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaBundleError")]
+        public virtual string MediaBundleError { get; set; }
+
+        /// <summary>The reasons for the media file error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaFileError")]
+        public virtual string MediaFileError { get; set; }
+
+        /// <summary>The reasons for media uploading errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaUploadError")]
+        public virtual string MediaUploadError { get; set; }
+
+        /// <summary>Container for enum describing possible merchant center errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantCenterError")]
+        public virtual string MerchantCenterError { get; set; }
+
+        /// <summary>The reasons for the multiplier error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiplierError")]
+        public virtual string MultiplierError { get; set; }
+
+        /// <summary>An error with a mutate</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mutateError")]
+        public virtual string MutateError { get; set; }
+
+        /// <summary>The reasons for the new resource creation error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newResourceCreationError")]
+        public virtual string NewResourceCreationError { get; set; }
+
+        /// <summary>The reasons for the not allowlisted error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notAllowlistedError")]
+        public virtual string NotAllowlistedError { get; set; }
+
+        /// <summary>The reasons for the not empty error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notEmptyError")]
+        public virtual string NotEmptyError { get; set; }
+
+        /// <summary>The reasons for the null error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nullError")]
+        public virtual string NullError { get; set; }
+
+        /// <summary>The reasons for the offline user data job error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offlineUserDataJobError")]
+        public virtual string OfflineUserDataJobError { get; set; }
+
+        /// <summary>The reasons for the operation access denied error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationAccessDeniedError")]
+        public virtual string OperationAccessDeniedError { get; set; }
+
+        /// <summary>The reasons for the operator error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operatorError")]
+        public virtual string OperatorError { get; set; }
+
+        /// <summary>The reasons for the mutate job error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialFailureError")]
+        public virtual string PartialFailureError { get; set; }
+
+        /// <summary>The reasons for errors in payments accounts service</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paymentsAccountError")]
+        public virtual string PaymentsAccountError { get; set; }
+
+        /// <summary>The reasons for the policy finding error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyFindingError")]
+        public virtual string PolicyFindingError { get; set; }
+
+        /// <summary>The reasons for the policy validation parameter error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyValidationParameterError")]
+        public virtual string PolicyValidationParameterError { get; set; }
+
+        /// <summary>The reasons for the policy violation error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyViolationError")]
+        public virtual string PolicyViolationError { get; set; }
+
+        /// <summary>The reasons for the product link error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productLinkError")]
+        public virtual string ProductLinkError { get; set; }
+
+        /// <summary>The reasons for the product link invitation error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productLinkInvitationError")]
+        public virtual string ProductLinkInvitationError { get; set; }
+
+        /// <summary>An error with the query</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryError")]
+        public virtual string QueryError { get; set; }
+
+        /// <summary>An error with the amount of quota remaining.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaError")]
+        public virtual string QuotaError { get; set; }
+
+        /// <summary>The reasons for the range error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rangeError")]
+        public virtual string RangeError { get; set; }
+
+        /// <summary>The reasons for the reach plan error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reachPlanError")]
+        public virtual string ReachPlanError { get; set; }
+
+        /// <summary>The reasons for error in applying a recommendation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendationError")]
+        public virtual string RecommendationError { get; set; }
+
+        /// <summary>The reasons for the recommendation subscription error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendationSubscriptionError")]
+        public virtual string RecommendationSubscriptionError { get; set; }
+
+        /// <summary>The reasons for the region code error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCodeError")]
+        public virtual string RegionCodeError { get; set; }
+
+        /// <summary>An error caused by the request</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestError")]
+        public virtual string RequestError { get; set; }
+
+        /// <summary>The reasons for the resource access denied error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceAccessDeniedError")]
+        public virtual string ResourceAccessDeniedError { get; set; }
+
+        /// <summary>The reasons for the resource count limit exceeded error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceCountLimitExceededError")]
+        public virtual string ResourceCountLimitExceededError { get; set; }
+
+        /// <summary>The reasons for the Search term insight error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchTermInsightError")]
+        public virtual string SearchTermInsightError { get; set; }
+
+        /// <summary>The reasons for the setting error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("settingError")]
+        public virtual string SettingError { get; set; }
+
+        /// <summary>The reasons for the shareable preview error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shareablePreviewError")]
+        public virtual string ShareablePreviewError { get; set; }
+
+        /// <summary>The reasons for the shared criterion error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sharedCriterionError")]
+        public virtual string SharedCriterionError { get; set; }
+
+        /// <summary>The reasons for the shared set error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sharedSetError")]
+        public virtual string SharedSetError { get; set; }
+
+        /// <summary>The reasons for error in querying shopping product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shoppingProductError")]
+        public virtual string ShoppingProductError { get; set; }
+
+        /// <summary>The reasons for the size limit error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeLimitError")]
+        public virtual string SizeLimitError { get; set; }
+
+        /// <summary>The reasons for the Smart campaign error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("smartCampaignError")]
+        public virtual string SmartCampaignError { get; set; }
+
+        /// <summary>The reasons for the string format error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringFormatError")]
+        public virtual string StringFormatError { get; set; }
+
+        /// <summary>The reasons for the string length error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringLengthError")]
+        public virtual string StringLengthError { get; set; }
+
+        /// <summary>The reasons for the third party app analytics link mutate error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyAppAnalyticsLinkError")]
+        public virtual string ThirdPartyAppAnalyticsLinkError { get; set; }
+
+        /// <summary>The reasons for the time zone error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZoneError")]
+        public virtual string TimeZoneError { get; set; }
+
+        /// <summary>An error with a URL field mutate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urlFieldError")]
+        public virtual string UrlFieldError { get; set; }
+
+        /// <summary>The reasons for the user data error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userDataError")]
+        public virtual string UserDataError { get; set; }
+
+        /// <summary>The reasons for a user list customer type error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userListCustomerTypeError")]
+        public virtual string UserListCustomerTypeError { get; set; }
+
+        /// <summary>The reasons for the user list error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userListError")]
+        public virtual string UserListError { get; set; }
+
+        /// <summary>An error with a Video Campaign mutate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoCampaignError")]
+        public virtual string VideoCampaignError { get; set; }
+
+        /// <summary>The reasons for YouTube video registration errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeVideoRegistrationError")]
+        public virtual string YoutubeVideoRegistrationError { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional error details.</summary>
+    public class GoogleAdsSearchads360V23ErrorsErrorDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Details for a budget below per-day minimum error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("budgetPerDayMinimumErrorDetails")]
+        public virtual GoogleAdsSearchads360V23ErrorsBudgetPerDayMinimumErrorDetails BudgetPerDayMinimumErrorDetails { get; set; }
+
+        /// <summary>Describes policy violation findings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyFindingDetails")]
+        public virtual GoogleAdsSearchads360V23ErrorsPolicyFindingDetails PolicyFindingDetails { get; set; }
+
+        /// <summary>Describes an ad policy violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyViolationDetails")]
+        public virtual GoogleAdsSearchads360V23ErrorsPolicyViolationDetails PolicyViolationDetails { get; set; }
+
+        /// <summary>
+        /// Details on the quota error, including the scope (account or developer), the rate bucket name and the retry
+        /// delay.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaErrorDetails")]
+        public virtual GoogleAdsSearchads360V23ErrorsQuotaErrorDetails QuotaErrorDetails { get; set; }
+
+        /// <summary>Details for a resource count limit exceeded error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceCountDetails")]
+        public virtual GoogleAdsSearchads360V23ErrorsResourceCountDetails ResourceCountDetails { get; set; }
+
+        /// <summary>
+        /// The error code that should have been returned, but wasn't. This is used when the error code is not published
+        /// in the client specified version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unpublishedErrorCode")]
+        public virtual string UnpublishedErrorCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the part of the request proto that caused the error.</summary>
+    public class GoogleAdsSearchads360V23ErrorsErrorLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A field path that indicates which field was invalid in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldPathElements")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V23ErrorsErrorLocationFieldPathElement> FieldPathElements { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A part of a field path.</summary>
+    public class GoogleAdsSearchads360V23ErrorsErrorLocationFieldPathElement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of a field or a oneof</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
+        public virtual string FieldName { get; set; }
+
+        /// <summary>If field_name is a repeated field, this is the element that failed</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<int> Index { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Error returned as part of a mutate response. This error indicates one or more policy findings in the fields of a
+    /// resource.
+    /// </summary>
+    public class GoogleAdsSearchads360V23ErrorsPolicyFindingDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of policy topics for the resource. Contains the PROHIBITED or FULLY_LIMITED policy topic entries
+        /// that prevented the resource from being saved (among any other entries the resource may also have).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyTopicEntries")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V23CommonPolicyTopicEntry> PolicyTopicEntries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Error returned as part of a mutate response. This error indicates single policy violation by some text in one of
+    /// the fields.
+    /// </summary>
+    public class GoogleAdsSearchads360V23ErrorsPolicyViolationDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Human readable description of policy violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalPolicyDescription")]
+        public virtual string ExternalPolicyDescription { get; set; }
+
+        /// <summary>Human readable name of the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalPolicyName")]
+        public virtual string ExternalPolicyName { get; set; }
+
+        /// <summary>Whether user can file an exemption request for this violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isExemptible")]
+        public virtual System.Nullable<bool> IsExemptible { get; set; }
+
+        /// <summary>
+        /// Unique identifier for this violation. If policy is exemptible, this key may be used to request exemption.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual GoogleAdsSearchads360V23CommonPolicyViolationKey Key { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional quota error details when there is QuotaError.</summary>
+    public class GoogleAdsSearchads360V23ErrorsQuotaErrorDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The high level description of the quota bucket. Examples are "Get requests for standard access" or "Requests
+        /// per account".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rateName")]
+        public virtual string RateName { get; set; }
+
+        /// <summary>The rate scope of the quota limit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rateScope")]
+        public virtual string RateScope { get; set; }
+
+        /// <summary>Backoff period that customers should wait before sending next request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retryDelay")]
+        public virtual object RetryDelay { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Error details returned when an resource count limit was exceeded.</summary>
+    public class GoogleAdsSearchads360V23ErrorsResourceCountDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The ID of the resource whose limit was exceeded. External customer ID if the limit is for a customer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enclosingId")]
+        public virtual string EnclosingId { get; set; }
+
+        /// <summary>The name of the resource ( etc.) whose limit was exceeded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enclosingResource")]
+        public virtual string EnclosingResource { get; set; }
+
+        /// <summary>The count of existing entities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("existingCount")]
+        public virtual System.Nullable<int> ExistingCount { get; set; }
+
+        /// <summary>The limit which was exceeded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("limit")]
+        public virtual System.Nullable<int> Limit { get; set; }
+
+        /// <summary>The resource limit type which was exceeded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("limitType")]
+        public virtual string LimitType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Search Ads 360-specific error.</summary>
+    public class GoogleAdsSearchads360V23ErrorsSearchAds360Error : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Additional error details, which are returned by certain error codes. Most error codes do not include
+        /// details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual GoogleAdsSearchads360V23ErrorsErrorDetails Details { get; set; }
+
+        /// <summary>An enum value that indicates which error occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
+        public virtual GoogleAdsSearchads360V23ErrorsErrorCode ErrorCode { get; set; }
+
+        /// <summary>Describes the part of the request proto that caused the error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual GoogleAdsSearchads360V23ErrorsErrorLocation Location { get; set; }
+
+        /// <summary>A human-readable description of the error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The value that triggered the error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trigger")]
+        public virtual GoogleAdsSearchads360V23CommonValue Trigger { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Describes how a Search Ads 360 API call failed. It's returned inside google.rpc.Status.details when a call
+    /// fails.
+    /// </summary>
+    public class GoogleAdsSearchads360V23ErrorsSearchAds360Failure : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of errors that occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V23ErrorsSearchAds360Error> Errors { get; set; }
+
+        /// <summary>The unique ID of the request that is used for debugging purposes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Additional information about the batch job. This message is also used as metadata returned in batch job Long
+    /// Running Operations.
+    /// </summary>
+    public class GoogleAdsSearchads360V23ResourcesBatchJobBatchJobMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The time when this batch job was completed. Formatted as yyyy-MM-dd HH:mm:ss. Example:
+        /// "2018-03-05 09:16:00"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completionDateTime")]
+        public virtual string CompletionDateTime { get; set; }
+
+        /// <summary>
+        /// Output only. The time when this batch job was created. Formatted as yyyy-mm-dd hh:mm:ss. Example:
+        /// "2018-03-05 09:15:00"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationDateTime")]
+        public virtual string CreationDateTime { get; set; }
+
+        /// <summary>
+        /// Output only. The fraction (between 0.0 and 1.0) of mutates that have been processed. This is empty if the
+        /// job hasn't started running yet.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedCompletionRatio")]
+        public virtual System.Nullable<double> EstimatedCompletionRatio { get; set; }
+
+        /// <summary>
+        /// Output only. The number of mutate operations executed by the batch job. Present only if the job has started
+        /// running.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executedOperationCount")]
+        public virtual System.Nullable<long> ExecutedOperationCount { get; set; }
+
+        /// <summary>
+        /// Immutable. The approximate upper bound for how long a batch job can be executed, in seconds. If the job runs
+        /// more than the given upper bound, the job will be canceled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionLimitSeconds")]
+        public virtual System.Nullable<int> ExecutionLimitSeconds { get; set; }
+
+        /// <summary>Output only. The number of mutate operations in the batch job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationCount")]
+        public virtual System.Nullable<long> OperationCount { get; set; }
+
+        /// <summary>
+        /// Output only. The time when this batch job started running. Formatted as yyyy-mm-dd hh:mm:ss. Example:
+        /// "2018-03-05 09:15:30"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDateTime")]
+        public virtual string StartDateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata of offline user data job.</summary>
+    public class GoogleAdsSearchads360V23ResourcesOfflineUserDataJobMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Match rate of the Customer Match user list upload. Describes the estimated match rate when the
+        /// status of the job is "RUNNING" and final match rate when the final match rate is available after the status
+        /// of the job is "SUCCESS/FAILED".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchRateRange")]
+        public virtual string MatchRateRange { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata of the promoted experiment.</summary>
+    public class GoogleAdsSearchads360V23ServicesPromoteExperimentMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The promoted experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("experiment")]
+        public virtual string Experiment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata of the scheduled experiment.</summary>
+    public class GoogleAdsSearchads360V23ServicesScheduleExperimentMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The scheduled experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("experiment")]
+        public virtual string Experiment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
