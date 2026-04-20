@@ -1149,14 +1149,14 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         public virtual string GoogleProductCategory { get; set; }
 
         /// <summary>
-        /// Global Trade Item Numbers ([GTIN](https://support.google.com/merchants/answer/188494#gtin)) of the item. You
-        /// can provide up to 10 GTINs. Deprecated: Use `gtins` instead.
+        /// Global Trade Item Numbers ([GTIN](https://support.google.com/merchants/answer/6324461)) of the item. You can
+        /// provide up to 10 GTINs. Deprecated: Use `gtins` instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
         public virtual System.Collections.Generic.IList<string> Gtin { get; set; }
 
         /// <summary>
-        /// A list of Global Trade Item Numbers ([GTIN](https://support.google.com/merchants/answer/188494#gtin)) of the
+        /// A list of Global Trade Item Numbers ([GTIN](https://support.google.com/merchants/answer/6324461)) of the
         /// item. You can provide up to 10 GTINs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gtins")]
@@ -1268,7 +1268,7 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         public virtual string MobileLinkTemplate { get; set; }
 
         /// <summary>
-        /// Manufacturer Part Number ([MPN](https://support.google.com/merchants/answer/188494#mpn)) of the item.
+        /// Manufacturer Part Number ([MPN](https://support.google.com/merchants/answer/6324482)) of the item.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mpn")]
         public virtual string Mpn { get; set; }
