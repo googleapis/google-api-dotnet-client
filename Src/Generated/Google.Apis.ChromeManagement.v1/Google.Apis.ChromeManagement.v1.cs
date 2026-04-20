@@ -316,6 +316,7 @@ namespace Google.Apis.ChromeManagement.v1
             this.service = service;
             Apps = new AppsResource(service);
             CertificateProvisioningProcesses = new CertificateProvisioningProcessesResource(service);
+            ConnectorConfigs = new ConnectorConfigsResource(service);
             Profiles = new ProfilesResource(service);
             Reports = new ReportsResource(service);
             Telemetry = new TelemetryResource(service);
@@ -1275,6 +1276,276 @@ namespace Google.Apis.ChromeManagement.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^customers/[^/]+/certificateProvisioningProcesses/[^/]+$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the ConnectorConfigs resource.</summary>
+        public virtual ConnectorConfigsResource ConnectorConfigs { get; }
+
+        /// <summary>The "connectorConfigs" collection of methods.</summary>
+        public class ConnectorConfigsResource
+        {
+            private const string Resource = "connectorConfigs";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ConnectorConfigsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Creates a connector config.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. Format: customers/{customer}</param>
+            public virtual CreateRequest Create(Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ConnectorConfig body, string parent)
+            {
+                return new CreateRequest(this.service, body, parent);
+            }
+
+            /// <summary>Creates a connector config.</summary>
+            public class CreateRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ConnectorConfig>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ConnectorConfig body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Format: customers/{customer}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. ID to use for the connector config, which becomes the final component of the connector
+                /// config's resource name. If provided, the ID must be 1-63 characters long, and contain only lowercase
+                /// letters, digits, and hyphens. It must start with a letter, and end with a letter or number. If not
+                /// provided, the connector config will be assigned a random UUID.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("connectorConfigId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ConnectorConfigId { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ConnectorConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/connectorConfigs";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+$",
+                    });
+                    RequestParameters.Add("connectorConfigId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "connectorConfigId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Deletes a connector config.</summary>
+            /// <param name="name">Required. Format: customers/{customer}/connectorConfigs/{connector_config}</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(this.service, name);
+            }
+
+            /// <summary>Deletes a connector config.</summary>
+            public class DeleteRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleProtobufEmpty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Format: customers/{customer}/connectorConfigs/{connector_config}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Optional. The etag of the connector config. If an etag is provided and does not match the current
+                /// etag of the connector config, deletion will be blocked and an ABORTED error will be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Etag { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+/connectorConfigs/[^/]+$",
+                    });
+                    RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "etag",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Gets a connector config with customer ID and config ID.</summary>
+            /// <param name="name">Required. Format: customers/{customer}/connectorConfigs/{connector_config}</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Gets a connector config with customer ID and config ID.</summary>
+            public class GetRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ConnectorConfig>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Format: customers/{customer}/connectorConfigs/{connector_config}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+/connectorConfigs/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists connector configs of a customer.</summary>
+            /// <param name="parent">Required. Format: customers/{customer}</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>Lists connector configs of a customer.</summary>
+            public class ListRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ListConnectorConfigsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Format: customers/{customer}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of connector configs to return. The default page size is 50 if
+                /// page_size is unspecified, and the maximum page size allowed is 100. Values above 100 will be capped
+                /// at 100.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `ListConnectorConfigs` call. Provide this to
+                /// retrieve the subsequent page. When paginating, all other parameters provided to
+                /// `ListConnectorConfigs` must match the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/connectorConfigs";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -4289,6 +4560,13 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appId")]
         public virtual string AppId { get; set; }
+
+        /// <summary>
+        /// Output only. The category IDs of the app, which are the same as stored in the Web Store item. It's expected
+        /// that there is only one category ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryIds")]
+        public virtual System.Collections.Generic.IList<string> CategoryIds { get; set; }
 
         /// <summary>Output only. Chrome Web Store app information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chromeAppInfo")]
@@ -8753,6 +9031,234 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A representation of a connector config.</summary>
+    public class GoogleChromeManagementVersionsV1ConnectorConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The details of the connector config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual GoogleChromeManagementVersionsV1ConnectorConfigDetails Details { get; set; }
+
+        /// <summary>Required. The display name of the config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on
+        /// update and delete requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Identifier. Format: customers/{customer}/connectorConfigs/{connector_config}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The status of the connector config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleChromeManagementVersionsV1ConnectorConfigStatus Status { get; set; }
+
+        /// <summary>Required. The type of the connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+    }
+
+    /// <summary>The details of the connector config. LINT.IfChange</summary>
+    public class GoogleChromeManagementVersionsV1ConnectorConfigDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>CrowdStrike connector config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crowdStrikeConfig")]
+        public virtual GoogleChromeManagementVersionsV1CrowdStrikeConfig CrowdStrikeConfig { get; set; }
+
+        /// <summary>CrowdStrike Falcon Next Gen connector config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crowdStrikeFalconNextGenConfig")]
+        public virtual GoogleChromeManagementVersionsV1CrowdStrikeFalconNextGenConfig CrowdStrikeFalconNextGenConfig { get; set; }
+
+        /// <summary>CrowdStrike XDR connector config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crowdStrikeXdrConfig")]
+        public virtual GoogleChromeManagementVersionsV1CrowdStrikeXdrConfig CrowdStrikeXdrConfig { get; set; }
+
+        /// <summary>Device trust connector config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceTrustConfig")]
+        public virtual GoogleChromeManagementVersionsV1DeviceTrustConfig DeviceTrustConfig { get; set; }
+
+        /// <summary>Google SecOps connector config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleSecOpsConfig")]
+        public virtual GoogleChromeManagementVersionsV1GoogleSecOpsConfig GoogleSecOpsConfig { get; set; }
+
+        /// <summary>Palo Alto Networks connector config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paloAltoNetworksConfig")]
+        public virtual GoogleChromeManagementVersionsV1PaloAltoNetworksConfig PaloAltoNetworksConfig { get; set; }
+
+        /// <summary>Pub/Sub connector config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubSubConfig")]
+        public virtual GoogleChromeManagementVersionsV1PubSubConfig PubSubConfig { get; set; }
+
+        /// <summary>Pub/Sub XDR connector config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubSubXdrConfig")]
+        public virtual GoogleChromeManagementVersionsV1PubSubXdrConfig PubSubXdrConfig { get; set; }
+
+        /// <summary>Splunk connector config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("splunkConfig")]
+        public virtual GoogleChromeManagementVersionsV1SplunkConfig SplunkConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of the connector config.</summary>
+    public class GoogleChromeManagementVersionsV1ConnectorConfigStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _failureStartTimeRaw;
+
+        private object _failureStartTime;
+
+        /// <summary>
+        /// Output only. Field recording time of the earliest failure since the last success event. This field is only
+        /// set when the state is `DISABLED_BY_FAILURES`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureStartTime")]
+        public virtual string FailureStartTimeRaw
+        {
+            get => _failureStartTimeRaw;
+            set
+            {
+                _failureStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _failureStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FailureStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FailureStartTimeDateTimeOffset instead.")]
+        public virtual object FailureStartTime
+        {
+            get => _failureStartTime;
+            set
+            {
+                _failureStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _failureStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="FailureStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FailureStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FailureStartTimeRaw);
+            set => FailureStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The state of the connector config. The connector state is disabled if the connector has not
+        /// successfully sent an event in the last 24 hours.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>
+        /// Output only. Field recording time of most recent modification of the status. For ENABLED, this is the time
+        /// the status was changed to ENABLED. For DISABLED_BY_FAILURES, this is the time of the most recent failed
+        /// attempt to send an event to this config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CrowdStrike connector config.</summary>
+    public class GoogleChromeManagementVersionsV1CrowdStrikeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Input only. API key to use on the ingestion API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKey")]
+        public virtual string ApiKey { get; set; }
+
+        /// <summary>Required. Host to identify the customer specific server to receive the events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>Required. The reporting settings for the CrowdStrike config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportingSettings")]
+        public virtual GoogleChromeManagementVersionsV1ReportingSettings ReportingSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CrowdStrike Falcon Next Gen connector config.</summary>
+    public class GoogleChromeManagementVersionsV1CrowdStrikeFalconNextGenConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Input only. API key to use on the ingestion API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKey")]
+        public virtual string ApiKey { get; set; }
+
+        /// <summary>Required. Host to identify the customer specific server to receive the events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>Required. The reporting settings for the CrowdStrike Falcon Next Gen config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportingSettings")]
+        public virtual GoogleChromeManagementVersionsV1ReportingSettings ReportingSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CrowdStrike XDR connector config.</summary>
+    public class GoogleChromeManagementVersionsV1CrowdStrikeXdrConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Input only. API key to use on the ingestion API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKey")]
+        public virtual string ApiKey { get; set; }
+
+        /// <summary>Required. Host to identify the customer specific server to receive the events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>Required. The XDR settings for the CrowdStrike XDR config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xdrSettings")]
+        public virtual GoogleChromeManagementVersionsV1XdrSettings XdrSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information of a device that runs a Chrome browser profile.</summary>
     public class GoogleChromeManagementVersionsV1DeviceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8784,6 +9290,40 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Device trust config for device trust connectors.</summary>
+    public class GoogleChromeManagementVersionsV1DeviceTrustConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The scope at which this configuration will be applied. Note that this only applies to Chrome
+        /// browser, as in ChromeOS it's always applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>
+        /// Required. A list of email addresses of the service accounts which are allowed to call the Verified Access
+        /// API with full access.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccounts")]
+        public virtual System.Collections.Generic.IList<string> ServiceAccounts { get; set; }
+
+        /// <summary>Optional. The service provider for the device trust connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceProvider")]
+        public virtual string ServiceProvider { get; set; }
+
+        /// <summary>
+        /// Required. List of URLs allowed to be part of the attestation flow to get the set of signals from the
+        /// machine. URLs must have HTTPS scheme, e.g. "https://example.com". Wildcards, *, are allowed. For detailed
+        /// information on valid URL patterns, please see
+        /// https://cloud.google.com/docs/chrome-enterprise/policies/url-patterns.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urlMatchers")]
+        public virtual System.Collections.Generic.IList<string> UrlMatchers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes a generic Certificate Authority Connection.</summary>
     public class GoogleChromeManagementVersionsV1GenericCaConnection : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8807,6 +9347,28 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileAdapterConfigReference")]
         public virtual string ProfileAdapterConfigReference { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Google SecOps connector config.</summary>
+    public class GoogleChromeManagementVersionsV1GoogleSecOpsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Input only. API key to use on the ingestion API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKey")]
+        public virtual string ApiKey { get; set; }
+
+        /// <summary>
+        /// Required. Host of ingestion API endpoint. Allows customer to upload events to servers in specific
+        /// geographical regions. Existing configs that don't have this setting default to US.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>Required. The reporting settings for the Google SecOps config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportingSettings")]
+        public virtual GoogleChromeManagementVersionsV1ReportingSettings ReportingSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8853,6 +9415,28 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response to ListConnectorConfigs method.</summary>
+    public class GoogleChromeManagementVersionsV1ListConnectorConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of connector configs returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementVersionsV1ConnectorConfig> ConnectorConfigs { get; set; }
+
+        /// <summary>
+        /// The page token used to retrieve the next page of the listing request. If the token is empty, there are no
+        /// more pages to retrieve.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The total size of the connector configs list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<int> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request to MoveThirdPartyProfileUser method.</summary>
     public class GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8872,6 +9456,55 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Output only. The moved third party profile user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyProfileUser")]
         public virtual GoogleChromeManagementVersionsV1ThirdPartyProfileUser ThirdPartyProfileUser { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Palo Alto Networks connector config.</summary>
+    public class GoogleChromeManagementVersionsV1PaloAltoNetworksConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Input only. API key to use on the ingestion API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKey")]
+        public virtual string ApiKey { get; set; }
+
+        /// <summary>Required. Host to identify the customer specific server to receive the events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>Required. The reporting settings for the Palo Alto Networks config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportingSettings")]
+        public virtual GoogleChromeManagementVersionsV1ReportingSettings ReportingSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Pub/Sub connector config.</summary>
+    public class GoogleChromeManagementVersionsV1PubSubConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The reporting settings for the Pub/Sub config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportingSettings")]
+        public virtual GoogleChromeManagementVersionsV1ReportingSettings ReportingSettings { get; set; }
+
+        /// <summary>Required. The full path to the topic to send the event to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topicFullPath")]
+        public virtual string TopicFullPath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Pub/Sub XDR connector config.</summary>
+    public class GoogleChromeManagementVersionsV1PubSubXdrConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The full path to the topic to send the event to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topicFullPath")]
+        public virtual string TopicFullPath { get; set; }
+
+        /// <summary>Required. The XDR settings for the Pub/Sub XDR config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xdrSettings")]
+        public virtual GoogleChromeManagementVersionsV1XdrSettings XdrSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9016,6 +9649,34 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Output only. Value of the policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Reporting settings for connector configs.</summary>
+    public class GoogleChromeManagementVersionsV1ReportingSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The list of user and browser events that are enabled for this connector. An empty list disables
+        /// all default events, and using `ALL_DEFAULT_EVENTS` will enable all default events.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledDefaultEvents")]
+        public virtual System.Collections.Generic.IList<string> EnabledDefaultEvents { get; set; }
+
+        /// <summary>
+        /// Optional. The list of device events that are enabled for this config. An empty list disables all device
+        /// events, and using `ALL_DEVICE_EVENTS` will enable all device events.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledDeviceEvents")]
+        public virtual System.Collections.Generic.IList<string> EnabledDeviceEvents { get; set; }
+
+        /// <summary>
+        /// Optional. The list of opt-in events that are enabled for this config. An empty list disables all opt-in
+        /// events, and using `ALL_OPT_IN_EVENTS` will enable all opt-in events.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledOptInEvents")]
+        public virtual System.Collections.Generic.IList<string> EnabledOptInEvents { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9181,6 +9842,41 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Splunk connector config.</summary>
+    public class GoogleChromeManagementVersionsV1SplunkConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Input only. The data input's HTTP Event Collector token to use as an Authorization header.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hecToken")]
+        public virtual string HecToken { get; set; }
+
+        /// <summary>Required. Host to identify the customer specific server to receive the events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>Optional. The port number to use. If not set, the default Splunk port is used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("portNumber")]
+        public virtual System.Nullable<int> PortNumber { get; set; }
+
+        /// <summary>Required. The reporting settings for the Splunk config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportingSettings")]
+        public virtual GoogleChromeManagementVersionsV1ReportingSettings ReportingSettings { get; set; }
+
+        /// <summary>
+        /// Optional. Optional source name to override the default one set in the Splunk admin console.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>Optional. Whether to use an unsecure HTTP scheme. Defaults to false (HTTPS).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unsecureScheme")]
+        public virtual System.Nullable<bool> UnsecureScheme { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes a subject alternative name.</summary>
     public class GoogleChromeManagementVersionsV1SubjectAltName : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9229,6 +9925,17 @@ namespace Google.Apis.ChromeManagement.v1.Data
     /// <summary>Response message for publishing an issued certificate for a certificate provisioning process.</summary>
     public class GoogleChromeManagementVersionsV1UploadCertificateResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>XDR settings for connector configs.</summary>
+    public class GoogleChromeManagementVersionsV1XdrSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Whether to enable all XDR events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableAllXdrEvents")]
+        public virtual System.Nullable<bool> EnableAllXdrEvents { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
