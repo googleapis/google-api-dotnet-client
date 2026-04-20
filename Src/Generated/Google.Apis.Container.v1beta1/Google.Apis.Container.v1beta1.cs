@@ -6897,6 +6897,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sliceControllerConfig")]
         public virtual SliceControllerConfig SliceControllerConfig { get; set; }
 
+        /// <summary>Configuration for the Slurm Operator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("slurmOperatorConfig")]
+        public virtual SlurmOperatorConfig SlurmOperatorConfig { get; set; }
+
         /// <summary>Optional. Configuration for the StatefulHA add-on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statefulHaConfig")]
         public virtual StatefulHAConfig StatefulHaConfig { get; set; }
@@ -13983,6 +13987,17 @@ namespace Google.Apis.Container.v1beta1.Data
     public class SliceControllerConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Indicates whether Slice Controller is enabled in the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the Slurm Operator.</summary>
+    public class SlurmOperatorConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the Slurm Operator is enabled in the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
