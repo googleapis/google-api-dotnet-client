@@ -5553,12 +5553,12 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
     }
 
     /// <summary>
-    /// The `Account` message represents a business's account within Shopping Ads. It's the primary entity for managing
-    /// product data, settings, and interactions with Google's services and external providers. Accounts can operate as
-    /// standalone entities or be part of a advanced account structure. In an advanced account setup the parent account
-    /// manages multiple sub-accounts. Establishing an account involves configuring attributes like the account name,
-    /// time zone, and language preferences. The `Account` message is the parent entity for many other resources, for
-    /// example, `AccountRelationship`, `Homepage`, `BusinessInfo` and so on.
+    /// The `Account` message represents a business's account within Merchant Center. It's the primary entity for
+    /// managing product data, settings, and interactions with Google's services and external providers. Accounts can
+    /// operate as standalone entities or be part of a advanced account structure. In an advanced account setup the
+    /// parent account manages multiple sub-accounts. Establishing an account involves configuring attributes like the
+    /// account name, time zone, and language preferences. The `Account` message is the parent entity for many other
+    /// resources, for example, `AccountRelationship`, `Homepage`, `BusinessInfo` and so on.
     /// </summary>
     public class Account : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7966,7 +7966,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
     /// listings](https://support.google.com/merchants/answer/13889434) program, which enables products from a
     /// business's store to be shown across Google for free. The following list is the available set of program resource
     /// IDs accessible through the API: * `checkout` * `free-listings` * `product-ratings` * `shopping-ads` *
-    /// `youtube-shopping-checkout`
+    /// `youtube-affiliate` * `youtube-shopping-checkout`
     /// </summary>
     public class Program : Google.Apis.Requests.IDirectResponseSchema
     {
