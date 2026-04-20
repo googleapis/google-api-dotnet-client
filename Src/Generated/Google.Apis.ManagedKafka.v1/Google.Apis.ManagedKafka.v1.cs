@@ -7541,8 +7541,8 @@ namespace Google.Apis.ManagedKafka.v1.Data
         public virtual CapacityConfig CapacityConfig { get; set; }
 
         /// <summary>
-        /// Optional. Configurations for the worker that are overridden from the defaults. The key of the map is a Kafka
-        /// Connect worker property name, for example: `exactly.once.source.support`.
+        /// Optional. Reserved for future use. This field is meant for worker config overrides, but is unsupported for
+        /// now.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual System.Collections.Generic.IDictionary<string, string> Config { get; set; }
