@@ -1816,8 +1816,8 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual string GoogleProductCategory { get; set; }
 
         /// <summary>
-        /// Global Trade Item Numbers ([GTIN](https://support.google.com/merchants/answer/188494#gtin)) of the item. You
-        /// can provide up to 10 GTINs.
+        /// Global Trade Item Numbers ([GTIN](https://support.google.com/merchants/answer/6324461)) of the item. You can
+        /// provide up to 10 GTINs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gtins")]
         public virtual System.Collections.Generic.IList<string> Gtins { get; set; }
@@ -1937,7 +1937,7 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual string MobileLinkTemplate { get; set; }
 
         /// <summary>
-        /// Manufacturer Part Number ([MPN](https://support.google.com/merchants/answer/188494#mpn)) of the item.
+        /// Manufacturer Part Number ([MPN](https://support.google.com/merchants/answer/6324482)) of the item.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mpn")]
         public virtual string Mpn { get; set; }
@@ -2155,6 +2155,14 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// <summary>The measure and dimension of an item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unitPricingMeasure")]
         public virtual UnitPricingMeasure UnitPricingMeasure { get; set; }
+
+        /// <summary>
+        /// Optional. A list of video URLs for the item. Use this attribute to provide more visuals for your product
+        /// beyond your image attributes. See the [Help Center
+        /// article](https://support.google.com/merchants/answer/15216925) for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoLinks")]
+        public virtual System.Collections.Generic.IList<string> VideoLinks { get; set; }
 
         /// <summary>
         /// URL of the 3D image of the item. See the [Help Center
@@ -2408,6 +2416,10 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// <summary>The amount the buyer has to pay per month.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
         public virtual Price Amount { get; set; }
+
+        /// <summary>Optional. Annual percentage rate for `credit_type` finance</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annualPercentageRate")]
+        public virtual System.Nullable<double> AnnualPercentageRate { get; set; }
 
         /// <summary>Type of installment payments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creditType")]
