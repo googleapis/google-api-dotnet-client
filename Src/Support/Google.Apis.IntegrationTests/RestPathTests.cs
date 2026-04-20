@@ -1,12 +1,24 @@
-﻿using Google;
-using Google.Apis.CloudMachineLearningEngine.v1;
-using Google.Apis.CloudMachineLearningEngine.v1.Data;
+﻿/*
+Copyright 2026 Google Inc
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+using Google;
+using Google.Apis.BigtableAdmin.v2;
+using Google.Apis.BigtableAdmin.v2.Data;
 using Google.Apis.Services;
 using IntegrationTests.Utils;
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
 using Xunit;
 
 namespace IntegrationTests
@@ -20,21 +32,21 @@ namespace IntegrationTests
             // This is fine, as the test is checking that the request URI is correctly formed,
             // not that the call itself works.
             // The check on the returned error ensures that the URI is correct.
-            // The "predict" method contains a ':' in the request path, which is what this test is testing.
-            var client = new CloudMachineLearningEngineService(new BaseClientService.Initializer
+            // The "GetIamPolicy" method contains a ':' in the request path, which is what this test is testing.
+            var client = new BigtableAdminService(new BaseClientService.Initializer
             {
                 HttpClientInitializer = Helper.GetServiceCredential()
-                    .CreateScoped(CloudMachineLearningEngineService.Scope.CloudPlatform),
-                ApplicationName = "IntegrationTest"
+                    .CreateScoped(BigtableAdminService.Scope.CloudPlatform),
+                ApplicationName = "IntegrationTest",
             });
-            var emptyBody = new GoogleCloudMlV1PredictRequest { HttpBody = new GoogleApiHttpBody() };
-            var request = client.Projects.Predict(emptyBody, "projects/dummyProject");
-            request.ModifyRequest = httpRequestMessage =>
-            {
-                httpRequestMessage.Content = new StringContent("dummyRequest", Encoding.UTF8, "application/json");
-            };
+            var request = client.Projects.Instances.GetIamPolicy(
+                new GetIamPolicyRequest
+                {
+                    Options = new GetPolicyOptions { RequestedPolicyVersion = 3 }
+                },
+                $"projects/{Helper.GetProjectId()}/instances/fake-instance");
             var ex = Assert.Throws<GoogleApiException>(() => request.Execute());
-            Assert.Contains("Permission denied on resource project dummyProject", ex.Message);
+            Assert.Contains("HttpStatusCode is NotFound.", ex.Message);
         }
     }
 }
