@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -589,6 +589,21 @@ namespace Google.Apis.HomeGraphService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains the set of updates for a component.</summary>
+    public class ComponentTraitUpdates : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. ID of the component from the device provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("componentId")]
+        public virtual string ComponentId { get; set; }
+
+        /// <summary>Required. The updated trait data for the component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("traitData")]
+        public virtual System.Collections.Generic.IList<TraitData> TraitData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Third-party device definition.</summary>
     public class Device : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -730,6 +745,106 @@ namespace Google.Apis.HomeGraphService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains the details for a single event.</summary>
+    public class EventData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The actual event payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("event")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Event__ { get; set; }
+
+        /// <summary>Required. The unique event ID from the device provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
+        public virtual string EventId { get; set; }
+
+        private string _eventTimeRaw;
+
+        private object _eventTime;
+
+        /// <summary>Required. The timestamp of the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
+        public virtual string EventTimeRaw
+        {
+            get => _eventTimeRaw;
+            set
+            {
+                _eventTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _eventTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventTimeDateTimeOffset instead.")]
+        public virtual object EventTime
+        {
+            get => _eventTime;
+            set
+            {
+                _eventTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _eventTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EventTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains a set of events for a specific component.</summary>
+    public class Events : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The ID of the provider component if the events are associated with a specific component. Optional
+        /// for WHDM events, required for UDDM events.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("componentId")]
+        public virtual string ComponentId { get; set; }
+
+        /// <summary>Required. List of events associated with the component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("events")]
+        public virtual System.Collections.Generic.IList<EventData> EventsValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the set of events for an item.</summary>
+    public class HomeEvents : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. / Unique identifier for the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
+        public virtual string DeviceId { get; set; }
+
+        /// <summary>Required. List of events for the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("events")]
+        public virtual System.Collections.Generic.IList<Events> Events { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the set of updates for a device.</summary>
+    public class HomeTraitUpdates : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Trait updates for each component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("components")]
+        public virtual System.Collections.Generic.IList<ComponentTraitUpdates> Components { get; set; }
+
+        /// <summary>Required. Unique identifier for the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
+        public virtual string DeviceId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request type for the [`Query`](#google.home.graph.v1.HomeGraphApiService.Query) call.</summary>
     public class QueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -809,6 +924,14 @@ namespace Google.Apis.HomeGraphService.v1.Data
     /// <summary>The states and notifications specific to a device.</summary>
     public class ReportStateAndNotificationDevice : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. UDDM/WHDM trait events</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("homeEvents")]
+        public virtual System.Collections.Generic.IList<HomeEvents> HomeEvents { get; set; }
+
+        /// <summary>Optional. UDDM/WHDM trait updates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("homeTraits")]
+        public virtual System.Collections.Generic.IList<HomeTraitUpdates> HomeTraits { get; set; }
+
         /// <summary>
         /// Notifications metadata for devices. See the **Device NOTIFICATIONS** section of the individual trait
         /// [reference guides](https://developers.home.google.com/cloud-to-cloud/traits).
@@ -972,6 +1095,17 @@ namespace Google.Apis.HomeGraphService.v1.Data
         /// <summary>Devices associated with the third-party user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("devices")]
         public virtual System.Collections.Generic.IList<Device> Devices { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the trait payload for a single trait.</summary>
+    public class TraitData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The Home API trait payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trait")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Trait { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
