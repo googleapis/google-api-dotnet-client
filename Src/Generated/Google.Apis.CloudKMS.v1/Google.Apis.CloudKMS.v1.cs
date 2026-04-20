@@ -9863,6 +9863,13 @@ namespace Google.Apis.CloudKMS.v1.Data
         }
 
         /// <summary>
+        /// Optional. Immutable. Indicates whether key portability is enabled for the SingleTenantHsmInstance. This can
+        /// only be set at creation time. Key portability features are disabled by default and not yet available in GA.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyPortabilityEnabled")]
+        public virtual System.Nullable<bool> KeyPortabilityEnabled { get; set; }
+
+        /// <summary>
         /// Identifier. The resource name for this SingleTenantHsmInstance in the format
         /// `projects/*/locations/*/singleTenantHsmInstances/*`.
         /// </summary>
