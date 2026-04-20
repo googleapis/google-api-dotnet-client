@@ -148,7 +148,7 @@ namespace Google.Apis.Services
             public Initializer()
             {
                 GZipEnabled = true;
-                Serializer = new NewtonsoftJsonSerializer();
+                Serializer = NewtonsoftJsonSerializer.Instance;
                 DefaultExponentialBackOffPolicy = ExponentialBackOffPolicy.UnsuccessfulResponse503;
                 MaxUrlLength = DefaultMaxUrlLength;
                 VersionHeaderBuilder = new VersionHeaderBuilder()
