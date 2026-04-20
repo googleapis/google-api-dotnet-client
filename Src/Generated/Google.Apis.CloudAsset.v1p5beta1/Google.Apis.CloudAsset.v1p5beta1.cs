@@ -1497,8 +1497,8 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     {
         /// <summary>
         /// A list of identities that are allowed access through [EgressPolicy]. Identities can be an individual user,
-        /// service account, Google group, or third-party identity. For the list of supported identity types, see
-        /// https://docs.cloud.google.com/vpc-service-controls/docs/supported-identities.
+        /// service account, Google group, third-party identity, or agent identity. For the list of supported identity
+        /// types, see https://docs.cloud.google.com/vpc-service-controls/docs/supported-identities.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identities")]
         public virtual System.Collections.Generic.IList<string> Identities { get; set; }
@@ -1646,8 +1646,8 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     {
         /// <summary>
         /// A list of identities that are allowed access through [IngressPolicy]. Identities can be an individual user,
-        /// service account, Google group, or third-party identity. For the list of supported identity types, see
-        /// https://docs.cloud.google.com/vpc-service-controls/docs/supported-identities.
+        /// service account, Google group, third-party identity, or agent identity. For the list of supported identity
+        /// types, see https://docs.cloud.google.com/vpc-service-controls/docs/supported-identities.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identities")]
         public virtual System.Collections.Generic.IList<string> Identities { get; set; }
