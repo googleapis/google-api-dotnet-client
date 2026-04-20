@@ -1083,8 +1083,8 @@ namespace Google.Apis.NetworkManagement.v1beta1
 
             /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
-            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
-            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
             /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
             /// that specific project. This includes public, private, or other project-specific locations enabled for
             /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
@@ -1099,8 +1099,8 @@ namespace Google.Apis.NetworkManagement.v1beta1
 
             /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
-            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
-            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
             /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
             /// that specific project. This includes public, private, or other project-specific locations enabled for
             /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
@@ -2941,8 +2941,8 @@ namespace Google.Apis.NetworkManagement.v1beta1
 
             /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
-            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
-            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
             /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
             /// that specific project. This includes public, private, or other project-specific locations enabled for
             /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
@@ -2957,8 +2957,8 @@ namespace Google.Apis.NetworkManagement.v1beta1
 
             /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
-            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
-            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
             /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
             /// that specific project. This includes public, private, or other project-specific locations enabled for
             /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
@@ -3770,6 +3770,22 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// <summary>A [Cloud SQL](https://cloud.google.com/sql) instance URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlInstance")]
         public virtual string CloudSqlInstance { get; set; }
+
+        /// <summary>
+        /// A [Datastream Private
+        /// Connection](https://docs.cloud.google.com/datastream/docs/reference/rest/v1/projects.locations.privateConnections)
+        /// name format: projects/{project}/locations/{location}/privateConnections/{privateConnection}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datastreamPrivateConnection")]
+        public virtual string DatastreamPrivateConnection { get; set; }
+
+        /// <summary>
+        /// A [DMS Private
+        /// Connection](https://docs.cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.privateConnections)
+        /// name format: projects/{project}/locations/{location}/privateConnections/{privateConnection}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dmsPrivateConnection")]
+        public virtual string DmsPrivateConnection { get; set; }
 
         /// <summary>
         /// A forwarding rule and its corresponding IP address represent the frontend configuration of a Google Cloud
@@ -5310,7 +5326,8 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
 
         /// <summary>
         /// Region of the route. DYNAMIC, PEERING_DYNAMIC, POLICY_BASED and ADVERTISED routes only. If set for
-        /// POLICY_BASED route, this is a region of VLAN attachments for Cloud Interconnect the route applies to.
+        /// POLICY_BASED route, this is a region of VLAN attachments for Cloud Interconnect the route applies to. If set
+        /// to "all" for POLICY_BASED route, the route applies to VLAN attachments of Cloud Interconnect in all regions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
