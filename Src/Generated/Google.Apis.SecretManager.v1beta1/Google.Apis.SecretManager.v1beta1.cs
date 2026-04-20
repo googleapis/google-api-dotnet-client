@@ -341,10 +341,14 @@ namespace Google.Apis.SecretManager.v1beta1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -353,10 +357,14 @@ namespace Google.Apis.SecretManager.v1beta1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
+            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             public class ListRequest : SecretManagerBaseServiceRequest<Google.Apis.SecretManager.v1beta1.Data.ListLocationsResponse>
             {
@@ -1846,7 +1854,7 @@ namespace Google.Apis.SecretManager.v1beta1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. The time the operation was created.</summary>
+        /// <summary>Output only. Time the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -1883,7 +1891,7 @@ namespace Google.Apis.SecretManager.v1beta1.Data
 
         private object _endTime;
 
-        /// <summary>Output only. The time the operation finished running.</summary>
+        /// <summary>Output only. Time the operation finished running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual string EndTimeRaw
         {
@@ -1915,6 +1923,13 @@ namespace Google.Apis.SecretManager.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Output only. Represents the progress of the operation. This field is populated for operations that involve
+        /// processing multiple secret versions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progress")]
+        public virtual Progress Progress { get; set; }
 
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
@@ -2015,6 +2030,27 @@ namespace Google.Apis.SecretManager.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>Represents progress information for operations involving multiple secret versions.</summary>
+    public class Progress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Number of secret versions that have been successfully processed so far.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completedVersionCount")]
+        public virtual System.Nullable<int> CompletedVersionCount { get; set; }
+
+        /// <summary>Output only. Number of secret versions that failed to process.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedVersionCount")]
+        public virtual System.Nullable<int> FailedVersionCount { get; set; }
+
+        /// <summary>
+        /// Output only. Provides the total number of secret versions to be processed by the operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalVersionCount")]
+        public virtual System.Nullable<int> TotalVersionCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Represents a Replica for this Secret.</summary>
