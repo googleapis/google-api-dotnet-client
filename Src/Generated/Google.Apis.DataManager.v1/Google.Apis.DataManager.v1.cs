@@ -68,6 +68,12 @@ namespace Google.Apis.DataManager.v1
             /// (Campaign Manager 360, Search Ads 360, Display &amp;amp; Video 360), and Google Analytics
             /// </summary>
             public static string Datamanager = "https://www.googleapis.com/auth/datamanager";
+
+            /// <summary>
+            /// View, create, or delete your partner links in Google Ads, Marketing Platform (Campaign Manager 360,
+            /// Search Ads 360, Display &amp;amp; Video 360), and Analytics
+            /// </summary>
+            public static string DatamanagerPartnerlink = "https://www.googleapis.com/auth/datamanager.partnerlink";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Data Manager API.</summary>
@@ -78,6 +84,12 @@ namespace Google.Apis.DataManager.v1
             /// (Campaign Manager 360, Search Ads 360, Display &amp;amp; Video 360), and Google Analytics
             /// </summary>
             public const string Datamanager = "https://www.googleapis.com/auth/datamanager";
+
+            /// <summary>
+            /// View, create, or delete your partner links in Google Ads, Marketing Platform (Campaign Manager 360,
+            /// Search Ads 360, Display &amp;amp; Video 360), and Analytics
+            /// </summary>
+            public const string DatamanagerPartnerlink = "https://www.googleapis.com/auth/datamanager.partnerlink";
         }
 
         /// <summary>Gets the AccountTypes resource.</summary>
