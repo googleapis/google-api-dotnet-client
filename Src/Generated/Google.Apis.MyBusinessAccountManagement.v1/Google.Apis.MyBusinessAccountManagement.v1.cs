@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1694,7 +1694,7 @@ namespace Google.Apis.MyBusinessAccountManagement.v1.Data
     /// <summary>Represents a target location for a pending invitation.</summary>
     public class TargetLocation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The address of the location to which the user is invited.</summary>
+        /// <summary>The address of the location to which the user is invited. Not always populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string Address { get; set; }
 
