@@ -2632,6 +2632,24 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         public virtual System.Nullable<long> LocationId { get; set; }
 
         /// <summary>
+        /// Optional. The label of the [loyalty program](https://support.google.com/merchants/answer/6324484). Must
+        /// match one of the program labels set in loyalty_programs. When set (in combination with
+        /// [loyalty_tier_label](https://support.google.com/merchants/answer/6324484)), this shipping option is only
+        /// applicable to loyalty program members of the specified tier.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loyaltyProgramLabel")]
+        public virtual string LoyaltyProgramLabel { get; set; }
+
+        /// <summary>
+        /// Optional. The label of the [loyalty tier](https://support.google.com/merchants/answer/6324484) within the
+        /// loyalty program. Must match one of the tiers set in the loyalty_programs. When set (in combination with
+        /// [loyalty_program_label](https://support.google.com/merchants/answer/6324484)), this shipping option is only
+        /// applicable to loyalty program members of the specified tier.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loyaltyTierLabel")]
+        public virtual string LoyaltyTierLabel { get; set; }
+
+        /// <summary>
         /// Maximum handling time (inclusive) between when the order is received and shipped in business days. 0 means
         /// that the order is shipped on the same day as it is received if it happens before the cut-off time. Both
         /// maxHandlingTime and maxTransitTime are required if providing shipping speeds. minHandlingTime is optional if
