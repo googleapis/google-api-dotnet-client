@@ -1925,6 +1925,14 @@ namespace Google.Apis.Merchant.products_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minHandlingTime")]
         public virtual System.Nullable<long> MinHandlingTime { get; set; }
 
+        /// <summary>
+        /// The [minimum value](https://support.google.com/merchants/answer/16989009) in the cart before a customer can
+        /// initiate checkout. Supports multiple minimum order values. Different minimum order values can be specified
+        /// per country, service and surface. Maximum entries: 100.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumOrderValues")]
+        public virtual System.Collections.Generic.IList<ProductMinimumOrderValue> MinimumOrderValues { get; set; }
+
         /// <summary>URL for the mobile-optimized version of your item's landing page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileLink")]
         public virtual string MobileLink { get; set; }
@@ -2437,6 +2445,37 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The minimum order value in the cart before the checkout is permitted.</summary>
+    public class ProductMinimumOrderValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) of the
+        /// country to which an item will ship.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("country")]
+        public virtual string Country { get; set; }
+
+        /// <summary>Required. The minimum cart or basket value before the checkout is permitted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("price")]
+        public virtual Price Price { get; set; }
+
+        /// <summary>
+        /// A free-form description of the service class or delivery speed. This should match the service value set for
+        /// the Shipping attribute. See service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>
+        /// The surface to which the minimum order value applies. Defaults to `ONLINE_LOCAL` if not configured.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("surface")]
+        public virtual string Surface { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The status of a product, data validation issues, that is, information about a product computed asynchronously.
     /// </summary>
@@ -2771,6 +2810,24 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual System.Nullable<long> LocationId { get; set; }
+
+        /// <summary>
+        /// Optional. The label of the [loyalty program](https://support.google.com/merchants/answer/6324484). Must
+        /// match one of the program labels set in loyalty_programs. When set (in combination with
+        /// [loyalty_tier_label](https://support.google.com/merchants/answer/6324484)), this shipping option is only
+        /// applicable to loyalty program members of the specified tier.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loyaltyProgramLabel")]
+        public virtual string LoyaltyProgramLabel { get; set; }
+
+        /// <summary>
+        /// Optional. The label of the [loyalty tier](https://support.google.com/merchants/answer/6324484) within the
+        /// loyalty program. Must match one of the tiers set in the loyalty_programs. When set (in combination with
+        /// [loyalty_program_label](https://support.google.com/merchants/answer/6324484)), this shipping option is only
+        /// applicable to loyalty program members of the specified tier.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loyaltyTierLabel")]
+        public virtual string LoyaltyTierLabel { get; set; }
 
         /// <summary>
         /// Maximum handling time (inclusive) between when the order is received and shipped in business days. 0 means
