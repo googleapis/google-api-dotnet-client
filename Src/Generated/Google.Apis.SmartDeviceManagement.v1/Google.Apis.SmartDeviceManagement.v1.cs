@@ -695,7 +695,7 @@ namespace Google.Apis.SmartDeviceManagement.v1.Data
     /// <summary>Device resource represents an instance of enterprise managed device in the property.</summary>
     public class GoogleHomeEnterpriseSdmV1Device : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The GHP device ID of the device.</summary>
+        /// <summary>Output only. The Home APIs device ID of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ghpName")]
         public virtual string GhpName { get; set; }
 
@@ -794,7 +794,7 @@ namespace Google.Apis.SmartDeviceManagement.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Output only. The GHP name of the relation -- e.g., structure/room where the device is assigned to. For
+        /// Output only. The Home APIs name of the relation -- e.g., structure/room where the device is assigned to. For
         /// example: "homegraph.googleapis.com/Structure/ABC" or "homegraph.googleapis.com/Room/ABC"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ghpParent")]
