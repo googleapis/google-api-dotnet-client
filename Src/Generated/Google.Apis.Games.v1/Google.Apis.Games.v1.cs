@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3320,6 +3320,10 @@ namespace Google.Apis.Games.v1.Data
     /// <summary>An achievement definition object.</summary>
     public class AchievementDefinition : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The lifecycle state of the achievement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("achievementLifecycleState")]
+        public virtual string AchievementLifecycleState { get; set; }
+
         /// <summary>The type of the achievement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("achievementType")]
         public virtual string AchievementType { get; set; }
