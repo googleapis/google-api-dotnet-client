@@ -7835,7 +7835,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>
         /// The body of the private key credentials file, in string format. This is only populated when the
-        /// ServiceAccountKey is created, and is not stored by Google.
+        /// ServiceAccountKey is created, and is not stored by Google. When type is "pkcs12", the contents of the data
+        /// field is base64 encoded and has the password "notasecret".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; }
