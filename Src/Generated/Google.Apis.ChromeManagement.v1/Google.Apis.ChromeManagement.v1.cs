@@ -1389,13 +1389,6 @@ namespace Google.Apis.ChromeManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>
-                /// Optional. The etag of the connector config. If an etag is provided and does not match the current
-                /// etag of the connector config, deletion will be blocked and an ABORTED error will be returned.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Etag { get; set; }
-
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
@@ -1416,14 +1409,6 @@ namespace Google.Apis.ChromeManagement.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^customers/[^/]+/connectorConfigs/[^/]+$",
-                    });
-                    RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "etag",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
                     });
                 }
             }
@@ -1542,6 +1527,71 @@ namespace Google.Apis.ChromeManagement.v1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates a connector config.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Identifier. Format: customers/{customer}/connectorConfigs/{connector_config}</param>
+            public virtual PatchRequest Patch(Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ConnectorConfig body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates a connector config.</summary>
+            public class PatchRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ConnectorConfig>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ConnectorConfig body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Identifier. Format: customers/{customer}/connectorConfigs/{connector_config}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Optional. The update mask that can be used to specify which fields to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ConnectorConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+/connectorConfigs/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -9042,13 +9092,6 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>
-        /// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on
-        /// update and delete requests to ensure the client has an up-to-date value before proceeding.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; }
-
         /// <summary>Identifier. Format: customers/{customer}/connectorConfigs/{connector_config}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -9060,9 +9103,12 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Required. The type of the connector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
-    /// <summary>The details of the connector config. LINT.IfChange</summary>
+    /// <summary>The details of the connector config.</summary>
     public class GoogleChromeManagementVersionsV1ConnectorConfigDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>CrowdStrike connector config.</summary>
@@ -9162,8 +9208,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         private object _updateTime;
 
         /// <summary>
-        /// Output only. Field recording time of most recent modification of the status. For ENABLED, this is the time
-        /// the status was changed to ENABLED. For DISABLED_BY_FAILURES, this is the time of the most recent failed
+        /// Output only. Field recording time of most recent modification of the status. For `ENABLED`, this is the time
+        /// the status was changed to `ENABLED`. For `DISABLED_BY_FAILURES`, this is the time of the most recent failed
         /// attempt to send an event to this config.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
@@ -9428,10 +9474,6 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
-
-        /// <summary>The total size of the connector configs list.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
-        public virtual System.Nullable<int> TotalSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
