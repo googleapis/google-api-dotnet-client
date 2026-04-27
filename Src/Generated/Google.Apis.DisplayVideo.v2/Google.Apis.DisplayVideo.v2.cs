@@ -23466,7 +23466,11 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creativeIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> CreativeIds { get; set; }
 
-        /// <summary>Optional. Settings specific to Demand Gen line items.</summary>
+        /// <summary>
+        /// Optional. Settings specific to Demand Gen line items. Only applicable to Demand Gen line items. Retrieval
+        /// and management of Demand Gen resources is currently in beta. This field is only available to allowlisted
+        /// users.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("demandGenSettings")]
         public virtual DemandGenSettings DemandGenSettings { get; set; }
 
@@ -26414,6 +26418,10 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowInStream")]
         public virtual System.Nullable<bool> AllowInStream { get; set; }
 
+        /// <summary>Optional. Indicates whether ads can serve as non-skippable in-stream format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowNonSkippableInStream")]
+        public virtual System.Nullable<bool> AllowNonSkippableInStream { get; set; }
+
         /// <summary>Optional. Whether ads can serve as shorts format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowShorts")]
         public virtual System.Nullable<bool> AllowShorts { get; set; }
@@ -26783,9 +26791,8 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// The value used by the bidding strategy. When the bidding strategy is assigned at the line item level, this
         /// field is only applicable for the following strategy types: *
         /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` *
-        /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` *
-        /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_RESERVE_SHARE_OF_VOICE` When the bidding strategy is assigned at
-        /// the ad group level, this field is only applicable for the following strategy types: *
+        /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` When the bidding strategy is assigned at the ad
+        /// group level, this field is only applicable for the following strategy types: *
         /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPM` *
         /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPV` *
         /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` *
