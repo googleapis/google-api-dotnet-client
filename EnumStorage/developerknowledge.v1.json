@@ -1,0 +1,23 @@
+{
+  "Google.Apis.DeveloperKnowledge.v1.DeveloperKnowledgeBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.DeveloperKnowledge.v1.DeveloperKnowledgeBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.DeveloperKnowledge.v1.DocumentsResource+BatchGetRequest.ViewEnum": [
+    "DOCUMENT_VIEW_UNSPECIFIED",
+    "DOCUMENT_VIEW_BASIC",
+    "DOCUMENT_VIEW_FULL",
+    "DOCUMENT_VIEW_CONTENT"
+  ],
+  "Google.Apis.DeveloperKnowledge.v1.DocumentsResource+GetRequest.ViewEnum": [
+    "DOCUMENT_VIEW_UNSPECIFIED",
+    "DOCUMENT_VIEW_BASIC",
+    "DOCUMENT_VIEW_FULL",
+    "DOCUMENT_VIEW_CONTENT"
+  ]
+}
