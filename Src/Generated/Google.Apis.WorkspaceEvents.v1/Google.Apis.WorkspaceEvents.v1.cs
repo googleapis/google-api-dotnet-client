@@ -125,6 +125,12 @@ namespace Google.Apis.WorkspaceEvents.v1
             /// <summary>View chat and spaces in Google Chat</summary>
             public static string ChatSpacesReadonly = "https://www.googleapis.com/auth/chat.spaces.readonly";
 
+            /// <summary>View and modify last read time for Google Chat conversations</summary>
+            public static string ChatUsersReadstate = "https://www.googleapis.com/auth/chat.users.readstate";
+
+            /// <summary>View last read time for Google Chat conversations</summary>
+            public static string ChatUsersReadstateReadonly = "https://www.googleapis.com/auth/chat.users.readstate.readonly";
+
             /// <summary>See, edit, create, and delete all of your Google Drive files</summary>
             public static string Drive = "https://www.googleapis.com/auth/drive";
 
@@ -215,6 +221,12 @@ namespace Google.Apis.WorkspaceEvents.v1
 
             /// <summary>View chat and spaces in Google Chat</summary>
             public const string ChatSpacesReadonly = "https://www.googleapis.com/auth/chat.spaces.readonly";
+
+            /// <summary>View and modify last read time for Google Chat conversations</summary>
+            public const string ChatUsersReadstate = "https://www.googleapis.com/auth/chat.users.readstate";
+
+            /// <summary>View last read time for Google Chat conversations</summary>
+            public const string ChatUsersReadstateReadonly = "https://www.googleapis.com/auth/chat.users.readstate.readonly";
 
             /// <summary>See, edit, create, and delete all of your Google Drive files</summary>
             public const string Drive = "https://www.googleapis.com/auth/drive";
