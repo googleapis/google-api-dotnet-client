@@ -4819,8 +4819,8 @@ namespace Google.Apis.CustomerEngagementSuite.v1
 
             /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
-            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
-            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
             /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
             /// that specific project. This includes public, private, or other project-specific locations enabled for
             /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
@@ -4835,8 +4835,8 @@ namespace Google.Apis.CustomerEngagementSuite.v1
 
             /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
-            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
-            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
             /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
             /// that specific project. This includes public, private, or other project-specific locations enabled for
             /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
@@ -4857,8 +4857,8 @@ namespace Google.Apis.CustomerEngagementSuite.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Do not use this field unless explicitly documented otherwise. This is primarily for
+                /// internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -7039,6 +7039,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
+        /// <summary>Optional. Experiment configuration for the deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("experimentConfig")]
+        public virtual ExperimentConfig ExperimentConfig { get; set; }
+
         /// <summary>
         /// Identifier. The resource name of the deployment. Format:
         /// `projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}`
@@ -7544,6 +7548,54 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// <summary>The variable values at the end of the tool execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variables")]
         public virtual System.Collections.Generic.IDictionary<string, object> Variables { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Experiment for the deployment.</summary>
+    public class ExperimentConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Version release for the experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionRelease")]
+        public virtual ExperimentConfigVersionRelease VersionRelease { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Version release for the experiment.</summary>
+    public class ExperimentConfigVersionRelease : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. State of the version release.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Optional. Traffic allocations for the version release.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trafficAllocations")]
+        public virtual System.Collections.Generic.IList<ExperimentConfigVersionReleaseTrafficAllocation> TrafficAllocations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Traffic allocation for the version release.</summary>
+    public class ExperimentConfigVersionReleaseTrafficAllocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. App version of the traffic allocation. Format:
+        /// `projects/{project}/locations/{location}/apps/{app}/versions/{version}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appVersion")]
+        public virtual string AppVersion { get; set; }
+
+        /// <summary>Optional. Id of the traffic allocation. Free format string, up to 128 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Optional. Traffic percentage of the traffic allocation. Must be between 0 and 100.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trafficPercentage")]
+        public virtual System.Nullable<int> TrafficPercentage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8563,6 +8615,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("redactionConfig")]
         public virtual RedactionConfig RedactionConfig { get; set; }
 
+        /// <summary>
+        /// Optional. Configures recording of unredacted audio. Use this to maintain a raw backup with restricted access
+        /// when audio redaction is enabled, typically for auditing or monitoring purposes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unredactedAudioRecordingConfig")]
+        public virtual AudioRecordingConfig UnredactedAudioRecordingConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8782,7 +8841,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mockResponse")]
         public virtual System.Collections.Generic.IDictionary<string, object> MockResponse { get; set; }
 
-        /// <summary>Required. Deprecated. Use tool_identifier instead.</summary>
+        /// <summary>Optional. Deprecated. Use tool_identifier instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tool")]
         public virtual string Tool { get; set; }
 
@@ -10832,6 +10891,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual Schema Parameters { get; set; }
 
+        /// <summary>Optional. Configuration for always-included text responses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textResponseConfig")]
+        public virtual WidgetToolTextResponseConfig TextResponseConfig { get; set; }
+
         /// <summary>Optional. Configuration for rendering the widget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uiConfig")]
         public virtual System.Collections.Generic.IDictionary<string, object> UiConfig { get; set; }
@@ -10876,6 +10939,28 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceToolName")]
         public virtual string SourceToolName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the text response returned with the widget.</summary>
+    public class WidgetToolTextResponseConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The static text response to return when type is STATIC.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("staticText")]
+        public virtual string StaticText { get; set; }
+
+        /// <summary>
+        /// Optional. Instruction for the LLM on how to generate the text response. Used as the description for the text
+        /// response parameter if type is LLM_GENERATED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textResponseInstruction")]
+        public virtual string TextResponseInstruction { get; set; }
+
+        /// <summary>Optional. The strategy for providing the text response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
