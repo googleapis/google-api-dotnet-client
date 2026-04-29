@@ -1125,8 +1125,9 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
             }
 
             /// <summary>
-            /// Gets the version of the specified location, returning an `Attributes` message that provides the
-            /// attributes view as it appears to consumers, which may be different than the merchant's information.
+            /// Retrieves attributes for a location as they appear live on Google Maps and Search. This consumer-facing
+            /// view may have been updated by Google or user-generated content and may differ from the merchant's
+            /// version.
             /// </summary>
             /// <param name="name">
             /// Required. Google identifier for this location in the form of `locations/{location_id}/attributes`.
@@ -1137,8 +1138,9 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
             }
 
             /// <summary>
-            /// Gets the version of the specified location, returning an `Attributes` message that provides the
-            /// attributes view as it appears to consumers, which may be different than the merchant's information.
+            /// Retrieves attributes for a location as they appear live on Google Maps and Search. This consumer-facing
+            /// view may have been updated by Google or user-generated content and may differ from the merchant's
+            /// version.
             /// </summary>
             public class GetGoogleUpdatedRequest : MyBusinessBusinessInformationBaseServiceRequest<Google.Apis.MyBusinessBusinessInformation.v1.Data.Attributes>
             {
@@ -1233,14 +1235,20 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
             }
         }
 
-        /// <summary>Returns the specified location.</summary>
+        /// <summary>
+        /// Returns the specified location as last set by the merchant. It may not reflect updates from Google or
+        /// user-generated content that are live on Google Maps.
+        /// </summary>
         /// <param name="name">Required. The name of the location to fetch.</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(this.service, name);
         }
 
-        /// <summary>Returns the specified location.</summary>
+        /// <summary>
+        /// Returns the specified location as last set by the merchant. It may not reflect updates from Google or
+        /// user-generated content that are live on Google Maps.
+        /// </summary>
         public class GetRequest : MyBusinessBusinessInformationBaseServiceRequest<Google.Apis.MyBusinessBusinessInformation.v1.Data.Location>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1290,7 +1298,10 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
             }
         }
 
-        /// <summary>Looks up all the attributes set for a given location.</summary>
+        /// <summary>
+        /// Retrieves attributes for a location as last set by the merchant. It may not reflect updates from Google or
+        /// user-generated content that are live on Google Maps.
+        /// </summary>
         /// <param name="name">
         /// Required. Google identifier for this location in the form of `locations/{location_id}/attributes`.
         /// </param>
@@ -1299,7 +1310,10 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
             return new GetAttributesRequest(this.service, name);
         }
 
-        /// <summary>Looks up all the attributes set for a given location.</summary>
+        /// <summary>
+        /// Retrieves attributes for a location as last set by the merchant. It may not reflect updates from Google or
+        /// user-generated content that are live on Google Maps.
+        /// </summary>
         public class GetAttributesRequest : MyBusinessBusinessInformationBaseServiceRequest<Google.Apis.MyBusinessBusinessInformation.v1.Data.Attributes>
         {
             /// <summary>Constructs a new GetAttributes request.</summary>
@@ -1340,8 +1354,9 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
         }
 
         /// <summary>
-        /// Gets the version of the specified location, returning a `GoogleUpdatedLocation` that provides the location
-        /// view as it appears to consumers and masks indicating which fields are different than the merchant's
+        /// Returns the specified location as it appears live on Google Maps and Search. This consumer-facing view may
+        /// have been updated by Google or user-generated content and may differ from the merchant's version. The
+        /// returned GoogleUpdatedLocation contains masks that indicate which fields differ from the merchant's
         /// information.
         /// </summary>
         /// <param name="name">Required. The name of the location to fetch.</param>
@@ -1351,8 +1366,9 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
         }
 
         /// <summary>
-        /// Gets the version of the specified location, returning a `GoogleUpdatedLocation` that provides the location
-        /// view as it appears to consumers and masks indicating which fields are different than the merchant's
+        /// Returns the specified location as it appears live on Google Maps and Search. This consumer-facing view may
+        /// have been updated by Google or user-generated content and may differ from the merchant's version. The
+        /// returned GoogleUpdatedLocation contains masks that indicate which fields differ from the merchant's
         /// information.
         /// </summary>
         public class GetGoogleUpdatedRequest : MyBusinessBusinessInformationBaseServiceRequest<Google.Apis.MyBusinessBusinessInformation.v1.Data.GoogleUpdatedLocation>
