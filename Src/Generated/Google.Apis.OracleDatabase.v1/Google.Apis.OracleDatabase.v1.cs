@@ -5790,8 +5790,8 @@ namespace Google.Apis.OracleDatabase.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Do not use this field unless explicitly documented otherwise. This is primarily for
+                /// internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -9231,6 +9231,12 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
+        /// <summary>
+        /// Unreachable locations when listing resources across all locations using wildcard location '-'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9261,6 +9267,12 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
+        /// <summary>
+        /// Unreachable locations when listing resources across all locations using wildcard location '-'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9275,6 +9287,12 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// <summary>A token to fetch the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// Unreachable locations when listing resources across all locations using wildcard location '-'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9381,6 +9399,12 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
+        /// <summary>
+        /// Unreachable locations when listing resources across all locations using wildcard location '-'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9426,6 +9450,12 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
+        /// <summary>
+        /// Unreachable locations when listing resources across all locations using wildcard location '-'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9444,6 +9474,12 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// Unreachable locations when listing resources across all locations using wildcard location '-'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
