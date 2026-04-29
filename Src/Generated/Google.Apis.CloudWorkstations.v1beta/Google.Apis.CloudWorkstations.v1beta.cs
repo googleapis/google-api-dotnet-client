@@ -1251,6 +1251,71 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         }
 
                         /// <summary>
+                        /// Pushes credentials to a running workstation on behalf of a user. Once complete, supported
+                        /// credential types (application_default_credentials) are made available to processes running
+                        /// in the user container.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="workstation">
+                        /// Required. Name of the workstation for which the credentials should be pushed.
+                        /// </param>
+                        public virtual PushCredentialsRequest PushCredentials(Google.Apis.CloudWorkstations.v1beta.Data.PushCredentialsRequest body, string workstation)
+                        {
+                            return new PushCredentialsRequest(this.service, body, workstation);
+                        }
+
+                        /// <summary>
+                        /// Pushes credentials to a running workstation on behalf of a user. Once complete, supported
+                        /// credential types (application_default_credentials) are made available to processes running
+                        /// in the user container.
+                        /// </summary>
+                        public class PushCredentialsRequest : CloudWorkstationsBaseServiceRequest<Google.Apis.CloudWorkstations.v1beta.Data.Operation>
+                        {
+                            /// <summary>Constructs a new PushCredentials request.</summary>
+                            public PushCredentialsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudWorkstations.v1beta.Data.PushCredentialsRequest body, string workstation) : base(service)
+                            {
+                                Workstation = workstation;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Name of the workstation for which the credentials should be pushed.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("workstation", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Workstation { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudWorkstations.v1beta.Data.PushCredentialsRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "pushCredentials";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/{+workstation}:pushCredentials";
+
+                            /// <summary>Initializes PushCredentials parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("workstation", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "workstation",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/workstationClusters/[^/]+/workstationConfigs/[^/]+/workstations/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
                         /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
                         /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
                         /// </summary>
@@ -3602,6 +3667,68 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>OAuth token.</summary>
+    public class OAuthToken : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The OAuth token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessToken")]
+        public virtual string AccessToken { get; set; }
+
+        /// <summary>Optional. The email address encapsulated in the OAuth token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
+        /// <summary>
+        /// Optional. The time the OAuth access token will expire. This should be the time the access token was
+        /// generated plus the expires_in offset returned from the Access Token Response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. The scopes encapsulated in the OAuth token. See
+        /// https://developers.google.com/identity/protocols/oauth2/scopes for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual string Scopes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3899,6 +4026,20 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachmentUri")]
         public virtual string ServiceAttachmentUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for PushCredentials.</summary>
+    public class PushCredentialsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Credentials used by Cloud Client Libraries, Google API Client Libraries, and other tooling within
+        /// the user conainer: https://cloud.google.com/docs/authentication/application-default-credentials
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationDefaultCredentials")]
+        public virtual OAuthToken ApplicationDefaultCredentials { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4715,6 +4856,15 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual System.Nullable<bool> EnableAuditAgent { get; set; }
 
         /// <summary>
+        /// Optional. Enables pushing user provided credentials to Workstations by calling workstations.pushCredentials.
+        /// If application_default_credentials are supplied to pushCredentials, the provided token is returned when
+        /// tools and applications running in the user container make a request for Default Application Credentials.
+        /// Please note that any credentials supplied are made available to all users with access to the workstation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePushingCredentials")]
+        public virtual System.Nullable<bool> EnablePushingCredentials { get; set; }
+
+        /// <summary>
         /// Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key
         /// (CMEK). If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted
         /// using this encryption key. If this field is not set, the disks are encrypted using a generated key.
@@ -4817,16 +4967,16 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual System.Collections.Generic.IList<string> ReplicaZones { get; set; }
 
         /// <summary>
-        /// Optional. Number of seconds that a workstation can run until it is automatically shut down. This field
-        /// applies to workstations in both STATE_RUNNING and STATE_SUSPENDED. We recommend that workstations be shut
-        /// down daily to reduce costs and so that security updates can be applied upon restart. The idle_timeout and
-        /// running_timeout fields are independent of each other. Note that the running_timeout field shuts down VMs
-        /// after the specified time, regardless of whether or not the VMs are idle. Provide duration terminated by `s`
-        /// for seconds—for example, `"54000s"` (15 hours). Defaults to `"43200s"` (12 hours). A value of `"0s"`
-        /// indicates that workstations using this configuration should never time out. If encryption_key is set, it
-        /// must be greater than `"0s"` and less than `"86400s"` (24 hours). Warning: A value of `"0s"` indicates that
-        /// Cloud Workstations VMs created with this configuration have no maximum running time. This is strongly
-        /// discouraged because you incur costs and will not pick up security updates.
+        /// Optional. Number of seconds that a workstation can run until it is automatically shut down. We recommend
+        /// that workstations be shut down daily to reduce costs and so that security updates can be applied upon
+        /// restart. The idle_timeout and running_timeout fields are independent of each other. Note that the
+        /// running_timeout field shuts down VMs after the specified time, regardless of whether or not the VMs are
+        /// idle. Provide duration terminated by `s` for seconds—for example, `"54000s"` (15 hours). Defaults to
+        /// `"43200s"` (12 hours). A value of `"0s"` indicates that workstations using this configuration should never
+        /// time out. If encryption_key is set, it must be greater than `"0s"` and less than `"86400s"` (24 hours).
+        /// Warning: A value of `"0s"` indicates that Cloud Workstations VMs created with this configuration have no
+        /// maximum running time. This is strongly discouraged because you incur costs and will not pick up security
+        /// updates.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runningTimeout")]
         public virtual object RunningTimeout { get; set; }
