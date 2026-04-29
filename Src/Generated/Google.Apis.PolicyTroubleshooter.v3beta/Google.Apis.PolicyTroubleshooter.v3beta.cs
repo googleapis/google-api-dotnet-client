@@ -2086,6 +2086,13 @@ namespace Google.Apis.PolicyTroubleshooter.v3beta.Data
         public virtual string Effect { get; set; }
 
         /// <summary>
+        /// Optional. The operation attributes that determine whether this rule applies to a request. If this field is
+        /// not specified, the rule applies to all operations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual GoogleIamV3PrincipalAccessBoundaryPolicyRuleOperation Operation { get; set; }
+
+        /// <summary>
         /// Required. A list of Resource Manager resources. If a resource is listed in the rule, then the rule applies
         /// for that resource and its descendants. The number of resources in a policy is limited to 500 across all
         /// rules in the policy. The following resource types are supported: * Organizations, such as
@@ -2096,6 +2103,38 @@ namespace Google.Apis.PolicyTroubleshooter.v3beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<string> Resources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An operation attribute that defines the permissions applicable to this rule.</summary>
+    public class GoogleIamV3PrincipalAccessBoundaryPolicyRuleOperation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies the permissions that this rule excludes from the set of affected permissions given by
+        /// `permissions`. The number of excluded permission strings in this field is limited to 50. If a permission
+        /// appears in both `permissions` and `excluded_permissions` then it will _not_ be subject to the policy effect.
+        /// The excluded permissions can be specified using the same syntax as `permissions`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedPermissions")]
+        public virtual System.Collections.Generic.IList<string> ExcludedPermissions { get; set; }
+
+        /// <summary>
+        /// Optional. The permissions that are explicitly affected by this rule. The number of permission strings in
+        /// this field is limited to 50. Each permission uses the format `{service_fqdn}/{resource}.{verb}`, where
+        /// `{service_fqdn}` is the fully qualified domain name for the service. `*` can be used as a wildcard to match
+        /// all permissions for a specific service, resource type, or verb. The following formats are supported: *
+        /// `{service_fqdn}/{resource}.{verb}`: A specific permission. * `{service_fqdn}/{resource}.*`: All permissions
+        /// for a specific resource type. * `{service_fqdn}/*.*`: All permissions for all resource types under a
+        /// specific service. * `{service_fqdn}/*.{verb}`: All permissions with a specific verb under a specific
+        /// service. * `*`: All permissions across all services. For example, `compute.googleapis.com/*.setIamPolicy`
+        /// refers to all setIamPolicy permissions for any compute resource. Wildcards expand only to the permissions
+        /// specified in the `enforcement_version` of the policy. If the `enforcement_version` is updated, the wildcard
+        /// will automatically expand to include new permissions in the updated version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
