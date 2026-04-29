@@ -1675,8 +1675,8 @@ namespace Google.Apis.PolicySimulator.v1alpha.Data
     public class GoogleCloudOrgpolicyV2AlternatePolicySpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Reference to the launch that will be used while audit logging and to control the launch. Should be set only
-        /// in the alternate policy.
+        /// Reference to the launch that will be used while audit logging and to control the launch. Set only in the
+        /// alternate policy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("launch")]
         public virtual string Launch { get; set; }
@@ -1724,7 +1724,7 @@ namespace Google.Apis.PolicySimulator.v1alpha.Data
         public virtual System.Collections.Generic.IList<string> MethodTypes { get; set; }
 
         /// <summary>
-        /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be *
+        /// Immutable. Name of the constraint. This is unique within the organization. The name must be of the form: *
         /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example:
         /// `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 71 characters and the
         /// minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/custom.` is not
