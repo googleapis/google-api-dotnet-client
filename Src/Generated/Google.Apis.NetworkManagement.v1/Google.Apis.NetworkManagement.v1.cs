@@ -1121,8 +1121,8 @@ namespace Google.Apis.NetworkManagement.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Do not use this field unless explicitly documented otherwise. This is primarily for
+                /// internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -2979,8 +2979,8 @@ namespace Google.Apis.NetworkManagement.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Do not use this field unless explicitly documented otherwise. This is primarily for
+                /// internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -4915,6 +4915,20 @@ namespace Google.Apis.NetworkManagement.v1.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
+    /// <summary>For display only. Metadata associated with a Private Connection.</summary>
+    public class PrivateConnectionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// URI of the Private Connection in format
+        /// "projects/{project_id}/locations/{location}/privateConnections/{private_connection_id}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Results of active probing from the last run of the test.</summary>
     public class ProbingDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5504,6 +5518,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlInstance")]
         public virtual CloudSQLInstanceInfo CloudSqlInstance { get; set; }
 
+        /// <summary>Display information of a Datastream Private Connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datastreamPrivateConnection")]
+        public virtual PrivateConnectionInfo DatastreamPrivateConnection { get; set; }
+
         /// <summary>Display information of the final state "deliver" and reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliver")]
         public virtual DeliverInfo Deliver { get; set; }
@@ -5515,6 +5533,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// <summary>Display information of a serverless direct VPC egress connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directVpcEgressConnection")]
         public virtual DirectVpcEgressConnectionInfo DirectVpcEgressConnection { get; set; }
+
+        /// <summary>Display information of a DMS Private Connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dmsPrivateConnection")]
+        public virtual PrivateConnectionInfo DmsPrivateConnection { get; set; }
 
         /// <summary>Display information of the final state "drop" and reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("drop")]
