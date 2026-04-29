@@ -3506,9 +3506,10 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         public virtual NativeContent Native { get; set; }
 
         /// <summary>
-        /// Experimental field that can be used during the [FLEDGE Origin
-        /// Trial](/authorized-buyers/rtb/fledge-origin-trial). The URL to fetch an interest group ad used in
-        /// [TURTLEDOVE on-device
+        /// Deprecated: FLEDGE is no longer supported. See:
+        /// https://privacysandbox.google.com/blog/update-on-plans-for-privacy-sandbox-technologies Experimental field
+        /// that can be used during the [FLEDGE Origin Trial](/authorized-buyers/rtb/fledge-origin-trial). The URL to
+        /// fetch an interest group ad used in [TURTLEDOVE on-device
         /// auction](https://github.com/WICG/turtledove/blob/main/FLEDGE.md#1-browsers-record-interest-groups"). This
         /// should be unique among all creatives for a given `accountId`. This URL should be the same as the URL
         /// returned by [generateBid()](https://github.com/WICG/turtledove/blob/main/FLEDGE.md#32-on-device-bidding).
