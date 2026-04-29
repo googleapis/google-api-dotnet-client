@@ -13935,8 +13935,9 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual GoogleCloudRetailV2betaSearchResponseConversationalSearchResult ConversationalSearchResult { get; set; }
 
         /// <summary>
-        /// Contains the spell corrected query, if found. If the spell correction type is AUTOMATIC, then the search
-        /// results are based on corrected_query. Otherwise the original query is used for search.
+        /// Contains the spell corrected query, if found. The search results are based on corrected_query by default.
+        /// However, if SearchRequest.SpellCorrectionSpec.mode is set to
+        /// SearchRequest.SpellCorrectionSpec.Mode.SUGGESTION_ONLY, the original query is used for search.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("correctedQuery")]
         public virtual string CorrectedQuery { get; set; }
