@@ -20260,7 +20260,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// `license_assignment_state = NO_LICENSE_ATTEMPTED_LOGIN` to list users who attempted login
                         /// but no license assigned. * `license_assignment_state != NO_LICENSE_ATTEMPTED_LOGIN` to
                         /// filter out users who attempted login but no license assigned. * `user_principal =
-                        /// user1@abc.com` to list user license for `user1@abc.com`.
+                        /// user1@example.com` to list user license for `user1@example.com`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -25638,10 +25638,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
         /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
-        /// `personalization-memory` * `personalization-suggested-highlights` * `disable-agent-sharing` *
-        /// `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` *
-        /// `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` *
-        /// `disable-canvas-workspace` * `disable-skills`
+        /// `personalization-memory` * `personalization-suggested-highlights` * `disable-mobile-app-access` *
+        /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
+        /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
+        /// `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -30062,6 +30062,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("segments")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataSegment> Segments { get; set; }
 
+        /// <summary>Grounding information for parts of the visual content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visualSegments")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataVisualSegment> VisualSegments { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -30069,6 +30073,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Referenced content and related document metadata.</summary>
     public class GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataReference : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Chunk of code snippet from the referenced document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("codeSnippet")]
+        public virtual string CodeSnippet { get; set; }
+
         /// <summary>Referenced text content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
@@ -30094,6 +30102,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("language")]
+        public virtual string Language { get; set; }
 
         /// <summary>
         /// The mime type of the document. https://www.iana.org/assignments/media-types/media-types.xhtml.
@@ -30142,6 +30153,24 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>The text segment itself.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Grounding information for a visual segment.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataVisualSegment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The content id of the visual segment. In order to display the citation of the visual element, this
+        /// content_id needs to match with the `grounded_content.content_metadata.content_id` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentId")]
+        public virtual string ContentId { get; set; }
+
+        /// <summary>References for the visual segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceIndices")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> ReferenceIndices { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -34117,10 +34146,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
         /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
-        /// `personalization-memory` * `personalization-suggested-highlights` * `disable-agent-sharing` *
-        /// `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` *
-        /// `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` *
-        /// `disable-canvas-workspace` * `disable-skills`
+        /// `personalization-memory` * `personalization-suggested-highlights` * `disable-mobile-app-access` *
+        /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
+        /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
+        /// `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -39152,6 +39181,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("detailedAssistAnswer")]
         public virtual GoogleCloudDiscoveryengineV1alphaAssistAnswer DetailedAssistAnswer { get; set; }
 
+        /// <summary>Optional. Indicates whether this turn is a live turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("live")]
+        public virtual System.Nullable<bool> Live { get; set; }
+
         /// <summary>
         /// Optional. The user query. May not be set if this turn is merely regenerating an answer to a different turn
         /// </summary>
@@ -42563,6 +42596,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("segments")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataSegment> Segments { get; set; }
 
+        /// <summary>Grounding information for parts of the visual content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visualSegments")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataVisualSegment> VisualSegments { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -42570,6 +42607,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Referenced content and related document metadata.</summary>
     public class GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataReference : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Chunk of code snippet from the referenced document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("codeSnippet")]
+        public virtual string CodeSnippet { get; set; }
+
         /// <summary>Referenced text content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
@@ -42595,6 +42636,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("language")]
+        public virtual string Language { get; set; }
 
         /// <summary>
         /// The mime type of the document. https://www.iana.org/assignments/media-types/media-types.xhtml.
@@ -42643,6 +42687,24 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>The text segment itself.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Grounding information for a visual segment.</summary>
+    public class GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataVisualSegment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The content id of the visual segment. In order to display the citation of the visual element, this
+        /// content_id needs to match with the `grounded_content.content_metadata.content_id` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentId")]
+        public virtual string ContentId { get; set; }
+
+        /// <summary>References for the visual segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceIndices")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> ReferenceIndices { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -46800,10 +46862,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
         /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
-        /// `personalization-memory` * `personalization-suggested-highlights` * `disable-agent-sharing` *
-        /// `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` *
-        /// `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` *
-        /// `disable-canvas-workspace` * `disable-skills`
+        /// `personalization-memory` * `personalization-suggested-highlights` * `disable-mobile-app-access` *
+        /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
+        /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
+        /// `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -50346,8 +50408,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string Id { get; set; }
 
         /// <summary>
-        /// The score of this record based on the given query and selected model. The score will be rounded to 2 decimal
-        /// places. If the score is close to 0, it will be rounded to 0.0001 to avoid returning unset.
+        /// The score of this record based on the given query and selected model. The score will be rounded to 4 decimal
+        /// places. If the score is close to 0, it will be rounded to 0.00001 to avoid returning unset.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
         public virtual System.Nullable<float> Score { get; set; }
@@ -53448,6 +53510,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detailedAssistAnswer")]
         public virtual GoogleCloudDiscoveryengineV1betaAssistAnswer DetailedAssistAnswer { get; set; }
+
+        /// <summary>Optional. Indicates whether this turn is a live turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("live")]
+        public virtual System.Nullable<bool> Live { get; set; }
 
         /// <summary>
         /// Optional. The user query. May not be set if this turn is merely regenerating an answer to a different turn
