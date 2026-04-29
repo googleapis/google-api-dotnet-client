@@ -3385,6 +3385,15 @@ namespace Google.Apis.CloudWorkstations.v1.Data
     public class GceRegionalPersistentDisk : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Number of seconds to wait after initially creating or subsequently shutting down the workstation
+        /// before converting its disk into a snapshot. This generally saves costs at the expense of greater startup
+        /// time on next workstation start, as the service will need to create a disk from the archival snapshot. A
+        /// value of `"0s"` indicates that the disk will never be archived.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archiveTimeout")]
+        public virtual object ArchiveTimeout { get; set; }
+
+        /// <summary>
         /// Optional. The [type of the persistent disk](https://cloud.google.com/compute/docs/disks#disk-types) for the
         /// home directory. Defaults to `"pd-standard"`.
         /// </summary>
@@ -4886,16 +4895,16 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         public virtual System.Collections.Generic.IList<string> ReplicaZones { get; set; }
 
         /// <summary>
-        /// Optional. Number of seconds that a workstation can run until it is automatically shut down. This field
-        /// applies to workstations in both STATE_RUNNING and STATE_SUSPENDED. We recommend that workstations be shut
-        /// down daily to reduce costs and so that security updates can be applied upon restart. The idle_timeout and
-        /// running_timeout fields are independent of each other. Note that the running_timeout field shuts down VMs
-        /// after the specified time, regardless of whether or not the VMs are idle. Provide duration terminated by `s`
-        /// for seconds—for example, `"54000s"` (15 hours). Defaults to `"43200s"` (12 hours). A value of `"0s"`
-        /// indicates that workstations using this configuration should never time out. If encryption_key is set, it
-        /// must be greater than `"0s"` and less than `"86400s"` (24 hours). Warning: A value of `"0s"` indicates that
-        /// Cloud Workstations VMs created with this configuration have no maximum running time. This is strongly
-        /// discouraged because you incur costs and will not pick up security updates.
+        /// Optional. Number of seconds that a workstation can run until it is automatically shut down. We recommend
+        /// that workstations be shut down daily to reduce costs and so that security updates can be applied upon
+        /// restart. The idle_timeout and running_timeout fields are independent of each other. Note that the
+        /// running_timeout field shuts down VMs after the specified time, regardless of whether or not the VMs are
+        /// idle. Provide duration terminated by `s` for seconds—for example, `"54000s"` (15 hours). Defaults to
+        /// `"43200s"` (12 hours). A value of `"0s"` indicates that workstations using this configuration should never
+        /// time out. If encryption_key is set, it must be greater than `"0s"` and less than `"86400s"` (24 hours).
+        /// Warning: A value of `"0s"` indicates that Cloud Workstations VMs created with this configuration have no
+        /// maximum running time. This is strongly discouraged because you incur costs and will not pick up security
+        /// updates.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runningTimeout")]
         public virtual object RunningTimeout { get; set; }
