@@ -14634,8 +14634,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     public class UserLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Textual location. This is most useful for display purposes to concisely describe the location. For example
-        /// 'Mountain View, CA', 'Near Seattle', 'US-NYC-9TH 9A209A.''
+        /// Required. Textual location. This is most useful for display purposes to concisely describe the location. For
+        /// example 'Mountain View, CA', 'Near Seattle', 'US-NYC-9TH 9A209A.''
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("area")]
         public virtual string Area { get; set; }
