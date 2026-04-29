@@ -1865,17 +1865,18 @@ namespace Google.Apis.Meet.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details how to join the conference via a SIP gateway.</summary>
+    /// <summary>Details how to join the conference through a SIP gateway.</summary>
     public class GatewaySipAccess : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Permanent numeric code for manual entry on specially configured devices.</summary>
+        /// <summary>The permanent numeric code for manual entry on specially configured devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sipAccessCode")]
         public virtual string SipAccessCode { get; set; }
 
         /// <summary>
-        /// The SIP URI the conference can be reached through. The string is on one of the formats: "sip:@" "sips:@"
-        /// where currently is the 13-digit universal pin, and is a valid address to be resolved using a DNS SRV lookup,
-        /// or a dotted quad.
+        /// The Session Initiation Protocol (SIP) URI the conference can be reached through. The string is in one of
+        /// these formats: * "sip:USER_ID@GATEWAY_ADDRESS" * "sips:USER_ID@GATEWAY_ADDRESS" where USER_ID is the
+        /// 13-digit universal pin (with the future option to support using a Meet meeting code as well), and
+        /// GATEWAY_ADDRESS is a valid address to be resolved using a DNS SRV lookup, or a dotted quad.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -2557,7 +2558,7 @@ namespace Google.Apis.Meet.v2.Data
         public virtual SpaceConfig Config { get; set; }
 
         /// <summary>
-        /// Output only. The SIP based access methods that can be used to join the conference. Can be empty.
+        /// Output only. The SIP-based access methods that can be used to join the conference. Can be empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gatewaySipAccess")]
         public virtual System.Collections.Generic.IList<GatewaySipAccess> GatewaySipAccess { get; set; }
