@@ -80,6 +80,15 @@
     "statusUnspecified",
     "closed"
   ],
+  "Google.Apis.YouTube.v3.MediaResource+UploadMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.YouTube.v3.MediaResource+UploadMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
   "Google.Apis.YouTube.v3.MembersResource+ListRequest.ModeEnum": [
     "listMembersModeUnknown",
     "updates",
