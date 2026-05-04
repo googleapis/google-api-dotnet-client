@@ -294,6 +294,7 @@ namespace Google.Apis.FirebaseAppHosting.v1beta
                 this.service = service;
                 Backends = new BackendsResource(service);
                 Operations = new OperationsResource(service);
+                SupportedRuntimes = new SupportedRuntimesResource(service);
             }
 
             /// <summary>Gets the Backends resource.</summary>
@@ -2554,6 +2555,96 @@ namespace Google.Apis.FirebaseAppHosting.v1beta
                 }
             }
 
+            /// <summary>Gets the SupportedRuntimes resource.</summary>
+            public virtual SupportedRuntimesResource SupportedRuntimes { get; }
+
+            /// <summary>The "supportedRuntimes" collection of methods.</summary>
+            public class SupportedRuntimesResource
+            {
+                private const string Resource = "supportedRuntimes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SupportedRuntimesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Lists the runtimes supported by the backend. The list of runtimes may vary across projects and
+                /// locations, for example, during staged rollouts of new runtime support.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The parent, which owns this collection of SupportedRuntime. Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// Lists the runtimes supported by the backend. The list of runtimes may vary across projects and
+                /// locations, for example, during staged rollouts of new runtime support.
+                /// </summary>
+                public class ListRequest : FirebaseAppHostingBaseServiceRequest<Google.Apis.FirebaseAppHosting.v1beta.Data.ListSupportedRuntimesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent, which owns this collection of SupportedRuntime. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The suggested number of runtimes to return. This field is ignored. We return all
+                    /// runtimes in a single page regardless of the page size.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+parent}/supportedRuntimes";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
@@ -4097,6 +4188,17 @@ namespace Google.Apis.FirebaseAppHosting.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for a list of supported runtimes.</summary>
+    public class ListSupportedRuntimesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of supported runtimes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedRuntimes")]
+        public virtual System.Collections.Generic.IList<SupportedRuntime> SupportedRuntimes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A set of updates including ACME challenges and DNS records that allow App Hosting to create an SSL certificate
     /// and establish project ownership for your domain name before you direct traffic to App Hosting servers. Use these
@@ -4743,6 +4845,114 @@ namespace Google.Apis.FirebaseAppHosting.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a single FAH supported runtime. Although instances of this resource are parented by a project and
+    /// location, the set of available runtimes may vary across projects and locations, for example, during staged
+    /// rollouts of new runtime support.
+    /// </summary>
+    public class SupportedRuntime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. True if Automatic Base Image Updates (ABIU) is supported for this runtime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automaticBaseImageUpdatesSupported")]
+        public virtual System.Nullable<bool> AutomaticBaseImageUpdatesSupported { get; set; }
+
+        private string _decommissionTimeRaw;
+
+        private object _decommissionTime;
+
+        /// <summary>
+        /// Output only. The time at which this runtime will be decommissioned. After this date, the runtime can no
+        /// longer be used for new builds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("decommissionTime")]
+        public virtual string DecommissionTimeRaw
+        {
+            get => _decommissionTimeRaw;
+            set
+            {
+                _decommissionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _decommissionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DecommissionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DecommissionTimeDateTimeOffset instead.")]
+        public virtual object DecommissionTime
+        {
+            get => _decommissionTime;
+            set
+            {
+                _decommissionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _decommissionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="DecommissionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DecommissionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DecommissionTimeRaw);
+            set => DecommissionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _deprecateTimeRaw;
+
+        private object _deprecateTime;
+
+        /// <summary>
+        /// Output only. The time at which this runtime will effectively be deprecated. After this date, the runtime is
+        /// still usable but may not receive new features or updates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deprecateTime")]
+        public virtual string DeprecateTimeRaw
+        {
+            get => _deprecateTimeRaw;
+            set
+            {
+                _deprecateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deprecateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeprecateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeprecateTimeDateTimeOffset instead.")]
+        public virtual object DeprecateTime
+        {
+            get => _deprecateTime;
+            set
+            {
+                _deprecateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deprecateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeprecateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeprecateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeprecateTimeRaw);
+            set => DeprecateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Identifier. The resource name of the supported runtime. Format:
+        /// projects/{project}/locations/{location}/supportedRuntimes/{runtime_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The identifier of the runtime, e.g., "nodejs22".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeId")]
+        public virtual string RuntimeId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
