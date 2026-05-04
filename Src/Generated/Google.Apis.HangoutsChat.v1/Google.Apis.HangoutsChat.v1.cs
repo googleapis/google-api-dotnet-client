@@ -3824,14 +3824,13 @@ namespace Google.Apis.HangoutsChat.v1
         }
 
         /// <summary>
-        /// [Developer Preview](https://developers.google.com/workspace/preview): Returns all spaces with `spaceType ==
-        /// GROUP_CHAT`, whose human memberships contain exactly the calling user, and the users specified in
-        /// `FindGroupChatsRequest.users`. Only members that have joined the conversation are supported. For an example,
-        /// see [Find group chats](https://developers.google.com/workspace/chat/find-group-chats). If the calling user
-        /// blocks, or is blocked by, some users, and no spaces with the entire specified set of users are found, this
-        /// method returns spaces that don't include the blocked or blocking users. The specified set of users must
-        /// contain only human (non-app) memberships. A request that contains non-human users doesn't return any spaces.
-        /// Requires [user
+        /// Returns all spaces with `spaceType == GROUP_CHAT`, whose human memberships contain exactly the calling user,
+        /// and the users specified in `FindGroupChatsRequest.users`. Only members that have joined the conversation are
+        /// supported. For an example, see [Find group
+        /// chats](https://developers.google.com/workspace/chat/find-group-chats). If the calling user blocks, or is
+        /// blocked by, some users, and no spaces with the entire specified set of users are found, this method returns
+        /// spaces that don't include the blocked or blocking users. The specified set of users must contain only human
+        /// (non-app) memberships. A request that contains non-human users doesn't return any spaces. Requires [user
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of
         /// the following [authorization
         /// scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
@@ -3844,14 +3843,13 @@ namespace Google.Apis.HangoutsChat.v1
         }
 
         /// <summary>
-        /// [Developer Preview](https://developers.google.com/workspace/preview): Returns all spaces with `spaceType ==
-        /// GROUP_CHAT`, whose human memberships contain exactly the calling user, and the users specified in
-        /// `FindGroupChatsRequest.users`. Only members that have joined the conversation are supported. For an example,
-        /// see [Find group chats](https://developers.google.com/workspace/chat/find-group-chats). If the calling user
-        /// blocks, or is blocked by, some users, and no spaces with the entire specified set of users are found, this
-        /// method returns spaces that don't include the blocked or blocking users. The specified set of users must
-        /// contain only human (non-app) memberships. A request that contains non-human users doesn't return any spaces.
-        /// Requires [user
+        /// Returns all spaces with `spaceType == GROUP_CHAT`, whose human memberships contain exactly the calling user,
+        /// and the users specified in `FindGroupChatsRequest.users`. Only members that have joined the conversation are
+        /// supported. For an example, see [Find group
+        /// chats](https://developers.google.com/workspace/chat/find-group-chats). If the calling user blocks, or is
+        /// blocked by, some users, and no spaces with the entire specified set of users are found, this method returns
+        /// spaces that don't include the blocked or blocking users. The specified set of users must contain only human
+        /// (non-app) memberships. A request that contains non-human users doesn't return any spaces. Requires [user
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of
         /// the following [authorization
         /// scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
@@ -6754,8 +6752,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// A response containing group chat spaces with exactly the calling user and the requested users. [Developer
-    /// Preview](https://developers.google.com/workspace/preview):
+    /// A response containing group chat spaces with exactly the calling user and the requested users.
     /// </summary>
     public class FindGroupChatsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
