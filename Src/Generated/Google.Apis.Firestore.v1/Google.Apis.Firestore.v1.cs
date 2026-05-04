@@ -2061,7 +2061,8 @@ namespace Google.Apis.Firestore.v1
                 /// <param name="parent">
                 /// Required. The parent document. In the format:
                 /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example:
-                /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
+                /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom` Use
+                /// `projects/{project_id}/databases/{database_id}/documents` to list top-level collections.
                 /// </param>
                 public virtual ListCollectionIdsRequest ListCollectionIds(Google.Apis.Firestore.v1.Data.ListCollectionIdsRequest body, string parent)
                 {
@@ -2082,7 +2083,8 @@ namespace Google.Apis.Firestore.v1
                     /// <summary>
                     /// Required. The parent document. In the format:
                     /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example:
-                    /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
+                    /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom` Use
+                    /// `projects/{project_id}/databases/{database_id}/documents` to list top-level collections.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -4514,8 +4516,8 @@ namespace Google.Apis.Firestore.v1
 
             /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
-            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
-            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
             /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
             /// that specific project. This includes public, private, or other project-specific locations enabled for
             /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
@@ -4530,8 +4532,8 @@ namespace Google.Apis.Firestore.v1
 
             /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
-            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
-            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
             /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
             /// that specific project. This includes public, private, or other project-specific locations enabled for
             /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
@@ -4552,8 +4554,8 @@ namespace Google.Apis.Firestore.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Do not use this field unless explicitly documented otherwise. This is primarily for
+                /// internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -6505,8 +6507,12 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual GoogleFirestoreAdminV1CmekConfig CmekConfig { get; set; }
 
         /// <summary>
-        /// The concurrency control mode to use for this database. If unspecified in a CreateDatabase request, this will
-        /// default based on the database edition: Optimistic for Enterprise and Pessimistic for all other databases.
+        /// The default concurrency control mode to use for this database. If unspecified in a CreateDatabase request,
+        /// this will default based on the database edition: Optimistic for Enterprise and Pessimistic for all other
+        /// databases. While transactions can explicitly specify their own concurrency mode, this setting defines the
+        /// default behavior when left unspecified. Important: This database-level setting is not respected for
+        /// Firestore with MongoDB compatibility. All transactions through the MongoDB compatibility layer will use
+        /// optimistic concurrency control, regardless of this setting.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("concurrencyMode")]
         public virtual string ConcurrencyMode { get; set; }
@@ -7506,10 +7512,7 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("order")]
         public virtual string Order { get; set; }
 
-        /// <summary>
-        /// Indicates that this field supports search operations. This field is only currently supported for indexes
-        /// with MONGODB_COMPATIBLE_API ApiScope.
-        /// </summary>
+        /// <summary>Indicates that this field supports search operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchConfig")]
         public virtual GoogleFirestoreAdminV1SearchConfig SearchConfig { get; set; }
 
@@ -8851,12 +8854,18 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Options for a transaction that can be used to read and write documents. Firestore does not allow 3rd party auth
-    /// requests to create read-write. transactions.
-    /// </summary>
+    /// <summary>Options for a transaction that can be used to read and write documents.</summary>
     public class ReadWrite : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The concurrency control mode to use for this transaction. A database is able to use different
+        /// concurrency modes for different transactions simultaneously. 3rd party auth requests are only allowed to
+        /// create optimistic read-write transactions and must specify that here even if the database-level setting is
+        /// already configured to optimistic.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("concurrencyMode")]
+        public virtual string ConcurrencyMode { get; set; }
+
         /// <summary>An optional transaction to retry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retryTransaction")]
         public virtual string RetryTransaction { get; set; }
