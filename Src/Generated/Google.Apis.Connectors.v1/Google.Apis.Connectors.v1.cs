@@ -6197,10 +6197,14 @@ namespace Google.Apis.Connectors.v1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -6209,10 +6213,14 @@ namespace Google.Apis.Connectors.v1
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             public class ListRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.ListLocationsResponse>
             {
@@ -6228,8 +6236,8 @@ namespace Google.Apis.Connectors.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Do not use this field unless explicitly documented otherwise. This is primarily for
+                /// internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -6385,6 +6393,38 @@ namespace Google.Apis.Connectors.v1
 }
 namespace Google.Apis.Connectors.v1.Data
 {
+    /// <summary>
+    /// * AdminFilters defines a set of filters that can be applied to a connection. These are currently used by Gemini
+    /// Enterprise connections.
+    /// </summary>
+    public class AdminFilters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Unique name for the filter, e.g., "SharePointSiteURL", "DocumentType", "ChatSpaceName".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterKey")]
+        public virtual string FilterKey { get; set; }
+
+        /// <summary>Required. Type of the filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterType")]
+        public virtual string FilterType { get; set; }
+
+        /// <summary>Optional. A single integer value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
+        public virtual System.Nullable<long> IntValue { get; set; }
+
+        /// <summary>Optional. List of string values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringListValues")]
+        public virtual StringListValues StringListValues { get; set; }
+
+        /// <summary>Optional. A single string value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
@@ -6855,6 +6895,10 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>Connection represents an instance of connector.</summary>
     public class Connection : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Admin filters for the connection. These are used by Gemini Enterprise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminFilters")]
+        public virtual System.Collections.Generic.IList<AdminFilters> AdminFilters { get; set; }
+
         /// <summary>
         /// Optional. Async operations enabled for the connection. If Async Operations is enabled, Connection allows the
         /// customers to initiate async long running operations using the actions API.
@@ -9158,7 +9202,7 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Eventing Configuration of a connection next: 20</summary>
+    /// <summary>Eventing Configuration of a connection next: 21</summary>
     public class EventingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Additional eventing related field values</summary>
@@ -9190,6 +9234,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventsListenerIngressEndpoint")]
         public virtual string EventsListenerIngressEndpoint { get; set; }
+
+        /// <summary>Optional. Filter to be applied on the events to be received by the connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("globalEventFilter")]
+        public virtual string GlobalEventFilter { get; set; }
 
         /// <summary>Optional. Auth details for the event listener.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listenerAuthConfig")]
@@ -9311,6 +9359,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Output only. Array of search keywords.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchTags")]
         public virtual System.Collections.Generic.IList<string> SearchTags { get; set; }
+
+        /// <summary>The webhook model supported by this connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionType")]
+        public virtual string SubscriptionType { get; set; }
 
         /// <summary>Output only. The type of the event listener for a specific connector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -9903,6 +9955,26 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>JsonSchema representation of schema metadata</summary>
     public class JsonSchema : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A comment on the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("$comment")]
+        public virtual string Comment { get; set; }
+
+        /// <summary>Definitions for the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("$defs")]
+        public virtual System.Collections.Generic.IDictionary<string, JsonSchema> Defs { get; set; }
+
+        /// <summary>The URI defining the core schema meta-schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("$id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>A reference to another schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("$ref")]
+        public virtual string Ref__ { get; set; }
+
+        /// <summary>The URI defining the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("$schema")]
+        public virtual string Schema { get; set; }
+
         /// <summary>
         /// Additional details apart from standard json schema fields, this gives flexibility to store metadata about
         /// the schema
@@ -9910,13 +9982,57 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalDetails")]
         public virtual System.Collections.Generic.IDictionary<string, object> AdditionalDetails { get; set; }
 
+        /// <summary>Schema for additional items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalItems")]
+        public virtual JsonSchema AdditionalItems { get; set; }
+
+        /// <summary>Schema for additional properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalProperties")]
+        public virtual JsonSchema AdditionalProperties { get; set; }
+
+        /// <summary>Schema that must be valid against all of the sub-schemas.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allOf")]
+        public virtual System.Collections.Generic.IList<JsonSchema> AllOf { get; set; }
+
+        /// <summary>Schema that must be valid against at least one of the sub-schemas.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("anyOf")]
+        public virtual System.Collections.Generic.IList<JsonSchema> AnyOf { get; set; }
+
+        /// <summary>Const value that the data must match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("const")]
+        public virtual object Const__ { get; set; }
+
+        /// <summary>Schema that applies to at least one item in an array.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contains")]
+        public virtual JsonSchema Contains { get; set; }
+
+        /// <summary>Encoding of the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentEncoding")]
+        public virtual string ContentEncoding { get; set; }
+
+        /// <summary>Media type of the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentMediaType")]
+        public virtual string ContentMediaType { get; set; }
+
         /// <summary>The default value of the field or object described by this schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("default")]
         public virtual object Default__ { get; set; }
 
+        /// <summary>Definitions for the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("definitions")]
+        public virtual System.Collections.Generic.IDictionary<string, JsonSchema> Definitions { get; set; }
+
+        /// <summary>Dependencies for the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dependencies")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Dependencies { get; set; }
+
         /// <summary>A description of this schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>Schema that must be valid if the "if" schema is invalid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("else")]
+        public virtual JsonSchema Else__ { get; set; }
 
         /// <summary>
         /// Possible values for an enumeration. This works in conjunction with `type` to represent types with a fixed
@@ -9925,19 +10041,27 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enum")]
         public virtual System.Collections.Generic.IList<object> Enum__ { get; set; }
 
+        /// <summary>Examples of the value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("examples")]
+        public virtual System.Collections.Generic.IList<object> Examples { get; set; }
+
         /// <summary>Whether the maximum number value is exclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusiveMaximum")]
-        public virtual System.Nullable<bool> ExclusiveMaximum { get; set; }
+        public virtual object ExclusiveMaximum { get; set; }
 
         /// <summary>Whether the minimum number value is exclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusiveMinimum")]
-        public virtual System.Nullable<bool> ExclusiveMinimum { get; set; }
+        public virtual object ExclusiveMinimum { get; set; }
 
         /// <summary>
         /// Format of the value as per https://json-schema.org/understanding-json-schema/reference/string.html#format
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
         public virtual string Format { get; set; }
+
+        /// <summary>Schema that must be valid if the "if" schema is valid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("if")]
+        public virtual JsonSchema If__ { get; set; }
 
         /// <summary>Schema that applies to array values, applicable only if this is of type `array`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
@@ -9955,6 +10079,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxLength")]
         public virtual System.Nullable<int> MaxLength { get; set; }
 
+        /// <summary>Maximum number of properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxProperties")]
+        public virtual System.Nullable<int> MaxProperties { get; set; }
+
         /// <summary>Maximum value of the number field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximum")]
         public virtual object Maximum { get; set; }
@@ -9967,9 +10095,25 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minLength")]
         public virtual System.Nullable<int> MinLength { get; set; }
 
+        /// <summary>Minimum number of properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minProperties")]
+        public virtual System.Nullable<int> MinProperties { get; set; }
+
         /// <summary>Minimum value of the number field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimum")]
         public virtual object Minimum { get; set; }
+
+        /// <summary>Number must be a multiple of this value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multipleOf")]
+        public virtual System.Nullable<double> MultipleOf { get; set; }
+
+        /// <summary>Schema that must not be valid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("not")]
+        public virtual JsonSchema Not { get; set; }
+
+        /// <summary>Schema that must be valid against at least one of the sub-schemas.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneOf")]
+        public virtual System.Collections.Generic.IList<JsonSchema> OneOf { get; set; }
 
         /// <summary>
         /// Regex pattern of the string field. This is a string value that describes the regular expression that the
@@ -9978,6 +10122,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
         public virtual string Pattern { get; set; }
 
+        /// <summary>Pattern properties for the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("patternProperties")]
+        public virtual System.Collections.Generic.IDictionary<string, JsonSchema> PatternProperties { get; set; }
+
         /// <summary>
         /// The child schemas, applicable only if this is of type `object`. The key is the name of the property and the
         /// value is the json schema that describes that property
@@ -9985,9 +10133,25 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IDictionary<string, JsonSchema> Properties { get; set; }
 
+        /// <summary>Schema for property names.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertyNames")]
+        public virtual JsonSchema PropertyNames { get; set; }
+
+        /// <summary>Whether the value is read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
+        public virtual System.Nullable<bool> ReadOnly__ { get; set; }
+
         /// <summary>Whether this property is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("required")]
         public virtual System.Collections.Generic.IList<string> Required { get; set; }
+
+        /// <summary>Schema that must be valid if the "if" schema is valid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("then")]
+        public virtual JsonSchema Then { get; set; }
+
+        /// <summary>A title of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
 
         /// <summary>JSON Schema Validation: A Vocabulary for Structural Validation of JSON</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -9996,6 +10160,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Whether the items in the array field are unique.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uniqueItems")]
         public virtual System.Nullable<bool> UniqueItems { get; set; }
+
+        /// <summary>Whether the value is write-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeOnly")]
+        public virtual System.Nullable<bool> WriteOnly { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11771,6 +11939,10 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>Regional Settings details.</summary>
     public class RegionalSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Client type for the regional settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("client")]
+        public virtual string Client { get; set; }
+
         /// <summary>Optional. Regional encryption config to hold CMEK details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
         public virtual EncryptionConfig EncryptionConfig { get; set; }
@@ -12399,6 +12571,17 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>StringListValues is a message to store a list of string values.</summary>
+    public class StringListValues : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The list of string values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listValues")]
+        public virtual System.Collections.Generic.IList<string> ListValues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Supported runtime features of a connector version.</summary>
     public class SupportedRuntimeFeatures : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12507,6 +12690,12 @@ namespace Google.Apis.Connectors.v1.Data
     /// </summary>
     public class ToolspecOverride : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Required. Represents the base version of the toolspec for which admin has added overrides.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseVersion")]
+        public virtual string BaseVersion { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -12751,6 +12940,16 @@ namespace Google.Apis.Connectors.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Output only. List of event subscriptions which are using the webhook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventSubscriptions")]
+        public virtual System.Collections.Generic.IList<string> EventSubscriptions { get; set; }
+
+        /// <summary>
+        /// Output only. List of event types for the webhook. This is the event types subscribed by the current webhook.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTypes")]
+        public virtual System.Collections.Generic.IList<string> EventTypes { get; set; }
 
         /// <summary>Output only. ID to uniquely identify webhook.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
