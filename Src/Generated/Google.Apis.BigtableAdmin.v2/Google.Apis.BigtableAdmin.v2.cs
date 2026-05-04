@@ -2400,83 +2400,6 @@ namespace Google.Apis.BigtableAdmin.v2
                         });
                     }
                 }
-
-                /// <summary>
-                /// Updates the memory layer of a cluster. To enable the memory layer, set the memory_config. To disable
-                /// the memory layer, unset the memory_config.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">
-                /// Identifier. Name of the memory layer. This is always:
-                /// "projects/{project}/instances/{instance}/clusters/{cluster}/memoryLayer".
-                /// </param>
-                public virtual UpdateMemoryLayerRequest UpdateMemoryLayer(Google.Apis.BigtableAdmin.v2.Data.MemoryLayer body, string name)
-                {
-                    return new UpdateMemoryLayerRequest(this.service, body, name);
-                }
-
-                /// <summary>
-                /// Updates the memory layer of a cluster. To enable the memory layer, set the memory_config. To disable
-                /// the memory layer, unset the memory_config.
-                /// </summary>
-                public class UpdateMemoryLayerRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Operation>
-                {
-                    /// <summary>Constructs a new UpdateMemoryLayer request.</summary>
-                    public UpdateMemoryLayerRequest(Google.Apis.Services.IClientService service, Google.Apis.BigtableAdmin.v2.Data.MemoryLayer body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Identifier. Name of the memory layer. This is always:
-                    /// "projects/{project}/instances/{instance}/clusters/{cluster}/memoryLayer".
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Optional. The list of fields to update.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object UpdateMask { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.BigtableAdmin.v2.Data.MemoryLayer Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "updateMemoryLayer";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "PATCH";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+name}";
-
-                    /// <summary>Initializes UpdateMemoryLayer parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/instances/[^/]+/clusters/[^/]+/memoryLayer$",
-                        });
-                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
             }
 
             /// <summary>Gets the LogicalViews resource.</summary>
@@ -6581,8 +6504,8 @@ namespace Google.Apis.BigtableAdmin.v2
 
             /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
-            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
-            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
             /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
             /// that specific project. This includes public, private, or other project-specific locations enabled for
             /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
@@ -6597,8 +6520,8 @@ namespace Google.Apis.BigtableAdmin.v2
 
             /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
-            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
-            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
             /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
             /// that specific project. This includes public, private, or other project-specific locations enabled for
             /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
@@ -6619,8 +6542,8 @@ namespace Google.Apis.BigtableAdmin.v2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Do not use this field unless explicitly documented otherwise. This is primarily for
+                /// internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
