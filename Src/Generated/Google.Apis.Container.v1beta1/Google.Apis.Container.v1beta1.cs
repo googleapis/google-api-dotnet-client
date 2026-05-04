@@ -6881,6 +6881,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkPolicyConfig")]
         public virtual NetworkPolicyConfig NetworkPolicyConfig { get; set; }
 
+        /// <summary>Optional. Configuration for NodeReadinessController add-on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeReadinessConfig")]
+        public virtual NodeReadinessConfig NodeReadinessConfig { get; set; }
+
         /// <summary>Configuration for the Cloud Storage Parallelstore CSI driver.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parallelstoreCsiDriverConfig")]
         public virtual ParallelstoreCsiDriverConfig ParallelstoreCsiDriverConfig { get; set; }
@@ -7953,6 +7957,12 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual NodePoolDefaults NodePoolDefaults { get; set; }
 
         /// <summary>
+        /// The node pool upgrade concurrency config of the cluster. This field is used for auto upgrade.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodePoolUpgradeConcurrencyConfig")]
+        public virtual NodePoolUpgradeConcurrencyConfig NodePoolUpgradeConcurrencyConfig { get; set; }
+
+        /// <summary>
         /// The node pools associated with this cluster. This field should not be set if "node_config" or
         /// "initial_node_count" are specified.
         /// </summary>
@@ -8536,6 +8546,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredNodePoolLoggingConfig")]
         public virtual NodePoolLoggingConfig DesiredNodePoolLoggingConfig { get; set; }
 
+        /// <summary>The desired node pool upgrade concurrency configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredNodePoolUpgradeConcurrencyConfig")]
+        public virtual NodePoolUpgradeConcurrencyConfig DesiredNodePoolUpgradeConcurrencyConfig { get; set; }
+
         /// <summary>
         /// The Kubernetes version to change the nodes to (typically an upgrade). Users may specify either explicit
         /// versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest":
@@ -9075,6 +9089,17 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Support for running custom init code while bootstrapping nodes.</summary>
+    public class CustomNodeInit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The init script to be executed on the node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initScript")]
+        public virtual InitScript InitScript { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10351,6 +10376,44 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>InitScript provide a simply bash script to be executed on the node.</summary>
+    public class InitScript : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The optional arguments line to be passed to the init script.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("args")]
+        public virtual System.Collections.Generic.IList<string> Args { get; set; }
+
+        /// <summary>
+        /// The resource name of the secret manager secret hosting the init script. Both global and regional secrets are
+        /// supported with format below: Global secret: projects/{project}/secrets/{secret}/versions/{version} Regional
+        /// secret: projects/{project}/locations/{location}/secrets/{secret}/versions/{version} Example:
+        /// projects/1234567890/secrets/script_1/versions/1. Accept version number only, not support version alias. User
+        /// can't configure both gcp_secret_manager_secret_uri and gcs_uri.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpSecretManagerSecretUri")]
+        public virtual string GcpSecretManagerSecretUri { get; set; }
+
+        /// <summary>
+        /// The generation of the init script stored in Gloud Storage. This is the required field to identify the
+        /// version of the init script. User can get the genetaion from `gcloud storage objects describe
+        /// gs://BUCKET_NAME/OBJECT_NAME --format="value(generation)"` or from the "Version history" tab of the object
+        /// in the Cloud Console UI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsGeneration")]
+        public virtual System.Nullable<long> GcsGeneration { get; set; }
+
+        /// <summary>
+        /// The Cloud Storage URI for storing the init script. Format: gs://BUCKET_NAME/OBJECT_NAME The service account
+        /// on the node pool must have read access to the object. User can't configure both gcs_uri and
+        /// gcp_secret_manager_secret_uri.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
+        public virtual string GcsUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// IntraNodeVisibilityConfig contains the desired config of the intra-node visibility on this cluster.
     /// </summary>
@@ -10480,6 +10543,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>cgroup_mode specifies the cgroup mode to be used on the node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cgroupMode")]
         public virtual string CgroupMode { get; set; }
+
+        /// <summary>Optional. Allow users to run arbitrary bash script or container on the node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customNodeInit")]
+        public virtual CustomNodeInit CustomNodeInit { get; set; }
 
         /// <summary>Optional. Amounts for 2M and 1G hugepages</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hugepages")]
@@ -10776,6 +10843,14 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceExclusions")]
         public virtual System.Collections.Generic.IDictionary<string, TimeWindow> MaintenanceExclusions { get; set; }
+
+        /// <summary>
+        /// RecurringMaintenanceWindow specifies some number of recurring time periods for maintenance to occur. The
+        /// time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
+        /// Alternative to RecurringWindow, with renamed fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recurringMaintenanceWindow")]
+        public virtual RecurringMaintenanceWindow RecurringMaintenanceWindow { get; set; }
 
         /// <summary>
         /// RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows
@@ -12165,6 +12240,19 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// NodePoolUpgradeConcurrencyConfig is the configuration for the node pool auto upgrade concurrency.
+    /// </summary>
+    public class NodePoolUpgradeConcurrencyConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set, no more than max_count node pools can be upgraded concurrently.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxCount")]
+        public virtual System.Nullable<long> MaxCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>NodePoolUpgradeInfo contains the upgrade information of a node pool.</summary>
     public class NodePoolUpgradeInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12195,6 +12283,17 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>The list of past auto upgrades.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeDetails")]
         public virtual System.Collections.Generic.IList<UpgradeDetails> UpgradeDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the GKE Node Readiness Controller.</summary>
+    public class NodeReadinessConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether the GKE Node Readiness Controller is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12826,6 +12925,41 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Optional. Monitoring configuration for Ray clusters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rayClusterMonitoringConfig")]
         public virtual RayClusterMonitoringConfig RayClusterMonitoringConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents an arbitrary window of time that recurs. Alternative to RecurringTimeWindow, with renamed fields.
+    /// </summary>
+    public class RecurringMaintenanceWindow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Windows will not be scheduled before that day. Depending on the recurrence, this may be the date
+        /// the first window appears. Days are measured in the UTC timezone. This setting must be used when
+        /// INTERVAL&amp;gt;1 or FREQ=WEEKLY/MONTHLY and no BYDAY specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delayUntil")]
+        public virtual Date DelayUntil { get; set; }
+
+        /// <summary>
+        /// Required. An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how this window reccurs. For
+        /// example, to have something repeat every weekday, you'd use: `FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR` To repeat
+        /// some window daily (equivalent to the DailyMaintenanceWindow): `FREQ=DAILY` For the first weekend of every
+        /// month: `FREQ=MONTHLY;BYSETPOS=1;BYDAY=SA,SU` The FREQ values of HOURLY, MINUTELY, and SECONDLY are not
+        /// supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recurrence")]
+        public virtual string Recurrence { get; set; }
+
+        /// <summary>Required. Duration of the window.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("windowDuration")]
+        public virtual object WindowDuration { get; set; }
+
+        /// <summary>Required. Start time of the window on days that it is scheduled, assuming UTC timezone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("windowStartTime")]
+        public virtual TimeOfDay WindowStartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14204,6 +14338,41 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API
+    /// may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+    /// </summary>
+    public class TimeOfDay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or
+        /// equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hours")]
+        public virtual System.Nullable<int> Hours { get; set; }
+
+        /// <summary>Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
+        public virtual System.Nullable<int> Minutes { get; set; }
+
+        /// <summary>
+        /// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to
+        /// 999,999,999.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; }
+
+        /// <summary>
+        /// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An
+        /// API may allow the value 60 if it allows leap-seconds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
+        public virtual System.Nullable<int> Seconds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents an arbitrary window of time.</summary>
     public class TimeWindow : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14650,6 +14819,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual NetworkTags Tags { get; set; }
+
+        /// <summary>The taint configuration for the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taintConfig")]
+        public virtual TaintConfig TaintConfig { get; set; }
 
         /// <summary>
         /// The desired node taints to be applied to all nodes in the node pool. If this field is not present, the
