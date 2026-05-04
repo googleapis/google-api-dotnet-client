@@ -2020,6 +2020,14 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("layerDetails")]
         public virtual LayerDetails LayerDetails { get; set; }
 
+        /// <summary>
+        /// Line number in the file where the package is found. Applies only to source repository scanning. Note: this
+        /// field is marked as `optional` in other corresponding protos, but in edition 2023, the "optional" keyword is
+        /// redundant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineNumber")]
+        public virtual System.Nullable<int> LineNumber { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
