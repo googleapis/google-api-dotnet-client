@@ -1058,7 +1058,7 @@ namespace Google.Apis.FirebaseDataConnect.v1
                     }
 
                     /// <summary>
-                    /// Impersonate a mutation defined on a Firebase Data Connect connector. It grants the admin SDK
+                    /// Impersonate a mutation defined on a Firebase SQL Connect connector. It grants the admin SDK
                     /// access to mutations defined in the given connector. The caller can choose to impersonate a
                     /// particular Firebase Auth user, or skip @auth completely.
                     /// </summary>
@@ -1076,7 +1076,7 @@ namespace Google.Apis.FirebaseDataConnect.v1
                     }
 
                     /// <summary>
-                    /// Impersonate a mutation defined on a Firebase Data Connect connector. It grants the admin SDK
+                    /// Impersonate a mutation defined on a Firebase SQL Connect connector. It grants the admin SDK
                     /// access to mutations defined in the given connector. The caller can choose to impersonate a
                     /// particular Firebase Auth user, or skip @auth completely.
                     /// </summary>
@@ -1131,7 +1131,7 @@ namespace Google.Apis.FirebaseDataConnect.v1
                     }
 
                     /// <summary>
-                    /// Impersonate a query defined on a Firebase Data Connect connector. It grants the admin SDK access
+                    /// Impersonate a query defined on a Firebase SQL Connect connector. It grants the admin SDK access
                     /// to queries defined in the given connector. The caller can choose to impersonate a particular
                     /// Firebase Auth user, or skip @auth completely.
                     /// </summary>
@@ -1149,7 +1149,7 @@ namespace Google.Apis.FirebaseDataConnect.v1
                     }
 
                     /// <summary>
-                    /// Impersonate a query defined on a Firebase Data Connect connector. It grants the admin SDK access
+                    /// Impersonate a query defined on a Firebase SQL Connect connector. It grants the admin SDK access
                     /// to queries defined in the given connector. The caller can choose to impersonate a particular
                     /// Firebase Auth user, or skip @auth completely.
                     /// </summary>
@@ -2253,13 +2253,13 @@ namespace Google.Apis.FirebaseDataConnect.v1
                 }
 
                 /// <summary>
-                /// Execute any GraphQL query and mutation against the Firebase Data Connect's generated GraphQL schema.
+                /// Execute any GraphQL query or mutation against the Firebase SQL Connect's generated GraphQL schema.
                 /// Grants full read and write access to the connected data sources. Note: Use introspection query to
                 /// explore the generated GraphQL schema.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. The relative resource name of Firebase Data Connect service, in the format:
+                /// Required. The relative resource name of Firebase SQL Connect service, in the format:
                 /// ```
                 /// projects/{project}/locations/{location}/services/{service}
                 /// ```
@@ -2270,7 +2270,7 @@ namespace Google.Apis.FirebaseDataConnect.v1
                 }
 
                 /// <summary>
-                /// Execute any GraphQL query and mutation against the Firebase Data Connect's generated GraphQL schema.
+                /// Execute any GraphQL query or mutation against the Firebase SQL Connect's generated GraphQL schema.
                 /// Grants full read and write access to the connected data sources. Note: Use introspection query to
                 /// explore the generated GraphQL schema.
                 /// </summary>
@@ -2285,7 +2285,7 @@ namespace Google.Apis.FirebaseDataConnect.v1
                     }
 
                     /// <summary>
-                    /// Required. The relative resource name of Firebase Data Connect service, in the format:
+                    /// Required. The relative resource name of Firebase SQL Connect service, in the format:
                     /// ```
                     /// projects/{project}/locations/{location}/services/{service}
                     /// ```
@@ -2324,13 +2324,13 @@ namespace Google.Apis.FirebaseDataConnect.v1
                 }
 
                 /// <summary>
-                /// Execute any GraphQL query against the Firebase Data Connect's generated GraphQL schema. Grants full
+                /// Execute any GraphQL query against the Firebase SQL Connect's generated GraphQL schema. Grants full
                 /// read to the connected data sources. `ExecuteGraphqlRead` is identical to `ExecuteGraphql` except it
                 /// only accepts read-only query.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. The relative resource name of Firebase Data Connect service, in the format:
+                /// Required. The relative resource name of Firebase SQL Connect service, in the format:
                 /// ```
                 /// projects/{project}/locations/{location}/services/{service}
                 /// ```
@@ -2341,7 +2341,7 @@ namespace Google.Apis.FirebaseDataConnect.v1
                 }
 
                 /// <summary>
-                /// Execute any GraphQL query against the Firebase Data Connect's generated GraphQL schema. Grants full
+                /// Execute any GraphQL query against the Firebase SQL Connect's generated GraphQL schema. Grants full
                 /// read to the connected data sources. `ExecuteGraphqlRead` is identical to `ExecuteGraphql` except it
                 /// only accepts read-only query.
                 /// </summary>
@@ -2356,7 +2356,7 @@ namespace Google.Apis.FirebaseDataConnect.v1
                     }
 
                     /// <summary>
-                    /// Required. The relative resource name of Firebase Data Connect service, in the format:
+                    /// Required. The relative resource name of Firebase SQL Connect service, in the format:
                     /// ```
                     /// projects/{project}/locations/{location}/services/{service}
                     /// ```
@@ -2450,7 +2450,7 @@ namespace Google.Apis.FirebaseDataConnect.v1
                 }
 
                 /// <summary>
-                /// Execute introspection query against the Firebase Data Connect's generated GraphQL schema. GraphQL
+                /// Execute introspection query against the Firebase SQL Connect's generated GraphQL schema. GraphQL
                 /// introspection query provides metadata such as what tables the schema have, what queries and
                 /// mutations can be performed on the schema, and so on. Read more at
                 /// https://graphql.org/learn/introspection. IntrospectGraphql can read schema metadata but cannot read
@@ -2458,7 +2458,7 @@ namespace Google.Apis.FirebaseDataConnect.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. The relative resource name of Firebase Data Connect service, in the format:
+                /// Required. The relative resource name of Firebase SQL Connect service, in the format:
                 /// ```
                 /// projects/{project}/locations/{location}/services/{service}
                 /// ```
@@ -2469,7 +2469,7 @@ namespace Google.Apis.FirebaseDataConnect.v1
                 }
 
                 /// <summary>
-                /// Execute introspection query against the Firebase Data Connect's generated GraphQL schema. GraphQL
+                /// Execute introspection query against the Firebase SQL Connect's generated GraphQL schema. GraphQL
                 /// introspection query provides metadata such as what tables the schema have, what queries and
                 /// mutations can be performed on the schema, and so on. Read more at
                 /// https://graphql.org/learn/introspection. IntrospectGraphql can read schema metadata but cannot read
@@ -2486,7 +2486,7 @@ namespace Google.Apis.FirebaseDataConnect.v1
                     }
 
                     /// <summary>
-                    /// Required. The relative resource name of Firebase Data Connect service, in the format:
+                    /// Required. The relative resource name of Firebase SQL Connect service, in the format:
                     /// ```
                     /// projects/{project}/locations/{location}/services/{service}
                     /// ```
@@ -2627,12 +2627,12 @@ namespace Google.Apis.FirebaseDataConnect.v1
                 /// <summary>Updates the parameters of a single Service.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Identifier. The relative resource name of the Firebase Data Connect service, in the format:
+                /// Identifier. The relative resource name of the Firebase SQL Connect service, in the format:
                 /// ```
                 /// projects/{project}/locations/{location}/services/{service}
                 /// ```
                 /// Note that the service ID is specific
-                /// to Firebase Data Connect and does not correspond to any of the instance IDs of the underlying data
+                /// to Firebase SQL Connect and does not correspond to any of the instance IDs of the underlying data
                 /// source connections.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.FirebaseDataConnect.v1.Data.Service body, string name)
@@ -2652,12 +2652,12 @@ namespace Google.Apis.FirebaseDataConnect.v1
                     }
 
                     /// <summary>
-                    /// Identifier. The relative resource name of the Firebase Data Connect service, in the format:
+                    /// Identifier. The relative resource name of the Firebase SQL Connect service, in the format:
                     /// ```
                     /// projects/{project}/locations/{location}/services/{service}
                     /// ```
                     /// Note that the service ID is
-                    /// specific to Firebase Data Connect and does not correspond to any of the instance IDs of the
+                    /// specific to Firebase SQL Connect and does not correspond to any of the instance IDs of the
                     /// underlying data source connections.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2808,8 +2808,8 @@ namespace Google.Apis.FirebaseDataConnect.v1
 
             /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
-            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
-            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
             /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
             /// that specific project. This includes public, private, or other project-specific locations enabled for
             /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
@@ -2824,8 +2824,8 @@ namespace Google.Apis.FirebaseDataConnect.v1
 
             /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
-            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
-            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
             /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
             /// that specific project. This includes public, private, or other project-specific locations enabled for
             /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
@@ -2846,8 +2846,8 @@ namespace Google.Apis.FirebaseDataConnect.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Do not use this field unless explicitly documented otherwise. This is primarily for
+                /// internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -3107,7 +3107,7 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         }
     }
 
-    /// <summary>Data Connect specific properties for a path under response.data.</summary>
+    /// <summary>SQL Connect specific properties for a path under response.data.</summary>
     public class DataConnectProperties : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A single Entity ID. Set if the path points to a single entity.</summary>
@@ -3136,7 +3136,7 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A data source that backs Firebase Data Connect services.</summary>
+    /// <summary>A data source that backs Firebase SQL Connect services.</summary>
     public class Datasource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>HTTP GraphQL server webhook configurations.</summary>
@@ -3162,7 +3162,7 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The ExecuteMutation request to Firebase Data Connect.</summary>
+    /// <summary>The ExecuteMutation request to Firebase SQL Connect.</summary>
     public class ExecuteMutationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3180,7 +3180,7 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The ExecuteMutation response from Firebase Data Connect.</summary>
+    /// <summary>The ExecuteMutation response from Firebase SQL Connect.</summary>
     public class ExecuteMutationResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The result of executing the requested operation.</summary>
@@ -3199,7 +3199,7 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The ExecuteQuery request to Firebase Data Connect.</summary>
+    /// <summary>The ExecuteQuery request to Firebase SQL Connect.</summary>
     public class ExecuteQueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3217,7 +3217,7 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The ExecuteQuery response from Firebase Data Connect.</summary>
+    /// <summary>The ExecuteQuery response from Firebase SQL Connect.</summary>
     public class ExecuteQueryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The result of executing the requested operation.</summary>
@@ -3256,9 +3256,9 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
     }
 
     /// <summary>
-    /// GraphqlError conforms to the GraphQL error spec. https://spec.graphql.org/draft/#sec-Errors Firebase Data
-    /// Connect API surfaces `GraphqlError` in various APIs: - Upon compile error, `UpdateSchema` and `UpdateConnector`
-    /// return Code.Invalid_Argument with a list of `GraphqlError` in error details. - Upon query compile error,
+    /// GraphqlError conforms to the GraphQL error spec. https://spec.graphql.org/draft/#sec-Errors Firebase SQL Connect
+    /// API surfaces `GraphqlError` in various APIs: - Upon compile error, `UpdateSchema` and `UpdateConnector` return
+    /// Code.Invalid_Argument with a list of `GraphqlError` in error details. - Upon query compile error,
     /// `ExecuteGraphql`, `ExecuteGraphqlRead` and `IntrospectGraphql` return Code.OK with a list of `GraphqlError` in
     /// response body. - Upon query execution error, `ExecuteGraphql`, `ExecuteGraphqlRead`, `ExecuteMutation`,
     /// `ExecuteQuery`, `IntrospectGraphql`, `ImpersonateQuery` and `ImpersonateMutation` all return Code.OK with a list
@@ -3308,7 +3308,7 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
 
         /// <summary>
         /// More detailed error message to assist debugging. It contains application business logic that are
-        /// inappropriate to leak publicly. In the emulator, Data Connect API always includes it to assist local
+        /// inappropriate to leak publicly. In the emulator, SQL Connect API always includes it to assist local
         /// development and debugging. In the backend, ConnectorService always hides it. GraphqlService without
         /// impersonation always include it. GraphqlService with impersonation includes it only if explicitly opted-in
         /// with `include_debug_details` in `GraphqlRequestExtensions`.
@@ -3339,7 +3339,7 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
     }
 
     /// <summary>
-    /// The GraphQL request to Firebase Data Connect. It strives to match the GraphQL over HTTP spec.
+    /// The GraphQL request to Firebase SQL Connect. It strives to match the GraphQL over HTTP spec.
     /// https://github.com/graphql/graphql-over-http/blob/main/spec/GraphQLOverHTTP.md#post
     /// </summary>
     public class GraphqlRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -3382,8 +3382,8 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
     }
 
     /// <summary>
-    /// The GraphQL response from Firebase Data Connect. It strives to match the GraphQL over HTTP spec. Note: Firebase
-    /// Data Connect always responds with `Content-Type: application/json`.
+    /// The GraphQL response from Firebase SQL Connect. It strives to match the GraphQL over HTTP spec. Note: Firebase
+    /// SQL Connect always responds with `Content-Type: application/json`.
     /// https://github.com/graphql/graphql-over-http/blob/main/spec/GraphQLOverHTTP.md#body
     /// </summary>
     public class GraphqlResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -3420,7 +3420,7 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
     /// </summary>
     public class GraphqlResponseExtensions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Data Connect specific GraphQL extension, a list of paths and properties.</summary>
+        /// <summary>SQL Connect specific GraphQL extension, a list of paths and properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataConnect")]
         public virtual System.Collections.Generic.IList<DataConnectProperties> DataConnect { get; set; }
 
@@ -3443,7 +3443,7 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The Impersonate request to Firebase Data Connect.</summary>
+    /// <summary>The Impersonate request to Firebase SQL Connect.</summary>
     public class ImpersonateRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Additional GraphQL request information.</summary>
@@ -3799,9 +3799,9 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         public virtual string Database { get; set; }
 
         /// <summary>
-        /// Output only. Ephemeral is true if this data connect service is served from temporary in-memory emulation of
-        /// Postgres. While Cloud SQL is being provisioned, the data connect service provides the ephemeral service to
-        /// help developers get started. Once the Cloud SQL is provisioned, Data Connect service will transfer its data
+        /// Output only. Ephemeral is true if this SQL Connect service is served from temporary in-memory emulation of
+        /// Postgres. While Cloud SQL is being provisioned, the SQL Connect service provides the ephemeral service to
+        /// help developers get started. Once the Cloud SQL is provisioned, SQL Connect service will transfer its data
         /// on a best-effort basis to the Cloud SQL instance. WARNING: Ephemeral data sources will expire after 24 hour.
         /// The data will be lost if they aren't transferred to the Cloud SQL instance. WARNING: When `ephemeral=true`,
         /// mutations to the database are not guaranteed to be durably persisted, even if an OK status code is returned.
@@ -3832,7 +3832,7 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The application schema of a Firebase Data Connect service.</summary>
+    /// <summary>The application schema of a Firebase SQL Connect service.</summary>
     public class Schema : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Stores small amounts of arbitrary data.</summary>
@@ -3959,7 +3959,7 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         }
     }
 
-    /// <summary>A Firebase Data Connect service.</summary>
+    /// <summary>A Firebase SQL Connect service.</summary>
     public class Service : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Stores small amounts of arbitrary data.</summary>
@@ -4020,12 +4020,12 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Identifier. The relative resource name of the Firebase Data Connect service, in the format:
+        /// Identifier. The relative resource name of the Firebase SQL Connect service, in the format:
         /// ```
         /// projects/{project}/locations/{location}/services/{service}
         /// ```
         /// Note that the service ID is specific to
-        /// Firebase Data Connect and does not correspond to any of the instance IDs of the underlying data source
+        /// Firebase SQL Connect and does not correspond to any of the instance IDs of the underlying data source
         /// connections.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
