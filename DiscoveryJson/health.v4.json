@@ -646,7 +646,7 @@
       }
     }
   },
-  "revision": "20260416",
+  "revision": "20260430",
   "rootUrl": "https://health.googleapis.com/",
   "schemas": {
     "ActiveMinutes": {
@@ -910,6 +910,22 @@
           "description": "Output only. The client ID of the application that recorded the data. This ID is a legacy Fitbit API client ID, which is different from a Google OAuth client ID. Example format: `ABC123`. This field is system-populated and used for tracing data from legacy Fitbit API integrations. This field is system-populated when the data is uploaded from a legacy Fitbit API integration.",
           "readOnly": true,
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "BasalEnergyBurned": {
+      "description": "Number of calories burned due to basal metabolic rate (BMR) over a period of time.",
+      "id": "BasalEnergyBurned",
+      "properties": {
+        "interval": {
+          "$ref": "ObservationTimeInterval",
+          "description": "Required. Observed interval."
+        },
+        "kcal": {
+          "description": "Required. Number of calories burned due to basal metabolic rate in kilocalories over the observed interval.",
+          "format": "double",
+          "type": "number"
         }
       },
       "type": "object"
@@ -1415,6 +1431,10 @@
         "altitude": {
           "$ref": "Altitude",
           "description": "Optional. Data for points in the `altitude` interval data type collection."
+        },
+        "basalEnergyBurned": {
+          "$ref": "BasalEnergyBurned",
+          "description": "Optional. Data for points in the `basal-energy-burned` interval data type collection."
         },
         "bodyFat": {
           "$ref": "BodyFat",
@@ -1950,6 +1970,17 @@
         "name": {
           "description": "Identifier. The resource name of the data type. Format: `users/{user}/dataTypes/{data_type}` See DataPoint.name for examples and possible values.",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleDevicesandservicesHealthV4WebhookNotificationCloudLog": {
+      "description": "Log message for a webhook notification sent by the Google Health API to a subscriber's endpoint. Includes the HTTP response received from the endpoint.",
+      "id": "GoogleDevicesandservicesHealthV4WebhookNotificationCloudLog",
+      "properties": {
+        "httpResponse": {
+          "$ref": "HttpResponse",
+          "description": "Required. Represents the HTTP response. This message includes the status code, reason phrase, headers, and body."
         }
       },
       "type": "object"
@@ -2590,6 +2621,10 @@
         "altitude": {
           "$ref": "Altitude",
           "description": "Data for points in the `altitude` interval data type collection."
+        },
+        "basalEnergyBurned": {
+          "$ref": "BasalEnergyBurned",
+          "description": "Data for points in the `basal-energy-burned` interval data type collection."
         },
         "bodyFat": {
           "$ref": "BodyFat",
@@ -3932,17 +3967,6 @@
             "Pint (US)"
           ],
           "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "WebhookNotificationCloudLog": {
-      "description": "Log message for a webhook notification sent by the Google Health API to a subscriber's endpoint. Includes the HTTP response received from the endpoint.",
-      "id": "WebhookNotificationCloudLog",
-      "properties": {
-        "httpResponse": {
-          "$ref": "HttpResponse",
-          "description": "Required. Represents the HTTP response. This message includes the status code, reason phrase, headers, and body."
         }
       },
       "type": "object"

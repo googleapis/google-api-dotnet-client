@@ -2020,6 +2020,23 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Number of calories burned due to basal metabolic rate (BMR) over a period of time.</summary>
+    public class BasalEnergyBurned : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Observed interval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interval")]
+        public virtual ObservationTimeInterval Interval { get; set; }
+
+        /// <summary>
+        /// Required. Number of calories burned due to basal metabolic rate in kilocalories over the observed interval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kcal")]
+        public virtual System.Nullable<double> Kcal { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request to delete a batch of identifiable data points.</summary>
     public class BatchDeleteDataPointsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2575,6 +2592,10 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>Optional. Data for points in the `altitude` interval data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("altitude")]
         public virtual Altitude Altitude { get; set; }
+
+        /// <summary>Optional. Data for points in the `basal-energy-burned` interval data type collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basalEnergyBurned")]
+        public virtual BasalEnergyBurned BasalEnergyBurned { get; set; }
 
         /// <summary>Optional. Data for points in the `body-fat` sample data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bodyFat")]
@@ -3152,6 +3173,23 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Log message for a webhook notification sent by the Google Health API to a subscriber's endpoint. Includes the
+    /// HTTP response received from the endpoint.
+    /// </summary>
+    public class GoogleDevicesandservicesHealthV4WebhookNotificationCloudLog : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Represents the HTTP response. This message includes the status code, reason phrase, headers, and
+        /// body.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpResponse")]
+        public virtual HttpResponse HttpResponse { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4027,6 +4065,10 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>Data for points in the `altitude` interval data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("altitude")]
         public virtual Altitude Altitude { get; set; }
+
+        /// <summary>Data for points in the `basal-energy-burned` interval data type collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basalEnergyBurned")]
+        public virtual BasalEnergyBurned BasalEnergyBurned { get; set; }
 
         /// <summary>Data for points in the `body-fat` sample data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bodyFat")]
@@ -5588,23 +5630,6 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>Optional. The user provided unit on the last element.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userProvidedUnitLast")]
         public virtual string UserProvidedUnitLast { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Log message for a webhook notification sent by the Google Health API to a subscriber's endpoint. Includes the
-    /// HTTP response received from the endpoint.
-    /// </summary>
-    public class WebhookNotificationCloudLog : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. Represents the HTTP response. This message includes the status code, reason phrase, headers, and
-        /// body.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("httpResponse")]
-        public virtual HttpResponse HttpResponse { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
