@@ -1979,7 +1979,7 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
 
         private object _createTime;
 
-        /// <summary>Output only. The time the document was created.</summary>
+        /// <summary>Output only. The timestamp of the original external publication of the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
