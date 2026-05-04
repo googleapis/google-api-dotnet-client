@@ -5477,7 +5477,7 @@ namespace Google.Apis.Docs.v1.Data
     public class UpdateNamedStyleRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The NamedStyle fields that should be updated. At least `named_style_type must be specified. The root
+        /// The NamedStyle fields that should be updated. At least `named_style_type` must be specified. The root
         /// `named_style` is implied and should not be specified. A single `"*"` can be used as short-hand for listing
         /// every field. For example, to update the text style to bold, set `fields` to include `"text_style"` and
         /// `"text_style.bold"`. To update the paragraph style's alignment property, set `fields` to include
