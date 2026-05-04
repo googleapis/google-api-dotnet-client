@@ -1667,7 +1667,7 @@ namespace Google.Apis.AccessContextManager.v1
             /// Replace all existing service perimeters in an access policy with the service perimeters provided. This
             /// is done atomically. The long-running operation from this RPC has a successful status after all
             /// replacements propagate to long-lasting storage. Replacements containing errors result in an error
-            /// response for the first error encountered. Upon an error, replacement are cancelled and existing service
+            /// response for the first error encountered. Upon an error, replacements are cancelled and existing service
             /// perimeters are not affected. The Operation.response field contains ReplaceServicePerimetersResponse.
             /// </summary>
             /// <param name="body">The body of the request.</param>
@@ -1684,7 +1684,7 @@ namespace Google.Apis.AccessContextManager.v1
             /// Replace all existing service perimeters in an access policy with the service perimeters provided. This
             /// is done atomically. The long-running operation from this RPC has a successful status after all
             /// replacements propagate to long-lasting storage. Replacements containing errors result in an error
-            /// response for the first error encountered. Upon an error, replacement are cancelled and existing service
+            /// response for the first error encountered. Upon an error, replacements are cancelled and existing service
             /// perimeters are not affected. The Operation.response field contains ReplaceServicePerimetersResponse.
             /// </summary>
             public class ReplaceAllRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.Operation>
@@ -2972,13 +2972,17 @@ namespace Google.Apis.AccessContextManager.v1
             this.service = service;
         }
 
-        /// <summary>Lists all supported permissions in VPCSC Granular Controls.</summary>
+        /// <summary>
+        /// Lists all supported permissions in VPC Service Controls ingress and egress rules for Granular Controls.
+        /// </summary>
         public virtual ListRequest List()
         {
             return new ListRequest(this.service);
         }
 
-        /// <summary>Lists all supported permissions in VPCSC Granular Controls.</summary>
+        /// <summary>
+        /// Lists all supported permissions in VPC Service Controls ingress and egress rules for Granular Controls.
+        /// </summary>
         public class ListRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.ListSupportedPermissionsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2988,12 +2992,14 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
             /// <summary>
-            /// Optional. This flag specifies the maximum number of services to return per page. Default is 100.
+            /// Optional. This flag specifies the maximum number of services to return per page. Default value is 100.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>Optional. Token to start on a later page. Default is the first page.</summary>
+            /// <summary>
+            /// Optional. Use this token to retrieve a specific page of results. Default is the first page.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -3111,12 +3117,12 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
             /// <summary>
-            /// This flag specifies the maximum number of services to return per page. Default is 100.
+            /// This flag specifies the maximum number of services to return per page. Default value is 100.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>Token to start on a later page. Default is the first page.</summary>
+            /// <summary>Use this token to retrieve a specific page of results. Default is the first page.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -4211,12 +4217,13 @@ namespace Google.Apis.AccessContextManager.v1.Data
     public class ListSupportedPermissionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The pagination token to retrieve the next page of results. If the value is empty, no further results remain.
+        /// Use this pagination token to retrieve the next page of results. An empty value indicates that no further
+        /// results are available.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>List of VPC-SC supported permissions.</summary>
+        /// <summary>List of VPC Service Controls supported permissions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedPermissions")]
         public virtual System.Collections.Generic.IList<string> SupportedPermissions { get; set; }
 
@@ -4228,7 +4235,8 @@ namespace Google.Apis.AccessContextManager.v1.Data
     public class ListSupportedServicesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The pagination token to retrieve the next page of results. If the value is empty, no further results remain.
+        /// Use this pagination token to retrieve the next page of results. An empty value indicates that no further
+        /// results are available.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
