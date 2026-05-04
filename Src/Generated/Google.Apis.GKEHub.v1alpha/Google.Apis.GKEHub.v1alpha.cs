@@ -3785,7 +3785,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     this.service = service;
                 }
 
-                /// <summary>Create a new rollout sequence resource.</summary>
+                /// <summary>Creates a new rollout sequence resource.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The parent resource where this rollout sequence will be created.
@@ -3796,7 +3796,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Create a new rollout sequence resource.</summary>
+                /// <summary>Creates a new rollout sequence resource.</summary>
                 public class CreateRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -3860,7 +3860,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     }
                 }
 
-                /// <summary>Remove a RolloutSequence.</summary>
+                /// <summary>Removes a RolloutSequence.</summary>
                 /// <param name="name">
                 /// Required. The name of the rollout sequence to delete.
                 /// projects/{project}/locations/{location}/rolloutSequences/{rollout_sequence}
@@ -3870,7 +3870,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Remove a RolloutSequence.</summary>
+                /// <summary>Removes a RolloutSequence.</summary>
                 public class DeleteRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -3962,7 +3962,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     }
                 }
 
-                /// <summary>Retrieve the list of all rollout sequences.</summary>
+                /// <summary>Retrieves the list of all rollout sequences.</summary>
                 /// <param name="parent">
                 /// Required. The parent, which owns this collection of rollout sequences. Format:
                 /// projects/{project}/locations/{location}
@@ -3972,7 +3972,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Retrieve the list of all rollout sequences.</summary>
+                /// <summary>Retrieves the list of all rollout sequences.</summary>
                 public class ListRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.ListRolloutSequencesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -4060,7 +4060,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     }
                 }
 
-                /// <summary>Update a rollout sequence.</summary>
+                /// <summary>Updates a rollout sequence.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Identifier. Name of the rollout sequence in the format of:
@@ -4071,7 +4071,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Update a rollout sequence.</summary>
+                /// <summary>Updates a rollout sequence.</summary>
                 public class PatchRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -4149,7 +4149,70 @@ namespace Google.Apis.GKEHub.v1alpha
                     this.service = service;
                 }
 
-                /// <summary>Retrieve a single rollout.</summary>
+                /// <summary>
+                /// Force-completes a rollout stage. Only the active stage of an active rollout can be force-completed.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the rollout. Format:
+                /// projects/{project}/locations/{location}/rollouts/{rollout}
+                /// </param>
+                public virtual ForceCompleteStageRequest ForceCompleteStage(Google.Apis.GKEHub.v1alpha.Data.ForceCompleteRolloutStageRequest body, string name)
+                {
+                    return new ForceCompleteStageRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Force-completes a rollout stage. Only the active stage of an active rollout can be force-completed.
+                /// </summary>
+                public class ForceCompleteStageRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.Operation>
+                {
+                    /// <summary>Constructs a new ForceCompleteStage request.</summary>
+                    public ForceCompleteStageRequest(Google.Apis.Services.IClientService service, Google.Apis.GKEHub.v1alpha.Data.ForceCompleteRolloutStageRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the rollout. Format:
+                    /// projects/{project}/locations/{location}/rollouts/{rollout}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.GKEHub.v1alpha.Data.ForceCompleteRolloutStageRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "forceCompleteStage";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}:forceCompleteStage";
+
+                    /// <summary>Initializes ForceCompleteStage parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/rollouts/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Retrieves a single rollout.</summary>
                 /// <param name="name">
                 /// Required. The name of the rollout to retrieve.
                 /// projects/{project}/locations/{location}/rollouts/{rollout}
@@ -4159,7 +4222,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Retrieve a single rollout.</summary>
+                /// <summary>Retrieves a single rollout.</summary>
                 public class GetRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.Rollout>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -4200,7 +4263,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     }
                 }
 
-                /// <summary>Retrieve the list of all rollouts.</summary>
+                /// <summary>Retrieves the list of all rollouts.</summary>
                 /// <param name="parent">
                 /// Required. The parent, which owns this collection of rollout. Format:
                 /// projects/{project}/locations/{location}
@@ -4210,7 +4273,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Retrieve the list of all rollouts.</summary>
+                /// <summary>Retrieves the list of all rollouts.</summary>
                 public class ListRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.ListRolloutsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -5787,8 +5850,8 @@ namespace Google.Apis.GKEHub.v1alpha
 
             /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
-            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
-            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
             /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
             /// that specific project. This includes public, private, or other project-specific locations enabled for
             /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
@@ -5803,8 +5866,8 @@ namespace Google.Apis.GKEHub.v1alpha
 
             /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
-            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
-            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
             /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
             /// that specific project. This includes public, private, or other project-specific locations enabled for
             /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
@@ -5825,8 +5888,8 @@ namespace Google.Apis.GKEHub.v1alpha
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Do not use this field unless explicitly documented otherwise. This is primarily for
+                /// internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -6046,6 +6109,23 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloadIdentityPool")]
         public virtual string WorkloadIdentityPool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for automatic upgrades.</summary>
+    public class AutoUpgradeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies the scope of automation for the creation of rollouts. Represents the types of rollouts
+        /// (version upgrades) the sequence should initiate automatically. If this field is `unset`, it defaults to all
+        /// types. If this field is `set` but the internal `upgrade_types` list is `empty`, most automatic rollouts are
+        /// disabled for this sequence. Exceptions are rollouts enforcing our security policies (e.g. such as
+        /// end-of-support and outdated control plane patch enforcements). These policy enforcements cannot be disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutCreationScope")]
+        public virtual RolloutCreationScope RolloutCreationScope { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8343,6 +8423,17 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>mode configures the logs routing mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for force-completing a rollout stage.</summary>
+    public class ForceCompleteRolloutStageRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The stage number to force-complete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stageNumber")]
+        public virtual System.Nullable<int> StageNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11280,6 +11371,17 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual VersionUpgrade VersionUpgrade { get; set; }
     }
 
+    /// <summary>The scope for automatic rollout creation.</summary>
+    public class RolloutCreationScope : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The list of enabled upgrade types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeTypes")]
+        public virtual System.Collections.Generic.IList<string> UpgradeTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata about single cluster (GKE Hub membership) that's part of this Rollout.</summary>
     public class RolloutMembershipState : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11343,6 +11445,13 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>RolloutSequence defines the desired order of upgrades.</summary>
     public class RolloutSequence : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Configuration for automatic upgrades. If this message is `unset`, the system applies default
+        /// behavior.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoUpgradeConfig")]
+        public virtual AutoUpgradeConfig AutoUpgradeConfig { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -11420,6 +11529,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Optional. Human readable display name of the Rollout Sequence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. The resolved auto-upgrade options which are in effect.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveAutoUpgradeConfig")]
+        public virtual AutoUpgradeConfig EffectiveAutoUpgradeConfig { get; set; }
 
         /// <summary>Output only. etag of the Rollout Sequence Ex. abc1234</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
