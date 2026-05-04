@@ -24961,11 +24961,29 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("answerText")]
         public virtual string AnswerText { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("eventSource")]
+        public virtual GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerEventSource EventSource { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("faqSource")]
         public virtual GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource FaqSource { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("generativeSource")]
         public virtual GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource GenerativeSource { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("playbookSource")]
+        public virtual GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource PlaybookSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerEventSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("event")]
+        public virtual string Event__ { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("snippets")]
+        public virtual GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource Snippets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -29041,11 +29059,29 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("answerText")]
         public virtual string AnswerText { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("eventSource")]
+        public virtual GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerEventSource EventSource { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("faqSource")]
         public virtual GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerFaqSource FaqSource { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("generativeSource")]
         public virtual GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource GenerativeSource { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("playbookSource")]
+        public virtual GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource PlaybookSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerEventSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("event")]
+        public virtual string Event__ { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("snippets")]
+        public virtual GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource Snippets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
