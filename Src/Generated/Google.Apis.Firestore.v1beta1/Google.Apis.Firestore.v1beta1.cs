@@ -1164,7 +1164,8 @@ namespace Google.Apis.Firestore.v1beta1
                 /// <param name="parent">
                 /// Required. The parent document. In the format:
                 /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example:
-                /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
+                /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom` Use
+                /// `projects/{project_id}/databases/{database_id}/documents` to list top-level collections.
                 /// </param>
                 public virtual ListCollectionIdsRequest ListCollectionIds(Google.Apis.Firestore.v1beta1.Data.ListCollectionIdsRequest body, string parent)
                 {
@@ -1185,7 +1186,8 @@ namespace Google.Apis.Firestore.v1beta1
                     /// <summary>
                     /// Required. The parent document. In the format:
                     /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example:
-                    /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
+                    /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom` Use
+                    /// `projects/{project_id}/databases/{database_id}/documents` to list top-level collections.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -5015,12 +5017,18 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Options for a transaction that can be used to read and write documents. Firestore does not allow 3rd party auth
-    /// requests to create read-write. transactions.
-    /// </summary>
+    /// <summary>Options for a transaction that can be used to read and write documents.</summary>
     public class ReadWrite : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The concurrency control mode to use for this transaction. A database is able to use different
+        /// concurrency modes for different transactions simultaneously. 3rd party auth requests are only allowed to
+        /// create optimistic read-write transactions and must specify that here even if the database-level setting is
+        /// already configured to optimistic.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("concurrencyMode")]
+        public virtual string ConcurrencyMode { get; set; }
+
         /// <summary>An optional transaction to retry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retryTransaction")]
         public virtual string RetryTransaction { get; set; }
