@@ -1452,6 +1452,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                     /// <summary>This represents a secret.</summary>
                     [Google.Apis.Util.StringValueAttribute("SECRET")]
                     SECRET = 17,
+
+                    /// <summary>This represents an AI skill analysis.</summary>
+                    [Google.Apis.Util.StringValueAttribute("AI_SKILL_ANALYSIS")]
+                    AISKILLANALYSIS = 18,
                 }
 
                 /// <summary>
@@ -2824,6 +2828,28 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
 }
 namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
 {
+    /// <summary>AISkillAnalysisNote provides the metadata of an AI-based skill analysis.</summary>
+    public class AISkillAnalysisNote : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AISkillAnalysisOccurrence provides the results of an AI-based skill analysis.</summary>
+    public class AISkillAnalysisOccurrence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Findings produced by the analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("findings")]
+        public virtual System.Collections.Generic.IList<Finding> Findings { get; set; }
+
+        /// <summary>Optional. Name of the skill that produced this analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skillName")]
+        public virtual string SkillName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Indicates which analysis completed successfully. Multiple types of analysis can be performed on a single
     /// resource.
@@ -3938,6 +3964,13 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     public class ContaineranalysisGoogleDevtoolsCloudbuildV1Artifacts : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. A list of generic artifacts to be uploaded to Artifact Registry upon successful completion of all
+        /// build steps. If any artifacts fail to be pushed, the build is marked FAILURE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericArtifacts")]
+        public virtual System.Collections.Generic.IList<ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsGenericArtifact> GenericArtifacts { get; set; }
+
+        /// <summary>
         /// Optional. A list of Go modules to be uploaded to Artifact Registry upon successful completion of all build
         /// steps. If any objects fail to be pushed, the build is marked FAILURE.
         /// </summary>
@@ -4019,6 +4052,28 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>Output only. Stores timing information for pushing all artifact objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timing")]
         public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan Timing { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Generic artifact to upload to Artifact Registry upon successful completion of all build steps.
+    /// </summary>
+    public class ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsGenericArtifact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Path to the generic artifact in the build's workspace to be uploaded to Artifact Registry.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("folder")]
+        public virtual string Folder { get; set; }
+
+        /// <summary>
+        /// Required. Registry path to upload the generic artifact to, in the form
+        /// projects/$PROJECT/locations/$LOCATION/repositories/$REPO/packages/$PACKAGE/versions/$VERSION
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("registryPath")]
+        public virtual string RegistryPath { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4705,6 +4760,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pullTiming")]
         public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan PullTiming { get; set; }
 
+        /// <summary>Declaration of results for this build step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<ContaineranalysisGoogleDevtoolsCloudbuildV1StepResult> Results { get; set; }
+
         /// <summary>
         /// A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint
         /// or args.
@@ -4752,6 +4811,17 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("waitFor")]
         public virtual System.Collections.Generic.IList<string> WaitFor { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Results for a build step.</summary>
+    public class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildStepResults : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Results for a build step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Results { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4836,9 +4906,31 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("empty")]
         public virtual System.Nullable<bool> Empty { get; set; }
 
+        /// <summary>Represents a generic artifact as a build dependency.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericArtifact")]
+        public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGenericArtifactDependency GenericArtifact { get; set; }
+
         /// <summary>Represents a git repository as a build dependency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gitSource")]
         public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGitSourceDependency GitSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a generic artifact as a build dependency.</summary>
+    public class ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGenericArtifactDependency : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Where the artifact files should be placed on the worker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destPath")]
+        public virtual string DestPath { get; set; }
+
+        /// <summary>
+        /// Required. The location to download the artifact files from. Ex:
+        /// projects/p1/locations/us/repositories/r1/packages/p1/versions/v1
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5107,6 +5199,14 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("buildStepOutputs")]
         public virtual System.Collections.Generic.IList<string> BuildStepOutputs { get; set; }
 
+        /// <summary>Results for build steps. step_id -&gt; </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildStepResults")]
+        public virtual System.Collections.Generic.IDictionary<string, ContaineranalysisGoogleDevtoolsCloudbuildV1BuildStepResults> BuildStepResults { get; set; }
+
+        /// <summary>Output only. Generic artifacts uploaded to Artifact Registry at the end of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericArtifacts")]
+        public virtual System.Collections.Generic.IList<ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedGenericArtifact> GenericArtifacts { get; set; }
+
         /// <summary>Optional. Go module artifacts uploaded to Artifact Registry at the end of the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("goModules")]
         public virtual System.Collections.Generic.IList<ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedGoModule> GoModules { get; set; }
@@ -5276,6 +5376,25 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>StepResult is the declaration of a result for a build step.</summary>
+    public class ContaineranalysisGoogleDevtoolsCloudbuildV1StepResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The content of the attestation to be generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attestationContent")]
+        public virtual string AttestationContent { get; set; }
+
+        /// <summary>Optional. The type of attestation to be generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attestationType")]
+        public virtual string AttestationType { get; set; }
+
+        /// <summary>Required. The name of the result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Location of the source in an archive file in Cloud Storage.</summary>
     public class ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5413,6 +5532,36 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A generic artifact uploaded to Artifact Registry using the GenericArtifact directive.</summary>
+    public class ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedGenericArtifact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The hash of the whole artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactFingerprint")]
+        public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes ArtifactFingerprint { get; set; }
+
+        /// <summary>Output only. Path to the artifact in Artifact Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactRegistryPackage")]
+        public virtual string ArtifactRegistryPackage { get; set; }
+
+        /// <summary>Output only. The file hashes that make up the generic artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
+        public virtual System.Collections.Generic.IDictionary<string, ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes> FileHashes { get; set; }
+
+        /// <summary>Output only. Stores timing information for pushing the specified artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pushTiming")]
+        public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan PushTiming { get; set; }
+
+        /// <summary>
+        /// Output only. URI of the uploaded artifact. Ex:
+        /// projects/p1/locations/us/repositories/r1/packages/p1/versions/v1
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6444,6 +6593,41 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Finding provides details for a single finding within an AISkillAnalysisOccurrence.</summary>
+    public class Finding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Category of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>Optional. Detailed description of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. Path to the file where the finding was detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
+        public virtual string FilePath { get; set; }
+
+        /// <summary>Optional. Unique identifier of the rule that produced this finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleId")]
+        public virtual string RuleId { get; set; }
+
+        /// <summary>Optional. Severity of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>Optional. Code snippet relevant to the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
+        public virtual string Snippet { get; set; }
+
+        /// <summary>Optional. Title of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A set of properties that uniquely identify a given Docker image.</summary>
     public class Fingerprint : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7406,6 +7590,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     /// <summary>Provides a detailed description of a `Note`.</summary>
     public class Note : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A note describing an AI skill analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiSkillAnalysis")]
+        public virtual AISkillAnalysisNote AiSkillAnalysis { get; set; }
+
         /// <summary>A note describing an attestation role.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attestationAuthority")]
         public virtual AttestationAuthority AttestationAuthority { get; set; }
@@ -7621,6 +7809,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     /// <summary>`Occurrence` includes information about analysis occurrences for an image.</summary>
     public class Occurrence : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>This represents an AI skill analysis occurrence</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiSkillAnalysis")]
+        public virtual AISkillAnalysisOccurrence AiSkillAnalysis { get; set; }
+
         /// <summary>Describes an attestation of an artifact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attestation")]
         public virtual Attestation Attestation { get; set; }
