@@ -3020,6 +3020,14 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// <summary>Request to suspend a subscription.</summary>
     public class SuspendSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The mode to suspend the subscription. It's required for partners to specify the suspend mode,
+        /// whether suspend immediately and indefinitely, or cancel the subscription after grace_period_millis or
+        /// auto_cancel_duration_millis if it's not resumed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suspendMode")]
+        public virtual string SuspendMode { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
