@@ -7139,8 +7139,8 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
-            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
-            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
             /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
             /// that specific project. This includes public, private, or other project-specific locations enabled for
             /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
@@ -7155,8 +7155,8 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
-            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
-            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
             /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
             /// that specific project. This includes public, private, or other project-specific locations enabled for
             /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
@@ -7177,8 +7177,8 @@ namespace Google.Apis.CloudRun.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Do not use this field unless explicitly documented otherwise. This is primarily for
+                /// internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -9176,6 +9176,10 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pullTiming")]
         public virtual GoogleDevtoolsCloudbuildV1TimeSpan PullTiming { get; set; }
 
+        /// <summary>Declaration of results for this build step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1StepResult> Results { get; set; }
+
         /// <summary>
         /// A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint
         /// or args.
@@ -9223,6 +9227,17 @@ namespace Google.Apis.CloudRun.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("waitFor")]
         public virtual System.Collections.Generic.IList<string> WaitFor { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Results for a build step.</summary>
+    public class GoogleDevtoolsCloudbuildV1BuildStepResults : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Results for a build step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Results { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9798,6 +9813,10 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("buildStepOutputs")]
         public virtual System.Collections.Generic.IList<string> BuildStepOutputs { get; set; }
 
+        /// <summary>Results for build steps. step_id -&gt; </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildStepResults")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleDevtoolsCloudbuildV1BuildStepResults> BuildStepResults { get; set; }
+
         /// <summary>Output only. Generic artifacts uploaded to Artifact Registry at the end of the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("genericArtifacts")]
         public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1UploadedGenericArtifact> GenericArtifacts { get; set; }
@@ -9966,6 +9985,25 @@ namespace Google.Apis.CloudRun.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolvedStorageSourceManifest")]
         public virtual GoogleDevtoolsCloudbuildV1StorageSourceManifest ResolvedStorageSourceManifest { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>StepResult is the declaration of a result for a build step.</summary>
+    public class GoogleDevtoolsCloudbuildV1StepResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The content of the attestation to be generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attestationContent")]
+        public virtual string AttestationContent { get; set; }
+
+        /// <summary>Optional. The type of attestation to be generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attestationType")]
+        public virtual string AttestationType { get; set; }
+
+        /// <summary>Required. The name of the result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
