@@ -1024,6 +1024,21 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The co2 emission of the vehicle.</summary>
+    public class Co2Emissions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unit of the co2 emission.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual string Unit { get; set; }
+
+        /// <summary>The co2 emission value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<long> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A message that represents custom attributes. Exactly one of `value` or `group_values` must not be empty.
     /// </summary>
@@ -1083,6 +1098,21 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The energy consumption of the vehicle.</summary>
+    public class EnergyConsumption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unit of the energy consumption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual string Unit { get; set; }
+
+        /// <summary>The energy consumption value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<double> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Conditions to be met for a product to have free shipping.</summary>
     public class FreeShippingThreshold : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1096,6 +1126,21 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// <summary>The minimum product price for the shipping cost to become free. Represented as a number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceThreshold")]
         public virtual Price PriceThreshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The fuel consumption of the vehicle.</summary>
+    public class FuelConsumption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unit of the fuel consumption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual string Unit { get; set; }
+
+        /// <summary>The fuel consumption value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<double> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1370,6 +1415,21 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The mileage of the vehicle.</summary>
+    public class Mileage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unit of the mileage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual string Unit { get; set; }
+
+        /// <summary>The distance value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<long> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The price represented as a number and currency.</summary>
     public class Price : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1583,6 +1643,10 @@ namespace Google.Apis.Merchant.products_v1.Data
             set => AvailabilityDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>The [body style](https://support.google.com/google-ads/answer/14157085) of the vehicle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bodyStyle")]
+        public virtual string BodyStyle { get; set; }
+
         /// <summary>
         /// [Brand](https://support.google.com/merchants/answer/6324351) of the item. For example, "Google".
         /// </summary>
@@ -1605,9 +1669,19 @@ namespace Google.Apis.Merchant.products_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("certifications")]
         public virtual System.Collections.Generic.IList<ProductCertification> Certifications { get; set; }
 
+        /// <summary>
+        /// Whether the vehicle is OEM [certified pre-owned](https://support.google.com/google-ads/answer/14156475).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certifiedPreOwned")]
+        public virtual System.Nullable<bool> CertifiedPreOwned { get; set; }
+
         /// <summary>Extra fields to export to the Cloud Retail program.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudExportAdditionalProperties")]
         public virtual System.Collections.Generic.IList<CloudExportAdditionalProperties> CloudExportAdditionalProperties { get; set; }
+
+        /// <summary>The [co2 emission](https://support.google.com/google-ads/answer/14546146) of the vehicle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("co2Emissions")]
+        public virtual Co2Emissions Co2Emissions { get; set; }
 
         /// <summary>
         /// [Color](https://support.google.com/merchants/answer/6324487) of the item. For example, "red".
@@ -1657,6 +1731,13 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customLabel4")]
         public virtual string CustomLabel4 { get; set; }
+
+        /// <summary>
+        /// The date the vehicle was first registered. Format: `YYYY-MM`. See the [Date first
+        /// registered](https://support.google.com/google-ads/answer/14546138) for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateFirstRegistered")]
+        public virtual string DateFirstRegistered { get; set; }
 
         /// <summary>Description of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -1732,11 +1813,33 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual System.Nullable<double> DisplayAdsValue { get; set; }
 
         /// <summary>
+        /// The [electric range](https://support.google.com/google-ads/answer/15162232) of the vehicle in miles/kms.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("electricRange")]
+        public virtual Mileage ElectricRange { get; set; }
+
+        /// <summary>
+        /// The [emission standard](https://support.google.com/google-ads/answer/14869021) of the vehicle.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emissionsStandard")]
+        public virtual string EmissionsStandard { get; set; }
+
+        /// <summary>
+        /// The [energy consumption](https://support.google.com/google-ads/answer/14546149) of the vehicle.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("energyConsumption")]
+        public virtual EnergyConsumption EnergyConsumption { get; set; }
+
+        /// <summary>
         /// The [energy efficiency class](https://support.google.com/merchants/answer/7562785) as defined in EU
         /// directive 2010/30/EU.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("energyEfficiencyClass")]
         public virtual string EnergyEfficiencyClass { get; set; }
+
+        /// <summary>The [engine](https://support.google.com/google-ads/answer/14156068) type of the vehicle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("engine")]
+        public virtual string Engine { get; set; }
 
         /// <summary>
         /// The list of destinations to exclude for this target (corresponds to unchecked check boxes in Merchant
@@ -1801,6 +1904,19 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// <summary>Conditions to be met for a product to have free shipping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freeShippingThreshold")]
         public virtual System.Collections.Generic.IList<FreeShippingThreshold> FreeShippingThreshold { get; set; }
+
+        /// <summary>
+        /// The [fuel consumption](https://support.google.com/google-ads/answer/14543580) of the vehicle.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fuelConsumption")]
+        public virtual FuelConsumption FuelConsumption { get; set; }
+
+        /// <summary>
+        /// The fuel consumption of the vehicle when the hybrid battery is discharged. See the [Help Center
+        /// article](https://support.google.com/google-ads/answer/15162033) for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fuelConsumptionDischargedBattery")]
+        public virtual FuelConsumption FuelConsumptionDischargedBattery { get; set; }
 
         /// <summary>Target [gender](https://support.google.com/merchants/answer/6324479) of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gender")]
@@ -1915,6 +2031,13 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual Price MaximumRetailPrice { get; set; }
 
         /// <summary>
+        /// The number of miles/kms on the vehicle. See the
+        /// [Mileage](https://support.google.com/google-ads/answer/14156166) for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mileage")]
+        public virtual Mileage Mileage { get; set; }
+
+        /// <summary>
         /// The [energy efficiency class](https://support.google.com/merchants/answer/7562785) as defined in EU
         /// directive 2010/30/EU.
         /// </summary>
@@ -1943,6 +2066,13 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileLinkTemplate")]
         public virtual string MobileLinkTemplate { get; set; }
+
+        /// <summary>
+        /// The [Model](https://support.google.com/google-ads/answer/14154511) of the vehicle, such as `LX`, `EX`, and
+        /// others.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
 
         /// <summary>
         /// Manufacturer Part Number ([MPN](https://support.google.com/merchants/answer/6324482)) of the item.
@@ -2156,6 +2286,13 @@ namespace Google.Apis.Merchant.products_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transitTimeLabel")]
         public virtual string TransitTimeLabel { get; set; }
 
+        /// <summary>
+        /// The [Trim](https://support.google.com/google-ads/answer/14154176) of the vehicle model, such as `S`, `SV`,
+        /// `SL` and others.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trim")]
+        public virtual string Trim { get; set; }
+
         /// <summary>The preference of the denominator of the unit price.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unitPricingBaseMeasure")]
         public virtual UnitPricingBaseMeasure UnitPricingBaseMeasure { get; set; }
@@ -2163,6 +2300,42 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// <summary>The measure and dimension of an item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unitPricingMeasure")]
         public virtual UnitPricingMeasure UnitPricingMeasure { get; set; }
+
+        /// <summary>
+        /// The all-in advertised price for a vehicle, which includes costs for the following – any accessories attached
+        /// to the vehicle, environmental levies, extra warranty, fuel, freight, pre-delivery inspection (PDI), dealer
+        /// fees for handling licensing, provincial regulatory fees, miscellaneous dealer charges for security etching
+        /// and nitrogen tire fill, and factory-to-customer or dealer-to-customer discounts or incentives. See the
+        /// [Vehicle all-in price](https://support.google.com/google-ads/answer/14156981) for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vehicleAllInPrice")]
+        public virtual Price VehicleAllInPrice { get; set; }
+
+        /// <summary>
+        /// The miscellaneous expenses like insurance and registration fees of the vehicle. See the [Vehicle
+        /// expenses](https://support.google.com/google-ads/answer/15957154) for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vehicleExpenses")]
+        public virtual Price VehicleExpenses { get; set; }
+
+        /// <summary>
+        /// Whether the vehicle is sold with mandatory inspection and maintenance performed before delivery. See the
+        /// [Vehicle mandatory inspection included](https://support.google.com/google-ads/answer/15956630) for more
+        /// information.`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vehicleMandatoryInspectionIncluded")]
+        public virtual System.Nullable<bool> VehicleMandatoryInspectionIncluded { get; set; }
+
+        /// <summary>
+        /// The MSRP (Manufacturer Suggested Retail Price) for the vehicle in its current configuration. See the
+        /// [Vehicle MSRP](https://support.google.com/google-ads/answer/14154171) for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vehicleMsrp")]
+        public virtual Price VehicleMsrp { get; set; }
+
+        /// <summary>The [price type](https://support.google.com/google-ads/answer/14592783) of the vehicle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vehiclePriceType")]
+        public virtual string VehiclePriceType { get; set; }
 
         /// <summary>
         /// Optional. A list of video URLs for the item. Use this attribute to provide more visuals for your product
@@ -2173,11 +2346,26 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual System.Collections.Generic.IList<string> VideoLinks { get; set; }
 
         /// <summary>
+        /// The [Vehicle Identification Number (VIN)](https://support.google.com/google-ads/answer/14154510) of the
+        /// vehicle.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vin")]
+        public virtual string Vin { get; set; }
+
+        /// <summary>
         /// URL of the 3D image of the item. See the [Help Center
         /// article](https://support.google.com/merchants/answer/13674896) for more information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("virtualModelLink")]
         public virtual string VirtualModelLink { get; set; }
+
+        /// <summary>The [warranty](https://support.google.com/google-ads/answer/15957626) of the vehicle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warranty")]
+        public virtual Warranty Warranty { get; set; }
+
+        /// <summary>The [Year](https://support.google.com/google-ads/answer/14152816) of the vehicle model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<long> Year { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3024,6 +3212,21 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// <summary>The measure of an item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<double> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The warranty of the vehicle.</summary>
+    public class Warranty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The warranty duration in months.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual System.Nullable<long> Duration { get; set; }
+
+        /// <summary>The warranty mileage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mileage")]
+        public virtual Mileage Mileage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
