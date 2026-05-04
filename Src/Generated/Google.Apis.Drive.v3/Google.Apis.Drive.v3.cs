@@ -666,15 +666,327 @@ namespace Google.Apis.Drive.v3
             this.service = service;
         }
 
-        /// <summary>Gets an Approval by ID.</summary>
-        /// <param name="fileId">Required. The ID of the file the Approval is on.</param>
-        /// <param name="approvalId">Required. The ID of the Approval.</param>
+        /// <summary>
+        /// Approves an approval. For more information, see [Manage
+        /// approvals](https://developers.google.com/workspace/drive/api/guides/approvals). This is used to update the
+        /// ReviewerResponse of the requesting user with a Response of `APPROVED`. If this is the last required reviewer
+        /// response, this also completes the approval and sets the approval Status to `APPROVED`.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="fileId">Required. The ID of the file that the approval is on.</param>
+        /// <param name="approvalId">Required. The ID of the approval to approve.</param>
+        public virtual ApproveRequest Approve(Google.Apis.Drive.v3.Data.ApproveApprovalRequest body, string fileId, string approvalId)
+        {
+            return new ApproveRequest(this.service, body, fileId, approvalId);
+        }
+
+        /// <summary>
+        /// Approves an approval. For more information, see [Manage
+        /// approvals](https://developers.google.com/workspace/drive/api/guides/approvals). This is used to update the
+        /// ReviewerResponse of the requesting user with a Response of `APPROVED`. If this is the last required reviewer
+        /// response, this also completes the approval and sets the approval Status to `APPROVED`.
+        /// </summary>
+        public class ApproveRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Approval>
+        {
+            /// <summary>Constructs a new Approve request.</summary>
+            public ApproveRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.ApproveApprovalRequest body, string fileId, string approvalId) : base(service)
+            {
+                FileId = fileId;
+                ApprovalId = approvalId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the file that the approval is on.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string FileId { get; private set; }
+
+            /// <summary>Required. The ID of the approval to approve.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("approvalId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ApprovalId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Drive.v3.Data.ApproveApprovalRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "approve";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "files/{fileId}/approvals/{approvalId}:approve";
+
+            /// <summary>Initializes Approve parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("approvalId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "approvalId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Cancels an approval. For more information, see [Manage
+        /// approvals](https://developers.google.com/workspace/drive/api/guides/approvals). Updates the approval Status
+        /// to `CANCELLED`. This can be called by any user with the `writer` permission on the file while the approval
+        /// Status is `IN_PROGRESS`.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="fileId">Required. The ID of the file that the approval is on.</param>
+        /// <param name="approvalId">Required. The ID of the approval to cancel.</param>
+        public virtual CancelRequest Cancel(Google.Apis.Drive.v3.Data.CancelApprovalRequest body, string fileId, string approvalId)
+        {
+            return new CancelRequest(this.service, body, fileId, approvalId);
+        }
+
+        /// <summary>
+        /// Cancels an approval. For more information, see [Manage
+        /// approvals](https://developers.google.com/workspace/drive/api/guides/approvals). Updates the approval Status
+        /// to `CANCELLED`. This can be called by any user with the `writer` permission on the file while the approval
+        /// Status is `IN_PROGRESS`.
+        /// </summary>
+        public class CancelRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Approval>
+        {
+            /// <summary>Constructs a new Cancel request.</summary>
+            public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.CancelApprovalRequest body, string fileId, string approvalId) : base(service)
+            {
+                FileId = fileId;
+                ApprovalId = approvalId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the file that the approval is on.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string FileId { get; private set; }
+
+            /// <summary>Required. The ID of the approval to cancel.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("approvalId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ApprovalId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Drive.v3.Data.CancelApprovalRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "cancel";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "files/{fileId}/approvals/{approvalId}:cancel";
+
+            /// <summary>Initializes Cancel parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("approvalId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "approvalId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Comments on an approval. For more information, see [Manage
+        /// approvals](https://developers.google.com/workspace/drive/api/guides/approvals). This sends a notification to
+        /// both the initiator and the reviewers. Additionally, a message is also added to the approval activity log.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="fileId">Required. The ID of the file that the approval is on.</param>
+        /// <param name="approvalId">Required. The ID of the approval to comment on.</param>
+        public virtual CommentRequest Comment(Google.Apis.Drive.v3.Data.CommentApprovalRequest body, string fileId, string approvalId)
+        {
+            return new CommentRequest(this.service, body, fileId, approvalId);
+        }
+
+        /// <summary>
+        /// Comments on an approval. For more information, see [Manage
+        /// approvals](https://developers.google.com/workspace/drive/api/guides/approvals). This sends a notification to
+        /// both the initiator and the reviewers. Additionally, a message is also added to the approval activity log.
+        /// </summary>
+        public class CommentRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Approval>
+        {
+            /// <summary>Constructs a new Comment request.</summary>
+            public CommentRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.CommentApprovalRequest body, string fileId, string approvalId) : base(service)
+            {
+                FileId = fileId;
+                ApprovalId = approvalId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the file that the approval is on.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string FileId { get; private set; }
+
+            /// <summary>Required. The ID of the approval to comment on.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("approvalId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ApprovalId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Drive.v3.Data.CommentApprovalRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "comment";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "files/{fileId}/approvals/{approvalId}:comment";
+
+            /// <summary>Initializes Comment parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("approvalId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "approvalId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Declines an approval. For more information, see [Manage
+        /// approvals](https://developers.google.com/workspace/drive/api/guides/approvals). This is used to update the
+        /// ReviewerResponse of the requesting user with a Response of `DECLINED`. This also completes the approval and
+        /// sets the approval Status to `DECLINED`.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="fileId">Required. The ID of the file that the approval is on.</param>
+        /// <param name="approvalId">Required. The ID of the approval to decline.</param>
+        public virtual DeclineRequest Decline(Google.Apis.Drive.v3.Data.DeclineApprovalRequest body, string fileId, string approvalId)
+        {
+            return new DeclineRequest(this.service, body, fileId, approvalId);
+        }
+
+        /// <summary>
+        /// Declines an approval. For more information, see [Manage
+        /// approvals](https://developers.google.com/workspace/drive/api/guides/approvals). This is used to update the
+        /// ReviewerResponse of the requesting user with a Response of `DECLINED`. This also completes the approval and
+        /// sets the approval Status to `DECLINED`.
+        /// </summary>
+        public class DeclineRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Approval>
+        {
+            /// <summary>Constructs a new Decline request.</summary>
+            public DeclineRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.DeclineApprovalRequest body, string fileId, string approvalId) : base(service)
+            {
+                FileId = fileId;
+                ApprovalId = approvalId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the file that the approval is on.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string FileId { get; private set; }
+
+            /// <summary>Required. The ID of the approval to decline.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("approvalId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ApprovalId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Drive.v3.Data.DeclineApprovalRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "decline";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "files/{fileId}/approvals/{approvalId}:decline";
+
+            /// <summary>Initializes Decline parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("approvalId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "approvalId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Gets an approval by ID. For more information, see [Manage
+        /// approvals](https://developers.google.com/workspace/drive/api/guides/approvals).
+        /// </summary>
+        /// <param name="fileId">Required. The ID of the file that the approval is on.</param>
+        /// <param name="approvalId">Required. The ID of the approval.</param>
         public virtual GetRequest Get(string fileId, string approvalId)
         {
             return new GetRequest(this.service, fileId, approvalId);
         }
 
-        /// <summary>Gets an Approval by ID.</summary>
+        /// <summary>
+        /// Gets an approval by ID. For more information, see [Manage
+        /// approvals](https://developers.google.com/workspace/drive/api/guides/approvals).
+        /// </summary>
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Approval>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -685,11 +997,11 @@ namespace Google.Apis.Drive.v3
                 InitParameters();
             }
 
-            /// <summary>Required. The ID of the file the Approval is on.</summary>
+            /// <summary>Required. The ID of the file that the approval is on.</summary>
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
-            /// <summary>Required. The ID of the Approval.</summary>
+            /// <summary>Required. The ID of the approval.</summary>
             [Google.Apis.Util.RequestParameterAttribute("approvalId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ApprovalId { get; private set; }
 
@@ -725,14 +1037,20 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Lists the Approvals on a file.</summary>
-        /// <param name="fileId">Required. The ID of the file the Approval is on.</param>
+        /// <summary>
+        /// Lists the approvals on a file. For more information, see [Manage
+        /// approvals](https://developers.google.com/workspace/drive/api/guides/approvals).
+        /// </summary>
+        /// <param name="fileId">Required. The ID of the file that the approval is on.</param>
         public virtual ListRequest List(string fileId)
         {
             return new ListRequest(this.service, fileId);
         }
 
-        /// <summary>Lists the Approvals on a file.</summary>
+        /// <summary>
+        /// Lists the approvals on a file. For more information, see [Manage
+        /// approvals](https://developers.google.com/workspace/drive/api/guides/approvals).
+        /// </summary>
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.ApprovalList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -742,19 +1060,19 @@ namespace Google.Apis.Drive.v3
                 InitParameters();
             }
 
-            /// <summary>Required. The ID of the file the Approval is on.</summary>
+            /// <summary>Required. The ID of the file that the approval is on.</summary>
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
             /// <summary>
-            /// The maximum number of Approvals to return. When not set, at most 100 Approvals will be returned.
+            /// The maximum number of approvals to return. When not set, at most 100 approvals are returned.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>
             /// The token for continuing a previous list request on the next page. This should be set to the value of
-            /// nextPageToken from a previous response.
+            /// `nextPageToken` from a previous response.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -793,6 +1111,146 @@ namespace Google.Apis.Drive.v3
                     Name = "pageToken",
                     IsRequired = false,
                     ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Reassigns the reviewers on an approval. For more information, see [Manage
+        /// approvals](https://developers.google.com/workspace/drive/api/guides/approvals). Adds or replaces reviewers
+        /// in the ReviewerResponse of the approval. This can be called by any user with the `writer` permission on the
+        /// file while the approval Status is `IN_PROGRESS` and the Response for the reviewer being reassigned is
+        /// `NO_RESPONSE`. A user with the `reader` permission can only reassign an approval that's assigned to
+        /// themselves. Removing a reviewer isn't allowed.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="fileId">Required. The ID of the file that the approval is on.</param>
+        /// <param name="approvalId">Required. The ID of the approval to reassign.</param>
+        public virtual ReassignRequest Reassign(Google.Apis.Drive.v3.Data.ReassignApprovalRequest body, string fileId, string approvalId)
+        {
+            return new ReassignRequest(this.service, body, fileId, approvalId);
+        }
+
+        /// <summary>
+        /// Reassigns the reviewers on an approval. For more information, see [Manage
+        /// approvals](https://developers.google.com/workspace/drive/api/guides/approvals). Adds or replaces reviewers
+        /// in the ReviewerResponse of the approval. This can be called by any user with the `writer` permission on the
+        /// file while the approval Status is `IN_PROGRESS` and the Response for the reviewer being reassigned is
+        /// `NO_RESPONSE`. A user with the `reader` permission can only reassign an approval that's assigned to
+        /// themselves. Removing a reviewer isn't allowed.
+        /// </summary>
+        public class ReassignRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Approval>
+        {
+            /// <summary>Constructs a new Reassign request.</summary>
+            public ReassignRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.ReassignApprovalRequest body, string fileId, string approvalId) : base(service)
+            {
+                FileId = fileId;
+                ApprovalId = approvalId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the file that the approval is on.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string FileId { get; private set; }
+
+            /// <summary>Required. The ID of the approval to reassign.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("approvalId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ApprovalId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Drive.v3.Data.ReassignApprovalRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "reassign";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "files/{fileId}/approvals/{approvalId}:reassign";
+
+            /// <summary>Initializes Reassign parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("approvalId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "approvalId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Starts an approval on a file. For more information, see [Manage
+        /// approvals](https://developers.google.com/workspace/drive/api/guides/approvals).
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="fileId">Required. The ID of the file that the approval is created on.</param>
+        public virtual StartRequest Start(Google.Apis.Drive.v3.Data.StartApprovalRequest body, string fileId)
+        {
+            return new StartRequest(this.service, body, fileId);
+        }
+
+        /// <summary>
+        /// Starts an approval on a file. For more information, see [Manage
+        /// approvals](https://developers.google.com/workspace/drive/api/guides/approvals).
+        /// </summary>
+        public class StartRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Approval>
+        {
+            /// <summary>Constructs a new Start request.</summary>
+            public StartRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.StartApprovalRequest body, string fileId) : base(service)
+            {
+                FileId = fileId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the file that the approval is created on.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string FileId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Drive.v3.Data.StartApprovalRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "start";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "files/{fileId}/approvals:start";
+
+            /// <summary>Initializes Start parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -3917,8 +4375,8 @@ namespace Google.Apis.Drive.v3
             /// <summary>
             /// A comma-separated list of sort keys. Valid keys are: * `createdTime`: When the file was created. Avoid
             /// using this key for queries on large item collections as it might result in timeouts or other issues. For
-            /// time-related sorting on large item collections, use `modifiedTime` instead. * `folder`: The folder ID.
-            /// This field is sorted using alphabetical ordering. * `modifiedByMeTime`: The last time the file was
+            /// time-related sorting on large item collections, use `modifiedTime desc` instead. * `folder`: The folder
+            /// ID. This field is sorted using alphabetical ordering. * `modifiedByMeTime`: The last time the file was
             /// modified by the user. * `modifiedTime`: The last time the file was modified by anyone. * `name`: The
             /// name of the file. This field is sorted using alphabetical ordering, so 1, 12, 2, 22. * `name_natural`:
             /// The name of the file. This field is sorted using natural sort ordering, so 1, 2, 12, 22. *
@@ -3932,8 +4390,9 @@ namespace Google.Apis.Drive.v3
             public virtual string OrderBy { get; set; }
 
             /// <summary>
-            /// The maximum number of files to return per page. Partial or empty result pages are possible even before
-            /// the end of the files list has been reached.
+            /// The maximum number of files to return per page. Pages may be partial or empty even before reaching the
+            /// end of the file list. If unspecified, at most 100 files are returned for shared drives, and the entire
+            /// list of files for non-shared drives. The maximum value is 100; values above 100 are changed to 100.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -6985,6 +7444,17 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Representation of a reviewer addition.</summary>
+    public class AddReviewer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The email of the reviewer to add.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addedReviewerEmail")]
+        public virtual string AddedReviewerEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The `apps` resource provides a list of apps that a user has installed, with information about each app's
     /// supported MIME types, file extensions, and other details. Some resource methods (such as `apps.get`) require an
@@ -7156,10 +7626,10 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for an approval. An approval is a review/approve process for a Drive item.</summary>
+    /// <summary>Metadata for an approval. An approval is a review or approve process for a Drive item.</summary>
     public class Approval : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Approval ID.</summary>
+        /// <summary>The approval ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approvalId")]
         public virtual string ApprovalId { get; set; }
 
@@ -7274,7 +7744,7 @@ namespace Google.Apis.Drive.v3.Data
             set => DueTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>The user that requested the Approval.</summary>
+        /// <summary>The user that requested the approval.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initiator")]
         public virtual User Initiator { get; set; }
 
@@ -7319,7 +7789,7 @@ namespace Google.Apis.Drive.v3.Data
             set => ModifyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>The responses made on the Approval by reviewers.</summary>
+        /// <summary>The responses made on the approval by reviewers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviewerResponses")]
         public virtual System.Collections.Generic.IList<ReviewerResponse> ReviewerResponses { get; set; }
 
@@ -7335,11 +7805,11 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The response of an Approvals list request.</summary>
+    /// <summary>The response of an approvals list request.</summary>
     public class ApprovalList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The list of Approvals. If nextPageToken is populated, then this list may be incomplete and an additional
+        /// The list of approvals. If `nextPageToken` is populated, then this list may be incomplete and an additional
         /// page of results should be fetched.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
@@ -7350,12 +7820,40 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string Kind { get; set; }
 
         /// <summary>
-        /// The page token for the next page of Approvals. This will be absent if the end of the Approvals list has been
+        /// The page token for the next page of approvals. This is absent if the end of the approvals list has been
         /// reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted
         /// from the first page of results.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for approving an approval as a reviewer.</summary>
+    public class ApproveApprovalRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A message to accompany the reviewer response on the approval. This message is included in
+        /// notifications for the action and in the approval activity log.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for cancelling an approval as an initiator.</summary>
+    public class CancelApprovalRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A message to accompany the cancellation of the approval. This message is included in notifications
+        /// for the action and in the approval activity log.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7680,6 +8178,20 @@ namespace Google.Apis.Drive.v3.Data
         }
     }
 
+    /// <summary>Request for commenting on an approval.</summary>
+    public class CommentApprovalRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A message to comment on the approval. This message is included in notifications for the action and
+        /// in the approval activity log.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A list of comments on a file.</summary>
     public class CommentList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7779,6 +8291,20 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for declining an approval as a reviewer.</summary>
+    public class DeclineApprovalRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A message to accompany the reviewer response on the approval. This message is included in
+        /// notifications for the action and in the approval activity log.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Representation of the CSE DecryptionMetadata.</summary>
     public class DecryptionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7831,7 +8357,7 @@ namespace Google.Apis.Drive.v3.Data
         public virtual System.Nullable<bool> RestrictedForReaders { get; set; }
 
         /// <summary>
-        /// Whether download and copy is restricted for writers. If `true`, download is also restricted for readers.
+        /// Whether download and copy is restricted for writers. If true, download is also restricted for readers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedForWriters")]
         public virtual System.Nullable<bool> RestrictedForWriters { get; set; }
@@ -8360,7 +8886,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Output only. An overview of the labels on the file.</summary>
+        /// <summary>Label information on the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelInfo")]
         public virtual LabelInfoData LabelInfo { get; set; }
 
@@ -8552,10 +9078,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sharingUser")]
         public virtual User SharingUser { get; set; }
 
-        /// <summary>
-        /// Shortcut file details. Only populated for shortcut files, which have the mimeType field set to
-        /// `application/vnd.google-apps.shortcut`. Can only be set on `files.create` requests.
-        /// </summary>
+        /// <summary>Information about a shortcut file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortcutDetails")]
         public virtual ShortcutDetailsData ShortcutDetails { get; set; }
 
@@ -8945,6 +9468,10 @@ namespace Google.Apis.Drive.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("canShare")]
             public virtual System.Nullable<bool> CanShare { get; set; }
 
+            /// <summary>Whether the current user can start an approval on the file.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canStartApproval")]
+            public virtual System.Nullable<bool> CanStartApproval { get; set; }
+
             /// <summary>Output only. Whether the current user can move this file to trash.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canTrash")]
             public virtual System.Nullable<bool> CanTrash { get; set; }
@@ -9106,7 +9633,7 @@ namespace Google.Apis.Drive.v3.Data
             }
         }
 
-        /// <summary>Output only. An overview of the labels on the file.</summary>
+        /// <summary>Label information on the file.</summary>
         public class LabelInfoData
         {
             /// <summary>
@@ -9129,10 +9656,7 @@ namespace Google.Apis.Drive.v3.Data
             public virtual System.Nullable<bool> SecurityUpdateEnabled { get; set; }
         }
 
-        /// <summary>
-        /// Shortcut file details. Only populated for shortcut files, which have the mimeType field set to
-        /// `application/vnd.google-apps.shortcut`. Can only be set on `files.create` requests.
-        /// </summary>
+        /// <summary>Information about a shortcut file.</summary>
         public class ShortcutDetailsData
         {
             /// <summary>
@@ -9549,11 +10073,11 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>The domain to which this permission refers.</summary>
+        /// <summary>Output only. The domain to which this permission refers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
 
-        /// <summary>The email address of the user or group to which this permission refers.</summary>
+        /// <summary>Output only. The email address of the user or group to which this permission refers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
         public virtual string EmailAddress { get; set; }
 
@@ -9738,6 +10262,43 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for reassigning an approval. Reviewers can be added or replaced, but not removed.</summary>
+    public class ReassignApprovalRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The list of reviewers to add.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addReviewers")]
+        public virtual System.Collections.Generic.IList<AddReviewer> AddReviewers { get; set; }
+
+        /// <summary>
+        /// Optional. A message to send to the new reviewers. This message is included in notifications for the action
+        /// and in the approval activity log.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Optional. The list of reviewer replacements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replaceReviewers")]
+        public virtual System.Collections.Generic.IList<ReplaceReviewer> ReplaceReviewers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Representation of a reviewer replacement.</summary>
+    public class ReplaceReviewer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The email of the reviewer to add.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addedReviewerEmail")]
+        public virtual string AddedReviewerEmail { get; set; }
+
+        /// <summary>Required. The email of the reviewer to remove.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removedReviewerEmail")]
+        public virtual string RemovedReviewerEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A reply to a comment on a file. Some resource methods (such as `replies.update`) require a `replyId`. Use the
     /// `replies.list` method to retrieve the ID for a reply.
@@ -9900,18 +10461,18 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A response on an Approval made by a specific Reviewer.</summary>
+    /// <summary>A response on an approval made by a specific reviewer.</summary>
     public class ReviewerResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>This is always drive#reviewerResponse.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>A Reviewer’s Response for the Approval.</summary>
+        /// <summary>A reviewer’s response for the approval.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual string Response { get; set; }
 
-        /// <summary>The user that is responsible for this response.</summary>
+        /// <summary>The user that's responsible for this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviewer")]
         public virtual User Reviewer { get; set; }
 
@@ -10054,6 +10615,62 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Allows creating an approval on a file.</summary>
+    public class StartApprovalRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _dueTimeRaw;
+
+        private object _dueTime;
+
+        /// <summary>Optional. The time that the approval is due.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dueTime")]
+        public virtual string DueTimeRaw
+        {
+            get => _dueTimeRaw;
+            set
+            {
+                _dueTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _dueTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DueTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DueTimeDateTimeOffset instead.")]
+        public virtual object DueTime
+        {
+            get => _dueTime;
+            set
+            {
+                _dueTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _dueTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DueTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DueTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DueTimeRaw);
+            set => DueTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Whether to lock the file when starting the approval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lockFile")]
+        public virtual System.Nullable<bool> LockFile { get; set; }
+
+        /// <summary>Optional. A message to send to reviewers when notifying them of the approval request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Required. The emails of the users who are set to review the approval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reviewerEmails")]
+        public virtual System.Collections.Generic.IList<string> ReviewerEmails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class StartPageToken : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -10099,14 +10716,10 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Deprecated: use the drive collection instead.</summary>
+    /// <summary>Deprecated: use the drive collection instead. Next ID: 33</summary>
     public class TeamDrive : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// An image file and cropping parameters from which a background image for this Team Drive is set. This is a
-        /// write only field; it can only be set on `drive.teamdrives.update` requests that don't set `themeId`. When
-        /// specified, all fields of the `backgroundImageFile` must be set.
-        /// </summary>
+        /// <summary>The background image file for a Team Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundImageFile")]
         public virtual BackgroundImageFileData BackgroundImageFile { get; set; }
 
@@ -10184,11 +10797,7 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
 
-        /// <summary>
-        /// An image file and cropping parameters from which a background image for this Team Drive is set. This is a
-        /// write only field; it can only be set on `drive.teamdrives.update` requests that don't set `themeId`. When
-        /// specified, all fields of the `backgroundImageFile` must be set.
-        /// </summary>
+        /// <summary>The background image file for a Team Drive.</summary>
         public class BackgroundImageFileData
         {
             /// <summary>The ID of an image file in Drive to use for the background image.</summary>
@@ -10241,7 +10850,8 @@ namespace Google.Apis.Drive.v3.Data
             public virtual System.Nullable<bool> CanChangeDomainUsersOnlyRestriction { get; set; }
 
             /// <summary>
-            /// Whether the current user can change organizer-applied download restrictions of this shared drive.
+            /// Output only. Whether the current user can change organizer-applied download restrictions of this shared
+            /// drive.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canChangeDownloadRestriction")]
             public virtual System.Nullable<bool> CanChangeDownloadRestriction { get; set; }
