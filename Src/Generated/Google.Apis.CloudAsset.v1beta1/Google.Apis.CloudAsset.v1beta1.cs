@@ -1490,7 +1490,7 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
     public class GcsDestination : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The URI of the Cloud Storage object. It's the same URI that is used by gsutil. For example:
+        /// The URI of the Cloud Storage object. It's the same URI that is used by gcloud storage. For example:
         /// "gs://bucket_name/object_name". See [Viewing and Editing Object
         /// Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata) for more information.
         /// </summary>
