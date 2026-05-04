@@ -2664,6 +2664,17 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         public virtual AndroidxCrawlerOutputPoint Tap { get; set; }
 
         /// <summary>
+        /// Output only. The target folded state of the device in a set folded state action. The valid string values are
+        /// device-dependent, and can be found using `adb shell cmd device_state print-states`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetFoldedState")]
+        public virtual string TargetFoldedState { get; set; }
+
+        /// <summary>Output only. The target orientation of the device in a set orientation action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetOrientation")]
+        public virtual string TargetOrientation { get; set; }
+
+        /// <summary>
         /// Output only. A text input action, that types some text into whatever field is currently focused, if any.
         /// Unlike `enter_text` this action requires that the field be brought into focus first, for example by emitting
         /// a tap action before this one.
