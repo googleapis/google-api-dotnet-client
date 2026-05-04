@@ -13564,6 +13564,14 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; }
 
+        /// <summary>
+        /// Optional. Associates Resource Manager tags with the workload nodes. There is a max limit of 30 tags. Keys
+        /// and values can be either in numeric format, such as tagKeys/{tag_key_id} and tagValues/{tag_value_id}, or in
+        /// namespaced format, such as {org_id|project_id}/{tag_key_short_name} and {tag_value_short_name}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceManagerTags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ResourceManagerTags { get; set; }
+
         /// <summary>Optional. Service account that used to execute workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
