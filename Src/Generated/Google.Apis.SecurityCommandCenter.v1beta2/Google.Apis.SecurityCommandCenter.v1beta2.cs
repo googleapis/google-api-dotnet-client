@@ -7292,11 +7292,22 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     public class ExternalExposure : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// The full resource name of the load balancer backend bucket, for example,
+        /// "//compute.googleapis.com/projects/{project-id}/global/backendBuckets/{name}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backendBucket")]
+        public virtual string BackendBucket { get; set; }
+
+        /// <summary>
         /// The full resource name of load balancer backend service, for example,
         /// "//compute.googleapis.com/projects/{project-id}/global/backendServices/{name}".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backendService")]
         public virtual string BackendService { get; set; }
+
+        /// <summary>The name and version of the exposed web application, for example, "Jenkins 2.184".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exposedApplication")]
+        public virtual string ExposedApplication { get; set; }
 
         /// <summary>
         /// The resource which is running the exposed service, for example,
@@ -7316,12 +7327,27 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingRule")]
         public virtual string ForwardingRule { get; set; }
 
+        /// <summary>Hostname of the exposed application, for example, "https://test-app.a.run.app/"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostnameUri")]
+        public virtual string HostnameUri { get; set; }
+
+        /// <summary>The http response returned by the web application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpResponse")]
+        public virtual System.Collections.Generic.IList<HttpResponse> HttpResponse { get; set; }
+
         /// <summary>
         /// The full resource name of the instance group, for example,
         /// "//compute.googleapis.com/projects/{project-id}/global/instanceGroups/{name}".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceGroup")]
         public virtual string InstanceGroup { get; set; }
+
+        /// <summary>
+        /// The full resource name of load balancer backend service in the internal project having resource exposed via
+        /// PSC, for example, "//compute.googleapis.com/projects/{project-id}/global/backendServices/{name}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalBackendService")]
+        public virtual string InternalBackendService { get; set; }
 
         /// <summary>
         /// The full resource name of the load balancer firewall policy, for example,
@@ -7337,6 +7363,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkEndpointGroup")]
         public virtual string NetworkEndpointGroup { get; set; }
 
+        /// <summary>
+        /// The full resource name of the network ingress firewall policy, for example,
+        /// "//compute.googleapis.com/projects/{project-id}/global/firewallPolicies/{name}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkIngressFirewallPolicy")]
+        public virtual string NetworkIngressFirewallPolicy { get; set; }
+
         /// <summary>Private IP address of the exposed endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateIpAddress")]
         public virtual string PrivateIpAddress { get; set; }
@@ -7344,6 +7377,22 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>Port number associated with private IP address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privatePort")]
         public virtual string PrivatePort { get; set; }
+
+        /// <summary>
+        /// The full resource name of the PSC (Private Service Connect) network attachment that network interface
+        /// controller is attached to, for example,
+        /// "//compute.googleapis.com/projects/{project-id}/regions/{region}/networkAttachments/{name}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscNetworkAttachment")]
+        public virtual string PscNetworkAttachment { get; set; }
+
+        /// <summary>
+        /// The full resource name of the PSC (Private Service Connect) service attachment that the load balancer
+        /// network endpoint group targets, for example,
+        /// "//compute.googleapis.com/projects/{project-id}/regions/{region}/serviceAttachments/{name}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscServiceAttachment")]
+        public virtual string PscServiceAttachment { get; set; }
 
         /// <summary>Public IP address of the exposed endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicIpAddress")]
@@ -11469,11 +11518,22 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     public class GoogleCloudSecuritycenterV2ExternalExposure : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// The full resource name of the load balancer backend bucket, for example,
+        /// "//compute.googleapis.com/projects/{project-id}/global/backendBuckets/{name}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backendBucket")]
+        public virtual string BackendBucket { get; set; }
+
+        /// <summary>
         /// The full resource name of load balancer backend service, for example,
         /// "//compute.googleapis.com/projects/{project-id}/global/backendServices/{name}".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backendService")]
         public virtual string BackendService { get; set; }
+
+        /// <summary>The name and version of the exposed web application, for example, "Jenkins 2.184".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exposedApplication")]
+        public virtual string ExposedApplication { get; set; }
 
         /// <summary>
         /// The resource which is running the exposed service, for example,
@@ -11493,12 +11553,27 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingRule")]
         public virtual string ForwardingRule { get; set; }
 
+        /// <summary>Hostname of the exposed application, for example, "https://test-app.a.run.app/"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostnameUri")]
+        public virtual string HostnameUri { get; set; }
+
+        /// <summary>The http response returned by the web application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpResponse")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2HttpResponse> HttpResponse { get; set; }
+
         /// <summary>
         /// The full resource name of the instance group, for example,
         /// "//compute.googleapis.com/projects/{project-id}/global/instanceGroups/{name}".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceGroup")]
         public virtual string InstanceGroup { get; set; }
+
+        /// <summary>
+        /// The full resource name of load balancer backend service in the internal project having resource exposed via
+        /// PSC, for example, "//compute.googleapis.com/projects/{project-id}/global/backendServices/{name}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalBackendService")]
+        public virtual string InternalBackendService { get; set; }
 
         /// <summary>
         /// The full resource name of the load balancer firewall policy, for example,
@@ -11514,6 +11589,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkEndpointGroup")]
         public virtual string NetworkEndpointGroup { get; set; }
 
+        /// <summary>
+        /// The full resource name of the network ingress firewall policy, for example,
+        /// "//compute.googleapis.com/projects/{project-id}/global/firewallPolicies/{name}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkIngressFirewallPolicy")]
+        public virtual string NetworkIngressFirewallPolicy { get; set; }
+
         /// <summary>Private IP address of the exposed endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateIpAddress")]
         public virtual string PrivateIpAddress { get; set; }
@@ -11521,6 +11603,22 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>Port number associated with private IP address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privatePort")]
         public virtual string PrivatePort { get; set; }
+
+        /// <summary>
+        /// The full resource name of the PSC (Private Service Connect) network attachment that network interface
+        /// controller is attached to, for example,
+        /// "//compute.googleapis.com/projects/{project-id}/regions/{region}/networkAttachments/{name}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscNetworkAttachment")]
+        public virtual string PscNetworkAttachment { get; set; }
+
+        /// <summary>
+        /// The full resource name of the PSC (Private Service Connect) service attachment that the load balancer
+        /// network endpoint group targets, for example,
+        /// "//compute.googleapis.com/projects/{project-id}/regions/{region}/serviceAttachments/{name}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscServiceAttachment")]
+        public virtual string PscServiceAttachment { get; set; }
 
         /// <summary>Public IP address of the exposed endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicIpAddress")]
@@ -12371,6 +12469,24 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>Type of group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupType")]
         public virtual string GroupType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The http response returned by the web application.</summary>
+    public class GoogleCloudSecuritycenterV2HttpResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The http path for which response code was returned by web application, for example,
+        /// "https://test-app.a.run.app/test".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>The http response code returned by the web application, for example, 200.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusCode")]
+        public virtual string StatusCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14883,6 +14999,24 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>Type of group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupType")]
         public virtual string GroupType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The http response returned by the web application.</summary>
+    public class HttpResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The http path for which response code was returned by web application, for example,
+        /// "https://test-app.a.run.app/test".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>The http response code returned by the web application, for example, 200.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusCode")]
+        public virtual string StatusCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
