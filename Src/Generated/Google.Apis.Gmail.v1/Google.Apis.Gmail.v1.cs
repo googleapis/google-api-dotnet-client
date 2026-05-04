@@ -371,7 +371,10 @@ namespace Google.Apis.Gmail.v1
                 this.service = service;
             }
 
-            /// <summary>Creates a new draft with the `DRAFT` label.</summary>
+            /// <summary>
+            /// Creates a draft with the `DRAFT` label. For more information, see [Create and send draft
+            /// emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">
             /// The user's email address. The special value `me` can be used to indicate the authenticated user.
@@ -381,7 +384,10 @@ namespace Google.Apis.Gmail.v1
                 return new CreateRequest(this.service, body, userId);
             }
 
-            /// <summary>Creates a new draft with the `DRAFT` label.</summary>
+            /// <summary>
+            /// Creates a draft with the `DRAFT` label. For more information, see [Create and send draft
+            /// emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
+            /// </summary>
             public class CreateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Draft>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -428,7 +434,10 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Creates a new draft with the `DRAFT` label.</summary>
+            /// <summary>
+            /// Creates a draft with the `DRAFT` label. For more information, see [Create and send draft
+            /// emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
+            /// </summary>
             /// <remarks>
             /// Considerations regarding <paramref name="stream"/>:
             /// <list type="bullet">
@@ -575,7 +584,10 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Immediately and permanently deletes the specified draft. Does not simply trash it.</summary>
+            /// <summary>
+            /// Immediately and permanently deletes the specified draft. Does not simply trash it. For more information,
+            /// see [Create and send draft emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
+            /// </summary>
             /// <param name="userId">
             /// The user's email address. The special value `me` can be used to indicate the authenticated user.
             /// </param>
@@ -585,7 +597,10 @@ namespace Google.Apis.Gmail.v1
                 return new DeleteRequest(this.service, userId, id);
             }
 
-            /// <summary>Immediately and permanently deletes the specified draft. Does not simply trash it.</summary>
+            /// <summary>
+            /// Immediately and permanently deletes the specified draft. Does not simply trash it. For more information,
+            /// see [Create and send draft emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
+            /// </summary>
             public class DeleteRequest : GmailBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -638,7 +653,10 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Gets the specified draft.</summary>
+            /// <summary>
+            /// Gets the specified draft. For more information, see [Create and send draft
+            /// emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
+            /// </summary>
             /// <param name="userId">
             /// The user's email address. The special value `me` can be used to indicate the authenticated user.
             /// </param>
@@ -648,7 +666,10 @@ namespace Google.Apis.Gmail.v1
                 return new GetRequest(this.service, userId, id);
             }
 
-            /// <summary>Gets the specified draft.</summary>
+            /// <summary>
+            /// Gets the specified draft. For more information, see [Create and send draft
+            /// emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
+            /// </summary>
             public class GetRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Draft>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -742,7 +763,10 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Lists the drafts in the user's mailbox.</summary>
+            /// <summary>
+            /// Lists the drafts in the user's mailbox. For more information, see [Create and send draft
+            /// emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
+            /// </summary>
             /// <param name="userId">
             /// The user's email address. The special value `me` can be used to indicate the authenticated user.
             /// </param>
@@ -751,7 +775,10 @@ namespace Google.Apis.Gmail.v1
                 return new ListRequest(this.service, userId);
             }
 
-            /// <summary>Lists the drafts in the user's mailbox.</summary>
+            /// <summary>
+            /// Lists the drafts in the user's mailbox. For more information, see [Create and send draft
+            /// emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
+            /// </summary>
             public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListDraftsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -846,7 +873,9 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>
-            /// Sends the specified, existing draft to the recipients in the `To`, `Cc`, and `Bcc` headers.
+            /// Sends the specified, existing draft to the recipients in the `To`, `Cc`, and `Bcc` headers. For more
+            /// information, see [Create and send draft
+            /// emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">
@@ -858,7 +887,9 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>
-            /// Sends the specified, existing draft to the recipients in the `To`, `Cc`, and `Bcc` headers.
+            /// Sends the specified, existing draft to the recipients in the `To`, `Cc`, and `Bcc` headers. For more
+            /// information, see [Create and send draft
+            /// emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
             /// </summary>
             public class SendRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Message>
             {
@@ -907,7 +938,9 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>
-            /// Sends the specified, existing draft to the recipients in the `To`, `Cc`, and `Bcc` headers.
+            /// Sends the specified, existing draft to the recipients in the `To`, `Cc`, and `Bcc` headers. For more
+            /// information, see [Create and send draft
+            /// emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
             /// </summary>
             /// <remarks>
             /// Considerations regarding <paramref name="stream"/>:
@@ -1055,7 +1088,10 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Replaces a draft's content.</summary>
+            /// <summary>
+            /// Replaces a draft's content. For more information, see [Create and send draft
+            /// emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">
             /// The user's email address. The special value `me` can be used to indicate the authenticated user.
@@ -1066,7 +1102,10 @@ namespace Google.Apis.Gmail.v1
                 return new UpdateRequest(this.service, body, userId, id);
             }
 
-            /// <summary>Replaces a draft's content.</summary>
+            /// <summary>
+            /// Replaces a draft's content. For more information, see [Create and send draft
+            /// emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
+            /// </summary>
             public class UpdateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Draft>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -1126,7 +1165,10 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Replaces a draft's content.</summary>
+            /// <summary>
+            /// Replaces a draft's content. For more information, see [Create and send draft
+            /// emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
+            /// </summary>
             /// <remarks>
             /// Considerations regarding <paramref name="stream"/>:
             /// <list type="bullet">
@@ -1299,7 +1341,8 @@ namespace Google.Apis.Gmail.v1
 
             /// <summary>
             /// Lists the history of all changes to the given mailbox. History results are returned in chronological
-            /// order (increasing `historyId`).
+            /// order (increasing `historyId`). For more information, see [Synchronize clients with
+            /// Gmail](https://developers.google.com/workspace/gmail/api/guides/sync).
             /// </summary>
             /// <param name="userId">
             /// The user's email address. The special value `me` can be used to indicate the authenticated user.
@@ -1311,7 +1354,8 @@ namespace Google.Apis.Gmail.v1
 
             /// <summary>
             /// Lists the history of all changes to the given mailbox. History results are returned in chronological
-            /// order (increasing `historyId`).
+            /// order (increasing `historyId`). For more information, see [Synchronize clients with
+            /// Gmail](https://developers.google.com/workspace/gmail/api/guides/sync).
             /// </summary>
             public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListHistoryResponse>
             {
@@ -1474,7 +1518,10 @@ namespace Google.Apis.Gmail.v1
                 this.service = service;
             }
 
-            /// <summary>Creates a new label.</summary>
+            /// <summary>
+            /// Creates a label. For more information, see [Manage
+            /// labels](https://developers.google.com/workspace/gmail/api/guides/labels).
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">
             /// The user's email address. The special value `me` can be used to indicate the authenticated user.
@@ -1484,7 +1531,10 @@ namespace Google.Apis.Gmail.v1
                 return new CreateRequest(this.service, body, userId);
             }
 
-            /// <summary>Creates a new label.</summary>
+            /// <summary>
+            /// Creates a label. For more information, see [Manage
+            /// labels](https://developers.google.com/workspace/gmail/api/guides/labels).
+            /// </summary>
             public class CreateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Label>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -1533,7 +1583,8 @@ namespace Google.Apis.Gmail.v1
 
             /// <summary>
             /// Immediately and permanently deletes the specified label and removes it from any messages and threads
-            /// that it is applied to.
+            /// that it's applied to. For more information, see [Manage
+            /// labels](https://developers.google.com/workspace/gmail/api/guides/labels).
             /// </summary>
             /// <param name="userId">
             /// The user's email address. The special value `me` can be used to indicate the authenticated user.
@@ -1546,7 +1597,8 @@ namespace Google.Apis.Gmail.v1
 
             /// <summary>
             /// Immediately and permanently deletes the specified label and removes it from any messages and threads
-            /// that it is applied to.
+            /// that it's applied to. For more information, see [Manage
+            /// labels](https://developers.google.com/workspace/gmail/api/guides/labels).
             /// </summary>
             public class DeleteRequest : GmailBaseServiceRequest<string>
             {
@@ -1600,7 +1652,10 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Gets the specified label.</summary>
+            /// <summary>
+            /// Gets the specified label. For more information, see [Manage
+            /// labels](https://developers.google.com/workspace/gmail/api/guides/labels).
+            /// </summary>
             /// <param name="userId">
             /// The user's email address. The special value `me` can be used to indicate the authenticated user.
             /// </param>
@@ -1610,7 +1665,10 @@ namespace Google.Apis.Gmail.v1
                 return new GetRequest(this.service, userId, id);
             }
 
-            /// <summary>Gets the specified label.</summary>
+            /// <summary>
+            /// Gets the specified label. For more information, see [Manage
+            /// labels](https://developers.google.com/workspace/gmail/api/guides/labels).
+            /// </summary>
             public class GetRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Label>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -1663,7 +1721,10 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Lists all labels in the user's mailbox.</summary>
+            /// <summary>
+            /// Lists all labels in the user's mailbox. For more information, see [Manage
+            /// labels](https://developers.google.com/workspace/gmail/api/guides/labels).
+            /// </summary>
             /// <param name="userId">
             /// The user's email address. The special value `me` can be used to indicate the authenticated user.
             /// </param>
@@ -1672,7 +1733,10 @@ namespace Google.Apis.Gmail.v1
                 return new ListRequest(this.service, userId);
             }
 
-            /// <summary>Lists all labels in the user's mailbox.</summary>
+            /// <summary>
+            /// Lists all labels in the user's mailbox. For more information, see [Manage
+            /// labels](https://developers.google.com/workspace/gmail/api/guides/labels).
+            /// </summary>
             public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListLabelsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1712,7 +1776,10 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Patch the specified label.</summary>
+            /// <summary>
+            /// Patch the specified label. For more information, see [Manage
+            /// labels](https://developers.google.com/workspace/gmail/api/guides/labels).
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">
             /// The user's email address. The special value `me` can be used to indicate the authenticated user.
@@ -1723,7 +1790,10 @@ namespace Google.Apis.Gmail.v1
                 return new PatchRequest(this.service, body, userId, id);
             }
 
-            /// <summary>Patch the specified label.</summary>
+            /// <summary>
+            /// Patch the specified label. For more information, see [Manage
+            /// labels](https://developers.google.com/workspace/gmail/api/guides/labels).
+            /// </summary>
             public class PatchRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Label>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -1783,7 +1853,10 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Updates the specified label.</summary>
+            /// <summary>
+            /// Updates the specified label. For more information, see [Manage
+            /// labels](https://developers.google.com/workspace/gmail/api/guides/labels).
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">
             /// The user's email address. The special value `me` can be used to indicate the authenticated user.
@@ -1794,7 +1867,10 @@ namespace Google.Apis.Gmail.v1
                 return new UpdateRequest(this.service, body, userId, id);
             }
 
-            /// <summary>Updates the specified label.</summary>
+            /// <summary>
+            /// Updates the specified label. For more information, see [Manage
+            /// labels](https://developers.google.com/workspace/gmail/api/guides/labels).
+            /// </summary>
             public class UpdateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Label>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -2284,7 +2360,7 @@ namespace Google.Apis.Gmail.v1
             /// Imports a message into only this user's mailbox, with standard email delivery scanning and
             /// classification similar to receiving via SMTP. This method doesn't perform SPF checks, so it might not
             /// work for some spam messages, such as those attempting to perform domain spoofing. This method does not
-            /// send a message. Note that the maximum size of the message is 150MB.
+            /// send a message. Note that the maximum size of the message is 150 MB.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">
@@ -2299,7 +2375,7 @@ namespace Google.Apis.Gmail.v1
             /// Imports a message into only this user's mailbox, with standard email delivery scanning and
             /// classification similar to receiving via SMTP. This method doesn't perform SPF checks, so it might not
             /// work for some spam messages, such as those attempting to perform domain spoofing. This method does not
-            /// send a message. Note that the maximum size of the message is 150MB.
+            /// send a message. Note that the maximum size of the message is 150 MB.
             /// </summary>
             public class ImportRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Message>
             {
@@ -2419,7 +2495,7 @@ namespace Google.Apis.Gmail.v1
             /// Imports a message into only this user's mailbox, with standard email delivery scanning and
             /// classification similar to receiving via SMTP. This method doesn't perform SPF checks, so it might not
             /// work for some spam messages, such as those attempting to perform domain spoofing. This method does not
-            /// send a message. Note that the maximum size of the message is 150MB.
+            /// send a message. Note that the maximum size of the message is 150 MB.
             /// </summary>
             /// <remarks>
             /// Considerations regarding <paramref name="stream"/>:
@@ -2605,7 +2681,8 @@ namespace Google.Apis.Gmail.v1
 
             /// <summary>
             /// Directly inserts a message into only this user's mailbox similar to `IMAP APPEND`, bypassing most
-            /// scanning and classification. Does not send a message.
+            /// scanning and classification. Does not send a message. For more information, see [Create and send email
+            /// messages](https://developers.google.com/workspace/gmail/api/guides/sending).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">
@@ -2618,7 +2695,8 @@ namespace Google.Apis.Gmail.v1
 
             /// <summary>
             /// Directly inserts a message into only this user's mailbox similar to `IMAP APPEND`, bypassing most
-            /// scanning and classification. Does not send a message.
+            /// scanning and classification. Does not send a message. For more information, see [Create and send email
+            /// messages](https://developers.google.com/workspace/gmail/api/guides/sending).
             /// </summary>
             public class InsertRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Message>
             {
@@ -2707,7 +2785,8 @@ namespace Google.Apis.Gmail.v1
 
             /// <summary>
             /// Directly inserts a message into only this user's mailbox similar to `IMAP APPEND`, bypassing most
-            /// scanning and classification. Does not send a message.
+            /// scanning and classification. Does not send a message. For more information, see [Create and send email
+            /// messages](https://developers.google.com/workspace/gmail/api/guides/sending).
             /// </summary>
             /// <remarks>
             /// Considerations regarding <paramref name="stream"/>:
@@ -2879,7 +2958,7 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>
-            /// Lists the messages in the user's mailbox. For example usage, see [List Gmail
+            /// Lists the messages in the user's mailbox. For more information, see [List Gmail
             /// messages](https://developers.google.com/workspace/gmail/api/guides/list-messages).
             /// </summary>
             /// <param name="userId">
@@ -2891,7 +2970,7 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>
-            /// Lists the messages in the user's mailbox. For example usage, see [List Gmail
+            /// Lists the messages in the user's mailbox. For more information, see [List Gmail
             /// messages](https://developers.google.com/workspace/gmail/api/guides/list-messages).
             /// </summary>
             public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListMessagesResponse>
@@ -3077,8 +3156,9 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>
-            /// Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc` headers. For example usage,
-            /// see [Sending email](https://developers.google.com/workspace/gmail/api/guides/sending).
+            /// Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc` headers. For more
+            /// information, see [Create and send email
+            /// messages](https://developers.google.com/workspace/gmail/api/guides/sending).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">
@@ -3090,8 +3170,9 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>
-            /// Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc` headers. For example usage,
-            /// see [Sending email](https://developers.google.com/workspace/gmail/api/guides/sending).
+            /// Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc` headers. For more
+            /// information, see [Create and send email
+            /// messages](https://developers.google.com/workspace/gmail/api/guides/sending).
             /// </summary>
             public class SendRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Message>
             {
@@ -3140,8 +3221,9 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>
-            /// Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc` headers. For example usage,
-            /// see [Sending email](https://developers.google.com/workspace/gmail/api/guides/sending).
+            /// Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc` headers. For more
+            /// information, see [Create and send email
+            /// messages](https://developers.google.com/workspace/gmail/api/guides/sending).
             /// </summary>
             /// <remarks>
             /// Considerations regarding <paramref name="stream"/>:
@@ -4527,13 +4609,14 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>
                 /// Adds a delegate with its verification status set directly to `accepted`, without sending any
                 /// verification email. The delegate user must be a member of the same Google Workspace organization as
-                /// the delegator user. Gmail imposes limitations on the number of delegates and delegators each user in
-                /// a Google Workspace organization can have. These limits depend on your organization, but in general
-                /// each user can have up to 25 delegates and up to 10 delegators. Note that a delegate user must be
-                /// referred to by their primary email address, and not an email alias. Also note that when a new
-                /// delegate is created, there may be up to a one minute delay before the new delegate is available for
-                /// use. This method is only available to service account clients that have been delegated domain-wide
-                /// authority.
+                /// the delegator user. For more information, see [Manage
+                /// delegates](https://developers.google.com/workspace/gmail/api/guides/delegate_settings). Gmail
+                /// imposes limitations on the number of delegates and delegators each user in a Google Workspace
+                /// organization can have. These limits depend on your organization, but in general each user can have
+                /// up to 25 delegates and up to 10 delegators. A delegate user must be referred to by their primary
+                /// email address, and not an email alias. When a new delegate is created, there may be up to a one
+                /// minute delay before the new delegate is available for use. This method is only available to service
+                /// account clients that have been delegated domain-wide authority.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="userId">
@@ -4547,13 +4630,14 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>
                 /// Adds a delegate with its verification status set directly to `accepted`, without sending any
                 /// verification email. The delegate user must be a member of the same Google Workspace organization as
-                /// the delegator user. Gmail imposes limitations on the number of delegates and delegators each user in
-                /// a Google Workspace organization can have. These limits depend on your organization, but in general
-                /// each user can have up to 25 delegates and up to 10 delegators. Note that a delegate user must be
-                /// referred to by their primary email address, and not an email alias. Also note that when a new
-                /// delegate is created, there may be up to a one minute delay before the new delegate is available for
-                /// use. This method is only available to service account clients that have been delegated domain-wide
-                /// authority.
+                /// the delegator user. For more information, see [Manage
+                /// delegates](https://developers.google.com/workspace/gmail/api/guides/delegate_settings). Gmail
+                /// imposes limitations on the number of delegates and delegators each user in a Google Workspace
+                /// organization can have. These limits depend on your organization, but in general each user can have
+                /// up to 25 delegates and up to 10 delegators. A delegate user must be referred to by their primary
+                /// email address, and not an email alias. When a new delegate is created, there may be up to a one
+                /// minute delay before the new delegate is available for use. This method is only available to service
+                /// account clients that have been delegated domain-wide authority.
                 /// </summary>
                 public class CreateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Delegate>
                 {
@@ -4603,9 +4687,10 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>
                 /// Removes the specified delegate (which can be of any verification status), and revokes any
-                /// verification that may have been required for using it. Note that a delegate user must be referred to
-                /// by their primary email address, and not an email alias. This method is only available to service
-                /// account clients that have been delegated domain-wide authority.
+                /// verification that may have been required for using it. For more information, see [Manage
+                /// delegates](https://developers.google.com/workspace/gmail/api/guides/delegate_settings). A delegate
+                /// user must be referred to by their primary email address, and not an email alias. This method is only
+                /// available to service account clients that have been delegated domain-wide authority.
                 /// </summary>
                 /// <param name="userId">
                 /// User's email address. The special value "me" can be used to indicate the authenticated user.
@@ -4618,9 +4703,10 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>
                 /// Removes the specified delegate (which can be of any verification status), and revokes any
-                /// verification that may have been required for using it. Note that a delegate user must be referred to
-                /// by their primary email address, and not an email alias. This method is only available to service
-                /// account clients that have been delegated domain-wide authority.
+                /// verification that may have been required for using it. For more information, see [Manage
+                /// delegates](https://developers.google.com/workspace/gmail/api/guides/delegate_settings). A delegate
+                /// user must be referred to by their primary email address, and not an email alias. This method is only
+                /// available to service account clients that have been delegated domain-wide authority.
                 /// </summary>
                 public class DeleteRequest : GmailBaseServiceRequest<string>
                 {
@@ -4675,9 +4761,10 @@ namespace Google.Apis.Gmail.v1
                 }
 
                 /// <summary>
-                /// Gets the specified delegate. Note that a delegate user must be referred to by their primary email
-                /// address, and not an email alias. This method is only available to service account clients that have
-                /// been delegated domain-wide authority.
+                /// Gets the specified delegate. For more information, see [Manage
+                /// delegates](https://developers.google.com/workspace/gmail/api/guides/delegate_settings). A delegate
+                /// user must be referred to by their primary email address, and not an email alias. This method is only
+                /// available to service account clients that have been delegated domain-wide authority.
                 /// </summary>
                 /// <param name="userId">
                 /// User's email address. The special value "me" can be used to indicate the authenticated user.
@@ -4691,9 +4778,10 @@ namespace Google.Apis.Gmail.v1
                 }
 
                 /// <summary>
-                /// Gets the specified delegate. Note that a delegate user must be referred to by their primary email
-                /// address, and not an email alias. This method is only available to service account clients that have
-                /// been delegated domain-wide authority.
+                /// Gets the specified delegate. For more information, see [Manage
+                /// delegates](https://developers.google.com/workspace/gmail/api/guides/delegate_settings). A delegate
+                /// user must be referred to by their primary email address, and not an email alias. This method is only
+                /// available to service account clients that have been delegated domain-wide authority.
                 /// </summary>
                 public class GetRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Delegate>
                 {
@@ -4748,8 +4836,9 @@ namespace Google.Apis.Gmail.v1
                 }
 
                 /// <summary>
-                /// Lists the delegates for the specified account. This method is only available to service account
-                /// clients that have been delegated domain-wide authority.
+                /// Lists the delegates for the specified account. For more information, see [Manage
+                /// delegates](https://developers.google.com/workspace/gmail/api/guides/delegate_settings). This method
+                /// is only available to service account clients that have been delegated domain-wide authority.
                 /// </summary>
                 /// <param name="userId">
                 /// User's email address. The special value "me" can be used to indicate the authenticated user.
@@ -4760,8 +4849,9 @@ namespace Google.Apis.Gmail.v1
                 }
 
                 /// <summary>
-                /// Lists the delegates for the specified account. This method is only available to service account
-                /// clients that have been delegated domain-wide authority.
+                /// Lists the delegates for the specified account. For more information, see [Manage
+                /// delegates](https://developers.google.com/workspace/gmail/api/guides/delegate_settings). This method
+                /// is only available to service account clients that have been delegated domain-wide authority.
                 /// </summary>
                 public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListDelegatesResponse>
                 {
@@ -4820,7 +4910,10 @@ namespace Google.Apis.Gmail.v1
                     this.service = service;
                 }
 
-                /// <summary>Creates a filter. Note: you can only create a maximum of 1,000 filters.</summary>
+                /// <summary>
+                /// Creates a filter. Note: you can only create a maximum of 1,000 filters. For more information, see
+                /// [Manage Gmail filters](https://developers.google.com/workspace/gmail/api/guides/filter_settings).
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="userId">
                 /// User's email address. The special value "me" can be used to indicate the authenticated user.
@@ -4830,7 +4923,10 @@ namespace Google.Apis.Gmail.v1
                     return new CreateRequest(this.service, body, userId);
                 }
 
-                /// <summary>Creates a filter. Note: you can only create a maximum of 1,000 filters.</summary>
+                /// <summary>
+                /// Creates a filter. Note: you can only create a maximum of 1,000 filters. For more information, see
+                /// [Manage Gmail filters](https://developers.google.com/workspace/gmail/api/guides/filter_settings).
+                /// </summary>
                 public class CreateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Filter>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -4877,7 +4973,10 @@ namespace Google.Apis.Gmail.v1
                     }
                 }
 
-                /// <summary>Immediately and permanently deletes the specified filter.</summary>
+                /// <summary>
+                /// Immediately and permanently deletes the specified filter. For more information, see [Manage Gmail
+                /// filters](https://developers.google.com/workspace/gmail/api/guides/filter_settings).
+                /// </summary>
                 /// <param name="userId">
                 /// User's email address. The special value "me" can be used to indicate the authenticated user.
                 /// </param>
@@ -4887,7 +4986,10 @@ namespace Google.Apis.Gmail.v1
                     return new DeleteRequest(this.service, userId, id);
                 }
 
-                /// <summary>Immediately and permanently deletes the specified filter.</summary>
+                /// <summary>
+                /// Immediately and permanently deletes the specified filter. For more information, see [Manage Gmail
+                /// filters](https://developers.google.com/workspace/gmail/api/guides/filter_settings).
+                /// </summary>
                 public class DeleteRequest : GmailBaseServiceRequest<string>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -4940,7 +5042,10 @@ namespace Google.Apis.Gmail.v1
                     }
                 }
 
-                /// <summary>Gets a filter.</summary>
+                /// <summary>
+                /// Gets a filter. For more information, see [Manage Gmail
+                /// filters](https://developers.google.com/workspace/gmail/api/guides/filter_settings).
+                /// </summary>
                 /// <param name="userId">
                 /// User's email address. The special value "me" can be used to indicate the authenticated user.
                 /// </param>
@@ -4950,7 +5055,10 @@ namespace Google.Apis.Gmail.v1
                     return new GetRequest(this.service, userId, id);
                 }
 
-                /// <summary>Gets a filter.</summary>
+                /// <summary>
+                /// Gets a filter. For more information, see [Manage Gmail
+                /// filters](https://developers.google.com/workspace/gmail/api/guides/filter_settings).
+                /// </summary>
                 public class GetRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Filter>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -5003,7 +5111,10 @@ namespace Google.Apis.Gmail.v1
                     }
                 }
 
-                /// <summary>Lists the message filters of a Gmail user.</summary>
+                /// <summary>
+                /// Lists the message filters of a Gmail user. For more information, see [Manage Gmail
+                /// filters](https://developers.google.com/workspace/gmail/api/guides/filter_settings).
+                /// </summary>
                 /// <param name="userId">
                 /// User's email address. The special value "me" can be used to indicate the authenticated user.
                 /// </param>
@@ -5012,7 +5123,10 @@ namespace Google.Apis.Gmail.v1
                     return new ListRequest(this.service, userId);
                 }
 
-                /// <summary>Lists the message filters of a Gmail user.</summary>
+                /// <summary>
+                /// Lists the message filters of a Gmail user. For more information, see [Manage Gmail
+                /// filters](https://developers.google.com/workspace/gmail/api/guides/filter_settings).
+                /// </summary>
                 public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListFiltersResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -5073,8 +5187,9 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>
                 /// Creates a forwarding address. If ownership verification is required, a message will be sent to the
                 /// recipient and the resource's verification status will be set to `pending`; otherwise, the resource
-                /// will be created with verification status set to `accepted`. This method is only available to service
-                /// account clients that have been delegated domain-wide authority.
+                /// will be created with verification status set to `accepted`. For more information, see [Manage email
+                /// forwarding](https://developers.google.com/workspace/gmail/api/guides/forwarding_settings). This
+                /// method is only available to service account clients that have been delegated domain-wide authority.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="userId">
@@ -5088,8 +5203,9 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>
                 /// Creates a forwarding address. If ownership verification is required, a message will be sent to the
                 /// recipient and the resource's verification status will be set to `pending`; otherwise, the resource
-                /// will be created with verification status set to `accepted`. This method is only available to service
-                /// account clients that have been delegated domain-wide authority.
+                /// will be created with verification status set to `accepted`. For more information, see [Manage email
+                /// forwarding](https://developers.google.com/workspace/gmail/api/guides/forwarding_settings). This
+                /// method is only available to service account clients that have been delegated domain-wide authority.
                 /// </summary>
                 public class CreateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ForwardingAddress>
                 {
@@ -5139,8 +5255,9 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>
                 /// Deletes the specified forwarding address and revokes any verification that may have been required.
-                /// This method is only available to service account clients that have been delegated domain-wide
-                /// authority.
+                /// For more information, see [Manage email
+                /// forwarding](https://developers.google.com/workspace/gmail/api/guides/forwarding_settings). This
+                /// method is only available to service account clients that have been delegated domain-wide authority.
                 /// </summary>
                 /// <param name="userId">
                 /// User's email address. The special value "me" can be used to indicate the authenticated user.
@@ -5153,8 +5270,9 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>
                 /// Deletes the specified forwarding address and revokes any verification that may have been required.
-                /// This method is only available to service account clients that have been delegated domain-wide
-                /// authority.
+                /// For more information, see [Manage email
+                /// forwarding](https://developers.google.com/workspace/gmail/api/guides/forwarding_settings). This
+                /// method is only available to service account clients that have been delegated domain-wide authority.
                 /// </summary>
                 public class DeleteRequest : GmailBaseServiceRequest<string>
                 {
@@ -5208,7 +5326,10 @@ namespace Google.Apis.Gmail.v1
                     }
                 }
 
-                /// <summary>Gets the specified forwarding address.</summary>
+                /// <summary>
+                /// Gets the specified forwarding address. For more information, see [Manage email
+                /// forwarding](https://developers.google.com/workspace/gmail/api/guides/forwarding_settings).
+                /// </summary>
                 /// <param name="userId">
                 /// User's email address. The special value "me" can be used to indicate the authenticated user.
                 /// </param>
@@ -5218,7 +5339,10 @@ namespace Google.Apis.Gmail.v1
                     return new GetRequest(this.service, userId, forwardingEmail);
                 }
 
-                /// <summary>Gets the specified forwarding address.</summary>
+                /// <summary>
+                /// Gets the specified forwarding address. For more information, see [Manage email
+                /// forwarding](https://developers.google.com/workspace/gmail/api/guides/forwarding_settings).
+                /// </summary>
                 public class GetRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ForwardingAddress>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -5271,7 +5395,10 @@ namespace Google.Apis.Gmail.v1
                     }
                 }
 
-                /// <summary>Lists the forwarding addresses for the specified account.</summary>
+                /// <summary>
+                /// Lists the forwarding addresses for the specified account. For more information, see [Manage email
+                /// forwarding](https://developers.google.com/workspace/gmail/api/guides/forwarding_settings).
+                /// </summary>
                 /// <param name="userId">
                 /// User's email address. The special value "me" can be used to indicate the authenticated user.
                 /// </param>
@@ -5280,7 +5407,10 @@ namespace Google.Apis.Gmail.v1
                     return new ListRequest(this.service, userId);
                 }
 
-                /// <summary>Lists the forwarding addresses for the specified account.</summary>
+                /// <summary>
+                /// Lists the forwarding addresses for the specified account. For more information, see [Manage email
+                /// forwarding](https://developers.google.com/workspace/gmail/api/guides/forwarding_settings).
+                /// </summary>
                 public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListForwardingAddressesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -5356,7 +5486,11 @@ namespace Google.Apis.Gmail.v1
                         this.service = service;
                     }
 
-                    /// <summary>Deletes the specified S/MIME config for the specified send-as alias.</summary>
+                    /// <summary>
+                    /// Deletes the specified S/MIME config for the specified send-as alias. For more information, see
+                    /// [Manage S/MIME certificates with the Gmail
+                    /// API](https://developers.google.com/workspace/gmail/api/guides/smime_certs).
+                    /// </summary>
                     /// <param name="userId">
                     /// The user's email address. The special value `me` can be used to indicate the authenticated user.
                     /// </param>
@@ -5369,7 +5503,11 @@ namespace Google.Apis.Gmail.v1
                         return new DeleteRequest(this.service, userId, sendAsEmail, id);
                     }
 
-                    /// <summary>Deletes the specified S/MIME config for the specified send-as alias.</summary>
+                    /// <summary>
+                    /// Deletes the specified S/MIME config for the specified send-as alias. For more information, see
+                    /// [Manage S/MIME certificates with the Gmail
+                    /// API](https://developers.google.com/workspace/gmail/api/guides/smime_certs).
+                    /// </summary>
                     public class DeleteRequest : GmailBaseServiceRequest<string>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -5438,7 +5576,11 @@ namespace Google.Apis.Gmail.v1
                         }
                     }
 
-                    /// <summary>Gets the specified S/MIME config for the specified send-as alias.</summary>
+                    /// <summary>
+                    /// Gets the specified S/MIME config for the specified send-as alias. For more information, see
+                    /// [Manage S/MIME certificates with the Gmail
+                    /// API](https://developers.google.com/workspace/gmail/api/guides/smime_certs).
+                    /// </summary>
                     /// <param name="userId">
                     /// The user's email address. The special value `me` can be used to indicate the authenticated user.
                     /// </param>
@@ -5451,7 +5593,11 @@ namespace Google.Apis.Gmail.v1
                         return new GetRequest(this.service, userId, sendAsEmail, id);
                     }
 
-                    /// <summary>Gets the specified S/MIME config for the specified send-as alias.</summary>
+                    /// <summary>
+                    /// Gets the specified S/MIME config for the specified send-as alias. For more information, see
+                    /// [Manage S/MIME certificates with the Gmail
+                    /// API](https://developers.google.com/workspace/gmail/api/guides/smime_certs).
+                    /// </summary>
                     public class GetRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.SmimeInfo>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -5521,8 +5667,9 @@ namespace Google.Apis.Gmail.v1
                     }
 
                     /// <summary>
-                    /// Insert (upload) the given S/MIME config for the specified send-as alias. Note that pkcs12 format
-                    /// is required for the key.
+                    /// Insert (upload) the given S/MIME config for the specified send-as alias. Note that `pkcs12`
+                    /// format is required for the key. For more information, see [Manage S/MIME certificates with the
+                    /// Gmail API](https://developers.google.com/workspace/gmail/api/guides/smime_certs).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="userId">
@@ -5537,8 +5684,9 @@ namespace Google.Apis.Gmail.v1
                     }
 
                     /// <summary>
-                    /// Insert (upload) the given S/MIME config for the specified send-as alias. Note that pkcs12 format
-                    /// is required for the key.
+                    /// Insert (upload) the given S/MIME config for the specified send-as alias. Note that `pkcs12`
+                    /// format is required for the key. For more information, see [Manage S/MIME certificates with the
+                    /// Gmail API](https://developers.google.com/workspace/gmail/api/guides/smime_certs).
                     /// </summary>
                     public class InsertRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.SmimeInfo>
                     {
@@ -5602,7 +5750,11 @@ namespace Google.Apis.Gmail.v1
                         }
                     }
 
-                    /// <summary>Lists S/MIME configs for the specified send-as alias.</summary>
+                    /// <summary>
+                    /// Lists S/MIME configs for the specified send-as alias. For more information, see [Manage S/MIME
+                    /// certificates with the Gmail
+                    /// API](https://developers.google.com/workspace/gmail/api/guides/smime_certs).
+                    /// </summary>
                     /// <param name="userId">
                     /// The user's email address. The special value `me` can be used to indicate the authenticated user.
                     /// </param>
@@ -5614,7 +5766,11 @@ namespace Google.Apis.Gmail.v1
                         return new ListRequest(this.service, userId, sendAsEmail);
                     }
 
-                    /// <summary>Lists S/MIME configs for the specified send-as alias.</summary>
+                    /// <summary>
+                    /// Lists S/MIME configs for the specified send-as alias. For more information, see [Manage S/MIME
+                    /// certificates with the Gmail
+                    /// API](https://developers.google.com/workspace/gmail/api/guides/smime_certs).
+                    /// </summary>
                     public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListSmimeInfoResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -5670,7 +5826,11 @@ namespace Google.Apis.Gmail.v1
                         }
                     }
 
-                    /// <summary>Sets the default S/MIME config for the specified send-as alias.</summary>
+                    /// <summary>
+                    /// Sets the default S/MIME config for the specified send-as alias. For more information, see
+                    /// [Manage S/MIME certificates with the Gmail
+                    /// API](https://developers.google.com/workspace/gmail/api/guides/smime_certs).
+                    /// </summary>
                     /// <param name="userId">
                     /// The user's email address. The special value `me` can be used to indicate the authenticated user.
                     /// </param>
@@ -5683,7 +5843,11 @@ namespace Google.Apis.Gmail.v1
                         return new SetDefaultRequest(this.service, userId, sendAsEmail, id);
                     }
 
-                    /// <summary>Sets the default S/MIME config for the specified send-as alias.</summary>
+                    /// <summary>
+                    /// Sets the default S/MIME config for the specified send-as alias. For more information, see
+                    /// [Manage S/MIME certificates with the Gmail
+                    /// API](https://developers.google.com/workspace/gmail/api/guides/smime_certs).
+                    /// </summary>
                     public class SetDefaultRequest : GmailBaseServiceRequest<string>
                     {
                         /// <summary>Constructs a new SetDefault request.</summary>
@@ -5759,8 +5923,10 @@ namespace Google.Apis.Gmail.v1
                 /// is required for the alias, a message will be sent to the email address and the resource's
                 /// verification status will be set to `pending`; otherwise, the resource will be created with
                 /// verification status set to `accepted`. If a signature is provided, Gmail will sanitize the HTML
-                /// before saving it with the alias. This method is only available to service account clients that have
-                /// been delegated domain-wide authority.
+                /// before saving it with the alias. For more information, see [Manage aliases and signatures with the
+                /// Gmail API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings).
+                /// This method is only available to service account clients that have been delegated domain-wide
+                /// authority.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="userId">
@@ -5777,8 +5943,10 @@ namespace Google.Apis.Gmail.v1
                 /// is required for the alias, a message will be sent to the email address and the resource's
                 /// verification status will be set to `pending`; otherwise, the resource will be created with
                 /// verification status set to `accepted`. If a signature is provided, Gmail will sanitize the HTML
-                /// before saving it with the alias. This method is only available to service account clients that have
-                /// been delegated domain-wide authority.
+                /// before saving it with the alias. For more information, see [Manage aliases and signatures with the
+                /// Gmail API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings).
+                /// This method is only available to service account clients that have been delegated domain-wide
+                /// authority.
                 /// </summary>
                 public class CreateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.SendAs>
                 {
@@ -5828,8 +5996,9 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>
                 /// Deletes the specified send-as alias. Revokes any verification that may have been required for using
-                /// it. This method is only available to service account clients that have been delegated domain-wide
-                /// authority.
+                /// it. For more information, see [Manage aliases and signatures with the Gmail
+                /// API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings). This
+                /// method is only available to service account clients that have been delegated domain-wide authority.
                 /// </summary>
                 /// <param name="userId">
                 /// User's email address. The special value "me" can be used to indicate the authenticated user.
@@ -5842,8 +6011,9 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>
                 /// Deletes the specified send-as alias. Revokes any verification that may have been required for using
-                /// it. This method is only available to service account clients that have been delegated domain-wide
-                /// authority.
+                /// it. For more information, see [Manage aliases and signatures with the Gmail
+                /// API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings). This
+                /// method is only available to service account clients that have been delegated domain-wide authority.
                 /// </summary>
                 public class DeleteRequest : GmailBaseServiceRequest<string>
                 {
@@ -5899,7 +6069,8 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>
                 /// Gets the specified send-as alias. Fails with an HTTP 404 error if the specified address is not a
-                /// member of the collection.
+                /// member of the collection. For more information, see [Manage aliases and signatures with the Gmail
+                /// API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings).
                 /// </summary>
                 /// <param name="userId">
                 /// User's email address. The special value "me" can be used to indicate the authenticated user.
@@ -5912,7 +6083,8 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>
                 /// Gets the specified send-as alias. Fails with an HTTP 404 error if the specified address is not a
-                /// member of the collection.
+                /// member of the collection. For more information, see [Manage aliases and signatures with the Gmail
+                /// API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings).
                 /// </summary>
                 public class GetRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.SendAs>
                 {
@@ -5968,7 +6140,9 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>
                 /// Lists the send-as aliases for the specified account. The result includes the primary send-as address
-                /// associated with the account as well as any custom "from" aliases.
+                /// associated with the account as well as any custom "from" aliases. For more information, see [Manage
+                /// aliases and signatures with the Gmail
+                /// API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings).
                 /// </summary>
                 /// <param name="userId">
                 /// User's email address. The special value "me" can be used to indicate the authenticated user.
@@ -5980,7 +6154,9 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>
                 /// Lists the send-as aliases for the specified account. The result includes the primary send-as address
-                /// associated with the account as well as any custom "from" aliases.
+                /// associated with the account as well as any custom "from" aliases. For more information, see [Manage
+                /// aliases and signatures with the Gmail
+                /// API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings).
                 /// </summary>
                 public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListSendAsResponse>
                 {
@@ -6021,7 +6197,10 @@ namespace Google.Apis.Gmail.v1
                     }
                 }
 
-                /// <summary>Patch the specified send-as alias.</summary>
+                /// <summary>
+                /// Patch the specified send-as alias. For more information, see [Manage aliases and signatures with the
+                /// Gmail API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings).
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="userId">
                 /// User's email address. The special value "me" can be used to indicate the authenticated user.
@@ -6032,7 +6211,10 @@ namespace Google.Apis.Gmail.v1
                     return new PatchRequest(this.service, body, userId, sendAsEmail);
                 }
 
-                /// <summary>Patch the specified send-as alias.</summary>
+                /// <summary>
+                /// Patch the specified send-as alias. For more information, see [Manage aliases and signatures with the
+                /// Gmail API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings).
+                /// </summary>
                 public class PatchRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.SendAs>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -6094,8 +6276,10 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>
                 /// Updates a send-as alias. If a signature is provided, Gmail will sanitize the HTML before saving it
-                /// with the alias. Addresses other than the primary address for the account can only be updated by
-                /// service account clients that have been delegated domain-wide authority.
+                /// with the alias. For more information, see [Manage aliases and signatures with the Gmail
+                /// API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings).
+                /// Addresses other than the primary address for the account can only be updated by service account
+                /// clients that have been delegated domain-wide authority.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="userId">
@@ -6109,8 +6293,10 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>
                 /// Updates a send-as alias. If a signature is provided, Gmail will sanitize the HTML before saving it
-                /// with the alias. Addresses other than the primary address for the account can only be updated by
-                /// service account clients that have been delegated domain-wide authority.
+                /// with the alias. For more information, see [Manage aliases and signatures with the Gmail
+                /// API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings).
+                /// Addresses other than the primary address for the account can only be updated by service account
+                /// clients that have been delegated domain-wide authority.
                 /// </summary>
                 public class UpdateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.SendAs>
                 {
@@ -6173,8 +6359,9 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>
                 /// Sends a verification email to the specified send-as alias address. The verification status must be
-                /// `pending`. This method is only available to service account clients that have been delegated
-                /// domain-wide authority.
+                /// `pending`. For more information, see [Manage aliases and signatures with the Gmail
+                /// API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings). This
+                /// method is only available to service account clients that have been delegated domain-wide authority.
                 /// </summary>
                 /// <param name="userId">
                 /// User's email address. The special value "me" can be used to indicate the authenticated user.
@@ -6187,8 +6374,9 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>
                 /// Sends a verification email to the specified send-as alias address. The verification status must be
-                /// `pending`. This method is only available to service account clients that have been delegated
-                /// domain-wide authority.
+                /// `pending`. For more information, see [Manage aliases and signatures with the Gmail
+                /// API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings). This
+                /// method is only available to service account clients that have been delegated domain-wide authority.
                 /// </summary>
                 public class VerifyRequest : GmailBaseServiceRequest<string>
                 {
@@ -6243,7 +6431,10 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Gets the auto-forwarding setting for the specified account.</summary>
+            /// <summary>
+            /// Gets the auto-forwarding setting for the specified account. For more information, see [Manage email
+            /// forwarding](https://developers.google.com/workspace/gmail/api/guides/forwarding_settings).
+            /// </summary>
             /// <param name="userId">
             /// User's email address. The special value "me" can be used to indicate the authenticated user.
             /// </param>
@@ -6252,7 +6443,10 @@ namespace Google.Apis.Gmail.v1
                 return new GetAutoForwardingRequest(this.service, userId);
             }
 
-            /// <summary>Gets the auto-forwarding setting for the specified account.</summary>
+            /// <summary>
+            /// Gets the auto-forwarding setting for the specified account. For more information, see [Manage email
+            /// forwarding](https://developers.google.com/workspace/gmail/api/guides/forwarding_settings).
+            /// </summary>
             public class GetAutoForwardingRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.AutoForwarding>
             {
                 /// <summary>Constructs a new GetAutoForwarding request.</summary>
@@ -6292,7 +6486,10 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Gets IMAP settings.</summary>
+            /// <summary>
+            /// Gets IMAP settings. For more information, see [Configure POP and IMAP settings with the Gmail
+            /// API](https://developers.google.com/workspace/gmail/api/guides/pop_imap_settings).
+            /// </summary>
             /// <param name="userId">
             /// User's email address. The special value "me" can be used to indicate the authenticated user.
             /// </param>
@@ -6301,7 +6498,10 @@ namespace Google.Apis.Gmail.v1
                 return new GetImapRequest(this.service, userId);
             }
 
-            /// <summary>Gets IMAP settings.</summary>
+            /// <summary>
+            /// Gets IMAP settings. For more information, see [Configure POP and IMAP settings with the Gmail
+            /// API](https://developers.google.com/workspace/gmail/api/guides/pop_imap_settings).
+            /// </summary>
             public class GetImapRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ImapSettings>
             {
                 /// <summary>Constructs a new GetImap request.</summary>
@@ -6341,7 +6541,10 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Gets language settings.</summary>
+            /// <summary>
+            /// Gets language settings. For more information, see [Manage language
+            /// settings](https://developers.google.com/workspace/gmail/api/guides/language-settings).
+            /// </summary>
             /// <param name="userId">
             /// User's email address. The special value "me" can be used to indicate the authenticated user.
             /// </param>
@@ -6350,7 +6553,10 @@ namespace Google.Apis.Gmail.v1
                 return new GetLanguageRequest(this.service, userId);
             }
 
-            /// <summary>Gets language settings.</summary>
+            /// <summary>
+            /// Gets language settings. For more information, see [Manage language
+            /// settings](https://developers.google.com/workspace/gmail/api/guides/language-settings).
+            /// </summary>
             public class GetLanguageRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.LanguageSettings>
             {
                 /// <summary>Constructs a new GetLanguage request.</summary>
@@ -6390,7 +6596,10 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Gets POP settings.</summary>
+            /// <summary>
+            /// Gets POP settings. For more information, see [Configure POP and IMAP settings with the Gmail
+            /// API](https://developers.google.com/workspace/gmail/api/guides/pop_imap_settings).
+            /// </summary>
             /// <param name="userId">
             /// User's email address. The special value "me" can be used to indicate the authenticated user.
             /// </param>
@@ -6399,7 +6608,10 @@ namespace Google.Apis.Gmail.v1
                 return new GetPopRequest(this.service, userId);
             }
 
-            /// <summary>Gets POP settings.</summary>
+            /// <summary>
+            /// Gets POP settings. For more information, see [Configure POP and IMAP settings with the Gmail
+            /// API](https://developers.google.com/workspace/gmail/api/guides/pop_imap_settings).
+            /// </summary>
             public class GetPopRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.PopSettings>
             {
                 /// <summary>Constructs a new GetPop request.</summary>
@@ -6439,7 +6651,10 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Gets vacation responder settings.</summary>
+            /// <summary>
+            /// Gets vacation responder settings. For more information, see [Manage vacation settings with the Gmail
+            /// API](https://developers.google.com/workspace/gmail/api/guides/vacation_settings).
+            /// </summary>
             /// <param name="userId">
             /// User's email address. The special value "me" can be used to indicate the authenticated user.
             /// </param>
@@ -6448,7 +6663,10 @@ namespace Google.Apis.Gmail.v1
                 return new GetVacationRequest(this.service, userId);
             }
 
-            /// <summary>Gets vacation responder settings.</summary>
+            /// <summary>
+            /// Gets vacation responder settings. For more information, see [Manage vacation settings with the Gmail
+            /// API](https://developers.google.com/workspace/gmail/api/guides/vacation_settings).
+            /// </summary>
             public class GetVacationRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.VacationSettings>
             {
                 /// <summary>Constructs a new GetVacation request.</summary>
@@ -6490,8 +6708,9 @@ namespace Google.Apis.Gmail.v1
 
             /// <summary>
             /// Updates the auto-forwarding setting for the specified account. A verified forwarding address must be
-            /// specified when auto-forwarding is enabled. This method is only available to service account clients that
-            /// have been delegated domain-wide authority.
+            /// specified when auto-forwarding is enabled. For more information, see [Manage email
+            /// forwarding](https://developers.google.com/workspace/gmail/api/guides/forwarding_settings). This method
+            /// is only available to service account clients that have been delegated domain-wide authority.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">
@@ -6504,8 +6723,9 @@ namespace Google.Apis.Gmail.v1
 
             /// <summary>
             /// Updates the auto-forwarding setting for the specified account. A verified forwarding address must be
-            /// specified when auto-forwarding is enabled. This method is only available to service account clients that
-            /// have been delegated domain-wide authority.
+            /// specified when auto-forwarding is enabled. For more information, see [Manage email
+            /// forwarding](https://developers.google.com/workspace/gmail/api/guides/forwarding_settings). This method
+            /// is only available to service account clients that have been delegated domain-wide authority.
             /// </summary>
             public class UpdateAutoForwardingRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.AutoForwarding>
             {
@@ -6553,7 +6773,10 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Updates IMAP settings.</summary>
+            /// <summary>
+            /// Updates IMAP settings. For more information, see [Configure POP and IMAP settings with the Gmail
+            /// API](https://developers.google.com/workspace/gmail/api/guides/pop_imap_settings).
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">
             /// User's email address. The special value "me" can be used to indicate the authenticated user.
@@ -6563,7 +6786,10 @@ namespace Google.Apis.Gmail.v1
                 return new UpdateImapRequest(this.service, body, userId);
             }
 
-            /// <summary>Updates IMAP settings.</summary>
+            /// <summary>
+            /// Updates IMAP settings. For more information, see [Configure POP and IMAP settings with the Gmail
+            /// API](https://developers.google.com/workspace/gmail/api/guides/pop_imap_settings).
+            /// </summary>
             public class UpdateImapRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ImapSettings>
             {
                 /// <summary>Constructs a new UpdateImap request.</summary>
@@ -6611,10 +6837,11 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>
-            /// Updates language settings. If successful, the return object contains the `displayLanguage` that was
-            /// saved for the user, which may differ from the value passed into the request. This is because the
-            /// requested `displayLanguage` may not be directly supported by Gmail but have a close variant that is, and
-            /// so the variant may be chosen and saved instead.
+            /// Updates language settings. For more information, see [Manage language
+            /// settings](https://developers.google.com/workspace/gmail/api/guides/language-settings). If successful,
+            /// the return object contains the `displayLanguage` that was saved for the user, which may differ from the
+            /// value passed into the request. This is because the requested `displayLanguage` may not be directly
+            /// supported by Gmail but have a close variant that is, and so the variant may be chosen and saved instead.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">
@@ -6626,10 +6853,11 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>
-            /// Updates language settings. If successful, the return object contains the `displayLanguage` that was
-            /// saved for the user, which may differ from the value passed into the request. This is because the
-            /// requested `displayLanguage` may not be directly supported by Gmail but have a close variant that is, and
-            /// so the variant may be chosen and saved instead.
+            /// Updates language settings. For more information, see [Manage language
+            /// settings](https://developers.google.com/workspace/gmail/api/guides/language-settings). If successful,
+            /// the return object contains the `displayLanguage` that was saved for the user, which may differ from the
+            /// value passed into the request. This is because the requested `displayLanguage` may not be directly
+            /// supported by Gmail but have a close variant that is, and so the variant may be chosen and saved instead.
             /// </summary>
             public class UpdateLanguageRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.LanguageSettings>
             {
@@ -6677,7 +6905,10 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Updates POP settings.</summary>
+            /// <summary>
+            /// Updates POP settings. For more information, see [Configure POP and IMAP settings with the Gmail
+            /// API](https://developers.google.com/workspace/gmail/api/guides/pop_imap_settings).
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">
             /// User's email address. The special value "me" can be used to indicate the authenticated user.
@@ -6687,7 +6918,10 @@ namespace Google.Apis.Gmail.v1
                 return new UpdatePopRequest(this.service, body, userId);
             }
 
-            /// <summary>Updates POP settings.</summary>
+            /// <summary>
+            /// Updates POP settings. For more information, see [Configure POP and IMAP settings with the Gmail
+            /// API](https://developers.google.com/workspace/gmail/api/guides/pop_imap_settings).
+            /// </summary>
             public class UpdatePopRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.PopSettings>
             {
                 /// <summary>Constructs a new UpdatePop request.</summary>
@@ -6734,7 +6968,10 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Updates vacation responder settings.</summary>
+            /// <summary>
+            /// Updates vacation responder settings. For more information, see [Manage vacation settings with the Gmail
+            /// API](https://developers.google.com/workspace/gmail/api/guides/vacation_settings).
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">
             /// User's email address. The special value "me" can be used to indicate the authenticated user.
@@ -6744,7 +6981,10 @@ namespace Google.Apis.Gmail.v1
                 return new UpdateVacationRequest(this.service, body, userId);
             }
 
-            /// <summary>Updates vacation responder settings.</summary>
+            /// <summary>
+            /// Updates vacation responder settings. For more information, see [Manage vacation settings with the Gmail
+            /// API](https://developers.google.com/workspace/gmail/api/guides/vacation_settings).
+            /// </summary>
             public class UpdateVacationRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.VacationSettings>
             {
                 /// <summary>Constructs a new UpdateVacation request.</summary>
@@ -6811,7 +7051,8 @@ namespace Google.Apis.Gmail.v1
 
             /// <summary>
             /// Immediately and permanently deletes the specified thread. Any messages that belong to the thread are
-            /// also deleted. This operation cannot be undone. Prefer `threads.trash` instead.
+            /// also deleted. This operation cannot be undone. Prefer `threads.trash` instead. For more information, see
+            /// [Manage threads](https://developers.google.com/workspace/gmail/api/guides/threads).
             /// </summary>
             /// <param name="userId">
             /// The user's email address. The special value `me` can be used to indicate the authenticated user.
@@ -6824,7 +7065,8 @@ namespace Google.Apis.Gmail.v1
 
             /// <summary>
             /// Immediately and permanently deletes the specified thread. Any messages that belong to the thread are
-            /// also deleted. This operation cannot be undone. Prefer `threads.trash` instead.
+            /// also deleted. This operation cannot be undone. Prefer `threads.trash` instead. For more information, see
+            /// [Manage threads](https://developers.google.com/workspace/gmail/api/guides/threads).
             /// </summary>
             public class DeleteRequest : GmailBaseServiceRequest<string>
             {
@@ -6878,7 +7120,10 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Gets the specified thread.</summary>
+            /// <summary>
+            /// Gets the specified thread. For more information, see [Manage
+            /// threads](https://developers.google.com/workspace/gmail/api/guides/threads).
+            /// </summary>
             /// <param name="userId">
             /// The user's email address. The special value `me` can be used to indicate the authenticated user.
             /// </param>
@@ -6888,7 +7133,10 @@ namespace Google.Apis.Gmail.v1
                 return new GetRequest(this.service, userId, id);
             }
 
-            /// <summary>Gets the specified thread.</summary>
+            /// <summary>
+            /// Gets the specified thread. For more information, see [Manage
+            /// threads](https://developers.google.com/workspace/gmail/api/guides/threads).
+            /// </summary>
             public class GetRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Thread>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -6986,7 +7234,10 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Lists the threads in the user's mailbox.</summary>
+            /// <summary>
+            /// Lists the threads in the user's mailbox. For more information, see [Manage
+            /// threads](https://developers.google.com/workspace/gmail/api/guides/threads).
+            /// </summary>
             /// <param name="userId">
             /// The user's email address. The special value `me` can be used to indicate the authenticated user.
             /// </param>
@@ -6995,7 +7246,10 @@ namespace Google.Apis.Gmail.v1
                 return new ListRequest(this.service, userId);
             }
 
-            /// <summary>Lists the threads in the user's mailbox.</summary>
+            /// <summary>
+            /// Lists the threads in the user's mailbox. For more information, see [Manage
+            /// threads](https://developers.google.com/workspace/gmail/api/guides/threads).
+            /// </summary>
             public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListThreadsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -7103,7 +7357,8 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>
-            /// Modifies the labels applied to the thread. This applies to all messages in the thread.
+            /// Modifies the labels applied to the thread. This applies to all messages in the thread. For more
+            /// information, see [Manage threads](https://developers.google.com/workspace/gmail/api/guides/threads).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">
@@ -7116,7 +7371,8 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>
-            /// Modifies the labels applied to the thread. This applies to all messages in the thread.
+            /// Modifies the labels applied to the thread. This applies to all messages in the thread. For more
+            /// information, see [Manage threads](https://developers.google.com/workspace/gmail/api/guides/threads).
             /// </summary>
             public class ModifyRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Thread>
             {
@@ -7179,7 +7435,8 @@ namespace Google.Apis.Gmail.v1
 
             /// <summary>
             /// Moves the specified thread to the trash. Any messages that belong to the thread are also moved to the
-            /// trash.
+            /// trash. For more information, see [Manage
+            /// threads](https://developers.google.com/workspace/gmail/api/guides/threads).
             /// </summary>
             /// <param name="userId">
             /// The user's email address. The special value `me` can be used to indicate the authenticated user.
@@ -7192,7 +7449,8 @@ namespace Google.Apis.Gmail.v1
 
             /// <summary>
             /// Moves the specified thread to the trash. Any messages that belong to the thread are also moved to the
-            /// trash.
+            /// trash. For more information, see [Manage
+            /// threads](https://developers.google.com/workspace/gmail/api/guides/threads).
             /// </summary>
             public class TrashRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Thread>
             {
@@ -7248,7 +7506,8 @@ namespace Google.Apis.Gmail.v1
 
             /// <summary>
             /// Removes the specified thread from the trash. Any messages that belong to the thread are also removed
-            /// from the trash.
+            /// from the trash. For more information, see [Manage
+            /// threads](https://developers.google.com/workspace/gmail/api/guides/threads).
             /// </summary>
             /// <param name="userId">
             /// The user's email address. The special value `me` can be used to indicate the authenticated user.
@@ -7261,7 +7520,8 @@ namespace Google.Apis.Gmail.v1
 
             /// <summary>
             /// Removes the specified thread from the trash. Any messages that belong to the thread are also removed
-            /// from the trash.
+            /// from the trash. For more information, see [Manage
+            /// threads](https://developers.google.com/workspace/gmail/api/guides/threads).
             /// </summary>
             public class UntrashRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Thread>
             {
@@ -7365,7 +7625,10 @@ namespace Google.Apis.Gmail.v1
             }
         }
 
-        /// <summary>Stop receiving push notifications for the given user mailbox.</summary>
+        /// <summary>
+        /// Turn off push notification delivery for the given user mailbox. For more information, see [Configure push
+        /// notifications in Gmail API](https://developers.google.com/workspace/gmail/api/guides/push).
+        /// </summary>
         /// <param name="userId">
         /// The user's email address. The special value `me` can be used to indicate the authenticated user.
         /// </param>
@@ -7374,7 +7637,10 @@ namespace Google.Apis.Gmail.v1
             return new StopRequest(this.service, userId);
         }
 
-        /// <summary>Stop receiving push notifications for the given user mailbox.</summary>
+        /// <summary>
+        /// Turn off push notification delivery for the given user mailbox. For more information, see [Configure push
+        /// notifications in Gmail API](https://developers.google.com/workspace/gmail/api/guides/push).
+        /// </summary>
         public class StopRequest : GmailBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Stop request.</summary>
@@ -7414,7 +7680,10 @@ namespace Google.Apis.Gmail.v1
             }
         }
 
-        /// <summary>Set up or update a push notification watch on the given user mailbox.</summary>
+        /// <summary>
+        /// Set up or update a push notification watch on the given user mailbox. For more information, see [Configure
+        /// push notifications in Gmail API](https://developers.google.com/workspace/gmail/api/guides/push).
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="userId">
         /// The user's email address. The special value `me` can be used to indicate the authenticated user.
@@ -7424,7 +7693,10 @@ namespace Google.Apis.Gmail.v1
             return new WatchRequest(this.service, body, userId);
         }
 
-        /// <summary>Set up or update a push notification watch on the given user mailbox.</summary>
+        /// <summary>
+        /// Set up or update a push notification watch on the given user mailbox. For more information, see [Configure
+        /// push notifications in Gmail API](https://developers.google.com/workspace/gmail/api/guides/push).
+        /// </summary>
         public class WatchRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.WatchResponse>
         {
             /// <summary>Constructs a new Watch request.</summary>
@@ -7788,7 +8060,10 @@ namespace Google.Apis.Gmail.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("addLabelIds")]
         public virtual System.Collections.Generic.IList<string> AddLabelIds { get; set; }
 
-        /// <summary>Email address that the message should be forwarded to.</summary>
+        /// <summary>
+        /// Email address that the message should be forwarded to. This effectively redirects the message to the address
+        /// specified in this field, maintaining the original sender in the "From" field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forward")]
         public virtual string Forward { get; set; }
 
@@ -8564,7 +8839,7 @@ namespace Google.Apis.Gmail.v1.Data
     /// <summary>
     /// Settings associated with a send-as alias, which can be either the primary login address associated with the
     /// account or a custom "from" address. Send-as aliases correspond to the "Send Mail As" feature in the web
-    /// interface.
+    /// interface. The send-as alias must be a valid email address.
     /// </summary>
     public class SendAs : Google.Apis.Requests.IDirectResponseSchema
     {
