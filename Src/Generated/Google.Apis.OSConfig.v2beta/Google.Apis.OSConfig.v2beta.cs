@@ -676,7 +676,7 @@ namespace Google.Apis.OSConfig.v2beta
                     /// <summary>Updates an existing policy orchestrator, parented by a folder.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Immutable. Identifier. In form of *
+                    /// Immutable. Identifier. In the following format: *
                     /// `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}` *
                     /// `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}` *
                     /// `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}`
@@ -698,7 +698,7 @@ namespace Google.Apis.OSConfig.v2beta
                         }
 
                         /// <summary>
-                        /// Immutable. Identifier. In form of *
+                        /// Immutable. Identifier. In the following format: *
                         /// `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}` *
                         /// `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}` *
                         /// `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}`
@@ -1469,7 +1469,7 @@ namespace Google.Apis.OSConfig.v2beta
                     /// <summary>Updates an existing policy orchestrator, parented by an organization.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Immutable. Identifier. In form of *
+                    /// Immutable. Identifier. In the following format: *
                     /// `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}` *
                     /// `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}` *
                     /// `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}`
@@ -1491,7 +1491,7 @@ namespace Google.Apis.OSConfig.v2beta
                         }
 
                         /// <summary>
-                        /// Immutable. Identifier. In form of *
+                        /// Immutable. Identifier. In the following format: *
                         /// `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}` *
                         /// `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}` *
                         /// `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}`
@@ -2258,7 +2258,7 @@ namespace Google.Apis.OSConfig.v2beta
                     /// <summary>Updates an existing policy orchestrator, parented by a project.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Immutable. Identifier. In form of *
+                    /// Immutable. Identifier. In the following format: *
                     /// `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}` *
                     /// `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}` *
                     /// `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}`
@@ -2280,7 +2280,7 @@ namespace Google.Apis.OSConfig.v2beta
                         }
 
                         /// <summary>
-                        /// Immutable. Identifier. In form of *
+                        /// Immutable. Identifier. In the following format: *
                         /// `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}` *
                         /// `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}` *
                         /// `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}`
@@ -2675,321 +2675,6 @@ namespace Google.Apis.OSConfig.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percent")]
         public virtual System.Nullable<int> Percent { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents the metadata of a generic long-running operation.</summary>
-    public class GoogleCloudOsconfigCommonV1OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. API version used to start the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; }
-
-        private string _createTimeRaw;
-
-        private object _createTime;
-
-        /// <summary>Output only. The time the operation was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        private string _endTimeRaw;
-
-        private object _endTime;
-
-        /// <summary>Output only. The time the operation finished running.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTimeRaw
-        {
-            get => _endTimeRaw;
-            set
-            {
-                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _endTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
-        public virtual object EndTime
-        {
-            get => _endTime;
-            set
-            {
-                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _endTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>
-        /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
-        public virtual System.Nullable<bool> RequestedCancellation { get; set; }
-
-        /// <summary>Output only. Human-readable status of the operation, if any.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
-        public virtual string StatusMessage { get; set; }
-
-        /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; }
-
-        /// <summary>Output only. Name of the verb executed by the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
-        public virtual string Verb { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents the metadata of a generic long-running operation.</summary>
-    public class GoogleCloudOsconfigCommonV1alphaOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. API version used to start the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; }
-
-        private string _createTimeRaw;
-
-        private object _createTime;
-
-        /// <summary>Output only. The time the operation was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        private string _endTimeRaw;
-
-        private object _endTime;
-
-        /// <summary>Output only. The time the operation finished running.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTimeRaw
-        {
-            get => _endTimeRaw;
-            set
-            {
-                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _endTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
-        public virtual object EndTime
-        {
-            get => _endTime;
-            set
-            {
-                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _endTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>
-        /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
-        public virtual System.Nullable<bool> RequestedCancellation { get; set; }
-
-        /// <summary>Output only. Human-readable status of the operation, if any.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
-        public virtual string StatusMessage { get; set; }
-
-        /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; }
-
-        /// <summary>Output only. Name of the verb executed by the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
-        public virtual string Verb { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents the metadata of a generic long-running operation.</summary>
-    public class GoogleCloudOsconfigCommonV1mainOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. API version used to start the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; }
-
-        private string _createTimeRaw;
-
-        private object _createTime;
-
-        /// <summary>Output only. The time the operation was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        private string _endTimeRaw;
-
-        private object _endTime;
-
-        /// <summary>Output only. The time the operation finished running.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTimeRaw
-        {
-            get => _endTimeRaw;
-            set
-            {
-                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _endTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
-        public virtual object EndTime
-        {
-            get => _endTime;
-            set
-            {
-                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _endTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>
-        /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
-        public virtual System.Nullable<bool> RequestedCancellation { get; set; }
-
-        /// <summary>Output only. Human-readable status of the operation, if any.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
-        public virtual string StatusMessage { get; set; }
-
-        /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; }
-
-        /// <summary>Output only. Name of the verb executed by the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
-        public virtual string Verb { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3414,16 +3099,16 @@ namespace Google.Apis.OSConfig.v2beta.Data
     }
 
     /// <summary>
-    /// PolicyOrchestrator helps managing project+zone level policy resources (e.g. OS Policy Assignments), by providing
-    /// tools to create, update and delete them across projects and locations, at scale. Policy orchestrator functions
-    /// as an endless loop. Each iteration orchestrator computes a set of resources that should be affected, then
-    /// progressively applies changes to them. If for some reason this set of resources changes over time (e.g. new
-    /// projects are added), the future loop iterations will address that. Orchestrator can either upsert or delete
-    /// policy resources. For more details, see the description of the `action`, and `orchestrated_resource` fields.
-    /// Note that policy orchestrator do not "manage" the resources it creates. Every iteration is independent and only
-    /// minimal history of past actions is retained (apart from Cloud Logging). If orchestrator gets deleted, it does
-    /// not affect the resources it created in the past. Those will remain where they were. Same applies if projects are
-    /// removed from the orchestrator's scope.
+    /// A policy orchestrator manages project-level and zone-level policy resources, such as OS policy assignments. It
+    /// provides methods to create, update, and delete these resources across projects and locations at scale. The
+    /// policy orchestrator operates as a continuous loop. In each iteration, the orchestrator identifies the set of
+    /// resources to be modified and progressively applies changes. If the set of resources changes over time (for
+    /// example, if you add new projects), subsequent iterations address those changes. The orchestrator can either
+    /// upsert or delete policy resources. For more details, see the `action` and `orchestrated_resource` fields. The
+    /// policy orchestrator does not manage the lifecycle of the resources it creates. Each iteration is independent
+    /// and, besides Cloud Logging, the orchestrator retains only a minimal history of past actions. Deleting the
+    /// orchestrator does not affect previously created resources; these resources remain in their current state.
+    /// Similarly, removing projects from the orchestrator's scope does not affect existing resources.
     /// </summary>
     public class GoogleCloudOsconfigV2betaPolicyOrchestrator : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3488,7 +3173,7 @@ namespace Google.Apis.OSConfig.v2beta.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Immutable. Identifier. In form of *
+        /// Immutable. Identifier. In the following format: *
         /// `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}` *
         /// `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}` *
         /// `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}`
