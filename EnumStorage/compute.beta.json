@@ -8,6 +8,14 @@
     "1",
     "2"
   ],
+  "Google.Apis.Compute.beta.ForwardingRulesResource+GetRequest.ViewEnum": [
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.Compute.beta.GlobalForwardingRulesResource+GetRequest.ViewEnum": [
+    "BASIC",
+    "FULL"
+  ],
   "Google.Apis.Compute.beta.InstancesResource+GetRequest.ViewEnum": [
     "BASIC",
     "FULL",
