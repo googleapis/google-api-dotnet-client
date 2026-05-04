@@ -2376,7 +2376,8 @@ namespace Google.Apis.CloudIAP.v1.Data
         /// CRM nodes. - For global resources: use a single value of "global". - For regional/multi-regional resources:
         /// use name of the GCP region(s) where the resource exists (e.g., ["us-east1", "us-west1"]). For multi-regional
         /// resources specify the name of each GCP region in the resource's multi-region. NOTE: Only GCP cloud region
-        /// names are supported - go/cloud-region-names.
+        /// names are supported - go/cloud-region-names. - Constraints: - Individual location strings must be less than
+        /// 1000 bytes. - The cumulative size of all locations must be less than 16KB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
         public virtual System.Collections.Generic.IList<string> Locations { get; set; }
