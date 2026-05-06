@@ -3573,6 +3573,13 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
+        /// <summary>
+        /// Optional. Configures how the environment routes traffic to other services. This field is supported for Cloud
+        /// Composer environments in versions composer-3-airflow-*.*.*-build.* and newer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trafficRoutingConfig")]
+        public virtual TrafficRoutingConfig TrafficRoutingConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4156,6 +4163,19 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// <summary>Optional. The mode of storage for Airflow workers task logs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageMode")]
         public virtual string StorageMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for network traffic routing from the Cloud Composer environment to other services.
+    /// </summary>
+    public class TrafficRoutingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Controls how network traffic to Cloud Run functions is routed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudRunFunctionsRouting")]
+        public virtual string CloudRunFunctionsRouting { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
