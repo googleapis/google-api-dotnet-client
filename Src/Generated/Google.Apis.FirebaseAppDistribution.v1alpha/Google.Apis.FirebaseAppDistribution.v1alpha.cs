@@ -3255,6 +3255,13 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// Optional. Input only. The custom Cloud Storage bucket where test results are stored. Format:
+        /// `projects/{project_number}/buckets/{bucket}` If not provided, the default test lab bucket is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultsBucket")]
+        public virtual string ResultsBucket { get; set; }
+
+        /// <summary>
         /// Optional. The test case that was used to generate this release test. Note: The test case may have changed or
         /// been deleted since the release test was created. Format:
         /// `projects/{project_number}/apps/{app}/testCases/{test_case}`
@@ -3424,6 +3431,13 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. The custom Cloud Storage bucket where test results are stored. Format:
+        /// `projects/{project_number}/buckets/{bucket}` If not provided, the default test lab bucket is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultsBucket")]
+        public virtual string ResultsBucket { get; set; }
 
         /// <summary>Optional. Configuration for Robo crawler</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roboCrawler")]

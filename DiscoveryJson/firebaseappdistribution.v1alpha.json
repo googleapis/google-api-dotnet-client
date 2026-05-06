@@ -868,7 +868,7 @@
       }
     }
   },
-  "revision": "20260430",
+  "revision": "20260504",
   "rootUrl": "https://firebaseappdistribution.googleapis.com/",
   "schemas": {
     "AndroidxCrawlerOutputPoint": {
@@ -2039,6 +2039,10 @@
           "description": "The name of the release test resource. Format: `projects/{project_number}/apps/{app}/releases/{release}/tests/{test}`",
           "type": "string"
         },
+        "resultsBucket": {
+          "description": "Optional. Input only. The custom Cloud Storage bucket where test results are stored. Format: `projects/{project_number}/buckets/{bucket}` If not provided, the default test lab bucket is used.",
+          "type": "string"
+        },
         "testCase": {
           "description": "Optional. The test case that was used to generate this release test. Note: The test case may have changed or been deleted since the release test was created. Format: `projects/{project_number}/apps/{app}/testCases/{test_case}`",
           "type": "string"
@@ -2208,6 +2212,10 @@
         },
         "name": {
           "description": "Identifier. The name of the test configuration resource. Format: `projects/{project_number}/apps/{app}/testConfig`",
+          "type": "string"
+        },
+        "resultsBucket": {
+          "description": "Optional. The custom Cloud Storage bucket where test results are stored. Format: `projects/{project_number}/buckets/{bucket}` If not provided, the default test lab bucket is used.",
           "type": "string"
         },
         "roboCrawler": {
