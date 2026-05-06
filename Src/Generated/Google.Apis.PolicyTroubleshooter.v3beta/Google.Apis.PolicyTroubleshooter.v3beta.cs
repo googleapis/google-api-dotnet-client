@@ -1763,7 +1763,7 @@ namespace Google.Apis.PolicyTroubleshooter.v3beta.Data
         /// == ` - `principal.subject != ` - `principal.subject in []` - `principal.subject.startsWith()` -
         /// `principal.subject.endsWith()` Allowed operations for `principal.type`: - `principal.type == ` -
         /// `principal.type != ` - `principal.type in []` Supported principal types are workspace, workforce pool,
-        /// workload pool, service account, and Agent Identity. Allowed string must be one of: -
+        /// workload pool, service account, and agent identity. Allowed string must be one of: -
         /// `iam.googleapis.com/WorkspaceIdentity` - `iam.googleapis.com/WorkforcePoolIdentity` -
         /// `iam.googleapis.com/WorkloadPoolIdentity` - `iam.googleapis.com/ServiceAccount` -
         /// `iam.googleapis.com/AgentPoolIdentity` (available in Preview)
