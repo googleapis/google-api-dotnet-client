@@ -2438,6 +2438,12 @@ namespace Google.Apis.CloudSearch.v1
                 public virtual string PageToken { get; set; }
 
                 /// <summary>
+                /// The BCP-47 language code, such as "pt" or "en". It represents the user's preferred Display Language.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("requestOptions.clientDisplayLanguageCode", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string RequestOptionsClientDisplayLanguageCode { get; set; }
+
+                /// <summary>
                 /// If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestOptions.debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
@@ -2488,6 +2494,14 @@ namespace Google.Apis.CloudSearch.v1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("requestOptions.clientDisplayLanguageCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestOptions.clientDisplayLanguageCode",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -9246,10 +9260,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// This field does not contain anything as of now and is just used as an indicator that the suggest result was a
-    /// phrase completion.
-    /// </summary>
     public class QuerySuggestion : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _lastQueryTimeRaw;
@@ -9345,6 +9355,12 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// <summary>Shared request options for all RPC methods.</summary>
     public class RequestOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The BCP-47 language code, such as "pt" or "en". It represents the user's preferred Display Language.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientDisplayLanguageCode")]
+        public virtual string ClientDisplayLanguageCode { get; set; }
+
         /// <summary>Debug options of the request</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugOptions")]
         public virtual DebugOptions DebugOptions { get; set; }
