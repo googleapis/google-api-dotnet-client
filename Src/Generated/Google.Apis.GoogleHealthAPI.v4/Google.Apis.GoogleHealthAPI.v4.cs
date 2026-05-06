@@ -1182,23 +1182,23 @@ namespace Google.Apis.GoogleHealthAPI.v4
                     /// "2023-11-25"` - `weight.sample_time.civil_time &amp;gt;= "2024-08-14T12:34:56"` - Daily summary
                     /// date: - Pattern: `{daily_summary_data_type}.date` - Supported comparison operators: `&amp;gt;=`,
                     /// `&amp;lt;` - Date literal expected in ISO 8601 `YYYY-MM-DD` format - Supported logical
-                    /// operators: `AND` - Example: - `daily_resting_heart_rate.date &amp;gt;= "2024-08-14"` -
-                    /// `daily_heart_rate_variability.date &amp;lt; "2024-08-15"` - Session civil start time
-                    /// (**Excluding Sleep**): - Pattern: `{session_data_type}.interval.civil_start_time` - Supported
-                    /// comparison operators: `&amp;gt;=`, `&amp;lt;` - Date with optional time literal expected in ISO
-                    /// 8601 `YYYY-MM-DD[THH:mm:ss]` format - Supported logical operators: `AND` - Example: -
-                    /// `exercise.interval.civil_start_time &amp;gt;= "2023-11-24" AND
-                    /// exercise.interval.civil_start_time &amp;lt; "2023-11-25"` - `exercise.interval.civil_start_time
-                    /// &amp;gt;= "2024-08-14T12:34:56"` - Session end time (**Sleep specific**): - Pattern:
-                    /// `sleep.interval.end_time` - Supported comparison operators: `&amp;gt;=`, `&amp;lt;` - Timestamp
-                    /// literal expected in RFC-3339 format - Supported logical operators: `AND`, `OR` - Example: -
-                    /// `sleep.interval.end_time &amp;gt;= "2023-11-24T00:00:00Z" AND sleep.interval.end_time &amp;lt;
-                    /// "2023-11-25T00:00:00Z"` - Session civil end time (**Sleep specific**): - Pattern:
-                    /// `sleep.interval.civil_end_time` - Supported comparison operators: `&amp;gt;=`, `&amp;lt;` - Date
-                    /// with optional time literal expected in ISO 8601 `YYYY-MM-DD[THH:mm:ss]` format - Supported
-                    /// logical operators: `AND`, `OR` - Example: - `sleep.interval.civil_end_time &amp;gt;=
-                    /// "2023-11-24" AND sleep.interval.civil_end_time &amp;lt; "2023-11-25"` Data points in the
-                    /// response will be ordered by the interval start time in descending order.
+                    /// operators: `AND` - Example: - `daily_heart_rate_variability.date &amp;lt; "2024-08-15"` -
+                    /// Session civil start time (**Excluding Sleep**): - Pattern:
+                    /// `{session_data_type}.interval.civil_start_time` - Supported comparison operators: `&amp;gt;=`,
+                    /// `&amp;lt;` - Date with optional time literal expected in ISO 8601 `YYYY-MM-DD[THH:mm:ss]` format
+                    /// - Supported logical operators: `AND` - Example: - `exercise.interval.civil_start_time &amp;gt;=
+                    /// "2023-11-24" AND exercise.interval.civil_start_time &amp;lt; "2023-11-25"` -
+                    /// `exercise.interval.civil_start_time &amp;gt;= "2024-08-14T12:34:56"` - Session end time (**Sleep
+                    /// specific**): - Pattern: `sleep.interval.end_time` - Supported comparison operators: `&amp;gt;=`,
+                    /// `&amp;lt;` - Timestamp literal expected in RFC-3339 format - Supported logical operators: `AND`,
+                    /// `OR` - Example: - `sleep.interval.end_time &amp;gt;= "2023-11-24T00:00:00Z" AND
+                    /// sleep.interval.end_time &amp;lt; "2023-11-25T00:00:00Z"` - Session civil end time (**Sleep
+                    /// specific**): - Pattern: `sleep.interval.civil_end_time` - Supported comparison operators:
+                    /// `&amp;gt;=`, `&amp;lt;` - Date with optional time literal expected in ISO 8601
+                    /// `YYYY-MM-DD[THH:mm:ss]` format - Supported logical operators: `AND`, `OR` - Example: -
+                    /// `sleep.interval.civil_end_time &amp;gt;= "2023-11-24" AND sleep.interval.civil_end_time &amp;lt;
+                    /// "2023-11-25"` Data points in the response will be ordered by the interval start time in
+                    /// descending order.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
