@@ -2252,8 +2252,8 @@ namespace Google.Apis.AgentRegistry.v1alpha
 
             /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
-            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
-            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
             /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
             /// that specific project. This includes public, private, or other project-specific locations enabled for
             /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
@@ -2268,8 +2268,8 @@ namespace Google.Apis.AgentRegistry.v1alpha
 
             /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
-            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
-            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
             /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
             /// that specific project. This includes public, private, or other project-specific locations enabled for
             /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
@@ -2290,8 +2290,8 @@ namespace Google.Apis.AgentRegistry.v1alpha
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Do not use this field unless explicitly documented otherwise. This is primarily for
+                /// internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -3388,9 +3388,9 @@ namespace Google.Apis.AgentRegistry.v1alpha.Data
         /// No | Yes | No | Included | | skills | No | Yes | No | Included | | skills.id | No | Yes | No | Included | |
         /// skills.name | No | Yes | No | Included | | skills.description | No | Yes | No | Included | | skills.tags |
         /// No | Yes | No | Included | | skills.examples | No | Yes | No | Included | Examples: *
-        /// `agentId=urn:agent:projects-123:projects:123:locations:us-central1:reasoningEngines:1234` to find the agent
-        /// with the specified agent ID. * `name:important` to find agents whose name contains `important` as a word. *
-        /// `displayName:works*` to find agents whose display name contains words that start with `works`. *
+        /// `agentId="urn:agent:projects-123:projects:123:locations:us-central1:reasoningEngines:1234"` to find the
+        /// agent with the specified agent ID. * `name:important` to find agents whose name contains `important` as a
+        /// word. * `displayName:works*` to find agents whose display name contains words that start with `works`. *
         /// `skills.tags:test` to find agents whose skills tags contain `test`. * `planner OR booking` to find agents
         /// whose metadata contains the words `planner` or `booking`.
         /// </summary>
@@ -3446,7 +3446,7 @@ namespace Google.Apis.AgentRegistry.v1alpha.Data
         /// Allowed operators: `=`, `:`, `NOT`, `AND`, `OR`, and `()`. Searchable fields: | Field | `=` | `:` | `*` |
         /// Keyword Search | |--------------------|-----|-----|-----|----------------| | mcpServerId | Yes | Yes | Yes |
         /// Included | | name | No | Yes | Yes | Included | | displayName | No | Yes | Yes | Included | Examples: *
-        /// `mcpServerId=urn:mcp:projects-123:projects:123:locations:us-central1:agentregistry:services:service-id` to
+        /// `mcpServerId="urn:mcp:projects-123:projects:123:locations:us-central1:agentregistry:services:service-id"` to
         /// find the MCP Server with the specified MCP Server ID. * `name:important` to find MCP Servers whose name
         /// contains `important` as a word. * `displayName:works*` to find MCP Servers whose display name contains words
         /// that start with `works`. * `planner OR booking` to find MCP Servers whose metadata contains the words
