@@ -18,7 +18,8 @@ using Google.Apis.Http;
 using Google.Apis.Json;
 using Google.Apis.Logging;
 using Google.Apis.Requests;
-using Google.Apis.Requests.Parameters;
+using System.Collections.Concurrent;
+using System.Reflection;
 using Google.Apis.Responses;
 using Google.Apis.Services;
 using Google.Apis.Testing;
@@ -1175,17 +1176,90 @@ namespace Google.Apis.Upload
             return request;
         }
 
+        private sealed class UploadParameterDescriptor
+        {
+            public PropertyInfo Property { get; }
+            public string Name { get; }
+            public RequestParameterType Type { get; }
+            public UploadParameterDescriptor(PropertyInfo property, string name, RequestParameterType type)
+            {
+                Property = property;
+                Name = name;
+                Type = type;
+            }
+        }
+
+        // Intentionally allocated eagerly rather than lazily. This keeps the implementation simple;
+        // when request-description caching is disabled, the legacy reflection path is used and this
+        // dictionary remains unused. One-time startup cost, not a per-request overhead.
+        private static readonly ConcurrentDictionary<Type, UploadParameterDescriptor[]> s_uploadParameterCache =
+            new ConcurrentDictionary<Type, UploadParameterDescriptor[]>();
+
+        private static UploadParameterDescriptor[] ComputeDescriptors(Type type) =>
+            type.GetProperties()
+                .Select(p => (p, attr: Utilities.GetCustomAttribute<RequestParameterAttribute>(p)))
+                .Where(t => t.attr is not null)
+                .Select(t => new UploadParameterDescriptor(t.p, t.attr.Name ?? t.p.Name.ToLowerInvariant(), t.attr.Type))
+                .ToArray();
+
         /// <summary>
         /// Reflectively enumerate the properties of this object looking for all properties containing the 
         /// RequestParameterAttribute and copy their values into the request builder.
         /// </summary>
         private void SetAllPropertyValues(RequestBuilder requestBuilder)
         {
-            // Use InitParametersWithExpansion which:
-            // 1. Uses ReflectionCache to avoid PropertyInfo regeneration (performance)
-            // 2. Expands IEnumerable/Repeatable<T> parameters correctly (functionality)
-            // Note: Using the expansion variant ensures mismatched library versions fail at compile time
-            ParameterUtils.InitParametersWithExpansion(requestBuilder, this);
+            if (ApplicationContext.EnableRequestParameterCache)
+            {
+                foreach (var pwa in s_uploadParameterCache.GetOrAdd(GetType(), ComputeDescriptors))
+                {
+                    object value = pwa.Property.GetValue(this, null);
+                    if (value is not null)
+                    {
+                        var valueAsEnumerable = value as IEnumerable;
+                        if (value is not string && valueAsEnumerable is not null)
+                        {
+                            foreach (var elem in valueAsEnumerable)
+                            {
+                                requestBuilder.AddParameter(pwa.Type, pwa.Name, Utilities.ConvertToString(elem));
+                            }
+                        }
+                        else
+                        {
+                            requestBuilder.AddParameter(pwa.Type, pwa.Name, Utilities.ConvertToString(value));
+                        }
+                    }
+                }
+            }
+            else
+            {
+                // Default path: identical to upstream main.
+                Type myType = this.GetType();
+                var properties = myType.GetProperties();
+                foreach (var property in properties)
+                {
+                    var attribute = Utilities.GetCustomAttribute<RequestParameterAttribute>(property);
+                    if (attribute is not null)
+                    {
+                        string name = attribute.Name ?? property.Name.ToLowerInvariant();
+                        object value = property.GetValue(this, null);
+                        if (value is not null)
+                        {
+                            var valueAsEnumerable = value as IEnumerable;
+                            if (value is not string && valueAsEnumerable is not null)
+                            {
+                                foreach (var elem in valueAsEnumerable)
+                                {
+                                    requestBuilder.AddParameter(attribute.Type, name, Utilities.ConvertToString(elem));
+                                }
+                            }
+                            else
+                            {
+                                requestBuilder.AddParameter(attribute.Type, name, Utilities.ConvertToString(value));
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         #endregion Upload Implementation

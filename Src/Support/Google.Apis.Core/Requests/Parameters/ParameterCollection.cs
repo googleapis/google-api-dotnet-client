@@ -17,7 +17,6 @@ limitations under the License.
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 using Google.Apis.Util;
 
@@ -143,16 +142,23 @@ namespace Google.Apis.Requests.Parameters
         /// </summary>
         public static ParameterCollection FromDictionary(IDictionary<string, object> dictionary)
         {
-            // Convert to typed dictionary (defaulting to Query) so we can reuse the shared expansion logic.
-            var typedDict = dictionary.ToDictionary(
-                kvp => kvp.Key,
-                kvp => new ParameterValue(RequestParameterType.Query, kvp.Value));
-
-            // Expand any enumerable values into repeated parameters.
             var collection = new ParameterCollection();
-            foreach (var param in ParameterUtils.ExpandParametersWithTypes(typedDict))
+            foreach (KeyValuePair<string, object> pair in dictionary)
             {
-                collection.Add(param.Name, param.Value);
+                // Try parsing the value of the pair as an enumerable.
+                var valueAsEnumerable = pair.Value as IEnumerable;
+                if (!(pair.Value is string) && valueAsEnumerable != null)
+                {
+                    foreach (var value in valueAsEnumerable)
+                    {
+                        collection.Add(pair.Key, Util.Utilities.ConvertToString(value));
+                    }
+                }
+                else
+                {
+                    // Otherwise just convert it to a string.
+                    collection.Add(pair.Key, pair.Value == null ? null : Util.Utilities.ConvertToString(pair.Value));
+                }
             }
             return collection;
         }

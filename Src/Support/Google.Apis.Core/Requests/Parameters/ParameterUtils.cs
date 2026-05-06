@@ -39,7 +39,7 @@ namespace Google.Apis.Requests.Parameters
         /// <see cref="Google.Apis.Util.RequestParameterAttribute"/> attribute.
         /// </summary>
         /// <param name="request">
-        /// A request object which contains properties with
+        /// A request object which contains properties with 
         /// <see cref="Google.Apis.Util.RequestParameterAttribute"/> attribute. Those properties will be serialized
         /// to the returned <see cref="System.Net.Http.FormUrlEncodedContent"/>.
         /// </param>
@@ -62,40 +62,17 @@ namespace Google.Apis.Requests.Parameters
         /// <see cref="Google.Apis.Util.RequestParameterAttribute"/> attribute.
         /// </summary>
         /// <param name="request">
-        /// A request object which contains properties with
+        /// A request object which contains properties with 
         /// <see cref="Google.Apis.Util.RequestParameterAttribute"/> attribute. Those properties will be set
         /// in the output dictionary.
         /// </param>
         public static IDictionary<string, object> CreateParameterDictionary(object request)
         {
-            // Use the typed implementation, then drop type information to preserve the legacy return type.
-            return CreateParameterDictionaryWithTypes(request)
-                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Value);
-        }
-
-        /// <summary>
-        /// Creates a parameter dictionary with type information by using reflection to iterate over all properties with
-        /// <see cref="Google.Apis.Util.RequestParameterAttribute"/> attribute.
-        /// </summary>
-        /// <param name="request">
-        /// A request object which contains properties with
-        /// <see cref="Google.Apis.Util.RequestParameterAttribute"/> attribute. Those properties will be set
-        /// in the output dictionary along with their parameter type.
-        /// </param>
-        /// <exception cref="InvalidOperationException">
-        /// Thrown when multiple properties set the same parameter name to non-null values.
-        /// </exception>
-        /// <returns>
-        /// A dictionary where the key is the parameter name and the value is a ParameterValue containing type and value.
-        /// </returns>
-        private static IDictionary<string, ParameterValue> CreateParameterDictionaryWithTypes(object request)
-        {
-            var dict = new Dictionary<string, ParameterValue>();
+            var dict = new Dictionary<string, object>();
             IterateParameters(request, (type, name, value) =>
             {
-                if (dict.TryGetValue(name, out var existingEntry))
+                if (dict.TryGetValue(name, out var existingValue))
                 {
-                    var existingValue = existingEntry.Value;
                     // Repeated enum query parameters end up with two properties: a single
                     // one, and a Repeatable<T> (where the T is always non-nullable, whether or not the parameter
                     // is optional). If both properties are set, we fail. Note that this delegate is called
@@ -105,7 +82,7 @@ namespace Google.Apis.Requests.Parameters
                     if (existingValue is null && value is object)
                     {
                         // Overwrite null value with non-null value
-                        dict[name] = new ParameterValue(type, value);
+                        dict[name] = value;
                     }
                     else if (value is null)
                     {
@@ -120,7 +97,7 @@ namespace Google.Apis.Requests.Parameters
                 }
                 else
                 {
-                    dict.Add(name, new ParameterValue(type, value));
+                    dict.Add(name, value);
                 }
             });
             return dict;
@@ -132,8 +109,8 @@ namespace Google.Apis.Requests.Parameters
         /// </summary>
         /// <param name="builder">The request builder</param>
         /// <param name="request">
-        /// A request object which contains properties with
-        /// <see cref="Google.Apis.Util.RequestParameterAttribute"/> attribute. Those properties will be set in the
+        /// A request object which contains properties with 
+        /// <see cref="Google.Apis.Util.RequestParameterAttribute"/> attribute. Those properties will be set in the 
         /// given request builder object
         /// </param>
         public static void InitParameters(RequestBuilder builder, object request)
@@ -145,70 +122,6 @@ namespace Google.Apis.Requests.Parameters
         }
 
         /// <summary>
-        /// Sets request parameters in the given builder with all properties with the
-        /// <see cref="Google.Apis.Util.RequestParameterAttribute"/> attribute
-        /// by expanding <see cref="IEnumerable"/> values into multiple parameters.
-        /// </summary>
-        /// <param name="builder">The request builder</param>
-        /// <param name="request">
-        /// A request object which contains properties with
-        /// <see cref="Google.Apis.Util.RequestParameterAttribute"/> attribute. Those properties will be set in the
-        /// given request builder object
-        /// </param>
-        public static void InitParametersWithExpansion(RequestBuilder builder, object request)
-        {
-            // Use typed methods to preserve RequestParameterType information
-            var parametersWithTypes = CreateParameterDictionaryWithTypes(request);
-
-            // Expand and add all parameters to the builder with their correct types
-            foreach (var param in ExpandParametersWithTypes(parametersWithTypes))
-            {
-                builder.AddParameter(param.Type, param.Name, param.Value);
-            }
-        }
-
-        /// <summary>
-        /// Expands a dictionary of typed parameters into a sequence of <see cref="TypedParameter"/> instances.
-        /// </summary>
-        /// <remarks>
-        /// If a parameter value implements <see cref="System.Collections.IEnumerable"/> (and is not a <see cref="string"/>), it is expanded into
-        /// multiple <see cref="TypedParameter"/> instances with the same name and <see cref="RequestParameterType"/>.
-        /// This supports repeatable parameters represented as <see cref="Google.Apis.Util.Repeatable{T}"/> (which is <see cref="System.Collections.IEnumerable"/>) and other
-        /// enumerable values.
-        /// </remarks>
-        /// <param name="dictionary">
-        /// A dictionary where the key is the parameter name and the value is a <see cref="ParameterValue"/> containing both
-        /// the parameter type and raw value.
-        /// </param>
-        /// <returns>
-        /// An enumerable of <see cref="TypedParameter"/> instances, with enumerable values expanded into repeated parameters.
-        /// </returns>
-        internal static IEnumerable<TypedParameter> ExpandParametersWithTypes(IDictionary<string, ParameterValue> dictionary)
-        {
-            foreach (var pair in dictionary)
-            {
-                var paramType = pair.Value.Type;
-                var value = pair.Value.Value;
-                var name = pair.Key;
-
-                // Try parsing the value as an enumerable.
-                var valueAsEnumerable = value as IEnumerable;
-                if (!(value is string) && valueAsEnumerable != null)
-                {
-                    foreach (var elem in valueAsEnumerable)
-                    {
-                        yield return new TypedParameter(paramType, name, Utilities.ConvertToString(elem));
-                    }
-                }
-                else
-                {
-                    // Otherwise just convert it to a string.
-                    yield return new TypedParameter(paramType, name, Utilities.ConvertToString(value));
-                }
-            }
-        }
-
-        /// <summary>
         /// Iterates over all <see cref="Google.Apis.Util.RequestParameterAttribute"/> properties in the request
         /// object and invokes the specified action for each of them.
         /// </summary>
@@ -216,41 +129,83 @@ namespace Google.Apis.Requests.Parameters
         /// <param name="action">An action to invoke which gets the parameter type, name and its value</param>
         private static void IterateParameters(object request, Action<RequestParameterType, string, object> action)
         {
-            // Use ReflectionCache to avoid repeated reflection + attribute lookup on every call.
-            foreach (var propertyWithAttribute in ReflectionCache.GetRequestParameterProperties(request.GetType()))
+            if (ApplicationContext.EnableRequestParameterCache)
             {
-                var property = propertyWithAttribute.Property;
-                var attribute = propertyWithAttribute.Attribute;
-
-                // Get the name of this parameter from the attribute, if it doesn't exist take a lower-case variant of
-                // property name.
-                string name = attribute.Name ?? property.Name.ToLowerInvariant();
-
-                var propertyType = property.PropertyType;
-                var value = property.GetValue(request, null);
-
-                // Call action with the type name and value.
-                if (propertyType.GetTypeInfo().IsValueType || value != null)
+                foreach (var pwa in ReflectionCache.GetRequestParameterProperties(request.GetType()))
                 {
-                    if (attribute.Type == RequestParameterType.UserDefinedQueries)
+                    var value = pwa.Property.GetValue(request, null);
+                    if (pwa.Property.PropertyType.GetTypeInfo().IsValueType || value is not null)
                     {
-                        if (typeof(IEnumerable<KeyValuePair<string, string>>).IsAssignableFrom(value.GetType()))
+                        if (pwa.IsUserDefinedQueries)
                         {
-                            foreach (var pair in (IEnumerable<KeyValuePair<string, string>>)value)
+                            if (value is IEnumerable<KeyValuePair<string, string>> pairs)
                             {
-                                action(RequestParameterType.Query, pair.Key, pair.Value);
+                                foreach (var pair in pairs)
+                                {
+                                    action(RequestParameterType.Query, pair.Key, pair.Value);
+                                }
+                            }
+                            else
+                            {
+                                Logger.Warning("Parameter marked with RequestParameterType.UserDefinedQueries attribute " +
+                                    "was not of type IEnumerable<KeyValuePair<string, string>> and will be skipped.");
                             }
                         }
                         else
                         {
-                            Logger.Warning("Parameter marked with RequestParameterType.UserDefinedQueries attribute " +
-                                "was not of type IEnumerable<KeyValuePair<string, string>> and will be skipped.");
+                            action(pwa.Type, pwa.Name, value);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                // Default path: identical to upstream main — no caching, no intermediate types.
+                foreach (PropertyInfo property in request.GetType().GetProperties(BindingFlags.Instance |
+                    BindingFlags.Public))
+                {
+                    RequestParameterAttribute attribute =
+                        property.GetCustomAttributes(typeof(RequestParameterAttribute), false).FirstOrDefault() as
+                        RequestParameterAttribute;
+                    if (attribute is null)
+                    {
+                        continue;
+                    }
+
+                    ProcessProperty(property, attribute, request, action);
+                }
+            }
+        }
+
+        private static void ProcessProperty(PropertyInfo property, RequestParameterAttribute attribute,
+            object request, Action<RequestParameterType, string, object> action)
+        {
+            string name = attribute.Name ?? property.Name.ToLowerInvariant();
+
+            var propertyType = property.PropertyType;
+            var value = property.GetValue(request, null);
+
+            // Call action with the type name and value.
+            if (propertyType.GetTypeInfo().IsValueType || value is not null)
+            {
+                if (attribute.Type == RequestParameterType.UserDefinedQueries)
+                {
+                    if (value is IEnumerable<KeyValuePair<string, string>> pairs)
+                    {
+                        foreach (var pair in pairs)
+                        {
+                            action(RequestParameterType.Query, pair.Key, pair.Value);
                         }
                     }
                     else
                     {
-                        action(attribute.Type, name, value);
+                        Logger.Warning("Parameter marked with RequestParameterType.UserDefinedQueries attribute " +
+                            "was not of type IEnumerable<KeyValuePair<string, string>> and will be skipped.");
                     }
+                }
+                else
+                {
+                    action(attribute.Type, name, value);
                 }
             }
         }

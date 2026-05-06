@@ -28,11 +28,11 @@ namespace Google
         internal static void Reset()
         {
             logger = null;
-            EnableReflectionCache = false;
+            EnableRequestParameterCache = false;
         }
 
         /// <summary>
-        /// Gets or sets whether to enable reflection result caching for request parameter properties.
+        /// Gets or sets whether to enable caching of request parameter descriptors per request type.
         /// </summary>
         /// <remarks>
         /// <para>
@@ -45,7 +45,7 @@ namespace Google
         /// where reflection overhead has been identified as a bottleneck.
         /// </para>
         /// </remarks>
-        public static bool EnableReflectionCache { get; set; }
+        public static bool EnableRequestParameterCache { get; set; }
 
         /// <summary>Returns the logger used within this application context.</summary>
         /// <remarks>It creates a <see cref="NullLogger"/> if no logger was registered previously</remarks>

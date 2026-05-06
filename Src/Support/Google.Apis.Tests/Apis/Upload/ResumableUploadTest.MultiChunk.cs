@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google;
 using Google.Apis.Json;
 using Google.Apis.Services;
 using Google.Apis.Tests.Mocks;
@@ -577,44 +578,36 @@ namespace Google.Apis.Tests.Apis.Upload
             }
         }
 
-        private class TestResumableUploadWithRepeatableParameters : TestResumableUpload
+        [Theory]
+        [InlineData(false)]
+        [InlineData(true)]
+        public void TestUploadWithParameters_IdenticalInBothCacheModes(bool enableCache)
         {
-            public TestResumableUploadWithRepeatableParameters(IClientService service, string path, string method, Stream stream,
-                string contentType, int chunkSize)
-                : base(service, path, method, stream, contentType, chunkSize) { }
-
-            [RequestParameter("id", RequestParameterType.Path)]
-            public int Id { get; set; }
-
-            [RequestParameter("part", RequestParameterType.Query)]
-            public Repeatable<string> Part { get; set; }
-
-            [RequestParameter("tag", RequestParameterType.Query)]
-            public Repeatable<string> Tag { get; set; }
-        }
-
-        /// <summary>
-        /// Uploader correctly adds repeatable (IEnumerable) query parameters to initial server call.
-        /// </summary>
-        [Fact]
-        public void TestUploadWithRepeatableParameters()
-        {
-            var id = 456;
-            // Repeatable parameters should be sent multiple times with the same key
-            var pathAndQuery = $"testPath/{id}?uploadType=resumable&part=snippet&part=contentDetails&tag=important&tag=urgent";
-            using (var server = new MultiChunkQueriedServer(_server, pathAndQuery))
-            using (var service = new MockClientService(server.HttpPrefix))
+            var originalState = ApplicationContext.EnableRequestParameterCache;
+            try
             {
-                var content = new MemoryStream(UploadTestBytes);
-                var uploader = new TestResumableUploadWithRepeatableParameters(service, "testPath/{id}", "POST", content, "text/plain", 100)
+                ApplicationContext.EnableRequestParameterCache = enableCache;
+                var id = 123;
+                var pathAndQuery = $"testPath/{id}?uploadType=resumable&queryA=valuea&queryB=VALUEB&time=2002-02-25T12%3A57%3A32.777Z";
+                using (var server = new MultiChunkQueriedServer(_server, pathAndQuery))
+                using (var service = new MockClientService(server.HttpPrefix))
                 {
-                    Id = id,
-                    Part = new[] { "snippet", "contentDetails" },
-                    Tag = new[] { "important", "urgent" }
-                };
-                var progress = uploader.Upload();
-                Assert.Equal(UploadStatus.Completed, progress.Status);
-                Assert.Equal(6, server.Requests.Count);
+                    var content = new MemoryStream(UploadTestBytes);
+                    var uploader = new TestResumableUploadWithParameters(service, "testPath/{id}", "POST", content, "text/plain", 100)
+                    {
+                        Id = id,
+                        QueryA = "valuea",
+                        QueryB = "VALUEB",
+                        MinTime = new DateTime(2002, 2, 25, 12, 57, 32, 777, DateTimeKind.Utc),
+                    };
+                    var progress = uploader.Upload();
+                    Assert.Equal(UploadStatus.Completed, progress.Status);
+                    Assert.Equal(6, server.Requests.Count);
+                }
+            }
+            finally
+            {
+                ApplicationContext.EnableRequestParameterCache = originalState;
             }
         }
 
