@@ -1593,6 +1593,13 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytesFound")]
         public virtual System.Nullable<long> TotalBytesFound { get; set; }
 
+        /// <summary>
+        /// Output only. The total number of bytes affected by the transformation. For example, this counts bytes
+        /// deleted for `DeleteObject` operations and bytes rewritten for `RewriteObject` operations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalBytesTransformed")]
+        public virtual System.Nullable<long> TotalBytesTransformed { get; set; }
+
         /// <summary>Output only. Number of objects listed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalObjectCount")]
         public virtual System.Nullable<long> TotalObjectCount { get; set; }
