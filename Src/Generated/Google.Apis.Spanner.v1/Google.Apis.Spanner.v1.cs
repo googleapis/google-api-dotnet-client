@@ -1519,7 +1519,8 @@ namespace Google.Apis.Spanner.v1
                 /// recently started operation.
                 /// </summary>
                 /// <param name="parent">
-                /// Required. The instance of the backup operations. Values are of the form `projects//instances/`.
+                /// Required. The instance of the backup operations. Values are of the form
+                /// `projects/{project}/instances/{instance}`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1544,7 +1545,8 @@ namespace Google.Apis.Spanner.v1
                     }
 
                     /// <summary>
-                    /// Required. The instance of the backup operations. Values are of the form `projects//instances/`.
+                    /// Required. The instance of the backup operations. Values are of the form
+                    /// `projects/{project}/instances/{instance}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1971,7 +1973,7 @@ namespace Google.Apis.Spanner.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The name of the destination instance that will contain the backup copy. Values are of the
-                /// form: `projects//instances/`.
+                /// form: `projects/{project}/instances/{instance}`.
                 /// </param>
                 public virtual CopyRequest Copy(Google.Apis.Spanner.v1.Data.CopyBackupRequest body, string parent)
                 {
@@ -1998,7 +2000,7 @@ namespace Google.Apis.Spanner.v1
 
                     /// <summary>
                     /// Required. The name of the destination instance that will contain the backup copy. Values are of
-                    /// the form: `projects//instances/`.
+                    /// the form: `projects/{project}/instances/{instance}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2046,7 +2048,7 @@ namespace Google.Apis.Spanner.v1
                 /// Required. The name of the instance in which the backup is created. This must be the same instance
                 /// that contains the database the backup is created from. The backup will be stored in the locations
                 /// specified in the instance configuration of this instance. Values are of the form
-                /// `projects//instances/`.
+                /// `projects/{project}/instances/{instance}`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Spanner.v1.Data.Backup body, string parent)
                 {
@@ -2075,14 +2077,14 @@ namespace Google.Apis.Spanner.v1
                     /// Required. The name of the instance in which the backup is created. This must be the same
                     /// instance that contains the database the backup is created from. The backup will be stored in the
                     /// locations specified in the instance configuration of this instance. Values are of the form
-                    /// `projects//instances/`.
+                    /// `projects/{project}/instances/{instance}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
                     /// Required. The id of the backup to be created. The `backup_id` appended to `parent` forms the
-                    /// full backup name of the form `projects//instances//backups/`.
+                    /// full backup name of the form `projects/{project}/instances/{instance}/backups/{backup_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("backupId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string BackupId { get; set; }
@@ -2126,21 +2128,23 @@ namespace Google.Apis.Spanner.v1
                     /// location is in `us-central1` or `nam3`, then the database instance must also be in `us-central1`
                     /// or `nam3`. The Cloud KMS key that is used to encrypt and decrypt the restored database. Set this
                     /// field only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form
-                    /// `projects//locations//keyRings//cryptoKeys/`.
+                    /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{kms_key_name}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("encryptionConfig.kmsKeyName", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string EncryptionConfigKmsKeyName { get; set; }
 
                     /// <summary>
                     /// Optional. Specifies the KMS configuration for the one or more keys used to protect the backup.
-                    /// Values are of the form `projects//locations//keyRings//cryptoKeys/`. The keys referenced by
-                    /// `kms_key_names` must fully cover all regions of the backup's instance configuration. Some
-                    /// examples: * For regional (single-region) instance configurations, specify a regional location
-                    /// KMS key. * For multi-region instance configurations of type `GOOGLE_MANAGED`, either specify a
-                    /// multi-region location KMS key or multiple regional location KMS keys that cover all regions in
-                    /// the instance configuration. * For an instance configuration of type `USER_MANAGED`, specify only
-                    /// regional location KMS keys to cover each region in the instance configuration. Multi-region
-                    /// location KMS keys aren't supported for `USER_MANAGED` type instance configurations.
+                    /// Values are of the form
+                    /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{kms_key_name}`. The
+                    /// keys referenced by `kms_key_names` must fully cover all regions of the backup's instance
+                    /// configuration. Some examples: * For regional (single-region) instance configurations, specify a
+                    /// regional location KMS key. * For multi-region instance configurations of type `GOOGLE_MANAGED`,
+                    /// either specify a multi-region location KMS key or multiple regional location KMS keys that cover
+                    /// all regions in the instance configuration. * For an instance configuration of type
+                    /// `USER_MANAGED`, specify only regional location KMS keys to cover each region in the instance
+                    /// configuration. Multi-region location KMS keys aren't supported for `USER_MANAGED` type instance
+                    /// configurations.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("encryptionConfig.kmsKeyNames", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> EncryptionConfigKmsKeyNames { get; set; }
@@ -2209,7 +2213,8 @@ namespace Google.Apis.Spanner.v1
 
                 /// <summary>Deletes a pending or completed Backup.</summary>
                 /// <param name="name">
-                /// Required. Name of the backup to delete. Values are of the form `projects//instances//backups/`.
+                /// Required. Name of the backup to delete. Values are of the form
+                /// `projects/{project}/instances/{instance}/backups/{backup}`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -2227,7 +2232,8 @@ namespace Google.Apis.Spanner.v1
                     }
 
                     /// <summary>
-                    /// Required. Name of the backup to delete. Values are of the form `projects//instances//backups/`.
+                    /// Required. Name of the backup to delete. Values are of the form
+                    /// `projects/{project}/instances/{instance}/backups/{backup}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2258,7 +2264,8 @@ namespace Google.Apis.Spanner.v1
 
                 /// <summary>Gets metadata on a pending or completed Backup.</summary>
                 /// <param name="name">
-                /// Required. Name of the backup. Values are of the form `projects//instances//backups/`.
+                /// Required. Name of the backup. Values are of the form
+                /// `projects/{project}/instances/{instance}/backups/{backup}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -2276,7 +2283,8 @@ namespace Google.Apis.Spanner.v1
                     }
 
                     /// <summary>
-                    /// Required. Name of the backup. Values are of the form `projects//instances//backups/`.
+                    /// Required. Name of the backup. Values are of the form
+                    /// `projects/{project}/instances/{instance}/backups/{backup}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2383,7 +2391,8 @@ namespace Google.Apis.Spanner.v1
                 /// order, starting from the most recent `create_time`.
                 /// </summary>
                 /// <param name="parent">
-                /// Required. The instance to list backups from. Values are of the form `projects//instances/`.
+                /// Required. The instance to list backups from. Values are of the form
+                /// `projects/{project}/instances/{instance}`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -2404,7 +2413,8 @@ namespace Google.Apis.Spanner.v1
                     }
 
                     /// <summary>
-                    /// Required. The instance to list backups from. Values are of the form `projects//instances/`.
+                    /// Required. The instance to list backups from. Values are of the form
+                    /// `projects/{project}/instances/{instance}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2499,10 +2509,10 @@ namespace Google.Apis.Spanner.v1
                 /// <param name="name">
                 /// Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally
                 /// unique identifier for the backup which cannot be changed. Values are of the form
-                /// `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60
-                /// characters in length. The backup is stored in the location(s) specified in the instance
-                /// configuration of the instance containing the backup, identified by the prefix of the backup name of
-                /// the form `projects//instances/`.
+                /// `projects/{project}/instances/{instance}/backups/a-z*[a-z0-9]` The final segment of the name must be
+                /// between 2 and 60 characters in length. The backup is stored in the location(s) specified in the
+                /// instance configuration of the instance containing the backup, identified by the prefix of the backup
+                /// name of the form `projects/{project}/instances/{instance}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Spanner.v1.Data.Backup body, string name)
                 {
@@ -2523,10 +2533,10 @@ namespace Google.Apis.Spanner.v1
                     /// <summary>
                     /// Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally
                     /// unique identifier for the backup which cannot be changed. Values are of the form
-                    /// `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and
-                    /// 60 characters in length. The backup is stored in the location(s) specified in the instance
-                    /// configuration of the instance containing the backup, identified by the prefix of the backup name
-                    /// of the form `projects//instances/`.
+                    /// `projects/{project}/instances/{instance}/backups/a-z*[a-z0-9]` The final segment of the name
+                    /// must be between 2 and 60 characters in length. The backup is stored in the location(s) specified
+                    /// in the instance configuration of the instance containing the backup, identified by the prefix of
+                    /// the backup name of the form `projects/{project}/instances/{instance}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -8684,7 +8694,8 @@ namespace Google.Apis.Spanner.v1.Data
 
         /// <summary>
         /// Required for the CreateBackup operation. Name of the database from which this backup was created. This needs
-        /// to be in the same instance as the backup. Values are of the form `projects//instances//databases/`.
+        /// to be in the same instance as the backup. Values are of the form
+        /// `projects/{project}/instances/{instance}/databases/{database}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
         public virtual string Database { get; set; }
@@ -8835,10 +8846,10 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>
         /// Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique
         /// identifier for the backup which cannot be changed. Values are of the form
-        /// `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60
-        /// characters in length. The backup is stored in the location(s) specified in the instance configuration of the
-        /// instance containing the backup, identified by the prefix of the backup name of the form
-        /// `projects//instances/`.
+        /// `projects/{project}/instances/{instance}/backups/a-z*[a-z0-9]` The final segment of the name must be between
+        /// 2 and 60 characters in length. The backup is stored in the location(s) specified in the instance
+        /// configuration of the instance containing the backup, identified by the prefix of the backup name of the form
+        /// `projects/{project}/instances/{instance}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -8889,19 +8900,19 @@ namespace Google.Apis.Spanner.v1.Data
 
         /// <summary>
         /// Output only. The names of the destination backups being created by copying this source backup. The backup
-        /// names are of the form `projects//instances//backups/`. Referencing backups may exist in different instances.
-        /// The existence of any referencing backup prevents the backup from being deleted. When the copy operation is
-        /// done (either successfully completed or cancelled or the destination backup is deleted), the reference to the
-        /// backup is removed.
+        /// names are of the form `projects/{project}/instances/{instance}/backups/{backup}`. Referencing backups may
+        /// exist in different instances. The existence of any referencing backup prevents the backup from being
+        /// deleted. When the copy operation is done (either successfully completed or cancelled or the destination
+        /// backup is deleted), the reference to the backup is removed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referencingBackups")]
         public virtual System.Collections.Generic.IList<string> ReferencingBackups { get; set; }
 
         /// <summary>
         /// Output only. The names of the restored databases that reference the backup. The database names are of the
-        /// form `projects//instances//databases/`. Referencing databases may exist in different instances. The
-        /// existence of any referencing database prevents the backup from being deleted. When a restored database from
-        /// the backup enters the `READY` state, the reference to the backup is removed.
+        /// form `projects/{project}/instances/{instance}/databases/{database}`. Referencing databases may exist in
+        /// different instances. The existence of any referencing database prevents the backup from being deleted. When
+        /// a restored database from the backup enters the `READY` state, the reference to the backup is removed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referencingDatabases")]
         public virtual System.Collections.Generic.IList<string> ReferencingDatabases { get; set; }
@@ -9060,7 +9071,7 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>
         /// A unique identifier for the instance partition. Values are of the form
-        /// `projects//instances//instancePartitions/`
+        /// `projects/{project}/instances/{instance}/instancePartitions/{instance_partition_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instancePartition")]
         public virtual string InstancePartition { get; set; }
@@ -9863,21 +9874,22 @@ namespace Google.Apis.Spanner.v1.Data
         /// database instance's configuration (location) exactly. For example, if the KMS location is in `us-central1`
         /// or `nam3`, then the database instance must also be in `us-central1` or `nam3`. The Cloud KMS key that is
         /// used to encrypt and decrypt the restored database. Set this field only when encryption_type is
-        /// `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+        /// `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form
+        /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{kms_key_name}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; }
 
         /// <summary>
         /// Optional. Specifies the KMS configuration for the one or more keys used to protect the backup. Values are of
-        /// the form `projects//locations//keyRings//cryptoKeys/`. KMS keys specified can be in any order. The keys
-        /// referenced by `kms_key_names` must fully cover all regions of the backup's instance configuration. Some
-        /// examples: * For regional (single-region) instance configurations, specify a regional location KMS key. * For
-        /// multi-region instance configurations of type `GOOGLE_MANAGED`, either specify a multi-region location KMS
-        /// key or multiple regional location KMS keys that cover all regions in the instance configuration. * For an
-        /// instance configuration of type `USER_MANAGED`, specify only regional location KMS keys to cover each region
-        /// in the instance configuration. Multi-region location KMS keys aren't supported for `USER_MANAGED` type
-        /// instance configurations.
+        /// the form `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{kms_key_name}`. KMS keys
+        /// specified can be in any order. The keys referenced by `kms_key_names` must fully cover all regions of the
+        /// backup's instance configuration. Some examples: * For regional (single-region) instance configurations,
+        /// specify a regional location KMS key. * For multi-region instance configurations of type `GOOGLE_MANAGED`,
+        /// either specify a multi-region location KMS key or multiple regional location KMS keys that cover all regions
+        /// in the instance configuration. * For an instance configuration of type `USER_MANAGED`, specify only regional
+        /// location KMS keys to cover each region in the instance configuration. Multi-region location KMS keys aren't
+        /// supported for `USER_MANAGED` type instance configurations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyNames")]
         public virtual System.Collections.Generic.IList<string> KmsKeyNames { get; set; }
@@ -9935,7 +9947,7 @@ namespace Google.Apis.Spanner.v1.Data
 
         /// <summary>
         /// The name of the backup being created through the copy operation. Values are of the form
-        /// `projects//instances//backups/`.
+        /// `projects/{project}/instances/{instance}/backups/{backup}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -9945,7 +9957,8 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual OperationProgress Progress { get; set; }
 
         /// <summary>
-        /// The name of the source backup that is being copied. Values are of the form `projects//instances//backups/`.
+        /// The name of the source backup that is being copied. Values are of the form
+        /// `projects/{project}/instances/{instance}/backups/{backup}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceBackup")]
         public virtual string SourceBackup { get; set; }
@@ -9959,7 +9972,7 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>
         /// Required. The id of the backup copy. The `backup_id` appended to `parent` forms the full backup_uri of the
-        /// form `projects//instances//backups/`.
+        /// form `projects/{project}/instances/{instance}/backups/{backup}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupId")]
         public virtual string BackupId { get; set; }
@@ -10017,7 +10030,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>
         /// Required. The source backup to be copied. The source backup needs to be in READY state for it to be copied.
         /// Once CopyBackup is in progress, the source backup cannot be deleted or cleaned up on expiration until
-        /// CopyBackup is finished. Values are of the form: `projects//instances//backups/`.
+        /// CopyBackup is finished. Values are of the form: `projects/{project}/instances/{instance}/backups/{backup}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceBackup")]
         public virtual string SourceBackup { get; set; }
@@ -10039,20 +10052,22 @@ namespace Google.Apis.Spanner.v1.Data
         /// database instance's configuration (location) exactly. For example, if the KMS location is in `us-central1`
         /// or `nam3`, then the database instance must also be in `us-central1` or `nam3`. The Cloud KMS key that is
         /// used to encrypt and decrypt the restored database. Set this field only when encryption_type is
-        /// `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+        /// `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form
+        /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{kms_key_name}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; }
 
         /// <summary>
         /// Optional. Specifies the KMS configuration for the one or more keys used to protect the backup. Values are of
-        /// the form `projects//locations//keyRings//cryptoKeys/`. The keys referenced by `kms_key_names` must fully
-        /// cover all regions of the backup's instance configuration. Some examples: * For regional (single-region)
-        /// instance configurations, specify a regional location KMS key. * For multi-region instance configurations of
-        /// type `GOOGLE_MANAGED`, either specify a multi-region location KMS key or multiple regional location KMS keys
-        /// that cover all regions in the instance configuration. * For an instance configuration of type
-        /// `USER_MANAGED`, specify only regional location KMS keys to cover each region in the instance configuration.
-        /// Multi-region location KMS keys aren't supported for `USER_MANAGED` type instance configurations.
+        /// the form `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{kms_key_name}`. The keys
+        /// referenced by `kms_key_names` must fully cover all regions of the backup's instance configuration. Some
+        /// examples: * For regional (single-region) instance configurations, specify a regional location KMS key. * For
+        /// multi-region instance configurations of type `GOOGLE_MANAGED`, either specify a multi-region location KMS
+        /// key or multiple regional location KMS keys that cover all regions in the instance configuration. * For an
+        /// instance configuration of type `USER_MANAGED`, specify only regional location KMS keys to cover each region
+        /// in the instance configuration. Multi-region location KMS keys aren't supported for `USER_MANAGED` type
+        /// instance configurations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyNames")]
         public virtual System.Collections.Generic.IList<string> KmsKeyNames { get; set; }
