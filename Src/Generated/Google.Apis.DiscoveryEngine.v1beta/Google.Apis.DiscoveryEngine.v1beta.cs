@@ -26829,7 +26829,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// subscription history stored internally and reflect the thresholds actively being used for billing purposes at
     /// the time of the GetProject call. This includes the start_time of the subscription and may differ from the values
     /// in `customer_provided_config` due to billing rules (e.g., scale-downs taking effect only at the start of a new
-    /// month).
+    /// month). We also include the update type to indicate the type of update performed on the configurable billing
+    /// configuration in the UpdateProject operation.
     /// </summary>
     public class GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -27013,6 +27014,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TerminateTimeRaw);
             set => TerminateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Output only. The type of update performed in this operation. This field is populated in the response of
+        /// UpdateProject.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateType")]
+        public virtual string UpdateType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -36320,7 +36328,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// subscription history stored internally and reflect the thresholds actively being used for billing purposes at
     /// the time of the GetProject call. This includes the start_time of the subscription and may differ from the values
     /// in `customer_provided_config` due to billing rules (e.g., scale-downs taking effect only at the start of a new
-    /// month).
+    /// month). We also include the update type to indicate the type of update performed on the configurable billing
+    /// configuration in the UpdateProject operation.
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -36504,6 +36513,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TerminateTimeRaw);
             set => TerminateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Output only. The type of update performed in this operation. This field is populated in the response of
+        /// UpdateProject.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateType")]
+        public virtual string UpdateType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -49449,7 +49465,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// subscription history stored internally and reflect the thresholds actively being used for billing purposes at
     /// the time of the GetProject call. This includes the start_time of the subscription and may differ from the values
     /// in `customer_provided_config` due to billing rules (e.g., scale-downs taking effect only at the start of a new
-    /// month).
+    /// month). We also include the update type to indicate the type of update performed on the configurable billing
+    /// configuration in the UpdateProject operation.
     /// </summary>
     public class GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -49633,6 +49650,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TerminateTimeRaw);
             set => TerminateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Output only. The type of update performed in this operation. This field is populated in the response of
+        /// UpdateProject.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateType")]
+        public virtual string UpdateType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
