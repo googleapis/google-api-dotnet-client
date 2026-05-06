@@ -34,6 +34,7 @@ namespace Google.Apis.Assuredworkloads.v1
         /// <param name="initializer">The service initializer.</param>
         public AssuredworkloadsService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Assuredworkloads = new AssuredworkloadsResource(this);
             Organizations = new OrganizationsResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://assuredworkloads.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://assuredworkloads.googleapis.com/batch");
@@ -76,6 +77,9 @@ namespace Google.Apis.Assuredworkloads.v1
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
+
+        /// <summary>Gets the Assuredworkloads resource.</summary>
+        public virtual AssuredworkloadsResource Assuredworkloads { get; }
 
         /// <summary>Gets the Organizations resource.</summary>
         public virtual OrganizationsResource Organizations { get; }
@@ -259,6 +263,103 @@ namespace Google.Apis.Assuredworkloads.v1
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "assuredworkloads" collection of methods.</summary>
+    public class AssuredworkloadsResource
+    {
+        private const string Resource = "assuredworkloads";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public AssuredworkloadsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Finds orphan ResourceEvents matching the criteria and moves them to the ArchivedResourceEvents table.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual ArchiveResourceEventsRequest ArchiveResourceEvents(Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1ArchiveResourceEventsRequest body)
+        {
+            return new ArchiveResourceEventsRequest(this.service, body);
+        }
+
+        /// <summary>
+        /// Finds orphan ResourceEvents matching the criteria and moves them to the ArchivedResourceEvents table.
+        /// </summary>
+        public class ArchiveResourceEventsRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse>
+        {
+            /// <summary>Constructs a new ArchiveResourceEvents request.</summary>
+            public ArchiveResourceEventsRequest(Google.Apis.Services.IClientService service, Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1ArchiveResourceEventsRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1ArchiveResourceEventsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "archiveResourceEvents";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/assuredworkloads:archiveResourceEvents";
+
+            /// <summary>Initializes ArchiveResourceEvents parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary>Finds matching ArchivedResourceEvents and moves them back to the ResourceEvents table.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual RevertArchivedResourceEventsRequest RevertArchivedResourceEvents(Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsRequest body)
+        {
+            return new RevertArchivedResourceEventsRequest(this.service, body);
+        }
+
+        /// <summary>Finds matching ArchivedResourceEvents and moves them back to the ResourceEvents table.</summary>
+        public class RevertArchivedResourceEventsRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse>
+        {
+            /// <summary>Constructs a new RevertArchivedResourceEvents request.</summary>
+            public RevertArchivedResourceEventsRequest(Google.Apis.Services.IClientService service, Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "revertArchivedResourceEvents";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/assuredworkloads:revertArchivedResourceEvents";
+
+            /// <summary>Initializes RevertArchivedResourceEvents parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
         }
     }
 
@@ -1830,6 +1931,121 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for archiving resource events.</summary>
+    public class GoogleCloudAssuredworkloadsV1ArchiveResourceEventsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _archiveTimeRaw;
+
+        private object _archiveTime;
+
+        /// <summary>
+        /// Optional. Time to set as ArchiveTime in the archive table. If not provided, the current time is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archiveTime")]
+        public virtual string ArchiveTimeRaw
+        {
+            get => _archiveTimeRaw;
+            set
+            {
+                _archiveTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _archiveTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ArchiveTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ArchiveTimeDateTimeOffset instead.")]
+        public virtual object ArchiveTime
+        {
+            get => _archiveTime;
+            set
+            {
+                _archiveTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _archiveTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ArchiveTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ArchiveTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ArchiveTimeRaw);
+            set => ArchiveTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. The number of events to process in a single transaction batch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchSize")]
+        public virtual System.Nullable<int> BatchSize { get; set; }
+
+        private string _eventCutoffTimeRaw;
+
+        private object _eventCutoffTime;
+
+        /// <summary>Required. Only events with EventTime earlier than this cutoff will be archived.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventCutoffTime")]
+        public virtual string EventCutoffTimeRaw
+        {
+            get => _eventCutoffTimeRaw;
+            set
+            {
+                _eventCutoffTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _eventCutoffTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EventCutoffTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventCutoffTimeDateTimeOffset instead.")]
+        public virtual object EventCutoffTime
+        {
+            get => _eventCutoffTime;
+            set
+            {
+                _eventCutoffTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _eventCutoffTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EventCutoffTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EventCutoffTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventCutoffTimeRaw);
+            set => EventCutoffTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. The maximum total number of events to move in this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxEventsMove")]
+        public virtual System.Nullable<int> MaxEventsMove { get; set; }
+
+        /// <summary>Required. The organization ID for which to archive events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organizationId")]
+        public virtual System.Nullable<long> OrganizationId { get; set; }
+
+        /// <summary>
+        /// Required. The region of the workload(s) whose events should be archived. This is used to filter workloads
+        /// based on AssurantWorkloadData.region.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for archiving resource events.</summary>
+    public class GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The total number of events successfully moved to the archive table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("movedEventsCount")]
+        public virtual System.Nullable<int> MovedEventsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents move analysis results for an asset.</summary>
     public class GoogleCloudAssuredworkloadsV1AssetMoveAnalysis : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2148,6 +2364,127 @@ namespace Google.Apis.Assuredworkloads.v1.Data
     /// <summary>Response for restricting the list of allowed resources.</summary>
     public class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for reverting archived resource events.</summary>
+    public class GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _archiveEndTimeRaw;
+
+        private object _archiveEndTime;
+
+        /// <summary>
+        /// Required. Only events within this time range will be reverted. This helps prevent reverting everything when
+        /// something goes wrong.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archiveEndTime")]
+        public virtual string ArchiveEndTimeRaw
+        {
+            get => _archiveEndTimeRaw;
+            set
+            {
+                _archiveEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _archiveEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ArchiveEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ArchiveEndTimeDateTimeOffset instead.")]
+        public virtual object ArchiveEndTime
+        {
+            get => _archiveEndTime;
+            set
+            {
+                _archiveEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _archiveEndTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ArchiveEndTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ArchiveEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ArchiveEndTimeRaw);
+            set => ArchiveEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _archiveStartTimeRaw;
+
+        private object _archiveStartTime;
+
+        /// <summary>
+        /// Required. Only events within this time range will be reverted. This helps prevent reverting everything when
+        /// something goes wrong.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archiveStartTime")]
+        public virtual string ArchiveStartTimeRaw
+        {
+            get => _archiveStartTimeRaw;
+            set
+            {
+                _archiveStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _archiveStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ArchiveStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ArchiveStartTimeDateTimeOffset instead.")]
+        public virtual object ArchiveStartTime
+        {
+            get => _archiveStartTime;
+            set
+            {
+                _archiveStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _archiveStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ArchiveStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ArchiveStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ArchiveStartTimeRaw);
+            set => ArchiveStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. The number of events to process in a single transaction batch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchSize")]
+        public virtual System.Nullable<int> BatchSize { get; set; }
+
+        /// <summary>Required. The maximum total number of events to move in this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxEventsMove")]
+        public virtual System.Nullable<int> MaxEventsMove { get; set; }
+
+        /// <summary>Required. The organization ID for which to revert events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organizationId")]
+        public virtual System.Nullable<long> OrganizationId { get; set; }
+
+        /// <summary>
+        /// Required. The region of the workload(s) whose events should be reverted. This is used to filter workloads
+        /// based on AssurantWorkloadData.region.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for reverting archived resource events.</summary>
+    public class GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The total number of events successfully moved to the original table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("movedEventsCount")]
+        public virtual System.Nullable<int> MovedEventsCount { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
