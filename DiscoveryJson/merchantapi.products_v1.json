@@ -281,7 +281,7 @@
       }
     }
   },
-  "revision": "20260429",
+  "revision": "20260501",
   "rootUrl": "https://merchantapi.googleapis.com/",
   "schemas": {
     "AutomatedDiscounts": {
@@ -2464,6 +2464,10 @@
           "description": "The number of installments the buyer has to pay.",
           "format": "int64",
           "type": "string"
+        },
+        "totalAmount": {
+          "$ref": "Price",
+          "description": "Optional. Total amount the buyer has to pay, including interest."
         }
       },
       "type": "object"

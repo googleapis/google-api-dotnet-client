@@ -2629,6 +2629,10 @@ namespace Google.Apis.Merchant.products_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("months")]
         public virtual System.Nullable<long> Months { get; set; }
 
+        /// <summary>Optional. Total amount the buyer has to pay, including interest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalAmount")]
+        public virtual Price TotalAmount { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
