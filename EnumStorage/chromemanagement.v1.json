@@ -15,5 +15,13 @@
     "THEME",
     "HOSTED_APP",
     "ANDROID_APP"
+  ],
+  "Google.Apis.ChromeManagement.v1.CustomersResource+ReportsResource+FindInstalledAppProfilesRequest.AppTypeEnum": [
+    "APP_TYPE_UNSPECIFIED",
+    "EXTENSION",
+    "APP",
+    "THEME",
+    "HOSTED_APP",
+    "ANDROID_APP"
   ]
 }

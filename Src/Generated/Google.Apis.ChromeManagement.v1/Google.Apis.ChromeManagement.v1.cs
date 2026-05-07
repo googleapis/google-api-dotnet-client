@@ -3499,6 +3499,183 @@ namespace Google.Apis.ChromeManagement.v1
                     });
                 }
             }
+
+            /// <summary>Generate report of managed Chrome profiles that have a specified app installed.</summary>
+            /// <param name="customer">
+            /// Required. Customer id or "my_customer" to use the customer associated to the account making the request.
+            /// </param>
+            public virtual FindInstalledAppProfilesRequest FindInstalledAppProfiles(string customer)
+            {
+                return new FindInstalledAppProfilesRequest(this.service, customer);
+            }
+
+            /// <summary>Generate report of managed Chrome profiles that have a specified app installed.</summary>
+            public class FindInstalledAppProfilesRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1FindInstalledAppProfilesResponse>
+            {
+                /// <summary>Constructs a new FindInstalledAppProfiles request.</summary>
+                public FindInstalledAppProfilesRequest(Google.Apis.Services.IClientService service, string customer) : base(service)
+                {
+                    Customer = customer;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Customer id or "my_customer" to use the customer associated to the account making the
+                /// request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>
+                /// Required. Unique identifier of the app. For Chrome apps and extensions, the 32-character id (e.g.
+                /// ehoadneljpdggcbbknedodolkkjodefl). For Android apps, the package name (e.g. com.evernote).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("appId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string AppId { get; set; }
+
+                /// <summary>
+                /// Type of the app. Optional. If not provided, an app type will be inferred from the format of the app
+                /// ID.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("appType", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<AppTypeEnum> AppType { get; set; }
+
+                /// <summary>
+                /// Type of the app. Optional. If not provided, an app type will be inferred from the format of the app
+                /// ID.
+                /// </summary>
+                public enum AppTypeEnum
+                {
+                    /// <summary>App type not specified.</summary>
+                    [Google.Apis.Util.StringValueAttribute("APP_TYPE_UNSPECIFIED")]
+                    APPTYPEUNSPECIFIED = 0,
+
+                    /// <summary>Chrome extension.</summary>
+                    [Google.Apis.Util.StringValueAttribute("EXTENSION")]
+                    EXTENSION = 1,
+
+                    /// <summary>Chrome app.</summary>
+                    [Google.Apis.Util.StringValueAttribute("APP")]
+                    APP = 2,
+
+                    /// <summary>Chrome theme.</summary>
+                    [Google.Apis.Util.StringValueAttribute("THEME")]
+                    THEME = 3,
+
+                    /// <summary>Chrome hosted app.</summary>
+                    [Google.Apis.Util.StringValueAttribute("HOSTED_APP")]
+                    HOSTEDAPP = 4,
+
+                    /// <summary>ARC++ app.</summary>
+                    [Google.Apis.Util.StringValueAttribute("ANDROID_APP")]
+                    ANDROIDAPP = 5,
+                }
+
+                /// <summary>
+                /// Optional. Query string to filter results, AND-separated fields in EBNF syntax. Note: OR operations
+                /// are not supported in this filter. Supported filter fields: * last_active_date
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Optional. Field used to order results. Supported order by fields: * email * profile_id *
+                /// profile_permanent_id
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>Optional. The ID of the organizational unit.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orgUnitId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrgUnitId { get; set; }
+
+                /// <summary>Optional. Maximum number of results to return. Maximum and default are 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. Token to specify the page of the request to be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "findInstalledAppProfiles";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+customer}/reports:findInstalledAppProfiles";
+
+                /// <summary>Initializes FindInstalledAppProfiles parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customer",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+$",
+                    });
+                    RequestParameters.Add("appId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("appType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appType",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orgUnitId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orgUnitId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Telemetry resource.</summary>
@@ -6240,6 +6417,28 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response containing a list of profiles with queried app installed.</summary>
+    public class GoogleChromeManagementV1FindInstalledAppProfilesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token to specify the next page of the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// A list of profiles which have the app installed. Sorted in ascending alphabetical order on the profile.Email
+        /// field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profiles")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1ProfileAppInstallInstance> Profiles { get; set; }
+
+        /// <summary>Total number of profiles matching request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<int> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information of a graphics adapter (GPU).</summary>
     public class GoogleChromeManagementV1GraphicsAdapterInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7334,6 +7533,31 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Number of users that have sent print jobs to the printer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userCount")]
         public virtual System.Nullable<long> UserCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a profile reporting Chrome Profile information.</summary>
+    public class GoogleChromeManagementV1ProfileAppInstallInstance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The email of the profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>Output only. The Chrome client side profile ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileId")]
+        public virtual string ProfileId { get; set; }
+
+        /// <summary>Output only. The organizational unit id of the profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileOrgUnitId")]
+        public virtual string ProfileOrgUnitId { get; set; }
+
+        /// <summary>
+        /// Output only. Profile permanent ID is the unique identifier of a profile within one customer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profilePermanentId")]
+        public virtual string ProfilePermanentId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9131,6 +9355,10 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("googleSecOpsConfig")]
         public virtual GoogleChromeManagementVersionsV1GoogleSecOpsConfig GoogleSecOpsConfig { get; set; }
 
+        /// <summary>MIP label connector config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mipLabelConfig")]
+        public virtual GoogleChromeManagementVersionsV1MipLabelConfig MipLabelConfig { get; set; }
+
         /// <summary>Palo Alto Networks connector config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paloAltoNetworksConfig")]
         public virtual GoogleChromeManagementVersionsV1PaloAltoNetworksConfig PaloAltoNetworksConfig { get; set; }
@@ -9474,6 +9702,24 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MIP label connector config.</summary>
+    public class GoogleChromeManagementVersionsV1MipLabelConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Domain can be used optionally for the corner case where one Dasher customer ID maps to multiple
+        /// Microsoft tenant ID. Each domain can be verified with at most one Microsoft tenant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domains")]
+        public virtual System.Collections.Generic.IList<string> Domains { get; set; }
+
+        /// <summary>Required. Microsoft tenant ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("microsoftTenantId")]
+        public virtual string MicrosoftTenantId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
