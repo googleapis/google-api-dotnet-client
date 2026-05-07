@@ -8443,6 +8443,14 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Optional. The hex-encoded SHA256 checksum of the package. If the checksum is provided, the worker will
+        /// verify the checksum of the package before using it. If the checksum does not match, the worker will fail to
+        /// start.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sha256")]
+        public virtual string Sha256 { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
