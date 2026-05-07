@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -508,7 +508,7 @@ namespace Google.Apis.AdMob.v1
             /// Generates an AdMob Mediation report based on the provided report specification. Returns result of a
             /// server-side streaming RPC. The result is returned in a sequence of responses.
             /// </summary>
-            public class GenerateRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1.Data.GenerateMediationReportResponse[]>
+            public class GenerateRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1.Data.GenerateMediationReportResponse>
             {
                 /// <summary>Constructs a new Generate request.</summary>
                 public GenerateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdMob.v1.Data.GenerateMediationReportRequest body, string parent) : base(service)
@@ -589,7 +589,7 @@ namespace Google.Apis.AdMob.v1
             /// Generates an AdMob Network report based on the provided report specification. Returns result of a
             /// server-side streaming RPC. The result is returned in a sequence of responses.
             /// </summary>
-            public class GenerateRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1.Data.GenerateNetworkReportResponse[]>
+            public class GenerateRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1.Data.GenerateNetworkReportResponse>
             {
                 /// <summary>Constructs a new Generate request.</summary>
                 public GenerateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdMob.v1.Data.GenerateNetworkReportRequest body, string parent) : base(service)
