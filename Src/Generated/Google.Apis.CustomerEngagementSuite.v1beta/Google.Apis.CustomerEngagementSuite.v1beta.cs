@@ -2617,6 +2617,65 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                         }
                     }
 
+                    /// <summary>Exports evaluations runs.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The resource name of the app to export evaluation runs from. Format:
+                    /// `projects/{project}/locations/{location}/apps/{app}`
+                    /// </param>
+                    public virtual ExportRequest Export(Google.Apis.CustomerEngagementSuite.v1beta.Data.ExportEvaluationRunsRequest body, string parent)
+                    {
+                        return new ExportRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Exports evaluations runs.</summary>
+                    public class ExportRequest : CustomerEngagementSuiteBaseServiceRequest<Google.Apis.CustomerEngagementSuite.v1beta.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Export request.</summary>
+                        public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.CustomerEngagementSuite.v1beta.Data.ExportEvaluationRunsRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the app to export evaluation runs from. Format:
+                        /// `projects/{project}/locations/{location}/apps/{app}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CustomerEngagementSuite.v1beta.Data.ExportEvaluationRunsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "export";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta/{+parent}/evaluationRuns:export";
+
+                        /// <summary>Initializes Export parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/apps/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Gets details of the specified evaluation run.</summary>
                     /// <param name="name">Required. The resource name of the evaluation run to retrieve.</param>
                     public virtual GetRequest Get(string name)
@@ -2848,6 +2907,65 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/apps/[^/]+/evaluations/[^/]+/results/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Exports evaluations results.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The resource name of the evaluation to export evaluation results from. Format:
+                        /// `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}`
+                        /// </param>
+                        public virtual ExportRequest Export(Google.Apis.CustomerEngagementSuite.v1beta.Data.ExportEvaluationResultsRequest body, string parent)
+                        {
+                            return new ExportRequest(this.service, body, parent);
+                        }
+
+                        /// <summary>Exports evaluations results.</summary>
+                        public class ExportRequest : CustomerEngagementSuiteBaseServiceRequest<Google.Apis.CustomerEngagementSuite.v1beta.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Export request.</summary>
+                            public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.CustomerEngagementSuite.v1beta.Data.ExportEvaluationResultsRequest body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the evaluation to export evaluation results from. Format:
+                            /// `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CustomerEngagementSuite.v1beta.Data.ExportEvaluationResultsRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "export";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/{+parent}/results:export";
+
+                            /// <summary>Initializes Export parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/apps/[^/]+/evaluations/[^/]+$",
                                 });
                             }
                         }
@@ -7787,6 +7905,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Output only. Misconfigurations or errors in the agent that may affect agent quality.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validationErrors")]
+        public virtual System.Collections.Generic.IList<string> ValidationErrors { get; set; }
     }
 
     /// <summary>A toolset with a selection of its tools.</summary>
@@ -7802,6 +7924,74 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolset")]
         public virtual string Toolset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// AgentCard conveys key information about a remote agent. It is a trimmed version of the AgentCard defined in the
+    /// A2A protocol https://a2a-protocol.org/dev/specification/#441-agentcard
+    /// </summary>
+    public class AgentCard : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. A description of the agent's domain of action/solution space.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. A human-readable name for the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Skills represent a unit of ability an agent can perform. This may somewhat abstract but represents
+        /// a more focused set of actions that the agent is highly likely to succeed at.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skills")]
+        public virtual System.Collections.Generic.IList<AgentSkill> Skills { get; set; }
+
+        /// <summary>Required. Ordered list of supported interfaces. The first entry is preferred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedInterfaces")]
+        public virtual System.Collections.Generic.IList<AgentInterface> SupportedInterfaces { get; set; }
+
+        /// <summary>Required. The version of the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Declares a combination of a target URL, transport and protocol version for interacting with the agent. This
+    /// allows agents to expose the same functionality over multiple protocol binding mechanisms.
+    /// </summary>
+    public class AgentInterface : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The protocol binding supported at this URL. This is an open form string, to be easily extended for
+        /// other protocol bindings. The core ones officially supported are `JSONRPC`, `GRPC` and `HTTP+JSON`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocolBinding")]
+        public virtual string ProtocolBinding { get; set; }
+
+        /// <summary>
+        /// Required. The version of the A2A protocol this interface exposes. Use the latest supported minor version per
+        /// major version. Examples: "0.3", "1.0"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocolVersion")]
+        public virtual string ProtocolVersion { get; set; }
+
+        /// <summary>Tenant ID to be used in the request when calling the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenant")]
+        public virtual string Tenant { get; set; }
+
+        /// <summary>
+        /// Required. The URL where this interface is available. Must be a valid absolute HTTPS URL in production.
+        /// Example: "https://api.example.com/a2a/v1", "https://grpc.example.com/a2a"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7866,6 +8056,41 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("respectResponseInterruptionSettings")]
         public virtual System.Nullable<bool> RespectResponseInterruptionSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a distinct capability or function that an agent can perform.</summary>
+    public class AgentSkill : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. A detailed description of the skill.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Example prompts or scenarios that this skill can handle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("examples")]
+        public virtual System.Collections.Generic.IList<string> Examples { get; set; }
+
+        /// <summary>Required. A unique identifier for the agent's skill.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The set of supported input media types for this skill, overriding the agent's defaults.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputModes")]
+        public virtual System.Collections.Generic.IList<string> InputModes { get; set; }
+
+        /// <summary>Required. A human-readable name for the skill.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The set of supported output media types for this skill, overriding the agent's defaults.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputModes")]
+        public virtual System.Collections.Generic.IList<string> OutputModes { get; set; }
+
+        /// <summary>Required. A set of keywords describing the skill's capabilities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8375,9 +8600,17 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. Misconfigurations or warnings in the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validationErrors")]
+        public virtual System.Collections.Generic.IList<string> ValidationErrors { get; set; }
+
         /// <summary>Optional. The declarations of the variables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variableDeclarations")]
         public virtual System.Collections.Generic.IList<AppVariableDeclaration> VariableDeclarations { get; set; }
+
+        /// <summary>Optional. VPC-SC settings for the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcScSettings")]
+        public virtual VpcScSettings VpcScSettings { get; set; }
     }
 
     /// <summary>A snapshot of the app.</summary>
@@ -10895,6 +11128,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("observedAgentTransfer")]
         public virtual AgentTransfer ObservedAgentTransfer { get; set; }
 
+        /// <summary>
+        /// Output only. An observed custom payload. There are no expectations for custom payloads. This is only used
+        /// for metrics calculation. The outcome is always SKIPPED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observedPayload")]
+        public virtual System.Collections.Generic.IDictionary<string, object> ObservedPayload { get; set; }
+
         /// <summary>Output only. The result of the tool call expectation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observedToolCall")]
         public virtual ToolCall ObservedToolCall { get; set; }
@@ -12168,6 +12408,21 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for EvaluationService.ExportEvaluationResults.</summary>
+    public class ExportEvaluationResultsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The export options for the evaluation results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportOptions")]
+        public virtual ExportOptions ExportOptions { get; set; }
+
+        /// <summary>Required. The resource names of the evaluation results to export.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for EvaluationService.ExportEvaluationResults.</summary>
     public class ExportEvaluationResultsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12184,6 +12439,21 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationResultsUri")]
         public virtual string EvaluationResultsUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for EvaluationService.ExportEvaluationRuns.</summary>
+    public class ExportEvaluationRunsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The export options for the evaluation runs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportOptions")]
+        public virtual ExportOptions ExportOptions { get; set; }
+
+        /// <summary>Required. The resource names of the evaluation runs to export.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15060,6 +15330,25 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a tool that allows the agent to call another remote agent.</summary>
+    public class RemoteAgentTool : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The agent card of the remote agent that this tool invokes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentCard")]
+        public virtual AgentCard AgentCard { get; set; }
+
+        /// <summary>Required. The description of the tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. The name of the tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for AgentService.RestoreAppVersion</summary>
     public class RestoreAppVersionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16298,9 +16587,20 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pythonFunction")]
         public virtual PythonFunction PythonFunction { get; set; }
 
+        /// <summary>Optional. The remote agent tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteAgentTool")]
+        public virtual RemoteAgentTool RemoteAgentTool { get; set; }
+
         /// <summary>Optional. The system tool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("systemTool")]
         public virtual SystemTool SystemTool { get; set; }
+
+        /// <summary>
+        /// Optional. The timeout for the tool execution. If not set, the default timeout is 30 seconds for
+        /// `SYNCHRONOUS` tools and 60 seconds for `ASYNCHRONOUS` tools.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual object Timeout { get; set; }
 
         /// <summary>Optional. Configuration for tool behavior in fake mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolFakeConfig")]
@@ -16760,6 +17060,22 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// <summary>The transcript of the audio, generated by Cloud Speech-to-Text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
         public virtual string Transcript { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>VPC-SC settings for the app.</summary>
+    public class VpcScSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The allowed HTTP(s) origins that OpenAPI tools in the App are able to directly call when VPC
+        /// Service Controls are enabled. These strings must match the origin exactly, including the port if specified.
+        /// For example, "https://example.com" or "https://example.com:443". This list does not yet apply to Python
+        /// tools that may make direct HTTP calls.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedOrigins")]
+        public virtual System.Collections.Generic.IList<string> AllowedOrigins { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
