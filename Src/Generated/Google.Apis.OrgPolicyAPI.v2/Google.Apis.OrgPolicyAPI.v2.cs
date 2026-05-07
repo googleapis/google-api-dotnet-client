@@ -333,15 +333,15 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Size of the pages to be returned. This is currently unsupported and will be ignored. The server may
-                /// at any point start using this field to limit page size.
+                /// Size of the pages to be returned. This is not used, but the server may at any point start using this
+                /// field to limit page size.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// Page token used to retrieve the next page. This is currently unsupported and will be ignored. The
-                /// server may at any point start using this field.
+                /// Page token used to retrieve the next page. This is not used, but the server may at any point start
+                /// using this field.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -681,15 +681,15 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Size of the pages to be returned. This is currently unsupported and will be ignored. The server may
-                /// at any point start using this field to limit page size.
+                /// Size of the pages to be returned. This is not used, but the server may at any point start using this
+                /// field to limit page size.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// Page token used to retrieve the next page. This is currently unsupported and will be ignored. The
-                /// server may at any point start using this field.
+                /// Page token used to retrieve the next page. This is not used, but the server may at any point start
+                /// using this field.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -896,15 +896,15 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Size of the pages to be returned. This is currently unsupported and will be ignored. The server may
-                /// at any point start using this field to limit page size.
+                /// Size of the pages to be returned. This is not used, but the server may at any point start using this
+                /// field to limit page size.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// Page token used to retrieve the next page. This is currently unsupported and will be ignored. The
-                /// server may at any point start using this field.
+                /// Page token used to retrieve the next page. This is not used, but the server may at any point start
+                /// using this field.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1174,15 +1174,15 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Size of the pages to be returned. This is currently unsupported and will be ignored. The server may
-                /// at any point start using this field to limit page size.
+                /// Size of the pages to be returned. This is not used, but the server may at any point start using this
+                /// field to limit page size.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// Page token used to retrieve the next page. This is currently unsupported and will be ignored. The
-                /// server may at any point start using this field.
+                /// Page token used to retrieve the next page. This is not used, but the server may at any point start
+                /// using this field.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1233,7 +1233,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be
+            /// Immutable. Name of the constraint. This is unique within the organization. The name must be of the form:
             /// * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example:
             /// `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 71 characters and the
             /// minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/custom.` is
@@ -1259,8 +1259,8 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 }
 
                 /// <summary>
-                /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should
-                /// be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example:
+                /// Immutable. Name of the constraint. This is unique within the organization. The name must be of the
+                /// form: * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example:
                 /// `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 71 characters and
                 /// the minimum length is 1. Note that the prefix
                 /// `organizations/{organization_id}/customConstraints/custom.` is not counted.
@@ -1593,15 +1593,15 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Size of the pages to be returned. This is currently unsupported and will be ignored. The server may
-                /// at any point start using this field to limit page size.
+                /// Size of the pages to be returned. This is not used, but the server may at any point start using this
+                /// field to limit page size.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// Page token used to retrieve the next page. This is currently unsupported and will be ignored. The
-                /// server may at any point start using this field.
+                /// Page token used to retrieve the next page. This is not used, but the server may at any point start
+                /// using this field.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1807,15 +1807,15 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Size of the pages to be returned. This is currently unsupported and will be ignored. The server may
-                /// at any point start using this field to limit page size.
+                /// Size of the pages to be returned. This is not used, but the server may at any point start using this
+                /// field to limit page size.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// Page token used to retrieve the next page. This is currently unsupported and will be ignored. The
-                /// server may at any point start using this field.
+                /// Page token used to retrieve the next page. This is not used, but the server may at any point start
+                /// using this field.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2155,15 +2155,15 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Size of the pages to be returned. This is currently unsupported and will be ignored. The server may
-                /// at any point start using this field to limit page size.
+                /// Size of the pages to be returned. This is not used, but the server may at any point start using this
+                /// field to limit page size.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// Page token used to retrieve the next page. This is currently unsupported and will be ignored. The
-                /// server may at any point start using this field.
+                /// Page token used to retrieve the next page. This is not used, but the server may at any point start
+                /// using this field.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2315,8 +2315,8 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
     public class GoogleCloudOrgpolicyV2AlternatePolicySpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Reference to the launch that will be used while audit logging and to control the launch. Should be set only
-        /// in the alternate policy.
+        /// Reference to the launch that will be used while audit logging and to control the launch. Set only in the
+        /// alternate policy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("launch")]
         public virtual string Launch { get; set; }
@@ -2548,7 +2548,7 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         public virtual System.Collections.Generic.IList<string> MethodTypes { get; set; }
 
         /// <summary>
-        /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be *
+        /// Immutable. Name of the constraint. This is unique within the organization. The name must be of the form: *
         /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example:
         /// `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 71 characters and the
         /// minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/custom.` is not
@@ -2615,7 +2615,7 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("constraints")]
         public virtual System.Collections.Generic.IList<GoogleCloudOrgpolicyV2Constraint> Constraints { get; set; }
 
-        /// <summary>Page token used to retrieve the next page. This is currently not used.</summary>
+        /// <summary>Page token used to retrieve the next page. This is not used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -2637,8 +2637,8 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         public virtual System.Collections.Generic.IList<GoogleCloudOrgpolicyV2CustomConstraint> CustomConstraints { get; set; }
 
         /// <summary>
-        /// Page token used to retrieve the next page. This is currently not used, but the server may at any point start
-        /// supplying a valid token.
+        /// Page token used to retrieve the next page. This is not used, but the server may at any point start supplying
+        /// a valid token.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -2653,8 +2653,8 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
     public class GoogleCloudOrgpolicyV2ListPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Page token used to retrieve the next page. This is currently not used, but the server may at any point start
-        /// supplying a valid token.
+        /// Page token used to retrieve the next page. This is not used, but the server may at any point start supplying
+        /// a valid token.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
