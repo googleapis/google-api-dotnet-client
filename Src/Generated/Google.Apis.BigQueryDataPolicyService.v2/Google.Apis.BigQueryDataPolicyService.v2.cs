@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1167,6 +1167,27 @@ namespace Google.Apis.BigQueryDataPolicyService.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Data Governance tag This is a namespaced name specifying the key and the value. For example:
+    /// `project-id/pii/sensitive`.
+    /// </summary>
+    public class DataGovernanceTag : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example
+        /// `parent-id/pii` where `parent-id` is the ID of the parent organization or project resource for this tag key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Optional. Specifies the tag value as the short name, for example `sensitive`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The policy used to specify data masking rule.</summary>
     public class DataMaskingPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1188,6 +1209,10 @@ namespace Google.Apis.BigQueryDataPolicyService.v2.Data
     /// <summary>Represents the label-policy binding.</summary>
     public class DataPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Data Governance tag bound to the Data Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataGovernanceTag")]
+        public virtual DataGovernanceTag DataGovernanceTag { get; set; }
+
         /// <summary>
         /// Optional. The data masking policy that specifies the data masking rule to use. It must be set if the data
         /// policy type is DATA_MASKING_POLICY.
