@@ -39,7 +39,9 @@
     "admin_data_action",
     "contacts",
     "takeout",
-    "graduation"
+    "graduation",
+    "voice",
+    "chrome_sync"
   ],
   "Google.Apis.Admin.Reports.reports_v1.ActivitiesResource+WatchRequest.ApplicationNameEnum": [
     "application_name_unspecified",
