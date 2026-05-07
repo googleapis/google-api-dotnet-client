@@ -2980,11 +2980,11 @@ namespace Google.Apis.DatabaseMigrationService.v1beta1.Data
         /// EmailAddress { enum Type { TYPE_UNSPECIFIED = 0; HOME = 1; WORK = 2; } optional string email = 1; repeated
         /// EmailType type = 2; } string full_name = 1; repeated EmailAddress email_addresses = 2; } In this example, in
         /// proto `field` could take one of the following values: * `full_name` for a violation in the `full_name` value
-        /// * `email_addresses[1].email` for a violation in the `email` field of the first `email_addresses` message *
-        /// `email_addresses[3].type[2]` for a violation in the second `type` value in the third `email_addresses`
+        /// * `email_addresses[0].email` for a violation in the `email` field of the first `email_addresses` message *
+        /// `email_addresses[2].type[1]` for a violation in the second `type` value in the third `email_addresses`
         /// message. In JSON, the same values are represented as: * `fullName` for a violation in the `fullName` value *
-        /// `emailAddresses[1].email` for a violation in the `email` field of the first `emailAddresses` message *
-        /// `emailAddresses[3].type[2]` for a violation in the second `type` value in the third `emailAddresses`
+        /// `emailAddresses[0].email` for a violation in the `email` field of the first `emailAddresses` message *
+        /// `emailAddresses[2].type[1]` for a violation in the second `type` value in the third `emailAddresses`
         /// message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
