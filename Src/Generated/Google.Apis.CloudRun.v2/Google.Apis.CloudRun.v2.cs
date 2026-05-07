@@ -6163,6 +6163,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creator")]
         public virtual string Creator { get; set; }
 
+        /// <summary>Optional. Disables public resolution of the default URI of this Instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultUriDisabled")]
+        public virtual System.Nullable<bool> DefaultUriDisabled { get; set; }
+
         private string _deleteTimeRaw;
 
         private object _deleteTime;
@@ -10154,7 +10158,7 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pullTiming")]
         public virtual GoogleDevtoolsCloudbuildV1TimeSpan PullTiming { get; set; }
 
-        /// <summary>Declaration of results for this build step.</summary>
+        /// <summary>Output only. Declaration of results for this build step.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1StepResult> Results { get; set; }
 
