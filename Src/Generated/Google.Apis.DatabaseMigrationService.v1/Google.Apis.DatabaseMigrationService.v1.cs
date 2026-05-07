@@ -7130,11 +7130,11 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// EmailAddress { enum Type { TYPE_UNSPECIFIED = 0; HOME = 1; WORK = 2; } optional string email = 1; repeated
         /// EmailType type = 2; } string full_name = 1; repeated EmailAddress email_addresses = 2; } In this example, in
         /// proto `field` could take one of the following values: * `full_name` for a violation in the `full_name` value
-        /// * `email_addresses[1].email` for a violation in the `email` field of the first `email_addresses` message *
-        /// `email_addresses[3].type[2]` for a violation in the second `type` value in the third `email_addresses`
+        /// * `email_addresses[0].email` for a violation in the `email` field of the first `email_addresses` message *
+        /// `email_addresses[2].type[1]` for a violation in the second `type` value in the third `email_addresses`
         /// message. In JSON, the same values are represented as: * `fullName` for a violation in the `fullName` value *
-        /// `emailAddresses[1].email` for a violation in the `email` field of the first `emailAddresses` message *
-        /// `emailAddresses[3].type[2]` for a violation in the second `type` value in the third `emailAddresses`
+        /// `emailAddresses[0].email` for a violation in the `email` field of the first `emailAddresses` message *
+        /// `emailAddresses[2].type[1]` for a violation in the second `type` value in the third `emailAddresses`
         /// message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
@@ -8184,6 +8184,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("phase")]
         public virtual string Phase { get; set; }
 
+        /// <summary>Optional. Configuration for PostgreSQL homogeneous migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postgresHomogeneousConfig")]
+        public virtual PostgresHomogeneousConfig PostgresHomogeneousConfig { get; set; }
+
         /// <summary>Configuration for heterogeneous failback migrations from **PostgreSQL to SQL Server**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postgresToSqlserverConfig")]
         public virtual PostgresToSqlServerConfig PostgresToSqlserverConfig { get; set; }
@@ -8977,6 +8981,21 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// <summary>Optional. Timeout for data migration transactions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionTimeout")]
         public virtual object TransactionTimeout { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for PostgreSQL to PostgreSQL migrations.</summary>
+    public class PostgresHomogeneousConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Whether the migration is native logical.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isNativeLogical")]
+        public virtual System.Nullable<bool> IsNativeLogical { get; set; }
+
+        /// <summary>Optional. Maximum number of additional subscriptions to use for the migration job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxAdditionalSubscriptions")]
+        public virtual System.Nullable<int> MaxAdditionalSubscriptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
