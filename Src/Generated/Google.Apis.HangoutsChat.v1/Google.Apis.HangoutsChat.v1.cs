@@ -2435,6 +2435,39 @@ namespace Google.Apis.HangoutsChat.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>The notification type for the message.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("createMessageNotificationOptions.notificationType", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<CreateMessageNotificationOptionsNotificationTypeEnum> CreateMessageNotificationOptionsNotificationType { get; set; }
+
+                /// <summary>The notification type for the message.</summary>
+                public enum CreateMessageNotificationOptionsNotificationTypeEnum
+                {
+                    /// <summary>
+                    /// Default behavior. Notification behavior is similar to when the human user sends the message
+                    /// using the Chat UI: no notification is sent to the human sender.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("NOTIFICATION_TYPE_NONE")]
+                    NOTIFICATIONTYPENONE = 0,
+
+                    /// <summary>
+                    /// Force notify recipients. This bypasses users' space notification settings and [Chat Do Not
+                    /// Disturb settings](https://support.google.com/chat/answer/9093489). This option does not bypass
+                    /// device-level Do Not Disturb settings. Requires [app authentication]
+                    /// (https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("NOTIFICATION_TYPE_FORCE_NOTIFY")]
+                    NOTIFICATIONTYPEFORCENOTIFY = 1,
+
+                    /// <summary>
+                    /// Silence the notification as if the recipients have [Chat Do Not
+                    /// Disturb](https://support.google.com/chat/answer/9093489) enabled or have muted the space.
+                    /// Requires [app authentication]
+                    /// (https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("NOTIFICATION_TYPE_SILENT")]
+                    NOTIFICATIONTYPESILENT = 2,
+                }
+
                 /// <summary>
                 /// Optional. A custom ID for a message. Lets Chat apps get, update, or delete a message without needing
                 /// to store the system-assigned ID in the message's resource name (represented in the message `name`
@@ -2531,6 +2564,14 @@ namespace Google.Apis.HangoutsChat.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^spaces/[^/]+$",
+                    });
+                    RequestParameters.Add("createMessageNotificationOptions.notificationType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "createMessageNotificationOptions.notificationType",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("messageId", new Google.Apis.Discovery.Parameter
                     {
@@ -9743,6 +9784,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sender")]
         public virtual User Sender { get; set; }
+
+        /// <summary>
+        /// Output only. Whether this is a silent message. Silent messages are messages where Chat suppresses push
+        /// notifications for recipients.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("silent")]
+        public virtual System.Nullable<bool> Silent { get; set; }
 
         /// <summary>Output only. Slash command information, if applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slashCommand")]
