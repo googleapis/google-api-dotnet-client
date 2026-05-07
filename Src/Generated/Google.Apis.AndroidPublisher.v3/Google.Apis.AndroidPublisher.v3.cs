@@ -16412,7 +16412,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
     /// <summary>
     /// Download metadata for split, standalone and universal APKs, as well as asset pack slices, signed with a given
-    /// key.
+    /// key. Next ID: 10
     /// </summary>
     public class GeneratedApksPerSigningKey : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16455,6 +16455,24 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Contains targeting information about the generated apks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingInfo")]
         public virtual TargetingInfo TargetingInfo { get; set; }
+
+        /// <summary>
+        /// List of generated split APKs without automatic protection, signed with a key corresponding to
+        /// certificate_sha256_hash. This field is only present if the app uses automatic protection. In this case,
+        /// `generated_split_apks` contains APKs with automatic protection enabled, whereas this field contains APKs
+        /// without automatic protection.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unprotectedGeneratedSplitApks")]
+        public virtual System.Collections.Generic.IList<GeneratedSplitApk> UnprotectedGeneratedSplitApks { get; set; }
+
+        /// <summary>
+        /// List of generated standalone APKs without automatic protection, signed with a key corresponding to
+        /// certificate_sha256_hash. This field is only present if the app uses automatic protection. In this case,
+        /// `generated_standalone_apks` contains APKs with automatic protection enabled, whereas this field contains
+        /// APKs without automatic protection.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unprotectedGeneratedStandaloneApks")]
+        public virtual System.Collections.Generic.IList<GeneratedStandaloneApk> UnprotectedGeneratedStandaloneApks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
