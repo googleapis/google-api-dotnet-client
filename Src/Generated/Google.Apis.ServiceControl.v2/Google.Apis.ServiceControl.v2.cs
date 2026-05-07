@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -546,6 +546,14 @@ namespace Google.Apis.ServiceControl.v2.Data
     /// <summary>Common audit log format for Google Cloud Platform API operations. </summary>
     public class AuditLog : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The API version identifier of the operation that uses interface based versioning (IBV). For example,
+        /// `"2026-01-01-preview"`. The version identifier generally follows the format of [variant_]date[_decorator].
+        /// It should not be parsed because the exact format varies across services.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersionIdentifier")]
+        public virtual string ApiVersionIdentifier { get; set; }
+
         /// <summary>Authentication information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authenticationInfo")]
         public virtual AuthenticationInfo AuthenticationInfo { get; set; }
