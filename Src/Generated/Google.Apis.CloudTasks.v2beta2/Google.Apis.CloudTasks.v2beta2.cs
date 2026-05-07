@@ -393,77 +393,7 @@ namespace Google.Apis.CloudTasks.v2beta2
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-                Operations = new OperationsResource(service);
                 Queues = new QueuesResource(service);
-            }
-
-            /// <summary>Gets the Operations resource.</summary>
-            public virtual OperationsResource Operations { get; }
-
-            /// <summary>The "operations" collection of methods.</summary>
-            public class OperationsResource
-            {
-                private const string Resource = "operations";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public OperationsResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                }
-
-                /// <summary>
-                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
-                /// result at intervals as recommended by the API service.
-                /// </summary>
-                /// <param name="name">The name of the operation resource.</param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(this.service, name);
-                }
-
-                /// <summary>
-                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
-                /// result at intervals as recommended by the API service.
-                /// </summary>
-                public class GetRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Operation>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>The name of the operation resource.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "get";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2beta2/{+name}";
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                        });
-                    }
-                }
             }
 
             /// <summary>Gets the Queues resource.</summary>
@@ -2274,8 +2204,8 @@ namespace Google.Apis.CloudTasks.v2beta2
 
             /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
-            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
-            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
             /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
             /// that specific project. This includes public, private, or other project-specific locations enabled for
             /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
@@ -2290,8 +2220,8 @@ namespace Google.Apis.CloudTasks.v2beta2
 
             /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
-            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
-            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
             /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
             /// that specific project. This includes public, private, or other project-specific locations enabled for
             /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
@@ -2312,8 +2242,8 @@ namespace Google.Apis.CloudTasks.v2beta2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Do not use this field unless explicitly documented otherwise. This is primarily for
+                /// internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -3513,49 +3443,6 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
         public virtual string ServiceAccountEmail { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
-    public class Operation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed,
-        /// and either `error` or `response` is available.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; }
-
-        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; }
-
-        /// <summary>
-        /// Service-specific metadata associated with the operation. It typically contains progress information and
-        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
-        /// a long-running operation should document the metadata type, if any.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
-
-        /// <summary>
-        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
-        /// use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// The normal, successful response of the operation. If the original method returns no data on success, such as
-        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
-        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
