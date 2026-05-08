@@ -9697,37 +9697,43 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Performance Capture configuration.</summary>
+    /// <summary>Performance capture configuration.</summary>
     public class PerformanceCaptureConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Enable or disable the Performance Capture feature.</summary>
+        /// <summary>Optional. Enables or disables the performance capture feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>
-        /// Optional. The minimum number of consecutive readings above threshold that triggers instance state capture.
+        /// Optional. Specifies the minimum number of consecutive probe threshold that triggers performance capture.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("probeThreshold")]
         public virtual System.Nullable<int> ProbeThreshold { get; set; }
 
-        /// <summary>Optional. The time interval in seconds between any two probes.</summary>
+        /// <summary>
+        /// Optional. Specifies the interval in seconds between consecutive probes that check if any trigger condition
+        /// thresholds have been reached.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("probingIntervalSeconds")]
         public virtual System.Nullable<int> ProbingIntervalSeconds { get; set; }
 
-        /// <summary>Optional. The minimum number of server threads running to trigger the capture on primary.</summary>
+        /// <summary>
+        /// Optional. Specifies the minimum number of MySQL `Threads_running` to trigger the performance capture on the
+        /// primary instance.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runningThreadsThreshold")]
         public virtual System.Nullable<int> RunningThreadsThreshold { get; set; }
 
         /// <summary>
-        /// Optional. The minimum number of seconds replica must be lagging behind primary to trigger capture on
-        /// replica.
+        /// Optional. Specifies the minimum number of seconds replica must be lagging behind primary instance to trigger
+        /// the performance capture on replica.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondsBehindSourceThreshold")]
         public virtual System.Nullable<int> SecondsBehindSourceThreshold { get; set; }
 
         /// <summary>
-        /// Optional. The amount of time in seconds that a transaction needs to have been open before the watcher starts
-        /// recording it.
+        /// Optional. Specifies the amount of time in seconds that a transaction needs to have been open before the
+        /// watcher starts recording it.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionDurationThreshold")]
         public virtual System.Nullable<int> TransactionDurationThreshold { get; set; }
