@@ -1461,6 +1461,10 @@ namespace Google.Apis.YouTubeReporting.v1.Data
         public virtual string Sha256Hash { get; set; }
 
         /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sha512Hash")]
+        public virtual string Sha512Hash { get; set; }
+
+        /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
         public virtual System.Nullable<ulong> Timestamp { get; set; }
 
