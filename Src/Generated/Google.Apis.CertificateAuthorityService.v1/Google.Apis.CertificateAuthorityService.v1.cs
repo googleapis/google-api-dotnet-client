@@ -3760,8 +3760,8 @@ namespace Google.Apis.CertificateAuthorityService.v1
 
             /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
-            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
-            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
             /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
             /// that specific project. This includes public, private, or other project-specific locations enabled for
             /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
@@ -3776,8 +3776,8 @@ namespace Google.Apis.CertificateAuthorityService.v1
 
             /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
-            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
-            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
             /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
             /// that specific project. This includes public, private, or other project-specific locations enabled for
             /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
@@ -3798,8 +3798,8 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Do not use this field unless explicitly documented otherwise. This is primarily for
+                /// internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -4285,6 +4285,51 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         /// <summary>Immutable. A pem-encoded X.509 certificate signing request (CSR).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pemCsr")]
         public virtual string PemCsr { get; set; }
+
+        private string _requestedNotBeforeTimeRaw;
+
+        private object _requestedNotBeforeTime;
+
+        /// <summary>
+        /// Optional. The requested not_before_time of this Certificate. This field may only be set if the
+        /// CaPool.IssuancePolicy.allow_requester_specified_not_before_time field is set to true for the issuing CaPool.
+        /// If this field is specified, the certificate will be issued with this 'not_before_time'. If this is not
+        /// specified, the 'not_before_time' will be set to the issuance time or issuance time minus backdate_duration
+        /// depending on the CaPool configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedNotBeforeTime")]
+        public virtual string RequestedNotBeforeTimeRaw
+        {
+            get => _requestedNotBeforeTimeRaw;
+            set
+            {
+                _requestedNotBeforeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _requestedNotBeforeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RequestedNotBeforeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RequestedNotBeforeTimeDateTimeOffset instead.")]
+        public virtual object RequestedNotBeforeTime
+        {
+            get => _requestedNotBeforeTime;
+            set
+            {
+                _requestedNotBeforeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _requestedNotBeforeTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="RequestedNotBeforeTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RequestedNotBeforeTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RequestedNotBeforeTimeRaw);
+            set => RequestedNotBeforeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>
         /// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if
@@ -5265,6 +5310,16 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
     /// <summary>Defines controls over all certificate issuance within a CaPool.</summary>
     public class IssuancePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. If set to true, allows requesters to specify the requested_not_before_time field when creating a
+        /// Certificate. Certificates requested with this option enabled will have a 'not_before_time' equal to the
+        /// value specified in the request. The 'not_after_time' will be adjusted to preserve the requested lifetime.
+        /// The maximum time that a certificate can be backdated with these options is 48 hours in the past. This option
+        /// cannot be set if backdate_duration is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowRequesterSpecifiedNotBeforeTime")]
+        public virtual System.Nullable<bool> AllowRequesterSpecifiedNotBeforeTime { get; set; }
+
         /// <summary>
         /// Optional. If specified, then only methods allowed in the IssuanceModes may be used to issue Certificates.
         /// </summary>
