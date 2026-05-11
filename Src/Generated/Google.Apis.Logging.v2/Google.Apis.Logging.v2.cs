@@ -3087,8 +3087,8 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Do not use this field unless explicitly documented otherwise. This is primarily for
+                /// internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -7983,8 +7983,8 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Do not use this field unless explicitly documented otherwise. This is primarily for
+                /// internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -10955,8 +10955,8 @@ namespace Google.Apis.Logging.v2
             public virtual string Name { get; private set; }
 
             /// <summary>
-            /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-            /// otherwise. This is primarily for internal usage.
+            /// Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal
+            /// usage.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -14631,8 +14631,8 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Do not use this field unless explicitly documented otherwise. This is primarily for
+                /// internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -19159,8 +19159,8 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Do not use this field unless explicitly documented otherwise. This is primarily for
+                /// internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -22025,8 +22025,9 @@ namespace Google.Apis.Logging.v2.Data
     }
 
     /// <summary>
-    /// A source that can be used to represent a field within various parts of a structured query, such as in SELECT,
-    /// WHERE, or ORDER BY clauses.
+    /// A source that can be used to represent a "field of data" within various parts of a structured query, such as in
+    /// SELECT, WHERE, or ORDER BY clauses. The term "field of data" is used here because it is not limited to literal
+    /// fields in the underlying data schema.
     /// </summary>
     public class FieldSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -24673,7 +24674,8 @@ namespace Google.Apis.Logging.v2.Data
     /// field and optionally applies transformations like aggregation, casting, regex extraction, or assigns an alias.
     /// Use ProjectedField when you need more than just the raw source field name (for which you might use FieldSource
     /// directly in QueryBuilderConfig's field_sources list if no transformations or specific operation type are
-    /// needed).
+    /// needed).A ProjectedField can represent either a field present in the data schema (specified via the field
+    /// property) or a virtual field that is computed from other fields (specified via the virtual_field property).
     /// </summary>
     public class ProjectedField : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -24693,8 +24695,8 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string Cast { get; set; }
 
         /// <summary>
-        /// The field name. This will be the field that is selected using the dot notation to display the drill down
-        /// value.
+        /// Optional. The field name. This will be the field that is selected using the dot notation to display the
+        /// drill down value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual string Field { get; set; }
