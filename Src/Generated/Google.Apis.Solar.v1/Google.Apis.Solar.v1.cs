@@ -305,6 +305,37 @@ namespace Google.Apis.Solar.v1
                 InitParameters();
             }
 
+            /// <summary>Optional. A list of additional_insights to be included in the response.</summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="AdditionalInsightsList"/> to
+            /// set multiple values. Do not set both properties.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("additionalInsights", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<AdditionalInsightsEnum> AdditionalInsights { get; set; }
+
+            /// <summary>Optional. A list of additional_insights to be included in the response.</summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="AdditionalInsights"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("additionalInsights", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<AdditionalInsightsEnum> AdditionalInsightsList { get; set; }
+
+            /// <summary>Optional. A list of additional_insights to be included in the response.</summary>
+            public enum AdditionalInsightsEnum
+            {
+                /// <summary>The default value. The default BuildingInsights will be returned.</summary>
+                [Google.Apis.Util.StringValueAttribute("ADDITIONAL_INSIGHTS_UNSPECIFIED")]
+                ADDITIONALINSIGHTSUNSPECIFIED = 0,
+
+                /// <summary>
+                /// Determines whether the response will include the detected arrays. If specified, the
+                /// `detected_arrays` field will be populated in the response.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("DETECTED_ARRAYS")]
+                DETECTEDARRAYS = 1,
+            }
+
             /// <summary>
             /// Optional. Whether to require exact quality of the imagery. If set to false, the `required_quality` field
             /// is interpreted as the minimum required quality, such that HIGH quality imagery may be returned when
@@ -420,6 +451,14 @@ namespace Google.Apis.Solar.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
+                RequestParameters.Add("additionalInsights", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "additionalInsights",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("exactQualityRequired", new Google.Apis.Discovery.Parameter
                 {
                     Name = "exactQualityRequired",
@@ -814,6 +853,13 @@ namespace Google.Apis.Solar.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("center")]
         public virtual LatLng Center { get; set; }
 
+        /// <summary>
+        /// Solar arrays detected on the building. This field is only populated if DETECTED_ARRAYS is included in the
+        /// request's FindClosestBuildingInsightsRequest.additional_insights.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedArrays")]
+        public virtual BuildingInsightsDetectedArrays DetectedArrays { get; set; }
+
         /// <summary>Date that the underlying imagery was acquired. This is approximate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageryDate")]
         public virtual Date ImageryDate { get; set; }
@@ -845,6 +891,21 @@ namespace Google.Apis.Solar.v1.Data
         /// <summary>Statistical area (e.g., US census tract) this building is in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statisticalArea")]
         public virtual string StatisticalArea { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about solar arrays detected on the building.</summary>
+    public class BuildingInsightsDetectedArrays : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates the detection status of solar arrays for this building.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectionStatus")]
+        public virtual string DetectionStatus { get; set; }
+
+        /// <summary>The date indicating when the latest solar array data was captured.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestCaptureDate")]
+        public virtual Date LatestCaptureDate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

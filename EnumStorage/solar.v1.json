@@ -1,4 +1,8 @@
 {
+  "Google.Apis.Solar.v1.BuildingInsightsResource+FindClosestRequest.AdditionalInsightsEnum": [
+    "ADDITIONAL_INSIGHTS_UNSPECIFIED",
+    "DETECTED_ARRAYS"
+  ],
   "Google.Apis.Solar.v1.BuildingInsightsResource+FindClosestRequest.ExperimentsEnum": [
     "EXPERIMENT_UNSPECIFIED",
     "EXPANDED_COVERAGE"
