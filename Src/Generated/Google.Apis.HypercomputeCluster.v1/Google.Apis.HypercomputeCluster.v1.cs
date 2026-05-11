@@ -1193,7 +1193,7 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
     /// </summary>
     public class BootDisk : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Immutable. Size of the disk in gigabytes. Must be at least 10GB.</summary>
+        /// <summary>Required. Immutable. Size of the disk in gigabytes. Must be at least 40GB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
         public virtual System.Nullable<long> SizeGb { get; set; }
 
