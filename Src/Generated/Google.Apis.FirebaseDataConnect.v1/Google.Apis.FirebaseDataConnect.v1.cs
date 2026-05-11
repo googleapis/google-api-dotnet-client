@@ -2394,6 +2394,138 @@ namespace Google.Apis.FirebaseDataConnect.v1
                     }
                 }
 
+                /// <summary>
+                /// Generates a GraphQL query based on a natural language prompt and the provided schema context. This
+                /// is a stateless method; the schema is provided per request to support local development states.
+                /// Streams results with real-time status and output chunks.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the service in which to generate the query. Format:
+                /// projects/{project}/locations/{location}/services/{service}
+                /// </param>
+                public virtual GenerateQueryRequest GenerateQuery(Google.Apis.FirebaseDataConnect.v1.Data.GenerateQueryRequest body, string name)
+                {
+                    return new GenerateQueryRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Generates a GraphQL query based on a natural language prompt and the provided schema context. This
+                /// is a stateless method; the schema is provided per request to support local development states.
+                /// Streams results with real-time status and output chunks.
+                /// </summary>
+                public class GenerateQueryRequest : FirebaseDataConnectBaseServiceRequest<Google.Apis.FirebaseDataConnect.v1.Data.GenerateQueryResponse>
+                {
+                    /// <summary>Constructs a new GenerateQuery request.</summary>
+                    public GenerateQueryRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseDataConnect.v1.Data.GenerateQueryRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the service in which to generate the query. Format:
+                    /// projects/{project}/locations/{location}/services/{service}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.FirebaseDataConnect.v1.Data.GenerateQueryRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "generateQuery";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:generateQuery";
+
+                    /// <summary>Initializes GenerateQuery parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Generates GraphQL schema based on a natural language prompt or data description. This allows users
+                /// to scaffold new types and tables quickly. Streams results with real-time status and output chunks.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the service in which to generate the schema. Format:
+                /// projects/{project}/locations/{location}/services/{service}
+                /// </param>
+                public virtual GenerateSchemaRequest GenerateSchema(Google.Apis.FirebaseDataConnect.v1.Data.GenerateSchemaRequest body, string name)
+                {
+                    return new GenerateSchemaRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Generates GraphQL schema based on a natural language prompt or data description. This allows users
+                /// to scaffold new types and tables quickly. Streams results with real-time status and output chunks.
+                /// </summary>
+                public class GenerateSchemaRequest : FirebaseDataConnectBaseServiceRequest<Google.Apis.FirebaseDataConnect.v1.Data.GenerateSchemaResponse>
+                {
+                    /// <summary>Constructs a new GenerateSchema request.</summary>
+                    public GenerateSchemaRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseDataConnect.v1.Data.GenerateSchemaRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the service in which to generate the schema. Format:
+                    /// projects/{project}/locations/{location}/services/{service}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.FirebaseDataConnect.v1.Data.GenerateSchemaRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "generateSchema";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:generateSchema";
+
+                    /// <summary>Initializes GenerateSchema parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Gets details of a single Service.</summary>
                 /// <param name="name">
                 /// Required. The name of the service to retrieve, in the format:
@@ -2982,6 +3114,24 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A chunk of code.</summary>
+    public class CodeChunk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The code content string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the language if we expand support beyond GraphQL (e.g., SQL or JSON) The standard is
+        /// BCP-47 language code.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Connector consists of a set of operations, i.e. queries and mutations.</summary>
     public class Connector : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3250,6 +3400,90 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for GenerateQuery.</summary>
+    public class GenerateQueryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The natural language description of the desired query. Example: "Find all users who signed up in
+        /// the last 7 days."
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prompt")]
+        public virtual string Prompt { get; set; }
+
+        /// <summary>
+        /// Optional. The user's locally defined FDC Schema(s). If not defined, the backend will fetch the user's
+        /// deployed schema.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemas")]
+        public virtual System.Collections.Generic.IList<Schema> Schemas { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Output for streaming generate query requests</summary>
+    public class GenerateQueryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The content from the current conversational turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("part")]
+        public virtual Part Part { get; set; }
+
+        /// <summary>
+        /// Essential for providing responsive UI feedback (e.g., a spinner or "Analyzing schema..." step).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GenerationStatus Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for GenerateSchema.</summary>
+    public class GenerateSchemaRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The natural language description of the data model to generate. Example: "A blog system with
+        /// Users, Posts, and Comments. Users can have multiple posts."
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prompt")]
+        public virtual string Prompt { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Output for streaming generate schema requests</summary>
+    public class GenerateSchemaResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The content from the current conversational turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("part")]
+        public virtual Part Part { get; set; }
+
+        /// <summary>
+        /// Essential for providing responsive UI feedback (e.g., a spinner or "Analyzing schema..." step).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GenerationStatus Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the progress of the server side generation request.</summary>
+    public class GenerationStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A message providing more details about the state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Output only. The state of generation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3787,6 +4021,21 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a chunk of content.</summary>
+    public class Part : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A chunk of code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("codeChunk")]
+        public virtual CodeChunk CodeChunk { get; set; }
+
+        /// <summary>Optional. A chunk of text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textChunk")]
+        public virtual TextChunk TextChunk { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Settings for PostgreSQL data source.</summary>
     public class PostgreSql : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3814,11 +4063,17 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual string Schema { get; set; }
 
-        /// <summary>Optional. Configure how to perform Postgresql schema migration.</summary>
+        /// <summary>
+        /// Optional. Configure how to perform automatic PostgreSQL schema migration before deploying the FDC schema.
+        /// This is an additive-only operation.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaMigration")]
         public virtual string SchemaMigration { get; set; }
 
-        /// <summary>Optional. Configure how much Postgresql schema validation to perform.</summary>
+        /// <summary>
+        /// Optional. Configure how much PostgreSQL schema validation to perform against the live database before
+        /// deploying the FDC schema.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaValidation")]
         public virtual string SchemaValidation { get; set; }
 
@@ -4129,6 +4384,17 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A chunk of conversational text.</summary>
+    public class TextChunk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The text content string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
