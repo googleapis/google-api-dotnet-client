@@ -7249,6 +7249,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoTimeRequired")]
         public virtual System.Nullable<bool> AutoTimeRequired { get; set; }
 
+        /// <summary>Optional. The policy for the autofill service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autofillPolicy")]
+        public virtual string AutofillPolicy { get; set; }
+
         /// <summary>This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blockApplicationsEnabled")]
         public virtual System.Nullable<bool> BlockApplicationsEnabled { get; set; }
