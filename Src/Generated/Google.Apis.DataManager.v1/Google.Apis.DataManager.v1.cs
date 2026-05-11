@@ -2135,6 +2135,13 @@ namespace Google.Apis.DataManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("landingPageDeviceInfo")]
         public virtual DeviceInfo LandingPageDeviceInfo { get; set; }
 
+        /// <summary>
+        /// Optional. The mobile identifier for advertisers. This would be IDFA on iOS, AdID on Android, or other
+        /// platforms’ identifiers for advertisers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mobileDeviceId")]
+        public virtual string MobileDeviceId { get; set; }
+
         /// <summary>Optional. Session attributes for event attribution and modeling.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionAttributes")]
         public virtual string SessionAttributes { get; set; }
@@ -2271,6 +2278,14 @@ namespace Google.Apis.DataManager.v1.Data
     /// <summary>The cart data associated with the event.</summary>
     public class CartData : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The list of coupon codes that were applied to the cart. Cart-level and item-level coupon codes are
+        /// independent. If the event is for a Google Analytics destination, only provide a single coupon code. Google
+        /// Analytics ignores additional coupon codes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("couponCodes")]
+        public virtual System.Collections.Generic.IList<string> CouponCodes { get; set; }
+
         /// <summary>Optional. The list of items associated with the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Item> Items { get; set; }
@@ -2399,6 +2414,22 @@ namespace Google.Apis.DataManager.v1.Data
     /// <summary>Information about the device being used (if any) when the event happened.</summary>
     public class DeviceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The brand of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brand")]
+        public virtual string Brand { get; set; }
+
+        /// <summary>Optional. The brand or type of the browser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("browser")]
+        public virtual string Browser { get; set; }
+
+        /// <summary>Optional. The version of the browser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("browserVersion")]
+        public virtual string BrowserVersion { get; set; }
+
+        /// <summary>Optional. The category of device. For example, “desktop”, “tablet”, “mobile”, “smart TV”.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
         /// <summary>
         /// Optional. The IP address of the device for the given context. **Note:** Google Ads does not support IP
         /// address matching for end users in the European Economic Area (EEA), United Kingdom (UK), or Switzerland
@@ -2409,6 +2440,30 @@ namespace Google.Apis.DataManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; }
+
+        /// <summary>Optional. The language the device uses in ISO 639-1 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>Optional. The model of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
+        /// <summary>Optional. The operating system or platform of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operatingSystem")]
+        public virtual string OperatingSystem { get; set; }
+
+        /// <summary>Optional. The version of the operating system or platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operatingSystemVersion")]
+        public virtual string OperatingSystemVersion { get; set; }
+
+        /// <summary>Optional. The height of the screen in pixels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenHeight")]
+        public virtual System.Nullable<int> ScreenHeight { get; set; }
+
+        /// <summary>Optional. The width of the screen in pixels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenWidth")]
+        public virtual System.Nullable<int> ScreenWidth { get; set; }
 
         /// <summary>Optional. The user-agent string of the device for the given context.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
@@ -2488,6 +2543,12 @@ namespace Google.Apis.DataManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalEventParameters")]
         public virtual System.Collections.Generic.IList<EventParameter> AdditionalEventParameters { get; set; }
 
+        /// <summary>
+        /// Optional. A unique identifier for the user instance of an app client for this GA4 app stream.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appInstanceId")]
+        public virtual string AppInstanceId { get; set; }
+
         /// <summary>Optional. Information about the transaction and items associated with the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cartData")]
         public virtual CartData CartData { get; set; }
@@ -2531,6 +2592,10 @@ namespace Google.Apis.DataManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventDeviceInfo")]
         public virtual DeviceInfo EventDeviceInfo { get; set; }
+
+        /// <summary>Optional. Information gathered about the location of the user when this event occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventLocation")]
+        public virtual EventLocation EventLocation { get; set; }
 
         /// <summary>Optional. The name of the event. Required for GA4 events.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventName")]
@@ -2626,7 +2691,15 @@ namespace Google.Apis.DataManager.v1.Data
         }
 
         /// <summary>
-        /// Optional. The unique identifier for this event. Required for conversions using multiple data sources.
+        /// Optional. The same type of data provided in user_data, but explicitly flagged as being provided as owned by
+        /// a third-party and not first-party advertiser data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyUserData")]
+        public virtual UserData ThirdPartyUserData { get; set; }
+
+        /// <summary>
+        /// Optional. The unique identifier for this event. Required for events sent as an additional data source for
+        /// tag conversions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionId")]
         public virtual string TransactionId { get; set; }
@@ -2646,6 +2719,39 @@ namespace Google.Apis.DataManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userProperties")]
         public virtual UserProperties UserProperties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The location where the event occurred.</summary>
+    public class EventLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The name of the city where the event occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("city")]
+        public virtual string City { get; set; }
+
+        /// <summary>Optional. The continent code in UN M49 format where the event occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("continentCode")]
+        public virtual string ContinentCode { get; set; }
+
+        /// <summary>Optional. The 2-letter CLDR region code of the user's address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>
+        /// Optional. Required for Store Sales. The identifier to represent a physical store where the event happened.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeId")]
+        public virtual string StoreId { get; set; }
+
+        /// <summary>Optional. The subcontinent code in UN M49 format where the event occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subcontinentCode")]
+        public virtual string SubcontinentCode { get; set; }
+
+        /// <summary>Optional. The ISO 3166-2 subdivision code where the event occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subdivisionCode")]
+        public virtual string SubdivisionCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3051,9 +3157,45 @@ namespace Google.Apis.DataManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalItemParameters")]
         public virtual System.Collections.Generic.IList<ItemParameter> AdditionalItemParameters { get; set; }
 
+        /// <summary>
+        /// Optional. The conversion value associated with this item within the event, for cases where the conversion
+        /// value is different for each item.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionValue")]
+        public virtual System.Nullable<double> ConversionValue { get; set; }
+
+        /// <summary>
+        /// Optional. Additional key/value pair information to send to the conversion containers (conversion action or
+        /// Floodlight activity), when tracking per-item conversions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customVariables")]
+        public virtual System.Collections.Generic.IList<ItemCustomVariable> CustomVariables { get; set; }
+
         /// <summary>Optional. A unique identifier to reference the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
         public virtual string ItemId { get; set; }
+
+        /// <summary>
+        /// Optional. The feed label of the Merchant Center feed. If countries are still being used, the 2-letter
+        /// country code in ISO-3166-1 alpha-2 can be used instead. For Store Sales events this will override the value
+        /// set at the cart level. This field is ignored for other events.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantFeedLabel")]
+        public virtual string MerchantFeedLabel { get; set; }
+
+        /// <summary>
+        /// Optional. The language code in ISO 639-1 associated with the Merchant Center feed where your items are
+        /// uploaded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantFeedLanguageCode")]
+        public virtual string MerchantFeedLanguageCode { get; set; }
+
+        /// <summary>
+        /// Optional. The Merchant Center ID associated with the item. For Store Sales events this will override the
+        /// value set at the cart level. This field is ignored for other events.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
+        public virtual string MerchantId { get; set; }
 
         /// <summary>Optional. The product ID within the Merchant Center account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantProductId")]
@@ -3066,6 +3208,31 @@ namespace Google.Apis.DataManager.v1.Data
         /// <summary>Optional. The unit price excluding tax, shipping, and any transaction level discounts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unitPrice")]
         public virtual System.Nullable<double> UnitPrice { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Item-level custom variable for ads conversions.</summary>
+    public class ItemCustomVariable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Reference string used to determine which of the Event.destination_references the custom variable
+        /// should be sent to. If empty, the Event.destination_references will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationReferences")]
+        public virtual System.Collections.Generic.IList<string> DestinationReferences { get; set; }
+
+        /// <summary>Optional. The value to store for the custom variable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the custom variable to set. If the variable is not found for the given destination, it
+        /// will be ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variable")]
+        public virtual string Variable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3607,7 +3774,11 @@ namespace Google.Apis.DataManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual Destination Destination { get; set; }
 
-        /// <summary>An error info error containing the error reason and error counts related to the upload.</summary>
+        /// <summary>
+        /// An error info error containing the error reason and error counts related to the upload. Only populated if
+        /// the `request_status` is `FAILED` or `PARTIAL_SUCCESS`. This field isn't populated while the request has
+        /// `request_status` of `PROCESSING`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorInfo")]
         public virtual ErrorInfo ErrorInfo { get; set; }
 
@@ -3619,7 +3790,10 @@ namespace Google.Apis.DataManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestStatus")]
         public virtual string RequestStatus { get; set; }
 
-        /// <summary>A warning info containing the warning reason and warning counts related to the upload.</summary>
+        /// <summary>
+        /// A warning info containing the warning reason and warning counts related to the upload. This field isn't
+        /// populated while the request has `request_status` of `PROCESSING`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warningInfo")]
         public virtual WarningInfo WarningInfo { get; set; }
 
@@ -3694,12 +3868,20 @@ namespace Google.Apis.DataManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayNetworkMembersCount")]
         public virtual System.Nullable<long> DisplayNetworkMembersCount { get; set; }
 
+        /// <summary>Output only. Estimated number of members in this user list on Gmail.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gmailMembersCount")]
+        public virtual System.Nullable<long> GmailMembersCount { get; set; }
+
         /// <summary>
         /// Output only. Estimated number of members in this user list in the google.com domain. These are the members
         /// available for targeting in Search campaigns.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchNetworkMembersCount")]
         public virtual System.Nullable<long> SearchNetworkMembersCount { get; set; }
+
+        /// <summary>Output only. Estimated number of members in this user list on YouTube.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeMembersCount")]
+        public virtual System.Nullable<long> YoutubeMembersCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
