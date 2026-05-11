@@ -2842,6 +2842,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("findings")]
         public virtual System.Collections.Generic.IList<Finding> Findings { get; set; }
 
+        /// <summary>Optional. Maximum severity found among findings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSeverity")]
+        public virtual string MaxSeverity { get; set; }
+
         /// <summary>Optional. Name of the skill that produced this analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skillName")]
         public virtual string SkillName { get; set; }
@@ -3657,34 +3661,37 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     /// Common Vulnerability Scoring System. This message is compatible with CVSS v2 and v3. For CVSS v2 details, see
     /// https://www.first.org/cvss/v2/guide CVSS v2 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For
     /// CVSS v3 details, see https://www.first.org/cvss/specification-document CVSS v3 calculator:
-    /// https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
+    /// https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator For CVSS v4 details, see
+    /// https://www.first.org/cvss/v4.0/user-guide CVSS v4 calculator:
+    /// https://nvd.nist.gov/vuln-metrics/cvss/v4-calculator
     /// </summary>
     public class CVSS : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Defined in CVSS v3, CVSS v2</summary>
+        /// <summary>Optional. Attack Complexity (AC). Defined in CVSS v2, v3, v4.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attackComplexity")]
         public virtual string AttackComplexity { get; set; }
 
-        /// <summary>
-        /// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and
-        /// across user environments. Defined in CVSS v3, CVSS v2
-        /// </summary>
+        /// <summary>Optional. Attack Requirements (AT). Defined in CVSS v4.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attackRequirements")]
+        public virtual string AttackRequirements { get; set; }
+
+        /// <summary>Optional. Attack Vector (AV). Defined in CVSS v2, v3, v4.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attackVector")]
         public virtual string AttackVector { get; set; }
 
-        /// <summary>Defined in CVSS v2</summary>
+        /// <summary>Optional. Authentication (Au). Defined in CVSS v2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authentication")]
         public virtual string Authentication { get; set; }
 
-        /// <summary>Defined in CVSS v3, CVSS v2</summary>
+        /// <summary>Optional. Availability Impact (A). Defined in CVSS v2, v3.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availabilityImpact")]
         public virtual string AvailabilityImpact { get; set; }
 
-        /// <summary>The base score is a function of the base metric scores.</summary>
+        /// <summary>Optional. The base score is a function of the base metric scores.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseScore")]
         public virtual System.Nullable<float> BaseScore { get; set; }
 
-        /// <summary>Defined in CVSS v3, CVSS v2</summary>
+        /// <summary>Optional. Confidentiality Impact (C). Defined in CVSS v2, v3.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidentialityImpact")]
         public virtual string ConfidentialityImpact { get; set; }
 
@@ -3694,21 +3701,45 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("impactScore")]
         public virtual System.Nullable<float> ImpactScore { get; set; }
 
-        /// <summary>Defined in CVSS v3, CVSS v2</summary>
+        /// <summary>Optional. Integrity Impact (I). Defined in CVSS v2, v3.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integrityImpact")]
         public virtual string IntegrityImpact { get; set; }
 
-        /// <summary>Defined in CVSS v3</summary>
+        /// <summary>Optional. Privileges Required (PR). Defined in CVSS v3, v4.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privilegesRequired")]
         public virtual string PrivilegesRequired { get; set; }
 
-        /// <summary>Defined in CVSS v3</summary>
+        /// <summary>Optional. Scope (S). Defined in CVSS v3.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual string Scope { get; set; }
 
-        /// <summary>Defined in CVSS v3</summary>
+        /// <summary>Optional. Subsequent System Availability Impact (SA). Defined in CVSS v4.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subsequentSystemAvailabilityImpact")]
+        public virtual string SubsequentSystemAvailabilityImpact { get; set; }
+
+        /// <summary>Optional. Subsequent System Confidentiality Impact (SC). Defined in CVSS v4.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subsequentSystemConfidentialityImpact")]
+        public virtual string SubsequentSystemConfidentialityImpact { get; set; }
+
+        /// <summary>Optional. Subsequent System Integrity Impact (SI). Defined in CVSS v4.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subsequentSystemIntegrityImpact")]
+        public virtual string SubsequentSystemIntegrityImpact { get; set; }
+
+        /// <summary>Optional. User Interaction (UI). Defined in CVSS v3, v4.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userInteraction")]
         public virtual string UserInteraction { get; set; }
+
+        /// <summary>Optional. Vulnerable System Availability Impact (VA). Defined in CVSS v4.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vulnerableSystemAvailabilityImpact")]
+        public virtual string VulnerableSystemAvailabilityImpact { get; set; }
+
+        /// <summary>Optional. Vulnerable System Confidentiality Impact (VC). Defined in CVSS v4.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vulnerableSystemConfidentialityImpact")]
+        public virtual string VulnerableSystemConfidentialityImpact { get; set; }
+
+        /// <summary>Optional. Vulnerable System Integrity Impact (VI). Defined in CVSS v4.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vulnerableSystemIntegrityImpact")]
+        public virtual string VulnerableSystemIntegrityImpact { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6600,29 +6631,32 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; }
 
-        /// <summary>Optional. Detailed description of the finding.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
+        /// <summary>Optional. Location (path and line) where the finding was detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual FindingLocation Location { get; set; }
 
-        /// <summary>Optional. Path to the file where the finding was detected.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
-        public virtual string FilePath { get; set; }
-
-        /// <summary>Optional. Unique identifier of the rule that produced this finding.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ruleId")]
-        public virtual string RuleId { get; set; }
+        /// <summary>Optional. Scanner determines which engine (e.g. static, llm) emitted the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scanner")]
+        public virtual string Scanner { get; set; }
 
         /// <summary>Optional. Severity of the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; }
 
-        /// <summary>Optional. Code snippet relevant to the finding.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual string Snippet { get; set; }
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
 
-        /// <summary>Optional. Title of the finding.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
+    /// <summary>Location details with file path and line number.</summary>
+    public class FindingLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Relative path of the file containing the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
+        public virtual string FilePath { get; set; }
+
+        /// <summary>Optional. Line number (1-based), or 0 if whole File / unknown.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineNumber")]
+        public virtual System.Nullable<long> LineNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
