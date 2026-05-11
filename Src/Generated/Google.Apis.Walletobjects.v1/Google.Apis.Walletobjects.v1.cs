@@ -11038,10 +11038,6 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sha256Hash")]
         public virtual string Sha256Hash { get; set; }
 
-        /// <summary>Scotty-provided SHA512 hash for an upload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sha512Hash")]
-        public virtual string Sha512Hash { get; set; }
-
         /// <summary>Time at which the media data was last updated, in milliseconds since UNIX epoch</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
         public virtual System.Nullable<ulong> Timestamp { get; set; }
