@@ -624,6 +624,14 @@ namespace Google.Apis.ServiceControl.v1.Data
     /// <summary>Common audit log format for Google Cloud Platform API operations. </summary>
     public class AuditLog : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The API version identifier of the operation that uses interface based versioning (IBV). For example,
+        /// `"2026-01-01-preview"`. The version identifier generally follows the format of [variant_]date[_decorator].
+        /// It should not be parsed because the exact format varies across services.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersionIdentifier")]
+        public virtual string ApiVersionIdentifier { get; set; }
+
         /// <summary>Authentication information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authenticationInfo")]
         public virtual AuthenticationInfo AuthenticationInfo { get; set; }
