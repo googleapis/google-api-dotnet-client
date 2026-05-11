@@ -9602,10 +9602,10 @@ namespace Google.Apis.Classroom.v1
             /// <summary>
             /// Mask that identifies which fields on the course to update. This field is required to do an update. The
             /// update will fail if invalid fields are specified. The following fields are valid: * `courseState` *
-            /// `description` * `descriptionHeading` * `name` * `ownerId` * `room` * `section` * `subject` Note: patches
-            /// to ownerId are treated as being effective immediately, but in practice it may take some time for the
-            /// ownership transfer of all affected resources to complete. When set in a query parameter, this field
-            /// should be specified as `updateMask=,,...`
+            /// `description` * `descriptionHeading` * `name` * `ownerId` * `room` * `section` * `subject` * `levels`
+            /// Note: patches to ownerId are treated as being effective immediately, but in practice it may take some
+            /// time for the ownership transfer of all affected resources to complete. When set in a query parameter,
+            /// this field should be specified as `updateMask=,,...`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
@@ -9649,10 +9649,12 @@ namespace Google.Apis.Classroom.v1
         }
 
         /// <summary>
-        /// Updates a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting
-        /// user is not permitted to modify the requested course or for access errors. * `NOT_FOUND` if no course exists
-        /// with the requested ID. * `FAILED_PRECONDITION` for the following request errors: * CourseNotModifiable *
-        /// CourseTitleCannotContainUrl
+        /// Updates a course. Note: Unlike other fields, `levels` is not cleared if omitted from the request. The
+        /// `UpdateCourse` method only modifies `levels` if it is explicitly provided; otherwise, the existing value is
+        /// preserved. Use the `PatchCourse` method to clear the `levels` field. This method returns the following error
+        /// codes: * `PERMISSION_DENIED` if the requesting user is not permitted to modify the requested course or for
+        /// access errors. * `NOT_FOUND` if no course exists with the requested ID. * `FAILED_PRECONDITION` for the
+        /// following request errors: * CourseNotModifiable * CourseTitleCannotContainUrl
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="id">
@@ -9665,10 +9667,12 @@ namespace Google.Apis.Classroom.v1
         }
 
         /// <summary>
-        /// Updates a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting
-        /// user is not permitted to modify the requested course or for access errors. * `NOT_FOUND` if no course exists
-        /// with the requested ID. * `FAILED_PRECONDITION` for the following request errors: * CourseNotModifiable *
-        /// CourseTitleCannotContainUrl
+        /// Updates a course. Note: Unlike other fields, `levels` is not cleared if omitted from the request. The
+        /// `UpdateCourse` method only modifies `levels` if it is explicitly provided; otherwise, the existing value is
+        /// preserved. Use the `PatchCourse` method to clear the `levels` field. This method returns the following error
+        /// codes: * `PERMISSION_DENIED` if the requesting user is not permitted to modify the requested course or for
+        /// access errors. * `NOT_FOUND` if no course exists with the requested ID. * `FAILED_PRECONDITION` for the
+        /// following request errors: * CourseNotModifiable * CourseTitleCannotContainUrl
         /// </summary>
         public class UpdateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Course>
         {
@@ -11645,6 +11649,14 @@ namespace Google.Apis.Classroom.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Optional. Levels for the course. Examples: "9th grade", "Middle school", "4th - 5th", "K-2", "3000". If set,
+        /// this field must be a valid UTF-8 string and fewer than 1000 characters. This field can only be cleared using
+        /// the `PatchCourse` method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("levels")]
+        public virtual string Levels { get; set; }
 
         /// <summary>
         /// Name of the course. For example, "10th Grade Biology". The name is required. It must be between 1 and 750
