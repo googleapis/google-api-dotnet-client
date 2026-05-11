@@ -5651,6 +5651,25 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Resource representing the anti-virus information of a Device.</summary>
+    public class AntivirusInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The display name of the anti-virus software.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. The GUID of the anti-virus product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productGuid")]
+        public virtual string ProductGuid { get; set; }
+
+        /// <summary>Output only. The state of the anti-virus.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productState")]
+        public virtual string ProductState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for approving the device to access user data.</summary>
     public class ApproveDeviceUserRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6385,6 +6404,10 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("androidSpecificAttributes")]
         public virtual AndroidAttributes AndroidSpecificAttributes { get; set; }
 
+        /// <summary>Output only. Anti-virus information for the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("antivirusInfo")]
+        public virtual System.Collections.Generic.IList<AntivirusInfo> AntivirusInfo { get; set; }
+
         /// <summary>Asset tag of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetTag")]
         public virtual string AssetTag { get; set; }
@@ -6563,6 +6586,10 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkOperator")]
         public virtual string NetworkOperator { get; set; }
 
+        /// <summary>Output only. OS firewall status of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osFirewallStatus")]
+        public virtual string OsFirewallStatus { get; set; }
+
         /// <summary>Output only. OS version of the device. Example: Android 8.1.0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
         public virtual string OsVersion { get; set; }
@@ -6634,6 +6661,10 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// <summary>WiFi MAC addresses of device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiMacAddresses")]
         public virtual System.Collections.Generic.IList<string> WifiMacAddresses { get; set; }
+
+        /// <summary>Output only. Attributes specific to Windows devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("windowsSpecificDeviceAttributes")]
+        public virtual WindowsSpecificDeviceAttributes WindowsSpecificDeviceAttributes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9727,6 +9758,32 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the Windows specific attributes of a Device.</summary>
+    public class WindowsSpecificDeviceAttributes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The hotfixes installed on the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hotfixes")]
+        public virtual System.Collections.Generic.IList<string> Hotfixes { get; set; }
+
+        /// <summary>Output only. Secure boot mode of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secureBootMode")]
+        public virtual string SecureBootMode { get; set; }
+
+        /// <summary>
+        /// Output only. The domain of the machine that the user is logged into. This is different from the
+        /// windows_user_domain as the user could be logged into a domain different from the machine domain.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("windowsMachineDomain")]
+        public virtual string WindowsMachineDomain { get; set; }
+
+        /// <summary>Output only. The domain of the user account that is logged into the machine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("windowsUserDomain")]
+        public virtual string WindowsUserDomain { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
