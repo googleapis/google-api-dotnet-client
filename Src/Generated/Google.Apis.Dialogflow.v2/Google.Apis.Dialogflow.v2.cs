@@ -21517,6 +21517,12 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("confirmationRequirement")]
         public virtual string ConfirmationRequirement { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("proactiveEnabled")]
+        public virtual System.Nullable<bool> ProactiveEnabled { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("reactiveEnabled")]
+        public virtual System.Nullable<bool> ReactiveEnabled { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
