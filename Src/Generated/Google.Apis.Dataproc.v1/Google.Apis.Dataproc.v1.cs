@@ -8891,7 +8891,7 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>
                     /// Optional. A filter constraining the clusters to list. Filters are case-sensitive and have the
                     /// following syntax:field = value AND field = value ...where field is one of status.state,
-                    /// clusterName, or labels.[KEY], and [KEY] is a label key. value can be * to match all values.
+                    /// clusterName, or labels.[KEY], and [KEY] is a label key. value can be "*" to match all values.
                     /// status.state can be one of the following: ACTIVE, INACTIVE, CREATING, RUNNING, ERROR, DELETING,
                     /// UPDATING, STOPPING, or STOPPED. ACTIVE contains the CREATING, UPDATING, and RUNNING states.
                     /// INACTIVE contains the DELETING, ERROR, STOPPING, and STOPPED states. clusterName is the name of
@@ -12884,11 +12884,11 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console
-        /// output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US,
-        /// ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is
-        /// deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp
-        /// buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field
-        /// requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+        /// output. If you do not specify a staging bucket, Dataproc determines a Cloud Storage location (US, ASIA, or
+        /// EU) for the cluster staging bucket according to the Compute Engine zone where the cluster is deployed, and
+        /// then creates and manages this project-level, per-location bucket (see Dataproc staging and temp buckets
+        /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires
+        /// a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configBucket")]
         public virtual string ConfigBucket { get; set; }
@@ -12968,10 +12968,10 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce
-        /// history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US,
-        /// ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is
-        /// deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL
-        /// of 90 days, but you can use any TTL (or none) if you specify a bucket (see Dataproc staging and temp buckets
+        /// history files. If you do not specify a temp bucket, Dataproc determines a Cloud Storage location (US, ASIA,
+        /// or EU) for the cluster temp bucket according to the Compute Engine zone where the cluster is deployed, and
+        /// then creates and manages this project-level, per-location bucket. The default bucket has a TTL of 90 days,
+        /// but you can use any TTL (or none) if you specify a bucket (see Dataproc staging and temp buckets
         /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires
         /// a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
         /// </summary>
@@ -13235,7 +13235,10 @@ namespace Google.Apis.Dataproc.v1.Data
     /// </summary>
     public class ConfidentialInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Defines whether the instance should have confidential compute enabled.</summary>
+        /// <summary>
+        /// Optional. Deprecated: Use 'confidential_instance_type' instead. Defines whether the instance should have
+        /// confidential compute enabled.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableConfidentialCompute")]
         public virtual System.Nullable<bool> EnableConfidentialCompute { get; set; }
 
@@ -13402,16 +13405,16 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual System.Nullable<int> BootDiskSizeGb { get; set; }
 
         /// <summary>
-        /// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-balanced" (Persistent Disk
-        /// Balanced Solid State Drive), "pd-ssd" (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk
+        /// Optional. Type of the boot disk (default is pd-standard). Valid values: pd-balanced (Persistent Disk
+        /// Balanced Solid State Drive), pd-ssd (Persistent Disk Solid State Drive), or pd-standard (Persistent Disk
         /// Hard Disk Drive). See Disk types (https://cloud.google.com/compute/docs/disks#disk-types).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootDiskType")]
         public virtual string BootDiskType { get; set; }
 
         /// <summary>
-        /// Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System
-        /// Interface), "nvme" (Non-Volatile Memory Express). See local SSD performance
+        /// Optional. Interface type of local SSDs (default is scsi). Valid values: scsi (Small Computer System
+        /// Interface), nvme (Non-Volatile Memory Express). See local SSD performance
         /// (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localSsdInterface")]
@@ -14078,7 +14081,7 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>
         /// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with
         /// subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network of the project
-        /// is used, if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks
+        /// is used, if it exists. Cannot be a Custom Subnet Network (see Using Subnetworks
         /// (https://cloud.google.com/compute/docs/subnetworks) for more information).A full URL, partial URI, or short
         /// name are valid. Examples:
         /// https://www.googleapis.com/compute/v1/projects/[project_id]/global/networks/default
@@ -20662,11 +20665,11 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console
-        /// output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US,
-        /// ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is
-        /// deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp
-        /// buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field
-        /// requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+        /// output. If you do not specify a staging bucket, Dataproc determines a Cloud Storage location (US, ASIA, or
+        /// EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed,
+        /// and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets
+        /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires
+        /// a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stagingBucket")]
         public virtual string StagingBucket { get; set; }
