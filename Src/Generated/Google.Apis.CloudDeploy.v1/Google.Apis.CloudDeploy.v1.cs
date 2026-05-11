@@ -7045,6 +7045,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual string Image { get; set; }
 
+        /// <summary>Optional. Shell script to execute. If provided then command and args cannot be specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("script")]
+        public virtual string Script { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
