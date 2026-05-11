@@ -807,7 +807,8 @@ namespace Google.Apis.AccessContextManager.v1
             /// <summary>
             /// Returns the IAM permissions that the caller has on the specified Access Context Manager resource. The
             /// resource can be an AccessPolicy, AccessLevel, or ServicePerimeter. This method does not support other
-            /// resources.
+            /// resources. **IAM Permissions**: No specific IAM permission is required to call this method. It returns
+            /// the subset of the requested permissions that the caller possesses.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">
@@ -822,7 +823,8 @@ namespace Google.Apis.AccessContextManager.v1
             /// <summary>
             /// Returns the IAM permissions that the caller has on the specified Access Context Manager resource. The
             /// resource can be an AccessPolicy, AccessLevel, or ServicePerimeter. This method does not support other
-            /// resources.
+            /// resources. **IAM Permissions**: No specific IAM permission is required to call this method. It returns
+            /// the subset of the requested permissions that the caller possesses.
             /// </summary>
             public class TestIamPermissionsRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.TestIamPermissionsResponse>
             {
@@ -1737,7 +1739,8 @@ namespace Google.Apis.AccessContextManager.v1
             /// <summary>
             /// Returns the IAM permissions that the caller has on the specified Access Context Manager resource. The
             /// resource can be an AccessPolicy, AccessLevel, or ServicePerimeter. This method does not support other
-            /// resources.
+            /// resources. **IAM Permissions**: No specific IAM permission is required to call this method. It returns
+            /// the subset of the requested permissions that the caller possesses.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">
@@ -1752,7 +1755,8 @@ namespace Google.Apis.AccessContextManager.v1
             /// <summary>
             /// Returns the IAM permissions that the caller has on the specified Access Context Manager resource. The
             /// resource can be an AccessPolicy, AccessLevel, or ServicePerimeter. This method does not support other
-            /// resources.
+            /// resources. **IAM Permissions**: No specific IAM permission is required to call this method. It returns
+            /// the subset of the requested permissions that the caller possesses.
             /// </summary>
             public class TestIamPermissionsRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.TestIamPermissionsResponse>
             {
@@ -2230,7 +2234,8 @@ namespace Google.Apis.AccessContextManager.v1
         /// <summary>
         /// Returns the IAM permissions that the caller has on the specified Access Context Manager resource. The
         /// resource can be an AccessPolicy, AccessLevel, or ServicePerimeter. This method does not support other
-        /// resources.
+        /// resources. **IAM Permissions**: No specific IAM permission is required to call this method. It returns the
+        /// subset of the requested permissions that the caller possesses.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">
@@ -2245,7 +2250,8 @@ namespace Google.Apis.AccessContextManager.v1
         /// <summary>
         /// Returns the IAM permissions that the caller has on the specified Access Context Manager resource. The
         /// resource can be an AccessPolicy, AccessLevel, or ServicePerimeter. This method does not support other
-        /// resources.
+        /// resources. **IAM Permissions**: No specific IAM permission is required to call this method. It returns the
+        /// subset of the requested permissions that the caller possesses.
         /// </summary>
         public class TestIamPermissionsRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.TestIamPermissionsResponse>
         {
@@ -3050,7 +3056,10 @@ namespace Google.Apis.AccessContextManager.v1
             this.service = service;
         }
 
-        /// <summary>Returns a VPC-SC supported service based on the service name.</summary>
+        /// <summary>
+        /// Returns a VPC-SC supported service based on the service name. **IAM Permissions**: Requires the following
+        /// IAM permissions to use this method: - `serviceusage.services.use` on the project.
+        /// </summary>
         /// <param name="name">
         /// The name of the service to get information about. The names must be in the same format as used in defining a
         /// service perimeter, for example, `storage.googleapis.com`.
@@ -3060,7 +3069,10 @@ namespace Google.Apis.AccessContextManager.v1
             return new GetRequest(this.service, name);
         }
 
-        /// <summary>Returns a VPC-SC supported service based on the service name.</summary>
+        /// <summary>
+        /// Returns a VPC-SC supported service based on the service name. **IAM Permissions**: Requires the following
+        /// IAM permissions to use this method: - `serviceusage.services.use` on the project.
+        /// </summary>
         public class GetRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.SupportedService>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -3101,13 +3113,19 @@ namespace Google.Apis.AccessContextManager.v1
             }
         }
 
-        /// <summary>Lists all VPC-SC supported services.</summary>
+        /// <summary>
+        /// Lists all VPC-SC supported services. **IAM Permissions**: Requires the following IAM permissions to use this
+        /// method: - `serviceusage.services.use` on the project.
+        /// </summary>
         public virtual ListRequest List()
         {
             return new ListRequest(this.service);
         }
 
-        /// <summary>Lists all VPC-SC supported services.</summary>
+        /// <summary>
+        /// Lists all VPC-SC supported services. **IAM Permissions**: Requires the following IAM permissions to use this
+        /// method: - `serviceusage.services.use` on the project.
+        /// </summary>
         public class ListRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.ListSupportedServicesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
