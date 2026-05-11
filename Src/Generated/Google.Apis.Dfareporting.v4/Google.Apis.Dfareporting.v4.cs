@@ -25014,6 +25014,10 @@ namespace Google.Apis.Dfareporting.v4.Data
     /// <summary>Contains dependent field value information.</summary>
     public class DependentFieldValue : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The ID of the dynamic feed that value's field will match against.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicFeedId")]
+        public virtual System.Nullable<long> DynamicFeedId { get; set; }
+
         /// <summary>Optional. The ID of the element that value's field will match against.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("elementId")]
         public virtual System.Nullable<long> ElementId { get; set; }
