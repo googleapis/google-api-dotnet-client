@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Dfareporting.v5 Client Library</Title>
-    <Version>1.74.0.4086</Version>
+    <Version>1.74.0.4102</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2026 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
