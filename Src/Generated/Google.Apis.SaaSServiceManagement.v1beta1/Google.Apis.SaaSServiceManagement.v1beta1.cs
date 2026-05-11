@@ -6043,8 +6043,8 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Do not use this field unless explicitly documented otherwise. This is primarily for
+                /// internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -6350,6 +6350,10 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
     /// </summary>
     public class EvaluationRule : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The ID of an allocation to target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocationId")]
+        public virtual string AllocationId { get; set; }
+
         /// <summary>
         /// Required. A Common Expression Language (CEL) expression that evaluates to a boolean. The expression is
         /// evaluated against the provided context. If it returns true, the rule's target is applied.
@@ -6362,11 +6366,15 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         public virtual string Id { get; set; }
 
         /// <summary>
-        /// Required. The target variant or allocation to apply if the condition is met. This should match the name of a
-        /// defined variant or allocation's ID.
+        /// Optional. Deprecated: Use `rule_target` instead. The target variant or allocation to apply if the condition
+        /// is met. This should match the name of a defined variant or allocation's ID.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; }
+
+        /// <summary>Optional. The name of a variant to target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variantId")]
+        public virtual string VariantId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6385,9 +6393,19 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IList<string> Attributes { get; set; }
 
-        /// <summary>Required. Default variant or allocation of the flag.</summary>
+        /// <summary>Optional. The ID of an allocation to use as the default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultAllocation")]
+        public virtual string DefaultAllocation { get; set; }
+
+        /// <summary>
+        /// Optional. Deprecated: Use `base_target` instead. Default variant or allocation of the flag.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultTarget")]
         public virtual string DefaultTarget { get; set; }
+
+        /// <summary>Optional. The name of a variant to use as the default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultVariant")]
+        public virtual string DefaultVariant { get; set; }
 
         /// <summary>
         /// Optional. Evaluation rules define the logic for evaluating the flag against a given context. The rules are
