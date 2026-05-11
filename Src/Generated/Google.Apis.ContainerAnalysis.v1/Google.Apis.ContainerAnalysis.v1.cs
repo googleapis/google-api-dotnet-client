@@ -3496,6 +3496,10 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("findings")]
         public virtual System.Collections.Generic.IList<Finding> Findings { get; set; }
 
+        /// <summary>Maximum severity found among findings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSeverity")]
+        public virtual string MaxSeverity { get; set; }
+
         /// <summary>Name of the skill that produced this analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skillName")]
         public virtual string SkillName { get; set; }
@@ -7071,29 +7075,32 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; }
 
-        /// <summary>Detailed description of the finding.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
+        /// <summary>Location (path and line) where the finding was detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual FindingLocation Location { get; set; }
 
-        /// <summary>Path to the file where the finding was detected.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
-        public virtual string FilePath { get; set; }
-
-        /// <summary>Unique identifier of the rule that produced this finding.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ruleId")]
-        public virtual string RuleId { get; set; }
+        /// <summary>Scanner determines which engine (e.g. static, llm) emitted the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scanner")]
+        public virtual string Scanner { get; set; }
 
         /// <summary>Severity of the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; }
 
-        /// <summary>Code snippet relevant to the finding.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual string Snippet { get; set; }
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
 
-        /// <summary>Title of the finding.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
+    /// <summary>Location details with file path and line number.</summary>
+    public class FindingLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Relative path of the file containing the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
+        public virtual string FilePath { get; set; }
+
+        /// <summary>Line number (1-based), or 0 if whole File / unknown.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineNumber")]
+        public virtual System.Nullable<long> LineNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
