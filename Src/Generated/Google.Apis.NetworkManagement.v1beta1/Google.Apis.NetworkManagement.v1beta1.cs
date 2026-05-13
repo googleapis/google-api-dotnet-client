@@ -3761,6 +3761,14 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
 
         /// <summary>
         /// A [Cloud Run](https://cloud.google.com/run)
+        /// [job](https://docs.cloud.google.com/run/docs/reference/rest/v2/projects.locations.jobs#Job) URI. Applicable
+        /// only to source endpoint. The format is: projects/{project}/locations/{location}/jobs/{job}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudRunJob")]
+        public virtual string CloudRunJob { get; set; }
+
+        /// <summary>
+        /// A [Cloud Run](https://cloud.google.com/run)
         /// [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) Applicable only to
         /// source endpoint.
         /// </summary>
