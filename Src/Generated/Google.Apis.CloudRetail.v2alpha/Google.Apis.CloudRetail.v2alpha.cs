@@ -5606,8 +5606,8 @@ namespace Google.Apis.CloudRetail.v2alpha
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Indicates which fields in the provided Catalog to update. If an unsupported or unknown field is
-                    /// provided, an INVALID_ARGUMENT error is returned.
+                    /// Optional. Indicates which fields in the provided Catalog to update. If an unsupported or unknown
+                    /// field is provided, an INVALID_ARGUMENT error is returned.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -5780,9 +5780,9 @@ namespace Google.Apis.CloudRetail.v2alpha
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Indicates which fields in the provided AttributesConfig to update. The following is the only
-                    /// supported field: * AttributesConfig.catalog_attributes If not set, all supported fields are
-                    /// updated.
+                    /// Optional. Indicates which fields in the provided AttributesConfig to update. The following is
+                    /// the only supported field: * AttributesConfig.catalog_attributes If not set, all supported fields
+                    /// are updated.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -5853,9 +5853,9 @@ namespace Google.Apis.CloudRetail.v2alpha
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Indicates which fields in the provided CompletionConfig to update. The following are the only
-                    /// supported fields: * CompletionConfig.matching_order * CompletionConfig.max_suggestions *
-                    /// CompletionConfig.min_prefix_length * CompletionConfig.auto_learning If not set, all supported
+                    /// Optional. Indicates which fields in the provided CompletionConfig to update. The following are
+                    /// the only supported fields: * CompletionConfig.matching_order * CompletionConfig.max_suggestions
+                    /// * CompletionConfig.min_prefix_length * CompletionConfig.auto_learning If not set, all supported
                     /// fields are updated.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
@@ -13194,8 +13194,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual GoogleCloudRetailV2alphaCatalogAttribute CatalogAttribute { get; set; }
 
         /// <summary>
-        /// Indicates which fields in the provided CatalogAttribute to update. The following are NOT supported: *
-        /// CatalogAttribute.key If not set, all supported fields are updated.
+        /// Optional. Indicates which fields in the provided CatalogAttribute to update. The following are NOT
+        /// supported: * CatalogAttribute.key If not set, all supported fields are updated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
