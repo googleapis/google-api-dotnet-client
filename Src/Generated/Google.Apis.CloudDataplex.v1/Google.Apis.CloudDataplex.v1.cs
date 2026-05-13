@@ -4483,9 +4483,10 @@ namespace Google.Apis.CloudDataplex.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must
-                    /// start with a letter. Must end with a number or a letter. Must be between 1-63 characters. Must
-                    /// be unique within the customer project / location.
+                    /// Optional. DataScan identifier. If not provided, a unique ID will be generated with the prefix
+                    /// "data-scan-". Must contain only lowercase letters, numbers and hyphens. Must start with a
+                    /// letter. Must end with a number or a letter. Must be between 1-63 characters. Must be unique
+                    /// within the customer project / location.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("dataScanId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DataScanId { get; set; }
@@ -23824,6 +23825,12 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>Lookup Context using permissions in the source system.</summary>
     public class GoogleCloudDataplexV1LookupContextRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The text representing contextual information for which metadata context is being requested.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("context")]
+        public virtual string Context { get; set; }
+
         /// <summary>
         /// Optional. Allows to configure the context.Supported options: format - The format of the context (one of
         /// yaml, xml, json, default is yaml). context_budget - If provided, the output will be intelligently truncated
