@@ -1430,6 +1430,21 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The pickup cost of the item.</summary>
+    public class PickupCost : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The flat rate pickup cost of the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flatRate")]
+        public virtual Price FlatRate { get; set; }
+
+        /// <summary>Optional. The price threshold above which pickup is free of charge.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeThreshold")]
+        public virtual Price FreeThreshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The price represented as a number and currency.</summary>
     public class Price : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2095,6 +2110,13 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pause")]
         public virtual string Pause { get; set; }
+
+        /// <summary>
+        /// Optional. The [pickup cost](https://support.google.com/merchants/answer/16988704) for an item when a
+        /// customer buys it online and picks it up at a store.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickupCost")]
+        public virtual PickupCost PickupCost { get; set; }
 
         /// <summary>The [pickup](https://support.google.com/merchants/answer/14634021) option for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickupMethod")]
