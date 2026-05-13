@@ -14617,7 +14617,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>
         /// The current recurring price of the auto renewing plan. Note that the price does not take into account
-        /// discounts and does not include taxes for tax-exclusive pricing, please call orders.get API instead if
+        /// discounts and does not include taxes. For tax-exclusive pricing, please call orders.get API instead if
         /// transaction details are needed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurringPrice")]
