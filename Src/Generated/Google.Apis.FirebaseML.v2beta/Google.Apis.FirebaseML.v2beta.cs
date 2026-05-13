@@ -1192,6 +1192,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     public class GoogleCloudAiplatformV1beta1FunctionDeclaration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Specifies the function Behavior. If not specified, the system keeps the current function call
+        /// behavior. This field is currently only supported by the BidiGenerateContent method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("behavior")]
+        public virtual string Behavior { get; set; }
+
+        /// <summary>
         /// Optional. Description and purpose of the function. Model uses it to decide how and whether to call the
         /// function.
         /// </summary>
