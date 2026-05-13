@@ -1,0 +1,35 @@
+{
+  "Google.Apis.CloudNumberRegistry.v1alpha.CloudNumberRegistryBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudNumberRegistry.v1alpha.CloudNumberRegistryBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.CloudNumberRegistry.v1alpha.ProjectsResource+LocationsResource+RealmsResource+GetRequest.ViewEnum": [
+    "REALM_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL",
+    "AGGREGATE"
+  ],
+  "Google.Apis.CloudNumberRegistry.v1alpha.ProjectsResource+LocationsResource+RealmsResource+ListRequest.ViewEnum": [
+    "REALM_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL",
+    "AGGREGATE"
+  ],
+  "Google.Apis.CloudNumberRegistry.v1alpha.ProjectsResource+LocationsResource+RegistryBooksResource+GetRequest.ViewEnum": [
+    "REGISTRY_BOOK_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL",
+    "AGGREGATE"
+  ],
+  "Google.Apis.CloudNumberRegistry.v1alpha.ProjectsResource+LocationsResource+RegistryBooksResource+ListRequest.ViewEnum": [
+    "REGISTRY_BOOK_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL",
+    "AGGREGATE"
+  ]
+}
