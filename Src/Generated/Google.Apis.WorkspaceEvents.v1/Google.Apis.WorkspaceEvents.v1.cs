@@ -1695,6 +1695,24 @@ namespace Google.Apis.WorkspaceEvents.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Additional supported options for serving Drive events.</summary>
+    public class DriveOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Immutable. For subscriptions to Google Drive events, whether to receive events about Drive files
+        /// that are children of the target folder or shared drive. * If `false`, the subscription only receives events
+        /// about changes to the folder or shared drive that's specified as the `targetResource`. * If `true`, the
+        /// `mimeType` field of the `file` resource must be set to `application/vnd.google-apps.folder`. For details,
+        /// see [Google Drive event
+        /// types](https://developers.google.com/workspace/events/guides/events-drive#event-types).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeDescendants")]
+        public virtual System.Nullable<bool> IncludeDescendants { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -2120,6 +2138,10 @@ namespace Google.Apis.WorkspaceEvents.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. Features that are supported only for subscriptions on Drive resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driveOptions")]
+        public virtual DriveOptions DriveOptions { get; set; }
 
         /// <summary>
         /// Optional. This checksum is computed by the server based on the value of other fields, and might be sent on
