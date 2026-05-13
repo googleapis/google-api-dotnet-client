@@ -709,6 +709,19 @@ namespace Google.Apis.HomeGraphService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for traits of a single device.</summary>
+    public class DeviceMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Map from the Trait ID (e.g., "action.devices.traits.OnOff") to its last Spanner commit timestamp.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("traitCommitTimestamps")]
+        public virtual System.Collections.Generic.IDictionary<string, object> TraitCommitTimestamps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Identifiers used to describe the device.</summary>
     public class DeviceNames : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -852,6 +865,12 @@ namespace Google.Apis.HomeGraphService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agentUserId")]
         public virtual string AgentUserId { get; set; }
 
+        /// <summary>
+        /// Optional. If true, the response will include device metadata in the device_metadata field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeDeviceMetadata")]
+        public virtual System.Nullable<bool> IncludeDeviceMetadata { get; set; }
+
         /// <summary>Required. Inputs containing third-party device IDs for which to get the device states.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputs")]
         public virtual System.Collections.Generic.IList<QueryRequestInput> Inputs { get; set; }
@@ -913,6 +932,13 @@ namespace Google.Apis.HomeGraphService.v1.Data
     /// <summary>Payload containing device states information.</summary>
     public class QueryResponsePayload : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Map from the Trait ID (e.g., "action.devices.traits.OnOff") to its last Spanner commit timestamp. If a trait
+        /// has no recorded timestamp, it will be omitted from this map.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, DeviceMetadata> DeviceMetadata { get; set; }
+
         /// <summary>States of the devices. Map of third-party device ID to struct of device states.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("devices")]
         public virtual System.Collections.Generic.IDictionary<string, System.Collections.Generic.IDictionary<string, object>> Devices { get; set; }
