@@ -2725,7 +2725,7 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
     }
 
     /// <summary>
-    /// A resource representing a form of persistent storage that is accessible to compute resources in the cluster.
+    /// A resource representing a form of persistent storage that can be mounted onto compute resources in the cluster.
     /// </summary>
     public class StorageResource : Google.Apis.Requests.IDirectResponseSchema
     {
