@@ -4354,6 +4354,10 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. Directories to persist across workstation sessions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("persistentDirectories")]
+        public virtual System.Collections.Generic.IList<WorkstationPersistentDirectory> PersistentDirectories { get; set; }
+
         /// <summary>
         /// Output only. Indicates whether this workstation is currently being updated to match its intended state.
         /// </summary>
@@ -5029,5 +5033,47 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+    }
+
+    /// <summary>
+    /// A Persistent Directory backed by a Compute Engine regional persistent disk within the workstation.
+    /// </summary>
+    public class WorkstationGceRegionalPersistentDisk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the persistent directory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The desired size of the persistent directory in GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
+        public virtual System.Nullable<int> SizeGb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A directory to persist across workstation sessions. Updates to this field will only take effect on this
+    /// workstation after it is restarted.
+    /// </summary>
+    public class WorkstationPersistentDirectory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A PersistentDirectory backed by a Compute Engine persistent disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcePd")]
+        public virtual WorkstationGceRegionalPersistentDisk GcePd { get; set; }
+
+        /// <summary>Optional. The mount path of the persistent directory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mountPath")]
+        public virtual string MountPath { get; set; }
+
+        /// <summary>
+        /// Optional. Size of the persistent directory in GB. If specified in an update request, this is the desired
+        /// size of the directory.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
+        public virtual System.Nullable<int> SizeGb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 }
