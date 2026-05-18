@@ -12334,8 +12334,10 @@ namespace Google.Apis.DiscoveryEngine.v1
                     /// <summary>
                     /// Sets the IAM access control policy for an Engine. A `NOT_FOUND` error is returned if the
                     /// resource does not exist. **Important:** When setting a policy directly on an Engine resource,
-                    /// the only recommended roles in the bindings are: `roles/discoveryengine.user` and
-                    /// `roles/discoveryengine.agentspaceUser`. Attempting to grant any other role will result in a
+                    /// the only recommended roles in the bindings are: `roles/discoveryengine.admin`,
+                    /// `roles/discoveryengine.agentspaceAdmin`, `roles/discoveryengine.user`,
+                    /// `roles/discoveryengine.agentspaceUser`, `roles/discoveryengine.viewer`,
+                    /// `roles/discoveryengine.agentspaceViewer`. Attempting to grant any other role will result in a
                     /// warning in logging.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
@@ -12352,8 +12354,10 @@ namespace Google.Apis.DiscoveryEngine.v1
                     /// <summary>
                     /// Sets the IAM access control policy for an Engine. A `NOT_FOUND` error is returned if the
                     /// resource does not exist. **Important:** When setting a policy directly on an Engine resource,
-                    /// the only recommended roles in the bindings are: `roles/discoveryengine.user` and
-                    /// `roles/discoveryengine.agentspaceUser`. Attempting to grant any other role will result in a
+                    /// the only recommended roles in the bindings are: `roles/discoveryengine.admin`,
+                    /// `roles/discoveryengine.agentspaceAdmin`, `roles/discoveryengine.user`,
+                    /// `roles/discoveryengine.agentspaceUser`, `roles/discoveryengine.viewer`,
+                    /// `roles/discoveryengine.agentspaceViewer`. Attempting to grant any other role will result in a
                     /// warning in logging.
                     /// </summary>
                     public class SetIamPolicyRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleIamV1Policy>
@@ -19662,6 +19666,97 @@ namespace Google.Apis.DiscoveryEngine.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/licenseConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists all the LicenseConfigs associated with the project.</summary>
+                /// <param name="parent">
+                /// Required. The parent branch resource name, such as `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists all the LicenseConfigs associated with the project.</summary>
+                public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1ListLicenseConfigsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent branch resource name, such as `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The filter to apply to the list results. The supported fields are: *
+                    /// `subscription_tier` * `state` Examples: *
+                    /// `subscription_tier=SUBSCRIPTION_TIER_SEARCH,state=ACTIVE` - Lists all active search license
+                    /// configs. * `state=ACTIVE` - Lists all active license configs. The filter string should be a
+                    /// comma-separated list of field=value pairs.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Not supported.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. Not supported.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/licenseConfigs";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -27870,6 +27965,12 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual System.Collections.Generic.IList<string> ConnectorModes { get; set; }
 
         /// <summary>
+        /// Optional. If set, this value instead of `data_source` is used to fetch the corresponding connector source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorSourceId")]
+        public virtual string ConnectorSourceId { get; set; }
+
+        /// <summary>
         /// Output only. The type of connector. Each source can only map to one type. For example, salesforce,
         /// confluence and jira have THIRD_PARTY connector type. It is not mutable once set by system.
         /// </summary>
@@ -30362,7 +30463,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// `personalization-memory` * `personalization-suggested-highlights` * `disable-mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
-        /// `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills`
+        /// `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills` *
+        /// `enable-end-user-sharing-with-groups`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -32095,6 +32197,21 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
         /// subsequent pages.
         /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for LicenseConfigService.ListLicenseConfigs method.</summary>
+    public class GoogleCloudDiscoveryengineV1ListLicenseConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All the customer's LicenseConfigs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1LicenseConfig> LicenseConfigs { get; set; }
+
+        /// <summary>Not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -35777,6 +35894,14 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Output only. Full resource name of an in-progress AsyncAssist operation for this session, e.g.
+        /// `projects/*/locations/*/collections/*/engines/*/sessions/*/operations/*`. Set when the operation starts and
+        /// cleared when it finishes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingAsyncAssistOperationId")]
+        public virtual string PendingAsyncAssistOperationId { get; set; }
+
         private string _startTimeRaw;
 
         private object _startTime;
@@ -38043,7 +38168,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// `personalization-memory` * `personalization-suggested-highlights` * `disable-mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
-        /// `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills`
+        /// `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills` *
+        /// `enable-end-user-sharing-with-groups`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -40988,6 +41114,12 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual System.Collections.Generic.IList<string> ConnectorModes { get; set; }
 
         /// <summary>
+        /// Optional. If set, this value instead of `data_source` is used to fetch the corresponding connector source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorSourceId")]
+        public virtual string ConnectorSourceId { get; set; }
+
+        /// <summary>
         /// Output only. The type of connector. Each source can only map to one type. For example, salesforce,
         /// confluence and jira have THIRD_PARTY connector type. It is not mutable once set by system.
         /// </summary>
@@ -43333,7 +43465,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// `personalization-memory` * `personalization-suggested-highlights` * `disable-mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
-        /// `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills`
+        /// `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills` *
+        /// `enable-end-user-sharing-with-groups`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -46395,6 +46528,43 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Defines a user inputed query.</summary>
     public class GoogleCloudDiscoveryengineV1alphaQuery : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time at which the server accepted this query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>Query content parts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parts")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaQueryPart> Parts { get; set; }
@@ -48295,6 +48465,14 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Full resource name of an in-progress AsyncAssist operation for this session, e.g.
+        /// `projects/*/locations/*/collections/*/engines/*/sessions/*/operations/*`. Set when the operation starts and
+        /// cleared when it finishes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingAsyncAssistOperationId")]
+        public virtual string PendingAsyncAssistOperationId { get; set; }
 
         private string _startTimeRaw;
 
@@ -52171,7 +52349,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// `personalization-memory` * `personalization-suggested-highlights` * `disable-mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
-        /// `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills`
+        /// `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills` *
+        /// `enable-end-user-sharing-with-groups`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
