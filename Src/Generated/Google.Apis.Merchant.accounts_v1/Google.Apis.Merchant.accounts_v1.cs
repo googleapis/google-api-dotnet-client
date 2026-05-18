@@ -958,13 +958,21 @@ namespace Google.Apis.Merchant.accounts_v1
             /// <summary>
             /// Registers the GCP used for the API call to the shopping account passed in the request. Will create a
             /// user with an "API developer" and add the "developer_email" as a contact with "API notifications" email
-            /// preference on.
+            /// preference on. Restrictions: * The caller account must be authenticated and must not impersonate another
+            /// account at registration time. Registering for subaccounts is not supported if the caller account is
+            /// authenticated with the parent or the managing advanced account. * The caller account must have a
+            /// [verified website](https://support.google.com/merchants/answer/11586344) in Merchant Center. * [Test
+            /// accounts](https://developers.google.com/merchant/api/guides/accounts/test-accounts) are not eligible for
+            /// registration.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. The name of the developer registration to be created for the merchant account that the GCP
             /// will be registered with. Format: `accounts/{account}/developerRegistration` The {account} used must be
-            /// the same account where user calling this API method is directly added to.
+            /// the same account where user calling this API method is directly added to. Note: The account used must be
+            /// a production account (can't be a [test
+            /// account](https://developers.google.com/merchant/api/guides/accounts/test-accounts) ) and must have a
+            /// [verified website](https://support.google.com/merchants/answer/11586344) in Merchant Center.
             /// </param>
             public virtual RegisterGcpRequest RegisterGcp(Google.Apis.Merchant.accounts_v1.Data.RegisterGcpRequest body, string name)
             {
@@ -974,7 +982,12 @@ namespace Google.Apis.Merchant.accounts_v1
             /// <summary>
             /// Registers the GCP used for the API call to the shopping account passed in the request. Will create a
             /// user with an "API developer" and add the "developer_email" as a contact with "API notifications" email
-            /// preference on.
+            /// preference on. Restrictions: * The caller account must be authenticated and must not impersonate another
+            /// account at registration time. Registering for subaccounts is not supported if the caller account is
+            /// authenticated with the parent or the managing advanced account. * The caller account must have a
+            /// [verified website](https://support.google.com/merchants/answer/11586344) in Merchant Center. * [Test
+            /// accounts](https://developers.google.com/merchant/api/guides/accounts/test-accounts) are not eligible for
+            /// registration.
             /// </summary>
             public class RegisterGcpRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1.Data.DeveloperRegistration>
             {
@@ -989,7 +1002,10 @@ namespace Google.Apis.Merchant.accounts_v1
                 /// <summary>
                 /// Required. The name of the developer registration to be created for the merchant account that the GCP
                 /// will be registered with. Format: `accounts/{account}/developerRegistration` The {account} used must
-                /// be the same account where user calling this API method is directly added to.
+                /// be the same account where user calling this API method is directly added to. Note: The account used
+                /// must be a production account (can't be a [test
+                /// account](https://developers.google.com/merchant/api/guides/accounts/test-accounts) ) and must have a
+                /// [verified website](https://support.google.com/merchants/answer/11586344) in Merchant Center.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
