@@ -1963,6 +1963,15 @@ namespace Google.Apis.Merchant.products_v1beta.Data
     /// </summary>
     public class Product : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. Determines whether the product is
+        /// [archived](https://support.google.com/merchants/answer/11909930). To archive or restore your product, visit
+        /// Merchant Center products page. Learn also more about [offer
+        /// visibility](https://support.google.com/merchants/answer/12488713).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archived")]
+        public virtual System.Nullable<bool> Archived { get; set; }
+
         /// <summary>Output only. A list of product attributes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual Attributes Attributes { get; set; }
