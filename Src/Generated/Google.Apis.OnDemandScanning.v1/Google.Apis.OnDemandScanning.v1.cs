@@ -1471,19 +1471,23 @@ namespace Google.Apis.OnDemandScanning.v1.Data
     /// </summary>
     public class CVSS : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Attack Complexity (AC). Defined in CVSS v2, v3, v4.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attackComplexity")]
         public virtual string AttackComplexity { get; set; }
 
-        /// <summary>
-        /// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and
-        /// across user environments.
-        /// </summary>
+        /// <summary>Attack Requirements (AT). Defined in CVSS v4.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attackRequirements")]
+        public virtual string AttackRequirements { get; set; }
+
+        /// <summary>Attack Vector (AV). Defined in CVSS v2, v3, v4.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attackVector")]
         public virtual string AttackVector { get; set; }
 
+        /// <summary>Authentication (Au). Defined in CVSS v2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authentication")]
         public virtual string Authentication { get; set; }
 
+        /// <summary>Availability Impact (A). Defined in CVSS v2, v3.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availabilityImpact")]
         public virtual string AvailabilityImpact { get; set; }
 
@@ -1491,6 +1495,7 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("baseScore")]
         public virtual System.Nullable<float> BaseScore { get; set; }
 
+        /// <summary>Confidentiality Impact (C). Defined in CVSS v2, v3.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidentialityImpact")]
         public virtual string ConfidentialityImpact { get; set; }
 
@@ -1500,17 +1505,45 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("impactScore")]
         public virtual System.Nullable<float> ImpactScore { get; set; }
 
+        /// <summary>Integrity Impact (I). Defined in CVSS v2, v3.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integrityImpact")]
         public virtual string IntegrityImpact { get; set; }
 
+        /// <summary>Privileges Required (PR). Defined in CVSS v3, v4.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privilegesRequired")]
         public virtual string PrivilegesRequired { get; set; }
 
+        /// <summary>Scope (S). Defined in CVSS v3.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual string Scope { get; set; }
 
+        /// <summary>Subsequent System Availability Impact (SA). Defined in CVSS v4.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subsequentSystemAvailabilityImpact")]
+        public virtual string SubsequentSystemAvailabilityImpact { get; set; }
+
+        /// <summary>Subsequent System Confidentiality Impact (SC). Defined in CVSS v4.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subsequentSystemConfidentialityImpact")]
+        public virtual string SubsequentSystemConfidentialityImpact { get; set; }
+
+        /// <summary>Subsequent System Integrity Impact (SI). Defined in CVSS v4.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subsequentSystemIntegrityImpact")]
+        public virtual string SubsequentSystemIntegrityImpact { get; set; }
+
+        /// <summary>User Interaction (UI). Defined in CVSS v3, v4.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userInteraction")]
         public virtual string UserInteraction { get; set; }
+
+        /// <summary>Vulnerable System Availability Impact (VA). Defined in CVSS v4.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vulnerableSystemAvailabilityImpact")]
+        public virtual string VulnerableSystemAvailabilityImpact { get; set; }
+
+        /// <summary>Vulnerable System Confidentiality Impact (VC). Defined in CVSS v4.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vulnerableSystemConfidentialityImpact")]
+        public virtual string VulnerableSystemConfidentialityImpact { get; set; }
+
+        /// <summary>Vulnerable System Integrity Impact (VI). Defined in CVSS v4.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vulnerableSystemIntegrityImpact")]
+        public virtual string VulnerableSystemIntegrityImpact { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
