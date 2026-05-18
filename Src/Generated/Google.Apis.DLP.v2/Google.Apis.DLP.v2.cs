@@ -18102,6 +18102,15 @@ namespace Google.Apis.DLP.v2.Data
     /// </summary>
     public class GooglePrivacyDlpV2InspectTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Enables the use of limited-availability built-in infoTypes in inspect_config. These infoTypes are
+        /// supported only in specific regions and can cause scanning errors if used elsewhere. For more information,
+        /// see https://cloud.google.com/sensitive-data-protection/docs/locations#location-specific_limitations to learn
+        /// more about location-specific limitations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowLimitedAvailabilityInfoTypes")]
+        public virtual System.Nullable<bool> AllowLimitedAvailabilityInfoTypes { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
