@@ -1814,7 +1814,7 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
     /// </summary>
     public class Alert : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. AI summary of the finding.</summary>
+        /// <summary>Optional. AI summary of the alert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aiSummary")]
         public virtual string AiSummary { get; set; }
 
@@ -1924,7 +1924,7 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
     /// <summary>A document that is associated with an alert.</summary>
     public class AlertDocument : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. AI summary of the finding.</summary>
+        /// <summary>Output only. AI summary of the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aiSummary")]
         public virtual string AiSummary { get; set; }
 
