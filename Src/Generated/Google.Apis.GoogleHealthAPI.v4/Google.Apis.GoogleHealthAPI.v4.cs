@@ -66,6 +66,24 @@ namespace Google.Apis.GoogleHealthAPI.v4
             /// Account.
             /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>See your Google Health activity and fitness data</summary>
+            public static string GooglehealthActivityAndFitnessReadonly = "https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly";
+
+            /// <summary>See your Google Health health metrics and measurement data</summary>
+            public static string GooglehealthHealthMetricsAndMeasurementsReadonly = "https://www.googleapis.com/auth/googlehealth.health_metrics_and_measurements.readonly";
+
+            /// <summary>See exercise GPS location data in Google Health</summary>
+            public static string GooglehealthLocationReadonly = "https://www.googleapis.com/auth/googlehealth.location.readonly";
+
+            /// <summary>See your Google Health profile data</summary>
+            public static string GooglehealthProfileReadonly = "https://www.googleapis.com/auth/googlehealth.profile.readonly";
+
+            /// <summary>See your Google Health settings</summary>
+            public static string GooglehealthSettingsReadonly = "https://www.googleapis.com/auth/googlehealth.settings.readonly";
+
+            /// <summary>See your Google Health sleep data</summary>
+            public static string GooglehealthSleepReadonly = "https://www.googleapis.com/auth/googlehealth.sleep.readonly";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Google Health API.</summary>
@@ -76,6 +94,24 @@ namespace Google.Apis.GoogleHealthAPI.v4
             /// Account.
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>See your Google Health activity and fitness data</summary>
+            public const string GooglehealthActivityAndFitnessReadonly = "https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly";
+
+            /// <summary>See your Google Health health metrics and measurement data</summary>
+            public const string GooglehealthHealthMetricsAndMeasurementsReadonly = "https://www.googleapis.com/auth/googlehealth.health_metrics_and_measurements.readonly";
+
+            /// <summary>See exercise GPS location data in Google Health</summary>
+            public const string GooglehealthLocationReadonly = "https://www.googleapis.com/auth/googlehealth.location.readonly";
+
+            /// <summary>See your Google Health profile data</summary>
+            public const string GooglehealthProfileReadonly = "https://www.googleapis.com/auth/googlehealth.profile.readonly";
+
+            /// <summary>See your Google Health settings</summary>
+            public const string GooglehealthSettingsReadonly = "https://www.googleapis.com/auth/googlehealth.settings.readonly";
+
+            /// <summary>See your Google Health sleep data</summary>
+            public const string GooglehealthSleepReadonly = "https://www.googleapis.com/auth/googlehealth.sleep.readonly";
         }
 
         /// <summary>Gets the Projects resource.</summary>
@@ -899,10 +935,14 @@ namespace Google.Apis.GoogleHealthAPI.v4
                 }
 
                 /// <summary>
-                /// Exports exercise data in TCX format. Note: While the Authorization section below states that any one
-                /// of the listed scopes is accepted, this specific method requires the user to provide both one of the
-                /// `activity_and_fitness` scopes (`normal` or `readonly`) AND one of the `location` scopes (`normal` or
-                /// `readonly`) in their access token to succeed.
+                /// Exports exercise data in TCX format. **IMPORTANT:** HTTP clients must append `?alt=media` to the
+                /// request URL to download the raw TCX file. Example:
+                /// `https://health.googleapis.com/v4/users/me/dataTypes/exercise/dataPoints/EXERCISE_ID:exportExerciseTcx?alt=media`
+                /// Without `alt=media`, the server returns a JSON response (`ExportExerciseTcxResponse`) which is
+                /// intended primarily for gRPC clients. **Note:** While the Authorization section below states that any
+                /// one of the listed scopes is accepted, this specific method requires the user to provide both one of
+                /// the `activity_and_fitness` scopes (`normal` or `readonly`) AND one of the `location` scopes
+                /// (`normal` or `readonly`) in their access token to succeed.
                 /// </summary>
                 /// <param name="name">
                 /// Required. The resource name of the exercise data point to export. Format:
@@ -917,10 +957,14 @@ namespace Google.Apis.GoogleHealthAPI.v4
                 }
 
                 /// <summary>
-                /// Exports exercise data in TCX format. Note: While the Authorization section below states that any one
-                /// of the listed scopes is accepted, this specific method requires the user to provide both one of the
-                /// `activity_and_fitness` scopes (`normal` or `readonly`) AND one of the `location` scopes (`normal` or
-                /// `readonly`) in their access token to succeed.
+                /// Exports exercise data in TCX format. **IMPORTANT:** HTTP clients must append `?alt=media` to the
+                /// request URL to download the raw TCX file. Example:
+                /// `https://health.googleapis.com/v4/users/me/dataTypes/exercise/dataPoints/EXERCISE_ID:exportExerciseTcx?alt=media`
+                /// Without `alt=media`, the server returns a JSON response (`ExportExerciseTcxResponse`) which is
+                /// intended primarily for gRPC clients. **Note:** While the Authorization section below states that any
+                /// one of the listed scopes is accepted, this specific method requires the user to provide both one of
+                /// the `activity_and_fitness` scopes (`normal` or `readonly`) AND one of the `location` scopes
+                /// (`normal` or `readonly`) in their access token to succeed.
                 /// </summary>
                 public class ExportExerciseTcxRequest : GoogleHealthAPIBaseServiceRequest<Google.Apis.GoogleHealthAPI.v4.Data.ExportExerciseTcxResponse>
                 {
@@ -1183,22 +1227,26 @@ namespace Google.Apis.GoogleHealthAPI.v4
                     /// date: - Pattern: `{daily_summary_data_type}.date` - Supported comparison operators: `&amp;gt;=`,
                     /// `&amp;lt;` - Date literal expected in ISO 8601 `YYYY-MM-DD` format - Supported logical
                     /// operators: `AND` - Example: - `daily_heart_rate_variability.date &amp;lt; "2024-08-15"` -
-                    /// Session civil start time (**Excluding Sleep**): - Pattern:
-                    /// `{session_data_type}.interval.civil_start_time` - Supported comparison operators: `&amp;gt;=`,
-                    /// `&amp;lt;` - Date with optional time literal expected in ISO 8601 `YYYY-MM-DD[THH:mm:ss]` format
-                    /// - Supported logical operators: `AND` - Example: - `exercise.interval.civil_start_time &amp;gt;=
-                    /// "2023-11-24" AND exercise.interval.civil_start_time &amp;lt; "2023-11-25"` -
-                    /// `exercise.interval.civil_start_time &amp;gt;= "2024-08-14T12:34:56"` - Session end time (**Sleep
-                    /// specific**): - Pattern: `sleep.interval.end_time` - Supported comparison operators: `&amp;gt;=`,
-                    /// `&amp;lt;` - Timestamp literal expected in RFC-3339 format - Supported logical operators: `AND`,
-                    /// `OR` - Example: - `sleep.interval.end_time &amp;gt;= "2023-11-24T00:00:00Z" AND
-                    /// sleep.interval.end_time &amp;lt; "2023-11-25T00:00:00Z"` - Session civil end time (**Sleep
-                    /// specific**): - Pattern: `sleep.interval.civil_end_time` - Supported comparison operators:
-                    /// `&amp;gt;=`, `&amp;lt;` - Date with optional time literal expected in ISO 8601
-                    /// `YYYY-MM-DD[THH:mm:ss]` format - Supported logical operators: `AND`, `OR` - Example: -
-                    /// `sleep.interval.civil_end_time &amp;gt;= "2023-11-24" AND sleep.interval.civil_end_time &amp;lt;
-                    /// "2023-11-25"` Data points in the response will be ordered by the interval start time in
-                    /// descending order.
+                    /// Session start time (**ECG specific**): - Pattern: `electrocardiogram.interval.start_time` -
+                    /// Supported comparison operators: `&amp;gt;=` - Timestamp literal expected in RFC-3339 format -
+                    /// Example: - `electrocardiogram.interval.start_time &amp;gt;= "2024-08-14T12:34:56Z"` - Note: Only
+                    /// filtering by start time is supported for ECG. Filtering by end time (e.g.,
+                    /// `electrocardiogram.interval.end_time`) is not supported. - Session civil start time (**Excluding
+                    /// Sleep**): - Pattern: `{session_data_type}.interval.civil_start_time` - Supported comparison
+                    /// operators: `&amp;gt;=`, `&amp;lt;` - Date with optional time literal expected in ISO 8601
+                    /// `YYYY-MM-DD[THH:mm:ss]` format - Supported logical operators: `AND` - Example: -
+                    /// `exercise.interval.civil_start_time &amp;gt;= "2023-11-24" AND
+                    /// exercise.interval.civil_start_time &amp;lt; "2023-11-25"` - `exercise.interval.civil_start_time
+                    /// &amp;gt;= "2024-08-14T12:34:56"` - Session end time (**Sleep specific**): - Pattern:
+                    /// `sleep.interval.end_time` - Supported comparison operators: `&amp;gt;=`, `&amp;lt;` - Timestamp
+                    /// literal expected in RFC-3339 format - Supported logical operators: `AND`, `OR` - Example: -
+                    /// `sleep.interval.end_time &amp;gt;= "2023-11-24T00:00:00Z" AND sleep.interval.end_time &amp;lt;
+                    /// "2023-11-25T00:00:00Z"` - Session civil end time (**Sleep specific**): - Pattern:
+                    /// `sleep.interval.civil_end_time` - Supported comparison operators: `&amp;gt;=`, `&amp;lt;` - Date
+                    /// with optional time literal expected in ISO 8601 `YYYY-MM-DD[THH:mm:ss]` format - Supported
+                    /// logical operators: `AND`, `OR` - Example: - `sleep.interval.civil_end_time &amp;gt;=
+                    /// "2023-11-24" AND sleep.interval.civil_end_time &amp;lt; "2023-11-25"` Data points in the
+                    /// response will be ordered by the interval start time in descending order.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -2354,7 +2402,11 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Value of a daily rollup for a single civil time interval (aggregation window)</summary>
+    /// <summary>
+    /// Value of a daily rollup for a single civil time interval (aggregation window) of reconciled data points from all
+    /// data sources, excluding those data points that are identified as recorded by wearables in intervals when they
+    /// were not actually worn.
+    /// </summary>
     public class DailyRollupDataPoint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3126,7 +3178,11 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     /// <summary>Represents a Response for exporting exercise data in TCX format.</summary>
     public class ExportExerciseTcxResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Contains the exported TCX data.</summary>
+        /// <summary>
+        /// Contains the exported TCX data. This field is intended for gRPC clients, as media download integration is
+        /// not supported for gRPC. HTTP clients should instead use the `alt=media` query parameter to download the raw
+        /// binary TCX file.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tcxData")]
         public virtual string TcxData { get; set; }
 
@@ -3256,7 +3312,7 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     {
         /// <summary>
         /// Optional. The root mean square of successive differences between normal heartbeats. This is a measure of
-        /// heart rate variability used by Fitbit.
+        /// heart rate variability used by Google Health.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootMeanSquareOfSuccessiveDifferencesMilliseconds")]
         public virtual System.Nullable<double> RootMeanSquareOfSuccessiveDifferencesMilliseconds { get; set; }
@@ -4313,7 +4369,11 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Value of a rollup for a single physical time interval (aggregation window)</summary>
+    /// <summary>
+    /// Value of a rollup for a single physical time interval (aggregation window) of reconciled data points from all
+    /// data sources, excluding those data points that are identified as recorded by wearables in intervals when they
+    /// were not actually worn.
+    /// </summary>
     public class RollupDataPoint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5417,8 +5477,8 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     public class SubscriberConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Supported data types are: "altitude", "distance", "floors", "sleep", "steps", "weight". Values
-        /// should be in kebab-case.
+        /// Required. See [Google Health API data types](https://developers.google.com/health/data-types) for the list
+        /// of supported data types. Values should be in kebab-case.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataTypes")]
         public virtual System.Collections.Generic.IList<string> DataTypes { get; set; }
@@ -5612,7 +5672,10 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("milliliters")]
         public virtual System.Nullable<double> Milliliters { get; set; }
 
-        /// <summary>Optional. Value representing the user provided unit.</summary>
+        /// <summary>
+        /// Optional. Value representing the user provided unit, used only for user-facing input and display purposes.
+        /// In the API format, all volume quantities are converted to milliliters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userProvidedUnit")]
         public virtual string UserProvidedUnit { get; set; }
 
