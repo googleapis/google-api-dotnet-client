@@ -6244,6 +6244,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("awsApplicationLoadBalancerDetails")]
         public virtual AwsApplicationLoadBalancerDetails AwsApplicationLoadBalancerDetails { get; set; }
 
+        /// <summary>Output only. Asset information specific for AwsAthenaWorkGroupDetails</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsAthenaWorkGroupDetails")]
+        public virtual AwsAthenaWorkGroupDetails AwsAthenaWorkGroupDetails { get; set; }
+
         /// <summary>Output only. Asset information specific for AwsAutoscalingGroupDetails</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsAutoscalingGroupDetails")]
         public virtual AwsAutoscalingGroupDetails AwsAutoscalingGroupDetails { get; set; }
@@ -6292,9 +6296,25 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("awsElbLoadBalancerDetails")]
         public virtual AwsElbLoadBalancerDetails AwsElbLoadBalancerDetails { get; set; }
 
+        /// <summary>Output only. Asset information specific for AwsEmrClusterDetails</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsEmrClusterDetails")]
+        public virtual AwsEmrClusterDetails AwsEmrClusterDetails { get; set; }
+
+        /// <summary>Output only. Asset information specific for AwsFirehoseDetails</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsFirehoseDetails")]
+        public virtual AwsFirehoseDetails AwsFirehoseDetails { get; set; }
+
+        /// <summary>Output only. Asset information specific for AwsGlueJobDetails</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsGlueJobDetails")]
+        public virtual AwsGlueJobDetails AwsGlueJobDetails { get; set; }
+
         /// <summary>Output only. Asset information specific for AWS Internet Gateways.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsInternetGatewayDetails")]
         public virtual AwsInternetGatewayDetails AwsInternetGatewayDetails { get; set; }
+
+        /// <summary>Output only. Asset information specific for AwsKinesisStreamDetails</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsKinesisStreamDetails")]
+        public virtual AwsKinesisStreamDetails AwsKinesisStreamDetails { get; set; }
 
         /// <summary>Output only. Asset information specific for AWS Lambda functions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsLambdaFunctionDetails")]
@@ -6514,6 +6534,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("awsApplicationLoadBalancerDetails")]
         public virtual AwsApplicationLoadBalancerDetails AwsApplicationLoadBalancerDetails { get; set; }
 
+        /// <summary>Optional. Asset information specific for AwsAthenaWorkGroupDetails</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsAthenaWorkGroupDetails")]
+        public virtual AwsAthenaWorkGroupDetails AwsAthenaWorkGroupDetails { get; set; }
+
         /// <summary>Optional. Asset information specific for AwsAutoscalingGroupDetails</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsAutoscalingGroupDetails")]
         public virtual AwsAutoscalingGroupDetails AwsAutoscalingGroupDetails { get; set; }
@@ -6562,9 +6586,25 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("awsElbLoadBalancerDetails")]
         public virtual AwsElbLoadBalancerDetails AwsElbLoadBalancerDetails { get; set; }
 
+        /// <summary>Optional. Asset information specific for AwsEmrClusterDetails</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsEmrClusterDetails")]
+        public virtual AwsEmrClusterDetails AwsEmrClusterDetails { get; set; }
+
+        /// <summary>Optional. Asset information specific for AwsFirehoseDetails</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsFirehoseDetails")]
+        public virtual AwsFirehoseDetails AwsFirehoseDetails { get; set; }
+
+        /// <summary>Optional. Asset information specific for AwsGlueJobDetails</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsGlueJobDetails")]
+        public virtual AwsGlueJobDetails AwsGlueJobDetails { get; set; }
+
         /// <summary>Optional. Asset information specific for AWS Internet Gateways.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsInternetGatewayDetails")]
         public virtual AwsInternetGatewayDetails AwsInternetGatewayDetails { get; set; }
+
+        /// <summary>Optional. Asset information specific for AwsKinesisStreamDetails</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsKinesisStreamDetails")]
+        public virtual AwsKinesisStreamDetails AwsKinesisStreamDetails { get; set; }
 
         /// <summary>Asset information specific for AWS Lambda functions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsLambdaFunctionDetails")]
@@ -7042,6 +7082,13 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains details for an AWS Athena Work Group asset.</summary>
+    public class AwsAthenaWorkGroupDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Asset information specific for AWS Autoscaling Group.</summary>
     public class AwsAutoscalingGroupDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7145,8 +7192,36 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains details for an AWS EMR Cluster asset.</summary>
+    public class AwsEmrClusterDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains details for an AWS Firehose asset.</summary>
+    public class AwsFirehoseDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains details for an AWS Glue Job asset.</summary>
+    public class AwsGlueJobDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Asset information specific for AWS Internet Gateways.</summary>
     public class AwsInternetGatewayDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains details for an AWS Kinesis Stream asset.</summary>
+    public class AwsKinesisStreamDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
