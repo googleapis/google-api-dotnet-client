@@ -2484,7 +2484,7 @@ namespace Google.Apis.NetAppFiles.v1
                 /// <summary>Updates the Kms config properties with the full spec</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Identifier. Name of the KmsConfig. Format:
+                /// Identifier. Name of the `KmsConfig`. Format:
                 /// `projects/{project}/locations/{location}/kmsConfigs/{kms_config}`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetAppFiles.v1.Data.KmsConfig body, string name)
@@ -2504,7 +2504,7 @@ namespace Google.Apis.NetAppFiles.v1
                     }
 
                     /// <summary>
-                    /// Identifier. Name of the KmsConfig. Format:
+                    /// Identifier. Name of the `KmsConfig`. Format:
                     /// `projects/{project}/locations/{location}/kmsConfigs/{kms_config}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2942,7 +2942,7 @@ namespace Google.Apis.NetAppFiles.v1
                     }
 
                     /// <summary>
-                    /// `ExecuteOntapDelete` dispatches the ONTAP `DELETE` request to the `StoragePool` cluster.
+                    /// `ExecuteOntapDelete` sends the ONTAP `DELETE` request to the `StoragePool` cluster.
                     /// </summary>
                     /// <param name="ontapPath">
                     /// Required. The resource path of the ONTAP resource. Format:
@@ -2956,7 +2956,7 @@ namespace Google.Apis.NetAppFiles.v1
                     }
 
                     /// <summary>
-                    /// `ExecuteOntapDelete` dispatches the ONTAP `DELETE` request to the `StoragePool` cluster.
+                    /// `ExecuteOntapDelete` sends the ONTAP `DELETE` request to the `StoragePool` cluster.
                     /// </summary>
                     public class ExecuteOntapDeleteRequest : NetAppFilesBaseServiceRequest<Google.Apis.NetAppFiles.v1.Data.ExecuteOntapDeleteResponse>
                     {
@@ -3000,9 +3000,7 @@ namespace Google.Apis.NetAppFiles.v1
                         }
                     }
 
-                    /// <summary>
-                    /// `ExecuteOntapGet` dispatches the ONTAP `GET` request to the `StoragePool` cluster.
-                    /// </summary>
+                    /// <summary>`ExecuteOntapGet` sends the ONTAP `GET` request to the `StoragePool` cluster.</summary>
                     /// <param name="ontapPath">
                     /// Required. The resource path of the ONTAP resource. Format:
                     /// `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`.
@@ -3014,9 +3012,7 @@ namespace Google.Apis.NetAppFiles.v1
                         return new ExecuteOntapGetRequest(this.service, ontapPath);
                     }
 
-                    /// <summary>
-                    /// `ExecuteOntapGet` dispatches the ONTAP `GET` request to the `StoragePool` cluster.
-                    /// </summary>
+                    /// <summary>`ExecuteOntapGet` sends the ONTAP `GET` request to the `StoragePool` cluster.</summary>
                     public class ExecuteOntapGetRequest : NetAppFilesBaseServiceRequest<Google.Apis.NetAppFiles.v1.Data.ExecuteOntapGetResponse>
                     {
                         /// <summary>Constructs a new ExecuteOntapGet request.</summary>
@@ -3060,7 +3056,7 @@ namespace Google.Apis.NetAppFiles.v1
                     }
 
                     /// <summary>
-                    /// `ExecuteOntapPatch` dispatches the ONTAP `PATCH` request to the `StoragePool` cluster.
+                    /// `ExecuteOntapPatch` sends the ONTAP `PATCH` request to the `StoragePool` cluster.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="ontapPath">
@@ -3075,7 +3071,7 @@ namespace Google.Apis.NetAppFiles.v1
                     }
 
                     /// <summary>
-                    /// `ExecuteOntapPatch` dispatches the ONTAP `PATCH` request to the `StoragePool` cluster.
+                    /// `ExecuteOntapPatch` sends the ONTAP `PATCH` request to the `StoragePool` cluster.
                     /// </summary>
                     public class ExecuteOntapPatchRequest : NetAppFilesBaseServiceRequest<Google.Apis.NetAppFiles.v1.Data.ExecuteOntapPatchResponse>
                     {
@@ -3127,11 +3123,11 @@ namespace Google.Apis.NetAppFiles.v1
                     }
 
                     /// <summary>
-                    /// `ExecuteOntapPost` dispatches the ONTAP `POST` request to the `StoragePool` cluster.
+                    /// `ExecuteOntapPost` sends the ONTAP `POST` request to the `StoragePool` cluster.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="ontapPath">
-                    /// Required. The resource path of the ONTAP resource. Format:
+                    /// Required. The path of the ONTAP resource. Format:
                     /// `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`.
                     /// For example:
                     /// `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`.
@@ -3142,7 +3138,7 @@ namespace Google.Apis.NetAppFiles.v1
                     }
 
                     /// <summary>
-                    /// `ExecuteOntapPost` dispatches the ONTAP `POST` request to the `StoragePool` cluster.
+                    /// `ExecuteOntapPost` sends the ONTAP `POST` request to the `StoragePool` cluster.
                     /// </summary>
                     public class ExecuteOntapPostRequest : NetAppFilesBaseServiceRequest<Google.Apis.NetAppFiles.v1.Data.ExecuteOntapPostResponse>
                     {
@@ -3155,7 +3151,7 @@ namespace Google.Apis.NetAppFiles.v1
                         }
 
                         /// <summary>
-                        /// Required. The resource path of the ONTAP resource. Format:
+                        /// Required. The path of the ONTAP resource. Format:
                         /// `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`.
                         /// For example:
                         /// `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`.
@@ -6018,8 +6014,8 @@ namespace Google.Apis.NetAppFiles.v1.Data
         public virtual string SourceSnapshot { get; set; }
 
         /// <summary>
-        /// Volume full name of this backup belongs to. Either source_volume or ontap_source should be provided. Format:
-        /// `projects/{projects_id}/locations/{location}/volumes/{volume_id}`
+        /// The resource name of the volume that this backup belongs to. You must provide either `source_volume` or
+        /// `ontap_source`. Format: `projects/{project_id}/locations/{location}/volumes/{volume_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceVolume")]
         public virtual string SourceVolume { get; set; }
@@ -6649,7 +6645,7 @@ namespace Google.Apis.NetAppFiles.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("peerClusterName")]
         public virtual string PeerClusterName { get; set; }
 
-        /// <summary>Optional. List of IPv4 ip addresses to be used for peering.</summary>
+        /// <summary>Optional. List of IPv4 IP addresses to be used for peering.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerIpAddresses")]
         public virtual System.Collections.Generic.IList<string> PeerIpAddresses { get; set; }
 
@@ -7063,7 +7059,8 @@ namespace Google.Apis.NetAppFiles.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Identifier. Name of the KmsConfig. Format: `projects/{project}/locations/{location}/kmsConfigs/{kms_config}`
+        /// Identifier. Name of the `KmsConfig`. Format:
+        /// `projects/{project}/locations/{location}/kmsConfigs/{kms_config}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7088,7 +7085,7 @@ namespace Google.Apis.NetAppFiles.v1.Data
 
     /// <summary>
     /// Configuration for a Large Capacity Volume. A Large Capacity Volume supports sizes ranging from 4.8 TiB to 20
-    /// PiB, it is composed of multiple internal constituents, and must be created in a large capacity pool.
+    /// PiB; it is composed of multiple internal constituents, and must be created in a large capacity pool.
     /// </summary>
     public class LargeCapacityConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7867,7 +7864,7 @@ namespace Google.Apis.NetAppFiles.v1.Data
     {
         /// <summary>
         /// Full name of the backup resource. Format for standard backup:
-        /// projects/{project}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id} Format for
+        /// projects/{project}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id}. Format for
         /// BackupDR backup:
         /// projects/{project}/locations/{location}/backupVaults/{backup_vault}/dataSources/{data_source}/backups/{backup}
         /// </summary>
@@ -8269,7 +8266,7 @@ namespace Google.Apis.NetAppFiles.v1.Data
         public virtual System.Nullable<bool> LdapEnabled { get; set; }
 
         /// <summary>
-        /// Optional. Mode of the storage pool. This field is used to control whether the user can perform the ONTAP
+        /// Optional. Mode of the storage pool. This field is used to control whether the user can perform ONTAP
         /// operations on the storage pool using the GCNV ONTAP Mode APIs. If not specified during creation, it defaults
         /// to `DEFAULT`.
         /// </summary>
