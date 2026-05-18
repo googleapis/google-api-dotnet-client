@@ -2484,7 +2484,7 @@ namespace Google.Apis.NetAppFiles.v1beta1
                 /// <summary>Updates the Kms config properties with the full spec</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Identifier. Name of the KmsConfig. Format:
+                /// Identifier. Name of the `KmsConfig`. Format:
                 /// `projects/{project}/locations/{location}/kmsConfigs/{kms_config}`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetAppFiles.v1beta1.Data.KmsConfig body, string name)
@@ -2504,7 +2504,7 @@ namespace Google.Apis.NetAppFiles.v1beta1
                     }
 
                     /// <summary>
-                    /// Identifier. Name of the KmsConfig. Format:
+                    /// Identifier. Name of the `KmsConfig`. Format:
                     /// `projects/{project}/locations/{location}/kmsConfigs/{kms_config}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2921,7 +2921,132 @@ namespace Google.Apis.NetAppFiles.v1beta1
                 public StoragePoolsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    BackupConfigs = new BackupConfigsResource(service);
                     Ontap = new OntapResource(service);
+                }
+
+                /// <summary>Gets the BackupConfigs resource.</summary>
+                public virtual BackupConfigsResource BackupConfigs { get; }
+
+                /// <summary>The "backupConfigs" collection of methods.</summary>
+                public class BackupConfigsResource
+                {
+                    private const string Resource = "backupConfigs";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public BackupConfigsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Lists backup configurations for all volumes in an ONTAP-mode Storage Pool.</summary>
+                    /// <param name="parent">
+                    /// Required. The ONTAP StoragePool for which to retrieve backup configuration information, in the
+                    /// format `projects/{project}/locations/{location}/storagePools/{storage_pool}`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists backup configurations for all volumes in an ONTAP-mode Storage Pool.</summary>
+                    public class ListRequest : NetAppFilesBaseServiceRequest<Google.Apis.NetAppFiles.v1beta1.Data.ListBackupConfigsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The ONTAP StoragePool for which to retrieve backup configuration information, in
+                        /// the format `projects/{project}/locations/{location}/storagePools/{storage_pool}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. The standard list filter.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Optional. Sort results. Supported values are "volume_id" or ""</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of items to return. The service may return fewer than this
+                        /// value. The maximum value is 1000; values above 1000 will be coerced to 1000. If unspecified
+                        /// or set to 0, a default of 50 will be used.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. The next_page_token value to use if there are additional results to retrieve for
+                        /// this list request.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/backupConfigs";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/storagePools/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the Ontap resource.</summary>
@@ -2942,7 +3067,7 @@ namespace Google.Apis.NetAppFiles.v1beta1
                     }
 
                     /// <summary>
-                    /// `ExecuteOntapDelete` dispatches the ONTAP `DELETE` request to the `StoragePool` cluster.
+                    /// `ExecuteOntapDelete` sends the ONTAP `DELETE` request to the `StoragePool` cluster.
                     /// </summary>
                     /// <param name="ontapPath">
                     /// Required. The resource path of the ONTAP resource. Format:
@@ -2956,7 +3081,7 @@ namespace Google.Apis.NetAppFiles.v1beta1
                     }
 
                     /// <summary>
-                    /// `ExecuteOntapDelete` dispatches the ONTAP `DELETE` request to the `StoragePool` cluster.
+                    /// `ExecuteOntapDelete` sends the ONTAP `DELETE` request to the `StoragePool` cluster.
                     /// </summary>
                     public class ExecuteOntapDeleteRequest : NetAppFilesBaseServiceRequest<Google.Apis.NetAppFiles.v1beta1.Data.ExecuteOntapDeleteResponse>
                     {
@@ -3000,9 +3125,7 @@ namespace Google.Apis.NetAppFiles.v1beta1
                         }
                     }
 
-                    /// <summary>
-                    /// `ExecuteOntapGet` dispatches the ONTAP `GET` request to the `StoragePool` cluster.
-                    /// </summary>
+                    /// <summary>`ExecuteOntapGet` sends the ONTAP `GET` request to the `StoragePool` cluster.</summary>
                     /// <param name="ontapPath">
                     /// Required. The resource path of the ONTAP resource. Format:
                     /// `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`.
@@ -3014,9 +3137,7 @@ namespace Google.Apis.NetAppFiles.v1beta1
                         return new ExecuteOntapGetRequest(this.service, ontapPath);
                     }
 
-                    /// <summary>
-                    /// `ExecuteOntapGet` dispatches the ONTAP `GET` request to the `StoragePool` cluster.
-                    /// </summary>
+                    /// <summary>`ExecuteOntapGet` sends the ONTAP `GET` request to the `StoragePool` cluster.</summary>
                     public class ExecuteOntapGetRequest : NetAppFilesBaseServiceRequest<Google.Apis.NetAppFiles.v1beta1.Data.ExecuteOntapGetResponse>
                     {
                         /// <summary>Constructs a new ExecuteOntapGet request.</summary>
@@ -3060,7 +3181,7 @@ namespace Google.Apis.NetAppFiles.v1beta1
                     }
 
                     /// <summary>
-                    /// `ExecuteOntapPatch` dispatches the ONTAP `PATCH` request to the `StoragePool` cluster.
+                    /// `ExecuteOntapPatch` sends the ONTAP `PATCH` request to the `StoragePool` cluster.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="ontapPath">
@@ -3075,7 +3196,7 @@ namespace Google.Apis.NetAppFiles.v1beta1
                     }
 
                     /// <summary>
-                    /// `ExecuteOntapPatch` dispatches the ONTAP `PATCH` request to the `StoragePool` cluster.
+                    /// `ExecuteOntapPatch` sends the ONTAP `PATCH` request to the `StoragePool` cluster.
                     /// </summary>
                     public class ExecuteOntapPatchRequest : NetAppFilesBaseServiceRequest<Google.Apis.NetAppFiles.v1beta1.Data.ExecuteOntapPatchResponse>
                     {
@@ -3127,11 +3248,11 @@ namespace Google.Apis.NetAppFiles.v1beta1
                     }
 
                     /// <summary>
-                    /// `ExecuteOntapPost` dispatches the ONTAP `POST` request to the `StoragePool` cluster.
+                    /// `ExecuteOntapPost` sends the ONTAP `POST` request to the `StoragePool` cluster.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="ontapPath">
-                    /// Required. The resource path of the ONTAP resource. Format:
+                    /// Required. The path of the ONTAP resource. Format:
                     /// `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`.
                     /// For example:
                     /// `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`.
@@ -3142,7 +3263,7 @@ namespace Google.Apis.NetAppFiles.v1beta1
                     }
 
                     /// <summary>
-                    /// `ExecuteOntapPost` dispatches the ONTAP `POST` request to the `StoragePool` cluster.
+                    /// `ExecuteOntapPost` sends the ONTAP `POST` request to the `StoragePool` cluster.
                     /// </summary>
                     public class ExecuteOntapPostRequest : NetAppFilesBaseServiceRequest<Google.Apis.NetAppFiles.v1beta1.Data.ExecuteOntapPostResponse>
                     {
@@ -3155,7 +3276,7 @@ namespace Google.Apis.NetAppFiles.v1beta1
                         }
 
                         /// <summary>
-                        /// Required. The resource path of the ONTAP resource. Format:
+                        /// Required. The path of the ONTAP resource. Format:
                         /// `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`.
                         /// For example:
                         /// `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`.
@@ -3521,6 +3642,65 @@ namespace Google.Apis.NetAppFiles.v1beta1
                     }
                 }
 
+                /// <summary>Restores a backup to an ONTAP-mode volume.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the ONTAP mode storage pool, in the format of
+                /// `projects/{project}/locations/{location}/storagePools/{storage_pool}`
+                /// </param>
+                public virtual RestoreVolumeRequest RestoreVolume(Google.Apis.NetAppFiles.v1beta1.Data.RestoreVolumeRequest body, string name)
+                {
+                    return new RestoreVolumeRequest(this.service, body, name);
+                }
+
+                /// <summary>Restores a backup to an ONTAP-mode volume.</summary>
+                public class RestoreVolumeRequest : NetAppFilesBaseServiceRequest<Google.Apis.NetAppFiles.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new RestoreVolume request.</summary>
+                    public RestoreVolumeRequest(Google.Apis.Services.IClientService service, Google.Apis.NetAppFiles.v1beta1.Data.RestoreVolumeRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the ONTAP mode storage pool, in the format of
+                    /// `projects/{project}/locations/{location}/storagePools/{storage_pool}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetAppFiles.v1beta1.Data.RestoreVolumeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "restoreVolume";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:restoreVolume";
+
+                    /// <summary>Initializes RestoreVolume parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/storagePools/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>This operation will switch the active/replica zone for a regional storagePool.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. Name of the storage pool</param>
@@ -3560,6 +3740,65 @@ namespace Google.Apis.NetAppFiles.v1beta1
                     public override string RestPath => "v1beta1/{+name}:switch";
 
                     /// <summary>Initializes NetAppFilesSwitch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/storagePools/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Updates the backup configuration for an ONTAP-mode volume.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the StoragePool, in the format:
+                /// projects/{projectNumber}/locations/{locationId}/storagePools/{poolId}
+                /// </param>
+                public virtual UpdateBackupConfigRequest UpdateBackupConfig(Google.Apis.NetAppFiles.v1beta1.Data.UpdateBackupConfigRequest body, string name)
+                {
+                    return new UpdateBackupConfigRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the backup configuration for an ONTAP-mode volume.</summary>
+                public class UpdateBackupConfigRequest : NetAppFilesBaseServiceRequest<Google.Apis.NetAppFiles.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new UpdateBackupConfig request.</summary>
+                    public UpdateBackupConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.NetAppFiles.v1beta1.Data.UpdateBackupConfigRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the StoragePool, in the format:
+                    /// projects/{projectNumber}/locations/{locationId}/storagePools/{poolId}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetAppFiles.v1beta1.Data.UpdateBackupConfigRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateBackupConfig";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:updateBackupConfig";
+
+                    /// <summary>Initializes UpdateBackupConfig parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -6001,6 +6240,13 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Optional. Represents source details for ONTAP backups. Either source_volume or ontap_source should be
+        /// provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ontapSource")]
+        public virtual OntapSource OntapSource { get; set; }
+
         /// <summary>Output only. Reserved for future use</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
         public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
@@ -6018,8 +6264,8 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         public virtual string SourceSnapshot { get; set; }
 
         /// <summary>
-        /// Volume full name of this backup belongs to. Either source_volume or ontap_source should be provided. Format:
-        /// `projects/{projects_id}/locations/{location}/volumes/{volume_id}`
+        /// The resource name of the volume that this backup belongs to. You must provide either `source_volume` or
+        /// `ontap_source`. Format: `projects/{project_id}/locations/{location}/volumes/{volume_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceVolume")]
         public virtual string SourceVolume { get; set; }
@@ -6206,6 +6452,24 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weeklyBackupImmutable")]
         public virtual System.Nullable<bool> WeeklyBackupImmutable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the backup source of the restore operation.</summary>
+    public class BackupSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The backup resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backup")]
+        public virtual string Backup { get; set; }
+
+        /// <summary>
+        /// Optional. List of files to be restored in the form of their absolute path as in source volume. If provided,
+        /// only these files will be restored. If not provided, the entire backup will be restored (Full Backup Restore)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileList")]
+        public virtual System.Collections.Generic.IList<string> FileList { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6653,7 +6917,7 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("peerClusterName")]
         public virtual string PeerClusterName { get; set; }
 
-        /// <summary>Optional. List of IPv4 ip addresses to be used for peering.</summary>
+        /// <summary>Optional. List of IPv4 IP addresses to be used for peering.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerIpAddresses")]
         public virtual System.Collections.Generic.IList<string> PeerIpAddresses { get; set; }
 
@@ -7067,7 +7331,8 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Identifier. Name of the KmsConfig. Format: `projects/{project}/locations/{location}/kmsConfigs/{kms_config}`
+        /// Identifier. Name of the `KmsConfig`. Format:
+        /// `projects/{project}/locations/{location}/kmsConfigs/{kms_config}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7092,7 +7357,7 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
 
     /// <summary>
     /// Configuration for a Large Capacity Volume. A Large Capacity Volume supports sizes ranging from 4.8 TiB to 20
-    /// PiB, it is composed of multiple internal constituents, and must be created in a large capacity pool.
+    /// PiB; it is composed of multiple internal constituents, and must be created in a large capacity pool.
     /// </summary>
     public class LargeCapacityConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7121,6 +7386,28 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         /// <summary>Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing BackupConfigs in an ONTAP StoragePool.</summary>
+    public class ListBackupConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The token you can use to retrieve the next page of results. Not returned if there are no more results in the
+        /// list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>A list of backup configurations for volumes in the pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeBackupConfigs")]
+        public virtual System.Collections.Generic.IList<VolumeBackupConfig> VolumeBackupConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7471,6 +7758,43 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         /// <summary>Protocol to mount with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents ONTAP source details.</summary>
+    public class OntapSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The UUID of the ONTAP source snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotUuid")]
+        public virtual string SnapshotUuid { get; set; }
+
+        /// <summary>
+        /// Required. Name of the storage pool. This must be specified for creating backups for ONTAP mode volumes.
+        /// Format: `projects/{projects_id}/locations/{location}/storagePools/{storage_pool_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storagePool")]
+        public virtual string StoragePool { get; set; }
+
+        /// <summary>Required. The UUID of the ONTAP source volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeUuid")]
+        public virtual string VolumeUuid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the ONTAP volume target of the restore operation.</summary>
+    public class OntapVolumeTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Absolute directory path in the destination volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restoreDestinationPath")]
+        public virtual string RestoreDestinationPath { get; set; }
+
+        /// <summary>Required. The UUID of the ONTAP volume to restore to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeUuid")]
+        public virtual string VolumeUuid { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7871,7 +8195,7 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
     {
         /// <summary>
         /// Full name of the backup resource. Format for standard backup:
-        /// projects/{project}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id} Format for
+        /// projects/{project}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id}. Format for
         /// BackupDR backup:
         /// projects/{project}/locations/{location}/backupVaults/{backup_vault}/dataSources/{data_source}/backups/{backup}
         /// </summary>
@@ -7884,6 +8208,21 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshot")]
         public virtual string SourceSnapshot { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for `RestoreVolume` API.</summary>
+    public class RestoreVolumeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The backup source of the restore operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupSource")]
+        public virtual BackupSource BackupSource { get; set; }
+
+        /// <summary>The ONTAP volume target of the restore operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ontapVolumeTarget")]
+        public virtual OntapVolumeTarget OntapVolumeTarget { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8273,7 +8612,7 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         public virtual System.Nullable<bool> LdapEnabled { get; set; }
 
         /// <summary>
-        /// Optional. Mode of the storage pool. This field is used to control whether the user can perform the ONTAP
+        /// Optional. Mode of the storage pool. This field is used to control whether the user can perform ONTAP
         /// operations on the storage pool using the GCNV ONTAP Mode APIs. If not specified during creation, it defaults
         /// to `DEFAULT`.
         /// </summary>
@@ -8514,6 +8853,29 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for UpdateBackupConfig</summary>
+    public class UpdateBackupConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Backup configuration to apply.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupConfig")]
+        public virtual BackupConfig BackupConfig { get; set; }
+
+        /// <summary>
+        /// Required. Field mask is used to specify the fields to be overwritten in the BackupConfig for the Volume. The
+        /// fields specified in the update_mask are relative to the resource, not the full request. A field will be
+        /// overwritten if it is in the mask.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
+        /// <summary>Required. The UUID of the ONTAP-mode volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeUuid")]
+        public virtual string VolumeUuid { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8815,6 +9177,21 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         /// <summary>Output only. Specifies the active zone for regional volume.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Backup configuration for a volume in a pool.</summary>
+    public class VolumeBackupConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Backup configuration for the volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupConfig")]
+        public virtual BackupConfig BackupConfig { get; set; }
+
+        /// <summary>Provides the Ontap UUID of the volume within the pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeUuid")]
+        public virtual string VolumeUuid { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
