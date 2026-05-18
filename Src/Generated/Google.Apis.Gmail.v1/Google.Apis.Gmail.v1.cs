@@ -2107,7 +2107,14 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Modifies the labels on the specified messages.</summary>
+            /// <summary>
+            /// Modifies the labels and the Classification Label values on the specified messages. For administrators
+            /// modifying messages for users in their organization, requests require authorization with a [service
+            /// account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide
+            /// delegation
+            /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to
+            /// impersonate users with the `https://www.googleapis.com/auth/gmail.modify.restricted` scope.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">
             /// The user's email address. The special value `me` can be used to indicate the authenticated user.
@@ -2117,7 +2124,14 @@ namespace Google.Apis.Gmail.v1
                 return new BatchModifyRequest(this.service, body, userId);
             }
 
-            /// <summary>Modifies the labels on the specified messages.</summary>
+            /// <summary>
+            /// Modifies the labels and the Classification Label values on the specified messages. For administrators
+            /// modifying messages for users in their organization, requests require authorization with a [service
+            /// account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide
+            /// delegation
+            /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to
+            /// impersonate users with the `https://www.googleapis.com/auth/gmail.modify.restricted` scope.
+            /// </summary>
             public class BatchModifyRequest : GmailBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new BatchModify request.</summary>
@@ -3084,7 +3098,14 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Modifies the labels on the specified message.</summary>
+            /// <summary>
+            /// Modifies the labels and the Classification Label values on the specified message. For administrators
+            /// modifying message for users in their organization, requests require authorization with a [service
+            /// account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide
+            /// delegation
+            /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to
+            /// impersonate users with the `https://www.googleapis.com/auth/gmail.modify.restricted` scope.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">
             /// The user's email address. The special value `me` can be used to indicate the authenticated user.
@@ -3095,7 +3116,14 @@ namespace Google.Apis.Gmail.v1
                 return new ModifyRequest(this.service, body, userId, id);
             }
 
-            /// <summary>Modifies the labels on the specified message.</summary>
+            /// <summary>
+            /// Modifies the labels and the Classification Label values on the specified message. For administrators
+            /// modifying message for users in their organization, requests require authorization with a [service
+            /// account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide
+            /// delegation
+            /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to
+            /// impersonate users with the `https://www.googleapis.com/auth/gmail.modify.restricted` scope.
+            /// </summary>
             public class ModifyRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Message>
             {
                 /// <summary>Constructs a new Modify request.</summary>
@@ -7780,6 +7808,16 @@ namespace Google.Apis.Gmail.v1.Data
 
     public class BatchModifyMessagesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// A list of Classification Label values to add. If a Classification Label with the same label ID is already
+        /// applied to the message, fields with existing field IDs will be updated and fields with new field IDs will be
+        /// added. There's a limit of 20 Classification Label values per request. If the message is already classified
+        /// and the final total number of Classification Label values exceeds the maximum allowed number of
+        /// Classification Label values per message, the modification fails.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addClassificationLabels")]
+        public virtual System.Collections.Generic.IList<ClassificationLabelValue> AddClassificationLabels { get; set; }
+
         /// <summary>A list of label IDs to add to messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addLabelIds")]
         public virtual System.Collections.Generic.IList<string> AddLabelIds { get; set; }
@@ -7787,6 +7825,10 @@ namespace Google.Apis.Gmail.v1.Data
         /// <summary>The IDs of the messages to modify. There is a limit of 1000 ids per request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ids")]
         public virtual System.Collections.Generic.IList<string> Ids { get; set; }
+
+        /// <summary>A list of Classification Label values to remove from messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removeClassificationLabelIds")]
+        public virtual System.Collections.Generic.IList<string> RemoveClassificationLabelIds { get; set; }
 
         /// <summary>A list of label IDs to remove from messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removeLabelIds")]
@@ -8616,7 +8658,9 @@ namespace Google.Apis.Gmail.v1.Data
         /// <summary>
         /// Classification Label values on the message. Available Classification Label schemas can be queried using the
         /// Google Drive Labels API. Each classification label ID must be unique. If duplicate IDs are provided, only
-        /// one will be retained, and the selection is arbitrary. Only used for Google Workspace accounts.
+        /// one will be retained, and the selection is arbitrary. Only used for Google Workspace accounts. There's a
+        /// limit of 20 Classification Label values per request. If the Classification Label values exceeds the maximum
+        /// allowed number, the request fails.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("classificationLabelValues")]
         public virtual System.Collections.Generic.IList<ClassificationLabelValue> ClassificationLabelValues { get; set; }
@@ -8758,10 +8802,24 @@ namespace Google.Apis.Gmail.v1.Data
     public class ModifyMessageRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// A list of classification label values to add. If a Classification Label with the same label ID is already
+        /// applied to the message, fields with existing field IDs will be updated and fields with new field IDs will be
+        /// added. There's a limit of 20 Classification Label values per request. If the message is already classified
+        /// and the final total number of Classification Label values exceeds the maximum allowed number of
+        /// Classification Label values per message, the modification fails.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addClassificationLabels")]
+        public virtual System.Collections.Generic.IList<ClassificationLabelValue> AddClassificationLabels { get; set; }
+
+        /// <summary>
         /// A list of IDs of labels to add to this message. You can add up to 100 labels with each update.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addLabelIds")]
         public virtual System.Collections.Generic.IList<string> AddLabelIds { get; set; }
+
+        /// <summary>A list of Classification Label values to remove from this message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removeClassificationLabelIds")]
+        public virtual System.Collections.Generic.IList<string> RemoveClassificationLabelIds { get; set; }
 
         /// <summary>
         /// A list IDs of labels to remove from this message. You can remove up to 100 labels with each update.
