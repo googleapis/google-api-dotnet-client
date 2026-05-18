@@ -9176,7 +9176,7 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pullTiming")]
         public virtual GoogleDevtoolsCloudbuildV1TimeSpan PullTiming { get; set; }
 
-        /// <summary>Output only. Declaration of results for this build step.</summary>
+        /// <summary>Declaration of results for this build step.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1StepResult> Results { get; set; }
 
@@ -11135,12 +11135,12 @@ namespace Google.Apis.CloudRun.v1.Data
         /// `run.googleapis.com/build-image-uri`: Service. * `run.googleapis.com/build-name`: Service. *
         /// `run.googleapis.com/build-service-account`: Service. * `run.googleapis.com/build-source-location`: Service,
         /// Revision. * `run.googleapis.com/build-worker-pool`: Service. * `run.googleapis.com/client-name`: All
-        /// resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. *
+        /// resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution . *
         /// `run.googleapis.com/container-dependencies`: Revision . * `run.googleapis.com/cpu-throttling`: Revision. *
         /// `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/default-url-disabled`: Service. *
         /// `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision *
-        /// `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`:
-        /// Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. *
+        /// `run.googleapis.com/encryption-key`: Revision, Execution . * `run.googleapis.com/execution-environment`:
+        /// Revision, Execution . * `run.googleapis.com/gc-traffic-tags`: Service. *
         /// `run.googleapis.com/gpu-zonal-redundancy-disabled`: Revision. * `run.googleapis.com/health-check-disabled`:
         /// Revision. * `run.googleapis.com/ingress`: Service, Instance. * `run.googleapis.com/invoker-iam-disabled`:
         /// Service, Instance. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/minScale`:
@@ -11149,7 +11149,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// `run.googleapis.com/post-key-revocation-action-type`: Revision. `run.googleapis.com/scalingMode`: Service. *
         /// `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. *
         /// `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. *
-        /// `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`:
+        /// `run.googleapis.com/vpc-access-connector`: Revision, Execution . * `run.googleapis.com/vpc-access-egress`:
         /// Revision, Execution.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
