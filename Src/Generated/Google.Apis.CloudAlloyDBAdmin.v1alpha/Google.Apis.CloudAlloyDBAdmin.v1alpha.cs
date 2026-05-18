@@ -5608,6 +5608,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
     /// <summary>Configuration for Managed Connection Pool (MCP).</summary>
     public class ConnectionPoolConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The number of running AuthProxy poolers per instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authproxyPoolerCount")]
+        public virtual System.Nullable<int> AuthproxyPoolerCount { get; set; }
+
         /// <summary>Optional. Whether to enable Managed Connection Pool (MCP).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
