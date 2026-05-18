@@ -7181,8 +7181,8 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string BackupVaultServiceAccount { get; set; }
 
         /// <summary>
-        /// Optional. Defines optional properties specific to backups of disk-based resources, such as Compute Engine.
-        /// This includes settings like whether to perform a guest flush.
+        /// Optional. Defines optional properties specific to backups of compute instance-based resources, such as
+        /// Compute Engine. This includes settings like whether to perform a guest flush.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeInstanceBackupPlanProperties")]
         public virtual ComputeInstanceBackupPlanProperties ComputeInstanceBackupPlanProperties { get; set; }
@@ -8182,7 +8182,7 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>--- ComputeInstanceBackupPlanProperties Message ---</summary>
+    /// <summary>Properties for a compute instance backup plan.</summary>
     public class ComputeInstanceBackupPlanProperties : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -8929,7 +8929,7 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>--- DiskBackupPlanProperties Message ---</summary>
+    /// <summary>Properties for a disk backup plan.</summary>
     public class DiskBackupPlanProperties : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
