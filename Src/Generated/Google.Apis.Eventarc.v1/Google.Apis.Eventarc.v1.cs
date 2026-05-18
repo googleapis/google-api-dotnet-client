@@ -2155,15 +2155,15 @@ namespace Google.Apis.Eventarc.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. If set to true, and the MessageBus is not found, the request will succeed but no
+                    /// Optional. If set to true, and the GoogleApiSource is not found, the request will succeed but no
                     /// action will be taken on the server.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> AllowMissing { get; set; }
 
                     /// <summary>
-                    /// Optional. If provided, the MessageBus will only be deleted if the etag matches the current etag
-                    /// on the resource.
+                    /// Optional. If provided, the GoogleApiSource will only be deleted if the etag matches the current
+                    /// etag on the resource.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
