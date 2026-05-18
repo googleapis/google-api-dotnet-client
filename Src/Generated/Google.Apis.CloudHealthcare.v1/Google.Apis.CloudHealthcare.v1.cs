@@ -13182,8 +13182,8 @@ namespace Google.Apis.CloudHealthcare.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Do not use this field unless explicitly documented otherwise. This is primarily for
+                /// internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -13872,6 +13872,14 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("until")]
         public virtual string Until { get; set; }
+
+        /// <summary>
+        /// Optional. If set to true, the request will only perform a dry run. By default (once the behavior change is
+        /// fully rolled out), this will default to true. During the transition period, the default depends on the
+        /// Mendel flag status for the project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
         /// <summary>Optional. Specifies which version of the resources to delete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionConfig")]
