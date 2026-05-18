@@ -6141,6 +6141,52 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a position in a Spanner change stream from which to start replicating.</summary>
+    public class SpannerChangeStreamPosition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// Required. The timestamp to start change stream queries from. The timestamp must be a positive value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Spanner column.</summary>
     public class SpannerColumn : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6304,6 +6350,10 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Oracle SCN to start replicating from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oracleScnPosition")]
         public virtual OracleScnPosition OracleScnPosition { get; set; }
+
+        /// <summary>Optional. Spanner change stream position to start replicating from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spannerChangeStreamPosition")]
+        public virtual SpannerChangeStreamPosition SpannerChangeStreamPosition { get; set; }
 
         /// <summary>SqlServer LSN to start replicating from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlServerLsnPosition")]
