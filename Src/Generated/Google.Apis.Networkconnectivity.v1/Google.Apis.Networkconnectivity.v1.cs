@@ -7285,6 +7285,421 @@ namespace Google.Apis.Networkconnectivity.v1
                 public SpokesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    GatewayAdvertisedRoutes = new GatewayAdvertisedRoutesResource(service);
+                }
+
+                /// <summary>Gets the GatewayAdvertisedRoutes resource.</summary>
+                public virtual GatewayAdvertisedRoutesResource GatewayAdvertisedRoutes { get; }
+
+                /// <summary>The "gatewayAdvertisedRoutes" collection of methods.</summary>
+                public class GatewayAdvertisedRoutesResource
+                {
+                    private const string Resource = "gatewayAdvertisedRoutes";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public GatewayAdvertisedRoutesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Create a GatewayAdvertisedRoute</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. The parent resource.</param>
+                    public virtual CreateRequest Create(Google.Apis.Networkconnectivity.v1.Data.GatewayAdvertisedRoute body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Create a GatewayAdvertisedRoute</summary>
+                    public class CreateRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.GatewayAdvertisedRoute body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The parent resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Required. Unique id for the route to create.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("gatewayAdvertisedRouteId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string GatewayAdvertisedRouteId { get; set; }
+
+                        /// <summary>
+                        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                        /// retry your request, the server knows to ignore the request if it has already been completed.
+                        /// The server guarantees that a request doesn't result in creation of duplicate commitments for
+                        /// at least 60 minutes. For example, consider a situation where you make an initial request and
+                        /// the request times out. If you make the request again with the same request ID, the server
+                        /// can check to see whether the original operation was received. If it was, the server ignores
+                        /// the second request. This behavior prevents clients from mistakenly creating duplicate
+                        /// commitments. The request ID must be a valid UUID, with the exception that zero UUID is not
+                        /// supported (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Networkconnectivity.v1.Data.GatewayAdvertisedRoute Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/gatewayAdvertisedRoutes";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/spokes/[^/]+$",
+                            });
+                            RequestParameters.Add("gatewayAdvertisedRouteId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "gatewayAdvertisedRouteId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Delete a GatewayAdvertisedRoute</summary>
+                    /// <param name="name">Required. The name of the gateway advertised route to delete.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Delete a GatewayAdvertisedRoute</summary>
+                    public class DeleteRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the gateway advertised route to delete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                        /// retry your request, the server knows to ignore the request if it has already been completed.
+                        /// The server guarantees that a request doesn't result in creation of duplicate commitments for
+                        /// at least 60 minutes. For example, consider a situation where you make an initial request and
+                        /// the request times out. If you make the request again with the same request ID, the server
+                        /// can check to see whether the original operation was received. If it was, the server ignores
+                        /// the second request. This behavior prevents clients from mistakenly creating duplicate
+                        /// commitments. The request ID must be a valid UUID, with the exception that zero UUID is not
+                        /// supported (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/spokes/[^/]+/gatewayAdvertisedRoutes/[^/]+$",
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Get a GatewayAdvertisedRoute</summary>
+                    /// <param name="name">Required. The name of the gateway advertised route to get.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Get a GatewayAdvertisedRoute</summary>
+                    public class GetRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GatewayAdvertisedRoute>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the gateway advertised route to get.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/spokes/[^/]+/gatewayAdvertisedRoutes/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>List GatewayAdvertisedRoutes</summary>
+                    /// <param name="parent">Required. The parent resource's name.</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>List GatewayAdvertisedRoutes</summary>
+                    public class ListRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.ListGatewayAdvertisedRoutesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The parent resource's name.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>An expression that filters the list of results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Sort the results by a certain order.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>Optional. The maximum number of results per page that should be returned.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListGatewayAdvertisedRoutes` call. Provide
+                        /// this to retrieve the subsequent page. When paginating, all other parameters provided to
+                        /// `ListGatewayAdvertisedRoutes` must match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/gatewayAdvertisedRoutes";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/spokes/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Update a GatewayAdvertisedRoute</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Identifier. The name of the gateway advertised route. Route names must be unique and use the
+                    /// following form:
+                    /// `projects/{project_number}/locations/{region}/spokes/{spoke}/gatewayAdvertisedRoutes/{gateway_advertised_route_id}`
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.Networkconnectivity.v1.Data.GatewayAdvertisedRoute body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Update a GatewayAdvertisedRoute</summary>
+                    public class PatchRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.GatewayAdvertisedRoute body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Identifier. The name of the gateway advertised route. Route names must be unique and use the
+                        /// following form:
+                        /// `projects/{project_number}/locations/{region}/spokes/{spoke}/gatewayAdvertisedRoutes/{gateway_advertised_route_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                        /// retry your request, the server knows to ignore the request if it has already been completed.
+                        /// The server guarantees that a request doesn't result in creation of duplicate commitments for
+                        /// at least 60 minutes. For example, consider a situation where you make an initial request and
+                        /// the request times out. If you make the request again with the same request ID, the server
+                        /// can check to see whether the original operation was received. If it was, the server ignores
+                        /// the second request. This behavior prevents clients from mistakenly creating duplicate
+                        /// commitments. The request ID must be a valid UUID, with the exception that zero UUID is not
+                        /// supported (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>
+                        /// Optional. In the case of an update to an existing group, field mask is used to specify the
+                        /// fields to be overwritten. The fields specified in the update_mask are relative to the
+                        /// resource, not the full request. A field is overwritten if it is in the mask. If the user
+                        /// does not provide a mask, then all fields are overwritten.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Networkconnectivity.v1.Data.GatewayAdvertisedRoute Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/spokes/[^/]+/gatewayAdvertisedRoutes/[^/]+$",
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Creates a Network Connectivity Center spoke.</summary>
@@ -9540,6 +9955,167 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A gateway that can apply specialized traffic processing.</summary>
+    public class Gateway : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The aggregate processing capacity of this gateway.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capacity")]
+        public virtual string Capacity { get; set; }
+
+        /// <summary>
+        /// Output only. The list of Cloud Routers that are connected to this gateway. Should be in the form:
+        /// https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/routers/{router}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudRouters")]
+        public virtual System.Collections.Generic.IList<string> CloudRouters { get; set; }
+
+        /// <summary>
+        /// Optional. A list of IP ranges that are reserved for this gateway's internal intfrastructure.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipRangeReservations")]
+        public virtual System.Collections.Generic.IList<IpRangeReservation> IpRangeReservations { get; set; }
+
+        /// <summary>
+        /// Output only. The URI of the connected SACAttachment. Should be in the form:
+        /// projects/{project}/locations/{location}/sacAttachments/{sac_attachment}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sacAttachment")]
+        public virtual string SacAttachment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A gateway advertised route is a route that a gateway spoke advertises somewhere.</summary>
+    public class GatewayAdvertisedRoute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the gateway advertised route was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>An optional description of the gateway advertised route.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Immutable. This route's advertised IP address range. Must be a valid CIDR-formatted prefix. If an IP address
+        /// is provided without a subnet mask, it is interpreted as, for IPv4, a `/32` singular IP address range, and,
+        /// for IPv6, `/128`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipRange")]
+        public virtual string IpRange { get; set; }
+
+        /// <summary>
+        /// Optional labels in key-value pair format. For more information about labels, see [Requirements for
+        /// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the gateway advertised route. Route names must be unique and use the following form:
+        /// `projects/{project_number}/locations/{region}/spokes/{spoke}/gatewayAdvertisedRoutes/{gateway_advertised_route_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. The priority of this advertised route. You can choose a value from `0` to `65335`. If you don't
+        /// provide a value, Google Cloud assigns a priority of `100` to the ranges.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual System.Nullable<int> Priority { get; set; }
+
+        /// <summary>Optional. The recipient of this advertised route.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recipient")]
+        public virtual string Recipient { get; set; }
+
+        /// <summary>Output only. The current lifecycle state of this gateway advertised route.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. The Google-generated UUID for the gateway advertised route. This value is unique across all
+        /// gateway advertised route resources. If a gateway advertised route is deleted and another with the same name
+        /// is created, the new route is assigned a different `unique_id`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uniqueId")]
+        public virtual string UniqueId { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time the gateway advertised route was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class GoogleLongrunningCancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10193,6 +10769,21 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A list of IP ranges that are reserved for this gateway's internal intfrastructure.</summary>
+    public class IpRangeReservation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A block of IP addresses used to allocate supporting infrastructure for this gateway. This block
+        /// must not overlap with subnets in any spokes or peer VPC networks that the gateway can communicate with.
+        /// Example: "10.1.2.0/24"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipRange")]
+        public virtual string IpRange { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise
     /// the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be
@@ -10466,6 +11057,28 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string NextPageToken { get; set; }
 
         /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for HubService.ListGatewayAdvertisedRoutes method.</summary>
+    public class ListGatewayAdvertisedRoutesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The requested gateway advertised routes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatewayAdvertisedRoutes")]
+        public virtual System.Collections.Generic.IList<GatewayAdvertisedRoute> GatewayAdvertisedRoutes { get; set; }
+
+        /// <summary>
+        /// The token for the next page of the response. To see more results, use this value as the page_token for your
+        /// next request. If this value is empty, there are no more results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Hubs that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
@@ -12946,6 +13559,12 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>Optional. The list of fields waiting for hub administrator's approval.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldPathsPendingUpdate")]
         public virtual System.Collections.Generic.IList<string> FieldPathsPendingUpdate { get; set; }
+
+        /// <summary>
+        /// Optional. This is a gateway that can apply specialized processing to traffic going through it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gateway")]
+        public virtual Gateway Gateway { get; set; }
 
         /// <summary>Optional. The name of the group that this spoke is associated with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
