@@ -11215,6 +11215,19 @@ namespace Google.Apis.Classroom.v1.Data
     /// <summary>Payload for grade update requests.</summary>
     public class AddOnAttachmentStudentSubmission : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. Identifier of the course work submission under which this attachment submission was made.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("courseWorkSubmissionId")]
+        public virtual string CourseWorkSubmissionId { get; set; }
+
+        /// <summary>
+        /// Output only. Classroom-assigned identifier for this student submission. This is unique among submissions for
+        /// the relevant course work and add-on attachment combination.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
         /// <summary>Student grade on this attachment. If unset, no grade was set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pointsEarned")]
         public virtual System.Nullable<double> PointsEarned { get; set; }
