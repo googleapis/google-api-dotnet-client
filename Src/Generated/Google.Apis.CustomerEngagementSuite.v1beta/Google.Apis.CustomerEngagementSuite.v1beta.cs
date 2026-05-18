@@ -10329,6 +10329,14 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationDatasets")]
         public virtual System.Collections.Generic.IList<string> EvaluationDatasets { get; set; }
 
+        /// <summary>Optional. Overrides metrics config for this specific evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationMetricsConfigOverride")]
+        public virtual EvaluationMetricsConfig EvaluationMetricsConfigOverride { get; set; }
+
+        /// <summary>Optional. Overrides metrics thresholds for this specific evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationMetricsThresholdOverride")]
+        public virtual EvaluationMetricsThresholds EvaluationMetricsThresholdOverride { get; set; }
+
         /// <summary>Output only. The EvaluationRuns that this Evaluation is associated with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationRuns")]
         public virtual System.Collections.Generic.IList<string> EvaluationRuns { get; set; }
@@ -10710,9 +10718,21 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agentResponse")]
         public virtual Message AgentResponse { get; set; }
 
+        /// <summary>Optional. Overrides for agent_response hallucination metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentResponseHallucinationMetricsConfigOverride")]
+        public virtual EvaluationMetricsConfigHallucinationMetricsConfig AgentResponseHallucinationMetricsConfigOverride { get; set; }
+
+        /// <summary>Optional. Overrides for agent_response semantic similarity metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentResponseSemanticSimilarityMetricsConfigOverride")]
+        public virtual EvaluationMetricsConfigSemanticSimilarityMetricsConfig AgentResponseSemanticSimilarityMetricsConfigOverride { get; set; }
+
         /// <summary>Optional. Check that the agent transferred the conversation to a different agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentTransfer")]
         public virtual AgentTransfer AgentTransfer { get; set; }
+
+        /// <summary>Optional. Overrides metrics at the step level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expectationLevelMetricsThresholdsOverride")]
+        public virtual EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds ExpectationLevelMetricsThresholdsOverride { get; set; }
 
         /// <summary>
         /// Optional. The tool response to mock, with the parameters of interest specified. Any parameters not specified
@@ -10727,6 +10747,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("note")]
         public virtual string Note { get; set; }
+
+        /// <summary>Optional. If set to true, this specific expectation will not be evaluated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipEvaluation")]
+        public virtual System.Nullable<bool> SkipEvaluation { get; set; }
 
         /// <summary>Optional. Check that a specific tool was called with the parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolCall")]
@@ -10750,8 +10774,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
     /// <summary>A golden turn defines a single turn in a golden conversation.</summary>
     public class EvaluationGoldenTurn : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Override for turn-level hallucination metric behavior.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hallucinationMetricBehaviorOverride")]
+        public virtual string HallucinationMetricBehaviorOverride { get; set; }
+
         /// <summary>
-        /// Optional. The root span of the golden turn for processing and maintaining audio information.
+        /// Optional. The root span of the golden turn for processing and maintaining audio information. The uri for the
+        /// audio must contain audio saved in 16Khz sample rate.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootSpan")]
         public virtual Span RootSpan { get; set; }
@@ -10759,6 +10788,134 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// <summary>Required. The steps required to replay a golden conversation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
         public virtual System.Collections.Generic.IList<EvaluationStep> Steps { get; set; }
+
+        /// <summary>Optional. Overrides for turn-level metric thresholds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("turnLevelMetricsThresholdsOverride")]
+        public virtual EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds TurnLevelMetricsThresholdsOverride { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configures the metrics for an evaluation.</summary>
+    public class EvaluationMetricsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Configuration for the golden metrics for the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goldenMetricsConfig")]
+        public virtual EvaluationMetricsConfigGoldenMetricsConfig GoldenMetricsConfig { get; set; }
+
+        /// <summary>Optional. Configuration for the scenario metrics for the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scenarioMetricsConfig")]
+        public virtual EvaluationMetricsConfigScenarioMetricsConfig ScenarioMetricsConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for the expectation level metrics for the evaluation. To disable the metric, set the message but
+    /// do not set the `enable_expectations_met_metrics` field to true (or explicitly set it to false). To unset the
+    /// configuration and fallback to the default behavior, omit the message entirely.
+    /// </summary>
+    public class EvaluationMetricsConfigExpectationsMetMetricsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether to calculate the expectation level metrics for the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableExpectationsMetMetrics")]
+        public virtual System.Nullable<bool> EnableExpectationsMetMetrics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the golden metrics for the evaluation.</summary>
+    public class EvaluationMetricsConfigGoldenMetricsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Global configuration for semantic similarity metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("semanticSimilarityMetricsConfig")]
+        public virtual EvaluationMetricsConfigSemanticSimilarityMetricsConfig SemanticSimilarityMetricsConfig { get; set; }
+
+        /// <summary>Optional. Configuration for step level tool correctness metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stepToolCorrectnessMetricsConfig")]
+        public virtual EvaluationMetricsConfigToolCorrectnessMetricsConfig StepToolCorrectnessMetricsConfig { get; set; }
+
+        /// <summary>Optional. Configuration for turn level tool correctness metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolCorrectnessMetricsConfig")]
+        public virtual EvaluationMetricsConfigToolCorrectnessMetricsConfig ToolCorrectnessMetricsConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for the hallucination metrics for the evaluation. To disable the metric, set the message but do
+    /// not set the `enable_hallucination_metrics` field to true (or explicitly set it to false). To unset the
+    /// configuration and fallback to the default behavior, omit the message entirely.
+    /// </summary>
+    public class EvaluationMetricsConfigHallucinationMetricsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether to calculate hallucination metrics for the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableHallucinationMetrics")]
+        public virtual System.Nullable<bool> EnableHallucinationMetrics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the scenario metrics for the evaluation.</summary>
+    public class EvaluationMetricsConfigScenarioMetricsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Configuration for expectation level metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expectationsMetMetricsConfig")]
+        public virtual EvaluationMetricsConfigExpectationsMetMetricsConfig ExpectationsMetMetricsConfig { get; set; }
+
+        /// <summary>Optional. Configuration for user goal met metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userGoalMetMetricsConfig")]
+        public virtual EvaluationMetricsConfigUserGoalMetMetricsConfig UserGoalMetMetricsConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for similarity metrics for the evaluation. To disable the metric, set the message but do not set
+    /// the `enable_semantic_similarity_metrics` field to true (or explicitly set it to false). To unset the
+    /// configuration and fallback to the default behavior, omit the message entirely.
+    /// </summary>
+    public class EvaluationMetricsConfigSemanticSimilarityMetricsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether to calculate semantic similarity metrics for the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableSemanticSimilarityMetrics")]
+        public virtual System.Nullable<bool> EnableSemanticSimilarityMetrics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for correctness metrics for the evaluation. To disable the metric, set the message but do not set
+    /// the `enable_tool_correctness_metrics` field to true (or explicitly set it to false). To unset the configuration
+    /// and fallback to the default behavior, omit the message entirely.
+    /// </summary>
+    public class EvaluationMetricsConfigToolCorrectnessMetricsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether to calculate tool correctness metrics for the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableToolCorrectnessMetrics")]
+        public virtual System.Nullable<bool> EnableToolCorrectnessMetrics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for the user goal met metrics for the evaluation. To disable the metric, set the message but do
+    /// not set the `enable_user_goal_met_metrics` field to true (or explicitly set it to false). To unset the
+    /// configuration and fallback to the default behavior, omit the message entirely.
+    /// </summary>
+    public class EvaluationMetricsConfigUserGoalMetMetricsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether to calculate the user goal met metrics for the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableUserGoalMetMetrics")]
+        public virtual System.Nullable<bool> EnableUserGoalMetMetrics { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12081,6 +12238,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("goldenRunMethod")]
         public virtual string GoldenRunMethod { get; set; }
+
+        /// <summary>Optional. Configures the default metrics for evaluations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricsConfig")]
+        public virtual EvaluationMetricsConfig MetricsConfig { get; set; }
 
         /// <summary>Optional. Who starts the conversation in a scenario evaluation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scenarioConversationInitiator")]
@@ -14607,302 +14768,6 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// <summary>Required. The token endpoint in the OAuth provider to exchange for an access token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokenEndpoint")]
         public virtual string TokenEndpoint { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents an Omnichannel resource.</summary>
-    public class Omnichannel : Google.Apis.Requests.IDirectResponseSchema
-    {
-        private string _createTimeRaw;
-
-        private object _createTime;
-
-        /// <summary>Output only. Timestamp when the omnichannel resource was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>Optional. Human-readable description of the omnichannel resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>Required. Display name of the omnichannel resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>
-        /// Output only. Etag used to ensure the object hasn't changed during a read-modify-write operation.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; }
-
-        /// <summary>Optional. The integration config for the omnichannel resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("integrationConfig")]
-        public virtual OmnichannelIntegrationConfig IntegrationConfig { get; set; }
-
-        /// <summary>
-        /// Identifier. The unique identifier of the omnichannel resource. Format:
-        /// `projects/{project}/locations/{location}/omnichannels/{omnichannel}`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
-        /// <summary>Output only. Timestamp when the omnichannel resource was last updated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-    }
-
-    /// <summary>OmnichannelIntegrationConfig contains all App integration configs.</summary>
-    public class OmnichannelIntegrationConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. Various of configuration for handling App events.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("channelConfigs")]
-        public virtual System.Collections.Generic.IDictionary<string, OmnichannelIntegrationConfigChannelConfig> ChannelConfigs { get; set; }
-
-        /// <summary>
-        /// Optional. The key of routing_configs is a key of `app_configs`, value is a `RoutingConfig`, which contains
-        /// subscriber's key.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("routingConfigs")]
-        public virtual System.Collections.Generic.IDictionary<string, OmnichannelIntegrationConfigRoutingConfig> RoutingConfigs { get; set; }
-
-        /// <summary>Optional. Various of subscribers configs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("subscriberConfigs")]
-        public virtual System.Collections.Generic.IDictionary<string, OmnichannelIntegrationConfigSubscriberConfig> SubscriberConfigs { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Configs for CES app.</summary>
-    public class OmnichannelIntegrationConfigCesAppConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The unique identifier of the CES app. Format: `projects/{project}/locations/{location}/apps/{app}`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("app")]
-        public virtual string App { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>ChannelConfig contains config for various of app integration.</summary>
-    public class OmnichannelIntegrationConfigChannelConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>WhatsApp config.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("whatsappConfig")]
-        public virtual OmnichannelIntegrationConfigWhatsappConfig WhatsappConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Routing config specify how/who to route app events to a subscriber.</summary>
-    public class OmnichannelIntegrationConfigRoutingConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The key of the subscriber.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("subscriberKey")]
-        public virtual string SubscriberKey { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Configs of subscribers.</summary>
-    public class OmnichannelIntegrationConfigSubscriberConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Ces app config.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cesAppConfig")]
-        public virtual OmnichannelIntegrationConfigCesAppConfig CesAppConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>How Omnichannel should receive/reply events from WhatsApp.</summary>
-    public class OmnichannelIntegrationConfigWhatsappConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The Meta Business Portfolio (MBP) ID. https://www.facebook.com/business/help/1710077379203657
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metaBusinessPortfolioId")]
-        public virtual string MetaBusinessPortfolioId { get; set; }
-
-        /// <summary>The phone number used for sending/receiving messages.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
-        public virtual string PhoneNumber { get; set; }
-
-        /// <summary>The Phone Number ID associated with the WhatsApp Business Account.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumberId")]
-        public virtual string PhoneNumberId { get; set; }
-
-        /// <summary>The verify token configured in the Meta App Dashboard for webhook verification.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("webhookVerifyToken")]
-        public virtual string WebhookVerifyToken { get; set; }
-
-        /// <summary>The customer's WhatsApp Business Account (WABA) ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("whatsappBusinessAccountId")]
-        public virtual string WhatsappBusinessAccountId { get; set; }
-
-        /// <summary>
-        /// The access token for authenticating API calls to the WhatsApp Cloud API.
-        /// https://developers.facebook.com/docs/whatsapp/business-management-api/get-started/#business-integration-system-user-access-tokens
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("whatsappBusinessToken")]
-        public virtual string WhatsappBusinessToken { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents the metadata of the long-running operation.</summary>
-    public class OmnichannelOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        private string _createTimeRaw;
-
-        private object _createTime;
-
-        /// <summary>Output only. The time the operation was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        private string _endTimeRaw;
-
-        private object _endTime;
-
-        /// <summary>Output only. The time the operation finished running.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTimeRaw
-        {
-            get => _endTimeRaw;
-            set
-            {
-                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _endTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
-        public virtual object EndTime
-        {
-            get => _endTime;
-            set
-            {
-                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _endTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>Output only. Identifies whether the user has requested cancellation of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
-        public virtual System.Nullable<bool> RequestedCancellation { get; set; }
-
-        /// <summary>Output only. Human-readable status of the operation, if any.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
-        public virtual string StatusMessage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
