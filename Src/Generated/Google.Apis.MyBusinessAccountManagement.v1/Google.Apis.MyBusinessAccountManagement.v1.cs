@@ -1702,6 +1702,12 @@ namespace Google.Apis.MyBusinessAccountManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locationName")]
         public virtual string LocationName { get; set; }
 
+        /// <summary>
+        /// Output only. The Place ID of the location to which the user is invited. Not always populated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placeId")]
+        public virtual string PlaceId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
