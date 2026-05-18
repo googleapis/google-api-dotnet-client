@@ -308,6 +308,13 @@ namespace Google.Apis.OracleDatabase.v1
                 ExadbVmClusters = new ExadbVmClustersResource(service);
                 ExascaleDbStorageVaults = new ExascaleDbStorageVaultsResource(service);
                 GiVersions = new GiVersionsResource(service);
+                GoldengateConnectionAssignments = new GoldengateConnectionAssignmentsResource(service);
+                GoldengateConnectionTypes = new GoldengateConnectionTypesResource(service);
+                GoldengateConnections = new GoldengateConnectionsResource(service);
+                GoldengateDeploymentEnvironments = new GoldengateDeploymentEnvironmentsResource(service);
+                GoldengateDeploymentTypes = new GoldengateDeploymentTypesResource(service);
+                GoldengateDeploymentVersions = new GoldengateDeploymentVersionsResource(service);
+                GoldengateDeployments = new GoldengateDeploymentsResource(service);
                 OdbNetworks = new OdbNetworksResource(service);
                 Operations = new OperationsResource(service);
                 PluggableDatabases = new PluggableDatabasesResource(service);
@@ -4572,6 +4579,1858 @@ namespace Google.Apis.OracleDatabase.v1
                 }
             }
 
+            /// <summary>Gets the GoldengateConnectionAssignments resource.</summary>
+            public virtual GoldengateConnectionAssignmentsResource GoldengateConnectionAssignments { get; }
+
+            /// <summary>The "goldengateConnectionAssignments" collection of methods.</summary>
+            public class GoldengateConnectionAssignmentsResource
+            {
+                private const string Resource = "goldengateConnectionAssignments";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public GoldengateConnectionAssignmentsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new GoldengateConnectionAssignment in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource where this GoldengateConnectionAssignment will be created. Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.OracleDatabase.v1.Data.GoldengateConnectionAssignment body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new GoldengateConnectionAssignment in a given project and location.</summary>
+                public class CreateRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.GoldengateConnectionAssignment body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource where this GoldengateConnectionAssignment will be created. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. The ID of the GoldengateConnectionAssignment to create.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("goldengateConnectionAssignmentId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string GoldengateConnectionAssignmentId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.GoldengateConnectionAssignment Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/goldengateConnectionAssignments";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("goldengateConnectionAssignmentId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "goldengateConnectionAssignmentId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single GoldengateConnectionAssignment.</summary>
+                /// <param name="name">
+                /// Required. The name of the GoldengateConnectionAssignment to delete. Format:
+                /// projects/{project}/locations/{location}/goldengateConnectionAssignments/{goldengate_connection_assignment}
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single GoldengateConnectionAssignment.</summary>
+                public class DeleteRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the GoldengateConnectionAssignment to delete. Format:
+                    /// projects/{project}/locations/{location}/goldengateConnectionAssignments/{goldengate_connection_assignment}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/goldengateConnectionAssignments/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single GoldengateConnectionAssignment.</summary>
+                /// <param name="name">
+                /// Required. The name of the GoldengateConnectionAssignment to retrieve. Format:
+                /// projects/{project}/locations/{location}/goldengateConnectionAssignments/{goldengate_connection_assignment}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single GoldengateConnectionAssignment.</summary>
+                public class GetRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.GoldengateConnectionAssignment>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the GoldengateConnectionAssignment to retrieve. Format:
+                    /// projects/{project}/locations/{location}/goldengateConnectionAssignments/{goldengate_connection_assignment}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/goldengateConnectionAssignments/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists GoldengateConnectionAssignments in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent value for the GoldengateConnectionAssignments. Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists GoldengateConnectionAssignments in a given project and location.</summary>
+                public class ListRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ListGoldengateConnectionAssignmentsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent value for the GoldengateConnectionAssignments. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A filter expression that filters GoldengateConnectionAssignments listed in the
+                    /// response.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. A comma-separated list of fields to order by, sorted in ascending order. Use "DESC"
+                    /// after a field name for descending.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of GoldengateConnectionAssignments to return. The service may
+                    /// return fewer than this value. If unspecified, at most 50 GoldengateConnectionAssignments will be
+                    /// returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListGoldengateConnectionAssignments` call.
+                    /// Provide this to retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListGoldengateConnectionAssignments` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/goldengateConnectionAssignments";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Tests a single GoldengateConnectionAssignment.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Name of the connection assignment for which to test connection.
+                /// projects/{project}/locations/{region}/goldengateConnectionAssignments/{goldengate_connection_assignment}
+                /// </param>
+                public virtual TestRequest Test(Google.Apis.OracleDatabase.v1.Data.TestGoldengateConnectionAssignmentRequest body, string name)
+                {
+                    return new TestRequest(this.service, body, name);
+                }
+
+                /// <summary>Tests a single GoldengateConnectionAssignment.</summary>
+                public class TestRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.TestGoldengateConnectionAssignmentResponse>
+                {
+                    /// <summary>Constructs a new Test request.</summary>
+                    public TestRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.TestGoldengateConnectionAssignmentRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the connection assignment for which to test connection.
+                    /// projects/{project}/locations/{region}/goldengateConnectionAssignments/{goldengate_connection_assignment}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.TestGoldengateConnectionAssignmentRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "test";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:test";
+
+                    /// <summary>Initializes Test parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/goldengateConnectionAssignments/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the GoldengateConnectionTypes resource.</summary>
+            public virtual GoldengateConnectionTypesResource GoldengateConnectionTypes { get; }
+
+            /// <summary>The "goldengateConnectionTypes" collection of methods.</summary>
+            public class GoldengateConnectionTypesResource
+            {
+                private const string Resource = "goldengateConnectionTypes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public GoldengateConnectionTypesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Gets details of a single GoldengateConnectionType.</summary>
+                /// <param name="name">
+                /// Required. Name of the resource in the format:
+                /// projects/{project}/locations/{location}/goldengateConnectionTypes/{goldengate_connection_type}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single GoldengateConnectionType.</summary>
+                public class GetRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.GoldengateConnectionType>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the resource in the format:
+                    /// projects/{project}/locations/{location}/goldengateConnectionTypes/{goldengate_connection_type}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/goldengateConnectionTypes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists GoldengateConnectionTypes in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. Parent value for ListGoldengateConnectionTypesRequest Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists GoldengateConnectionTypes in a given project and location.</summary>
+                public class ListRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ListGoldengateConnectionTypesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent value for ListGoldengateConnectionTypesRequest Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An expression for filtering the results of the request. The connection_type field must
+                    /// be specified in the format: `connection_type="ORACLE"`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/goldengateConnectionTypes";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the GoldengateConnections resource.</summary>
+            public virtual GoldengateConnectionsResource GoldengateConnections { get; }
+
+            /// <summary>The "goldengateConnections" collection of methods.</summary>
+            public class GoldengateConnectionsResource
+            {
+                private const string Resource = "goldengateConnections";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public GoldengateConnectionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new GoldengateConnection in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The value for parent of the GoldengateConnection in the following format:
+                /// projects/{project}/locations/{location}.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.OracleDatabase.v1.Data.GoldengateConnection body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new GoldengateConnection in a given project and location.</summary>
+                public class CreateRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.GoldengateConnection body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The value for parent of the GoldengateConnection in the following format:
+                    /// projects/{project}/locations/{location}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The ID of the GoldengateConnection to create. This value is restricted to
+                    /// (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of 63 characters in length. The value
+                    /// must start with a letter and end with a letter or a number.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("goldengateConnectionId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string GoldengateConnectionId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.GoldengateConnection Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/goldengateConnections";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("goldengateConnectionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "goldengateConnectionId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single GoldengateConnection.</summary>
+                /// <param name="name">
+                /// Required. The name of the GoldengateConnection in the following format:
+                /// projects/{project}/locations/{location}/goldengateConnections/{goldengate_connection}.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single GoldengateConnection.</summary>
+                public class DeleteRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the GoldengateConnection in the following format:
+                    /// projects/{project}/locations/{location}/goldengateConnections/{goldengate_connection}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional ID to identify the request. This value is used to identify duplicate
+                    /// requests. If you make a request with the same request ID and the original request is still in
+                    /// progress or completed, the server ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/goldengateConnections/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single GoldengateConnection.</summary>
+                /// <param name="name">
+                /// Required. The name of the GoldengateConnection in the following format:
+                /// projects/{project}/locations/{location}/goldengateConnections/{goldengate_connection}.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single GoldengateConnection.</summary>
+                public class GetRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.GoldengateConnection>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the GoldengateConnection in the following format:
+                    /// projects/{project}/locations/{location}/goldengateConnections/{goldengate_connection}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/goldengateConnections/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists all the GoldengateConnections for the given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent value for GoldengateConnections in the following format:
+                /// projects/{project}/locations/{location}.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists all the GoldengateConnections for the given project and location.</summary>
+                public class ListRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ListGoldengateConnectionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent value for GoldengateConnections in the following format:
+                    /// projects/{project}/locations/{location}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. An expression for filtering the results of the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. An expression for ordering the results of the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of items to return. If unspecified, at most 50
+                    /// GoldengateConnections will be returned. The maximum value is 1000; values above 1000 will be
+                    /// coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous ListGoldengateConnections call. Provide this to
+                    /// retrieve the subsequent page.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/goldengateConnections";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the GoldengateDeploymentEnvironments resource.</summary>
+            public virtual GoldengateDeploymentEnvironmentsResource GoldengateDeploymentEnvironments { get; }
+
+            /// <summary>The "goldengateDeploymentEnvironments" collection of methods.</summary>
+            public class GoldengateDeploymentEnvironmentsResource
+            {
+                private const string Resource = "goldengateDeploymentEnvironments";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public GoldengateDeploymentEnvironmentsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Gets details of a single GoldengateDeploymentEnvironment.</summary>
+                /// <param name="name">
+                /// Required. Name of the resource with the format:
+                /// projects/{project}/locations/{location}/goldengateDeploymentEnvironments/{goldengate_deployment_environment}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single GoldengateDeploymentEnvironment.</summary>
+                public class GetRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.GoldengateDeploymentEnvironment>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the resource with the format:
+                    /// projects/{project}/locations/{location}/goldengateDeploymentEnvironments/{goldengate_deployment_environment}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/goldengateDeploymentEnvironments/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists GoldengateDeploymentEnvironments in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent, which owns this collection of GoldengateDeploymentEnvironments. Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists GoldengateDeploymentEnvironments in a given project and location.</summary>
+                public class ListRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ListGoldengateDeploymentEnvironmentsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent, which owns this collection of GoldengateDeploymentEnvironments. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of items to return. If unspecified, at most 50 deployment
+                    /// environments will be returned. The maximum value is 1000; values above 1000 will be coerced to
+                    /// 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/goldengateDeploymentEnvironments";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the GoldengateDeploymentTypes resource.</summary>
+            public virtual GoldengateDeploymentTypesResource GoldengateDeploymentTypes { get; }
+
+            /// <summary>The "goldengateDeploymentTypes" collection of methods.</summary>
+            public class GoldengateDeploymentTypesResource
+            {
+                private const string Resource = "goldengateDeploymentTypes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public GoldengateDeploymentTypesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Gets details of a single GoldenGateDeploymentType.</summary>
+                /// <param name="name">
+                /// Required. The name of the GoldengateDeploymentType to retrieve. Format:
+                /// projects/{project}/locations/{location}/goldengateDeploymentTypes/{goldengate_deployment_type}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single GoldenGateDeploymentType.</summary>
+                public class GetRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.GoldengateDeploymentType>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the GoldengateDeploymentType to retrieve. Format:
+                    /// projects/{project}/locations/{location}/goldengateDeploymentTypes/{goldengate_deployment_type}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/goldengateDeploymentTypes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists GoldenGateDeploymentTypes in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent resource. Format: projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists GoldenGateDeploymentTypes in a given project and location.</summary>
+                public class ListRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ListGoldengateDeploymentTypesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource. Format: projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An expression for filtering the results of the request. Either the deployment_type and
+                    /// ogg_version fields must be specified in the format: `deployment_type="DATABASE_ORACLE"` or
+                    /// `ogg_version="version"`. Allowed values for deployment_type are: `DATABASE_ORACLE`, `BIGDATA`,
+                    /// `DATABASE_MICROSOFT_SQLSERVER`, `DATABASE_MYSQL`, `DATABASE_POSTGRESQL`, `DATABASE_DB2ZOS`,
+                    /// `DATABASE_DB2I`, `GGSA`, `DATA_TRANSFORMS`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Hint for how to order the results</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/goldengateDeploymentTypes";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the GoldengateDeploymentVersions resource.</summary>
+            public virtual GoldengateDeploymentVersionsResource GoldengateDeploymentVersions { get; }
+
+            /// <summary>The "goldengateDeploymentVersions" collection of methods.</summary>
+            public class GoldengateDeploymentVersionsResource
+            {
+                private const string Resource = "goldengateDeploymentVersions";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public GoldengateDeploymentVersionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Gets details of a single GoldengateDeploymentVersion.</summary>
+                /// <param name="name">
+                /// Required. The name of the GoldengateDeploymentVersion to retrieve. Format:
+                /// projects/{project}/locations/{location}/goldengateDeploymentVersions/{goldengate_deployment_version}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single GoldengateDeploymentVersion.</summary>
+                public class GetRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.GoldengateDeploymentVersion>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the GoldengateDeploymentVersion to retrieve. Format:
+                    /// projects/{project}/locations/{location}/goldengateDeploymentVersions/{goldengate_deployment_version}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/goldengateDeploymentVersions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists GoldengateDeploymentVersions in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. Parent value for ListGoldengateDeploymentVersionsRequest Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists GoldengateDeploymentVersions in a given project and location.</summary>
+                public class ListRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ListGoldengateDeploymentVersionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent value for ListGoldengateDeploymentVersionsRequest Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An expression for filtering the results of the request. Either the deployment_id and
+                    /// deployment_type fields must be specified in the format: `deployment_id="id"` or
+                    /// `deployment_type="DATABASE_ORACLE"`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default. The maximum value is 1000; values above 1000 will be
+                    /// coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/goldengateDeploymentVersions";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the GoldengateDeployments resource.</summary>
+            public virtual GoldengateDeploymentsResource GoldengateDeployments { get; }
+
+            /// <summary>The "goldengateDeployments" collection of methods.</summary>
+            public class GoldengateDeploymentsResource
+            {
+                private const string Resource = "goldengateDeployments";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public GoldengateDeploymentsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new GoldengateDeployment in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The value for parent of the GoldengateDeployment in the following format:
+                /// projects/{project}/locations/{location}.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.OracleDatabase.v1.Data.GoldengateDeployment body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new GoldengateDeployment in a given project and location.</summary>
+                public class CreateRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.GoldengateDeployment body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The value for parent of the GoldengateDeployment in the following format:
+                    /// projects/{project}/locations/{location}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The ID of the GoldengateDeployment to create. This value is restricted to
+                    /// (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of 63 characters in length. The value
+                    /// must start with a letter and end with a letter or a number.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("goldengateDeploymentId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string GoldengateDeploymentId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.GoldengateDeployment Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/goldengateDeployments";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("goldengateDeploymentId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "goldengateDeploymentId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single GoldengateDeployment.</summary>
+                /// <param name="name">
+                /// Required. The name of the GoldengateDeployment in the following format:
+                /// projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single GoldengateDeployment.</summary>
+                public class DeleteRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the GoldengateDeployment in the following format:
+                    /// projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional ID to identify the request. This value is used to identify duplicate
+                    /// requests. If you make a request with the same request ID and the original request is still in
+                    /// progress or completed, the server ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/goldengateDeployments/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single GoldengateDeployment.</summary>
+                /// <param name="name">
+                /// Required. The name of the GoldengateDeployment in the following format:
+                /// projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single GoldengateDeployment.</summary>
+                public class GetRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.GoldengateDeployment>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the GoldengateDeployment in the following format:
+                    /// projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/goldengateDeployments/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists all the GoldengateDeployments for the given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent value for GoldengateDeployments in the following format:
+                /// projects/{project}/locations/{location}.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists all the GoldengateDeployments for the given project and location.</summary>
+                public class ListRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ListGoldengateDeploymentsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent value for GoldengateDeployments in the following format:
+                    /// projects/{project}/locations/{location}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. An expression for filtering the results of the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. An expression for ordering the results of the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of items to return. If unspecified, at most 50
+                    /// GoldengateDeployments will be returned. The maximum value is 1000; values above 1000 will be
+                    /// coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous ListGoldengateDeployments call. Provide this to
+                    /// retrieve the subsequent page.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/goldengateDeployments";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Starts a single GoldengateDeployment.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the Goldengate Deployment in the following format:
+                /// projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}.
+                /// </param>
+                public virtual StartRequest Start(Google.Apis.OracleDatabase.v1.Data.StartGoldengateDeploymentRequest body, string name)
+                {
+                    return new StartRequest(this.service, body, name);
+                }
+
+                /// <summary>Starts a single GoldengateDeployment.</summary>
+                public class StartRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Start request.</summary>
+                    public StartRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.StartGoldengateDeploymentRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Goldengate Deployment in the following format:
+                    /// projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.StartGoldengateDeploymentRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "start";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:start";
+
+                    /// <summary>Initializes Start parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/goldengateDeployments/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Stops a single GoldengateDeployment.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the Goldengate Deployment in the following format:
+                /// projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}.
+                /// </param>
+                public virtual StopRequest Stop(Google.Apis.OracleDatabase.v1.Data.StopGoldengateDeploymentRequest body, string name)
+                {
+                    return new StopRequest(this.service, body, name);
+                }
+
+                /// <summary>Stops a single GoldengateDeployment.</summary>
+                public class StopRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Stop request.</summary>
+                    public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.StopGoldengateDeploymentRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Goldengate Deployment in the following format:
+                    /// projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.StopGoldengateDeploymentRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "stop";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:stop";
+
+                    /// <summary>Initializes Stop parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/goldengateDeployments/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the OdbNetworks resource.</summary>
             public virtual OdbNetworksResource OdbNetworks { get; }
 
@@ -5901,6 +7760,37 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The Amazon S3 Iceberg storage.</summary>
+    public class AmazonS3IcebergStorage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The access key ID of Amazon S3.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessKeyId")]
+        public virtual string AccessKeyId { get; set; }
+
+        /// <summary>Required. The bucket of Amazon S3.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>Optional. The endpoint of Amazon S3.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
+        public virtual string Endpoint { get; set; }
+
+        /// <summary>Required. The region of Amazon S3.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>Required. The scheme type of Amazon S3.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemeType")]
+        public virtual string SchemeType { get; set; }
+
+        /// <summary>Optional. The secret access key of Amazon S3.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretAccessKeySecret")]
+        public virtual string SecretAccessKeySecret { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Details of the Autonomous Database resource.
     /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/AutonomousDatabase/
@@ -7066,6 +8956,29 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloadUri")]
         public virtual string WorkloadUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Azure Data Lake Storage Iceberg storage.</summary>
+    public class AzureDataLakeStorageIcebergStorage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The account key of Azure Data Lake Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountKeySecret")]
+        public virtual string AccountKeySecret { get; set; }
+
+        /// <summary>Required. The account of Azure Data Lake Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("azureAccount")]
+        public virtual string AzureAccount { get; set; }
+
+        /// <summary>Required. The container of Azure Data Lake Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("container")]
+        public virtual string Container { get; set; }
+
+        /// <summary>Optional. The endpoint of Azure Data Lake Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
+        public virtual string Endpoint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8612,6 +10525,107 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The deployment diagnostic data.</summary>
+    public class DeploymentDiagnosticData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The bucket name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        private string _diagnosticEndTimeRaw;
+
+        private object _diagnosticEndTime;
+
+        /// <summary>Output only. The time diagnostic end.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diagnosticEndTime")]
+        public virtual string DiagnosticEndTimeRaw
+        {
+            get => _diagnosticEndTimeRaw;
+            set
+            {
+                _diagnosticEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _diagnosticEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DiagnosticEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DiagnosticEndTimeDateTimeOffset instead.")]
+        public virtual object DiagnosticEndTime
+        {
+            get => _diagnosticEndTime;
+            set
+            {
+                _diagnosticEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _diagnosticEndTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="DiagnosticEndTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DiagnosticEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DiagnosticEndTimeRaw);
+            set => DiagnosticEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _diagnosticStartTimeRaw;
+
+        private object _diagnosticStartTime;
+
+        /// <summary>Output only. The time diagnostic start.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diagnosticStartTime")]
+        public virtual string DiagnosticStartTimeRaw
+        {
+            get => _diagnosticStartTimeRaw;
+            set
+            {
+                _diagnosticStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _diagnosticStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DiagnosticStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DiagnosticStartTimeDateTimeOffset instead.")]
+        public virtual object DiagnosticStartTime
+        {
+            get => _diagnosticStartTime;
+            set
+            {
+                _diagnosticStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _diagnosticStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="DiagnosticStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DiagnosticStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DiagnosticStartTimeRaw);
+            set => DiagnosticStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The diagnostic state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diagnosticState")]
+        public virtual string DiagnosticState { get; set; }
+
+        /// <summary>Output only. The namespace name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
+        public virtual string Namespace__ { get; set; }
+
+        /// <summary>Output only. The object name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("object")]
+        public virtual string Object__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -9170,6 +11184,2995 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The Glue Iceberg catalog.</summary>
+    public class GlueIcebergCatalog : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The catalog ID of Glue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("glueId")]
+        public virtual string GlueId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengateAmazonKinesisConnection.</summary>
+    public class GoldengateAmazonKinesisConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Access key ID to access the Amazon Kinesis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessKeyId")]
+        public virtual string AccessKeyId { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the AWS region. If not provided, Goldengate will default to 'us-west-1'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsRegion")]
+        public virtual string AwsRegion { get; set; }
+
+        /// <summary>
+        /// Optional. The endpoint URL of the Amazon Kinesis service. e.g.: 'https://kinesis.us-east-1.amazonaws.com' If
+        /// not provided, Goldengate will default to 'https://kinesis..amazonaws.com'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
+        public virtual string Endpoint { get; set; }
+
+        /// <summary>Optional. Secret access key to access the Amazon Kinesis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretAccessKeySecret")]
+        public virtual string SecretAccessKeySecret { get; set; }
+
+        /// <summary>Optional. The technology type of AmazonKinesisConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengateAmazonRedshiftConnection.</summary>
+    public class GoldengateAmazonRedshiftConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Connection URL. e.g.:
+        /// 'jdbc:redshift://aws-redshift-instance.aaaaaaaaaaaa.us-east-2.redshift.amazonaws.com:5439/mydb'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionUrl")]
+        public virtual string ConnectionUrl { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The password Oracle Goldengate uses for Amazon Redshift connection in plain text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the password
+        /// Oracle Goldengate uses for Amazon Redshift connection. Format:
+        /// projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordSecretVersion")]
+        public virtual string PasswordSecretVersion { get; set; }
+
+        /// <summary>Optional. The technology type of AmazonRedshiftConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>
+        /// Optional. The username Oracle Goldengate uses to connect the associated system of the given technology.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengateAmazonS3Connection.</summary>
+    public class GoldengateAmazonS3ConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Access key ID to access the Amazon S3 bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessKeyId")]
+        public virtual string AccessKeyId { get; set; }
+
+        /// <summary>Optional. The Amazon Endpoint for S3.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
+        public virtual string Endpoint { get; set; }
+
+        /// <summary>Optional. The name of the AWS region where the bucket is created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>Optional. Secret access key to access the Amazon S3 bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretAccessKeySecret")]
+        public virtual string SecretAccessKeySecret { get; set; }
+
+        /// <summary>Optional. The technology type of AmazonS3Connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengateAzureDataLakeStorageConnection.</summary>
+    public class GoldengateAzureDataLakeStorageConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Sets the Azure storage account name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("account")]
+        public virtual string Account { get; set; }
+
+        /// <summary>
+        /// Optional. Azure storage account key. This property is required when 'authentication_type' is set to
+        /// 'SHARED_KEY'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountKeySecret")]
+        public virtual string AccountKeySecret { get; set; }
+
+        /// <summary>Optional. Authentication mechanism to access Azure Data Lake Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authenticationType")]
+        public virtual string AuthenticationType { get; set; }
+
+        /// <summary>
+        /// Optional. The endpoint used for authentication with Microsoft Entra ID (formerly Azure Active Directory).
+        /// Default value: https://login.microsoftonline.com
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("azureAuthorityHost")]
+        public virtual string AzureAuthorityHost { get; set; }
+
+        /// <summary>
+        /// Optional. Azure tenant ID of the application. This property is required when 'authentication_type' is set to
+        /// 'AZURE_ACTIVE_DIRECTORY'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("azureTenantId")]
+        public virtual string AzureTenantId { get; set; }
+
+        /// <summary>
+        /// Optional. Azure client ID of the application. This property is required when 'authentication_type' is set to
+        /// 'AZURE_ACTIVE_DIRECTORY'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>Optional. Azure client secret (aka application password) for authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual string ClientSecret { get; set; }
+
+        /// <summary>Optional. Azure Storage service endpoint. e.g: https://test.blob.core.windows.net</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
+        public virtual string Endpoint { get; set; }
+
+        /// <summary>
+        /// Optional. Credential that uses a shared access signature (SAS) to authenticate to an Azure Service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sasTokenSecret")]
+        public virtual string SasTokenSecret { get; set; }
+
+        /// <summary>Optional. The technology type of AzureDataLakeStorageConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengateAzureSynapseAnalyticsConnection.</summary>
+    public class GoldengateAzureSynapseAnalyticsConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. JDBC connection string. e.g.:
+        /// 'jdbc:sqlserver://.sql.azuresynapse.net:1433;database=;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.sql.azuresynapse.net;loginTimeout=300;'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionString")]
+        public virtual string ConnectionString { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The password Oracle Goldengate uses for Azure Synapse Analytics connection in plain
+        /// text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the password
+        /// Oracle Goldengate uses for Azure Synapse Analytics connection. Format:
+        /// projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordSecretVersion")]
+        public virtual string PasswordSecretVersion { get; set; }
+
+        /// <summary>Optional. The technology type of AzureSynapseAnalyticsConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>
+        /// Optional. The username Oracle Goldengate uses to connect the associated system of the given technology.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The backup schedule of the GoldengateDeployment.</summary>
+    public class GoldengateBackupSchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _backupScheduledTimeRaw;
+
+        private object _backupScheduledTime;
+
+        /// <summary>Output only. The timestamp of when the backup was scheduled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupScheduledTime")]
+        public virtual string BackupScheduledTimeRaw
+        {
+            get => _backupScheduledTimeRaw;
+            set
+            {
+                _backupScheduledTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _backupScheduledTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="BackupScheduledTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use BackupScheduledTimeDateTimeOffset instead.")]
+        public virtual object BackupScheduledTime
+        {
+            get => _backupScheduledTime;
+            set
+            {
+                _backupScheduledTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _backupScheduledTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="BackupScheduledTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? BackupScheduledTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(BackupScheduledTimeRaw);
+            set => BackupScheduledTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The bucket name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>Output only. The compartment id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compartmentId")]
+        public virtual string CompartmentId { get; set; }
+
+        /// <summary>Output only. The frequency backup scheduled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequencyBackupScheduled")]
+        public virtual string FrequencyBackupScheduled { get; set; }
+
+        /// <summary>Output only. If metadata only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataOnly")]
+        public virtual System.Nullable<bool> MetadataOnly { get; set; }
+
+        /// <summary>Output only. The namespace name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
+        public virtual string Namespace__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of the GoldengateConnection resource.</summary>
+    public class GoldengateConnection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The date and time that the GoldengateConnection was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The ID of the subscription entitlement associated with the GoldengateConnection.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entitlementId")]
+        public virtual string EntitlementId { get; set; }
+
+        /// <summary>
+        /// Optional. The GCP Oracle zone where Oracle GoldengateConnection is hosted. Example: us-east4-b-r2. If not
+        /// specified, the system will pick a zone based on availability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpOracleZone")]
+        public virtual string GcpOracleZone { get; set; }
+
+        /// <summary>Optional. The labels or tags associated with the GoldengateConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the GoldengateConnection resource in the following format:
+        /// projects/{project}/locations/{region}/goldengateConnections/{goldengate_connection}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. HTTPS link to OCI resources exposed to Customer via UI Interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ociUrl")]
+        public virtual string OciUrl { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the OdbNetwork associated with the GoldengateConnection. The format is
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}. It is optional but if specified, this
+        /// should match the parent ODBNetwork of the OdbSubnet.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("odbNetwork")]
+        public virtual string OdbNetwork { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the OdbSubnet associated with the GoldengateConnection for IP allocation. Format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("odbSubnet")]
+        public virtual string OdbSubnet { get; set; }
+
+        /// <summary>Required. The properties of the GoldengateConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual GoldengateConnectionProperties Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the metadata of a Goldengate Connection Assignment.</summary>
+    public class GoldengateConnectionAssignment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the connection assignment was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. The display name for the GoldengateConnectionAssignment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. The OCID of the entitlement linked to this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entitlementId")]
+        public virtual string EntitlementId { get; set; }
+
+        /// <summary>Optional. The labels or tags associated with the GoldengateConnectionAssignment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the GoldengateConnectionAssignment resource in the following format:
+        /// projects/{project}/locations/{region}/goldengateConnectionAssignments/{goldengate_connection_assignment}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The properties of the GoldengateConnectionAssignment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual GoldengateConnectionAssignmentProperties Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of a GoldengateConnectionAssignment.</summary>
+    public class GoldengateConnectionAssignmentProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Credential store alias.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alias")]
+        public virtual string Alias { get; set; }
+
+        /// <summary>
+        /// Required. The GoldengateConnection resource to be assigned. Format:
+        /// projects/{project}/locations/{location}/goldengateConnections/{goldengate_connection}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goldengateConnection")]
+        public virtual string GoldengateConnection { get; set; }
+
+        /// <summary>
+        /// Required. The GoldenGateDeployment to assign the connection to. Format:
+        /// projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goldengateDeployment")]
+        public virtual string GoldengateDeployment { get; set; }
+
+        /// <summary>
+        /// Output only. The [OCID](https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the
+        /// connection assignment being referenced.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ocid")]
+        public virtual string Ocid { get; set; }
+
+        /// <summary>Output only. The lifecycle state of the connection assignment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of a GoldengateConnection.</summary>
+    public class GoldengateConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Properties for an Amazon Kinesis connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amazonKinesisConnectionProperties")]
+        public virtual GoldengateAmazonKinesisConnectionProperties AmazonKinesisConnectionProperties { get; set; }
+
+        /// <summary>Properties for an Amazon Redshift connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amazonRedshiftConnectionProperties")]
+        public virtual GoldengateAmazonRedshiftConnectionProperties AmazonRedshiftConnectionProperties { get; set; }
+
+        /// <summary>Properties for an Amazon S3 connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amazonS3ConnectionProperties")]
+        public virtual GoldengateAmazonS3ConnectionProperties AmazonS3ConnectionProperties { get; set; }
+
+        /// <summary>Properties for an Azure Data Lake Storage Connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("azureDataLakeStorageConnectionProperties")]
+        public virtual GoldengateAzureDataLakeStorageConnectionProperties AzureDataLakeStorageConnectionProperties { get; set; }
+
+        /// <summary>Properties for an Azure Synapse Analytics connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("azureSynapseAnalyticsConnectionProperties")]
+        public virtual GoldengateAzureSynapseAnalyticsConnectionProperties AzureSynapseAnalyticsConnectionProperties { get; set; }
+
+        /// <summary>Required. The connection type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionType")]
+        public virtual string ConnectionType { get; set; }
+
+        /// <summary>Properties for a Databricks connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databricksConnectionProperties")]
+        public virtual GoldengateDatabricksConnectionProperties DatabricksConnectionProperties { get; set; }
+
+        /// <summary>Properties for a DB2 connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("db2ConnectionProperties")]
+        public virtual GoldengateDb2ConnectionProperties Db2ConnectionProperties { get; set; }
+
+        /// <summary>Optional. Metadata about this specific object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. An object's Display Name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Properties for an Elasticsearch connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("elasticsearchConnectionProperties")]
+        public virtual GoldengateElasticsearchConnectionProperties ElasticsearchConnectionProperties { get; set; }
+
+        /// <summary>Properties for a Generic Connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericConnectionProperties")]
+        public virtual GoldengateGenericConnectionProperties GenericConnectionProperties { get; set; }
+
+        /// <summary>Properties for a Goldengate Connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goldengateConnectionProperties")]
+        public virtual GoldengateGoldengateConnectionProperties GoldengateConnectionPropertiesValue { get; set; }
+
+        /// <summary>Properties for a Google BigQuery Connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleBigQueryConnectionProperties")]
+        public virtual GoldengateGoogleBigQueryConnectionProperties GoogleBigQueryConnectionProperties { get; set; }
+
+        /// <summary>Properties for a Google Cloud Storage Connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleCloudStorageConnectionProperties")]
+        public virtual GoldengateGoogleCloudStorageConnectionProperties GoogleCloudStorageConnectionProperties { get; set; }
+
+        /// <summary>Properties for a Google Pub/Sub connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googlePubsubConnectionProperties")]
+        public virtual GoldengateGooglePubsubConnectionProperties GooglePubsubConnectionProperties { get; set; }
+
+        /// <summary>Properties for an HDFS connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hdfsConnectionProperties")]
+        public virtual GoldengateHdfsConnectionProperties HdfsConnectionProperties { get; set; }
+
+        /// <summary>Properties for an Iceberg connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("icebergConnectionProperties")]
+        public virtual GoldengateIcebergConnectionProperties IcebergConnectionProperties { get; set; }
+
+        /// <summary>Output only. The Ingress IPs of the GoldengateConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingressIpAddresses")]
+        public virtual System.Collections.Generic.IList<string> IngressIpAddresses { get; set; }
+
+        /// <summary>Properties for a Java Message Service connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("javaMessageServiceConnectionProperties")]
+        public virtual GoldengateJavaMessageServiceConnectionProperties JavaMessageServiceConnectionProperties { get; set; }
+
+        /// <summary>Properties for a Kafka Connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kafkaConnectionProperties")]
+        public virtual GoldengateKafkaConnectionProperties KafkaConnectionProperties { get; set; }
+
+        /// <summary>Properties for a Kafka Schema Registry Connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kafkaSchemaRegistryConnectionProperties")]
+        public virtual GoldengateKafkaSchemaRegistryConnectionProperties KafkaSchemaRegistryConnectionProperties { get; set; }
+
+        /// <summary>
+        /// Output only. Describes the object's current state in detail. For example, it can be used to provide
+        /// actionable information for a resource in a Failed state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lifecycleDetails")]
+        public virtual string LifecycleDetails { get; set; }
+
+        /// <summary>Output only. The lifecycle state of the connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
+        public virtual string LifecycleState { get; set; }
+
+        /// <summary>Properties for a Microsoft Fabric connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("microsoftFabricConnectionProperties")]
+        public virtual GoldengateMicrosoftFabricConnectionProperties MicrosoftFabricConnectionProperties { get; set; }
+
+        /// <summary>Properties for a Microsoft SQL Server connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("microsoftSqlserverConnectionProperties")]
+        public virtual GoldengateMicrosoftSqlserverConnectionProperties MicrosoftSqlserverConnectionProperties { get; set; }
+
+        /// <summary>Properties for a MongoDB connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mongodbConnectionProperties")]
+        public virtual GoldengateMongodbConnectionProperties MongodbConnectionProperties { get; set; }
+
+        /// <summary>Properties for a Mysql Connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mysqlConnectionProperties")]
+        public virtual GoldengateMysqlConnectionProperties MysqlConnectionProperties { get; set; }
+
+        /// <summary>Properties for an OCI Object Storage Connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ociObjectStorageConnectionProperties")]
+        public virtual GoldengateOciObjectStorageConnectionProperties OciObjectStorageConnectionProperties { get; set; }
+
+        /// <summary>Output only. The [OCID] of the connection being referenced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ocid")]
+        public virtual string Ocid { get; set; }
+
+        /// <summary>Properties for an Oracle AI Data Platform connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oracleAiDataPlatformConnectionProperties")]
+        public virtual GoldengateOracleAIDataPlatformConnectionProperties OracleAiDataPlatformConnectionProperties { get; set; }
+
+        /// <summary>Properties for an Oracle Database Connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oracleConnectionProperties")]
+        public virtual GoldengateOracleConnectionProperties OracleConnectionProperties { get; set; }
+
+        /// <summary>Properties for an Oracle NoSQL connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oracleNosqlConnectionProperties")]
+        public virtual GoldengateOracleNosqlConnectionProperties OracleNosqlConnectionProperties { get; set; }
+
+        /// <summary>Properties for a PostgreSQL connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postgresqlConnectionProperties")]
+        public virtual GoldengatePostgresqlConnectionProperties PostgresqlConnectionProperties { get; set; }
+
+        /// <summary>Properties for a Redis connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redisConnectionProperties")]
+        public virtual GoldengateRedisConnectionProperties RedisConnectionProperties { get; set; }
+
+        /// <summary>Optional. The routing method for the GoldengateConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routingMethod")]
+        public virtual string RoutingMethod { get; set; }
+
+        /// <summary>Properties for a Snowflake connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snowflakeConnectionProperties")]
+        public virtual GoldengateSnowflakeConnectionProperties SnowflakeConnectionProperties { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time the resource was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of the Goldengate Connection Type resource.</summary>
+    public class GoldengateConnectionType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The connection type of the Goldengate Connection Type resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionType")]
+        public virtual string ConnectionType { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the Goldengate Connection Type resource with the format:
+        /// projects/{project}/locations/{region}/goldengateConnectionTypes/{goldengate_connection_type}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The technology type of the Goldengate Connection Type resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyTypes")]
+        public virtual System.Collections.Generic.IList<string> TechnologyTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengateDatabricksConnection.</summary>
+    public class GoldengateDatabricksConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Authentication type for Databricks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authenticationType")]
+        public virtual string AuthenticationType { get; set; }
+
+        /// <summary>Optional. OAuth client id, only applicable for authentication_type == OAUTH_M2M</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>Optional. OAuth client secret, only applicable for authentication_type == OAUTH_M2M</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual string ClientSecret { get; set; }
+
+        /// <summary>
+        /// Optional. Connection URL. e.g.:
+        /// 'jdbc:databricks://adb-33934.4.azuredatabricks.net:443/default;transportMode=http;ssl=1;httpPath=sql/protocolv1/o/3393########44/0##3-7-hlrb'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionUrl")]
+        public virtual string ConnectionUrl { get; set; }
+
+        /// <summary>Optional. Input only. The password used to connect to Databricks in plain text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the password
+        /// used to connect to Databricks. Format: projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordSecretVersion")]
+        public virtual string PasswordSecretVersion { get; set; }
+
+        /// <summary>
+        /// Optional. External storage credential name to access files on object storage such as ADLS Gen2, S3 or Cloud
+        /// Storage.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageCredential")]
+        public virtual string StorageCredential { get; set; }
+
+        /// <summary>Optional. The technology type of DatabricksConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengateDb2Connection.</summary>
+    public class GoldengateDb2ConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. An array of name-value pair attribute entries. Used as additional parameters in connection string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalAttributes")]
+        public virtual System.Collections.Generic.IList<NameValuePair> AdditionalAttributes { get; set; }
+
+        /// <summary>Optional. The name of the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>Optional. The name or address of a host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The password Oracle Goldengate uses for Db2 connection in plain text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the password
+        /// Oracle Goldengate uses for Db2 connection. Format: projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordSecretVersion")]
+        public virtual string PasswordSecretVersion { get; set; }
+
+        /// <summary>Optional. The port of an endpoint usually specified for a connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>Optional. Security protocol for the DB2 database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityProtocol")]
+        public virtual string SecurityProtocol { get; set; }
+
+        /// <summary>
+        /// Optional. The keystash file which contains the encrypted password to the key database file. Not supported
+        /// for IBM Db2 for i.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslClientKeystashFile")]
+        public virtual string SslClientKeystashFile { get; set; }
+
+        /// <summary>
+        /// Optional. The keystore file created at the client containing the server certificate / CA root certificate.
+        /// Not supported for IBM Db2 for i.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslClientKeystoredbFile")]
+        public virtual string SslClientKeystoredbFile { get; set; }
+
+        /// <summary>
+        /// Optional. The file which contains the self-signed server certificate / Certificate Authority (CA)
+        /// certificate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslServerCertificateFile")]
+        public virtual string SslServerCertificateFile { get; set; }
+
+        /// <summary>Optional. The technology type of Db2Connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>Optional. The username Oracle Goldengate uses to connect to the DB2 database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>GoldengateDeployment Goldengate Deployment resource model.</summary>
+    public class GoldengateDeployment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The date and time that the GoldengateDeployment was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. The display name for the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. The ID of the subscription entitlement associated with the GoldengateDeployment
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entitlementId")]
+        public virtual string EntitlementId { get; set; }
+
+        /// <summary>
+        /// Optional. The GCP Oracle zone where Oracle GoldengateDeployment is hosted. Example: us-east4-b-r2. If not
+        /// specified, the system will pick a zone based on availability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpOracleZone")]
+        public virtual string GcpOracleZone { get; set; }
+
+        /// <summary>Optional. The labels or tags associated with the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the GoldengateDeployment resource in the following format:
+        /// projects/{project}/locations/{region}/goldengateDeployments/{goldengate_deployment}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. HTTPS link to OCI resources exposed to Customer via UI Interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ociUrl")]
+        public virtual string OciUrl { get; set; }
+
+        /// <summary>Optional. The name of the OdbNetwork associated with the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("odbNetwork")]
+        public virtual string OdbNetwork { get; set; }
+
+        /// <summary>
+        /// Required. The name of the OdbSubnet associated with the GoldengateDeployment for IP allocation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("odbSubnet")]
+        public virtual string OdbSubnet { get; set; }
+
+        /// <summary>Required. The properties of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual GoldengateDeploymentProperties Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of the Goldengate Deployment Environment resource.</summary>
+    public class GoldengateDeploymentEnvironment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Whether auto scaling is enabled by default for the Goldengate Deployment Environment resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoScalingEnabled")]
+        public virtual System.Nullable<bool> AutoScalingEnabled { get; set; }
+
+        /// <summary>Output only. The category of the Goldengate Deployment Environment resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>
+        /// Output only. The default CPU core count of the Goldengate Deployment Environment resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultCpuCoreCount")]
+        public virtual System.Nullable<int> DefaultCpuCoreCount { get; set; }
+
+        /// <summary>The display name of the Goldengate Deployment Environment resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. The environment type of the Goldengate Deployment Environment resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentType")]
+        public virtual string EnvironmentType { get; set; }
+
+        /// <summary>Output only. The max CPU core count of the Goldengate Deployment Environment resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxCpuCoreCount")]
+        public virtual System.Nullable<int> MaxCpuCoreCount { get; set; }
+
+        /// <summary>
+        /// Output only. The memory per CPU core in GBs of the Goldengate Deployment Environment resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryGbPerCpuCore")]
+        public virtual System.Nullable<int> MemoryGbPerCpuCore { get; set; }
+
+        /// <summary>Output only. The min CPU core count of the Goldengate Deployment Environment resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minCpuCoreCount")]
+        public virtual System.Nullable<int> MinCpuCoreCount { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the Goldengate Deployment Environment resource with the format:
+        /// projects/{project}/locations/{location}/goldengateDeploymentEnvironments/{goldengate_deployment_environment}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The network bandwidth per CPU core in Gbps of the Goldengate Deployment Environment resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkBandwidthGbpsPerCpuCore")]
+        public virtual System.Nullable<int> NetworkBandwidthGbpsPerCpuCore { get; set; }
+
+        /// <summary>
+        /// Output only. The storage usage limit per CPU core in GBs of the Goldengate Deployment Environment resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageUsageLimitGbPerCpuCore")]
+        public virtual System.Nullable<int> StorageUsageLimitGbPerCpuCore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The lock of the GoldengateDeployment.</summary>
+    public class GoldengateDeploymentLock : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The compartment id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compartmentId")]
+        public virtual string CompartmentId { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Output only. The related resource id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedResourceId")]
+        public virtual string RelatedResourceId { get; set; }
+
+        /// <summary>Output only. The type of lock.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Properties of GoldengateDeployment.</summary>
+    public class GoldengateDeploymentProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The backup schedule of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupSchedule")]
+        public virtual GoldengateBackupSchedule BackupSchedule { get; set; }
+
+        /// <summary>Output only. The category of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>Optional. The Minimum number of OCPUs to be made available for this Deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuCoreCount")]
+        public virtual System.Nullable<int> CpuCoreCount { get; set; }
+
+        /// <summary>Output only. The deployment backup id of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentBackupId")]
+        public virtual string DeploymentBackupId { get; set; }
+
+        /// <summary>Output only. The deployment diagnostic data of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentDiagnosticData")]
+        public virtual DeploymentDiagnosticData DeploymentDiagnosticData { get; set; }
+
+        /// <summary>Output only. The deployment role of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentRole")]
+        public virtual string DeploymentRole { get; set; }
+
+        /// <summary>
+        /// Required. A valid Goldengate Deployment type. For a list of supported types, use the
+        /// `ListGoldengateDeploymentTypes` operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentType")]
+        public virtual string DeploymentType { get; set; }
+
+        /// <summary>Output only. The deployment url of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentUrl")]
+        public virtual string DeploymentUrl { get; set; }
+
+        /// <summary>Optional. The description of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. The environment type of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentType")]
+        public virtual string EnvironmentType { get; set; }
+
+        /// <summary>Output only. The Fully Qualified Domain Name of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fqdn")]
+        public virtual string Fqdn { get; set; }
+
+        /// <summary>Output only. Whether the GoldengateDeployment is healthy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthy")]
+        public virtual System.Nullable<bool> Healthy { get; set; }
+
+        /// <summary>Output only. The ingress ips of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingressIps")]
+        public virtual System.Collections.Generic.IList<IngressIp> IngressIps { get; set; }
+
+        /// <summary>Optional. Indicates if auto scaling is enabled for the Deployment's CPU core count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isAutoScalingEnabled")]
+        public virtual System.Nullable<bool> IsAutoScalingEnabled { get; set; }
+
+        /// <summary>Output only. Whether the GoldengateDeployment is of the latest version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isLatestVersion")]
+        public virtual System.Nullable<bool> IsLatestVersion { get; set; }
+
+        /// <summary>Output only. Whether the GoldengateDeployment is public.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isPublic")]
+        public virtual System.Nullable<bool> IsPublic { get; set; }
+
+        /// <summary>Output only. Whether storage utilization limit is exceeded of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isStorageUtilizationLimitExceeded")]
+        public virtual System.Nullable<bool> IsStorageUtilizationLimitExceeded { get; set; }
+
+        private string _lastBackupScheduleTimeRaw;
+
+        private object _lastBackupScheduleTime;
+
+        /// <summary>Output only. The time last backup scheduled of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastBackupScheduleTime")]
+        public virtual string LastBackupScheduleTimeRaw
+        {
+            get => _lastBackupScheduleTimeRaw;
+            set
+            {
+                _lastBackupScheduleTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastBackupScheduleTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastBackupScheduleTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastBackupScheduleTimeDateTimeOffset instead.")]
+        public virtual object LastBackupScheduleTime
+        {
+            get => _lastBackupScheduleTime;
+            set
+            {
+                _lastBackupScheduleTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastBackupScheduleTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastBackupScheduleTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastBackupScheduleTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastBackupScheduleTimeRaw);
+            set => LastBackupScheduleTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. The Oracle license model that applies to a Deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseModel")]
+        public virtual string LicenseModel { get; set; }
+
+        /// <summary>Output only. The lifecycle details of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lifecycleDetails")]
+        public virtual string LifecycleDetails { get; set; }
+
+        /// <summary>Output only. State of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
+        public virtual string LifecycleState { get; set; }
+
+        /// <summary>Output only. The lifecycle sub-state of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lifecycleSubState")]
+        public virtual string LifecycleSubState { get; set; }
+
+        /// <summary>Output only. The load balancer id of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancerId")]
+        public virtual string LoadBalancerId { get; set; }
+
+        /// <summary>Output only. The load balancer subnet id of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancerSubnetId")]
+        public virtual string LoadBalancerSubnetId { get; set; }
+
+        /// <summary>Output only. The locks of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locks")]
+        public virtual System.Collections.Generic.IList<GoldengateDeploymentLock> Locks { get; set; }
+
+        /// <summary>Optional. The maintenance configuration of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceConfig")]
+        public virtual GoldengateMaintenanceConfig MaintenanceConfig { get; set; }
+
+        /// <summary>Optional. The maintenance window of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceWindow")]
+        public virtual GoldengateMaintenanceWindow MaintenanceWindow { get; set; }
+
+        private string _nextBackupScheduleTimeRaw;
+
+        private object _nextBackupScheduleTime;
+
+        /// <summary>Output only. The time next backup scheduled of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextBackupScheduleTime")]
+        public virtual string NextBackupScheduleTimeRaw
+        {
+            get => _nextBackupScheduleTimeRaw;
+            set
+            {
+                _nextBackupScheduleTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _nextBackupScheduleTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="NextBackupScheduleTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use NextBackupScheduleTimeDateTimeOffset instead.")]
+        public virtual object NextBackupScheduleTime
+        {
+            get => _nextBackupScheduleTime;
+            set
+            {
+                _nextBackupScheduleTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _nextBackupScheduleTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="NextBackupScheduleTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? NextBackupScheduleTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NextBackupScheduleTimeRaw);
+            set => NextBackupScheduleTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The next maintenance action type of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextMaintenanceActionType")]
+        public virtual string NextMaintenanceActionType { get; set; }
+
+        /// <summary>Output only. The next maintenance description of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextMaintenanceDescription")]
+        public virtual string NextMaintenanceDescription { get; set; }
+
+        private string _nextMaintenanceTimeRaw;
+
+        private object _nextMaintenanceTime;
+
+        /// <summary>Output only. The time of next maintenance of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextMaintenanceTime")]
+        public virtual string NextMaintenanceTimeRaw
+        {
+            get => _nextMaintenanceTimeRaw;
+            set
+            {
+                _nextMaintenanceTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _nextMaintenanceTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="NextMaintenanceTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use NextMaintenanceTimeDateTimeOffset instead.")]
+        public virtual object NextMaintenanceTime
+        {
+            get => _nextMaintenanceTime;
+            set
+            {
+                _nextMaintenanceTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _nextMaintenanceTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="NextMaintenanceTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? NextMaintenanceTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NextMaintenanceTimeRaw);
+            set => NextMaintenanceTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The nsg ids of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nsgIds")]
+        public virtual System.Collections.Generic.IList<string> NsgIds { get; set; }
+
+        /// <summary>Output only. OCID of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ocid")]
+        public virtual string Ocid { get; set; }
+
+        /// <summary>Required. The ogg data of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oggData")]
+        public virtual GoldengateOggDeployment OggData { get; set; }
+
+        private string _oggVersionSupportEndTimeRaw;
+
+        private object _oggVersionSupportEndTime;
+
+        /// <summary>Output only. The time ogg version supported until of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oggVersionSupportEndTime")]
+        public virtual string OggVersionSupportEndTimeRaw
+        {
+            get => _oggVersionSupportEndTimeRaw;
+            set
+            {
+                _oggVersionSupportEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _oggVersionSupportEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="OggVersionSupportEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use OggVersionSupportEndTimeDateTimeOffset instead.")]
+        public virtual object OggVersionSupportEndTime
+        {
+            get => _oggVersionSupportEndTime;
+            set
+            {
+                _oggVersionSupportEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _oggVersionSupportEndTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="OggVersionSupportEndTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? OggVersionSupportEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(OggVersionSupportEndTimeRaw);
+            set => OggVersionSupportEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The placements of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placements")]
+        public virtual System.Collections.Generic.IList<GoldengatePlacement> Placements { get; set; }
+
+        /// <summary>Output only. The private ip address of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateIpAddress")]
+        public virtual string PrivateIpAddress { get; set; }
+
+        /// <summary>Output only. The public ip address of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicIpAddress")]
+        public virtual string PublicIpAddress { get; set; }
+
+        private string _roleChangeTimeRaw;
+
+        private object _roleChangeTime;
+
+        /// <summary>Output only. The time when the role of the GoldengateDeployment was changed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("roleChangeTime")]
+        public virtual string RoleChangeTimeRaw
+        {
+            get => _roleChangeTimeRaw;
+            set
+            {
+                _roleChangeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _roleChangeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RoleChangeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RoleChangeTimeDateTimeOffset instead.")]
+        public virtual object RoleChangeTime
+        {
+            get => _roleChangeTime;
+            set
+            {
+                _roleChangeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _roleChangeTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="RoleChangeTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RoleChangeTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RoleChangeTimeRaw);
+            set => RoleChangeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The storage utilization in bytes of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageUtilizationBytes")]
+        public virtual System.Nullable<long> StorageUtilizationBytes { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time the GoldengateDeployment was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _upgradeRequiredTimeRaw;
+
+        private object _upgradeRequiredTime;
+
+        /// <summary>Output only. The time upgrade required of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeRequiredTime")]
+        public virtual string UpgradeRequiredTimeRaw
+        {
+            get => _upgradeRequiredTimeRaw;
+            set
+            {
+                _upgradeRequiredTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _upgradeRequiredTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpgradeRequiredTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpgradeRequiredTimeDateTimeOffset instead.")]
+        public virtual object UpgradeRequiredTime
+        {
+            get => _upgradeRequiredTime;
+            set
+            {
+                _upgradeRequiredTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _upgradeRequiredTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="UpgradeRequiredTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpgradeRequiredTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpgradeRequiredTimeRaw);
+            set => UpgradeRequiredTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of the Goldengate Deployment Type resource.</summary>
+    public class GoldengateDeploymentType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The category of the Goldengate Deployment Type resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>Output only. The connection types of the Goldengate Deployment Type resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionTypes")]
+        public virtual System.Collections.Generic.IList<string> ConnectionTypes { get; set; }
+
+        /// <summary>Output only. The default username of the Goldengate Deployment Type resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultUsername")]
+        public virtual string DefaultUsername { get; set; }
+
+        /// <summary>Output only. The deployment type of the Goldengate Deployment Type resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentType")]
+        public virtual string DeploymentType { get; set; }
+
+        /// <summary>Output only. The display name of the Goldengate Deployment Type resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the Goldengate Deployment Type resource with the format:
+        /// projects/{project}/locations/{region}/goldengateDeploymentTypes/{goldengate_deployment_type}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The Ogg version of the Goldengate Deployment Type resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oggVersion")]
+        public virtual string OggVersion { get; set; }
+
+        /// <summary>Output only. The source technologies of the Goldengate Deployment Type resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceTechnologies")]
+        public virtual System.Collections.Generic.IList<string> SourceTechnologies { get; set; }
+
+        /// <summary>Output only. The supported capabilities of the Goldengate Deployment Type resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedCapabilities")]
+        public virtual System.Collections.Generic.IList<string> SupportedCapabilities { get; set; }
+
+        /// <summary>Output only. The supported technologies URL of the Goldengate Deployment Type resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedTechnologiesUrl")]
+        public virtual string SupportedTechnologiesUrl { get; set; }
+
+        /// <summary>Output only. The target technologies of the Goldengate Deployment Type resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetTechnologies")]
+        public virtual System.Collections.Generic.IList<string> TargetTechnologies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of the Goldengate Deployment Version resource.</summary>
+    public class GoldengateDeploymentVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Identifier. The name of the Goldengate Deployment Version resource with the format:
+        /// projects/{project}/locations/{location}/goldengateDeploymentVersions/{goldengate_deployment_version}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The deployment version ocid of the Goldengate Deployment Version resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ocid")]
+        public virtual string Ocid { get; set; }
+
+        /// <summary>Output only. The technology type of the Goldengate Deployment Version resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual GoldengateDeploymentVersionProperties Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Properties of GoldengateDeploymentVersion.</summary>
+    public class GoldengateDeploymentVersionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The deployment type of the Goldengate Deployment Version resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentType")]
+        public virtual string DeploymentType { get; set; }
+
+        /// <summary>Output only. The OGG version of the Goldengate Deployment Version resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oggVersion")]
+        public virtual string OggVersion { get; set; }
+
+        private string _releaseTimeRaw;
+
+        private object _releaseTime;
+
+        /// <summary>Output only. The release time of the Goldengate Deployment Version resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseTime")]
+        public virtual string ReleaseTimeRaw
+        {
+            get => _releaseTimeRaw;
+            set
+            {
+                _releaseTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _releaseTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ReleaseTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReleaseTimeDateTimeOffset instead.")]
+        public virtual object ReleaseTime
+        {
+            get => _releaseTime;
+            set
+            {
+                _releaseTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _releaseTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReleaseTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ReleaseTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReleaseTimeRaw);
+            set => ReleaseTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The release type of the Goldengate Deployment Version resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseType")]
+        public virtual string ReleaseType { get; set; }
+
+        /// <summary>Optional. Whether the Goldengate Deployment Version resource is a security fix.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityFix")]
+        public virtual System.Nullable<bool> SecurityFix { get; set; }
+
+        private string _supportEndTimeRaw;
+
+        private object _supportEndTime;
+
+        /// <summary>Output only. The support end time of the Goldengate Deployment Version resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportEndTime")]
+        public virtual string SupportEndTimeRaw
+        {
+            get => _supportEndTimeRaw;
+            set
+            {
+                _supportEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _supportEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="SupportEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SupportEndTimeDateTimeOffset instead.")]
+        public virtual object SupportEndTime
+        {
+            get => _supportEndTime;
+            set
+            {
+                _supportEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _supportEndTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SupportEndTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SupportEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SupportEndTimeRaw);
+            set => SupportEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengateElasticsearchConnection.</summary>
+    public class GoldengateElasticsearchConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Authentication type for Elasticsearch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authenticationType")]
+        public virtual string AuthenticationType { get; set; }
+
+        /// <summary>
+        /// Optional. Fingerprint required by TLS security protocol. Eg.:
+        /// '6152b2dfbff200f973c5074a5b91d06ab3b472c07c09a1ea57bb7fd406cdce9c'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
+        public virtual string Fingerprint { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The password Oracle Goldengate uses for Elastic Search connection in plain text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the password
+        /// Oracle Goldengate uses for Elastic Search connection. Format:
+        /// projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordSecretVersion")]
+        public virtual string PasswordSecretVersion { get; set; }
+
+        /// <summary>Optional. Security protocol for Elasticsearch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityProtocol")]
+        public virtual string SecurityProtocol { get; set; }
+
+        /// <summary>
+        /// Optional. Comma separated list of Elasticsearch server addresses, specified as host:port entries, where
+        /// :port is optional. If port is not specified, it defaults to 9200. Example:
+        /// "server1.example.com:4000,server2.example.com:4000"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servers")]
+        public virtual string Servers { get; set; }
+
+        /// <summary>Optional. The technology type of ElasticsearchConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>
+        /// Optional. The username Oracle Goldengate uses to connect the associated system of the given technology.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengateGenericConnectionProperties.</summary>
+    public class GoldengateGenericConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The host of the GenericConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>Optional. The technology type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengateGoldengateConnectionProperties.</summary>
+    public class GoldengateGoldengateConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The name of the GoldengateDeployment associated with the GoldengateConnection. Format:
+        /// projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goldengateDeploymentId")]
+        public virtual string GoldengateDeploymentId { get; set; }
+
+        /// <summary>Optional. The host of the GoldengateConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The password used to connect to the Oracle Goldengate in plain text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the password
+        /// used to connect to the Oracle Goldengate. Format: projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordSecretVersion")]
+        public virtual string PasswordSecretVersion { get; set; }
+
+        /// <summary>Optional. The port of the GoldengateConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>Optional. The technology type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>Optional. The username credential.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengateGoogleBigQueryConnectionProperties.</summary>
+    public class GoldengateGoogleBigQueryConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The service account key file Cloud Storage containing the credentials required to use Google
+        /// BigQuery.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountKeyFile")]
+        public virtual string ServiceAccountKeyFile { get; set; }
+
+        /// <summary>Optional. The technology type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengateGoogleCloudStorageConnectionProperties.</summary>
+    public class GoldengateGoogleCloudStorageConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The service account key Cloud Storage file containing the credentials required to use Google Cloud
+        /// Storage.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountKeyFile")]
+        public virtual string ServiceAccountKeyFile { get; set; }
+
+        /// <summary>Optional. The technology type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengateGooglePubsubConnection.</summary>
+    public class GoldengateGooglePubsubConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The content of the service account key file containing the credentials required to use Google
+        /// Pub/Sub.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountKeyFile")]
+        public virtual string ServiceAccountKeyFile { get; set; }
+
+        /// <summary>Optional. The technology type of GooglePubsubConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The group to roles mapping of the GoldengateDeployment.</summary>
+    public class GoldengateGroupToRolesMapping : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The administrator group id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("administratorGroupId")]
+        public virtual string AdministratorGroupId { get; set; }
+
+        /// <summary>Output only. The operator group id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operatorGroupId")]
+        public virtual string OperatorGroupId { get; set; }
+
+        /// <summary>Output only. The security group id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityGroupId")]
+        public virtual string SecurityGroupId { get; set; }
+
+        /// <summary>Output only. The user group id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userGroupId")]
+        public virtual string UserGroupId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengateHdfsConnection.</summary>
+    public class GoldengateHdfsConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The content of the Hadoop Distributed File System configuration file (core-site.xml).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coreSiteXml")]
+        public virtual string CoreSiteXml { get; set; }
+
+        /// <summary>Optional. The technology type of HdfsConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengateIcebergConnection.</summary>
+    public class GoldengateIcebergConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Iceberg catalog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalog")]
+        public virtual IcebergCatalog Catalog { get; set; }
+
+        /// <summary>Required. The Iceberg storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storage")]
+        public virtual IcebergStorage Storage { get; set; }
+
+        /// <summary>Required. The technology type of Iceberg connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengateJavaMessageServiceConnection.</summary>
+    public class GoldengateJavaMessageServiceConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Authentication type for Java Message Service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authenticationType")]
+        public virtual string AuthenticationType { get; set; }
+
+        /// <summary>
+        /// Optional. The Java class implementing javax.jms.ConnectionFactory interface supplied by the JMS provider.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionFactory")]
+        public virtual string ConnectionFactory { get; set; }
+
+        /// <summary>
+        /// Optional. Connection URL of the Java Message Service, specifying the protocol, host, and port. e.g.:
+        /// 'mq://myjms.host.domain:7676'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionUrl")]
+        public virtual string ConnectionUrl { get; set; }
+
+        /// <summary>
+        /// Optional. The Connection Factory can be looked up using this name. e.g.: 'ConnectionFactory'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jndiConnectionFactory")]
+        public virtual string JndiConnectionFactory { get; set; }
+
+        /// <summary>
+        /// Optional. The implementation of javax.naming.spi.InitialContextFactory interface used to obtain initial
+        /// naming context.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jndiInitialContextFactory")]
+        public virtual string JndiInitialContextFactory { get; set; }
+
+        /// <summary>
+        /// Optional. The URL that Java Message Service will use to contact the JNDI provider. e.g.:
+        /// 'tcp://myjms.host.domain:61616?jms.prefetchPolicy.all=1000'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jndiProviderUrl")]
+        public virtual string JndiProviderUrl { get; set; }
+
+        /// <summary>Optional. The password associated to the principal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jndiSecurityCredentialsSecret")]
+        public virtual string JndiSecurityCredentialsSecret { get; set; }
+
+        /// <summary>Optional. Specifies the identity of the principal (user) to be authenticated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jndiSecurityPrincipal")]
+        public virtual string JndiSecurityPrincipal { get; set; }
+
+        /// <summary>Optional. The content of the KeyStore file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyStoreFile")]
+        public virtual string KeyStoreFile { get; set; }
+
+        /// <summary>Optional. Input only. The KeyStore password in plain text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyStorePassword")]
+        public virtual string KeyStorePassword { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the KeyStore
+        /// password. Format: projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyStorePasswordSecretVersion")]
+        public virtual string KeyStorePasswordSecretVersion { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The password Oracle Goldengate uses to connect the Java Message Service in plain text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the password
+        /// Oracle Goldengate uses to connect the associated Java Message Service. Format:
+        /// projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordSecretVersion")]
+        public virtual string PasswordSecretVersion { get; set; }
+
+        /// <summary>Optional. Security protocol for Java Message Service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityProtocol")]
+        public virtual string SecurityProtocol { get; set; }
+
+        /// <summary>Optional. Input only. The password for the cert inside of the KeyStore in plain text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslKeyPassword")]
+        public virtual string SslKeyPassword { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the password
+        /// for the cert inside of the KeyStore. Format: projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslKeyPasswordSecretVersion")]
+        public virtual string SslKeyPasswordSecretVersion { get; set; }
+
+        /// <summary>Optional. The technology type of JavaMessageServiceConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>Optional. The content of the TrustStore file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustStoreFile")]
+        public virtual string TrustStoreFile { get; set; }
+
+        /// <summary>Optional. Input only. The TrustStore password in plain text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustStorePassword")]
+        public virtual string TrustStorePassword { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the TrustStore
+        /// password. Format: projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustStorePasswordSecretVersion")]
+        public virtual string TrustStorePasswordSecretVersion { get; set; }
+
+        /// <summary>
+        /// Optional. If set to true, Java Naming and Directory Interface (JNDI) properties should be provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useJndi")]
+        public virtual System.Nullable<bool> UseJndi { get; set; }
+
+        /// <summary>Optional. The username Oracle Goldengate uses to connect to the Java Message Service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengateKafkaConnection.</summary>
+    public class GoldengateKafkaConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Kafka bootstrap. Equivalent of bootstrap.servers configuration property in Kafka: list of
+        /// KafkaBootstrapServer objects specified by host/port. Used for establishing the initial connection to the
+        /// Kafka cluster. Example: "server1.example.com:9092,server2.example.com:9092"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootstrapServers")]
+        public virtual System.Collections.Generic.IList<KafkaBootstrapServer> BootstrapServers { get; set; }
+
+        /// <summary>
+        /// Optional. The OCID of the Kafka cluster being referenced from OCI Streaming with Apache Kafka.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
+        public virtual string ClusterId { get; set; }
+
+        /// <summary>Optional. The content of the consumer.properties file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerPropertiesFile")]
+        public virtual string ConsumerPropertiesFile { get; set; }
+
+        /// <summary>Optional. The content of the KeyStore file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyStoreFile")]
+        public virtual string KeyStoreFile { get; set; }
+
+        /// <summary>Optional. Input only. The KeyStore password in plain text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyStorePassword")]
+        public virtual string KeyStorePassword { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the KeyStore
+        /// password. Format: projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyStorePasswordSecretVersion")]
+        public virtual string KeyStorePasswordSecretVersion { get; set; }
+
+        /// <summary>Optional. Input only. The password for Kafka basic/SASL auth in plain text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the password
+        /// for Kafka basic/SASL auth. Format: projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordSecretVersion")]
+        public virtual string PasswordSecretVersion { get; set; }
+
+        /// <summary>Optional. The content of the producer.properties file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerPropertiesFile")]
+        public virtual string ProducerPropertiesFile { get; set; }
+
+        /// <summary>Optional. Security Type for Kafka.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityProtocol")]
+        public virtual string SecurityProtocol { get; set; }
+
+        /// <summary>Optional. Input only. The password for the cert inside of the KeyStore in plain text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslKeyPassword")]
+        public virtual string SslKeyPassword { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the password
+        /// for the cert inside of the KeyStore. Format: projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslKeyPasswordSecretVersion")]
+        public virtual string SslKeyPasswordSecretVersion { get; set; }
+
+        /// <summary>Optional. The OCID of the stream pool being referenced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamPoolId")]
+        public virtual string StreamPoolId { get; set; }
+
+        /// <summary>Optional. The technology type of KafkaConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>Optional. The content of the TrustStore file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustStoreFile")]
+        public virtual string TrustStoreFile { get; set; }
+
+        /// <summary>Optional. Input only. The TrustStore password in plain text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustStorePassword")]
+        public virtual string TrustStorePassword { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the TrustStore
+        /// password. Format: projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustStorePasswordSecretVersion")]
+        public virtual string TrustStorePasswordSecretVersion { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies that the user intends to authenticate to the instance using a resource principal.
+        /// Applicable only for OCI Streaming connections.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useResourcePrincipal")]
+        public virtual System.Nullable<bool> UseResourcePrincipal { get; set; }
+
+        /// <summary>
+        /// Optional. The username Oracle Goldengate uses to connect the associated system of the given technology.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengateKafkaSchemaRegistryConnection.</summary>
+    public class GoldengateKafkaSchemaRegistryConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Used authentication mechanism to access Schema Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authenticationType")]
+        public virtual string AuthenticationType { get; set; }
+
+        /// <summary>Optional. The content of the KeyStore file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyStoreFile")]
+        public virtual string KeyStoreFile { get; set; }
+
+        /// <summary>Optional. Input only. The KeyStore password in plain text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyStorePassword")]
+        public virtual string KeyStorePassword { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the KeyStore
+        /// password. Format: projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyStorePasswordSecretVersion")]
+        public virtual string KeyStorePasswordSecretVersion { get; set; }
+
+        /// <summary>Optional. Input only. The password to access Schema Registry in plain text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the password to
+        /// access Schema Registry using basic authentication. Format:
+        /// projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordSecretVersion")]
+        public virtual string PasswordSecretVersion { get; set; }
+
+        /// <summary>Optional. Input only. The password for the cert inside the KeyStore in plain text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslKeyPassword")]
+        public virtual string SslKeyPassword { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the password
+        /// for the cert inside the KeyStore. Format: projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslKeyPasswordSecretVersion")]
+        public virtual string SslKeyPasswordSecretVersion { get; set; }
+
+        /// <summary>Optional. The technology type of KafkaSchemaRegistryConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>Optional. The content of the TrustStore file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustStoreFile")]
+        public virtual string TrustStoreFile { get; set; }
+
+        /// <summary>Optional. Input only. The TrustStore password in plain text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustStorePassword")]
+        public virtual string TrustStorePassword { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the TrustStore
+        /// password. Format: projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustStorePasswordSecretVersion")]
+        public virtual string TrustStorePasswordSecretVersion { get; set; }
+
+        /// <summary>Optional. Kafka Schema Registry URL. e.g.: 'https://server1.us.oracle.com:8081'</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>
+        /// Optional. The username to access Schema Registry using basic authentication. This value is injected into
+        /// 'schema.registry.basic.auth.user.info=user:password' configuration property.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The maintenance configuration of the GoldengateDeployment.</summary>
+    public class GoldengateMaintenanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Defines auto upgrade period for bundle releases. Manually configured period cannot be longer than
+        /// service defined period for bundle releases. This period must be shorter or equal to major release upgrade
+        /// period. Not passing this field during create will equate to using the service default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bundleReleaseUpgradePeriodDays")]
+        public virtual System.Nullable<int> BundleReleaseUpgradePeriodDays { get; set; }
+
+        /// <summary>
+        /// Optional. Defines auto upgrade period for interim releases. This period must be shorter or equal to bundle
+        /// release upgrade period.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interimReleaseUpgradePeriodDays")]
+        public virtual System.Nullable<int> InterimReleaseUpgradePeriodDays { get; set; }
+
+        /// <summary>
+        /// Optional. By default auto upgrade for interim releases are not enabled. If auto-upgrade is enabled for
+        /// interim release, you have to specify interim_release_upgrade_period_days too.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isInterimReleaseAutoUpgradeEnabled")]
+        public virtual System.Nullable<bool> IsInterimReleaseAutoUpgradeEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. Defines auto upgrade period for major releases. Manually configured period cannot be longer than
+        /// service defined period for major releases. Not passing this field during create will equate to using the
+        /// service default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("majorReleaseUpgradePeriodDays")]
+        public virtual System.Nullable<int> MajorReleaseUpgradePeriodDays { get; set; }
+
+        /// <summary>
+        /// Optional. Defines auto upgrade period for releases with security fix. Manually configured period cannot be
+        /// longer than service defined period for security releases. Not passing this field during create will equate
+        /// to using the service default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityPatchUpgradePeriodDays")]
+        public virtual System.Nullable<int> SecurityPatchUpgradePeriodDays { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The maintenance window of the GoldengateDeployment.</summary>
+    public class GoldengateMaintenanceWindow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Days of the week.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual string Day { get; set; }
+
+        /// <summary>Required. Start hour for maintenance period. Hour is in UTC.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startHour")]
+        public virtual System.Nullable<int> StartHour { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengateMicrosoftFabricConnection.</summary>
+    public class GoldengateMicrosoftFabricConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Azure client ID of the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>Optional. Client secret associated with the client id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual string ClientSecret { get; set; }
+
+        /// <summary>
+        /// Optional. Optional Microsoft Fabric service endpoint. Default value:
+        /// https://onelake.dfs.fabric.microsoft.com
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
+        public virtual string Endpoint { get; set; }
+
+        /// <summary>Optional. The technology type of MicrosoftFabricConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>Optional. Azure tenant ID of the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenantId")]
+        public virtual string TenantId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengateMicrosoftSqlserverConnection.</summary>
+    public class GoldengateMicrosoftSqlserverConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. An array of name-value pair attribute entries. Used as additional parameters in connection string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalAttributes")]
+        public virtual System.Collections.Generic.IList<NameValuePair> AdditionalAttributes { get; set; }
+
+        /// <summary>Optional. The name of the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>Optional. The name or address of a host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The password Oracle Goldengate uses for Microsoft SQL Server connection in plain text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the password
+        /// Oracle Goldengate uses for Microsoft SQL Server connection. Format:
+        /// projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordSecretVersion")]
+        public virtual string PasswordSecretVersion { get; set; }
+
+        /// <summary>Optional. The port of an endpoint usually specified for a connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>Optional. Security Type for Microsoft SQL Server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityProtocol")]
+        public virtual string SecurityProtocol { get; set; }
+
+        /// <summary>
+        /// Optional. If set to true, the driver validates the certificate that is sent by the database server.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverCertificateValidationRequired")]
+        public virtual System.Nullable<bool> ServerCertificateValidationRequired { get; set; }
+
+        /// <summary>
+        /// Optional. Database Certificate - The content of a .pem or .crt file containing the server public key (for
+        /// 1-way SSL).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslCaFile")]
+        public virtual string SslCaFile { get; set; }
+
+        /// <summary>Optional. The technology type of MicrosoftSqlserverConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>Optional. The username Oracle Goldengate uses to connect to the Microsoft SQL Server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengateMongodbConnection.</summary>
+    public class GoldengateMongodbConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. MongoDB connection string. e.g.: 'mongodb://mongodb0.example.com:27017/recordsrecords'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionString")]
+        public virtual string ConnectionString { get; set; }
+
+        /// <summary>Optional. The OCID of the Oracle Autonomous Json Database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
+        public virtual string DatabaseId { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The password Oracle Goldengate uses to connect the Mongodb connection in plain text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the password
+        /// Oracle Goldengate uses to connect the Mongodb connection. Format:
+        /// projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordSecretVersion")]
+        public virtual string PasswordSecretVersion { get; set; }
+
+        /// <summary>Optional. Security Type for MongoDB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityProtocol")]
+        public virtual string SecurityProtocol { get; set; }
+
+        /// <summary>Optional. The technology type of MongodbConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>
+        /// Optional. Database Certificate - The content of a .pem file, containing the server public key (for 1 and
+        /// 2-way SSL).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tlsCaFile")]
+        public virtual string TlsCaFile { get; set; }
+
+        /// <summary>
+        /// Optional. Client Certificate - The content of a .pem file, containing the client public key (for 2-way SSL).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tlsCertificateKeyFile")]
+        public virtual string TlsCertificateKeyFile { get; set; }
+
+        /// <summary>Optional. Input only. The Client Certificate key file password in plain text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tlsCertificateKeyFilePassword")]
+        public virtual string TlsCertificateKeyFilePassword { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the Client
+        /// Certificate key file password in Secret Manager. Format:
+        /// projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tlsCertificateKeyFilePasswordSecretVersion")]
+        public virtual string TlsCertificateKeyFilePasswordSecretVersion { get; set; }
+
+        /// <summary>Optional. The username Oracle Goldengate uses to connect to the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Properties of GoldengateMysqlConnection.</summary>
+    public class GoldengateMysqlConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. An array of name-value pair attribute entries. Used as additional parameters in connection string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalAttributes")]
+        public virtual System.Collections.Generic.IList<NameValuePair> AdditionalAttributes { get; set; }
+
+        /// <summary>Optional. The name of the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>Optional. The OCID of the database system being referenced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dbSystemId")]
+        public virtual string DbSystemId { get; set; }
+
+        /// <summary>Optional. The name or address of a host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The password Oracle Goldengate uses to connect to MySQL in plain text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the password
+        /// Oracle Goldengate uses to connect to MySQL. Format: projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordSecretVersion")]
+        public virtual string PasswordSecretVersion { get; set; }
+
+        /// <summary>Optional. The port of an endpoint usually specified for a connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>Optional. Security Type for MySQL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityProtocol")]
+        public virtual string SecurityProtocol { get; set; }
+
+        /// <summary>
+        /// Optional. Database Certificate - The content of a .pem or .crt file containing the server public key (for 1
+        /// and 2-way SSL).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslCaFile")]
+        public virtual string SslCaFile { get; set; }
+
+        /// <summary>
+        /// Optional. Client Certificate - The content of a .pem or .crt file containing the client public key (for
+        /// 2-way SSL).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslCertFile")]
+        public virtual string SslCertFile { get; set; }
+
+        /// <summary>
+        /// Optional. The list of certificates revoked by the trusted certificate authorities (Trusted CA).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslCrlFile")]
+        public virtual string SslCrlFile { get; set; }
+
+        /// <summary>
+        /// Optional. Client Key - The content of a .pem or .crt file containing the client private key (for 2-way SSL).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslKeyFile")]
+        public virtual string SslKeyFile { get; set; }
+
+        /// <summary>Optional. SSL modes for MySQL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslMode")]
+        public virtual string SslMode { get; set; }
+
+        /// <summary>Optional. The technology type of MysqlConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>
+        /// Optional. The username Oracle Goldengate uses to connect the associated system of the given technology.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengateOciObjectStorageConnection.</summary>
+    public class GoldengateOciObjectStorageConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The content of the private key file (PEM file) corresponding to the API key of the fingerprint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateKeyFile")]
+        public virtual string PrivateKeyFile { get; set; }
+
+        /// <summary>Optional. The passphrase of the private key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateKeyPassphraseSecret")]
+        public virtual string PrivateKeyPassphraseSecret { get; set; }
+
+        /// <summary>Optional. The fingerprint of the API Key of the user specified by the userId.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicKeyFingerprint")]
+        public virtual string PublicKeyFingerprint { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the region of OCI Object Storage. e.g.: us-ashburn-1 If the region is not provided,
+        /// backend will default to the default region.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>Optional. The technology type of OciObjectStorageConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>Optional. The OCID of the related OCI tenancy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenancyId")]
+        public virtual string TenancyId { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies that the user intends to authenticate to the instance using a resource principal.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useResourcePrincipal")]
+        public virtual System.Nullable<bool> UseResourcePrincipal { get; set; }
+
+        /// <summary>
+        /// Optional. The OCID of the OCI user who will access the Object Storage. The user must have write access to
+        /// the bucket they want to connect to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Ogg data of the GoldengateDeployment.</summary>
+    public class GoldengateOggDeployment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The Goldengate deployment console password in plain text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminPassword")]
+        public virtual string AdminPassword { get; set; }
+
+        /// <summary>Optional. Input only. The Goldengate deployment console password secret version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminPasswordSecretVersion")]
+        public virtual string AdminPasswordSecretVersion { get; set; }
+
+        /// <summary>Required. The Goldengate deployment console username.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminUsername")]
+        public virtual string AdminUsername { get; set; }
+
+        /// <summary>Output only. The certificate of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificate")]
+        public virtual string Certificate { get; set; }
+
+        /// <summary>Output only. The credential store of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("credentialStore")]
+        public virtual string CredentialStore { get; set; }
+
+        /// <summary>
+        /// Required. The name given to the Goldengate service deployment. The name must be 1 to 32 characters long,
+        /// must contain only alphanumeric characters and must start with a letter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
+        public virtual string Deployment { get; set; }
+
+        /// <summary>Output only. The group to roles mapping of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupRolesMapping")]
+        public virtual GoldengateGroupToRolesMapping GroupRolesMapping { get; set; }
+
+        /// <summary>Output only. The identity domain id of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityDomainId")]
+        public virtual string IdentityDomainId { get; set; }
+
+        /// <summary>Optional. Version of OGG</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oggVersion")]
+        public virtual string OggVersion { get; set; }
+
+        /// <summary>Output only. The password secret id of the GoldengateDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordSecretId")]
+        public virtual string PasswordSecretId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengateOracleAIDataPlatformConnection.</summary>
+    public class GoldengateOracleAIDataPlatformConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Connection URL. It must start with 'jdbc:spark://'</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionUrl")]
+        public virtual string ConnectionUrl { get; set; }
+
+        /// <summary>
+        /// Optional. The content of the private key file (PEM file) corresponding to the API key of the fingerprint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateKeyFile")]
+        public virtual string PrivateKeyFile { get; set; }
+
+        /// <summary>Optional. The passphrase of the private key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateKeyPassphraseSecret")]
+        public virtual string PrivateKeyPassphraseSecret { get; set; }
+
+        /// <summary>Optional. The fingerprint of the API Key of the user specified by the user_id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicKeyFingerprint")]
+        public virtual string PublicKeyFingerprint { get; set; }
+
+        /// <summary>Optional. The name of the region. e.g.: us-ashburn-1</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>Optional. The technology type of OracleAiDataPlatformConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>Optional. The OCID of the related OCI tenancy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenancyId")]
+        public virtual string TenancyId { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies that the user intends to authenticate to the instance using a resource principal.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useResourcePrincipal")]
+        public virtual System.Nullable<bool> UseResourcePrincipal { get; set; }
+
+        /// <summary>Optional. The OCID of the OCI user who will access.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of Goldengate Oracle Database Connection.</summary>
+    public class GoldengateOracleConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Authentication mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authenticationMode")]
+        public virtual string AuthenticationMode { get; set; }
+
+        /// <summary>Optional. Connect descriptor or Easy Connect Naming method used to connect to a database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionString")]
+        public virtual string ConnectionString { get; set; }
+
+        /// <summary>
+        /// Optional. Database instance id of database in Oracle Database @ Google Cloud. If gcp_oracle_database_id is
+        /// provided, connection_string must be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpOracleDatabaseId")]
+        public virtual string GcpOracleDatabaseId { get; set; }
+
+        /// <summary>Optional. Input only. The password Oracle Goldengate uses in plain text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the password
+        /// Oracle Goldengate uses. Format: projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordSecretVersion")]
+        public virtual string PasswordSecretVersion { get; set; }
+
+        /// <summary>
+        /// Optional. The mode of the database connection session to be established by the data client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionMode")]
+        public virtual string SessionMode { get; set; }
+
+        /// <summary>Optional. The technology type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>Optional. The username Oracle Goldengate uses to connect.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>Optional. The wallet contents Oracle Goldengate uses to make connections to a database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("walletFile")]
+        public virtual string WalletFile { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengateOracleNosqlConnection.</summary>
+    public class GoldengateOracleNosqlConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The content of the private key file (PEM file) corresponding to the API key of the fingerprint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateKeyFile")]
+        public virtual string PrivateKeyFile { get; set; }
+
+        /// <summary>Optional. The passphrase of the private key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateKeyPassphraseSecret")]
+        public virtual string PrivateKeyPassphraseSecret { get; set; }
+
+        /// <summary>Optional. The fingerprint of the API Key of the user specified by the userId.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicKeyFingerprint")]
+        public virtual string PublicKeyFingerprint { get; set; }
+
+        /// <summary>Optional. The name of the region. e.g.: us-ashburn-1</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>Optional. The technology type of OracleNosqlConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>Optional. The OCID of the OCI tenancy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenancyId")]
+        public virtual string TenancyId { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies that the user intends to authenticate to the instance using a resource principal.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useResourcePrincipal")]
+        public virtual System.Nullable<bool> UseResourcePrincipal { get; set; }
+
+        /// <summary>Optional. The OCID of the OCI user who will access the Oracle NoSQL database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The placement of the GoldengateDeployment.</summary>
+    public class GoldengatePlacement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The availability domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availabilityDomain")]
+        public virtual string AvailabilityDomain { get; set; }
+
+        /// <summary>Output only. The fault domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("faultDomain")]
+        public virtual string FaultDomain { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengatePostgresqlConnection.</summary>
+    public class GoldengatePostgresqlConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. An array of name-value pair attribute entries. Used as additional parameters in connection string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalAttributes")]
+        public virtual System.Collections.Generic.IList<NameValuePair> AdditionalAttributes { get; set; }
+
+        /// <summary>Optional. The name of the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>Optional. The OCID of the database system being referenced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dbSystemId")]
+        public virtual string DbSystemId { get; set; }
+
+        /// <summary>Optional. The name or address of a host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The password Oracle Goldengate uses for PostgreSQL connection in plain text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the password
+        /// Oracle Goldengate uses for PostgreSQL connection. Format:
+        /// projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordSecretVersion")]
+        public virtual string PasswordSecretVersion { get; set; }
+
+        /// <summary>Optional. The port of an endpoint usually specified for a connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>Optional. Security protocol for PostgreSQL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityProtocol")]
+        public virtual string SecurityProtocol { get; set; }
+
+        /// <summary>
+        /// Optional. The certificate of the trusted certificate authorities (Trusted CA) for PostgreSQL.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslCaFile")]
+        public virtual string SslCaFile { get; set; }
+
+        /// <summary>Optional. The certificate of the PostgreSQL server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslCertFile")]
+        public virtual string SslCertFile { get; set; }
+
+        /// <summary>
+        /// Optional. The list of certificates revoked by the trusted certificate authorities (Trusted CA).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslCrlFile")]
+        public virtual string SslCrlFile { get; set; }
+
+        /// <summary>Optional. The private key of the PostgreSQL server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslKeyFile")]
+        public virtual string SslKeyFile { get; set; }
+
+        /// <summary>Optional. SSL modes for PostgreSQL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslMode")]
+        public virtual string SslMode { get; set; }
+
+        /// <summary>Optional. The technology type of PostgresqlConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>
+        /// Optional. The username Oracle Goldengate uses to connect the associated system of the given technology.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengateRedisConnection.</summary>
+    public class GoldengateRedisConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Authentication type for Redis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authenticationType")]
+        public virtual string AuthenticationType { get; set; }
+
+        /// <summary>Optional. The content of the KeyStore file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyStoreFile")]
+        public virtual string KeyStoreFile { get; set; }
+
+        /// <summary>Optional. Input only. The KeyStore password in plain text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyStorePassword")]
+        public virtual string KeyStorePassword { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the KeyStore
+        /// password. Format: projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyStorePasswordSecretVersion")]
+        public virtual string KeyStorePasswordSecretVersion { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The password Oracle Goldengate uses for Redis connection in plain text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the password
+        /// Oracle Goldengate uses for Redis connection. Format: projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordSecretVersion")]
+        public virtual string PasswordSecretVersion { get; set; }
+
+        /// <summary>Optional. The OCID of the Redis cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redisClusterId")]
+        public virtual string RedisClusterId { get; set; }
+
+        /// <summary>Optional. Security protocol for Redis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityProtocol")]
+        public virtual string SecurityProtocol { get; set; }
+
+        /// <summary>
+        /// Optional. Comma separated list of Redis server addresses, specified as host:port entries, where :port is
+        /// optional. If port is not specified, it defaults to 6379. Example:
+        /// "server1.example.com:6379,server2.example.com:6379"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servers")]
+        public virtual string Servers { get; set; }
+
+        /// <summary>Optional. The technology type of RedisConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>Optional. The content of the TrustStore file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustStoreFile")]
+        public virtual string TrustStoreFile { get; set; }
+
+        /// <summary>Optional. Input only. The TrustStore password in plain text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustStorePassword")]
+        public virtual string TrustStorePassword { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the TrustStore
+        /// password. Format: projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustStorePasswordSecretVersion")]
+        public virtual string TrustStorePasswordSecretVersion { get; set; }
+
+        /// <summary>
+        /// Optional. The username Oracle Goldengate uses to connect the associated system of the given technology.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of GoldengateSnowflakeConnection.</summary>
+    public class GoldengateSnowflakeConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Used authentication mechanism to access Snowflake.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authenticationType")]
+        public virtual string AuthenticationType { get; set; }
+
+        /// <summary>
+        /// Optional. JDBC connection URL. e.g.: 'jdbc:snowflake://.snowflakecomputing.com/?warehouse=&amp;amp;db='
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionUrl")]
+        public virtual string ConnectionUrl { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The password Oracle Goldengate uses to connect to Snowflake platform in plain text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the password
+        /// Oracle Goldengate uses to connect to Snowflake platform. Format:
+        /// projects/{project}/secrets/{secret}/versions/{version}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordSecretVersion")]
+        public virtual string PasswordSecretVersion { get; set; }
+
+        /// <summary>Optional. The content of private key file in PEM format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateKeyFile")]
+        public virtual string PrivateKeyFile { get; set; }
+
+        /// <summary>Optional. Password if the private key file is encrypted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateKeyPassphraseSecret")]
+        public virtual string PrivateKeyPassphraseSecret { get; set; }
+
+        /// <summary>Optional. The technology type of SnowflakeConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
+        public virtual string TechnologyType { get; set; }
+
+        /// <summary>Optional. The username Oracle Goldengate uses to connect to Snowflake.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Google Cloud Storage Iceberg storage.</summary>
+    public class GoogleCloudStorageIcebergStorage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The bucket of Google Cloud Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>Required. The project ID of Google Cloud Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>Optional. The service account key file of Google Cloud Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountKeyFile")]
+        public virtual string ServiceAccountKeyFile { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Iceberg catalog details.</summary>
+    public class IcebergCatalog : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The type of Iceberg catalog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalogType")]
+        public virtual string CatalogType { get; set; }
+
+        /// <summary>The Glue Iceberg catalog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("glueIcebergCatalog")]
+        public virtual GlueIcebergCatalog GlueIcebergCatalog { get; set; }
+
+        /// <summary>The Nessie Iceberg catalog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nessieIcebergCatalog")]
+        public virtual NessieIcebergCatalog NessieIcebergCatalog { get; set; }
+
+        /// <summary>The Polaris Iceberg catalog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("polarisIcebergCatalog")]
+        public virtual PolarisIcebergCatalog PolarisIcebergCatalog { get; set; }
+
+        /// <summary>The REST Iceberg catalog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restIcebergCatalog")]
+        public virtual RestIcebergCatalog RestIcebergCatalog { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Iceberg storage details.</summary>
+    public class IcebergStorage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Amazon S3 Iceberg storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amazonS3IcebergStorage")]
+        public virtual AmazonS3IcebergStorage AmazonS3IcebergStorage { get; set; }
+
+        /// <summary>The Azure Data Lake Storage Iceberg storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("azureDataLakeStorageIcebergStorage")]
+        public virtual AzureDataLakeStorageIcebergStorage AzureDataLakeStorageIcebergStorage { get; set; }
+
+        /// <summary>The Google Cloud Storage Iceberg storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleCloudStorageIcebergStorage")]
+        public virtual GoogleCloudStorageIcebergStorage GoogleCloudStorageIcebergStorage { get; set; }
+
+        /// <summary>Required. The type of Iceberg storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageType")]
+        public virtual string StorageType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The identity connector details which will allow OCI to securely access the resources in the customer project.
     /// </summary>
@@ -9185,6 +14188,44 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAgentEmail")]
         public virtual string ServiceAgentEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The ingress IPs of the GoldengateDeployment.</summary>
+    public class IngressIp : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The ingress IP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingressIpAddress")]
+        public virtual string IngressIpAddress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a Kafka bootstrap server with host name, optional port defaults to 9092, and an optional private ip.
+    /// </summary>
+    public class KafkaBootstrapServer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name or address of a host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>Optional. The port of an endpoint usually specified for a connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>
+        /// Optional. The private IP address of the connection's endpoint in the customer's VCN, typically a database
+        /// endpoint or a big data endpoint (e.g. Kafka bootstrap server). In case the privateIp is provided, the
+        /// subnetId must also be provided. In case the privateIp (and the subnetId) is not provided it is assumed the
+        /// datasource is publicly accessible. In case the connection is accessible only privately, the lack of
+        /// privateIp will result in not being able to access the connection.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateIpAddress")]
+        public virtual string PrivateIpAddress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9500,6 +14541,156 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for listing GoldengateConnectionAssignments.</summary>
+    public class ListGoldengateConnectionAssignmentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of GoldengateConnectionAssignments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goldengateConnectionAssignments")]
+        public virtual System.Collections.Generic.IList<GoldengateConnectionAssignment> GoldengateConnectionAssignments { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// Unreachable locations when listing resources across all locations using wildcard location '-'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing GoldengateConnectionTypes</summary>
+    public class ListGoldengateConnectionTypesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of GoldengateConnectionType</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goldengateConnectionTypes")]
+        public virtual System.Collections.Generic.IList<GoldengateConnectionType> GoldengateConnectionTypes { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for `GoldengateConnection.List`.</summary>
+    public class ListGoldengateConnectionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of GoldengateConnections.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goldengateConnections")]
+        public virtual System.Collections.Generic.IList<GoldengateConnection> GoldengateConnections { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Optional. Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing GoldengateDeploymentEnvironments</summary>
+    public class ListGoldengateDeploymentEnvironmentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of GoldengateDeploymentEnvironment</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goldengateDeploymentEnvironments")]
+        public virtual System.Collections.Generic.IList<GoldengateDeploymentEnvironment> GoldengateDeploymentEnvironments { get; set; }
+
+        /// <summary>
+        /// A token identifying a page of results the server should return. If this field is empty, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing GoldengateDeploymentTypes</summary>
+    public class ListGoldengateDeploymentTypesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of GoldengateDeploymentType</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goldengateDeploymentTypes")]
+        public virtual System.Collections.Generic.IList<GoldengateDeploymentType> GoldengateDeploymentTypes { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Unordered list. The resource names of locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing GoldengateDeploymentVersions</summary>
+    public class ListGoldengateDeploymentVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of GoldengateDeploymentVersion</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goldengateDeploymentVersions")]
+        public virtual System.Collections.Generic.IList<GoldengateDeploymentVersion> GoldengateDeploymentVersions { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for `GoldengateDeployment.List`.</summary>
+    public class ListGoldengateDeploymentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of GoldengateDeployments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goldengateDeployments")]
+        public virtual System.Collections.Generic.IList<GoldengateDeployment> GoldengateDeployments { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Optional. Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Locations.ListLocations.</summary>
     public class ListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9740,6 +14931,36 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// <summary>Optional. The valid Oracle grid infrastructure software version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A name-value pair representing an attribute entry usable in a list of attributes.</summary>
+    public class NameValuePair : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the property entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Required. The value of the property entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Nessie Iceberg catalog.</summary>
+    public class NessieIcebergCatalog : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Nessie branch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("branch")]
+        public virtual string Branch { get; set; }
+
+        /// <summary>Required. The Nessie uri.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10211,6 +15432,33 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The Polaris Iceberg catalog.</summary>
+    public class PolarisIcebergCatalog : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Polaris client ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>Optional. The Polaris client secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual string ClientSecret { get; set; }
+
+        /// <summary>Required. The catalog name within Polaris.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("polarisCatalog")]
+        public virtual string PolarisCatalog { get; set; }
+
+        /// <summary>Required. The Polaris principal role.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principalRole")]
+        public virtual string PrincipalRole { get; set; }
+
+        /// <summary>Required. The Polaris uri.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request for `ExadbVmCluster.RemoveVirtualMachine`.</summary>
     public class RemoveVirtualMachineExadbVmClusterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10227,6 +15475,23 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The REST Iceberg catalog.</summary>
+    public class RestIcebergCatalog : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The content of the configuration file containing additional properties for the REST catalog.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual string Properties { get; set; }
+
+        /// <summary>Required. The REST uri.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10333,6 +15598,13 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request for `GoldengateDeployment.Start`.</summary>
+    public class StartGoldengateDeploymentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -10369,6 +15641,13 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request for `GoldengateDeployment.Stop`.</summary>
+    public class StopGoldengateDeploymentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The initial storage size, in gigabytes, that is applicable for virtual machine DBSystem.</summary>
     public class StorageSizeDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10397,6 +15676,64 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerAutonomousDatabase")]
         public virtual string PeerAutonomousDatabase { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Error details for TestGoldengateConnectionAssignment.</summary>
+    public class TestConnectionAssignmentError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The text describing the action required to fix the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>A short error code that defines the error, meant for programmatic parsing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>The text describing the root cause of the reported issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issue")]
+        public virtual string Issue { get; set; }
+
+        /// <summary>A human-readable error message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for TestGoldengateConnectionAssignment.</summary>
+    public class TestGoldengateConnectionAssignmentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The type of the test of the assigned connection. The only type actually supported is DEFAULT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The result of the connectivity test performed between the Goldengate deployment and the associated database /
+    /// service.
+    /// </summary>
+    public class TestGoldengateConnectionAssignmentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Error details if test connection failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual TestConnectionAssignmentError Error { get; set; }
+
+        /// <summary>List of test connection assignment error objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<TestConnectionAssignmentError> Errors { get; set; }
+
+        /// <summary>Type of the result i.e. Success, Failure or Timeout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultType")]
+        public virtual string ResultType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
