@@ -3964,6 +3964,73 @@ namespace Google.Apis.CloudDataplex.v1
                 }
 
                 /// <summary>
+                /// Requests access to a data product. This will trigger an access approval workflow, and the requester
+                /// will need to wait for the approval to be granted before they will be able to access the data product
+                /// assets.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the data product. Format:
+                /// projects/{project_number}/locations/{location_id}/dataProducts/{data_product_id}
+                /// </param>
+                public virtual RequestAccessRequest RequestAccess(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1RequestDataProductAccessRequest body, string parent)
+                {
+                    return new RequestAccessRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Requests access to a data product. This will trigger an access approval workflow, and the requester
+                /// will need to wait for the approval to be granted before they will be able to access the data product
+                /// assets.
+                /// </summary>
+                public class RequestAccessRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1RequestDataProductAccessResponse>
+                {
+                    /// <summary>Constructs a new RequestAccess request.</summary>
+                    public RequestAccessRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1RequestDataProductAccessRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the data product. Format:
+                    /// projects/{project_number}/locations/{location_id}/dataProducts/{data_product_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1RequestDataProductAccessRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "requestAccess";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}:requestAccess";
+
+                    /// <summary>Initializes RequestAccess parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dataProducts/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Sets the access control policy on the specified resource. Replaces any existing policy.Can return
                 /// NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
                 /// </summary>
@@ -17777,6 +17844,329 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a proposed change to a metadata resource.</summary>
+    public class GoogleCloudDataplexV1ChangeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The email address of the user who approved/rejected the ChangeRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approver")]
+        public virtual string Approver { get; set; }
+
+        /// <summary>Output only. The email address of the user who created the ChangeRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("author")]
+        public virtual string Author { get; set; }
+
+        /// <summary>
+        /// Output only. The type of change represented by the change_payload. This field is derived from the populated
+        /// field in the change_payload oneof.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeType")]
+        public virtual string ChangeType { get; set; }
+
+        /// <summary>Payload for creating an Entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createEntry")]
+        public virtual GoogleCloudDataplexV1CreateEntryRequest CreateEntry { get; set; }
+
+        /// <summary>Payload for creating an EntryLink.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createEntryLink")]
+        public virtual GoogleCloudDataplexV1CreateEntryLinkRequest CreateEntryLink { get; set; }
+
+        /// <summary>Payload for creating a Glossary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createGlossary")]
+        public virtual GoogleCloudDataplexV1CreateGlossaryRequest CreateGlossary { get; set; }
+
+        /// <summary>Payload for creating a GlossaryCategory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createGlossaryCategory")]
+        public virtual GoogleCloudDataplexV1CreateGlossaryCategoryRequest CreateGlossaryCategory { get; set; }
+
+        /// <summary>Payload for creating a GlossaryTerm.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createGlossaryTerm")]
+        public virtual GoogleCloudDataplexV1CreateGlossaryTermRequest CreateGlossaryTerm { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the ChangeRequest was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Payload for deleting an Entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteEntry")]
+        public virtual GoogleCloudDataplexV1DeleteEntryRequest DeleteEntry { get; set; }
+
+        /// <summary>Payload for deleting an EntryLink.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteEntryLink")]
+        public virtual GoogleCloudDataplexV1DeleteEntryLinkRequest DeleteEntryLink { get; set; }
+
+        /// <summary>Payload for deleting a Glossary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteGlossary")]
+        public virtual GoogleCloudDataplexV1DeleteGlossaryRequest DeleteGlossary { get; set; }
+
+        /// <summary>Payload for deleting a GlossaryCategory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteGlossaryCategory")]
+        public virtual GoogleCloudDataplexV1DeleteGlossaryCategoryRequest DeleteGlossaryCategory { get; set; }
+
+        /// <summary>Payload for deleting a GlossaryTerm.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteGlossaryTerm")]
+        public virtual GoogleCloudDataplexV1DeleteGlossaryTermRequest DeleteGlossaryTerm { get; set; }
+
+        /// <summary>
+        /// Optional. This checksum is computed by the service. It can be sent on update and delete requests to ensure
+        /// the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. Justification of the ChangeRequest. This should explain why the change is needed or why it should
+        /// be approved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("justification")]
+        public virtual string Justification { get; set; }
+
+        /// <summary>Optional. User-defined labels for the ChangeRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. The relative resource name of the ChangeRequest, of the form:
+        /// projects/{project_number}/locations/{location_id}/changeRequests/{change_request_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The reason provided for rejecting the ChangeRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rejectionComment")]
+        public virtual string RejectionComment { get; set; }
+
+        /// <summary>
+        /// Output only. The full resource name of the target resource to be modified. Example:
+        /// //dataplex.googleapis.com/projects/my-project/locations/us-central1/entryGroups/my-group/entries/my-entry
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>Output only. The current state of the ChangeRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. System generated globally unique ID for the ChangeRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        /// <summary>Payload for updating an Entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateEntry")]
+        public virtual GoogleCloudDataplexV1UpdateEntryRequest UpdateEntry { get; set; }
+
+        /// <summary>Payload for updating a Glossary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateGlossary")]
+        public virtual GoogleCloudDataplexV1UpdateGlossaryRequest UpdateGlossary { get; set; }
+
+        /// <summary>Payload for updating a GlossaryCategory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateGlossaryCategory")]
+        public virtual GoogleCloudDataplexV1UpdateGlossaryCategoryRequest UpdateGlossaryCategory { get; set; }
+
+        /// <summary>Payload for updating a GlossaryTerm.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateGlossaryTerm")]
+        public virtual GoogleCloudDataplexV1UpdateGlossaryTermRequest UpdateGlossaryTerm { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time when the ChangeRequest was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
+    /// <summary>Request message for CreateEntryLink.</summary>
+    public class GoogleCloudDataplexV1CreateEntryLinkRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Entry Link resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryLink")]
+        public virtual GoogleCloudDataplexV1EntryLink EntryLink { get; set; }
+
+        /// <summary>
+        /// Required. Entry Link identifier * Must contain only lowercase letters, numbers and hyphens. * Must start
+        /// with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique
+        /// within the EntryGroup.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryLinkId")]
+        public virtual string EntryLinkId { get; set; }
+
+        /// <summary>
+        /// Required. The resource name of the parent Entry Group:
+        /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Create Entry request.</summary>
+    public class GoogleCloudDataplexV1CreateEntryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Entry resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entry")]
+        public virtual GoogleCloudDataplexV1Entry Entry { get; set; }
+
+        /// <summary>
+        /// Required. Entry identifier. It has to be unique within an Entry Group.Entries corresponding to Google Cloud
+        /// resources use an Entry ID format based on full resource names
+        /// (https://cloud.google.com/apis/design/resource_names#full_resource_name). The format is a full resource name
+        /// of the resource without the prefix double slashes in the API service name part of the full resource name.
+        /// This allows retrieval of entries using their associated resource name.For example, if the full resource name
+        /// of a resource is //library.googleapis.com/shelves/shelf1/books/book2, then the suggested entry_id is
+        /// library.googleapis.com/shelves/shelf1/books/book2.It is also suggested to follow the same convention for
+        /// entries corresponding to resources from providers or systems other than Google Cloud.The maximum size of the
+        /// field is 4000 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryId")]
+        public virtual string EntryId { get; set; }
+
+        /// <summary>
+        /// Required. The resource name of the parent Entry Group:
+        /// projects/{project}/locations/{location}/entryGroups/{entry_group}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Creates a new GlossaryCategory under the specified Glossary.</summary>
+    public class GoogleCloudDataplexV1CreateGlossaryCategoryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The GlossaryCategory to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual GoogleCloudDataplexV1GlossaryCategory Category { get; set; }
+
+        /// <summary>Required. GlossaryCategory identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryId")]
+        public virtual string CategoryId { get; set; }
+
+        /// <summary>
+        /// Required. The parent resource where this GlossaryCategory will be created. Format:
+        /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id} where locationId refers to
+        /// a Google Cloud region.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Create Glossary Request</summary>
+    public class GoogleCloudDataplexV1CreateGlossaryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Glossary to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("glossary")]
+        public virtual GoogleCloudDataplexV1Glossary Glossary { get; set; }
+
+        /// <summary>Required. Glossary ID: Glossary identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("glossaryId")]
+        public virtual string GlossaryId { get; set; }
+
+        /// <summary>
+        /// Required. The parent resource where this Glossary will be created. Format:
+        /// projects/{project_id_or_number}/locations/{location_id} where location_id refers to a Google Cloud region.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>Optional. Validates the request without actually creating the Glossary. Default: false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Creates a new GlossaryTerm under the specified Glossary.</summary>
+    public class GoogleCloudDataplexV1CreateGlossaryTermRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The parent resource where the GlossaryTerm will be created. Format:
+        /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id} where location_id refers to
+        /// a Google Cloud region.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>Required. The GlossaryTerm to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("term")]
+        public virtual GoogleCloudDataplexV1GlossaryTerm Term { get; set; }
+
+        /// <summary>Required. GlossaryTerm identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("termId")]
+        public virtual string TermId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// DataAccessSpec holds the access control configuration to be enforced on data stored within resources (eg: rows,
     /// columns in BigQuery Tables). When associated with data, the data is only accessible to principals explicitly
@@ -18667,6 +19057,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// </summary>
     public class GoogleCloudDataplexV1DataProduct : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Configuration for access approval for the data product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessApprovalConfig")]
+        public virtual GoogleCloudDataplexV1DataProductAccessApprovalConfig AccessApprovalConfig { get; set; }
+
         /// <summary>
         /// Optional. Data product access groups by access group id as key. If data product is used only for packaging
         /// data assets, then access groups may be empty. However, if a data product is used for sharing data assets,
@@ -18805,6 +19199,20 @@ namespace Google.Apis.CloudDataplex.v1.Data
         }
     }
 
+    /// <summary>Configuration for access approval for the data product.</summary>
+    public class GoogleCloudDataplexV1DataProductAccessApprovalConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies the email addresses of users who are potential approvers and are notified when an access
+        /// request is made for the data product. The maximum number of emails allowed is 10.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approverEmails")]
+        public virtual System.Collections.Generic.IList<string> ApproverEmails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Custom user defined access groups at the data product level. These are used for granting different levels of
     /// access (IAM roles) on the individual data product's data assets.
@@ -18848,6 +19256,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleGroup")]
         public virtual string GoogleGroup { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the email of the producer service account, as per
+        /// https://cloud.google.com/iam/docs/principals-overview#service-account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21172,6 +21587,80 @@ namespace Google.Apis.CloudDataplex.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+    }
+
+    /// <summary>Request message for DeleteEntryLink.</summary>
+    public class GoogleCloudDataplexV1DeleteEntryLinkRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The resource name of the Entry Link:
+        /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Delete Entry request.</summary>
+    public class GoogleCloudDataplexV1DeleteEntryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The resource name of the Entry:
+        /// projects/{project}/locations/{location}/entryGroups/{entry_group}/entries/{entry}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Delete GlossaryCategory Request</summary>
+    public class GoogleCloudDataplexV1DeleteGlossaryCategoryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the GlossaryCategory to delete. Format:
+        /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/categories/{category_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Delete Glossary Request</summary>
+    public class GoogleCloudDataplexV1DeleteGlossaryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The etag of the Glossary. If this is provided, it must match the server's etag. If the etag is
+        /// provided and does not match the server-computed etag, the request must fail with a ABORTED error code.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Required. The name of the Glossary to delete. Format:
+        /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+    }
+
+    /// <summary>Delete GlossaryTerm Request</summary>
+    public class GoogleCloudDataplexV1DeleteGlossaryTermRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the GlossaryTerm to delete. Format:
+        /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/terms/{term_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>The payload associated with Discovery data processing.</summary>
@@ -24730,6 +25219,37 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
     }
 
+    /// <summary>Message for requesting access to a Data Product.</summary>
+    public class GoogleCloudDataplexV1RequestDataProductAccessRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The change request for the data product access request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeRequest")]
+        public virtual GoogleCloudDataplexV1ChangeRequest ChangeRequest { get; set; }
+
+        /// <summary>
+        /// Optional. Validates the request without actually creating the access change request. Defaults to false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for requesting access to a Data Product.</summary>
+    public class GoogleCloudDataplexV1RequestDataProductAccessResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the created ChangeRequest. Format:
+        /// projects/{project_number}/locations/{location_id}/changeRequests/{change_request_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeRequestName")]
+        public virtual string ChangeRequestName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// ResourceAccessSpec holds the access control configuration to be enforced on the resources, for example, Cloud
     /// Storage bucket, BigQuery dataset, BigQuery table.
@@ -25715,6 +26235,107 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cron")]
         public virtual string Cron { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Update Entry request.</summary>
+    public class GoogleCloudDataplexV1UpdateEntryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. If set to true and the entry doesn't exist, the service will create it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowMissing")]
+        public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+        /// <summary>
+        /// Optional. The map keys of the Aspects which the service should modify. It supports the following syntaxes: -
+        /// matches an aspect of the given type and empty path. @path - matches an aspect of the given type and
+        /// specified path. For example, to attach an aspect to a field that is specified by the schema aspect, the path
+        /// should have the format Schema.. @* - matches aspects of the given type for all paths. *@path - matches
+        /// aspects of all types on the given path.The service will not remove existing aspects matching the syntax
+        /// unless delete_missing_aspects is set to true.If this field is left empty, the service treats it as
+        /// specifying exactly those Aspects present in the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aspectKeys")]
+        public virtual System.Collections.Generic.IList<string> AspectKeys { get; set; }
+
+        /// <summary>
+        /// Optional. If set to true and the aspect_keys specify aspect ranges, the service deletes any existing aspects
+        /// from that range that weren't provided in the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteMissingAspects")]
+        public virtual System.Nullable<bool> DeleteMissingAspects { get; set; }
+
+        /// <summary>Required. Entry resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entry")]
+        public virtual GoogleCloudDataplexV1Entry Entry { get; set; }
+
+        /// <summary>
+        /// Optional. Mask of fields to update. To update Aspects, the update_mask must contain the value "aspects".If
+        /// the update_mask is empty, the service will update all modifiable fields present in the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Update GlossaryCategory Request</summary>
+    public class GoogleCloudDataplexV1UpdateGlossaryCategoryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The GlossaryCategory to update. The GlossaryCategory's name field is used to identify the
+        /// GlossaryCategory to update. Format:
+        /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/categories/{category_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual GoogleCloudDataplexV1GlossaryCategory Category { get; set; }
+
+        /// <summary>Required. The list of fields to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Update Glossary Request</summary>
+    public class GoogleCloudDataplexV1UpdateGlossaryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The Glossary to update. The Glossary's name field is used to identify the Glossary to update.
+        /// Format: projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("glossary")]
+        public virtual GoogleCloudDataplexV1Glossary Glossary { get; set; }
+
+        /// <summary>Required. The list of fields to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
+        /// <summary>Optional. Validates the request without actually updating the Glossary. Default: false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Update GlossaryTerm Request</summary>
+    public class GoogleCloudDataplexV1UpdateGlossaryTermRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The GlossaryTerm to update. The GlossaryTerm's name field is used to identify the GlossaryTerm to
+        /// update. Format:
+        /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/terms/{term_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("term")]
+        public virtual GoogleCloudDataplexV1GlossaryTerm Term { get; set; }
+
+        /// <summary>Required. The list of fields to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
