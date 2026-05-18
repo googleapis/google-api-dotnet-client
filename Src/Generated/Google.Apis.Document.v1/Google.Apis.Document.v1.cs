@@ -2935,8 +2935,8 @@ namespace Google.Apis.Document.v1
 
             /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
-            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
-            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
             /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
             /// that specific project. This includes public, private, or other project-specific locations enabled for
             /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
@@ -2951,8 +2951,8 @@ namespace Google.Apis.Document.v1
 
             /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
-            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
-            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
             /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
             /// that specific project. This includes public, private, or other project-specific locations enabled for
             /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
@@ -2973,8 +2973,8 @@ namespace Google.Apis.Document.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Do not use this field unless explicitly documented otherwise. This is primarily for
+                /// internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -5439,6 +5439,14 @@ namespace Google.Apis.Document.v1.Data
     /// </summary>
     public class GoogleCloudDocumentaiV1Document : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The blob assets in this document. This is used to store the content of the inline blobs in this
+        /// document, for example, image bytes, such that it can be referenced by other fields in the document via asset
+        /// id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobAssets")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentBlobAsset> BlobAssets { get; set; }
+
         /// <summary>Document chunked based on chunking config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chunkedDocument")]
         public virtual GoogleCloudDocumentaiV1DocumentChunkedDocument ChunkedDocument { get; set; }
@@ -5543,6 +5551,42 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents the annotation of a block or a chunk.</summary>
+    public class GoogleCloudDocumentaiV1DocumentAnnotations : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The description of the content with this annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a blob asset. It's used to store the content of the inline blob in this document, for example, image
+    /// bytes, such that it can be referenced by other fields in the document via asset ID.
+    /// </summary>
+    public class GoogleCloudDocumentaiV1DocumentBlobAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The id of the blob asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetId")]
+        public virtual string AssetId { get; set; }
+
+        /// <summary>Optional. The content of the blob asset, for example, image bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>
+        /// The mime type of the blob asset. An IANA published [media type (MIME
+        /// type)](https://www.iana.org/assignments/media-types/media-types.xhtml).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the chunks that the document is divided into.</summary>
     public class GoogleCloudDocumentaiV1DocumentChunkedDocument : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5557,6 +5601,10 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>Represents a chunk.</summary>
     public class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Chunk fields inside this chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkFields")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkField> ChunkFields { get; set; }
+
         /// <summary>ID of the chunk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chunkId")]
         public virtual string ChunkId { get; set; }
@@ -5580,6 +5628,24 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>Unused.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceBlockIds")]
         public virtual System.Collections.Generic.IList<string> SourceBlockIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The chunk field in the chunk. A chunk field could be one of the various types (for example, image, table)
+    /// supported.
+    /// </summary>
+    public class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The image chunk field in the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageChunkField")]
+        public virtual GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkImageChunkField ImageChunkField { get; set; }
+
+        /// <summary>The table chunk field in the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableChunkField")]
+        public virtual GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkTableChunkField TableChunkField { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5630,6 +5696,45 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The image chunk field in the chunk.</summary>
+    public class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkImageChunkField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Annotation of the image chunk field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual GoogleCloudDocumentaiV1DocumentAnnotations Annotations { get; set; }
+
+        /// <summary>
+        /// Optional. Asset id of the inline image. If set, find the image content in the blob_assets field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobAssetId")]
+        public virtual string BlobAssetId { get; set; }
+
+        /// <summary>
+        /// Optional. Data uri of the image. It is composed of four parts: a prefix (data:), a MIME type indicating the
+        /// type of data, an optional base64 token if non-textual, and the data itself: data:,
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataUri")]
+        public virtual string DataUri { get; set; }
+
+        /// <summary>Optional. Google Cloud Storage uri of the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
+        public virtual string GcsUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The table chunk field in the chunk.</summary>
+    public class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkTableChunkField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Annotation of the table chunk field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual GoogleCloudDocumentaiV1DocumentAnnotations Annotations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents the parsed layout of a document as a collection of blocks that the document is divided into.
     /// </summary>
@@ -5654,6 +5759,10 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudDocumentaiV1BoundingPoly BoundingBox { get; set; }
 
+        /// <summary>Block consisting of image content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageBlock")]
+        public virtual GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutImageBlock ImageBlock { get; set; }
+
         /// <summary>Block consisting of list content/structure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listBlock")]
         public virtual GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock ListBlock { get; set; }
@@ -5669,6 +5778,45 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>Block consisting of text content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textBlock")]
         public virtual GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock TextBlock { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an image type block.</summary>
+    public class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutImageBlock : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Annotation of the image block.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual GoogleCloudDocumentaiV1DocumentAnnotations Annotations { get; set; }
+
+        /// <summary>
+        /// Optional. Asset id of the inline image. If set, find the image content in the blob_assets field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobAssetId")]
+        public virtual string BlobAssetId { get; set; }
+
+        /// <summary>
+        /// Optional. Data uri of the image. It is composed of four parts: a prefix (data:), a MIME type indicating the
+        /// type of data, an optional base64 token if non-textual, and the data itself: data:,
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataUri")]
+        public virtual string DataUri { get; set; }
+
+        /// <summary>Optional. Google Cloud Storage uri of the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
+        public virtual string GcsUri { get; set; }
+
+        /// <summary>Text extracted from the image using OCR or alt text describing the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageText")]
+        public virtual string ImageText { get; set; }
+
+        /// <summary>
+        /// Mime type of the image. An IANA published [media type (MIME type)]
+        /// (https://www.iana.org/assignments/media-types/media-types.xhtml).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5720,6 +5868,10 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>Represents a table type block.</summary>
     public class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Annotation of the table block.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual GoogleCloudDocumentaiV1DocumentAnnotations Annotations { get; set; }
+
         /// <summary>Body rows containing main table content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bodyRows")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow> BodyRows { get; set; }
@@ -5771,6 +5923,10 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>Represents a text type block.</summary>
     public class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Annotation of the text block.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual GoogleCloudDocumentaiV1DocumentAnnotations Annotations { get; set; }
+
         /// <summary>
         /// A text block could further have child blocks. Repeated blocks support further hierarchies and nested blocks.
         /// </summary>
