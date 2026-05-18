@@ -10444,7 +10444,7 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("denyMaintenancePeriods")]
         public virtual System.Collections.Generic.IList<DenyMaintenancePeriod> DenyMaintenancePeriods { get; set; }
 
-        /// <summary>Optional. The edition of the instance.</summary>
+        /// <summary>Optional. The edition type of the Cloud SQL instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("edition")]
         public virtual string Edition { get; set; }
 
