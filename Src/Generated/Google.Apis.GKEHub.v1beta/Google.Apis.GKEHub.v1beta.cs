@@ -9941,6 +9941,63 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Operational state of the Rollout Sequence.</summary>
+    public class OperationalState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Reasons for the Rollout Sequence state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reasons")]
+        public virtual System.Collections.Generic.IList<string> Reasons { get; set; }
+
+        /// <summary>Output only. State of the Rollout Sequence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _stateChangeTimeRaw;
+
+        private object _stateChangeTime;
+
+        /// <summary>
+        /// Output only. The timestamp at which the operational state was last changed. Used to track how long it has
+        /// been in the current state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateChangeTime")]
+        public virtual string StateChangeTimeRaw
+        {
+            get => _stateChangeTimeRaw;
+            set
+            {
+                _stateChangeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _stateChangeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StateChangeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StateChangeTimeDateTimeOffset instead.")]
+        public virtual object StateChangeTime
+        {
+            get => _stateChangeTime;
+            set
+            {
+                _stateChangeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _stateChangeTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="StateChangeTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StateChangeTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StateChangeTimeRaw);
+            set => StateChangeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Origin defines where this MembershipFeatureSpec originated from.</summary>
     public class Origin : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10975,13 +11032,13 @@ namespace Google.Apis.GKEHub.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Operational state of the Rollout Sequence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationalState")]
+        public virtual OperationalState OperationalState { get; set; }
+
         /// <summary>Required. Ordered list of stages that constitutes this Rollout.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stages")]
         public virtual System.Collections.Generic.IList<Stage> Stages { get; set; }
-
-        /// <summary>Output only. State of the Rollout Sequence as a whole.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual RolloutSequenceState State { get; set; }
 
         /// <summary>
         /// Output only. Google-generated UUID for this resource. This is unique across all Rollout Sequence resources.
@@ -11027,63 +11084,6 @@ namespace Google.Apis.GKEHub.v1beta.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
-    }
-
-    /// <summary>State and reasons of the Rollout Sequence.</summary>
-    public class RolloutSequenceState : Google.Apis.Requests.IDirectResponseSchema
-    {
-        private string _lastStateChangeTimeRaw;
-
-        private object _lastStateChangeTime;
-
-        /// <summary>
-        /// Output only. The timestamp at which the LifecycleState was last changed. Used to track how long it has been
-        /// in the current state.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastStateChangeTime")]
-        public virtual string LastStateChangeTimeRaw
-        {
-            get => _lastStateChangeTimeRaw;
-            set
-            {
-                _lastStateChangeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _lastStateChangeTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="LastStateChangeTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastStateChangeTimeDateTimeOffset instead.")]
-        public virtual object LastStateChangeTime
-        {
-            get => _lastStateChangeTime;
-            set
-            {
-                _lastStateChangeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _lastStateChangeTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastStateChangeTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? LastStateChangeTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastStateChangeTimeRaw);
-            set => LastStateChangeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>Output only. Lifecycle state of the Rollout Sequence.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
-        public virtual string LifecycleState { get; set; }
-
-        /// <summary>Output only. StateReason represents the reason for the Rollout Sequence state.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("stateReasons")]
-        public virtual System.Collections.Generic.IList<string> StateReasons { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>Stage represents a single stage in the Rollout.</summary>
