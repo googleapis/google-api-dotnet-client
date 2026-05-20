@@ -1898,6 +1898,10 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual GoogleTypeTimeZone TimeZone { get; set; }
 
+        /// <summary>The transit station information for the place.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transitStation")]
+        public virtual GoogleMapsPlacesV1TransitStation TransitStation { get; set; }
+
         /// <summary>
         /// A set of type tags for this result. For example, "political" and "locality". For the complete list of
         /// possible values, see Table A and Table B at
@@ -3154,6 +3158,175 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchUri")]
         public virtual string SearchUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a transit agency.</summary>
+    public class GoogleMapsPlacesV1TransitAgency : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Agency name (e.g. "VTA") in the requested language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual GoogleTypeLocalizedText DisplayName { get; set; }
+
+        /// <summary>The URL of the agency's fare details page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fareUrl")]
+        public virtual string FareUrl { get; set; }
+
+        /// <summary>
+        /// Icon identifier for localized branded icon of a transit system (e.g. London Underground) which should be
+        /// used instead of TransitLine.vehicle_icon in the UI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("icon")]
+        public virtual GoogleMapsPlacesV1TransitIcon Icon { get; set; }
+
+        /// <summary>The transit lines that are served by this agency.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lines")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1TransitLine> Lines { get; set; }
+
+        /// <summary>The URL of the agency's homepage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Icon for a transit line, vehicle, or agency.</summary>
+    public class GoogleMapsPlacesV1TransitIcon : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether the name is contained in the icon and there is no need to display it next to the icon.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nameIncluded")]
+        public virtual System.Nullable<bool> NameIncluded { get; set; }
+
+        /// <summary>The URL of the icon.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a single transit line.</summary>
+    public class GoogleMapsPlacesV1TransitLine : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The background color of the labels for this transit line in #RRGGBB hex format, e.g. #909CE1. This color can
+        /// also be used for drawing shapes for this transit line.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
+        public virtual string BackgroundColor { get; set; }
+
+        /// <summary>The long name for this transit line (e.g. "Sunnydale local").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual GoogleTypeLocalizedText DisplayName { get; set; }
+
+        /// <summary>Icon identifier for this particular line (e.g. subway lines in New York).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("icon")]
+        public virtual GoogleMapsPlacesV1TransitIcon Icon { get; set; }
+
+        /// <summary>
+        /// The id of the transit line that can be used to uniquely identify the line among other transit lines in the
+        /// same transit station. This identifier is not guaranteed to be stable across different responses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The short name for this transit line (e.g. "S2").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shortDisplayName")]
+        public virtual GoogleTypeLocalizedText ShortDisplayName { get; set; }
+
+        /// <summary>The text color of labels for this transit line in #RRGGBB hex format, e.g. #909CE1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textColor")]
+        public virtual string TextColor { get; set; }
+
+        /// <summary>The URL of a webpage with details about this line.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>Icon identifier for this particular vehicle type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vehicleIcon")]
+        public virtual GoogleMapsPlacesV1TransitIcon VehicleIcon { get; set; }
+
+        /// <summary>The type of vehicle using this line.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vehicleType")]
+        public virtual string VehicleType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents transit-specific information for a place.</summary>
+    public class GoogleMapsPlacesV1TransitStation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The transit agencies that serve this station.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agencies")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1TransitAgency> Agencies { get; set; }
+
+        /// <summary>The name of the station in the local language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual GoogleTypeLocalizedText DisplayName { get; set; }
+
+        /// <summary>Transit stops at this station.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stops")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1TransitStop> Stops { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a transit stop within a station. This is a specific location where passengers board and alight
+    /// transit vehicles, such as a platform or bus bay. This is distinct from a `Departure`, which is an event of a
+    /// vehicle leaving a stop at a specific time.
+    /// </summary>
+    public class GoogleMapsPlacesV1TransitStop : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the stop.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual GoogleTypeLocalizedText DisplayName { get; set; }
+
+        /// <summary>
+        /// The id of the transit stop that can be used to uniquely identify the stop among other transit stops in the
+        /// same transit station. This identifier is not guaranteed to be stable across different responses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The stop's location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual GoogleTypeLatLng Location { get; set; }
+
+        /// <summary>
+        /// The platform code represented by this stop. It can be formatted in any way. (eg: "2", "Platform 2", "2-4",
+        /// or "1x").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platformCode")]
+        public virtual GoogleTypeLocalizedText PlatformCode { get; set; }
+
+        /// <summary>
+        /// The verbatim text written on the signboard for this platform, e.g. "Towards Central" or "East side &amp;amp;
+        /// Brooklyn". When `platform_code` is absent, this field is potentially the only identifier for the platform;
+        /// however, both `platform_code` and `signage_text` may be set simultaneously.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signageText")]
+        public virtual GoogleTypeLocalizedText SignageText { get; set; }
+
+        /// <summary>
+        /// Human readable identifier of the stop, used by transit agencies to distinguish stops with the same name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stopCode")]
+        public virtual GoogleTypeLocalizedText StopCode { get; set; }
+
+        /// <summary>
+        /// Wheelchair accessibility of this stop. This field indicates whether there is an accessible path from outside
+        /// the station to the stop. It does not indicate whether it is possible to board a vehicle from the stop.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wheelchairAccessibleEntrance")]
+        public virtual System.Nullable<bool> WheelchairAccessibleEntrance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
