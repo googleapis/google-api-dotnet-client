@@ -12023,8 +12023,9 @@ namespace Google.Apis.AndroidPublisher.v3
             }
 
             /// <summary>
-            /// Cancels a user's subscription purchase. The subscription remains valid until its expiration time. Newer
-            /// version is available at purchases.subscriptionsv2.cancel for better client library support.
+            /// Deprecated: Use purchases.subscriptionsv2.cancel instead. Cancels a user's subscription purchase. The
+            /// subscription remains valid until its expiration time. Newer version is available at
+            /// purchases.subscriptionsv2.cancel for better client library support.
             /// </summary>
             /// <param name="packageName">
             /// The package name of the application for which this subscription was purchased (for example,
@@ -12041,8 +12042,9 @@ namespace Google.Apis.AndroidPublisher.v3
             }
 
             /// <summary>
-            /// Cancels a user's subscription purchase. The subscription remains valid until its expiration time. Newer
-            /// version is available at purchases.subscriptionsv2.cancel for better client library support.
+            /// Deprecated: Use purchases.subscriptionsv2.cancel instead. Cancels a user's subscription purchase. The
+            /// subscription remains valid until its expiration time. Newer version is available at
+            /// purchases.subscriptionsv2.cancel for better client library support.
             /// </summary>
             public class CancelRequest : AndroidPublisherBaseServiceRequest<string>
             {
@@ -12113,7 +12115,10 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
             }
 
-            /// <summary>Defers a user's subscription purchase until a specified future expiration time.</summary>
+            /// <summary>
+            /// Deprecated: Use purchases.subscriptionsv2.defer instead. Defers a user's subscription purchase until a
+            /// specified future expiration time.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="packageName">
             /// The package name of the application for which this subscription was purchased (for example,
@@ -12126,7 +12131,10 @@ namespace Google.Apis.AndroidPublisher.v3
                 return new DeferRequest(this.service, body, packageName, subscriptionId, token);
             }
 
-            /// <summary>Defers a user's subscription purchase until a specified future expiration time.</summary>
+            /// <summary>
+            /// Deprecated: Use purchases.subscriptionsv2.defer instead. Defers a user's subscription purchase until a
+            /// specified future expiration time.
+            /// </summary>
             public class DeferRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.SubscriptionPurchasesDeferResponse>
             {
                 /// <summary>Constructs a new Defer request.</summary>
@@ -16810,6 +16818,17 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Additional context around subscriptions in IN_GRACE_PERIOD state.</summary>
+    public class InGracePeriodStateContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The payment for the renewal was declined.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("renewalDeclined")]
+        public virtual RenewalDeclinedContext RenewalDeclined { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request to delete multiple in-app products.</summary>
     public class InappproductsBatchDeleteRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17707,6 +17726,17 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
         public virtual string Tag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional context around subscriptions in ON_HOLD state.</summary>
+    public class OnHoldStateContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The payment for the renewal was declined.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("renewalDeclined")]
+        public virtual RenewalDeclinedContext RenewalDeclined { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19959,6 +19989,17 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Context related to renewal declined scenario.</summary>
+    public class RenewalDeclinedContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The ID of the pending or failed order causing the state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingOrderId")]
+        public virtual string PendingOrderId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Offer details information related to a rental line item.</summary>
     public class RentOfferDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -20431,7 +20472,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string OfferId { get; set; }
 
         /// <summary>
-        /// The pricing phase for the billing period funded by this order. Deprecated. Use offer_phase_details instead.
+        /// Deprecated: Use offer_phase_details instead. The pricing phase for the billing period funded by this order.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offerPhase")]
         public virtual string OfferPhase { get; set; }
@@ -20757,7 +20798,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A SubscriptionPurchase resource indicates the status of a user's subscription purchase.</summary>
+    /// <summary>
+    /// Deprecated: Use SubscriptionPurchaseV2 instead. A SubscriptionPurchase resource indicates the status of a user's
+    /// subscription purchase.
+    /// </summary>
     public class SubscriptionPurchase : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -21086,6 +21130,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("externalAccountIdentifiers")]
         public virtual ExternalAccountIdentifiers ExternalAccountIdentifiers { get; set; }
 
+        /// <summary>
+        /// Optional. Additional context around subscriptions in IN_GRACE_PERIOD state. Only present if the subscription
+        /// currently has subscription_state SUBSCRIPTION_STATE_IN_GRACE_PERIOD.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inGracePeriodStateContext")]
+        public virtual InGracePeriodStateContext InGracePeriodStateContext { get; set; }
+
         /// <summary>This kind represents a SubscriptionPurchaseV2 object in the androidpublisher service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -21114,6 +21165,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedPurchaseToken")]
         public virtual string LinkedPurchaseToken { get; set; }
+
+        /// <summary>
+        /// Optional. Additional context around subscriptions in ON_HOLD state. Only present if the subscription
+        /// currently has subscription_state SUBSCRIPTION_STATE_ON_HOLD.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onHoldStateContext")]
+        public virtual OnHoldStateContext OnHoldStateContext { get; set; }
 
         /// <summary>
         /// Additional context for out of app purchases. This information is only present for re-subscription purchases
