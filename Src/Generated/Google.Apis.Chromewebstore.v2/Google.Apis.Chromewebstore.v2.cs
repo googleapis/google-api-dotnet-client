@@ -895,6 +895,14 @@ namespace Google.Apis.Chromewebstore.v2.Data
     public class PublishItemRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. When set to true the request will fail if there are any warnings during validation and the details
+        /// will be included in the error_details. Otherwise warnings are treated as non-blocking and will be ignored
+        /// for validation but will be included in the response for inspection. Defaults to `false` if unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockOnWarnings")]
+        public virtual System.Nullable<bool> BlockOnWarnings { get; set; }
+
+        /// <summary>
         /// Optional. Additional deploy information including the desired initial percentage rollout. Defaults to the
         /// current value saved in the developer dashboard if unset.
         /// </summary>
@@ -933,6 +941,10 @@ namespace Google.Apis.Chromewebstore.v2.Data
         /// <summary>Output only. The current state of the submission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>Output only. Non-blocking warnings encountered during the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warningInfo")]
+        public virtual WarningsInfo WarningInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -990,6 +1002,39 @@ namespace Google.Apis.Chromewebstore.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadState")]
         public virtual string UploadState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a single warning encountered during the request.</summary>
+    public class Warning : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A description of the warning. Developers should use this message to understand the warning and take
+        /// appropriate action to resolve the issue.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// The reason for the warning. This is a constant value that identifies the proximate cause of the warning.
+        /// This should be at most 63 characters and match a regular expression of `A-Z+[A-Z0-9]`, which represents
+        /// UPPER_SNAKE_CASE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message containing details on warnings encountered during PublishItem.</summary>
+    public class WarningsInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All warnings encountered during the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<Warning> Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
