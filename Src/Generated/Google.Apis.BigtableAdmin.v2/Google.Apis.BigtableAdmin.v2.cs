@@ -6775,7 +6775,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>
         /// Optional. A list of Cloud Bigtable zones where automated backups are allowed to be created. If empty,
         /// automated backups will be created in all zones of the instance. Locations are in the format
-        /// `projects/{project}/locations/{zone}`. This field can only set for tables in Enterprise Plus instances.
+        /// `projects/{project}/locations/{zone}`. You can set this field only for tables in Enterprise Plus instances.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
         public virtual System.Collections.Generic.IList<string> Locations { get; set; }
@@ -10389,7 +10389,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
-    /// <summary>Represents a protobuf schema.</summary>
+    /// <summary>Represents a collection of protobuf schemas.</summary>
     public class ProtoSchema : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
