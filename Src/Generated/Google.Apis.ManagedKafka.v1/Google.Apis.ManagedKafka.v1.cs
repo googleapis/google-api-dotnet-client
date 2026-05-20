@@ -8525,6 +8525,27 @@ namespace Google.Apis.ManagedKafka.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Subject defines the evolution scope of schemas as a holder of schema versions.</summary>
+    public class SchemaSubject : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Identifier. The name of the subject. Structured like:
+        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}` or
+        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}`
+        /// Subject name {subject} can contain the following: * Up to 255 UTF-8 bytes. * Allowed characters: letters
+        /// (uppercase or lowercase), numbers, and the following special characters: `.`, `-`, `_`, `+`, `%`, and `~`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. The versions of the subject.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versions")]
+        public virtual System.Collections.Generic.IList<string> Versions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Version of a schema.</summary>
     public class SchemaVersion : Google.Apis.Requests.IDirectResponseSchema
     {
