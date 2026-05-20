@@ -1837,6 +1837,14 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual System.Nullable<double> DisplayAdsValue { get; set; }
 
         /// <summary>
+        /// Optional. Contains a list of PDF [document URLs](https://support.google.com/merchants/answer/17084656) for
+        /// the product. Examples are training manuals, user guides, assembly instructions, package inserts, etc. Must
+        /// start with "http://" or "https://"), ASCII characters only, and RFC 3986 compliant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentLinks")]
+        public virtual System.Collections.Generic.IList<string> DocumentLinks { get; set; }
+
+        /// <summary>
         /// The [electric range](https://support.google.com/google-ads/answer/15162232) of the vehicle in miles/kms.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("electricRange")]
@@ -2004,6 +2012,15 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual string ItemGroupId { get; set; }
 
         /// <summary>
+        /// Optional. Represents the [product group title](https://support.google.com/merchants/answer/17085146) to
+        /// which this variant product belongs. This can be used along with the [item group
+        /// id](https://support.google.com/merchants/answer/6324507) attribute. It lets you perform better grouping of
+        /// variant products, and helps identifying common product characteristics more efficiently.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemGroupTitle")]
+        public virtual string ItemGroupTitle { get; set; }
+
+        /// <summary>
         /// Additional URLs of lifestyle images of the item, used to explicitly identify images that showcase your item
         /// in a real-world context. See the [Help Center article](https://support.google.com/merchants/answer/9103186)
         /// for more information.
@@ -2138,6 +2155,13 @@ namespace Google.Apis.Merchant.products_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pickupSla")]
         public virtual string PickupSla { get; set; }
 
+        /// <summary>
+        /// Optional. Indicates the [popularity](https://support.google.com/merchants/answer/17085297) of the product in
+        /// a merchant's inventory. Using a scale of 0.0 (lowest) to 100.0 (highest).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("popularityRank")]
+        public virtual System.Nullable<float> PopularityRank { get; set; }
+
         /// <summary>Price of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
         public virtual Price Price { get; set; }
@@ -2191,6 +2215,22 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// <summary>The unique ID of a promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionIds")]
         public virtual System.Collections.Generic.IList<string> PromotionIds { get; set; }
+
+        /// <summary>
+        /// Optional. Contains merchant authored [questions and
+        /// answers](https://support.google.com/merchants/answer/17085211) about the product. Max 30 question and answer
+        /// pairs. Max 5000 characters total. Each question can have max 1000 characters. Each answer can have max 1000
+        /// characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("questionsAndAnswers")]
+        public virtual System.Collections.Generic.IList<QuestionAndAnswer> QuestionsAndAnswers { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies how other [products are related](https://support.google.com/merchants/answer/17085213)
+        /// to this product.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedProducts")]
+        public virtual System.Collections.Generic.IList<RelatedProduct> RelatedProducts { get; set; }
 
         /// <summary>
         /// The return label of the product, used to group products in account-level return policies. Max. 100
@@ -2331,6 +2371,13 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// <summary>The measure and dimension of an item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unitPricingMeasure")]
         public virtual UnitPricingMeasure UnitPricingMeasure { get; set; }
+
+        /// <summary>
+        /// Optional. Contains a list of [additional variants](https://support.google.com/merchants/answer/17085214) for
+        /// the product.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variantOptions")]
+        public virtual System.Collections.Generic.IList<VariantOption> VariantOptions { get; set; }
 
         /// <summary>
         /// The all-in advertised price for a vehicle, which includes costs for the following – any accessories attached
@@ -2996,6 +3043,44 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The question and answer for the product.</summary>
+    public class QuestionAndAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The answer text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answer")]
+        public virtual string Answer { get; set; }
+
+        /// <summary>Required. The question text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("question")]
+        public virtual string Question { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies how other products are related to this product.</summary>
+    public class RelatedProduct : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The identifier of the related product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Required. The type of the identifier of the related product. For example,
+        /// [GTIN](https://support.google.com/merchants/answer/6219078) or [product
+        /// ID](https://support.google.com/merchants/answer/6324405).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idType")]
+        public virtual string IdType { get; set; }
+
+        /// <summary>Required. The type of the relationship between this product and the related product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relationshipType")]
+        public virtual string RelationshipType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The Shipping of the product.</summary>
     public class Shipping : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3247,6 +3332,21 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// <summary>The measure of an item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<double> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional product variants for the product.</summary>
+    public class VariantOption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the variant. For example, "Color", "Memory", "Size", "Length"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The value of the variant. For example, "Red", "128GB", "XL", "100cm"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
