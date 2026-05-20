@@ -3182,10 +3182,6 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>Tool to support computer use.</summary>
     public class GoogleCloudAiplatformV1beta1ToolComputerUse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Enables the prompt injection detection check on computer-use request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enablePromptInjectionDetection")]
-        public virtual System.Nullable<bool> EnablePromptInjectionDetection { get; set; }
-
         /// <summary>Required. The environment being operated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; }
