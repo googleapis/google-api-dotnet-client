@@ -15,17 +15,64 @@ limitations under the License.
 */
 
 using Google.Apis.Logging;
+using Google.Apis.Util;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace Google
 {
-    /// <summary>Defines the context in which this library runs. It allows setting up custom loggers.</summary>
+    /// <summary>Defines the context in which this library runs. It allows setting up custom loggers and performance options.</summary>
     public static class ApplicationContext
     {
         private static ILogger logger;
 
         // For testing
-        internal static void Reset() => logger = null;
+        internal static void Reset()
+        {
+            logger = null;
+            EnableRequestParameterCache = false;
+        }
+
+        private static bool s_enableRequestParameterCache = false;
+        /// <summary>
+        /// Gets or sets whether to enable caching of request parameter descriptors per request type.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// When enabled, <see cref="System.Reflection.PropertyInfo"/> lookups for request parameter
+        /// properties are cached per request type, eliminating repeated reflection overhead.
+        /// </para>
+        /// <para>
+        /// Default is <c>false</c>. Set to <c>true</c> early in application startup before making
+        /// any API requests. This setting is intended for applications that make many requests and
+        /// where reflection overhead has been identified as a bottleneck.
+        /// </para>
+        /// </remarks>
+        public static bool EnableRequestParameterCache
+        { 
+            get => s_enableRequestParameterCache;
+            set
+            {
+                s_enableRequestParameterCache = value;
+                if (s_enableRequestParameterCache)
+                {
+                    RequestParameterProvider = RequestParameterDescriptorProvider.GetCachedRequestParameterProperties;
+                }
+                else
+                {
+                    RequestParameterProvider = RequestParameterDescriptorProvider.GetUncachedRequestParameterProperties;
+                    RequestParameterDescriptorProvider.ClearCache();
+                }
+            }
+        }
+
+        /// <summary>
+        /// The provider used to obtain request parameter description information from a given type.
+        /// <see cref="EnableRequestParameterCache"/> for more information.
+        /// </summary>
+        public static Func<Type, IEnumerable<PropertyInfo>> RequestParameterProvider { get; private set; } = RequestParameterDescriptorProvider.GetUncachedRequestParameterProperties;
 
         /// <summary>Returns the logger used within this application context.</summary>
         /// <remarks>It creates a <see cref="NullLogger"/> if no logger was registered previously</remarks>
