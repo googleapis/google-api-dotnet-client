@@ -16,6 +16,8 @@ limitations under the License.
 
 using System;
 using Google.Apis.Logging;
+using Google.Apis.Tests.Apis.Utils;
+using Google.Apis.Util;
 using Xunit;
 
 namespace Google.Apis.Tests
@@ -52,17 +54,19 @@ namespace Google.Apis.Tests
         /// Checks the registered default logger.
         /// </summary>
         [Fact]
-        public void GetLoggerDefaultTest()
+        public void Default()
         {
             ApplicationContext.Reset();
             Assert.IsType<NullLogger>(ApplicationContext.Logger);
+            Assert.False(ApplicationContext.EnableRequestParameterCache);
+            Assert.Equal(RequestParameterDescriptorProvider.GetUncachedRequestParameterProperties, ApplicationContext.RequestParameterProvider);
         }
 
         /// <summary>
         /// Confirms that the RegisterLogger method will not fail when no logger was previously registered.
         /// </summary>
         [Fact]
-        public void RegisterLoggerTest()
+        public void RegisterLogger()
         {
             ApplicationContext.Reset();
             try
@@ -75,6 +79,63 @@ namespace Google.Apis.Tests
 
                 // Fail test: should now throw, only allowed to register one logger
                 Assert.Throws<InvalidOperationException>(() => ApplicationContext.RegisterLogger(new MockLogger()));
+            }
+            finally
+            {
+                ApplicationContext.Reset();
+            }
+        }
+
+        [Fact]
+        public void EnableRequestParameterCache()
+        {
+            ApplicationContext.Reset();
+            try
+            {
+                ApplicationContext.EnableRequestParameterCache = true;
+
+                Assert.True(ApplicationContext.EnableRequestParameterCache);
+                Assert.Equal(RequestParameterDescriptorProvider.GetCachedRequestParameterProperties, ApplicationContext.RequestParameterProvider);
+            }
+            finally
+            {
+                ApplicationContext.Reset();
+            }
+        }
+
+        [Fact]
+        public void DisableRequestParameterCache()
+        {
+            ApplicationContext.Reset();
+            try
+            {
+                ApplicationContext.EnableRequestParameterCache = true;
+                ApplicationContext.EnableRequestParameterCache = false;
+
+                Assert.False(ApplicationContext.EnableRequestParameterCache);
+                Assert.Equal(RequestParameterDescriptorProvider.GetUncachedRequestParameterProperties, ApplicationContext.RequestParameterProvider);
+            }
+            finally
+            {
+                ApplicationContext.Reset();
+            }
+        }
+
+        [Fact]
+        public void DisableRequestParameterCache_CacheCleared()
+        {
+            ApplicationContext.Reset();
+            try
+            {
+                ApplicationContext.EnableRequestParameterCache = true;
+                var result1 = ApplicationContext.RequestParameterProvider(typeof(RequestParameterDescriptorProviderTest.TestClass));
+
+                // This should clear the cache, even if we enable cache right after.
+                ApplicationContext.EnableRequestParameterCache = false;
+                ApplicationContext.EnableRequestParameterCache = true;
+                var result2 = ApplicationContext.RequestParameterProvider(typeof(RequestParameterDescriptorProviderTest.TestClass));
+
+                Assert.NotSame(result1, result2);
             }
             finally
             {

@@ -1180,32 +1180,27 @@ namespace Google.Apis.Upload
         /// </summary>
         private void SetAllPropertyValues(RequestBuilder requestBuilder)
         {
-            Type myType = this.GetType();
-            var properties = myType.GetProperties();
-
-            foreach (var property in properties)
+            foreach (var property in ApplicationContext.RequestParameterProvider(GetType()))
             {
+                // We know these properties have this attribute.
                 var attribute = Utilities.GetCustomAttribute<RequestParameterAttribute>(property);
 
-                if (attribute != null)
+                string name = attribute.Name ?? property.Name.ToLowerInvariant();
+                object value = property.GetValue(this, null);
+                if (value != null)
                 {
-                    string name = attribute.Name ?? property.Name.ToLowerInvariant();
-                    object value = property.GetValue(this, null);
-                    if (value != null)
+                    var valueAsEnumerable = value as IEnumerable;
+                    if (!(value is string) && valueAsEnumerable != null)
                     {
-                        var valueAsEnumerable = value as IEnumerable;
-                        if (!(value is string) && valueAsEnumerable != null)
+                        foreach (var elem in valueAsEnumerable)
                         {
-                            foreach (var elem in valueAsEnumerable)
-                            {
-                                requestBuilder.AddParameter(attribute.Type, name, Utilities.ConvertToString(elem));
-                            }
+                            requestBuilder.AddParameter(attribute.Type, name, Utilities.ConvertToString(elem));
                         }
-                        else
-                        {
-                            // Otherwise just convert it to a string.
-                            requestBuilder.AddParameter(attribute.Type, name, Utilities.ConvertToString(value));
-                        }
+                    }
+                    else
+                    {
+                        // Otherwise just convert it to a string.
+                        requestBuilder.AddParameter(attribute.Type, name, Utilities.ConvertToString(value));
                     }
                 }
             }

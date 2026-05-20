@@ -14,14 +14,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Logging;
+using Google.Apis.Util;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Linq;
 using System.Reflection;
-
-using Google.Apis.Logging;
-using Google.Apis.Util;
 
 namespace Google.Apis.Requests.Parameters
 {
@@ -89,7 +87,7 @@ namespace Google.Apis.Requests.Parameters
                     }
                     else
                     {
-                        // Throw if we see a second null value
+                        // Throw if we see a second non-null value
                         throw new InvalidOperationException(
                             $"The query parameter '{name}' is set by multiple properties. For repeated enum query parameters, ensure that only one property is set to a non-null value.");
                     }
@@ -129,17 +127,10 @@ namespace Google.Apis.Requests.Parameters
         private static void IterateParameters(object request, Action<RequestParameterType, string, object> action)
         {
             // Use reflection to build the parameter dictionary.
-            foreach (PropertyInfo property in request.GetType().GetProperties(BindingFlags.Instance |
-                BindingFlags.Public))
+            foreach (PropertyInfo property in ApplicationContext.RequestParameterProvider(request.GetType()))
             {
-                // Retrieve the RequestParameterAttribute.
-                RequestParameterAttribute attribute =
-                    property.GetCustomAttributes(typeof(RequestParameterAttribute), false).FirstOrDefault() as
-                    RequestParameterAttribute;
-                if (attribute == null)
-                {
-                    continue;
-                }
+                // Retrieve the RequestParameterAttribute, we know these properties have it.
+                RequestParameterAttribute attribute = property.GetCustomAttribute<RequestParameterAttribute>(inherit: false);
 
                 // Get the name of this parameter from the attribute, if it doesn't exist take a lower-case variant of
                 // property name.

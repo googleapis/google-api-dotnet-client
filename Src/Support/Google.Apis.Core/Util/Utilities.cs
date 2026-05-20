@@ -109,11 +109,8 @@ namespace Google.Apis.Util
         /// <summary>
         /// A Google.Apis utility method for returning the first matching custom attribute (or <c>null</c>) of the specified member.
         /// </summary>
-        public static T GetCustomAttribute<T>(this MemberInfo info) where T : Attribute
-        {
-            object[] results = info.GetCustomAttributes(typeof(T), false).ToArray();
-            return results.Length == 0 ? null : (T)results[0];
-        }
+        public static T GetCustomAttribute<T>(this MemberInfo info) where T : Attribute =>
+            info.GetCustomAttributes(typeof(T), false).FirstOrDefault() as T;
 
         /// <summary>Returns the defined string value of an Enum.</summary>
         internal static string GetStringValue(this Enum value)
