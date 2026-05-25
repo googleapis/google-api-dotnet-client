@@ -8918,6 +8918,14 @@ namespace Google.Apis.Contactcenterinsights.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. The CES App ID to filter diagnostics by.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("appId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string AppId { get; set; }
+
+                    /// <summary>Optional. The CES App version to filter diagnostics by.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("appVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string AppVersion { get; set; }
+
                     /// <summary>
                     /// Optional. A filter to apply to the list (e.g. `create_time &amp;gt; "2023-01-01T00:00:00Z"`).
                     /// </summary>
@@ -8959,6 +8967,22 @@ namespace Google.Apis.Contactcenterinsights.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("appId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "appId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("appVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "appVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                         {
@@ -16662,6 +16686,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entrySubagentDisplayName")]
         public virtual string EntrySubagentDisplayName { get; set; }
 
+        /// <summary>The entry subagent's ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entrySubagentId")]
+        public virtual string EntrySubagentId { get; set; }
+
         /// <summary>The agent's location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
@@ -17977,6 +18005,25 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// </summary>
     public class GoogleCloudContactcenterinsightsV1DiagnoseConversationsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>ces agent display name (e.g., "Steering", "Billing").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentDisplayName")]
+        public virtual string AgentDisplayName { get; set; }
+
+        /// <summary>ces agent id to diagnose.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
+        public virtual string AgentId { get; set; }
+
+        /// <summary>Required. The CES App ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appId")]
+        public virtual string AppId { get; set; }
+
+        /// <summary>
+        /// Optional. Optional but highly recommended. ces app version. If provided, specific version of agent
+        /// instruction will be retrieved. If empty or set to '-', will use the latest draft version of instruction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appVersion")]
+        public virtual string AppVersion { get; set; }
+
         /// <summary>
         /// Optional. Deprecated: If true, the request will be validated and a simulation of the analysis will be
         /// performed without actually executing the task. This field is unused. Use validate_only instead.
@@ -17996,7 +18043,16 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fullReport")]
         public virtual System.Nullable<bool> FullReport { get; set; }
 
-        /// <summary>Optional. Specific instructions for the agent.</summary>
+        /// <summary>
+        /// Optional. A unique identifier used to group multiple diagnostic requests triggered under the same run batch
+        /// or cron job.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
+        public virtual string GroupId { get; set; }
+
+        /// <summary>
+        /// Optional. Deprecated: Specific instructions for the agent. Use app_id and subagent fields instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instructions")]
         public virtual string Instructions { get; set; }
 
@@ -18085,9 +18141,25 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>The diagnostic resource.</summary>
     public class GoogleCloudContactcenterinsightsV1Diagnostic : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The display name of the agent associated with the diagnostic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentDisplayName")]
+        public virtual string AgentDisplayName { get; set; }
+
+        /// <summary>Output only. The ID of the agent associated with the diagnostic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
+        public virtual string AgentId { get; set; }
+
         /// <summary>Output only. The complete sequence of thoughts and actions taken by the agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analysisSummary")]
         public virtual string AnalysisSummary { get; set; }
+
+        /// <summary>Output only. The application ID associated with the diagnostic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appId")]
+        public virtual string AppId { get; set; }
+
+        /// <summary>Output only. The application version associated with the diagnostic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appVersion")]
+        public virtual string AppVersion { get; set; }
 
         /// <summary>
         /// Output only. The filter used to select the conversations that were included in the diagnostic.
@@ -18132,6 +18204,45 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        private string _groupCreateTimeRaw;
+
+        private object _groupCreateTime;
+
+        /// <summary>Output only. The timestamp when the group was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupCreateTime")]
+        public virtual string GroupCreateTimeRaw
+        {
+            get => _groupCreateTimeRaw;
+            set
+            {
+                _groupCreateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _groupCreateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="GroupCreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use GroupCreateTimeDateTimeOffset instead.")]
+        public virtual object GroupCreateTime
+        {
+            get => _groupCreateTime;
+            set
+            {
+                _groupCreateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _groupCreateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="GroupCreateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? GroupCreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(GroupCreateTimeRaw);
+            set => GroupCreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>Immutable. Identifier. The resource name of the diagnostic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -18144,7 +18255,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A diagnostic report containing aggregate metrics and intent breakdowns.</summary>
+    /// <summary>A diagnostic report containing loss patterns and problematic slice stats.</summary>
     public class GoogleCloudContactcenterinsightsV1DiagnosticReport : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. A map of conversation slices used in the report.</summary>
@@ -25965,6 +26076,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entrySubagentDisplayName")]
         public virtual string EntrySubagentDisplayName { get; set; }
 
+        /// <summary>The entry subagent's ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entrySubagentId")]
+        public virtual string EntrySubagentId { get; set; }
+
         /// <summary>The agent's location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
@@ -26990,6 +27105,25 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// </summary>
     public class GoogleCloudContactcenterinsightsV1alpha1DiagnoseConversationsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>ces agent display name (e.g., "Steering", "Billing").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentDisplayName")]
+        public virtual string AgentDisplayName { get; set; }
+
+        /// <summary>ces agent id to diagnose.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
+        public virtual string AgentId { get; set; }
+
+        /// <summary>Required. The CES App ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appId")]
+        public virtual string AppId { get; set; }
+
+        /// <summary>
+        /// Optional. Optional but highly recommended. ces app version. If provided, specific version of agent
+        /// instruction will be retrieved. If empty or set to '-', will use the latest draft version of instruction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appVersion")]
+        public virtual string AppVersion { get; set; }
+
         /// <summary>
         /// Optional. Deprecated: If true, the request will be validated and a simulation of the analysis will be
         /// performed without actually executing the task. This field is unused. Use validate_only instead.
@@ -27009,7 +27143,16 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fullReport")]
         public virtual System.Nullable<bool> FullReport { get; set; }
 
-        /// <summary>Optional. Specific instructions for the agent.</summary>
+        /// <summary>
+        /// Optional. A unique identifier used to group multiple diagnostic requests triggered under the same run batch
+        /// or cron job.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
+        public virtual string GroupId { get; set; }
+
+        /// <summary>
+        /// Optional. Deprecated: Specific instructions for the agent. Use app_id and subagent fields instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instructions")]
         public virtual string Instructions { get; set; }
 
@@ -27095,7 +27238,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A diagnostic report containing aggregate metrics and intent breakdowns.</summary>
+    /// <summary>A diagnostic report containing loss patterns and problematic slice stats.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1DiagnosticReport : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. A map of conversation slices used in the report.</summary>
@@ -32864,6 +33007,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entrySubagentDisplayName")]
         public virtual string EntrySubagentDisplayName { get; set; }
 
+        /// <summary>The entry subagent's ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entrySubagentId")]
+        public virtual string EntrySubagentId { get; set; }
+
         /// <summary>The agent's location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
@@ -33889,6 +34036,25 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// </summary>
     public class GoogleCloudContactcenterinsightsV1mainDiagnoseConversationsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>ces agent display name (e.g., "Steering", "Billing").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentDisplayName")]
+        public virtual string AgentDisplayName { get; set; }
+
+        /// <summary>ces agent id to diagnose.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
+        public virtual string AgentId { get; set; }
+
+        /// <summary>Required. The CES App ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appId")]
+        public virtual string AppId { get; set; }
+
+        /// <summary>
+        /// Optional. Optional but highly recommended. ces app version. If provided, specific version of agent
+        /// instruction will be retrieved. If empty or set to '-', will use the latest draft version of instruction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appVersion")]
+        public virtual string AppVersion { get; set; }
+
         /// <summary>
         /// Optional. Deprecated: If true, the request will be validated and a simulation of the analysis will be
         /// performed without actually executing the task. This field is unused. Use validate_only instead.
@@ -33908,7 +34074,16 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fullReport")]
         public virtual System.Nullable<bool> FullReport { get; set; }
 
-        /// <summary>Optional. Specific instructions for the agent.</summary>
+        /// <summary>
+        /// Optional. A unique identifier used to group multiple diagnostic requests triggered under the same run batch
+        /// or cron job.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
+        public virtual string GroupId { get; set; }
+
+        /// <summary>
+        /// Optional. Deprecated: Specific instructions for the agent. Use app_id and subagent fields instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instructions")]
         public virtual string Instructions { get; set; }
 
@@ -33994,7 +34169,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A diagnostic report containing aggregate metrics and intent breakdowns.</summary>
+    /// <summary>A diagnostic report containing loss patterns and problematic slice stats.</summary>
     public class GoogleCloudContactcenterinsightsV1mainDiagnosticReport : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. A map of conversation slices used in the report.</summary>
