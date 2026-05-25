@@ -5781,6 +5781,14 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalGuests")]
         public virtual System.Nullable<int> AdditionalGuests { get; set; }
 
+        /// <summary>
+        /// If present, indicates the status of an asynchronous operation ongoing for this attendee (e.g. listing of
+        /// members of large attendee groups). Read-only. The default is to not be present. Possible values are:   -
+        /// "inProgress" - The asynchronous operation is in progress.  - (not present) - Otherwise.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asyncOperation")]
+        public virtual string AsyncOperation { get; set; }
+
         /// <summary>The attendee's response comment. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comment")]
         public virtual string Comment { get; set; }
