@@ -292,12 +292,12 @@ namespace Google.Apis.CloudSupport.v2beta
         /// returning it. After six months, `case.create` requests using the classification will fail. EXAMPLES: cURL:
         /// ```
         /// shell curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \
-        /// 'https://cloudsupport.googleapis.com/v2/caseClassifications:search?query=display_name:"*Compute%20Engine*"'
+        /// 'https://cloudsupport.googleapis.com/v2beta/caseClassifications:search?query=display_name:"*Compute%20Engine*"'
         /// ```
         /// Python:
         /// ```
         /// python import googleapiclient.discovery supportApiService = googleapiclient.discovery.build(
-        /// serviceName="cloudsupport", version="v2",
+        /// serviceName="cloudsupport", version="v2beta",
         /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version=v2", ) request =
         /// supportApiService.caseClassifications().search( query='display_name:"*Compute Engine*"' )
         /// print(request.execute())
@@ -316,12 +316,12 @@ namespace Google.Apis.CloudSupport.v2beta
         /// returning it. After six months, `case.create` requests using the classification will fail. EXAMPLES: cURL:
         /// ```
         /// shell curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \
-        /// 'https://cloudsupport.googleapis.com/v2/caseClassifications:search?query=display_name:"*Compute%20Engine*"'
+        /// 'https://cloudsupport.googleapis.com/v2beta/caseClassifications:search?query=display_name:"*Compute%20Engine*"'
         /// ```
         /// Python:
         /// ```
         /// python import googleapiclient.discovery supportApiService = googleapiclient.discovery.build(
-        /// serviceName="cloudsupport", version="v2",
+        /// serviceName="cloudsupport", version="v2beta",
         /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version=v2", ) request =
         /// supportApiService.caseClassifications().search( query='display_name:"*Compute Engine*"' )
         /// print(request.execute())
@@ -460,7 +460,7 @@ namespace Google.Apis.CloudSupport.v2beta
             /// shell
             /// attachment="projects/some-project/cases/23598314/attachments/0684M00000P3h1fQAB" curl \ --header
             /// "Authorization: Bearer $(gcloud auth print-access-token)" \
-            /// "https://cloudsupport.googleapis.com/v2/$attachment"
+            /// "https://cloudsupport.googleapis.com/v2beta/$attachment"
             /// ```
             /// Python:
             /// ```
@@ -485,7 +485,7 @@ namespace Google.Apis.CloudSupport.v2beta
             /// shell
             /// attachment="projects/some-project/cases/23598314/attachments/0684M00000P3h1fQAB" curl \ --header
             /// "Authorization: Bearer $(gcloud auth print-access-token)" \
-            /// "https://cloudsupport.googleapis.com/v2/$attachment"
+            /// "https://cloudsupport.googleapis.com/v2beta/$attachment"
             /// ```
             /// Python:
             /// ```
@@ -540,13 +540,12 @@ namespace Google.Apis.CloudSupport.v2beta
             /// ```
             /// shell
             /// case="projects/some-project/cases/23598314" curl \ --header "Authorization: Bearer $(gcloud auth
-            /// print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case/attachments"
+            /// print-access-token)" \ "https://cloudsupport.googleapis.com/v2beta/$case/attachments"
             /// ```
             /// Python:
             /// ```
-            /// python
-            /// import googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
-            /// serviceName="cloudsupport", version=api_version,
+            /// python import googleapiclient.discovery api_version = "v2beta" supportApiService =
+            /// googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version,
             /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", )
             /// request = ( supportApiService.cases() .attachments()
             /// .list(parent="projects/some-project/cases/43595344") ) print(request.execute())
@@ -563,13 +562,12 @@ namespace Google.Apis.CloudSupport.v2beta
             /// ```
             /// shell
             /// case="projects/some-project/cases/23598314" curl \ --header "Authorization: Bearer $(gcloud auth
-            /// print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case/attachments"
+            /// print-access-token)" \ "https://cloudsupport.googleapis.com/v2beta/$case/attachments"
             /// ```
             /// Python:
             /// ```
-            /// python
-            /// import googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
-            /// serviceName="cloudsupport", version=api_version,
+            /// python import googleapiclient.discovery api_version = "v2beta" supportApiService =
+            /// googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version,
             /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", )
             /// request = ( supportApiService.cases() .attachments()
             /// .list(parent="projects/some-project/cases/43595344") ) print(request.execute())
@@ -666,11 +664,11 @@ namespace Google.Apis.CloudSupport.v2beta
             /// ```
             /// shell case="projects/some-project/cases/43591344" curl \ --request POST \ --header "Authorization:
             /// Bearer $(gcloud auth print-access-token)" \ --header 'Content-Type: application/json' \ --data '{
-            /// "body": "This is a test comment." }' \ "https://cloudsupport.googleapis.com/v2/$case/comments"
+            /// "body": "This is a test comment." }' \ "https://cloudsupport.googleapis.com/v2beta/$case/comments"
             /// ```
             /// Python:
             /// ```
-            /// python import googleapiclient.discovery api_version = "v2" supportApiService =
+            /// python import googleapiclient.discovery api_version = "v2beta" supportApiService =
             /// googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version,
             /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", )
             /// request = ( supportApiService.cases() .comments() .create(
@@ -690,11 +688,11 @@ namespace Google.Apis.CloudSupport.v2beta
             /// ```
             /// shell case="projects/some-project/cases/43591344" curl \ --request POST \ --header "Authorization:
             /// Bearer $(gcloud auth print-access-token)" \ --header 'Content-Type: application/json' \ --data '{
-            /// "body": "This is a test comment." }' \ "https://cloudsupport.googleapis.com/v2/$case/comments"
+            /// "body": "This is a test comment." }' \ "https://cloudsupport.googleapis.com/v2beta/$case/comments"
             /// ```
             /// Python:
             /// ```
-            /// python import googleapiclient.discovery api_version = "v2" supportApiService =
+            /// python import googleapiclient.discovery api_version = "v2beta" supportApiService =
             /// googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version,
             /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", )
             /// request = ( supportApiService.cases() .comments() .create(
@@ -751,7 +749,7 @@ namespace Google.Apis.CloudSupport.v2beta
             /// ```
             /// shell
             /// comment="projects/some-project/cases/43595344/comments/234567890" curl \ --header "Authorization: Bearer
-            /// $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$comment"
+            /// $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2beta/$comment"
             /// ```
             /// Python:
             /// ```
@@ -773,7 +771,7 @@ namespace Google.Apis.CloudSupport.v2beta
             /// ```
             /// shell
             /// comment="projects/some-project/cases/43595344/comments/234567890" curl \ --header "Authorization: Bearer
-            /// $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$comment"
+            /// $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2beta/$comment"
             /// ```
             /// Python:
             /// ```
@@ -826,13 +824,13 @@ namespace Google.Apis.CloudSupport.v2beta
             /// ```
             /// shell
             /// case="projects/some-project/cases/43595344" curl \ --header "Authorization: Bearer $(gcloud auth
-            /// print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case/comments"
+            /// print-access-token)" \ "https://cloudsupport.googleapis.com/v2beta/$case/comments"
             /// ```
             /// Python:
             /// ```
             /// python
-            /// import googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
-            /// serviceName="cloudsupport", version=api_version,
+            /// import googleapiclient.discovery api_version = "v2beta" supportApiService =
+            /// googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version,
             /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", )
             /// request = ( supportApiService.cases() .comments() .list(parent="projects/some-project/cases/43595344") )
             /// print(request.execute())
@@ -849,13 +847,13 @@ namespace Google.Apis.CloudSupport.v2beta
             /// ```
             /// shell
             /// case="projects/some-project/cases/43595344" curl \ --header "Authorization: Bearer $(gcloud auth
-            /// print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case/comments"
+            /// print-access-token)" \ "https://cloudsupport.googleapis.com/v2beta/$case/comments"
             /// ```
             /// Python:
             /// ```
             /// python
-            /// import googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
-            /// serviceName="cloudsupport", version=api_version,
+            /// import googleapiclient.discovery api_version = "v2beta" supportApiService =
+            /// googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version,
             /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", )
             /// request = ( supportApiService.cases() .comments() .list(parent="projects/some-project/cases/43595344") )
             /// print(request.execute())
@@ -930,13 +928,13 @@ namespace Google.Apis.CloudSupport.v2beta
         /// ```
         /// shell case="projects/some-project/cases/43595344" curl \ --request POST \
         /// --header "Authorization: Bearer $(gcloud auth print-access-token)" \
-        /// "https://cloudsupport.googleapis.com/v2/$case:close"
+        /// "https://cloudsupport.googleapis.com/v2beta/$case:close"
         /// ```
         /// Python:
         /// ```
-        /// python import googleapiclient.discovery
-        /// api_version = "v2" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport",
-        /// version=api_version,
+        /// python import
+        /// googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build(
+        /// serviceName="cloudsupport", version=api_version,
         /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
         /// = supportApiService.cases().close( name="projects/some-project/cases/43595344" ) print(request.execute())
         /// ```
@@ -953,13 +951,13 @@ namespace Google.Apis.CloudSupport.v2beta
         /// ```
         /// shell case="projects/some-project/cases/43595344" curl \ --request POST \
         /// --header "Authorization: Bearer $(gcloud auth print-access-token)" \
-        /// "https://cloudsupport.googleapis.com/v2/$case:close"
+        /// "https://cloudsupport.googleapis.com/v2beta/$case:close"
         /// ```
         /// Python:
         /// ```
-        /// python import googleapiclient.discovery
-        /// api_version = "v2" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport",
-        /// version=api_version,
+        /// python import
+        /// googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build(
+        /// serviceName="cloudsupport", version=api_version,
         /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
         /// = supportApiService.cases().close( name="projects/some-project/cases/43595344" ) print(request.execute())
         /// ```
@@ -1019,12 +1017,12 @@ namespace Google.Apis.CloudSupport.v2beta
         /// random test case, feel free to close", "classification": { "id":
         /// "100IK2AKCLHMGRJ9CDGMOCGP8DM6UTB4BT262T31BT1M2T31DHNMENPO6KS36CPJ786L2TBFEHGN6NPI64R3CDHN8880G08I1H3MURR7DHII0GRCDTQM8"
         /// }, "time_zone": "-07:00", "subscriber_email_addresses": [ "foo@domain.com", "bar@domain.com" ], "testCase":
-        /// true, "priority": "P3" }' \ "https://cloudsupport.googleapis.com/v2/$parent/cases"
+        /// true, "priority": "P3" }' \ "https://cloudsupport.googleapis.com/v2beta/$parent/cases"
         /// ```
         /// Python:
         /// ```
         /// python
-        /// import googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+        /// import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build(
         /// serviceName="cloudsupport", version=api_version,
         /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
         /// = supportApiService.cases().create( parent="projects/some-project", body={ "displayName": "A Test Case",
@@ -1051,12 +1049,12 @@ namespace Google.Apis.CloudSupport.v2beta
         /// random test case, feel free to close", "classification": { "id":
         /// "100IK2AKCLHMGRJ9CDGMOCGP8DM6UTB4BT262T31BT1M2T31DHNMENPO6KS36CPJ786L2TBFEHGN6NPI64R3CDHN8880G08I1H3MURR7DHII0GRCDTQM8"
         /// }, "time_zone": "-07:00", "subscriber_email_addresses": [ "foo@domain.com", "bar@domain.com" ], "testCase":
-        /// true, "priority": "P3" }' \ "https://cloudsupport.googleapis.com/v2/$parent/cases"
+        /// true, "priority": "P3" }' \ "https://cloudsupport.googleapis.com/v2beta/$parent/cases"
         /// ```
         /// Python:
         /// ```
         /// python
-        /// import googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+        /// import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build(
         /// serviceName="cloudsupport", version=api_version,
         /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
         /// = supportApiService.cases().create( parent="projects/some-project", body={ "displayName": "A Test Case",
@@ -1118,12 +1116,12 @@ namespace Google.Apis.CloudSupport.v2beta
         /// case="projects/some-project/cases/43595344" curl \ --request POST \ --header "Authorization: Bearer $(gcloud
         /// auth print-access-token)" \ --header "Content-Type: application/json" \ --data '{ "escalation": { "reason":
         /// "BUSINESS_IMPACT", "justification": "This is a test escalation." } }' \
-        /// "https://cloudsupport.googleapis.com/v2/$case:escalate"
+        /// "https://cloudsupport.googleapis.com/v2beta/$case:escalate"
         /// ```
         /// Python:
         /// ```
         /// python import
-        /// googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+        /// googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build(
         /// serviceName="cloudsupport", version=api_version,
         /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
         /// = supportApiService.cases().escalate( name="projects/some-project/cases/43595344", body={ "escalation": {
@@ -1146,12 +1144,12 @@ namespace Google.Apis.CloudSupport.v2beta
         /// case="projects/some-project/cases/43595344" curl \ --request POST \ --header "Authorization: Bearer $(gcloud
         /// auth print-access-token)" \ --header "Content-Type: application/json" \ --data '{ "escalation": { "reason":
         /// "BUSINESS_IMPACT", "justification": "This is a test escalation." } }' \
-        /// "https://cloudsupport.googleapis.com/v2/$case:escalate"
+        /// "https://cloudsupport.googleapis.com/v2beta/$case:escalate"
         /// ```
         /// Python:
         /// ```
         /// python import
-        /// googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+        /// googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build(
         /// serviceName="cloudsupport", version=api_version,
         /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
         /// = supportApiService.cases().escalate( name="projects/some-project/cases/43595344", body={ "escalation": {
@@ -1206,12 +1204,14 @@ namespace Google.Apis.CloudSupport.v2beta
         /// Retrieve a case. EXAMPLES: cURL:
         /// ```
         /// shell case="projects/some-project/cases/16033687" curl \ --header
-        /// "Authorization: Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case"
+        /// "Authorization: Bearer $(gcloud auth print-access-token)" \
+        /// "https://cloudsupport.googleapis.com/v2beta/$case"
         /// ```
         /// Python:
         /// ```
-        /// python import googleapiclient.discovery api_version = "v2" supportApiService =
-        /// googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version,
+        /// python import googleapiclient.discovery
+        /// api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport",
+        /// version=api_version,
         /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
         /// = supportApiService.cases().get( name="projects/some-project/cases/43595344", ) print(request.execute())
         /// ```
@@ -1226,12 +1226,14 @@ namespace Google.Apis.CloudSupport.v2beta
         /// Retrieve a case. EXAMPLES: cURL:
         /// ```
         /// shell case="projects/some-project/cases/16033687" curl \ --header
-        /// "Authorization: Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case"
+        /// "Authorization: Bearer $(gcloud auth print-access-token)" \
+        /// "https://cloudsupport.googleapis.com/v2beta/$case"
         /// ```
         /// Python:
         /// ```
-        /// python import googleapiclient.discovery api_version = "v2" supportApiService =
-        /// googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version,
+        /// python import googleapiclient.discovery
+        /// api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport",
+        /// version=api_version,
         /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
         /// = supportApiService.cases().get( name="projects/some-project/cases/43595344", ) print(request.execute())
         /// ```
@@ -1280,12 +1282,12 @@ namespace Google.Apis.CloudSupport.v2beta
         /// ```
         /// shell parent="projects/some-project"
         /// curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \
-        /// "https://cloudsupport.googleapis.com/v2/$parent/cases"
+        /// "https://cloudsupport.googleapis.com/v2beta/$parent/cases"
         /// ```
         /// Python:
         /// ```
         /// python import
-        /// googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+        /// googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build(
         /// serviceName="cloudsupport", version=api_version,
         /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
         /// = supportApiService.cases().list(parent="projects/some-project") print(request.execute())
@@ -1304,12 +1306,12 @@ namespace Google.Apis.CloudSupport.v2beta
         /// ```
         /// shell parent="projects/some-project"
         /// curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \
-        /// "https://cloudsupport.googleapis.com/v2/$parent/cases"
+        /// "https://cloudsupport.googleapis.com/v2beta/$parent/cases"
         /// ```
         /// Python:
         /// ```
         /// python import
-        /// googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+        /// googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build(
         /// serviceName="cloudsupport", version=api_version,
         /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
         /// = supportApiService.cases().list(parent="projects/some-project") print(request.execute())
@@ -1436,12 +1438,12 @@ namespace Google.Apis.CloudSupport.v2beta
         /// shell
         /// case="projects/some-project/cases/43595344" curl \ --request PATCH \ --header "Authorization: Bearer
         /// $(gcloud auth print-access-token)" \ --header "Content-Type: application/json" \ --data '{ "priority": "P1"
-        /// }' \ "https://cloudsupport.googleapis.com/v2/$case?updateMask=priority"
+        /// }' \ "https://cloudsupport.googleapis.com/v2beta/$case?updateMask=priority"
         /// ```
         /// Python:
         /// ```
         /// python import
-        /// googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+        /// googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build(
         /// serviceName="cloudsupport", version=api_version,
         /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
         /// = supportApiService.cases().patch( name="projects/some-project/cases/43112854", body={ "displayName": "This
@@ -1461,12 +1463,12 @@ namespace Google.Apis.CloudSupport.v2beta
         /// shell
         /// case="projects/some-project/cases/43595344" curl \ --request PATCH \ --header "Authorization: Bearer
         /// $(gcloud auth print-access-token)" \ --header "Content-Type: application/json" \ --data '{ "priority": "P1"
-        /// }' \ "https://cloudsupport.googleapis.com/v2/$case?updateMask=priority"
+        /// }' \ "https://cloudsupport.googleapis.com/v2beta/$case?updateMask=priority"
         /// ```
         /// Python:
         /// ```
         /// python import
-        /// googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+        /// googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build(
         /// serviceName="cloudsupport", version=api_version,
         /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
         /// = supportApiService.cases().patch( name="projects/some-project/cases/43112854", body={ "displayName": "This
@@ -1540,12 +1542,12 @@ namespace Google.Apis.CloudSupport.v2beta
         /// ```
         /// shell parent="projects/some-project" curl \ --header
         /// "Authorization: Bearer $(gcloud auth print-access-token)" \
-        /// "https://cloudsupport.googleapis.com/v2/$parent/cases:search"
+        /// "https://cloudsupport.googleapis.com/v2beta/$parent/cases:search"
         /// ```
         /// Python:
         /// ```
         /// python import
-        /// googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+        /// googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build(
         /// serviceName="cloudsupport", version=api_version,
         /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
         /// = supportApiService.cases().search( parent="projects/some-project", query="state=OPEN" )
@@ -1562,12 +1564,12 @@ namespace Google.Apis.CloudSupport.v2beta
         /// ```
         /// shell parent="projects/some-project" curl \ --header
         /// "Authorization: Bearer $(gcloud auth print-access-token)" \
-        /// "https://cloudsupport.googleapis.com/v2/$parent/cases:search"
+        /// "https://cloudsupport.googleapis.com/v2beta/$parent/cases:search"
         /// ```
         /// Python:
         /// ```
         /// python import
-        /// googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+        /// googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build(
         /// serviceName="cloudsupport", version=api_version,
         /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
         /// = supportApiService.cases().search( parent="projects/some-project", query="state=OPEN" )
@@ -1779,12 +1781,12 @@ namespace Google.Apis.CloudSupport.v2beta
         /// ```
         /// shell name="projects/some-project/cases/43594844/attachments/0674M00000WijAnZAJ" curl \
         /// --header "Authorization: Bearer $(gcloud auth print-access-token)" \
-        /// "https://cloudsupport.googleapis.com/v2/$name:download?alt=media"
+        /// "https://cloudsupport.googleapis.com/v2beta/$name:download?alt=media"
         /// ```
         /// Python:
         /// ```
         /// python import
-        /// googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+        /// googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build(
         /// serviceName="cloudsupport", version=api_version,
         /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
         /// = supportApiService.media().download(
@@ -1805,12 +1807,12 @@ namespace Google.Apis.CloudSupport.v2beta
         /// ```
         /// shell name="projects/some-project/cases/43594844/attachments/0674M00000WijAnZAJ" curl \
         /// --header "Authorization: Bearer $(gcloud auth print-access-token)" \
-        /// "https://cloudsupport.googleapis.com/v2/$name:download?alt=media"
+        /// "https://cloudsupport.googleapis.com/v2beta/$name:download?alt=media"
         /// ```
         /// Python:
         /// ```
         /// python import
-        /// googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+        /// googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build(
         /// serviceName="cloudsupport", version=api_version,
         /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
         /// = supportApiService.media().download(
@@ -1952,7 +1954,7 @@ namespace Google.Apis.CloudSupport.v2beta
         /// ```
         /// Python:
         /// ```
-        /// python import googleapiclient.discovery api_version = "v2" supportApiService =
+        /// python import googleapiclient.discovery api_version = "v2beta" supportApiService =
         /// googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version,
         /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", )
         /// file_path = "./example_file.txt" with open(file_path, "w") as file: file.write( "This text is inside a file
@@ -1981,7 +1983,7 @@ namespace Google.Apis.CloudSupport.v2beta
         /// ```
         /// Python:
         /// ```
-        /// python import googleapiclient.discovery api_version = "v2" supportApiService =
+        /// python import googleapiclient.discovery api_version = "v2beta" supportApiService =
         /// googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version,
         /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", )
         /// file_path = "./example_file.txt" with open(file_path, "w") as file: file.write( "This text is inside a file
@@ -2047,7 +2049,7 @@ namespace Google.Apis.CloudSupport.v2beta
         /// ```
         /// Python:
         /// ```
-        /// python import googleapiclient.discovery api_version = "v2" supportApiService =
+        /// python import googleapiclient.discovery api_version = "v2beta" supportApiService =
         /// googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version,
         /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", )
         /// file_path = "./example_file.txt" with open(file_path, "w") as file: file.write( "This text is inside a file
@@ -3152,6 +3154,10 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         /// <summary># gdata.* are outside protos with mising documentation</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha256Hash")]
         public virtual string Sha256Hash { get; set; }
+
+        /// <summary># gdata.* are outside protos with mising documentation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sha512Hash")]
+        public virtual string Sha512Hash { get; set; }
 
         /// <summary># gdata.* are outside protos with mising documentation</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
