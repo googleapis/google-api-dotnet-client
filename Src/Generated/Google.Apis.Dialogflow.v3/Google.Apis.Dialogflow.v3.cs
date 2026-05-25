@@ -18867,6 +18867,9 @@ namespace Google.Apis.Dialogflow.v3.Data
 
     public class GoogleCloudDialogflowV2KnowledgeAssistDebugInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("cesDebugInfo")]
+        public virtual System.Collections.Generic.IDictionary<string, object> CesDebugInfo { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("datastoreResponseReason")]
         public virtual string DatastoreResponseReason { get; set; }
 
@@ -18878,6 +18881,9 @@ namespace Google.Apis.Dialogflow.v3.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("queryCategorizationFailureReason")]
         public virtual string QueryCategorizationFailureReason { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("queryGenerationDebugInfo")]
+        public virtual GoogleCloudDialogflowV2KnowledgeAssistDebugInfoQueryGenerationDebugInfo QueryGenerationDebugInfo { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("queryGenerationFailureReason")]
         public virtual string QueryGenerationFailureReason { get; set; }
@@ -18941,6 +18947,21 @@ namespace Google.Apis.Dialogflow.v3.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("useTranslatedMessage")]
         public virtual System.Nullable<bool> UseTranslatedMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2KnowledgeAssistDebugInfoQueryGenerationDebugInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("candidatesTokenCount")]
+        public virtual System.Nullable<int> CandidatesTokenCount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("promptTokenCount")]
+        public virtual System.Nullable<int> PromptTokenCount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("totalTokenCount")]
+        public virtual System.Nullable<int> TotalTokenCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21243,6 +21264,9 @@ namespace Google.Apis.Dialogflow.v3.Data
 
     public class GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("cesDebugInfo")]
+        public virtual System.Collections.Generic.IDictionary<string, object> CesDebugInfo { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("datastoreResponseReason")]
         public virtual string DatastoreResponseReason { get; set; }
 
@@ -21254,6 +21278,9 @@ namespace Google.Apis.Dialogflow.v3.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("queryCategorizationFailureReason")]
         public virtual string QueryCategorizationFailureReason { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("queryGenerationDebugInfo")]
+        public virtual GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoQueryGenerationDebugInfo QueryGenerationDebugInfo { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("queryGenerationFailureReason")]
         public virtual string QueryGenerationFailureReason { get; set; }
@@ -21317,6 +21344,21 @@ namespace Google.Apis.Dialogflow.v3.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("useTranslatedMessage")]
         public virtual System.Nullable<bool> UseTranslatedMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoQueryGenerationDebugInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("candidatesTokenCount")]
+        public virtual System.Nullable<int> CandidatesTokenCount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("promptTokenCount")]
+        public virtual System.Nullable<int> PromptTokenCount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("totalTokenCount")]
+        public virtual System.Nullable<int> TotalTokenCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
