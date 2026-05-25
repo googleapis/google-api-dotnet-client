@@ -331,6 +331,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                     Evaluations = new EvaluationsResource(service);
                     Examples = new ExamplesResource(service);
                     Guardrails = new GuardrailsResource(service);
+                    Message = new MessageResource(service);
                     ScheduledEvaluationRuns = new ScheduledEvaluationRunsResource(service);
                     Sessions = new SessionsResource(service);
                     Tools = new ToolsResource(service);
@@ -4443,6 +4444,77 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                     }
                 }
 
+                /// <summary>Gets the Message resource.</summary>
+                public virtual MessageResource Message { get; }
+
+                /// <summary>The "message" collection of methods.</summary>
+                public class MessageResource
+                {
+                    private const string Resource = "message";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public MessageResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Sends a message to an agent.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="tenant">Optional. Tenant ID, provided as a path parameter.</param>
+                    public virtual SendRequest Send(Google.Apis.CustomerEngagementSuite.v1beta.Data.LfA2aV1SendMessageRequest body, string tenant)
+                    {
+                        return new SendRequest(this.service, body, tenant);
+                    }
+
+                    /// <summary>Sends a message to an agent.</summary>
+                    public class SendRequest : CustomerEngagementSuiteBaseServiceRequest<Google.Apis.CustomerEngagementSuite.v1beta.Data.LfA2aV1SendMessageResponse>
+                    {
+                        /// <summary>Constructs a new Send request.</summary>
+                        public SendRequest(Google.Apis.Services.IClientService service, Google.Apis.CustomerEngagementSuite.v1beta.Data.LfA2aV1SendMessageRequest body, string tenant) : base(service)
+                        {
+                            Tenant = tenant;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Optional. Tenant ID, provided as a path parameter.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Tenant { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CustomerEngagementSuite.v1beta.Data.LfA2aV1SendMessageRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "send";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta/{+tenant}/message:send";
+
+                        /// <summary>Initializes Send parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "tenant",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/apps/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
                 /// <summary>Gets the ScheduledEvaluationRuns resource.</summary>
                 public virtual ScheduledEvaluationRunsResource ScheduledEvaluationRuns { get; }
 
@@ -8041,6 +8113,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         public virtual System.Collections.Generic.IDictionary<string, string> InputVariableMapping { get; set; }
 
         /// <summary>
+        /// Optional. The name of the variable that contains the language code to be used for the Dialogflow session. If
+        /// unspecified, the default language code of the Dialogflow agent will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCodeVariable")]
+        public virtual string LanguageCodeVariable { get; set; }
+
+        /// <summary>
         /// Optional. The mapping of the Dialogflow session parameters names to the app variables names to be sent back
         /// to the CES agent after the Dialogflow agent execution ends.
         /// </summary>
@@ -10572,6 +10651,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sessionId")]
         public virtual string SessionId { get; set; }
 
+        /// <summary>Output only. The user facing error message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userFacingErrorMessage")]
+        public virtual string UserFacingErrorMessage { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -12022,6 +12105,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The operation that created this evaluation run. Format:
+        /// `projects/{project}/locations/{location}/operations/{operation}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; }
 
         /// <summary>
         /// Optional. Configuration for running the optimization step after the evaluation run. If not set, the
@@ -14072,6 +14162,353 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Artifacts represent task outputs.</summary>
+    public class LfA2aV1Artifact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Unique identifier (e.g. UUID) for the artifact. It must be unique within a task.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactId")]
+        public virtual string ArtifactId { get; set; }
+
+        /// <summary>Optional. A human readable description of the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The URIs of extensions that are present or contributed to this Artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
+        public virtual System.Collections.Generic.IList<string> Extensions { get; set; }
+
+        /// <summary>Optional. Metadata included with the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>A human readable name for the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The content of the artifact. Must contain at least one part.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parts")]
+        public virtual System.Collections.Generic.IList<LfA2aV1Part> Parts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines authentication details, used for push notifications.</summary>
+    public class LfA2aV1AuthenticationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Push Notification credentials. Format depends on the scheme (e.g., token for Bearer).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("credentials")]
+        public virtual string Credentials { get; set; }
+
+        /// <summary>
+        /// Required. HTTP Authentication Scheme from the [IANA
+        /// registry](https://www.iana.org/assignments/http-authschemes/). Examples: `Bearer`, `Basic`, `Digest`. Scheme
+        /// names are case-insensitive per [RFC 9110 Section 11.1](https://www.rfc-editor.org/rfc/rfc9110#section-11.1).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheme")]
+        public virtual string Scheme { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// `Message` is one unit of communication between client and server. It can be associated with a context and/or a
+    /// task. For server messages, `context_id` must be provided, and `task_id` only if a task was created. For client
+    /// messages, both fields are optional, with the caveat that if both are provided, they have to match (the
+    /// `context_id` has to be the one that is set on the task). If only `task_id` is provided, the server will infer
+    /// `context_id` from it.
+    /// </summary>
+    public class LfA2aV1Message : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The context id of the message. If set, the message will be associated with the given context.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextId")]
+        public virtual string ContextId { get; set; }
+
+        /// <summary>The URIs of extensions that are present or contributed to this Message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
+        public virtual System.Collections.Generic.IList<string> Extensions { get; set; }
+
+        /// <summary>
+        /// Required. The unique identifier (e.g. UUID) of the message. This is created by the message creator.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
+        public virtual string MessageId { get; set; }
+
+        /// <summary>Optional. Any metadata to provide along with the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>Required. Parts is the container of the message content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parts")]
+        public virtual System.Collections.Generic.IList<LfA2aV1Part> Parts { get; set; }
+
+        /// <summary>A list of task IDs that this message references for additional context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceTaskIds")]
+        public virtual System.Collections.Generic.IList<string> ReferenceTaskIds { get; set; }
+
+        /// <summary>Required. Identifies the sender of the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
+
+        /// <summary>
+        /// Optional. The task id of the message. If set, the message will be associated with the given task.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskId")]
+        public virtual string TaskId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// `Part` represents a container for a section of communication content. Parts can be purely textual, some sort of
+    /// file (image, video, etc) or a structured data blob (i.e. JSON).
+    /// </summary>
+    public class LfA2aV1Part : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Arbitrary structured `data` as a JSON value (object, array, string, number, boolean, or null).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual object Data { get; set; }
+
+        /// <summary>An optional `filename` for the file (e.g., "document.pdf").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filename")]
+        public virtual string Filename { get; set; }
+
+        /// <summary>
+        /// The `media_type` (MIME type) of the part content (e.g., "text/plain", "application/json", "image/png"). This
+        /// field is available for all part types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaType")]
+        public virtual string MediaType { get; set; }
+
+        /// <summary>Optional. metadata associated with this part.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>
+        /// The `raw` byte content of a file. In JSON serialization, this is encoded as a base64 string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("raw")]
+        public virtual string Raw { get; set; }
+
+        /// <summary>The string content of the `text` part.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>A `url` pointing to the file's content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration of a send message request.</summary>
+    public class LfA2aV1SendMessageConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of media types the client is prepared to accept for response parts. Agents SHOULD use this to tailor
+        /// their output.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceptedOutputModes")]
+        public virtual System.Collections.Generic.IList<string> AcceptedOutputModes { get; set; }
+
+        /// <summary>
+        /// The maximum number of most recent messages from the task's history to retrieve in the response. An unset
+        /// value means the client does not impose any limit. A value of zero is a request to not include any messages.
+        /// The server MUST NOT return more messages than the provided value, but MAY apply a lower limit.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("historyLength")]
+        public virtual System.Nullable<int> HistoryLength { get; set; }
+
+        /// <summary>
+        /// If `true`, the operation returns immediately after creating the task, even if processing is still in
+        /// progress. If `false` (default), the operation MUST wait until the task reaches a terminal (`COMPLETED`,
+        /// `FAILED`, `CANCELED`, `REJECTED`) or interrupted (`INPUT_REQUIRED`, `AUTH_REQUIRED`) state before returning.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnImmediately")]
+        public virtual System.Nullable<bool> ReturnImmediately { get; set; }
+
+        /// <summary>
+        /// Configuration for the agent to send push notifications for task updates. Task id should be empty when
+        /// sending this configuration in a `SendMessage` request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskPushNotificationConfig")]
+        public virtual LfA2aV1TaskPushNotificationConfig TaskPushNotificationConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a request for the `SendMessage` method.</summary>
+    public class LfA2aV1SendMessageRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration for the send request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configuration")]
+        public virtual LfA2aV1SendMessageConfiguration Configuration { get; set; }
+
+        /// <summary>Required. The message to send to the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual LfA2aV1Message Message { get; set; }
+
+        /// <summary>A flexible key-value map for passing additional context or parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the response for the `SendMessage` method.</summary>
+    public class LfA2aV1SendMessageResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A message from the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual LfA2aV1Message Message { get; set; }
+
+        /// <summary>The task created or updated by the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("task")]
+        public virtual LfA2aV1Task Task { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// `Task` is the core unit of action for A2A. It has a current status and when results are created for the task
+    /// they are stored in the artifact. If there are multiple turns for a task, these are stored in history.
+    /// </summary>
+    public class LfA2aV1Task : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A set of output artifacts for a `Task`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifacts")]
+        public virtual System.Collections.Generic.IList<LfA2aV1Artifact> Artifacts { get; set; }
+
+        /// <summary>
+        /// Unique identifier (e.g. UUID) for the contextual collection of interactions (tasks and messages).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextId")]
+        public virtual string ContextId { get; set; }
+
+        /// <summary>
+        /// protolint:disable REPEATED_FIELD_NAMES_PLURALIZED The history of interactions from a `Task`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("history")]
+        public virtual System.Collections.Generic.IList<LfA2aV1Message> History { get; set; }
+
+        /// <summary>
+        /// Required. Unique identifier (e.g. UUID) for the task, generated by the server for a new task.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// protolint:enable REPEATED_FIELD_NAMES_PLURALIZED A key/value object to store custom metadata about a task.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>Required. The current status of a `Task`, including `state` and a `message`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual LfA2aV1TaskStatus Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A container associating a push notification configuration with a specific task.</summary>
+    public class LfA2aV1TaskPushNotificationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Authentication information required to send the notification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authentication")]
+        public virtual LfA2aV1AuthenticationInfo Authentication { get; set; }
+
+        /// <summary>
+        /// The push notification configuration details. A unique identifier (e.g. UUID) for this push notification
+        /// configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ID of the task this configuration is associated with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskId")]
+        public virtual string TaskId { get; set; }
+
+        /// <summary>Optional. Tenant ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenant")]
+        public virtual string Tenant { get; set; }
+
+        /// <summary>A token unique for this task or session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("token")]
+        public virtual string Token { get; set; }
+
+        /// <summary>Required. The URL where the notification should be sent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A container for the status of a task</summary>
+    public class LfA2aV1TaskStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A message associated with the status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual LfA2aV1Message Message { get; set; }
+
+        /// <summary>Required. The current state of this task.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _timestampRaw;
+
+        private object _timestamp;
+
+        /// <summary>ISO 8601 Timestamp when the status was recorded. Example: "2023-10-27T10:00:00Z"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual string TimestampRaw
+        {
+            get => _timestampRaw;
+            set
+            {
+                _timestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimestampDateTimeOffset instead.")]
+        public virtual object Timestamp
+        {
+            get => _timestamp;
+            set
+            {
+                _timestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _timestamp = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampRaw);
+            set => TimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for AgentService.ListAgents.</summary>
     public class ListAgentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14437,13 +14874,16 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
     /// <summary>Settings to describe the logging behaviors for the app.</summary>
     public class LoggingSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Configuration for how audio interactions should be recorded.</summary>
+        /// <summary>
+        /// Optional. Configuration for how audio interactions should be recorded. The audio is subject to redaction as
+        /// configured in RedactionConfig.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioRecordingConfig")]
         public virtual AudioRecordingConfig AudioRecordingConfig { get; set; }
 
         /// <summary>
-        /// Optional. Settings to describe the BigQuery export behaviors for the app. The conversation data will be
-        /// exported to BigQuery tables if it is enabled.
+        /// Optional. Configures the BigQuery export behaviors for the app. The conversation data is subject to
+        /// redaction as configured in RedactionConfig.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryExportSettings")]
         public virtual BigQueryExportSettings BigqueryExportSettings { get; set; }
@@ -14475,8 +14915,8 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         public virtual RedactionConfig RedactionConfig { get; set; }
 
         /// <summary>
-        /// Optional. Configures recording of unredacted audio. Use this to maintain a raw backup with restricted access
-        /// when audio redaction is enabled, typically for auditing or monitoring purposes.
+        /// Optional. Configures an additional recording of unredacted audio. This can be used to maintain a raw audio
+        /// copy when audio redaction is enabled, typically for auditing or monitoring purposes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unredactedAudioRecordingConfig")]
         public virtual AudioRecordingConfig UnredactedAudioRecordingConfig { get; set; }
@@ -14519,6 +14959,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Optional. The name override of the MCP tool. This is populated if the name was overridden by a Toolset
+        /// override.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nameOverride")]
+        public virtual string NameOverride { get; set; }
+
         /// <summary>Optional. The schema of the output arguments of the MCP tool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputSchema")]
         public virtual Schema OutputSchema { get; set; }
@@ -14538,11 +14985,74 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceDirectoryConfig")]
         public virtual ServiceDirectoryConfig ServiceDirectoryConfig { get; set; }
 
+        /// <summary>Output only. The dynamic availability state of the tool on the external server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
         /// <summary>
         /// Optional. The TLS configuration. Includes the custom server certificates that the client should trust.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tlsConfig")]
         public virtual TlsConfig TlsConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Container for a tool's core definition elements that are snapshot. Schemas in the snapshot are used as-is and
+    /// cannot be overridden.
+    /// </summary>
+    public class McpToolDefinition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The description of the MCP tool. This can be overridden by `description_override` in
+        /// `McpToolOverride`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. The schema of the input arguments of the MCP tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputSchema")]
+        public virtual Schema InputSchema { get; set; }
+
+        /// <summary>Output only. The schema of the output arguments of the MCP tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputSchema")]
+        public virtual Schema OutputSchema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Overrides associated with a given tool in a Toolset. This enables "pinning" or "overriding" of tool definitions
+    /// from the external dynamic server.
+    /// </summary>
+    public class McpToolOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If present, this tool uses this description instead of the original description from the server.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("descriptionOverride")]
+        public virtual string DescriptionOverride { get; set; }
+
+        /// <summary>
+        /// Optional. If present, this tool uses this name in the Agent instead of the original name. This is primarily
+        /// used as an alias if the MCP server offers poorly named tools.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nameOverride")]
+        public virtual string NameOverride { get; set; }
+
+        /// <summary>
+        /// Output only. If present, this tool is "Pinned" and uses the snapshot values as fallbacks if the server
+        /// becomes temporarily unavailable or if no Override is present.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshot")]
+        public virtual McpToolDefinition Snapshot { get; set; }
+
+        /// <summary>Required. The original name of the tool as it is emitted by the MCP server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tool")]
+        public virtual string Tool { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14588,6 +15098,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tlsConfig")]
         public virtual TlsConfig TlsConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Overrides for individual tools within this toolset. This allows overriding specific details like
+        /// descriptions, names, or pinning the tools' states so they aren't fully dynamic.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolOverrides")]
+        public virtual System.Collections.Generic.IList<McpToolOverride> ToolOverrides { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15103,6 +15620,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pythonCode")]
         public virtual string PythonCode { get; set; }
 
+        /// <summary>Optional. Service Directory configuration for the tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceDirectoryConfig")]
+        public virtual ServiceDirectoryConfig ServiceDirectoryConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -15271,6 +15792,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
     /// <summary>Request message for ToolService.RetrieveTools.</summary>
     public class RetrieveToolsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. If true, the returned tools will contain raw descriptions and schemas directly from the server,
+        /// bypassing any stored persistence configurations (overrides/snapshots).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bypassPersistenceConfig")]
+        public virtual System.Nullable<bool> BypassPersistenceConfig { get; set; }
+
         /// <summary>
         /// Optional. The identifiers of the tools to retrieve from the toolset. If empty, all tools in the toolset will
         /// be returned.
