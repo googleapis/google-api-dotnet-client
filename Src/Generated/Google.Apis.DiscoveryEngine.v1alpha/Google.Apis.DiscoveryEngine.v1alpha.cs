@@ -35924,7 +35924,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Config to store data store type configuration for workspace data</summary>
     public class GoogleCloudDiscoveryengineV1WorkspaceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Obfuscated Dasher customer ID.</summary>
+        /// <summary>
+        /// Output only. Obfuscated Dasher customer ID. Derived by the server from the project's GCP organization at
+        /// data store creation time; any value supplied in the request payload is ignored.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dasherCustomerId")]
         public virtual string DasherCustomerId { get; set; }
 
@@ -45868,6 +45871,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("groupMetadata")]
         public virtual GoogleCloudDiscoveryengineV1alphaExternalIdentityGroupMetadata GroupMetadata { get; set; }
 
+        /// <summary>
+        /// Output only. Represents the canonical IAM subject identifier (for users) or group identifier (for groups),
+        /// derived from the workforce-pool claim mapping. Falls back to custom logic if not set. This must be used for
+        /// IAM bindings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subject")]
+        public virtual string Subject { get; set; }
+
         /// <summary>Metadata corresponding to the external user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userMetadata")]
         public virtual GoogleCloudDiscoveryengineV1alphaExternalIdentityUserMetadata UserMetadata { get; set; }
@@ -45894,7 +45905,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("givenName")]
         public virtual string GivenName { get; set; }
 
-        /// <summary>The user's primary email address.</summary>
+        /// <summary>
+        /// The user's primary email address. Do not use this for IAM bindings. Use ExternalIdentity.subject.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryEmail")]
         public virtual string PrimaryEmail { get; set; }
 
@@ -46132,7 +46145,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// Optional. Specifies the importance of the field when `searchable_option` is `SEARCHABLE_ENABLED`. If
         /// `searchable_option` is `SEARCHABLE_DISABLED`, this field is ignored. If `searchable_option` is
         /// `SEARCHABLE_ENABLED` and this is `SEARCHABLE_FIELD_IMPORTANCE_UNSPECIFIED`, it behaves as
-        /// `DEFAULT_IMPORTANCE`.
+        /// `DEFAULT_IMPORTANCE`. For more information, see [Weight searchable
+        /// fields](https://cloud.google.com/generative-ai-app-builder/docs/configure-field-settings#weight-search).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchableFieldImportance")]
         public virtual string SearchableFieldImportance { get; set; }
@@ -51652,7 +51666,12 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// `freshness_rank`: freshness adjustment as a rank * `document_age`: The time in hours elapsed since the
         /// document was last updated, a floating-point number (e.g., 0.25 means 15 minutes). * `topicality_rank`:
         /// topicality adjustment as a rank. Uses proprietary Google model to determine the keyword-based overlap
-        /// between the query and the document. * `base_rank`: the default rank of the result
+        /// between the query and the document. * `base_rank`: the default rank of the result * `media_actor_match`:
+        /// whether the media actor matches the query * `media_director_match`: whether the media director matches the
+        /// query * `media_genre_match`: whether the media genre matches the query * `media_language_match`: whether the
+        /// media language matches the query * `media_title_match`: whether the media title matches the query *
+        /// `media_prefix_similarity_rank`: prefix similarity rank for media results * `media_semantic_similarity_rank`:
+        /// semantic similarity rank for media results
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankingExpression")]
         public virtual string RankingExpression { get; set; }
@@ -54518,11 +54537,30 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("invocationTools")]
         public virtual System.Collections.Generic.IList<string> InvocationTools { get; set; }
 
+        /// <summary>The skills executed during the turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invokedSkills")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaStreamAssistResponseInvokedSkill> InvokedSkills { get; set; }
+
         /// <summary>
         /// Session information. Only included in the final StreamAssistResponse of the response stream.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionInfo")]
         public virtual GoogleCloudDiscoveryengineV1alphaStreamAssistResponseSessionInfo SessionInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a skill used during the assist call.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaStreamAssistResponseInvokedSkill : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The display name of the skill.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The resource name of the skill.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -56644,7 +56682,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Config to store data store type configuration for workspace data</summary>
     public class GoogleCloudDiscoveryengineV1alphaWorkspaceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Obfuscated Dasher customer ID.</summary>
+        /// <summary>
+        /// Output only. Obfuscated Dasher customer ID. Derived by the server from the project's GCP organization at
+        /// data store creation time; any value supplied in the request payload is ignored.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dasherCustomerId")]
         public virtual string DasherCustomerId { get; set; }
 
@@ -61916,7 +61957,12 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// `freshness_rank`: freshness adjustment as a rank * `document_age`: The time in hours elapsed since the
         /// document was last updated, a floating-point number (e.g., 0.25 means 15 minutes). * `topicality_rank`:
         /// topicality adjustment as a rank. Uses proprietary Google model to determine the keyword-based overlap
-        /// between the query and the document. * `base_rank`: the default rank of the result
+        /// between the query and the document. * `base_rank`: the default rank of the result * `media_actor_match`:
+        /// whether the media actor matches the query * `media_director_match`: whether the media director matches the
+        /// query * `media_genre_match`: whether the media genre matches the query * `media_language_match`: whether the
+        /// media language matches the query * `media_title_match`: whether the media title matches the query *
+        /// `media_prefix_similarity_rank`: prefix similarity rank for media results * `media_semantic_similarity_rank`:
+        /// semantic similarity rank for media results
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankingExpression")]
         public virtual string RankingExpression { get; set; }
@@ -63776,7 +63822,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Config to store data store type configuration for workspace data</summary>
     public class GoogleCloudDiscoveryengineV1betaWorkspaceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Obfuscated Dasher customer ID.</summary>
+        /// <summary>
+        /// Output only. Obfuscated Dasher customer ID. Derived by the server from the project's GCP organization at
+        /// data store creation time; any value supplied in the request payload is ignored.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dasherCustomerId")]
         public virtual string DasherCustomerId { get; set; }
 
