@@ -7658,6 +7658,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodeConfig")]
         public virtual NodeConfig NodeConfig { get; set; }
 
+        /// <summary>Optional. Configuration for Node Creation Mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeCreationConfig")]
+        public virtual NodeCreationConfig NodeCreationConfig { get; set; }
+
         /// <summary>
         /// Output only. The size of the address space on each node for hosting containers. This is provisioned from
         /// within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network
@@ -8143,6 +8147,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The desired network tier configuration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredNetworkTierConfig")]
         public virtual NetworkTierConfig DesiredNetworkTierConfig { get; set; }
+
+        /// <summary>Optional. The desired NodeCreationConfig for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredNodeCreationConfig")]
+        public virtual NodeCreationConfig DesiredNodeCreationConfig { get; set; }
 
         /// <summary>The desired node kubelet config for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredNodeKubeletConfig")]
@@ -9230,6 +9238,98 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pidAvailable")]
         public virtual string PidAvailable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the maintenance exclusion for the node pool.</summary>
+    public class ExclusionUntilEndOfSupport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Indicates whether the exclusion is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>
+        /// Output only. The end time of the maintenance exclusion. It is output only. It is the cluster control plane
+        /// version's end of support time, or end of extended support time when the cluster is on extended support
+        /// channel.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// Output only. The start time of the maintenance exclusion. It is output only. It is the exclusion creation
+        /// time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11017,9 +11117,28 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>NodeCreationConfig defines the settings of node creation mode.</summary>
+    public class NodeCreationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The mode of node creation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeCreationMode")]
+        public virtual string NodeCreationMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>NodeDrainConfig contains the node drain related configurations for this node pool.</summary>
     public class NodeDrainConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The duration of the grace termination period for node drain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("graceTerminationDuration")]
+        public virtual object GraceTerminationDuration { get; set; }
+
+        /// <summary>The duration of the PDB timeout period for node drain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pdbTimeoutDuration")]
+        public virtual object PdbTimeoutDuration { get; set; }
+
         /// <summary>Whether to respect PDB during node pool deletion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("respectPdbDuringNodePoolDeletion")]
         public virtual System.Nullable<bool> RespectPdbDuringNodePoolDeletion { get; set; }
@@ -11450,6 +11569,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
         public virtual System.Collections.Generic.IList<string> Locations { get; set; }
 
+        /// <summary>Optional. Specifies the maintenance policy for the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicy")]
+        public virtual NodePoolMaintenancePolicy MaintenancePolicy { get; set; }
+
         /// <summary>NodeManagement configuration for this NodePool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("management")]
         public virtual NodeManagement Management { get; set; }
@@ -11621,6 +11744,17 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Logging variant configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variantConfig")]
         public virtual LoggingVariantConfig VariantConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the maintenance policy for the node pool.</summary>
+    public class NodePoolMaintenancePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The exclusion until end of support for the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusionUntilEndOfSupport")]
+        public virtual ExclusionUntilEndOfSupport ExclusionUntilEndOfSupport { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
