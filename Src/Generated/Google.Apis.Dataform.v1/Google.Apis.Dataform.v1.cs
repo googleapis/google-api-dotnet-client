@@ -5919,7 +5919,7 @@ namespace Google.Apis.Dataform.v1
 
                     /// <summary>
                     /// Optional. Maximum number of TeamFolders to return. The server may return fewer items than
-                    /// requested. If unspecified, the server will pick an appropriate default.
+                    /// requested. If unspecified, the server will pick a default of page_size = 50.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -7340,11 +7340,15 @@ namespace Google.Apis.Dataform.v1.Data
     /// <summary>Represents a single entry in a directory.</summary>
     public class DirectoryEntry : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A child directory in the directory.</summary>
+        /// <summary>
+        /// A child directory in the directory. The path is returned including the full folder structure from the root.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directory")]
         public virtual string Directory { get; set; }
 
-        /// <summary>A file in the directory.</summary>
+        /// <summary>
+        /// A file in the directory. The path is returned including the full folder structure from the root.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("file")]
         public virtual string File { get; set; }
 
@@ -7725,12 +7729,16 @@ namespace Google.Apis.Dataform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authenticationTokenSecretVersion")]
         public virtual string AuthenticationTokenSecretVersion { get; set; }
 
-        /// <summary>
-        /// Required. The Git remote's default branch name. If not set, `main` will be used and stored for the
-        /// repository.
-        /// </summary>
+        /// <summary>Optional. The Git remote's default branch name. If not set `main` will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultBranch")]
         public virtual string DefaultBranch { get; set; }
+
+        /// <summary>
+        /// Output only. The Git remote's effective default branch name. This is the default branch name of the Git
+        /// remote if it is set, otherwise it is `main`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveDefaultBranch")]
+        public virtual string EffectiveDefaultBranch { get; set; }
 
         /// <summary>Optional. Authentication fields for remote uris using SSH protocol.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sshAuthenticationConfig")]
