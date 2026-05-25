@@ -61,6 +61,12 @@ namespace Google.Apis.NetAppFiles.v1beta1
         public class Scope
         {
             /// <summary>
+            /// See, edit, configure, and delete your Google Cloud NetApp data and see the email address for your Google
+            /// Account
+            /// </summary>
+            public static string CloudNetapp = "https://www.googleapis.com/auth/cloud-netapp";
+
+            /// <summary>
             /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
             /// Account.
             /// </summary>
@@ -70,6 +76,12 @@ namespace Google.Apis.NetAppFiles.v1beta1
         /// <summary>Available OAuth 2.0 scope constants for use with the NetApp API.</summary>
         public static class ScopeConstants
         {
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud NetApp data and see the email address for your Google
+            /// Account
+            /// </summary>
+            public const string CloudNetapp = "https://www.googleapis.com/auth/cloud-netapp";
+
             /// <summary>
             /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
             /// Account.
