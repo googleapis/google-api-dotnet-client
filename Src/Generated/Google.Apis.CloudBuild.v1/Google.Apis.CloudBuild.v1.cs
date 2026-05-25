@@ -6556,6 +6556,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pullTiming")]
         public virtual TimeSpan PullTiming { get; set; }
 
+        /// <summary>Declaration of results for this build step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<StepResult> Results { get; set; }
+
         /// <summary>
         /// A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint
         /// or args.
@@ -6603,6 +6607,17 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("waitFor")]
         public virtual System.Collections.Generic.IList<string> WaitFor { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Results for a build step.</summary>
+    public class BuildStepResults : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Results for a build step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Results { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9339,6 +9354,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("buildStepOutputs")]
         public virtual System.Collections.Generic.IList<string> BuildStepOutputs { get; set; }
 
+        /// <summary>Results for build steps. step_id -&gt; </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildStepResults")]
+        public virtual System.Collections.Generic.IDictionary<string, BuildStepResults> BuildStepResults { get; set; }
+
         /// <summary>Output only. Generic artifacts uploaded to Artifact Registry at the end of the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("genericArtifacts")]
         public virtual System.Collections.Generic.IList<UploadedGenericArtifact> GenericArtifacts { get; set; }
@@ -9592,6 +9611,25 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>StepResult is the declaration of a result for a build step.</summary>
+    public class StepResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The content of the attestation to be generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attestationContent")]
+        public virtual string AttestationContent { get; set; }
+
+        /// <summary>Optional. The type of attestation to be generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attestationType")]
+        public virtual string AttestationType { get; set; }
+
+        /// <summary>Required. The name of the result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
