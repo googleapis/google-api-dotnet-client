@@ -4566,6 +4566,59 @@ namespace Google.Apis.Dataform.v1beta1
                     }
                 }
 
+                /// <summary>Deletes a single Repository asynchronously.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The repository's name.</param>
+                public virtual DeleteLongRunningRequest DeleteLongRunning(Google.Apis.Dataform.v1beta1.Data.DeleteRepositoryLongRunningRequest body, string name)
+                {
+                    return new DeleteLongRunningRequest(this.service, body, name);
+                }
+
+                /// <summary>Deletes a single Repository asynchronously.</summary>
+                public class DeleteLongRunningRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new DeleteLongRunning request.</summary>
+                    public DeleteLongRunningRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataform.v1beta1.Data.DeleteRepositoryLongRunningRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The repository's name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataform.v1beta1.Data.DeleteRepositoryLongRunningRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "deleteLongRunning";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:deleteLongRunning";
+
+                    /// <summary>Initializes DeleteLongRunning parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Fetches a Repository's history of commits. The Repository must not have a value for
                 /// `git_remote_settings.url`.
@@ -5949,7 +6002,7 @@ namespace Google.Apis.Dataform.v1beta1
 
                     /// <summary>
                     /// Optional. Maximum number of TeamFolders to return. The server may return fewer items than
-                    /// requested. If unspecified, the server will pick an appropriate default.
+                    /// requested. If unspecified, the server will pick a default of page_size = 50.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -7351,6 +7404,22 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>`DeleteRepositoryLongRunning` request message.</summary>
+    public class DeleteRepositoryLongRunningRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If set to true, child resources of this repository (compilation results and workflow invocations)
+        /// will also be deleted. Otherwise, the request will only succeed if the repository has no child resources.
+        /// **Note:** *This flag doesn't support deletion of workspaces, release configs or workflow configs. If any of
+        /// such resources exists in the repository, the request will fail.*
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>`DeleteTeamFolderTree` request message.</summary>
     public class DeleteTeamFolderTreeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7370,11 +7439,15 @@ namespace Google.Apis.Dataform.v1beta1.Data
     /// <summary>Represents a single entry in a directory.</summary>
     public class DirectoryEntry : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A child directory in the directory.</summary>
+        /// <summary>
+        /// A child directory in the directory. The path is returned including the full folder structure from the root.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directory")]
         public virtual string Directory { get; set; }
 
-        /// <summary>A file in the directory.</summary>
+        /// <summary>
+        /// A file in the directory. The path is returned including the full folder structure from the root.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("file")]
         public virtual string File { get; set; }
 
@@ -7755,12 +7828,16 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authenticationTokenSecretVersion")]
         public virtual string AuthenticationTokenSecretVersion { get; set; }
 
-        /// <summary>
-        /// Required. The Git remote's default branch name. If not set, `main` will be used and stored for the
-        /// repository.
-        /// </summary>
+        /// <summary>Optional. The Git remote's default branch name. If not set `main` will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultBranch")]
         public virtual string DefaultBranch { get; set; }
+
+        /// <summary>
+        /// Output only. The Git remote's effective default branch name. This is the default branch name of the Git
+        /// remote if it is set, otherwise it is `main`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveDefaultBranch")]
+        public virtual string EffectiveDefaultBranch { get; set; }
 
         /// <summary>Optional. Authentication fields for remote uris using SSH protocol.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sshAuthenticationConfig")]
