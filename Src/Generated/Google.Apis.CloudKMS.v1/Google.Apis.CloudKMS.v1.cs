@@ -3922,6 +3922,66 @@ namespace Google.Apis.CloudKMS.v1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
+                        /// <summary>
+                        /// Optional. Specifies the WrappingPublicKey format. If not specified: * For RSA-based import
+                        /// methods, the wrapping key will be returned in PEM format * For pure ML-KEM-based import
+                        /// methods, the wrapping key will be returned in the raw bytes format specified in FIPS-203 *
+                        /// For X-Wing-based import methods, the wrapping key will be returned in the raw bytes format
+                        /// specified in https://datatracker.ietf.org/doc/draft-connolly-cfrg-xwing-kem.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("publicKeyFormat", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<PublicKeyFormatEnum> PublicKeyFormat { get; set; }
+
+                        /// <summary>
+                        /// Optional. Specifies the WrappingPublicKey format. If not specified: * For RSA-based import
+                        /// methods, the wrapping key will be returned in PEM format * For pure ML-KEM-based import
+                        /// methods, the wrapping key will be returned in the raw bytes format specified in FIPS-203 *
+                        /// For X-Wing-based import methods, the wrapping key will be returned in the raw bytes format
+                        /// specified in https://datatracker.ietf.org/doc/draft-connolly-cfrg-xwing-kem.
+                        /// </summary>
+                        public enum PublicKeyFormatEnum
+                        {
+                            /// <summary>
+                            /// If the public_key_format field is not specified: - For PQC algorithms, an error will be
+                            /// returned. - For non-PQC algorithms, the default format is PEM, and the field pem will be
+                            /// populated. Otherwise, the public key will be exported through the public_key field in
+                            /// the requested format.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("PUBLIC_KEY_FORMAT_UNSPECIFIED")]
+                            PUBLICKEYFORMATUNSPECIFIED = 0,
+
+                            /// <summary>
+                            /// The returned public key will be encoded in PEM format. See the
+                            /// [RFC7468](https://tools.ietf.org/html/rfc7468) sections for [General
+                            /// Considerations](https://tools.ietf.org/html/rfc7468#section-2) and [Textual Encoding of
+                            /// Subject Public Key Info] (https://tools.ietf.org/html/rfc7468#section-13) for more
+                            /// information.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("PEM")]
+                            PEM = 1,
+
+                            /// <summary>
+                            /// The returned public key will be encoded in DER format (the PrivateKeyInfo structure from
+                            /// RFC 5208).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("DER")]
+                            DER = 2,
+
+                            /// <summary>
+                            /// This is supported only for PQC algorithms. The key material is returned in the format
+                            /// defined by NIST PQC standards (FIPS 203, FIPS 204, and FIPS 205).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("NIST_PQC")]
+                            NISTPQC = 3,
+
+                            /// <summary>
+                            /// The returned public key is in raw bytes format defined in its standard
+                            /// https://datatracker.ietf.org/doc/draft-connolly-cfrg-xwing-kem.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("XWING_RAW_BYTES")]
+                            XWINGRAWBYTES = 4,
+                        }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
@@ -3942,6 +4002,14 @@ namespace Google.Apis.CloudKMS.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/importJobs/[^/]+$",
+                            });
+                            RequestParameters.Add("publicKeyFormat", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "publicKeyFormat",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -8282,6 +8350,13 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publicKey")]
         public virtual WrappingPublicKey PublicKey { get; set; }
 
+        /// <summary>
+        /// Output only. Specifies the WrappingPublicKey format provided by the customer in the
+        /// KeyManagementService.GetImportJob request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicKeyFormat")]
+        public virtual string PublicKeyFormat { get; set; }
+
         /// <summary>Output only. The current state of the ImportJob, indicating if it can be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -10222,10 +10297,20 @@ namespace Google.Apis.CloudKMS.v1.Data
     public class WrappingPublicKey : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Output only. Contains the public key, formatted according to the PublicKey.PublicKeyFormat specified in the
+        /// KeyManagementService.GetImportJob request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; }
+
+        /// <summary>
         /// The public key, encoded in PEM format. For more information, see the [RFC
         /// 7468](https://tools.ietf.org/html/rfc7468) sections for [General
         /// Considerations](https://tools.ietf.org/html/rfc7468#section-2) and [Textual Encoding of Subject Public Key
-        /// Info] (https://tools.ietf.org/html/rfc7468#section-13).
+        /// Info] (https://tools.ietf.org/html/rfc7468#section-13). This field gets populated by default for RSA-based
+        /// import methods, if no public_key_format is specified in the request. If you want to retrieve the wrapping
+        /// key of an ImportJob in some other format, use KeyManagementService.GetImportJob and set the
+        /// public_key_format to the desired public key format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pem")]
         public virtual string Pem { get; set; }

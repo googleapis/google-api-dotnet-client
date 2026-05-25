@@ -22,5 +22,12 @@
   "Google.Apis.CloudKMS.v1.ProjectsResource+LocationsResource+KeyRingsResource+CryptoKeysResource+ListRequest.VersionViewEnum": [
     "CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED",
     "FULL"
+  ],
+  "Google.Apis.CloudKMS.v1.ProjectsResource+LocationsResource+KeyRingsResource+ImportJobsResource+GetRequest.PublicKeyFormatEnum": [
+    "PUBLIC_KEY_FORMAT_UNSPECIFIED",
+    "PEM",
+    "DER",
+    "NIST_PQC",
+    "XWING_RAW_BYTES"
   ]
 }
