@@ -22216,6 +22216,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("securitySettings")]
         public virtual string SecuritySettings { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("sipConfig")]
+        public virtual GoogleCloudDialogflowV2SipConfig SipConfig { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("sttConfig")]
         public virtual GoogleCloudDialogflowV2SpeechToTextConfig SttConfig { get; set; }
 
@@ -25042,6 +25045,9 @@ namespace Google.Apis.Dialogflow.v2.Data
 
     public class GoogleCloudDialogflowV2KnowledgeAssistDebugInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("cesDebugInfo")]
+        public virtual System.Collections.Generic.IDictionary<string, object> CesDebugInfo { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("datastoreResponseReason")]
         public virtual string DatastoreResponseReason { get; set; }
 
@@ -25053,6 +25059,9 @@ namespace Google.Apis.Dialogflow.v2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("queryCategorizationFailureReason")]
         public virtual string QueryCategorizationFailureReason { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("queryGenerationDebugInfo")]
+        public virtual GoogleCloudDialogflowV2KnowledgeAssistDebugInfoQueryGenerationDebugInfo QueryGenerationDebugInfo { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("queryGenerationFailureReason")]
         public virtual string QueryGenerationFailureReason { get; set; }
@@ -25116,6 +25125,21 @@ namespace Google.Apis.Dialogflow.v2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("useTranslatedMessage")]
         public virtual System.Nullable<bool> UseTranslatedMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2KnowledgeAssistDebugInfoQueryGenerationDebugInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("candidatesTokenCount")]
+        public virtual System.Nullable<int> CandidatesTokenCount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("promptTokenCount")]
+        public virtual System.Nullable<int> PromptTokenCount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("totalTokenCount")]
+        public virtual System.Nullable<int> TotalTokenCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26244,6 +26268,33 @@ namespace Google.Apis.Dialogflow.v2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("suggestionFeatureConfig")]
         public virtual GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig SuggestionFeatureConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2SipConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("allowVirtualAgentInteraction")]
+        public virtual System.Nullable<bool> AllowVirtualAgentInteraction { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("copyInboundCallLegHeaders")]
+        public virtual System.Collections.Generic.IList<string> CopyInboundCallLegHeaders { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("createConversationOnTheFly")]
+        public virtual System.Nullable<bool> CreateConversationOnTheFly { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreReinviteMediaDirection")]
+        public virtual System.Nullable<bool> IgnoreReinviteMediaDirection { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("inactiveStart")]
+        public virtual System.Nullable<bool> InactiveStart { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("keepConversationRunning")]
+        public virtual System.Nullable<bool> KeepConversationRunning { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("maxAudioRecordingDuration")]
+        public virtual object MaxAudioRecordingDuration { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -29140,6 +29191,9 @@ namespace Google.Apis.Dialogflow.v2.Data
 
     public class GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("cesDebugInfo")]
+        public virtual System.Collections.Generic.IDictionary<string, object> CesDebugInfo { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("datastoreResponseReason")]
         public virtual string DatastoreResponseReason { get; set; }
 
@@ -29151,6 +29205,9 @@ namespace Google.Apis.Dialogflow.v2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("queryCategorizationFailureReason")]
         public virtual string QueryCategorizationFailureReason { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("queryGenerationDebugInfo")]
+        public virtual GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoQueryGenerationDebugInfo QueryGenerationDebugInfo { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("queryGenerationFailureReason")]
         public virtual string QueryGenerationFailureReason { get; set; }
@@ -29214,6 +29271,21 @@ namespace Google.Apis.Dialogflow.v2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("useTranslatedMessage")]
         public virtual System.Nullable<bool> UseTranslatedMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoQueryGenerationDebugInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("candidatesTokenCount")]
+        public virtual System.Nullable<int> CandidatesTokenCount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("promptTokenCount")]
+        public virtual System.Nullable<int> PromptTokenCount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("totalTokenCount")]
+        public virtual System.Nullable<int> TotalTokenCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
