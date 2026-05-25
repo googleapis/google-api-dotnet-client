@@ -7045,10 +7045,6 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual string Image { get; set; }
 
-        /// <summary>Optional. Shell script to execute. If provided then command and args cannot be specified.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("script")]
-        public virtual string Script { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7515,8 +7511,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the
-        /// following constraints: * Keys and values can contain only lowercase letters, numeric characters,
+        /// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must
+        /// meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters,
         /// underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed.
         /// * Keys must start with a lowercase letter or international character. * Each resource is limited to a
         /// maximum of 64 labels. Both keys and values are additionally constrained to be &amp;lt;= 128 bytes.
@@ -9713,8 +9709,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the
-        /// following constraints: * Keys and values can contain only lowercase letters, numeric characters,
+        /// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must
+        /// meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters,
         /// underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed.
         /// * Keys must start with a lowercase letter or international character. * Each resource is limited to a
         /// maximum of 64 labels. Both keys and values are additionally constrained to be &amp;lt;= 128 bytes.
