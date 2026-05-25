@@ -4551,7 +4551,11 @@ namespace Google.Apis.FirebaseAppHosting.v1.Data
         /// <summary>
         /// Optional. A list of file paths patterns to exclude from triggering a rollout. Patterns in this list take
         /// precedence over required_paths. **Note**: All paths must be in the ignored_paths in order for the rollout to
-        /// be skipped. Limited to 100 paths. Example: ignored_paths: { pattern: "foo/bar/excluded/*” type: GLOB }
+        /// be skipped. Limited to 100 paths. Example:
+        /// ```
+        /// ignored_paths: { pattern: "foo/bar/excluded/*", type: "GLOB"
+        /// }
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoredPaths")]
         public virtual System.Collections.Generic.IList<Path> IgnoredPaths { get; set; }
@@ -4560,7 +4564,10 @@ namespace Google.Apis.FirebaseAppHosting.v1.Data
         /// Optional. A list of file paths patterns that trigger a build and rollout if at least one of the changed
         /// files in the commit are present in this list. This field is optional; the rollout policy will default to
         /// triggering on all paths if both ignored_paths and required_paths are not populated. Limited to 100 paths.
-        /// Example: “required_paths: { pattern: "foo/bar/*” type: GLOB }
+        /// Example:
+        /// ```
+        /// required_paths: { pattern: "foo/bar/*", type: "GLOB" }
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredPaths")]
         public virtual System.Collections.Generic.IList<Path> RequiredPaths { get; set; }
