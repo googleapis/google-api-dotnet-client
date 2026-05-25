@@ -12778,6 +12778,13 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>If set, indicates that the finding applies to all messages in the conversation.</summary>
+    public class GooglePrivacyDlpV2AllMessages : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Catch-all for all other tables not specified by other filters. Should always be last, except for single-table
     /// configurations, which will only have a TableReference target.
@@ -13976,6 +13983,13 @@ namespace Google.Apis.DLP.v2.Data
         public virtual GooglePrivacyDlpV2ContentMetadata ContentMetadata { get; set; }
 
         /// <summary>
+        /// Represents a conversation (either complete or a slice). It is assumed that all included messages are
+        /// contiguous and ordered in chronological order.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversation")]
+        public virtual GooglePrivacyDlpV2Conversation Conversation { get; set; }
+
+        /// <summary>
         /// Structured content for inspection. See
         /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-text#inspecting_a_table to learn more.
         /// </summary>
@@ -14050,6 +14064,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containerVersion")]
         public virtual string ContainerVersion { get; set; }
 
+        /// <summary>Location within a conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationLocation")]
+        public virtual GooglePrivacyDlpV2ConversationLocation ConversationLocation { get; set; }
+
         /// <summary>Location data for document files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentLocation")]
         public virtual GooglePrivacyDlpV2DocumentLocation DocumentLocation { get; set; }
@@ -14076,6 +14094,61 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>User provided key-value pairs of content metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2KeyValueMetadataProperty> Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Complete conversation or slice of a conversation. It is assumed that all included messages are contiguous and
+    /// ordered in chronological order.
+    /// </summary>
+    public class GooglePrivacyDlpV2Conversation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Messages exchanged within this conversation. The maximum number of messages allowed is 50k. The order of the
+        /// messages is assumed to be chronological and will be used to index findings in the response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messages")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2ConversationMessage> Messages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Location within a conversation.</summary>
+    public class GooglePrivacyDlpV2ConversationLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set, indicates that the finding applies to all messages in the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allMessages")]
+        public virtual GooglePrivacyDlpV2AllMessages AllMessages { get; set; }
+
+        /// <summary>Matches an index of a message in the conversation provided in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageIndex")]
+        public virtual System.Nullable<int> MessageIndex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Single message in a conversation.</summary>
+    public class GooglePrivacyDlpV2ConversationMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The contents of this message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>The type of message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageType")]
+        public virtual string MessageType { get; set; }
+
+        /// <summary>
+        /// Optional. The identifier of the participant. For example 'test-user' or 'gemini'. The participant ID can
+        /// contain lowercase letters, numbers, and hyphens; that is, it must match the regular expression:
+        /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. The maximum length is 63 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("participantId")]
+        public virtual string ParticipantId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18103,10 +18176,10 @@ namespace Google.Apis.DLP.v2.Data
     public class GooglePrivacyDlpV2InspectTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Enables the use of limited-availability built-in infoTypes in inspect_config. These infoTypes are
-        /// supported only in specific regions and can cause scanning errors if used elsewhere. For more information,
-        /// see https://cloud.google.com/sensitive-data-protection/docs/locations#location-specific_limitations to learn
-        /// more about location-specific limitations.
+        /// Optional. Enables the use of [limited-availability built-in
+        /// infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#limited-availability-infotypes)
+        /// in inspect_config. These infoTypes are supported only in specific regions and can cause scanning errors if
+        /// used elsewhere.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowLimitedAvailabilityInfoTypes")]
         public virtual System.Nullable<bool> AllowLimitedAvailabilityInfoTypes { get; set; }
