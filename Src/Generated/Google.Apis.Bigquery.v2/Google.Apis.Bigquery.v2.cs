@@ -6096,6 +6096,20 @@ namespace Google.Apis.Bigquery.v2.Data
     }
 
     /// <summary>
+    /// A list of data policy options. For more information, see [Mask data by applying data policies to a
+    /// column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+    /// </summary>
+    public class DataPolicyList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Contains a list of data policy options. At most 9 data policies are allowed per field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataPolicies")]
+        public virtual System.Collections.Generic.IList<DataPolicyOption> DataPolicies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Data policy option. For more information, see [Mask data by applying data policies to a
     /// column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
     /// </summary>
@@ -7436,6 +7450,13 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ContainerMemory { get; set; }
 
         /// <summary>
+        /// Optional. Maximum number of requests that a Cloud Run instance can handle concurrently. If absent or if `0`,
+        /// a default concurrency is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerRequestConcurrency")]
+        public virtual System.Nullable<long> ContainerRequestConcurrency { get; set; }
+
+        /// <summary>
         /// Optional. Maximum number of rows in each batch sent to the external runtime. If absent or if 0, BigQuery
         /// dynamically decides the number of rows in a batch.
         /// </summary>
@@ -7566,6 +7587,17 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Provides cache statistics for a GenAi function call.</summary>
+    public class GenAiFunctionCacheStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of rows served from cache.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numCacheHitRows")]
+        public virtual System.Nullable<long> NumCacheHitRows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Provides cost optimization statistics for a GenAi function call.</summary>
     public class GenAiFunctionCostOptimizationStats : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7599,6 +7631,10 @@ namespace Google.Apis.Bigquery.v2.Data
     /// <summary>Provides statistics for each Ai function call within a query.</summary>
     public class GenAiFunctionStats : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Cache stats for the function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheStats")]
+        public virtual GenAiFunctionCacheStats CacheStats { get; set; }
+
         /// <summary>Cost optimization stats if applied on the rows processed by the function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("costOptimizationStats")]
         public virtual GenAiFunctionCostOptimizationStats CostOptimizationStats { get; set; }
@@ -10374,6 +10410,26 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Column Metadata Index staleness detailed infnormation.</summary>
+    public class MetadataCacheStalenessInsight : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Average column metadata index staleness of previous runs with the same query hash.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("avgPreviousStalenessMs")]
+        public virtual object AvgPreviousStalenessMs { get; set; }
+
+        /// <summary>
+        /// Output only. The percent increase in staleness between the current job and the average staleness of previous
+        /// jobs with the same query hash.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stalenessPercentageIncrease")]
+        public virtual System.Nullable<double> StalenessPercentageIncrease { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Statistics for metadata caching in queried tables.</summary>
     public class MetadataCacheStatistics : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10720,6 +10776,12 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stagePerformanceStandaloneInsights")]
         public virtual System.Collections.Generic.IList<StagePerformanceStandaloneInsight> StagePerformanceStandaloneInsights { get; set; }
+
+        /// <summary>
+        /// Output only. Performance insights for table-level attributes that changed compared to previous runs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableChangeInsights")]
+        public virtual System.Collections.Generic.IList<TableChangeInsight> TableChangeInsights { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13001,6 +13063,34 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Table-level performance insights compared to previous runs. These insights don't apply to specific query stages,
+    /// rather they apply to the whole table.
+    /// </summary>
+    public class TableChangeInsight : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. True if the table's column metadata index was not used in the current job, but was used in a
+        /// previous job with the same query hash.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataCacheNotUsedButUsedPreviously")]
+        public virtual System.Nullable<bool> MetadataCacheNotUsedButUsedPreviously { get; set; }
+
+        /// <summary>
+        /// Output only. If present, indicates that the table's metadata column index staleness has increased
+        /// significantly compared to previous jobs with the same query hash.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataCacheStalenessInsight")]
+        public virtual MetadataCacheStalenessInsight MetadataCacheStalenessInsight { get; set; }
+
+        /// <summary>Output only. The table that was queried.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableReference")]
+        public virtual TableReference TableReference { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The TableConstraints defines the primary key and foreign key.</summary>
     public class TableConstraints : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13197,9 +13287,29 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("collation")]
         public virtual string Collation { get; set; }
 
+        /// <summary>
+        /// Optional. Specifies the data governance tags on this field. This field works with other column-level
+        /// security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes
+        /// precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it
+        /// takes precedence over the data governance tag. - Patching behavior (how this field behaves during a
+        /// `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update
+        /// request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a
+        /// column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the
+        /// column. - Updating tags: To replace existing tag, send the field with the new tag.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataGovernanceTagsInfo")]
+        public virtual DataGovernanceTagsInfoData DataGovernanceTagsInfo { get; set; }
+
         /// <summary>Optional. Data policies attached to this field, used for field-level access control.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataPolicies")]
         public virtual System.Collections.Generic.IList<DataPolicyOption> DataPolicies { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies data policies attached to this field, used for field-level access control. When set,
+        /// this will be the source of truth for data policy information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataPolicyList")]
+        public virtual DataPolicyList DataPolicyList { get; set; }
 
         /// <summary>
         /// Optional. A SQL expression to specify the [default value]
@@ -13315,6 +13425,31 @@ namespace Google.Apis.Bigquery.v2.Data
             /// <summary>Deprecated.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("names")]
             public virtual System.Collections.Generic.IList<string> Names { get; set; }
+        }
+
+        /// <summary>
+        /// Optional. Specifies the data governance tags on this field. This field works with other column-level
+        /// security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes
+        /// precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it
+        /// takes precedence over the data governance tag. - Patching behavior (how this field behaves during a
+        /// `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update
+        /// request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a
+        /// column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the
+        /// column. - Updating tags: To replace existing tag, send the field with the new tag.
+        /// </summary>
+        public class DataGovernanceTagsInfoData
+        {
+            /// <summary>
+            /// Optional. The data governance tags added to this field are used for field-level access control. Only one
+            /// data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected
+            /// to be in the namespaced format, for example "123456789012/pii" where 123456789012 is the ID of the
+            /// parent organization or project resource for this tag key. Tag value is expected to be the short name,
+            /// for example "sensitive". See [Tag
+            /// definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For
+            /// example: "123456789012/pii": "sensitive", "myProject/cost_center": "sales"
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("dataGovernanceTags")]
+            public virtual System.Collections.Generic.IDictionary<string, string> DataGovernanceTags { get; set; }
         }
 
         /// <summary>
