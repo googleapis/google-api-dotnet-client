@@ -2872,6 +2872,12 @@ namespace Google.Apis.FirebaseAppHosting.v1beta.Data
         public virtual string AppId { get; set; }
 
         /// <summary>
+        /// Optional. automatic_base_image_updates_disabled acts as a way for users to opt out of ABIU.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automaticBaseImageUpdatesDisabled")]
+        public virtual System.Nullable<bool> AutomaticBaseImageUpdatesDisabled { get; set; }
+
+        /// <summary>
         /// Optional. If specified, the connection to an external source repository to watch for event-driven updates to
         /// the backend.
         /// </summary>
@@ -3008,6 +3014,13 @@ namespace Google.Apis.FirebaseAppHosting.v1beta.Data
         public virtual System.Nullable<bool> RequestLogsDisabled { get; set; }
 
         /// <summary>
+        /// Optional. The runtime that the backend will be built on. A default base_image will be chosen for a given
+        /// runtime.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtime")]
+        public virtual BackendRuntime Runtime { get; set; }
+
+        /// <summary>
         /// Required. The name of the service account used for Cloud Build and Cloud Run. Should have the role
         /// roles/firebaseapphosting.computeRunner or equivalent permissions.
         /// </summary>
@@ -3066,6 +3079,22 @@ namespace Google.Apis.FirebaseAppHosting.v1beta.Data
         /// <summary>Output only. The primary URI to communicate with the backend.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+    }
+
+    /// <summary>
+    /// Runtime is a string that represents the runtime that is used to build the backend. Users can specify one of the
+    /// following runtimes: nodejs20, nodejs22, nodejs24, nodejs. Runtime "nodejs" means that nodejs version will be
+    /// determined at build time. If not specified or specified with a value that is not in the list above, the default
+    /// runtime `nodejs` will be used and Automatic Base Image Updates will be disabled.
+    /// </summary>
+    public class BackendRuntime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The value of the runtime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>
@@ -4695,7 +4724,11 @@ namespace Google.Apis.FirebaseAppHosting.v1beta.Data
         /// <summary>
         /// Optional. A list of file paths patterns to exclude from triggering a rollout. Patterns in this list take
         /// precedence over required_paths. **Note**: All paths must be in the ignored_paths in order for the rollout to
-        /// be skipped. Limited to 100 paths. Example: ignored_paths: { pattern: "foo/bar/excluded/*” type: GLOB }
+        /// be skipped. Limited to 100 paths. Example:
+        /// ```
+        /// ignored_paths: { pattern: "foo/bar/excluded/*", type: "GLOB"
+        /// }
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoredPaths")]
         public virtual System.Collections.Generic.IList<Path> IgnoredPaths { get; set; }
@@ -4704,7 +4737,10 @@ namespace Google.Apis.FirebaseAppHosting.v1beta.Data
         /// Optional. A list of file paths patterns that trigger a build and rollout if at least one of the changed
         /// files in the commit are present in this list. This field is optional; the rollout policy will default to
         /// triggering on all paths if both ignored_paths and required_paths are not populated. Limited to 100 paths.
-        /// Example: “required_paths: { pattern: "foo/bar/*” type: GLOB }
+        /// Example:
+        /// ```
+        /// required_paths: { pattern: "foo/bar/*", type: "GLOB" }
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredPaths")]
         public virtual System.Collections.Generic.IList<Path> RequiredPaths { get; set; }
