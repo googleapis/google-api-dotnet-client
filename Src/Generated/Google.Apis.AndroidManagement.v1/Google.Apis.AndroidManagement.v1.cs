@@ -3769,12 +3769,16 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string PackageSha256Hash { get; set; }
 
         /// <summary>
-        /// The SHA-1 hash of each android.content.pm.Signature
+        /// Deprecated. Use signingKeyCerts instead. The SHA-1 hash of each android.content.pm.Signature
         /// (https://developer.android.com/reference/android/content/pm/Signature.html) associated with the app package.
         /// Each byte of each hash value is represented as a two-digit hexadecimal number.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signingKeyCertFingerprints")]
         public virtual System.Collections.Generic.IList<string> SigningKeyCertFingerprints { get; set; }
+
+        /// <summary>Output only. Signing key certificates of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signingKeyCerts")]
+        public virtual System.Collections.Generic.IList<ApplicationSigningKeyCert> SigningKeyCerts { get; set; }
 
         /// <summary>Application state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
