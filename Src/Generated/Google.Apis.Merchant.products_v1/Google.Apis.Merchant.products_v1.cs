@@ -2012,8 +2012,8 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual string ItemGroupId { get; set; }
 
         /// <summary>
-        /// Optional. Represents the [product group title](https://support.google.com/merchants/answer/17085146) to
-        /// which this variant product belongs. This can be used along with the [item group
+        /// Optional. Represents the [title of the product group](https://support.google.com/merchants/answer/17085146)
+        /// to which this variant product belongs. This can be used along with the [item group
         /// id](https://support.google.com/merchants/answer/6324507) attribute. It lets you perform better grouping of
         /// variant products, and helps identifying common product characteristics more efficiently.
         /// </summary>
@@ -2217,7 +2217,7 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual System.Collections.Generic.IList<string> PromotionIds { get; set; }
 
         /// <summary>
-        /// Optional. Contains merchant authored [questions and
+        /// Optional. Contains user-, merchant-, and manufacturer-authored [questions and
         /// answers](https://support.google.com/merchants/answer/17085211) about the product. Max 30 question and answer
         /// pairs. Max 5000 characters total. Each question can have max 1000 characters. Each answer can have max 1000
         /// characters.
@@ -2373,8 +2373,8 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual UnitPricingMeasure UnitPricingMeasure { get; set; }
 
         /// <summary>
-        /// Optional. Contains a list of [additional variants](https://support.google.com/merchants/answer/17085214) for
-        /// the product.
+        /// Optional. Contains the [list of all variant-identifying
+        /// options](https://support.google.com/merchants/answer/17085214) of this product.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variantOptions")]
         public virtual System.Collections.Generic.IList<VariantOption> VariantOptions { get; set; }
