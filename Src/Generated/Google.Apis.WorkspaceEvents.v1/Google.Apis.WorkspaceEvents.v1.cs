@@ -125,6 +125,12 @@ namespace Google.Apis.WorkspaceEvents.v1
             /// <summary>View chat and spaces in Google Chat</summary>
             public static string ChatSpacesReadonly = "https://www.googleapis.com/auth/chat.spaces.readonly";
 
+            /// <summary>See and change your availability status in Google Chat.</summary>
+            public static string ChatUsersAvailability = "https://www.googleapis.com/auth/chat.users.availability";
+
+            /// <summary>See your availability status in Google Chat.</summary>
+            public static string ChatUsersAvailabilityReadonly = "https://www.googleapis.com/auth/chat.users.availability.readonly";
+
             /// <summary>View and modify last read time for Google Chat conversations</summary>
             public static string ChatUsersReadstate = "https://www.googleapis.com/auth/chat.users.readstate";
 
@@ -221,6 +227,12 @@ namespace Google.Apis.WorkspaceEvents.v1
 
             /// <summary>View chat and spaces in Google Chat</summary>
             public const string ChatSpacesReadonly = "https://www.googleapis.com/auth/chat.spaces.readonly";
+
+            /// <summary>See and change your availability status in Google Chat.</summary>
+            public const string ChatUsersAvailability = "https://www.googleapis.com/auth/chat.users.availability";
+
+            /// <summary>See your availability status in Google Chat.</summary>
+            public const string ChatUsersAvailabilityReadonly = "https://www.googleapis.com/auth/chat.users.availability.readonly";
 
             /// <summary>View and modify last read time for Google Chat conversations</summary>
             public const string ChatUsersReadstate = "https://www.googleapis.com/auth/chat.users.readstate";
