@@ -8479,6 +8479,10 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
 
+        /// <summary>Optional. Whether to use the project service account for the Compute Engine instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useProjectServiceAccount")]
+        public virtual System.Nullable<bool> UseProjectServiceAccount { get; set; }
+
         /// <summary>Required. The zone of the Compute Engine instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
@@ -9163,6 +9167,10 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>Required. Target project for the disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
+
+        /// <summary>Optional. Whether to use the project service account for the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useProjectServiceAccount")]
+        public virtual System.Nullable<bool> UseProjectServiceAccount { get; set; }
 
         /// <summary>Required. Target zone for the disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
@@ -11006,6 +11014,10 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>Required. Target URLs of the replica zones for the disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicaZones")]
         public virtual System.Collections.Generic.IList<string> ReplicaZones { get; set; }
+
+        /// <summary>Optional. Whether to use the project service account for the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useProjectServiceAccount")]
+        public virtual System.Nullable<bool> UseProjectServiceAccount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
