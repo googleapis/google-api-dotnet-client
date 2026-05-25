@@ -317,6 +317,7 @@ namespace Google.Apis.ChromeManagement.v1
             Apps = new AppsResource(service);
             CertificateProvisioningProcesses = new CertificateProvisioningProcessesResource(service);
             ConnectorConfigs = new ConnectorConfigsResource(service);
+            Enterprise = new EnterpriseResource(service);
             Profiles = new ProfilesResource(service);
             Reports = new ReportsResource(service);
             Telemetry = new TelemetryResource(service);
@@ -1597,6 +1598,202 @@ namespace Google.Apis.ChromeManagement.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
+                }
+            }
+        }
+
+        /// <summary>Gets the Enterprise resource.</summary>
+        public virtual EnterpriseResource Enterprise { get; }
+
+        /// <summary>The "enterprise" collection of methods.</summary>
+        public class EnterpriseResource
+        {
+            private const string Resource = "enterprise";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public EnterpriseResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                SecurityInsights = new SecurityInsightsResource(service);
+            }
+
+            /// <summary>Gets the SecurityInsights resource.</summary>
+            public virtual SecurityInsightsResource SecurityInsights { get; }
+
+            /// <summary>The "securityInsights" collection of methods.</summary>
+            public class SecurityInsightsResource
+            {
+                private const string Resource = "securityInsights";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SecurityInsightsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Gets the setting state of the insights feature for the customer.</summary>
+                /// <param name="customer">
+                /// Required. The customer to check the enablement status for. Format: customers/{customer_id}
+                /// </param>
+                public virtual CheckEnablementStatusRequest CheckEnablementStatus(string customer)
+                {
+                    return new CheckEnablementStatusRequest(this.service, customer);
+                }
+
+                /// <summary>Gets the setting state of the insights feature for the customer.</summary>
+                public class CheckEnablementStatusRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1CheckEnablementStatusResponse>
+                {
+                    /// <summary>Constructs a new CheckEnablementStatus request.</summary>
+                    public CheckEnablementStatusRequest(Google.Apis.Services.IClientService service, string customer) : base(service)
+                    {
+                        Customer = customer;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The customer to check the enablement status for. Format: customers/{customer_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Customer { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "checkEnablementStatus";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+customer}/enterprise/securityInsights:checkEnablementStatus";
+
+                    /// <summary>Initializes CheckEnablementStatus parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Disables insights for the customer.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="customer">
+                /// Required. The customer to disable insights for. Format: customers/{customer}
+                /// </param>
+                public virtual DisableRequest Disable(Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1DisableInsightsRequest body, string customer)
+                {
+                    return new DisableRequest(this.service, body, customer);
+                }
+
+                /// <summary>Disables insights for the customer.</summary>
+                public class DisableRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1DisableInsightsResponse>
+                {
+                    /// <summary>Constructs a new Disable request.</summary>
+                    public DisableRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1DisableInsightsRequest body, string customer) : base(service)
+                    {
+                        Customer = customer;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The customer to disable insights for. Format: customers/{customer}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Customer { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1DisableInsightsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "disable";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+customer}/enterprise/securityInsights:disable";
+
+                    /// <summary>Initializes Disable parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Enables insights for the customer and sets up required chrome connectors.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="customer">
+                /// Required. The customer to enable insights for. Format: customers/{customer}
+                /// </param>
+                public virtual EnableRequest Enable(Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1EnableInsightsRequest body, string customer)
+                {
+                    return new EnableRequest(this.service, body, customer);
+                }
+
+                /// <summary>Enables insights for the customer and sets up required chrome connectors.</summary>
+                public class EnableRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1EnableInsightsResponse>
+                {
+                    /// <summary>Constructs a new Enable request.</summary>
+                    public EnableRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1EnableInsightsRequest body, string customer) : base(service)
+                    {
+                        Customer = customer;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The customer to enable insights for. Format: customers/{customer}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Customer { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1EnableInsightsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "enable";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+customer}/enterprise/securityInsights:enable";
+
+                    /// <summary>Initializes Enable parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                    }
                 }
             }
         }
@@ -8814,6 +9011,17 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response from checking the enablement status of insights for the customer.</summary>
+    public class GoogleChromeManagementVersionsV1CheckEnablementStatusResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The state of the insights feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insightsState")]
+        public virtual string InsightsState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A representation of a Chrome browser profile.</summary>
     public class GoogleChromeManagementVersionsV1ChromeBrowserProfile : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9593,6 +9801,50 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlMatchers")]
         public virtual System.Collections.Generic.IList<string> UrlMatchers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to disable insights for the customer.</summary>
+    public class GoogleChromeManagementVersionsV1DisableInsightsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response from disabling insights for the customer.</summary>
+    public class GoogleChromeManagementVersionsV1DisableInsightsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The state of the insights feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insightsState")]
+        public virtual string InsightsState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to enable insights for the customer.</summary>
+    public class GoogleChromeManagementVersionsV1EnableInsightsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The Organizational Units to set up required connectors for. Organizational Units are provided as
+        /// paths relative to root. If this field is not set, connectors will be set up at root OU (as if it were set to
+        /// ["/"]). Example: ["/corp/sales", "/eng"]
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetOus")]
+        public virtual System.Collections.Generic.IList<string> TargetOus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response from enabling insights for the customer.</summary>
+    public class GoogleChromeManagementVersionsV1EnableInsightsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The state of the insights feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insightsState")]
+        public virtual string InsightsState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
