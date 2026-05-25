@@ -1912,6 +1912,183 @@ namespace Google.Apis.CloudDataplex.v1
                     this.service = service;
                 }
 
+                /// <summary>Approves a ChangeRequest.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The name of the ChangeRequest to approve.</param>
+                public virtual ApproveRequest Approve(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1ApproveChangeRequestRequest body, string name)
+                {
+                    return new ApproveRequest(this.service, body, name);
+                }
+
+                /// <summary>Approves a ChangeRequest.</summary>
+                public class ApproveRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1ChangeRequest>
+                {
+                    /// <summary>Constructs a new Approve request.</summary>
+                    public ApproveRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1ApproveChangeRequestRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the ChangeRequest to approve.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1ApproveChangeRequestRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "approve";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:approve";
+
+                    /// <summary>Initializes Approve parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/changeRequests/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes a ChangeRequest.Behavior depends on the caller's permissions and the resource's state: 1.
+                /// Callers with dataplex.changeRequests.delete can only delete ChangeRequests in the NEW state. 2.
+                /// Callers with the dataplex.changeRequests.adminDelete permission can delete ChangeRequests regardless
+                /// of their state.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The name of the ChangeRequest to delete. Format:
+                /// projects/{project_number}/locations/{location_id}/changeRequests/{change_request_id}
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Deletes a ChangeRequest.Behavior depends on the caller's permissions and the resource's state: 1.
+                /// Callers with dataplex.changeRequests.delete can only delete ChangeRequests in the NEW state. 2.
+                /// Callers with the dataplex.changeRequests.adminDelete permission can delete ChangeRequests regardless
+                /// of their state.
+                /// </summary>
+                public class DeleteRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the ChangeRequest to delete. Format:
+                    /// projects/{project_number}/locations/{location_id}/changeRequests/{change_request_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. The etag of the ChangeRequest.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/changeRequests/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets a ChangeRequest.</summary>
+                /// <param name="name">
+                /// Required. The name of the ChangeRequest to retrieve. Format:
+                /// projects/{project_number}/locations/{location_id}/changeRequests/{change_request_id}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a ChangeRequest.</summary>
+                public class GetRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1ChangeRequest>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the ChangeRequest to retrieve. Format:
+                    /// projects/{project_number}/locations/{location_id}/changeRequests/{change_request_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/changeRequests/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
                 /// does not have a policy set.
@@ -1986,6 +2163,234 @@ namespace Google.Apis.CloudDataplex.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Lists ChangeRequests.</summary>
+                /// <param name="parent">
+                /// Required. The parent, which owns this collection of ChangeRequests. Format:
+                /// projects/{project_number}/locations/{location_id}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists ChangeRequests.</summary>
+                public class ListRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1ListChangeRequestsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent, which owns this collection of ChangeRequests. Format:
+                    /// projects/{project_number}/locations/{location_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Filter request. Supports filtering by: state, author, resource, create_time,
+                    /// update_time.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Order by fields for the result.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Maximum number of ChangeRequests to return. The service may return fewer.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. Page token received from a previous ListChangeRequests call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/changeRequests";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a ChangeRequest. Only allowed when the state is NEW.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The relative resource name of the ChangeRequest, of the form:
+                /// projects/{project_number}/locations/{location_id}/changeRequests/{change_request_id}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1ChangeRequest body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a ChangeRequest. Only allowed when the state is NEW.</summary>
+                public class PatchRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1ChangeRequest>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1ChangeRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The relative resource name of the ChangeRequest, of the form:
+                    /// projects/{project_number}/locations/{location_id}/changeRequests/{change_request_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. The list of fields to update.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1ChangeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/changeRequests/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Rejects a ChangeRequest.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The name of the ChangeRequest to reject.</param>
+                public virtual RejectRequest Reject(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1RejectChangeRequestRequest body, string name)
+                {
+                    return new RejectRequest(this.service, body, name);
+                }
+
+                /// <summary>Rejects a ChangeRequest.</summary>
+                public class RejectRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1ChangeRequest>
+                {
+                    /// <summary>Constructs a new Reject request.</summary>
+                    public RejectRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1RejectChangeRequestRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the ChangeRequest to reject.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1RejectChangeRequestRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "reject";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:reject";
+
+                    /// <summary>Initializes Reject parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/changeRequests/[^/]+$",
                         });
                     }
                 }
@@ -16775,6 +17180,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for ApproveChangeRequest.</summary>
+    public class GoogleCloudDataplexV1ApproveChangeRequestRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The etag of the ChangeRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a single piece of metadata describing an entry or entry link.</summary>
     public class GoogleCloudDataplexV1Aspect : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17919,6 +18332,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Payload for Data Product access request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataProductAccessRequest")]
+        public virtual GoogleCloudDataplexV1DataProductAccessRequest DataProductAccessRequest { get; set; }
+
         /// <summary>Payload for deleting an Entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteEntry")]
         public virtual GoogleCloudDataplexV1DeleteEntryRequest DeleteEntry { get; set; }
@@ -18855,13 +19272,6 @@ namespace Google.Apis.CloudDataplex.v1.Data
     public class GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Deprecated: Use semantic_inference_enabled instead. Specifies whether deeper entity inference over
-        /// the objects' contents using GenAI is enabled.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entityInferenceEnabled")]
-        public virtual System.Nullable<bool> EntityInferenceEnabled { get; set; }
-
-        /// <summary>
         /// Optional. Specifies whether deeper semantic inference over the objects' contents using GenAI is enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("semanticInferenceEnabled")]
@@ -19239,6 +19649,45 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>Required. The principal entity associated with this access group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principal")]
         public virtual GoogleCloudDataplexV1DataProductPrincipal Principal { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Message for requesting access to a Data Product. This will be used to create a ChangeRequest of type
+    /// REQUEST_DATA_PRODUCT_ACCESS.
+    /// </summary>
+    public class GoogleCloudDataplexV1DataProductAccessRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The display name of the access group defined in the Data Product for which access is being
+        /// requested.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessGroupDisplayName")]
+        public virtual string AccessGroupDisplayName { get; set; }
+
+        /// <summary>
+        /// Required. The ID of the access group for which access is being requested. This corresponds to the unique
+        /// identifier of the AccessGroup defined in the Data Product.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessGroupId")]
+        public virtual string AccessGroupId { get; set; }
+
+        /// <summary>
+        /// Required. The resource name of the data product. Format:
+        /// projects/{project_number}/locations/{location_id}/dataProducts/{data_product_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>
+        /// Optional. The principal for which access is being requested in IAM format. If not specified, the requestor's
+        /// principal will be used. Example: serviceAccount:my-sa@my-project.iam.gserviceaccount.com. Only service
+        /// account principals are currently supported. https://cloud.google.com/iam/docs/principal-identifiers
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedPrincipal")]
+        public virtual string RequestedPrincipal { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23872,6 +24321,25 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListChangeRequests.</summary>
+    public class GoogleCloudDataplexV1ListChangeRequestsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ChangeRequests from the specified project and location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeRequests")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1ChangeRequest> ChangeRequests { get; set; }
+
+        /// <summary>A token, which can be sent as page_token to retrieve the next page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for listing data assets.</summary>
     public class GoogleCloudDataplexV1ListDataAssetsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -25217,6 +25685,18 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
+    }
+
+    /// <summary>Request message for RejectChangeRequest.</summary>
+    public class GoogleCloudDataplexV1RejectChangeRequestRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The reason for rejecting the ChangeRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
+        public virtual string Comment { get; set; }
+
+        /// <summary>Optional. The etag of the ChangeRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Message for requesting access to a Data Product.</summary>
