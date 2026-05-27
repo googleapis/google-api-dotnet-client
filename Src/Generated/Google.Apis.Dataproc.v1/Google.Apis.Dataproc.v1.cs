@@ -20470,16 +20470,41 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>Usage metrics represent approximate total resources consumed by a workload.</summary>
     public class UsageMetrics : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. DEPRECATED Accelerator type being used, if any</summary>
+        /// <summary>
+        /// Optional. Accelerator type being used, if any Deprecated: This field is only used in runtime versions below
+        /// 3.0.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
         public virtual string AcceleratorType { get; set; }
 
         /// <summary>
-        /// Optional. DEPRECATED Accelerator usage in (milliAccelerator x seconds) (see Dataproc Serverless pricing
-        /// (https://cloud.google.com/dataproc-serverless/pricing)).
+        /// Optional. Accelerator usage in (milliAccelerator x seconds) (see Dataproc Serverless pricing
+        /// (https://cloud.google.com/dataproc-serverless/pricing)). Deprecated: This field is only used in runtime
+        /// versions below 3.0.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("milliAcceleratorSeconds")]
         public virtual System.Nullable<long> MilliAcceleratorSeconds { get; set; }
+
+        /// <summary>
+        /// Optional. A100-40 accelerator usage in (milliAccelerator x seconds) (see Dataproc Serverless pricing
+        /// (https://cloud.google.com/dataproc-serverless/pricing)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("milliAcceleratorSecondsA10040")]
+        public virtual System.Nullable<long> MilliAcceleratorSecondsA10040 { get; set; }
+
+        /// <summary>
+        /// Optional. A100-80 accelerator usage in (milliAccelerator x seconds) (see Dataproc Serverless pricing
+        /// (https://cloud.google.com/dataproc-serverless/pricing)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("milliAcceleratorSecondsA10080")]
+        public virtual System.Nullable<long> MilliAcceleratorSecondsA10080 { get; set; }
+
+        /// <summary>
+        /// Optional. L4 accelerator usage in (milliAccelerator x seconds) (see Dataproc Serverless pricing
+        /// (https://cloud.google.com/dataproc-serverless/pricing)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("milliAcceleratorSecondsL4")]
+        public virtual System.Nullable<long> MilliAcceleratorSecondsL4 { get; set; }
 
         /// <summary>
         /// Optional. DCU (Dataproc Compute Units) usage in (milliDCU x seconds) (see Dataproc Serverless pricing
@@ -20539,16 +20564,41 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>The usage snapshot represents the resources consumed by a workload at a specified time.</summary>
     public class UsageSnapshot : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Accelerator type being used, if any</summary>
+        /// <summary>
+        /// Optional. Accelerator type being used, if any Deprecated: This field is only used in runtime versions below
+        /// 3.0.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
         public virtual string AcceleratorType { get; set; }
 
         /// <summary>
         /// Optional. Milli (one-thousandth) accelerator. (see Dataproc Serverless pricing
-        /// (https://cloud.google.com/dataproc-serverless/pricing))
+        /// (https://cloud.google.com/dataproc-serverless/pricing)) Deprecated: This field is only used in runtime
+        /// versions below 3.0.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("milliAccelerator")]
         public virtual System.Nullable<long> MilliAccelerator { get; set; }
+
+        /// <summary>
+        /// Optional. Milli (one-thousandth) accelerator for A100-40 accelerators. (see Dataproc Serverless pricing
+        /// (https://cloud.google.com/dataproc-serverless/pricing))
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("milliAcceleratorA10040")]
+        public virtual System.Nullable<long> MilliAcceleratorA10040 { get; set; }
+
+        /// <summary>
+        /// Optional. Milli (one-thousandth) accelerator for A100-80 accelerators. (see Dataproc Serverless pricing
+        /// (https://cloud.google.com/dataproc-serverless/pricing))
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("milliAcceleratorA10080")]
+        public virtual System.Nullable<long> MilliAcceleratorA10080 { get; set; }
+
+        /// <summary>
+        /// Optional. Milli (one-thousandth) accelerator for L4 accelerators. (see Dataproc Serverless pricing
+        /// (https://cloud.google.com/dataproc-serverless/pricing))
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("milliAcceleratorL4")]
+        public virtual System.Nullable<long> MilliAcceleratorL4 { get; set; }
 
         /// <summary>
         /// Optional. Milli (one-thousandth) Dataproc Compute Units (DCUs) (see Dataproc Serverless pricing
