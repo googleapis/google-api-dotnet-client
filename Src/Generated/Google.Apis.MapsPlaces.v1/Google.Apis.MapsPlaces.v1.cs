@@ -1163,18 +1163,10 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Experimental: See
-    /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
-    /// details. Content that is contextual to the place query.
-    /// </summary>
+    /// <summary>Content that is contextual to the place query.</summary>
     public class GoogleMapsPlacesV1ContextualContent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Experimental: See
-        /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
-        /// details. Justifications for the place.
-        /// </summary>
+        /// <summary>Justifications for the place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("justifications")]
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1ContextualContentJustification> Justifications { get; set; }
 
@@ -1193,26 +1185,13 @@ namespace Google.Apis.MapsPlaces.v1.Data
     }
 
     /// <summary>
-    /// Experimental: See
-    /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
-    /// details. Justifications for the place. Justifications answers the question of why a place could interest an end
-    /// user.
+    /// Justifications for the place. Justifications answers the question of why a place could interest an end user.
     /// </summary>
     public class GoogleMapsPlacesV1ContextualContentJustification : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Experimental: See
-        /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
-        /// details.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("businessAvailabilityAttributesJustification")]
         public virtual GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification BusinessAvailabilityAttributesJustification { get; set; }
 
-        /// <summary>
-        /// Experimental: See
-        /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
-        /// details.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviewJustification")]
         public virtual GoogleMapsPlacesV1ContextualContentJustificationReviewJustification ReviewJustification { get; set; }
 
@@ -1221,10 +1200,8 @@ namespace Google.Apis.MapsPlaces.v1.Data
     }
 
     /// <summary>
-    /// Experimental: See
-    /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
-    /// details. BusinessAvailabilityAttributes justifications. This shows some attributes a business has that could
-    /// interest an end user.
+    /// BusinessAvailabilityAttributes justifications. This shows some attributes a business has that could interest an
+    /// end user.
     /// </summary>
     public class GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1245,11 +1222,9 @@ namespace Google.Apis.MapsPlaces.v1.Data
     }
 
     /// <summary>
-    /// Experimental: See
-    /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
-    /// details. User review justifications. This highlights a section of the user review that would interest an end
-    /// user. For instance, if the search query is "firewood pizza", the review justification highlights the text
-    /// relevant to the search query.
+    /// User review justifications. This highlights a section of the user review that would interest an end user. For
+    /// instance, if the search query is "firewood pizza", the review justification highlights the text relevant to the
+    /// search query.
     /// </summary>
     public class GoogleMapsPlacesV1ContextualContentJustificationReviewJustification : Google.Apis.Requests.IDirectResponseSchema
     {
