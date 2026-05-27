@@ -6690,6 +6690,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
 
+        /// <summary>Optional. The details of each disk to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disks")]
+        public virtual System.Collections.Generic.IList<PersistentDiskDefaults> Disks { get; set; }
+
         /// <summary>
         /// Optional. Defines whether the instance has integrity monitoring enabled. This can be set to true only if the
         /// VM boot option is EFI, and vTPM is enabled.
@@ -9693,11 +9697,11 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// <summary>Details of a created Persistent Disk.</summary>
     public class PersistentDisk : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The URI of the Persistent Disk.</summary>
+        /// <summary>Output only. The URI of the Persistent Disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskUri")]
         public virtual string DiskUri { get; set; }
 
-        /// <summary>The ordinal number of the source VM disk.</summary>
+        /// <summary>Output only. The ordinal number of the source VM disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceDiskNumber")]
         public virtual System.Nullable<int> SourceDiskNumber { get; set; }
 
