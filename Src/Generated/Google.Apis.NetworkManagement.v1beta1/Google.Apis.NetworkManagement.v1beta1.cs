@@ -3294,6 +3294,25 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>For display only. Metadata associated with a Cloud Run job.</summary>
+    public class CloudRunJobInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of a Cloud Run job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Location in which this job is deployed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>URI of a Cloud Run job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Wrapper for Cloud Run revision attributes.</summary>
     public class CloudRunRevisionEndpoint : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5533,6 +5552,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// <summary>Display information of a Cloud Function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudFunction")]
         public virtual CloudFunctionInfo CloudFunction { get; set; }
+
+        /// <summary>Display information of a Cloud Run job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudRunJob")]
+        public virtual CloudRunJobInfo CloudRunJob { get; set; }
 
         /// <summary>Display information of a Cloud Run revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudRunRevision")]
