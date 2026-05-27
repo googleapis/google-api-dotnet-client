@@ -2824,6 +2824,10 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     /// </summary>
     public class RuleViolationInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Agent type that triggered the rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentType")]
+        public virtual string AgentType { get; set; }
+
         /// <summary>Source of the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
         public virtual string DataSource { get; set; }
