@@ -731,7 +731,8 @@ namespace Google.Apis.MyBusinessVerifications.v1.Data
     public class GenerateInstantVerificationTokenRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Immutable. The address and other details of the location to generate an instant verification token for.
+        /// Immutable. Deprecated: Please use location_id instead. The address and other details of the location to
+        /// generate an instant verification token for.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationData")]
         public virtual LocationData LocationData { get; set; }
