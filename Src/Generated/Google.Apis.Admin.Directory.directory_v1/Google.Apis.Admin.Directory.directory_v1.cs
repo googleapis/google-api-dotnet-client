@@ -9380,8 +9380,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>
         /// Create a guest user with access to a [subset of Workspace
-        /// capabilities](https://support.google.com/a/answer/16558545). This feature is currently in Alpha. Please
-        /// reach out to support if you are interested in trying this feature.
+        /// capabilities](https://support.google.com/a/answer/16558545). This feature is currently in Open Beta.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateGuestRequest CreateGuest(Google.Apis.Admin.Directory.directory_v1.Data.DirectoryUsersCreateGuestRequest body)
@@ -9391,8 +9390,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>
         /// Create a guest user with access to a [subset of Workspace
-        /// capabilities](https://support.google.com/a/answer/16558545). This feature is currently in Alpha. Please
-        /// reach out to support if you are interested in trying this feature.
+        /// capabilities](https://support.google.com/a/answer/16558545). This feature is currently in Open Beta.
         /// </summary>
         public class CreateGuestRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.User>
         {
@@ -12449,11 +12447,14 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// <summary>Directory users guest creation request message.</summary>
     public class DirectoryUsersCreateGuestRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Immutable ID of the Google Workspace account.</summary>
+        /// <summary>
+        /// Optional. Immutable ID of the Google Workspace account. Only required when request is created by a service
+        /// account. Defaults to the authenticated user's customer ID otherwise.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
         public virtual string Customer { get; set; }
 
-        /// <summary>Immutable. External email of the guest user being created.</summary>
+        /// <summary>Required. External email of the guest user being created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryGuestEmail")]
         public virtual string PrimaryGuestEmail { get; set; }
 
