@@ -3124,6 +3124,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual GoogleCloudAiplatformV1beta1EnterpriseWebSearch EnterpriseWebSearch { get; set; }
 
         /// <summary>
+        /// Optional. Uses Exa.ai to search for information to answer user queries. The search results will be grounded
+        /// on Exa.ai and presented to the model for response generation
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exaAiSearch")]
+        public virtual GoogleCloudAiplatformV1beta1ToolExaAiSearch ExaAiSearch { get; set; }
+
+        /// <summary>
         /// Optional. Function tool type. One or more function declarations to be passed to the model along with the
         /// current user query. Model may decide to call a subset of these functions by populating FunctionCall in the
         /// response. User should provide a FunctionResponse for each function call in the next turn. Based on the
@@ -3210,6 +3217,21 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Optional. Retrieval config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retrievalConfig")]
         public virtual GoogleCloudAiplatformV1beta1RetrievalConfig RetrievalConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding.</summary>
+    public class GoogleCloudAiplatformV1beta1ToolExaAiSearch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The API key for ExaAiSearch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKey")]
+        public virtual string ApiKey { get; set; }
+
+        /// <summary>Optional. This field can be used to pass any parameter from the Exa.ai Search API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customConfigs")]
+        public virtual System.Collections.Generic.IDictionary<string, object> CustomConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
