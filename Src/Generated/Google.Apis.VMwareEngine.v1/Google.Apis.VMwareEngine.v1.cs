@@ -7698,6 +7698,75 @@ namespace Google.Apis.VMwareEngine.v1
                 }
 
                 /// <summary>
+                /// Migrates the management VMs of the PC from the current management cluster to a workload cluster.
+                /// Post this migration, the provided workload cluster becomes the management cluster
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the private cloud whose management vms are getting migrated. Resource
+                /// names are schemeless URIs that follow the conventions in
+                /// https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                /// </param>
+                public virtual MigrateManagementVmsRequest MigrateManagementVms(Google.Apis.VMwareEngine.v1.Data.MigrateManagementVmsRequest body, string name)
+                {
+                    return new MigrateManagementVmsRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Migrates the management VMs of the PC from the current management cluster to a workload cluster.
+                /// Post this migration, the provided workload cluster becomes the management cluster
+                /// </summary>
+                public class MigrateManagementVmsRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new MigrateManagementVms request.</summary>
+                    public MigrateManagementVmsRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.MigrateManagementVmsRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the private cloud whose management vms are getting migrated.
+                    /// Resource names are schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.VMwareEngine.v1.Data.MigrateManagementVmsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "migrateManagementVms";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:migrateManagementVms";
+
+                    /// <summary>Initializes MigrateManagementVms parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Modifies a `PrivateCloud` resource. Only the following fields can be updated: `description`. Only
                 /// fields specified in `updateMask` are applied. During operation processing, the resource is
                 /// temporarily in the `ACTIVE` state before the operation fully completes. For that period of time, you
@@ -9790,8 +9859,8 @@ namespace Google.Apis.VMwareEngine.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Do not use this field unless explicitly documented otherwise. This is primarily for
+                /// internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -12101,6 +12170,40 @@ namespace Google.Apis.VMwareEngine.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for VmwareEngine.MigrateManagementVms</summary>
+    public class MigrateManagementVmsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The user-provided identifier of the workload cluster to which the management VMs are to be
+        /// migrated. The cluster must be in the same private cloud as the one specified in `name`, and must be a
+        /// workload cluster. The eventual cluster name will be constructed from the private cloud name and this cluster
+        /// ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
+        public virtual string ClusterId { get; set; }
+
+        /// <summary>
+        /// Optional. Checksum used to ensure that the user-provided value is up to date before the server processes the
+        /// request. The server compares provided checksum with the current checksum of the resource. If the
+        /// user-provided value is out of date, this request returns an `ABORTED` error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your
+        /// request, the server will know to ignore the request if it has already been completed. The server guarantees
+        /// that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example,
+        /// consider a situation where you make an initial request and the request times out. If you make the request
+        /// again with the same request ID, the server can check if the original operation with the same request ID was
+        /// received, and if so, will ignore the second request. This prevents clients from accidentally creating
+        /// duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not
+        /// supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
     }
 
     /// <summary>Mount Datastore Request message</summary>
