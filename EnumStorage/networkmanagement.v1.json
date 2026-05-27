@@ -14,6 +14,7 @@
     "KVM",
     "VMWARE",
     "HELM",
-    "GCE_VM"
+    "GCE_VM",
+    "AZURE_VM"
   ]
 }

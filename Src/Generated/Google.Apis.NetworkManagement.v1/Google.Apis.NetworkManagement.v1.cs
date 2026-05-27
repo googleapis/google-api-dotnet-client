@@ -2375,6 +2375,10 @@ namespace Google.Apis.NetworkManagement.v1
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("GCE_VM")]
                             GCEVM = 5,
+
+                            /// <summary>Monitoring Point that runs as a startup script in an Azure VM.</summary>
+                            [Google.Apis.Util.StringValueAttribute("AZURE_VM")]
+                            AZUREVM = 6,
                         }
 
                         /// <summary>
@@ -2388,6 +2392,13 @@ namespace Google.Apis.NetworkManagement.v1
                         /// <summary>Optional. Second NTP server.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("ntpServerSecondaryAddress", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string NtpServerSecondaryAddress { get; set; }
+
+                        /// <summary>
+                        /// Optional. For Google Cloud MPs, this field indicates whether the Monitoring Point is
+                        /// deployed in a Private Service Connect deployment. Not used for non-Google Cloud MPs.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("privateConnectivityEnabled", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> PrivateConnectivityEnabled { get; set; }
 
                         /// <summary>Required. DNS server.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("staticIpAddress.dnsServerAddress", Google.Apis.Util.RequestParameterType.Query)]
@@ -2485,6 +2496,14 @@ namespace Google.Apis.NetworkManagement.v1
                             RequestParameters.Add("ntpServerSecondaryAddress", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "ntpServerSecondaryAddress",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("privateConnectivityEnabled", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "privateConnectivityEnabled",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3290,6 +3309,13 @@ namespace Google.Apis.NetworkManagement.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// Optional. For Google Cloud MPs, this field indicates whether the Monitoring Point is deployed in
+                    /// a Private Service Connect deployment. Not used for non-Google Cloud MPs.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("privateConnectivityEnabled", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> PrivateConnectivityEnabled { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "generateMonitoringPointConfig";
 
@@ -3310,6 +3336,14 @@ namespace Google.Apis.NetworkManagement.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/networkMonitoringProviders/[^/]+$",
+                        });
+                        RequestParameters.Add("privateConnectivityEnabled", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "privateConnectivityEnabled",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -4543,6 +4577,25 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// <summary>Latest successfully deployed version id of the Cloud Function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
         public virtual System.Nullable<long> VersionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>For display only. Metadata associated with a Cloud Run job.</summary>
+    public class CloudRunJobInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of a Cloud Run job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Location in which this job is deployed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>URI of a Cloud Run job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7395,6 +7448,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// <summary>Display information of a Cloud Function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudFunction")]
         public virtual CloudFunctionInfo CloudFunction { get; set; }
+
+        /// <summary>Display information of a Cloud Run job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudRunJob")]
+        public virtual CloudRunJobInfo CloudRunJob { get; set; }
 
         /// <summary>Display information of a Cloud Run revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudRunRevision")]
