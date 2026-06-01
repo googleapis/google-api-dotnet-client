@@ -1071,6 +1071,254 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 public FirewallEndpointsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    WildfireVerdictChangeRequests = new WildfireVerdictChangeRequestsResource(service);
+                }
+
+                /// <summary>Gets the WildfireVerdictChangeRequests resource.</summary>
+                public virtual WildfireVerdictChangeRequestsResource WildfireVerdictChangeRequests { get; }
+
+                /// <summary>The "wildfireVerdictChangeRequests" collection of methods.</summary>
+                public class WildfireVerdictChangeRequestsResource
+                {
+                    private const string Resource = "wildfireVerdictChangeRequests";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public WildfireVerdictChangeRequestsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Create WildfireVerdictChangeRequest in a given Firewall Endpoint in an organization and
+                    /// location.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. Parent value for CreateWildfireVerdictChangeRequestRequest. The parent is a firewall
+                    /// endpoint resource. Format:
+                    /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1beta1.Data.WildfireVerdictChangeRequest body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Create WildfireVerdictChangeRequest in a given Firewall Endpoint in an organization and
+                    /// location.
+                    /// </summary>
+                    public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.WildfireVerdictChangeRequest>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkSecurity.v1beta1.Data.WildfireVerdictChangeRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Parent value for CreateWildfireVerdictChangeRequestRequest. The parent is a
+                        /// firewall endpoint resource. Format:
+                        /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.NetworkSecurity.v1beta1.Data.WildfireVerdictChangeRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/wildfireVerdictChangeRequests";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+/firewallEndpoints/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Get WildfireVerdictChangeRequest in a given Firewall Endpoint in an organization and location.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. Name of the WildfireVerdictChangeRequest to retrieve. Format:
+                    /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}
+                    /// Where {wildfire_verdict_change_request_id} is the ID in the format:
+                    /// ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Get WildfireVerdictChangeRequest in a given Firewall Endpoint in an organization and location.
+                    /// </summary>
+                    public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.WildfireVerdictChangeRequest>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of the WildfireVerdictChangeRequest to retrieve. Format:
+                        /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}
+                        /// Where {wildfire_verdict_change_request_id} is the ID in the format:
+                        /// ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+/firewallEndpoints/[^/]+/wildfireVerdictChangeRequests/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Lists WildfireVerdictChangeRequests in a given Firewall Endpoint in an organization and
+                    /// location.
+                    /// </summary>
+                    /// <param name="parent">
+                    /// Required. Parent value for ListWildfireVerdictChangeRequestsRequest. The parent is a firewall
+                    /// endpoint resource. Format:
+                    /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>
+                    /// Lists WildfireVerdictChangeRequests in a given Firewall Endpoint in an organization and
+                    /// location.
+                    /// </summary>
+                    public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.ListWildfireVerdictChangeRequestsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Parent value for ListWildfireVerdictChangeRequestsRequest. The parent is a
+                        /// firewall endpoint resource. Format:
+                        /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Filter expression to filter the results. See AIP-160 for filtering syntax.
+                        /// Supported fields are: - `sha256` (string, equality only, e.g. `sha256 = "..."`) - `state`
+                        /// (enum, equality only, e.g. `state = "ACTIVE"`) - `create_time` (timestamp, comparisons, e.g.
+                        /// `create_time &amp;gt; "2026-01-01T00:00:00Z"`)
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                        /// server will pick an appropriate default.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/wildfireVerdictChangeRequests";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+/firewallEndpoints/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Creates a new FirewallEndpoint in a given organization and location.</summary>
@@ -6507,6 +6755,250 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 public FirewallEndpointsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    WildfireVerdictChangeRequests = new WildfireVerdictChangeRequestsResource(service);
+                }
+
+                /// <summary>Gets the WildfireVerdictChangeRequests resource.</summary>
+                public virtual WildfireVerdictChangeRequestsResource WildfireVerdictChangeRequests { get; }
+
+                /// <summary>The "wildfireVerdictChangeRequests" collection of methods.</summary>
+                public class WildfireVerdictChangeRequestsResource
+                {
+                    private const string Resource = "wildfireVerdictChangeRequests";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public WildfireVerdictChangeRequestsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Create WildfireVerdictChangeRequest in a given Firewall Endpoint in a project and location.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. Parent value for CreateWildfireVerdictChangeRequestRequest. The parent is a firewall
+                    /// endpoint resource. Format:
+                    /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1beta1.Data.WildfireVerdictChangeRequest body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Create WildfireVerdictChangeRequest in a given Firewall Endpoint in a project and location.
+                    /// </summary>
+                    public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.WildfireVerdictChangeRequest>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkSecurity.v1beta1.Data.WildfireVerdictChangeRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Parent value for CreateWildfireVerdictChangeRequestRequest. The parent is a
+                        /// firewall endpoint resource. Format:
+                        /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.NetworkSecurity.v1beta1.Data.WildfireVerdictChangeRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/wildfireVerdictChangeRequests";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/firewallEndpoints/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Get WildfireVerdictChangeRequest in a given Firewall Endpoint in a project and location.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. Name of the WildfireVerdictChangeRequest to retrieve. Format:
+                    /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}
+                    /// Where {wildfire_verdict_change_request_id} is the ID in the format:
+                    /// ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Get WildfireVerdictChangeRequest in a given Firewall Endpoint in a project and location.
+                    /// </summary>
+                    public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.WildfireVerdictChangeRequest>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of the WildfireVerdictChangeRequest to retrieve. Format:
+                        /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}
+                        /// Where {wildfire_verdict_change_request_id} is the ID in the format:
+                        /// ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/firewallEndpoints/[^/]+/wildfireVerdictChangeRequests/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Lists WildfireVerdictChangeRequests in a given Firewall Endpoint in a project and location.
+                    /// </summary>
+                    /// <param name="parent">
+                    /// Required. Parent value for ListWildfireVerdictChangeRequestsRequest. The parent is a firewall
+                    /// endpoint resource. Format:
+                    /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>
+                    /// Lists WildfireVerdictChangeRequests in a given Firewall Endpoint in a project and location.
+                    /// </summary>
+                    public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.ListWildfireVerdictChangeRequestsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Parent value for ListWildfireVerdictChangeRequestsRequest. The parent is a
+                        /// firewall endpoint resource. Format:
+                        /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Filter expression to filter the results. See AIP-160 for filtering syntax.
+                        /// Supported fields are: - `sha256` (string, equality only, e.g. `sha256 = "..."`) - `state`
+                        /// (enum, equality only, e.g. `state = "ACTIVE"`) - `create_time` (timestamp, comparisons, e.g.
+                        /// `create_time &amp;gt; "2026-01-01T00:00:00Z"`)
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                        /// server will pick an appropriate default.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/wildfireVerdictChangeRequests";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/firewallEndpoints/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Creates a new FirewallEndpoint in a given project and location.</summary>
@@ -15702,6 +16194,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. Settings for WildFire analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wildfireSettings")]
+        public virtual FirewallEndpointWildfireSettings WildfireSettings { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -15848,9 +16344,83 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     /// <summary>Settings for the endpoint.</summary>
     public class FirewallEndpointEndpointSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The content cloud region of the endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentCloudRegion")]
+        public virtual string ContentCloudRegion { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to block HTTP partial responses for the endpoint. When this is true, resumption of blocked
+        /// malicious HTTP file downloads will be blocked by the firewall. False provides maximum availability, true
+        /// provides maximum security.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpPartialResponseBlocked")]
+        public virtual System.Nullable<bool> HttpPartialResponseBlocked { get; set; }
+
         /// <summary>Optional. Immutable. Indicates whether Jumbo Frames are enabled. Default value is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jumboFramesEnabled")]
         public virtual System.Nullable<bool> JumboFramesEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for WildFire analysis.</summary>
+    public class FirewallEndpointWildfireSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Indicates whether WildFire analysis is enabled. Default value is false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Optional. Settings for WildFire inline cloud analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wildfireInlineCloudAnalysisSettings")]
+        public virtual FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings WildfireInlineCloudAnalysisSettings { get; set; }
+
+        /// <summary>
+        /// Optional. Duration in milliseconds on a file being held while the WildFire real time signature cloud
+        /// performs a signature lookup. Value between 1 to 5000 is valid. Default value is 1000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wildfireRealtimeLookupDuration")]
+        public virtual object WildfireRealtimeLookupDuration { get; set; }
+
+        /// <summary>
+        /// Optional. Action to take on WildFire real time signature lookup timeout. Default value is ALLOW.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wildfireRealtimeLookupTimeoutAction")]
+        public virtual string WildfireRealtimeLookupTimeoutAction { get; set; }
+
+        /// <summary>
+        /// Optional. The region where WildFire analysis will be performed. PAN supports regions:
+        /// https://docs.paloaltonetworks.com/advanced-wildfire/administration/advanced-wildfire-overview/advanced-wildfire-deployments/advanced-wildfire-global-cloud
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wildfireRegion")]
+        public virtual string WildfireRegion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for WildFire inline cloud analysis.</summary>
+    public class FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Timeout in milliseconds on a file being held while WildFire inline cloud analysis is performed.
+        /// Value between 1 to 240000 is valid. Default value is 30000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxAnalysisDuration")]
+        public virtual object MaxAnalysisDuration { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to disable WildFire submission log generation for files that timeout during WildFire
+        /// inline cloud analysis.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("submissionTimeoutLoggingDisabled")]
+        public virtual System.Nullable<bool> SubmissionTimeoutLoggingDisabled { get; set; }
+
+        /// <summary>
+        /// Optional. Action to take when WildFire inline cloud analysis times out. Default value is ALLOW.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeoutAction")]
+        public virtual string TimeoutAction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17414,7 +17984,9 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>Locations that could not be reached.</summary>
+        /// <summary>
+        /// Unordered list. Locations that could not be reached. See https://google.aip.dev/217 for more details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
@@ -17619,6 +18191,25 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// <summary>List of UrlList resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlLists")]
         public virtual System.Collections.Generic.IList<UrlList> UrlLists { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing WildfireVerdictChangeRequests.</summary>
+    public class ListWildfireVerdictChangeRequestsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The list of WildfireVerdictChangeRequests</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wildfireVerdictChangeRequests")]
+        public virtual System.Collections.Generic.IList<WildfireVerdictChangeRequest> WildfireVerdictChangeRequests { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18994,6 +19585,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// <summary>The URL filtering configuration for the SecurityProfile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlFilteringProfile")]
         public virtual UrlFilteringProfile UrlFilteringProfile { get; set; }
+
+        /// <summary>The WildFire Analysis configurations for SecurityProfile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wildfireAnalysisProfile")]
+        public virtual WildfireAnalysisProfile WildfireAnalysisProfile { get; set; }
     }
 
     /// <summary>SecurityProfileGroup is a resource that defines the behavior for various ProfileTypes.</summary>
@@ -19114,6 +19709,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// <summary>Optional. Reference to a SecurityProfile with the UrlFiltering configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlFilteringProfile")]
         public virtual string UrlFilteringProfile { get; set; }
+
+        /// <summary>Optional. Reference to a SecurityProfile with the WildFire configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wildfireAnalysisProfile")]
+        public virtual string WildfireAnalysisProfile { get; set; }
     }
 
     /// <summary>
@@ -19661,6 +20260,384 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// <summary>gRPC specific configuration to access the gRPC server to obtain the CA certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("grpcEndpoint")]
         public virtual GoogleCloudNetworksecurityV1beta1GrpcEndpoint GrpcEndpoint { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>WildfireAnalysisProfile defines Palo Alto Networks WildFire behavior.</summary>
+    public class WildfireAnalysisProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Configuration for WildFire inline cloud analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wildfireInlineCloudAnalysisRules")]
+        public virtual System.Collections.Generic.IList<WildfireInlineCloudAnalysisRule> WildfireInlineCloudAnalysisRules { get; set; }
+
+        /// <summary>Optional. Configuration for overriding inline ML WildFire actions per protocol.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wildfireInlineMlOverrides")]
+        public virtual System.Collections.Generic.IList<WildfireInlineMlOverride> WildfireInlineMlOverrides { get; set; }
+
+        /// <summary>Optional. Settings for WildFire Inline ML analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wildfireInlineMlSetting")]
+        public virtual WildfireInlineMlSettings WildfireInlineMlSetting { get; set; }
+
+        /// <summary>Optional. Settings for WildFire Inline ML analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wildfireInlineMlSettings")]
+        public virtual System.Collections.Generic.IList<WildfireInlineMlSettings> WildfireInlineMlSettings { get; set; }
+
+        /// <summary>Optional. Configuration for overriding WildFire actions per protocol.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wildfireOverrides")]
+        public virtual System.Collections.Generic.IList<WildfireOverride> WildfireOverrides { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to hold the transfer of a file while the WildFire real-time signature cloud performs a
+        /// signature lookup. Default value is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wildfireRealtimeLookup")]
+        public virtual System.Nullable<bool> WildfireRealtimeLookup { get; set; }
+
+        /// <summary>Optional. Configurations for WildFire file submissions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wildfireSubmissionRules")]
+        public virtual System.Collections.Generic.IList<WildfireSubmissionRule> WildfireSubmissionRules { get; set; }
+
+        /// <summary>Optional. Configuration for overriding WildFire threats action by threat_id match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wildfireThreatOverrides")]
+        public virtual System.Collections.Generic.IList<WildfireThreatOverride> WildfireThreatOverrides { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The list of file type configurations to be scanned by WildFire Inline Cloud Analysis.</summary>
+    public class WildfireInlineCloudAnalysisRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Action to take when a threat is detected using WildFire Inline Cloud Analysis. The default Value
+        /// is DENY.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>Submit a custom list of file types for WildFire analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customFileTypes")]
+        public virtual WildfireInlineCloudAnalysisRuleCustomFileTypes CustomFileTypes { get; set; }
+
+        /// <summary>Required. Direction for the file to be analyzed by WildFire Inline Cloud Analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("direction")]
+        public virtual string Direction { get; set; }
+
+        /// <summary>Required. File selection mode for WildFire inline cloud analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileSelectionMode")]
+        public virtual string FileSelectionMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The options to submit a custom list of file types for scan.</summary>
+    public class WildfireInlineCloudAnalysisRuleCustomFileTypes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. File types to be submitted for WildFire inline cloud analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileTypes")]
+        public virtual System.Collections.Generic.IList<string> FileTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the file to exclude from WildFire Inline ML analysis.</summary>
+    public class WildfireInlineMlFileException : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Name of the file to exclude from WildFire Inline ML analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filename")]
+        public virtual string Filename { get; set; }
+
+        /// <summary>
+        /// Required. Machine learning partial hash of the file to exclude from WildFire Inline ML analysis.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialHash")]
+        public virtual string PartialHash { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines what action to take for WildFire Inline ML threats per protocol.</summary>
+    public class WildfireInlineMlOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The action to take for WildFire Inline ML override.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>Required. Protocol to match for WildFire Inline ML override.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
+        public virtual string Protocol { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the settings for WildFire Inline ML analysis.</summary>
+    public class WildfireInlineMlSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of files to exclude from WildFire Inline ML analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileExceptions")]
+        public virtual System.Collections.Generic.IList<WildfireInlineMlFileException> FileExceptions { get; set; }
+
+        /// <summary>Optional. List of Inline ML configs to enable in WildFire Inline ML analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineMlConfigs")]
+        public virtual System.Collections.Generic.IList<WildfireInlineMlSettingsInlineMlConfig> InlineMlConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for WildFire Inline ML analysis per file type.</summary>
+    public class WildfireInlineMlSettingsInlineMlConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Action to take when a threat is detected using Inline ML.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>Required. File type to configure Inline ML for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
+        public virtual string FileType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines what action to take for WildFire threats per protocol.</summary>
+    public class WildfireOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Threat action override. For some threat types, only a subset of actions applies.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>Required. Protocol to match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
+        public virtual string Protocol { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Defines the file types to be submitted for WildFire analysis and the direction of the traffic.
+    /// </summary>
+    public class WildfireSubmissionRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Submit a custom list of file types for WildFire analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customFileTypes")]
+        public virtual WildfireSubmissionRuleCustomFileTypes CustomFileTypes { get; set; }
+
+        /// <summary>Required. Direction for the files to be analyzed by WildFire.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("direction")]
+        public virtual string Direction { get; set; }
+
+        /// <summary>Required. File selection mode for WildFire analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileSelectionMode")]
+        public virtual string FileSelectionMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The options to submit a custom list of file types for scan.</summary>
+    public class WildfireSubmissionRuleCustomFileTypes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. File types to be submitted for WildFire analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileTypes")]
+        public virtual System.Collections.Generic.IList<string> FileTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines what action to take for a specific WildFire threat_id match.</summary>
+    public class WildfireThreatOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Threat action override.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>Required. Threat ID to match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threatId")]
+        public virtual string ThreatId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for a WildfireVerdictChangeRequest.</summary>
+    public class WildfireVerdictChangeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The justification for the verdict change request. Max length 2048 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
+        public virtual string Comment { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when the WildfireVerdictChangeRequest was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The file name of the Malware Sample.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileName")]
+        public virtual string FileName { get; set; }
+
+        /// <summary>Output only. The file type of the Malware Sample.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
+        public virtual string FileType { get; set; }
+
+        /// <summary>Output only. The final verdict of the Malware Sample.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalVerdict")]
+        public virtual string FinalVerdict { get; set; }
+
+        /// <summary>
+        /// Output only. Identifier. The relative name of the WildfireVerdictChangeRequest. Output only. This is a
+        /// unique identifier generated by the third party API. Format:
+        /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}
+        /// Where {wildfire_verdict_change_request_id} is the ID in the format:
+        /// ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The suggested verdict to apply to the Malware Sample.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newVerdict")]
+        public virtual string NewVerdict { get; set; }
+
+        /// <summary>Output only. The original verdict of the Malware Sample.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oldVerdict")]
+        public virtual string OldVerdict { get; set; }
+
+        private string _resolutionTimeRaw;
+
+        private object _resolutionTime;
+
+        /// <summary>Output only. The timestamp when the WildfireVerdictChangeRequest was resolved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolutionTime")]
+        public virtual string ResolutionTimeRaw
+        {
+            get => _resolutionTimeRaw;
+            set
+            {
+                _resolutionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _resolutionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ResolutionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ResolutionTimeDateTimeOffset instead.")]
+        public virtual object ResolutionTime
+        {
+            get => _resolutionTime;
+            set
+            {
+                _resolutionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _resolutionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ResolutionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ResolutionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ResolutionTimeRaw);
+            set => ResolutionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. The SHA256 hash of the Malware Sample to change the verdict of.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sha256")]
+        public virtual string Sha256 { get; set; }
+
+        /// <summary>Output only. The region of the file associated with the Malware Sample.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceRegion")]
+        public virtual string SourceRegion { get; set; }
+
+        /// <summary>Output only. The review state of the WildfireVerdictChangeRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp when the WildfireVerdictChangeRequest was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The ID of the WildfireVerdictChangeRequest. This is a unique identifier generated by the third
+        /// party API. Format: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wildfireVerdictChangeRequestId")]
+        public virtual string WildfireVerdictChangeRequestId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
