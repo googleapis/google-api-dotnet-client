@@ -8411,7 +8411,8 @@ namespace Google.Apis.Gmail.v1.Data
         /// #076239, #1a764d, #1c4587, #41236d, #83334c, \#464646, #e7e7e7, #0d3472, #b6cff5, #0d3b44, #98d7e4, #3d188e,
         /// #e3d7ff, \#711a36, #fbd3e0, #8a1c0a, #f2b2a8, #7a2e0b, #ffc8af, #7a4706, #ffdeb5, \#594c05, #fbe983,
         /// #684e07, #fdedc1, #0b4f30, #b3efd3, #04502e, #a2dcc1, \#c2c2c2, #4986e7, #2da2bb, #b99aff, #994a64, #f691b2,
-        /// #ff7537, #ffad46, \#662e37, #ebdbde, #cca6ac, #094228, #42d692, #16a765
+        /// #ff7537, #ffad46, \#662e37, #ebdbde, #cca6ac, #094228, #42d692, #16a765, #757575, #1e53b8, \#007286,
+        /// #7858c3, #c2185b, #d93025, #54240e, #633e04, #521d28, #202124, \#083018
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
         public virtual string BackgroundColor { get; set; }
@@ -8427,7 +8428,8 @@ namespace Google.Apis.Gmail.v1.Data
         /// #41236d, #83334c, \#464646, #e7e7e7, #0d3472, #b6cff5, #0d3b44, #98d7e4, #3d188e, #e3d7ff, \#711a36,
         /// #fbd3e0, #8a1c0a, #f2b2a8, #7a2e0b, #ffc8af, #7a4706, #ffdeb5, \#594c05, #fbe983, #684e07, #fdedc1, #0b4f30,
         /// #b3efd3, #04502e, #a2dcc1, \#c2c2c2, #4986e7, #2da2bb, #b99aff, #994a64, #f691b2, #ff7537, #ffad46,
-        /// \#662e37, #ebdbde, #cca6ac, #094228, #42d692, #16a765
+        /// \#662e37, #ebdbde, #cca6ac, #094228, #42d692, #16a765, #757575, #1e53b8, \#007286, #7858c3, #c2185b,
+        /// #d93025, #54240e, #633e04, #521d28, #202124, \#083018
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textColor")]
         public virtual string TextColor { get; set; }
@@ -8692,7 +8694,8 @@ namespace Google.Apis.Gmail.v1.Data
 
         /// <summary>
         /// The entire email message in an RFC 2822 formatted and base64url encoded string. Returned in `messages.get`
-        /// and `drafts.get` responses when the `format=RAW` parameter is supplied.
+        /// and `drafts.get` responses when the `format=RAW` parameter is supplied. @required gmail.users.drafts.create
+        /// gmail.users.drafts.update
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("raw")]
         public virtual string Raw { get; set; }
