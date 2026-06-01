@@ -4268,6 +4268,13 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         public virtual string Id { get; set; }
 
         /// <summary>
+        /// Output only. The URIs of the source code, if available. For Cloud Run source deploy for example:
+        /// `gs://my-bucket/my-folder/1234567890.abcde-fdbe.zip#1234567890`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceCodeUris")]
+        public virtual System.Collections.Generic.IList<string> SourceCodeUris { get; set; }
+
+        /// <summary>
         /// Output only. The source commits at which this artifact was built. Extracted from provenance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceCommitUris")]
