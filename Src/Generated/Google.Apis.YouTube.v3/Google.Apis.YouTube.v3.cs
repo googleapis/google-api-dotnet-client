@@ -7413,7 +7413,7 @@ namespace Google.Apis.YouTube.v3
             [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Part { get; private set; }
 
-            /// <summary>Filter on resources belonging to this channelId.</summary>
+            /// <summary>Filter on resources belonging to this channelId. (Force TAP rebuild)</summary>
             [Google.Apis.Util.RequestParameterAttribute("channelId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ChannelId { get; set; }
 
@@ -15877,7 +15877,7 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
         public virtual TokenPagination TokenPagination { get; set; }
 
-        /// <summary>The visitorId identifies the visitor.</summary>
+        /// <summary>The visitor ID identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
         public virtual string VisitorId { get; set; }
     }
