@@ -1129,7 +1129,7 @@ namespace Google.Apis.HomeGraphService.v1.Data
     /// <summary>Contains the trait payload for a single trait.</summary>
     public class TraitData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The Home API trait payload.</summary>
+        /// <summary>The Provider Home API trait payload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trait")]
         public virtual System.Collections.Generic.IDictionary<string, object> Trait { get; set; }
 
