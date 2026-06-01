@@ -5407,9 +5407,13 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common model for database resource instance metadata. Next ID: 32</summary>
+    /// <summary>Common model for database resource instance metadata. Next ID: 35</summary>
     public class DatabaseResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Field to ingest additional metadata whichd does not support proto format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> AdditionalMetadata { get; set; }
+
         /// <summary>Availability configuration for this instance</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availabilityConfiguration")]
         public virtual AvailabilityConfiguration AvailabilityConfiguration { get; set; }
@@ -5502,6 +5506,14 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>The type of the instance. Specified at creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceType")]
         public virtual string InstanceType { get; set; }
+
+        /// <summary>Field to ingest additional metadata which support proto format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalAdditionalMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> InternalAdditionalMetadata { get; set; }
+
+        /// <summary>Optional. Private and public IP address of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual IpAddress IpAddress { get; set; }
 
         /// <summary>Optional. Whether deletion protection is enabled for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDeletionProtectionEnabled")]
@@ -6498,6 +6510,27 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Used to send IP address information for a database resource.</summary>
+    public class IpAddress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The private IP address assigned to the resource within a Virtual Private Cloud (VPC). This IP is only
+        /// reachable from within the same VPC network. Stored in standard string format (e.g., "10.0.0.2").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateIp")]
+        public virtual string PrivateIp { get; set; }
+
+        /// <summary>
+        /// The public IP address assigned to the resource. This IP is reachable from the internet. Stored in standard
+        /// string format (e.g., "34.72.1.1").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicIp")]
+        public virtual string PublicIp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7867,6 +7900,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceVersion")]
         public virtual string MaintenanceVersion { get; set; }
+
+        /// <summary>Optional. List of next available maintenance versions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextAvailableMaintenanceVersions")]
+        public virtual System.Collections.Generic.IList<string> NextAvailableMaintenanceVersions { get; set; }
 
         /// <summary>
         /// Optional. Upcoming maintenance for the database resource. This field is populated once SLM generates and
