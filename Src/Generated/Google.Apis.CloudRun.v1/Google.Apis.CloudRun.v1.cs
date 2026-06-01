@@ -10523,10 +10523,6 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountName")]
         public virtual string ServiceAccountName { get; set; }
 
-        /// <summary>Optional. Duration the instance may be active before the system will shut it down.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
-        public virtual object Timeout { get; set; }
-
         /// <summary>Optional. List of volumes that can be mounted by containers belonging to the Instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
         public virtual System.Collections.Generic.IList<Volume> Volumes { get; set; }
