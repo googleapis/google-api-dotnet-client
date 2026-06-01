@@ -1,0 +1,11 @@
+{
+  "Google.Apis.WebContentPublisher.v1.WebContentPublisherBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.WebContentPublisher.v1.WebContentPublisherBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
