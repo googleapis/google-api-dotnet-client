@@ -704,7 +704,7 @@ namespace Google.Apis.AppHub.v1alpha
                         public virtual string RequestId { get; set; }
 
                         /// <summary>
-                        /// Required. Field mask is used to specify the fields to be overwritten in the Service resource
+                        /// Optional. Field mask is used to specify the fields to be overwritten in the Service resource
                         /// by the update. The fields specified in the update_mask are relative to the resource, not the
                         /// full request. The API changes the values of the fields as specified in the update_mask. The
                         /// API ignores the values of all fields not covered by the update_mask. You can also unset a
@@ -1146,7 +1146,7 @@ namespace Google.Apis.AppHub.v1alpha
                         public virtual string RequestId { get; set; }
 
                         /// <summary>
-                        /// Required. Field mask is used to specify the fields to be overwritten in the Workload
+                        /// Optional. Field mask is used to specify the fields to be overwritten in the Workload
                         /// resource by the update. The fields specified in the update_mask are relative to the
                         /// resource, not the full request. The API changes the values of the fields as specified in the
                         /// update_mask. The API ignores the values of all fields not covered by the update_mask. You
@@ -1646,7 +1646,7 @@ namespace Google.Apis.AppHub.v1alpha
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the Application resource
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the Application resource
                     /// by the update. The fields specified in the update_mask are relative to the resource, not the
                     /// full request. The API changes the values of the fields as specified in the update_mask. The API
                     /// ignores the values of all fields not covered by the update_mask. You can also unset a field by
@@ -3700,7 +3700,7 @@ namespace Google.Apis.AppHub.v1alpha
                 public virtual string RequestId { get; set; }
 
                 /// <summary>
-                /// Required. Field mask is used to specify the fields to be overwritten in the Boundary resource by the
+                /// Optional. Field mask is used to specify the fields to be overwritten in the Boundary resource by the
                 /// update. The fields specified in the update_mask are relative to the resource, not the full request.
                 /// A field will be overwritten if it is in the mask. If the user does not provide a mask then all
                 /// fields will be overwritten.
