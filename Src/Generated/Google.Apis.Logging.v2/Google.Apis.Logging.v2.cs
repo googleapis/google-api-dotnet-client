@@ -24730,6 +24730,15 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("truncationGranularity")]
         public virtual string TruncationGranularity { get; set; }
 
+        /// <summary>
+        /// Optional. A virtual field definition, used in place of field to define a field that is computed from other
+        /// fields rather than being directly present in the data schema.For example, a virtual field can be defined
+        /// using COALESCE to select the first non-null value from a list of fields.If virtual_field is set, field must
+        /// not be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("virtualField")]
+        public virtual VirtualField VirtualField { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -25518,6 +25527,32 @@ namespace Google.Apis.Logging.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A virtual field is a field that is not physically present in the underlying data schema, but is created through
+    /// specific operations within the query builder model based on other fields in the schema.
+    /// </summary>
+    public class VirtualField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The field sources that will be used to create the virtual field, based on the semantics of the virtual field
+        /// type.The field sources must follow these rules, based on the virtual field type: - For
+        /// VIRTUAL_FIELD_TYPE_UNSPECIFIED, this field must be empty. - For COALESCE, this field must be non-empty and
+        /// include a minimum of two field sources. The underlying field sources must be actual projected fields that
+        /// represent actual schema fields and that must not be transformed and aggregated in any way, except for
+        /// casting. The type of all the underlying field sources must be equivalent so that picking one of them would
+        /// result in the same value type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("underlyingFieldSources")]
+        public virtual System.Collections.Generic.IList<FieldSource> UnderlyingFieldSources { get; set; }
+
+        /// <summary>Required. The type of the virtual field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("virtualFieldType")]
+        public virtual string VirtualFieldType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
