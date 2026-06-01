@@ -5118,8 +5118,9 @@ namespace Google.Apis.DiscoveryEngine.v1
                             /// <summary>
                             /// A comma-separated list of fields to order by, sorted in ascending order. Use "desc"
                             /// after a field name for descending. Supported fields: * `update_time` * `create_time` *
-                            /// `session_name` * `is_pinned` Example: * `update_time desc` * `create_time` * `is_pinned
-                            /// desc,update_time desc`: list sessions by is_pinned first, then by update_time.
+                            /// `session_name` * `is_pinned` * `display_name` Example: * `update_time desc` *
+                            /// `create_time` * `is_pinned desc,update_time desc`: list sessions by is_pinned first,
+                            /// then by update_time.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string OrderBy { get; set; }
@@ -11559,8 +11560,9 @@ namespace Google.Apis.DiscoveryEngine.v1
                             /// <summary>
                             /// A comma-separated list of fields to order by, sorted in ascending order. Use "desc"
                             /// after a field name for descending. Supported fields: * `update_time` * `create_time` *
-                            /// `session_name` * `is_pinned` Example: * `update_time desc` * `create_time` * `is_pinned
-                            /// desc,update_time desc`: list sessions by is_pinned first, then by update_time.
+                            /// `session_name` * `is_pinned` * `display_name` Example: * `update_time desc` *
+                            /// `create_time` * `is_pinned desc,update_time desc`: list sessions by is_pinned first,
+                            /// then by update_time.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string OrderBy { get; set; }
@@ -16534,8 +16536,8 @@ namespace Google.Apis.DiscoveryEngine.v1
                         /// <summary>
                         /// A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a
                         /// field name for descending. Supported fields: * `update_time` * `create_time` *
-                        /// `session_name` * `is_pinned` Example: * `update_time desc` * `create_time` * `is_pinned
-                        /// desc,update_time desc`: list sessions by is_pinned first, then by update_time.
+                        /// `session_name` * `is_pinned` * `display_name` Example: * `update_time desc` * `create_time`
+                        /// * `is_pinned desc,update_time desc`: list sessions by is_pinned first, then by update_time.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
@@ -45331,9 +45333,9 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
 
         /// <summary>
         /// A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for
-        /// descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: *
-        /// `update_time desc` * `create_time` * `is_pinned desc,update_time desc`: list sessions by is_pinned first,
-        /// then by update_time.
+        /// descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` *
+        /// `display_name` Example: * `update_time desc` * `create_time` * `is_pinned desc,update_time desc`: list
+        /// sessions by is_pinned first, then by update_time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
         public virtual string OrderBy { get; set; }
