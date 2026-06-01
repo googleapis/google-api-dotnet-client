@@ -2745,6 +2745,107 @@ namespace Google.Apis.ChromeManagement.v1
                 }
             }
 
+            /// <summary>Generate report of installed Chrome versions on managed profiles.</summary>
+            /// <param name="customer">
+            /// Required. Customer id or "my_customer" to use the customer associated to the account making the request.
+            /// </param>
+            public virtual CountChromeProfileVersionsRequest CountChromeProfileVersions(string customer)
+            {
+                return new CountChromeProfileVersionsRequest(this.service, customer);
+            }
+
+            /// <summary>Generate report of installed Chrome versions on managed profiles.</summary>
+            public class CountChromeProfileVersionsRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1CountChromeProfileVersionsResponse>
+            {
+                /// <summary>Constructs a new CountChromeProfileVersions request.</summary>
+                public CountChromeProfileVersionsRequest(Google.Apis.Services.IClientService service, string customer) : base(service)
+                {
+                    Customer = customer;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Customer id or "my_customer" to use the customer associated to the account making the
+                /// request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>
+                /// Optional. Query string to filter results, AND-separated fields in EBNF syntax. Note: OR operations
+                /// are not supported in this filter. Supported filter fields: * last_active_date
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>The ID of the organizational unit. If omitted, all data will be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orgUnitId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrgUnitId { get; set; }
+
+                /// <summary>Optional. Maximum number of results to return. Maximum and default are 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. Token to specify the page of the request to be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "countChromeProfileVersions";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+customer}/reports:countChromeProfileVersions";
+
+                /// <summary>Initializes CountChromeProfileVersions parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customer",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orgUnitId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orgUnitId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
             /// <summary>Generate report of installed Chrome versions.</summary>
             /// <param name="customer">
             /// Required. Customer id or "my_customer" to use the customer associated to the account making the request.
@@ -5974,6 +6075,25 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>The DeviceHardwareCountReport for device storage amount in gigabytes (for example 128).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageReports")]
         public virtual System.Collections.Generic.IList<GoogleChromeManagementV1DeviceHardwareCountReport> StorageReports { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response containing requested managed profile versions details and counts.</summary>
+    public class GoogleChromeManagementV1CountChromeProfileVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token to specify the next page of the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of all browser versions reported for profiles and their install counts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileBrowserVersions")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1BrowserVersion> ProfileBrowserVersions { get; set; }
+
+        /// <summary>Total number browser versions matching request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<int> TotalSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
