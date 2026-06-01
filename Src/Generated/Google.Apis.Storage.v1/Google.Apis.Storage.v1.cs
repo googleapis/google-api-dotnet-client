@@ -10812,6 +10812,14 @@ namespace Google.Apis.Storage.v1.Data
                     /// </summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("numNewerVersions")]
                     public virtual System.Nullable<int> NumNewerVersions { get; set; }
+
+                    /// <summary>Objects having a size greater than this value in bytes will be matched.</summary>
+                    [Newtonsoft.Json.JsonPropertyAttribute("sizeAboveBytes")]
+                    public virtual System.Nullable<long> SizeAboveBytes { get; set; }
+
+                    /// <summary>Objects having a size less than this value in bytes will be matched.</summary>
+                    [Newtonsoft.Json.JsonPropertyAttribute("sizeBelowBytes")]
+                    public virtual System.Nullable<long> SizeBelowBytes { get; set; }
                 }
             }
         }
