@@ -16420,7 +16420,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
     /// <summary>
     /// Download metadata for split, standalone and universal APKs, as well as asset pack slices, signed with a given
-    /// key. Next ID: 10
+    /// key.
     /// </summary>
     public class GeneratedApksPerSigningKey : Google.Apis.Requests.IDirectResponseSchema
     {
