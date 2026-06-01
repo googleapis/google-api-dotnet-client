@@ -65,6 +65,15 @@ namespace Google.Apis.Container.v1beta1
             /// Account.
             /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>
+            /// See, edit, configure, and delete your Google Kubernetes Engine data and see the email address for your
+            /// Google Account
+            /// </summary>
+            public static string Container = "https://www.googleapis.com/auth/container";
+
+            /// <summary>See your Google Kubernetes Engine data and the email address of your Google Account</summary>
+            public static string ContainerReadOnly = "https://www.googleapis.com/auth/container.read-only";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Kubernetes Engine API.</summary>
@@ -75,6 +84,15 @@ namespace Google.Apis.Container.v1beta1
             /// Account.
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>
+            /// See, edit, configure, and delete your Google Kubernetes Engine data and see the email address for your
+            /// Google Account
+            /// </summary>
+            public const string Container = "https://www.googleapis.com/auth/container";
+
+            /// <summary>See your Google Kubernetes Engine data and the email address of your Google Account</summary>
+            public const string ContainerReadOnly = "https://www.googleapis.com/auth/container.read-only";
         }
 
         /// <summary>Gets the Projects resource.</summary>
@@ -8397,6 +8415,19 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual IdentityServiceConfig DesiredIdentityServiceConfig { get; set; }
 
         /// <summary>
+        /// The desired name of the image to use for this node. This is used to create clusters using a custom image.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredImage")]
+        public virtual string DesiredImage { get; set; }
+
+        /// <summary>
+        /// The project containing the desired image to use for this node. This is used to create clusters using a
+        /// custom image.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredImageProject")]
+        public virtual string DesiredImageProject { get; set; }
+
+        /// <summary>
         /// The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as well.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredImageType")]
@@ -9102,6 +9133,25 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>CustomImageConfig contains the information r</summary>
+    public class CustomImageConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the image to use for this node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual string Image { get; set; }
+
+        /// <summary>The name of the image family to use for this node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageFamily")]
+        public virtual string ImageFamily { get; set; }
+
+        /// <summary>The project containing the image to use for this node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageProject")]
+        public virtual string ImageProject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Support for running custom init code while bootstrapping nodes.</summary>
     public class CustomNodeInit : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9215,6 +9265,17 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>The desired state of etcd encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DataplaneV2Config is the configuration for DPv2.</summary>
+    public class DataplaneV2Config : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Scalability mode for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scalabilityMode")]
+        public virtual string ScalabilityMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10667,12 +10728,14 @@ namespace Google.Apis.Container.v1beta1.Data
         /// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following
         /// parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog
         /// net.core.rmem_max net.core.rmem_default net.core.wmem_default net.core.wmem_max net.core.optmem_max
-        /// net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse net.ipv4.tcp_mtu_probing
-        /// net.ipv4.tcp_max_orphans net.ipv4.tcp_max_tw_buckets net.ipv4.tcp_syn_retries net.ipv4.tcp_ecn
-        /// net.ipv4.tcp_congestion_control net.netfilter.nf_conntrack_max net.netfilter.nf_conntrack_buckets
-        /// net.netfilter.nf_conntrack_tcp_timeout_close_wait net.netfilter.nf_conntrack_tcp_timeout_time_wait
-        /// net.netfilter.nf_conntrack_tcp_timeout_established net.netfilter.nf_conntrack_acct kernel.shmmni
-        /// kernel.shmmax kernel.shmall kernel.perf_event_paranoid kernel.sched_rt_runtime_us kernel.softlockup_panic
+        /// net.core.somaxconn net.ipv4.neigh.default.gc_thresh1 net.ipv4.neigh.default.gc_thresh2
+        /// net.ipv4.neigh.default.gc_thresh3 net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
+        /// net.ipv4.tcp_mtu_probing net.ipv4.tcp_max_orphans net.ipv4.tcp_max_tw_buckets net.ipv4.tcp_syn_retries
+        /// net.ipv4.tcp_ecn net.ipv4.tcp_congestion_control net.netfilter.nf_conntrack_max
+        /// net.netfilter.nf_conntrack_buckets net.netfilter.nf_conntrack_tcp_timeout_close_wait
+        /// net.netfilter.nf_conntrack_tcp_timeout_time_wait net.netfilter.nf_conntrack_tcp_timeout_established
+        /// net.netfilter.nf_conntrack_acct kernel.keys.maxkeys kernel.keys.maxbytes kernel.shmmni kernel.shmmax
+        /// kernel.shmall kernel.perf_event_paranoid kernel.sched_rt_runtime_us kernel.softlockup_panic
         /// kernel.yama.ptrace_scope kernel.kptr_restrict kernel.dmesg_restrict kernel.sysrq fs.aio-max-nr fs.file-max
         /// fs.inotify.max_user_instances fs.inotify.max_user_watches fs.nr_open vm.dirty_background_ratio
         /// vm.dirty_background_bytes vm.dirty_expire_centisecs vm.dirty_ratio vm.dirty_bytes
@@ -11210,6 +11273,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("datapathProvider")]
         public virtual string DatapathProvider { get; set; }
 
+        /// <summary>Optional. DataplaneV2Config specifies the DPv2 configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataplaneV2Config")]
+        public virtual DataplaneV2Config DataplaneV2Config { get; set; }
+
         /// <summary>
         /// Controls whether by default nodes have private IP addresses only. It is invalid to specify both
         /// PrivateClusterConfig.enablePrivateNodes and this field at the same time. To update the default setting, use
@@ -11603,6 +11670,13 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeGroup")]
         public virtual string NodeGroup { get; set; }
+
+        /// <summary>
+        /// The node image configuration to use for this node pool. Note that this is only applicable for node pools
+        /// using image_type=CUSTOM.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeImageConfig")]
+        public virtual CustomImageConfig NodeImageConfig { get; set; }
 
         /// <summary>
         /// The set of Google API scopes to be made available on all of the node VMs under the "default" service
@@ -12051,6 +12125,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateNodes")]
         public virtual System.Nullable<bool> EnablePrivateNodes { get; set; }
+
+        /// <summary>Optional. Immutable. The VPC network for the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
 
         /// <summary>Network bandwidth tier configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkPerformanceConfig")]
@@ -14830,6 +14908,20 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Enable or disable gvnic on the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gvnic")]
         public virtual VirtualNIC Gvnic { get; set; }
+
+        /// <summary>
+        /// The desired name of the image name to use for this node. This is used to create clusters using a custom
+        /// image.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual string Image { get; set; }
+
+        /// <summary>
+        /// The project containing the desired image to use for this node pool. This is used to create clusters using a
+        /// custom image.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageProject")]
+        public virtual string ImageProject { get; set; }
 
         /// <summary>
         /// Required. The desired image type for the node pool. Please see
