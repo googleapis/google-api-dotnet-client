@@ -468,6 +468,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     MavenArtifacts = new MavenArtifactsResource(service);
                     NpmPackages = new NpmPackagesResource(service);
                     Packages = new PackagesResource(service);
+                    PrewarmedArtifacts = new PrewarmedArtifactsResource(service);
                     PythonPackages = new PythonPackagesResource(service);
                     Rules = new RulesResource(service);
                     YumArtifacts = new YumArtifactsResource(service);
@@ -4251,6 +4252,119 @@ namespace Google.Apis.ArtifactRegistry.v1
                     }
                 }
 
+                /// <summary>Gets the PrewarmedArtifacts resource.</summary>
+                public virtual PrewarmedArtifactsResource PrewarmedArtifacts { get; }
+
+                /// <summary>The "prewarmedArtifacts" collection of methods.</summary>
+                public class PrewarmedArtifactsResource
+                {
+                    private const string Resource = "prewarmedArtifacts";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public PrewarmedArtifactsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Lists all streamed artifacts in a repository.</summary>
+                    /// <param name="parent">
+                    /// Required. The repository of the artifact to list. Format:
+                    /// projects/{project}/locations/{location}/repositories/{repository}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists all streamed artifacts in a repository.</summary>
+                    public class ListRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.ListPrewarmedArtifactsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The repository of the artifact to list. Format:
+                        /// projects/{project}/locations/{location}/repositories/{repository}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Filter should only support The location of the prewarmed artifacts. multi-region
+                        /// is not supported for this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of prewarmed artifacts to return. Maximum page size is 1,000.
+                        /// Default page size is 100.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. The next_page_token value returned from a previous list request, if any.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/prewarmedArtifacts";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
                 /// <summary>Gets the PythonPackages resource.</summary>
                 public virtual PythonPackagesResource PythonPackages { get; }
 
@@ -5007,6 +5121,67 @@ namespace Google.Apis.ArtifactRegistry.v1
                     }
                 }
 
+                /// <summary>Checks an artifact streaming.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="repository">
+                /// Required. The name of the repository, for example:
+                /// `projects/p1/locations/us-central1/repositories/repo1`. If the package or version ID parts contain
+                /// slashes, the slashes are escaped.
+                /// </param>
+                public virtual CheckPrewarmedArtifactRequest CheckPrewarmedArtifact(Google.Apis.ArtifactRegistry.v1.Data.CheckPrewarmedArtifactRequest body, string repository)
+                {
+                    return new CheckPrewarmedArtifactRequest(this.service, body, repository);
+                }
+
+                /// <summary>Checks an artifact streaming.</summary>
+                public class CheckPrewarmedArtifactRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.CheckPrewarmedArtifactResponse>
+                {
+                    /// <summary>Constructs a new CheckPrewarmedArtifact request.</summary>
+                    public CheckPrewarmedArtifactRequest(Google.Apis.Services.IClientService service, Google.Apis.ArtifactRegistry.v1.Data.CheckPrewarmedArtifactRequest body, string repository) : base(service)
+                    {
+                        Repository = repository;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the repository, for example:
+                    /// `projects/p1/locations/us-central1/repositories/repo1`. If the package or version ID parts
+                    /// contain slashes, the slashes are escaped.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("repository", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Repository { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.ArtifactRegistry.v1.Data.CheckPrewarmedArtifactRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "checkPrewarmedArtifact";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+repository}:checkPrewarmedArtifact";
+
+                    /// <summary>Initializes CheckPrewarmedArtifact parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("repository", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "repository",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Creates a repository. The returned Operation will finish once the repository has been created. Its
                 /// response will be the created Repository.
@@ -5492,6 +5667,124 @@ namespace Google.Apis.ArtifactRegistry.v1
                     }
                 }
 
+                /// <summary>Prewarms an artifact for streaming.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="repository">
+                /// Required. The repository name, for example: `projects/p1/locations/us-central1/repositories/repo1`.
+                /// If the package or version ID parts contain slashes, the slashes are escaped.
+                /// </param>
+                public virtual PrewarmArtifactRequest PrewarmArtifact(Google.Apis.ArtifactRegistry.v1.Data.PrewarmArtifactRequest body, string repository)
+                {
+                    return new PrewarmArtifactRequest(this.service, body, repository);
+                }
+
+                /// <summary>Prewarms an artifact for streaming.</summary>
+                public class PrewarmArtifactRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new PrewarmArtifact request.</summary>
+                    public PrewarmArtifactRequest(Google.Apis.Services.IClientService service, Google.Apis.ArtifactRegistry.v1.Data.PrewarmArtifactRequest body, string repository) : base(service)
+                    {
+                        Repository = repository;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The repository name, for example:
+                    /// `projects/p1/locations/us-central1/repositories/repo1`. If the package or version ID parts
+                    /// contain slashes, the slashes are escaped.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("repository", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Repository { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.ArtifactRegistry.v1.Data.PrewarmArtifactRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "prewarmArtifact";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+repository}:prewarmArtifact";
+
+                    /// <summary>Initializes PrewarmArtifact parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("repository", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "repository",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Removes an artifact from streaming.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="repository">
+                /// Required. The repository name, for example: `projects/p1/locations/us-central1/repositories/repo1`.
+                /// </param>
+                public virtual RemovePrewarmedArtifactRequest RemovePrewarmedArtifact(Google.Apis.ArtifactRegistry.v1.Data.RemovePrewarmedArtifactRequest body, string repository)
+                {
+                    return new RemovePrewarmedArtifactRequest(this.service, body, repository);
+                }
+
+                /// <summary>Removes an artifact from streaming.</summary>
+                public class RemovePrewarmedArtifactRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.RemovePrewarmedArtifactResponse>
+                {
+                    /// <summary>Constructs a new RemovePrewarmedArtifact request.</summary>
+                    public RemovePrewarmedArtifactRequest(Google.Apis.Services.IClientService service, Google.Apis.ArtifactRegistry.v1.Data.RemovePrewarmedArtifactRequest body, string repository) : base(service)
+                    {
+                        Repository = repository;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The repository name, for example:
+                    /// `projects/p1/locations/us-central1/repositories/repo1`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("repository", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Repository { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.ArtifactRegistry.v1.Data.RemovePrewarmedArtifactRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "removePrewarmedArtifact";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+repository}:removePrewarmedArtifact";
+
+                    /// <summary>Initializes RemovePrewarmedArtifact parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("repository", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "repository",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Updates the IAM policy for a given resource.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">
@@ -5758,8 +6051,8 @@ namespace Google.Apis.ArtifactRegistry.v1
 
             /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
-            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
-            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
             /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
             /// that specific project. This includes public, private, or other project-specific locations enabled for
             /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
@@ -5774,8 +6067,8 @@ namespace Google.Apis.ArtifactRegistry.v1
 
             /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
-            /// the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name`
-            /// is empty, the method lists the public locations available to all projects. * **Project-specific
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
             /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
             /// that specific project. This includes public, private, or other project-specific locations enabled for
             /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
@@ -5796,8 +6089,8 @@ namespace Google.Apis.ArtifactRegistry.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Do not use this field unless explicitly documented otherwise. This is primarily for
+                /// internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -6428,6 +6721,44 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for checking an artifact for streaming.</summary>
+    public class CheckPrewarmedArtifactRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The location of the prewarmed artifact. multi-region is not supported for this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamLocation")]
+        public virtual string StreamLocation { get; set; }
+
+        /// <summary>
+        /// Optional. The artifact tag
+        /// Format:projects/{project}/locations/{location}/repositories/{repository}/packages/{package}/tags/{tag}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; }
+
+        /// <summary>
+        /// Optional. The artifact version Format:
+        /// projects/{project}/locations/{location}/repositories/{repository}/packages/{package}/versions/{version}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for checking an artifact for streaming.</summary>
+    public class CheckPrewarmedArtifactResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The prewarmed artifact that was checked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prewarmedArtifact")]
+        public virtual PrewarmedArtifact PrewarmedArtifact { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7750,6 +8081,24 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response for listing artifacts for streaming.</summary>
+    public class ListPrewarmedArtifactsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The token to retrieve the next page of prewarmed artifacts, or empty if there are no more streamings to
+        /// return.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The prewarmed artifacts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prewarmedArtifacts")]
+        public virtual System.Collections.Generic.IList<PrewarmedArtifact> PrewarmedArtifacts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response from listing python packages.</summary>
     public class ListPythonPackagesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8365,6 +8714,113 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
+    /// <summary>The request for prewarming an artifact for streaming.</summary>
+    public class PrewarmArtifactRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. If true, old artifact will be evicted to make room for the new artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; }
+
+        /// <summary>
+        /// Optional. The retention days of the prewarmed artifact. If not specified, the artifact will be cached for 3
+        /// days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionDays")]
+        public virtual System.Nullable<long> RetentionDays { get; set; }
+
+        /// <summary>
+        /// Optional. The location to cache the artifact in. If not specified, the artifact will be cached in the same
+        /// location as the artifact. multi-region is not supported for this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamLocation")]
+        public virtual string StreamLocation { get; set; }
+
+        /// <summary>
+        /// Optional. The artifact tag
+        /// Format:projects/{project}/locations/{location}/repositories/{repository}/packages/{package}/tags/{tag}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; }
+
+        /// <summary>
+        /// Optional. The artifact version Format:
+        /// projects/{project}/locations/{location}/repositories/{repository}/packages/{package}/versions/{version}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for prewarming an artifact for streaming.</summary>
+    public class PrewarmArtifactResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The prewarmed artifact that was prewarmed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prewarmedArtifact")]
+        public virtual PrewarmedArtifact PrewarmedArtifact { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PrewarmedArtifact represents a streamed artifact.</summary>
+    public class PrewarmedArtifact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _expirationTimeRaw;
+
+        private object _expirationTime;
+
+        /// <summary>The expiration time of the prewarmed artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
+        public virtual string ExpirationTimeRaw
+        {
+            get => _expirationTimeRaw;
+            set
+            {
+                _expirationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expirationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpirationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpirationTimeDateTimeOffset instead.")]
+        public virtual object ExpirationTime
+        {
+            get => _expirationTime;
+            set
+            {
+                _expirationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expirationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpirationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpirationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpirationTimeRaw);
+            set => ExpirationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The location of the prewarmed artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
+        /// URL to access the image. Example:
+        /// us-west4-docker.pkg.dev/test-project/test-repo/nginx@sha256:e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The Artifact Registry logging configurations that apply to a Project.</summary>
     public class ProjectConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8571,6 +9027,44 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         /// <summary>Specific settings for a Yum remote repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yumRepository")]
         public virtual YumRepository YumRepository { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for removing an artifact from streaming.</summary>
+    public class RemovePrewarmedArtifactRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The location of the prewarmed artifact. multi-region is not supported for this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamLocation")]
+        public virtual string StreamLocation { get; set; }
+
+        /// <summary>
+        /// Optional. The artifact tag
+        /// Format:projects/{project}/locations/{location}/repositories/{repository}/packages/{package}/tags/{tag}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; }
+
+        /// <summary>
+        /// Optional. The artifact version Format:
+        /// projects/{project}/locations/{location}/repositories/{repository}/packages/{package}/versions/{version}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for removing an artifact from streaming.</summary>
+    public class RemovePrewarmedArtifactResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The prewarmed artifact that was removed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prewarmedArtifact")]
+        public virtual PrewarmedArtifact PrewarmedArtifact { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
