@@ -8922,7 +8922,12 @@ namespace Google.Apis.Contactcenterinsights.v1
                     [Google.Apis.Util.RequestParameterAttribute("appId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string AppId { get; set; }
 
-                    /// <summary>Optional. The CES App version to filter diagnostics by.</summary>
+                    /// <summary>
+                    /// Optional. The CES App version to filter diagnostics by. Setting to "-" filters to diagnostics
+                    /// created using "-" (the latest draft version). Note that reports created at different times may
+                    /// correspond to different draft instructions. Setting to "" (empty) retrieves all diagnostics for
+                    /// the app_id regardless of version.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("appVersion", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string AppVersion { get; set; }
 
@@ -17887,6 +17892,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>Metadata for a DiagnoseConversations operation.</summary>
     public class GoogleCloudContactcenterinsightsV1DiagnoseConversationsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The list of conversation IDs that were selected for this diagnosis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationIds")]
+        public virtual System.Collections.Generic.IList<string> ConversationIds { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -18018,8 +18027,9 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string AppId { get; set; }
 
         /// <summary>
-        /// Optional. Optional but highly recommended. ces app version. If provided, specific version of agent
-        /// instruction will be retrieved. If empty or set to '-', will use the latest draft version of instruction.
+        /// Required. The CES App version of the agent. Setting to "-" uses the latest draft version. Note that the
+        /// agent active during the conversation history may have different instructions or tool definitions compared
+        /// with the latest draft version.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appVersion")]
         public virtual string AppVersion { get; set; }
@@ -26987,6 +26997,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>Metadata for a DiagnoseConversations operation.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1DiagnoseConversationsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The list of conversation IDs that were selected for this diagnosis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationIds")]
+        public virtual System.Collections.Generic.IList<string> ConversationIds { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -27118,8 +27132,9 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string AppId { get; set; }
 
         /// <summary>
-        /// Optional. Optional but highly recommended. ces app version. If provided, specific version of agent
-        /// instruction will be retrieved. If empty or set to '-', will use the latest draft version of instruction.
+        /// Required. The CES App version of the agent. Setting to "-" uses the latest draft version. Note that the
+        /// agent active during the conversation history may have different instructions or tool definitions compared
+        /// with the latest draft version.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appVersion")]
         public virtual string AppVersion { get; set; }
@@ -33918,6 +33933,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>Metadata for a DiagnoseConversations operation.</summary>
     public class GoogleCloudContactcenterinsightsV1mainDiagnoseConversationsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The list of conversation IDs that were selected for this diagnosis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationIds")]
+        public virtual System.Collections.Generic.IList<string> ConversationIds { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -34049,8 +34068,9 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string AppId { get; set; }
 
         /// <summary>
-        /// Optional. Optional but highly recommended. ces app version. If provided, specific version of agent
-        /// instruction will be retrieved. If empty or set to '-', will use the latest draft version of instruction.
+        /// Required. The CES App version of the agent. Setting to "-" uses the latest draft version. Note that the
+        /// agent active during the conversation history may have different instructions or tool definitions compared
+        /// with the latest draft version.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appVersion")]
         public virtual string AppVersion { get; set; }
