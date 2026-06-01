@@ -2117,6 +2117,14 @@ namespace Google.Apis.DataManager.v1.Data
     /// </summary>
     public class AdIdentifiers : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The display click ID associated with this event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dclid")]
+        public virtual string Dclid { get; set; }
+
+        /// <summary>Optional. Any number of encrypted user IDs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptedUserIds")]
+        public virtual System.Collections.Generic.IList<EncryptedUserId> EncryptedUserIds { get; set; }
+
         /// <summary>
         /// Optional. The click identifier for clicks associated with app events and originating from iOS devices
         /// starting with iOS14.
@@ -2128,12 +2136,20 @@ namespace Google.Apis.DataManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gclid")]
         public virtual string Gclid { get; set; }
 
+        /// <summary>Optional. The impression ID associated with this event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impressionId")]
+        public virtual string ImpressionId { get; set; }
+
         /// <summary>
         /// Optional. Information gathered about the device being used (if any) at the time of landing onto the
         /// advertiser’s site after interacting with the ad.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("landingPageDeviceInfo")]
         public virtual DeviceInfo LandingPageDeviceInfo { get; set; }
+
+        /// <summary>Optional. The match ID field used to join this event with a previous event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchId")]
+        public virtual string MatchId { get; set; }
 
         /// <summary>
         /// Optional. The mobile identifier for advertisers. This would be IDFA on iOS, AdID on Android, or other
@@ -2189,6 +2205,10 @@ namespace Google.Apis.DataManager.v1.Data
     /// <summary>The audience member to be operated on.</summary>
     public class AudienceMember : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Group of multiple identifier types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compositeData")]
+        public virtual CompositeData CompositeData { get; set; }
+
         /// <summary>Optional. The consent setting for the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consent")]
         public virtual Consent Consent { get; set; }
@@ -2314,6 +2334,24 @@ namespace Google.Apis.DataManager.v1.Data
     }
 
     /// <summary>
+    /// Composite data holding identifiers and associated data for a user. At least one of `user_data` or `ip_data` is
+    /// required.
+    /// </summary>
+    public class CompositeData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. IP address data representing customer interaction used to build the audience.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipData")]
+        public virtual System.Collections.Generic.IList<IpData> IpData { get; set; }
+
+        /// <summary>Optional. User-provided data that identifies the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userData")]
+        public virtual UserData UserData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// [Digital Markets Act (DMA)](//digital-markets-act.ec.europa.eu/index_en) consent settings for the user.
     /// </summary>
     public class Consent : Google.Apis.Requests.IDirectResponseSchema
@@ -2365,6 +2403,21 @@ namespace Google.Apis.DataManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variable")]
         public virtual string Variable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The count for a specific data type.</summary>
+    public class DataTypeCount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The count for this data type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>The type of data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2484,6 +2537,38 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A user identifier issued to be used for attribution. All fields are required if this is used.</summary>
+    public class EncryptedUserId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The alphanumeric encrypted id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptedId")]
+        public virtual string EncryptedId { get; set; }
+
+        /// <summary>
+        /// Required. The encryption entity ID. This should match the encryption configuration for ad serving or Data
+        /// Transfer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
+        public virtual System.Nullable<long> EntityId { get; set; }
+
+        /// <summary>
+        /// Required. The encryption entity type. This should match the encryption configuration for ad serving or Data
+        /// Transfer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityType")]
+        public virtual string EntityType { get; set; }
+
+        /// <summary>
+        /// Required. Describes whether the encrypted cookie was received from ad serving (the %m macro) or from Data
+        /// Transfer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Encryption information for the data being ingested.</summary>
     public class EncryptionInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2564,6 +2649,12 @@ namespace Google.Apis.DataManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consent")]
         public virtual Consent Consent { get; set; }
+
+        /// <summary>
+        /// Optional. The conversion quantity associated with the event, for counting-based conversions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionCount")]
+        public virtual System.Nullable<double> ConversionCount { get; set; }
 
         /// <summary>Optional. The conversion value associated with the event, for value-based conversions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionValue")]
@@ -2887,6 +2978,10 @@ namespace Google.Apis.DataManager.v1.Data
     /// <summary>The status of the ingest audience members request.</summary>
     public class IngestAudienceMembersStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The status of the composite data ingestion to the destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compositeDataIngestionStatus")]
+        public virtual IngestCompositeDataStatus CompositeDataIngestionStatus { get; set; }
+
         /// <summary>The status of the mobile data ingestion to the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileDataIngestionStatus")]
         public virtual IngestMobileDataStatus MobileDataIngestionStatus { get; set; }
@@ -2906,6 +3001,33 @@ namespace Google.Apis.DataManager.v1.Data
         /// <summary>The status of the user id data ingestion to the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userIdDataIngestionStatus")]
         public virtual IngestUserIdDataStatus UserIdDataIngestionStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The status of the composite data ingestion to the destination containing stats related to the ingestion.
+    /// </summary>
+    public class IngestCompositeDataStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The total count of data types sent in the upload request for the destination, broken down by data type.
+        /// Includes all data types in the request, regardless of whether they were successfully ingested or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataTypeCounts")]
+        public virtual System.Collections.Generic.IList<DataTypeCount> DataTypeCounts { get; set; }
+
+        /// <summary>
+        /// The total count of audience members sent in the upload request for the destination. Includes all audience
+        /// members in the request, regardless of whether they were successfully ingested or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
+        public virtual System.Nullable<long> RecordCount { get; set; }
+
+        /// <summary>The match rate range of the upload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uploadMatchRateRange")]
+        public virtual string UploadMatchRateRange { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3141,6 +3263,101 @@ namespace Google.Apis.DataManager.v1.Data
         /// <summary>Optional. Additional information when `USER_ID` is one of the `upload_key_types`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userIdInfo")]
         public virtual UserIdInfo UserIdInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// IP address information for a user. We recommend including observe_start_time and observe_end_time to help
+    /// improve Customer Match match rates.
+    /// </summary>
+    public class IpData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. IP address captured at the time of customer interaction. Accepts standard string formats for both
+        /// IPv4 and IPv6.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; }
+
+        private string _observeEndTimeRaw;
+
+        private object _observeEndTime;
+
+        /// <summary>Optional. Last recorded interaction time from this IP address in a session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observeEndTime")]
+        public virtual string ObserveEndTimeRaw
+        {
+            get => _observeEndTimeRaw;
+            set
+            {
+                _observeEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _observeEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ObserveEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ObserveEndTimeDateTimeOffset instead.")]
+        public virtual object ObserveEndTime
+        {
+            get => _observeEndTime;
+            set
+            {
+                _observeEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _observeEndTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ObserveEndTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ObserveEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ObserveEndTimeRaw);
+            set => ObserveEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _observeStartTimeRaw;
+
+        private object _observeStartTime;
+
+        /// <summary>Optional. First recorded interaction time from this IP address in a session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observeStartTime")]
+        public virtual string ObserveStartTimeRaw
+        {
+            get => _observeStartTimeRaw;
+            set
+            {
+                _observeStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _observeStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ObserveStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ObserveStartTimeDateTimeOffset instead.")]
+        public virtual object ObserveStartTime
+        {
+            get => _observeStartTime;
+            set
+            {
+                _observeStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _observeStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ObserveStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ObserveStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ObserveStartTimeRaw);
+            set => ObserveStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3630,6 +3847,10 @@ namespace Google.Apis.DataManager.v1.Data
     /// <summary>The status of the remove audience members request.</summary>
     public class RemoveAudienceMembersStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The status of the composite data removal from the destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compositeDataRemovalStatus")]
+        public virtual RemoveCompositeDataStatus CompositeDataRemovalStatus { get; set; }
+
         /// <summary>The status of the mobile data removal from the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileDataRemovalStatus")]
         public virtual RemoveMobileDataStatus MobileDataRemovalStatus { get; set; }
@@ -3649,6 +3870,27 @@ namespace Google.Apis.DataManager.v1.Data
         /// <summary>The status of the user id data removal from the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userIdDataRemovalStatus")]
         public virtual RemoveUserIdDataStatus UserIdDataRemovalStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of the composite data removal from the destination.</summary>
+    public class RemoveCompositeDataStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The total count of data types sent in the removal request, broken down by data type. Includes all data types
+        /// in the request, regardless of whether they were successfully removed or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataTypeCounts")]
+        public virtual System.Collections.Generic.IList<DataTypeCount> DataTypeCounts { get; set; }
+
+        /// <summary>
+        /// The total count of audience members sent in the removal request. Includes all audience members in the
+        /// request, regardless of whether they were successfully removed or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
+        public virtual System.Nullable<long> RecordCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
