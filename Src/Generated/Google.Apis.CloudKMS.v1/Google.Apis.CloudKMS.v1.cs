@@ -294,8 +294,8 @@ namespace Google.Apis.CloudKMS.v1
 
         /// <summary>Returns the AutokeyConfig for a folder or project.</summary>
         /// <param name="name">
-        /// Required. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig` or
-        /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
+        /// Required. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`,
+        /// `projects/{PROJECT_NUMBER}/autokeyConfig`, or `projects/{PROJECT_ID}/autokeyConfig`.
         /// </param>
         public virtual GetAutokeyConfigRequest GetAutokeyConfig(string name)
         {
@@ -313,8 +313,8 @@ namespace Google.Apis.CloudKMS.v1
             }
 
             /// <summary>
-            /// Required. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig` or
-            /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
+            /// Required. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`,
+            /// `projects/{PROJECT_NUMBER}/autokeyConfig`, or `projects/{PROJECT_ID}/autokeyConfig`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -400,8 +400,8 @@ namespace Google.Apis.CloudKMS.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig` or
-        /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
+        /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`,
+        /// `projects/{PROJECT_NUMBER}/autokeyConfig`, or `projects/{PROJECT_ID}/autokeyConfig`.
         /// </param>
         public virtual UpdateAutokeyConfigRequest UpdateAutokeyConfig(Google.Apis.CloudKMS.v1.Data.AutokeyConfig body, string name)
         {
@@ -425,8 +425,8 @@ namespace Google.Apis.CloudKMS.v1
             }
 
             /// <summary>
-            /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig` or
-            /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
+            /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`,
+            /// `projects/{PROJECT_NUMBER}/autokeyConfig`, or `projects/{PROJECT_ID}/autokeyConfig`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -6080,8 +6080,8 @@ namespace Google.Apis.CloudKMS.v1
 
         /// <summary>Returns the AutokeyConfig for a folder or project.</summary>
         /// <param name="name">
-        /// Required. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig` or
-        /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
+        /// Required. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`,
+        /// `projects/{PROJECT_NUMBER}/autokeyConfig`, or `projects/{PROJECT_ID}/autokeyConfig`.
         /// </param>
         public virtual GetAutokeyConfigRequest GetAutokeyConfig(string name)
         {
@@ -6099,8 +6099,8 @@ namespace Google.Apis.CloudKMS.v1
             }
 
             /// <summary>
-            /// Required. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig` or
-            /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
+            /// Required. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`,
+            /// `projects/{PROJECT_NUMBER}/autokeyConfig`, or `projects/{PROJECT_ID}/autokeyConfig`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -6349,8 +6349,8 @@ namespace Google.Apis.CloudKMS.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig` or
-        /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
+        /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`,
+        /// `projects/{PROJECT_NUMBER}/autokeyConfig`, or `projects/{PROJECT_ID}/autokeyConfig`.
         /// </param>
         public virtual UpdateAutokeyConfigRequest UpdateAutokeyConfig(Google.Apis.CloudKMS.v1.Data.AutokeyConfig body, string name)
         {
@@ -6374,8 +6374,8 @@ namespace Google.Apis.CloudKMS.v1
             }
 
             /// <summary>
-            /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig` or
-            /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
+            /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`,
+            /// `projects/{PROJECT_NUMBER}/autokeyConfig`, or `projects/{PROJECT_ID}/autokeyConfig`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -6783,8 +6783,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string KeyProjectResolutionMode { get; set; }
 
         /// <summary>
-        /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig` or
-        /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
+        /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`,
+        /// `projects/{PROJECT_NUMBER}/autokeyConfig`, or `projects/{PROJECT_ID}/autokeyConfig`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
