@@ -12977,6 +12977,28 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a batch of content to inspect or redact.</summary>
+    public class GooglePrivacyDlpV2BatchContentItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Represents a batch of string values to inspect or redact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValueBatch")]
+        public virtual GooglePrivacyDlpV2StringValueBatch StringValueBatch { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Location within a batch of content.</summary>
+    public class GooglePrivacyDlpV2BatchContentLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Matches an index of a batch item in the batch provided in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemIndex")]
+        public virtual System.Nullable<int> ItemIndex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Target used to match against for discovery with BigQuery tables</summary>
     public class GooglePrivacyDlpV2BigQueryDiscoveryTarget : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13974,6 +13996,10 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Type of content to inspect.</summary>
     public class GooglePrivacyDlpV2ContentItem : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Represents a batch of items to inspect.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchContentItem")]
+        public virtual GooglePrivacyDlpV2BatchContentItem BatchContentItem { get; set; }
+
         /// <summary>Content data to inspect or redact. Replaces `type` and `data`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("byteItem")]
         public virtual GooglePrivacyDlpV2ByteContentItem ByteItem { get; set; }
@@ -14007,6 +14033,10 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Precise location of the finding within a document, record, image, or metadata container.</summary>
     public class GooglePrivacyDlpV2ContentLocation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Location within a batch of content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchContentLocation")]
+        public virtual GooglePrivacyDlpV2BatchContentLocation BatchContentLocation { get; set; }
+
         /// <summary>
         /// Name of the container where the finding is located. The top level name is the source file name or table
         /// name. Names of some common storage containers are formatted as follows: * BigQuery tables:
@@ -20887,6 +20917,17 @@ namespace Google.Apis.DLP.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a batch of string values to inspect or redact.</summary>
+    public class GooglePrivacyDlpV2StringValueBatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Represents string data to inspect or redact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
