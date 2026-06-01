@@ -70,8 +70,14 @@ namespace Google.Apis.GoogleHealthAPI.v4
             /// <summary>See your Google Health activity and fitness data</summary>
             public static string GooglehealthActivityAndFitnessReadonly = "https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly";
 
+            /// <summary>See your Google Health ECG data</summary>
+            public static string GooglehealthEcgReadonly = "https://www.googleapis.com/auth/googlehealth.ecg.readonly";
+
             /// <summary>See your Google Health health metrics and measurement data</summary>
             public static string GooglehealthHealthMetricsAndMeasurementsReadonly = "https://www.googleapis.com/auth/googlehealth.health_metrics_and_measurements.readonly";
+
+            /// <summary>See your Google Health Irregular Rhythm Notifications data</summary>
+            public static string GooglehealthIrnReadonly = "https://www.googleapis.com/auth/googlehealth.irn.readonly";
 
             /// <summary>See exercise GPS location data in Google Health</summary>
             public static string GooglehealthLocationReadonly = "https://www.googleapis.com/auth/googlehealth.location.readonly";
@@ -98,8 +104,14 @@ namespace Google.Apis.GoogleHealthAPI.v4
             /// <summary>See your Google Health activity and fitness data</summary>
             public const string GooglehealthActivityAndFitnessReadonly = "https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly";
 
+            /// <summary>See your Google Health ECG data</summary>
+            public const string GooglehealthEcgReadonly = "https://www.googleapis.com/auth/googlehealth.ecg.readonly";
+
             /// <summary>See your Google Health health metrics and measurement data</summary>
             public const string GooglehealthHealthMetricsAndMeasurementsReadonly = "https://www.googleapis.com/auth/googlehealth.health_metrics_and_measurements.readonly";
+
+            /// <summary>See your Google Health Irregular Rhythm Notifications data</summary>
+            public const string GooglehealthIrnReadonly = "https://www.googleapis.com/auth/googlehealth.irn.readonly";
 
             /// <summary>See exercise GPS location data in Google Health</summary>
             public const string GooglehealthLocationReadonly = "https://www.googleapis.com/auth/googlehealth.location.readonly";
@@ -332,6 +344,363 @@ namespace Google.Apis.GoogleHealthAPI.v4
             public SubscribersResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                Subscriptions = new SubscriptionsResource(service);
+            }
+
+            /// <summary>Gets the Subscriptions resource.</summary>
+            public virtual SubscriptionsResource Subscriptions { get; }
+
+            /// <summary>The "subscriptions" collection of methods.</summary>
+            public class SubscriptionsResource
+            {
+                private const string Resource = "subscriptions";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SubscriptionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Creates a subscription for a specific user to a specific subscriber. This method requires the
+                /// subscriber to have a `SubscriptionCreatePolicy` set to `MANUAL` for the given data types.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent subscriber. Format: projects/{project}/subscribers/{subscriber} The
+                /// {subscriber} ID is user-settable (4-36 characters, matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) if
+                /// provided during creation, or system-generated otherwise.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.GoogleHealthAPI.v4.Data.CreateSubscriptionPayload body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a subscription for a specific user to a specific subscriber. This method requires the
+                /// subscriber to have a `SubscriptionCreatePolicy` set to `MANUAL` for the given data types.
+                /// </summary>
+                public class CreateRequest : GoogleHealthAPIBaseServiceRequest<Google.Apis.GoogleHealthAPI.v4.Data.Subscription>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleHealthAPI.v4.Data.CreateSubscriptionPayload body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent subscriber. Format: projects/{project}/subscribers/{subscriber} The
+                    /// {subscriber} ID is user-settable (4-36 characters, matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) if
+                    /// provided during creation, or system-generated otherwise.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The {subscription_id} is user-settable (4-36 chars, matching
+                    /// /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) or system-generated otherwise. If provided, the ID must be
+                    /// unique within the parent subscriber.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("subscriptionId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string SubscriptionId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.GoogleHealthAPI.v4.Data.CreateSubscriptionPayload Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v4/{+parent}/subscriptions";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/subscribers/[^/]+$",
+                        });
+                        RequestParameters.Add("subscriptionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "subscriptionId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes a specific user subscription, stopping notifications for this user to this subscriber.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The resource name of the subscription to delete. Format:
+                /// `projects/{project}/subscribers/{subscriber}/subscriptions/{subscription}` Example:
+                /// `projects/my-project/subscribers/my-subscriber-123/subscriptions/my-subscription-456` The
+                /// {subscriber} ID is user-settable (4-36 characters, matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) if
+                /// provided during creation, or system-generated otherwise. The {subscription} ID is user-settable
+                /// (4-36 characters, matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) or system-generated if not provided
+                /// during creation.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Deletes a specific user subscription, stopping notifications for this user to this subscriber.
+                /// </summary>
+                public class DeleteRequest : GoogleHealthAPIBaseServiceRequest<Google.Apis.GoogleHealthAPI.v4.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the subscription to delete. Format:
+                    /// `projects/{project}/subscribers/{subscriber}/subscriptions/{subscription}` Example:
+                    /// `projects/my-project/subscribers/my-subscriber-123/subscriptions/my-subscription-456` The
+                    /// {subscriber} ID is user-settable (4-36 characters, matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) if
+                    /// provided during creation, or system-generated otherwise. The {subscription} ID is user-settable
+                    /// (4-36 characters, matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) or system-generated if not provided
+                    /// during creation.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v4/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/subscribers/[^/]+/subscriptions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Lists all active subscriptions for a given subscriber. This can be filtered, for example, by user or
+                /// data type.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The parent subscriber. Format: projects/{project}/subscribers/{subscriber} The
+                /// {subscriber} ID is user-settable (4-36 characters, matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) if
+                /// provided during creation, or system-generated otherwise.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// Lists all active subscriptions for a given subscriber. This can be filtered, for example, by user or
+                /// data type.
+                /// </summary>
+                public class ListRequest : GoogleHealthAPIBaseServiceRequest<Google.Apis.GoogleHealthAPI.v4.Data.ListSubscriptionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent subscriber. Format: projects/{project}/subscribers/{subscriber} The
+                    /// {subscriber} ID is user-settable (4-36 characters, matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) if
+                    /// provided during creation, or system-generated otherwise.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A filter to apply to the list of subscriptions. The filter syntax is described in
+                    /// https://google.aip.dev/160. The filter can be applied to the following fields: - `user` -
+                    /// `data_type` The `user` identifier (e.g., `user1` in `users/user1`) refers to the public
+                    /// `health_user_id` Example: user = "users/user1" Example: user = "users/user1" OR user =
+                    /// "users/user2" Example: user = "users/user1" AND (data_type = "sleep" OR data_type = "weight")
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of subscriptions to return. The service may return fewer than this
+                    /// value. If unspecified, at most 50 subscriptions will be returned. The maximum value is 1000;
+                    /// values above 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListSubscriptions` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListSubscriptions` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v4/{+parent}/subscriptions";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/subscribers/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the data types for an existing user subscription.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The resource name of the Subscription. Format:
+                /// `projects/{project}/subscribers/{subscriber}/subscriptions/{subscription}` Example:
+                /// `projects/my-project/subscribers/my-subscriber-123/subscriptions/my-subscription-456` The {project}
+                /// ID is mandatory (6-30 characters, matching /a-z{6,30}/) The {subscriber} ID is user-settable (4-36
+                /// characters, matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) if provided during creation, or
+                /// system-generated otherwise. The {subscription} ID is user-settable (4-36 chars, matching
+                /// /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) or system-generated otherwise.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.GoogleHealthAPI.v4.Data.Subscription body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the data types for an existing user subscription.</summary>
+                public class PatchRequest : GoogleHealthAPIBaseServiceRequest<Google.Apis.GoogleHealthAPI.v4.Data.Subscription>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleHealthAPI.v4.Data.Subscription body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The resource name of the Subscription. Format:
+                    /// `projects/{project}/subscribers/{subscriber}/subscriptions/{subscription}` Example:
+                    /// `projects/my-project/subscribers/my-subscriber-123/subscriptions/my-subscription-456` The
+                    /// {project} ID is mandatory (6-30 characters, matching /a-z{6,30}/) The {subscriber} ID is
+                    /// user-settable (4-36 characters, matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) if provided during
+                    /// creation, or system-generated otherwise. The {subscription} ID is user-settable (4-36 chars,
+                    /// matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) or system-generated otherwise.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. The list of fields to update.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.GoogleHealthAPI.v4.Data.Subscription Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v4/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/subscribers/[^/]+/subscriptions/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>
@@ -710,6 +1079,7 @@ namespace Google.Apis.GoogleHealthAPI.v4
         {
             this.service = service;
             DataTypes = new DataTypesResource(service);
+            PairedDevices = new PairedDevicesResource(service);
         }
 
         /// <summary>Gets the DataTypes resource.</summary>
@@ -1227,26 +1597,27 @@ namespace Google.Apis.GoogleHealthAPI.v4
                     /// date: - Pattern: `{daily_summary_data_type}.date` - Supported comparison operators: `&amp;gt;=`,
                     /// `&amp;lt;` - Date literal expected in ISO 8601 `YYYY-MM-DD` format - Supported logical
                     /// operators: `AND` - Example: - `daily_heart_rate_variability.date &amp;lt; "2024-08-15"` -
-                    /// Session start time (**ECG specific**): - Pattern: `electrocardiogram.interval.start_time` -
-                    /// Supported comparison operators: `&amp;gt;=` - Timestamp literal expected in RFC-3339 format -
-                    /// Example: - `electrocardiogram.interval.start_time &amp;gt;= "2024-08-14T12:34:56Z"` - Note: Only
-                    /// filtering by start time is supported for ECG. Filtering by end time (e.g.,
-                    /// `electrocardiogram.interval.end_time`) is not supported. - Session civil start time (**Excluding
-                    /// Sleep**): - Pattern: `{session_data_type}.interval.civil_start_time` - Supported comparison
-                    /// operators: `&amp;gt;=`, `&amp;lt;` - Date with optional time literal expected in ISO 8601
-                    /// `YYYY-MM-DD[THH:mm:ss]` format - Supported logical operators: `AND` - Example: -
-                    /// `exercise.interval.civil_start_time &amp;gt;= "2023-11-24" AND
-                    /// exercise.interval.civil_start_time &amp;lt; "2023-11-25"` - `exercise.interval.civil_start_time
-                    /// &amp;gt;= "2024-08-14T12:34:56"` - Session end time (**Sleep specific**): - Pattern:
-                    /// `sleep.interval.end_time` - Supported comparison operators: `&amp;gt;=`, `&amp;lt;` - Timestamp
-                    /// literal expected in RFC-3339 format - Supported logical operators: `AND`, `OR` - Example: -
-                    /// `sleep.interval.end_time &amp;gt;= "2023-11-24T00:00:00Z" AND sleep.interval.end_time &amp;lt;
-                    /// "2023-11-25T00:00:00Z"` - Session civil end time (**Sleep specific**): - Pattern:
-                    /// `sleep.interval.civil_end_time` - Supported comparison operators: `&amp;gt;=`, `&amp;lt;` - Date
-                    /// with optional time literal expected in ISO 8601 `YYYY-MM-DD[THH:mm:ss]` format - Supported
-                    /// logical operators: `AND`, `OR` - Example: - `sleep.interval.civil_end_time &amp;gt;=
-                    /// "2023-11-24" AND sleep.interval.civil_end_time &amp;lt; "2023-11-25"` Data points in the
-                    /// response will be ordered by the interval start time in descending order.
+                    /// Session civil start time (**Excluding Sleep and ECG**): - Pattern:
+                    /// `{session_data_type}.interval.civil_start_time` - Supported comparison operators: `&amp;gt;=`,
+                    /// `&amp;lt;` - Date with optional time literal expected in ISO 8601 `YYYY-MM-DD[THH:mm:ss]` format
+                    /// - Supported logical operators: `AND` - Example: - `exercise.interval.civil_start_time &amp;gt;=
+                    /// "2023-11-24" AND exercise.interval.civil_start_time &amp;lt; "2023-11-25"` -
+                    /// `exercise.interval.civil_start_time &amp;gt;= "2024-08-14T12:34:56"` - Session start time (**ECG
+                    /// specific**): - Pattern: `electrocardiogram.interval.start_time` - Supported comparison
+                    /// operators: `&amp;gt;=` - Timestamp literal expected in RFC-3339 format - Example: -
+                    /// `electrocardiogram.interval.start_time &amp;gt;= "2024-08-14T12:34:56Z"` - Note: Only filtering
+                    /// by start time is supported for ECG. Filtering by end time (e.g.,
+                    /// `electrocardiogram.interval.end_time`) is not supported. - Session end time (**Sleep
+                    /// specific**): - Pattern: `sleep.interval.end_time` - Supported comparison operators: `&amp;gt;=`,
+                    /// `&amp;lt;` - Timestamp literal expected in RFC-3339 format - Supported logical operators: `AND`,
+                    /// `OR` - Example: - `sleep.interval.end_time &amp;gt;= "2023-11-24T00:00:00Z" AND
+                    /// sleep.interval.end_time &amp;lt; "2023-11-25T00:00:00Z"` - Session civil end time (**Sleep
+                    /// specific**): - Pattern: `sleep.interval.civil_end_time` - Supported comparison operators:
+                    /// `&amp;gt;=`, `&amp;lt;` - Date with optional time literal expected in ISO 8601
+                    /// `YYYY-MM-DD[THH:mm:ss]` format - Supported logical operators: `AND`, `OR` - Example: -
+                    /// `sleep.interval.civil_end_time &amp;gt;= "2023-11-24" AND sleep.interval.civil_end_time &amp;lt;
+                    /// "2023-11-25"` Data points in the response will be ordered by the interval start time in
+                    /// descending order.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -1573,6 +1944,152 @@ namespace Google.Apis.GoogleHealthAPI.v4
             }
         }
 
+        /// <summary>Gets the PairedDevices resource.</summary>
+        public virtual PairedDevicesResource PairedDevices { get; }
+
+        /// <summary>The "pairedDevices" collection of methods.</summary>
+        public class PairedDevicesResource
+        {
+            private const string Resource = "pairedDevices";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public PairedDevicesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Returns user's Device.</summary>
+            /// <param name="name">
+            /// Required. The name of the device to retrieve. Format: users/{user}/devices/{device}
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Returns user's Device.</summary>
+            public class GetRequest : GoogleHealthAPIBaseServiceRequest<Google.Apis.GoogleHealthAPI.v4.Data.PairedDevice>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the device to retrieve. Format: users/{user}/devices/{device}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v4/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^users/[^/]+/pairedDevices/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Returns the user's list of paired 1P trackers and smartwatches.</summary>
+            /// <param name="parent">
+            /// Required. The parent, which owns this collection of devices. Format: users/{user}
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>Returns the user's list of paired 1P trackers and smartwatches.</summary>
+            public class ListRequest : GoogleHealthAPIBaseServiceRequest<Google.Apis.GoogleHealthAPI.v4.Data.ListPairedDevicesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The parent, which owns this collection of devices. Format: users/{user}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of devices to return. The service may return fewer than this value. If
+                /// unspecified, at most 5 devices will be returned. The maximum value is 100. values above 100 will be
+                /// coerced to 100.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `ListPairedDevices` call. Provide this to retrieve
+                /// the subsequent page. When paginating, all other parameters provided to `ListPairedDevices` must
+                /// match the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v4/{+parent}/pairedDevices";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^users/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
         /// <summary>
         /// Gets the user's identity. It includes the legacy Fitbit user ID and the Google user ID and it can be used by
         /// migrating clients to map identifiers between the two systems.
@@ -1620,6 +2137,61 @@ namespace Google.Apis.GoogleHealthAPI.v4
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^users/[^/]+/identity$",
+                });
+            }
+        }
+
+        /// <summary>Returns user's IRN Profile details.</summary>
+        /// <param name="name">
+        /// Required. The resource name of the IRN Profile. Format: `users/{user}/irnProfile` Example:
+        /// `users/1234567890/irnProfile` or `users/me/irnProfile` The {user} ID is a system-generated Google Health API
+        /// user ID, a string of 1-63 characters consisting of lowercase and uppercase letters, numbers, and hyphens.
+        /// The literal `me` can also be used to refer to the authenticated user.
+        /// </param>
+        public virtual GetIrnProfileRequest GetIrnProfile(string name)
+        {
+            return new GetIrnProfileRequest(this.service, name);
+        }
+
+        /// <summary>Returns user's IRN Profile details.</summary>
+        public class GetIrnProfileRequest : GoogleHealthAPIBaseServiceRequest<Google.Apis.GoogleHealthAPI.v4.Data.IrnProfile>
+        {
+            /// <summary>Constructs a new GetIrnProfile request.</summary>
+            public GetIrnProfileRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The resource name of the IRN Profile. Format: `users/{user}/irnProfile` Example:
+            /// `users/1234567890/irnProfile` or `users/me/irnProfile` The {user} ID is a system-generated Google Health
+            /// API user ID, a string of 1-63 characters consisting of lowercase and uppercase letters, numbers, and
+            /// hyphens. The literal `me` can also be used to refer to the authenticated user.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getIrnProfile";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v4/{+name}";
+
+            /// <summary>Initializes GetIrnProfile parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^users/[^/]+/irnProfile$",
                 });
             }
         }
@@ -1867,6 +2439,32 @@ namespace Google.Apis.GoogleHealthAPI.v4
 }
 namespace Google.Apis.GoogleHealthAPI.v4.Data
 {
+    /// <summary>Energy burned as part of an activity, excluding the basal energy burn.</summary>
+    public class ActiveEnergyBurned : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Observed interval</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interval")]
+        public virtual ObservationTimeInterval Interval { get; set; }
+
+        /// <summary>Required. Energy burned during an activity, measured in kilocalories.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kcal")]
+        public virtual System.Nullable<double> Kcal { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the result of the rollup of active energy burned.</summary>
+    public class ActiveEnergyBurnedRollupValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Sum of the active energy burned in kilocalories.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kcalSum")]
+        public virtual System.Nullable<double> KcalSum { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Record of active minutes in a given time interval.</summary>
     public class ActiveMinutes : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2009,6 +2607,126 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// An analysis window evaluated for AFib. Note: The current version of the algorithm will only produce alerts if
+    /// all windows are positive. So anything returned from the API will always have the positive bit set to true.
+    /// Internally, windows can be negative, however. We never save "inconclusive" windows (they aren't produced by the
+    /// algorithm).
+    /// </summary>
+    public class AlertWindow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Observed interval end time in civil time in the timezone the subject is in at the end of the
+        /// observed interval
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("civilEndTime")]
+        public virtual CivilDateTime CivilEndTime { get; set; }
+
+        /// <summary>
+        /// Output only. Observed interval start time in civil time in the timezone the subject is in at the start of
+        /// the observed interval
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("civilStartTime")]
+        public virtual CivilDateTime CivilStartTime { get; set; }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Required. The end time of the analysis window.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. The UTC offset of the user's timezone when the analysis window ended.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endUtcOffset")]
+        public virtual object EndUtcOffset { get; set; }
+
+        /// <summary>Optional. All heart beats in the interval contained in this analysis window.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("heartBeats")]
+        public virtual System.Collections.Generic.IList<HeartBeat> HeartBeats { get; set; }
+
+        /// <summary>
+        /// Optional. Flag indicating whether the window was positive for AFib or not. A `true` value indicates that
+        /// AFib was detected in this window. A `false` value means AFib was not detected, but does not guarantee the
+        /// absence of AFib.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("positive")]
+        public virtual System.Nullable<bool> Positive { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Required. Observed interval. The start time of the analysis window.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. The UTC offset of the user's timezone when the analysis window started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startUtcOffset")]
+        public virtual object StartUtcOffset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Captures the altitude gain (i.e. deltas), and not level above sea, for a user in millimeters.</summary>
     public class Altitude : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2099,6 +2817,52 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a blood glucose level measurement. LINT: LEGACY_NAMES</summary>
+    public class BloodGlucose : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Blood glucose level concentration in mg/dL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bloodGlucoseMilligramsPerDeciliter")]
+        public virtual System.Nullable<double> BloodGlucoseMilligramsPerDeciliter { get; set; }
+
+        /// <summary>Optional. Meal type of the measurement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mealType")]
+        public virtual string MealType { get; set; }
+
+        /// <summary>Optional. Source of the measurement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("measurementSource")]
+        public virtual string MeasurementSource { get; set; }
+
+        /// <summary>Optional. Timing of the measurement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("measurementTiming")]
+        public virtual string MeasurementTiming { get; set; }
+
+        /// <summary>Optional. Standard free-form notes captured at manual logging.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notes")]
+        public virtual string Notes { get; set; }
+
+        /// <summary>Required. The time at which blood glucose was measured.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleTime")]
+        public virtual ObservationSampleTime SampleTime { get; set; }
+
+        /// <summary>Optional. Type of body fluid used to measure the blood glucose.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("specimen")]
+        public virtual string Specimen { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the result of the rollup of the blood glucose data type. LINT: LEGACY_NAMES</summary>
+    public class BloodGlucoseRollupValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Average blood glucose level in mg/dL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bloodGlucoseMilligramsPerDeciliterAvg")]
+        public virtual System.Nullable<double> BloodGlucoseMilligramsPerDeciliterAvg { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Body fat measurement.</summary>
     public class BodyFat : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2184,6 +2948,51 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Core body temperature measurement, distinct from peripheral body temperature, reflects the temperature of the
+    /// body's internal organs.
+    /// </summary>
+    public class CoreBodyTemperature : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The unique identifier of the core body temperature measurement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Optional. The location of the core body temperature measurement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("measurementLocation")]
+        public virtual string MeasurementLocation { get; set; }
+
+        /// <summary>Required. The time at which core body temperature was measured.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleTime")]
+        public virtual ObservationSampleTime SampleTime { get; set; }
+
+        /// <summary>Required. The core body temperature in Celsius.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("temperatureCelsius")]
+        public virtual System.Nullable<double> TemperatureCelsius { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the result of the rollup of the core body temperature data type.</summary>
+    public class CoreBodyTemperatureRollupValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Average core body temperature in Celsius.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("temperatureCelsiusAvg")]
+        public virtual System.Nullable<double> TemperatureCelsiusAvg { get; set; }
+
+        /// <summary>Maximum core body temperature in Celsius.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("temperatureCelsiusMax")]
+        public virtual System.Nullable<double> TemperatureCelsiusMax { get; set; }
+
+        /// <summary>Minimum core body temperature in Celsius.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("temperatureCelsiusMin")]
+        public virtual System.Nullable<double> TemperatureCelsiusMin { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Payload for creating a subscriber.</summary>
     public class CreateSubscriberPayload : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2205,6 +3014,25 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>Optional. Configuration for the subscriber.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriberConfigs")]
         public virtual System.Collections.Generic.IList<SubscriberConfig> SubscriberConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Payload for creating a subscription.</summary>
+    public class CreateSubscriptionPayload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Data types subscribed to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataTypes")]
+        public virtual System.Collections.Generic.IList<string> DataTypes { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The resource name of the user for whom this subscription is active. Format:
+        /// `users/{user}` where `{user}` is the public `healthUserId` as returned by the `GetIdentity` action in the
+        /// profile PAPI (see `google.devicesandservices.health.v4main.HealthProfileService.GetIdentity`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual string User { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2410,6 +3238,12 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     public class DailyRollupDataPoint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Returned by default when rolling up data points from the `active-energy-burned` data type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeEnergyBurned")]
+        public virtual ActiveEnergyBurnedRollupValue ActiveEnergyBurned { get; set; }
+
+        /// <summary>
         /// Returned by default when rolling up data points from the `active-minutes` data type, or when requested
         /// explicitly using the `active-minutes` rollup type identifier.
         /// </summary>
@@ -2437,6 +3271,10 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("altitude")]
         public virtual AltitudeRollupValue Altitude { get; set; }
 
+        /// <summary>Returned by default when rolling up data points from the `blood-glucose` data type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bloodGlucose")]
+        public virtual BloodGlucoseRollupValue BloodGlucose { get; set; }
+
         /// <summary>
         /// Returned by default when rolling up data points from the `body-fat` data type, or when requested explicitly
         /// using the `body-fat` rollup type identifier.
@@ -2458,6 +3296,13 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>Start time of the window this value aggregates over</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("civilStartTime")]
         public virtual CivilDateTime CivilStartTime { get; set; }
+
+        /// <summary>
+        /// Returned by default when rolling up data points from the `core-body-temperature` data type, or when
+        /// requested explicitly using the `core-body-temperature` rollup type identifier.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coreBodyTemperature")]
+        public virtual CoreBodyTemperatureRollupValue CoreBodyTemperature { get; set; }
 
         /// <summary>
         /// Returned by default when rolling up data points from the `distance` data type, or when requested explicitly
@@ -2493,6 +3338,13 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hydrationLog")]
         public virtual HydrationLogRollupValue HydrationLog { get; set; }
+
+        /// <summary>
+        /// Returned by default when rolling up data points from the `nutrition-log` data type, or when requested
+        /// explicitly using the `nutrition-log` rollup type identifier.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nutritionLog")]
+        public virtual NutritionLogRollupValue NutritionLog { get; set; }
 
         /// <summary>
         /// Returned by default when rolling up data points from the `daily-resting-heart-rate` data type, or when
@@ -2627,6 +3479,10 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     /// <summary>A computed or recorded metric.</summary>
     public class DataPoint : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Data for points in the `active-energy-burned` interval data type collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeEnergyBurned")]
+        public virtual ActiveEnergyBurned ActiveEnergyBurned { get; set; }
+
         /// <summary>Optional. Data for points in the `active-minutes` interval data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeMinutes")]
         public virtual ActiveMinutes ActiveMinutes { get; set; }
@@ -2649,9 +3505,17 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("basalEnergyBurned")]
         public virtual BasalEnergyBurned BasalEnergyBurned { get; set; }
 
+        /// <summary>Optional. Data for points in the `blood-glucose` sample data type collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bloodGlucose")]
+        public virtual BloodGlucose BloodGlucose { get; set; }
+
         /// <summary>Optional. Data for points in the `body-fat` sample data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bodyFat")]
         public virtual BodyFat BodyFat { get; set; }
+
+        /// <summary>Optional. Data for points in the `core-body-temperature` sample data type collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coreBodyTemperature")]
+        public virtual CoreBodyTemperature CoreBodyTemperature { get; set; }
 
         /// <summary>
         /// Optional. Data for points in the `daily-heart-rate-variability` daily data type collection.
@@ -2693,6 +3557,10 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("distance")]
         public virtual Distance Distance { get; set; }
 
+        /// <summary>Optional. Data for points in the `electrocardiogram` session data type collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("electrocardiogram")]
+        public virtual Electrocardiogram Electrocardiogram { get; set; }
+
         /// <summary>Optional. Data for points in the `exercise` session data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exercise")]
         public virtual Exercise Exercise { get; set; }
@@ -2700,6 +3568,14 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>Optional. Data for points in the `floors` interval data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floors")]
         public virtual Floors Floors { get; set; }
+
+        /// <summary>Optional. The food details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("food")]
+        public virtual Food Food { get; set; }
+
+        /// <summary>Optional. The food measurement unit details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("foodMeasurementUnit")]
+        public virtual FoodMeasurementUnit FoodMeasurementUnit { get; set; }
 
         /// <summary>Optional. Data for points in the `heart-rate` sample data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("heartRate")]
@@ -2718,6 +3594,12 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         public virtual HydrationLog HydrationLog { get; set; }
 
         /// <summary>
+        /// Optional. Data for points in the `irregular-rhythm-notification` session data type collection.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("irregularRhythmNotification")]
+        public virtual IrregularRhythmNotification IrregularRhythmNotification { get; set; }
+
+        /// <summary>
         /// Identifier. Data point name, only supported for the subset of identifiable data types. For the majority of
         /// the data types, individual data points do not need to be identified and this field would be empty. Format:
         /// `users/{user}/dataTypes/{data_type}/dataPoints/{data_point}` Example:
@@ -2730,6 +3612,10 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Optional. Data for points in the `nutrition-log` session data type collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nutritionLog")]
+        public virtual NutritionLog NutritionLog { get; set; }
 
         /// <summary>Optional. Data for points in the `oxygen-saturation` sample data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oxygenSaturation")]
@@ -2954,6 +3840,73 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     }
 
     /// <summary>
+    /// Represents an Electrocardiogram (ECG) measurement session. This data type is based on SaMD feature and any
+    /// changes to it may require additional review.
+    /// </summary>
+    public class Electrocardiogram : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Average heart rate recorded during ECG reading in beats per minute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("beatsPerMinuteAvg")]
+        public virtual System.Nullable<long> BeatsPerMinuteAvg { get; set; }
+
+        /// <summary>
+        /// Required. Observed interval. NOTE: Historical ECG data lacks timezone offsets, so `start_utc_offset` and
+        /// `end_utc_offset` will be missing or default to zero. As a result, the civil time fields within this interval
+        /// will default to UTC. It is recommended to use physical time fields instead for accurate time referencing.
+        /// NOTE: The `start_time` and `end_time` of the interval are equal, representing the reading time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interval")]
+        public virtual SessionTimeInterval Interval { get; set; }
+
+        /// <summary>Optional. The number of leads used for ECG reading.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("leadNumber")]
+        public virtual System.Nullable<int> LeadNumber { get; set; }
+
+        /// <summary>
+        /// Output only. The meta information for the compatible device used to conduct the measurement. ECG
+        /// measurements typically populate `firmware_version`, `feature_version`, and `device_model`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("medicalDeviceInfo")]
+        public virtual MedicalDeviceInfo MedicalDeviceInfo { get; set; }
+
+        /// <summary>
+        /// Optional. The factor by which to divide waveform samples to get voltage in millivolts: millivolts =
+        /// waveform_sample / millivolts_scaling_factor.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("millivoltsScalingFactor")]
+        public virtual System.Nullable<int> MillivoltsScalingFactor { get; set; }
+
+        /// <summary>Optional. The result classification of the ECG reading.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultClassification")]
+        public virtual string ResultClassification { get; set; }
+
+        /// <summary>Optional. The sampling frequency of waveform samples in hertz.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("samplingFrequencyHertz")]
+        public virtual System.Nullable<int> SamplingFrequencyHertz { get; set; }
+
+        /// <summary>
+        /// Optional. An array of voltage values representing lead I ECG values. Each sample represents voltage
+        /// difference in ECG graph. The first value in array corresponds to the start of the reading.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("waveformSamples")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> WaveformSamples { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    /// </summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Authorization mechanism for a subscriber endpoint. For all requests sent by the Webhooks service, the JSON
     /// payload is cryptographically signed. The signature is delivered in the `X-HEALTHAPI-SIGNATURE` HTTP header. This
     /// is an ECDSA (NIST P256) signature of the JSON payload. Clients must verify this signature using Google Health
@@ -2974,6 +3927,36 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>Output only. Whether the secret is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretSet")]
         public virtual System.Nullable<bool> SecretSet { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the energy quantity.</summary>
+    public class EnergyQuantity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Value representing the energy in kilocalories.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kcal")]
+        public virtual System.Nullable<double> Kcal { get; set; }
+
+        /// <summary>Optional. Value representing the user provided unit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userProvidedUnit")]
+        public virtual string UserProvidedUnit { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Rollup for the energy quantity.</summary>
+    public class EnergyQuantityRollup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The sum of the energy in kilocalories.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kcalSum")]
+        public virtual System.Nullable<double> KcalSum { get; set; }
+
+        /// <summary>Optional. The user provided unit on the last element.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userProvidedUnitLast")]
+        public virtual string UserProvidedUnitLast { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3216,6 +4199,125 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a food item.</summary>
+    public class Food : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The access level of the food.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessLevel")]
+        public virtual string AccessLevel { get; set; }
+
+        /// <summary>Optional. The brand of the food.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brand")]
+        public virtual string Brand { get; set; }
+
+        /// <summary>Required. Value representing the default serving of the food.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultServing")]
+        public virtual FoodServing DefaultServing { get; set; }
+
+        /// <summary>Optional. The description of the food.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. The display name of the food.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. Value representing the average energy of the food for the default serving.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("energyAvg")]
+        public virtual EnergyQuantity EnergyAvg { get; set; }
+
+        /// <summary>Optional. Value representing the energy from fat of the food for the default serving.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("energyFromFat")]
+        public virtual EnergyQuantity EnergyFromFat { get; set; }
+
+        /// <summary>Optional. Value representing the maximum energy of the food for the default serving.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("energyMax")]
+        public virtual EnergyQuantity EnergyMax { get; set; }
+
+        /// <summary>Optional. Value representing the minimum energy of the food for the default serving.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("energyMin")]
+        public virtual EnergyQuantity EnergyMin { get; set; }
+
+        /// <summary>
+        /// Optional. The language code where the food is available in format xx-XX. Supported values are defined in
+        /// Settings.food_language_code.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>Optional. The meal type associated with this food.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mealType")]
+        public virtual string MealType { get; set; }
+
+        /// <summary>Optional. Value representing the nutrients of the food for the default serving.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nutrients")]
+        public virtual System.Collections.Generic.IList<NutrientQuantity> Nutrients { get; set; }
+
+        /// <summary>Optional. The serving of the food.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servings")]
+        public virtual System.Collections.Generic.IList<FoodServing> Servings { get; set; }
+
+        /// <summary>Optional. Value representing the total carbohydrate of the food for the default serving.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCarbohydrate")]
+        public virtual WeightQuantity TotalCarbohydrate { get; set; }
+
+        /// <summary>Optional. Value representing the total fat of the food for the default serving.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalFat")]
+        public virtual WeightQuantity TotalFat { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a food measurement unit.</summary>
+    public class FoodMeasurementUnit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The display name of the food measurement unit (e.g., "gram", "piece").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. The plural display name of the food measurement unit (e.g., "grams", "pieces").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pluralDisplayName")]
+        public virtual string PluralDisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents different properties and information about the serving of a specific food.</summary>
+    public class FoodServing : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Amount of food consumed, fractional values are supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amount")]
+        public virtual System.Nullable<double> Amount { get; set; }
+
+        /// <summary>Required. Food measurement unit</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("foodMeasurementUnit")]
+        public virtual string FoodMeasurementUnit { get; set; }
+
+        /// <summary>
+        /// Output only. Legacy measurement unit for serving size in singular form (e.g. "piece", "gram").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("foodMeasurementUnitDisplayName")]
+        public virtual string FoodMeasurementUnitDisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. Legacy measurement unit for serving size in plural form (e.g. "pieces", "grams").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("foodMeasurementUnitDisplayNamePlural")]
+        public virtual string FoodMeasurementUnitDisplayNamePlural { get; set; }
+
+        /// <summary>
+        /// Optional. Value representing the multiplier used to compute the energy when using this serving instead of
+        /// the default serving.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiplier")]
+        public virtual System.Nullable<double> Multiplier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a type of health data a user can have data points recorded for. It matches the parent resource of
     /// collection containing data points of the given type. Clients currently do not need to interact with this
@@ -3226,6 +4328,23 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>
         /// Identifier. The resource name of the data type. Format: `users/{user}/dataTypes/{data_type}` See
         /// DataPoint.name for examples and possible values.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a user in the Google Health API. It matches the parent resource of collections owned by the user.
+    /// Clients currently do not need to interact with this resource directly.
+    /// </summary>
+    public class GoogleDevicesandservicesHealthV4User : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Identifier. The resource name of the user. The `{user}` ID is a system-generated identifier, as described in
+        /// Identity.health_user_id. Format: `users/{user}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3246,6 +4365,68 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpResponse")]
         public virtual HttpResponse HttpResponse { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single heart beat measurement.</summary>
+    public class HeartBeat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The beats-per-minute value extrapolated from the time before the following heart beat. This is
+        /// calculated as 60000 / rr, where rr is the gap between heart beats in milliseconds (IBI - Interbeat
+        /// Interval).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("beatsPerMinute")]
+        public virtual System.Nullable<int> BeatsPerMinute { get; set; }
+
+        /// <summary>
+        /// Output only. The civil time in the timezone the subject is in at the time of the observation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("civilTime")]
+        public virtual CivilDateTime CivilTime { get; set; }
+
+        private string _physicalTimeRaw;
+
+        private object _physicalTime;
+
+        /// <summary>Required. The time of the heart beat measurement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("physicalTime")]
+        public virtual string PhysicalTimeRaw
+        {
+            get => _physicalTimeRaw;
+            set
+            {
+                _physicalTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _physicalTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="PhysicalTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PhysicalTimeDateTimeOffset instead.")]
+        public virtual object PhysicalTime
+        {
+            get => _physicalTime;
+            set
+            {
+                _physicalTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _physicalTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PhysicalTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PhysicalTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PhysicalTimeRaw);
+            set => PhysicalTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. The UTC offset of the user's timezone when the heart beat measurement occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utcOffset")]
+        public virtual object UtcOffset { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3567,6 +4748,102 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Irregular Rhythm Notifications (IRN) Profile details. The Irregular Rhythm Notifications (IRN) feature checks
+    /// for signs of atrial fibrillation (AFib). The IrnProfile details include information about the user's onboarding
+    /// status, enrollment status, and the last update time of analyzable data for this feature.
+    /// </summary>
+    public class IrnProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Whether or not the user is currently enrolled in having their data processed for IRN alerts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enrollmentStatus")]
+        public virtual System.Nullable<bool> EnrollmentStatus { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of this IrnProfile resource. Format: `users/{user}/irnProfile` Example:
+        /// `users/1234567890/irnProfile` or `users/me/irnProfile` The {user} ID is a system-generated Google Health API
+        /// user ID, a string of 1-63 characters consisting of lowercase and uppercase letters, numbers, and hyphens.
+        /// The literal `me` can also be used to refer to the authenticated user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. Whether or not the user has onboarded onto the IRN feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onboardingStatus")]
+        public virtual System.Nullable<bool> OnboardingStatus { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp of the last piece of analyzable data synced by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents an Irregular Rhythm Notification alert, indicating a potential sign of atrial fibrillation (AFib).
+    /// This data type is based on SaMD feature and any changes to it may require additional review.
+    /// </summary>
+    public class IrregularRhythmNotification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The overlapping analysis windows that were used to evaluate rhythm for potential AFib, containing
+        /// specific information about the user's heart rhythm.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertWindows")]
+        public virtual System.Collections.Generic.IList<AlertWindow> AlertWindows { get; set; }
+
+        /// <summary>Required. Observed interval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interval")]
+        public virtual SessionTimeInterval Interval { get; set; }
+
+        /// <summary>
+        /// Output only. The meta information for the compatible device used to conduct the measurement. Irregular
+        /// Rhythm Notification measurements typically populate `algorithm_version`, `service_version`, and
+        /// `device_model`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("medicalDeviceInfo")]
+        public virtual MedicalDeviceInfo MedicalDeviceInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response containing raw data points matching the query</summary>
     public class ListDataPointsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3577,6 +4854,24 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>Next page token, empty if the response is complete</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListPairedDevices.</summary>
+    public class ListPairedDevicesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The paired devices of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pairedDevices")]
+        public virtual System.Collections.Generic.IList<PairedDevice> PairedDevices { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3599,6 +4894,57 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>The total number of subscribers matching the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<int> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListSubscriptions.</summary>
+    public class ListSubscriptionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The subscriptions from the specified subscriber.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptions")]
+        public virtual System.Collections.Generic.IList<Subscription> Subscriptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Software as Medical Device (SaMD) metadata. Used to construct the Unique Device Identifier (UDI).
+    /// </summary>
+    public class MedicalDeviceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The algorithm version used by the feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("algorithmVersion")]
+        public virtual string AlgorithmVersion { get; set; }
+
+        /// <summary>
+        /// Output only. The model name or device type of the compatible device used to collect the data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceModel")]
+        public virtual string DeviceModel { get; set; }
+
+        /// <summary>Output only. The version of the feature/app running on the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureVersion")]
+        public virtual string FeatureVersion { get; set; }
+
+        /// <summary>
+        /// Output only. The firmware version running on the compatible device used to collect the data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firmwareVersion")]
+        public virtual string FirmwareVersion { get; set; }
+
+        /// <summary>Output only. The service version used by the feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceVersion")]
+        public virtual string ServiceVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3697,6 +5043,137 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>Optional. Vertical oscillation/stride length between [5.0, 11.0].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("avgVerticalRatio")]
         public virtual System.Nullable<double> AvgVerticalRatio { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the quantity of a nutrient.</summary>
+    public class NutrientQuantity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Value representing the nutrient.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nutrient")]
+        public virtual string Nutrient { get; set; }
+
+        /// <summary>Required. Value representing the quantity of the nutrient.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
+        public virtual WeightQuantity Quantity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Nutrient quantity rollup.</summary>
+    public class NutrientQuantityRollup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Aggregated nutrient.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nutrient")]
+        public virtual string Nutrient { get; set; }
+
+        /// <summary>Required. Aggregated nutrient weight.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
+        public virtual WeightQuantityRollup Quantity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Holds information about a user logged food. There are two ways of creating a nutrition log based on the food
+    /// type: 1. Identified food: Using the food field, which is a reference to a Food resource. In this case fields
+    /// `nutrients`, `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `food_display_name` will be
+    /// populated based on the referenced food. 2. Anonymous food: Using the `food_display_name` field and setting the
+    /// `nutrients`, `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat` fields manually. The identified food
+    /// is preferred over the anonymous food. Nutrition logs created from anonymous food are not be editable.
+    /// </summary>
+    public class NutritionLog : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Value representing the energy of the nutrition log. For nutrition logs created from an identified
+        /// food, this field will be populated based on the referenced food. For anonymous food, this field will be
+        /// populated manually.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("energy")]
+        public virtual EnergyQuantity Energy { get; set; }
+
+        /// <summary>
+        /// Optional. Value representing the energy from fat of the nutrition log. For nutrition logs created from an
+        /// identified food, this field will be populated based on the referenced food. For anonymous food, this field
+        /// will be populated manually.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("energyFromFat")]
+        public virtual EnergyQuantity EnergyFromFat { get; set; }
+
+        /// <summary>Required. Represents the food ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("food")]
+        public virtual string Food { get; set; }
+
+        /// <summary>
+        /// Value representing the display name of the food. For nutrition logs created from an identified food, this
+        /// field will be populated based on the referenced food. For anonymous food, this field will be populated
+        /// manually.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("foodDisplayName")]
+        public virtual string FoodDisplayName { get; set; }
+
+        /// <summary>Required. Observed interval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interval")]
+        public virtual SessionTimeInterval Interval { get; set; }
+
+        /// <summary>Optional. Value representing the meal type of the nutrition log.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mealType")]
+        public virtual string MealType { get; set; }
+
+        /// <summary>Optional. Value representing the nutrients of the nutrition log.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nutrients")]
+        public virtual System.Collections.Generic.IList<NutrientQuantity> Nutrients { get; set; }
+
+        /// <summary>Optional. Value representing the nutrition log serving.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serving")]
+        public virtual Serving Serving { get; set; }
+
+        /// <summary>
+        /// Optional. Value representing the total carbohydrate of the nutrition log. For nutrition logs created from an
+        /// identified food, this field will be populated based on the referenced food. For anonymous food, this field
+        /// will be populated manually.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCarbohydrate")]
+        public virtual WeightQuantity TotalCarbohydrate { get; set; }
+
+        /// <summary>
+        /// Optional. Value representing the total fat of the nutrition log. For nutrition logs created from an
+        /// identified food, this field will be populated based on the referenced food. For anonymous food, this field
+        /// will be populated manually.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalFat")]
+        public virtual WeightQuantity TotalFat { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the result of the rollup of the nutrition log data type.</summary>
+    public class NutritionLogRollupValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Energy rollup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("energy")]
+        public virtual EnergyQuantityRollup Energy { get; set; }
+
+        /// <summary>Value Energy from fat rollup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("energyFromFat")]
+        public virtual EnergyQuantityRollup EnergyFromFat { get; set; }
+
+        /// <summary>List of the nutrient roll-ups by the nutrient type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nutrients")]
+        public virtual System.Collections.Generic.IList<NutrientQuantityRollup> Nutrients { get; set; }
+
+        /// <summary>Total carbohydrate rollup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCarbohydrate")]
+        public virtual WeightQuantityRollup TotalCarbohydrate { get; set; }
+
+        /// <summary>Total fat rollup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalFat")]
+        public virtual WeightQuantityRollup TotalFat { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4021,6 +5498,121 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// User's Paired 1P Device The PairedDevice details include information about the device type, battery status,
+    /// battery level, last sync time, device version, mac address, and features.
+    /// </summary>
+    public class PairedDevice : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The battery level of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batteryLevel")]
+        public virtual System.Nullable<int> BatteryLevel { get; set; }
+
+        /// <summary>Output only. The battery status of the device. Supported: High | Medium | Low | Empty</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batteryStatus")]
+        public virtual string BatteryStatus { get; set; }
+
+        /// <summary>Output only. The device type. Supported: TRACKER | SCALE</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceType")]
+        public virtual string DeviceType { get; set; }
+
+        /// <summary>Output only. The product name of the device</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceVersion")]
+        public virtual string DeviceVersion { get; set; }
+
+        /// <summary>
+        /// Output only. Lists of unique features supported by the device. Comprehensive list of supported features:
+        /// **Fitness Tracking** - `ACTIVE_MINUTES`: Legacy active minutes. - `AUTOSTRIDE`: Automatic stride length
+        /// calculation. - `BIKE_ONBOARDING`: Cycling UI support. - `CALORIES`: Daily burned calories. - `DISTANCE`:
+        /// Daily distance tracking. - `ELEVATION`: Floors climbed. - `INACTIVITY_ALERTS`: Reminders to move. -
+        /// `SEDENTARY_TIME`: Tracks inactive time. - `STEPS`: Daily steps. - `SWIM`: Swim tracking (laps/strokes). -
+        /// `AUTORUN`: Automatic run detection. - `ACTIVE_ZONE_MINUTES`: Active Zone Minutes (AZM). **Heart Rate
+        /// &amp;amp; Health** - `HEART_RATE`: Continuous heart rate (PPG). - `BAT_SIGNAL`: High/Low Heart Rate Alerts.
+        /// **Advanced Sensors** - `SPO2`: Blood oxygen saturation. - `NIGHTTIME_OXYGEN_SATURATION`: Sleep SpO2. -
+        /// `ESTIMATED_OXYGEN_VARIATION`: Estimated Oxygen Variation. - `EDA`: Electrodermal Activity (stress). -
+        /// `SKIN_TEMPERATURE`: Skin temperature variation. - `INTERNAL_DEVICE_TEMPERATURE`: Internal device
+        /// temperature. **Sleep &amp;amp; Wellness** - `SLEEP`: Basic sleep tracking. - `SMART_SLEEP`: Advanced sleep
+        /// tracking (stages/score). - `BEDTIME_REMINDER`: Bedtime reminders. - `SOUNDSCAPE`: Snore and noise detection.
+        /// **Advanced Workouts** - `WB`: Custom Workout Builder. - `AUTOCUES`: Auto Cues / Auto Lap. - `DWR_RUN`: Daily
+        /// Run Recommendations. - `ADVANCED_RUNNING`: Advanced Running Dynamics (e.g., GCT, VO). **GPS &amp;amp;
+        /// Location** - `GPS`: Built-in GPS. - `CONNECTED_GPS`: Connected GPS (uses phone). - `LOCATION_HINT`: Location
+        /// helper. **Payments &amp;amp; NFC** - `PAYMENTS`: NFC payments (Fitbit Pay/Google Wallet). - `FELICA`: FeliCa
+        /// support (Japan payments/transit). **Activity Detection** - `GROK`: SmartTrack automatic activity detection.
+        /// - `RETRO_AR`: Retroactive Activity Recognition prompts. **Smart Features &amp;amp; UI** - `ALARMS`: Silent
+        /// alarms. - `BLE_MUSIC_CONTROL`: BLE music control. - `MUSIC`: Direct music storage/control. -
+        /// `YOUTUBE_MUSIC_SUPPORTED`: YouTube Music support. - `GALLERY`: App Gallery. - `TUTORIAL_SUPPORTED`:
+        /// On-screen tutorials. - `SMILEY_EMOTE`: Legacy Zip face. - `MOBILE_TO_DEVICE_DEEPLINK`: Mobile to device
+        /// settings deep link. - `HIDE_GALLERY`: Option to hide Gallery. - `HIDE_GOAL_SELECTION`: Option to hide goal
+        /// selection. - `DIGITAL_WARRANTY_SUPPORTED`: Digital warranty display. - `DIRECT_DEVICE_SETTINGS_SUPPORTED`:
+        /// Direct device settings management. **Gym HR Broadcasting** - `ASPEN_SUPPORTED`: Broadcast HR to gym
+        /// equipment. - `ASPEN_REMOTE_UI_SUPPORTED`: Remote UI for HR sharing. **Privacy &amp;amp; Security** -
+        /// `FINITE_IMPROBABILITY`: BLE Resolvable Private Address (RPA) privacy. - `DOMAIN_KEY_SYNC`: Domain key
+        /// synchronization. **BLE Protocol** - `BONDING`: Secure BLE bonding. - `ADVERTISES_SERIAL`: Advertises serial
+        /// number. - `STATUS_CHARACTERISTIC`: BLE Status Characteristic. - `TRACKER_CHANNEL_CHARACTERISTIC`: BLE
+        /// Tracker Channel Characteristic. - `PING_CHARACTERISTIC`: BLE Ping Characteristic. **Cellular &amp;amp;
+        /// Wi-Fi** - `MOBILE_DATA`: LTE cellular support. - `SINGLE_AP_WIFI`: Single AP Wi-Fi. - `MULTI_AP_WIFI`: Multi
+        /// AP Wi-Fi. - `WIFI_FWUP`: Firmware updates over Wi-Fi. **Data Sync &amp;amp; Transfer** - `APP_SYNC`:
+        /// Background app sync. - `LIVE_DATA`: Real-time data streaming. - `EVENT_BASED_SYNC_SUPPORTED`: Event-based
+        /// sync. - `TIME_SERVICE`: Time synchronization service. - `REMOTE_FILE_PROVIDER`: Remote file transfer. -
+        /// `DIRECT_COMMS_ALARMS`: Direct communication for alarms. - `DIRECT_COMMS_EXERCISE`: Direct communication for
+        /// exercise. - `DIRECT_COMMS_BATTERY_ALERTS`: Direct communication for battery alerts. **Google Integrations**
+        /// - `PARROT_TREE_SUPPORTED`: Find My Device support.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("features")]
+        public virtual System.Collections.Generic.IList<string> Features { get; set; }
+
+        private string _lastSyncTimeRaw;
+
+        private object _lastSyncTime;
+
+        /// <summary>Output only. The time of last sync with the Fitbit mobile application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastSyncTime")]
+        public virtual string LastSyncTimeRaw
+        {
+            get => _lastSyncTimeRaw;
+            set
+            {
+                _lastSyncTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastSyncTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastSyncTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastSyncTimeDateTimeOffset instead.")]
+        public virtual object LastSyncTime
+        {
+            get => _lastSyncTime;
+            set
+            {
+                _lastSyncTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastSyncTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastSyncTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastSyncTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastSyncTimeRaw);
+            set => LastSyncTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Mac ID number of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("macAddress")]
+        public virtual string MacAddress { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of this Device resource. Format: `users/{user}/pairedDevices/{paired_device}`
+        /// Example: `users/1234567890/pairedDevices/123` or `users/me/pairedDevices/123`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Profile details.</summary>
     public class Profile : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4104,6 +5696,10 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     /// <summary>A reconciled computed or recorded metric.</summary>
     public class ReconciledDataPoint : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Data for points in the `active-energy-burned` interval data type collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeEnergyBurned")]
+        public virtual ActiveEnergyBurned ActiveEnergyBurned { get; set; }
+
         /// <summary>Data for points in the `active-minutes` interval data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeMinutes")]
         public virtual ActiveMinutes ActiveMinutes { get; set; }
@@ -4126,9 +5722,17 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("basalEnergyBurned")]
         public virtual BasalEnergyBurned BasalEnergyBurned { get; set; }
 
+        /// <summary>Data for points in the `blood-glucose` sample data type collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bloodGlucose")]
+        public virtual BloodGlucose BloodGlucose { get; set; }
+
         /// <summary>Data for points in the `body-fat` sample data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bodyFat")]
         public virtual BodyFat BodyFat { get; set; }
+
+        /// <summary>Data for points in the `core-body-temperature` sample data type collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coreBodyTemperature")]
+        public virtual CoreBodyTemperature CoreBodyTemperature { get; set; }
 
         /// <summary>Data for points in the `daily-heart-rate-variability` daily data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dailyHeartRateVariability")]
@@ -4199,6 +5803,10 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>Data for points in the `hydration-log` session data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hydrationLog")]
         public virtual HydrationLog HydrationLog { get; set; }
+
+        /// <summary>Data for points in the `nutrition-log` session data type collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nutritionLog")]
+        public virtual NutritionLog NutritionLog { get; set; }
 
         /// <summary>Data for points in the `oxygen-saturation` sample data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oxygenSaturation")]
@@ -4377,6 +5985,12 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     public class RollupDataPoint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Returned by default when rolling up data points from the `active-energy-burned` data type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeEnergyBurned")]
+        public virtual ActiveEnergyBurnedRollupValue ActiveEnergyBurned { get; set; }
+
+        /// <summary>
         /// Returned by default when rolling up data points from the `active-minutes` data type, or when requested
         /// explicitly using the `active-minutes` rollup type identifier.
         /// </summary>
@@ -4404,6 +6018,10 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("altitude")]
         public virtual AltitudeRollupValue Altitude { get; set; }
 
+        /// <summary>Returned by default when rolling up data points from the `blood-glucose` data type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bloodGlucose")]
+        public virtual BloodGlucoseRollupValue BloodGlucose { get; set; }
+
         /// <summary>
         /// Returned by default when rolling up data points from the `body-fat` data type, or when requested explicitly
         /// using the `body-fat` rollup type identifier.
@@ -4417,6 +6035,13 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("caloriesInHeartRateZone")]
         public virtual CaloriesInHeartRateZoneRollupValue CaloriesInHeartRateZone { get; set; }
+
+        /// <summary>
+        /// Returned by default when rolling up data points from the `core-body-temperature` data type, or when
+        /// requested explicitly using the `core-body-temperature` rollup type identifier.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coreBodyTemperature")]
+        public virtual CoreBodyTemperatureRollupValue CoreBodyTemperature { get; set; }
 
         /// <summary>
         /// Returned by default when rolling up data points from the `distance` data type, or when requested explicitly
@@ -4482,6 +6107,13 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hydrationLog")]
         public virtual HydrationLogRollupValue HydrationLog { get; set; }
+
+        /// <summary>
+        /// Returned by default when rolling up data points from the `nutrition-log` data type, or when requested
+        /// explicitly using the `nutrition-log` rollup type identifier.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nutritionLog")]
+        public virtual NutritionLogRollupValue NutritionLog { get; set; }
 
         /// <summary>
         /// Returned by default when rolling up data points from the `run-vo2-max` data type, or when requested
@@ -4634,6 +6266,27 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents different properties and information about the serving of a specific food.</summary>
+    public class Serving : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Amount of food consumed, fractional values are supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amount")]
+        public virtual System.Nullable<double> Amount { get; set; }
+
+        /// <summary>Required. Food measurement unit</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("foodMeasurementUnit")]
+        public virtual string FoodMeasurementUnit { get; set; }
+
+        /// <summary>
+        /// Output only. Legacy measurement unit for serving size in singular form (e.g. "piece", "gram").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("foodMeasurementUnitDisplayName")]
+        public virtual string FoodMeasurementUnitDisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a time interval of session data point, which bundles multiple observed metrics together.
     /// </summary>
@@ -4759,6 +6412,15 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distanceUnit")]
         public virtual string DistanceUnit { get; set; }
+
+        /// <summary>
+        /// Output only. The food language code derived from the user's food database. Possible values: `'en-US'`,
+        /// `'en-GB'`, `'de-DE'`, `'es-ES'`, `'fr-FR'`, `'zh-CN'`, `'zh-TW'`, `'ja-JP'`, `'en-AU'`, `'en-CA'`,
+        /// `'it-IT'`, `'ko-KR'`, `'es-MX'`, `'en-IN'`, `'en-SG'`, `'en-PH'`, `'en-IE'`, `'fr-CA'`. Updates to this
+        /// field are currently not supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("foodLanguageCode")]
+        public virtual string FoodLanguageCode { get; set; }
 
         /// <summary>Optional. The measurement unit defined in the user's account settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glucoseUnit")]
@@ -5491,6 +7153,42 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A subscription to a data collection for a specific user, to be delivered to a subscriber.</summary>
+    public class Subscription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Data types subscribed to. A subscriber will only receive notifications for data types that are
+        /// declared here. A subscription can only subscribe to the data types of the subscriber. The values should be
+        /// in the format "users/{health_user_id}/dataTypes/{data_type}" where `{data_type}` is one of "altitude",
+        /// "distance", "floors", "sleep", "steps", "weight".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataTypes")]
+        public virtual System.Collections.Generic.IList<string> DataTypes { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the Subscription. Format:
+        /// `projects/{project}/subscribers/{subscriber}/subscriptions/{subscription}` Example:
+        /// `projects/my-project/subscribers/my-subscriber-123/subscriptions/my-subscription-456` The {project} ID is
+        /// mandatory (6-30 characters, matching /a-z{6,30}/) The {subscriber} ID is user-settable (4-36 characters,
+        /// matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) if provided during creation, or system-generated otherwise. The
+        /// {subscription} ID is user-settable (4-36 chars, matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) or
+        /// system-generated otherwise.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the user for whom this subscription is active. Format: `users/{user}` where
+        /// `{user}` is the public `healthUserId` as returned by the `GetIdentity` action in the profile PAPI (see
+        /// `google.devicesandservices.health.v4main.HealthProfileService.GetIdentity`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual string User { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Swim lengths data over the time interval.</summary>
     public class SwimLengthsData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5712,6 +7410,36 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>Required. Weight of a user in grams.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weightGrams")]
         public virtual System.Nullable<double> WeightGrams { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the weight quantity.</summary>
+    public class WeightQuantity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Value representing the weight in grams.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grams")]
+        public virtual System.Nullable<double> Grams { get; set; }
+
+        /// <summary>Optional. Value representing the user provided unit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userProvidedUnit")]
+        public virtual string UserProvidedUnit { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Rollup for the weight.</summary>
+    public class WeightQuantityRollup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The sum of the weight in grams.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gramsSum")]
+        public virtual System.Nullable<double> GramsSum { get; set; }
+
+        /// <summary>Optional. The user provided unit on the last element.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userProvidedUnitLast")]
+        public virtual string UserProvidedUnitLast { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
