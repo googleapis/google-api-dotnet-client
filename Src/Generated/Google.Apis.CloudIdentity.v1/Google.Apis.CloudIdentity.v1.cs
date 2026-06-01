@@ -8103,10 +8103,10 @@ namespace Google.Apis.CloudIdentity.v1.Data
         /// by a clause like so: entity.org_units.exists(org_unit, org_unit.org_unit_id == orgUnitId('{orgUnitId}')) The
         /// Group the Policy applies to are represented by a clause like so: entity.groups.exists(group, group.group_id
         /// == groupId('{groupId}')) The Licenses the Policy applies to are represented by a clause like so:
-        /// entity.licenses.exists(license, license in ['/product/{productId}/sku/{skuId}']) The above clauses can be
-        /// present in any combination, and used in conjunction with the &amp;amp;&amp;amp;, || and ! operators. The
-        /// org_unit and group fields below are helper fields that contain the corresponding value(s) as the query to
-        /// make the query easier to use.
+        /// entity.licenses.exists(license, license in ['/product/{productId}/sku/{skuId}']) **Note:** The licenses
+        /// clause is not supported in mutate endpoints. The above clauses can be present in any combination, and used
+        /// in conjunction with the &amp;amp;&amp;amp;, || and ! operators. The org_unit and group fields below are
+        /// helper fields that contain the corresponding value(s) as the query to make the query easier to use.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
