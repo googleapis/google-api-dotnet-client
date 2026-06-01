@@ -2243,6 +2243,13 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
+        /// If included when updating a configuration, this should be set to the current etag of the configuration. If
+        /// the etags do not match, the update will be rejected and an ABORTED error will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
         /// Identifier. Server generated name for the configuration. format is
         /// projects/{project}/configurations/{configuration}
         /// </summary>
@@ -2260,9 +2267,6 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         /// <summary>Optional. A user-manipulatable version. Does not adhere to a specific format</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>
