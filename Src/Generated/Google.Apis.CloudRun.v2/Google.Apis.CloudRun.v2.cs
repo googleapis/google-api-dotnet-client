@@ -6371,10 +6371,6 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("terminalCondition")]
         public virtual GoogleCloudRunV2Condition TerminalCondition { get; set; }
 
-        /// <summary>Optional. Duration the instance may be active before the system will shut it down.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
-        public virtual object Timeout { get; set; }
-
         /// <summary>
         /// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed
         /// to remain unchanged until the resource is deleted.
