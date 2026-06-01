@@ -299,9 +299,7 @@ namespace Google.Apis.DeveloperKnowledge.v1alpha
             /// Required. Specifies the names of the documents to retrieve. A maximum of 20 documents can be retrieved
             /// in a batch. The documents are returned in the same order as the `names` in the request. Format:
             /// `documents/{uri_without_scheme}` Example:
-            /// `documents/docs.cloud.google.com/storage/docs/creating-buckets` If you are changing the batch size,
-            /// consider the value of `maxConcurrentGCSFetches` constant in the service implementation:
-            /// http://cs///depot/google3/devrel/boq/developerknowledge/service/developerknowledge.go
+            /// `documents/docs.cloud.google.com/storage/docs/creating-buckets`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("names", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Names { get; set; }
@@ -657,6 +655,39 @@ namespace Google.Apis.DeveloperKnowledge.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("answerText")]
         public virtual string AnswerText { get; set; }
 
+        /// <summary>Output only. Contains citations for the answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citations")]
+        public virtual System.Collections.Generic.IList<AnswerCitation> Citations { get; set; }
+
+        /// <summary>Output only. Contains references for the answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("references")]
+        public virtual System.Collections.Generic.IList<AnswerReference> References { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Citation info for a segment.</summary>
+    public class AnswerCitation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Indicates the end of the segment, measured in bytes (UTF-8 unicode), exclusive. If there are
+        /// multi-byte characters, such as non-ASCII characters, the index measurement is longer than the string length.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
+        public virtual System.Nullable<int> EndIndex { get; set; }
+
+        /// <summary>Output only. Contains citation sources for the attributed segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sources")]
+        public virtual System.Collections.Generic.IList<CitationSource> Sources { get; set; }
+
+        /// <summary>
+        /// Output only. Indicates the start of the segment, measured in bytes (UTF-8 unicode), inclusive. If there are
+        /// multi-byte characters, such as non-ASCII characters, the index measurement is longer than the string length.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<int> StartIndex { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -683,12 +714,36 @@ namespace Google.Apis.DeveloperKnowledge.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a reference to a source.</summary>
+    public class AnswerReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The reference document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentReference")]
+        public virtual DocumentReference DocumentReference { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for DeveloperKnowledge.BatchGetDocuments.</summary>
     public class BatchGetDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Contains the documents requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documents")]
         public virtual System.Collections.Generic.IList<Document> Documents { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Citation source.</summary>
+    public class CitationSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Contains the index of the Answer.AnswerReference in the `references` repeated field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceIndex")]
+        public virtual System.Nullable<int> ReferenceIndex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -809,6 +864,19 @@ namespace Google.Apis.DeveloperKnowledge.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a reference to a document.</summary>
+    public class DocumentReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Contains the document chunk. The `document_chunk.id` field is not set and will be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentChunk")]
+        public virtual DocumentChunk DocumentChunk { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
