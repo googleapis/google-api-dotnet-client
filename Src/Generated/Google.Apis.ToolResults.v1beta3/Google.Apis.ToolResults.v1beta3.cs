@@ -4311,6 +4311,13 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Licensing protection termination (Pairip) was detected.</summary>
+    public class LicensingProtectionTermination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for EnvironmentService.ListEnvironments.</summary>
     public class ListEnvironmentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
