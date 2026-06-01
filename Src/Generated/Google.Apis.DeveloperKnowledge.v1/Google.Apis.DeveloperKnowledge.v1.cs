@@ -295,9 +295,7 @@ namespace Google.Apis.DeveloperKnowledge.v1
             /// Required. Specifies the names of the documents to retrieve. A maximum of 20 documents can be retrieved
             /// in a batch. The documents are returned in the same order as the `names` in the request. Format:
             /// `documents/{uri_without_scheme}` Example:
-            /// `documents/docs.cloud.google.com/storage/docs/creating-buckets` If you are changing the batch size,
-            /// consider the value of `maxConcurrentGCSFetches` constant in the service implementation:
-            /// http://cs///depot/google3/devrel/boq/developerknowledge/service/developerknowledge.go
+            /// `documents/docs.cloud.google.com/storage/docs/creating-buckets`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("names", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Names { get; set; }
