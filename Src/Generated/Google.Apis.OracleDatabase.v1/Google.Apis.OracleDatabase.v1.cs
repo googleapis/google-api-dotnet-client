@@ -9557,11 +9557,11 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scanIpIds")]
         public virtual System.Collections.Generic.IList<string> ScanIpIds { get; set; }
 
-        /// <summary>Output only. SCAN listener port - TCP</summary>
+        /// <summary>Optional. SCAN listener port - TCP</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scanListenerPortTcp")]
         public virtual System.Nullable<int> ScanListenerPortTcp { get; set; }
 
-        /// <summary>Output only. SCAN listener port - TLS</summary>
+        /// <summary>Optional. SCAN listener port - TLS</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scanListenerPortTcpSsl")]
         public virtual System.Nullable<int> ScanListenerPortTcpSsl { get; set; }
 
@@ -12914,8 +12914,8 @@ namespace Google.Apis.OracleDatabase.v1.Data
     public class GoldengateGoogleBigQueryConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The service account key file Cloud Storage containing the credentials required to use Google
-        /// BigQuery.
+        /// Optional. The base64 encoded content of the service account key file containing the credentials required to
+        /// use Google BigQuery.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountKeyFile")]
         public virtual string ServiceAccountKeyFile { get; set; }
@@ -12932,8 +12932,8 @@ namespace Google.Apis.OracleDatabase.v1.Data
     public class GoldengateGoogleCloudStorageConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The service account key Cloud Storage file containing the credentials required to use Google Cloud
-        /// Storage.
+        /// Optional. The base64 encoded content of the service account key file containing the credentials required to
+        /// use Google Cloud Storage.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountKeyFile")]
         public virtual string ServiceAccountKeyFile { get; set; }
@@ -12950,8 +12950,8 @@ namespace Google.Apis.OracleDatabase.v1.Data
     public class GoldengateGooglePubsubConnectionProperties : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The content of the service account key file containing the credentials required to use Google
-        /// Pub/Sub.
+        /// Optional. The base64 encoded content of the service account key file containing the credentials required to
+        /// use Google Pub/Sub.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountKeyFile")]
         public virtual string ServiceAccountKeyFile { get; set; }
@@ -13071,7 +13071,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jndiSecurityPrincipal")]
         public virtual string JndiSecurityPrincipal { get; set; }
 
-        /// <summary>Optional. The content of the KeyStore file.</summary>
+        /// <summary>Optional. The base64 encoded content of the KeyStore file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyStoreFile")]
         public virtual string KeyStoreFile { get; set; }
 
@@ -13119,7 +13119,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
         public virtual string TechnologyType { get; set; }
 
-        /// <summary>Optional. The content of the TrustStore file.</summary>
+        /// <summary>Optional. The base64 encoded content of the TrustStore file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trustStoreFile")]
         public virtual string TrustStoreFile { get; set; }
 
@@ -13165,11 +13165,11 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; }
 
-        /// <summary>Optional. The content of the consumer.properties file.</summary>
+        /// <summary>Optional. The base64 encoded content of the consumer.properties file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerPropertiesFile")]
         public virtual string ConsumerPropertiesFile { get; set; }
 
-        /// <summary>Optional. The content of the KeyStore file.</summary>
+        /// <summary>Optional. The base64 encoded content of the KeyStore file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyStoreFile")]
         public virtual string KeyStoreFile { get; set; }
 
@@ -13195,7 +13195,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("passwordSecretVersion")]
         public virtual string PasswordSecretVersion { get; set; }
 
-        /// <summary>Optional. The content of the producer.properties file.</summary>
+        /// <summary>Optional. The base64 encoded content of the producer.properties file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("producerPropertiesFile")]
         public virtual string ProducerPropertiesFile { get; set; }
 
@@ -13222,7 +13222,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
         public virtual string TechnologyType { get; set; }
 
-        /// <summary>Optional. The content of the TrustStore file.</summary>
+        /// <summary>Optional. The base64 encoded content of the TrustStore file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trustStoreFile")]
         public virtual string TrustStoreFile { get; set; }
 
@@ -13261,7 +13261,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authenticationType")]
         public virtual string AuthenticationType { get; set; }
 
-        /// <summary>Optional. The content of the KeyStore file.</summary>
+        /// <summary>Optional. The base64 encoded content of the KeyStore file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyStoreFile")]
         public virtual string KeyStoreFile { get; set; }
 
@@ -13303,7 +13303,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
         public virtual string TechnologyType { get; set; }
 
-        /// <summary>Optional. The content of the TrustStore file.</summary>
+        /// <summary>Optional. The base64 encoded content of the TrustStore file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trustStoreFile")]
         public virtual string TrustStoreFile { get; set; }
 
@@ -13469,8 +13469,8 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual System.Nullable<bool> ServerCertificateValidationRequired { get; set; }
 
         /// <summary>
-        /// Optional. Database Certificate - The content of a .pem or .crt file containing the server public key (for
-        /// 1-way SSL).
+        /// Optional. Database Certificate - The base64 encoded content of a .pem or .crt file containing the server
+        /// public key (for 1-way SSL).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslCaFile")]
         public virtual string SslCaFile { get; set; }
@@ -13523,14 +13523,15 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string TechnologyType { get; set; }
 
         /// <summary>
-        /// Optional. Database Certificate - The content of a .pem file, containing the server public key (for 1 and
-        /// 2-way SSL).
+        /// Optional. Database Certificate - The base64 encoded content of a .pem file, containing the server public key
+        /// (for 1 and 2-way SSL).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tlsCaFile")]
         public virtual string TlsCaFile { get; set; }
 
         /// <summary>
-        /// Optional. Client Certificate - The content of a .pem file, containing the client public key (for 2-way SSL).
+        /// Optional. Client Certificate - The base64 encoded content of a .pem file, containing the client public key
+        /// (for 2-way SSL).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tlsCertificateKeyFile")]
         public virtual string TlsCertificateKeyFile { get; set; }
@@ -13598,27 +13599,29 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string SecurityProtocol { get; set; }
 
         /// <summary>
-        /// Optional. Database Certificate - The content of a .pem or .crt file containing the server public key (for 1
-        /// and 2-way SSL).
+        /// Optional. Database Certificate - The base64 encoded content of a .pem or .crt file containing the server
+        /// public key (for 1 and 2-way SSL).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslCaFile")]
         public virtual string SslCaFile { get; set; }
 
         /// <summary>
-        /// Optional. Client Certificate - The content of a .pem or .crt file containing the client public key (for
-        /// 2-way SSL).
+        /// Optional. Client Certificate - The base64 encoded content of a .pem or .crt file containing the client
+        /// public key (for 2-way SSL).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslCertFile")]
         public virtual string SslCertFile { get; set; }
 
         /// <summary>
-        /// Optional. The list of certificates revoked by the trusted certificate authorities (Trusted CA).
+        /// Optional. The base64 encoded list of certificates revoked by the trusted certificate authorities (Trusted
+        /// CA).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslCrlFile")]
         public virtual string SslCrlFile { get; set; }
 
         /// <summary>
-        /// Optional. Client Key - The content of a .pem or .crt file containing the client private key (for 2-way SSL).
+        /// Optional. Client Key - The base64 encoded content of a .pem or .crt file containing the client private key
+        /// (for 2-way SSL).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslKeyFile")]
         public virtual string SslKeyFile { get; set; }
@@ -13830,7 +13833,10 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; }
 
-        /// <summary>Optional. The wallet contents Oracle Goldengate uses to make connections to a database.</summary>
+        /// <summary>
+        /// Optional. The wallet contents Oracle Goldengate uses to make connections to a database. This attribute is
+        /// expected to be base64 encoded.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("walletFile")]
         public virtual string WalletFile { get; set; }
 
@@ -13940,22 +13946,23 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string SecurityProtocol { get; set; }
 
         /// <summary>
-        /// Optional. The certificate of the trusted certificate authorities (Trusted CA) for PostgreSQL.
+        /// Optional. The base64 encoded certificate of the trusted certificate authorities (Trusted CA) for PostgreSQL.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslCaFile")]
         public virtual string SslCaFile { get; set; }
 
-        /// <summary>Optional. The certificate of the PostgreSQL server.</summary>
+        /// <summary>Optional. The base64 encoded certificate of the PostgreSQL server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslCertFile")]
         public virtual string SslCertFile { get; set; }
 
         /// <summary>
-        /// Optional. The list of certificates revoked by the trusted certificate authorities (Trusted CA).
+        /// Optional. The base64 encoded list of certificates revoked by the trusted certificate authorities (Trusted
+        /// CA).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslCrlFile")]
         public virtual string SslCrlFile { get; set; }
 
-        /// <summary>Optional. The private key of the PostgreSQL server.</summary>
+        /// <summary>Optional. The base64 encoded private key of the PostgreSQL server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslKeyFile")]
         public virtual string SslKeyFile { get; set; }
 
@@ -13984,7 +13991,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authenticationType")]
         public virtual string AuthenticationType { get; set; }
 
-        /// <summary>Optional. The content of the KeyStore file.</summary>
+        /// <summary>Optional. The base64 encoded content of the KeyStore file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyStoreFile")]
         public virtual string KeyStoreFile { get; set; }
 
@@ -14032,7 +14039,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("technologyType")]
         public virtual string TechnologyType { get; set; }
 
-        /// <summary>Optional. The content of the TrustStore file.</summary>
+        /// <summary>Optional. The base64 encoded content of the TrustStore file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trustStoreFile")]
         public virtual string TrustStoreFile { get; set; }
 
@@ -14115,7 +14122,9 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
-        /// <summary>Optional. The service account key file of Google Cloud Storage.</summary>
+        /// <summary>
+        /// Optional. The base64 encoded content of the service account key file of Google Cloud Storage.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountKeyFile")]
         public virtual string ServiceAccountKeyFile { get; set; }
 
@@ -15484,7 +15493,8 @@ namespace Google.Apis.OracleDatabase.v1.Data
     public class RestIcebergCatalog : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The content of the configuration file containing additional properties for the REST catalog.
+        /// Optional. The base64 encoded content of the configuration file containing additional properties for the REST
+        /// catalog.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual string Properties { get; set; }
