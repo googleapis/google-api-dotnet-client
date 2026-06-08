@@ -2867,6 +2867,14 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
     /// <summary>ConfigImage represents an image release available to create a WbI</summary>
     public class ImageRelease : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The description of the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. The image family of the image. (ex: workbench-instances or workbench-2603)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageFamily")]
+        public virtual string ImageFamily { get; set; }
+
         /// <summary>Output only. The name of the image of the form workbench-instances-vYYYYmmdd--</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageName")]
         public virtual string ImageName { get; set; }
