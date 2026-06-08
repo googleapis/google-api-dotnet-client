@@ -14173,7 +14173,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string MessageType { get; set; }
 
         /// <summary>
-        /// Optional. The identifier of the participant. For example 'test-user' or 'gemini'. The participant ID can
+        /// Optional. The identifier of the participant, for example 'test-user' or 'gemini'. The participant ID can
         /// contain lowercase letters, numbers, and hyphens; that is, it must match the regular expression:
         /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. The maximum length is 63 characters.
         /// </summary>
