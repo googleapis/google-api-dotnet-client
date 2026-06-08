@@ -333,8 +333,8 @@ namespace Google.Apis.StorageBatchOperations.v1
 
                     /// <summary>Gets a BucketOperation.</summary>
                     /// <param name="name">
-                    /// Required. `name` of the bucket operation to retrieve. Format:
-                    /// projects/{project_id}/locations/global/jobs/{job_id}/bucketOperations/{bucket_operation_id}.
+                    /// Required. The `name` of the bucket operation to retrieve. Format:
+                    /// `projects/{project_id}/locations/global/jobs/{job_id}/bucketOperations/{bucket_operation_id}`.
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -352,8 +352,8 @@ namespace Google.Apis.StorageBatchOperations.v1
                         }
 
                         /// <summary>
-                        /// Required. `name` of the bucket operation to retrieve. Format:
-                        /// projects/{project_id}/locations/global/jobs/{job_id}/bucketOperations/{bucket_operation_id}.
+                        /// Required. The `name` of the bucket operation to retrieve. Format:
+                        /// `projects/{project_id}/locations/global/jobs/{job_id}/bucketOperations/{bucket_operation_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -384,7 +384,7 @@ namespace Google.Apis.StorageBatchOperations.v1
 
                     /// <summary>Lists BucketOperations in a given project and job.</summary>
                     /// <param name="parent">
-                    /// Required. Format: projects/{project_id}/locations/global/jobs/{job_id}.
+                    /// Required. Format: `projects/{project_id}/locations/global/jobs/{job_id}`.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -401,7 +401,7 @@ namespace Google.Apis.StorageBatchOperations.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. Format: projects/{project_id}/locations/global/jobs/{job_id}.</summary>
+                        /// <summary>Required. Format: `projects/{project_id}/locations/global/jobs/{job_id}`.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -409,7 +409,9 @@ namespace Google.Apis.StorageBatchOperations.v1
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>Optional. Field to sort by. Supported fields are name, create_time.</summary>
+                        /// <summary>
+                        /// Optional. Field to sort by. Supported fields are `name` and `create_time`.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
@@ -482,7 +484,7 @@ namespace Google.Apis.StorageBatchOperations.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. The `name` of the job to cancel. Format:
-                /// projects/{project_id}/locations/global/jobs/{job_id}.
+                /// `projects/{project_id}/locations/global/jobs/{job_id}`.
                 /// </param>
                 public virtual CancelRequest Cancel(Google.Apis.StorageBatchOperations.v1.Data.CancelJobRequest body, string name)
                 {
@@ -502,7 +504,7 @@ namespace Google.Apis.StorageBatchOperations.v1
 
                     /// <summary>
                     /// Required. The `name` of the job to cancel. Format:
-                    /// projects/{project_id}/locations/global/jobs/{job_id}.
+                    /// `projects/{project_id}/locations/global/jobs/{job_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -539,7 +541,7 @@ namespace Google.Apis.StorageBatchOperations.v1
 
                 /// <summary>Creates a batch job.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <param name="parent">Required. The value for parent.</param>
                 public virtual CreateRequest Create(Google.Apis.StorageBatchOperations.v1.Data.Job body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
@@ -556,23 +558,22 @@ namespace Google.Apis.StorageBatchOperations.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>Required. The value for parent.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. The optional `job_id` for this Job . If not specified, an id is generated. `job_id`
-                    /// should be no more than 128 characters and must include only characters available in DNS names,
-                    /// as defined by RFC-1123.
+                    /// Required. A unique identifier for the job. `job_id` must be up to 128 characters and must
+                    /// include only characters available in DNS names, as defined by RFC-1123.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string JobId { get; set; }
 
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID in case you
-                    /// need to retry your request. Requests with same `request_id` will be ignored for at least 60
-                    /// minutes since the first request. The request ID must be a valid UUID with the exception that
-                    /// zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// need to retry your request. Requests with same `request_id` are ignored for at least 60 minutes
+                    /// since the first request. The request ID must be a valid UUID with the exception that zero UUID
+                    /// isn't supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -626,7 +627,7 @@ namespace Google.Apis.StorageBatchOperations.v1
                 /// <summary>Deletes a batch job.</summary>
                 /// <param name="name">
                 /// Required. The `name` of the job to delete. Format:
-                /// projects/{project_id}/locations/global/jobs/{job_id} .
+                /// `projects/{project_id}/locations/global/jobs/{job_id}`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -645,24 +646,24 @@ namespace Google.Apis.StorageBatchOperations.v1
 
                     /// <summary>
                     /// Required. The `name` of the job to delete. Format:
-                    /// projects/{project_id}/locations/global/jobs/{job_id} .
+                    /// `projects/{project_id}/locations/global/jobs/{job_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. If set to true, any child bucket operations of the job will also be deleted. Highly
-                    /// recommended to be set to true by all clients. Users cannot mutate bucket operations directly, so
-                    /// only the jobs.delete permission is required to delete a job (and its child bucket operations).
+                    /// Optional. If set to true, any child bucket operations of the job are deleted. We recommend
+                    /// setting this to `true`. You can't mutate bucket operations directly, so only the `jobs.delete`
+                    /// permission is required to delete a job (and its child bucket operations).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Force { get; set; }
 
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID in case you
-                    /// need to retry your request. Requests with same `request_id` will be ignored for at least 60
-                    /// minutes since the first request. The request ID must be a valid UUID with the exception that
-                    /// zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// need to retry your request. Requests with same `request_id` are ignored for at least 60 minutes
+                    /// since the first request. The request ID must be a valid UUID with the exception that zero UUID
+                    /// isn't supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -709,8 +710,8 @@ namespace Google.Apis.StorageBatchOperations.v1
 
                 /// <summary>Gets a batch job.</summary>
                 /// <param name="name">
-                /// Required. `name` of the job to retrieve. Format:
-                /// projects/{project_id}/locations/global/jobs/{job_id} .
+                /// Required. The `name` of the job to retrieve. Format:
+                /// `projects/{project_id}/locations/global/jobs/{job_id}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -728,8 +729,8 @@ namespace Google.Apis.StorageBatchOperations.v1
                     }
 
                     /// <summary>
-                    /// Required. `name` of the job to retrieve. Format:
-                    /// projects/{project_id}/locations/global/jobs/{job_id} .
+                    /// Required. The `name` of the job to retrieve. Format:
+                    /// `projects/{project_id}/locations/global/jobs/{job_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -783,11 +784,11 @@ namespace Google.Apis.StorageBatchOperations.v1
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Field to sort by. Supported fields are name, create_time.</summary>
+                    /// <summary>Optional. Field to sort by. Supported fields are `name` and `create_time`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>Optional. The list page size. default page size is 100.</summary>
+                    /// <summary>Optional. The list page size. The default page size is 100.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1318,6 +1319,26 @@ namespace Google.Apis.StorageBatchOperations.v1
 }
 namespace Google.Apis.StorageBatchOperations.v1.Data
 {
+    /// <summary>Represents updates to existing access-control entries on an object.</summary>
+    public class AccessControlsUpdates : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Grants to add or update. If a grant for same entity exists, its role is updated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grants")]
+        public virtual System.Collections.Generic.IList<ObjectAccessControl> Grants { get; set; }
+
+        /// <summary>
+        /// Optional. Entities for which all grants should be removed. An entity can't be in both `grants` and
+        /// `remove_entities`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removeEntities")]
+        public virtual System.Collections.Generic.IList<string> RemoveEntities { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes configuration of a single bucket and its objects to be transformed.</summary>
     public class Bucket : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1341,8 +1362,8 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
     public class BucketList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. List of buckets and their objects to be transformed. Currently, only one bucket configuration is
-        /// supported. If multiple buckets are specified, an error will be returned.
+        /// Required. List of buckets and their objects to be transformed. You can specify only one bucket per job. If
+        /// multiple buckets are specified, an error occurs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buckets")]
         public virtual System.Collections.Generic.IList<Bucket> Buckets { get; set; }
@@ -1450,7 +1471,7 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
 
         /// <summary>
         /// Identifier. The resource name of the BucketOperation. This is defined by the service. Format:
-        /// projects/{project}/locations/global/jobs/{job_id}/bucketOperations/{bucket_operation}.
+        /// `projects/{project_id}/locations/global/jobs/{job_id}/bucketOperations/{bucket_operation}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -1458,6 +1479,10 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
         /// <summary>Specifies objects matching a prefix set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prefixList")]
         public virtual PrefixList PrefixList { get; set; }
+
+        /// <summary>Specifies objects matching the object filters in a project source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectSource")]
+        public virtual ProjectSource ProjectSource { get; set; }
 
         /// <summary>
         /// Updates object metadata. Allows updating fixed-key and custom metadata and fixed-key metadata i.e.
@@ -1473,6 +1498,10 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
         /// <summary>Rewrite the object and updates metadata like KMS key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rewriteObject")]
         public virtual RewriteObject RewriteObject { get; set; }
+
+        /// <summary>Updates object ACLs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setObjectAcls")]
+        public virtual SetObjectAcls SetObjectAcls { get; set; }
 
         private string _startTimeRaw;
 
@@ -1528,8 +1557,8 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
     {
         /// <summary>
         /// Optional. An optional request ID to identify requests. Specify a unique request ID in case you need to retry
-        /// your request. Requests with same `request_id` will be ignored for at least 60 minutes since the first
-        /// request. The request ID must be a valid UUID with the exception that zero UUID is not supported
+        /// your request. Requests with same `request_id` are ignored for at least 60 minutes since the first request.
+        /// The request ID must be a valid UUID with the exception that zero UUID isn't supported
         /// (00000000-0000-0000-0000-000000000000).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
@@ -1612,7 +1641,7 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
     public class CustomContextUpdates : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Custom contexts to clear by key. A key cannot be present in both `updates` and `keys_to_clear`.
+        /// Optional. Custom contexts to clear by key. A key can't be present in both `updates` and `keys_to_clear`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keysToClear")]
         public virtual System.Collections.Generic.IList<string> KeysToClear { get; set; }
@@ -1629,12 +1658,12 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
     public class DeleteObject : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Controls deletion behavior when versioning is enabled for the object's bucket. If true both live
+        /// Required. Controls deletion behavior when versioning is enabled for the object's bucket. If true, both live
         /// and noncurrent objects will be permanently deleted. Otherwise live objects in versioned buckets will become
         /// noncurrent and objects that were already noncurrent will be skipped. This setting doesn't have any impact on
         /// the Soft Delete feature. All objects deleted by this service can be be restored for the duration of the Soft
         /// Delete retention duration if enabled. If enabled and the manifest doesn't specify an object's generation, a
-        /// GetObjectMetadata call (a Class B operation) will be made to determine the live object generation.
+        /// `GetObjectMetadata` call is made to determine the live object generation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permanentObjectDeletionEnabled")]
         public virtual System.Nullable<bool> PermanentObjectDeletionEnabled { get; set; }
@@ -1690,7 +1719,51 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The Storage Batch Operations Job description.</summary>
+    /// <summary>
+    /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
+    /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
+    /// (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() &amp;lt; 100" Example (Equality): title: "Requestor is owner" description:
+    /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
+    /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
+    /// visible" expression: "document.type != 'private' &amp;amp;&amp;amp; document.type != 'internal'" Example (Data
+    /// Manipulation): title: "Notification string" description: "Create a notification string with a timestamp."
+    /// expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that
+    /// may be referenced within an expression are determined by the service that evaluates it. See the service
+    /// documentation for additional information.
+    /// </summary>
+    public class Expr : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when
+        /// hovered over it in a UI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expression")]
+        public virtual string Expression { get; set; }
+
+        /// <summary>
+        /// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a
+        /// position in the file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
+        /// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs
+        /// which allow to enter the expression.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The storage batch operations job description.</summary>
     public class Job : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies a list of buckets and their objects to be transformed.</summary>
@@ -1780,14 +1853,14 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
         public virtual DeleteObject DeleteObject { get; set; }
 
         /// <summary>
-        /// Optional. A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+        /// Optional. A user-provided description for the job. Maximum length: 1024 bytes when unicode-encoded.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Optional. If true, the job will run in dry run mode, returning the total object count and, if the object
-        /// configuration is a prefix list, the bytes found from source. No transformations will be performed.
+        /// Optional. If true, the job runs in dry run mode, returning the total object count and, if the object
+        /// configuration is a prefix list, the bytes found from source. No transformations are performed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dryRun")]
         public virtual System.Nullable<bool> DryRun { get; set; }
@@ -1797,8 +1870,8 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
         public virtual System.Collections.Generic.IList<ErrorSummary> ErrorSummaries { get; set; }
 
         /// <summary>
-        /// Output only. If true, this Job operates on multiple buckets. Multibucket jobs are subject to different quota
-        /// limits than single-bucket jobs.
+        /// Output only. If true, this job operates on multiple buckets. Multi-bucket jobs are subject to different
+        /// quota limits than single-bucket jobs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isMultiBucketJob")]
         public virtual System.Nullable<bool> IsMultiBucketJob { get; set; }
@@ -1808,16 +1881,20 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
         public virtual LoggingConfig LoggingConfig { get; set; }
 
         /// <summary>
-        /// Identifier. The resource name of the Job. job_id is unique within the project, that is either set by the
-        /// customer or defined by the service. Format: projects/{project}/locations/global/jobs/{job_id} . For example:
-        /// "projects/123456/locations/global/jobs/job01".
+        /// Identifier. The resource name of the job. Format: `projects/{project_id}/locations/global/jobs/{job_id}`.
+        /// For example: `projects/123456/locations/global/jobs/job01`. `job_id` is unique in a given project.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Specifies a project source and filters to identify objects to be transformed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectSource")]
+        public virtual ProjectSource ProjectSource { get; set; }
+
         /// <summary>
-        /// Updates object metadata. Allows updating fixed-key and custom metadata and fixed-key metadata i.e.
-        /// Cache-Control, Content-Disposition, Content-Encoding, Content-Language, Content-Type, Custom-Time.
+        /// Updates object metadata. Allows updating fixed-key and custom metadata. For example, `Cache-Control`,
+        /// `Content-Disposition`, `Content-Encoding`, `Content-Language`, `Content-Type`, `Custom-Time`, and `Retention
+        /// configuration`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("putMetadata")]
         public virtual PutMetadata PutMetadata { get; set; }
@@ -1866,6 +1943,10 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduleTimeRaw);
             set => ScheduleTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Updates object ACLs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setObjectAcls")]
+        public virtual SetObjectAcls SetObjectAcls { get; set; }
 
         /// <summary>Output only. State of the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -2006,13 +2087,18 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
     public class Manifest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. `manifest_location` must contain the manifest source file that is a CSV file in a Google Cloud
-        /// Storage bucket. Each row in the file must include the object details i.e. BucketId and Name. Generation may
-        /// optionally be specified. When it is not specified the live object is acted upon. `manifest_location` should
-        /// either be 1) An absolute path to the object in the format of `gs://bucket_name/path/file_name.csv`. 2) An
-        /// absolute path with a single wildcard character in the file name, for example
-        /// `gs://bucket_name/path/file_name*.csv`. If manifest location is specified with a wildcard, objects in all
-        /// manifest files matching the pattern will be acted upon.
+        /// Required. Specify the manifest file location. The format of manifest location can be an absolute path to the
+        /// object in the format of `gs://bucket_name/path/object_name`. For example,
+        /// `gs://bucket_name/path/object_name.csv`. Alternatively, you can specify an absolute path with a single
+        /// wildcard character in the file name, for example `gs://bucket_name/path/file_name*.csv`. If the manifest
+        /// location is specified with a wildcard, objects in all manifest files matching the pattern will be acted
+        /// upon. The manifest is a CSV file, uploaded to Cloud Storage, that contains one object or a list of objects
+        /// that you want to process. Each row in the manifest must include the `bucket` and `name` of the object. You
+        /// can optionally specify the `generation` of the object. If you don't specify the `generation`, the current
+        /// version of the object is used. You can optionally include a header row with the following format:
+        /// `bucket,name,generation`. For example, bucket,name,generation bucket_1,object_1,generation_1
+        /// bucket_1,object_2,generation_2 bucket_1,object_3,generation_3 Note: The manifest file must specify only
+        /// objects within the bucket provided to the job. Rows referencing objects in other buckets are ignored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manifestLocation")]
         public virtual string ManifestLocation { get; set; }
@@ -2021,13 +2107,34 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Describes the payload of a user defined object custom context.</summary>
+    /// <summary>Represents an access control entry on an object.</summary>
+    public class ObjectAccessControl : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The entity holding the permission, in one of the following forms: * `allUsers` *
+        /// `allAuthenticatedUsers`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entity")]
+        public virtual string Entity { get; set; }
+
+        /// <summary>
+        /// Required. The role to grant. Acceptable values are: * `READER` - gives read access to the object. * `OWNER`
+        /// - gives owner access to the object.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the payload of a user-defined object custom context.</summary>
     public class ObjectCustomContextPayload : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The value of the object custom context. If set, `value` must NOT be an empty string since it is a required
-        /// field in custom context. If unset, `value` will be ignored and no changes will be made to the `value` field
-        /// of the custom context payload.
+        /// The value of the object custom context. If set, `value` can't be an empty string because it is a required
+        /// field in custom context. If unset, `value` is ignored and no changes are made to the `value` field of the
+        /// custom context payload.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
@@ -2040,13 +2147,16 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
     public class ObjectRetention : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The time when the object will be retained until. UNSET will clear the retention. Must be specified
-        /// in RFC 3339 format e.g. YYYY-MM-DD'T'HH:MM:SS.SS'Z' or YYYY-MM-DD'T'HH:MM:SS'Z'.
+        /// Required. The object's retention expiration time, during which, the object is protected from being deleted
+        /// or overwritten. The time must be specified in RFC 3339 format, for example `YYYY-MM-DD'T'HH:MM:SS'Z'` or
+        /// `YYYY-MM-DD'T'HH:MM:SS.SS'Z'`. To clear an object's retention, both `retentionMode` and `retainUntilTime`
+        /// must be left unset (omitted). Setting `retentionMode` to `RETENTION_MODE_UNSPECIFIED` is treated as a no-op.
+        /// Unlike an unset field, it doesn't modify or clear the retention settings.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retainUntilTime")]
         public virtual string RetainUntilTime { get; set; }
 
-        /// <summary>Required. The retention mode of the object.</summary>
+        /// <summary>Required. The retention mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retentionMode")]
         public virtual string RetentionMode { get; set; }
 
@@ -2184,7 +2294,7 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
 
         /// <summary>
         /// Output only. The unique operation resource name. Format:
-        /// projects/{project}/locations/global/operations/{operation}.
+        /// projects/{project_id}/locations/global/operations/{operation}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
         public virtual string Operation { get; set; }
@@ -2205,11 +2315,106 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
     public class PrefixList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Include prefixes of the objects to be transformed. * Supports full object name * Supports prefix
-        /// of the object name * Wildcards are not supported * Supports empty string for all objects in a bucket.
+        /// Optional. Specify one or more object prefixes. For example: * To match one object, use a single prefix,
+        /// `prefix1`. * To match multiple objects, use comma-separated prefixes, `prefix1, prefix2`. * To match all
+        /// objects, use an empty prefix, `''`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedObjectPrefixes")]
         public virtual System.Collections.Generic.IList<string> IncludedObjectPrefixes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the project source where the objects satisfying the filters will be transformed.</summary>
+    public class ProjectSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Filters expressed in Common Expression Language (CEL) to apply to buckets to identify buckets with
+        /// objects to be transformed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketFilters")]
+        public virtual Expr BucketFilters { get; set; }
+
+        /// <summary>
+        /// Optional. The unique identifier of a dry run job to use as the baseline for the current job. Specifying this
+        /// ID ensures the job is executed against the same set of objects validated during the dry run. The value
+        /// corresponds to the {job_id} segment of the resource name:
+        /// `projects/{project_id}/locations/{location}/jobs/{job_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dryRunJobId")]
+        public virtual string DryRunJobId { get; set; }
+
+        /// <summary>
+        /// Required. The resource identifier of the Storage Insights dataset configuration. Storage batch operations
+        /// uses the latest snapshot from this dataset as the source to list and filter target objects. Format:
+        /// `projects/{project_id}/locations/{location}/datasetConfigs/{dataset_config}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insightsDatasetConfig")]
+        public virtual string InsightsDatasetConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Filters expressed in Common Expression Language (CEL) to apply to objects to identify objects to
+        /// be transformed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectFilters")]
+        public virtual Expr ObjectFilters { get; set; }
+
+        /// <summary>
+        /// Required. Project name of the objects to be transformed. e.g. projects/my-project or projects/123456.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("project")]
+        public virtual string Project { get; set; }
+
+        private string _snapshotTimeRaw;
+
+        private object _snapshotTime;
+
+        /// <summary>
+        /// Output only. The snapshot time used by the job to read the Storage Insights dataset for bucket and object
+        /// discovery. This field is populated by the service and reflects the exact timestamp of the dataset snapshot
+        /// used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotTime")]
+        public virtual string SnapshotTimeRaw
+        {
+            get => _snapshotTimeRaw;
+            set
+            {
+                _snapshotTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _snapshotTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="SnapshotTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SnapshotTimeDateTimeOffset instead.")]
+        public virtual object SnapshotTime
+        {
+            get => _snapshotTime;
+            set
+            {
+                _snapshotTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _snapshotTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="SnapshotTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SnapshotTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SnapshotTimeRaw);
+            set => SnapshotTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. Specifies the Cloud Storage locations to include in the job. If provided, only buckets and objects
+        /// within these locations will be discovered from the Storage Insights dataset as configured in the
+        /// `insights_dataset_config`. If omitted, the job will discover buckets and objects from all locations
+        /// configured in the `insights_dataset_config`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetLocations")]
+        public virtual TargetLocations TargetLocations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2219,65 +2424,71 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
     public class PutMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Updates objects Cache-Control fixed metadata. Unset values will be ignored. Set empty values to
-        /// clear the metadata. Additionally, the value for Custom-Time cannot decrease. Refer to documentation in
-        /// https://cloud.google.com/storage/docs/metadata#caching_data.
+        /// Optional. Updates the objects `Cache-Control` fixed metadata. Unset values in the request are ignored. To
+        /// clear the metadata, set an empty value. Additionally, the value for `Custom-Time` can't decrease. For
+        /// details, see [Cache-Control](https://cloud.google.com/storage/docs/metadata#caching_data).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheControl")]
         public virtual string CacheControl { get; set; }
 
         /// <summary>
-        /// Optional. Updates objects Content-Disposition fixed metadata. Unset values will be ignored. Set empty values
-        /// to clear the metadata. Refer https://cloud.google.com/storage/docs/metadata#content-disposition for
-        /// additional documentation.
+        /// Optional. Updates objects `Content-Disposition` fixed metadata. Unset values in the request are ignored. To
+        /// clear the metadata, set an empty value. For details, see
+        /// [Content-Disposition](https://cloud.google.com/storage/docs/metadata#content-disposition).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentDisposition")]
         public virtual string ContentDisposition { get; set; }
 
         /// <summary>
-        /// Optional. Updates objects Content-Encoding fixed metadata. Unset values will be ignored. Set empty values to
-        /// clear the metadata. Refer to documentation in
-        /// https://cloud.google.com/storage/docs/metadata#content-encoding.
+        /// Optional. Updates the objects `Content-Encoding` fixed metadata. Unset values in the request are ignored. To
+        /// clear the metadata, set an empty value. For details, see
+        /// [Content-Encoding](https://cloud.google.com/storage/docs/metadata#content-encoding).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentEncoding")]
         public virtual string ContentEncoding { get; set; }
 
         /// <summary>
-        /// Optional. Updates objects Content-Language fixed metadata. Refer to ISO 639-1 language codes for typical
-        /// values of this metadata. Max length 100 characters. Unset values will be ignored. Set empty values to clear
-        /// the metadata. Refer to documentation in https://cloud.google.com/storage/docs/metadata#content-language.
+        /// Optional. Updates the objects `Content-Language` fixed metadata. Metadata values must use ISO 639-1 language
+        /// codes. The maximum length for metadata values is 100 characters. Unset values in the request are ignored. To
+        /// clear the metadata, set an empty value. For details, see
+        /// [Content-Language](https://cloud.google.com/storage/docs/metadata#content-language).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
         public virtual string ContentLanguage { get; set; }
 
         /// <summary>
-        /// Optional. Updates objects Content-Type fixed metadata. Unset values will be ignored. Set empty values to
-        /// clear the metadata. Refer to documentation in https://cloud.google.com/storage/docs/metadata#content-type
+        /// Optional. Updates objects `Content-Type` fixed metadata. Unset values in the request are ignored. To clear
+        /// the metadata, set an empty value. For details, see
+        /// [Content-Type](https://cloud.google.com/storage/docs/metadata#content-type).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
         public virtual string ContentType { get; set; }
 
         /// <summary>
-        /// Optional. Updates objects custom metadata. Adds or sets individual custom metadata key value pairs on
-        /// objects. Keys that are set with empty custom metadata values will have its value cleared. Existing custom
-        /// metadata not specified with this flag is not changed. Refer to documentation in
-        /// https://cloud.google.com/storage/docs/metadata#custom-metadata
+        /// Optional. Updates the object's custom metadata. This operation adds or sets individual custom metadata
+        /// key-value pairs. Keys specified with empty values have their values cleared. Existing custom metadata keys
+        /// not included in the request remain unchanged. For details, see [Custom
+        /// metadata](https://cloud.google.com/storage/docs/metadata#custom-metadata).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customMetadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> CustomMetadata { get; set; }
 
         /// <summary>
-        /// Optional. Updates objects Custom-Time fixed metadata. Unset values will be ignored. Set empty values to
-        /// clear the metadata. Refer to documentation in https://cloud.google.com/storage/docs/metadata#custom-time.
+        /// Optional. Updates the objects `Custom-Time` fixed metadata. Unset values in the request are ignored. To
+        /// clear the metadata, set an empty value. The time must be specified in RFC 3339 format, for example
+        /// `YYYY-MM-DD'T'HH:MM:SS'Z'` or `YYYY-MM-DD'T'HH:MM:SS.SS'Z'`. For details, see
+        /// [Custom-Time](https://cloud.google.com/storage/docs/metadata#custom-time).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customTime")]
         public virtual string CustomTime { get; set; }
 
         /// <summary>
-        /// Optional. Updates objects retention lock configuration. Unset values will be ignored. Set empty values to
-        /// clear the retention for the object with existing `Unlocked` retention mode. Object with existing `Locked`
-        /// retention mode cannot be cleared or reduce retain_until_time. Refer to documentation in
-        /// https://cloud.google.com/storage/docs/object-lock
+        /// Optional. Updates an object's retention configuration. To clear an object's retention, both `retentionMode`
+        /// and `retainUntilTime` must be left unset (omitted). Setting `retentionMode` to `RETENTION_MODE_UNSPECIFIED`
+        /// is treated as a no-op. Unlike an unset field, it doesn't modify or clear the retention settings. An object
+        /// with `LOCKED` retention mode can't have its retention cleared or its `retainUntilTime` reduced. For more
+        /// information, see [Object
+        /// retention](https://cloud.google.com/storage/docs/batch-operations/create-manage-batch-operation-jobs#retain-until-time).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectRetention")]
         public virtual ObjectRetention ObjectRetention { get; set; }
@@ -2290,14 +2501,14 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
     public class PutObjectHold : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Updates object event based holds state. When object event based hold is set, object cannot be
+        /// Required. Updates object event based holds state. When object event based hold is set, object can't be
         /// deleted or replaced. Resets object's time in the bucket for the purposes of the retention period.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventBasedHold")]
         public virtual string EventBasedHold { get; set; }
 
         /// <summary>
-        /// Required. Updates object temporary holds state. When object temporary hold is set, object cannot be deleted
+        /// Required. Updates object temporary holds state. When object temporary hold is set, object can't be deleted
         /// or replaced.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("temporaryHold")]
@@ -2311,15 +2522,34 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
     public class RewriteObject : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Resource name of the Cloud KMS key that will be used to encrypt the object. The Cloud KMS key must
-        /// be located in same location as the object. Refer to
-        /// https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys#add-object-key for additional
-        /// documentation. Format: projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key} For
-        /// example: "projects/123456/locations/us-central1/keyRings/my-keyring/cryptoKeys/my-key". The object will be
-        /// rewritten and set with the specified KMS key.
+        /// Optional. Resource name of the Cloud KMS key that is used to encrypt the object. The Cloud KMS key must be
+        /// located in same location as the object. For details, see
+        /// https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys#add-object-key Format:
+        /// `projects/{project_id}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}` For example:
+        /// `projects/123456/locations/us-central1/keyRings/my-keyring/cryptoKeys/my-key`. The object will be rewritten
+        /// and set with the specified KMS key.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
         public virtual string KmsKey { get; set; }
+
+        /// <summary>
+        /// Optional. Rewrites the object to the specified storage class. Setting this field will perform a full byte
+        /// copy of the object if the storage class is different from the object's current storage class. If Autoclass
+        /// is enabled on the bucket, storage class changes are ignored by Cloud Storage.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageClass")]
+        public virtual string StorageClass { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes options for setting object ACLs.</summary>
+    public class SetObjectAcls : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Add, update, or remove grants from the object's existing ACLs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessControlsUpdates")]
+        public virtual AccessControlsUpdates AccessControlsUpdates { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2354,10 +2584,69 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Describes the Cloud Storage locations to include in a ProjectSource job.</summary>
+    public class TargetLocations : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. REQUIRED. A list of Cloud Storage locations (e.g., `us-central1`) to include in the job. If
+        /// `snapshot_time` is omitted, the job automatically defaults to the most recent snapshot timestamp that is
+        /// successfully populated in BOTH the `object_attributes_view` and `bucket_attributes_view` across ALL
+        /// specified locations. For details on Storage Insights dataset snapshots and views, see:
+        /// https://docs.cloud.google.com/storage/docs/insights/dataset-tables-and-schemas#schema
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<string> Locations { get; set; }
+
+        private string _snapshotTimeRaw;
+
+        private object _snapshotTime;
+
+        /// <summary>
+        /// Optional. OPTIONAL. The exact Storage Insights snapshot timestamp to use for the job compatible with the RFC
+        /// 3339 format (e.g., `2024-01-02T03:04:05Z`). If specified, this exact snapshot must exist in BOTH the
+        /// `object_attributes_view` and `bucket_attributes_view` for every location listed in `locations`. If the
+        /// snapshot is missing from either view in any of the locations, the job fails.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotTime")]
+        public virtual string SnapshotTimeRaw
+        {
+            get => _snapshotTimeRaw;
+            set
+            {
+                _snapshotTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _snapshotTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="SnapshotTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SnapshotTimeDateTimeOffset instead.")]
+        public virtual object SnapshotTime
+        {
+            get => _snapshotTime;
+            set
+            {
+                _snapshotTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _snapshotTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="SnapshotTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SnapshotTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SnapshotTimeRaw);
+            set => SnapshotTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes options to update object custom contexts.</summary>
     public class UpdateObjectCustomContext : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If set, must be set to true and all existing object custom contexts will be deleted.</summary>
+        /// <summary>If set, must be set to true and all existing object custom contexts are deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clearAll")]
         public virtual System.Nullable<bool> ClearAll { get; set; }
 
