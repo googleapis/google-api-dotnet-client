@@ -2459,9 +2459,9 @@ namespace Google.Apis.HangoutsChat.v1
                     NOTIFICATIONTYPEFORCENOTIFY = 1,
 
                     /// <summary>
-                    /// Silence the notification as if the recipients have [Chat Do Not
-                    /// Disturb](https://support.google.com/chat/answer/9093489) enabled or have muted the space.
-                    /// Requires [app authentication]
+                    /// Do not notify recipients, and do not mark the message as unread. This behaves similarly to the
+                    /// user muting the conversation or enabling [Chat Do Not
+                    /// Disturb](https://support.google.com/chat/answer/9093489). Requires [app authentication]
                     /// (https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("NOTIFICATION_TYPE_SILENT")]
@@ -9294,6 +9294,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// </summary>
     public class Membership : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. A user's relationship to the Workspace organization that owns the space. In spaces owned by
+        /// consumer accounts, the affiliation of all members is `EXTERNAL`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("affiliation")]
+        public virtual string Affiliation { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
