@@ -7740,6 +7740,13 @@ namespace Google.Apis.Dataform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveDefaultBranch")]
         public virtual string EffectiveDefaultBranch { get; set; }
 
+        /// <summary>
+        /// Optional. Resource name for the GitRepositoryLink used for machine credentials. Must be in the format
+        /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitRepositoryLink")]
+        public virtual string GitRepositoryLink { get; set; }
+
         /// <summary>Optional. Authentication fields for remote uris using SSH protocol.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sshAuthenticationConfig")]
         public virtual SshAuthenticationConfig SshAuthenticationConfig { get; set; }
