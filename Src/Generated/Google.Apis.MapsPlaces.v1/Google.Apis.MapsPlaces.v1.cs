@@ -1545,9 +1545,11 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual System.Nullable<bool> CurbsidePickup { get; set; }
 
         /// <summary>
-        /// The hours of operation for the next seven days (including today). The time period starts at midnight on the
-        /// date of the request and ends at 11:59 pm six days later. This field includes the special_days subfield of
-        /// all hours, set for dates that have exceptional hours.
+        /// The hours of operation for the next seven days (including today) incorporating any special opening hours.
+        /// The time period starts at midnight on the date of the request and ends at 11:59 pm six days later. If the
+        /// actual opening hours are outside of this range, the opening hours will be truncated. For example, if a place
+        /// is open from 10pm yesterday to 6am today, the opening hours will be truncated to 12am today to 6am today.
+        /// This field includes the special_days subfield of all hours, set for dates that have exceptional hours.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentOpeningHours")]
         public virtual GoogleMapsPlacesV1PlaceOpeningHours CurrentOpeningHours { get; set; }
@@ -1776,8 +1778,9 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual System.Nullable<double> Rating { get; set; }
 
         /// <summary>
-        /// The regular hours of operation. Note that if a place is always open (24 hours), the `close` field will not
-        /// be set. Clients can rely on always open (24 hours) being represented as an
+        /// The regular hours are the hours of operation for a place on a typical schedule. Note that if a place is
+        /// always open (24 hours), the `close` field will not be set. Clients can rely on always open (24 hours) being
+        /// represented as an
         /// [`open`](https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places#Period)
         /// period containing
         /// [`day`](https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places#Point)
