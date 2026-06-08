@@ -1,0 +1,37 @@
+{
+  "Google.Apis.SA360.v23.CustomersResource+BatchJobsResource+ListResultsRequest.ResponseContentTypeEnum": [
+    "UNSPECIFIED",
+    "RESOURCE_NAME_ONLY",
+    "MUTABLE_RESOURCE"
+  ],
+  "Google.Apis.SA360.v23.CustomersResource+InvoicesResource+ListRequest.IssueMonthEnum": [
+    "UNSPECIFIED",
+    "UNKNOWN",
+    "JANUARY",
+    "FEBRUARY",
+    "MARCH",
+    "APRIL",
+    "MAY",
+    "JUNE",
+    "JULY",
+    "AUGUST",
+    "SEPTEMBER",
+    "OCTOBER",
+    "NOVEMBER",
+    "DECEMBER"
+  ],
+  "Google.Apis.SA360.v23.IncentivesResource+FetchIncentiveRequest.TypeEnum": [
+    "UNSPECIFIED",
+    "UNKNOWN",
+    "ACQUISITION"
+  ],
+  "Google.Apis.SA360.v23.SA360BaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.SA360.v23.SA360BaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
