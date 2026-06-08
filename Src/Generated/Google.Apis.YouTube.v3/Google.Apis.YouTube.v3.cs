@@ -9535,6 +9535,95 @@ namespace Google.Apis.YouTube.v3
             this.service = service;
         }
 
+        /// <summary>
+        /// Retrieves a batch of VideoStat resources, possibly filtered. BatchGetStats is intentionally not atomic to
+        /// provide a better user experience.
+        /// </summary>
+        public virtual BatchGetStatsRequest BatchGetStats()
+        {
+            return new BatchGetStatsRequest(this.service);
+        }
+
+        /// <summary>
+        /// Retrieves a batch of VideoStat resources, possibly filtered. BatchGetStats is intentionally not atomic to
+        /// provide a better user experience.
+        /// </summary>
+        public class BatchGetStatsRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.BatchGetStatsResponse>
+        {
+            /// <summary>Constructs a new BatchGetStats request.</summary>
+            public BatchGetStatsRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Return videos with the given ids. The number of IDs specified cannot exceed 50.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Id { get; set; }
+
+            /// <summary>
+            /// Optional. **Note:** This parameter is intended exclusively for YouTube content partners. The
+            /// `onBehalfOfContentOwner` parameter indicates that the request's authorization credentials identify a
+            /// YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This
+            /// parameter is intended for YouTube content partners that own and manage many different YouTube channels.
+            /// It allows content owners to authenticate once and get access to all their video and channel data,
+            /// without having to provide authentication credentials for each individual channel. The CMS account that
+            /// the user authenticates with must be linked to the specified YouTube content owner.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwner", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OnBehalfOfContentOwner { get; set; }
+
+            /// <summary>
+            /// Required. The `**part**` parameter specifies a comma-separated list of one or more `videoStat` resource
+            /// properties that the API response will include. If the parameter identifies a property that contains
+            /// child properties, the child properties will be included in the response. For example, in a `videoStat`
+            /// resource, the `statistics` property contains `view_count` and `like_count`. As such, if you set
+            /// `**part=snippet**`, the API response will contain all of those properties.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Part { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "batchGetStats";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "youtube/v3/videos:batchGetStats";
+
+            /// <summary>Initializes BatchGetStats parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "onBehalfOfContentOwner",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("part", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "part",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Deletes a resource.</summary>
         /// <param name="id"><c>null</c></param>
         public virtual DeleteRequest Delete(string id)
@@ -10979,61 +11068,6 @@ namespace Google.Apis.YouTube.v3
                     }
                 }
             }
-
-            /// <summary>Updates an existing resource.</summary>
-            /// <param name="body">The body of the request.</param>
-            public virtual UpdateCommentThreadsRequest UpdateCommentThreads(Google.Apis.YouTube.v3.Data.CommentThread body)
-            {
-                return new UpdateCommentThreadsRequest(this.service, body);
-            }
-
-            /// <summary>Updates an existing resource.</summary>
-            public class UpdateCommentThreadsRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.CommentThread>
-            {
-                /// <summary>Constructs a new UpdateCommentThreads request.</summary>
-                public UpdateCommentThreadsRequest(Google.Apis.Services.IClientService service, Google.Apis.YouTube.v3.Data.CommentThread body) : base(service)
-                {
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// The *part* parameter specifies a comma-separated list of commentThread resource properties that the
-                /// API response will include. You must at least include the snippet part in the parameter value since
-                /// that part contains all of the properties that the API request can update.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> Part { get; set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.YouTube.v3.Data.CommentThread Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "updateCommentThreads";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "PUT";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "youtube/v3/commentThreads";
-
-                /// <summary>Initializes UpdateCommentThreads parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("part", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "part",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                }
-            }
         }
     }
 }
@@ -11537,6 +11571,29 @@ namespace Google.Apis.YouTube.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response for the Videos.stats API. Returns VideoStat information about a batch of videos. VideoStat contains a
+    /// subset of the information in Video that is relevant to statistics and content details. BatchGetStats is
+    /// intentionally not atomic to provide a better user experience. BatchGetStatsResponse returns a summary to help
+    /// users understand the outcome of the operation.
+    /// </summary>
+    public class BatchGetStatsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Etag of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>The videos' stats information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<VideoStat> Items { get; set; }
+
+        /// <summary>
+        /// Identifies what kind of resource this is. Value: the fixed string "youtube#batchGetStatsResponse".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
     }
 
     /// <summary>
@@ -17561,6 +17618,41 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A *VideoStat* resource represents a YouTube video's stats.</summary>
+    public class VideoStat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The VideoStatsContentDetails object contains information about the video content, including the
+        /// length of the video.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentDetails")]
+        public virtual VideoStatsContentDetails ContentDetails { get; set; }
+
+        /// <summary>Output only. Etag of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Output only. The ID that YouTube uses to uniquely identify the video.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Output only. Identifies what kind of resource this is. Value: the fixed string "youtube#videoStats".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// Output only. The VideoStatsSnippet object contains basic details about the video, such publish time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
+        public virtual VideoStatsSnippet Snippet { get; set; }
+
+        /// <summary>Output only. The VideoStatsStatistics object contains statistics about the video.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statistics")]
+        public virtual VideoStatsStatistics Statistics { get; set; }
+    }
+
     /// <summary>Statistics about the video, such as the number of times the video was viewed or liked.</summary>
     public class VideoStatistics : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17587,6 +17679,97 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The number of times the video has been viewed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewCount")]
         public virtual System.Nullable<ulong> ViewCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details about the content of a YouTube Video. This is a subset of the information in VideoContentDetails
+    /// specifically for the Videos.stats API.
+    /// </summary>
+    public class VideoStatsContentDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The length of the video. The property value is a
+        /// [`google.protobuf.Duration`](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#duration)
+        /// object.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Basic details about a video. This is a subset of the information in VideoSnippet specifically for the
+    /// Videos.stats API.
+    /// </summary>
+    public class VideoStatsSnippet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _publishTimeRaw;
+
+        private object _publishTime;
+
+        /// <summary>
+        /// Output only. The date and time that the video was uploaded. The property value is a
+        /// [`google.protobuf.Timestamp`](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#timestamp)
+        /// object.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishTime")]
+        public virtual string PublishTimeRaw
+        {
+            get => _publishTimeRaw;
+            set
+            {
+                _publishTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _publishTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="PublishTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PublishTimeDateTimeOffset instead.")]
+        public virtual object PublishTime
+        {
+            get => _publishTime;
+            set
+            {
+                _publishTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _publishTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PublishTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PublishTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PublishTimeRaw);
+            set => PublishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Statistics about the video, such as the number of times the video was viewed or liked.</summary>
+    public class VideoStatsStatistics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The number of comments for the video.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commentCount")]
+        public virtual System.Nullable<long> CommentCount { get; set; }
+
+        /// <summary>
+        /// Output only. The number of users who have indicated that they liked the video by giving it a positive
+        /// rating.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("likeCount")]
+        public virtual System.Nullable<long> LikeCount { get; set; }
+
+        /// <summary>Output only. The number of times the video has been viewed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("viewCount")]
+        public virtual System.Nullable<long> ViewCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
