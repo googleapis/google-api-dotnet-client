@@ -7414,7 +7414,10 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("queryScope")]
         public virtual string QueryScope { get; set; }
 
-        /// <summary>Optional. Options for search indexes that are at the index definition level.</summary>
+        /// <summary>
+        /// Optional. Options for search indexes that are at the index definition level. This field is only currently
+        /// supported for indexes with MONGODB_COMPATIBLE_API ApiScope.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchIndexOptions")]
         public virtual GoogleFirestoreAdminV1SearchIndexOptions SearchIndexOptions { get; set; }
 
@@ -7977,8 +7980,7 @@ namespace Google.Apis.Firestore.v1.Data
     public class GoogleFirestoreAdminV1SearchGeoSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Disables geoJSON indexing for the field. By default, geoJSON points are indexed. Firestore
-        /// GeoPoints are indexed regardless of this value.
+        /// Optional. Disables geoJSON indexing for the field. By default, geoJSON points are indexed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoJsonIndexingDisabled")]
         public virtual System.Nullable<bool> GeoJsonIndexingDisabled { get; set; }
@@ -8000,9 +8002,9 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string TextLanguage { get; set; }
 
         /// <summary>
-        /// Optional. The field in the document that specifies which language to use for that specific document. If
-        /// unspecified, the language is taken from the "language" field if it exists or from `text_language` if it does
-        /// not.
+        /// Optional. The field in the document that specifies which language to use for that specific document. For
+        /// indexes with MONGODB_COMPATIBLE_API ApiScope: if unspecified, the language is taken from the "language"
+        /// field if it exists or from `text_language` if it does not.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textLanguageOverrideFieldPath")]
         public virtual string TextLanguageOverrideFieldPath { get; set; }
