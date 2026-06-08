@@ -19911,6 +19911,15 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GoogleCloudDialogflowV2KnowledgeAssistAnswerAdditionalSuggestedQueryResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedQuery")]
+        public virtual GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery SuggestedQuery { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("answerText")]
@@ -19984,6 +19993,21 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("queryText")]
         public virtual string QueryText { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("searchContexts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuerySearchContext> SearchContexts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuerySearchContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20603,6 +20627,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
     public class GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalSuggestedQueryResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2KnowledgeAssistAnswerAdditionalSuggestedQueryResult> AdditionalSuggestedQueryResults { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("contextSize")]
         public virtual System.Nullable<int> ContextSize { get; set; }
 
@@ -22308,6 +22335,15 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerAdditionalSuggestedQueryResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedQuery")]
+        public virtual GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery SuggestedQuery { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswer : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("answerText")]
@@ -22381,6 +22417,21 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("queryText")]
         public virtual string QueryText { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("searchContexts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuerySearchContext> SearchContexts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuerySearchContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23102,6 +23153,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
     public class GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalSuggestedQueryResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerAdditionalSuggestedQueryResult> AdditionalSuggestedQueryResults { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("contextSize")]
         public virtual System.Nullable<int> ContextSize { get; set; }
 
