@@ -14024,6 +14024,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("aliases")]
         public virtual System.Collections.Generic.IList<string> Aliases { get; set; }
 
+        /// <summary>Output only. User's account archival time. (Read-only)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archivalTime")]
+        public virtual string ArchivalTime { get; set; }
+
         /// <summary>Indicates if user is archived.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archived")]
         public virtual System.Nullable<bool> Archived { get; set; }
@@ -14326,6 +14330,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suspensionReason")]
         public virtual string SuspensionReason { get; set; }
+
+        /// <summary>Output only. User's account suspension time. (Read-only)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suspensionTime")]
+        public virtual string SuspensionTime { get; set; }
 
         /// <summary>Output only. ETag of the user's photo (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailPhotoEtag")]
