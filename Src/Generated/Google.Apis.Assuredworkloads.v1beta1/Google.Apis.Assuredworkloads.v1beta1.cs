@@ -825,6 +825,75 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                         }
                     }
 
+                    /// <summary>
+                    /// Acknowledges multiple existing violations. By acknowledging violations, users acknowledge the
+                    /// existence of compliance violations in their workload and decide to ignore them due to a valid
+                    /// business justification. Acknowledgement is a permanent operation and it cannot be reverted. This
+                    /// is a batch version of AcknowledgeViolation.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Optional. The parent resource shared by all violations being acknowledged. Format:
+                    /// organizations/{organization}/locations/{location}/workloads/{workload}
+                    /// </param>
+                    public virtual BatchAcknowledgeViolationsRequest BatchAcknowledgeViolations(Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsRequest body, string parent)
+                    {
+                        return new BatchAcknowledgeViolationsRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Acknowledges multiple existing violations. By acknowledging violations, users acknowledge the
+                    /// existence of compliance violations in their workload and decide to ignore them due to a valid
+                    /// business justification. Acknowledgement is a permanent operation and it cannot be reverted. This
+                    /// is a batch version of AcknowledgeViolation.
+                    /// </summary>
+                    public class BatchAcknowledgeViolationsRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsResponse>
+                    {
+                        /// <summary>Constructs a new BatchAcknowledgeViolations request.</summary>
+                        public BatchAcknowledgeViolationsRequest(Google.Apis.Services.IClientService service, Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Optional. The parent resource shared by all violations being acknowledged. Format:
+                        /// organizations/{organization}/locations/{location}/workloads/{workload}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchAcknowledgeViolations";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/violations:batchAcknowledgeViolations";
+
+                        /// <summary>Initializes BatchAcknowledgeViolations parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+/workloads/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Retrieves Assured Workload Violation based on ID.</summary>
                     /// <param name="name">
                     /// Required. The resource name of the Violation to fetch (ie. Violation.name). Format:
@@ -2002,6 +2071,35 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
         public virtual string AssetType { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for acknowledging the violations in a batch</summary>
+    public class GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Acknowledge type of specified violations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acknowledgeType")]
+        public virtual string AcknowledgeType { get; set; }
+
+        /// <summary>Required. Business justification explaining the need for violations acknowledgement</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
+        public virtual string Comment { get; set; }
+
+        /// <summary>
+        /// Required. The resource names of the Violations to acknowledge. Format for each name:
+        /// organizations/{organization}/locations/{location}/workloads/{workload}/violations/{violation}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for batch violation acknowledgement</summary>
+    public class GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
