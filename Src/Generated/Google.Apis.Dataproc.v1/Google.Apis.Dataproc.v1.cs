@@ -3309,11 +3309,11 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>
                     /// Optional. A filter for the batches to return in the response.A filter is a logical expression
                     /// constraining the values of various fields in each batch resource. Filters are case sensitive,
-                    /// and may contain multiple clauses combined with logical operators (AND/OR). Supported fields are
-                    /// batch_id, batch_uuid, state, create_time, and labels.e.g. state = RUNNING and create_time
-                    /// &amp;lt; "2023-01-01T00:00:00Z" filters for batches in state RUNNING that were created before
-                    /// 2023-01-01. state = RUNNING and labels.environment=production filters for batches in state in a
-                    /// RUNNING state that have a production environment label.See
+                    /// and may contain multiple clauses combined with logical operators (AND/OR). Supported fields: *
+                    /// batch_id * batch_uuid * state * create_time * labels * runtime_info.cohort_info.cohort e.g.
+                    /// state = RUNNING and create_time &amp;lt; "2023-01-01T00:00:00Z" filters for batches in state
+                    /// RUNNING that were created before 2023-01-01. state = RUNNING and labels.environment=production
+                    /// filters for batches in state in a RUNNING state that have a production environment label.See
                     /// https://google.aip.dev/assets/misc/ebnf-filtering.txt for a detailed description of the filter
                     /// syntax and a list of supported comparisons.
                     /// </summary>
@@ -8266,7 +8266,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="projectId">
                 /// Required. The ID of the Google Cloud Platform project that the cluster belongs to.
                 /// </param>
-                /// <param name="region">Required. The Dataproc region in which to handle the request.</param>
+                /// <param name="region">Required. The region in which to handle the request.</param>
                 public virtual CreateRequest Create(Google.Apis.Dataproc.v1.Data.Cluster body, string projectId, string region)
                 {
                     return new CreateRequest(this.service, body, projectId, region);
@@ -8293,7 +8293,7 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Required. The Dataproc region in which to handle the request.</summary>
+                    /// <summary>Required. The region in which to handle the request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
@@ -8394,7 +8394,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="projectId">
                 /// Required. The ID of the Google Cloud Platform project that the cluster belongs to.
                 /// </param>
-                /// <param name="region">Required. The Dataproc region in which to handle the request.</param>
+                /// <param name="region">Required. The region in which to handle the request.</param>
                 /// <param name="clusterName">Required. The cluster name.</param>
                 public virtual DeleteRequest Delete(string projectId, string region, string clusterName)
                 {
@@ -8422,7 +8422,7 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Required. The Dataproc region in which to handle the request.</summary>
+                    /// <summary>Required. The region in which to handle the request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
@@ -8537,7 +8537,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="projectId">
                 /// Required. The ID of the Google Cloud Platform project that the cluster belongs to.
                 /// </param>
-                /// <param name="region">Required. The Dataproc region in which to handle the request.</param>
+                /// <param name="region">Required. The region in which to handle the request.</param>
                 /// <param name="clusterName">Required. The cluster name.</param>
                 public virtual DiagnoseRequest Diagnose(Google.Apis.Dataproc.v1.Data.DiagnoseClusterRequest body, string projectId, string region, string clusterName)
                 {
@@ -8569,7 +8569,7 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Required. The Dataproc region in which to handle the request.</summary>
+                    /// <summary>Required. The region in which to handle the request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
@@ -8627,7 +8627,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="projectId">
                 /// Required. The ID of the Google Cloud Platform project that the cluster belongs to.
                 /// </param>
-                /// <param name="region">Required. The Dataproc region in which to handle the request.</param>
+                /// <param name="region">Required. The region in which to handle the request.</param>
                 /// <param name="clusterName">Required. The cluster name.</param>
                 public virtual GetRequest Get(string projectId, string region, string clusterName)
                 {
@@ -8652,7 +8652,7 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Required. The Dataproc region in which to handle the request.</summary>
+                    /// <summary>Required. The region in which to handle the request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
@@ -8861,7 +8861,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="projectId">
                 /// Required. The ID of the Google Cloud Platform project that the cluster belongs to.
                 /// </param>
-                /// <param name="region">Required. The Dataproc region in which to handle the request.</param>
+                /// <param name="region">Required. The region in which to handle the request.</param>
                 public virtual ListRequest List(string projectId, string region)
                 {
                     return new ListRequest(this.service, projectId, region);
@@ -8884,7 +8884,7 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Required. The Dataproc region in which to handle the request.</summary>
+                    /// <summary>Required. The region in which to handle the request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
@@ -8981,7 +8981,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="projectId">
                 /// Required. The ID of the Google Cloud Platform project the cluster belongs to.
                 /// </param>
-                /// <param name="region">Required. The Dataproc region in which to handle the request.</param>
+                /// <param name="region">Required. The region in which to handle the request.</param>
                 /// <param name="clusterName">Required. The cluster name.</param>
                 public virtual PatchRequest Patch(Google.Apis.Dataproc.v1.Data.Cluster body, string projectId, string region, string clusterName)
                 {
@@ -9009,7 +9009,7 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Required. The Dataproc region in which to handle the request.</summary>
+                    /// <summary>Required. The region in which to handle the request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
@@ -9023,8 +9023,8 @@ namespace Google.Apis.Dataproc.v1
                     /// for jobs in progress to finish before forcefully removing nodes (and potentially interrupting
                     /// jobs). Default timeout is 0 (for forceful decommission), and the maximum allowed timeout is 1
                     /// day. (see JSON representation of Duration
-                    /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).Only supported on Dataproc
-                    /// image versions 1.2 and higher.
+                    /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).Supported in image versions
+                    /// 1.2 and higher.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("gracefulDecommissionTimeout", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object GracefulDecommissionTimeout { get; set; }
@@ -9134,7 +9134,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="projectId">
                 /// Required. The ID of the Google Cloud Platform project the cluster belongs to.
                 /// </param>
-                /// <param name="region">Required. The Dataproc region in which to handle the request.</param>
+                /// <param name="region">Required. The region in which to handle the request.</param>
                 /// <param name="clusterName">Required. The cluster name.</param>
                 public virtual RepairRequest Repair(Google.Apis.Dataproc.v1.Data.RepairClusterRequest body, string projectId, string region, string clusterName)
                 {
@@ -9158,7 +9158,7 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Required. The Dataproc region in which to handle the request.</summary>
+                    /// <summary>Required. The region in which to handle the request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
@@ -9282,7 +9282,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="projectId">
                 /// Required. The ID of the Google Cloud Platform project the cluster belongs to.
                 /// </param>
-                /// <param name="region">Required. The Dataproc region in which to handle the request.</param>
+                /// <param name="region">Required. The region in which to handle the request.</param>
                 /// <param name="clusterName">Required. The cluster name.</param>
                 public virtual StartRequest Start(Google.Apis.Dataproc.v1.Data.StartClusterRequest body, string projectId, string region, string clusterName)
                 {
@@ -9306,7 +9306,7 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Required. The Dataproc region in which to handle the request.</summary>
+                    /// <summary>Required. The region in which to handle the request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
@@ -9365,7 +9365,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="projectId">
                 /// Required. The ID of the Google Cloud Platform project the cluster belongs to.
                 /// </param>
-                /// <param name="region">Required. The Dataproc region in which to handle the request.</param>
+                /// <param name="region">Required. The region in which to handle the request.</param>
                 /// <param name="clusterName">Required. The cluster name.</param>
                 public virtual StopRequest Stop(Google.Apis.Dataproc.v1.Data.StopClusterRequest body, string projectId, string region, string clusterName)
                 {
@@ -9389,7 +9389,7 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Required. The Dataproc region in which to handle the request.</summary>
+                    /// <summary>Required. The region in which to handle the request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
@@ -11687,9 +11687,9 @@ namespace Google.Apis.Dataproc.v1.Data
         /// (https://cloud.google.com/compute/docs/reference/v1/acceleratorTypes).Examples:
         /// https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]/acceleratorTypes/nvidia-tesla-t4
         /// projects/[project_id]/zones/[zone]/acceleratorTypes/nvidia-tesla-t4 nvidia-tesla-t4Auto Zone Exception: If
-        /// you are using the Dataproc Auto Zone Placement
-        /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement)
-        /// feature, you must use the short name of the accelerator type resource, for example, nvidia-tesla-t4.
+        /// you are using Auto Zone Placement
+        /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement),
+        /// you must use the short name of the accelerator type resource, for example, nvidia-tesla-t4.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorTypeUri")]
         public virtual string AcceleratorTypeUri { get; set; }
@@ -12260,7 +12260,7 @@ namespace Google.Apis.Dataproc.v1.Data
         /// (region) are valid. Examples:
         /// https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]
         /// projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]Note that the policy must
-        /// be in the same project and Dataproc region.
+        /// be in the same project and region.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyUri")]
         public virtual string PolicyUri { get; set; }
@@ -12792,7 +12792,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Describes the identifying information, config, and status of a Dataproc cluster</summary>
+    /// <summary>Describes the identifying information, config, and status of a cluster</summary>
     public class Cluster : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -12804,16 +12804,16 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ClusterName { get; set; }
 
         /// <summary>
-        /// Output only. A cluster UUID (Unique Universal Identifier). Dataproc generates this value when it creates the
-        /// cluster.
+        /// Output only. A cluster UUID (Unique Universal Identifier). The service generates this value when it creates
+        /// the cluster.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
         public virtual string ClusterUuid { get; set; }
 
         /// <summary>
-        /// Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default
-        /// values, and values may change when clusters are updated.Exactly one of ClusterConfig or VirtualClusterConfig
-        /// must be specified.
+        /// Optional. The cluster config for a cluster of Compute Engine Instances. Note that the service may set
+        /// default values, and values may change when clusters are updated.Exactly one of ClusterConfig or
+        /// VirtualClusterConfig must be specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual ClusterConfig Config { get; set; }
@@ -12847,9 +12847,9 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual System.Collections.Generic.IList<ClusterStatus> StatusHistory { get; set; }
 
         /// <summary>
-        /// Optional. The virtual cluster config is used when creating a Dataproc cluster that does not directly control
-        /// the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster
-        /// (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke-overview). Dataproc may set default
+        /// Optional. The virtual cluster config is used when creating a cluster that does not directly control the
+        /// underlying compute resources, for example, when creating a GKE cluster
+        /// (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke-overview). the service may set default
         /// values, and values may change when clusters are updated. Exactly one of config or virtual_cluster_config
         /// must be specified.
         /// </summary>
@@ -12884,25 +12884,24 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console
-        /// output. If you do not specify a staging bucket, Dataproc determines a Cloud Storage location (US, ASIA, or
-        /// EU) for the cluster staging bucket according to the Compute Engine zone where the cluster is deployed, and
-        /// then creates and manages this project-level, per-location bucket (see Dataproc staging and temp buckets
+        /// output. If you do not specify a staging bucket, the service will determine a Cloud Storage location (US,
+        /// ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is
+        /// deployed, and then create and manage this project-level, per-location bucket (see staging and temp buckets
         /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires
         /// a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configBucket")]
         public virtual string ConfigBucket { get; set; }
 
-        /// <summary>Optional. The config for Dataproc metrics.</summary>
+        /// <summary>Optional. The config for metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataprocMetricConfig")]
         public virtual DataprocMetricConfig DataprocMetricConfig { get; set; }
 
         /// <summary>
         /// Optional. A Cloud Storage bucket used to collect checkpoint diagnostic data
         /// (https://cloud.google.com/dataproc/docs/support/diagnose-clusters#checkpoint_diagnostic_data). If you do not
-        /// specify a diagnostic bucket, Cloud Dataproc will use the Dataproc temp bucket to collect the checkpoint
-        /// diagnostic data. This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage
-        /// bucket.
+        /// specify a diagnostic bucket, The service will use the temp bucket to collect the checkpoint diagnostic data.
+        /// This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diagnosticBucket")]
         public virtual string DiagnosticBucket { get; set; }
@@ -12924,10 +12923,9 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual GceClusterConfig GceClusterConfig { get; set; }
 
         /// <summary>
-        /// Optional. BETA. The Kubernetes Engine config for Dataproc clusters deployed to The Kubernetes Engine config
-        /// for Dataproc clusters deployed to Kubernetes. These config settings are mutually exclusive with Compute
-        /// Engine-based options, such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and
-        /// autoscaling_config.
+        /// Optional. BETA. The Kubernetes Engine config for clusters deployed to Kubernetes. These config settings are
+        /// mutually exclusive with Compute Engine-based options, such as gce_cluster_config, master_config,
+        /// worker_config, secondary_worker_config, and autoscaling_config.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeClusterConfig")]
         public virtual GkeClusterConfig GkeClusterConfig { get; set; }
@@ -12968,10 +12966,10 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce
-        /// history files. If you do not specify a temp bucket, Dataproc determines a Cloud Storage location (US, ASIA,
-        /// or EU) for the cluster temp bucket according to the Compute Engine zone where the cluster is deployed, and
-        /// then creates and manages this project-level, per-location bucket. The default bucket has a TTL of 90 days,
-        /// but you can use any TTL (or none) if you specify a bucket (see Dataproc staging and temp buckets
+        /// history files. If you do not specify a temp bucket, the service will determine a Cloud Storage location (US,
+        /// ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is
+        /// deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL
+        /// of 90 days, but you can use any TTL (or none) if you specify a bucket (see staging and temp buckets
         /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires
         /// a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
         /// </summary>
@@ -13304,7 +13302,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Dataproc metric config.</summary>
+    /// <summary>Metric config.</summary>
     public class DataprocMetricConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Metrics sources to enable.</summary>
@@ -14042,13 +14040,13 @@ namespace Google.Apis.Dataproc.v1.Data
     public class GceClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. An optional list of Compute Engine zones where the Dataproc cluster will not be located when Auto
-        /// Zone is enabled. Only one of zone_uri or auto_zone_exclude_zone_uris can be set. If both are omitted, the
-        /// service will pick a zone in the cluster Compute Engine region. If auto_zone_exclude_zone_uris is set and
-        /// there is more than one non-excluded zone, the service will pick one of the non-excluded zones. Otherwise,
-        /// cluster creation will fail with INVALID_ARGUMENT error.A full URL, partial URI, or short name are valid.
-        /// Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]
-        /// projects/[project_id]/zones/[zone] [zone]
+        /// Optional. An optional list of Compute Engine zones where the cluster will not be located when Auto Zone is
+        /// enabled. Only one of zone_uri or auto_zone_exclude_zone_uris can be set. If both are omitted, the service
+        /// will pick a zone in the cluster Compute Engine region. If auto_zone_exclude_zone_uris is set and there is
+        /// more than one non-excluded zone, the service will pick one of the non-excluded zones. Otherwise, cluster
+        /// creation will fail with INVALID_ARGUMENT error.A full URL, partial URI, or short name are valid. Examples:
+        /// https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone] projects/[project_id]/zones/[zone]
+        /// [zone]
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoZoneExcludeZoneUris")]
         public virtual System.Collections.Generic.IList<string> AutoZoneExcludeZoneUris { get; set; }
@@ -14063,10 +14061,10 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>
         /// Optional. This setting applies to subnetwork-enabled networks. It is set to true by default in clusters
         /// created with image versions 2.2.x.When set to true: All cluster VMs have internal IP addresses. Google
-        /// Private Access (https://cloud.google.com/vpc/docs/private-google-access) must be enabled to access Dataproc
-        /// and other Google Cloud APIs. Off-cluster dependencies must be configured to be accessible without external
-        /// IP addresses.When set to false: Cluster VMs are not restricted to internal IP addresses. Ephemeral external
-        /// IP addresses are assigned to each cluster VM.
+        /// Private Access (https://cloud.google.com/vpc/docs/private-google-access) must be enabled to access the
+        /// Dataproc API and other Google Cloud APIs. Off-cluster dependencies must be configured to be accessible
+        /// without external IP addresses.When set to false: Cluster VMs are not restricted to internal IP addresses.
+        /// Ephemeral external IP addresses are assigned to each cluster VM.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalIpOnly")]
         public virtual System.Nullable<bool> InternalIpOnly { get; set; }
@@ -14105,18 +14103,18 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>
         /// Optional. Resource manager tags
         /// (https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing) to add to all instances
-        /// (see Use secure tags in Dataproc (https://cloud.google.com/dataproc/docs/guides/use-secure-tags)).
+        /// (see Use secure tags (https://cloud.google.com/dataproc/docs/guides/use-secure-tags)).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceManagerTags")]
         public virtual System.Collections.Generic.IDictionary<string, string> ResourceManagerTags { get; set; }
 
         /// <summary>
-        /// Optional. The Dataproc service account
+        /// Optional. The VM service account
         /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/service-accounts#service_accounts_in_dataproc)
         /// (also see VM Data Plane identity
         /// (https://cloud.google.com/dataproc/docs/concepts/iam/dataproc-principals#vm_service_account_data_plane_identity))
-        /// used by Dataproc cluster VM instances to access Google Cloud Platform services.If not specified, the Compute
-        /// Engine default service account
+        /// used by cluster VM instances to access Google Cloud Platform services.If not specified, the Compute Engine
+        /// default service account
         /// (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
@@ -14157,9 +14155,9 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         /// <summary>
-        /// Optional. The Compute Engine zone where the Dataproc cluster will be located. If omitted, the service will
-        /// pick a zone in the cluster's Compute Engine region. On a get request, zone will always be present.A full
-        /// URL, partial URI, or short name are valid. Examples:
+        /// Optional. The Compute Engine zone where the cluster will be located. If omitted, the service will pick a
+        /// zone in the cluster's Compute Engine region. On a get request, zone will always be present.A full URL,
+        /// partial URI, or short name are valid. Examples:
         /// https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone] projects/[project_id]/zones/[zone]
         /// [zone]
         /// </summary>
@@ -14675,7 +14673,7 @@ namespace Google.Apis.Dataproc.v1.Data
         /// Optional. The Compute Engine image resource used for cluster instances.The URI can represent an image or
         /// image family.Image examples:
         /// https://www.googleapis.com/compute/v1/projects/[project_id]/global/images/[image-id]
-        /// projects/[project_id]/global/images/[image-id] image-idImage family examples. Dataproc will use the most
+        /// projects/[project_id]/global/images/[image-id] image-idImage family examples. The service will use the most
         /// recent image from the family:
         /// https://www.googleapis.com/compute/v1/projects/[project_id]/global/images/family/[custom-image-family-name]
         /// projects/[project_id]/global/images/family/[custom-image-family-name]If the URI is unspecified, it will be
@@ -14691,8 +14689,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual InstanceFlexibilityPolicy InstanceFlexibilityPolicy { get; set; }
 
         /// <summary>
-        /// Output only. The list of instance names. Dataproc derives the names from cluster_name, num_instances, and
-        /// the instance group.
+        /// Output only. The list of instance names, derived from cluster_name, num_instances, and the instance group.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceNames")]
         public virtual System.Collections.Generic.IList<string> InstanceNames { get; set; }
@@ -14710,9 +14707,9 @@ namespace Google.Apis.Dataproc.v1.Data
         /// are valid. Examples:
         /// https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2
         /// projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2 n1-standard-2Auto Zone Exception: If you are
-        /// using the Dataproc Auto Zone Placement
-        /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement)
-        /// feature, you must use the short name of the machine type resource, for example, n1-standard-2.
+        /// using Auto Zone Placement
+        /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement),
+        /// you must use the short name of the machine type resource, for example, n1-standard-2.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineTypeUri")]
         public virtual string MachineTypeUri { get; set; }
@@ -14725,8 +14722,8 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual ManagedGroupConfig ManagedGroupConfig { get; set; }
 
         /// <summary>
-        /// Optional. Specifies the minimum cpu platform for the Instance Group. See Dataproc -&amp;gt; Minimum CPU
-        /// Platform (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+        /// Optional. Specifies the minimum cpu platform for the Instance Group. See Minimum CPU Platform
+        /// (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
         public virtual string MinCpuPlatform { get; set; }
@@ -14797,8 +14794,8 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual System.Collections.Generic.IList<string> MachineTypes { get; set; }
 
         /// <summary>
-        /// Optional. Preference of this instance selection. Lower number means higher preference. Dataproc will first
-        /// try to create a VM based on the machine-type with priority rank and fallback to next rank based on
+        /// Optional. Preference of this instance selection. Lower number means higher preference. The service will
+        /// first try to create a VM based on the machine-type with priority rank and fallback to next rank based on
         /// availability. Machine types and instance selections with the same priority have the same preference.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rank")]
@@ -15454,7 +15451,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string CrossRealmTrustKdc { get; set; }
 
         /// <summary>
-        /// Optional. The remote realm the Dataproc on-cluster KDC will trust, should the user enable cross realm trust.
+        /// Optional. The remote realm the on-cluster KDC will trust, should the user enable cross realm trust.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crossRealmTrustRealm")]
         public virtual string CrossRealmTrustRealm { get; set; }
@@ -15481,21 +15478,21 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided key.
-        /// For the self-signed certificate, this password is generated by Dataproc.
+        /// For the self-signed certificate, this password is generated by the service.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyPasswordUri")]
         public virtual string KeyPasswordUri { get; set; }
 
         /// <summary>
         /// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided
-        /// keystore. For the self-signed certificate, this password is generated by Dataproc.
+        /// keystore. For the self-signed certificate, this password is generated by the service.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keystorePasswordUri")]
         public virtual string KeystorePasswordUri { get; set; }
 
         /// <summary>
-        /// Optional. The Cloud Storage URI of the keystore file used for SSL encryption. If not provided, Dataproc will
-        /// provide a self-signed certificate.
+        /// Optional. The Cloud Storage URI of the keystore file used for SSL encryption. If not provided, the service
+        /// will provide a self-signed certificate.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keystoreUri")]
         public virtual string KeystoreUri { get; set; }
@@ -15526,13 +15523,13 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided
-        /// truststore. For the self-signed certificate, this password is generated by Dataproc.
+        /// truststore. For the self-signed certificate, this password is generated by the service.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("truststorePasswordUri")]
         public virtual string TruststorePasswordUri { get; set; }
 
         /// <summary>
-        /// Optional. The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, Dataproc
+        /// Optional. The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, the service
         /// will provide a self-signed certificate.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("truststoreUri")]
@@ -16005,7 +16002,7 @@ namespace Google.Apis.Dataproc.v1.Data
     public class MetastoreConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Resource name of an existing Dataproc Metastore service.Example:
+        /// Required. Resource name of an existing Metastore service.Example:
         /// projects/[project_id]/locations/[dataproc_region]/services/[service-name]
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataprocMetastoreService")]
@@ -16015,7 +16012,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Dataproc custom metric.</summary>
+    /// <summary>A custom metric.</summary>
     public class Metric : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -16113,9 +16110,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Dataproc Node Group. The Dataproc NodeGroup resource is not related to the Dataproc NodeGroupAffinity resource.
-    /// </summary>
+    /// <summary>Node Group. The NodeGroup resource is not related to the NodeGroupAffinity resource.</summary>
     public class NodeGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -16144,8 +16139,8 @@ namespace Google.Apis.Dataproc.v1.Data
     }
 
     /// <summary>
-    /// Node Group Affinity for clusters using sole-tenant node groups. The Dataproc NodeGroupAffinity resource is not
-    /// related to the Dataproc NodeGroup resource.
+    /// Node Group Affinity for clusters using sole-tenant node groups. The NodeGroupAffinity resource is not related to
+    /// the NodeGroup resource.
     /// </summary>
     public class NodeGroupAffinity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16702,15 +16697,15 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Defines how Dataproc should create VMs with a mixture of provisioning models.</summary>
+    /// <summary>Defines how to create VMs with a mixture of provisioning models.</summary>
     public class ProvisioningModelMix : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Optional. The base capacity that will always use Standard VMs to avoid risk of more preemption than the
-        /// minimum capacity you need. Dataproc will create only standard VMs until it reaches standard_capacity_base,
-        /// then it will start using standard_capacity_percent_above_base to mix Spot with Standard VMs. eg. If 15
-        /// instances are requested and standard_capacity_base is 5, Dataproc will create 5 standard VMs and then start
-        /// mixing spot and standard VMs for remaining 10 instances.
+        /// minimum capacity you need. The service will create only standard VMs until it reaches
+        /// standard_capacity_base, then it will start using standard_capacity_percent_above_base to mix Spot with
+        /// Standard VMs. eg. If 15 instances are requested and standard_capacity_base is 5, the service will create 5
+        /// standard VMs and thenstart mixing spot and standard VMs for remaining 10 instances.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("standardCapacityBase")]
         public virtual System.Nullable<int> StandardCapacityBase { get; set; }
@@ -16718,7 +16713,7 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>
         /// Optional. The percentage of target capacity that should use Standard VM. The remaining percentage will use
         /// Spot VMs. The percentage applies only to the capacity above standard_capacity_base. eg. If 15 instances are
-        /// requested and standard_capacity_base is 5 and standard_capacity_percent_above_base is 30, Dataproc will
+        /// requested and standard_capacity_base is 5 and standard_capacity_percent_above_base is 30, the service will
         /// create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances. The mix will
         /// be 30% standard and 70% spot.
         /// </summary>
@@ -17122,7 +17117,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ClusterUuid { get; set; }
 
         /// <summary>
-        /// Optional. Whether the request is submitted by Dataproc super user. If true, IAM will check
+        /// Optional. Whether the request is submitted by a super user. If true, IAM will check
         /// 'dataproc.clusters.repair' permission instead of 'dataproc.clusters.update' permission. This is to give
         /// Dataproc superuser the ability to repair clusters without granting the overly broad update permission.
         /// </summary>
@@ -17135,7 +17130,7 @@ namespace Google.Apis.Dataproc.v1.Data
         /// jobs finish before forcefully removing nodes. The default timeout is 0 for forceful decommissioning, and the
         /// maximum timeout period is 1 day. (see JSON Mapping—Duration
         /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).graceful_decommission_timeout is
-        /// supported in Dataproc image versions 1.2+.
+        /// supported in image versions 1.2+.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gracefulDecommissionTimeout")]
         public virtual object GracefulDecommissionTimeout { get; set; }
@@ -18343,7 +18338,7 @@ namespace Google.Apis.Dataproc.v1.Data
     public class SoftwareConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The version of software inside the cluster. It must be one of the supported Dataproc Versions
+        /// Optional. The version of software inside the cluster. It must be one of the supported Image Versions
         /// (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported-dataproc-image-versions),
         /// such as "1.2" (including a subminor version, such as "1.2.29"), or the "preview" version
         /// (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If
@@ -20700,8 +20695,8 @@ namespace Google.Apis.Dataproc.v1.Data
     }
 
     /// <summary>
-    /// The Dataproc cluster config for a cluster that does not directly control the underlying compute resources, such
-    /// as a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke-overview).
+    /// The cluster config for a cluster that does not directly control the underlying compute resources, such as a GKE
+    /// cluster (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke-overview).
     /// </summary>
     public class VirtualClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -20709,15 +20704,15 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("auxiliaryServicesConfig")]
         public virtual AuxiliaryServicesConfig AuxiliaryServicesConfig { get; set; }
 
-        /// <summary>Required. The configuration for running the Dataproc cluster on Kubernetes.</summary>
+        /// <summary>Required. The configuration for running the cluster on Kubernetes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kubernetesClusterConfig")]
         public virtual KubernetesClusterConfig KubernetesClusterConfig { get; set; }
 
         /// <summary>
         /// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console
-        /// output. If you do not specify a staging bucket, Dataproc determines a Cloud Storage location (US, ASIA, or
-        /// EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed,
-        /// and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets
+        /// output. If you do not specify a staging bucket, the service will determine a Cloud Storage location (US,
+        /// ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is
+        /// deployed, and then create and manage this project-level, per-location bucket (see staging and temp buckets
         /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires
         /// a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
         /// </summary>
