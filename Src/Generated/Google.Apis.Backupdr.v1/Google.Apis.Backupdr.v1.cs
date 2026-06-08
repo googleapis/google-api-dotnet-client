@@ -8479,7 +8479,9 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
 
-        /// <summary>Optional. Whether to use the project service account for the Compute Engine instance.</summary>
+        /// <summary>
+        /// Optional. Whether to use the project service account for the Compute Engine instance restore.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useProjectServiceAccount")]
         public virtual System.Nullable<bool> UseProjectServiceAccount { get; set; }
 
@@ -9168,7 +9170,7 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
 
-        /// <summary>Optional. Whether to use the project service account for the disk.</summary>
+        /// <summary>Optional. Whether to use the project service account for the disk restore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useProjectServiceAccount")]
         public virtual System.Nullable<bool> UseProjectServiceAccount { get; set; }
 
@@ -11015,7 +11017,7 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("replicaZones")]
         public virtual System.Collections.Generic.IList<string> ReplicaZones { get; set; }
 
-        /// <summary>Optional. Whether to use the project service account for the disk.</summary>
+        /// <summary>Optional. Whether to use the project service account for the disk restore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useProjectServiceAccount")]
         public virtual System.Nullable<bool> UseProjectServiceAccount { get; set; }
 
