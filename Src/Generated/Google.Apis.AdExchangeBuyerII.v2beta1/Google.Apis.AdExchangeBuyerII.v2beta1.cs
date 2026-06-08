@@ -8189,6 +8189,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     /// <summary>Request message for indicating that the proposal's setup step is complete.</summary>
     public class CompleteSetupRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The external deal ids of the deals to mark as setup completed. If empty, all the deals in the proposal will
+        /// be marked as setup completed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalDealIds")]
+        public virtual System.Collections.Generic.IList<string> ExternalDealIds { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
