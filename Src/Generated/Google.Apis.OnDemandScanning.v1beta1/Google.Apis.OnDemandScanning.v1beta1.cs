@@ -2076,6 +2076,10 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; }
 
+        /// <summary>Description of the finding category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual string Details { get; set; }
+
         /// <summary>Location (path and line) where the finding was detected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual FindingLocation Location { get; set; }
@@ -4303,6 +4307,10 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         /// <summary>The cvss v2 score for the vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cvssV2")]
         public virtual CVSS CvssV2 { get; set; }
+
+        /// <summary>The cvss v4 score for the vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cvssV4")]
+        public virtual CVSS CvssV4 { get; set; }
 
         /// <summary>Output only. CVSS version used to populate cvss_score and severity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cvssVersion")]
