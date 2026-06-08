@@ -292,6 +292,7 @@ namespace Google.Apis.NetworkServices.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                AgentGateways = new AgentGatewaysResource(service);
                 AuthzExtensions = new AuthzExtensionsResource(service);
                 EdgeCacheKeysets = new EdgeCacheKeysetsResource(service);
                 EdgeCacheOrigins = new EdgeCacheOriginsResource(service);
@@ -304,12 +305,386 @@ namespace Google.Apis.NetworkServices.v1
                 LbRouteExtensions = new LbRouteExtensionsResource(service);
                 LbTrafficExtensions = new LbTrafficExtensionsResource(service);
                 Meshes = new MeshesResource(service);
+                MulticastConsumerAssociations = new MulticastConsumerAssociationsResource(service);
+                MulticastGroupConsumerActivations = new MulticastGroupConsumerActivationsResource(service);
                 Operations = new OperationsResource(service);
                 ServiceBindings = new ServiceBindingsResource(service);
                 ServiceLbPolicies = new ServiceLbPoliciesResource(service);
                 TcpRoutes = new TcpRoutesResource(service);
                 TlsRoutes = new TlsRoutesResource(service);
                 WasmPlugins = new WasmPluginsResource(service);
+            }
+
+            /// <summary>Gets the AgentGateways resource.</summary>
+            public virtual AgentGatewaysResource AgentGateways { get; }
+
+            /// <summary>The "agentGateways" collection of methods.</summary>
+            public class AgentGatewaysResource
+            {
+                private const string Resource = "agentGateways";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AgentGatewaysResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new AgentGateway in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the AgentGateway. Must be in the format `projects/*/locations/*`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkServices.v1.Data.AgentGateway body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new AgentGateway in a given project and location.</summary>
+                public class CreateRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.AgentGateway body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the AgentGateway. Must be in the format
+                    /// `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. Short name of the AgentGateway resource to be created.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("agentGatewayId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string AgentGatewayId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.AgentGateway Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/agentGateways";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("agentGatewayId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "agentGatewayId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single AgentGateway.</summary>
+                /// <param name="name">
+                /// Required. A name of the AgentGateway to delete. Must be in the format
+                /// `projects/*/locations/*/agentGateways/*`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single AgentGateway.</summary>
+                public class DeleteRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the AgentGateway to delete. Must be in the format
+                    /// `projects/*/locations/*/agentGateways/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. The etag of the AgentGateway to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/agentGateways/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single AgentGateway.</summary>
+                /// <param name="name">
+                /// Required. A name of the AgentGateway to get. Must be in the format
+                /// `projects/*/locations/*/agentGateways/*`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single AgentGateway.</summary>
+                public class GetRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.AgentGateway>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the AgentGateway to get. Must be in the format
+                    /// `projects/*/locations/*/agentGateways/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/agentGateways/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists AgentGateways in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the AgentGateways should be listed, specified in the
+                /// format `projects/*/locations/*`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists AgentGateways in a given project and location.</summary>
+                public class ListRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.ListAgentGatewaysResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the AgentGateways should be listed, specified in
+                    /// the format `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Maximum number of AgentGateways to return per call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The value returned by the last `ListAgentGatewaysResponse` Indicates that this is a
+                    /// continuation of a prior `ListAgentGateways` call, and that the system should return the next
+                    /// page of data.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>
+                    /// Optional. If true, allow partial responses for multi-regional Aggregated List requests.
+                    /// Otherwise if one of the locations is down or unreachable, the Aggregated List request will fail.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/agentGateways";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single AgentGateway.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. Name of the AgentGateway resource. It matches pattern
+                /// `projects/*/locations/*/agentGateways/`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1.Data.AgentGateway body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single AgentGateway.</summary>
+                public class PatchRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.AgentGateway body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. Name of the AgentGateway resource. It matches pattern
+                    /// `projects/*/locations/*/agentGateways/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the AgentGateway
+                    /// resource by the update. The fields specified in the update_mask are relative to the resource,
+                    /// not the full request. A field will be overwritten if it is in the mask. If the user does not
+                    /// provide a mask then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.AgentGateway Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/agentGateways/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the AuthzExtensions resource.</summary>
@@ -4829,6 +5204,902 @@ namespace Google.Apis.NetworkServices.v1
                 }
             }
 
+            /// <summary>Gets the MulticastConsumerAssociations resource.</summary>
+            public virtual MulticastConsumerAssociationsResource MulticastConsumerAssociations { get; }
+
+            /// <summary>The "multicastConsumerAssociations" collection of methods.</summary>
+            public class MulticastConsumerAssociationsResource
+            {
+                private const string Resource = "multicastConsumerAssociations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public MulticastConsumerAssociationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new multicast consumer association in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the multicast consumer association. Use the following format:
+                /// `projects/*/locations/*`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkServices.v1.Data.MulticastConsumerAssociation body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new multicast consumer association in a given project and location.</summary>
+                public class CreateRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.MulticastConsumerAssociation body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the multicast consumer association. Use the following format:
+                    /// `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. A unique name for the multicast consumer association. The name is restricted to
+                    /// lower-case letters, numbers, and hyphen, with the first character a lower-case letter, and the
+                    /// last a letter or a number. The name must not exceed 48 characters.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("multicastConsumerAssociationId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string MulticastConsumerAssociationId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.MulticastConsumerAssociation Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/multicastConsumerAssociations";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("multicastConsumerAssociationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "multicastConsumerAssociationId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single multicast consumer association.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the multicast consumer association to delete. Use the following
+                /// format: `projects/*/locations/*/multicastConsumerAssociations/*`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single multicast consumer association.</summary>
+                public class DeleteRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the multicast consumer association to delete. Use the following
+                    /// format: `projects/*/locations/*/multicastConsumerAssociations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/multicastConsumerAssociations/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single multicast consumer association.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the multicast consumer association to get. Use the following format:
+                /// `projects/*/locations/*/multicastConsumerAssociations/*`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single multicast consumer association.</summary>
+                public class GetRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.MulticastConsumerAssociation>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the multicast consumer association to get. Use the following
+                    /// format: `projects/*/locations/*/multicastConsumerAssociations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/multicastConsumerAssociations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists multicast consumer associations in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent resource for which to list multicast consumer associations. Use the following
+                /// format: `projects/*/locations/*`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists multicast consumer associations in a given project and location.</summary>
+                public class ListRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.ListMulticastConsumerAssociationsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource for which to list multicast consumer associations. Use the
+                    /// following format: `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A filter expression that filters the resources listed in the response. The expression
+                    /// must be of the form ` ` where operators: `&amp;lt;`, `&amp;gt;`, `&amp;lt;=`, `&amp;gt;=`, `!=`,
+                    /// `=`, `:` are supported (colon `:` represents a HAS operator which is roughly synonymous with
+                    /// equality). can refer to a proto or JSON field, or a synthetic field. Field names can be
+                    /// camelCase or snake_case. Examples: * Filter by name: name = "RESOURCE_NAME" * Filter by labels:
+                    /// * Resources that have a key named `foo` labels.foo:* * Resources that have a key named `foo`
+                    /// whose value is `bar` labels.foo = bar
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. A field used to sort the results by a certain order.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of multicast consumer associations to return per call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token from an earlier query, as returned in `next_page_token`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/multicastConsumerAssociations";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single multicast consumer association.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The resource name of the multicast consumer association. Use the following format:
+                /// `projects/*/locations/*/multicastConsumerAssociations/*`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1.Data.MulticastConsumerAssociation body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single multicast consumer association.</summary>
+                public class PatchRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.MulticastConsumerAssociation body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The resource name of the multicast consumer association. Use the following format:
+                    /// `projects/*/locations/*/multicastConsumerAssociations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the
+                    /// MulticastConsumerAssociation resource by the update. The fields specified in the `update_mask`
+                    /// are relative to the resource, not the full request. A field will be overwritten if it is in the
+                    /// mask. If the user does not provide a mask then all mutable fields present in the request will be
+                    /// overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.MulticastConsumerAssociation Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/multicastConsumerAssociations/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the MulticastGroupConsumerActivations resource.</summary>
+            public virtual MulticastGroupConsumerActivationsResource MulticastGroupConsumerActivations { get; }
+
+            /// <summary>The "multicastGroupConsumerActivations" collection of methods.</summary>
+            public class MulticastGroupConsumerActivationsResource
+            {
+                private const string Resource = "multicastGroupConsumerActivations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public MulticastGroupConsumerActivationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Creates a new multicast group consumer activation in a given project and location.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the multicast group consumer activation. Use the following format:
+                /// `projects/*/locations/*`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkServices.v1.Data.MulticastGroupConsumerActivation body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a new multicast group consumer activation in a given project and location.
+                /// </summary>
+                public class CreateRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.MulticastGroupConsumerActivation body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the multicast group consumer activation. Use the following
+                    /// format: `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. A unique name for the multicast group consumer activation. The name is restricted to
+                    /// lower-case letters, numbers, and hyphen, with the first character a lower-case letter, and the
+                    /// last a letter or a number. The name must not exceed 48 characters.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("multicastGroupConsumerActivationId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string MulticastGroupConsumerActivationId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.MulticastGroupConsumerActivation Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/multicastGroupConsumerActivations";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("multicastGroupConsumerActivationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "multicastGroupConsumerActivationId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single multicast group consumer activation.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the multicast group consumer activation to delete. Use the following
+                /// format: `projects/*/locations/*/multicastGroupConsumerActivations/*`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single multicast group consumer activation.</summary>
+                public class DeleteRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the multicast group consumer activation to delete. Use the
+                    /// following format: `projects/*/locations/*/multicastGroupConsumerActivations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/multicastGroupConsumerActivations/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single multicast group consumer activation.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the multicast group consumer activation to get. Use the following
+                /// format: `projects/*/locations/*/multicastGroupConsumerActivations/*`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single multicast group consumer activation.</summary>
+                public class GetRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.MulticastGroupConsumerActivation>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the multicast group consumer activation to get. Use the following
+                    /// format: `projects/*/locations/*/multicastGroupConsumerActivations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/multicastGroupConsumerActivations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists multicast group consumer activations in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent resource for which to list multicast group consumer activations. Use the
+                /// following format: `projects/*/locations/*`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists multicast group consumer activations in a given project and location.</summary>
+                public class ListRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.ListMulticastGroupConsumerActivationsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource for which to list multicast group consumer activations. Use the
+                    /// following format: `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A filter expression that filters the resources listed in the response. The expression
+                    /// must be of the form ` ` where operators: `&amp;lt;`, `&amp;gt;`, `&amp;lt;=`, `&amp;gt;=`, `!=`,
+                    /// `=`, `:` are supported (colon `:` represents a HAS operator which is roughly synonymous with
+                    /// equality). can refer to a proto or JSON field, or a synthetic field. Field names can be
+                    /// camelCase or snake_case. Examples: * Filter by name: name = "RESOURCE_NAME" * Filter by labels:
+                    /// * Resources that have a key named `foo` labels.foo:* * Resources that have a key named `foo`
+                    /// whose value is `bar` labels.foo = bar
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. A field used to sort the results by a certain order.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of multicast group consumer activations to return per call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token from an earlier query, as returned in `next_page_token`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/multicastGroupConsumerActivations";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single multicast group consumer activation.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The resource name of the multicast group consumer activation. Use the following format:
+                /// `projects/*/locations/*/multicastGroupConsumerActivations/*`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1.Data.MulticastGroupConsumerActivation body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single multicast group consumer activation.</summary>
+                public class PatchRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.MulticastGroupConsumerActivation body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The resource name of the multicast group consumer activation. Use the following
+                    /// format: `projects/*/locations/*/multicastGroupConsumerActivations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the
+                    /// MulticastGroupConsumerActivation resource by the update. The fields specified in the
+                    /// `update_mask` are relative to the resource, not the full request. A field will be overwritten if
+                    /// it is in the mask. If the user does not provide a mask then all mutable fields present in the
+                    /// request will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.MulticastGroupConsumerActivation Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/multicastGroupConsumerActivations/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the Operations resource.</summary>
             public virtual OperationsResource Operations { get; }
 
@@ -7373,6 +8644,235 @@ namespace Google.Apis.NetworkServices.v1
 }
 namespace Google.Apis.NetworkServices.v1.Data
 {
+    /// <summary>AgentGateway represents the agent gateway resource.</summary>
+    public class AgentGateway : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Field for populated AgentGateway card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentGatewayCard")]
+        public virtual AgentGatewayAgentGatewayOutputCard AgentGatewayCard { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. A free-text description of the resource. Max length 1024 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Etag of the resource. If this is provided, it must match the server's etag. If the provided etag
+        /// does not match the server's etag, the request will fail with a 409 ABORTED error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Optional. Proxy is orchestrated and managed by GoogleCloud in a tenant project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleManaged")]
+        public virtual AgentGatewayGoogleManaged GoogleManaged { get; set; }
+
+        /// <summary>Optional. Set of label tags associated with the AgentGateway resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. Name of the AgentGateway resource. It matches pattern `projects/*/locations/*/agentGateways/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Network configuration for the AgentGateway.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkConfig")]
+        public virtual AgentGatewayNetworkConfig NetworkConfig { get; set; }
+
+        /// <summary>Required. List of protocols supported by an Agent Gateway</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocols")]
+        public virtual System.Collections.Generic.IList<string> Protocols { get; set; }
+
+        /// <summary>
+        /// Optional. A list of Agent registries containing the agents, MCP servers and tools governed by the Agent
+        /// Gateway. Note: Currently limited to project-scoped registries Must be of format
+        /// `//agentregistry.googleapis.com/projects/{project}/locations/{location}/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("registries")]
+        public virtual System.Collections.Generic.IList<string> Registries { get; set; }
+
+        /// <summary>Optional. Attach to existing Application Load Balancers or Secure Web Proxies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfManaged")]
+        public virtual AgentGatewaySelfManaged SelfManaged { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp when the resource was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
+    /// <summary>AgentGatewayOutputCard contains informational output-only fields</summary>
+    public class AgentGatewayAgentGatewayOutputCard : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. mTLS Endpoint associated with this AgentGateway</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mtlsEndpoint")]
+        public virtual string MtlsEndpoint { get; set; }
+
+        /// <summary>Output only. Root Certificates for Agents to validate this AgentGateway</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rootCertificates")]
+        public virtual System.Collections.Generic.IList<string> RootCertificates { get; set; }
+
+        /// <summary>Output only. Service Account used by Service Extensions to operate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceExtensionsServiceAccount")]
+        public virtual string ServiceExtensionsServiceAccount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for Google Managed deployment mode. Proxy is orchestrated and managed by GoogleCloud in a tenant
+    /// project.
+    /// </summary>
+    public class AgentGatewayGoogleManaged : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Operating Mode of Agent Gateway.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("governedAccessPath")]
+        public virtual string GovernedAccessPath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>NetworkConfig contains network configurations for the AgentGateway.</summary>
+    public class AgentGatewayNetworkConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Optional DNS peering configuration for connectivity to your private VPC network.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsPeeringConfig")]
+        public virtual AgentGatewayNetworkConfigDnsPeeringConfig DnsPeeringConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Optional PSC-Interface network attachment for connectivity to your private VPCs network.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("egress")]
+        public virtual AgentGatewayNetworkConfigEgress Egress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DNS peering config for the user VPC network.</summary>
+    public class AgentGatewayNetworkConfigDnsPeeringConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Domain names for which DNS queries should be forwarded to the target network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domains")]
+        public virtual System.Collections.Generic.IList<string> Domains { get; set; }
+
+        /// <summary>
+        /// Required. Target network in 'target project' to which DNS queries should be forwarded to. Must be in format
+        /// of `projects/{project}/global/networks/{network}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetNetwork")]
+        public virtual string TargetNetwork { get; set; }
+
+        /// <summary>
+        /// Required. Target project ID to which DNS queries should be forwarded to. This can be the same project that
+        /// contains the AgentGateway or a different project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetProject")]
+        public virtual string TargetProject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for Egress</summary>
+    public class AgentGatewayNetworkConfigEgress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The URI of the Network Attachment resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
+        public virtual string NetworkAttachment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for Self Managed deployment mode. Attach to existing Application Load Balancers or Secure Web
+    /// Proxies.
+    /// </summary>
+    public class AgentGatewaySelfManaged : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A supported Google Cloud networking proxy in the Project and Location</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
+        public virtual string ResourceUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
@@ -9924,6 +11424,31 @@ namespace Google.Apis.NetworkServices.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response returned by the ListAgentGateways method.</summary>
+    public class ListAgentGatewaysResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of AgentGateway resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentGateways")]
+        public virtual System.Collections.Generic.IList<AgentGateway> AgentGateways { get; set; }
+
+        /// <summary>
+        /// If there might be more results than those appearing in this response, then `next_page_token` is included. To
+        /// get the next set of results, call this method again using the value of `next_page_token` as `page_token`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// Unreachable resources. Populated when the request attempts to list all resources across all supported
+        /// locations, while some locations are temporarily unavailable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for response to listing `AuthzExtension` resources.</summary>
     public class ListAuthzExtensionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10180,6 +11705,44 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// Unreachable resources. Populated when the request opts into `return_partial_success` and reading across
         /// collections e.g. when attempting to list all resources across all supported locations.
         /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListMulticastConsumerAssociations.</summary>
+    public class ListMulticastConsumerAssociationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of multicast consumer associations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multicastConsumerAssociations")]
+        public virtual System.Collections.Generic.IList<MulticastConsumerAssociation> MulticastConsumerAssociations { get; set; }
+
+        /// <summary>A page token from an earlier query, as returned in `next_page_token`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListMulticastGroupConsumerActivations.</summary>
+    public class ListMulticastGroupConsumerActivationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of multicast group consumer activations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multicastGroupConsumerActivations")]
+        public virtual System.Collections.Generic.IList<MulticastGroupConsumerActivation> MulticastGroupConsumerActivations { get; set; }
+
+        /// <summary>A page token from an earlier query, as returned in `next_page_token`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
@@ -10549,6 +12112,321 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// <summary>Output only. Type of the route: HttpRoute,GrpcRoute,TcpRoute, or TlsRoute</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routeType")]
         public virtual string RouteType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Multicast consumer association resource.</summary>
+    public class MulticastConsumerAssociation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>
+        /// Output only. [Output only] The timestamp when the multicast consumer association was created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. An optional text description of the multicast consumer association.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. Labels as key-value pairs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Optional. The resource name of the multicast domain activation that is in the same zone as this multicast
+        /// consumer association. Use the following format: `projects/*/locations/*/multicastDomainActivations/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multicastDomainActivation")]
+        public virtual string MulticastDomainActivation { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the multicast consumer association. Use the following format:
+        /// `projects/*/locations/*/multicastConsumerAssociations/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. The resource name of the multicast consumer VPC network. Use following format:
+        /// `projects/{project}/locations/global/networks/{network}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>
+        /// Output only. [Output only] A Compute Engine (placement
+        /// policy)[https://cloud.google.com/compute/docs/instances/placement-policies-overview] that can be used to
+        /// place virtual machine (VM) instances as multicast consumers close to the multicast infrastructure created
+        /// for this domain, on a best effort basis.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placementPolicy")]
+        public virtual string PlacementPolicy { get; set; }
+
+        /// <summary>
+        /// Output only. [Deprecated] The resource state of the multicast consumer association. Use the state field
+        /// instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceState")]
+        public virtual string ResourceState { get; set; }
+
+        /// <summary>Output only. [Output only] The state of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual MulticastResourceState State { get; set; }
+
+        /// <summary>
+        /// Output only. [Output only] The Google-generated UUID for the resource. This value is unique across all
+        /// multicast consumer association resources. If a consumer association is deleted and another with the same
+        /// name is created, the new consumer association is assigned a different unique_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uniqueId")]
+        public virtual string UniqueId { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>
+        /// Output only. [Output only] The timestamp when the Multicast Consumer Association was most recently updated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Multicast group consumer activation resource.</summary>
+    public class MulticastGroupConsumerActivation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>
+        /// Output only. [Output only] The timestamp when the multicast group consumer activation was created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. An optional text description of the multicast group consumer activation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. Labels as key-value pairs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the logging options for the activities performed related to the multicast group consumer
+        /// activation. Defaults to false. If logging is enabled, logs are exported to Cloud Logging.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logConfig")]
+        public virtual MulticastLogConfig LogConfig { get; set; }
+
+        /// <summary>
+        /// Required. The resource name of the multicast consumer association that is in the same zone as this multicast
+        /// group consumer activation. Use the following format:
+        /// `projects/*/locations/*/multicastConsumerAssociations/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multicastConsumerAssociation")]
+        public virtual string MulticastConsumerAssociation { get; set; }
+
+        /// <summary>
+        /// Optional. The resource name of the multicast group created by the admin in the same zone as this multicast
+        /// group consumer activation. Use the following format: // `projects/*/locations/*/multicastGroups/*`. This
+        /// field is deprecated. Use multicast_group_range_activation instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multicastGroup")]
+        public virtual string MulticastGroup { get; set; }
+
+        /// <summary>
+        /// Required. The resource name of the multicast group range activation created by the admin in the same zone as
+        /// this multicast group consumer activation. Use the following format: //
+        /// `projects/*/locations/*/multicastGroupRangeActivations/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multicastGroupRangeActivation")]
+        public virtual string MulticastGroupRangeActivation { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the multicast group consumer activation. Use the following format:
+        /// `projects/*/locations/*/multicastGroupConsumerActivations/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. [Deprecated] The resource state of the multicast group consumer activation. Use the state field
+        /// instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceState")]
+        public virtual string ResourceState { get; set; }
+
+        /// <summary>Output only. [Output only] The state of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual MulticastResourceState State { get; set; }
+
+        /// <summary>
+        /// Output only. [Output only] The Google-generated UUID for the resource. This value is unique across all
+        /// multicast group consumer activation resources. If a group consumer activation is deleted and another with
+        /// the same name is created, the new group consumer activation is assigned a different unique_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uniqueId")]
+        public virtual string UniqueId { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>
+        /// Output only. [Output only] The timestamp when the multicast group consumer activation was most recently
+        /// updated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The logging configuration.</summary>
+    public class MulticastLogConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether to enable logging or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The multicast resource's state.</summary>
+    public class MulticastResourceState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The state of the multicast resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
