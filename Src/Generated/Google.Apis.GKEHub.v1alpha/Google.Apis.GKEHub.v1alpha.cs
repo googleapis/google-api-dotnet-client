@@ -4150,6 +4150,73 @@ namespace Google.Apis.GKEHub.v1alpha
                 }
 
                 /// <summary>
+                /// Cancels a paused Rollout. The rollout will not be started on new clusters, however the rollout
+                /// running on the cluster will be allowed to finish. It's only valid to cancel a paused rollout,
+                /// otherwise it will return a FAILED_PRECONDITION error.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the rollout to cancel.
+                /// projects/{project}/locations/{location}/rollouts/{rollout}
+                /// </param>
+                public virtual CancelRequest Cancel(Google.Apis.GKEHub.v1alpha.Data.CancelRolloutRequest body, string name)
+                {
+                    return new CancelRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Cancels a paused Rollout. The rollout will not be started on new clusters, however the rollout
+                /// running on the cluster will be allowed to finish. It's only valid to cancel a paused rollout,
+                /// otherwise it will return a FAILED_PRECONDITION error.
+                /// </summary>
+                public class CancelRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.Operation>
+                {
+                    /// <summary>Constructs a new Cancel request.</summary>
+                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.GKEHub.v1alpha.Data.CancelRolloutRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the rollout to cancel.
+                    /// projects/{project}/locations/{location}/rollouts/{rollout}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.GKEHub.v1alpha.Data.CancelRolloutRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "cancel";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}:cancel";
+
+                    /// <summary>Initializes Cancel parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/rollouts/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Force-completes a rollout stage. Only the active stage of an active rollout can be force-completed.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
@@ -4357,6 +4424,134 @@ namespace Google.Apis.GKEHub.v1alpha
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Pauses a running Rollout. The rollout will not be started on new clusters, however the rollout
+                /// running on the cluster will be allowed to finish.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the rollout to pause.
+                /// projects/{project}/locations/{location}/rollouts/{rollout}
+                /// </param>
+                public virtual PauseRequest Pause(Google.Apis.GKEHub.v1alpha.Data.PauseRolloutRequest body, string name)
+                {
+                    return new PauseRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Pauses a running Rollout. The rollout will not be started on new clusters, however the rollout
+                /// running on the cluster will be allowed to finish.
+                /// </summary>
+                public class PauseRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.Operation>
+                {
+                    /// <summary>Constructs a new Pause request.</summary>
+                    public PauseRequest(Google.Apis.Services.IClientService service, Google.Apis.GKEHub.v1alpha.Data.PauseRolloutRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the rollout to pause.
+                    /// projects/{project}/locations/{location}/rollouts/{rollout}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.GKEHub.v1alpha.Data.PauseRolloutRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "pause";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}:pause";
+
+                    /// <summary>Initializes Pause parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/rollouts/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Resume a paused Rollout. The rollout will be resumed and allowed to be started on clusters.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the rollout to resume.
+                /// projects/{project}/locations/{location}/rollouts/{rollout}
+                /// </param>
+                public virtual ResumeRequest Resume(Google.Apis.GKEHub.v1alpha.Data.ResumeRolloutRequest body, string name)
+                {
+                    return new ResumeRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Resume a paused Rollout. The rollout will be resumed and allowed to be started on clusters.
+                /// </summary>
+                public class ResumeRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.Operation>
+                {
+                    /// <summary>Constructs a new Resume request.</summary>
+                    public ResumeRequest(Google.Apis.Services.IClientService service, Google.Apis.GKEHub.v1alpha.Data.ResumeRolloutRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the rollout to resume.
+                    /// projects/{project}/locations/{location}/rollouts/{rollout}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.GKEHub.v1alpha.Data.ResumeRolloutRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "resume";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}:resume";
+
+                    /// <summary>Initializes Resume parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/rollouts/[^/]+$",
                         });
                     }
                 }
@@ -6223,6 +6418,13 @@ namespace Google.Apis.GKEHub.v1alpha.Data
 
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for cancelling a rollout.</summary>
+    public class CancelRolloutRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10587,6 +10789,13 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for pausing a rollout.</summary>
+    public class PauseRolloutRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A
     /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single
@@ -11195,6 +11404,21 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("v1beta1Crd")]
         public virtual System.Nullable<bool> V1beta1Crd { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for resuming a rollout.</summary>
+    public class ResumeRolloutRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The duration to offset the Rollout schedule by.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduleOffset")]
+        public virtual object ScheduleOffset { get; set; }
+
+        /// <summary>Optional. If set, resume rollout will be executed in dry-run mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
