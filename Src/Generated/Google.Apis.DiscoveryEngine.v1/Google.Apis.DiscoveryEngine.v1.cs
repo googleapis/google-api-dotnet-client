@@ -25570,6 +25570,47 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("supportedConnectorModes")]
         public virtual System.Collections.Generic.IList<string> SupportedConnectorModes { get; set; }
 
+        /// <summary>
+        /// Optional. Custom toolspec overrides for this connection. For Enterprise BAP connectors that support
+        /// admin-curated tool definitions, this holds the (simplified) per-tool overrides. On Get, populated by the
+        /// server by merging persisted overrides with live runtime tool definitions and trimming the result for UI
+        /// consumption. On Update, the supplied value replaces the persisted overrides after server-side validation and
+        /// merging: the `base_version` field MUST match the server's current base toolspec version (otherwise the
+        /// request is rejected with a user-facing error directing the admin to re-download the latest tools first).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolspecOverride")]
+        public virtual GoogleCloudDiscoveryengineV1BAPConfigToolspecOverride ToolspecOverride { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Customer-facing view of the admin-curated toolspec for a BAP connection. Holds the (simplified) per-tool
+    /// definitions surfaced to and editable by the admin in the Discovery Engine UI. Mirrors the shape of the backend
+    /// `google.cloud.connectorexecution.v1.ToolspecOverride` message, but is intentionally kept as a separate public
+    /// type so the Discovery Engine API surface can evolve independently of the fed-API surface (AIP-215). Handlers
+    /// convert between the two via helpers in
+    /// //cloud/ml/discoveryengine/external_service/v1main/data_connector_service/lib:bap_custom_tool_util.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1BAPConfigToolspecOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Base toolspec version against which `tools` were authored. On Update, MUST match the server's
+        /// current stable toolspec version for the connection; mismatch is rejected with a user-facing error directing
+        /// the admin to re-download the latest tools first.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseVersion")]
+        public virtual string BaseVersion { get; set; }
+
+        /// <summary>
+        /// Required. Tool definitions (one Struct per tool) that the admin has customised on top of the base toolspec
+        /// returned by the fed API. REQUIRED because it is the only user-editable field in the modify API; the request
+        /// must carry at least one tool.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tools")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Tools { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -30466,7 +30507,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
         /// `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills` *
-        /// `enable-end-user-sharing-with-groups`
+        /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -30904,6 +30945,80 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>The URI of the source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information about the user feedback. This information will be used for logging and metrics purpose.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1Feedback : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The additional user comment of the feedback if user gives a thumb down.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
+        public virtual string Comment { get; set; }
+
+        /// <summary>Optional. The version of the component that this report is being sent from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("componentVersion")]
+        public virtual string ComponentVersion { get; set; }
+
+        /// <summary>The related conversation information when user gives feedback.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationInfo")]
+        public virtual GoogleCloudDiscoveryengineV1FeedbackConversationInfo ConversationInfo { get; set; }
+
+        /// <summary>Optional. Whether the customer accepted data use terms.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataTermsAccepted")]
+        public virtual System.Nullable<bool> DataTermsAccepted { get; set; }
+
+        /// <summary>
+        /// Optional. The UI component the user feedback comes from, which could be GOOGLE_CONSOLE, GOOGLE_WIDGET,
+        /// GOOGLE_WEBAPP.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedbackSource")]
+        public virtual string FeedbackSource { get; set; }
+
+        /// <summary>
+        /// Required. Indicate whether the user gives a positive or negative feedback. If the user gives a negative
+        /// feedback, there might be more feedback details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedbackType")]
+        public virtual string FeedbackType { get; set; }
+
+        /// <summary>The version of the LLM model that was used to generate the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("llmModelVersion")]
+        public virtual string LlmModelVersion { get; set; }
+
+        /// <summary>Optional. The reason if user gives a thumb down.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reasons")]
+        public virtual System.Collections.Generic.IList<string> Reasons { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The conversation information such as the question index and session name.</summary>
+    public class GoogleCloudDiscoveryengineV1FeedbackConversationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The token which could be used to fetch the answer log.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerQueryToken")]
+        public virtual string AnswerQueryToken { get; set; }
+
+        /// <summary>Optional. The token which could be used to fetch the assistant log.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assistToken")]
+        public virtual string AssistToken { get; set; }
+
+        /// <summary>Required. The user's search query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual GoogleCloudDiscoveryengineV1Query Query { get; set; }
+
+        /// <summary>The index of the user input within the conversation messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("questionIndex")]
+        public virtual System.Nullable<int> QuestionIndex { get; set; }
+
+        /// <summary>Name of the newly generated or continued session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("session")]
+        public virtual string Session { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -37212,6 +37327,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }
 
+        /// <summary>Optional. This field is optional except for the `add-feedback` event types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedback")]
+        public virtual GoogleCloudDiscoveryengineV1Feedback Feedback { get; set; }
+
         /// <summary>
         /// Optional. The filter syntax consists of an expression language for constructing a predicate from one or more
         /// fields of the documents being filtered. One example is for `search` events, the associated SearchRequest may
@@ -38195,7 +38314,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
         /// `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills` *
-        /// `enable-end-user-sharing-with-groups`
+        /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -38207,6 +38326,16 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Describes widget (or web app) interaction type</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interactionType")]
         public virtual string InteractionType { get; set; }
+
+        /// <summary>
+        /// Output only. The resolved, server-side view of model selector configuration. Holds both the ordered list of
+        /// models that should appear in the model selector dropdown and the model that should be selected by default.
+        /// Clients should render this directly without applying their own filtering, ordering, or localization. The
+        /// legacy `model_configs` map above is retained for backward compatibility with clients that have not yet
+        /// migrated to consuming this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelConfigInfo")]
+        public virtual GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsModelConfigInfo ModelConfigInfo { get; set; }
 
         /// <summary>
         /// Output only. Maps a model name to its specific configuration for this engine. This allows admin users to
@@ -38281,6 +38410,80 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>The number of top results to generate the answer from. Up to 10.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultCount")]
         public virtual System.Nullable<int> ResultCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The resolved, server-side view of model selector configuration for the end-user. The backend computes this
+    /// per-request by applying, in order: Mendel flag evaluation, regional availability rules based on the engine's
+    /// location, and admin-panel overrides from `model_configs`. The backend is the single source of truth for this
+    /// configuration; clients should render `resolved_models` directly in the model selector dropdown, in the order
+    /// provided, without applying their own filtering, ordering, or localization.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsModelConfigInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The `model_id` of the model that should be selected by default in the model selector when the
+        /// end-user has not made an explicit choice. The value is always one of the `model_id`s present in
+        /// `resolved_models`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultModelId")]
+        public virtual string DefaultModelId { get; set; }
+
+        /// <summary>
+        /// Output only. The list of models that are available to the end-user in the model selector, in the order in
+        /// which they should be displayed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedModels")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsModelConfigInfoResolvedModel> ResolvedModels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A single model that is resolved to be available to the end-user in the model selector, with all of its localized
+    /// display metadata.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsModelConfigInfoResolvedModel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Localized description text (e.g. `State-of-the-art reasoning`). Localized using the same locale
+        /// as `display_name`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. Localized display name of the model (e.g. `Gemini 3.1 Pro`). Localized server-side based on the
+        /// LookupWidgetConfigRequest.language_code and LookupWidgetConfigRequest.region_code of the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. GM3-compatible icon token associated with the model (e.g. `rocket_launch`, `bolt`, `graph_5`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("icon")]
+        public virtual string Icon { get; set; }
+
+        /// <summary>
+        /// Output only. Whether the model is currently in preview. Clients should surface this via a "Preview" badge in
+        /// the selector UI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isPreview")]
+        public virtual System.Nullable<bool> IsPreview { get; set; }
+
+        /// <summary>
+        /// Output only. Unique identifier of the model (e.g. `gemini-2.5-flash`, `gemini-3.1-pro-preview`). This is the
+        /// same identifier that clients pass back to the assistant service to select this model. Virtual / "pseudo"
+        /// models (e.g. `gemini-fast`) are also valid values here; they are resolved to the underlying concrete model
+        /// on the backend.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
+        public virtual string ModelId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -39525,6 +39728,47 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Required. The supported connector modes for the associated BAP connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedConnectorModes")]
         public virtual System.Collections.Generic.IList<string> SupportedConnectorModes { get; set; }
+
+        /// <summary>
+        /// Optional. Custom toolspec overrides for this connection. For Enterprise BAP connectors that support
+        /// admin-curated tool definitions, this holds the (simplified) per-tool overrides. On Get, populated by the
+        /// server by merging persisted overrides with live runtime tool definitions and trimming the result for UI
+        /// consumption. On Update, the supplied value replaces the persisted overrides after server-side validation and
+        /// merging: the `base_version` field MUST match the server's current base toolspec version (otherwise the
+        /// request is rejected with a user-facing error directing the admin to re-download the latest tools first).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolspecOverride")]
+        public virtual GoogleCloudDiscoveryengineV1alphaBAPConfigToolspecOverride ToolspecOverride { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Customer-facing view of the admin-curated toolspec for a BAP connection. Holds the (simplified) per-tool
+    /// definitions surfaced to and editable by the admin in the Discovery Engine UI. Mirrors the shape of the backend
+    /// `google.cloud.connectorexecution.v1.ToolspecOverride` message, but is intentionally kept as a separate public
+    /// type so the Discovery Engine API surface can evolve independently of the fed-API surface (AIP-215). Handlers
+    /// convert between the two via helpers in
+    /// //cloud/ml/discoveryengine/external_service/v1main/data_connector_service/lib:bap_custom_tool_util.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaBAPConfigToolspecOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Base toolspec version against which `tools` were authored. On Update, MUST match the server's
+        /// current stable toolspec version for the connection; mismatch is rejected with a user-facing error directing
+        /// the admin to re-download the latest tools first.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseVersion")]
+        public virtual string BaseVersion { get; set; }
+
+        /// <summary>
+        /// Required. Tool definitions (one Struct per tool) that the admin has customised on top of the base toolspec
+        /// returned by the fed API. REQUIRED because it is the only user-editable field in the modify API; the request
+        /// must carry at least one tool.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tools")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Tools { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -43495,7 +43739,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
         /// `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills` *
-        /// `enable-end-user-sharing-with-groups`
+        /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -52388,7 +52632,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
         /// `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills` *
-        /// `enable-end-user-sharing-with-groups`
+        /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
