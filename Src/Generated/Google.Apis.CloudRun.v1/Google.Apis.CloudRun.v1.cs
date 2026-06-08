@@ -10516,6 +10516,12 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> NodeSelector { get; set; }
 
         /// <summary>
+        /// Optional. Restart policy for the Instance. Allowable values are 'Always', 'OnFailure', or 'Never'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restartPolicy")]
+        public virtual string RestartPolicy { get; set; }
+
+        /// <summary>
         /// Optional. Email address of the IAM service account associated with the Instance. The service account
         /// represents the identity of the running container, and determines what permissions the Instance has. If not
         /// provided, the Instance will use the project's default service account.
