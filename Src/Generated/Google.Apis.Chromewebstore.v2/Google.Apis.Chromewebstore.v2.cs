@@ -896,7 +896,7 @@ namespace Google.Apis.Chromewebstore.v2.Data
     {
         /// <summary>
         /// Optional. When set to true the request will fail if there are any warnings during validation and the details
-        /// will be included in the error_details. Otherwise warnings are treated as non-blocking and will be ignored
+        /// will be included in the `error.details`. Otherwise warnings are treated as non-blocking and will be ignored
         /// for validation but will be included in the response for inspection. Defaults to `false` if unset.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blockOnWarnings")]
@@ -1019,8 +1019,6 @@ namespace Google.Apis.Chromewebstore.v2.Data
 
         /// <summary>
         /// The reason for the warning. This is a constant value that identifies the proximate cause of the warning.
-        /// This should be at most 63 characters and match a regular expression of `A-Z+[A-Z0-9]`, which represents
-        /// UPPER_SNAKE_CASE.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }
