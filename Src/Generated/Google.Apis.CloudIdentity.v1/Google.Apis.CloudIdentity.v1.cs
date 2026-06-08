@@ -5351,25 +5351,24 @@ namespace Google.Apis.CloudIdentity.v1
             }
 
             /// <summary>
-            /// Optional. A CEL expression for filtering the results. Policies can be filtered by application with this
-            /// expression: setting.type.matches('^settings/gmail\\..*$') Policies can be filtered by setting type with
-            /// this expression: setting.type.matches('^.*\\.service_status$') Policies can be filtered by customer with
-            /// this expression: customer == "customers/{customer}" Where `customer` is the `id` from the [Admin SDK
-            /// `Customer` resource](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers). You
-            /// may use `customers/my_customer` to specify your own organization. When no customer is mentioned it will
-            /// be default to customers/my_customer. You may only filter on policies for a single customer at a time.
-            /// The above clauses can be combined together in a single filter expression with the `&amp;amp;&amp;amp;`
-            /// and `||` operators, like in the following example: customer == "customers/my_customer"
-            /// &amp;amp;&amp;amp; ( setting.type.matches('^settings/gmail\\..*$') ||
-            /// setting.type.matches('^.*\\.service_status$') )
+            /// Optional. A CEL expression for filtering the results. Policies can be filtered using the expression in
+            /// the following ways: - Filter by application: `setting.type.matches('^settings/gmail\\..*$')` - Filter by
+            /// setting type: `setting.type.matches('^.*\\.service_status$')` - Filter by customer: `customer ==
+            /// "customers/{customer}"` Where `customer` is the `id` from the [Admin SDK `Customer`
+            /// resource](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers). You may use
+            /// `customers/my_customer` to specify your own organization. When no `customer` is mentioned it will be
+            /// default to `customers/my_customer`. You may only filter on policies for a single customer at a time. The
+            /// above clauses can be combined together in a single filter expression with the `&amp;amp;&amp;amp;` and
+            /// `||` operators, like in the following example: `customer == "customers/my_customer" &amp;amp;&amp;amp; (
+            /// setting.type.matches('^settings/gmail\\..*$') || setting.type.matches('^.*\\.service_status$') )`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>
             /// Optional. The maximum number of results to return. The service can return fewer than this number. If
-            /// omitted or set to 0, the default is 50 results per page. The maximum allowed value is 100. `page_size`
-            /// values greater than 100 default to 100.
+            /// omitted or set to `0`, the default is `50` results per page. The maximum allowed value is `100`.
+            /// `page_size` values greater than `100` default to `100`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
