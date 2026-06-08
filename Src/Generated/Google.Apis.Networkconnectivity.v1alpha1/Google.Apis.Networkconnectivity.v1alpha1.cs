@@ -3193,6 +3193,10 @@ namespace Google.Apis.Networkconnectivity.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("prefixLength")]
         public virtual System.Nullable<int> PrefixLength { get; set; }
 
+        /// <summary>Output only. Status of the Internal Range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rangeStatus")]
+        public virtual string RangeStatus { get; set; }
+
         /// <summary>
         /// Optional. Can be set to narrow down or pick a different address space while searching for a free range. If
         /// not set, defaults to the ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"] address space (for auto-mode
