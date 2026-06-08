@@ -105,6 +105,185 @@ namespace Google.Apis.Tests.Apis.Upload
         }
 
         /// <summary>
+        /// Verifies that the event triggers correctly when the last request is executing 
+        /// during a multi chunk upload.
+        /// </summary>
+        [Theory, CombinatorialData]
+        public void TestLastRequestExecutingEvent_MultiChunk(
+            [CombinatorialValues(true, false)] bool knownSize,
+            [CombinatorialValues(100, 400, 1000)] int chunkSize,
+            [CombinatorialValues(false, true)] bool lowerRange)
+        {
+            var expectedCallCount = 1 + (UploadLength + chunkSize - 1) / chunkSize;
+            using (var server = new MultiChunkServer(_server, lowerRange))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = knownSize ? new MemoryStream(UploadTestBytes) : new UnknownSizeMemoryStream(UploadTestBytes);
+                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize); 
+                int eventInvokeCount = 0;
+                uploader.LastRequestExecuting += (req) =>
+                {
+                    eventInvokeCount++;
+                    Assert.NotNull(req);
+                    Assert.Equal(Google.Apis.Http.HttpConsts.Put, req.Method.ToString());
+                };
+
+                var progress = uploader.Upload();
+                Assert.Equal(UploadStatus.Completed, progress.Status);
+                Assert.Equal(expectedCallCount, server.Requests.Count);
+                Assert.Equal(UploadTestBytes, server.Bytes);
+                Assert.Equal(1, eventInvokeCount);
+            }
+        }
+
+        private class HttpRetryHeaderServer : TestServer.Handler
+        {
+            private int _uploadCallCount = 0;
+            public List<string> ReceivedCustomHeaders { get; } = new List<string>();
+
+            public HttpRetryHeaderServer(TestServer server) : base(server) { }
+
+            protected override Task<IEnumerable<byte>> HandleCall(HttpListenerRequest request, HttpListenerResponse response)
+            {
+                switch (RemovePrefix(request.Url.PathAndQuery))
+                {
+                    case "HttpRetryHeader?uploadType=resumable":
+                        response.Headers[HttpResponseHeader.Location] = $"{HttpPrefix}{UploadPath}";
+                        return Task.FromResult<IEnumerable<byte>>(null);
+                    case UploadPath:
+                        _uploadCallCount++;
+                        ReceivedCustomHeaders.Add(request.Headers["X-Custom-Test-Header"]);
+                        if (_uploadCallCount == 1)
+                        {
+                            response.StatusCode = (int)HttpStatusCode.ServiceUnavailable; // 503
+                            return Task.FromResult<IEnumerable<byte>>(null);
+                        }
+                        response.StatusCode = (int)HttpStatusCode.OK;
+                        return Task.FromResult<IEnumerable<byte>>(null);
+                    default:
+                        throw new InvalidOperationException();
+                }
+            }
+        }
+
+        [Fact]
+        public void TestLastRequestExecutingEvent_HttpRetryPreservesHeader()
+        {
+            using (var server = new HttpRetryHeaderServer(_server))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = new MemoryStream(UploadTestBytes);
+                var uploader = new TestResumableUpload(
+                    service, "HttpRetryHeader", "POST", content, "text/plain", UploadLength);
+
+                int eventInvokeCount = 0;
+                uploader.LastRequestExecuting += (req) =>
+                {
+                    eventInvokeCount++;
+                    req.Headers.TryAddWithoutValidation("X-Custom-Test-Header", "MyToken");
+                };
+
+                var progress = uploader.Upload();
+                Assert.Equal(UploadStatus.Completed, progress.Status);
+                Assert.Equal(1, eventInvokeCount);
+                Assert.Equal(2, server.ReceivedCustomHeaders.Count);
+                Assert.Equal("MyToken", server.ReceivedCustomHeaders[0]);
+                Assert.Null(server.ReceivedCustomHeaders[1]);
+            }
+        }
+
+        private class ProtocolRetryHeaderServer : TestServer.Handler
+        {
+            public List<byte> Bytes { get; } = new List<byte>();
+            private bool _failedOnce = false;
+            public List<string> CapturedCustomHeaders { get; } = new List<string>();
+
+            public ProtocolRetryHeaderServer(TestServer server) : base(server) { }
+
+            protected override async Task<IEnumerable<byte>> HandleCall(HttpListenerRequest request, HttpListenerResponse response)
+            {
+                switch (RemovePrefix(request.Url.PathAndQuery))
+                {
+                    case "ProtocolRetryHeader?uploadType=resumable":
+                        response.Headers[HttpResponseHeader.Location] = $"{HttpPrefix}{UploadPath}";
+                        return null;
+                    case UploadPath:
+                        var bytesStream = new MemoryStream();
+                        await request.InputStream.CopyToAsync(bytesStream);
+                        var data = bytesStream.ToArray();
+
+                        // Capture header if present
+                        CapturedCustomHeaders.Add(request.Headers["X-Custom-Test-Header"]);
+
+                        if (Bytes.Count < 400)
+                        {
+                            Bytes.AddRange(data);
+                            response.StatusCode = 308;
+                            response.AddHeader("Range", $"bytes 0-{Bytes.Count - 1}");
+                        }
+                        else if (Bytes.Count == 400 && !_failedOnce)
+                        {
+                            // Final chunk first attempt: accept only 20 bytes (up to 419) and fail
+                            Bytes.AddRange(data.Take(20));
+                            _failedOnce = true;
+                            response.StatusCode = 308;
+                            response.AddHeader("Range", $"bytes 0-{Bytes.Count - 1}");
+                        }
+                        else
+                        {
+                            Bytes.AddRange(data);
+                            response.StatusCode = 200;
+                        }
+                        return null;
+                    default:
+                        throw new InvalidOperationException();
+                }
+            }
+        }
+
+        [Fact]
+        public void TestLastRequestExecutingEvent_ProtocolRetryPreservesHeader()
+        {
+            using (var server = new ProtocolRetryHeaderServer(_server))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = new MemoryStream(UploadTestBytes);
+                // chunk size 100, file size is 454
+                var uploader = new TestResumableUpload(
+                    service, "ProtocolRetryHeader", "POST", content, "text/plain", 100);
+
+                int eventInvokeCount = 0;
+                uploader.LastRequestExecuting += (req) =>
+                {
+                    eventInvokeCount++;
+                    req.Headers.TryAddWithoutValidation("X-Custom-Test-Header", $"Token-{eventInvokeCount}");
+                };
+
+                var progress = uploader.Upload();
+                Assert.Equal(UploadStatus.Completed, progress.Status);
+                Assert.Equal(UploadTestBytes, server.Bytes);
+
+                // The event should have fired exactly 2 times:
+                // 1. For the first attempt of the final chunk (bytes 400-453/454)
+                // 2. For the second attempt of the final chunk (bytes 420-453/454)
+                Assert.Equal(2, eventInvokeCount);
+
+                // There should be 6 requests in total:
+                // 1-4. Intermediate chunks (0-399) - should NOT have the custom header
+                // 5. Final chunk attempt 1 - should have "Token-1"
+                // 6. Final chunk attempt 2 (retry) - should have "Token-2"
+                Assert.Equal(6, server.CapturedCustomHeaders.Count);
+
+                for (int i = 0; i < 4; i++)
+                {
+                    Assert.Null(server.CapturedCustomHeaders[i]);
+                }
+                Assert.Equal("Token-1", server.CapturedCustomHeaders[4]);
+                Assert.Equal("Token-2", server.CapturedCustomHeaders[5]);
+            }
+        }
+
+        /// <summary>
         /// An upload in multiple chunks, with no server errors.
         /// </summary>
         [Theory, CombinatorialData]

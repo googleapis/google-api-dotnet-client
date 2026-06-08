@@ -132,6 +132,34 @@ namespace Google.Apis.Tests.Apis.Upload
             }
         }
 
+        /// <summary>
+        /// Verifies that the event triggers correctly when the last request is executing 
+        /// during a single chunk upload.
+        /// </summary>
+        [Fact]
+        public void TestLastRequestExecutingEvent()
+        {
+            using (var server = new SingleChunkServer(_server))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = new MemoryStream(UploadTestBytes);
+                var uploader = new TestResumableUpload(
+                    service, "SingleChunk", "POST", content, "text/plain", UploadLength);
+
+                int eventInvokeCount = 0;
+                uploader.LastRequestExecuting += (req) =>
+                {
+                    eventInvokeCount++;
+                    Assert.NotNull(req);
+                    Assert.Equal(Google.Apis.Http.HttpConsts.Put, req.Method.ToString());
+                };
+
+                var progress = uploader.Upload();
+                Assert.Equal(UploadStatus.Completed, progress.Status);
+                Assert.Equal(1, eventInvokeCount);
+            }
+        }
+
         [Fact]
         public void TestUploadStreamDisposedBeforeConstruction()
         {

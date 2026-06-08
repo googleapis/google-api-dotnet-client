@@ -206,6 +206,11 @@ namespace Google.Apis.Upload
         /// </summary>
         public StreamInterceptor UploadStreamInterceptor { get; set; }
 
+        /// <summary>
+        /// Event called when the final chunk of the data is uploading.
+        /// </summary>
+        public event Action<HttpRequestMessage> LastRequestExecuting;
+
         #endregion //Events
 
         #region Error handling (Exception and 5xx)
@@ -639,6 +644,10 @@ namespace Google.Apis.Upload
             request.Content = content;
 
             BytesClientSent = BytesServerReceived + contentLength;
+            if (StreamLength != UnknownSize && BytesClientSent == StreamLength)
+            {
+                LastRequestExecuting?.Invoke(request);
+            }
             Logger.Debug("MediaUpload[{0}] - Sending bytes={1}-{2}", UploadUri, BytesServerReceived,
                 BytesClientSent - 1);
 
