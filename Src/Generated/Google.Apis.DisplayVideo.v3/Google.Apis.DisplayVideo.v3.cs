@@ -379,7 +379,8 @@ namespace Google.Apis.DisplayVideo.v3
 
             /// <summary>
             /// Creates an ad group ad. This method is only supported for Demand Gen ads. Retrieval and management of
-            /// Demand Gen resources is currently in beta. This method is only available to allowlisted users.
+            /// Demand Gen resources is currently in beta. This method will begin rolling out to all partners on *June
+            /// 10, 2026* and be available to all partners on *June 24, 2026*.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Output only. The unique ID of the advertiser the ad belongs to.</param>
@@ -390,7 +391,8 @@ namespace Google.Apis.DisplayVideo.v3
 
             /// <summary>
             /// Creates an ad group ad. This method is only supported for Demand Gen ads. Retrieval and management of
-            /// Demand Gen resources is currently in beta. This method is only available to allowlisted users.
+            /// Demand Gen resources is currently in beta. This method will begin rolling out to all partners on *June
+            /// 10, 2026* and be available to all partners on *June 24, 2026*.
             /// </summary>
             public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AdGroupAd>
             {
@@ -438,7 +440,8 @@ namespace Google.Apis.DisplayVideo.v3
 
             /// <summary>
             /// Deletes an ad group ad. This method is only supported for Demand Gen ads. Retrieval and management of
-            /// Demand Gen resources is currently in beta. This method is only available to allowlisted users.
+            /// Demand Gen resources is currently in beta. This method will begin rolling out to all partners on *June
+            /// 10, 2026* and be available to all partners on *June 24, 2026*.
             /// </summary>
             /// <param name="advertiserId">Required. The ID of the advertiser the ad belongs to.</param>
             /// <param name="adGroupAdId">
@@ -451,7 +454,8 @@ namespace Google.Apis.DisplayVideo.v3
 
             /// <summary>
             /// Deletes an ad group ad. This method is only supported for Demand Gen ads. Retrieval and management of
-            /// Demand Gen resources is currently in beta. This method is only available to allowlisted users.
+            /// Demand Gen resources is currently in beta. This method will begin rolling out to all partners on *June
+            /// 10, 2026* and be available to all partners on *June 24, 2026*.
             /// </summary>
             public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
             {
@@ -679,7 +683,8 @@ namespace Google.Apis.DisplayVideo.v3
 
             /// <summary>
             /// Updates an ad group ad. This method is only supported for Demand Gen ads. Retrieval and management of
-            /// Demand Gen resources is currently in beta. This method is only available to allowlisted users.
+            /// Demand Gen resources is currently in beta. This method will begin rolling out to all partners on *June
+            /// 10, 2026* and be available to all partners on *June 24, 2026*.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Output only. The unique ID of the advertiser the ad belongs to.</param>
@@ -691,7 +696,8 @@ namespace Google.Apis.DisplayVideo.v3
 
             /// <summary>
             /// Updates an ad group ad. This method is only supported for Demand Gen ads. Retrieval and management of
-            /// Demand Gen resources is currently in beta. This method is only available to allowlisted users.
+            /// Demand Gen resources is currently in beta. This method will begin rolling out to all partners on *June
+            /// 10, 2026* and be available to all partners on *June 24, 2026*.
             /// </summary>
             public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AdGroupAd>
             {
@@ -819,7 +825,8 @@ namespace Google.Apis.DisplayVideo.v3
                     /// <summary>
                     /// Assigns a targeting option to an ad group. Returns the assigned targeting option if successful.
                     /// This method is only supported for Demand Gen ad groups. Retrieval and management of Demand Gen
-                    /// resources is currently in beta. This method is only available to allowlisted users.
+                    /// resources is currently in beta. This method will begin rolling out to all partners on *June 10,
+                    /// 2026* and be available to all partners on *June 24, 2026*.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="advertiserId">Required. The ID of the advertiser the ad group belongs to.</param>
@@ -842,7 +849,8 @@ namespace Google.Apis.DisplayVideo.v3
                     /// <summary>
                     /// Assigns a targeting option to an ad group. Returns the assigned targeting option if successful.
                     /// This method is only supported for Demand Gen ad groups. Retrieval and management of Demand Gen
-                    /// resources is currently in beta. This method is only available to allowlisted users.
+                    /// resources is currently in beta. This method will begin rolling out to all partners on *June 10,
+                    /// 2026* and be available to all partners on *June 24, 2026*.
                     /// </summary>
                     public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption>
                     {
@@ -1192,7 +1200,8 @@ namespace Google.Apis.DisplayVideo.v3
                     /// <summary>
                     /// Deletes an assigned targeting option from an ad group. This method is only supported for Demand
                     /// Gen ad groups with the AdGroupFormat `AD_GROUP_FORMAT_DEMAND_GEN`. Retrieval and management of
-                    /// Demand Gen resources is currently in beta. This method is only available to allowlisted users.
+                    /// Demand Gen resources is currently in beta. This method will begin rolling out to all partners on
+                    /// *June 10, 2026* and be available to all partners on *June 24, 2026*.
                     /// </summary>
                     /// <param name="advertiserId">Required. The ID of the advertiser the ad group belongs to.</param>
                     /// <param name="adGroupId">
@@ -1217,7 +1226,8 @@ namespace Google.Apis.DisplayVideo.v3
                     /// <summary>
                     /// Deletes an assigned targeting option from an ad group. This method is only supported for Demand
                     /// Gen ad groups with the AdGroupFormat `AD_GROUP_FORMAT_DEMAND_GEN`. Retrieval and management of
-                    /// Demand Gen resources is currently in beta. This method is only available to allowlisted users.
+                    /// Demand Gen resources is currently in beta. This method will begin rolling out to all partners on
+                    /// *June 10, 2026* and be available to all partners on *June 24, 2026*.
                     /// </summary>
                     public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
                     {
@@ -2398,8 +2408,9 @@ namespace Google.Apis.DisplayVideo.v3
             /// options provided in BulkEditAdGroupAssignedTargetingOptionsRequest.delete_requests from each ad group,
             /// and then create the assigned targeting options provided in
             /// BulkEditAdGroupAssignedTargetingOptionsRequest.create_requests. This method is only supported for Demand
-            /// Gen ad groups. Retrieval and management of Demand Gen resources is currently in beta. This method is
-            /// only available to allowlisted users.
+            /// Gen ad groups. Retrieval and management of Demand Gen resources is currently in beta. This method will
+            /// begin rolling out to all partners on *June 10, 2026* and be available to all partners on *June 24,
+            /// 2026*.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Required. The ID of the advertiser the ad groups belong to.</param>
@@ -2414,8 +2425,9 @@ namespace Google.Apis.DisplayVideo.v3
             /// options provided in BulkEditAdGroupAssignedTargetingOptionsRequest.delete_requests from each ad group,
             /// and then create the assigned targeting options provided in
             /// BulkEditAdGroupAssignedTargetingOptionsRequest.create_requests. This method is only supported for Demand
-            /// Gen ad groups. Retrieval and management of Demand Gen resources is currently in beta. This method is
-            /// only available to allowlisted users.
+            /// Gen ad groups. Retrieval and management of Demand Gen resources is currently in beta. This method will
+            /// begin rolling out to all partners on *June 10, 2026* and be available to all partners on *June 24,
+            /// 2026*.
             /// </summary>
             public class BulkEditAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.BulkEditAdGroupAssignedTargetingOptionsResponse>
             {
@@ -2596,7 +2608,8 @@ namespace Google.Apis.DisplayVideo.v3
             /// <summary>
             /// Creates a new ad group. Returns the newly created ad group if successful. This method is only supported
             /// for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently in beta. This
-            /// method is only available to allowlisted users.
+            /// method will begin rolling out to all partners on *June 10, 2026* and be available to all partners on
+            /// *June 24, 2026*.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Output only. The unique ID of the advertiser the ad group belongs to.</param>
@@ -2608,7 +2621,8 @@ namespace Google.Apis.DisplayVideo.v3
             /// <summary>
             /// Creates a new ad group. Returns the newly created ad group if successful. This method is only supported
             /// for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently in beta. This
-            /// method is only available to allowlisted users.
+            /// method will begin rolling out to all partners on *June 10, 2026* and be available to all partners on
+            /// *June 24, 2026*.
             /// </summary>
             public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AdGroup>
             {
@@ -2657,7 +2671,8 @@ namespace Google.Apis.DisplayVideo.v3
             /// <summary>
             /// Deletes a AdGroup. Returns error code `NOT_FOUND` if the ad group does not exist. This method is only
             /// supported for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently in
-            /// beta. This method is only available to allowlisted users.
+            /// beta. This method will begin rolling out to all partners on *June 10, 2026* and be available to all
+            /// partners on *June 24, 2026*.
             /// </summary>
             /// <param name="advertiserId">Required. The ID of the advertiser this ad group belongs to.</param>
             /// <param name="adGroupId">Required. The ID of the ad group to delete.</param>
@@ -2669,7 +2684,8 @@ namespace Google.Apis.DisplayVideo.v3
             /// <summary>
             /// Deletes a AdGroup. Returns error code `NOT_FOUND` if the ad group does not exist. This method is only
             /// supported for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently in
-            /// beta. This method is only available to allowlisted users.
+            /// beta. This method will begin rolling out to all partners on *June 10, 2026* and be available to all
+            /// partners on *June 24, 2026*.
             /// </summary>
             public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
             {
@@ -2898,7 +2914,8 @@ namespace Google.Apis.DisplayVideo.v3
             /// <summary>
             /// Updates an existing ad group. Returns the updated ad group if successful. This method is only supported
             /// for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently in beta. This
-            /// method is only available to allowlisted users.
+            /// method will begin rolling out to all partners on *June 10, 2026* and be available to all partners on
+            /// *June 24, 2026*.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Output only. The unique ID of the advertiser the ad group belongs to.</param>
@@ -2911,7 +2928,8 @@ namespace Google.Apis.DisplayVideo.v3
             /// <summary>
             /// Updates an existing ad group. Returns the updated ad group if successful. This method is only supported
             /// for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently in beta. This
-            /// method is only available to allowlisted users.
+            /// method will begin rolling out to all partners on *June 10, 2026* and be available to all partners on
+            /// *June 24, 2026*.
             /// </summary>
             public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AdGroup>
             {
@@ -20238,7 +20256,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// <summary>
         /// Optional. The DCM tracking ad info. Only valid for Demand Gen ads. To remove the DCM tracking ad info,
         /// please leave this field empty. Retrieval and management of Demand Gen resources is currently in beta. This
-        /// field is only available to allowlisted users.
+        /// field will begin rolling out to all partners on *June 10, 2026* and be available to all partners on *June
+        /// 24, 2026*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dcmTrackingInfo")]
         public virtual DcmTrackingInfo DcmTrackingInfo { get; set; }
@@ -20246,8 +20265,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// <summary>
         /// Details of a [Demand Gen carousel
         /// ad](//support.google.com/displayvideo/answer/15598924?&amp;amp;sjid=11207068802760924844-NC#CarouselAd).
-        /// Retrieval and management of Demand Gen resources is currently in beta. This field is only available to
-        /// allowlisted users.
+        /// Retrieval and management of Demand Gen resources is currently in beta. This field will begin rolling out to
+        /// all partners on *June 10, 2026* and be available to all partners on *June 24, 2026*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("demandGenCarouselAd")]
         public virtual DemandGenCarouselAd DemandGenCarouselAd { get; set; }
@@ -20255,8 +20274,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// <summary>
         /// Details of a [Demand Gen image
         /// ad](//support.google.com/displayvideo/answer/15598924?&amp;amp;sjid=11207068802760924844-NC#ImageAd).
-        /// Retrieval and management of Demand Gen resources is currently in beta. This field is only available to
-        /// allowlisted users.
+        /// Retrieval and management of Demand Gen resources is currently in beta. This field will begin rolling out to
+        /// all partners on *June 10, 2026* and be available to all partners on *June 24, 2026*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("demandGenImageAd")]
         public virtual DemandGenImageAd DemandGenImageAd { get; set; }
@@ -20264,8 +20283,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// <summary>
         /// Details of a [Demand Gen product
         /// ad](//support.google.com/displayvideo/answer/15598924?&amp;amp;sjid=11207068802760924844-NC#Product-onlyAd).
-        /// Retrieval and management of Demand Gen resources is currently in beta. This field is only available to
-        /// allowlisted users.
+        /// Retrieval and management of Demand Gen resources is currently in beta. This field will begin rolling out to
+        /// all partners on *June 10, 2026* and be available to all partners on *June 24, 2026*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("demandGenProductAd")]
         public virtual DemandGenProductAd DemandGenProductAd { get; set; }
@@ -20273,8 +20292,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// <summary>
         /// Details of a [Demand Gen video
         /// ad](//support.google.com/displayvideo/answer/15598924?&amp;amp;sjid=11207068802760924844-NC#VideoAd).
-        /// Retrieval and management of Demand Gen resources is currently in beta. This field is only available to
-        /// allowlisted users.
+        /// Retrieval and management of Demand Gen resources is currently in beta. This field will begin rolling out to
+        /// all partners on *June 10, 2026* and be available to all partners on *June 24, 2026*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("demandGenVideoAd")]
         public virtual DemandGenVideoAd DemandGenVideoAd { get; set; }
@@ -23858,8 +23877,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// Optional. The attribution model to use for conversion measurement. This attribution model will determine how
         /// conversions are counted. The Primary model can be set by you for a floodlight config or group. More details
         /// [here](https://support.google.com/displayvideo/answer/7409983). Only applicable to Demand Gen line items.
-        /// Retrieval and management of Demand Gen resources is currently in beta. This field is only available to
-        /// allowlisted users.
+        /// Retrieval and management of Demand Gen resources is currently in beta. This field will begin rolling out to
+        /// all partners on *June 10, 2026* and be available to all partners on *June 24, 2026*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryAttributionModelId")]
         public virtual System.Nullable<long> PrimaryAttributionModelId { get; set; }
@@ -27090,8 +27109,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
 
         /// <summary>
         /// Optional. Settings specific to Demand Gen line items. Only applicable to Demand Gen line items. Retrieval
-        /// and management of Demand Gen resources is currently in beta. This field is only available to allowlisted
-        /// users.
+        /// and management of Demand Gen resources is currently in beta. This field will begin rolling out to all
+        /// partners on *June 10, 2026* and be available to all partners on *June 24, 2026*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("demandGenSettings")]
         public virtual DemandGenSettings DemandGenSettings { get; set; }
@@ -29543,8 +29562,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
 
         /// <summary>
         /// Optional. Whether to exclude demographic expansion for Optimized Targeting. This field can only be set for
-        /// Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently in beta. This field is
-        /// only available to allowlisted users.
+        /// Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently in beta. This field will
+        /// begin rolling out to all partners on *June 10, 2026* and be available to all partners on *June 24, 2026*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeDemographicExpansion")]
         public virtual System.Nullable<bool> ExcludeDemographicExpansion { get; set; }
