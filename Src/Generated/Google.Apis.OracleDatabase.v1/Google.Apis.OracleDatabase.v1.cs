@@ -13802,8 +13802,9 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ConnectionString { get; set; }
 
         /// <summary>
-        /// Optional. Database instance id of database in Oracle Database @ Google Cloud. If gcp_oracle_database_id is
-        /// provided, connection_string must be empty.
+        /// Optional. Autonomous AI Database instance id of database in Oracle Database @ Google Cloud. If
+        /// gcp_oracle_database_id is provided, connection_string must be empty. Format:
+        /// projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpOracleDatabaseId")]
         public virtual string GcpOracleDatabaseId { get; set; }
