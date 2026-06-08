@@ -319,7 +319,9 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
 
                 /// <summary>Creates a new CustomRange in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <param name="parent">
+                /// Required. The parent resource name where the CustomRange will be created.
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudNumberRegistry.v1alpha.Data.CustomRange body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
@@ -336,11 +338,14 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>Required. The parent resource name where the CustomRange will be created.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Required. Id of the requesting object.</summary>
+                    /// <summary>
+                    /// Required. The ID to use for the CustomRange, which will become the final segment of the resource
+                    /// name.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("customRangeId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string CustomRangeId { get; set; }
 
@@ -404,7 +409,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                 }
 
                 /// <summary>Deletes a single CustomRange.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <param name="name">Required. The resource name of the CustomRange to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
@@ -420,7 +425,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. The resource name of the CustomRange to delete.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -482,7 +487,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                 }
 
                 /// <summary>Finds free IP ranges in a single CustomRange.</summary>
-                /// <param name="name">Required. Name of the CustomRange.</param>
+                /// <param name="name">Required. The resource name of the CustomRange to search within.</param>
                 public virtual FindFreeIpRangesRequest FindFreeIpRanges(string name)
                 {
                     return new FindFreeIpRangesRequest(this.service, name);
@@ -498,7 +503,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the CustomRange.</summary>
+                    /// <summary>Required. The resource name of the CustomRange to search within.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -572,7 +577,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                 }
 
                 /// <summary>Gets details of a single CustomRange.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <param name="name">Required. The resource name of the CustomRange to retrieve.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
@@ -588,7 +593,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. The resource name of the CustomRange to retrieve.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -617,7 +622,9 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                 }
 
                 /// <summary>Lists CustomRanges in a given project and location.</summary>
-                /// <param name="parent">Required. Parent value for ListCustomRangesRequest</param>
+                /// <param name="parent">
+                /// Required. The parent resource name, for example `projects/*/locations/*`.
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
@@ -633,11 +640,11 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent value for ListCustomRangesRequest</summary>
+                    /// <summary>Required. The parent resource name, for example `projects/*/locations/*`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results.</summary>
+                    /// <summary>Optional. Filter expression to filter the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -714,7 +721,10 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
 
                 /// <summary>Updates the parameters of a single CustomRange.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required. Identifier. name of resource</param>
+                /// <param name="name">
+                /// Required. Identifier. The resource name of the CustomRange, in the format
+                /// `projects/{project}/locations/{location}/customRanges/{custom_range}`.
+                /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudNumberRegistry.v1alpha.Data.CustomRange body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
@@ -731,7 +741,10 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Identifier. name of resource</summary>
+                    /// <summary>
+                    /// Required. Identifier. The resource name of the CustomRange, in the format
+                    /// `projects/{project}/locations/{location}/customRanges/{custom_range}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -804,7 +817,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                 }
 
                 /// <summary>Gets the details of a single CustomRange and its utilization.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <param name="name">Required. The resource name of the CustomRange.</param>
                 public virtual ShowUtilizationRequest ShowUtilization(string name)
                 {
                     return new ShowUtilizationRequest(this.service, name);
@@ -820,7 +833,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. The resource name of the CustomRange.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -867,7 +880,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                 }
 
                 /// <summary>Finds free IP ranges in a single DiscoveredRange.</summary>
-                /// <param name="name">Required. Name of the DiscoveredRange.</param>
+                /// <param name="name">Required. The resource name of the DiscoveredRange to search within.</param>
                 public virtual FindFreeIpRangesRequest FindFreeIpRanges(string name)
                 {
                     return new FindFreeIpRangesRequest(this.service, name);
@@ -883,7 +896,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the DiscoveredRange.</summary>
+                    /// <summary>Required. The resource name of the DiscoveredRange to search within.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -957,7 +970,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                 }
 
                 /// <summary>Gets details of a single DiscoveredRange.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <param name="name">Required. The resource name of the DiscoveredRange to retrieve.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
@@ -973,7 +986,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. The resource name of the DiscoveredRange to retrieve.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1002,7 +1015,9 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                 }
 
                 /// <summary>Lists DiscoveredRanges in a given project and location.</summary>
-                /// <param name="parent">Required. Parent value for ListDiscoveredRangesRequest</param>
+                /// <param name="parent">
+                /// Required. The parent resource name, for example `projects/*/locations/*`.
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
@@ -1018,11 +1033,11 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent value for ListDiscoveredRangesRequest</summary>
+                    /// <summary>Required. The parent resource name, for example `projects/*/locations/*`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results.</summary>
+                    /// <summary>Optional. Filter expression to filter the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -1098,7 +1113,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                 }
 
                 /// <summary>Gets the details of a single DiscoveredRange and its utilization.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <param name="name">Required. The resource name of the DiscoveredRange.</param>
                 public virtual ShowUtilizationRequest ShowUtilization(string name)
                 {
                     return new ShowUtilizationRequest(this.service, name);
@@ -1114,7 +1129,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. The resource name of the DiscoveredRange.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1160,14 +1175,16 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                     this.service = service;
                 }
 
-                /// <summary>Checks the availability of IPAM admin scopes in a given project and location.</summary>
-                /// <param name="parent">Required. Parent value for the IpamAdminScopes.</param>
+                /// <summary>Checks the availability of IpamAdminScopes in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent resource name, for example `projects/*/locations/*`.
+                /// </param>
                 public virtual CheckAvailabilityRequest CheckAvailability(string parent)
                 {
                     return new CheckAvailabilityRequest(this.service, parent);
                 }
 
-                /// <summary>Checks the availability of IPAM admin scopes in a given project and location.</summary>
+                /// <summary>Checks the availability of IpamAdminScopes in a given project and location.</summary>
                 public class CheckAvailabilityRequest : CloudNumberRegistryBaseServiceRequest<Google.Apis.CloudNumberRegistry.v1alpha.Data.CheckAvailabilityIpamAdminScopesResponse>
                 {
                     /// <summary>Constructs a new CheckAvailability request.</summary>
@@ -1177,11 +1194,11 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent value for the IpamAdminScopes.</summary>
+                    /// <summary>Required. The parent resource name, for example `projects/*/locations/*`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Required. The scopes of the IpamAdminScopes to look for.</summary>
+                    /// <summary>Required. The administrative scopes to check for availability.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("scopes", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> Scopes { get; set; }
 
@@ -1219,7 +1236,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
 
                 /// <summary>Cleans up a single IpamAdminScope.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <param name="name">Required. The resource name of the IpamAdminScope to clean up.</param>
                 public virtual CleanupRequest Cleanup(Google.Apis.CloudNumberRegistry.v1alpha.Data.CleanupIpamAdminScopeRequest body, string name)
                 {
                     return new CleanupRequest(this.service, body, name);
@@ -1236,7 +1253,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. The resource name of the IpamAdminScope to clean up.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1272,7 +1289,9 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
 
                 /// <summary>Creates a new IpamAdminScope in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <param name="parent">
+                /// Required. The parent resource name where the IpamAdminScope will be created.
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudNumberRegistry.v1alpha.Data.IpamAdminScope body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
@@ -1289,11 +1308,14 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>Required. The parent resource name where the IpamAdminScope will be created.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Required. Id of the requesting object.</summary>
+                    /// <summary>
+                    /// Required. The ID to use for the IpamAdminScope, which will become the final segment of the
+                    /// resource name.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("ipamAdminScopeId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string IpamAdminScopeId { get; set; }
 
@@ -1357,7 +1379,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                 }
 
                 /// <summary>Deletes a single IpamAdminScope.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <param name="name">Required. The resource name of the IpamAdminScope to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
@@ -1373,7 +1395,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. The resource name of the IpamAdminScope to delete.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1436,7 +1458,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
 
                 /// <summary>Disables a single IpamAdminScope.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <param name="name">Required. The resource name of the IpamAdminScope to disable.</param>
                 public virtual DisableRequest Disable(Google.Apis.CloudNumberRegistry.v1alpha.Data.DisableIpamAdminScopeRequest body, string name)
                 {
                     return new DisableRequest(this.service, body, name);
@@ -1453,7 +1475,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. The resource name of the IpamAdminScope to disable.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1488,7 +1510,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                 }
 
                 /// <summary>Gets details of a single IpamAdminScope.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <param name="name">Required. The resource name of the IpamAdminScope to retrieve.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
@@ -1504,7 +1526,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. The resource name of the IpamAdminScope to retrieve.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1532,14 +1554,16 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                     }
                 }
 
-                /// <summary>List all IPAM admin scopes in a given project and location.</summary>
-                /// <param name="parent">Required. Parent value for ListIpamAdminScopesRequest</param>
+                /// <summary>Lists IpamAdminScopes in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent resource name, for example `projects/*/locations/*`.
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>List all IPAM admin scopes in a given project and location.</summary>
+                /// <summary>Lists IpamAdminScopes in a given project and location.</summary>
                 public class ListRequest : CloudNumberRegistryBaseServiceRequest<Google.Apis.CloudNumberRegistry.v1alpha.Data.ListIpamAdminScopesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1549,15 +1573,15 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent value for ListIpamAdminScopesRequest</summary>
+                    /// <summary>Required. The parent resource name, for example `projects/*/locations/*`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results</summary>
+                    /// <summary>Optional. Filter expression to filter the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Hint for how to order the results</summary>
+                    /// <summary>Optional. Hint for how to order the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -1630,7 +1654,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
 
                 /// <summary>Updates the parameters of a single IpamAdminScope.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required. Identifier. name of resource</param>
+                /// <param name="name">Required. Identifier. The resource name of the IpamAdminScope.</param>
                 public virtual PatchRequest Patch(Google.Apis.CloudNumberRegistry.v1alpha.Data.IpamAdminScope body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
@@ -1647,7 +1671,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Identifier. name of resource</summary>
+                    /// <summary>Required. Identifier. The resource name of the IpamAdminScope.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -2034,7 +2058,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
 
                 /// <summary>Creates a new Realm in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <param name="parent">Required. The parent resource name where the Realm will be created.</param>
                 public virtual CreateRequest Create(Google.Apis.CloudNumberRegistry.v1alpha.Data.Realm body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
@@ -2051,11 +2075,13 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>Required. The parent resource name where the Realm will be created.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Required. Id of the requesting object.</summary>
+                    /// <summary>
+                    /// Required. The ID to use for the Realm, which will become the final segment of the resource name.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("realmId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RealmId { get; set; }
 
@@ -2114,7 +2140,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                 }
 
                 /// <summary>Deletes a single Realm.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <param name="name">Required. The resource name of the Realm to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
@@ -2130,7 +2156,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. The resource name of the Realm to delete.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -2187,7 +2213,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                 }
 
                 /// <summary>Gets details of a single Realm.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <param name="name">Required. The resource name of the Realm to retrieve.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
@@ -2203,15 +2229,15 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. The resource name of the Realm to retrieve.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Optional. The view of the Realm.</summary>
+                    /// <summary>Optional. The view of the Realm to retrieve.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<ViewEnum> View { get; set; }
 
-                    /// <summary>Optional. The view of the Realm.</summary>
+                    /// <summary>Optional. The view of the Realm to retrieve.</summary>
                     public enum ViewEnum
                     {
                         /// <summary>Unspecified view. Defaults to BASIC.</summary>
@@ -2264,7 +2290,9 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                 }
 
                 /// <summary>Lists Realms in a given project and location.</summary>
-                /// <param name="parent">Required. Parent value for ListRealmsRequest</param>
+                /// <param name="parent">
+                /// Required. The parent resource name, for example `projects/*/locations/*`.
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
@@ -2280,15 +2308,15 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent value for ListRealmsRequest</summary>
+                    /// <summary>Required. The parent resource name, for example `projects/*/locations/*`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results</summary>
+                    /// <summary>Optional. Filter expression to filter the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Hint for how to order the results</summary>
+                    /// <summary>Optional. Hint for how to order the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -2303,11 +2331,11 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Optional. The view of the Realm.</summary>
+                    /// <summary>Optional. The view of the Realm to retrieve.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<ViewEnum> View { get; set; }
 
-                    /// <summary>Optional. The view of the Realm.</summary>
+                    /// <summary>Optional. The view of the Realm to retrieve.</summary>
                     public enum ViewEnum
                     {
                         /// <summary>Unspecified view. Defaults to BASIC.</summary>
@@ -2393,7 +2421,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
 
                 /// <summary>Updates the parameters of a single Realm.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required. Identifier. Unique name/ID of the realm</param>
+                /// <param name="name">Required. Identifier. The resource name of the Realm.</param>
                 public virtual PatchRequest Patch(Google.Apis.CloudNumberRegistry.v1alpha.Data.Realm body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
@@ -2410,7 +2438,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Identifier. Unique name/ID of the realm</summary>
+                    /// <summary>Required. Identifier. The resource name of the Realm.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -2495,7 +2523,9 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
 
                 /// <summary>Creates a new RegistryBook in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <param name="parent">
+                /// Required. The parent resource name where the RegistryBook will be created.
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudNumberRegistry.v1alpha.Data.RegistryBook body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
@@ -2512,11 +2542,14 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>Required. The parent resource name where the RegistryBook will be created.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Required. Id of the requesting object.</summary>
+                    /// <summary>
+                    /// Required. The ID to use for the RegistryBook, which will become the final segment of the
+                    /// resource name.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("registryBookId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RegistryBookId { get; set; }
 
@@ -2580,7 +2613,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                 }
 
                 /// <summary>Deletes a single RegistryBook.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <param name="name">Required. The resource name of the RegistryBook to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
@@ -2596,7 +2629,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. The resource name of the RegistryBook to delete.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -2658,7 +2691,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                 }
 
                 /// <summary>Gets details of a single RegistryBook.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <param name="name">Required. The resource name of the RegistryBook to retrieve.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
@@ -2674,15 +2707,15 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. The resource name of the RegistryBook to retrieve.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Optional. The view of the RegistryBook.</summary>
+                    /// <summary>Optional. The view of the RegistryBook to retrieve.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<ViewEnum> View { get; set; }
 
-                    /// <summary>Optional. The view of the RegistryBook.</summary>
+                    /// <summary>Optional. The view of the RegistryBook to retrieve.</summary>
                     public enum ViewEnum
                     {
                         /// <summary>Unspecified view. Defaults to BASIC.</summary>
@@ -2735,7 +2768,9 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                 }
 
                 /// <summary>Lists RegistryBooks in a given project and location.</summary>
-                /// <param name="parent">Required. Parent value for ListRegistryBooksRequest</param>
+                /// <param name="parent">
+                /// Required. The parent resource name, for example `projects/*/locations/*`.
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
@@ -2751,15 +2786,15 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent value for ListRegistryBooksRequest</summary>
+                    /// <summary>Required. The parent resource name, for example `projects/*/locations/*`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results</summary>
+                    /// <summary>Optional. Filter expression to filter the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Hint for how to order the results</summary>
+                    /// <summary>Optional. Hint for how to order the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -2774,11 +2809,11 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Optional. The view of the RegistryBook.</summary>
+                    /// <summary>Optional. The view of the RegistryBook to retrieve.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<ViewEnum> View { get; set; }
 
-                    /// <summary>Optional. The view of the RegistryBook.</summary>
+                    /// <summary>Optional. The view of the RegistryBook to retrieve.</summary>
                     public enum ViewEnum
                     {
                         /// <summary>Unspecified view. Defaults to BASIC.</summary>
@@ -2864,7 +2899,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
 
                 /// <summary>Updates the parameters of a single RegistryBook.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required. Identifier. name of resource</param>
+                /// <param name="name">Required. Identifier. The resource name of the RegistryBook.</param>
                 public virtual PatchRequest Patch(Google.Apis.CloudNumberRegistry.v1alpha.Data.RegistryBook body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
@@ -2881,7 +2916,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. Identifier. name of resource</summary>
+                    /// <summary>Required. Identifier. The resource name of the RegistryBook.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -2955,7 +2990,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
 
                 /// <summary>Searches IP resources in a given RegistryBook.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required. The name of the RegistryBook to search in.</param>
+                /// <param name="name">Required. The resource name of the RegistryBook to search in.</param>
                 public virtual SearchIpResourcesRequest SearchIpResources(Google.Apis.CloudNumberRegistry.v1alpha.Data.SearchIpResourcesRequest body, string name)
                 {
                     return new SearchIpResourcesRequest(this.service, body, name);
@@ -2972,7 +3007,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha
                         InitParameters();
                     }
 
-                    /// <summary>Required. The name of the RegistryBook to search in.</summary>
+                    /// <summary>Required. The resource name of the RegistryBook to search in.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -3181,19 +3216,19 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
     /// <summary>Aggregated data for the RegistryBook.</summary>
     public class AggregatedData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Number of custom ranges in the RegistryBook.</summary>
+        /// <summary>Output only. Number of CustomRanges in the RegistryBook.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customRangesCount")]
         public virtual System.Nullable<int> CustomRangesCount { get; set; }
 
-        /// <summary>Output only. Number of custom realms in the RegistryBook.</summary>
+        /// <summary>Output only. Number of custom Realms in the RegistryBook.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customRealmsCount")]
         public virtual System.Nullable<int> CustomRealmsCount { get; set; }
 
-        /// <summary>Output only. Number of discovered ranges in the RegistryBook.</summary>
+        /// <summary>Output only. Number of DiscoveredRanges in the RegistryBook.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveredRangesCount")]
         public virtual System.Nullable<int> DiscoveredRangesCount { get; set; }
 
-        /// <summary>Output only. Number of discovered realms in the RegistryBook.</summary>
+        /// <summary>Output only. Number of discovered Realms in the RegistryBook.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveredRealmsCount")]
         public virtual System.Nullable<int> DiscoveredRealmsCount { get; set; }
 
@@ -3205,14 +3240,14 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing Attribute object</summary>
+    /// <summary>A key-value pair representing a custom attribute associated with a resource.</summary>
     public class Attribute : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Key of attribute</summary>
+        /// <summary>Required. The key of the attribute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
-        /// <summary>Required. Value of attribute</summary>
+        /// <summary>Required. The value of the attribute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
@@ -3227,7 +3262,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to checking the availability of IpamAdminScopes</summary>
+    /// <summary>Response message for the CloudNumberRegistry.CheckAvailabilityIpamAdminScopes method.</summary>
     public class CheckAvailabilityIpamAdminScopesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The details of the requested scopes.</summary>
@@ -3238,7 +3273,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for cleaning up a IpamAdminScope</summary>
+    /// <summary>Request message for the CloudNumberRegistry.CleanupIpamAdminScope method.</summary>
     public class CleanupIpamAdminScopeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3257,14 +3292,14 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing CustomRange object</summary>
+    /// <summary>A CustomRange represents a user-defined IP address range.</summary>
     public class CustomRange : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The attributes of the CustomRange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IList<Attribute> Attributes { get; set; }
 
-        /// <summary>Optional. Description of the CustomRange.</summary>
+        /// <summary>Optional. The description of the CustomRange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -3276,32 +3311,38 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipv6CidrRange")]
         public virtual string Ipv6CidrRange { get; set; }
 
-        /// <summary>Optional. Labels as key value pairs</summary>
+        /// <summary>Optional. User-defined labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Required. Identifier. name of resource</summary>
+        /// <summary>
+        /// Required. Identifier. The resource name of the CustomRange, in the format
+        /// `projects/{project}/locations/{location}/customRanges/{custom_range}`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Optional. The parent range of the CustomRange. Do not allow setting parent range if realm is specified.
-        /// Format must follow this pattern: projects/{project}/locations/{location}/customRanges/{custom_range}
+        /// Optional. The resource name of the parent CustomRange, in the format
+        /// `projects/{project}/locations/{location}/customRanges/{custom_range}`. If specified, the parent CustomRange
+        /// must be in the same RegistryBook. This field is mutually exclusive with the `realm` field, as the Realm is
+        /// inherited from the parent CustomRange.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentRange")]
         public virtual string ParentRange { get; set; }
 
         /// <summary>
-        /// Optional. The realm of the CustomRange. The realm must be in the same project as the custom range. Do not
-        /// allow setting realm if parent range is specified, since the realm should be inherited from the parent range.
-        /// Format must follow this pattern: projects/{project}/locations/{location}/realms/{realm}
+        /// Optional. The resource name of the Realm associated with the CustomRange, in the format
+        /// `projects/{project}/locations/{location}/realms/{realm}`. The Realm must be in the same project as the
+        /// CustomRange. This field must not be set if the `parent_range` field is set, as the Realm will be inherited
+        /// from the parent CustomRange.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("realm")]
         public virtual string Realm { get; set; }
 
         /// <summary>
-        /// Output only. The registry book of the CustomRange. This field is inherited from the realm or parent range
-        /// depending on which one is specified.
+        /// Output only. The RegistryBook of the CustomRange. This field is inherited from the Realm or parent
+        /// CustomRange depending on which one is specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("registryBook")]
         public virtual string RegistryBook { get; set; }
@@ -3310,7 +3351,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for disabling a IpamAdminScope</summary>
+    /// <summary>Request message for the CloudNumberRegistry.DisableIpamAdminScope method.</summary>
     public class DisableIpamAdminScopeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3329,14 +3370,18 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing DiscoveredRange object</summary>
+    /// <summary>
+    /// A DiscoveredRange represents an IP address range automatically detected by the discovery pipeline.
+    /// </summary>
     public class DiscoveredRange : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The attributes of the DiscoveredRange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IList<Attribute> Attributes { get; set; }
 
-        /// <summary>Output only. If true, allow child ranges of this range to overlap with each other.</summary>
+        /// <summary>
+        /// Output only. If true, allows child DiscoveredRanges of this DiscoveredRange to overlap with each other.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("childCidrOverlapAllowed")]
         public virtual System.Nullable<bool> ChildCidrOverlapAllowed { get; set; }
 
@@ -3344,7 +3389,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
 
         private object _createTime;
 
-        /// <summary>Output only. [Output only] Create time stamp</summary>
+        /// <summary>Output only. The time at which the DiscoveredRange was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -3398,23 +3443,29 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipv6CidrRange")]
         public virtual string Ipv6CidrRange { get; set; }
 
-        /// <summary>Optional. Labels as key value pairs</summary>
+        /// <summary>Optional. User-defined labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Required. Identifier. Name of the DiscoveredRange.</summary>
+        /// <summary>
+        /// Required. Identifier. The resource name of the DiscoveredRange, in the format
+        /// `projects/{project}/locations/{location}/discoveredRanges/{discovered_range}`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Optional. The parent range of the DiscoveredRange.</summary>
+        /// <summary>
+        /// Optional. The resource name of the parent DiscoveredRange, in the format
+        /// `projects/{project}/locations/{location}/discoveredRanges/{discovered_range}`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentRange")]
         public virtual string ParentRange { get; set; }
 
-        /// <summary>Optional. The realm of the DiscoveredRange.</summary>
+        /// <summary>Optional. The Realm of the DiscoveredRange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("realm")]
         public virtual string Realm { get; set; }
 
-        /// <summary>Output only. The registry book of the DiscoveredRange.</summary>
+        /// <summary>Output only. The RegistryBook of the DiscoveredRange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("registryBook")]
         public virtual string RegistryBook { get; set; }
 
@@ -3422,7 +3473,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. [Output only] Update time stamp</summary>
+        /// <summary>Output only. The time at which the DiscoveredRange was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -3459,7 +3510,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Discovery metadata of the discovered resource.</summary>
+    /// <summary>Metadata about a discovered resource, tracking event times, state, and source information.</summary>
     public class DiscoveryMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -3554,7 +3605,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         /// <summary>
         /// Output only. A single source resource can be the source of multiple CNR resources. This sub_id is used to
         /// distinguish between the different CNR resources derived from the same upstream resource. For example, a
-        /// single subnetwork can be the source of multiple ranges, one for each protocol. In this case, the sub_id
+        /// single subnetwork can be the source of multiple Ranges, one for each protocol. In this case, the sub_id
         /// could be "private-ipv4" or "private-ipv6".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceSubId")]
@@ -3616,10 +3667,10 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for the response to finding free IP ranges.</summary>
+    /// <summary>Response message for the CloudNumberRegistry.FindCustomRangeFreeIpRanges method.</summary>
     public class FindCustomRangeFreeIpRangesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Free IP CIDR ranges found in the CustomRange.</summary>
+        /// <summary>Output only. The free IP CIDR ranges found.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freeIpCidrRanges")]
         public virtual System.Collections.Generic.IList<string> FreeIpCidrRanges { get; set; }
 
@@ -3627,10 +3678,10 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for the response to finding free IP ranges.</summary>
+    /// <summary>Response message for the CloudNumberRegistry.FindDiscoveredRangeFreeIpRanges method.</summary>
     public class FindDiscoveredRangeFreeIpRangesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Free IP CIDR ranges found in the DiscoveredRange.</summary>
+        /// <summary>Output only. The free IP CIDR ranges found.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freeIpCidrRanges")]
         public virtual System.Collections.Generic.IList<string> FreeIpCidrRanges { get; set; }
 
@@ -3638,14 +3689,17 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing IpamAdminScope object</summary>
+    /// <summary>
+    /// An IpamAdminScope defines the administrative boundary for IP address discovery and management. It configures
+    /// which platforms and organizational scopes are enabled for IP tracking.
+    /// </summary>
     public class IpamAdminScope : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
 
         private object _createTime;
 
-        /// <summary>Output only. [Output only] Create time stamp</summary>
+        /// <summary>Output only. The time at which the IpamAdminScope was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -3679,17 +3733,17 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         }
 
         /// <summary>
-        /// Required. Addon platforms that are enabled for this IPAM admin scope. Cloud Number Registry only discovers
+        /// Required. Add-on platforms that are enabled for this IpamAdminScope. Cloud Number Registry only discovers
         /// the IP addresses from the enabled platforms.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabledAddonPlatforms")]
         public virtual System.Collections.Generic.IList<string> EnabledAddonPlatforms { get; set; }
 
-        /// <summary>Optional. Labels as key value pairs</summary>
+        /// <summary>Optional. User-defined labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Required. Identifier. name of resource</summary>
+        /// <summary>Required. Identifier. The resource name of the IpamAdminScope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3709,7 +3763,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. [Output only] Update time stamp</summary>
+        /// <summary>Output only. The time at which the IpamAdminScope was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -3746,7 +3800,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for the availability of an IpamAdminScope</summary>
+    /// <summary>Availability details for a specific IpamAdminScope.</summary>
     public class IpamAdminScopeAvailability : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The admin project of the IpamAdminScope if it exists.</summary>
@@ -3765,14 +3819,16 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing CustomRanges</summary>
+    /// <summary>Response message for the CloudNumberRegistry.ListCustomRanges method.</summary>
     public class ListCustomRangesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of CustomRange</summary>
+        /// <summary>The list of CustomRanges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customRanges")]
         public virtual System.Collections.Generic.IList<CustomRange> CustomRanges { get; set; }
 
-        /// <summary>A token identifying a page of results the server should return.</summary>
+        /// <summary>
+        /// A token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -3784,14 +3840,16 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing DiscoveredRanges</summary>
+    /// <summary>Response message for the CloudNumberRegistry.ListDiscoveredRanges method.</summary>
     public class ListDiscoveredRangesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of DiscoveredRange</summary>
+        /// <summary>The list of DiscoveredRanges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveredRanges")]
         public virtual System.Collections.Generic.IList<DiscoveredRange> DiscoveredRanges { get; set; }
 
-        /// <summary>A token identifying a page of results the server should return.</summary>
+        /// <summary>
+        /// A token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -3803,14 +3861,16 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing ipamAdminScopes</summary>
+    /// <summary>Response message for the CloudNumberRegistry.ListIpamAdminScopes method.</summary>
     public class ListIpamAdminScopesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of IpamAdminScope</summary>
+        /// <summary>The list of IpamAdminScopes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipamAdminScopes")]
         public virtual System.Collections.Generic.IList<IpamAdminScope> IpamAdminScopes { get; set; }
 
-        /// <summary>A token identifying a page of results the server should return.</summary>
+        /// <summary>
+        /// A token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -3860,14 +3920,14 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing Realms</summary>
+    /// <summary>Response message for the CloudNumberRegistry.ListRealms method.</summary>
     public class ListRealmsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A token identifying a page of results the server should return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The list of Realm</summary>
+        /// <summary>The list of Realms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("realms")]
         public virtual System.Collections.Generic.IList<Realm> Realms { get; set; }
 
@@ -3879,7 +3939,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing RegistryBooks</summary>
+    /// <summary>Response message for the CloudNumberRegistry.ListRegistryBooks method.</summary>
     public class ListRegistryBooksResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A token identifying a page of results the server should return.</summary>
@@ -4078,18 +4138,18 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing either a CustomRange or a DiscoveredRange.</summary>
+    /// <summary>Represents either a CustomRange or a DiscoveredRange.</summary>
     public class Range : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A custom range.</summary>
+        /// <summary>A CustomRange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customRange")]
         public virtual CustomRange CustomRange { get; set; }
 
-        /// <summary>A discovered range.</summary>
+        /// <summary>A DiscoveredRange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveredRange")]
         public virtual DiscoveredRange DiscoveredRange { get; set; }
 
-        /// <summary>The utilization of the range.</summary>
+        /// <summary>The utilization of the Range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utilization")]
         public virtual RangeUtilization Utilization { get; set; }
 
@@ -4097,19 +4157,19 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for the utilization of an IP range</summary>
+    /// <summary>Utilization metrics for an IP Range, including consumed and produced address counts.</summary>
     public class RangeUtilization : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The total number of IP addresses consumed in the range.</summary>
+        /// <summary>Output only. The total number of IP addresses consumed in the Range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalConsumed")]
         public virtual string TotalConsumed { get; set; }
 
-        /// <summary>Output only. The total number of IP addresses produced in the range.</summary>
+        /// <summary>Output only. The total number of IP addresses produced in the Range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalProduced")]
         public virtual string TotalProduced { get; set; }
 
         /// <summary>
-        /// Output only. The usage of the range as a percentage. This is marked as optional so that we have presence
+        /// Output only. The usage of the Range as a percentage. This is marked as optional so that we have presence
         /// tracking and API responses show 0.0 instead of NULL.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usage")]
@@ -4119,7 +4179,11 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing Realm object</summary>
+    /// <summary>
+    /// A Realm represents a distinct network domain or security zone. It groups Ranges that share the same traffic and
+    /// management characteristics. All the ranges in a Realm are routable to each other, meaning that they cannot
+    /// overlap.
+    /// </summary>
     public class Realm : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Aggregated data for the Realm. Populated only when the view is AGGREGATE.</summary>
@@ -4130,7 +4194,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
 
         private object _createTime;
 
-        /// <summary>Output only. [Output only] Create time stamp</summary>
+        /// <summary>Output only. The time at which the Realm was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -4163,31 +4227,31 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Output only. Discovery metadata of the realm.</summary>
+        /// <summary>Output only. Discovery metadata of the Realm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveryMetadata")]
         public virtual DiscoveryMetadata DiscoveryMetadata { get; set; }
 
-        /// <summary>Optional. IP version of the realm.</summary>
+        /// <summary>Optional. IP version of the Realm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipVersion")]
         public virtual string IpVersion { get; set; }
 
-        /// <summary>Optional. Labels as key value pairs</summary>
+        /// <summary>Optional. User-defined labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Required. Management type of realm.</summary>
+        /// <summary>Required. Management type of the Realm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
         public virtual string ManagementType { get; set; }
 
-        /// <summary>Required. Identifier. Unique name/ID of the realm</summary>
+        /// <summary>Required. Identifier. The resource name of the Realm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. URI of the registry book that claims the realm.</summary>
+        /// <summary>Required. Name of the RegistryBook that claims the Realm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("registryBook")]
         public virtual string RegistryBook { get; set; }
 
-        /// <summary>Required. Traffic type of realm.</summary>
+        /// <summary>Required. Traffic type of the Realm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trafficType")]
         public virtual string TrafficType { get; set; }
 
@@ -4195,7 +4259,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. [Output only] Update time stamp</summary>
+        /// <summary>Output only. The time at which the Realm was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -4235,11 +4299,11 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
     /// <summary>Aggregated data for the Realm.</summary>
     public class RealmAggregatedData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Number of custom ranges in the Realm.</summary>
+        /// <summary>Output only. Number of CustomRanges in the Realm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customRangesCount")]
         public virtual System.Nullable<int> CustomRangesCount { get; set; }
 
-        /// <summary>Output only. Number of discovered ranges in the Realm.</summary>
+        /// <summary>Output only. Number of DiscoveredRanges in the Realm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveredRangesCount")]
         public virtual System.Nullable<int> DiscoveredRangesCount { get; set; }
 
@@ -4247,7 +4311,10 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing RegistryBook object</summary>
+    /// <summary>
+    /// A RegistryBook organizes and manages IP address space. It claims specific scopes (such as projects) and groups
+    /// related Realms and Ranges.
+    /// </summary>
     public class RegistryBook : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4267,7 +4334,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
 
         private object _createTime;
 
-        /// <summary>Output only. [Output only] Create time stamp</summary>
+        /// <summary>Output only. The time at which the RegistryBook was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -4304,11 +4371,11 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
         public virtual System.Nullable<bool> IsDefault { get; set; }
 
-        /// <summary>Optional. Labels as key value pairs</summary>
+        /// <summary>Optional. User-defined labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Required. Identifier. name of resource</summary>
+        /// <summary>Required. Identifier. The resource name of the RegistryBook.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4316,7 +4383,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. [Output only] Update time stamp</summary>
+        /// <summary>Output only. The time at which the RegistryBook was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -4353,10 +4420,15 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for searching IP resources</summary>
+    /// <summary>Request message for the CloudNumberRegistry.SearchIpResources method.</summary>
     public class SearchIpResourcesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Hint for how to order the results</summary>
+        /// <summary>
+        /// Optional. Hint for how to order the results. Supported sort fields are: - `name`: Sort alphabetically by the
+        /// resource name. - `create_time`: Sort by the creation timestamp of the resource. - `update_time`: Sort by the
+        /// last update timestamp of the resource. Supported directions are `asc` (ascending) and `desc` (descending).
+        /// If unspecified, direction defaults to `asc`. Only sorting by a single field is supported.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
         public virtual string OrderBy { get; set; }
 
@@ -4374,26 +4446,27 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         /// <summary>
         /// Optional. Search query. This string filters resources in an AIP-160-like format. It has some limitations.
         /// You can only specify top level conjunctions or attribute level negations. Each restriction can only be used
-        /// once except the attribute restriction. The available restrictions for ranges are: - `realm`: The realm name
-        /// to search in. - `ip_address`: The IP address to search for within ranges. - `ip_version`: The IP version to
-        /// filter by (e.g., "IPV4", "IPV6"). - `parent_range`: The parent range of the range to search for. -
-        /// `attribute_text`: The attribute text to search for within ranges. - `attribute`: The attribute key and value
-        /// to filter by. The available restrictions for realms are: - `ip_version`: The IP version to search for. Only
-        /// one of attribute_text or multiple attribute filters can be specified. Examples: - `realm=test-realm` -
-        /// `realm=test-realm AND ip_address=10.0.0.0` - `realm=test-realm AND ip_version=IPV6` - `realm=test-realm AND
-        /// attribute_text=test` - `ip_address=10.0.0.0 AND attribute:(key1=value1) AND attribute:(key2=value2)` -
-        /// `attribute_text=test AND parent_range=projects/123/locations/global/discoveredRanges/test-parent-range`
+        /// once except the attribute restriction. The available restrictions for Ranges are: - `realm`: The Realm name
+        /// to search in. - `ip_address`: The IP address to search for within Ranges. - `ip_version`: The IP version to
+        /// filter by (e.g., "IPV4", "IPV6"). - `parent_range`: The parent Range of the Range to search for. -
+        /// `attribute_text`: The attribute text to search for within Ranges. - `attribute`: The attribute key and value
+        /// to filter by. The available restrictions for Realms are: - `ip_version`: The IP version to search for. -
+        /// `management_type`: The management type of the Realm (e.g., "CNR", "USER"). Only one of attribute_text or
+        /// multiple attribute filters can be specified. Examples: - `realm=test-realm` - `realm=test-realm AND
+        /// ip_address=10.0.0.0` - `realm=test-realm AND ip_version=IPV6` - `realm=test-realm AND attribute_text=test` -
+        /// `ip_address=10.0.0.0 AND attribute:(key1=value1) AND attribute:(key2=value2)` - `attribute_text=test AND
+        /// parent_range=projects/123/locations/global/discoveredRanges/test-parent-range` - `management_type=CNR`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
 
         /// <summary>
-        /// Optional. The type of resources to search for. If not specified, the server will return ranges.
+        /// Optional. The type of resources to search for. If not specified, the server will return Ranges.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchResourceTypes")]
         public virtual System.Collections.Generic.IList<string> SearchResourceTypes { get; set; }
 
-        /// <summary>Optional. Whether to show the utilization of the ranges in the response.</summary>
+        /// <summary>Optional. Whether to show the utilization of the Ranges in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("showUtilization")]
         public virtual System.Nullable<bool> ShowUtilization { get; set; }
 
@@ -4401,14 +4474,14 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to searching IP resources</summary>
+    /// <summary>Response message for the CloudNumberRegistry.SearchIpResources method.</summary>
     public class SearchIpResourcesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A token identifying a page of results the server should return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>Deprecated: Use results field instead. The list of ranges matching the search query.</summary>
+        /// <summary>Deprecated: Use results field instead. The list of Ranges matching the search query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ranges")]
         public virtual System.Collections.Generic.IList<Range> Ranges { get; set; }
 
@@ -4424,14 +4497,14 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A result matching the search query, which can be either a range or a realm.</summary>
+    /// <summary>A result matching the search query, which can be either a Range or a Realm.</summary>
     public class SearchIpResourcesResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A range matching the search query.</summary>
+        /// <summary>A Range matching the search query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual Range Range { get; set; }
 
-        /// <summary>A realm matching the search query.</summary>
+        /// <summary>A Realm matching the search query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("realm")]
         public virtual Realm Realm { get; set; }
 
@@ -4439,14 +4512,14 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for the response to getting the utilization of a CustomRange</summary>
+    /// <summary>Response message for the CloudNumberRegistry.ShowCustomRangeUtilization method.</summary>
     public class ShowCustomRangeUtilizationResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The CustomRange resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customRange")]
         public virtual CustomRange CustomRange { get; set; }
 
-        /// <summary>The utilization of the CustomRange.</summary>
+        /// <summary>The utilization details of the CustomRange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rangeUtilization")]
         public virtual RangeUtilization RangeUtilization { get; set; }
 
@@ -4454,14 +4527,14 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for the response to getting the utilization of a DiscoveredRange</summary>
+    /// <summary>Response message for the CloudNumberRegistry.ShowDiscoveredRangeUtilization method.</summary>
     public class ShowDiscoveredRangeUtilizationResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The DiscoveredRange resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveredRange")]
         public virtual DiscoveredRange DiscoveredRange { get; set; }
 
-        /// <summary>The utilization of the DiscoveredRange.</summary>
+        /// <summary>The utilization details of the DiscoveredRange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rangeUtilization")]
         public virtual RangeUtilization RangeUtilization { get; set; }
 
