@@ -1794,8 +1794,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     /// **Specific CA Pool:** To list certificates within a single CA Pool:
                     /// `projects/*/locations/*/caPools/*` 2. **All CA Pools in a Location:** To list certificates
                     /// across *all* CA Pools in a given project and location, use the wildcard character (`-`) in place
-                    /// of the CA Pool ID. Example: `projects/*/locations/*/caPools/-` See
-                    /// go/ccfe-nested-collections#aggregate-listing for more details.
+                    /// of the CA Pool ID. Example: `projects/*/locations/*/caPools/-`
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -1818,8 +1817,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                         /// **Specific CA Pool:** To list certificates within a single CA Pool:
                         /// `projects/*/locations/*/caPools/*` 2. **All CA Pools in a Location:** To list certificates
                         /// across *all* CA Pools in a given project and location, use the wildcard character (`-`) in
-                        /// place of the CA Pool ID. Example: `projects/*/locations/*/caPools/-` See
-                        /// go/ccfe-nested-collections#aggregate-listing for more details.
+                        /// place of the CA Pool ID. Example: `projects/*/locations/*/caPools/-`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
