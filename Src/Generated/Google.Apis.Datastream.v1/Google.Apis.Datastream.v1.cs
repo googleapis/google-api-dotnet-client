@@ -2929,6 +2929,13 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("postgresqlExcludedObjects")]
         public virtual PostgresqlRdbms PostgresqlExcludedObjects { get; set; }
 
+        /// <summary>
+        /// Source catalog data source objects to avoid backfilling. This is mainly used to represent SaaS applications
+        /// objects.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("saasExcludedObjects")]
+        public virtual SourceCatalog SaasExcludedObjects { get; set; }
+
         /// <summary>Salesforce data source objects to avoid backfilling</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salesforceExcludedObjects")]
         public virtual SalesforceOrg SalesforceExcludedObjects { get; set; }
@@ -3269,6 +3276,10 @@ namespace Google.Apis.Datastream.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Profile for connecting to a Dataverse source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataverseProfile")]
+        public virtual DataverseProfile DataverseProfile { get; set; }
+
         /// <summary>Required. Display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -3309,6 +3320,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateConnectivity")]
         public virtual PrivateConnectivity PrivateConnectivity { get; set; }
 
+        /// <summary>Profile for connecting to a Salesforce Marketing Cloud source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("salesforceMarketingCloudProfile")]
+        public virtual SalesforceMarketingCloudProfile SalesforceMarketingCloudProfile { get; set; }
+
         /// <summary>Profile for connecting to a Salesforce source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salesforceProfile")]
         public virtual SalesforceProfile SalesforceProfile { get; set; }
@@ -3320,6 +3335,10 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
+        /// <summary>Profile for connecting to a ServiceNow source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceNowProfile")]
+        public virtual ServiceNowProfile ServiceNowProfile { get; set; }
 
         /// <summary>Profile for connecting to a Spanner source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spannerProfile")]
@@ -3419,6 +3438,49 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Profile for connecting to a Dataverse source.</summary>
+    public class DataverseProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Environment URL of the Microsoft Dataverse instance. Example: `.crm.dynamics.com`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentUrl")]
+        public virtual string EnvironmentUrl { get; set; }
+
+        /// <summary>Required. Credentials for authenticating with the Dataverse API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthClientCredentials")]
+        public virtual OauthClientCredentials OauthClientCredentials { get; set; }
+
+        /// <summary>Required. Tenant id of the Microsoft Dataverse instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenantId")]
+        public virtual string TenantId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for syncing data from a Dataverse source.</summary>
+    public class DataverseSourceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The objects to exclude from the stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeObjects")]
+        public virtual SourceCatalog ExcludeObjects { get; set; }
+
+        /// <summary>Optional. The objects to retrieve from the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeObjects")]
+        public virtual SourceCatalog IncludeObjects { get; set; }
+
+        /// <summary>
+        /// Required. Incremental sync polling interval for all objects. If not set, a default value of `5 minutes` is
+        /// used. The duration must be from `5 minutes` to `24 hours`, inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pollingInterval")]
+        public virtual object PollingInterval { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes additional debugging info.</summary>
     public class DebugInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3497,6 +3559,13 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("salesforceOrg")]
         public virtual SalesforceOrg SalesforceOrg { get; set; }
 
+        /// <summary>
+        /// Optional. Source catalog to enrich with child data objects and metadata. This is mainly used to represent
+        /// SaaS sources databases.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceCatalog")]
+        public virtual SourceCatalog SourceCatalog { get; set; }
+
         /// <summary>Optional. Spanner database to enrich with child data objects and metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spannerDatabase")]
         public virtual SpannerDatabase SpannerDatabase { get; set; }
@@ -3531,6 +3600,10 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Enriched Salesforce organization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salesforceOrg")]
         public virtual SalesforceOrg SalesforceOrg { get; set; }
+
+        /// <summary>Enriched source catalog. This is mainly used to represent SaaS sources databases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceCatalog")]
+        public virtual SourceCatalog SourceCatalog { get; set; }
 
         /// <summary>Enriched Spanner database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spannerDatabase")]
@@ -4722,6 +4795,21 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>OAuth Client Credentials.</summary>
+    public class OauthClientCredentials : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Client ID for OAuth Client Credentials.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>Required. Client secret for OAuth Client Credentials.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual Secret ClientSecret { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Object filter to apply the rules to.</summary>
     public class ObjectFilter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5889,6 +5977,57 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Profile for connecting to a Salesforce Marketing Cloud source.</summary>
+    public class SalesforceMarketingCloudProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Input only. Credentials for authenticating with the Salesforce Marketing Cloud API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthClientCredentials")]
+        public virtual OauthClientCredentials OauthClientCredentials { get; set; }
+
+        /// <summary>
+        /// Required. Subdomain for the Salesforce Marketing Cloud connection. Example: if your specific endpoint is
+        /// `https://{your-specific-subdomain}.rest.marketingcloudapis.com/`, the subdomain is
+        /// `{your-specific-subdomain}`. Must be 1-63 characters, start and end with an alphanumeric character, and
+        /// contain only lowercase letters, numbers, and hyphens (-).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subdomain")]
+        public virtual string Subdomain { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for syncing data from a Salesforce Marketing Cloud source.</summary>
+    public class SalesforceMarketingCloudSourceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The objects to exclude from the stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeObjects")]
+        public virtual SourceCatalog ExcludeObjects { get; set; }
+
+        /// <summary>
+        /// Required. Specifies the polling interval for a full refresh of objects that do not support incremental sync.
+        /// If not set, a default value of 24 hours is used. The duration must be between 1 and 24 hours, inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullRefreshPollingInterval")]
+        public virtual object FullRefreshPollingInterval { get; set; }
+
+        /// <summary>Optional. The objects to retrieve from the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeObjects")]
+        public virtual SourceCatalog IncludeObjects { get; set; }
+
+        /// <summary>
+        /// Required. Incremental sync polling interval for all objects. If not set, a default value of `5 minutes` is
+        /// used. The duration must be from `5 minutes` to `24 hours`, inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pollingInterval")]
+        public virtual object PollingInterval { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Salesforce object.</summary>
     public class SalesforceObject : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5971,6 +6110,28 @@ namespace Google.Apis.Datastream.v1.Data
     }
 
     /// <summary>
+    /// A confidential piece of information where the actual value is either directly specified in the message as a raw
+    /// string or stored in GCP secret manager.
+    /// </summary>
+    public class Secret : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Input only. The actual raw value of the secret as plain text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawValue")]
+        public virtual string RawValue { get; set; }
+
+        /// <summary>
+        /// Optional. A Secret Manager resource name storing the actual value of the secret. Supported formats: *
+        /// projects/{project}/locations/{location}/secrets/{secret}/versions/{version} *
+        /// projects/{project}/secrets/{secret}/versions/{version}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretVersion")]
+        public virtual string SecretVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Message represents the option where Datastream will enforce the encryption and authenticate the server identity
     /// as well as the client identity. ca_certificate, client_certificate and client_key must be set if user selects
     /// this option.
@@ -6030,6 +6191,49 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Profile for connecting to a ServiceNow source.</summary>
+    public class ServiceNowProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The instance of the ServiceNow account. This is the `` part of the URL `https://.service-now.com`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instance")]
+        public virtual string Instance { get; set; }
+
+        /// <summary>Credentials for authenticating with the ServiceNow API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthClientCredentials")]
+        public virtual OauthClientCredentials OauthClientCredentials { get; set; }
+
+        /// <summary>User-password authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userPasswordCredentials")]
+        public virtual UserPasswordCredentials UserPasswordCredentials { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for syncing data from a ServiceNow source.</summary>
+    public class ServiceNowSourceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The objects to exclude from the stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeObjects")]
+        public virtual SourceCatalog ExcludeObjects { get; set; }
+
+        /// <summary>Optional. The objects to retrieve from the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeObjects")]
+        public virtual SourceCatalog IncludeObjects { get; set; }
+
+        /// <summary>
+        /// Required. Incremental sync polling interval for all objects. If not set, a default value of `5 minutes` is
+        /// used. The duration must be from `5 minutes` to `24 hours`, inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pollingInterval")]
+        public virtual object PollingInterval { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A single target dataset to which all data will be streamed.</summary>
     public class SingleTargetDataset : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6044,9 +6248,24 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Source catalog.</summary>
+    public class SourceCatalog : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Source objects in the catalog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objects")]
+        public virtual System.Collections.Generic.IList<SourceObject> Objects { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The configuration of the stream source.</summary>
     public class SourceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Dataverse data source configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataverseSourceConfig")]
+        public virtual DataverseSourceConfig DataverseSourceConfig { get; set; }
+
         /// <summary>MongoDB data source configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mongodbSourceConfig")]
         public virtual MongodbSourceConfig MongodbSourceConfig { get; set; }
@@ -6063,9 +6282,17 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("postgresqlSourceConfig")]
         public virtual PostgresqlSourceConfig PostgresqlSourceConfig { get; set; }
 
+        /// <summary>Salesforce Marketing Cloud data source configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("salesforceMarketingCloudSourceConfig")]
+        public virtual SalesforceMarketingCloudSourceConfig SalesforceMarketingCloudSourceConfig { get; set; }
+
         /// <summary>Salesforce data source configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salesforceSourceConfig")]
         public virtual SalesforceSourceConfig SalesforceSourceConfig { get; set; }
+
+        /// <summary>ServiceNow data source configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceNowSourceConfig")]
+        public virtual ServiceNowSourceConfig ServiceNowSourceConfig { get; set; }
 
         /// <summary>
         /// Required. Source connection profile resource. Format:
@@ -6106,6 +6333,24 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Source object.</summary>
+    public class SourceObject : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The object name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectName")]
+        public virtual string ObjectName { get; set; }
+
+        /// <summary>
+        /// Optional. Source properties. When unspecified as part of include objects, includes everything, when
+        /// unspecified as part of exclude objects, excludes nothing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IList<SourceProperty> Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents an identifier of an object in the data source.</summary>
     public class SourceObjectIdentifier : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6136,6 +6381,29 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>SQLServer data source object identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlServerIdentifier")]
         public virtual SqlServerObjectIdentifier SqlServerIdentifier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Source property.</summary>
+    public class SourceProperty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether or not the property is a primary key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryKey")]
+        public virtual System.Nullable<bool> PrimaryKey { get; set; }
+
+        /// <summary>
+        /// Optional. Source properties. When specified, it means that the current property contains nested properties
+        /// of its own. When unspecified as part of include objects, includes everything, when unspecified as part of
+        /// exclude objects, excludes nothing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IList<SourceProperty> Properties { get; set; }
+
+        /// <summary>Required. The property name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertyName")]
+        public virtual string PropertyName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7033,6 +7301,21 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string SecurityToken { get; set; }
 
         /// <summary>Required. Username for the Salesforce connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>User-password credentials.</summary>
+    public class UserPasswordCredentials : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Password for the connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual Secret Password { get; set; }
+
+        /// <summary>Required. Username for the connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; }
 
