@@ -6989,6 +6989,10 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
+        /// <summary>Output only. Count of Chrome Profiles with this app installed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileCount")]
+        public virtual System.Nullable<long> ProfileCount { get; set; }
+
         /// <summary>Output only. If available, the risk assessment data about this extension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("riskAssessment")]
         public virtual GoogleChromeManagementV1RiskAssessmentData RiskAssessment { get; set; }
