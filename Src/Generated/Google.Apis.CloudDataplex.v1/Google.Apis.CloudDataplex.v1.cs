@@ -21215,6 +21215,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
+        /// <summary>Output only. The result of an unstructured data profile scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unstructuredDataProfileResult")]
+        public virtual GoogleCloudDataplexV1UnstructuredDataProfileResult UnstructuredDataProfileResult { get; set; }
+
+        /// <summary>Optional. Settings for an unstructured data profile scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unstructuredDataProfileSpec")]
+        public virtual GoogleCloudDataplexV1UnstructuredDataProfileSpec UnstructuredDataProfileSpec { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -21885,6 +21893,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>Output only. System generated globally unique ID for the DataScanJob.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
+
+        /// <summary>Output only. The result of an unstructured data profile scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unstructuredDataProfileResult")]
+        public virtual GoogleCloudDataplexV1UnstructuredDataProfileResult UnstructuredDataProfileResult { get; set; }
+
+        /// <summary>Output only. Settings for an unstructured data profile scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unstructuredDataProfileSpec")]
+        public virtual GoogleCloudDataplexV1UnstructuredDataProfileSpec UnstructuredDataProfileSpec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23767,6 +23783,207 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains the strict structure for graph-profile for semantic inference scan result.</summary>
+    public class GoogleCloudDataplexV1GraphProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Edge types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edgeTypes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1GraphProfileEdgeType> EdgeTypes { get; set; }
+
+        /// <summary>Output only. Node types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeTypes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1GraphProfileNodeType> NodeTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a type of edge (relationship) in the graph.</summary>
+    public class GoogleCloudDataplexV1GraphProfileEdgeType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Description of the edge type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. Extraction hints for the edge.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extractionHints")]
+        public virtual GoogleCloudDataplexV1GraphProfileEdgeTypeExtractionHints ExtractionHints { get; set; }
+
+        /// <summary>Output only. Fields of the edge type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1GraphProfileField> Fields { get; set; }
+
+        /// <summary>Output only. Defines the Foreign Key constraints for the edge.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("foreignKeys")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKey> ForeignKeys { get; set; }
+
+        /// <summary>Output only. Name of the edge type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Source node type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceNodeType")]
+        public virtual string SourceNodeType { get; set; }
+
+        /// <summary>Output only. Target node type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetNodeType")]
+        public virtual string TargetNodeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Extraction hints (edge-level).</summary>
+    public class GoogleCloudDataplexV1GraphProfileEdgeTypeExtractionHints : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Expected connectivity topology and bounds of this relationship. Format: "Topology -
+        /// Description" Example: "1:N - One company can have multiple financial reports."
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cardinality")]
+        public virtual string Cardinality { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a foreign key constraint.</summary>
+    public class GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Description of the foreign key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. Field Mappings. Mappings between local fields and the fields they reference in the referenced
+        /// node type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldMappings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyFieldMapping> FieldMappings { get; set; }
+
+        /// <summary>Output only. Name of the foreign key constraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The node type this constraint references.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referencedNodeType")]
+        public virtual string ReferencedNodeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Maps a local field to a referenced field.</summary>
+    public class GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyFieldMapping : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Local field name forming part of the foreign key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual string Field { get; set; }
+
+        /// <summary>Output only. Field name in the referenced node type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referencedField")]
+        public virtual string ReferencedField { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a field in a node or edge type.</summary>
+    public class GoogleCloudDataplexV1GraphProfileField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The data type of the field, e.g., STRING, INTEGER, DATE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
+        public virtual string DataType { get; set; }
+
+        /// <summary>Output only. Description of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. Extraction hints for the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extractionHints")]
+        public virtual GoogleCloudDataplexV1GraphProfileFieldExtractionHints ExtractionHints { get; set; }
+
+        /// <summary>Output only. Sub-fields of this field (for STRUCT types).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1GraphProfileField> Fields { get; set; }
+
+        /// <summary>Output only. The mapped metadata type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataType")]
+        public virtual string MetadataType { get; set; }
+
+        /// <summary>Output only. The mode of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>Output only. Name of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Extraction hints (field-level).</summary>
+    public class GoogleCloudDataplexV1GraphProfileFieldExtractionHints : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Standardizes extracted data (e.g., to ISO 3166-1 alpha-2).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalization")]
+        public virtual string Normalization { get; set; }
+
+        /// <summary>
+        /// Output only. Generates value from other data instead of direct extraction (e.g., hashing).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("synthesis")]
+        public virtual string Synthesis { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a type of node in the graph.</summary>
+    public class GoogleCloudDataplexV1GraphProfileNodeType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Description of the node type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. Extraction hints for the node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extractionHints")]
+        public virtual GoogleCloudDataplexV1GraphProfileNodeTypeExtractionHints ExtractionHints { get; set; }
+
+        /// <summary>Output only. Fields of the node type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1GraphProfileField> Fields { get; set; }
+
+        /// <summary>Output only. Name of the node type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Field names forming the primary keys. The order in this array defines the key's ordinal
+        /// positions for composite keys.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryKeys")]
+        public virtual System.Collections.Generic.IList<string> PrimaryKeys { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Extraction hints (node-level).</summary>
+    public class GoogleCloudDataplexV1GraphProfileNodeTypeExtractionHints : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Expected occurrence frequency of this node type within a document. Format: "Bounds -
+        /// Description" Example: "0:N - A document may contain multiple people names."
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cardinality")]
+        public virtual string Cardinality { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An object that describes the values that you want to set for an entry and its attached aspects when you import
     /// metadata. Used when you run a metadata import job. See CreateMetadataJob.You provide a collection of import
@@ -24792,7 +25009,9 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// Optional. Allows to configure the context.Supported options: format - The format of the context (one of
         /// yaml, xml, json, default is yaml). context_budget - If provided, the output will be intelligently truncated
         /// on a best-effort basis to contain approximately the desired amount of characters. There is no guarantee to
-        /// achieve the specific amount.
+        /// achieve the specific amount. all_schema_fields - If set to true, all schema fields will be returned in the
+        /// context (regardless of context_budget value). Otherwise, the list of schema fields is truncated. Default is
+        /// false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual System.Collections.Generic.IDictionary<string, string> Options { get; set; }
@@ -26715,6 +26934,47 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cron")]
         public virtual string Cron { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the result of an unstructured data profile scan.</summary>
+    public class GoogleCloudDataplexV1UnstructuredDataProfileResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The inferred description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. The inferred graph profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("graphProfile")]
+        public virtual GoogleCloudDataplexV1GraphProfile GraphProfile { get; set; }
+
+        /// <summary>Output only. Optional message for partial failures (e.g. node type extraction failed).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialFailureMessage")]
+        public virtual string PartialFailureMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the specification for an unstructured data profile scan.</summary>
+    public class GoogleCloudDataplexV1UnstructuredDataProfileSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Customized prompt for unstructured data profile. The field will be used as part of the prompt,
+        /// could be some instruction, specifying skill, or specific area to focus.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customizedPrompt")]
+        public virtual string CustomizedPrompt { get; set; }
+
+        /// <summary>Optional. Whether to use the global model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("globalEndpointEnabled")]
+        public virtual System.Nullable<bool> GlobalEndpointEnabled { get; set; }
+
+        /// <summary>Optional. Whether to publish graph-profile as aspect on the catalog entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("graphProfilePublishingEnabled")]
+        public virtual System.Nullable<bool> GraphProfilePublishingEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
