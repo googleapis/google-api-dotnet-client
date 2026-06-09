@@ -20,6 +20,13 @@
       "allowedVersions": "<2.1.0"
     },
     {
+      "matchPackageNames": [
+        "dotnet-sdk"
+      ],
+      "allowedVersions": "<9.0.0",
+      "minimumReleaseAge": "7 days"
+    },
+    {
       "matchPaths": [
         "Src/Support/Google.Apis.Auth.AspNetCore3/**"
       ],
