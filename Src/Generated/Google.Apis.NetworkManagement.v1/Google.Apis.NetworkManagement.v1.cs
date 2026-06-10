@@ -2379,6 +2379,12 @@ namespace Google.Apis.NetworkManagement.v1
                             /// <summary>Monitoring Point that runs as a startup script in an Azure VM.</summary>
                             [Google.Apis.Util.StringValueAttribute("AZURE_VM")]
                             AZUREVM = 6,
+
+                            /// <summary>
+                            /// Monitoring Point that runs as a startup script in an AWS EC2 instance.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("AWS_EC2")]
+                            AWSEC2 = 7,
                         }
 
                         /// <summary>
