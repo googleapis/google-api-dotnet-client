@@ -9210,6 +9210,61 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         }
                     }
 
+                    /// <summary>Gets a CompletionConfig</summary>
+                    /// <param name="name">
+                    /// Required. Full CompletionConfig resource name. Format:
+                    /// `projects/*/locations/*/dataStores/*/completionConfig`
+                    /// `projects/*/locations/*/collections/*/dataStores/*/completionConfig`
+                    /// `projects/*/locations/*/collections/*/engines/*/completionConfig`
+                    /// </param>
+                    public virtual GetCompletionConfigRequest GetCompletionConfig(string name)
+                    {
+                        return new GetCompletionConfigRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets a CompletionConfig</summary>
+                    public class GetCompletionConfigRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCompletionConfig>
+                    {
+                        /// <summary>Constructs a new GetCompletionConfig request.</summary>
+                        public GetCompletionConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Full CompletionConfig resource name. Format:
+                        /// `projects/*/locations/*/dataStores/*/completionConfig`
+                        /// `projects/*/locations/*/collections/*/dataStores/*/completionConfig`
+                        /// `projects/*/locations/*/collections/*/engines/*/completionConfig`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getCompletionConfig";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes GetCompletionConfig parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/completionConfig$",
+                            });
+                        }
+                    }
+
                     /// <summary>Gets a DocumentProcessingConfig.</summary>
                     /// <param name="name">
                     /// Required. Full DocumentProcessingConfig resource name. Format:
@@ -9713,6 +9768,89 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates the CompletionConfigs.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. Immutable. Fully qualified name `projects/*/locations/*/dataStores/*/completionConfig`
+                    /// `projects/*/locations/*/collections/*/dataStores/*/completionConfig`
+                    /// `projects/*/locations/*/collections/*/engines/*/completionConfig`
+                    /// </param>
+                    public virtual UpdateCompletionConfigRequest UpdateCompletionConfig(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCompletionConfig body, string name)
+                    {
+                        return new UpdateCompletionConfigRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Updates the CompletionConfigs.</summary>
+                    public class UpdateCompletionConfigRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCompletionConfig>
+                    {
+                        /// <summary>Constructs a new UpdateCompletionConfig request.</summary>
+                        public UpdateCompletionConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCompletionConfig body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Immutable. Fully qualified name
+                        /// `projects/*/locations/*/dataStores/*/completionConfig`
+                        /// `projects/*/locations/*/collections/*/dataStores/*/completionConfig`
+                        /// `projects/*/locations/*/collections/*/engines/*/completionConfig`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Indicates which fields in the provided CompletionConfig to update. The following are the
+                        /// only supported fields: * CompletionConfig.matching_order * CompletionConfig.max_suggestions
+                        /// * CompletionConfig.min_prefix_length * CompletionConfig.query_model *
+                        /// CompletionConfig.enable_mode * CompletionConfig.query_frequency_threshold *
+                        /// CompletionConfig.num_unique_users_threshold *
+                        /// CompletionConfig.should_serve_content_suggestions *
+                        /// CompletionConfig.filter_pii_suggestions_using_dlp If not set, all supported fields are
+                        /// updated.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCompletionConfig Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "updateCompletionConfig";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes UpdateCompletionConfig parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/completionConfig$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -14429,6 +14567,61 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         }
                     }
 
+                    /// <summary>Gets a CompletionConfig</summary>
+                    /// <param name="name">
+                    /// Required. Full CompletionConfig resource name. Format:
+                    /// `projects/*/locations/*/dataStores/*/completionConfig`
+                    /// `projects/*/locations/*/collections/*/dataStores/*/completionConfig`
+                    /// `projects/*/locations/*/collections/*/engines/*/completionConfig`
+                    /// </param>
+                    public virtual GetCompletionConfigRequest GetCompletionConfig(string name)
+                    {
+                        return new GetCompletionConfigRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets a CompletionConfig</summary>
+                    public class GetCompletionConfigRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCompletionConfig>
+                    {
+                        /// <summary>Constructs a new GetCompletionConfig request.</summary>
+                        public GetCompletionConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Full CompletionConfig resource name. Format:
+                        /// `projects/*/locations/*/dataStores/*/completionConfig`
+                        /// `projects/*/locations/*/collections/*/dataStores/*/completionConfig`
+                        /// `projects/*/locations/*/collections/*/engines/*/completionConfig`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getCompletionConfig";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes GetCompletionConfig parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/completionConfig$",
+                            });
+                        }
+                    }
+
                     /// <summary>
                     /// Gets the IAM access control policy for an Engine. A `NOT_FOUND` error is returned if the
                     /// resource does not exist. An empty policy is returned if the resource exists but does not have a
@@ -14998,6 +15191,89 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates the CompletionConfigs.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. Immutable. Fully qualified name `projects/*/locations/*/dataStores/*/completionConfig`
+                    /// `projects/*/locations/*/collections/*/dataStores/*/completionConfig`
+                    /// `projects/*/locations/*/collections/*/engines/*/completionConfig`
+                    /// </param>
+                    public virtual UpdateCompletionConfigRequest UpdateCompletionConfig(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCompletionConfig body, string name)
+                    {
+                        return new UpdateCompletionConfigRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Updates the CompletionConfigs.</summary>
+                    public class UpdateCompletionConfigRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCompletionConfig>
+                    {
+                        /// <summary>Constructs a new UpdateCompletionConfig request.</summary>
+                        public UpdateCompletionConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCompletionConfig body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Immutable. Fully qualified name
+                        /// `projects/*/locations/*/dataStores/*/completionConfig`
+                        /// `projects/*/locations/*/collections/*/dataStores/*/completionConfig`
+                        /// `projects/*/locations/*/collections/*/engines/*/completionConfig`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Indicates which fields in the provided CompletionConfig to update. The following are the
+                        /// only supported fields: * CompletionConfig.matching_order * CompletionConfig.max_suggestions
+                        /// * CompletionConfig.min_prefix_length * CompletionConfig.query_model *
+                        /// CompletionConfig.enable_mode * CompletionConfig.query_frequency_threshold *
+                        /// CompletionConfig.num_unique_users_threshold *
+                        /// CompletionConfig.should_serve_content_suggestions *
+                        /// CompletionConfig.filter_pii_suggestions_using_dlp If not set, all supported fields are
+                        /// updated.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCompletionConfig Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "updateCompletionConfig";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes UpdateCompletionConfig parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/completionConfig$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -21974,6 +22250,61 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     }
                 }
 
+                /// <summary>Gets a CompletionConfig</summary>
+                /// <param name="name">
+                /// Required. Full CompletionConfig resource name. Format:
+                /// `projects/*/locations/*/dataStores/*/completionConfig`
+                /// `projects/*/locations/*/collections/*/dataStores/*/completionConfig`
+                /// `projects/*/locations/*/collections/*/engines/*/completionConfig`
+                /// </param>
+                public virtual GetCompletionConfigRequest GetCompletionConfig(string name)
+                {
+                    return new GetCompletionConfigRequest(this.service, name);
+                }
+
+                /// <summary>Gets a CompletionConfig</summary>
+                public class GetCompletionConfigRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCompletionConfig>
+                {
+                    /// <summary>Constructs a new GetCompletionConfig request.</summary>
+                    public GetCompletionConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Full CompletionConfig resource name. Format:
+                    /// `projects/*/locations/*/dataStores/*/completionConfig`
+                    /// `projects/*/locations/*/collections/*/dataStores/*/completionConfig`
+                    /// `projects/*/locations/*/collections/*/engines/*/completionConfig`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getCompletionConfig";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes GetCompletionConfig parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/completionConfig$",
+                        });
+                    }
+                }
+
                 /// <summary>Gets a DocumentProcessingConfig.</summary>
                 /// <param name="name">
                 /// Required. Full DocumentProcessingConfig resource name. Format:
@@ -22416,6 +22747,86 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Updates the CompletionConfigs.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Immutable. Fully qualified name `projects/*/locations/*/dataStores/*/completionConfig`
+                /// `projects/*/locations/*/collections/*/dataStores/*/completionConfig`
+                /// `projects/*/locations/*/collections/*/engines/*/completionConfig`
+                /// </param>
+                public virtual UpdateCompletionConfigRequest UpdateCompletionConfig(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCompletionConfig body, string name)
+                {
+                    return new UpdateCompletionConfigRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the CompletionConfigs.</summary>
+                public class UpdateCompletionConfigRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCompletionConfig>
+                {
+                    /// <summary>Constructs a new UpdateCompletionConfig request.</summary>
+                    public UpdateCompletionConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCompletionConfig body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Immutable. Fully qualified name `projects/*/locations/*/dataStores/*/completionConfig`
+                    /// `projects/*/locations/*/collections/*/dataStores/*/completionConfig`
+                    /// `projects/*/locations/*/collections/*/engines/*/completionConfig`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Indicates which fields in the provided CompletionConfig to update. The following are the only
+                    /// supported fields: * CompletionConfig.matching_order * CompletionConfig.max_suggestions *
+                    /// CompletionConfig.min_prefix_length * CompletionConfig.query_model * CompletionConfig.enable_mode
+                    /// * CompletionConfig.query_frequency_threshold * CompletionConfig.num_unique_users_threshold *
+                    /// CompletionConfig.should_serve_content_suggestions *
+                    /// CompletionConfig.filter_pii_suggestions_using_dlp If not set, all supported fields are updated.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCompletionConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateCompletionConfig";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes UpdateCompletionConfig parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/completionConfig$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -32647,7 +33058,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
         /// `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills` *
-        /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration`
+        /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
+        /// `cross-product-intelligence`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -36055,6 +36467,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. The tool/action name being executed. If provided, the server will check the required scopes of the
+        /// action and dynamically trigger incremental authorization if they are missing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>
         /// Optional. The scope to request for the access token. Scope will override default scope if specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
@@ -38595,6 +39014,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bannedPhrases")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicyBannedPhrase> BannedPhrases { get; set; }
 
+        /// <summary>Optional. Data protection policy to be used for sanitizing file uploads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataProtectionPolicy")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDataProtectionPolicy DataProtectionPolicy { get; set; }
+
         /// <summary>
         /// Optional. Model Armor configuration to be used for sanitizing user prompts and assistant responses.
         /// </summary>
@@ -40565,6 +40988,101 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>The suggestion for the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestion")]
         public virtual string Suggestion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Config to customize Autocomplete API response for both engines and data stores. Some fields are applicable to
+    /// only one of them.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaCompletionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The enable mode of autocomplete generation pipelines. If this field is unset, the server behavior defaults
+        /// to CompletionConfig.EnableMode.AUTOMATIC. Applies to DataStore only. Ignored for Engine.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableMode")]
+        public virtual string EnableMode { get; set; }
+
+        /// <summary>
+        /// If true, with best effort, try to detect and remove the suggestions containing certain types of PII
+        /// information. This detection is performated by [DLP](https://cloud.google.com/security/products/dlp) under
+        /// the hood.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterPiiSuggestionsUsingDlp")]
+        public virtual System.Nullable<bool> FilterPiiSuggestionsUsingDlp { get; set; }
+
+        /// <summary>
+        /// The matching order for autocomplete suggestions, e.g., a query consisting of `sh` with `out-of-order`
+        /// specified would suggest `women's shoes`, whereas a query of `red s` with `exact-prefix` specified would
+        /// suggest `red shoes`. Currently supported values: * `out-of-order` * `exact-prefix` Default value:
+        /// `exact-prefix`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchingOrder")]
+        public virtual string MatchingOrder { get; set; }
+
+        /// <summary>
+        /// The maximum number of autocomplete suggestions returned per term. max_suggestions must lie within the range
+        /// of [1, 20]. If not set or set to 0, it will be set to the default of 20 suggestions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSuggestions")]
+        public virtual System.Nullable<int> MaxSuggestions { get; set; }
+
+        /// <summary>
+        /// The minimum number of characters needed to be typed in order to get suggestions. min_prefix_length must lie
+        /// within the range of [1, 20]. If not set or set to 0, it will be set to the default of 1 character.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minPrefixLength")]
+        public virtual System.Nullable<int> MinPrefixLength { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. Fully qualified name `projects/*/locations/*/dataStores/*/completionConfig`
+        /// `projects/*/locations/*/collections/*/dataStores/*/completionConfig`
+        /// `projects/*/locations/*/collections/*/engines/*/completionConfig`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// This field is only meaningful for suggestions generated from user events or search history, which may have
+        /// user ids attached. If the number of unique users that have searched a query is less than this threshold, the
+        /// query will not be generated as a suggestion. This is field can be helpful for preventing PII queries
+        /// becoming suggestions, as those queries are usually uniquely searched. If not set, the default value is 3
+        /// used in the generation pipeline.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numUniqueUsersThreshold")]
+        public virtual System.Nullable<int> NumUniqueUsersThreshold { get; set; }
+
+        /// <summary>
+        /// This field is only meaningful for suggestions generated from user events or search history. If a query shows
+        /// up less than this threshold, it may indicate that the query is rarely searched and thus will not be
+        /// generated as a suggestion. This is field can be helpful for preventing PII queries becoming suggestions, as
+        /// those queries are usually uniquely searched. If not set, the default value is 8 used in the generation
+        /// pipeline.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryFrequencyThreshold")]
+        public virtual System.Nullable<int> QueryFrequencyThreshold { get; set; }
+
+        /// <summary>
+        /// The data model of query suggestions for serving. Currently supported values: * `automatic` - autocomplete
+        /// backend automatic selects or mixes suggestions from different models. * `document` - Using suggestions
+        /// generated from user-imported documents. * `search-history` - Using suggestions generated from the past
+        /// history of SearchService.Search API calls. Do not use it when there is no traffic for Search API. *
+        /// `user-event` - Using suggestions generated from user-imported search events. * `document-completable` -
+        /// Using suggestions taken directly from user-imported document fields marked as completable. If query model is
+        /// empty, the serving applies the "automatic" model by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryModel")]
+        public virtual string QueryModel { get; set; }
+
+        /// <summary>
+        /// Whether to generate and serve content suggestions. This allows for content suggestions to be served in
+        /// addition to query suggestions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shouldServeContentSuggestions")]
+        public virtual System.Nullable<bool> ShouldServeContentSuggestions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -45016,7 +45534,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
         /// `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills` *
-        /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration`
+        /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
+        /// `cross-product-intelligence`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -56713,7 +57232,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
         /// `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills` *
-        /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration`
+        /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
+        /// `cross-product-intelligence`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -59565,7 +60085,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
         /// `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills` *
-        /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration`
+        /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
+        /// `cross-product-intelligence`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
