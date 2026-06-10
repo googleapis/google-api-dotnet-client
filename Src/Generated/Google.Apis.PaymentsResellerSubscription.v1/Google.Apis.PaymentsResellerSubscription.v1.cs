@@ -1506,7 +1506,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cycleOptions")]
         public virtual CycleOptions CycleOptions { get; set; }
 
-        /// <summary>Required. The parent resource name, which is the identifier of the partner.</summary>
+        /// <summary>
+        /// Optional. Deprecated: Use the `parent` field in `GenerateUserSessionRequest` instead. The parent resource
+        /// name, which is the identifier of the partner.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
