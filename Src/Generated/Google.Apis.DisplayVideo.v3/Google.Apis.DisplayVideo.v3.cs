@@ -1149,6 +1149,10 @@ namespace Google.Apis.DisplayVideo.v3
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                             TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
+
+                            /// <summary>Target ads to a specific YouTube channel pack.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL_PACK")]
+                            TARGETINGTYPEYOUTUBECHANNELPACK = 50,
                         }
 
                         /// <summary>Gets or sets the body of this request.</summary>
@@ -1528,6 +1532,10 @@ namespace Google.Apis.DisplayVideo.v3
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                             TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
+
+                            /// <summary>Target ads to a specific YouTube channel pack.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL_PACK")]
+                            TARGETINGTYPEYOUTUBECHANNELPACK = 50,
                         }
 
                         /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
@@ -1910,6 +1918,10 @@ namespace Google.Apis.DisplayVideo.v3
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                             TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
+
+                            /// <summary>Target ads to a specific YouTube channel pack.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL_PACK")]
+                            TARGETINGTYPEYOUTUBECHANNELPACK = 50,
                         }
 
                         /// <summary>
@@ -2288,6 +2300,10 @@ namespace Google.Apis.DisplayVideo.v3
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                             TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
+
+                            /// <summary>Target ads to a specific YouTube channel pack.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL_PACK")]
+                            TARGETINGTYPEYOUTUBECHANNELPACK = 50,
                         }
 
                         /// <summary>
@@ -5973,6 +5989,10 @@ namespace Google.Apis.DisplayVideo.v3
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                             TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
+
+                            /// <summary>Target ads to a specific YouTube channel pack.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL_PACK")]
+                            TARGETINGTYPEYOUTUBECHANNELPACK = 50,
                         }
 
                         /// <summary>Gets or sets the body of this request.</summary>
@@ -6399,6 +6419,10 @@ namespace Google.Apis.DisplayVideo.v3
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                             TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
+
+                            /// <summary>Target ads to a specific YouTube channel pack.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL_PACK")]
+                            TARGETINGTYPEYOUTUBECHANNELPACK = 50,
                         }
 
                         /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
@@ -6829,6 +6853,10 @@ namespace Google.Apis.DisplayVideo.v3
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                             TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
+
+                            /// <summary>Target ads to a specific YouTube channel pack.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL_PACK")]
+                            TARGETINGTYPEYOUTUBECHANNELPACK = 50,
                         }
 
                         /// <summary>
@@ -7257,6 +7285,10 @@ namespace Google.Apis.DisplayVideo.v3
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                             TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
+
+                            /// <summary>Target ads to a specific YouTube channel pack.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL_PACK")]
+                            TARGETINGTYPEYOUTUBECHANNELPACK = 50,
                         }
 
                         /// <summary>
@@ -10030,6 +10062,10 @@ namespace Google.Apis.DisplayVideo.v3
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                         TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
+
+                        /// <summary>Target ads to a specific YouTube channel pack.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL_PACK")]
+                        TARGETINGTYPEYOUTUBECHANNELPACK = 50,
                     }
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -10365,6 +10401,10 @@ namespace Google.Apis.DisplayVideo.v3
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                         TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
+
+                        /// <summary>Target ads to a specific YouTube channel pack.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL_PACK")]
+                        TARGETINGTYPEYOUTUBECHANNELPACK = 50,
                     }
 
                     /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
@@ -10713,6 +10753,10 @@ namespace Google.Apis.DisplayVideo.v3
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                         TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
+
+                        /// <summary>Target ads to a specific YouTube channel pack.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL_PACK")]
+                        TARGETINGTYPEYOUTUBECHANNELPACK = 50,
                     }
 
                     /// <summary>
@@ -11059,6 +11103,10 @@ namespace Google.Apis.DisplayVideo.v3
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                         TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
+
+                        /// <summary>Target ads to a specific YouTube channel pack.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL_PACK")]
+                        TARGETINGTYPEYOUTUBECHANNELPACK = 50,
                     }
 
                     /// <summary>
@@ -17113,6 +17161,10 @@ namespace Google.Apis.DisplayVideo.v3
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                         TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
+
+                        /// <summary>Target ads to a specific YouTube channel pack.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL_PACK")]
+                        TARGETINGTYPEYOUTUBECHANNELPACK = 50,
                     }
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -17445,6 +17497,10 @@ namespace Google.Apis.DisplayVideo.v3
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                         TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
+
+                        /// <summary>Target ads to a specific YouTube channel pack.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL_PACK")]
+                        TARGETINGTYPEYOUTUBECHANNELPACK = 50,
                     }
 
                     /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
@@ -17784,6 +17840,10 @@ namespace Google.Apis.DisplayVideo.v3
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                         TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
+
+                        /// <summary>Target ads to a specific YouTube channel pack.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL_PACK")]
+                        TARGETINGTYPEYOUTUBECHANNELPACK = 50,
                     }
 
                     /// <summary>
@@ -18121,6 +18181,10 @@ namespace Google.Apis.DisplayVideo.v3
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                         TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
+
+                        /// <summary>Target ads to a specific YouTube channel pack.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL_PACK")]
+                        TARGETINGTYPEYOUTUBECHANNELPACK = 50,
                     }
 
                     /// <summary>
@@ -18906,6 +18970,10 @@ namespace Google.Apis.DisplayVideo.v3
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                     TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
+
+                    /// <summary>Target ads to a specific YouTube channel pack.</summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL_PACK")]
+                    TARGETINGTYPEYOUTUBECHANNELPACK = 50,
                 }
 
                 /// <summary>Required. The ID of the of targeting option to retrieve.</summary>
@@ -19258,6 +19326,10 @@ namespace Google.Apis.DisplayVideo.v3
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                     TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
+
+                    /// <summary>Target ads to a specific YouTube channel pack.</summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL_PACK")]
+                    TARGETINGTYPEYOUTUBECHANNELPACK = 50,
                 }
 
                 /// <summary>Required. The Advertiser this request is being made in the context of.</summary>
@@ -19642,6 +19714,10 @@ namespace Google.Apis.DisplayVideo.v3
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                     TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
+
+                    /// <summary>Target ads to a specific YouTube channel pack.</summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL_PACK")]
+                    TARGETINGTYPEYOUTUBECHANNELPACK = 50,
                 }
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -22034,6 +22110,13 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("youtubeChannelDetails")]
         public virtual YoutubeChannelAssignedTargetingOptionDetails YoutubeChannelDetails { get; set; }
+
+        /// <summary>
+        /// YouTube channel pack details. This field will be populated when the targeting_type is
+        /// `TARGETING_TYPE_YOUTUBE_CHANNEL_PACK`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeChannelPackDetails")]
+        public virtual YoutubeChannelPackAssignedTargetingOptionDetails YoutubeChannelPackDetails { get; set; }
 
         /// <summary>
         /// YouTube video details. This field will be populated when the targeting_type is
@@ -30416,6 +30499,24 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual string ChannelId { get; set; }
 
         /// <summary>Indicates if this option is being negatively targeted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("negative")]
+        public virtual System.Nullable<bool> Negative { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details for YouTube channel pack assigned targeting option. This will be populated in the
+    /// youtube_channel_pack_details field when targeting_type is `TARGETING_TYPE_YOUTUBE_CHANNEL_PACK`.
+    /// </summary>
+    public class YoutubeChannelPackAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The ID of the YouTube channel pack.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelPackId")]
+        public virtual System.Nullable<long> ChannelPackId { get; set; }
+
+        /// <summary>Optional. Indicates if this option is being negatively targeted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negative")]
         public virtual System.Nullable<bool> Negative { get; set; }
 
