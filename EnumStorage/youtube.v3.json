@@ -195,11 +195,13 @@
   ],
   "Google.Apis.YouTube.v3.ThirdPartyLinksResource+DeleteRequest.TypeEnum": [
     "linkUnspecified",
-    "channelToStoreLink"
+    "channelToStoreLink",
+    "channelToAffiliateProgramLink"
   ],
   "Google.Apis.YouTube.v3.ThirdPartyLinksResource+ListRequest.TypeEnum": [
     "linkUnspecified",
-    "channelToStoreLink"
+    "channelToStoreLink",
+    "channelToAffiliateProgramLink"
   ],
   "Google.Apis.YouTube.v3.ThumbnailsResource+SetMediaUpload.AltEnum": [
     "json",
