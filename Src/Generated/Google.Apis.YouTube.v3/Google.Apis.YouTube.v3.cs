@@ -8745,6 +8745,13 @@ namespace Google.Apis.YouTube.v3
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("channelToStoreLink")]
                 ChannelToStoreLink = 1,
+
+                /// <summary>
+                /// A link that is connecting (or about to connect) a channel with an affiliate program of a partner to
+                /// enable that channel to earn commissions from that partner through affiliate links.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("channelToAffiliateProgramLink")]
+                ChannelToAffiliateProgramLink = 2,
             }
 
             /// <summary>Channel ID to which changes should be applied, for delegation.</summary>
@@ -8926,6 +8933,13 @@ namespace Google.Apis.YouTube.v3
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("channelToStoreLink")]
                 ChannelToStoreLink = 1,
+
+                /// <summary>
+                /// A link that is connecting (or about to connect) a channel with an affiliate program of a partner to
+                /// enable that channel to earn commissions from that partner through affiliate links.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("channelToAffiliateProgramLink")]
+                ChannelToAffiliateProgramLink = 2,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -12450,6 +12464,64 @@ namespace Google.Apis.YouTube.v3.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("selfDeclaredMadeForKids")]
         public virtual System.Nullable<bool> SelfDeclaredMadeForKids { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information specific to a creator in an affiliate program linked to a YouTube channel.</summary>
+    public class ChannelToAffiliateProgramLinkDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Google Merchant Center ID of the partner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
+        public virtual System.Nullable<ulong> MerchantId { get; set; }
+
+        /// <summary>Required. Affiliate program status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("programStatus")]
+        public virtual string ProgramStatus { get; set; }
+
+        /// <summary>Optional. Reason for the last update of the affiliate program status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusUpdateReason")]
+        public virtual string StatusUpdateReason { get; set; }
+
+        private string _statusUpdateTimeRaw;
+
+        private object _statusUpdateTime;
+
+        /// <summary>Optional. Timestamp when the affiliate program status was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusUpdateTime")]
+        public virtual string StatusUpdateTimeRaw
+        {
+            get => _statusUpdateTimeRaw;
+            set
+            {
+                _statusUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _statusUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StatusUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StatusUpdateTimeDateTimeOffset instead.")]
+        public virtual object StatusUpdateTime
+        {
+            get => _statusUpdateTime;
+            set
+            {
+                _statusUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _statusUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="StatusUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StatusUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StatusUpdateTimeRaw);
+            set => StatusUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16443,6 +16515,10 @@ namespace Google.Apis.YouTube.v3.Data
     /// </summary>
     public class ThirdPartyLinkSnippet : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Information specific to a link between a channel and an affiliate program of a partner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelToAffiliateProgramLink")]
+        public virtual ChannelToAffiliateProgramLinkDetails ChannelToAffiliateProgramLink { get; set; }
+
         /// <summary>Information specific to a link between a channel and a store on a merchandising platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelToStoreLink")]
         public virtual ChannelToStoreLinkDetails ChannelToStoreLink { get; set; }
