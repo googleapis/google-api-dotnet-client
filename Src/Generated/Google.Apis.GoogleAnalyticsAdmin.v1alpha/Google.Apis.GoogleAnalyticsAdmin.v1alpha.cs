@@ -15140,6 +15140,12 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     /// <summary>A virtual resource representing metadata for a Google Analytics property.</summary>
     public class GoogleAnalyticsAdminV1alphaPropertySummary : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// If true, then the user has a Google Analytics role that permits them to edit the property.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canEdit")]
+        public virtual System.Nullable<bool> CanEdit { get; set; }
+
         /// <summary>Display name for the property referred to in this property summary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
