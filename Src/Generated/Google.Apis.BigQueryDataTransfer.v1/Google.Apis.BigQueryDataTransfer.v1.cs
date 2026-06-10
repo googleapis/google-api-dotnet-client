@@ -3889,6 +3889,20 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for Dataplex destination.</summary>
+    public class DataplexConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The Dataplex Universal Catalog entry group for importing the metadata. entry_group has the format
+        /// of `projects/{project_id}/locations/{region}/entryGroups/{entry_group_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryGroup")]
+        public virtual string EntryGroup { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents preferences for sending email notifications for transfer run events.</summary>
     public class EmailPreferences : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4104,6 +4118,17 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
     /// <summary>Options customizing manual transfers schedule.</summary>
     public class ManualSchedule : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata destination of the transfer config.</summary>
+    public class MetadataDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Dataplex Universal Catalog configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataplexConfiguration")]
+        public virtual DataplexConfiguration DataplexConfiguration { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4711,6 +4736,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("managedTableType")]
         public virtual string ManagedTableType { get; set; }
 
+        /// <summary>The metadata destination of the transfer config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataDestination")]
+        public virtual MetadataDestination MetadataDestination { get; set; }
+
         /// <summary>
         /// Identifier. The resource name of the transfer config. Transfer config names have the form either
         /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or
@@ -5059,6 +5088,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         /// <summary>Status of the transfer run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorStatus")]
         public virtual Status ErrorStatus { get; set; }
+
+        /// <summary>Output only. The metadata destination of the transfer run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataDestination")]
+        public virtual MetadataDestination MetadataDestination { get; set; }
 
         /// <summary>
         /// Identifier. The resource name of the transfer run. Transfer run names have the form
