@@ -15,6 +15,7 @@
     "VMWARE",
     "HELM",
     "GCE_VM",
-    "AZURE_VM"
+    "AZURE_VM",
+    "AWS_EC2"
   ]
 }
