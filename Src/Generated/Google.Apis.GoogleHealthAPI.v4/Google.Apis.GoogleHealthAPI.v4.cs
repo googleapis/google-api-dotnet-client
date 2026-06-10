@@ -1695,7 +1695,7 @@ namespace Google.Apis.GoogleHealthAPI.v4
                 /// `users/abcd1234/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef` The `{user}` ID is
                 /// a system-generated identifier, as described in Identity.health_user_id. The `{data_type}` ID
                 /// corresponds to the kebab-case version of the field names in the DataPoint data union field, e.g.
-                /// `total-calories` for the `total_calories` field. The `{data_point}` ID can be client-provided or
+                /// `heart-rate` for the `heart_rate` field. The `{data_point}` ID can be client-provided or
                 /// system-generated. If client-provided, it must be a string of 4-63 characters, containing only
                 /// lowercase letters, numbers, and hyphens.
                 /// </param>
@@ -1725,7 +1725,7 @@ namespace Google.Apis.GoogleHealthAPI.v4
                     /// `users/abcd1234/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef` The `{user}` ID
                     /// is a system-generated identifier, as described in Identity.health_user_id. The `{data_type}` ID
                     /// corresponds to the kebab-case version of the field names in the DataPoint data union field, e.g.
-                    /// `total-calories` for the `total_calories` field. The `{data_point}` ID can be client-provided or
+                    /// `heart-rate` for the `heart_rate` field. The `{data_point}` ID can be client-provided or
                     /// system-generated. If client-provided, it must be a string of 4-63 characters, containing only
                     /// lowercase letters, numbers, and hyphens.
                     /// </summary>
@@ -3605,10 +3605,9 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// `users/{user}/dataTypes/{data_type}/dataPoints/{data_point}` Example:
         /// `users/abcd1234/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef` The `{user}` ID is a
         /// system-generated identifier, as described in Identity.health_user_id. The `{data_type}` ID corresponds to
-        /// the kebab-case version of the field names in the DataPoint data union field, e.g. `total-calories` for the
-        /// `total_calories` field. The `{data_point}` ID can be client-provided or system-generated. If
-        /// client-provided, it must be a string of 4-63 characters, containing only lowercase letters, numbers, and
-        /// hyphens.
+        /// the kebab-case version of the field names in the DataPoint data union field, e.g. `heart-rate` for the
+        /// `heart_rate` field. The `{data_point}` ID can be client-provided or system-generated. If client-provided, it
+        /// must be a string of 4-63 characters, containing only lowercase letters, numbers, and hyphens.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5768,10 +5767,9 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// `users/{user}/dataTypes/{data_type}/dataPoints/{data_point}` Example:
         /// `users/abcd1234/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef` The `{user}` ID is a
         /// system-generated identifier, as described in Identity.health_user_id. The `{data_type}` ID corresponds to
-        /// the kebab-case version of the field names in the DataPoint data union field, e.g. `total-calories` for the
-        /// `total_calories` field. The `{data_point}` ID can be client-provided or system-generated. If
-        /// client-provided, it must be a string of 4-63 characters, containing only lowercase letters, numbers, and
-        /// hyphens.
+        /// the kebab-case version of the field names in the DataPoint data union field, e.g. `heart-rate` for the
+        /// `heart_rate` field. The `{data_point}` ID can be client-provided or system-generated. If client-provided, it
+        /// must be a string of 4-63 characters, containing only lowercase letters, numbers, and hyphens.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataPointName")]
         public virtual string DataPointName { get; set; }
