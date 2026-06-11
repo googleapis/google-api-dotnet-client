@@ -40,7 +40,7 @@ public class HttpClientWithExecuteInterceptorTests
     [Fact]
     public async Task InterceptWithCredentials()
     {
-        var credential = Helper.GetServiceCredential().CreateScoped(StorageService.Scope.DevstorageFullControl);
+        var credential = Helper.GetApplicationDefaultCredential().CreateScoped(StorageService.Scope.DevstorageFullControl);
         var handler = credential.ToDelegatingHandler(new HttpClientHandler());
         using var client = new HttpClient(handler);
         var request = CreateListBucketsRequest();

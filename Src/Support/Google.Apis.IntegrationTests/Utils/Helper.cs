@@ -18,6 +18,7 @@ using Google.Apis.Auth.OAuth2;
 using System;
 using System.IO;
 using System.Text;
+using Xunit;
 
 namespace IntegrationTests.Utils
 {
@@ -35,6 +36,11 @@ namespace IntegrationTests.Utils
                 throw new InvalidOperationException($"Please set the {ProjectEnvironmentVariable} environment variable before running tests.");
             }
             return projectId;
+        });
+
+        private static readonly Lazy<GoogleCredential> s_adcCredential = new Lazy<GoogleCredential>(() =>
+        {
+            return GoogleCredential.GetApplicationDefault();
         });
 
         private static readonly Lazy<GoogleCredential> s_serviceCredential = new Lazy<GoogleCredential>(() =>
@@ -60,6 +66,8 @@ namespace IntegrationTests.Utils
 
         public static string GetProjectId() => s_projectId.Value;
 
+        public static GoogleCredential GetApplicationDefaultCredential() => s_adcCredential.Value;
+
         public static GoogleCredential GetServiceCredential() => s_serviceCredential.Value;
 
         public static string GetClientSecret() => Encoding.UTF8.GetString(s_clientSecret.Value);
@@ -71,6 +79,22 @@ namespace IntegrationTests.Utils
             ServiceAccountCredential credential = (ServiceAccountCredential)s_serviceCredential.Value.UnderlyingCredential;
 
             return GoogleCredential.FromServiceAccountCredential(credential.WithUseJwtAccessWithScopes(true));
+        }
+
+        const string GoogleApplicationCredentialsEnvironmentVariable = "GOOGLE_APPLICATION_CREDENTIALS";
+
+        /// <summary>
+        /// Returns true if this is a "restricted" environment
+        /// (crudely detected by the absence of the GOOGLE_APPLICATION_CREDENTIALS environment variable).
+        /// </summary>
+        public static bool IsRestrictedEnvironment() => string.IsNullOrEmpty(Environment.GetEnvironmentVariable(GoogleApplicationCredentialsEnvironmentVariable));
+
+        public static void SkipOnRestrictedEnvironment()
+        {
+            if (IsRestrictedEnvironment())
+            {
+                throw new SkipException("Test skipped in restricted environment");
+            }
         }
     }
 }

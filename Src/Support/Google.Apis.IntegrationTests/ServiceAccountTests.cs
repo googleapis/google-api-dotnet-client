@@ -58,9 +58,11 @@ namespace IntegrationTests
             Assert.NotNull(buckets.Items);
         }
 
-        [Fact]
+        [SkippableFact]
         public async Task JwtAccessToken_Http()
         {
+            // Requires Service Account credentials for JWT access token features.
+            Helper.SkipOnRestrictedEnvironment();
             // See: https://developers.google.com/identity/protocols/oauth2/service-account#jwt-auth
 
             ServiceAccountCredential credential = Helper.GetServiceCredential().CreateScoped().UnderlyingCredential as ServiceAccountCredential;
@@ -75,12 +77,17 @@ namespace IntegrationTests
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
 
-        [Theory]
+        [SkippableTheory]
         [InlineData(true, null)]
         [InlineData(false, null)]
         [InlineData(true, new[] { "https://www.googleapis.com/auth/bigtable.admin" })]
         public void JwtAccessToken_RestClient(bool useJwtAccessWithScopes, string[] scopes)
         {
+            if (useJwtAccessWithScopes)
+            {
+                // Requires Service Account credentials for JWT access token features.
+                Helper.SkipOnRestrictedEnvironment();
+            }
             // See: https://developers.google.com/identity/protocols/oauth2/service-account#jwt-auth
 
             GoogleCredential credential = useJwtAccessWithScopes 
@@ -97,9 +104,11 @@ namespace IntegrationTests
             Assert.NotNull(response);
         }
 
-        [Fact]
+        [SkippableFact]
         public void JwtAccessToken_WrongScope_RestClient()
         {
+            // Requires Service Account credentials for JWT access token features.
+            Helper.SkipOnRestrictedEnvironment();
             // See: https://developers.google.com/identity/protocols/oauth2/service-account#jwt-auth
 
             GoogleCredential credential = Helper.GetServiceCredentialWithJwtFlag().CreateScoped(new[] { "https://www.googleapis.com/auth/admob.readonly" });

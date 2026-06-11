@@ -27,9 +27,11 @@ namespace IntegrationTests
 {
     public class RevocationTests
     {
-        [Fact]
+        [SkippableFact]
         public async Task RevokeFakeToken_BadRequest()
         {
+            // Requires Client Secrets file.
+            Helper.SkipOnRestrictedEnvironment();
             // Tests that the correct 400 response is received from the server, given an invalid token.
             // Validates the revoke URL and verb are correct.
             using (var f = new GoogleAuthorizationCodeFlow(new GoogleAuthorizationCodeFlow.Initializer
@@ -44,9 +46,11 @@ namespace IntegrationTests
             }
         }
 
-        [Fact]
+        [SkippableFact]
         public async Task RevokeRealToken()
         {
+            // Requires an interactive browser session.
+            Helper.SkipOnRestrictedEnvironment();
             UserCredential cred = await GoogleWebAuthorizationBroker.AuthorizeAsync(
                 Helper.GetClientSecretStream(), new string[] { "email" },
                 "user", default, new NullDataStore());
