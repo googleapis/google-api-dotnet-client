@@ -29,12 +29,13 @@ namespace IntegrationTests
 {
     public class GoogleWebAuthorizationBrokerTests
     {
-        [Theory]
+        [SkippableTheory]
         [CombinatorialData]
         public async Task AuthClientSecretAndAccessTokenCredential(bool usePkce)
         {
             // Warning: This test is interactive!
             // It will bring up a browser window that must be responded to before the test can complete.
+            Helper.SkipOnRestrictedEnvironment();
 
             // Test the initial authorization.
             // NullDataStore is used to ensure the AuthorizationUrl is definitely used.
@@ -68,11 +69,12 @@ namespace IntegrationTests
             Assert.NotNull(buckets.Items);
         }
 
-        [Fact]
+        [SkippableFact]
         public async Task Cancellation()
         {
             // Warning: This test is pseudo-interactive!
             // It will bring up a browser window, but the test will complete without any interaction.
+            Helper.SkipOnRestrictedEnvironment();
 
             // Test the initial authorization.
             // NullDataStore is used to ensure browser will definitely be shown.

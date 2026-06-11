@@ -31,11 +31,12 @@ namespace IntegrationTests
 {
     public class GoogleJsonWebSignatureTests
     {
-        [Fact]
+        [SkippableFact]
         public async Task GetAndValidateJwt()
         {
             // Warning: This test is interactive!
             // It will bring up a browser window that must be responded to before the test can complete.
+            Helper.SkipOnRestrictedEnvironment(); 
 
             // Do auth.
             var codeReceiver = new LocalServerCodeReceiver();

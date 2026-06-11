@@ -35,7 +35,7 @@ namespace IntegrationTests
             // The "GetIamPolicy" method contains a ':' in the request path, which is what this test is testing.
             var client = new BigtableAdminService(new BaseClientService.Initializer
             {
-                HttpClientInitializer = Helper.GetServiceCredential()
+                HttpClientInitializer = Helper.GetApplicationDefaultCredential()
                     .CreateScoped(BigtableAdminService.Scope.CloudPlatform),
                 ApplicationName = "IntegrationTest",
             });

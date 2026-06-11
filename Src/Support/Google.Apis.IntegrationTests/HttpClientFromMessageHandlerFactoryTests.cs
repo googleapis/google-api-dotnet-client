@@ -77,7 +77,7 @@ namespace IntegrationTests
 
                     static TranslateService CreateTranslateService(IServiceProvider sp) => new TranslateService(new BaseClientService.Initializer
                     {
-                        HttpClientInitializer = Helper.GetServiceCredential().CreateScoped(TranslateService.Scope.CloudTranslation),
+                        HttpClientInitializer = Helper.GetApplicationDefaultCredential().CreateScoped(TranslateService.Scope.CloudTranslation),
                         ApplicationName = "IntegrationTest",
                         HttpClientFactory = sp.GetRequiredService<Google.Apis.Http.IHttpClientFactory>()
                     });
@@ -103,7 +103,9 @@ namespace IntegrationTests
             // We sometimes get:
             // Le temps froid sera bientôt fini
             // Le froid sera bientôt terminé
-            Assert.Contains("froid sera bientôt", translation.TranslatedText);
+            // Le froid va bientôt disparaître.
+            Assert.Contains("froid", translation.TranslatedText);
+            Assert.Contains("bientôt", translation.TranslatedText);
             await host.StopAsync();
         }
 

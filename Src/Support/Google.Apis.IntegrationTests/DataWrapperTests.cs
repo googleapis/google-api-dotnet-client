@@ -29,7 +29,7 @@ namespace IntegrationTests
         [Fact]
         public void Translate()
         {
-            GoogleCredential credential = Helper.GetServiceCredential().CreateScoped(TranslateService.Scope.CloudTranslation);
+            GoogleCredential credential = Helper.GetApplicationDefaultCredential().CreateScoped(TranslateService.Scope.CloudTranslation);
             TranslateService client = new TranslateService(new BaseClientService.Initializer
             {
                 HttpClientInitializer = credential,
@@ -56,7 +56,7 @@ namespace IntegrationTests
         [Fact]
         public void TranslateList()
         {
-            GoogleCredential credential = Helper.GetServiceCredential().CreateScoped(TranslateService.Scope.CloudTranslation);
+            GoogleCredential credential = Helper.GetApplicationDefaultCredential().CreateScoped(TranslateService.Scope.CloudTranslation);
             TranslateService client = new TranslateService(new BaseClientService.Initializer
             {
                 HttpClientInitializer = credential,
@@ -77,7 +77,7 @@ namespace IntegrationTests
         [Fact]
         public void Detect()
         {
-            GoogleCredential credential = Helper.GetServiceCredential().CreateScoped(TranslateService.Scope.CloudTranslation);
+            GoogleCredential credential = Helper.GetApplicationDefaultCredential().CreateScoped(TranslateService.Scope.CloudTranslation);
             TranslateService client = new TranslateService(new BaseClientService.Initializer
             {
                 HttpClientInitializer = credential,
@@ -98,7 +98,7 @@ namespace IntegrationTests
         [Fact]
         public void DetectList()
         {
-            GoogleCredential credential = Helper.GetServiceCredential().CreateScoped(TranslateService.Scope.CloudTranslation);
+            GoogleCredential credential = Helper.GetApplicationDefaultCredential().CreateScoped(TranslateService.Scope.CloudTranslation);
             TranslateService client = new TranslateService(new BaseClientService.Initializer
             {
                 HttpClientInitializer = credential,

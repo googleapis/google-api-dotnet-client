@@ -41,7 +41,7 @@ namespace IntegrationTests
             {
                 ApplicationName = "IntegrationTest"
             });
-            GoogleCredential credential = Helper.GetServiceCredential().CreateScoped(StorageService.Scope.DevstorageFullControl);
+            GoogleCredential credential = Helper.GetApplicationDefaultCredential().CreateScoped(StorageService.Scope.DevstorageFullControl);
             // Create a request with a per-call credential.
             Buckets buckets = client.Buckets.List(Helper.GetProjectId()).AddCredential(credential).Execute();
             // Check the response is sane.
@@ -57,7 +57,7 @@ namespace IntegrationTests
                 ApplicationName = "IntegrationTest",
                 HttpClientInitializer = GoogleCredential.FromAccessToken("BROKEN_ACCESS_TOKEN")
             });
-            GoogleCredential credential = Helper.GetServiceCredential().CreateScoped(StorageService.Scope.DevstorageFullControl);
+            GoogleCredential credential = Helper.GetApplicationDefaultCredential().CreateScoped(StorageService.Scope.DevstorageFullControl);
             // Create a request with a per-call credential.; this overrides the service-level credential.
             Buckets buckets = client.Buckets.List(Helper.GetProjectId()).AddCredential(credential).Execute();
             // Check the response is sane.
@@ -196,7 +196,7 @@ namespace IntegrationTests
         public void NullParameters()
         {
             StorageService client = new StorageService();
-            GoogleCredential credential = Helper.GetServiceCredential().CreateScoped(StorageService.Scope.DevstorageFullControl);
+            GoogleCredential credential = Helper.GetApplicationDefaultCredential().CreateScoped(StorageService.Scope.DevstorageFullControl);
             Assert.Throws<ArgumentNullException>(() => ((ClientServiceRequest)null).AddCredential(credential));
             var request = client.Buckets.List(Helper.GetProjectId());
             Assert.Throws<ArgumentNullException>(() => request.AddCredential(null));

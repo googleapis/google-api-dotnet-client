@@ -26,9 +26,11 @@ namespace IntegrationTests
 {
     public class OidcTests
     {
-        [Fact]
+        [SkippableFact]
         public async Task OidcTokenProvider_ServiceAccountCredential()
         {
+            // Requires Service Account credentials for JWT access token features.
+            Helper.SkipOnRestrictedEnvironment();
             GoogleCredential credential = Helper.GetServiceCredential();
 
             OidcToken token = await credential.GetOidcTokenAsync(

@@ -39,7 +39,7 @@ namespace IntegrationTests
         {
             StorageService client = new StorageService(new BaseClientService.Initializer
             {
-                HttpClientInitializer = Helper.GetServiceCredential().CreateScoped(StorageService.Scope.DevstorageFullControl),
+                HttpClientInitializer = Helper.GetApplicationDefaultCredential().CreateScoped(StorageService.Scope.DevstorageFullControl),
                 ApplicationName = "IntegrationTest"
             });
             var memLog = new MemoryLogger(LogLevel.All, clock: new MockClock(DateTime.UtcNow));
@@ -99,7 +99,7 @@ namespace IntegrationTests
         {
             StorageService client = new StorageService(new BaseClientService.Initializer
             {
-                HttpClientInitializer = Helper.GetServiceCredential().CreateScoped(StorageService.Scope.DevstorageFullControl),
+                HttpClientInitializer = Helper.GetApplicationDefaultCredential().CreateScoped(StorageService.Scope.DevstorageFullControl),
                 ApplicationName = "IntegrationTest",
             });
             var bucket = CreateTestBucket(client);
@@ -143,7 +143,7 @@ namespace IntegrationTests
         {
             StorageService client = new StorageService(new BaseClientService.Initializer
             {
-                HttpClientInitializer = Helper.GetServiceCredential().CreateScoped(StorageService.Scope.DevstorageFullControl),
+                HttpClientInitializer = Helper.GetApplicationDefaultCredential().CreateScoped(StorageService.Scope.DevstorageFullControl),
                 ApplicationName = "IntegrationTest",
             });
             var bucket = CreateTestBucket(client);
