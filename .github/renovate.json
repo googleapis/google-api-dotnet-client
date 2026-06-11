@@ -10,7 +10,7 @@
   ],
   "packageRules": [
     {
-      "matchPaths": [
+      "matchFileNames": [
         "Src/Support/Google.Apis.Auth.AspNetCore.IntegrationTests/**",
         "Src/Support/Google.Apis.Auth.AspNetCore/**"
       ],
@@ -27,7 +27,7 @@
       "minimumReleaseAge": "7 days"
     },
     {
-      "matchPaths": [
+      "matchFileNames": [
         "Src/Support/Google.Apis.Auth.AspNetCore3/**"
       ],
       "matchPackagePrefixes": [
@@ -36,7 +36,7 @@
       "allowedVersions": "<3.1.0"
     },
     {
-      "matchPaths": [
+      "matchFileNames": [
         "Src/Support/Google.Apis.Tests/**",
         "Src/Support/Google.Apis.Auth.Tests/**",
         "Src/Support/IntegrationTests/**"
@@ -47,7 +47,7 @@
       "allowedVersions": "<2.4.4"
     },
     {
-      "matchPaths": [
+      "matchFileNames": [
         "Src/Support/Google.Apis.Auth.Tests/**"
       ],
       "matchPackageNames": [
