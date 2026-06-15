@@ -10809,6 +10809,27 @@ namespace Google.Apis.VMwareEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Encryption configuration for a private cloud.</summary>
+    public class EncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The resource name of the Cloud KMS key to be used for CMEK encryption. The format of this field is
+        /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`. The key must be in
+        /// the same region as the private cloud. This key is used for wrapping the key-encrypting key of vSAN clusters.
+        /// This field must be provided when `type` is `CMEK` or `LEGACY_CMEK`, and must not be set when `type` is
+        /// `OTHER`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyName")]
+        public virtual string CryptoKeyName { get; set; }
+
+        /// <summary>Required. The encryption type of the private cloud.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
     /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
@@ -13149,6 +13170,13 @@ namespace Google.Apis.VMwareEngine.v1.Data
         /// <summary>User-provided description for this private cloud.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Encryption configuration for the private cloud. If this field is left unspecified, Google default
+        /// encryption is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
+        public virtual EncryptionConfig EncryptionConfig { get; set; }
 
         private string _expireTimeRaw;
 
