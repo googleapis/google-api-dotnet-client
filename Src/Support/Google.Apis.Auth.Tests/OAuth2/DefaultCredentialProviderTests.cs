@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2015 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -83,6 +83,9 @@ namespace Google.Apis.Auth.Tests.OAuth2
         private const string ImpersonatedServiceAccountCredentialUniverseDomainDifferentFileName = "impersonated_service_account_credential_universe_domain_different.json";
         private const string RecursiveImpersonatedServiceAccountCredentialFileName = "recursive_impersonated_service_account_credential.json";
         private const string ExternalAccountAuthorizedUserCredentialFileName = "external_account_authorized_user_credential.json";
+        private const string IdTokenCredentialFileName = "id_token_credential.json";
+        private const string SignerCredentialFileName = "signer_credential.json";
+        private const string UserCredentialNoRefreshTokenFileName = "user_credential_no_refresh_token.json";
 
         public DefaultCredentialProviderTests()
         {
@@ -426,6 +429,18 @@ namespace Google.Apis.Auth.Tests.OAuth2
         public async Task GetDefaultCredential_InvalidCredentialFile(string brokenCredentialFileName)
         {
             credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, brokenCredentialFileName);
+            var exception = await Assert.ThrowsAsync<InvalidOperationException>(credentialProvider.GetDefaultCredentialAsync);
+            Assert.Contains("Error reading credential file from location", exception.Message);
+        }
+
+        /// <summary>Credential file has unsupported credential types.</summary>
+        [Theory]
+        [InlineData(IdTokenCredentialFileName)]
+        [InlineData(SignerCredentialFileName)]
+        [InlineData(UserCredentialNoRefreshTokenFileName)]
+        public async Task GetDefaultCredential_UnsupportedCredentialType(string unsupportedCredentialFileName)
+        {
+            credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, unsupportedCredentialFileName);
             var exception = await Assert.ThrowsAsync<InvalidOperationException>(credentialProvider.GetDefaultCredentialAsync);
             Assert.Contains("Error reading credential file from location", exception.Message);
         }

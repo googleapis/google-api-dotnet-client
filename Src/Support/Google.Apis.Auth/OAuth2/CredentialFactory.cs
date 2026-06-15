@@ -292,7 +292,8 @@ public static class CredentialFactory
     {
         if (credentialParameters.Type != JsonCredentialParameters.AuthorizedUserCredentialType ||
             string.IsNullOrEmpty(credentialParameters.ClientId) ||
-            string.IsNullOrEmpty(credentialParameters.ClientSecret))
+            string.IsNullOrEmpty(credentialParameters.ClientSecret) ||
+            string.IsNullOrEmpty(credentialParameters.RefreshToken))
         {
             throw new InvalidOperationException("JSON data does not represent a valid user credential.");
         }
