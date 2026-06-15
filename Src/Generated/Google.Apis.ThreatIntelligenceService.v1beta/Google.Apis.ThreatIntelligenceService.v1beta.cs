@@ -1917,6 +1917,10 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("insiderThreat")]
         public virtual InsiderThreatAlertDetail InsiderThreat { get; set; }
 
+        /// <summary>Technology Watchlist alert detail type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetTechnology")]
+        public virtual TargetTechnologyAlertDetail TargetTechnology { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2134,6 +2138,21 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents an association with a vulnerability.</summary>
+    public class Association : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The ID of the association.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Required. The type of the association.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Tracks basic CRUD facts.</summary>
     public class Audit : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2284,6 +2303,10 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detailType")]
         public virtual string DetailType { get; set; }
+
+        /// <summary>Technology Watchlist detail config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyWatchlist")]
+        public virtual TechnologyWatchListConfig TechnologyWatchlist { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2908,6 +2931,10 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("insiderThreat")]
         public virtual InsiderThreatFindingDetail InsiderThreat { get; set; }
 
+        /// <summary>Technology Watchlist finding detail type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetTechnology")]
+        public virtual TargetTechnologyFindingDetail TargetTechnology { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3215,6 +3242,126 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains details about a product fix.</summary>
+    public class ProductFix : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the fix. Ex: "Magento".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        private string _publishTimeRaw;
+
+        private object _publishTime;
+
+        /// <summary>Optional. The published time of the fix.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishTime")]
+        public virtual string PublishTimeRaw
+        {
+            get => _publishTimeRaw;
+            set
+            {
+                _publishTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _publishTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="PublishTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PublishTimeDateTimeOffset instead.")]
+        public virtual object PublishTime
+        {
+            get => _publishTime;
+            set
+            {
+                _publishTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _publishTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PublishTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PublishTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PublishTimeRaw);
+            set => PublishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. The source ID of the fix. Ex: "APPSEC-1420".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceId")]
+        public virtual string SourceId { get; set; }
+
+        /// <summary>Optional. The URI of the fix.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains details about a public exploit.</summary>
+    public class PublicExploit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The grade of the exploit. Ex: "non-weaponized".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exploitGrade")]
+        public virtual string ExploitGrade { get; set; }
+
+        /// <summary>Required. The name of the exploit. Ex: "Magentounauth.php.txt".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exploitName")]
+        public virtual string ExploitName { get; set; }
+
+        /// <summary>Optional. The reliability of the exploit. Ex: "Unreviewed".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exploitReliability")]
+        public virtual string ExploitReliability { get; set; }
+
+        private string _releaseTimeRaw;
+
+        private object _releaseTime;
+
+        /// <summary>Optional. The release time of the exploit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseTime")]
+        public virtual string ReleaseTimeRaw
+        {
+            get => _releaseTimeRaw;
+            set
+            {
+                _releaseTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _releaseTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ReleaseTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReleaseTimeDateTimeOffset instead.")]
+        public virtual object ReleaseTime
+        {
+            get => _releaseTime;
+            set
+            {
+                _releaseTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _releaseTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReleaseTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ReleaseTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReleaseTimeRaw);
+            set => ReleaseTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. The size of the exploit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
+        public virtual System.Nullable<long> SizeBytes { get; set; }
+
+        /// <summary>Optional. The URI of the exploit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Structured relevance analysis for a threat.</summary>
     public class RelevanceAnalysis : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3311,12 +3458,204 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains details for a technology watchlist alert.</summary>
+    public class TargetTechnologyAlertDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The vulnerability match details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vulnerabilityMatch")]
+        public virtual VulnerabilityMatch VulnerabilityMatch { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains details for a technology watchlist finding.</summary>
+    public class TargetTechnologyFindingDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The vulnerability match details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vulnerabilityMatch")]
+        public virtual VulnerabilityMatch VulnerabilityMatch { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>TechnologyWatchListAlertThreshold contains the thresholds for alerting.</summary>
+    public class TechnologyWatchListAlertThreshold : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The minimum CVSS score for the alert. Evaluates to CVSS v3 when available with a fallback to v2
+        /// and v4. Ex: 7.0. Valid range is [0.0, 10.0].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cvssScoreMinimum")]
+        public virtual System.Nullable<float> CvssScoreMinimum { get; set; }
+
+        /// <summary>Optional. The minimum epss score for the alert. Ex: 0.8. Valid range is [0.0, 1.0].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("epssScoreMinimum")]
+        public virtual System.Nullable<float> EpssScoreMinimum { get; set; }
+
+        /// <summary>Optional. The exploitation states of the alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exploitationStates")]
+        public virtual System.Collections.Generic.IList<string> ExploitationStates { get; set; }
+
+        /// <summary>Optional. The minimum priority for the alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priorityMinimum")]
+        public virtual string PriorityMinimum { get; set; }
+
+        /// <summary>Optional. The minimum risk rating for the alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("riskRatingMinimum")]
+        public virtual string RiskRatingMinimum { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>TechnologyWatchListConfig is the configuration for the technology watchlist.</summary>
+    public class TechnologyWatchListConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Alert thresholds to effectively reduce noise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertThreshold")]
+        public virtual TechnologyWatchListAlertThreshold AlertThreshold { get; set; }
+
+        /// <summary>
+        /// Optional. List of vendor, technology or cpe fingerprint. example: Microsoft office 360 Apache Server 3.5
+        /// cpe:2.3:a:microsoft:outlook:*:*:*:*:*:*:*:*
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologies")]
+        public virtual System.Collections.Generic.IList<string> Technologies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for UpsertConfiguration.</summary>
     public class UpsertConfigurationResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Created configuration ID with server assigned id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configuration")]
         public virtual string Configuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains details about a vulnerability match.</summary>
+    public class VulnerabilityMatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Associated threat actors, malware, etc. This is embedded as a snapshot because the details of the
+        /// association at the time of the vulnerability match are important for context and reporting.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("associations")]
+        public virtual System.Collections.Generic.IList<Association> Associations { get; set; }
+
+        /// <summary>Required. The collection ID of the vulnerability. Ex: "vulnerability--cve-2025-9876".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collectionId")]
+        public virtual string CollectionId { get; set; }
+
+        /// <summary>
+        /// Required. The CVE ID of the vulnerability. Ex: "CVE-2025-9876". See https://www.cve.org/ for more
+        /// information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cveId")]
+        public virtual string CveId { get; set; }
+
+        /// <summary>
+        /// Required. The CVSS score of the vulnerability. Evaluates to CVSS v3 when available with a fallback to v2 and
+        /// v4. Example: 6.4.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cvss3Score")]
+        public virtual System.Nullable<float> Cvss3Score { get; set; }
+
+        /// <summary>Required. A description of the vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        private string _disclosureTimeRaw;
+
+        private object _disclosureTime;
+
+        /// <summary>Optional. The disclosure time of the vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disclosureTime")]
+        public virtual string DisclosureTimeRaw
+        {
+            get => _disclosureTimeRaw;
+            set
+            {
+                _disclosureTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _disclosureTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DisclosureTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DisclosureTimeDateTimeOffset instead.")]
+        public virtual object DisclosureTime
+        {
+            get => _disclosureTime;
+            set
+            {
+                _disclosureTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _disclosureTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="DisclosureTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DisclosureTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DisclosureTimeRaw);
+            set => DisclosureTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. The EPSS score, representing the probability of exploitation. Example: 0.87.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("epssScore")]
+        public virtual System.Nullable<float> EpssScore { get; set; }
+
+        /// <summary>Optional. List of exploitation consequences for the vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exploitationConsequences")]
+        public virtual System.Collections.Generic.IList<string> ExploitationConsequences { get; set; }
+
+        /// <summary>Required. The exploitation state of the vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exploitationState")]
+        public virtual string ExploitationState { get; set; }
+
+        /// <summary>Optional. List of exploitation vectors for the vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exploitationVectors")]
+        public virtual System.Collections.Generic.IList<string> ExploitationVectors { get; set; }
+
+        /// <summary>
+        /// Optional. The specific technologies from the configured watchlist that triggered the match. Ex: "Apache
+        /// Struts".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchedTechnologies")]
+        public virtual System.Collections.Generic.IList<string> MatchedTechnologies { get; set; }
+
+        /// <summary>Optional. The priority level of the vulnerability data. Ex: "P1".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual string Priority { get; set; }
+
+        /// <summary>Optional. List of product fixes for the vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productFixes")]
+        public virtual System.Collections.Generic.IList<ProductFix> ProductFixes { get; set; }
+
+        /// <summary>Optional. List of public exploits.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicExploits")]
+        public virtual System.Collections.Generic.IList<PublicExploit> PublicExploits { get; set; }
+
+        /// <summary>Output only. Whether a publicly available exploit exists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publiclyAvailableExploit")]
+        public virtual System.Nullable<bool> PubliclyAvailableExploit { get; set; }
+
+        /// <summary>Required. The risk rating of the vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("riskRating")]
+        public virtual string RiskRating { get; set; }
+
+        /// <summary>Required. All technologies affected by the vulnerability. Ex: "Apache Struts".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologies")]
+        public virtual System.Collections.Generic.IList<string> Technologies { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
