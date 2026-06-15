@@ -1916,8 +1916,8 @@ namespace Google.Apis.AdMob.v1beta.Data
         public virtual System.Collections.Generic.IList<string> AdTypes { get; set; }
 
         /// <summary>
-        /// The externally visible ID of the ad unit which can be used to integrate with the AdMob SDK. This is a read
-        /// only property. Example: ca-app-pub-9876543210987654/0123456789
+        /// The externally visible ID of the ad unit which can be used to integrate with AdMob. This is a read only
+        /// property. Example: ca-app-pub-9876543210987654/0123456789
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adUnitId")]
         public virtual string AdUnitId { get; set; }
@@ -2083,7 +2083,7 @@ namespace Google.Apis.AdMob.v1beta.Data
         public virtual string AppApprovalState { get; set; }
 
         /// <summary>
-        /// The externally visible ID of the app which can be used to integrate with the AdMob SDK. This is a read only
+        /// The externally visible ID of the app which can be used to integrate with AdMob. This is a read only
         /// property. Example: ca-app-pub-9876543210987654~0123456789
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appId")]
