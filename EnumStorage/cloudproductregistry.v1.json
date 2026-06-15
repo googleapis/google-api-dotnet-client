@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CloudProductRegistry.v1.CloudProductRegistryBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudProductRegistry.v1.CloudProductRegistryBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
