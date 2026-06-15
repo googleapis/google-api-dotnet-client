@@ -7026,7 +7026,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
 
         /// <summary>
         /// Optional. Indicate if a customer is attesting about the correctness of provided information. Only required
-        /// if creating a GCP Entitlement.
+        /// if creating a GCP Entitlement. NOTE: This field will be mandatory for all new GCP customers starting Aug
+        /// 31st, 2026 and this field will also be required for all existing customers purchasing new GCP Entitlements.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerAttestationState")]
         public virtual string CustomerAttestationState { get; set; }
