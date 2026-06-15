@@ -8,6 +8,49 @@
     "1",
     "2"
   ],
+  "Google.Apis.ChromeManagement.v1.CustomersResource+EnterpriseResource+SecurityInsightsResource+QueryContentTransfersBreakdownsRequest.BreakdownEnum": [
+    "CONTENT_TRANSFERS_BREAKDOWN_DIMENSION_UNSPECIFIED",
+    "USER",
+    "EVENT_DOMAIN",
+    "CONTENT_CATEGORY"
+  ],
+  "Google.Apis.ChromeManagement.v1.CustomersResource+EnterpriseResource+SecurityInsightsResource+QueryContentTransfersBreakdownsRequest.FixedTimeRangeEnum": [
+    "FIXED_TIME_RANGE_UNSPECIFIED",
+    "FIXED_TIME_RANGE_FOUR_HOURS",
+    "FIXED_TIME_RANGE_ONE_DAY",
+    "FIXED_TIME_RANGE_ONE_WEEK",
+    "FIXED_TIME_RANGE_FOUR_WEEKS"
+  ],
+  "Google.Apis.ChromeManagement.v1.CustomersResource+EnterpriseResource+SecurityInsightsResource+QueryContentTransfersBreakdownsRequest.MetricEnum": [
+    "CONTENT_TRANSFERS_METRIC_UNSPECIFIED",
+    "CONTENT_TRANSFERS_METRIC_TOTAL_TRANSFERS",
+    "CONTENT_TRANSFERS_METRIC_TOTAL_UPLOADS",
+    "CONTENT_TRANSFERS_METRIC_TOTAL_DOWNLOADS",
+    "CONTENT_TRANSFERS_METRIC_TOTAL_PRINTS",
+    "CONTENT_TRANSFERS_METRIC_TOTAL_SENSITIVE_TRANSFERS",
+    "CONTENT_TRANSFERS_METRIC_SENSITIVE_UPLOADS",
+    "CONTENT_TRANSFERS_METRIC_SENSITIVE_DOWNLOADS",
+    "CONTENT_TRANSFERS_METRIC_SENSITIVE_PRINTS"
+  ],
+  "Google.Apis.ChromeManagement.v1.CustomersResource+EnterpriseResource+SecurityInsightsResource+QueryUrlVisitsBreakdownsRequest.BreakdownEnum": [
+    "URL_VISITS_BREAKDOWN_DIMENSION_UNSPECIFIED",
+    "USER",
+    "EVENT_DOMAIN"
+  ],
+  "Google.Apis.ChromeManagement.v1.CustomersResource+EnterpriseResource+SecurityInsightsResource+QueryUrlVisitsBreakdownsRequest.FixedTimeRangeEnum": [
+    "FIXED_TIME_RANGE_UNSPECIFIED",
+    "FIXED_TIME_RANGE_FOUR_HOURS",
+    "FIXED_TIME_RANGE_ONE_DAY",
+    "FIXED_TIME_RANGE_ONE_WEEK",
+    "FIXED_TIME_RANGE_FOUR_WEEKS"
+  ],
+  "Google.Apis.ChromeManagement.v1.CustomersResource+EnterpriseResource+SecurityInsightsResource+QueryUrlVisitsBreakdownsRequest.MetricEnum": [
+    "URL_VISITS_METRIC_UNSPECIFIED",
+    "URL_VISITS_METRIC_TOTAL_SUSPICIOUS_URL_VISITS",
+    "URL_VISITS_METRIC_HIGH_RISK_URL_VISITS",
+    "URL_VISITS_METRIC_MEDIUM_RISK_URL_VISITS",
+    "URL_VISITS_METRIC_LOW_RISK_URL_VISITS"
+  ],
   "Google.Apis.ChromeManagement.v1.CustomersResource+ReportsResource+FindInstalledAppDevicesRequest.AppTypeEnum": [
     "APP_TYPE_UNSPECIFIED",
     "EXTENSION",
