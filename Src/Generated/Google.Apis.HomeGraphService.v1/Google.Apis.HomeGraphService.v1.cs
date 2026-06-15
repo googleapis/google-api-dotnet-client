@@ -589,6 +589,33 @@ namespace Google.Apis.HomeGraphService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Component of a provider device.</summary>
+    public class Component : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Child components.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("childComponents")]
+        public virtual System.Collections.Generic.IList<Component> ChildComponents { get; set; }
+
+        /// <summary>
+        /// Required. List of Device types associated with this component. Supported device types are defined in
+        /// cs//depot/google3/home/homeservicelayer/uddm/types/uddm_device_types.proto and the type string is the enum
+        /// name, for example: ON_OFF_LIGHT =&amp;gt; "ON_OFF_LIGHT".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceTypes")]
+        public virtual System.Collections.Generic.IList<string> DeviceTypes { get; set; }
+
+        /// <summary>Required. ID of the component from the device provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Required. List of trait data associated with the component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("traitData")]
+        public virtual System.Collections.Generic.IList<TraitData> TraitData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains the set of updates for a component.</summary>
     public class ComponentTraitUpdates : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -843,6 +870,17 @@ namespace Google.Apis.HomeGraphService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Container for UDDM trait data associated with a device.</summary>
+    public class HomeTraitPayload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The root component of the device as reported by the provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rootComponent")]
+        public virtual Component RootComponent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains the set of updates for a device.</summary>
     public class HomeTraitUpdates : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -864,6 +902,14 @@ namespace Google.Apis.HomeGraphService.v1.Data
         /// <summary>Required. Third-party user ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUserId")]
         public virtual string AgentUserId { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the type of device data to be returned in the response. This allows callers to request
+        /// traditional Smart Home traits, Unified Device Data Model (UDDM) traits, or both. If unspecified, defaults to
+        /// SMART_HOME_TRAIT_ONLY.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceView")]
+        public virtual string DeviceView { get; set; }
 
         /// <summary>
         /// Optional. If true, the response will include device metadata in the device_metadata field.
@@ -943,6 +989,13 @@ namespace Google.Apis.HomeGraphService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("devices")]
         public virtual System.Collections.Generic.IDictionary<string, System.Collections.Generic.IDictionary<string, object>> Devices { get; set; }
 
+        /// <summary>
+        /// Map of device IDs to their Unified Device Data Model (UDDM) trait payloads. This field is populated when
+        /// `device_view` is set to HOME_TRAIT_ONLY or HOME_TRAIT_AND_SMART_HOME_TRAIT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("homeTraitPayload")]
+        public virtual System.Collections.Generic.IDictionary<string, HomeTraitPayload> HomeTraitPayload { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -979,12 +1032,18 @@ namespace Google.Apis.HomeGraphService.v1.Data
     /// <summary>
     /// Request type for the
     /// [`ReportStateAndNotification`](#google.home.graph.v1.HomeGraphApiService.ReportStateAndNotification) call. It
-    /// may include states, notifications, or both. States and notifications are defined per `device_id` (for example,
-    /// "123" and "456" in the following example). Example:
+    /// may include states, notifications, home_traits, home_events, or any combination thereof. Smart Home Device
+    /// Traits (SHDT) `states` and `notifications` are defined per `device_id` (for example, "123" and "456" in the
+    /// following example). Google Home Traits `home_traits` and `home_events` are lists of updates or events, each
+    /// associated with a `device_id` (for example, "789" in the following example). Example:
     /// ```
     /// json { "requestId":
     /// "ff36a3cc-ec34-11e6-b1a0-64510650abcf", "agentUserId": "1234", "payload": { "devices": { "states": { "123": {
-    /// "on": true }, "456": { "on": true, "brightness": 10 }, }, } } }
+    /// "on": true }, "456": { "on": true, "brightness": 10 }, }, "homeTraits": [ { "deviceId": "789", "components": [ {
+    /// "componentId": "main", "traitData": [ { "trait": { "@type": "type.googleapis.com/home.graph.v1.OnOffTrait",
+    /// "onOff": true } } ] } ] } ], "homeEvents": [ { "deviceId": "789", "events": [ { "componentId": "main", "events":
+    /// [ { "eventId": "event-123", "eventTime": "2026-01-01T00:00:00Z", "event": { "@type":
+    /// "type.googleapis.com/home.graph.v1.DoorbellPressTrait.DoorbellPressedEvent" } } ] } ] } ] } } }
     /// ```
     /// </summary>
     public class ReportStateAndNotificationRequest : Google.Apis.Requests.IDirectResponseSchema
