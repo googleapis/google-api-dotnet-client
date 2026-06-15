@@ -15635,7 +15635,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string Medium { get; set; }
 
         /// <summary>
-        /// Input only. JSON metadata encoded as a string. This field is primarily used by Insights integrations with
+        /// Optional. JSON metadata encoded as a string. This field is primarily used by Insights integrations with
         /// various telephony systems and must be in one of Insight's supported formats.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadataJson")]
@@ -24316,7 +24316,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string Medium { get; set; }
 
         /// <summary>
-        /// Input only. JSON metadata encoded as a string. This field is primarily used by Insights integrations with
+        /// Optional. JSON metadata encoded as a string. This field is primarily used by Insights integrations with
         /// various telephony systems and must be in one of Insight's supported formats.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadataJson")]
@@ -30660,7 +30660,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string Medium { get; set; }
 
         /// <summary>
-        /// Input only. JSON metadata encoded as a string. This field is primarily used by Insights integrations with
+        /// Optional. JSON metadata encoded as a string. This field is primarily used by Insights integrations with
         /// various telephony systems and must be in one of Insight's supported formats.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadataJson")]
