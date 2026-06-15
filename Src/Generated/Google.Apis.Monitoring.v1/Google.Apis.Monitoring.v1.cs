@@ -2304,6 +2304,14 @@ namespace Google.Apis.Monitoring.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeBinSize")]
         public virtual object TimeBinSize { get; set; }
 
+        /// <summary>The maximum value for the x-axis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xMax")]
+        public virtual System.Nullable<double> XMax { get; set; }
+
+        /// <summary>The minimum value for the x-axis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xMin")]
+        public virtual System.Nullable<double> XMin { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3946,6 +3954,13 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string TimeSeriesQueryLanguage { get; set; }
 
         /// <summary>
+        /// Optional. Preview: Query for traces. This is a preview feature and may be subject to change before final
+        /// release.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("traceQuery")]
+        public virtual TraceQuery TraceQuery { get; set; }
+
+        /// <summary>
         /// The unit of data contained in fetched time series. If non-empty, this unit will override any unit that
         /// accompanies fetched data. The format is the same as the unit
         /// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in
@@ -3973,6 +3988,16 @@ namespace Google.Apis.Monitoring.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metricVisualization")]
         public virtual string MetricVisualization { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// LINT.IfChange Preview: Query for traces. This is a preview feature and may be subject to change before final
+    /// release.
+    /// </summary>
+    public class TraceQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
