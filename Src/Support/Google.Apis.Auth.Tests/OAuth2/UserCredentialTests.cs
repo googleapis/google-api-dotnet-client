@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2023 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -64,6 +64,22 @@ public class UserCredentialTests
         Assert.Throws<InvalidOperationException>(() => credential.WithUniverseDomain("universeDomain"));
     }
 
+    [Fact]
+    public async Task RefreshToken_OmittedInResponse_Preserved()
+    {
+        var flow = new MockAuthorizationCodeFlow();
+        var initialToken = new TokenResponse { AccessToken = "access_token_1", RefreshToken = "refresh_token_1" };
+        var credential = new UserCredential(flow, "userId", initialToken);
+
+        flow.TokenResponse = new TokenResponse { AccessToken = "access_token_2", RefreshToken = null };
+
+        bool refreshed = await credential.RefreshTokenAsync(default);
+
+        Assert.True(refreshed);
+        Assert.Equal("access_token_2", credential.Token.AccessToken);
+        Assert.Equal("refresh_token_1", credential.Token.RefreshToken); // Preserved
+    }
+
     private class FakeAuthorizationCodeFlow : IAuthorizationCodeFlow
     {
         public static readonly FakeAuthorizationCodeFlow Default = new FakeAuthorizationCodeFlow();
@@ -88,6 +104,23 @@ public class UserCredentialTests
 
         public Task RevokeTokenAsync(string userId, string token, CancellationToken taskCancellationToken) => throw new NotImplementedException();
 
+        public bool ShouldForceTokenRetrieval() => throw new NotImplementedException();
+    }
+
+    private class MockAuthorizationCodeFlow : IAuthorizationCodeFlow
+    {
+        public TokenResponse TokenResponse { get; set; }
+
+        public IAccessMethod AccessMethod => throw new NotImplementedException();
+        public IClock Clock => SystemClock.Default;
+        public IDataStore DataStore => throw new NotImplementedException();
+        public AuthorizationCodeRequestUrl CreateAuthorizationCodeRequest(string redirectUri) => throw new NotImplementedException();
+        public Task DeleteTokenAsync(string userId, CancellationToken taskCancellationToken) => throw new NotImplementedException();
+        public void Dispose() {}
+        public Task<TokenResponse> ExchangeCodeForTokenAsync(string userId, string code, string redirectUri, CancellationToken taskCancellationToken) => throw new NotImplementedException();
+        public Task<TokenResponse> LoadTokenAsync(string userId, CancellationToken taskCancellationToken) => throw new NotImplementedException();
+        public Task<TokenResponse> RefreshTokenAsync(string userId, string refreshToken, CancellationToken taskCancellationToken) => Task.FromResult(TokenResponse);
+        public Task RevokeTokenAsync(string userId, string token, CancellationToken taskCancellationToken) => throw new NotImplementedException();
         public bool ShouldForceTokenRetrieval() => throw new NotImplementedException();
     }
 }

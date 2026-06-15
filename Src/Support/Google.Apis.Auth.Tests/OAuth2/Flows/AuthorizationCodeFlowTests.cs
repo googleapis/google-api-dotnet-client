@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2013 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -284,6 +284,29 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
             Assert.Equal("uSer", store.StoredKey);
         }
 
+        [Fact]
+        public async Task TestRefreshTokenAsync_OmitRefreshToken()
+        {
+            var store = new FakeDataStore();
+            var handler = new FetchTokenMessageHandler();
+            handler.OmitRefreshToken = true;
+            handler.RefreshTokenRequest = new RefreshTokenRequest()
+            {
+                RefreshToken = "REFRESH",
+                Scope = "a"
+            };
+            MockHttpClientFactory mockFactory = new MockHttpClientFactory(handler);
+            var flow = CreateFlow(httpClientFactory: mockFactory, scopes: new[] { "a" }, dataStore: store);
+            var response = await flow.RefreshTokenAsync("uSer", "REFRESH", default);
+            
+            Assert.Equal("a", response.AccessToken);
+            Assert.Equal("REFRESH", response.RefreshToken); // Preserved
+            Assert.Equal(100, response.ExpiresInSeconds);
+            Assert.Equal("b", response.Scope);
+
+            Assert.Equal("uSer", store.StoredKey);
+        }
+
         #region FetchToken
 
         /// <summary>
@@ -296,6 +319,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
             internal AuthorizationCodeTokenRequest AuthorizationCodeTokenRequest { get; set; }
             internal RefreshTokenRequest RefreshTokenRequest { get; set; }
             internal bool Error { get; set; }
+            internal bool OmitRefreshToken { get; set; }
 
             protected override async Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
                 CancellationToken taskCancellationToken)
@@ -381,7 +405,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
                     var serializedObject = NewtonsoftJsonSerializer.Instance.Serialize(new TokenResponse
                     {
                         AccessToken = "a",
-                        RefreshToken = "r",
+                        RefreshToken = OmitRefreshToken ? null : "r",
                         ExpiresInSeconds = 100,
                         Scope = "b",
                     });
