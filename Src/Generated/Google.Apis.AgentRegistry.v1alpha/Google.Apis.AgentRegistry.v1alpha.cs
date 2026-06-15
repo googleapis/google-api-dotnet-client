@@ -2376,6 +2376,33 @@ namespace Google.Apis.AgentRegistry.v1alpha
 }
 namespace Google.Apis.AgentRegistry.v1alpha.Data
 {
+    /// <summary>Represents the skills of an Agent.</summary>
+    public class A2ASkill : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A more detailed description of the skill.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. Example prompts or scenarios this skill can handle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("examples")]
+        public virtual System.Collections.Generic.IList<string> Examples { get; set; }
+
+        /// <summary>Output only. A unique identifier for the agent's skill.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Output only. A human-readable name for the agent's skill.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Keywords describing the skill.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents an Agent. "A2A" below refers to the Agent-to-Agent protocol.</summary>
     public class Agent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2465,7 +2492,7 @@ namespace Google.Apis.AgentRegistry.v1alpha.Data
 
         /// <summary>Output only. Skills the agent possesses, often obtained from the A2A Agent Card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skills")]
-        public virtual System.Collections.Generic.IList<Skill> Skills { get; set; }
+        public virtual System.Collections.Generic.IList<A2ASkill> Skills { get; set; }
 
         /// <summary>Output only. A universally unique identifier for the Agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
@@ -3605,33 +3632,6 @@ namespace Google.Apis.AgentRegistry.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents the skills of an Agent.</summary>
-    public class Skill : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. A more detailed description of the skill.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>Output only. Example prompts or scenarios this skill can handle.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("examples")]
-        public virtual System.Collections.Generic.IList<string> Examples { get; set; }
-
-        /// <summary>Output only. A unique identifier for the agent's skill.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
-
-        /// <summary>Output only. A human-readable name for the agent's skill.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Output only. Keywords describing the skill.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
-        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
