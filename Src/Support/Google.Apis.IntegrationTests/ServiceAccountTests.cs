@@ -33,11 +33,12 @@ namespace IntegrationTests
 {
     public class ServiceAccountTests
     {
-        [Fact]
+        [SkippableFact]
         public async Task ServiceCredential()
         {
             // This is testing that a service-credential successfully authenticates to a Cloud Service.
             // If authentication fails, an exception will be thrown, failing the test.
+            Helper.SkipOnRestrictedEnvironment();
 
             GoogleCredential credential = Helper.GetServiceCredential().CreateScoped(StorageService.Scope.DevstorageFullControl);
 
@@ -83,11 +84,8 @@ namespace IntegrationTests
         [InlineData(true, new[] { "https://www.googleapis.com/auth/bigtable.admin" })]
         public void JwtAccessToken_RestClient(bool useJwtAccessWithScopes, string[] scopes)
         {
-            if (useJwtAccessWithScopes)
-            {
-                // Requires Service Account credentials for JWT access token features.
-                Helper.SkipOnRestrictedEnvironment();
-            }
+            // Requires Service Account credentials for JWT access token features.
+            Helper.SkipOnRestrictedEnvironment();
             // See: https://developers.google.com/identity/protocols/oauth2/service-account#jwt-auth
 
             GoogleCredential credential = useJwtAccessWithScopes 
