@@ -57,7 +57,7 @@ namespace IntegrationTests
             Assert.Contains("https://this.is.a.test", payload.AudienceAsList);
         }
 
-        [OnGceFact]
+        [OnGceFact(Skip = "b/524753260")]
         public async Task OidcTokenProvider_ComputeCredential()
         {
             // This test only executes on GCE so we are certain to have a ComputeCredential.
