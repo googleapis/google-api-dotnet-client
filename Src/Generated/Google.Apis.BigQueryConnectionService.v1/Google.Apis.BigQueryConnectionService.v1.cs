@@ -1265,6 +1265,16 @@ namespace Google.Apis.BigQueryConnectionService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual ConnectorConfigurationNetwork Network { get; set; }
 
+        /// <summary>
+        /// Optional. A map of name-value pairs for connector-specific parameters. Extra configuration parameters, that
+        /// are not standardized in configuration sections. To update a single parameter value call
+        /// ConnectionService.UpdateConnection with `update_mask` set to `configuration.parameters.parameter_id`. If
+        /// parameter id does not fit `[a-zA-Z0-9_]+` pattern, it should be escaped with backticks - for example
+        /// ``configuration.parameters.`parameter id` ``.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IDictionary<string, ConnectorConfigurationParameterValue> Parameters { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1293,6 +1303,17 @@ namespace Google.Apis.BigQueryConnectionService.v1.Data
     /// <summary>Client authentication.</summary>
     public class ConnectorConfigurationAuthentication : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. A map of name-value pairs for authentication-specific parameters. Extra configuration parameters,
+        /// that are not standardized in authentication. To update a single parameter value call
+        /// ConnectionService.UpdateConnection with `update_mask` set to
+        /// `configuration.authentication.parameters.parameter_id`. If parameter id does not fit `[a-zA-Z0-9_]+`
+        /// pattern, it should be escaped with backticks - for example
+        /// ``configuration.authentication.parameters.`parameter id` ``.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IDictionary<string, ConnectorConfigurationParameterValue> Parameters { get; set; }
+
         /// <summary>
         /// Output only. Google-managed service account associated with this connection, e.g.,
         /// `service-{project_number}@gcp-sa-bigqueryconnection.iam.gserviceaccount.com`. BigQuery jobs using this
@@ -1329,6 +1350,33 @@ namespace Google.Apis.BigQueryConnectionService.v1.Data
         /// <summary>Private Service Connect networking configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateServiceConnect")]
         public virtual ConnectorConfigurationPrivateServiceConnect PrivateServiceConnect { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a value for a connector parameter.</summary>
+    public class ConnectorConfigurationParameterValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A boolean parameter value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; }
+
+        /// <summary>A double parameter value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
+        public virtual System.Nullable<double> DoubleValue { get; set; }
+
+        /// <summary>An int32 parameter value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("int32Value")]
+        public virtual System.Nullable<int> Int32Value { get; set; }
+
+        /// <summary>A secret parameter value. Allowed only for Authentication parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretValue")]
+        public virtual ConnectorConfigurationSecret SecretValue { get; set; }
+
+        /// <summary>A string parameter value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
