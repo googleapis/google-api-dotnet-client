@@ -1087,6 +1087,33 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The display address of the property.</summary>
+    public class DisplayAddress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The city such as Seattle, New York, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("city")]
+        public virtual string City { get; set; }
+
+        /// <summary>The postal code, such as 94043.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
+        public virtual string PostalCode { get; set; }
+
+        /// <summary>The region(state), such as WA, OH, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>The street name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streetName")]
+        public virtual string StreetName { get; set; }
+
+        /// <summary>The street number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streetNumber")]
+        public virtual string StreetNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -1430,6 +1457,21 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The pet policy of the property.</summary>
+    public class PetPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The pet types allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("petTypes")]
+        public virtual System.Collections.Generic.IList<string> PetTypes { get; set; }
+
+        /// <summary>Whether pets are allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("petsAllowed")]
+        public virtual System.Nullable<bool> PetsAllowed { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The pickup cost of the item.</summary>
     public class PickupCost : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1612,6 +1654,10 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// <summary>Target [age group](https://support.google.com/merchants/answer/6324463) of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageGroup")]
         public virtual string AgeGroup { get; set; }
+
+        /// <summary>The amenity features for the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amenityFeature")]
+        public virtual System.Collections.Generic.IList<string> AmenityFeature { get; set; }
 
         /// <summary>
         /// A safeguard in the [automated discounts] (https://support.google.com/merchants/answer/10295759) and "Dynamic
@@ -1809,6 +1855,10 @@ namespace Google.Apis.Merchant.products_v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DisclosureDateRaw);
             set => DisclosureDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The display address of the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayAddress")]
+        public virtual DisplayAddress DisplayAddress { get; set; }
 
         /// <summary>An identifier for an item for dynamic remarketing campaigns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayAdsId")]
@@ -2021,6 +2071,13 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual string ItemGroupTitle { get; set; }
 
         /// <summary>
+        /// The latitude of the property. The value must be between -90 (inclusive) and 90 (inclusive), up to 6 decimal
+        /// places.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latitude")]
+        public virtual System.Nullable<double> Latitude { get; set; }
+
+        /// <summary>
         /// Additional URLs of lifestyle images of the item, used to explicitly identify images that showcase your item
         /// in a real-world context. See the [Help Center article](https://support.google.com/merchants/answer/9103186)
         /// for more information.
@@ -2037,6 +2094,13 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkTemplate")]
         public virtual string LinkTemplate { get; set; }
+
+        /// <summary>
+        /// The longitude of the property. The value must be between -180 (inclusive) and 180 (inclusive), up to 6
+        /// decimal places.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
+        public virtual System.Nullable<double> Longitude { get; set; }
 
         /// <summary>Loyalty points that users receive after purchasing the item. Japan only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loyaltyPoints")]
@@ -2125,6 +2189,28 @@ namespace Google.Apis.Merchant.products_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("multipack")]
         public virtual System.Nullable<long> Multipack { get; set; }
 
+        /// <summary>The neighborhood (locality) of the property, such as `Wallingford`, `Greenwood`, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("neighborhood")]
+        public virtual string Neighborhood { get; set; }
+
+        /// <summary>
+        /// The number of bathrooms in the property. The value must be greater than 0 and a multiple of 0.5.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numberOfBathrooms")]
+        public virtual System.Nullable<double> NumberOfBathrooms { get; set; }
+
+        /// <summary>
+        /// The number of bedrooms in the property. The value must be greater than or equal to 0 and a multiple of 1.0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numberOfBedrooms")]
+        public virtual System.Nullable<double> NumberOfBedrooms { get; set; }
+
+        /// <summary>
+        /// The number of units available for a specific floor plan of the property. The value must be greater than 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numberOfUnits")]
+        public virtual System.Nullable<long> NumberOfUnits { get; set; }
+
         /// <summary>
         /// The item's [pattern](https://support.google.com/merchants/answer/6324483). For example, polka dots.
         /// </summary>
@@ -2136,6 +2222,10 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pause")]
         public virtual string Pause { get; set; }
+
+        /// <summary>The pet policy for the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("petPolicy")]
+        public virtual PetPolicy PetPolicy { get; set; }
 
         /// <summary>
         /// Optional. The [pickup cost](https://support.google.com/merchants/answer/16988704) for an item when a
@@ -2169,6 +2259,10 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// <summary>Technical specification or additional product details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productDetails")]
         public virtual System.Collections.Generic.IList<ProductDetail> ProductDetails { get; set; }
+
+        /// <summary>The product fee for the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productFee")]
+        public virtual System.Collections.Generic.IList<ProductFee> ProductFee { get; set; }
 
         /// <summary>
         /// The height of the product in the units provided. The value must be between 0 (exclusive) and 3000
@@ -2215,6 +2309,14 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// <summary>The unique ID of a promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionIds")]
         public virtual System.Collections.Generic.IList<string> PromotionIds { get; set; }
+
+        /// <summary>The name of the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertyName")]
+        public virtual string PropertyName { get; set; }
+
+        /// <summary>The type of property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertyType")]
+        public virtual string PropertyType { get; set; }
 
         /// <summary>
         /// Optional. Contains user-, merchant-, and manufacturer-authored [questions and
@@ -2306,6 +2408,10 @@ namespace Google.Apis.Merchant.products_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shoppingAdsExcludedCountries")]
         public virtual System.Collections.Generic.IList<string> ShoppingAdsExcludedCountries { get; set; }
 
+        /// <summary>The short title of the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shortTitle")]
+        public virtual string ShortTitle { get; set; }
+
         /// <summary>
         /// Size of the item. Only one value is allowed. For variants with different sizes, insert a separate product
         /// for each size with the same `itemGroupId` value, see
@@ -2327,6 +2433,10 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeTypes")]
         public virtual System.Collections.Generic.IList<string> SizeTypes { get; set; }
+
+        /// <summary>The specialty housing type for the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("specialtyHousingType")]
+        public virtual string SpecialtyHousingType { get; set; }
 
         /// <summary>Structured description, for algorithmically (AI)-generated descriptions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structuredDescription")]
@@ -2364,6 +2474,10 @@ namespace Google.Apis.Merchant.products_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("trim")]
         public virtual string Trim { get; set; }
 
+        /// <summary>The unit area of the property, such as `1000 sqft`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unitArea")]
+        public virtual UnitArea UnitArea { get; set; }
+
         /// <summary>The preference of the denominator of the unit price.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unitPricingBaseMeasure")]
         public virtual UnitPricingBaseMeasure UnitPricingBaseMeasure { get; set; }
@@ -2371,6 +2485,10 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// <summary>The measure and dimension of an item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unitPricingMeasure")]
         public virtual UnitPricingMeasure UnitPricingMeasure { get; set; }
+
+        /// <summary>The utilities included for the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utilitiesIncluded")]
+        public virtual System.Collections.Generic.IList<string> UtilitiesIncluded { get; set; }
 
         /// <summary>
         /// Optional. Contains the [list of all variant-identifying
@@ -2546,6 +2664,21 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<double> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The product fee attribute containing type and amount.</summary>
+    public class ProductFee : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The amount of product fee.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amount")]
+        public virtual Price Amount { get; set; }
+
+        /// <summary>The type of product fee.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3302,6 +3435,21 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// <summary>The number of subscription periods the buyer has to pay.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("periodLength")]
         public virtual System.Nullable<long> PeriodLength { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The unit area of the property.</summary>
+    public class UnitArea : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unit of area.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual string Unit { get; set; }
+
+        /// <summary>The area value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<double> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
