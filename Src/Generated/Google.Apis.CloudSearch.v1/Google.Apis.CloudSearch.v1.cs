@@ -9761,7 +9761,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The search API request. NEXT ID: 25</summary>
+    /// <summary>The search API request. NEXT ID: 26</summary>
     public class SearchRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -9815,7 +9815,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The search API response. NEXT ID: 19</summary>
+    /// <summary>The search API response. NEXT ID: 20</summary>
     public class SearchResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Debugging information about the response.</summary>
@@ -9868,7 +9868,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Results containing indexed information for a document. Next ID: 16</summary>
+    /// <summary>Results containing indexed information for a document. Next ID: 17</summary>
     public class SearchResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
