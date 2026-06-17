@@ -1193,7 +1193,9 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
     /// </summary>
     public class BootDisk : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Immutable. Size of the disk in gigabytes. Must be at least 40GB.</summary>
+        /// <summary>
+        /// Required. Immutable. The size of the disk in gigabytes (GB), which must be at least 40 GB.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
         public virtual System.Nullable<long> SizeGb { get; set; }
 
@@ -1287,7 +1289,7 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. User-provided description of the cluster. Maximum of 2048 characters.</summary>
+        /// <summary>Optional. A description for your cluster. You can use up to 2,048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -1923,7 +1925,7 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual NetworkResourceConfig Config { get; set; }
 
-        /// <summary>Output only. Reference to a network in Google Compute Engine.</summary>
+        /// <summary>Output only. A reference to a network in Google Compute Engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual NetworkReference Network { get; set; }
 
@@ -2001,7 +2003,7 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
 
         /// <summary>
         /// Required. Immutable. Name of the Filestore instance to create, in the format
-        /// `projects/{project}/locations/{location}/instances/{instance}`
+        /// `projects/{project}/locations/{location}/instances/{instance}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filestore")]
         public virtual string Filestore { get; set; }
@@ -2555,7 +2557,7 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
     public class SlurmNodeSet : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. ID of the compute resource on which this nodeset will run. Must match a key in the cluster's
+        /// Required. The ID of the compute resource on which this nodeset runs. Must match a key in the cluster's
         /// compute_resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeId")]
@@ -2725,12 +2727,12 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
     }
 
     /// <summary>
-    /// A resource representing a form of persistent storage that can be mounted onto compute resources in the cluster.
+    /// Represents a form of persistent storage that you can mount onto compute resources in the cluster.
     /// </summary>
     public class StorageResource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Reference to a Google Cloud Storage bucket. Populated if and only if the storage resource was
+        /// Output only. A reference to a Google Cloud Storage bucket. Populated if and only if the storage resource was
         /// configured to use Google Cloud Storage.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
@@ -2746,14 +2748,14 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
         public virtual StorageResourceConfig Config { get; set; }
 
         /// <summary>
-        /// Output only. Reference to a Filestore instance. Populated if and only if the storage resource was configured
-        /// to use Filestore.
+        /// Output only. A reference to a Filestore instance. Populated if and only if the storage resource was
+        /// configured to use Filestore.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filestore")]
         public virtual FilestoreReference Filestore { get; set; }
 
         /// <summary>
-        /// Output only. Reference to a Managed Lustre instance. Populated if and only if the storage resource was
+        /// Output only. A reference to a Managed Lustre instance. Populated if and only if the storage resource was
         /// configured to use Managed Lustre.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lustre")]
