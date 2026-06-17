@@ -7695,6 +7695,12 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual ResourceRequirements Resources { get; set; }
 
+        /// <summary>
+        /// Optional. Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sandboxLauncher")]
+        public virtual System.Nullable<bool> SandboxLauncher { get; set; }
+
         /// <summary>Not supported by Cloud Run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityContext")]
         public virtual SecurityContext SecurityContext { get; set; }
@@ -11620,6 +11626,10 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>Optional. Runtime. Leave unset for default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeClassName")]
         public virtual string RuntimeClassName { get; set; }
+
+        /// <summary>Optional. Container templates that can be launched through the `sandbox` CLI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sandboxes")]
+        public virtual System.Collections.Generic.IList<Container> Sandboxes { get; set; }
 
         /// <summary>
         /// Email address of the IAM service account associated with the revision of the service. The service account
