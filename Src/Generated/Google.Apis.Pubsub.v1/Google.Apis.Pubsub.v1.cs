@@ -4189,6 +4189,23 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Configuration for compressing/decompressing message data using a user-specified compression algorithm.
+    /// </summary>
+    public class Compression : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Specifies the compression algorithm to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compressionAlgorithm")]
+        public virtual string CompressionAlgorithm { get; set; }
+
+        /// <summary>Required. Specifies whether to compress or decompress the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compressionMode")]
+        public virtual string CompressionMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Ingestion settings for Confluent Cloud.</summary>
     public class ConfluentCloud : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4591,6 +4608,10 @@ namespace Google.Apis.Pubsub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aiInference")]
         public virtual AIInference AiInference { get; set; }
+
+        /// <summary>Optional. Compression/Decompression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compression")]
+        public virtual Compression Compression { get; set; }
 
         /// <summary>
         /// Optional. If true, the transform is disabled and will not be applied to messages. Defaults to `false`.
