@@ -5166,6 +5166,11 @@
                               "location": "query",
                               "type": "boolean"
                             },
+                            "languageCode": {
+                              "description": "Optional. BCP-47 language tag (e.g. \"en\", \"fr-CA\"). Used to localize human-readable strings in the response, such as the model selector `display_name` / `description` on `WidgetConfig.UiSettings.ModelConfigInfo`. Empty / unset falls back to the default language (English).",
+                              "location": "query",
+                              "type": "string"
+                            },
                             "name": {
                               "description": "Required. Full WidgetConfig resource name. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/widgetConfigs/{widget_config_id}`",
                               "location": "path",
@@ -7565,6 +7570,11 @@
                               "description": "Optional. Whether to turn off collection_components in WidgetConfig to reduce latency and data transmission.",
                               "location": "query",
                               "type": "boolean"
+                            },
+                            "languageCode": {
+                              "description": "Optional. BCP-47 language tag (e.g. \"en\", \"fr-CA\"). Used to localize human-readable strings in the response, such as the model selector `display_name` / `description` on `WidgetConfig.UiSettings.ModelConfigInfo`. Empty / unset falls back to the default language (English).",
+                              "location": "query",
+                              "type": "string"
                             },
                             "name": {
                               "description": "Required. Full WidgetConfig resource name. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/widgetConfigs/{widget_config_id}`",
@@ -10782,6 +10792,11 @@
                           "location": "query",
                           "type": "boolean"
                         },
+                        "languageCode": {
+                          "description": "Optional. BCP-47 language tag (e.g. \"en\", \"fr-CA\"). Used to localize human-readable strings in the response, such as the model selector `display_name` / `description` on `WidgetConfig.UiSettings.ModelConfigInfo`. Empty / unset falls back to the default language (English).",
+                          "location": "query",
+                          "type": "string"
+                        },
                         "name": {
                           "description": "Required. Full WidgetConfig resource name. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/widgetConfigs/{widget_config_id}`",
                           "location": "path",
@@ -12865,7 +12880,7 @@
       }
     }
   },
-  "revision": "20260606",
+  "revision": "20260614",
   "rootUrl": "https://discoveryengine.googleapis.com/",
   "schemas": {
     "GoogleApiDistribution": {
@@ -14446,7 +14461,8 @@
             "GCNV",
             "GOOGLE_CHAT",
             "GOOGLE_SITES",
-            "REMOTE_MCP"
+            "REMOTE_MCP",
+            "GOOGLE_WORKSPACE"
           ],
           "enumDescriptions": [
             "Default value.",
@@ -14463,7 +14479,8 @@
             "Google Cloud NetApp Volumes connector.",
             "Google Chat connector.",
             "Google Sites connector.",
-            "Remote MCP based connector."
+            "Remote MCP based connector.",
+            "Google Workspace connector."
           ],
           "readOnly": true,
           "type": "string"
@@ -15664,7 +15681,7 @@
             ],
             "type": "string"
           },
-          "description": "Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all features, if it's present, all other feature state settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `disable-mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills` * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-intelligence`",
+          "description": "Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all features, if it's present, all other feature state settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-intelligence`",
           "type": "object"
         },
         "industryVertical": {
@@ -16005,7 +16022,8 @@
             "SUBSCRIPTION_TIER_EDU_PRO",
             "SUBSCRIPTION_TIER_EDU_EMERGING",
             "SUBSCRIPTION_TIER_EDU_PRO_EMERGING",
-            "SUBSCRIPTION_TIER_FRONTLINE_STARTER"
+            "SUBSCRIPTION_TIER_FRONTLINE_STARTER",
+            "SUBSCRIPTION_TIER_CONSUMPTION_ONLY"
           ],
           "enumDescriptions": [
             "Default value.",
@@ -16021,7 +16039,8 @@
             "Gemini Enterprise EDU Pro tier.",
             "Gemini Enterprise EDU tier for emerging market only.",
             "Gemini Enterprise EDU Pro tier for emerging market.",
-            "Gemini Frontline Starter tier."
+            "Gemini Frontline Starter tier.",
+            "Represents the Gemini Enterprise Consumption-only tier: $0 subscription billed purely on usage (PAYG)."
           ],
           "type": "string"
         },
@@ -16469,7 +16488,8 @@
             "SUBSCRIPTION_TIER_EDU_PRO",
             "SUBSCRIPTION_TIER_EDU_EMERGING",
             "SUBSCRIPTION_TIER_EDU_PRO_EMERGING",
-            "SUBSCRIPTION_TIER_FRONTLINE_STARTER"
+            "SUBSCRIPTION_TIER_FRONTLINE_STARTER",
+            "SUBSCRIPTION_TIER_CONSUMPTION_ONLY"
           ],
           "enumDescriptions": [
             "Default value.",
@@ -16485,7 +16505,8 @@
             "Gemini Enterprise EDU Pro tier.",
             "Gemini Enterprise EDU tier for emerging market only.",
             "Gemini Enterprise EDU Pro tier for emerging market.",
-            "Gemini Frontline Starter tier."
+            "Gemini Frontline Starter tier.",
+            "Represents the Gemini Enterprise Consumption-only tier: $0 subscription billed purely on usage (PAYG)."
           ],
           "type": "string"
         }
@@ -16573,6 +16594,14 @@
       "description": "Represents the currently effective configurable billing parameters. These values are derived from the customer's subscription history stored internally and reflect the thresholds actively being used for billing purposes at the time of the GetProject call. This includes the start_time of the subscription and may differ from the values in `customer_provided_config` due to billing rules (e.g., scale-downs taking effect only at the start of a new month). We also include the update type to indicate the type of update performed on the configurable billing configuration in the UpdateProject operation.",
       "id": "GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatus",
       "properties": {
+        "agentSearchTokenSubscriptionStatuses": {
+          "description": "Output only. Per-model Agent Search TPM subscription status.",
+          "items": {
+            "$ref": "GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus"
+          },
+          "readOnly": true,
+          "type": "array"
+        },
         "effectiveIndexingCoreThreshold": {
           "description": "Optional. The currently effective Indexing Core threshold. This is the threshold against which Indexing Core usage is compared for overage calculations.",
           "format": "int64",
@@ -16608,6 +16637,61 @@
         },
         "updateType": {
           "description": "Output only. The type of update performed in this operation. This field is populated in the response of UpdateProject.",
+          "enum": [
+            "UPDATE_TYPE_UNSPECIFIED",
+            "CREATE",
+            "DELETE",
+            "SCALE_UP",
+            "SCALE_DOWN"
+          ],
+          "enumDescriptions": [
+            "Unspecified update type.",
+            "Configurable billing was created/enabled.",
+            "Configurable billing was deleted/disabled.",
+            "Subscription was scaled up (thresholds increased).",
+            "Subscription was scaled down (thresholds decreased)."
+          ],
+          "readOnly": true,
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus": {
+      "description": "Per-model Agent Search TPM subscription status. One entry per active `core_subscription.agent_search_token_subscriptions[*]` entry in the customer-provided config; populated by UpdateProject and GetProject. The lifecycle scalars on this message (`start_time`, `terminate_time`, `update_type`, `tpm_threshold_next_update_time`) are per (project, model_version) \u2014 siblings of the whole-relationship `start_time` / `terminate_time` / `update_type` on the enclosing ConfigurableBillingStatus, but scoped to this specific Agent Search TPM subscription instead of to the overall customer-configurable- pricing relationship. This per-instance granularity is intentional: the underlying SubV3 storage is per-(project, model_version), so each model has its own activation, termination, and deferred-update clock; surfacing that on the response gives customers the granularity they need to manage per-model commitments independently. QPM / IndexingCore differ \u2014 their storage is one row per (project, location), so their lifecycle is represented only by the whole- relationship scalars on ConfigurableBillingStatus.",
+      "id": "GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus",
+      "properties": {
+        "effectiveTpmThreshold": {
+          "description": "Output only. The currently effective TPM threshold. Reflects scale-up immediately and scale-down at the next billing cycle, matching `effective_search_qpm_threshold` semantics.",
+          "format": "int64",
+          "readOnly": true,
+          "type": "string"
+        },
+        "modelVersion": {
+          "description": "Output only. The Gemini model version this status corresponds to. Matches CoreSubscription.AgentSearchTokenSubscription.model_version (a stable Gemini model version from the Gemini Enterprise Agent Platform model-versions registry; see https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions#gemini-models).",
+          "readOnly": true,
+          "type": "string"
+        },
+        "startTime": {
+          "description": "Output only. When this (project, model_version) Agent Search TPM subscription was first activated. Set once on first activation of this model version and never moved by subsequent threshold updates; on termination + re-activation a new value is recorded. Does NOT move the whole-relationship `start_time` on the enclosing ConfigurableBillingStatus, which continues to represent the first activation of the overall customer-configurable-pricing relationship.",
+          "format": "google-datetime",
+          "readOnly": true,
+          "type": "string"
+        },
+        "terminateTime": {
+          "description": "Output only. If set, the scheduled effective time at which this (project, model_version) Agent Search TPM subscription will terminate. Populated when the customer removes this entry from `core_subscription.agent_search_token_subscriptions[*]`. Does NOT move the whole-relationship `terminate_time` on the enclosing ConfigurableBillingStatus, which is populated only when the entire customer-configurable-pricing relationship is being torn down.",
+          "format": "google-datetime",
+          "readOnly": true,
+          "type": "string"
+        },
+        "tpmThresholdNextUpdateTime": {
+          "description": "Output only. The earliest next update time for the TPM subscription threshold for this (project, model_version). Populated only after a successful update.",
+          "format": "google-datetime",
+          "readOnly": true,
+          "type": "string"
+        },
+        "updateType": {
+          "description": "Output only. The type of the most recent update to this (project, model_version) subscription, as performed by the most recent UpdateProject call. `UPDATE_TYPE_UNSPECIFIED` indicates this model_version was not touched by the most recent UpdateProject (its `effective_tpm_threshold` reflects an earlier update). The whole-relationship `update_type` on the enclosing ConfigurableBillingStatus continues to summarize the direction of the most recent update across all surfaces in the project (QPM, IndexingCore, and Agent Search TPM together).",
           "enum": [
             "UPDATE_TYPE_UNSPECIFIED",
             "CREATE",
@@ -21152,7 +21236,8 @@
             "SUBSCRIPTION_TIER_EDU_PRO",
             "SUBSCRIPTION_TIER_EDU_EMERGING",
             "SUBSCRIPTION_TIER_EDU_PRO_EMERGING",
-            "SUBSCRIPTION_TIER_FRONTLINE_STARTER"
+            "SUBSCRIPTION_TIER_FRONTLINE_STARTER",
+            "SUBSCRIPTION_TIER_CONSUMPTION_ONLY"
           ],
           "enumDescriptions": [
             "Default value.",
@@ -21168,7 +21253,8 @@
             "Gemini Enterprise EDU Pro tier.",
             "Gemini Enterprise EDU tier for emerging market only.",
             "Gemini Enterprise EDU Pro tier for emerging market.",
-            "Gemini Frontline Starter tier."
+            "Gemini Frontline Starter tier.",
+            "Represents the Gemini Enterprise Consumption-only tier: $0 subscription billed purely on usage (PAYG)."
           ],
           "type": "string"
         }
@@ -23101,7 +23187,8 @@
             "GCNV",
             "GOOGLE_CHAT",
             "GOOGLE_SITES",
-            "REMOTE_MCP"
+            "REMOTE_MCP",
+            "GOOGLE_WORKSPACE"
           ],
           "enumDescriptions": [
             "Default value.",
@@ -23118,7 +23205,8 @@
             "Google Cloud NetApp Volumes connector.",
             "Google Chat connector.",
             "Google Sites connector.",
-            "Remote MCP based connector."
+            "Remote MCP based connector.",
+            "Google Workspace connector."
           ],
           "readOnly": true,
           "type": "string"
@@ -24701,7 +24789,7 @@
             ],
             "type": "string"
           },
-          "description": "Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all features, if it's present, all other feature state settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `disable-mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills` * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-intelligence`",
+          "description": "Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all features, if it's present, all other feature state settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-intelligence`",
           "type": "object"
         },
         "industryVertical": {
@@ -25107,7 +25195,8 @@
             "SUBSCRIPTION_TIER_EDU_PRO",
             "SUBSCRIPTION_TIER_EDU_EMERGING",
             "SUBSCRIPTION_TIER_EDU_PRO_EMERGING",
-            "SUBSCRIPTION_TIER_FRONTLINE_STARTER"
+            "SUBSCRIPTION_TIER_FRONTLINE_STARTER",
+            "SUBSCRIPTION_TIER_CONSUMPTION_ONLY"
           ],
           "enumDescriptions": [
             "Default value.",
@@ -25123,7 +25212,8 @@
             "Gemini Enterprise EDU Pro tier.",
             "Gemini Enterprise EDU tier for emerging market only.",
             "Gemini Enterprise EDU Pro tier for emerging market.",
-            "Gemini Frontline Starter tier."
+            "Gemini Frontline Starter tier.",
+            "Represents the Gemini Enterprise Consumption-only tier: $0 subscription billed purely on usage (PAYG)."
           ],
           "type": "string"
         },
@@ -27044,7 +27134,8 @@
             "SUBSCRIPTION_TIER_EDU_PRO",
             "SUBSCRIPTION_TIER_EDU_EMERGING",
             "SUBSCRIPTION_TIER_EDU_PRO_EMERGING",
-            "SUBSCRIPTION_TIER_FRONTLINE_STARTER"
+            "SUBSCRIPTION_TIER_FRONTLINE_STARTER",
+            "SUBSCRIPTION_TIER_CONSUMPTION_ONLY"
           ],
           "enumDescriptions": [
             "Default value.",
@@ -27060,7 +27151,8 @@
             "Gemini Enterprise EDU Pro tier.",
             "Gemini Enterprise EDU tier for emerging market only.",
             "Gemini Enterprise EDU Pro tier for emerging market.",
-            "Gemini Frontline Starter tier."
+            "Gemini Frontline Starter tier.",
+            "Represents the Gemini Enterprise Consumption-only tier: $0 subscription billed purely on usage (PAYG)."
           ],
           "type": "string"
         }
@@ -27954,6 +28046,14 @@
       "description": "Represents the currently effective configurable billing parameters. These values are derived from the customer's subscription history stored internally and reflect the thresholds actively being used for billing purposes at the time of the GetProject call. This includes the start_time of the subscription and may differ from the values in `customer_provided_config` due to billing rules (e.g., scale-downs taking effect only at the start of a new month). We also include the update type to indicate the type of update performed on the configurable billing configuration in the UpdateProject operation.",
       "id": "GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatus",
       "properties": {
+        "agentSearchTokenSubscriptionStatuses": {
+          "description": "Output only. Per-model Agent Search TPM subscription status.",
+          "items": {
+            "$ref": "GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus"
+          },
+          "readOnly": true,
+          "type": "array"
+        },
         "effectiveIndexingCoreThreshold": {
           "description": "Optional. The currently effective Indexing Core threshold. This is the threshold against which Indexing Core usage is compared for overage calculations.",
           "format": "int64",
@@ -27989,6 +28089,61 @@
         },
         "updateType": {
           "description": "Output only. The type of update performed in this operation. This field is populated in the response of UpdateProject.",
+          "enum": [
+            "UPDATE_TYPE_UNSPECIFIED",
+            "CREATE",
+            "DELETE",
+            "SCALE_UP",
+            "SCALE_DOWN"
+          ],
+          "enumDescriptions": [
+            "Unspecified update type.",
+            "Configurable billing was created/enabled.",
+            "Configurable billing was deleted/disabled.",
+            "Subscription was scaled up (thresholds increased).",
+            "Subscription was scaled down (thresholds decreased)."
+          ],
+          "readOnly": true,
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus": {
+      "description": "Per-model Agent Search TPM subscription status. One entry per active `core_subscription.agent_search_token_subscriptions[*]` entry in the customer-provided config; populated by UpdateProject and GetProject. The lifecycle scalars on this message (`start_time`, `terminate_time`, `update_type`, `tpm_threshold_next_update_time`) are per (project, model_version) \u2014 siblings of the whole-relationship `start_time` / `terminate_time` / `update_type` on the enclosing ConfigurableBillingStatus, but scoped to this specific Agent Search TPM subscription instead of to the overall customer-configurable- pricing relationship. This per-instance granularity is intentional: the underlying SubV3 storage is per-(project, model_version), so each model has its own activation, termination, and deferred-update clock; surfacing that on the response gives customers the granularity they need to manage per-model commitments independently. QPM / IndexingCore differ \u2014 their storage is one row per (project, location), so their lifecycle is represented only by the whole- relationship scalars on ConfigurableBillingStatus.",
+      "id": "GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus",
+      "properties": {
+        "effectiveTpmThreshold": {
+          "description": "Output only. The currently effective TPM threshold. Reflects scale-up immediately and scale-down at the next billing cycle, matching `effective_search_qpm_threshold` semantics.",
+          "format": "int64",
+          "readOnly": true,
+          "type": "string"
+        },
+        "modelVersion": {
+          "description": "Output only. The Gemini model version this status corresponds to. Matches CoreSubscription.AgentSearchTokenSubscription.model_version (a stable Gemini model version from the Gemini Enterprise Agent Platform model-versions registry; see https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions#gemini-models).",
+          "readOnly": true,
+          "type": "string"
+        },
+        "startTime": {
+          "description": "Output only. When this (project, model_version) Agent Search TPM subscription was first activated. Set once on first activation of this model version and never moved by subsequent threshold updates; on termination + re-activation a new value is recorded. Does NOT move the whole-relationship `start_time` on the enclosing ConfigurableBillingStatus, which continues to represent the first activation of the overall customer-configurable-pricing relationship.",
+          "format": "google-datetime",
+          "readOnly": true,
+          "type": "string"
+        },
+        "terminateTime": {
+          "description": "Output only. If set, the scheduled effective time at which this (project, model_version) Agent Search TPM subscription will terminate. Populated when the customer removes this entry from `core_subscription.agent_search_token_subscriptions[*]`. Does NOT move the whole-relationship `terminate_time` on the enclosing ConfigurableBillingStatus, which is populated only when the entire customer-configurable-pricing relationship is being torn down.",
+          "format": "google-datetime",
+          "readOnly": true,
+          "type": "string"
+        },
+        "tpmThresholdNextUpdateTime": {
+          "description": "Output only. The earliest next update time for the TPM subscription threshold for this (project, model_version). Populated only after a successful update.",
+          "format": "google-datetime",
+          "readOnly": true,
+          "type": "string"
+        },
+        "updateType": {
+          "description": "Output only. The type of the most recent update to this (project, model_version) subscription, as performed by the most recent UpdateProject call. `UPDATE_TYPE_UNSPECIFIED` indicates this model_version was not touched by the most recent UpdateProject (its `effective_tpm_threshold` reflects an earlier update). The whole-relationship `update_type` on the enclosing ConfigurableBillingStatus continues to summarize the direction of the most recent update across all surfaces in the project (QPM, IndexingCore, and Agent Search TPM together).",
           "enum": [
             "UPDATE_TYPE_UNSPECIFIED",
             "CREATE",
@@ -33263,6 +33418,11 @@
       "description": "Read-only collection component that contains data store collections fields that may be used for filtering",
       "id": "GoogleCloudDiscoveryengineV1alphaWidgetConfigCollectionComponent",
       "properties": {
+        "connectorAuthState": {
+          "$ref": "GoogleCloudDiscoveryengineV1alphaWidgetConfigConnectorAuthState",
+          "description": "Output only. The auth uri of the connector source.",
+          "readOnly": true
+        },
         "connectorIconLink": {
           "description": "Output only. The icon link of the connector source.",
           "readOnly": true,
@@ -33295,6 +33455,43 @@
         },
         "name": {
           "description": "The name of the collection. It should be collection resource name. Format: `projects/{project}/locations/{location}/collections/{collection_id}`. For APIs under WidgetService, such as WidgetService.LookupWidgetConfig, the project number and location part is erased in this field.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudDiscoveryengineV1alphaWidgetConfigConnectorAuthState": {
+      "description": "Read-only connector in CollectionComponent auth state.",
+      "id": "GoogleCloudDiscoveryengineV1alphaWidgetConfigConnectorAuthState",
+      "properties": {
+        "authState": {
+          "description": "Output only. The authorization state of the data connector.",
+          "enum": [
+            "AUTH_STATE_UNSPECIFIED",
+            "AUTHORIZED",
+            "EXPIRED",
+            "ACTIONS_DISABLED",
+            "NO_AUTH"
+          ],
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "The user has authorized the data connector.",
+            "The user authorization for the data connector has expired.",
+            "The user can still make search requests but actions need to be enabled.",
+            "The data connector does not require any authorization."
+          ],
+          "readOnly": true,
+          "type": "string"
+        },
+        "authorizationUri": {
+          "description": "Output only. The authorization uri for the data connector.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "updateTime": {
+          "description": "Output only. The authorization state update timestamp.",
+          "format": "google-datetime",
+          "readOnly": true,
           "type": "string"
         }
       },
@@ -33656,7 +33853,7 @@
             ],
             "type": "string"
           },
-          "description": "Output only. Feature config for the engine to opt in or opt out of features. Supported keys: * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `disable-mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills` * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-intelligence`",
+          "description": "Output only. Feature config for the engine to opt in or opt out of features. Supported keys: * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-intelligence`",
           "readOnly": true,
           "type": "object"
         },
@@ -35266,7 +35463,7 @@
             ],
             "type": "string"
           },
-          "description": "Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all features, if it's present, all other feature state settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `disable-mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills` * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-intelligence`",
+          "description": "Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all features, if it's present, all other feature state settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-intelligence`",
           "type": "object"
         },
         "industryVertical": {
@@ -35607,7 +35804,8 @@
             "SUBSCRIPTION_TIER_EDU_PRO",
             "SUBSCRIPTION_TIER_EDU_EMERGING",
             "SUBSCRIPTION_TIER_EDU_PRO_EMERGING",
-            "SUBSCRIPTION_TIER_FRONTLINE_STARTER"
+            "SUBSCRIPTION_TIER_FRONTLINE_STARTER",
+            "SUBSCRIPTION_TIER_CONSUMPTION_ONLY"
           ],
           "enumDescriptions": [
             "Default value.",
@@ -35623,7 +35821,8 @@
             "Gemini Enterprise EDU Pro tier.",
             "Gemini Enterprise EDU tier for emerging market only.",
             "Gemini Enterprise EDU Pro tier for emerging market.",
-            "Gemini Frontline Starter tier."
+            "Gemini Frontline Starter tier.",
+            "Represents the Gemini Enterprise Consumption-only tier: $0 subscription billed purely on usage (PAYG)."
           ],
           "type": "string"
         },
@@ -36248,7 +36447,8 @@
             "SUBSCRIPTION_TIER_EDU_PRO",
             "SUBSCRIPTION_TIER_EDU_EMERGING",
             "SUBSCRIPTION_TIER_EDU_PRO_EMERGING",
-            "SUBSCRIPTION_TIER_FRONTLINE_STARTER"
+            "SUBSCRIPTION_TIER_FRONTLINE_STARTER",
+            "SUBSCRIPTION_TIER_CONSUMPTION_ONLY"
           ],
           "enumDescriptions": [
             "Default value.",
@@ -36264,7 +36464,8 @@
             "Gemini Enterprise EDU Pro tier.",
             "Gemini Enterprise EDU tier for emerging market only.",
             "Gemini Enterprise EDU Pro tier for emerging market.",
-            "Gemini Frontline Starter tier."
+            "Gemini Frontline Starter tier.",
+            "Represents the Gemini Enterprise Consumption-only tier: $0 subscription billed purely on usage (PAYG)."
           ],
           "type": "string"
         }
@@ -36401,6 +36602,14 @@
       "description": "Represents the currently effective configurable billing parameters. These values are derived from the customer's subscription history stored internally and reflect the thresholds actively being used for billing purposes at the time of the GetProject call. This includes the start_time of the subscription and may differ from the values in `customer_provided_config` due to billing rules (e.g., scale-downs taking effect only at the start of a new month). We also include the update type to indicate the type of update performed on the configurable billing configuration in the UpdateProject operation.",
       "id": "GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatus",
       "properties": {
+        "agentSearchTokenSubscriptionStatuses": {
+          "description": "Output only. Per-model Agent Search TPM subscription status.",
+          "items": {
+            "$ref": "GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus"
+          },
+          "readOnly": true,
+          "type": "array"
+        },
         "effectiveIndexingCoreThreshold": {
           "description": "Optional. The currently effective Indexing Core threshold. This is the threshold against which Indexing Core usage is compared for overage calculations.",
           "format": "int64",
@@ -36436,6 +36645,61 @@
         },
         "updateType": {
           "description": "Output only. The type of update performed in this operation. This field is populated in the response of UpdateProject.",
+          "enum": [
+            "UPDATE_TYPE_UNSPECIFIED",
+            "CREATE",
+            "DELETE",
+            "SCALE_UP",
+            "SCALE_DOWN"
+          ],
+          "enumDescriptions": [
+            "Unspecified update type.",
+            "Configurable billing was created/enabled.",
+            "Configurable billing was deleted/disabled.",
+            "Subscription was scaled up (thresholds increased).",
+            "Subscription was scaled down (thresholds decreased)."
+          ],
+          "readOnly": true,
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus": {
+      "description": "Per-model Agent Search TPM subscription status. One entry per active `core_subscription.agent_search_token_subscriptions[*]` entry in the customer-provided config; populated by UpdateProject and GetProject. The lifecycle scalars on this message (`start_time`, `terminate_time`, `update_type`, `tpm_threshold_next_update_time`) are per (project, model_version) \u2014 siblings of the whole-relationship `start_time` / `terminate_time` / `update_type` on the enclosing ConfigurableBillingStatus, but scoped to this specific Agent Search TPM subscription instead of to the overall customer-configurable- pricing relationship. This per-instance granularity is intentional: the underlying SubV3 storage is per-(project, model_version), so each model has its own activation, termination, and deferred-update clock; surfacing that on the response gives customers the granularity they need to manage per-model commitments independently. QPM / IndexingCore differ \u2014 their storage is one row per (project, location), so their lifecycle is represented only by the whole- relationship scalars on ConfigurableBillingStatus.",
+      "id": "GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus",
+      "properties": {
+        "effectiveTpmThreshold": {
+          "description": "Output only. The currently effective TPM threshold. Reflects scale-up immediately and scale-down at the next billing cycle, matching `effective_search_qpm_threshold` semantics.",
+          "format": "int64",
+          "readOnly": true,
+          "type": "string"
+        },
+        "modelVersion": {
+          "description": "Output only. The Gemini model version this status corresponds to. Matches CoreSubscription.AgentSearchTokenSubscription.model_version (a stable Gemini model version from the Gemini Enterprise Agent Platform model-versions registry; see https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions#gemini-models).",
+          "readOnly": true,
+          "type": "string"
+        },
+        "startTime": {
+          "description": "Output only. When this (project, model_version) Agent Search TPM subscription was first activated. Set once on first activation of this model version and never moved by subsequent threshold updates; on termination + re-activation a new value is recorded. Does NOT move the whole-relationship `start_time` on the enclosing ConfigurableBillingStatus, which continues to represent the first activation of the overall customer-configurable-pricing relationship.",
+          "format": "google-datetime",
+          "readOnly": true,
+          "type": "string"
+        },
+        "terminateTime": {
+          "description": "Output only. If set, the scheduled effective time at which this (project, model_version) Agent Search TPM subscription will terminate. Populated when the customer removes this entry from `core_subscription.agent_search_token_subscriptions[*]`. Does NOT move the whole-relationship `terminate_time` on the enclosing ConfigurableBillingStatus, which is populated only when the entire customer-configurable-pricing relationship is being torn down.",
+          "format": "google-datetime",
+          "readOnly": true,
+          "type": "string"
+        },
+        "tpmThresholdNextUpdateTime": {
+          "description": "Output only. The earliest next update time for the TPM subscription threshold for this (project, model_version). Populated only after a successful update.",
+          "format": "google-datetime",
+          "readOnly": true,
+          "type": "string"
+        },
+        "updateType": {
+          "description": "Output only. The type of the most recent update to this (project, model_version) subscription, as performed by the most recent UpdateProject call. `UPDATE_TYPE_UNSPECIFIED` indicates this model_version was not touched by the most recent UpdateProject (its `effective_tpm_threshold` reflects an earlier update). The whole-relationship `update_type` on the enclosing ConfigurableBillingStatus continues to summarize the direction of the most recent update across all surfaces in the project (QPM, IndexingCore, and Agent Search TPM together).",
           "enum": [
             "UPDATE_TYPE_UNSPECIFIED",
             "CREATE",
