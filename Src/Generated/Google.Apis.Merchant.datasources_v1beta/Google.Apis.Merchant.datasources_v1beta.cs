@@ -865,7 +865,9 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
         /// remove the given reference from this list. Changing the order of this list will result in changing the
         /// priority of data sources in the default rule. For example, providing the following list: [`1001`, `self`]
         /// will take attribute values from supplemental data source `1001`, and fallback to `self` if the attribute is
-        /// not set in `1001`.
+        /// not set in `1001`. Warning: The update (patch) and create call replaces the entire default rule setup. It
+        /// doesn't work as an addition or append. If `self` is missing from the list of `take_from_data_sources`, the
+        /// API will ignore attributes from the primary data source itself.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("takeFromDataSources")]
         public virtual System.Collections.Generic.IList<DataSourceReference> TakeFromDataSources { get; set; }
@@ -1191,6 +1193,9 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
 
         /// <summary>
         /// Optional. Default rule management of the data source. If set, the linked data sources will be replaced.
+        /// Warning: The update (patch) and create call replaces the entire default rule setup. It doesn't work as an
+        /// addition or append. If `self` is missing from the list of `take_from_data_sources`, the API will ignore
+        /// attributes from the primary data source itself.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultRule")]
         public virtual DefaultRule DefaultRule { get; set; }
