@@ -524,6 +524,10 @@ namespace Google.Apis.PagespeedInsights.v5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessibility")]
         public virtual LighthouseCategoryV5 Accessibility { get; set; }
 
+        /// <summary>The agentic browsing category, containing all agentic browsing related audits.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentic-browsing")]
+        public virtual LighthouseCategoryV5 AgenticBrowsing { get; set; }
+
         /// <summary>The best practices category, containing all best practices related audits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("best-practices")]
         public virtual LighthouseCategoryV5 BestPractices { get; set; }
