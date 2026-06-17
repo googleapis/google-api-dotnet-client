@@ -5318,6 +5318,49 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal
+    /// formats, such as Java's
+    /// [BigDecimal](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or Python's
+    /// [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
+    /// </summary>
+    public class Decimal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The decimal value, as a string. The string representation consists of an optional sign, `+` (`U+002B`) or
+        /// `-` (`U+002D`), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed
+        /// by a fraction, optionally followed by an exponent. An empty string **should** be interpreted as `0`. The
+        /// fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at
+        /// least one digit in either the integer or the fraction. The number formed by the sign, the integer and the
+        /// fraction is referred to as the significand. The exponent consists of the character `e` (`U+0065`) or `E`
+        /// (`U+0045`) followed by one or more decimal digits. Services **should** normalize decimal values before
+        /// storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -&amp;gt; `2.5`). - Replacing a
+        /// zero-length integer value with `0` (`.5` -&amp;gt; `0.5`). - Coercing the exponent character to upper-case,
+        /// with explicit sign (`2.5e8` -&amp;gt; `2.5E+8`). - Removing an explicitly-provided zero exponent (`2.5E0`
+        /// -&amp;gt; `2.5`). Services **may** perform additional normalization based on its own needs and the internal
+        /// decimal implementation selected, such as shifting the decimal point and exponent value together (example:
+        /// `2.5E-1` &amp;lt;-&amp;gt; `0.25`). Additionally, services **may** preserve trailing zeroes in the fraction
+        /// to indicate increased precision, but are not required to do so. Note that only the `.` character is
+        /// supported to divide the integer and the fraction; `,` **should not** be supported regardless of locale.
+        /// Additionally, thousand separators **should not** be supported. If a service does support them, values
+        /// **must** be normalized. The ENBF grammar is: DecimalString = '' | [Sign] Significand [Exponent]; Sign = '+'
+        /// | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | 'E') [Sign] Digits; Digits = { '0'
+        /// | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' }; Services **should** clearly document the range of
+        /// supported values, the maximum supported precision (total number of digits), and, if applicable, the scale
+        /// (number of digits after the decimal point), as well as how it behaves when receiving out-of-bounds values.
+        /// Services **may** choose to accept values passed as input even when the value has a higher precision or scale
+        /// than the service supports, and **should** round the value to fit the supported scale. Alternatively, the
+        /// service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if precision would be lost.
+        /// Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a
+        /// value outside of the supported range.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Dependency represent a single dependency with another unit kind by alias.</summary>
     public class Dependency : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5338,23 +5381,6 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
     /// execute if the Unit is currently provisioned.
     /// </summary>
     public class Deprovision : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// DeprovisionUnitGroup is the unit group operation that deprovisions the underlying resources represented by a
-    /// UnitGroup.
-    /// </summary>
-    public class DeprovisionUnitGroup : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>DetachUnitGroup is the unit group operation that detaches a provisioned UnitGroup.</summary>
-    public class DetachUnitGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5788,16 +5814,6 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("release")]
         public virtual string Release { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// ProvisionUnitGroup is the unit group operation that provisions the underlying resources represented by a
-    /// UnitGroup.
-    /// </summary>
-    public class ProvisionUnitGroup : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6476,6 +6492,13 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("unitKind")]
         public virtual string UnitKind { get; set; }
 
+        /// <summary>
+        /// Optional. Settings for controlling the pacing of rollouts i.e. the number of units to be rolled out in
+        /// parallel in a region.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unitUpdatePacing")]
+        public virtual UnitUpdatePacing UnitUpdatePacing { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -6842,17 +6865,6 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. The Releases that are assigned to this SaasRelease.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("releases")]
-        public virtual System.Collections.Generic.IList<string> Releases { get; set; }
-
-        /// <summary>
-        /// Required. A mapping between Tiers and UnitKinds that are part of this SaasRelease. While Tiers are defined
-        /// as top-level resources, the mapping between Tiers and Unit Kinds is defined per SaasRelease.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tierMappings")]
-        public virtual System.Collections.Generic.IList<TierMapping> TierMappings { get; set; }
-
         /// <summary>
         /// Output only. The unique identifier of the resource. UID is unique in the time and space for this resource
         /// within the scope of the service. It is typically generated by the server on successful creation of a
@@ -7115,35 +7127,6 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
-    }
-
-    /// <summary>TierMapping describes the mapping between a Tier and its associated UnitKinds.</summary>
-    public class TierMapping : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The tier.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tier")]
-        public virtual string Tier { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("unitKinds")]
-        public virtual System.Collections.Generic.IList<TierUnitKind> UnitKinds { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A description of a single Unit Kind that is part of a Tier.</summary>
-    public class TierUnitKind : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. Output only. Input variables for the UnitKind.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inputVariables")]
-        public virtual System.Collections.Generic.IList<UnitVariable> InputVariables { get; set; }
-
-        /// <summary>Required. Immutable. The unique identifier of the UnitKind.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unitKind")]
-        public virtual string UnitKind { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>Input variables whose values will be passed on to dependencies</summary>
@@ -7583,18 +7566,6 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. Immutable. The SaaS that this UnitGroup is created for.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("saas")]
-        public virtual string Saas { get; set; }
-
-        /// <summary>Required. Immutable. Current SaasRelease that the UnitGroup is provisioned with.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("saasRelease")]
-        public virtual string SaasRelease { get; set; }
-
-        /// <summary>Optional. Output only. State of the UnitGroup.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
         /// <summary>
         /// Output only. The unique identifier of the resource. UID is unique in the time and space for this resource
         /// within the scope of the service. It is typically generated by the server on successful creation of a
@@ -7693,14 +7664,6 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. Represents a deprovision operation on a UnitGroup.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deprovisionUnitGroup")]
-        public virtual DeprovisionUnitGroup DeprovisionUnitGroup { get; set; }
-
-        /// <summary>Optional. Represents a detach operation on a UnitGroup.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("detachUnitGroup")]
-        public virtual DetachUnitGroup DetachUnitGroup { get; set; }
-
         /// <summary>
         /// Output only. An opaque value that uniquely identifies a version or generation of a resource. It can be used
         /// to confirm that the client and server agree on the ordering of a resource being written.
@@ -7721,14 +7684,6 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
-
-        /// <summary>Optional. Represents a provision operation on a UnitGroup.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("provisionUnitGroup")]
-        public virtual ProvisionUnitGroup ProvisionUnitGroup { get; set; }
-
-        /// <summary>Optional. Tier represents the tier level of the UnitGroupOperation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tier")]
-        public virtual string Tier { get; set; }
 
         /// <summary>
         /// Output only. The unique identifier of the resource. UID is unique in the time and space for this resource
@@ -8243,6 +8198,30 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         /// <summary>Required. Type of the condition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// UnitUpdatePacing defines the policy for the maximum number of unit operations that can run for a rollout in
+    /// parallel in a single region.
+    /// </summary>
+    public class UnitUpdatePacing : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. An absolute cap on concurrent units operations. If both percent and count are provided, the system
+        /// uses the MINIMUM (most restrictive).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentOperationsCount")]
+        public virtual System.Nullable<int> MaxConcurrentOperationsCount { get; set; }
+
+        /// <summary>
+        /// Optional. The maximum percentage of total units in the scope that can be in-flight. Example: 10.5 for 10.5%.
+        /// If both percent and count are provided, the system uses the MINIMUM (most restrictive).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentOperationsPercent")]
+        public virtual Decimal MaxConcurrentOperationsPercent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
