@@ -5590,6 +5590,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pemCertificateChain")]
         public virtual System.Collections.Generic.IList<string> PemCertificateChain { get; set; }
 
+        /// <summary>Output only. Specifies the DNS name to use with PSC service automation for the Instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscAutoDnsName")]
+        public virtual string PscAutoDnsName { get; set; }
+
         /// <summary>Output only. The DNS name to use with PSC for the Instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscDnsName")]
         public virtual string PscDnsName { get; set; }
@@ -9245,6 +9249,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceVersion")]
         public virtual string MaintenanceVersion { get; set; }
+
+        /// <summary>Optional. List of next available maintenance versions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextAvailableMaintenanceVersions")]
+        public virtual System.Collections.Generic.IList<string> NextAvailableMaintenanceVersions { get; set; }
 
         /// <summary>
         /// Optional. Upcoming maintenance for the database resource. This field is populated once SLM generates and
