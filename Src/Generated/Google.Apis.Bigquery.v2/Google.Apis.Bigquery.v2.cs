@@ -355,7 +355,8 @@ namespace Google.Apis.Bigquery.v2
         /// <summary>
         /// Deletes the dataset specified by the datasetId value. Before you can delete a dataset, you must delete all
         /// its tables, either manually or by specifying deleteContents. Immediately after deletion, you can create
-        /// another dataset with the same name.
+        /// another dataset with the same name. # IAM Permissions Requires the `bigquery.datasets.delete` permission on
+        /// the dataset.
         /// </summary>
         /// <param name="projectId">Required. Project ID of the dataset being deleted</param>
         /// <param name="datasetId">Required. Dataset ID of dataset being deleted</param>
@@ -367,7 +368,8 @@ namespace Google.Apis.Bigquery.v2
         /// <summary>
         /// Deletes the dataset specified by the datasetId value. Before you can delete a dataset, you must delete all
         /// its tables, either manually or by specifying deleteContents. Immediately after deletion, you can create
-        /// another dataset with the same name.
+        /// another dataset with the same name. # IAM Permissions Requires the `bigquery.datasets.delete` permission on
+        /// the dataset.
         /// </summary>
         public class DeleteRequest : BigqueryBaseServiceRequest<string>
         {
@@ -434,7 +436,10 @@ namespace Google.Apis.Bigquery.v2
             }
         }
 
-        /// <summary>Returns the dataset specified by datasetID.</summary>
+        /// <summary>
+        /// Returns the dataset specified by datasetID. # IAM Permissions Requires the `bigquery.datasets.get`
+        /// permission on the dataset.
+        /// </summary>
         /// <param name="projectId">Required. Project ID of the requested dataset</param>
         /// <param name="datasetId">Required. Dataset ID of the requested dataset</param>
         public virtual GetRequest Get(string projectId, string datasetId)
@@ -442,7 +447,10 @@ namespace Google.Apis.Bigquery.v2
             return new GetRequest(this.service, projectId, datasetId);
         }
 
-        /// <summary>Returns the dataset specified by datasetID.</summary>
+        /// <summary>
+        /// Returns the dataset specified by datasetID. # IAM Permissions Requires the `bigquery.datasets.get`
+        /// permission on the dataset.
+        /// </summary>
         public class GetRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Dataset>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -558,7 +566,10 @@ namespace Google.Apis.Bigquery.v2
             }
         }
 
-        /// <summary>Creates a new empty dataset.</summary>
+        /// <summary>
+        /// Creates a new empty dataset. # IAM Permissions Requires the `bigquery.datasets.create` permission on the
+        /// project.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Required. Project ID of the new dataset</param>
         public virtual InsertRequest Insert(Google.Apis.Bigquery.v2.Data.Dataset body, string projectId)
@@ -566,7 +577,10 @@ namespace Google.Apis.Bigquery.v2
             return new InsertRequest(this.service, body, projectId);
         }
 
-        /// <summary>Creates a new empty dataset.</summary>
+        /// <summary>
+        /// Creates a new empty dataset. # IAM Permissions Requires the `bigquery.datasets.create` permission on the
+        /// project.
+        /// </summary>
         public class InsertRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Dataset>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -633,7 +647,9 @@ namespace Google.Apis.Bigquery.v2
         }
 
         /// <summary>
-        /// Lists all datasets in the specified project to which the user has been granted the READER dataset role.
+        /// Lists all datasets in the specified project to which the user has been granted the READER dataset role. #
+        /// IAM Permissions Requires no specific IAM permission(s) to use this method. Results are filtered to only
+        /// include datasets on which the caller has the `bigquery.datasets.get` permission.
         /// </summary>
         /// <param name="projectId">Required. Project ID of the datasets to be listed</param>
         public virtual ListRequest List(string projectId)
@@ -642,7 +658,9 @@ namespace Google.Apis.Bigquery.v2
         }
 
         /// <summary>
-        /// Lists all datasets in the specified project to which the user has been granted the READER dataset role.
+        /// Lists all datasets in the specified project to which the user has been granted the READER dataset role. #
+        /// IAM Permissions Requires no specific IAM permission(s) to use this method. Results are filtered to only
+        /// include datasets on which the caller has the `bigquery.datasets.get` permission.
         /// </summary>
         public class ListRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.DatasetList>
         {
@@ -741,7 +759,8 @@ namespace Google.Apis.Bigquery.v2
         /// <summary>
         /// Updates information in an existing dataset. The update method replaces the entire dataset resource, whereas
         /// the patch method only replaces fields that are provided in the submitted dataset resource. This method
-        /// supports RFC5789 patch semantics.
+        /// supports RFC5789 patch semantics. # IAM Permissions Requires the following IAM permission(s) to use this
+        /// method: - `bigquery.datasets.update` on the dataset. - `bigquery.datasets.get` on the dataset.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Required. Project ID of the dataset being updated</param>
@@ -754,7 +773,8 @@ namespace Google.Apis.Bigquery.v2
         /// <summary>
         /// Updates information in an existing dataset. The update method replaces the entire dataset resource, whereas
         /// the patch method only replaces fields that are provided in the submitted dataset resource. This method
-        /// supports RFC5789 patch semantics.
+        /// supports RFC5789 patch semantics. # IAM Permissions Requires the following IAM permission(s) to use this
+        /// method: - `bigquery.datasets.update` on the dataset. - `bigquery.datasets.get` on the dataset.
         /// </summary>
         public class PatchRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Dataset>
         {
@@ -880,7 +900,9 @@ namespace Google.Apis.Bigquery.v2
 
         /// <summary>
         /// Undeletes a dataset which is within time travel window based on datasetId. If a time is specified, the
-        /// dataset version deleted at that time is undeleted, else the last live version is undeleted.
+        /// dataset version deleted at that time is undeleted, else the last live version is undeleted. # IAM
+        /// Permissions Requires the following IAM permission(s) to use this method: - `bigquery.datasets.create` on the
+        /// project. - `bigquery.datasets.get` on the dataset.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Required. Project ID of the dataset to be undeleted</param>
@@ -892,7 +914,9 @@ namespace Google.Apis.Bigquery.v2
 
         /// <summary>
         /// Undeletes a dataset which is within time travel window based on datasetId. If a time is specified, the
-        /// dataset version deleted at that time is undeleted, else the last live version is undeleted.
+        /// dataset version deleted at that time is undeleted, else the last live version is undeleted. # IAM
+        /// Permissions Requires the following IAM permission(s) to use this method: - `bigquery.datasets.create` on the
+        /// project. - `bigquery.datasets.get` on the dataset.
         /// </summary>
         public class UndeleteRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Dataset>
         {
@@ -953,7 +977,8 @@ namespace Google.Apis.Bigquery.v2
 
         /// <summary>
         /// Updates information in an existing dataset. The update method replaces the entire dataset resource, whereas
-        /// the patch method only replaces fields that are provided in the submitted dataset resource.
+        /// the patch method only replaces fields that are provided in the submitted dataset resource. # IAM Permissions
+        /// Requires the `bigquery.datasets.update` permission on the dataset.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Required. Project ID of the dataset being updated</param>
@@ -965,7 +990,8 @@ namespace Google.Apis.Bigquery.v2
 
         /// <summary>
         /// Updates information in an existing dataset. The update method replaces the entire dataset resource, whereas
-        /// the patch method only replaces fields that are provided in the submitted dataset resource.
+        /// the patch method only replaces fields that are provided in the submitted dataset resource. # IAM Permissions
+        /// Requires the `bigquery.datasets.update` permission on the dataset.
         /// </summary>
         public class UpdateRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Dataset>
         {
@@ -1106,7 +1132,9 @@ namespace Google.Apis.Bigquery.v2
 
         /// <summary>
         /// Requests that a job be cancelled. This call will return immediately, and the client will need to poll for
-        /// the job status to see if the cancel completed successfully. Cancelled jobs may still incur costs.
+        /// the job status to see if the cancel completed successfully. Cancelled jobs may still incur costs. # IAM
+        /// Permissions Requires the `bigquery.jobs.update` permission on the job resource. If the user matches the
+        /// creator of the job, the `bigquery.jobs.create` permission on the project is required instead.
         /// </summary>
         /// <param name="projectId">Required. Project ID of the job to cancel</param>
         /// <param name="jobId">Required. Job ID of the job to cancel</param>
@@ -1117,7 +1145,9 @@ namespace Google.Apis.Bigquery.v2
 
         /// <summary>
         /// Requests that a job be cancelled. This call will return immediately, and the client will need to poll for
-        /// the job status to see if the cancel completed successfully. Cancelled jobs may still incur costs.
+        /// the job status to see if the cancel completed successfully. Cancelled jobs may still incur costs. # IAM
+        /// Permissions Requires the `bigquery.jobs.update` permission on the job resource. If the user matches the
+        /// creator of the job, the `bigquery.jobs.create` permission on the project is required instead.
         /// </summary>
         public class CancelRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.JobCancelResponse>
         {
@@ -1187,7 +1217,8 @@ namespace Google.Apis.Bigquery.v2
         }
 
         /// <summary>
-        /// Requests the deletion of the metadata of a job. This call returns when the job's metadata is deleted.
+        /// Requests the deletion of the metadata of a job. This call returns when the job's metadata is deleted. # IAM
+        /// Permissions Requires the `bigquery.jobs.delete` permission on the job resource.
         /// </summary>
         /// <param name="projectId">Required. Project ID of the job for which metadata is to be deleted.</param>
         /// <param name="jobId">
@@ -1201,7 +1232,8 @@ namespace Google.Apis.Bigquery.v2
         }
 
         /// <summary>
-        /// Requests the deletion of the metadata of a job. This call returns when the job's metadata is deleted.
+        /// Requests the deletion of the metadata of a job. This call returns when the job's metadata is deleted. # IAM
+        /// Permissions Requires the `bigquery.jobs.delete` permission on the job resource.
         /// </summary>
         public class DeleteRequest : BigqueryBaseServiceRequest<string>
         {
@@ -1274,7 +1306,9 @@ namespace Google.Apis.Bigquery.v2
 
         /// <summary>
         /// Returns information about a specific job. Job information is available for a six month period after
-        /// creation. Requires that you're the person who ran the job, or have the Is Owner project role.
+        /// creation. Requires that you're the person who ran the job, or have the Is Owner project role. # IAM
+        /// Permissions Requires the `bigquery.jobs.get` permission on the job resource. If the user matches the creator
+        /// of the job, the `bigquery.jobs.create` permission on the project is required instead.
         /// </summary>
         /// <param name="projectId">Required. Project ID of the requested job.</param>
         /// <param name="jobId">Required. Job ID of the requested job.</param>
@@ -1285,7 +1319,9 @@ namespace Google.Apis.Bigquery.v2
 
         /// <summary>
         /// Returns information about a specific job. Job information is available for a six month period after
-        /// creation. Requires that you're the person who ran the job, or have the Is Owner project role.
+        /// creation. Requires that you're the person who ran the job, or have the Is Owner project role. # IAM
+        /// Permissions Requires the `bigquery.jobs.get` permission on the job resource. If the user matches the creator
+        /// of the job, the `bigquery.jobs.create` permission on the project is required instead.
         /// </summary>
         public class GetRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Job>
         {
@@ -1354,7 +1390,12 @@ namespace Google.Apis.Bigquery.v2
             }
         }
 
-        /// <summary>RPC to get the results of a query job.</summary>
+        /// <summary>
+        /// RPC to get the results of a query job. # IAM Permissions Requires the following IAM permission(s) to use
+        /// this method: - `bigquery.jobs.get` on the job. - `bigquery.tables.getData` on the destination table. If the
+        /// user matches the creator of the job, the following IAM permission(s) are required instead: -
+        /// `bigquery.jobs.create` on the project. - `bigquery.tables.getData` on the destination table.
+        /// </summary>
         /// <param name="projectId">Required. Project ID of the query job.</param>
         /// <param name="jobId">Required. Job ID of the query job.</param>
         public virtual GetQueryResultsRequest GetQueryResults(string projectId, string jobId)
@@ -1362,7 +1403,12 @@ namespace Google.Apis.Bigquery.v2
             return new GetQueryResultsRequest(this.service, projectId, jobId);
         }
 
-        /// <summary>RPC to get the results of a query job.</summary>
+        /// <summary>
+        /// RPC to get the results of a query job. # IAM Permissions Requires the following IAM permission(s) to use
+        /// this method: - `bigquery.jobs.get` on the job. - `bigquery.tables.getData` on the destination table. If the
+        /// user matches the creator of the job, the following IAM permission(s) are required instead: -
+        /// `bigquery.jobs.create` on the project. - `bigquery.tables.getData` on the destination table.
+        /// </summary>
         public class GetQueryResultsRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.GetQueryResultsResponse>
         {
             /// <summary>Constructs a new GetQueryResults request.</summary>
@@ -1542,7 +1588,12 @@ namespace Google.Apis.Bigquery.v2
         /// variety of use cases. * The *Metadata* URI is used for most interactions, as it accepts the job
         /// configuration directly. * The *Upload* URI is ONLY for the case when you're sending both a load job
         /// configuration and a data stream together. In this case, the Upload URI accepts the job configuration and the
-        /// data as two distinct multipart MIME parts.
+        /// data as two distinct multipart MIME parts. # IAM Permissions Requires the `bigquery.jobs.create` permission
+        /// on the project resource. Additional permissions are required depending on the job type: - **Load, Export,
+        /// and Copy jobs**: Generally require data-level permissions such as `bigquery.tables.export` or access to
+        /// external storage. - **Query jobs**: Permissions are dependent on the SQL statement. Complex queries (DDL,
+        /// DCL) may require additional permissions to create reservations, modify IAM policies, or update project
+        /// settings.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Project ID of project that will be billed for the job.</param>
@@ -1556,7 +1607,12 @@ namespace Google.Apis.Bigquery.v2
         /// variety of use cases. * The *Metadata* URI is used for most interactions, as it accepts the job
         /// configuration directly. * The *Upload* URI is ONLY for the case when you're sending both a load job
         /// configuration and a data stream together. In this case, the Upload URI accepts the job configuration and the
-        /// data as two distinct multipart MIME parts.
+        /// data as two distinct multipart MIME parts. # IAM Permissions Requires the `bigquery.jobs.create` permission
+        /// on the project resource. Additional permissions are required depending on the job type: - **Load, Export,
+        /// and Copy jobs**: Generally require data-level permissions such as `bigquery.tables.export` or access to
+        /// external storage. - **Query jobs**: Permissions are dependent on the SQL statement. Complex queries (DDL,
+        /// DCL) may require additional permissions to create reservations, modify IAM policies, or update project
+        /// settings.
         /// </summary>
         public class InsertRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Job>
         {
@@ -1607,7 +1663,12 @@ namespace Google.Apis.Bigquery.v2
         /// variety of use cases. * The *Metadata* URI is used for most interactions, as it accepts the job
         /// configuration directly. * The *Upload* URI is ONLY for the case when you're sending both a load job
         /// configuration and a data stream together. In this case, the Upload URI accepts the job configuration and the
-        /// data as two distinct multipart MIME parts.
+        /// data as two distinct multipart MIME parts. # IAM Permissions Requires the `bigquery.jobs.create` permission
+        /// on the project resource. Additional permissions are required depending on the job type: - **Load, Export,
+        /// and Copy jobs**: Generally require data-level permissions such as `bigquery.tables.export` or access to
+        /// external storage. - **Query jobs**: Permissions are dependent on the SQL statement. Complex queries (DDL,
+        /// DCL) may require additional permissions to create reservations, modify IAM policies, or update project
+        /// settings.
         /// </summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
@@ -1750,7 +1811,11 @@ namespace Google.Apis.Bigquery.v2
         /// <summary>
         /// Lists all jobs that you started in the specified project. Job information is available for a six month
         /// period after creation. The job list is sorted in reverse chronological order, by job creation time. Requires
-        /// the Can View project role, or the Is Owner project role if you set the allUsers property.
+        /// the Can View project role, or the Is Owner project role if you set the allUsers property. # IAM Permissions
+        /// Requires no specific IAM permission(s) to use this method. Users are able to list the jobs they created.
+        /// Additional access is granted based on the following permissions: - Users with the `bigquery.jobs.listAll`
+        /// permission can list all jobs with all metadata. - Users with the `bigquery.jobs.list` permission can list
+        /// all jobs, but with redacted information for jobs they did not create.
         /// </summary>
         /// <param name="projectId">Project ID of the jobs to list.</param>
         public virtual ListRequest List(string projectId)
@@ -1761,7 +1826,11 @@ namespace Google.Apis.Bigquery.v2
         /// <summary>
         /// Lists all jobs that you started in the specified project. Job information is available for a six month
         /// period after creation. The job list is sorted in reverse chronological order, by job creation time. Requires
-        /// the Can View project role, or the Is Owner project role if you set the allUsers property.
+        /// the Can View project role, or the Is Owner project role if you set the allUsers property. # IAM Permissions
+        /// Requires no specific IAM permission(s) to use this method. Users are able to list the jobs they created.
+        /// Additional access is granted based on the following permissions: - Users with the `bigquery.jobs.listAll`
+        /// permission can list all jobs with all metadata. - Users with the `bigquery.jobs.list` permission can list
+        /// all jobs, but with redacted information for jobs they did not create.
         /// </summary>
         public class ListRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.JobList>
         {
@@ -1949,7 +2018,10 @@ namespace Google.Apis.Bigquery.v2
 
         /// <summary>
         /// Runs a BigQuery SQL query synchronously and returns query results if the query completes within a specified
-        /// timeout.
+        /// timeout. # IAM Permissions Requires the `bigquery.jobs.create` permission on the project resource.
+        /// Data-level permissions are highly dependent on the SQL statement being executed. While standard queries
+        /// require data access (such as `bigquery.tables.getData`), complex operations like DDL or DCL may require
+        /// permissions to manage reservations, IAM policies, or project settings.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Required. Project ID of the query request.</param>
@@ -1960,7 +2032,10 @@ namespace Google.Apis.Bigquery.v2
 
         /// <summary>
         /// Runs a BigQuery SQL query synchronously and returns query results if the query completes within a specified
-        /// timeout.
+        /// timeout. # IAM Permissions Requires the `bigquery.jobs.create` permission on the project resource.
+        /// Data-level permissions are highly dependent on the SQL statement being executed. While standard queries
+        /// require data access (such as `bigquery.tables.getData`), complex operations like DDL or DCL may require
+        /// permissions to manage reservations, IAM policies, or project settings.
         /// </summary>
         public class QueryRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.QueryResponse>
         {
@@ -2021,7 +2096,10 @@ namespace Google.Apis.Bigquery.v2
             this.service = service;
         }
 
-        /// <summary>Deletes the model specified by modelId from the dataset.</summary>
+        /// <summary>
+        /// Deletes the model specified by modelId from the dataset. # IAM Permissions Requires the
+        /// `bigquery.models.delete` permission on the model.
+        /// </summary>
         /// <param name="projectId">Required. Project ID of the model to delete.</param>
         /// <param name="datasetId">Required. Dataset ID of the model to delete.</param>
         /// <param name="modelId">Required. Model ID of the model to delete.</param>
@@ -2030,7 +2108,10 @@ namespace Google.Apis.Bigquery.v2
             return new DeleteRequest(this.service, projectId, datasetId, modelId);
         }
 
-        /// <summary>Deletes the model specified by modelId from the dataset.</summary>
+        /// <summary>
+        /// Deletes the model specified by modelId from the dataset. # IAM Permissions Requires the
+        /// `bigquery.models.delete` permission on the model.
+        /// </summary>
         public class DeleteRequest : BigqueryBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -2094,7 +2175,10 @@ namespace Google.Apis.Bigquery.v2
             }
         }
 
-        /// <summary>Gets the specified model resource by model ID.</summary>
+        /// <summary>
+        /// Gets the specified model resource by model ID. # IAM Permissions Requires the `bigquery.models.getMetadata`
+        /// permission on the model.
+        /// </summary>
         /// <param name="projectId">Required. Project ID of the requested model.</param>
         /// <param name="datasetId">Required. Dataset ID of the requested model.</param>
         /// <param name="modelId">Required. Model ID of the requested model.</param>
@@ -2103,7 +2187,10 @@ namespace Google.Apis.Bigquery.v2
             return new GetRequest(this.service, projectId, datasetId, modelId);
         }
 
-        /// <summary>Gets the specified model resource by model ID.</summary>
+        /// <summary>
+        /// Gets the specified model resource by model ID. # IAM Permissions Requires the `bigquery.models.getMetadata`
+        /// permission on the model.
+        /// </summary>
         public class GetRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Model>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -2169,7 +2256,8 @@ namespace Google.Apis.Bigquery.v2
 
         /// <summary>
         /// Lists all models in the specified dataset. Requires the READER dataset role. After retrieving the list of
-        /// models, you can get information about a particular model by calling the models.get method.
+        /// models, you can get information about a particular model by calling the models.get method. # IAM Permissions
+        /// Requires the `bigquery.models.list` permission on the dataset.
         /// </summary>
         /// <param name="projectId">Required. Project ID of the models to list.</param>
         /// <param name="datasetId">Required. Dataset ID of the models to list.</param>
@@ -2180,7 +2268,8 @@ namespace Google.Apis.Bigquery.v2
 
         /// <summary>
         /// Lists all models in the specified dataset. Requires the READER dataset role. After retrieving the list of
-        /// models, you can get information about a particular model by calling the models.get method.
+        /// models, you can get information about a particular model by calling the models.get method. # IAM Permissions
+        /// Requires the `bigquery.models.list` permission on the dataset.
         /// </summary>
         public class ListRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.ListModelsResponse>
         {
@@ -2259,7 +2348,10 @@ namespace Google.Apis.Bigquery.v2
             }
         }
 
-        /// <summary>Patch specific fields in the specified model.</summary>
+        /// <summary>
+        /// Patch specific fields in the specified model. # IAM Permissions Requires the
+        /// `bigquery.models.updateMetadata` permission on the model.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Required. Project ID of the model to patch.</param>
         /// <param name="datasetId">Required. Dataset ID of the model to patch.</param>
@@ -2269,7 +2361,10 @@ namespace Google.Apis.Bigquery.v2
             return new PatchRequest(this.service, body, projectId, datasetId, modelId);
         }
 
-        /// <summary>Patch specific fields in the specified model.</summary>
+        /// <summary>
+        /// Patch specific fields in the specified model. # IAM Permissions Requires the
+        /// `bigquery.models.updateMetadata` permission on the model.
+        /// </summary>
         public class PatchRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Model>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -2355,14 +2450,22 @@ namespace Google.Apis.Bigquery.v2
             this.service = service;
         }
 
-        /// <summary>RPC to get the service account for a project used for interactions with Google Cloud KMS</summary>
+        /// <summary>
+        /// RPC to get the service account for a project used for interactions with Google Cloud KMS. Requires the
+        /// `bigquery.jobs.create` permission on the project resource. This permission is required to authorize the
+        /// retrieval of the project's service identity for technical management tasks like encryption configuration.
+        /// </summary>
         /// <param name="projectId">Required. ID of the project.</param>
         public virtual GetServiceAccountRequest GetServiceAccount(string projectId)
         {
             return new GetServiceAccountRequest(this.service, projectId);
         }
 
-        /// <summary>RPC to get the service account for a project used for interactions with Google Cloud KMS</summary>
+        /// <summary>
+        /// RPC to get the service account for a project used for interactions with Google Cloud KMS. Requires the
+        /// `bigquery.jobs.create` permission on the project resource. This permission is required to authorize the
+        /// retrieval of the project's service identity for technical management tasks like encryption configuration.
+        /// </summary>
         public class GetServiceAccountRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.GetServiceAccountResponse>
         {
             /// <summary>Constructs a new GetServiceAccount request.</summary>
@@ -2403,7 +2506,10 @@ namespace Google.Apis.Bigquery.v2
         /// <summary>
         /// RPC to list projects to which the user has been granted any project role. Users of this method are
         /// encouraged to consider the [Resource Manager](https://cloud.google.com/resource-manager/docs/) API, which
-        /// provides the underlying data for this method and has more capabilities.
+        /// provides the underlying data for this method and has more capabilities. # IAM Permissions Requires no
+        /// specific IAM permission(s) to use this method. The results are filtered to only include projects on which
+        /// the caller has been granted a project-level role such as a BigQuery predefined IAM role or a basic role such
+        /// as Viewer or Owner.
         /// </summary>
         public virtual ListRequest List()
         {
@@ -2413,7 +2519,10 @@ namespace Google.Apis.Bigquery.v2
         /// <summary>
         /// RPC to list projects to which the user has been granted any project role. Users of this method are
         /// encouraged to consider the [Resource Manager](https://cloud.google.com/resource-manager/docs/) API, which
-        /// provides the underlying data for this method and has more capabilities.
+        /// provides the underlying data for this method and has more capabilities. # IAM Permissions Requires no
+        /// specific IAM permission(s) to use this method. The results are filtered to only include projects on which
+        /// the caller has been granted a project-level role such as a BigQuery predefined IAM role or a basic role such
+        /// as Viewer or Owner.
         /// </summary>
         public class ListRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.ProjectList>
         {
@@ -2485,7 +2594,10 @@ namespace Google.Apis.Bigquery.v2
             this.service = service;
         }
 
-        /// <summary>Deletes the routine specified by routineId from the dataset.</summary>
+        /// <summary>
+        /// Deletes the routine specified by routineId from the dataset. # IAM Permissions Requires the
+        /// `bigquery.routines.delete` permission on the routine.
+        /// </summary>
         /// <param name="projectId">Required. Project ID of the routine to delete</param>
         /// <param name="datasetId">Required. Dataset ID of the routine to delete</param>
         /// <param name="routineId">Required. Routine ID of the routine to delete</param>
@@ -2494,7 +2606,10 @@ namespace Google.Apis.Bigquery.v2
             return new DeleteRequest(this.service, projectId, datasetId, routineId);
         }
 
-        /// <summary>Deletes the routine specified by routineId from the dataset.</summary>
+        /// <summary>
+        /// Deletes the routine specified by routineId from the dataset. # IAM Permissions Requires the
+        /// `bigquery.routines.delete` permission on the routine.
+        /// </summary>
         public class DeleteRequest : BigqueryBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -2558,7 +2673,10 @@ namespace Google.Apis.Bigquery.v2
             }
         }
 
-        /// <summary>Gets the specified routine resource by routine ID.</summary>
+        /// <summary>
+        /// Gets the specified routine resource by routine ID. # IAM Permissions Requires the `bigquery.routines.get`
+        /// permission on the routine.
+        /// </summary>
         /// <param name="projectId">Required. Project ID of the requested routine</param>
         /// <param name="datasetId">Required. Dataset ID of the requested routine</param>
         /// <param name="routineId">Required. Routine ID of the requested routine</param>
@@ -2567,7 +2685,10 @@ namespace Google.Apis.Bigquery.v2
             return new GetRequest(this.service, projectId, datasetId, routineId);
         }
 
-        /// <summary>Gets the specified routine resource by routine ID.</summary>
+        /// <summary>
+        /// Gets the specified routine resource by routine ID. # IAM Permissions Requires the `bigquery.routines.get`
+        /// permission on the routine.
+        /// </summary>
         public class GetRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Routine>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -2711,7 +2832,10 @@ namespace Google.Apis.Bigquery.v2
             }
         }
 
-        /// <summary>Creates a new routine in the dataset.</summary>
+        /// <summary>
+        /// Creates a new routine in the dataset. # IAM Permissions Requires the `bigquery.routines.create` permission
+        /// on the dataset.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Required. Project ID of the new routine</param>
         /// <param name="datasetId">Required. Dataset ID of the new routine</param>
@@ -2720,7 +2844,10 @@ namespace Google.Apis.Bigquery.v2
             return new InsertRequest(this.service, body, projectId, datasetId);
         }
 
-        /// <summary>Creates a new routine in the dataset.</summary>
+        /// <summary>
+        /// Creates a new routine in the dataset. # IAM Permissions Requires the `bigquery.routines.create` permission
+        /// on the dataset.
+        /// </summary>
         public class InsertRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Routine>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -2778,7 +2905,10 @@ namespace Google.Apis.Bigquery.v2
             }
         }
 
-        /// <summary>Lists all routines in the specified dataset. Requires the READER dataset role.</summary>
+        /// <summary>
+        /// Lists all routines in the specified dataset. Requires the READER dataset role. # IAM Permissions Requires
+        /// the `bigquery.routines.list` permission on the dataset.
+        /// </summary>
         /// <param name="projectId">Required. Project ID of the routines to list</param>
         /// <param name="datasetId">Required. Dataset ID of the routines to list</param>
         public virtual ListRequest List(string projectId, string datasetId)
@@ -2786,7 +2916,10 @@ namespace Google.Apis.Bigquery.v2
             return new ListRequest(this.service, projectId, datasetId);
         }
 
-        /// <summary>Lists all routines in the specified dataset. Requires the READER dataset role.</summary>
+        /// <summary>
+        /// Lists all routines in the specified dataset. Requires the READER dataset role. # IAM Permissions Requires
+        /// the `bigquery.routines.list` permission on the dataset.
+        /// </summary>
         public class ListRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.ListRoutinesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -3031,7 +3164,8 @@ namespace Google.Apis.Bigquery.v2
         }
 
         /// <summary>
-        /// Updates information in an existing routine. The update method replaces the entire Routine resource.
+        /// Updates information in an existing routine. The update method replaces the entire Routine resource. # IAM
+        /// Permissions Requires the `bigquery.routines.update` permission on the routine.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Required. Project ID of the routine to update</param>
@@ -3043,7 +3177,8 @@ namespace Google.Apis.Bigquery.v2
         }
 
         /// <summary>
-        /// Updates information in an existing routine. The update method replaces the entire Routine resource.
+        /// Updates information in an existing routine. The update method replaces the entire Routine resource. # IAM
+        /// Permissions Requires the `bigquery.routines.update` permission on the routine.
         /// </summary>
         public class UpdateRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Routine>
         {
@@ -3130,7 +3265,10 @@ namespace Google.Apis.Bigquery.v2
             this.service = service;
         }
 
-        /// <summary>Deletes provided row access policies.</summary>
+        /// <summary>
+        /// Deletes provided row access policies. # IAM Permissions Requires the following IAM permission(s) on the
+        /// table: - `bigquery.rowAccessPolicies.delete` - `bigquery.rowAccessPolicies.setIamPolicy`
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Required. Project ID of the table to delete the row access policies.</param>
         /// <param name="datasetId">Required. Dataset ID of the table to delete the row access policies.</param>
@@ -3140,7 +3278,10 @@ namespace Google.Apis.Bigquery.v2
             return new BatchDeleteRequest(this.service, body, projectId, datasetId, tableId);
         }
 
-        /// <summary>Deletes provided row access policies.</summary>
+        /// <summary>
+        /// Deletes provided row access policies. # IAM Permissions Requires the following IAM permission(s) on the
+        /// table: - `bigquery.rowAccessPolicies.delete` - `bigquery.rowAccessPolicies.setIamPolicy`
+        /// </summary>
         public class BatchDeleteRequest : BigqueryBaseServiceRequest<string>
         {
             /// <summary>Constructs a new BatchDelete request.</summary>
@@ -3211,7 +3352,10 @@ namespace Google.Apis.Bigquery.v2
             }
         }
 
-        /// <summary>Deletes a row access policy.</summary>
+        /// <summary>
+        /// Deletes a row access policy. # IAM Permissions Requires the following IAM permission(s) on the table: -
+        /// `bigquery.rowAccessPolicies.delete` - `bigquery.rowAccessPolicies.setIamPolicy`
+        /// </summary>
         /// <param name="projectId">Required. Project ID of the table to delete the row access policy.</param>
         /// <param name="datasetId">Required. Dataset ID of the table to delete the row access policy.</param>
         /// <param name="tableId">Required. Table ID of the table to delete the row access policy.</param>
@@ -3221,7 +3365,10 @@ namespace Google.Apis.Bigquery.v2
             return new DeleteRequest(this.service, projectId, datasetId, tableId, policyId);
         }
 
-        /// <summary>Deletes a row access policy.</summary>
+        /// <summary>
+        /// Deletes a row access policy. # IAM Permissions Requires the following IAM permission(s) on the table: -
+        /// `bigquery.rowAccessPolicies.delete` - `bigquery.rowAccessPolicies.setIamPolicy`
+        /// </summary>
         public class DeleteRequest : BigqueryBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -3313,7 +3460,10 @@ namespace Google.Apis.Bigquery.v2
             }
         }
 
-        /// <summary>Gets the specified row access policy by policy ID.</summary>
+        /// <summary>
+        /// Gets the specified row access policy by policy ID. # IAM Permissions Requires the
+        /// `bigquery.rowAccessPolicies.get` permission on the table.
+        /// </summary>
         /// <param name="projectId">Required. Project ID of the table to get the row access policy.</param>
         /// <param name="datasetId">Required. Dataset ID of the table to get the row access policy.</param>
         /// <param name="tableId">Required. Table ID of the table to get the row access policy.</param>
@@ -3323,7 +3473,10 @@ namespace Google.Apis.Bigquery.v2
             return new GetRequest(this.service, projectId, datasetId, tableId, policyId);
         }
 
-        /// <summary>Gets the specified row access policy by policy ID.</summary>
+        /// <summary>
+        /// Gets the specified row access policy by policy ID. # IAM Permissions Requires the
+        /// `bigquery.rowAccessPolicies.get` permission on the table.
+        /// </summary>
         public class GetRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.RowAccessPolicy>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -3465,7 +3618,10 @@ namespace Google.Apis.Bigquery.v2
             }
         }
 
-        /// <summary>Creates a row access policy.</summary>
+        /// <summary>
+        /// Creates a row access policy. # IAM Permissions Requires the following IAM permission(s) on the table: -
+        /// `bigquery.rowAccessPolicies.create` - `bigquery.rowAccessPolicies.setIamPolicy` - `bigquery.tables.getData`
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Required. Project ID of the table to get the row access policy.</param>
         /// <param name="datasetId">Required. Dataset ID of the table to get the row access policy.</param>
@@ -3475,7 +3631,10 @@ namespace Google.Apis.Bigquery.v2
             return new InsertRequest(this.service, body, projectId, datasetId, tableId);
         }
 
-        /// <summary>Creates a row access policy.</summary>
+        /// <summary>
+        /// Creates a row access policy. # IAM Permissions Requires the following IAM permission(s) on the table: -
+        /// `bigquery.rowAccessPolicies.create` - `bigquery.rowAccessPolicies.setIamPolicy` - `bigquery.tables.getData`
+        /// </summary>
         public class InsertRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.RowAccessPolicy>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -3546,7 +3705,10 @@ namespace Google.Apis.Bigquery.v2
             }
         }
 
-        /// <summary>Lists all row access policies on the specified table.</summary>
+        /// <summary>
+        /// Lists all row access policies on the specified table. # IAM Permissions Requires the
+        /// `bigquery.rowAccessPolicies.list` permission on the table.
+        /// </summary>
         /// <param name="projectId">Required. Project ID of the row access policies to list.</param>
         /// <param name="datasetId">Required. Dataset ID of row access policies to list.</param>
         /// <param name="tableId">Required. Table ID of the table to list row access policies.</param>
@@ -3555,7 +3717,10 @@ namespace Google.Apis.Bigquery.v2
             return new ListRequest(this.service, projectId, datasetId, tableId);
         }
 
-        /// <summary>Lists all row access policies on the specified table.</summary>
+        /// <summary>
+        /// Lists all row access policies on the specified table. # IAM Permissions Requires the
+        /// `bigquery.rowAccessPolicies.list` permission on the table.
+        /// </summary>
         public class ListRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.ListRowAccessPoliciesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -3715,7 +3880,10 @@ namespace Google.Apis.Bigquery.v2
             }
         }
 
-        /// <summary>Updates a row access policy.</summary>
+        /// <summary>
+        /// Updates a row access policy. # IAM Permissions Requires the following IAM permission(s) on the table: -
+        /// `bigquery.rowAccessPolicies.update` - `bigquery.rowAccessPolicies.setIamPolicy` - `bigquery.tables.getData`
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Required. Project ID of the table to get the row access policy.</param>
         /// <param name="datasetId">Required. Dataset ID of the table to get the row access policy.</param>
@@ -3726,7 +3894,10 @@ namespace Google.Apis.Bigquery.v2
             return new UpdateRequest(this.service, body, projectId, datasetId, tableId, policyId);
         }
 
-        /// <summary>Updates a row access policy.</summary>
+        /// <summary>
+        /// Updates a row access policy. # IAM Permissions Requires the following IAM permission(s) on the table: -
+        /// `bigquery.rowAccessPolicies.update` - `bigquery.rowAccessPolicies.setIamPolicy` - `bigquery.tables.getData`
+        /// </summary>
         public class UpdateRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.RowAccessPolicy>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -3825,7 +3996,11 @@ namespace Google.Apis.Bigquery.v2
             this.service = service;
         }
 
-        /// <summary>Streams data into BigQuery one record at a time without needing to run a load job.</summary>
+        /// <summary>
+        /// Streams data into BigQuery one record at a time without needing to run a load job. # IAM Permissions
+        /// Requires the following IAM permission(s) to use this method: - `bigquery.tables.updateData` on the table. -
+        /// `bigquery.tables.get` on the table. - `bigquery.datasets.get` on the dataset.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Required. Project ID of the destination.</param>
         /// <param name="datasetId">Required. Dataset ID of the destination.</param>
@@ -3835,7 +4010,11 @@ namespace Google.Apis.Bigquery.v2
             return new InsertAllRequest(this.service, body, projectId, datasetId, tableId);
         }
 
-        /// <summary>Streams data into BigQuery one record at a time without needing to run a load job.</summary>
+        /// <summary>
+        /// Streams data into BigQuery one record at a time without needing to run a load job. # IAM Permissions
+        /// Requires the following IAM permission(s) to use this method: - `bigquery.tables.updateData` on the table. -
+        /// `bigquery.tables.get` on the table. - `bigquery.datasets.get` on the dataset.
+        /// </summary>
         public class InsertAllRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.TableDataInsertAllResponse>
         {
             /// <summary>Constructs a new InsertAll request.</summary>
@@ -3906,7 +4085,10 @@ namespace Google.Apis.Bigquery.v2
             }
         }
 
-        /// <summary>List the content of a table in rows.</summary>
+        /// <summary>
+        /// List the content of a table in rows. # IAM Permissions Requires the `bigquery.tables.getData` permission on
+        /// the table.
+        /// </summary>
         /// <param name="projectId">Required. Project id of the table to list.</param>
         /// <param name="datasetId">Required. Dataset id of the table to list.</param>
         /// <param name="tableId">Required. Table id of the table to list.</param>
@@ -3915,7 +4097,10 @@ namespace Google.Apis.Bigquery.v2
             return new ListRequest(this.service, projectId, datasetId, tableId);
         }
 
-        /// <summary>List the content of a table in rows.</summary>
+        /// <summary>
+        /// List the content of a table in rows. # IAM Permissions Requires the `bigquery.tables.getData` permission on
+        /// the table.
+        /// </summary>
         public class ListRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.TableDataList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -4099,7 +4284,7 @@ namespace Google.Apis.Bigquery.v2
 
         /// <summary>
         /// Deletes the table specified by tableId from the dataset. If the table contains data, all the data will be
-        /// deleted.
+        /// deleted. # IAM Permissions Requires the `bigquery.tables.delete` permission on the table.
         /// </summary>
         /// <param name="projectId">Required. Project ID of the table to delete</param>
         /// <param name="datasetId">Required. Dataset ID of the table to delete</param>
@@ -4111,7 +4296,7 @@ namespace Google.Apis.Bigquery.v2
 
         /// <summary>
         /// Deletes the table specified by tableId from the dataset. If the table contains data, all the data will be
-        /// deleted.
+        /// deleted. # IAM Permissions Requires the `bigquery.tables.delete` permission on the table.
         /// </summary>
         public class DeleteRequest : BigqueryBaseServiceRequest<string>
         {
@@ -4178,7 +4363,8 @@ namespace Google.Apis.Bigquery.v2
 
         /// <summary>
         /// Gets the specified table resource by table ID. This method does not return the data in the table, it only
-        /// returns the table resource, which describes the structure of this table.
+        /// returns the table resource, which describes the structure of this table. # IAM Permissions Requires the
+        /// `bigquery.tables.get` permission on the table.
         /// </summary>
         /// <param name="projectId">Required. Project ID of the requested table</param>
         /// <param name="datasetId">Required. Dataset ID of the requested table</param>
@@ -4190,7 +4376,8 @@ namespace Google.Apis.Bigquery.v2
 
         /// <summary>
         /// Gets the specified table resource by table ID. This method does not return the data in the table, it only
-        /// returns the table resource, which describes the structure of this table.
+        /// returns the table resource, which describes the structure of this table. # IAM Permissions Requires the
+        /// `bigquery.tables.get` permission on the table.
         /// </summary>
         public class GetRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Table>
         {
@@ -4385,7 +4572,10 @@ namespace Google.Apis.Bigquery.v2
             }
         }
 
-        /// <summary>Creates a new, empty table in the dataset.</summary>
+        /// <summary>
+        /// Creates a new, empty table in the dataset. # IAM Permissions Requires the `bigquery.tables.create`
+        /// permission on the dataset.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Required. Project ID of the new table</param>
         /// <param name="datasetId">Required. Dataset ID of the new table</param>
@@ -4394,7 +4584,10 @@ namespace Google.Apis.Bigquery.v2
             return new InsertRequest(this.service, body, projectId, datasetId);
         }
 
-        /// <summary>Creates a new, empty table in the dataset.</summary>
+        /// <summary>
+        /// Creates a new, empty table in the dataset. # IAM Permissions Requires the `bigquery.tables.create`
+        /// permission on the dataset.
+        /// </summary>
         public class InsertRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Table>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -4452,7 +4645,10 @@ namespace Google.Apis.Bigquery.v2
             }
         }
 
-        /// <summary>Lists all tables in the specified dataset. Requires the READER dataset role.</summary>
+        /// <summary>
+        /// Lists all tables in the specified dataset. Requires the READER dataset role. # IAM Permissions Requires the
+        /// `bigquery.tables.list` permission on the dataset.
+        /// </summary>
         /// <param name="projectId">Required. Project ID of the tables to list</param>
         /// <param name="datasetId">Required. Dataset ID of the tables to list</param>
         public virtual ListRequest List(string projectId, string datasetId)
@@ -4460,7 +4656,10 @@ namespace Google.Apis.Bigquery.v2
             return new ListRequest(this.service, projectId, datasetId);
         }
 
-        /// <summary>Lists all tables in the specified dataset. Requires the READER dataset role.</summary>
+        /// <summary>
+        /// Lists all tables in the specified dataset. Requires the READER dataset role. # IAM Permissions Requires the
+        /// `bigquery.tables.list` permission on the dataset.
+        /// </summary>
         public class ListRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.TableList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -4541,7 +4740,8 @@ namespace Google.Apis.Bigquery.v2
         /// <summary>
         /// Updates information in an existing table. The update method replaces the entire table resource, whereas the
         /// patch method only replaces fields that are provided in the submitted table resource. This method supports
-        /// RFC5789 patch semantics.
+        /// RFC5789 patch semantics. # IAM Permissions Requires the following IAM permission(s) on the table: -
+        /// `bigquery.tables.update` - `bigquery.tables.get`
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Required. Project ID of the table to update</param>
@@ -4555,7 +4755,8 @@ namespace Google.Apis.Bigquery.v2
         /// <summary>
         /// Updates information in an existing table. The update method replaces the entire table resource, whereas the
         /// patch method only replaces fields that are provided in the submitted table resource. This method supports
-        /// RFC5789 patch semantics.
+        /// RFC5789 patch semantics. # IAM Permissions Requires the following IAM permission(s) on the table: -
+        /// `bigquery.tables.update` - `bigquery.tables.get`
         /// </summary>
         public class PatchRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Table>
         {
@@ -4775,7 +4976,8 @@ namespace Google.Apis.Bigquery.v2
 
         /// <summary>
         /// Updates information in an existing table. The update method replaces the entire Table resource, whereas the
-        /// patch method only replaces fields that are provided in the submitted Table resource.
+        /// patch method only replaces fields that are provided in the submitted Table resource. # IAM Permissions
+        /// Requires the `bigquery.tables.update` permission on the table.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Required. Project ID of the table to update</param>
@@ -4788,7 +4990,8 @@ namespace Google.Apis.Bigquery.v2
 
         /// <summary>
         /// Updates information in an existing table. The update method replaces the entire Table resource, whereas the
-        /// patch method only replaces fields that are provided in the submitted Table resource.
+        /// patch method only replaces fields that are provided in the submitted Table resource. # IAM Permissions
+        /// Requires the `bigquery.tables.update` permission on the table.
         /// </summary>
         public class UpdateRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Table>
         {
@@ -7397,12 +7600,13 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>
         /// Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to
-        /// the destination table for autodetection mode. Available for the formats: CSV, PARQUET, and AVRO. Possible
-        /// values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]:
-        /// timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds.
-        /// timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]:
-        /// timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored.
-        /// Inputs that have higher precision than the highest target precision in this array will be truncated.
+        /// the destination table for autodetection mode. Available for the formats: CSV, PARQUET, AVRO, and Iceberg
+        /// External Table. Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected
+        /// TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits
+        /// of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of
+        /// subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this
+        /// array is ignored. Inputs that have higher precision than the highest target precision in this array will be
+        /// truncated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestampTargetPrecision")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> TimestampTargetPrecision { get; set; }
@@ -7450,8 +7654,8 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ContainerMemory { get; set; }
 
         /// <summary>
-        /// Optional. Maximum number of requests that a Cloud Run instance can handle concurrently. If absent or if `0`,
-        /// a default concurrency is used.
+        /// Optional. Maximum number of requests that a Python UDF container instance can handle concurrently. If absent
+        /// or if `0`, a default concurrency is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerRequestConcurrency")]
         public virtual System.Nullable<long> ContainerRequestConcurrency { get; set; }
@@ -9012,12 +9216,13 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>
         /// Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to
-        /// the destination table for autodetection mode. Available for the formats: CSV, PARQUET, and AVRO. Possible
-        /// values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]:
-        /// timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds.
-        /// timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]:
-        /// timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored.
-        /// Inputs that have higher precision than the highest target precision in this array will be truncated.
+        /// the destination table for autodetection mode. Available for the formats: CSV, PARQUET, AVRO, and Iceberg
+        /// External Table. Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected
+        /// TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits
+        /// of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of
+        /// subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this
+        /// array is ignored. Inputs that have higher precision than the highest target precision in this array will be
+        /// truncated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestampTargetPrecision")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> TimestampTargetPrecision { get; set; }
