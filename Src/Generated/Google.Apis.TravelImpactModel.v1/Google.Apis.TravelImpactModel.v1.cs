@@ -257,6 +257,67 @@ namespace Google.Apis.TravelImpactModel.v1
         }
 
         /// <summary>
+        /// Retrieves detailed emission estimates. Detailed Flight Emissions are transparent per-passenger greenhouse
+        /// gas emission estimates supplemented by comprehensive metadata detailing the calculation methodology,
+        /// emissions breakdown, contrail impact, and data provenance. Details on how emission estimates are computed
+        /// are in [GitHub](https://github.com/google/travel-impact-model). The response will contain all entries that
+        /// match the input flight legs, in the same order. If there are no estimates available for a certain flight
+        /// leg, the response will return the flight leg object with empty emission fields. The request will still be
+        /// considered successful. Reasons for missing emission estimates include: * The flight is unknown to the
+        /// server. * The input flight leg is missing one or more identifiers. * The flight date is in the past. * The
+        /// aircraft type is not supported by the model. * Missing seat configuration. The request can contain up to 100
+        /// flight legs. If the request has more than 100 flight legs, it will fail with an INVALID_ARGUMENT error.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual ComputeDetailedFlightEmissionsRequest ComputeDetailedFlightEmissions(Google.Apis.TravelImpactModel.v1.Data.ComputeDetailedFlightEmissionsRequest body)
+        {
+            return new ComputeDetailedFlightEmissionsRequest(this.service, body);
+        }
+
+        /// <summary>
+        /// Retrieves detailed emission estimates. Detailed Flight Emissions are transparent per-passenger greenhouse
+        /// gas emission estimates supplemented by comprehensive metadata detailing the calculation methodology,
+        /// emissions breakdown, contrail impact, and data provenance. Details on how emission estimates are computed
+        /// are in [GitHub](https://github.com/google/travel-impact-model). The response will contain all entries that
+        /// match the input flight legs, in the same order. If there are no estimates available for a certain flight
+        /// leg, the response will return the flight leg object with empty emission fields. The request will still be
+        /// considered successful. Reasons for missing emission estimates include: * The flight is unknown to the
+        /// server. * The input flight leg is missing one or more identifiers. * The flight date is in the past. * The
+        /// aircraft type is not supported by the model. * Missing seat configuration. The request can contain up to 100
+        /// flight legs. If the request has more than 100 flight legs, it will fail with an INVALID_ARGUMENT error.
+        /// </summary>
+        public class ComputeDetailedFlightEmissionsRequest : TravelImpactModelBaseServiceRequest<Google.Apis.TravelImpactModel.v1.Data.ComputeDetailedFlightEmissionsResponse>
+        {
+            /// <summary>Constructs a new ComputeDetailedFlightEmissions request.</summary>
+            public ComputeDetailedFlightEmissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.TravelImpactModel.v1.Data.ComputeDetailedFlightEmissionsRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.TravelImpactModel.v1.Data.ComputeDetailedFlightEmissionsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "computeDetailedFlightEmissions";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/flights:computeDetailedFlightEmissions";
+
+            /// <summary>Initializes ComputeDetailedFlightEmissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary>
         /// Retrieves emission estimates. Details on how emission estimates are computed are in
         /// [GitHub](https://github.com/google/travel-impact-model). The response will contain all entries that match
         /// the input flight legs, in the same order. If there are no estimates available for a certain flight leg, the
@@ -464,6 +525,34 @@ namespace Google.Apis.TravelImpactModel.v1
 }
 namespace Google.Apis.TravelImpactModel.v1.Data
 {
+    /// <summary>Input definition for the ComputeDetailedFlightEmissions request.</summary>
+    public class ComputeDetailedFlightEmissionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Direct flights to return emission estimates for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flights")]
+        public virtual System.Collections.Generic.IList<Flight> Flights { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Output definition for the ComputeDetailedFlightEmissions response.</summary>
+    public class ComputeDetailedFlightEmissionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of flight legs with emission estimates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flightsWithDetailedEmissions")]
+        public virtual System.Collections.Generic.IList<FlightWithDetailedEmissions> FlightsWithDetailedEmissions { get; set; }
+
+        /// <summary>
+        /// The model version under which emission estimates for all flights in this response were computed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelVersion")]
+        public virtual ModelVersion ModelVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Input definition for the ComputeFlightEmissions request.</summary>
     public class ComputeFlightEmissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -615,6 +704,30 @@ namespace Google.Apis.TravelImpactModel.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Details about the various emissions portions of the total emissions_grams_per_pax value. The value of the summed
+    /// breakdowns should always equal emissions_grams_per_pax.
+    /// </summary>
+    public class EmissionsBreakdown : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Per-passenger tank-to-wake emission estimate numbers. Will not be present if emissions could not be
+        /// computed. For the list of reasons why emissions could not be computed, see ComputeFlightEmissions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttwEmissionsGramsPerPax")]
+        public virtual EmissionsGramsPerPax TtwEmissionsGramsPerPax { get; set; }
+
+        /// <summary>
+        /// Per-passenger well-to-tank emission estimate numbers. Will not be present if emissions could not be
+        /// computed. For the list of reasons why emissions could not be computed, see ComputeFlightEmissions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wttEmissionsGramsPerPax")]
+        public virtual EmissionsGramsPerPax WttEmissionsGramsPerPax { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Grouped emissions per seating class results.</summary>
     public class EmissionsGramsPerPax : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -650,6 +763,121 @@ namespace Google.Apis.TravelImpactModel.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>All additional metadata.</summary>
+    public class EmissionsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Metadata about the EASA Flight Emissions Label. Only set when the emissions data source is
+        /// EASA.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("easaLabelMetadata")]
+        public virtual EasaLabelMetadata EasaLabelMetadata { get; set; }
+
+        /// <summary>
+        /// Output only. Details about the provenance of data used to calculate the emissions data, including the
+        /// contributing factors with their data sources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emissionsProvenance")]
+        public virtual EmissionsProvenance EmissionsProvenance { get; set; }
+
+        /// <summary>
+        /// Output only. Link to the `travelimpactmodel.org` Emissions Calculator website. Example:
+        /// https://travelimpactmodel.org/lookup/flight?itinerary=ZRH-BOS-LX-52-20261225.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timWebsiteEmissionsCalculatorUrl")]
+        public virtual string TimWebsiteEmissionsCalculatorUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information about the provenance of the data used to calculate emissions estimates, including contributing
+    /// factors and their data sources.
+    /// </summary>
+    public class EmissionsProvenance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. All contributing factors used to calculate emissions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenanceEntries")]
+        public virtual System.Collections.Generic.IList<EmissionsProvenanceEntry> ProvenanceEntries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about a single contributing factor in emissions calculations.</summary>
+    public class EmissionsProvenanceEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The cargo mass fraction value. If not set, the cargo mass fraction value is not available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cargoMassFractionData")]
+        public virtual System.Nullable<double> CargoMassFractionData { get; set; }
+
+        /// <summary>Output only. Strategy for T100 cargo mass fraction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cargoMassFractionT100Strategy")]
+        public virtual string CargoMassFractionT100Strategy { get; set; }
+
+        /// <summary>Output only. Data category of the data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataCategory")]
+        public virtual string DataCategory { get; set; }
+
+        /// <summary>Output only. Strategy for distance adjustment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distanceAdjustmentStrategy")]
+        public virtual string DistanceAdjustmentStrategy { get; set; }
+
+        /// <summary>
+        /// Output only. The estimated distance flown in CCD flight phase in kilometers value calculated using the
+        /// distance adjustment factor (DAF). If not set, the estimated flight distance value is not available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedFlightDistanceKm")]
+        public virtual System.Nullable<int> EstimatedFlightDistanceKm { get; set; }
+
+        /// <summary>Output only. Strategy for EEA fuel burn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fuelBurnEeaStrategy")]
+        public virtual string FuelBurnEeaStrategy { get; set; }
+
+        /// <summary>Output only. Strategy for CH Aviation load factors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadFactorsChAviationStrategy")]
+        public virtual string LoadFactorsChAviationStrategy { get; set; }
+
+        /// <summary>
+        /// Output only. The load factors data value. If not set, the load factors value is not available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadFactorsData")]
+        public virtual System.Nullable<double> LoadFactorsData { get; set; }
+
+        /// <summary>Output only. Strategy for T100 load factors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadFactorsT100Strategy")]
+        public virtual string LoadFactorsT100Strategy { get; set; }
+
+        /// <summary>Output only. The type of the provenance entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenanceEntryType")]
+        public virtual string ProvenanceEntryType { get; set; }
+
+        /// <summary>
+        /// Output only. The seat area ratio value for each seating class. If not set, the seat area ratio value is not
+        /// available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seatAreaRatioData")]
+        public virtual SeatAreaRatioData SeatAreaRatioData { get; set; }
+
+        /// <summary>Output only. Strategy for IATA seat area ratios.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seatAreaRatioIataStrategy")]
+        public virtual string SeatAreaRatioIataStrategy { get; set; }
+
+        /// <summary>Output only. The source of the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>Output only. The version of the source data. For example, "2025/04".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceVersion")]
+        public virtual string SourceVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>All details related to a single request item for a direct flight emission estimates.</summary>
     public class Flight : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -675,6 +903,58 @@ namespace Google.Apis.TravelImpactModel.v1.Data
         /// <summary>Required. IATA airport code for flight origin, e.g. "LHR".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("origin")]
         public virtual string Origin { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about the specific flight's emissions.</summary>
+    public class FlightEmissionsDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The significance of contrails warming impact compared to the total CO2e emissions impact.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contrailsImpactBucket")]
+        public virtual string ContrailsImpactBucket { get; set; }
+
+        /// <summary>
+        /// Output only. Details about the various emissions portions of the total emissions_grams_per_pax value. The
+        /// value of the summed breakdowns should always equal emissions_grams_per_pax.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emissionsBreakdown")]
+        public virtual EmissionsBreakdown EmissionsBreakdown { get; set; }
+
+        /// <summary>
+        /// Output only. Per-passenger emission estimate numbers. Will not be present if emissions could not be
+        /// computed. For the list of reasons why emissions could not be computed, see ComputeDetailedFlightEmissions
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emissionsGramsPerPax")]
+        public virtual EmissionsGramsPerPax EmissionsGramsPerPax { get; set; }
+
+        /// <summary>Output only. The source of the emissions data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Direct flight with emission estimates details.</summary>
+    public class FlightWithDetailedEmissions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Additional metadata about the flight emissions calculation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emissionsMetadata")]
+        public virtual EmissionsMetadata EmissionsMetadata { get; set; }
+
+        /// <summary>
+        /// Output only. Matches the flight identifiers in the request. Note: all IATA codes are capitalized.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flight")]
+        public virtual Flight Flight { get; set; }
+
+        /// <summary>Output only. All the flight emissions data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flightEmissionsDetails")]
+        public virtual FlightEmissionsDetails FlightEmissionsDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -864,6 +1144,32 @@ namespace Google.Apis.TravelImpactModel.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("origin")]
         public virtual string Origin { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Seat area ratio data values. Economy is always 1.0 and serves as the reference point; other class values are
+    /// relative to economy. All 4 fields are always set whether the seating class exists on the aircraft or not.
+    /// </summary>
+    public class SeatAreaRatioData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Business seating class data value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("business")]
+        public virtual System.Nullable<double> Business { get; set; }
+
+        /// <summary>Output only. Economy seating class data value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("economy")]
+        public virtual System.Nullable<double> Economy { get; set; }
+
+        /// <summary>Output only. First seating class data value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("first")]
+        public virtual System.Nullable<double> First { get; set; }
+
+        /// <summary>Output only. Premium economy seating class data value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("premiumEconomy")]
+        public virtual System.Nullable<double> PremiumEconomy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
