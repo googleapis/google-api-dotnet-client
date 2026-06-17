@@ -8687,13 +8687,20 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual string Image { get; set; }
 
-        /// <summary>The name of the image family to use for this node.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageFamily")]
-        public virtual string ImageFamily { get; set; }
-
         /// <summary>The project containing the image to use for this node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageProject")]
         public virtual string ImageProject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the custom image info for a node pool.</summary>
+    public class CustomImageInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The human-readable upgrade message for the custom image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeMessage")]
+        public virtual string UpgradeMessage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11860,6 +11867,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The auto upgrade status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoUpgradeStatus")]
         public virtual System.Collections.Generic.IList<string> AutoUpgradeStatus { get; set; }
+
+        /// <summary>Output only. Upgrade info for the node pool specific to the usage of custom images.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customImageInfo")]
+        public virtual CustomImageInfo CustomImageInfo { get; set; }
 
         /// <summary>The node pool's current minor version's end of extended support timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endOfExtendedSupportTimestamp")]
