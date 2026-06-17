@@ -1170,6 +1170,65 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 });
             }
         }
+
+        /// <summary>Retrieves connect settings about a Cloud SQL instance using the instance DNS name.</summary>
+        /// <param name="dnsName">Required. Cloud SQL instance ID. This does not include the project ID.</param>
+        /// <param name="location">Required. The region of the instance.</param>
+        public virtual ResolveRequest Resolve(string dnsName, string location)
+        {
+            return new ResolveRequest(this.service, dnsName, location);
+        }
+
+        /// <summary>Retrieves connect settings about a Cloud SQL instance using the instance DNS name.</summary>
+        public class ResolveRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.ConnectSettings>
+        {
+            /// <summary>Constructs a new Resolve request.</summary>
+            public ResolveRequest(Google.Apis.Services.IClientService service, string dnsName, string location) : base(service)
+            {
+                DnsName = dnsName;
+                Location = location;
+                InitParameters();
+            }
+
+            /// <summary>Required. Cloud SQL instance ID. This does not include the project ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dnsName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DnsName { get; private set; }
+
+            /// <summary>Required. The region of the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Location { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "resolve";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "sql/v1beta4/dns/{dnsName}/locations/{location}:resolveConnectSettings";
+
+            /// <summary>Initializes Resolve parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("dnsName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dnsName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
     }
 
     /// <summary>The "databases" collection of methods.</summary>
@@ -6659,7 +6718,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
 
         /// <summary>
         /// Optional. The fully qualified URI of the VPC network to which the cloned instance will be connected via
-        /// Private Services Access for private IP. For
+        /// private services access for private IP. For
         /// example:`projects/my-network-project/global/networks/my-network`. This field is only required for
         /// cross-project cloning.
         /// </summary>
@@ -9978,6 +10037,19 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; }
 
+        /// <summary>
+        /// Output only. The service connection policy created automatically for the consumer network when
+        /// `psc_auto_connection_policy_enabled` is true. It is in the format of:
+        /// `projects/{project}/regions/{region}/serviceConnectionPolicies/{policy_id}` The `policy_id` is in format of
+        /// `$NETWORK-$RANDOM`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceConnectionPolicy")]
+        public virtual string ServiceConnectionPolicy { get; set; }
+
+        /// <summary>Output only. The status of service connection policy creation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceConnectionPolicyCreationResult")]
+        public virtual string ServiceConnectionPolicyCreationResult { get; set; }
+
         /// <summary>The connection status of the consumer endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
@@ -10005,6 +10077,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkAttachmentUri")]
         public virtual string NetworkAttachmentUri { get; set; }
 
+        /// <summary>Optional. Whether to set up the PSC service connection policy automatically.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscAutoConnectionPolicyEnabled")]
+        public virtual System.Nullable<bool> PscAutoConnectionPolicyEnabled { get; set; }
+
         /// <summary>
         /// Optional. The list of settings for requested Private Service Connect consumer endpoints that can be used to
         /// connect to this Cloud SQL instance.
@@ -10013,9 +10089,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual System.Collections.Generic.IList<PscAutoConnectionConfig> PscAutoConnections { get; set; }
 
         /// <summary>
-        /// Optional. Indicates whether PSC DNS automation is enabled for this instance. When enabled, Cloud SQL
-        /// provisions a universal DNS record across all networks configured with Private Service Connect (PSC)
-        /// auto-connections. This will default to true for new instances when Private Service Connect is enabled.
+        /// Optional. Indicates whether Private Service Connect DNS automation is enabled for this instance. When
+        /// enabled, Cloud SQL provisions a universal DNS record across all networks configured with Private Service
+        /// Connect auto-connections. This will default to true for new instances when Private Service Connect is
+        /// enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscAutoDnsEnabled")]
         public virtual System.Nullable<bool> PscAutoDnsEnabled { get; set; }
@@ -10025,10 +10102,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual System.Nullable<bool> PscEnabled { get; set; }
 
         /// <summary>
-        /// Optional. Indicates whether PSC write endpoint DNS automation is enabled for this instance. When enabled,
-        /// Cloud SQL provisions a universal global DNS record across all networks configured with Private Service
-        /// Connect (PSC) auto-connections that always points to the cluster primary instance. This feature is only
-        /// supported for Enterprise Plus edition. This will default to true for new enterprise plus instances when
+        /// Optional. Indicates whether Private Service Connect write endpoint DNS automation is enabled for this
+        /// instance. When enabled, Cloud SQL provisions a universal global DNS record across all networks configured
+        /// with Private Service Connect auto-connections that points to the cluster primary instance. This feature is
+        /// only supported for Enterprise Plus edition. This will default to true for new enterprise plus instances when
         /// `psc_auto_dns_enabled` is enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscWriteEndpointDnsEnabled")]
