@@ -1871,7 +1871,11 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>Tool to retrieve public maps data for grounding, powered by Google.</summary>
     public class GoogleCloudAiplatformV1beta1GoogleMaps : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. If true, include the widget context token in the response.</summary>
+        /// <summary>
+        /// Optional. Deprecated: The Google Maps contextual widget behavior in Grounding with Google Maps is being
+        /// deprecated; this field is planned for removal and no longer has any effect once removed. If true, include
+        /// the widget context token in the response.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableWidget")]
         public virtual System.Nullable<bool> EnableWidget { get; set; }
 
@@ -2113,8 +2117,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     public class GoogleCloudAiplatformV1beta1GroundingMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Output only. A token that can be used to render a Google Maps widget with the contextual data.
-        /// This field is populated only when the grounding source is Google Maps.
+        /// Optional. Output only. Deprecated: The Google Maps contextual widget behavior in Grounding with Google Maps
+        /// is being deprecated; this field is planned for removal and will no longer be populated once removed. A token
+        /// that can be used to render a Google Maps widget with the contextual data. This field is populated only when
+        /// the grounding source is Google Maps.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleMapsWidgetContextToken")]
         public virtual string GoogleMapsWidgetContextToken { get; set; }
