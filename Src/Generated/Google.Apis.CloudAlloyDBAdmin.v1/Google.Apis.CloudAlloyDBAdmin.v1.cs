@@ -8302,6 +8302,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceVersion")]
         public virtual string MaintenanceVersion { get; set; }
 
+        /// <summary>Optional. List of next available maintenance versions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextAvailableMaintenanceVersions")]
+        public virtual System.Collections.Generic.IList<string> NextAvailableMaintenanceVersions { get; set; }
+
         /// <summary>
         /// Optional. Upcoming maintenance for the database resource. This field is populated once SLM generates and
         /// publishes upcoming maintenance window.
