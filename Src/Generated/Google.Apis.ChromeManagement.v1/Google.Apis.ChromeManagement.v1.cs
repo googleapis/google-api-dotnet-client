@@ -79,6 +79,12 @@ namespace Google.Apis.ChromeManagement.v1
             /// <summary>See reports about devices and Chrome browsers managed within your organization</summary>
             public static string ChromeManagementReportsReadonly = "https://www.googleapis.com/auth/chrome.management.reports.readonly";
 
+            /// <summary>Turn Chrome Security Insights on and off and view the data it generates</summary>
+            public static string ChromeManagementSecurityinsights = "https://www.googleapis.com/auth/chrome.management.securityinsights";
+
+            /// <summary>See Chrome Security Insights reports</summary>
+            public static string ChromeManagementSecurityinsightsReadonly = "https://www.googleapis.com/auth/chrome.management.securityinsights.readonly";
+
             /// <summary>
             /// See basic device and telemetry information collected from ChromeOS devices or users managed within your
             /// organization
@@ -106,6 +112,12 @@ namespace Google.Apis.ChromeManagement.v1
 
             /// <summary>See reports about devices and Chrome browsers managed within your organization</summary>
             public const string ChromeManagementReportsReadonly = "https://www.googleapis.com/auth/chrome.management.reports.readonly";
+
+            /// <summary>Turn Chrome Security Insights on and off and view the data it generates</summary>
+            public const string ChromeManagementSecurityinsights = "https://www.googleapis.com/auth/chrome.management.securityinsights";
+
+            /// <summary>See Chrome Security Insights reports</summary>
+            public const string ChromeManagementSecurityinsightsReadonly = "https://www.googleapis.com/auth/chrome.management.securityinsights.readonly";
 
             /// <summary>
             /// See basic device and telemetry information collected from ChromeOS devices or users managed within your
@@ -1792,6 +1804,599 @@ namespace Google.Apis.ChromeManagement.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^customers/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Returns a high-level summary of content transfers for a given customer.</summary>
+                /// <param name="customer">Required. The customer ID in the format "customers/{customer_id}".</param>
+                public virtual QueryContentTransfersRequest QueryContentTransfers(string customer)
+                {
+                    return new QueryContentTransfersRequest(this.service, customer);
+                }
+
+                /// <summary>Returns a high-level summary of content transfers for a given customer.</summary>
+                public class QueryContentTransfersRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1QueryContentTransfersResponse>
+                {
+                    /// <summary>Constructs a new QueryContentTransfers request.</summary>
+                    public QueryContentTransfersRequest(Google.Apis.Services.IClientService service, string customer) : base(service)
+                    {
+                        Customer = customer;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The customer ID in the format "customers/{customer_id}".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Customer { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The filter to apply to the request. For syntax, see AIP-160. Data is not available for
+                    /// events older than 180 days, and may be unavailable or inaccurate for time ranges less than 4
+                    /// hours. If `event_time` is not specified, results will be returned for the last 30 days.
+                    /// Supported fields for filtering: - `event_time` Supported operators: - `&amp;gt;=` and
+                    /// `&amp;lt;=` for `event_time` Supported conjunctions: - `AND` Example: `event_time &amp;gt;=
+                    /// "2024-01-01T00:00:00Z" AND event_time &amp;lt;= "2024-01-02T00:00:00Z"`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "queryContentTransfers";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+customer}/enterprise/securityInsights:queryContentTransfers";
+
+                    /// <summary>Initializes QueryContentTransfers parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns summaries of content transfers for a given metric and breakdown dimension.
+                /// </summary>
+                /// <param name="customer">Required. The customer ID in the format "customers/{customer_id}".</param>
+                public virtual QueryContentTransfersBreakdownsRequest QueryContentTransfersBreakdowns(string customer)
+                {
+                    return new QueryContentTransfersBreakdownsRequest(this.service, customer);
+                }
+
+                /// <summary>
+                /// Returns summaries of content transfers for a given metric and breakdown dimension.
+                /// </summary>
+                public class QueryContentTransfersBreakdownsRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse>
+                {
+                    /// <summary>Constructs a new QueryContentTransfersBreakdowns request.</summary>
+                    public QueryContentTransfersBreakdownsRequest(Google.Apis.Services.IClientService service, string customer) : base(service)
+                    {
+                        Customer = customer;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The customer ID in the format "customers/{customer_id}".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Customer { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The dimension to break down the content transfers by. Defaults to USER.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("breakdown", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<BreakdownEnum> Breakdown { get; set; }
+
+                    /// <summary>
+                    /// Optional. The dimension to break down the content transfers by. Defaults to USER.
+                    /// </summary>
+                    public enum BreakdownEnum
+                    {
+                        /// <summary>Unspecified breakdown dimension. Defaults to USER.</summary>
+                        [Google.Apis.Util.StringValueAttribute("CONTENT_TRANSFERS_BREAKDOWN_DIMENSION_UNSPECIFIED")]
+                        CONTENTTRANSFERSBREAKDOWNDIMENSIONUNSPECIFIED = 0,
+
+                        /// <summary>Breakdown by user.</summary>
+                        [Google.Apis.Util.StringValueAttribute("USER")]
+                        USER = 1,
+
+                        /// <summary>Breakdown by event domain.</summary>
+                        [Google.Apis.Util.StringValueAttribute("EVENT_DOMAIN")]
+                        EVENTDOMAIN = 2,
+
+                        /// <summary>Breakdown by content category.</summary>
+                        [Google.Apis.Util.StringValueAttribute("CONTENT_CATEGORY")]
+                        CONTENTCATEGORY = 3,
+                    }
+
+                    /// <summary>
+                    /// Optional. The filter to apply to the request. For syntax, see AIP-160. Data is not available for
+                    /// events older than 180 days or more recent than 48 hours ago. If `event_time` is not specified,
+                    /// results will end 48 hours ago. Supported fields for filtering: - `user` - `event_domain` -
+                    /// `content_category` - `event_time` Filtering by `user` or `event_domain` requires the `breakdown`
+                    /// dimension to be set to the corresponding value (e.g., you must set `breakdown = USER` to filter
+                    /// by `user`). Supported operators: - `=` for `user`, `event_domain`, and `content_category`. -
+                    /// `&amp;lt;=` for `event_time`. Supported conjunctions: - `AND` Example: `user = "testuser" AND
+                    /// event_time &amp;lt;= "2024-01-02T00:00:00Z"`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The fixed time range to return the breakdowns for. Defaults to
+                    /// FIXED_TIME_RANGE_FOUR_WEEKS. Fixed time ranges are used to allow for precomputation and optimize
+                    /// response times.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fixedTimeRange", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<FixedTimeRangeEnum> FixedTimeRange { get; set; }
+
+                    /// <summary>
+                    /// Optional. The fixed time range to return the breakdowns for. Defaults to
+                    /// FIXED_TIME_RANGE_FOUR_WEEKS. Fixed time ranges are used to allow for precomputation and optimize
+                    /// response times.
+                    /// </summary>
+                    public enum FixedTimeRangeEnum
+                    {
+                        /// <summary>Unspecified fixed time range. Defaults to FIXED_TIME_RANGE_FOUR_WEEKS.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FIXED_TIME_RANGE_UNSPECIFIED")]
+                        FIXEDTIMERANGEUNSPECIFIED = 0,
+
+                        /// <summary>Four hours.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FIXED_TIME_RANGE_FOUR_HOURS")]
+                        FIXEDTIMERANGEFOURHOURS = 1,
+
+                        /// <summary>One day.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FIXED_TIME_RANGE_ONE_DAY")]
+                        FIXEDTIMERANGEONEDAY = 2,
+
+                        /// <summary>One week.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FIXED_TIME_RANGE_ONE_WEEK")]
+                        FIXEDTIMERANGEONEWEEK = 3,
+
+                        /// <summary>Four weeks.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FIXED_TIME_RANGE_FOUR_WEEKS")]
+                        FIXEDTIMERANGEFOURWEEKS = 4,
+                    }
+
+                    /// <summary>
+                    /// Optional. The metric to return the breakdowns for. Defaults to
+                    /// CONTENT_TRANSFERS_METRIC_TOTAL_TRANSFERS.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("metric", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<MetricEnum> Metric { get; set; }
+
+                    /// <summary>
+                    /// Optional. The metric to return the breakdowns for. Defaults to
+                    /// CONTENT_TRANSFERS_METRIC_TOTAL_TRANSFERS.
+                    /// </summary>
+                    public enum MetricEnum
+                    {
+                        /// <summary>
+                        /// Unspecified content transfers metric. Defaults to CONTENT_TRANSFERS_METRIC_TOTAL_TRANSFERS.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("CONTENT_TRANSFERS_METRIC_UNSPECIFIED")]
+                        CONTENTTRANSFERSMETRICUNSPECIFIED = 0,
+
+                        /// <summary>
+                        /// The total number of content transfers (sensitive and non-sensitive). This is the sum of the
+                        /// total_uploads, total_downloads, and total_prints.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("CONTENT_TRANSFERS_METRIC_TOTAL_TRANSFERS")]
+                        CONTENTTRANSFERSMETRICTOTALTRANSFERS = 1,
+
+                        /// <summary>The total number of content uploads (sensitive and non-sensitive).</summary>
+                        [Google.Apis.Util.StringValueAttribute("CONTENT_TRANSFERS_METRIC_TOTAL_UPLOADS")]
+                        CONTENTTRANSFERSMETRICTOTALUPLOADS = 2,
+
+                        /// <summary>The total number of content downloads (sensitive and non-sensitive).</summary>
+                        [Google.Apis.Util.StringValueAttribute("CONTENT_TRANSFERS_METRIC_TOTAL_DOWNLOADS")]
+                        CONTENTTRANSFERSMETRICTOTALDOWNLOADS = 3,
+
+                        /// <summary>The total number of content prints (sensitive and non-sensitive).</summary>
+                        [Google.Apis.Util.StringValueAttribute("CONTENT_TRANSFERS_METRIC_TOTAL_PRINTS")]
+                        CONTENTTRANSFERSMETRICTOTALPRINTS = 4,
+
+                        /// <summary>
+                        /// The total number of sensitive content transfers. This is the sum of the sensitive_uploads,
+                        /// sensitive_downloads, and sensitive_prints.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("CONTENT_TRANSFERS_METRIC_TOTAL_SENSITIVE_TRANSFERS")]
+                        CONTENTTRANSFERSMETRICTOTALSENSITIVETRANSFERS = 5,
+
+                        /// <summary>The number of sensitive content uploads.</summary>
+                        [Google.Apis.Util.StringValueAttribute("CONTENT_TRANSFERS_METRIC_SENSITIVE_UPLOADS")]
+                        CONTENTTRANSFERSMETRICSENSITIVEUPLOADS = 6,
+
+                        /// <summary>The number of sensitive content downloads.</summary>
+                        [Google.Apis.Util.StringValueAttribute("CONTENT_TRANSFERS_METRIC_SENSITIVE_DOWNLOADS")]
+                        CONTENTTRANSFERSMETRICSENSITIVEDOWNLOADS = 7,
+
+                        /// <summary>The number of sensitive content prints.</summary>
+                        [Google.Apis.Util.StringValueAttribute("CONTENT_TRANSFERS_METRIC_SENSITIVE_PRINTS")]
+                        CONTENTTRANSFERSMETRICSENSITIVEPRINTS = 8,
+                    }
+
+                    /// <summary>
+                    /// Optional. The maximum number of breakdowns to return. The service may return fewer than this
+                    /// value. If unspecified, at most 50 breakdowns will be returned. The maximum value is 1000; values
+                    /// above 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `QueryContentTransfersBreakdowns` call. Provide
+                    /// this to retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `QueryContentTransfersBreakdowns` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "queryContentTransfersBreakdowns";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+customer}/enterprise/securityInsights:queryContentTransfersBreakdowns";
+
+                    /// <summary>Initializes QueryContentTransfersBreakdowns parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                        RequestParameters.Add("breakdown", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "breakdown",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("fixedTimeRange", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fixedTimeRange",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("metric", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "metric",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Returns a high-level summary of URL visits for a given customer.</summary>
+                /// <param name="customer">Required. The customer ID in the format "customers/{customer_id}".</param>
+                public virtual QueryUrlVisitsRequest QueryUrlVisits(string customer)
+                {
+                    return new QueryUrlVisitsRequest(this.service, customer);
+                }
+
+                /// <summary>Returns a high-level summary of URL visits for a given customer.</summary>
+                public class QueryUrlVisitsRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1QueryUrlVisitsResponse>
+                {
+                    /// <summary>Constructs a new QueryUrlVisits request.</summary>
+                    public QueryUrlVisitsRequest(Google.Apis.Services.IClientService service, string customer) : base(service)
+                    {
+                        Customer = customer;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The customer ID in the format "customers/{customer_id}".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Customer { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The filter to apply to the request. For syntax, see AIP-160. Data is not available for
+                    /// events older than 180 days, and may be unavailable or inaccurate for time ranges less than 4
+                    /// hours. If `event_time` is not specified, results will be returned for the last 30 days.
+                    /// Supported fields for filtering: - `event_time` Supported operators: - `&amp;gt;=` and
+                    /// `&amp;lt;=` for `event_time` Supported conjunctions: - `AND` Example: `event_time &amp;gt;=
+                    /// "2024-01-01T00:00:00Z" AND event_time &amp;lt;= "2024-01-02T00:00:00Z"`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "queryUrlVisits";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+customer}/enterprise/securityInsights:queryUrlVisits";
+
+                    /// <summary>Initializes QueryUrlVisits parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Returns summaries of URL visits for a given metric and breakdown dimension.</summary>
+                /// <param name="customer">Required. The customer ID in the format "customers/{customer_id}".</param>
+                public virtual QueryUrlVisitsBreakdownsRequest QueryUrlVisitsBreakdowns(string customer)
+                {
+                    return new QueryUrlVisitsBreakdownsRequest(this.service, customer);
+                }
+
+                /// <summary>Returns summaries of URL visits for a given metric and breakdown dimension.</summary>
+                public class QueryUrlVisitsBreakdownsRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse>
+                {
+                    /// <summary>Constructs a new QueryUrlVisitsBreakdowns request.</summary>
+                    public QueryUrlVisitsBreakdownsRequest(Google.Apis.Services.IClientService service, string customer) : base(service)
+                    {
+                        Customer = customer;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The customer ID in the format "customers/{customer_id}".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Customer { get; private set; }
+
+                    /// <summary>Optional. The dimension to break down the URL visits by. Defaults to USER.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("breakdown", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<BreakdownEnum> Breakdown { get; set; }
+
+                    /// <summary>Optional. The dimension to break down the URL visits by. Defaults to USER.</summary>
+                    public enum BreakdownEnum
+                    {
+                        /// <summary>Unspecified breakdown dimension. Defaults to USER.</summary>
+                        [Google.Apis.Util.StringValueAttribute("URL_VISITS_BREAKDOWN_DIMENSION_UNSPECIFIED")]
+                        URLVISITSBREAKDOWNDIMENSIONUNSPECIFIED = 0,
+
+                        /// <summary>Breakdown by user.</summary>
+                        [Google.Apis.Util.StringValueAttribute("USER")]
+                        USER = 1,
+
+                        /// <summary>Breakdown by event domain.</summary>
+                        [Google.Apis.Util.StringValueAttribute("EVENT_DOMAIN")]
+                        EVENTDOMAIN = 2,
+                    }
+
+                    /// <summary>
+                    /// Optional. The filter to apply to the request. For syntax, see AIP-160. Data is not available for
+                    /// events older than 180 days or more recent than 48 hours ago. If `event_time` is not specified,
+                    /// results will end 48 hours ago. Supported fields for filtering: - `user` - `event_domain` -
+                    /// `event_time` Filtering by `user` or `event_domain` requires the `breakdown` dimension to be set
+                    /// to the corresponding value (e.g., you must set `breakdown = USER` to filter by `user`).
+                    /// Supported operators: - `=` for `user` and `event_domain`. - `&amp;lt;=` for `event_time`.
+                    /// Supported conjunctions: - `AND` Example: `user = "testuser" AND event_time &amp;lt;=
+                    /// "2024-01-02T00:00:00Z"`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The fixed time range to return the breakdowns for. Defaults to
+                    /// FIXED_TIME_RANGE_FOUR_WEEKS. Fixed time ranges are used to allow for precomputation and optimize
+                    /// response times.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fixedTimeRange", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<FixedTimeRangeEnum> FixedTimeRange { get; set; }
+
+                    /// <summary>
+                    /// Optional. The fixed time range to return the breakdowns for. Defaults to
+                    /// FIXED_TIME_RANGE_FOUR_WEEKS. Fixed time ranges are used to allow for precomputation and optimize
+                    /// response times.
+                    /// </summary>
+                    public enum FixedTimeRangeEnum
+                    {
+                        /// <summary>Unspecified fixed time range. Defaults to FIXED_TIME_RANGE_FOUR_WEEKS.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FIXED_TIME_RANGE_UNSPECIFIED")]
+                        FIXEDTIMERANGEUNSPECIFIED = 0,
+
+                        /// <summary>Four hours.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FIXED_TIME_RANGE_FOUR_HOURS")]
+                        FIXEDTIMERANGEFOURHOURS = 1,
+
+                        /// <summary>One day.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FIXED_TIME_RANGE_ONE_DAY")]
+                        FIXEDTIMERANGEONEDAY = 2,
+
+                        /// <summary>One week.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FIXED_TIME_RANGE_ONE_WEEK")]
+                        FIXEDTIMERANGEONEWEEK = 3,
+
+                        /// <summary>Four weeks.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FIXED_TIME_RANGE_FOUR_WEEKS")]
+                        FIXEDTIMERANGEFOURWEEKS = 4,
+                    }
+
+                    /// <summary>
+                    /// Optional. The metric to return the breakdowns for. Defaults to
+                    /// URL_VISITS_METRIC_TOTAL_SUSPICIOUS_URL_VISITS.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("metric", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<MetricEnum> Metric { get; set; }
+
+                    /// <summary>
+                    /// Optional. The metric to return the breakdowns for. Defaults to
+                    /// URL_VISITS_METRIC_TOTAL_SUSPICIOUS_URL_VISITS.
+                    /// </summary>
+                    public enum MetricEnum
+                    {
+                        /// <summary>
+                        /// Unspecified URL visits metric. Defaults to URL_VISITS_METRIC_TOTAL_SUSPICIOUS_URL_VISITS.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("URL_VISITS_METRIC_UNSPECIFIED")]
+                        URLVISITSMETRICUNSPECIFIED = 0,
+
+                        /// <summary>
+                        /// The total number of suspicious URL visits. This is the sum of the high_risk_url_visits,
+                        /// medium_risk_url_visits, and low_risk_url_visits.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("URL_VISITS_METRIC_TOTAL_SUSPICIOUS_URL_VISITS")]
+                        URLVISITSMETRICTOTALSUSPICIOUSURLVISITS = 1,
+
+                        /// <summary>The number of suspicious URL visits with high risk.</summary>
+                        [Google.Apis.Util.StringValueAttribute("URL_VISITS_METRIC_HIGH_RISK_URL_VISITS")]
+                        URLVISITSMETRICHIGHRISKURLVISITS = 2,
+
+                        /// <summary>The number of suspicious URL visits with medium risk.</summary>
+                        [Google.Apis.Util.StringValueAttribute("URL_VISITS_METRIC_MEDIUM_RISK_URL_VISITS")]
+                        URLVISITSMETRICMEDIUMRISKURLVISITS = 3,
+
+                        /// <summary>The number of suspicious URL visits with low risk.</summary>
+                        [Google.Apis.Util.StringValueAttribute("URL_VISITS_METRIC_LOW_RISK_URL_VISITS")]
+                        URLVISITSMETRICLOWRISKURLVISITS = 4,
+                    }
+
+                    /// <summary>
+                    /// Optional. The maximum number of breakdowns to return. The service may return fewer than this
+                    /// value. If unspecified, at most 50 breakdowns will be returned. The maximum value is 1000; values
+                    /// above 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `QueryUrlVisitsBreakdowns` call. Provide this
+                    /// to retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `QueryUrlVisitsBreakdowns` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "queryUrlVisitsBreakdowns";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+customer}/enterprise/securityInsights:queryUrlVisitsBreakdowns";
+
+                    /// <summary>Initializes QueryUrlVisitsBreakdowns parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                        RequestParameters.Add("breakdown", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "breakdown",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("fixedTimeRange", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fixedTimeRange",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("metric", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "metric",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -9808,6 +10413,44 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A content transfers summary for a given breakdown dimension.</summary>
+    public class GoogleChromeManagementVersionsV1ContentTransfersBreakdown : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The content category of the content transfers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentCategory")]
+        public virtual string ContentCategory { get; set; }
+
+        /// <summary>The event domain of the content transfers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventDomain")]
+        public virtual string EventDomain { get; set; }
+
+        /// <summary>The summary of content transfers for the breakdown dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
+        public virtual GoogleChromeManagementVersionsV1ContentTransfersSummary Summary { get; set; }
+
+        /// <summary>The user that transferred the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual string User { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Summary of content transfers for a given metric.</summary>
+    public class GoogleChromeManagementVersionsV1ContentTransfersSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The count of the content transfers metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>The type of content transfers metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
+        public virtual string Metric { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>CrowdStrike connector config.</summary>
     public class GoogleChromeManagementVersionsV1CrowdStrikeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10169,6 +10812,64 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Required. The XDR settings for the Pub/Sub XDR config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xdrSettings")]
         public virtual GoogleChromeManagementVersionsV1XdrSettings XdrSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for QueryContentTransfersBreakdowns.</summary>
+    public class GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The content transfer breakdowns from the specified insight.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentTransfersBreakdowns")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementVersionsV1ContentTransfersBreakdown> ContentTransfersBreakdowns { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for QueryContentTransfers.</summary>
+    public class GoogleChromeManagementVersionsV1QueryContentTransfersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A collection of summaries for various content transfers metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summaries")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementVersionsV1ContentTransfersSummary> Summaries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for QueryUrlVisitsBreakdowns.</summary>
+    public class GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The URL visit breakdowns from the specified insight.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urlVisitsBreakdowns")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementVersionsV1UrlVisitsBreakdown> UrlVisitsBreakdowns { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for QueryUrlVisits.</summary>
+    public class GoogleChromeManagementVersionsV1QueryUrlVisitsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A collection of summaries for various URL visit metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summaries")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementVersionsV1UrlVisitsSummary> Summaries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10589,6 +11290,40 @@ namespace Google.Apis.ChromeManagement.v1.Data
     /// <summary>Response message for publishing an issued certificate for a certificate provisioning process.</summary>
     public class GoogleChromeManagementVersionsV1UploadCertificateResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A URL visits summary for a given breakdown dimension.</summary>
+    public class GoogleChromeManagementVersionsV1UrlVisitsBreakdown : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The event domain of the URL visits.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventDomain")]
+        public virtual string EventDomain { get; set; }
+
+        /// <summary>The summary of URL visits for the breakdown dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
+        public virtual GoogleChromeManagementVersionsV1UrlVisitsSummary Summary { get; set; }
+
+        /// <summary>The user that visited the URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual string User { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Summary of URL visits for a given metric.</summary>
+    public class GoogleChromeManagementVersionsV1UrlVisitsSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The count of the URL visits metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>The type of URL visits metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
+        public virtual string Metric { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
