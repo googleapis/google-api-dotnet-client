@@ -25782,10 +25782,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
         /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
-        /// `personalization-memory` * `personalization-suggested-highlights` * `disable-mobile-app-access` *
+        /// `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
-        /// `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills` *
+        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` *
         /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
         /// `cross-product-intelligence`
         /// </summary>
@@ -26980,6 +26980,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// </summary>
     public class GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Per-model Agent Search TPM subscription status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentSearchTokenSubscriptionStatuses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus> AgentSearchTokenSubscriptionStatuses { get; set; }
+
         /// <summary>
         /// Optional. The currently effective Indexing Core threshold. This is the threshold against which Indexing Core
         /// usage is compared for overage calculations.
@@ -27164,6 +27168,180 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>
         /// Output only. The type of update performed in this operation. This field is populated in the response of
         /// UpdateProject.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateType")]
+        public virtual string UpdateType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Per-model Agent Search TPM subscription status. One entry per active
+    /// `core_subscription.agent_search_token_subscriptions[*]` entry in the customer-provided config; populated by
+    /// UpdateProject and GetProject. The lifecycle scalars on this message (`start_time`, `terminate_time`,
+    /// `update_type`, `tpm_threshold_next_update_time`) are per (project, model_version) — siblings of the
+    /// whole-relationship `start_time` / `terminate_time` / `update_type` on the enclosing ConfigurableBillingStatus,
+    /// but scoped to this specific Agent Search TPM subscription instead of to the overall customer-configurable-
+    /// pricing relationship. This per-instance granularity is intentional: the underlying SubV3 storage is
+    /// per-(project, model_version), so each model has its own activation, termination, and deferred-update clock;
+    /// surfacing that on the response gives customers the granularity they need to manage per-model commitments
+    /// independently. QPM / IndexingCore differ — their storage is one row per (project, location), so their lifecycle
+    /// is represented only by the whole- relationship scalars on ConfigurableBillingStatus.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The currently effective TPM threshold. Reflects scale-up immediately and scale-down at the next
+        /// billing cycle, matching `effective_search_qpm_threshold` semantics.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveTpmThreshold")]
+        public virtual System.Nullable<long> EffectiveTpmThreshold { get; set; }
+
+        /// <summary>
+        /// Output only. The Gemini model version this status corresponds to. Matches
+        /// CoreSubscription.AgentSearchTokenSubscription.model_version (a stable Gemini model version from the Gemini
+        /// Enterprise Agent Platform model-versions registry; see
+        /// https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions#gemini-models).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelVersion")]
+        public virtual string ModelVersion { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// Output only. When this (project, model_version) Agent Search TPM subscription was first activated. Set once
+        /// on first activation of this model version and never moved by subsequent threshold updates; on termination +
+        /// re-activation a new value is recorded. Does NOT move the whole-relationship `start_time` on the enclosing
+        /// ConfigurableBillingStatus, which continues to represent the first activation of the overall
+        /// customer-configurable-pricing relationship.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _terminateTimeRaw;
+
+        private object _terminateTime;
+
+        /// <summary>
+        /// Output only. If set, the scheduled effective time at which this (project, model_version) Agent Search TPM
+        /// subscription will terminate. Populated when the customer removes this entry from
+        /// `core_subscription.agent_search_token_subscriptions[*]`. Does NOT move the whole-relationship
+        /// `terminate_time` on the enclosing ConfigurableBillingStatus, which is populated only when the entire
+        /// customer-configurable-pricing relationship is being torn down.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("terminateTime")]
+        public virtual string TerminateTimeRaw
+        {
+            get => _terminateTimeRaw;
+            set
+            {
+                _terminateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _terminateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TerminateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TerminateTimeDateTimeOffset instead.")]
+        public virtual object TerminateTime
+        {
+            get => _terminateTime;
+            set
+            {
+                _terminateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _terminateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TerminateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TerminateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TerminateTimeRaw);
+            set => TerminateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _tpmThresholdNextUpdateTimeRaw;
+
+        private object _tpmThresholdNextUpdateTime;
+
+        /// <summary>
+        /// Output only. The earliest next update time for the TPM subscription threshold for this (project,
+        /// model_version). Populated only after a successful update.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tpmThresholdNextUpdateTime")]
+        public virtual string TpmThresholdNextUpdateTimeRaw
+        {
+            get => _tpmThresholdNextUpdateTimeRaw;
+            set
+            {
+                _tpmThresholdNextUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _tpmThresholdNextUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TpmThresholdNextUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TpmThresholdNextUpdateTimeDateTimeOffset instead.")]
+        public virtual object TpmThresholdNextUpdateTime
+        {
+            get => _tpmThresholdNextUpdateTime;
+            set
+            {
+                _tpmThresholdNextUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _tpmThresholdNextUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TpmThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TpmThresholdNextUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TpmThresholdNextUpdateTimeRaw);
+            set => TpmThresholdNextUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The type of the most recent update to this (project, model_version) subscription, as performed
+        /// by the most recent UpdateProject call. `UPDATE_TYPE_UNSPECIFIED` indicates this model_version was not
+        /// touched by the most recent UpdateProject (its `effective_tpm_threshold` reflects an earlier update). The
+        /// whole-relationship `update_type` on the enclosing ConfigurableBillingStatus continues to summarize the
+        /// direction of the most recent update across all surfaces in the project (QPM, IndexingCore, and Agent Search
+        /// TPM together).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateType")]
         public virtual string UpdateType { get; set; }
@@ -34350,10 +34528,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
         /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
-        /// `personalization-memory` * `personalization-suggested-highlights` * `disable-mobile-app-access` *
+        /// `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
-        /// `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills` *
+        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` *
         /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
         /// `cross-product-intelligence`
         /// </summary>
@@ -36532,6 +36710,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Per-model Agent Search TPM subscription status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentSearchTokenSubscriptionStatuses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus> AgentSearchTokenSubscriptionStatuses { get; set; }
+
         /// <summary>
         /// Optional. The currently effective Indexing Core threshold. This is the threshold against which Indexing Core
         /// usage is compared for overage calculations.
@@ -36716,6 +36898,180 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>
         /// Output only. The type of update performed in this operation. This field is populated in the response of
         /// UpdateProject.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateType")]
+        public virtual string UpdateType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Per-model Agent Search TPM subscription status. One entry per active
+    /// `core_subscription.agent_search_token_subscriptions[*]` entry in the customer-provided config; populated by
+    /// UpdateProject and GetProject. The lifecycle scalars on this message (`start_time`, `terminate_time`,
+    /// `update_type`, `tpm_threshold_next_update_time`) are per (project, model_version) — siblings of the
+    /// whole-relationship `start_time` / `terminate_time` / `update_type` on the enclosing ConfigurableBillingStatus,
+    /// but scoped to this specific Agent Search TPM subscription instead of to the overall customer-configurable-
+    /// pricing relationship. This per-instance granularity is intentional: the underlying SubV3 storage is
+    /// per-(project, model_version), so each model has its own activation, termination, and deferred-update clock;
+    /// surfacing that on the response gives customers the granularity they need to manage per-model commitments
+    /// independently. QPM / IndexingCore differ — their storage is one row per (project, location), so their lifecycle
+    /// is represented only by the whole- relationship scalars on ConfigurableBillingStatus.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The currently effective TPM threshold. Reflects scale-up immediately and scale-down at the next
+        /// billing cycle, matching `effective_search_qpm_threshold` semantics.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveTpmThreshold")]
+        public virtual System.Nullable<long> EffectiveTpmThreshold { get; set; }
+
+        /// <summary>
+        /// Output only. The Gemini model version this status corresponds to. Matches
+        /// CoreSubscription.AgentSearchTokenSubscription.model_version (a stable Gemini model version from the Gemini
+        /// Enterprise Agent Platform model-versions registry; see
+        /// https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions#gemini-models).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelVersion")]
+        public virtual string ModelVersion { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// Output only. When this (project, model_version) Agent Search TPM subscription was first activated. Set once
+        /// on first activation of this model version and never moved by subsequent threshold updates; on termination +
+        /// re-activation a new value is recorded. Does NOT move the whole-relationship `start_time` on the enclosing
+        /// ConfigurableBillingStatus, which continues to represent the first activation of the overall
+        /// customer-configurable-pricing relationship.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _terminateTimeRaw;
+
+        private object _terminateTime;
+
+        /// <summary>
+        /// Output only. If set, the scheduled effective time at which this (project, model_version) Agent Search TPM
+        /// subscription will terminate. Populated when the customer removes this entry from
+        /// `core_subscription.agent_search_token_subscriptions[*]`. Does NOT move the whole-relationship
+        /// `terminate_time` on the enclosing ConfigurableBillingStatus, which is populated only when the entire
+        /// customer-configurable-pricing relationship is being torn down.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("terminateTime")]
+        public virtual string TerminateTimeRaw
+        {
+            get => _terminateTimeRaw;
+            set
+            {
+                _terminateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _terminateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TerminateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TerminateTimeDateTimeOffset instead.")]
+        public virtual object TerminateTime
+        {
+            get => _terminateTime;
+            set
+            {
+                _terminateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _terminateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TerminateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TerminateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TerminateTimeRaw);
+            set => TerminateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _tpmThresholdNextUpdateTimeRaw;
+
+        private object _tpmThresholdNextUpdateTime;
+
+        /// <summary>
+        /// Output only. The earliest next update time for the TPM subscription threshold for this (project,
+        /// model_version). Populated only after a successful update.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tpmThresholdNextUpdateTime")]
+        public virtual string TpmThresholdNextUpdateTimeRaw
+        {
+            get => _tpmThresholdNextUpdateTimeRaw;
+            set
+            {
+                _tpmThresholdNextUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _tpmThresholdNextUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TpmThresholdNextUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TpmThresholdNextUpdateTimeDateTimeOffset instead.")]
+        public virtual object TpmThresholdNextUpdateTime
+        {
+            get => _tpmThresholdNextUpdateTime;
+            set
+            {
+                _tpmThresholdNextUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _tpmThresholdNextUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TpmThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TpmThresholdNextUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TpmThresholdNextUpdateTimeRaw);
+            set => TpmThresholdNextUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The type of the most recent update to this (project, model_version) subscription, as performed
+        /// by the most recent UpdateProject call. `UPDATE_TYPE_UNSPECIFIED` indicates this model_version was not
+        /// touched by the most recent UpdateProject (its `effective_tpm_threshold` reflects an earlier update). The
+        /// whole-relationship `update_type` on the enclosing ConfigurableBillingStatus continues to summarize the
+        /// direction of the most recent update across all surfaces in the project (QPM, IndexingCore, and Agent Search
+        /// TPM together).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateType")]
         public virtual string UpdateType { get; set; }
@@ -47130,10 +47486,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
         /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
-        /// `personalization-memory` * `personalization-suggested-highlights` * `disable-mobile-app-access` *
+        /// `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
-        /// `disable-welcome-emails` * `disable-canvas` * `disable-canvas-workspace` * `disable-skills` *
+        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` *
         /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
         /// `cross-product-intelligence`
         /// </summary>
@@ -49813,6 +50169,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// </summary>
     public class GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Per-model Agent Search TPM subscription status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentSearchTokenSubscriptionStatuses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus> AgentSearchTokenSubscriptionStatuses { get; set; }
+
         /// <summary>
         /// Optional. The currently effective Indexing Core threshold. This is the threshold against which Indexing Core
         /// usage is compared for overage calculations.
@@ -49997,6 +50357,180 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>
         /// Output only. The type of update performed in this operation. This field is populated in the response of
         /// UpdateProject.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateType")]
+        public virtual string UpdateType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Per-model Agent Search TPM subscription status. One entry per active
+    /// `core_subscription.agent_search_token_subscriptions[*]` entry in the customer-provided config; populated by
+    /// UpdateProject and GetProject. The lifecycle scalars on this message (`start_time`, `terminate_time`,
+    /// `update_type`, `tpm_threshold_next_update_time`) are per (project, model_version) — siblings of the
+    /// whole-relationship `start_time` / `terminate_time` / `update_type` on the enclosing ConfigurableBillingStatus,
+    /// but scoped to this specific Agent Search TPM subscription instead of to the overall customer-configurable-
+    /// pricing relationship. This per-instance granularity is intentional: the underlying SubV3 storage is
+    /// per-(project, model_version), so each model has its own activation, termination, and deferred-update clock;
+    /// surfacing that on the response gives customers the granularity they need to manage per-model commitments
+    /// independently. QPM / IndexingCore differ — their storage is one row per (project, location), so their lifecycle
+    /// is represented only by the whole- relationship scalars on ConfigurableBillingStatus.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The currently effective TPM threshold. Reflects scale-up immediately and scale-down at the next
+        /// billing cycle, matching `effective_search_qpm_threshold` semantics.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveTpmThreshold")]
+        public virtual System.Nullable<long> EffectiveTpmThreshold { get; set; }
+
+        /// <summary>
+        /// Output only. The Gemini model version this status corresponds to. Matches
+        /// CoreSubscription.AgentSearchTokenSubscription.model_version (a stable Gemini model version from the Gemini
+        /// Enterprise Agent Platform model-versions registry; see
+        /// https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions#gemini-models).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelVersion")]
+        public virtual string ModelVersion { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// Output only. When this (project, model_version) Agent Search TPM subscription was first activated. Set once
+        /// on first activation of this model version and never moved by subsequent threshold updates; on termination +
+        /// re-activation a new value is recorded. Does NOT move the whole-relationship `start_time` on the enclosing
+        /// ConfigurableBillingStatus, which continues to represent the first activation of the overall
+        /// customer-configurable-pricing relationship.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _terminateTimeRaw;
+
+        private object _terminateTime;
+
+        /// <summary>
+        /// Output only. If set, the scheduled effective time at which this (project, model_version) Agent Search TPM
+        /// subscription will terminate. Populated when the customer removes this entry from
+        /// `core_subscription.agent_search_token_subscriptions[*]`. Does NOT move the whole-relationship
+        /// `terminate_time` on the enclosing ConfigurableBillingStatus, which is populated only when the entire
+        /// customer-configurable-pricing relationship is being torn down.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("terminateTime")]
+        public virtual string TerminateTimeRaw
+        {
+            get => _terminateTimeRaw;
+            set
+            {
+                _terminateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _terminateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TerminateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TerminateTimeDateTimeOffset instead.")]
+        public virtual object TerminateTime
+        {
+            get => _terminateTime;
+            set
+            {
+                _terminateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _terminateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TerminateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TerminateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TerminateTimeRaw);
+            set => TerminateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _tpmThresholdNextUpdateTimeRaw;
+
+        private object _tpmThresholdNextUpdateTime;
+
+        /// <summary>
+        /// Output only. The earliest next update time for the TPM subscription threshold for this (project,
+        /// model_version). Populated only after a successful update.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tpmThresholdNextUpdateTime")]
+        public virtual string TpmThresholdNextUpdateTimeRaw
+        {
+            get => _tpmThresholdNextUpdateTimeRaw;
+            set
+            {
+                _tpmThresholdNextUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _tpmThresholdNextUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TpmThresholdNextUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TpmThresholdNextUpdateTimeDateTimeOffset instead.")]
+        public virtual object TpmThresholdNextUpdateTime
+        {
+            get => _tpmThresholdNextUpdateTime;
+            set
+            {
+                _tpmThresholdNextUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _tpmThresholdNextUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TpmThresholdNextUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TpmThresholdNextUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TpmThresholdNextUpdateTimeRaw);
+            set => TpmThresholdNextUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The type of the most recent update to this (project, model_version) subscription, as performed
+        /// by the most recent UpdateProject call. `UPDATE_TYPE_UNSPECIFIED` indicates this model_version was not
+        /// touched by the most recent UpdateProject (its `effective_tpm_threshold` reflects an earlier update). The
+        /// whole-relationship `update_type` on the enclosing ConfigurableBillingStatus continues to summarize the
+        /// direction of the most recent update across all surfaces in the project (QPM, IndexingCore, and Agent Search
+        /// TPM together).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateType")]
         public virtual string UpdateType { get; set; }
