@@ -4293,8 +4293,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1alpha
             public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>
-            /// A token identifying a page of results the server should return. This value is received from a previous
-            /// `ListMediaPlanners` call in ListMediaPlannersResponse.nextPageToken.
+            /// Optional. A token identifying a page of results the server should return. This value is received from a
+            /// previous `ListMediaPlanners` call in ListMediaPlannersResponse.nextPageToken.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
