@@ -299,9 +299,7 @@ namespace Google.Apis.IAMCredentials.v1
             }
 
             /// <summary>Returns the trust boundary info for a given workforce pool.</summary>
-            /// <param name="name">
-            /// Required. Resource name of workforce pool. Format: `locations/global/workforcePools/{pool_id}`
-            /// </param>
+            /// <param name="name">Required. Resource name of workforce pool.</param>
             public virtual GetAllowedLocationsRequest GetAllowedLocations(string name)
             {
                 return new GetAllowedLocationsRequest(this.service, name);
@@ -317,9 +315,7 @@ namespace Google.Apis.IAMCredentials.v1
                     InitParameters();
                 }
 
-                /// <summary>
-                /// Required. Resource name of workforce pool. Format: `locations/global/workforcePools/{pool_id}`
-                /// </summary>
+                /// <summary>Required. Resource name of workforce pool.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -401,10 +397,7 @@ namespace Google.Apis.IAMCredentials.v1
                 }
 
                 /// <summary>Returns the trust boundary info for a given workload identity pool.</summary>
-                /// <param name="name">
-                /// Required. Resource name of workload identity pool. Format:
-                /// `projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}`
-                /// </param>
+                /// <param name="name">Required. Resource name of workload identity pool.</param>
                 public virtual GetAllowedLocationsRequest GetAllowedLocations(string name)
                 {
                     return new GetAllowedLocationsRequest(this.service, name);
@@ -420,10 +413,7 @@ namespace Google.Apis.IAMCredentials.v1
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// Required. Resource name of workload identity pool. Format:
-                    /// `projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}`
-                    /// </summary>
+                    /// <summary>Required. Resource name of workload identity pool.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
