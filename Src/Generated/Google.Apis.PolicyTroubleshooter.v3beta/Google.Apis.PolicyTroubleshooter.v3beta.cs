@@ -1115,6 +1115,10 @@ namespace Google.Apis.PolicyTroubleshooter.v3beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("combinedResourceInclusionState")]
         public virtual string CombinedResourceInclusionState { get; set; }
 
+        /// <summary>The relevance of the combined resource inclusion state to the overall access state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("combinedResourceRelevance")]
+        public virtual string CombinedResourceRelevance { get; set; }
+
         /// <summary>Required. The effect of the rule which describes the access relationship.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effect")]
         public virtual string Effect { get; set; }
@@ -2113,25 +2117,27 @@ namespace Google.Apis.PolicyTroubleshooter.v3beta.Data
     {
         /// <summary>
         /// Optional. Specifies the permissions that this rule excludes from the set of affected permissions given by
-        /// `permissions`. The number of excluded permission strings in this field is limited to 50. If a permission
-        /// appears in both `permissions` and `excluded_permissions` then it will _not_ be subject to the policy effect.
-        /// The excluded permissions can be specified using the same syntax as `permissions`.
+        /// `permissions`. The number of excluded permission strings in this field is limited to 50 across all rules in
+        /// the policy. If a permission appears in both `permissions` and `excluded_permissions` then it will _not_ be
+        /// subject to the policy effect. The excluded permissions can be specified using the same syntax as
+        /// `permissions`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedPermissions")]
         public virtual System.Collections.Generic.IList<string> ExcludedPermissions { get; set; }
 
         /// <summary>
         /// Optional. The permissions that are explicitly affected by this rule. The number of permission strings in
-        /// this field is limited to 50. Each permission uses the format `{service_fqdn}/{resource}.{verb}`, where
-        /// `{service_fqdn}` is the fully qualified domain name for the service. `*` can be used as a wildcard to match
-        /// all permissions for a specific service, resource type, or verb. The following formats are supported: *
-        /// `{service_fqdn}/{resource}.{verb}`: A specific permission. * `{service_fqdn}/{resource}.*`: All permissions
-        /// for a specific resource type. * `{service_fqdn}/*.*`: All permissions for all resource types under a
-        /// specific service. * `{service_fqdn}/*.{verb}`: All permissions with a specific verb under a specific
-        /// service. * `*`: All permissions across all services. For example, `compute.googleapis.com/*.setIamPolicy`
-        /// refers to all setIamPolicy permissions for any compute resource. Wildcards expand only to the permissions
-        /// specified in the `enforcement_version` of the policy. If the `enforcement_version` is updated, the wildcard
-        /// will automatically expand to include new permissions in the updated version.
+        /// this field is limited to 50 across all rules in the policy. Each permission uses the format
+        /// `{service_fqdn}/{resource}.{verb}`, where `{service_fqdn}` is the fully qualified domain name for the
+        /// service. `*` can be used as a wildcard to match all permissions for a specific service, resource type, or
+        /// verb. The following formats are supported: * `{service_fqdn}/{resource}.{verb}`: A specific permission. *
+        /// `{service_fqdn}/{resource}.*`: All permissions for a specific resource type. * `{service_fqdn}/*.*`: All
+        /// permissions for all resource types under a specific service. * `{service_fqdn}/*.{verb}`: All permissions
+        /// with a specific verb under a specific service. * `*`: All permissions across all services. For example,
+        /// `compute.googleapis.com/*.setIamPolicy` refers to all setIamPolicy permissions for any compute resource.
+        /// Wildcards expand only to the permissions specified in the `enforcement_version` of the policy. If the
+        /// `enforcement_version` is updated, the wildcard will automatically expand to include new permissions in the
+        /// updated version.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
