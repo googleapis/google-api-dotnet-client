@@ -35,6 +35,7 @@ namespace Google.Apis.DataManager.v1
         public DataManagerService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             AccountTypes = new AccountTypesResource(this);
+            AdEvents = new AdEventsResource(this);
             AudienceMembers = new AudienceMembersResource(this);
             Events = new EventsResource(this);
             RequestStatus = new RequestStatusResource(this);
@@ -94,6 +95,9 @@ namespace Google.Apis.DataManager.v1
 
         /// <summary>Gets the AccountTypes resource.</summary>
         public virtual AccountTypesResource AccountTypes { get; }
+
+        /// <summary>Gets the AdEvents resource.</summary>
+        public virtual AdEventsResource AdEvents { get; }
 
         /// <summary>Gets the AudienceMembers resource.</summary>
         public virtual AudienceMembersResource AudienceMembers { get; }
@@ -1904,6 +1908,66 @@ namespace Google.Apis.DataManager.v1
         }
     }
 
+    /// <summary>The "adEvents" collection of methods.</summary>
+    public class AdEventsResource
+    {
+        private const string Resource = "adEvents";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public AdEventsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Uploads a list of AdEvent resources to Google Analytics. This feature is only available to accounts on an
+        /// allowlist.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual IngestRequest Ingest(Google.Apis.DataManager.v1.Data.IngestAdEventsRequest body)
+        {
+            return new IngestRequest(this.service, body);
+        }
+
+        /// <summary>
+        /// Uploads a list of AdEvent resources to Google Analytics. This feature is only available to accounts on an
+        /// allowlist.
+        /// </summary>
+        public class IngestRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.IngestAdEventsResponse>
+        {
+            /// <summary>Constructs a new Ingest request.</summary>
+            public IngestRequest(Google.Apis.Services.IClientService service, Google.Apis.DataManager.v1.Data.IngestAdEventsRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DataManager.v1.Data.IngestAdEventsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "ingest";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/adEvents:ingest";
+
+            /// <summary>Initializes Ingest parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+    }
+
     /// <summary>The "audienceMembers" collection of methods.</summary>
     public class AudienceMembersResource
     {
@@ -2111,6 +2175,193 @@ namespace Google.Apis.DataManager.v1
 }
 namespace Google.Apis.DataManager.v1.Data
 {
+    /// <summary>An ad event.</summary>
+    public class AdEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enum value for ad format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adFormat")]
+        public virtual string AdFormat { get; set; }
+
+        /// <summary>String value for ad format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adFormatString")]
+        public virtual string AdFormatString { get; set; }
+
+        /// <summary>Optional. The ID of the associated ad group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupId")]
+        public virtual string AdGroupId { get; set; }
+
+        /// <summary>Optional. The height of the ad in pixels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adHeight")]
+        public virtual System.Nullable<int> AdHeight { get; set; }
+
+        /// <summary>Optional. The ID of the associated ad within the group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adId")]
+        public virtual string AdId { get; set; }
+
+        /// <summary>Enum value for ad placement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adPlacement")]
+        public virtual string AdPlacement { get; set; }
+
+        /// <summary>String value for ad placement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adPlacementString")]
+        public virtual string AdPlacementString { get; set; }
+
+        /// <summary>Enum value for ad type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adType")]
+        public virtual string AdType { get; set; }
+
+        /// <summary>String value for ad type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adTypeString")]
+        public virtual string AdTypeString { get; set; }
+
+        /// <summary>Optional. The width of the ad in pixels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adWidth")]
+        public virtual System.Nullable<int> AdWidth { get; set; }
+
+        /// <summary>
+        /// Required. The ID of the advertiser for the ad event. This must match the ID sent in the linking flow.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
+        public virtual string AdvertiserId { get; set; }
+
+        /// <summary>
+        /// Optional. The partner-assumed attribution status for this ad event. This acts only as a signal for how the
+        /// partner assumed attribution played out, and does not force an end result in final reports.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributionHint")]
+        public virtual string AttributionHint { get; set; }
+
+        /// <summary>Required. The ID of the associated campaign.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignId")]
+        public virtual string CampaignId { get; set; }
+
+        /// <summary>Required. The name of the associated campaign.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignName")]
+        public virtual string CampaignName { get; set; }
+
+        /// <summary>Optional. Information gathered about the device being used when the ad event happened.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceInfo")]
+        public virtual DeviceInfo DeviceInfo { get; set; }
+
+        /// <summary>
+        /// Optional. An ID created and managed by the caller that uniquely identifies this event. Required if you want
+        /// to deduplicate ad events that are included in multiple requests. Otherwise, this field is optional.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
+        public virtual string EventId { get; set; }
+
+        /// <summary>Enum value for event subtype.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventSubtype")]
+        public virtual string EventSubtype { get; set; }
+
+        /// <summary>String value for event subtype.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventSubtypeString")]
+        public virtual string EventSubtypeString { get; set; }
+
+        /// <summary>Required. The type of the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
+        public virtual string EventType { get; set; }
+
+        /// <summary>
+        /// Optional. Represents if the row is allowed to be used for measurement purposes, as governed by applicable
+        /// privacy laws within regional jurisdiction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("measurementAllowed")]
+        public virtual System.Nullable<bool> MeasurementAllowed { get; set; }
+
+        /// <summary>Required. The medium of the ad, akin to the Google Analytics medium.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("medium")]
+        public virtual string Medium { get; set; }
+
+        /// <summary>Optional. The device ID of the device that the ad was served to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mobileDeviceId")]
+        public virtual string MobileDeviceId { get; set; }
+
+        /// <summary>Enum value for platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platform")]
+        public virtual string Platform { get; set; }
+
+        /// <summary>String value for platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platformString")]
+        public virtual string PlatformString { get; set; }
+
+        /// <summary>Enum value for platform type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platformType")]
+        public virtual string PlatformType { get; set; }
+
+        /// <summary>String value for platform type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platformTypeString")]
+        public virtual string PlatformTypeString { get; set; }
+
+        /// <summary>Required. The ISO 3166-2 country plus subdivision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>Required. The platform source of the ad, akin to the Google Analytics source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>Enum value for targeting type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetingType")]
+        public virtual string TargetingType { get; set; }
+
+        /// <summary>String value for targeting type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetingTypeString")]
+        public virtual string TargetingTypeString { get; set; }
+
+        private string _timestampRaw;
+
+        private object _timestamp;
+
+        /// <summary>Required. The time the event occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual string TimestampRaw
+        {
+            get => _timestampRaw;
+            set
+            {
+                _timestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimestampDateTimeOffset instead.")]
+        public virtual object Timestamp
+        {
+            get => _timestamp;
+            set
+            {
+                _timestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _timestamp = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampRaw);
+            set => TimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. Multiple pieces of user-provided data, representing the user the event is associated with. It is
+        /// possible to provide multiple instances of the same type of data (e.g. email address). The more data
+        /// provided, the more likely a match will be found.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userData")]
+        public virtual UserData UserData { get; set; }
+
+        /// <summary>Required. Details of the viewability of the ad served.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("viewabilityInfo")]
+        public virtual ViewabilityInfo ViewabilityInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Identifiers and other information used to match the conversion event with other online activity (such as ad
     /// clicks).
@@ -2383,6 +2634,17 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information about the coordinator key.</summary>
+    public class CoordinatorKeyInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The ID of the chosen coordinator key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyId")]
+        public virtual string KeyId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Custom variable for ads conversions.</summary>
     public class CustomVariable : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2575,6 +2837,13 @@ namespace Google.Apis.DataManager.v1.Data
         /// <summary>Amazon Web Services wrapped key information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsWrappedKeyInfo")]
         public virtual AwsWrappedKeyInfo AwsWrappedKeyInfo { get; set; }
+
+        /// <summary>
+        /// Key information for the chosen coordinator key. This is not supported for the IngestEvents,
+        /// IngestAudienceMembers, and RemoveAudienceMembers methods.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coordinatorKeyInfo")]
+        public virtual CoordinatorKeyInfo CoordinatorKeyInfo { get; set; }
 
         /// <summary>Google Cloud Platform wrapped key information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpWrappedKeyInfo")]
@@ -2905,6 +3174,32 @@ namespace Google.Apis.DataManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("wipProvider")]
         public virtual string WipProvider { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to upload ad events.</summary>
+    public class IngestAdEventsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Required (at least 1). A list of ad events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adEvents")]
+        public virtual System.Collections.Generic.IList<AdEvent> AdEvents { get; set; }
+
+        /// <summary>Optional. Information about encryption keys which are used to encrypt the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionInfo")]
+        public virtual EncryptionInfo EncryptionInfo { get; set; }
+
+        /// <summary>Optional. If true, the request is validated, but not executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response from an ad event ingestion operation.</summary>
+    public class IngestAdEventsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3718,9 +4013,38 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a customer account in the partner's system.</summary>
+    public class PartnerCustomerAccount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The identifier of the customer account in the partner's ID space.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual string AccountId { get; set; }
+
+        /// <summary>Optional. The name of the account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountName")]
+        public virtual string AccountName { get; set; }
+
+        /// <summary>
+        /// Optional. The type of the account. Can be used to distinguish between advertiser accounts and business level
+        /// accounts, for example.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountType")]
+        public virtual string AccountType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A partner link between an owning account and a partner account.</summary>
     public class PartnerLink : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Immutable. The set of features supported for the partner link. If not specified, the system
+        /// behavior defaults to FEATURE_SET_AUDIENCE_AND_EVENT_MANAGEMENT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureSet")]
+        public virtual string FeatureSet { get; set; }
+
         /// <summary>
         /// Identifier. The name of the partner link. Format:
         /// accountTypes/{account_type}/accounts/{account}/partnerLinks/{partner_link}
@@ -3736,9 +4060,34 @@ namespace Google.Apis.DataManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("partnerAccount")]
         public virtual ProductAccount PartnerAccount { get; set; }
 
+        /// <summary>
+        /// Optional. The customer account in the partner system. This is required for partner links with the
+        /// FEATURE_SET_AD_EVENT_MANAGEMENT feature set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerCustomerAccount")]
+        public virtual PartnerCustomerAccount PartnerCustomerAccount { get; set; }
+
         /// <summary>Output only. The partner link ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerLinkId")]
         public virtual string PartnerLinkId { get; set; }
+
+        /// <summary>
+        /// Optional. Metadata associated with the partner link. This is optional and only accepted for partner links
+        /// with the FEATURE_SET_AD_EVENT_MANAGEMENT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerLinkMetadata")]
+        public virtual PartnerLinkMetadata PartnerLinkMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents metadata associated with a partner link.</summary>
+    public class PartnerLinkMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The list of implicit accounts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("implicitAccounts")]
+        public virtual System.Collections.Generic.IList<PartnerCustomerAccount> ImplicitAccounts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3766,7 +4115,7 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string AccountId { get; set; }
 
         /// <summary>
-        /// Optional. The type of the account. For example, `GOOGLE_ADS`. Either `account_type` or the deprecated
+        /// Required. The type of the account. For example, `GOOGLE_ADS`. Either `account_type` or the deprecated
         /// `product` is required. If both are set, the values must match.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountType")]
@@ -4673,6 +5022,47 @@ namespace Google.Apis.DataManager.v1.Data
         /// <summary>Required. The string representation of the value of the user property to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of the viewability of the ad served.</summary>
+    public class ViewabilityInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The duration of the ad media.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaDuration")]
+        public virtual object MediaDuration { get; set; }
+
+        /// <summary>Optional. The amount of the media that was played as discrete quartiles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaQuartile")]
+        public virtual string MediaQuartile { get; set; }
+
+        /// <summary>Optional. Whether the ad media was skippable or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaSkippable")]
+        public virtual System.Nullable<bool> MediaSkippable { get; set; }
+
+        /// <summary>Optional. The numerical percent (0-100) of the volume of the media playback.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaVolumePercent")]
+        public virtual System.Nullable<int> MediaVolumePercent { get; set; }
+
+        /// <summary>
+        /// Optional. The duration of playback of the ad media, regardless of whether it was viewable or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playbackDuration")]
+        public virtual object PlaybackDuration { get; set; }
+
+        /// <summary>Required. The type of the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("viewType")]
+        public virtual string ViewType { get; set; }
+
+        /// <summary>Optional. The amount of time the ad was viewable for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("viewableDuration")]
+        public virtual object ViewableDuration { get; set; }
+
+        /// <summary>Optional. The numerical percent (0-100) of the pixels that were viewable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("viewablePercent")]
+        public virtual System.Nullable<int> ViewablePercent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
