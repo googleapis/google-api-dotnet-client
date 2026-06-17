@@ -294,8 +294,8 @@ namespace Google.Apis.Merchant.reports_v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. Id of the account making the call. Must be a standalone account or an MCA subaccount. Format:
-            /// accounts/{account}
+            /// Required. Id of the account making the call. Must be a standalone account or a subaccount of an advanced
+            /// account. Format: accounts/{account}
             /// </param>
             public virtual SearchRequest Search(Google.Apis.Merchant.reports_v1.Data.SearchRequest body, string parent)
             {
@@ -317,8 +317,8 @@ namespace Google.Apis.Merchant.reports_v1
                 }
 
                 /// <summary>
-                /// Required. Id of the account making the call. Must be a standalone account or an MCA subaccount.
-                /// Format: accounts/{account}
+                /// Required. Id of the account making the call. Must be a standalone account or a subaccount of an
+                /// advanced account. Format: accounts/{account}
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
