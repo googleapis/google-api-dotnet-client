@@ -905,6 +905,10 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fcmOptions")]
         public virtual FcmOptions FcmOptions { get; set; }
 
+        /// <summary>Optional. Firebase Installation ID to send a message to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fid")]
+        public virtual string Fid { get; set; }
+
         /// <summary>
         /// Output Only. The identifier of the message sent, in the format of `projects/*/messages/{message_id}`.
         /// </summary>
@@ -915,7 +919,10 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notification")]
         public virtual Notification Notification { get; set; }
 
-        /// <summary>Registration token to send a message to.</summary>
+        /// <summary>
+        /// Deprecated: Use `fid` instead. Registration token to send a message to. During the transition period, this
+        /// field also accepts a Firebase Installation ID (FID).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual string Token { get; set; }
 
