@@ -5434,6 +5434,13 @@ namespace Google.Apis.Firestore.v1.Data
     public class ExecutePipelineRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Automatically commits the transaction after the pipeline has been executed. Only permitted in
+        /// combination with `transaction` or `new_transaction`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoCommitTransaction")]
+        public virtual System.Nullable<bool> AutoCommitTransaction { get; set; }
+
+        /// <summary>
         /// Execute the pipeline in a new transaction. The identifier of the newly created transaction will be returned
         /// in the first response on the stream. This defaults to a read-only transaction.
         /// </summary>
