@@ -1229,6 +1229,16 @@ namespace Google.Apis.CloudOSLogin.v1alpha.Data
         public virtual string AppEngineInstance { get; set; }
 
         /// <summary>
+        /// Optional. The Cloud Run resource to sign the SSH public key for. Expected formats: -
+        /// `projects/{project}/locations/{location}/services/{service}` -
+        /// `projects/{project}/locations/{location}/workerPools/{worker_pool}` -
+        /// `projects/{project}/locations/{location}/jobs/{job}` -
+        /// `projects/{project}/locations/{location}/instances/{instance}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudRunResource")]
+        public virtual string CloudRunResource { get; set; }
+
+        /// <summary>
         /// The Compute instance to sign the SSH public key for. Expected format:
         /// projects/{project}/zones/{zone}/instances/{numeric_instance_id}
         /// </summary>
