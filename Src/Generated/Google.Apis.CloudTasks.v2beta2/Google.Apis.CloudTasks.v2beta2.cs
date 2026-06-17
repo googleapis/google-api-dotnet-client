@@ -3669,7 +3669,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// Rate limits for task dispatches. rate_limits and retry_config are related because they both control task
         /// attempts however they control how tasks are attempted in different ways: * rate_limits controls the total
         /// rate of dispatches from a queue (i.e. all traffic dispatched from the queue, regardless of whether the
-        /// dispatch is from a first attempt or a retry). * retry_config controls what happens to particular a task
+        /// dispatch is from a first attempt or a retry). * retry_config controls what happens to a particular task
         /// after its first attempt fails. That is, retry_config controls task retries (the second attempt, third
         /// attempt, etc).
         /// </summary>
