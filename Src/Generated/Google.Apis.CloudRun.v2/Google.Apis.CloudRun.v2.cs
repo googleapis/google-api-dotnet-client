@@ -5195,6 +5195,12 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual GoogleCloudRunV2ResourceRequirements Resources { get; set; }
 
+        /// <summary>
+        /// Optional. Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sandboxLauncher")]
+        public virtual System.Nullable<bool> SandboxLauncher { get; set; }
+
         /// <summary>Optional. Location of the source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceCode")]
         public virtual GoogleCloudRunV2SourceCode SourceCode { get; set; }
@@ -7352,6 +7358,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
+        /// <summary>Output only. Configuration for sandboxes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sandboxes")]
+        public virtual GoogleCloudRunV2SandboxConfiguration Sandboxes { get; set; }
+
         /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
@@ -7577,6 +7587,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("revision")]
         public virtual string Revision { get; set; }
 
+        /// <summary>Optional. Configuration for sandboxes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sandboxes")]
+        public virtual GoogleCloudRunV2SandboxConfiguration Sandboxes { get; set; }
+
         /// <summary>Optional. Scaling settings for this Revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scaling")]
         public virtual GoogleCloudRunV2RevisionScaling Scaling { get; set; }
@@ -7636,6 +7650,17 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Indicates that the request should be validated without actually deleting any resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
+    }
+
+    /// <summary>Configuration for sandboxes.</summary>
+    public class GoogleCloudRunV2SandboxConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Container templates that can be launched through the `sandbox` CLI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templates")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2Container> Templates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>SecretEnvVarSource represents a source for the value of an EnvVar.</summary>
