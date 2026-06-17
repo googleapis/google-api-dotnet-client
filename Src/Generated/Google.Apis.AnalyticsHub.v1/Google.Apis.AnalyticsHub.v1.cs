@@ -2971,8 +2971,9 @@ namespace Google.Apis.AnalyticsHub.v1.Data
 
     /// <summary>
     /// Configuration for a Bigtable subscription. The Pub/Sub message will be written to a Bigtable row as follows: -
-    /// row key: subscription name and message ID delimited by #. - columns: message bytes written to a single column
-    /// family "data" with an empty-string column qualifier. - cell timestamp: the message publish timestamp.
+    /// row key: subscription name, message ID hash, and message ID delimited by `#`. - columns: message bytes written
+    /// to a single column family `data` with an empty-string column qualifier. - cell timestamp: the message publish
+    /// timestamp.
     /// </summary>
     public class BigtableConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3158,6 +3159,23 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         /// <summary>Optional. If set, message data will be written to Cloud Storage in text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textConfig")]
         public virtual TextConfig TextConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for compressing/decompressing message data using a user-specified compression algorithm.
+    /// </summary>
+    public class Compression : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Specifies the compression algorithm to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compressionAlgorithm")]
+        public virtual string CompressionAlgorithm { get; set; }
+
+        /// <summary>Required. Specifies whether to compress or decompress the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compressionMode")]
+        public virtual string CompressionMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3977,6 +3995,10 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aiInference")]
         public virtual AIInference AiInference { get; set; }
+
+        /// <summary>Optional. Compression/Decompression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compression")]
+        public virtual Compression Compression { get; set; }
 
         /// <summary>
         /// Optional. If true, the transform is disabled and will not be applied to messages. Defaults to `false`.
