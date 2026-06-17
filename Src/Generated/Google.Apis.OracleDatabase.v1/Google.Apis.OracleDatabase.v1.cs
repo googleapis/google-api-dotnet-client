@@ -1605,6 +1605,65 @@ namespace Google.Apis.OracleDatabase.v1
                     }
                 }
 
+                /// <summary>Configures Exascale for a single Exadata Infrastructure.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the Cloud Exadata Infrastructure in the following format:
+                /// projects/{project}/locations/{location}/cloudExadataInfrastructures/{cloud_exadata_infrastructure}.
+                /// </param>
+                public virtual ConfigureExascaleRequest ConfigureExascale(Google.Apis.OracleDatabase.v1.Data.ConfigureExascaleCloudExadataInfrastructureRequest body, string name)
+                {
+                    return new ConfigureExascaleRequest(this.service, body, name);
+                }
+
+                /// <summary>Configures Exascale for a single Exadata Infrastructure.</summary>
+                public class ConfigureExascaleRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new ConfigureExascale request.</summary>
+                    public ConfigureExascaleRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.ConfigureExascaleCloudExadataInfrastructureRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Cloud Exadata Infrastructure in the following format:
+                    /// projects/{project}/locations/{location}/cloudExadataInfrastructures/{cloud_exadata_infrastructure}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.ConfigureExascaleCloudExadataInfrastructureRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "configureExascale";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:configureExascale";
+
+                    /// <summary>Initializes ConfigureExascale parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/cloudExadataInfrastructures/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Creates a new Exadata Infrastructure in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -5001,57 +5060,6 @@ namespace Google.Apis.OracleDatabase.v1
                     this.service = service;
                 }
 
-                /// <summary>Gets details of a single GoldengateConnectionType.</summary>
-                /// <param name="name">
-                /// Required. Name of the resource in the format:
-                /// projects/{project}/locations/{location}/goldengateConnectionTypes/{goldengate_connection_type}
-                /// </param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(this.service, name);
-                }
-
-                /// <summary>Gets details of a single GoldengateConnectionType.</summary>
-                public class GetRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.GoldengateConnectionType>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. Name of the resource in the format:
-                    /// projects/{project}/locations/{location}/goldengateConnectionTypes/{goldengate_connection_type}
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "get";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+name}";
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/goldengateConnectionTypes/[^/]+$",
-                        });
-                    }
-                }
-
                 /// <summary>Lists GoldengateConnectionTypes in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. Parent value for ListGoldengateConnectionTypesRequest Format:
@@ -5503,57 +5511,6 @@ namespace Google.Apis.OracleDatabase.v1
                     this.service = service;
                 }
 
-                /// <summary>Gets details of a single GoldengateDeploymentEnvironment.</summary>
-                /// <param name="name">
-                /// Required. Name of the resource with the format:
-                /// projects/{project}/locations/{location}/goldengateDeploymentEnvironments/{goldengate_deployment_environment}
-                /// </param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(this.service, name);
-                }
-
-                /// <summary>Gets details of a single GoldengateDeploymentEnvironment.</summary>
-                public class GetRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.GoldengateDeploymentEnvironment>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. Name of the resource with the format:
-                    /// projects/{project}/locations/{location}/goldengateDeploymentEnvironments/{goldengate_deployment_environment}
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "get";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+name}";
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/goldengateDeploymentEnvironments/[^/]+$",
-                        });
-                    }
-                }
-
                 /// <summary>Lists GoldengateDeploymentEnvironments in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The parent, which owns this collection of GoldengateDeploymentEnvironments. Format:
@@ -5649,57 +5606,6 @@ namespace Google.Apis.OracleDatabase.v1
                 public GoldengateDeploymentTypesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-                }
-
-                /// <summary>Gets details of a single GoldenGateDeploymentType.</summary>
-                /// <param name="name">
-                /// Required. The name of the GoldengateDeploymentType to retrieve. Format:
-                /// projects/{project}/locations/{location}/goldengateDeploymentTypes/{goldengate_deployment_type}
-                /// </param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(this.service, name);
-                }
-
-                /// <summary>Gets details of a single GoldenGateDeploymentType.</summary>
-                public class GetRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.GoldengateDeploymentType>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The name of the GoldengateDeploymentType to retrieve. Format:
-                    /// projects/{project}/locations/{location}/goldengateDeploymentTypes/{goldengate_deployment_type}
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "get";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+name}";
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/goldengateDeploymentTypes/[^/]+$",
-                        });
-                    }
                 }
 
                 /// <summary>Lists GoldenGateDeploymentTypes in a given project and location.</summary>
@@ -5824,57 +5730,6 @@ namespace Google.Apis.OracleDatabase.v1
                 public GoldengateDeploymentVersionsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-                }
-
-                /// <summary>Gets details of a single GoldengateDeploymentVersion.</summary>
-                /// <param name="name">
-                /// Required. The name of the GoldengateDeploymentVersion to retrieve. Format:
-                /// projects/{project}/locations/{location}/goldengateDeploymentVersions/{goldengate_deployment_version}
-                /// </param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(this.service, name);
-                }
-
-                /// <summary>Gets details of a single GoldengateDeploymentVersion.</summary>
-                public class GetRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.GoldengateDeploymentVersion>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The name of the GoldengateDeploymentVersion to retrieve. Format:
-                    /// projects/{project}/locations/{location}/goldengateDeploymentVersions/{goldengate_deployment_version}
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "get";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+name}";
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/goldengateDeploymentVersions/[^/]+$",
-                        });
-                    }
                 }
 
                 /// <summary>Lists GoldengateDeploymentVersions in a given project and location.</summary>
@@ -9160,6 +9015,10 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dbServerVersion")]
         public virtual string DbServerVersion { get; set; }
 
+        /// <summary>Output only. The Exascale configuration for the Exadata Infrastructure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exascaleConfig")]
+        public virtual ExascaleConfig ExascaleConfig { get; set; }
+
         /// <summary>Optional. Maintenance window for repair.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceWindow")]
         public virtual MaintenanceWindow MaintenanceWindow { get; set; }
@@ -9399,6 +9258,13 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ExadataInfrastructure { get; set; }
 
         /// <summary>
+        /// Optional. The name of ExascaleDbStorageVault associated with the VM Cluster. Format:
+        /// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exascaleDbStorageVault")]
+        public virtual string ExascaleDbStorageVault { get; set; }
+
+        /// <summary>
         /// Output only. The GCP Oracle zone where Oracle CloudVmCluster is hosted. This will be the same as the
         /// gcp_oracle_zone of the CloudExadataInfrastructure. Example: us-east4-b-r2.
         /// </summary>
@@ -9581,6 +9447,10 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>Output only. The storage management type of the VM Cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageManagementType")]
+        public virtual string StorageManagementType { get; set; }
+
         /// <summary>Output only. The storage allocation for the disk group, in gigabytes (GB).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageSizeGb")]
         public virtual System.Nullable<int> StorageSizeGb { get; set; }
@@ -9592,6 +9462,21 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// <summary>Optional. Time zone of VM Cluster to set. Defaults to UTC if not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual TimeZone TimeZone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for `CloudExadataInfrastructure.ConfigureExascale`.</summary>
+    public class ConfigureExascaleCloudExadataInfrastructureRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. An optional ID to identify the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>Required. The total storage to be allocated to Exascale in GBs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalStorageSizeGb")]
+        public virtual System.Nullable<int> TotalStorageSizeGb { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10954,6 +10839,21 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details of the Exascale configuration for the Exadata Infrastructure.</summary>
+    public class ExascaleConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Available storage size for Exascale in GBs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableStorageSizeGb")]
+        public virtual System.Nullable<int> AvailableStorageSizeGb { get; set; }
+
+        /// <summary>Output only. Total storage size needed for Exascale in GBs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalStorageSizeGb")]
+        public virtual System.Nullable<int> TotalStorageSizeGb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The storage details of the ExascaleDbStorageVault.</summary>
     public class ExascaleDbStorageDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11026,6 +10926,14 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entitlementId")]
         public virtual string EntitlementId { get; set; }
+
+        /// <summary>
+        /// Optional. The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created, in the
+        /// following format:
+        /// projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exadataInfrastructure")]
+        public virtual string ExadataInfrastructure { get; set; }
 
         /// <summary>
         /// Optional. The GCP Oracle zone where Oracle ExascaleDbStorageVault is hosted. Example: us-east4-b-r2. If not
