@@ -3061,6 +3061,13 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual object ArchiveTimeout { get; set; }
 
         /// <summary>
+        /// Optional. Maximum size in GB to which this persistent directory can be resized. Defaults to unlimited if not
+        /// set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSizeGb")]
+        public virtual System.Nullable<int> MaxSizeGb { get; set; }
+
+        /// <summary>
         /// Optional. Whether the persistent disk should be deleted when the workstation is deleted. Valid values are
         /// `DELETE` and `RETAIN`. Defaults to `DELETE`.
         /// </summary>
@@ -3332,6 +3339,13 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fsType")]
         public virtual string FsType { get; set; }
+
+        /// <summary>
+        /// Optional. Maximum size in GB to which this persistent directory can be resized. Defaults to unlimited if not
+        /// set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSizeGb")]
+        public virtual System.Nullable<int> MaxSizeGb { get; set; }
 
         /// <summary>
         /// Optional. Whether the persistent disk should be deleted when the workstation is deleted. Valid values are
