@@ -578,6 +578,31 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for audio-specific output formatting.</summary>
+    public class GoogleCloudAiplatformV1beta1AudioResponseFormat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitRate")]
+        public virtual System.Nullable<int> BitRate { get; set; }
+
+        /// <summary>Optional. Delivery mode for the generated content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delivery")]
+        public virtual string Delivery { get; set; }
+
+        /// <summary>Optional. The MIME type of the audio output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>Optional. Sample rate for the generated audio in Hertz.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleRate")]
+        public virtual System.Nullable<int> SampleRate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Auth configuration to run the extension.</summary>
     public class GoogleCloudAiplatformV1beta1AuthConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1635,7 +1660,9 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("frequencyPenalty")]
         public virtual System.Nullable<float> FrequencyPenalty { get; set; }
 
-        /// <summary>Optional. Config for image generation features.</summary>
+        /// <summary>
+        /// Optional. Config for image generation features. Deprecated: Use `response_format.image` instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageConfig")]
         public virtual GoogleCloudAiplatformV1beta1ImageConfig ImageConfig { get; set; }
 
@@ -1676,8 +1703,14 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual System.Nullable<float> PresencePenalty { get; set; }
 
         /// <summary>
+        /// Optional. New response format field for the model to configure output formatting and delivery.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseFormat")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1ResponseFormat> ResponseFormat { get; set; }
+
+        /// <summary>
         /// Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to
-        /// `application/json`.
+        /// `application/json`. Deprecated: Use `response_format` instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseJsonSchema")]
         public virtual object ResponseJsonSchema { get; set; }
@@ -1694,7 +1727,8 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>
         /// Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this
         /// MIME type. Supported values include 'text/plain' (default) and 'application/json'. The model needs to be
-        /// prompted to output the appropriate response type, otherwise the behavior is undefined.
+        /// prompted to output the appropriate response type, otherwise the behavior is undefined. Deprecated: Use
+        /// `response_format` instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseMimeType")]
         public virtual string ResponseMimeType { get; set; }
@@ -1711,7 +1745,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// Optional. Lets you to specify a schema for the model's response, ensuring that the output conforms to a
         /// particular structure. This is useful for generating structured data such as JSON. The schema is a subset of
         /// the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set,
-        /// you must also set the `response_mime_type` to `application/json`.
+        /// you must also set the `response_mime_type` to `application/json`. Deprecated: Use `response_format` instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseSchema")]
         public virtual GoogleCloudAiplatformV1beta1Schema ResponseSchema { get; set; }
@@ -2292,6 +2326,29 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for image-specific output formatting.</summary>
+    public class GoogleCloudAiplatformV1beta1ImageResponseFormat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The aspect ratio for the image output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aspectRatio")]
+        public virtual string AspectRatio { get; set; }
+
+        /// <summary>Optional. Delivery mode for the generated content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delivery")]
+        public virtual string Delivery { get; set; }
+
+        /// <summary>Optional. The size of the image output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageSize")]
+        public virtual string ImageSize { get; set; }
+
+        /// <summary>Optional. The MIME type of the image output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The log probabilities of the tokens generated by the model. This is useful for understanding the model's
     /// confidence in its predictions and for debugging. For example, you can use log probabilities to identify when the
@@ -2714,6 +2771,29 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for the model to configure output formatting and delivery.</summary>
+    public class GoogleCloudAiplatformV1beta1ResponseFormat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Audio output format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audio")]
+        public virtual GoogleCloudAiplatformV1beta1AudioResponseFormat Audio { get; set; }
+
+        /// <summary>Image output format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual GoogleCloudAiplatformV1beta1ImageResponseFormat Image { get; set; }
+
+        /// <summary>Text output format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual GoogleCloudAiplatformV1beta1TextResponseFormat Text { get; set; }
+
+        /// <summary>Video output format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("video")]
+        public virtual GoogleCloudAiplatformV1beta1VideoResponseFormat Video { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines a retrieval tool that model can call to access external knowledge.</summary>
     public class GoogleCloudAiplatformV1beta1Retrieval : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3102,6 +3182,24 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for text-specific output formatting.</summary>
+    public class GoogleCloudAiplatformV1beta1TextResponseFormat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The IANA standard MIME type of the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>
+        /// Optional. The JSON schema that the output should conform to. Only applicable when mime_type is
+        /// APPLICATION_JSON.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual object Schema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Tool details that the model may use to generate response. A `Tool` is a piece of code that enables the system to
     /// interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the
@@ -3195,6 +3293,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>Tool to support computer use.</summary>
     public class GoogleCloudAiplatformV1beta1ToolComputerUse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Enables the prompt injection detection check on computer-use request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePromptInjectionDetection")]
+        public virtual System.Nullable<bool> EnablePromptInjectionDetection { get; set; }
+
         /// <summary>Required. The environment being operated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; }
@@ -3508,6 +3610,31 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Optional. The start offset of the video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startOffset")]
         public virtual object StartOffset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for video-specific output formatting.</summary>
+    public class GoogleCloudAiplatformV1beta1VideoResponseFormat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The aspect ratio for the video output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aspectRatio")]
+        public virtual string AspectRatio { get; set; }
+
+        /// <summary>Optional. Delivery mode for the generated content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delivery")]
+        public virtual string Delivery { get; set; }
+
+        /// <summary>Optional. The duration for the video output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
+
+        /// <summary>
+        /// Optional. The Google Cloud Storage URI to store the video output. Required for Vertex if delivery is URI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
+        public virtual string GcsUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
