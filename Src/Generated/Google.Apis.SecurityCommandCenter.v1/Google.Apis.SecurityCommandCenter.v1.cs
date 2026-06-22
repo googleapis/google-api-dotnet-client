@@ -13737,6 +13737,47 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkIngressFirewallPolicy")]
         public virtual string NetworkIngressFirewallPolicy { get; set; }
 
+        private string _networkPathInsightsGenerationTimeRaw;
+
+        private object _networkPathInsightsGenerationTime;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("networkPathInsightsGenerationTime")]
+        public virtual string NetworkPathInsightsGenerationTimeRaw
+        {
+            get => _networkPathInsightsGenerationTimeRaw;
+            set
+            {
+                _networkPathInsightsGenerationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _networkPathInsightsGenerationTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="NetworkPathInsightsGenerationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use NetworkPathInsightsGenerationTimeDateTimeOffset instead.")]
+        public virtual object NetworkPathInsightsGenerationTime
+        {
+            get => _networkPathInsightsGenerationTime;
+            set
+            {
+                _networkPathInsightsGenerationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _networkPathInsightsGenerationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="NetworkPathInsightsGenerationTimeRaw"/>
+        /// .
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? NetworkPathInsightsGenerationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NetworkPathInsightsGenerationTimeRaw);
+            set => NetworkPathInsightsGenerationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         [Newtonsoft.Json.JsonPropertyAttribute("privateIpAddress")]
         public virtual string PrivateIpAddress { get; set; }
 
@@ -16674,6 +16715,47 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("networkIngressFirewallPolicy")]
         public virtual string NetworkIngressFirewallPolicy { get; set; }
+
+        private string _networkPathInsightsGenerationTimeRaw;
+
+        private object _networkPathInsightsGenerationTime;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("networkPathInsightsGenerationTime")]
+        public virtual string NetworkPathInsightsGenerationTimeRaw
+        {
+            get => _networkPathInsightsGenerationTimeRaw;
+            set
+            {
+                _networkPathInsightsGenerationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _networkPathInsightsGenerationTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="NetworkPathInsightsGenerationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use NetworkPathInsightsGenerationTimeDateTimeOffset instead.")]
+        public virtual object NetworkPathInsightsGenerationTime
+        {
+            get => _networkPathInsightsGenerationTime;
+            set
+            {
+                _networkPathInsightsGenerationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _networkPathInsightsGenerationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="NetworkPathInsightsGenerationTimeRaw"/>
+        /// .
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? NetworkPathInsightsGenerationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NetworkPathInsightsGenerationTimeRaw);
+            set => NetworkPathInsightsGenerationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         [Newtonsoft.Json.JsonPropertyAttribute("privateIpAddress")]
         public virtual string PrivateIpAddress { get; set; }
