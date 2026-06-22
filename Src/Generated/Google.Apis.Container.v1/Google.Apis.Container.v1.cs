@@ -14194,6 +14194,12 @@ namespace Google.Apis.Container.v1.Data
         public virtual string MachineType { get; set; }
 
         /// <summary>
+        /// Optional. Specifies the maintenance policy for the node pool, including maintenance exclusion options.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicy")]
+        public virtual NodePoolMaintenancePolicy MaintenancePolicy { get; set; }
+
+        /// <summary>
         /// The maximum duration for the nodes to exist. If unspecified, the nodes can exist indefinitely.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRunDuration")]
