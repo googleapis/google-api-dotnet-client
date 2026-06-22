@@ -9513,8 +9513,7 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
     }
 
     /// <summary>
-    /// An object that describes various settings of Rollout execution. Includes built-in policies across GCP and GDC,
-    /// and customizable policies.
+    /// An object that describes various settings of Rollout execution. Includes built-in and customizable policies.
     /// </summary>
     public class RolloutKind : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11002,8 +11001,8 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Optional. List of inputVariables for this release that will either be retrieved from a dependency’s
-        /// outputVariables, or will be passed on to a dependency’s inputVariables. Maximum 100.
+        /// Optional. List of inputVariables for this release that will either be retrieved from a dependency's
+        /// outputVariables, or will be passed on to a dependency's inputVariables. Maximum 100.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputVariableMappings")]
         public virtual System.Collections.Generic.IList<VariableMapping> InputVariableMappings { get; set; }
@@ -11194,6 +11193,7 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
             set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. Deprovision operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deprovision")]
         public virtual Deprovision Deprovision { get; set; }
 
@@ -11215,6 +11215,7 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
+        /// <summary>Optional. Flag update operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flagUpdate")]
         public virtual FlagUpdate FlagUpdate { get; set; }
 
@@ -11315,6 +11316,7 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. Upgrade operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgrade")]
         public virtual Upgrade Upgrade { get; set; }
     }
