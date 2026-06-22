@@ -10146,8 +10146,9 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<long> TotalSlotMs { get; set; }
 
         /// <summary>
-        /// Output only. Total bytes transferred for cross-cloud queries such as Cross Cloud Transfer and CREATE TABLE
-        /// AS SELECT (CTAS).
+        /// Output only. Total bytes transferred for BigQuery Omni queries from the remote cloud back to Google Cloud.
+        /// This tracks data movement over Google-managed connections (like query results). It doesn't include input
+        /// data read from the external data lake (for example, S3) because that data stays within the remote cloud.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferredBytes")]
         public virtual System.Nullable<long> TransferredBytes { get; set; }
