@@ -2828,6 +2828,10 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("driveQuery")]
         public virtual HeldDriveQuery DriveQuery { get; set; }
 
+        /// <summary>Service-specific options for Gemini holds. If set, **CorpusType** must be **GEMINI**.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geminiQuery")]
+        public virtual HeldGeminiQuery GeminiQuery { get; set; }
+
         /// <summary>Service-specific options for Groups holds. If set, **CorpusType** must be **GROUPS**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupsQuery")]
         public virtual HeldGroupsQuery GroupsQuery { get; set; }
@@ -3422,6 +3426,13 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includeTeamDriveFiles")]
         public virtual System.Nullable<bool> IncludeTeamDriveFiles { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Options for Gemini holds.</summary>
+    public class HeldGeminiQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
