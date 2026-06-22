@@ -9618,6 +9618,59 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a table update trigger configuration.</summary>
+    public class TableUpdateTrigger : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The target table to trigger the workflow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual Target Table { get; set; }
+
+        private string _triggerUpdateTimeRaw;
+
+        private object _triggerUpdateTime;
+
+        /// <summary>
+        /// Output only. The modification time of this table that resulted in an invocation of the workflow. This would
+        /// be updated by the triggering service after a successful workflow invocation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerUpdateTime")]
+        public virtual string TriggerUpdateTimeRaw
+        {
+            get => _triggerUpdateTimeRaw;
+            set
+            {
+                _triggerUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _triggerUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TriggerUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TriggerUpdateTimeDateTimeOffset instead.")]
+        public virtual object TriggerUpdateTime
+        {
+            get => _triggerUpdateTime;
+            set
+            {
+                _triggerUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _triggerUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TriggerUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TriggerUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TriggerUpdateTimeRaw);
+            set => TriggerUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents an action identifier. If the action writes output, the output will be written to the referenced
     /// database object.
@@ -9796,6 +9849,59 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A record of an attempt to evaluate trigger conditions.</summary>
+    public class TriggerEvaluationRecord : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _evaluationTimeRaw;
+
+        private object _evaluationTime;
+
+        /// <summary>Output only. The timestamp of this trigger evaluation attempt.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationTime")]
+        public virtual string EvaluationTimeRaw
+        {
+            get => _evaluationTimeRaw;
+            set
+            {
+                _evaluationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _evaluationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EvaluationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EvaluationTimeDateTimeOffset instead.")]
+        public virtual object EvaluationTime
+        {
+            get => _evaluationTime;
+            set
+            {
+                _evaluationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _evaluationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EvaluationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EvaluationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EvaluationTimeRaw);
+            set => EvaluationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The status of the trigger evaluation. Success is indicated by a code of 0 (OK). Message will
+        /// only be present if the status code is non-zero.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual Status Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the Git state of a file with uncommitted changes.</summary>
     public class UncommittedFileChange : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9936,6 +10042,13 @@ namespace Google.Apis.Dataform.v1beta1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>
+        /// Optional. Optional trigger configuration for this workflow. If present, the workflow will be triggered based
+        /// on the specified triggers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workflowTriggerConfig")]
+        public virtual WorkflowTriggerConfig WorkflowTriggerConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10049,6 +10162,93 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// <summary>Output only. This action's identifier. Unique within the workflow invocation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual Target Target { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The trigger definition to invoke a workflow.</summary>
+    public class WorkflowTrigger : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The table update trigger configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableUpdateTrigger")]
+        public virtual TableUpdateTrigger TableUpdateTrigger { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a trigger configuration for a workflow.</summary>
+    public class WorkflowTriggerConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The condition to use when triggering the workflow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        private string _lastSuccessfulEvaluationTimeRaw;
+
+        private object _lastSuccessfulEvaluationTime;
+
+        /// <summary>Output only. The timestamp of the last successful trigger evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastSuccessfulEvaluationTime")]
+        public virtual string LastSuccessfulEvaluationTimeRaw
+        {
+            get => _lastSuccessfulEvaluationTimeRaw;
+            set
+            {
+                _lastSuccessfulEvaluationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastSuccessfulEvaluationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastSuccessfulEvaluationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastSuccessfulEvaluationTimeDateTimeOffset instead.")]
+        public virtual object LastSuccessfulEvaluationTime
+        {
+            get => _lastSuccessfulEvaluationTime;
+            set
+            {
+                _lastSuccessfulEvaluationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastSuccessfulEvaluationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastSuccessfulEvaluationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastSuccessfulEvaluationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastSuccessfulEvaluationTimeRaw);
+            set => LastSuccessfulEvaluationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. The effective maximum wait time duration for the trigger condition to be met. If not specified,
+        /// the workflow won't be triggered until conditions are met.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxWaitDuration")]
+        public virtual object MaxWaitDuration { get; set; }
+
+        /// <summary>
+        /// Optional. Minimum duration between two consecutive executions. If not specified, the workflow will be
+        /// executed every time trigger conditions are met and no ongoing workflow execution.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minExecutionDuration")]
+        public virtual object MinExecutionDuration { get; set; }
+
+        /// <summary>
+        /// Output only. Records of the 10 most recent trigger evaluations, ordered in descending order of
+        /// `evaluation_time`. Updated whenever the service evaluates the trigger conditions (via polling or upon
+        /// receiving a push event).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recentTriggerEvaluationRecords")]
+        public virtual System.Collections.Generic.IList<TriggerEvaluationRecord> RecentTriggerEvaluationRecords { get; set; }
+
+        /// <summary>Required. The trigger definitions to invoke a workflow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workflowTriggers")]
+        public virtual System.Collections.Generic.IList<WorkflowTrigger> WorkflowTriggers { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
