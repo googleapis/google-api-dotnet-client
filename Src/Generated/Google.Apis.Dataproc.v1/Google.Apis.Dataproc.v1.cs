@@ -13229,10 +13229,14 @@ namespace Google.Apis.Dataproc.v1.Data
 
     /// <summary>
     /// Confidential Instance Config for clusters using Confidential VMs
-    /// (https://cloud.google.com/compute/confidential-vm/docs)
+    /// (https://cloud.google.com/confidential-computing/confidential-vm/docs)
     /// </summary>
     public class ConfidentialInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Defines the type of Confidential Compute technology to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidentialInstanceType")]
+        public virtual string ConfidentialInstanceType { get; set; }
+
         /// <summary>
         /// Optional. Deprecated: Use 'confidential_instance_type' instead. Defines whether the instance should have
         /// confidential compute enabled.
@@ -14053,7 +14057,7 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Optional. Confidential Instance Config for clusters using Confidential VMs
-        /// (https://cloud.google.com/compute/confidential-vm/docs).
+        /// (https://cloud.google.com/confidential-computing/confidential-vm/docs).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidentialInstanceConfig")]
         public virtual ConfidentialInstanceConfig ConfidentialInstanceConfig { get; set; }
@@ -14277,6 +14281,15 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preemptible")]
         public virtual System.Nullable<bool> Preemptible { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the service account
+        /// (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke-iam) to be used by the node pools. Specify
+        /// the email address of the service account or its full resource name.Format:
+        /// projects/{project}/serviceAccounts/{service_account_email} or {service_account_email}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
 
         /// <summary>
         /// Optional. Whether the nodes are created as Spot VM instances
