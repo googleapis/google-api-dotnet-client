@@ -3549,6 +3549,21 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Span attribute key and list of values to be used for filtering.</summary>
+    public class SpanAttributeFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Key of the attribute</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>List of attribute values for given key. Multiple values will be OR'd together.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Collections.Generic.IList<string> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The context of a span. This is attached to an Exemplar in Distribution values during aggregation.It contains the
     /// name of a span with format: projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
@@ -3563,6 +3578,84 @@ namespace Google.Apis.Monitoring.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spanName")]
         public virtual string SpanName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>First version of span filtering that is supported by the Trace component.</summary>
+    public class SpanFilters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Filtering for spans containing one of the Apphub service IDs in the list. Multiple values will be
+        /// OR'd together. Example: "service-id1", "service-id2"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apphubServices")]
+        public virtual System.Collections.Generic.IList<string> ApphubServices { get; set; }
+
+        /// <summary>
+        /// Optional. Filtering for spans containing one of the Apphub workload IDs in the list. Multiple values will be
+        /// OR'd together. Example: "workload-id1", "workload-id2"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apphubWorkloads")]
+        public virtual System.Collections.Generic.IList<string> ApphubWorkloads { get; set; }
+
+        /// <summary>
+        /// Optional. Filtering for spans containing one of the Apphub Application IDs in the list. Multiple values will
+        /// be OR'd together.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationIds")]
+        public virtual System.Collections.Generic.IList<string> ApplicationIds { get; set; }
+
+        /// <summary>
+        /// Optional. List of span attribute filters. Each SpanAttributeFilter key must be unique. Multiple attribute
+        /// filters will be AND'd together.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual System.Collections.Generic.IList<SpanAttributeFilter> Attributes { get; set; }
+
+        /// <summary>
+        /// Optional. Filtering for spans containing one of the span display names in the list. Multiple values will be
+        /// OR'd together.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayNames")]
+        public virtual System.Collections.Generic.IList<string> DisplayNames { get; set; }
+
+        /// <summary>
+        /// Optional. Filters for root spans only if set to true. A root span is a span without a defined parent span
+        /// ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isRootSpan")]
+        public virtual System.Nullable<bool> IsRootSpan { get; set; }
+
+        /// <summary>
+        /// Optional. Filtering for spans containing one of the kinds in the list. Multiple values will be OR'd
+        /// together.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kinds")]
+        public virtual System.Collections.Generic.IList<string> Kinds { get; set; }
+
+        /// <summary>Optional. Filtering for spans with a maximum duration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDuration")]
+        public virtual object MaxDuration { get; set; }
+
+        /// <summary>Optional. Filtering for spans with a minimum duration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minDuration")]
+        public virtual object MinDuration { get; set; }
+
+        /// <summary>
+        /// Optional. Filtering for spans containing one of the services in the list. Multiple values will be OR'd
+        /// together.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("services")]
+        public virtual System.Collections.Generic.IList<string> Services { get; set; }
+
+        /// <summary>
+        /// Optional. Filtering for spans containing one of the statuses in the list. Multiple values will be OR'd
+        /// together.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual System.Collections.Generic.IList<string> Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3998,6 +4091,22 @@ namespace Google.Apis.Monitoring.v1.Data
     /// </summary>
     public class TraceQuery : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The resource name of the project or Trace scope to fetch data from. If empty, the widget will
+        /// default to the project's default Trace scope. If scope cannot be determined, then we fallback to the current
+        /// project. Optional.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceContainer")]
+        public virtual string ResourceContainer { get; set; }
+
+        /// <summary>The type of span data value to be displayed on the chart. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spanDataValue")]
+        public virtual string SpanDataValue { get; set; }
+
+        /// <summary>First version of span filtering that we will support. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spanFilters")]
+        public virtual SpanFilters SpanFilters { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
