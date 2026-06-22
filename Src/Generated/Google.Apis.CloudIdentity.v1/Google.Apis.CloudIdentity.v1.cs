@@ -2948,7 +2948,10 @@ namespace Google.Apis.CloudIdentity.v1
                 }
             }
 
-            /// <summary>Searches direct groups of a member.</summary>
+            /// <summary>
+            /// Searches direct groups of a member. Groups for which the actor does not have the permission to view
+            /// memberships are silently filtered out.
+            /// </summary>
             /// <param name="parent">
             /// [Resource name](https://cloud.google.com/apis/design/resource_names) of the group to search transitive
             /// memberships in. Format: groups/{group_id}, where group_id is always '-' as this API will search across
@@ -2959,7 +2962,10 @@ namespace Google.Apis.CloudIdentity.v1
                 return new SearchDirectGroupsRequest(this.service, parent);
             }
 
-            /// <summary>Searches direct groups of a member.</summary>
+            /// <summary>
+            /// Searches direct groups of a member. Groups for which the actor does not have the permission to view
+            /// memberships are silently filtered out.
+            /// </summary>
             public class SearchDirectGroupsRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1.Data.SearchDirectGroupsResponse>
             {
                 /// <summary>Constructs a new SearchDirectGroups request.</summary>
