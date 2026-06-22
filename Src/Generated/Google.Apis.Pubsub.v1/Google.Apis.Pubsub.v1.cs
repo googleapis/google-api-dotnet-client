@@ -3895,8 +3895,9 @@ namespace Google.Apis.Pubsub.v1.Data
 
     /// <summary>
     /// Configuration for a Bigtable subscription. The Pub/Sub message will be written to a Bigtable row as follows: -
-    /// row key: subscription name and message ID delimited by #. - columns: message bytes written to a single column
-    /// family "data" with an empty-string column qualifier. - cell timestamp: the message publish timestamp.
+    /// row key: subscription name, message ID hash, and message ID delimited by `#`. - columns: message bytes written
+    /// to a single column family `data` with an empty-string column qualifier. - cell timestamp: the message publish
+    /// timestamp.
     /// </summary>
     public class BigtableConfig : Google.Apis.Requests.IDirectResponseSchema
     {
