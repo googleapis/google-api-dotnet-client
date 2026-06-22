@@ -1052,6 +1052,10 @@ namespace Google.Apis.Assuredworkloads.v1
                             }
                         }
 
+                        /// <summary>Optional. Actionable sorting delegation.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
                         /// <summary>Optional. Page size.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
@@ -1100,6 +1104,14 @@ namespace Google.Apis.Assuredworkloads.v1
                             RequestParameters.Add("interval.startTime", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "interval.startTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2247,6 +2259,10 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// <summary>The next page token. Returns empty if reached the last page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The total number of violations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<int> TotalSize { get; set; }
 
         /// <summary>List of Violations under a Workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violations")]
