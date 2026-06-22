@@ -6,13 +6,15 @@
     "freeBusyReader",
     "owner",
     "reader",
-    "writer"
+    "writer",
+    "writerWithoutPrivateAccess"
   ],
   "Google.Apis.Calendar.v3.CalendarListResource+WatchRequest.MinAccessRoleEnum": [
     "freeBusyReader",
     "owner",
     "reader",
-    "writer"
+    "writer",
+    "writerWithoutPrivateAccess"
   ],
   "Google.Apis.Calendar.v3.EventsResource+DeleteRequest.SendUpdatesEnum": [
     "all",

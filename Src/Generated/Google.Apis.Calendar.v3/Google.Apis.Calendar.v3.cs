@@ -1170,6 +1170,13 @@ namespace Google.Apis.Calendar.v3
                 /// <summary>The user can read and modify events.</summary>
                 [Google.Apis.Util.StringValueAttribute("writer")]
                 Writer = 3,
+
+                /// <summary>
+                /// The user can read and modify events that aren't private. The user can read free/busy information
+                /// about private events. The user can't modify private events.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("writerWithoutPrivateAccess")]
+                WriterWithoutPrivateAccess = 4,
             }
 
             /// <summary>Token specifying which result page to return. Optional.</summary>
@@ -1468,6 +1475,13 @@ namespace Google.Apis.Calendar.v3
                 /// <summary>The user can read and modify events.</summary>
                 [Google.Apis.Util.StringValueAttribute("writer")]
                 Writer = 3,
+
+                /// <summary>
+                /// The user can read and modify events that aren't private. The user can read free/busy information
+                /// about private events. The user can't modify private events.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("writerWithoutPrivateAccess")]
+                WriterWithoutPrivateAccess = 4,
             }
 
             /// <summary>Token specifying which result page to return. Optional.</summary>
