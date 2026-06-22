@@ -2508,7 +2508,7 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<long> DiskSizeGb { get; set; }
 
-        /// <summary>Optional. Input only. Indicates the type of the disk.</summary>
+        /// <summary>Optional. Indicates the type of the disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
 
