@@ -20966,8 +20966,8 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// Optional. The attribution model to use for conversion measurement. This attribution model will determine how
         /// conversions are counted. The Primary model can be set by you for a floodlight config or group. More details
         /// [here](https://support.google.com/displayvideo/answer/7409983). Only applicable to Demand Gen line items.
-        /// Retrieval and management of Demand Gen resources is currently in beta. This field will begin rolling out to
-        /// all partners on *June 10, 2026* and be available to all partners on *June 24, 2026*.
+        /// Retrieval and management of Demand Gen resources is currently rolling out. This field will be available to
+        /// all partners by *June 24, 2026*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryAttributionModelId")]
         public virtual System.Nullable<long> PrimaryAttributionModelId { get; set; }
@@ -23543,8 +23543,8 @@ namespace Google.Apis.DisplayVideo.v2.Data
 
         /// <summary>
         /// Optional. Settings specific to Demand Gen line items. Only applicable to Demand Gen line items. Retrieval
-        /// and management of Demand Gen resources is currently in beta. This field will begin rolling out to all
-        /// partners on *June 10, 2026* and be available to all partners on *June 24, 2026*.
+        /// and management of Demand Gen resources is currently rolling out. This field will be available to all
+        /// partners by *June 24, 2026*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("demandGenSettings")]
         public virtual DemandGenSettings DemandGenSettings { get; set; }
@@ -25959,8 +25959,8 @@ namespace Google.Apis.DisplayVideo.v2.Data
     {
         /// <summary>
         /// Optional. Whether to exclude demographic expansion for Optimized Targeting. This field can only be set for
-        /// Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently in beta. This field will
-        /// begin rolling out to all partners on *June 10, 2026* and be available to all partners on *June 24, 2026*.
+        /// Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently rolling out. This field
+        /// will be available to all partners by *June 24, 2026*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeDemographicExpansion")]
         public virtual System.Nullable<bool> ExcludeDemographicExpansion { get; set; }
