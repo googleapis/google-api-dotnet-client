@@ -8855,6 +8855,24 @@ namespace Google.Apis.NetworkServices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
         public virtual string NetworkAttachment { get; set; }
 
+        /// <summary>Optional. TrustConfig defines the trust configuration for egress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustConfig")]
+        public virtual AgentGatewayNetworkConfigEgressTrustConfig TrustConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>TrustConfig defines the trust configuration for egress.</summary>
+    public class AgentGatewayNetworkConfigEgressTrustConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. PEM encoded root certificates used to validate the identity of the upstream servers/destinations
+        /// during egress connections.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pemCertificates")]
+        public virtual System.Collections.Generic.IList<string> PemCertificates { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
