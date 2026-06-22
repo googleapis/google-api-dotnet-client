@@ -18789,6 +18789,9 @@ namespace Google.Apis.Dialogflow.v3.Data
 
     public class GoogleCloudDialogflowV2KnowledgeAssistAnswerAdditionalSuggestedQueryResult : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("suggestedQuery")]
         public virtual GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery SuggestedQuery { get; set; }
 
@@ -21213,6 +21216,9 @@ namespace Google.Apis.Dialogflow.v3.Data
 
     public class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerAdditionalSuggestedQueryResult : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("suggestedQuery")]
         public virtual GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery SuggestedQuery { get; set; }
 
