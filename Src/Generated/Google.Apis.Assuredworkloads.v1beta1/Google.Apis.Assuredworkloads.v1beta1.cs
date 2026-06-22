@@ -376,6 +376,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
         {
             this.service = service;
             Locations = new LocationsResource(service);
+            Violations = new ViolationsResource(service);
         }
 
         /// <summary>Gets the Locations resource.</summary>
@@ -394,6 +395,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
             {
                 this.service = service;
                 Operations = new OperationsResource(service);
+                Violations = new ViolationsResource(service);
                 Workloads = new WorkloadsResource(service);
             }
 
@@ -567,6 +569,93 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Violations resource.</summary>
+            public virtual ViolationsResource Violations { get; }
+
+            /// <summary>The "violations" collection of methods.</summary>
+            public class ViolationsResource
+            {
+                private const string Resource = "violations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ViolationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Acknowledges multiple existing violations. By acknowledging violations, users acknowledge the
+                /// existence of compliance violations in their workload and decide to ignore them due to a valid
+                /// business justification. Acknowledgement is a permanent operation and it cannot be reverted. This is
+                /// a batch version of AcknowledgeViolation.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Optional. The parent resource shared by all violations being acknowledged. Format:
+                /// organizations/{organization}/locations/{location}/workloads/{workload}
+                /// </param>
+                public virtual BatchAcknowledgeViolationsRequest BatchAcknowledgeViolations(Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsRequest body, string parent)
+                {
+                    return new BatchAcknowledgeViolationsRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Acknowledges multiple existing violations. By acknowledging violations, users acknowledge the
+                /// existence of compliance violations in their workload and decide to ignore them due to a valid
+                /// business justification. Acknowledgement is a permanent operation and it cannot be reverted. This is
+                /// a batch version of AcknowledgeViolation.
+                /// </summary>
+                public class BatchAcknowledgeViolationsRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsResponse>
+                {
+                    /// <summary>Constructs a new BatchAcknowledgeViolations request.</summary>
+                    public BatchAcknowledgeViolationsRequest(Google.Apis.Services.IClientService service, Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Optional. The parent resource shared by all violations being acknowledged. Format:
+                    /// organizations/{organization}/locations/{location}/workloads/{workload}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchAcknowledgeViolations";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/violations:batchAcknowledgeViolations";
+
+                    /// <summary>Initializes BatchAcknowledgeViolations parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
                         });
                     }
                 }
@@ -1052,6 +1141,10 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                             }
                         }
 
+                        /// <summary>Optional. Actionable sorting delegation.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
                         /// <summary>Optional. Page size.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
@@ -1100,6 +1193,14 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                             RequestParameters.Add("interval.startTime", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "interval.startTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1811,6 +1912,93 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                 }
             }
         }
+
+        /// <summary>Gets the Violations resource.</summary>
+        public virtual ViolationsResource Violations { get; }
+
+        /// <summary>The "violations" collection of methods.</summary>
+        public class ViolationsResource
+        {
+            private const string Resource = "violations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ViolationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Acknowledges multiple existing violations. By acknowledging violations, users acknowledge the existence
+            /// of compliance violations in their workload and decide to ignore them due to a valid business
+            /// justification. Acknowledgement is a permanent operation and it cannot be reverted. This is a batch
+            /// version of AcknowledgeViolation.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Optional. The parent resource shared by all violations being acknowledged. Format:
+            /// organizations/{organization}/locations/{location}/workloads/{workload}
+            /// </param>
+            public virtual BatchAcknowledgeViolationsRequest BatchAcknowledgeViolations(Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsRequest body, string parent)
+            {
+                return new BatchAcknowledgeViolationsRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Acknowledges multiple existing violations. By acknowledging violations, users acknowledge the existence
+            /// of compliance violations in their workload and decide to ignore them due to a valid business
+            /// justification. Acknowledgement is a permanent operation and it cannot be reverted. This is a batch
+            /// version of AcknowledgeViolation.
+            /// </summary>
+            public class BatchAcknowledgeViolationsRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsResponse>
+            {
+                /// <summary>Constructs a new BatchAcknowledgeViolations request.</summary>
+                public BatchAcknowledgeViolationsRequest(Google.Apis.Services.IClientService service, Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Optional. The parent resource shared by all violations being acknowledged. Format:
+                /// organizations/{organization}/locations/{location}/workloads/{workload}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "batchAcknowledgeViolations";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+parent}/violations:batchAcknowledgeViolations";
+
+                /// <summary>Initializes BatchAcknowledgeViolations parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                }
+            }
+        }
     }
 }
 namespace Google.Apis.Assuredworkloads.v1beta1.Data
@@ -2188,6 +2376,10 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         /// <summary>The next page token. Returns empty if reached the last page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The total number of violations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<int> TotalSize { get; set; }
 
         /// <summary>List of Violations under a Workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violations")]
