@@ -6659,7 +6659,11 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nap")]
         public virtual System.Nullable<bool> Nap { get; set; }
 
-        /// <summary>Output only. Sleep and sleep stages algorithms finished processing.</summary>
+        /// <summary>
+        /// Output only. Sleep and sleep stages algorithms finished processing. A `true` value indicates whether all
+        /// data processing for the session is complete. A `false` value means sleep period is detected but sleep stages
+        /// is still processing.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processed")]
         public virtual System.Nullable<bool> Processed { get; set; }
 
