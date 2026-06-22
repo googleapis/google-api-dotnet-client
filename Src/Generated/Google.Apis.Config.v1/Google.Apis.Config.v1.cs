@@ -4388,7 +4388,7 @@ namespace Google.Apis.Config.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
         /// <summary>
-        /// Optional. User-defined location of Cloud Build logs and artifacts in Google Cloud Storage. Format:
+        /// User-defined location of Cloud Build logs and artifacts in Google Cloud Storage. Format:
         /// `gs://{bucket}/{folder}` A default bucket will be bootstrapped if the field is not set or empty. Default
         /// bucket format: `gs://--blueprint-config` Constraints: - The bucket needs to be in the same project as the
         /// deployment - The path cannot be within the path of `gcs_source` - The field cannot be updated, including
@@ -4536,7 +4536,7 @@ namespace Google.Apis.Config.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tfVersion")]
         public virtual string TfVersion { get; set; }
 
-        /// <summary>Optional. The user-specified Terraform version constraint. Example: "=1.3.10".</summary>
+        /// <summary>The user-specified Terraform version constraint. Example: "=1.3.10".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tfVersionConstraint")]
         public virtual string TfVersionConstraint { get; set; }
 
@@ -4578,9 +4578,9 @@ namespace Google.Apis.Config.v1.Data
         }
 
         /// <summary>
-        /// Optional. The user-specified Cloud Build worker pool resource in which the Cloud Build job will execute.
-        /// Format: `projects/{project}/locations/{location}/workerPools/{workerPoolId}`. If this field is unspecified,
-        /// the default Cloud Build worker pool will be used.
+        /// The user-specified Cloud Build worker pool resource in which the Cloud Build job will execute. Format:
+        /// `projects/{project}/locations/{location}/workerPools/{workerPoolId}`. If this field is unspecified, the
+        /// default Cloud Build worker pool will be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
         public virtual string WorkerPool { get; set; }
@@ -5066,15 +5066,15 @@ namespace Google.Apis.Config.v1.Data
     /// <summary>A set of files in a Git repository.</summary>
     public class GitSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Subdirectory inside the repository. Example: 'staging/my-package'</summary>
+        /// <summary>Subdirectory inside the repository. Example: 'staging/my-package'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directory")]
         public virtual string Directory { get; set; }
 
-        /// <summary>Optional. Git reference (e.g. branch or tag).</summary>
+        /// <summary>Git reference (e.g. branch or tag).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ref")]
         public virtual string Ref__ { get; set; }
 
-        /// <summary>Optional. Repository URL. Example: 'https://github.com/kubernetes/examples.git'</summary>
+        /// <summary>Repository URL. Example: 'https://github.com/kubernetes/examples.git'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repo")]
         public virtual string Repo { get; set; }
 
@@ -5683,7 +5683,7 @@ namespace Google.Apis.Config.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
         /// <summary>
-        /// Optional. User-defined location of Cloud Build logs, artifacts, and in Google Cloud Storage. Format:
+        /// User-defined location of Cloud Build logs, artifacts, and in Google Cloud Storage. Format:
         /// `gs://{bucket}/{folder}` A default bucket will be bootstrapped if the field is not set or empty Default
         /// Bucket Format: `gs://--blueprint-config` Constraints: - The bucket needs to be in the same project as the
         /// deployment - The path cannot be within the path of `gcs_source` If omitted and deployment resource ref
@@ -5812,12 +5812,12 @@ namespace Google.Apis.Config.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tfVersion")]
         public virtual string TfVersion { get; set; }
 
-        /// <summary>Optional. The user-specified Terraform version constraint. Example: "=1.3.10".</summary>
+        /// <summary>The user-specified Terraform version constraint. Example: "=1.3.10".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tfVersionConstraint")]
         public virtual string TfVersionConstraint { get; set; }
 
         /// <summary>
-        /// Optional. The user-specified Worker Pool resource in which the Cloud Build job will execute. Format
+        /// The user-specified Worker Pool resource in which the Cloud Build job will execute. Format
         /// projects/{project}/locations/{location}/workerPools/{workerPoolId} If this field is unspecified, the default
         /// Cloud Build worker pool will be used. If omitted and deployment resource ref provided has worker_pool
         /// defined, that worker pool is used.
