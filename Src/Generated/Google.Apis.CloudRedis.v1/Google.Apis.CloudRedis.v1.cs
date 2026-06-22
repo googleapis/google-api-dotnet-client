@@ -341,7 +341,7 @@ namespace Google.Apis.CloudRedis.v1
                 }
 
                 /// <summary>
-                /// Creates an ACL Policy. The creation is executed synchronously and the policy is available for use
+                /// Creates an ACL policy. The creation is executed synchronously and the policy is available for use
                 /// immediately after the RPC returns.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
@@ -355,7 +355,7 @@ namespace Google.Apis.CloudRedis.v1
                 }
 
                 /// <summary>
-                /// Creates an ACL Policy. The creation is executed synchronously and the policy is available for use
+                /// Creates an ACL policy. The creation is executed synchronously and the policy is available for use
                 /// immediately after the RPC returns.
                 /// </summary>
                 public class CreateRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.AclPolicy>
@@ -377,7 +377,7 @@ namespace Google.Apis.CloudRedis.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. The logical name of the ACL Policy in the customer project with the following
+                    /// Required. The logical name of the ACL policy in the customer project with the following
                     /// restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a
                     /// letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be
                     /// unique within the customer project / location
@@ -436,11 +436,11 @@ namespace Google.Apis.CloudRedis.v1
                 }
 
                 /// <summary>
-                /// Deletes a specific Acl Policy. This action will delete the Acl Policy and all the rules associated
+                /// Deletes a specific ACL policy. This action will delete the ACL policy and all the rules associated
                 /// with it. An ACL policy cannot be deleted if it is attached to a cluster.
                 /// </summary>
                 /// <param name="name">
-                /// Required. Redis ACL Policy resource name using the form:
+                /// Required. Redis ACL policy resource name using the form:
                 /// `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}` where `location_id`
                 /// refers to a GCP region.
                 /// </param>
@@ -450,7 +450,7 @@ namespace Google.Apis.CloudRedis.v1
                 }
 
                 /// <summary>
-                /// Deletes a specific Acl Policy. This action will delete the Acl Policy and all the rules associated
+                /// Deletes a specific ACL policy. This action will delete the ACL policy and all the rules associated
                 /// with it. An ACL policy cannot be deleted if it is attached to a cluster.
                 /// </summary>
                 public class DeleteRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.Operation>
@@ -463,7 +463,7 @@ namespace Google.Apis.CloudRedis.v1
                     }
 
                     /// <summary>
-                    /// Required. Redis ACL Policy resource name using the form:
+                    /// Required. Redis ACL policy resource name using the form:
                     /// `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}` where `location_id`
                     /// refers to a GCP region.
                     /// </summary>
@@ -521,9 +521,9 @@ namespace Google.Apis.CloudRedis.v1
                     }
                 }
 
-                /// <summary>Gets the details of a specific Redis Cluster ACL Policy.</summary>
+                /// <summary>Gets the details of a specific Redis Cluster ACL policy.</summary>
                 /// <param name="name">
-                /// Required. Redis ACL Policy resource name using the form:
+                /// Required. Redis ACL policy resource name using the form:
                 /// `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}` where `location_id`
                 /// refers to a GCP region.
                 /// </param>
@@ -532,7 +532,7 @@ namespace Google.Apis.CloudRedis.v1
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets the details of a specific Redis Cluster ACL Policy.</summary>
+                /// <summary>Gets the details of a specific Redis Cluster ACL policy.</summary>
                 public class GetRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.AclPolicy>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -543,7 +543,7 @@ namespace Google.Apis.CloudRedis.v1
                     }
 
                     /// <summary>
-                    /// Required. Redis ACL Policy resource name using the form:
+                    /// Required. Redis ACL policy resource name using the form:
                     /// `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}` where `location_id`
                     /// refers to a GCP region.
                     /// </summary>
@@ -575,13 +575,13 @@ namespace Google.Apis.CloudRedis.v1
                 }
 
                 /// <summary>
-                /// Lists all ACL Policies owned by a project in either the specified location (region) or all
+                /// Lists all ACL policies owned by a project in either the specified location (region) or all
                 /// locations. The location should have the following format: *
                 /// `projects/{project_id}/locations/{location_id}` If `location_id` is specified as `-` (wildcard),
                 /// then all regions available to the project are queried, and the results are aggregated.
                 /// </summary>
                 /// <param name="parent">
-                /// Required. The resource name of the cluster location using the form:
+                /// Required. The resource name of the ACL policy location using the form:
                 /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a Google Cloud region.
                 /// </param>
                 public virtual ListRequest List(string parent)
@@ -590,7 +590,7 @@ namespace Google.Apis.CloudRedis.v1
                 }
 
                 /// <summary>
-                /// Lists all ACL Policies owned by a project in either the specified location (region) or all
+                /// Lists all ACL policies owned by a project in either the specified location (region) or all
                 /// locations. The location should have the following format: *
                 /// `projects/{project_id}/locations/{location_id}` If `location_id` is specified as `-` (wildcard),
                 /// then all regions available to the project are queried, and the results are aggregated.
@@ -605,7 +605,7 @@ namespace Google.Apis.CloudRedis.v1
                     }
 
                     /// <summary>
-                    /// Required. The resource name of the cluster location using the form:
+                    /// Required. The resource name of the ACL policy location using the form:
                     /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a Google Cloud
                     /// region.
                     /// </summary>
@@ -674,7 +674,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// If Memorystore can apply the policy to all clusters, then the operation returns a SUCCESS status. If
                 /// Memorystore can't apply the policy to all clusters, then to ensure eventual consistency, Memorystore
                 /// uses reconciliation to apply the policy to the failed clusters. Completed longrunning.Operation will
-                /// contain the new ACL Policy object in the response field.
+                /// contain the new ACL policy object in the response field.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Identifier. Full resource path of the ACL policy.</param>
@@ -688,7 +688,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// If Memorystore can apply the policy to all clusters, then the operation returns a SUCCESS status. If
                 /// Memorystore can't apply the policy to all clusters, then to ensure eventual consistency, Memorystore
                 /// uses reconciliation to apply the policy to the failed clusters. Completed longrunning.Operation will
-                /// contain the new ACL Policy object in the response field.
+                /// contain the new ACL policy object in the response field.
                 /// </summary>
                 public class PatchRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.Operation>
                 {
@@ -3760,7 +3760,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>Output only. The version of the ACL policy. Used in drift resolution.</summary>
+        /// <summary>Output only. Deprecated: Used in drift resolution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<long> Version { get; set; }
     }
@@ -4481,8 +4481,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string AclPolicy { get; set; }
 
         /// <summary>
-        /// Optional. Output only. Indicates whether the ACL rules applied to the cluster are in sync with the latest
-        /// ACL policy rules. This field is only applicable if the ACL policy is set for the cluster.
+        /// Optional. Output only. Deprecated: Indicates whether the ACL rules applied to the cluster are in sync.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aclPolicyInSync")]
         public virtual System.Nullable<bool> AclPolicyInSync { get; set; }
@@ -5222,12 +5221,15 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("feedType")]
         public virtual string FeedType { get; set; }
 
+        /// <summary>Observability metric data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observabilityMetricData")]
         public virtual ObservabilityMetricData ObservabilityMetricData { get; set; }
 
+        /// <summary>Database resource recommendation signal data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommendationSignalData")]
         public virtual DatabaseResourceRecommendationSignalData RecommendationSignalData { get; set; }
 
+        /// <summary>Database resource health signal data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceHealthSignalData")]
         public virtual DatabaseResourceHealthSignalData ResourceHealthSignalData { get; set; }
 
@@ -5237,6 +5239,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual DatabaseResourceId ResourceId { get; set; }
 
+        /// <summary>Database resource metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceMetadata")]
         public virtual DatabaseResourceMetadata ResourceMetadata { get; set; }
 
@@ -5365,6 +5368,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("signalType")]
         public virtual string SignalType { get; set; }
 
+        /// <summary>Required. The state of the signal, such as if it's ACTIVE or RESOLVED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -6498,6 +6502,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isDeletionProtectionEnabled")]
         public virtual System.Nullable<bool> IsDeletionProtectionEnabled { get; set; }
 
+        /// <summary>The product this resource represents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
         public virtual Product Product { get; set; }
 
@@ -6553,7 +6558,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>Locations that could not be reached.</summary>
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
@@ -7949,6 +7954,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("durationBasedRetention")]
         public virtual object DurationBasedRetention { get; set; }
 
+        /// <summary>Quantity based retention period i.e. 7 backups</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantityBasedRetention")]
         public virtual System.Nullable<int> QuantityBasedRetention { get; set; }
 
@@ -7956,6 +7962,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("retentionUnit")]
         public virtual string RetentionUnit { get; set; }
 
+        /// <summary>Duration based retention period i.e. 172800 seconds (2 days)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeBasedRetention")]
         public virtual object TimeBasedRetention { get; set; }
 
@@ -8431,6 +8438,13 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
+
+        /// <summary>
+        /// Optional. Specify the zones of a multi-zone cluster where Redis Cluster allocates resources. This flag isn't
+        /// applicable for single-zone clusters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zones")]
+        public virtual System.Collections.Generic.IList<string> Zones { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
