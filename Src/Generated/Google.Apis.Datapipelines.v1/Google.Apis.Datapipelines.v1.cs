@@ -1467,7 +1467,7 @@ namespace Google.Apis.Datapipelines.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Immutable. The sources of the pipeline (for example, Dataplex). The keys and values are set by the
+        /// Immutable. The sources of the pipeline (for example, Knowledge Catalog). The keys and values are set by the
         /// corresponding sources during pipeline creation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pipelineSources")]
