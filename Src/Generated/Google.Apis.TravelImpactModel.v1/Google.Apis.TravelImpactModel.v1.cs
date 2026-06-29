@@ -855,13 +855,6 @@ namespace Google.Apis.TravelImpactModel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("provenanceEntryType")]
         public virtual string ProvenanceEntryType { get; set; }
 
-        /// <summary>
-        /// Output only. The seat area ratio value for each seating class. If not set, the seat area ratio value is not
-        /// available.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("seatAreaRatioData")]
-        public virtual SeatAreaRatioData SeatAreaRatioData { get; set; }
-
         /// <summary>Output only. Strategy for IATA seat area ratios.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seatAreaRatioIataStrategy")]
         public virtual string SeatAreaRatioIataStrategy { get; set; }
@@ -1144,32 +1137,6 @@ namespace Google.Apis.TravelImpactModel.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("origin")]
         public virtual string Origin { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Seat area ratio data values. Economy is always 1.0 and serves as the reference point; other class values are
-    /// relative to economy. All 4 fields are always set whether the seating class exists on the aircraft or not.
-    /// </summary>
-    public class SeatAreaRatioData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. Business seating class data value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("business")]
-        public virtual System.Nullable<double> Business { get; set; }
-
-        /// <summary>Output only. Economy seating class data value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("economy")]
-        public virtual System.Nullable<double> Economy { get; set; }
-
-        /// <summary>Output only. First seating class data value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("first")]
-        public virtual System.Nullable<double> First { get; set; }
-
-        /// <summary>Output only. Premium economy seating class data value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("premiumEconomy")]
-        public virtual System.Nullable<double> PremiumEconomy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
