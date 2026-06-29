@@ -1250,6 +1250,14 @@ namespace Google.Apis.Merchant.inventories_v1.Data
         public virtual string InstoreProductLocation { get; set; }
 
         /// <summary>
+        /// Optional. Specifies a label associated with the shipping for the `LocalInventory` resource. Can be used to
+        /// group local shipping services to this particular inventory item. For accepted field format, see the [Local
+        /// delivery](https://support.google.com/merchants/answer/14819809#localdelivery)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localShippingLabel")]
+        public virtual string LocalShippingLabel { get; set; }
+
+        /// <summary>
         /// Optional. An optional list of loyalty programs containing applicable loyalty member prices for this product
         /// at this store. This field is used to show store-specific member prices on Local Inventory Ads (LIA). To use
         /// this, the loyalty program must be configured in Google Merchant Center. The benefits provided must match the
