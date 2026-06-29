@@ -6079,7 +6079,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientCredentials")]
         public virtual Oauth2ClientCredentials Oauth2ClientCredentials { get; set; }
 
-        /// <summary>User-password authentication.</summary>
+        /// <summary>
+        /// Deprecated: Salesforce is retiring Username-Password authentication. Use `oauth2_client_credentials`
+        /// instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userCredentials")]
         public virtual UserCredentials UserCredentials { get; set; }
 
@@ -7269,7 +7272,9 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Username-password credentials.</summary>
+    /// <summary>
+    /// Deprecated: Salesforce is retiring Username-Password authentication. Use `Oauth2ClientCredentials` instead.
+    /// </summary>
     public class UserCredentials : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
