@@ -5538,6 +5538,65 @@ namespace Google.Apis.NetAppFiles.v1beta1
                     }
                 }
 
+                /// <summary>
+                /// Retrieves the current state, progress, and details of a split operation for a volume. This method is
+                /// relevant when the volume is a clone. For volumes that are not clones, this method will return an
+                /// error.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The full name of the volume. Format:
+                /// projects/{project_number}/locations/{location}/volumes/{volume_id}
+                /// </param>
+                public virtual GetSplitStatusRequest GetSplitStatus(string name)
+                {
+                    return new GetSplitStatusRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Retrieves the current state, progress, and details of a split operation for a volume. This method is
+                /// relevant when the volume is a clone. For volumes that are not clones, this method will return an
+                /// error.
+                /// </summary>
+                public class GetSplitStatusRequest : NetAppFilesBaseServiceRequest<Google.Apis.NetAppFiles.v1beta1.Data.SplitStatus>
+                {
+                    /// <summary>Constructs a new GetSplitStatus request.</summary>
+                    public GetSplitStatusRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The full name of the volume. Format:
+                    /// projects/{project_number}/locations/{location}/volumes/{volume_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getSplitStatus";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:getSplitStatus";
+
+                    /// <summary>Initializes GetSplitStatus parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/volumes/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Lists Volumes in a given project.</summary>
                 /// <param name="parent">Required. Parent value for ListVolumesRequest</param>
                 public virtual ListRequest List(string parent)
@@ -5814,6 +5873,71 @@ namespace Google.Apis.NetAppFiles.v1beta1
                     public override string RestPath => "v1beta1/{+name}:revert";
 
                     /// <summary>Initializes Revert parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/volumes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Splits a clone volume from its source volume. This operation will only work for volumes which have
+                /// clone_details set(clones). For volumes that are not clones, this operation will return an error.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The full name of the clone volume to be split from its source. Format:
+                /// projects/{project_number}/locations/{location}/volumes/{volume_id}
+                /// </param>
+                public virtual StartSplitRequest StartSplit(Google.Apis.NetAppFiles.v1beta1.Data.StartSplitRequest body, string name)
+                {
+                    return new StartSplitRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Splits a clone volume from its source volume. This operation will only work for volumes which have
+                /// clone_details set(clones). For volumes that are not clones, this operation will return an error.
+                /// </summary>
+                public class StartSplitRequest : NetAppFilesBaseServiceRequest<Google.Apis.NetAppFiles.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new StartSplit request.</summary>
+                    public StartSplitRequest(Google.Apis.Services.IClientService service, Google.Apis.NetAppFiles.v1beta1.Data.StartSplitRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The full name of the clone volume to be split from its source. Format:
+                    /// projects/{project_number}/locations/{location}/volumes/{volume_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetAppFiles.v1beta1.Data.StartSplitRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "startSplit";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:startSplit";
+
+                    /// <summary>Initializes StartSplit parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -6820,6 +6944,10 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceVolume")]
         public virtual string SourceVolume { get; set; }
+
+        /// <summary>Output only. The current state of the clone split operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("splitState")]
+        public virtual string SplitState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8455,6 +8583,38 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("weeklySchedule")]
         public virtual WeeklySchedule WeeklySchedule { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for SplitStatus.</summary>
+    public class SplitStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The estimated progress percentage of the split operation (0-100). This is meaningful primarily
+        /// when split_state is IN_PROGRESS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressPercent")]
+        public virtual System.Nullable<int> ProgressPercent { get; set; }
+
+        /// <summary>Output only. The current state of the clone split operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("splitState")]
+        public virtual string SplitState { get; set; }
+
+        /// <summary>
+        /// Output only. Human-readable details about the current state. Mostly used for displaying error messages
+        /// during split failure Examples: "Split in progress", "Error: insufficient capacity".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateDetails")]
+        public virtual string StateDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for splitting a volume.</summary>
+    public class StartSplitRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
