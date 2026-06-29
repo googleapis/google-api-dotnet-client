@@ -366,6 +366,7 @@ namespace Google.Apis.DisplayVideo.v4
             LineItems = new LineItemsResource(service);
             LocationLists = new LocationListsResource(service);
             NegativeKeywordLists = new NegativeKeywordListsResource(service);
+            ReachForecast = new ReachForecastResource(service);
             TargetingTypes = new TargetingTypesResource(service);
         }
 
@@ -11174,6 +11175,355 @@ namespace Google.Apis.DisplayVideo.v4
                     RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                     {
                         Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the ReachForecast resource.</summary>
+        public virtual ReachForecastResource ReachForecast { get; }
+
+        /// <summary>The "reachForecast" collection of methods.</summary>
+        public class ReachForecastResource
+        {
+            private const string Resource = "reachForecast";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ReachForecastResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Generates a reach forecast for a given advertiser and targeting configuration.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="advertiserId">
+            /// Required. The ID of the advertiser that will run the planned campaign.
+            /// </param>
+            public virtual GenerateReachForecastRequest GenerateReachForecast(Google.Apis.DisplayVideo.v4.Data.GenerateReachForecastRequest body, long advertiserId)
+            {
+                return new GenerateReachForecastRequest(this.service, body, advertiserId);
+            }
+
+            /// <summary>Generates a reach forecast for a given advertiser and targeting configuration.</summary>
+            public class GenerateReachForecastRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.GenerateReachForecastResponse>
+            {
+                /// <summary>Constructs a new GenerateReachForecast request.</summary>
+                public GenerateReachForecastRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v4.Data.GenerateReachForecastRequest body, long advertiserId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the advertiser that will run the planned campaign.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v4.Data.GenerateReachForecastRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "generateReachForecast";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v4/advertisers/{+advertiserId}/reachForecast:generateReachForecast";
+
+                /// <summary>Initializes GenerateReachForecast parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Retrieves the list of countries where reach forecasting is supported.</summary>
+            /// <param name="advertiserId">Required. The ID of the advertiser to list plannable locations for.</param>
+            public virtual RetrievePlannableLocationsRequest RetrievePlannableLocations(long advertiserId)
+            {
+                return new RetrievePlannableLocationsRequest(this.service, advertiserId);
+            }
+
+            /// <summary>Retrieves the list of countries where reach forecasting is supported.</summary>
+            public class RetrievePlannableLocationsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.RetrievePlannableLocationsResponse>
+            {
+                /// <summary>Constructs a new RetrievePlannableLocations request.</summary>
+                public RetrievePlannableLocationsRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the advertiser to list plannable locations for.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "retrievePlannableLocations";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v4/advertisers/{+advertiserId}/reachForecast:retrievePlannableLocations";
+
+                /// <summary>Initializes RetrievePlannableLocations parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Retrieves the list of products that can be planned for a location.</summary>
+            /// <param name="advertiserId">Required. The ID of the advertiser to list plannable products for.</param>
+            public virtual RetrievePlannableProductsRequest RetrievePlannableProducts(long advertiserId)
+            {
+                return new RetrievePlannableProductsRequest(this.service, advertiserId);
+            }
+
+            /// <summary>Retrieves the list of products that can be planned for a location.</summary>
+            public class RetrievePlannableProductsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.RetrievePlannableProductsResponse>
+            {
+                /// <summary>Constructs a new RetrievePlannableProducts request.</summary>
+                public RetrievePlannableProductsRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the advertiser to list plannable products for.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Required. The ID of the plannable location.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("plannableLocationId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PlannableLocationId { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "retrievePlannableProducts";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v4/advertisers/{+advertiserId}/reachForecast:retrievePlannableProducts";
+
+                /// <summary>Initializes RetrievePlannableProducts parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("plannableLocationId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "plannableLocationId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Retrieves Google Audiences (User Interests) available for forecasting.</summary>
+            /// <param name="advertiserId">
+            /// Required. The ID of the advertiser to list plannable user interests for.
+            /// </param>
+            public virtual RetrievePlannableUserInterestsRequest RetrievePlannableUserInterests(long advertiserId)
+            {
+                return new RetrievePlannableUserInterestsRequest(this.service, advertiserId);
+            }
+
+            /// <summary>Retrieves Google Audiences (User Interests) available for forecasting.</summary>
+            public class RetrievePlannableUserInterestsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.RetrievePlannableUserInterestsResponse>
+            {
+                /// <summary>Constructs a new RetrievePlannableUserInterests request.</summary>
+                public RetrievePlannableUserInterestsRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the advertiser to list plannable user interests for.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Required. The product category to retrieve plannable user interests for.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("productCategory", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ProductCategoryEnum> ProductCategory { get; set; }
+
+                /// <summary>Required. The product category to retrieve plannable user interests for.</summary>
+                public enum ProductCategoryEnum
+                {
+                    /// <summary>Not specified.</summary>
+                    [Google.Apis.Util.StringValueAttribute("PLANNABLE_PRODUCT_CATEGORY_UNSPECIFIED")]
+                    PLANNABLEPRODUCTCATEGORYUNSPECIFIED = 0,
+
+                    /// <summary>YouTube.</summary>
+                    [Google.Apis.Util.StringValueAttribute("YOUTUBE")]
+                    YOUTUBE = 1,
+
+                    /// <summary>Open Auction.</summary>
+                    [Google.Apis.Util.StringValueAttribute("OPEN_AUCTION")]
+                    OPENAUCTION = 2,
+                }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "retrievePlannableUserInterests";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v4/advertisers/{+advertiserId}/reachForecast:retrievePlannableUserInterests";
+
+                /// <summary>Initializes RetrievePlannableUserInterests parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("productCategory", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "productCategory",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Retrieves first and third party user lists available for forecasting.</summary>
+            /// <param name="advertiserId">
+            /// Required. The ID of the advertiser to retrieve plannable user lists for.
+            /// </param>
+            public virtual RetrievePlannableUserListsRequest RetrievePlannableUserLists(long advertiserId)
+            {
+                return new RetrievePlannableUserListsRequest(this.service, advertiserId);
+            }
+
+            /// <summary>Retrieves first and third party user lists available for forecasting.</summary>
+            public class RetrievePlannableUserListsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.RetrievePlannableUserListsResponse>
+            {
+                /// <summary>Constructs a new RetrievePlannableUserLists request.</summary>
+                public RetrievePlannableUserListsRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the advertiser to retrieve plannable user lists for.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>
+                /// Optional. Allows filtering by plannable user list properties. Supported syntax: * Filter expressions
+                /// are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical
+                /// operators. * A restriction has the form of `{field} {operator} {value}`. * The `updateTime` field
+                /// must use the `GREATER THAN OR EQUAL TO (&amp;gt;=)` or `LESS THAN OR EQUAL TO (&amp;lt;=)`
+                /// operators. * All other fields must use the `EQUALS (=)` operator. Supported fields: *
+                /// `plannableStatus` Examples: * All plannable user lists: `plannableStatus="PLANNABLE"` The length of
+                /// this field should be no more than 500 characters. Reference our [filter `LIST`
+                /// requests](/display-video/api/guides/how-tos/filters) guide for more information.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Optional. Requested page size. Must be between `1` and `5000`. If unspecified will default to
+                /// `5000`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A token identifying a page of results the server should return. Typically, this is the
+                /// value of next_page_token returned from the previous call to `RetrievePlannableUserLists` method. If
+                /// not specified, the first page of results will be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "retrievePlannableUserLists";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v4/advertisers/{+advertiserId}/reachForecast:retrievePlannableUserLists";
+
+                /// <summary>Initializes RetrievePlannableUserLists parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -23038,6 +23388,65 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Product-specific targeting overrides.</summary>
+    public class AdvancedProductTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The age range to target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ageRange")]
+        public virtual string AgeRange { get; set; }
+
+        /// <summary>Optional. The date range to target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateRange")]
+        public virtual DateRange DateRange { get; set; }
+
+        /// <summary>Optional. The devices to target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("devices")]
+        public virtual System.Collections.Generic.IList<string> Devices { get; set; }
+
+        /// <summary>Optional. The frequency cap for the specific product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequencyCap")]
+        public virtual FrequencyCap FrequencyCap { get; set; }
+
+        /// <summary>Optional. The gender options to target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genders")]
+        public virtual System.Collections.Generic.IList<string> Genders { get; set; }
+
+        /// <summary>Optional. Plannable location IDs to target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plannableLocationIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> PlannableLocationIds { get; set; }
+
+        /// <summary>Optional. Plannable surfaces to target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("surfaceTargetingSettings")]
+        public virtual SurfaceTargetingSettings SurfaceTargetingSettings { get; set; }
+
+        /// <summary>
+        /// Optional. The average number of times the ads will show to the same person over a certain period of time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetFrequency")]
+        public virtual TargetFrequency TargetFrequency { get; set; }
+
+        /// <summary>
+        /// Optional. The user interest IDs to target. Plannable user interests can be retrieved using the
+        /// `RetrievePlannableUserInterests` method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInterestIds")]
+        public virtual System.Collections.Generic.IList<string> UserInterestIds { get; set; }
+
+        /// <summary>
+        /// Optional. The user list IDs to target. Plannable user lists can be retrieved using the
+        /// `RetrievePlannableUserInterests` method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userListIds")]
+        public virtual System.Collections.Generic.IList<string> UserListIds { get; set; }
+
+        /// <summary>Optional. YouTube Select settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeSelectSettings")]
+        public virtual YouTubeSelectSettings YoutubeSelectSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A single advertiser in Display &amp; Video 360 (DV360).</summary>
     public class Advertiser : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -25266,6 +25675,21 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prismaConfig")]
         public virtual PrismaConfig PrismaConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The duration of the reach plan.</summary>
+    public class CampaignDuration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The date range the plan covers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateRange")]
+        public virtual DateRange DateRange { get; set; }
+
+        /// <summary>Required. The number of days the plan covers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("durationDays")]
+        public virtual System.Nullable<int> DurationDays { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27748,6 +28172,45 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A breakdown of the number of unique people reached at a given effective frequency.</summary>
+    public class EffectiveFrequencyBreakdown : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The number of unique individuals, including co-viewers, exactly matching the targeting that were served the
+        /// ad at least the number of times dictated by the effective_frequency.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveCoviewReach")]
+        public virtual System.Nullable<long> EffectiveCoviewReach { get; set; }
+
+        /// <summary>The set effective frequency.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveFrequency")]
+        public virtual System.Nullable<int> EffectiveFrequency { get; set; }
+
+        /// <summary>
+        /// The total number of unique individuals, including co-viewers that were served the ad at least the number of
+        /// times dictated by the effective_frequency. This includes individuals that may fall outside of targeting.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onTargetEffectiveCoviewReach")]
+        public virtual System.Nullable<long> OnTargetEffectiveCoviewReach { get; set; }
+
+        /// <summary>
+        /// The number of unique individuals exactly matching the targeting that were served the ad at least the number
+        /// of times dictated by the effective_frequency.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onTargetReach")]
+        public virtual System.Nullable<long> OnTargetReach { get; set; }
+
+        /// <summary>
+        /// The total number of unique individuals that were served the ad at least the number of times dictated by the
+        /// effective_frequency. This includes individuals that may fall outside of targeting.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalReach")]
+        public virtual System.Nullable<long> TotalReach { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -28250,6 +28713,63 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// <summary>Output only. The gender of an audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gender")]
         public virtual string Gender { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ReachForecastService.GenerateReachForecast.</summary>
+    public class GenerateReachForecastRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The duration of the planned campaign.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignDuration")]
+        public virtual CampaignDuration CampaignDuration { get; set; }
+
+        /// <summary>Required. The currency code for the plan in ISO 4217 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>
+        /// Optional. The highest minimum effective frequency to include in
+        /// PlannedProductForecast.effective_frequency_breakdowns. Must be between 1 and 10, inclusive. If not
+        /// specified, PlannedProductForecast.effective_frequency_breakdowns will not be populated. If set, this value
+        /// will also be used as the minimum effective frequency for reach metrics reporting. This field cannot be
+        /// combined with the min_effective_frequency field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveFrequencyBreakdownLimit")]
+        public virtual System.Nullable<int> EffectiveFrequencyBreakdownLimit { get; set; }
+
+        /// <summary>
+        /// Optional. The minimum effective frequency for the reported reach metrics. This is the smallest number of
+        /// times a customer must be exposed to the ad for it to be considered effective. This setting only impacts
+        /// reporting. Must be between 1 and 10, inclusive. If not specified, a default of 1 is applied. This field
+        /// cannot be combined with effective_frequency_breakdown_limit.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minEffectiveFrequency")]
+        public virtual System.Nullable<int> MinEffectiveFrequency { get; set; }
+
+        /// <summary>Required. The list of line items to include in the forecast.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plannedProducts")]
+        public virtual System.Collections.Generic.IList<PlannedProduct> PlannedProducts { get; set; }
+
+        /// <summary>Required. The targeting parameters of the planned campaign.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targeting")]
+        public virtual Targeting Targeting { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ReachForecastService.GenerateReachForecast.</summary>
+    public class GenerateReachForecastResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The estimated audience sizes for the targeted geography.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onTargetAudienceMetrics")]
+        public virtual OnTargetAudienceMetrics OnTargetAudienceMetrics { get; set; }
+
+        /// <summary>The generated forecast curve.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reachCurve")]
+        public virtual ReachCurve ReachCurve { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -30876,6 +31396,21 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Estimated audience sizes for a targeted geography.</summary>
+    public class OnTargetAudienceMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Size of the audience based on the census data of the targeted geography.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("censusAudienceSize")]
+        public virtual System.Nullable<long> CensusAudienceSize { get; set; }
+
+        /// <summary>Estimated size of the YouTube audience.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeAudienceSize")]
+        public virtual System.Nullable<long> YoutubeAudienceSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Assigned operating system targeting option details. This will be populated in the operating_system_details field
     /// when targeting_type is `TARGETING_TYPE_OPERATING_SYSTEM`.
@@ -31339,6 +31874,193 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A plannable location used for forecasting.</summary>
+    public class PlannableLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The display name of the location, for example "Algeria".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. The type of location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geoRegionType")]
+        public virtual string GeoRegionType { get; set; }
+
+        /// <summary>Output only. The resource name of the plannable location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The plannable location ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plannableLocationId")]
+        public virtual System.Nullable<long> PlannableLocationId { get; set; }
+
+        /// <summary>Output only. The region code of the location, for example "DZ" for Algeria.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Targeting capabilities for a given product.</summary>
+    public class PlannableTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Allowed plannable age ranges for the product. Actual targeting is computed by mapping this age
+        /// range onto standard Google age targeting.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ageRanges")]
+        public virtual System.Collections.Generic.IList<string> AgeRanges { get; set; }
+
+        /// <summary>Output only. Targetable devices for the ad product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("devices")]
+        public virtual System.Collections.Generic.IList<string> Devices { get; set; }
+
+        /// <summary>Output only. Targetable genders for the ad product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genders")]
+        public virtual System.Collections.Generic.IList<string> Genders { get; set; }
+
+        /// <summary>Output only. Targetable networks for the ad product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networks")]
+        public virtual System.Collections.Generic.IList<string> Networks { get; set; }
+
+        /// <summary>Output only. Targetable surface combinations for the ad product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("surfaceTargetingCombinations")]
+        public virtual SurfaceTargetingCombinations SurfaceTargetingCombinations { get; set; }
+
+        /// <summary>Output only. Targetable YouTube Select Lineups for the ad product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeSelectLineups")]
+        public virtual System.Collections.Generic.IList<YouTubeSelectLineUp> YoutubeSelectLineups { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A plannable user interest used for targeting.</summary>
+    public class PlannableUserInterest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The identifier for the user interest. The product_category specified in the request dictates
+        /// the field populated in the object. * user_interest_category is populated for "Youtube". *
+        /// user_interest_user_list is populated for "Open Auction".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInterest")]
+        public virtual UserInterest UserInterest { get; set; }
+
+        /// <summary>Output only. The display name of the interest, for example "Outdoor Enthusiasts".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInterestDisplayName")]
+        public virtual string UserInterestDisplayName { get; set; }
+
+        /// <summary>Output only. The category path of the interest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInterestPath")]
+        public virtual string UserInterestPath { get; set; }
+
+        /// <summary>Output only. The type of audience, e.g., "AFFINITY", "IN_MARKET".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInterestType")]
+        public virtual string UserInterestType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A plannable user list used for reach forecasting.</summary>
+    public class PlannableUserList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The display name of the user list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name identifying the user list. Format:
+        /// `advertisers/{advertiser_id}/userLists/{user_list_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The plannability status of the user list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plannableStatus")]
+        public virtual string PlannableStatus { get; set; }
+
+        /// <summary>Output only. The type of the user list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userListType")]
+        public virtual string UserListType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for a specific product in the plan.</summary>
+    public class PlannedProduct : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Optional line item level targeting overrides.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedProductTargeting")]
+        public virtual AdvancedProductTargeting AdvancedProductTargeting { get; set; }
+
+        /// <summary>Required. The budget for this product in micros.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("budgetMicros")]
+        public virtual System.Nullable<long> BudgetMicros { get; set; }
+
+        /// <summary>Required. The code for the product, e.g. "VIDEO_REACH_CAMPAIGN".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plannableProductCode")]
+        public virtual string PlannableProductCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Performance metrics for a forecast point.</summary>
+    public class PlannedProductForecast : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of effective frequency breakdowns.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveFrequencyBreakdowns")]
+        public virtual System.Collections.Generic.IList<EffectiveFrequencyBreakdown> EffectiveFrequencyBreakdowns { get; set; }
+
+        /// <summary>Number of on-target impressions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onTargetImpressions")]
+        public virtual System.Nullable<long> OnTargetImpressions { get; set; }
+
+        /// <summary>Number of unique people reached that match the on-target definition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onTargetReach")]
+        public virtual System.Nullable<long> OnTargetReach { get; set; }
+
+        /// <summary>Total number of impressions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalImpressions")]
+        public virtual System.Nullable<long> TotalImpressions { get; set; }
+
+        /// <summary>Total number of unique people reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalReach")]
+        public virtual System.Nullable<long> TotalReach { get; set; }
+
+        /// <summary>Number of TrueView views.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trueviewViews")]
+        public virtual System.Nullable<long> TrueviewViews { get; set; }
+
+        /// <summary>Number of viewable impressions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("viewableImpressions")]
+        public virtual System.Nullable<long> ViewableImpressions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Performance forecast for a specific product.</summary>
+    public class PlannedProductReachForecast : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The cost in micros for this product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("costMicros")]
+        public virtual System.Nullable<long> CostMicros { get; set; }
+
+        /// <summary>The code for the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plannableProductCode")]
+        public virtual string PlannableProductCode { get; set; }
+
+        /// <summary>Performance metrics for the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plannedProductForecast")]
+        public virtual PlannedProductForecast PlannedProductForecast { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Details for assigned POI targeting option. This will be populated in the details field of an
     /// AssignedTargetingOption when targeting_type is `TARGETING_TYPE_POI`.
@@ -31500,6 +32222,29 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for a plannable product.</summary>
+    public class ProductMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The name associated with the ad product. For example: "Video View Campaign".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. The plannable product code (e.g. "YOUTUBE_REACH_MIX").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plannableProductCode")]
+        public virtual string PlannableProductCode { get; set; }
+
+        /// <summary>Output only. The plain-text description of the ad product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plannableProductDescription")]
+        public virtual string PlannableProductDescription { get; set; }
+
+        /// <summary>Output only. The targeting capabilities available for this product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plannableTargeting")]
+        public virtual PlannableTargeting PlannableTargeting { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Targeting details for proximity location list. This will be populated in the details field of an
     /// AssignedTargetingOption when targeting_type is `TARGETING_TYPE_PROXIMITY_LOCATION_LIST`.
@@ -31555,6 +32300,36 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unitsPurchased")]
         public virtual System.Nullable<long> UnitsPurchased { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The generated reach curve.</summary>
+    public class ReachCurve : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Points along the curve, ordered by cost.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reachForecasts")]
+        public virtual System.Collections.Generic.IList<ReachForecast> ReachForecasts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single point in the reach curve.</summary>
+    public class ReachForecast : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Total cost for this point in micros.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("costMicros")]
+        public virtual System.Nullable<long> CostMicros { get; set; }
+
+        /// <summary>Aggregate forecast for the entire plan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forecast")]
+        public virtual PlannedProductForecast Forecast { get; set; }
+
+        /// <summary>Breakdown for individual products at this cost point.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plannedProductReachForecasts")]
+        public virtual System.Collections.Generic.IList<PlannedProductReachForecast> PlannedProductReachForecasts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -31651,6 +32426,54 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// <summary>The list of sites in the channel after replacing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sites")]
         public virtual System.Collections.Generic.IList<Site> Sites { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for RetrievePlannableLocations</summary>
+    public class RetrievePlannableLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The list of plannable locations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plannableLocations")]
+        public virtual System.Collections.Generic.IList<PlannableLocation> PlannableLocations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for RetrievePlannableProducts</summary>
+    public class RetrievePlannableProductsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The list of product metadata showing targeting possibilities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productMetadata")]
+        public virtual System.Collections.Generic.IList<ProductMetadata> ProductMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for RetrievePlannableUserInterests.</summary>
+    public class RetrievePlannableUserInterestsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of plannable user interests (Google Audiences).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plannableUserInterests")]
+        public virtual System.Collections.Generic.IList<PlannableUserInterest> PlannableUserInterests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for RetrievePlannableUserLists.</summary>
+    public class RetrievePlannableUserListsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A token to retrieve the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. The list of plannable user lists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plannableUserLists")]
+        public virtual System.Collections.Generic.IList<PlannableUserList> PlannableUserLists { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -32035,6 +32858,43 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A valid combination of surfaces.</summary>
+    public class SurfaceTargetingCombination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The combination of surfaces.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("choices")]
+        public virtual System.Collections.Generic.IList<string> Choices { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Surface targeting rules.</summary>
+    public class SurfaceTargetingCombinations : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The surface types available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableSurfaceTypes")]
+        public virtual System.Collections.Generic.IList<string> AvailableSurfaceTypes { get; set; }
+
+        /// <summary>Output only. Valid combinations of surfaces that can be selected together.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validSurfaceCombinations")]
+        public virtual System.Collections.Generic.IList<SurfaceTargetingCombination> ValidSurfaceCombinations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Surface targeting selection.</summary>
+    public class SurfaceTargetingSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The surfaces to target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("surfaces")]
+        public virtual System.Collections.Generic.IList<string> Surfaces { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Setting that controls the average number of times the ads will show to the same person over a certain period of
     /// time.
@@ -32061,6 +32921,32 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeUnitCount")]
         public virtual System.Nullable<int> TimeUnitCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Targeting settings for a planned campaign.</summary>
+    public class Targeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The age range to target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ageRange")]
+        public virtual string AgeRange { get; set; }
+
+        /// <summary>Optional. The devices to target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("devices")]
+        public virtual System.Collections.Generic.IList<string> Devices { get; set; }
+
+        /// <summary>Optional. The gender options to target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genders")]
+        public virtual System.Collections.Generic.IList<string> Genders { get; set; }
+
+        /// <summary>
+        /// Required. IDs of plannable locations to target. Plannable locations can be retrieved using the
+        /// `RetrievePlannableLocations` method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plannableLocationIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> PlannableLocationIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -32687,6 +33573,27 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The identifier for a user interest.</summary>
+    public class UserInterest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The resource name of the interest category. Populated when `product_category` is "Youtube".
+        /// Format: customers/{customer_id}/userInterests/{user_interest_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInterestCategory")]
+        public virtual string UserInterestCategory { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the user list. Populated when `product_category` is "Open Auction".
+        /// Format: customers/{customer_id}/userLists/{user_list_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInterestUserList")]
+        public virtual string UserInterestUserList { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// User rewarded content targeting option details. This will be populated in the user_rewarded_content_details
     /// field when targeting_type is `TARGETING_TYPE_USER_REWARDED_CONTENT`.
@@ -32919,6 +33826,32 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// <summary>Output only. The predicted viewability percentage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewability")]
         public virtual string Viewability { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Plannable YouTube Select Lineup for product targeting.</summary>
+    public class YouTubeSelectLineUp : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The display name of the YouTube Select Lineup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. The ID of the YouTube Select Lineup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineupId")]
+        public virtual System.Nullable<long> LineupId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for YouTube Select Lineups.</summary>
+    public class YouTubeSelectSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The ID of the YouTube Select Lineup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineupId")]
+        public virtual System.Nullable<long> LineupId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
