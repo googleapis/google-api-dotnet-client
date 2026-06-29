@@ -15402,6 +15402,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>The action to be taken when the chart is clicked.</summary>
     public class GoogleCloudContactcenterinsightsV1ChartAction : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The conversation filter string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationFilter")]
+        public virtual string ConversationFilter { get; set; }
+
         /// <summary>Redirect action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirectAction")]
         public virtual GoogleCloudContactcenterinsightsV1RedirectAction RedirectAction { get; set; }
