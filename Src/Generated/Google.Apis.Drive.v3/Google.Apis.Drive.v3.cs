@@ -9236,6 +9236,10 @@ namespace Google.Apis.Drive.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("canAcceptOwnership")]
             public virtual System.Nullable<bool> CanAcceptOwnership { get; set; }
 
+            /// <summary>Whether the current user can access this file via Gen AI features.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canAccessViaGenAi")]
+            public virtual System.Nullable<bool> CanAccessViaGenAi { get; set; }
+
             /// <summary>
             /// Output only. Whether the current user can add children to this folder. This is always `false` when the
             /// item isn't a folder.
