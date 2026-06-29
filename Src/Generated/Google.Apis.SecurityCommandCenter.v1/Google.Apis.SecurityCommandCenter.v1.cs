@@ -14021,6 +14021,9 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("iamBindings")]
         public virtual System.Collections.Generic.IList<IamBinding> IamBindings { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("iamDetails")]
+        public virtual GoogleCloudSecuritycenterV1IamDetails IamDetails { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("indicator")]
         public virtual Indicator Indicator { get; set; }
 
@@ -14584,6 +14587,27 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("ticketInfo")]
         public virtual TicketInfo TicketInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudSecuritycenterV1IamDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("iamRolePermissions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV1IamRolePermission> IamRolePermissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudSecuritycenterV1IamRolePermission : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17178,6 +17202,9 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("iamBindings")]
         public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2IamBinding> IamBindings { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("iamDetails")]
+        public virtual GoogleCloudSecuritycenterV2IamDetails IamDetails { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("indicator")]
         public virtual GoogleCloudSecuritycenterV2Indicator Indicator { get; set; }
 
@@ -17386,6 +17413,27 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("member")]
         public virtual string Member { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudSecuritycenterV2IamDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("iamRolePermissions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2IamRolePermission> IamRolePermissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudSecuritycenterV2IamRolePermission : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
