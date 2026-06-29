@@ -37,6 +37,7 @@ namespace Google.Apis.CloudSupport.v2beta
             CaseClassifications = new CaseClassificationsResource(this);
             Cases = new CasesResource(this);
             Media = new MediaResource(this);
+            SupportEventSubscriptions = new SupportEventSubscriptionsResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://cloudsupport.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://cloudsupport.googleapis.com/batch");
         }
@@ -87,6 +88,9 @@ namespace Google.Apis.CloudSupport.v2beta
 
         /// <summary>Gets the Media resource.</summary>
         public virtual MediaResource Media { get; }
+
+        /// <summary>Gets the SupportEventSubscriptions resource.</summary>
+        public virtual SupportEventSubscriptionsResource SupportEventSubscriptions { get; }
     }
 
     /// <summary>A base abstract class for CloudSupport requests.</summary>
@@ -2200,6 +2204,415 @@ namespace Google.Apis.CloudSupport.v2beta
             }
         }
     }
+
+    /// <summary>The "supportEventSubscriptions" collection of methods.</summary>
+    public class SupportEventSubscriptionsResource
+    {
+        private const string Resource = "supportEventSubscriptions";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public SupportEventSubscriptionsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Creates a support event subscription for an organization.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">
+        /// Required. The parent resource name where the support event subscription will be created. Format:
+        /// organizations/{organization_id}
+        /// </param>
+        public virtual CreateRequest Create(Google.Apis.CloudSupport.v2beta.Data.SupportEventSubscription body, string parent)
+        {
+            return new CreateRequest(this.service, body, parent);
+        }
+
+        /// <summary>Creates a support event subscription for an organization.</summary>
+        public class CreateRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.SupportEventSubscription>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSupport.v2beta.Data.SupportEventSubscription body, string parent) : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The parent resource name where the support event subscription will be created. Format:
+            /// organizations/{organization_id}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudSupport.v2beta.Data.SupportEventSubscription Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2beta/{+parent}/supportEventSubscriptions";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Soft deletes a support event subscription.</summary>
+        /// <param name="name">
+        /// Required. The name of the support event subscription to delete. Format:
+        /// organizations/{organization_id}/supportEventSubscriptions/{subscription_id}
+        /// </param>
+        public virtual DeleteRequest Delete(string name)
+        {
+            return new DeleteRequest(this.service, name);
+        }
+
+        /// <summary>Soft deletes a support event subscription.</summary>
+        public class DeleteRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.SupportEventSubscription>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the support event subscription to delete. Format:
+            /// organizations/{organization_id}/supportEventSubscriptions/{subscription_id}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2beta/{+name}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+/supportEventSubscriptions/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Gets a support event subscription.</summary>
+        /// <param name="name">
+        /// Required. The name of the support event subscription to retrieve. Format:
+        /// organizations/{organization_id}/supportEventSubscriptions/{subscription_id}
+        /// </param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(this.service, name);
+        }
+
+        /// <summary>Gets a support event subscription.</summary>
+        public class GetRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.SupportEventSubscription>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the support event subscription to retrieve. Format:
+            /// organizations/{organization_id}/supportEventSubscriptions/{subscription_id}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2beta/{+name}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+/supportEventSubscriptions/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Lists support event subscriptions.</summary>
+        /// <param name="parent">
+        /// Required. The fully qualified name of the Cloud resource to list support event subscriptions under. Format:
+        /// organizations/{organization_id}
+        /// </param>
+        public virtual ListRequest List(string parent)
+        {
+            return new ListRequest(this.service, parent);
+        }
+
+        /// <summary>Lists support event subscriptions.</summary>
+        public class ListRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.ListSupportEventSubscriptionsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+            {
+                Parent = parent;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The fully qualified name of the Cloud resource to list support event subscriptions under.
+            /// Format: organizations/{organization_id}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>
+            /// Optional. Filter expression based on AIP-160. Supported fields: - pub_sub_topic - state Examples: -
+            /// `pub_sub_topic="projects/example-project/topics/example-topic"` - `state=WORKING` -
+            /// `pub_sub_topic="projects/example-project/topics/example-topic" AND state=WORKING`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>Optional. The maximum number of support event subscriptions to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Optional. A token identifying the page of results to return. If unspecified, the first page is
+            /// retrieved. When paginating, all other parameters provided to `ListSupportEventSubscriptions` must match
+            /// the call that provided the page token.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>
+            /// Optional. Whether to show deleted subscriptions. By default, deleted subscriptions are not returned.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2beta/{+parent}/supportEventSubscriptions";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "showDeleted",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Updates a support event subscription.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">Identifier. The resource name of the support event subscription.</param>
+        public virtual PatchRequest Patch(Google.Apis.CloudSupport.v2beta.Data.SupportEventSubscription body, string name)
+        {
+            return new PatchRequest(this.service, body, name);
+        }
+
+        /// <summary>Updates a support event subscription.</summary>
+        public class PatchRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.SupportEventSubscription>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSupport.v2beta.Data.SupportEventSubscription body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Identifier. The resource name of the support event subscription.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Optional. The list of fields to update. The only supported value is pub_sub_topic.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudSupport.v2beta.Data.SupportEventSubscription Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2beta/{+name}";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+/supportEventSubscriptions/[^/]+$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Undeletes a support event subscription.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Required. The name of the support event subscription to undelete. Format:
+        /// organizations/{organization_id}/supportEventSubscriptions/{subscription_id}
+        /// </param>
+        public virtual UndeleteRequest Undelete(Google.Apis.CloudSupport.v2beta.Data.UndeleteSupportEventSubscriptionRequest body, string name)
+        {
+            return new UndeleteRequest(this.service, body, name);
+        }
+
+        /// <summary>Undeletes a support event subscription.</summary>
+        public class UndeleteRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.SupportEventSubscription>
+        {
+            /// <summary>Constructs a new Undelete request.</summary>
+            public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSupport.v2beta.Data.UndeleteSupportEventSubscriptionRequest body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the support event subscription to undelete. Format:
+            /// organizations/{organization_id}/supportEventSubscriptions/{subscription_id}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudSupport.v2beta.Data.UndeleteSupportEventSubscriptionRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "undelete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2beta/{+name}:undelete";
+
+            /// <summary>Initializes Undelete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+/supportEventSubscriptions/[^/]+$",
+                });
+            }
+        }
+    }
 }
 namespace Google.Apis.CloudSupport.v2beta.Data
 {
@@ -3040,6 +3453,24 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListSupportEventSubscriptions.</summary>
+    public class ListSupportEventSubscriptionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The support event subscriptions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportEventSubscriptions")]
+        public virtual System.Collections.Generic.IList<SupportEventSubscription> SupportEventSubscriptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary># gdata.* are outside protos with mising documentation</summary>
     public class Media : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3255,6 +3686,183 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A support event subscription.</summary>
+    public class SupportEventSubscription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time at which the subscription was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _deleteTimeRaw;
+
+        private object _deleteTime;
+
+        /// <summary>Output only. The time at which the subscription was deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual string DeleteTimeRaw
+        {
+            get => _deleteTimeRaw;
+            set
+            {
+                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deleteTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
+        public virtual object DeleteTime
+        {
+            get => _deleteTime;
+            set
+            {
+                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deleteTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Reason why subscription is failing. State of subscription must be FAILING in order for this to
+        /// have a value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureReason")]
+        public virtual string FailureReason { get; set; }
+
+        /// <summary>Identifier. The resource name of the support event subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. The name of the Pub/Sub topic to publish notifications to. Format:
+        /// projects/{project}/topics/{topic}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubSubTopic")]
+        public virtual string PubSubTopic { get; set; }
+
+        private string _purgeTimeRaw;
+
+        private object _purgeTime;
+
+        /// <summary>Output only. The time at which the subscription will be purged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeTime")]
+        public virtual string PurgeTimeRaw
+        {
+            get => _purgeTimeRaw;
+            set
+            {
+                _purgeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _purgeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="PurgeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PurgeTimeDateTimeOffset instead.")]
+        public virtual object PurgeTime
+        {
+            get => _purgeTime;
+            set
+            {
+                _purgeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _purgeTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PurgeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PurgeTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PurgeTimeRaw);
+            set => PurgeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The state of the subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time at which the subscription was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Stores text attached to a support object.</summary>
     public class TextContent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3262,6 +3870,13 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("plainText")]
         public virtual string PlainText { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for UndeleteSupportEventSubscription.</summary>
+    public class UndeleteSupportEventSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
