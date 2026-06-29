@@ -1385,10 +1385,7 @@ namespace Google.Apis.Dataform.v1
                     }
 
                     /// <summary>Fetches a single CompilationResult.</summary>
-                    /// <param name="name">
-                    /// Required. The compilation result's name.
-                    /// LINT.ThenChange(//depot/google3/google/cloud/dataform/v2main/data_pipelines.proto:GetCompilationResultRequest)
-                    /// </param>
+                    /// <param name="name">Required. The compilation result's name.</param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(this.service, name);
@@ -1404,10 +1401,7 @@ namespace Google.Apis.Dataform.v1
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// Required. The compilation result's name.
-                        /// LINT.ThenChange(//depot/google3/google/cloud/dataform/v2main/data_pipelines.proto:GetCompilationResultRequest)
-                        /// </summary>
+                        /// <summary>Required. The compilation result's name.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -1462,10 +1456,7 @@ namespace Google.Apis.Dataform.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>
-                        /// Optional. Filter for the returned list.
-                        /// LINT.ThenChange(//depot/google3/google/cloud/dataform/v2main/data_pipelines.proto:ListCompilationResultsRequest)
-                        /// </summary>
+                        /// <summary>Optional. Filter for the returned list.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
@@ -1691,7 +1682,6 @@ namespace Google.Apis.Dataform.v1
                         /// <summary>
                         /// Required. The ID to use for the release config, which will become the final component of the
                         /// release config's resource name.
-                        /// LINT.ThenChange(//depot/google3/google/cloud/dataform/v2main/data_pipelines.proto:CreateReleaseConfigRequest)
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("releaseConfigId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ReleaseConfigId { get; set; }
@@ -1735,10 +1725,7 @@ namespace Google.Apis.Dataform.v1
                     }
 
                     /// <summary>Deletes a single ReleaseConfig.</summary>
-                    /// <param name="name">
-                    /// Required. The release config's name.
-                    /// LINT.ThenChange(//depot/google3/google/cloud/dataform/v2main/data_pipelines.proto:DeleteReleaseConfigRequest)
-                    /// </param>
+                    /// <param name="name">Required. The release config's name.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(this.service, name);
@@ -1754,10 +1741,7 @@ namespace Google.Apis.Dataform.v1
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// Required. The release config's name.
-                        /// LINT.ThenChange(//depot/google3/google/cloud/dataform/v2main/data_pipelines.proto:DeleteReleaseConfigRequest)
-                        /// </summary>
+                        /// <summary>Required. The release config's name.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -1786,10 +1770,7 @@ namespace Google.Apis.Dataform.v1
                     }
 
                     /// <summary>Fetches a single ReleaseConfig.</summary>
-                    /// <param name="name">
-                    /// Required. The release config's name.
-                    /// LINT.ThenChange(//depot/google3/google/cloud/dataform/v2main/data_pipelines.proto:GetReleaseConfigRequest)
-                    /// </param>
+                    /// <param name="name">Required. The release config's name.</param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(this.service, name);
@@ -1805,10 +1786,7 @@ namespace Google.Apis.Dataform.v1
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// Required. The release config's name.
-                        /// LINT.ThenChange(//depot/google3/google/cloud/dataform/v2main/data_pipelines.proto:GetReleaseConfigRequest)
-                        /// </summary>
+                        /// <summary>Required. The release config's name.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -1875,7 +1853,6 @@ namespace Google.Apis.Dataform.v1
                         /// retrieve the subsequent page. When paginating, all other parameters provided to
                         /// `ListReleaseConfigs`, with the exception of `page_size`, must match the call that provided
                         /// the page token.
-                        /// LINT.ThenChange(//depot/google3/google/cloud/dataform/v2main/data_pipelines.proto:ListReleaseConfigsRequest)
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -5918,8 +5895,8 @@ namespace Google.Apis.Dataform.v1
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Optional. Maximum number of TeamFolders to return. The server may return fewer items than
-                    /// requested. If unspecified, the server will pick a default of page_size = 50.
+                    /// Optional. Maximum number of `TeamFolders` to return. The server may return fewer items than
+                    /// requested. If unspecified, the server will pick a default of `page_size` = 50.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -6987,10 +6964,7 @@ namespace Google.Apis.Dataform.v1.Data
     /// <summary>An error encountered when attempting to compile a Dataform project.</summary>
     public class CompilationError : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Output only. The identifier of the action where this error occurred, if available.
-        /// LINT.ThenChange(//depot/google3/google/cloud/dataform/v2main/data_pipelines.proto:CompilationError)
-        /// </summary>
+        /// <summary>Output only. The identifier of the action where this error occurred, if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionTarget")]
         public virtual Target ActionTarget { get; set; }
 
@@ -7729,7 +7703,7 @@ namespace Google.Apis.Dataform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authenticationTokenSecretVersion")]
         public virtual string AuthenticationTokenSecretVersion { get; set; }
 
-        /// <summary>Optional. The Git remote's default branch name. If not set `main` will be used.</summary>
+        /// <summary>Optional. The Git remote's default branch name. If not set, `main` will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultBranch")]
         public virtual string DefaultBranch { get; set; }
 
@@ -7741,7 +7715,7 @@ namespace Google.Apis.Dataform.v1.Data
         public virtual string EffectiveDefaultBranch { get; set; }
 
         /// <summary>
-        /// Optional. Resource name for the GitRepositoryLink used for machine credentials. Must be in the format
+        /// Optional. Resource name for the `GitRepositoryLink` used for machine credentials. Must be in the format
         /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gitRepositoryLink")]
@@ -7994,10 +7968,7 @@ namespace Google.Apis.Dataform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>
-        /// Locations which could not be reached.
-        /// LINT.ThenChange(//depot/google3/google/cloud/dataform/v2main/data_pipelines.proto:ListCompilationResultsResponse)
-        /// </summary>
+        /// <summary>Locations which could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
@@ -8057,10 +8028,7 @@ namespace Google.Apis.Dataform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("releaseConfigs")]
         public virtual System.Collections.Generic.IList<ReleaseConfig> ReleaseConfigs { get; set; }
 
-        /// <summary>
-        /// Locations which could not be reached.
-        /// LINT.ThenChange(//depot/google3/google/cloud/dataform/v2main/data_pipelines.proto:ListReleaseConfigsResponse)
-        /// </summary>
+        /// <summary>Locations which could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
@@ -9017,7 +8985,6 @@ namespace Google.Apis.Dataform.v1.Data
         /// <summary>
         /// Output only. All the metadata information that is used internally to serve the resource. For example:
         /// timestamps, flags, status fields, etc. The format of this field is a JSON string.
-        /// LINT.ThenChange(//depot/google3/google/cloud/dataform/v2main/data_pipelines.proto:ReleaseConfig)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalMetadata")]
         public virtual string InternalMetadata { get; set; }
