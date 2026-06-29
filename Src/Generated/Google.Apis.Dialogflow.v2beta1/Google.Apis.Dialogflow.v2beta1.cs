@@ -25367,18 +25367,6 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("baselineModelVersion")]
-        public virtual string BaselineModelVersion { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("model")]
-        public virtual string Model { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     public class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("recentSentencesCount")]
@@ -25432,9 +25420,6 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
     public class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("conversationModelConfig")]
-        public virtual GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig ConversationModelConfig { get; set; }
-
         [Newtonsoft.Json.JsonPropertyAttribute("conversationProcessConfig")]
         public virtual GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfig ConversationProcessConfig { get; set; }
 
