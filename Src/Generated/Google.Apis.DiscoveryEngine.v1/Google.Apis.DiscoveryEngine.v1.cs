@@ -20664,8 +20664,8 @@ namespace Google.Apis.DiscoveryEngine.v1
 
                         /// <summary>
                         /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-                        /// defaults to 10. The maximum value is 50; values above 50 will be coerced to 50. If this
-                        /// field is negative, an INVALID_ARGUMENT error is returned.
+                        /// defaults to 100. The maximum value is 1000; values above 1000 will be coerced to 1000. If
+                        /// this field is negative, an INVALID_ARGUMENT error is returned.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
@@ -30460,6 +30460,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string AppType { get; set; }
 
         /// <summary>
+        /// Optional. The Agent registry containing the agents, MCP servers and tools associated with this engine. Field
+        /// is required if the engine has an Agent Gateway setting.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("associatedAgentRegistry")]
+        public virtual string AssociatedAgentRegistry { get; set; }
+
+        /// <summary>
         /// Configurations for the Chat Engine. Only applicable if solution_type is SOLUTION_TYPE_CHAT.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chatEngineConfig")]
@@ -30559,7 +30566,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
         /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` *
         /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
-        /// `cross-product-intelligence`
+        /// `cross-product-intelligence` * `deep-research`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -36704,6 +36711,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assistToken")]
         public virtual string AssistToken { get; set; }
 
+        /// <summary>
+        /// Per-connector authentication errors encountered during the request. Present when one or more connectors
+        /// failed authentication but the request proceeded with the remaining connectors.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorAuthErrors")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1StreamAssistResponseConnectorAuthError> ConnectorAuthErrors { get; set; }
+
         /// <summary>The tool names of the tools that were invoked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invocationTools")]
         public virtual System.Collections.Generic.IList<string> InvocationTools { get; set; }
@@ -36717,6 +36731,21 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionInfo")]
         public virtual GoogleCloudDiscoveryengineV1StreamAssistResponseSessionInfo SessionInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes an authentication error for a specific data connector.</summary>
+    public class GoogleCloudDiscoveryengineV1StreamAssistResponseConnectorAuthError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resource name of the data connector that failed authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataConnector")]
+        public virtual string DataConnector { get; set; }
+
+        /// <summary>Human-readable error message describing the auth failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -38601,7 +38630,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
         /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` *
         /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
-        /// `cross-product-intelligence`
+        /// `cross-product-intelligence` * `deep-research`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -43928,6 +43957,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string AppType { get; set; }
 
         /// <summary>
+        /// Optional. The Agent registry containing the agents, MCP servers and tools associated with this engine. Field
+        /// is required if the engine has an Agent Gateway setting.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("associatedAgentRegistry")]
+        public virtual string AssociatedAgentRegistry { get; set; }
+
+        /// <summary>
         /// Configurations for the Chat Engine. Only applicable if solution_type is SOLUTION_TYPE_CHAT.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chatEngineConfig")]
@@ -44027,7 +44063,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
         /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` *
         /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
-        /// `cross-product-intelligence`
+        /// `cross-product-intelligence` * `deep-research`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -53000,6 +53036,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string AppType { get; set; }
 
         /// <summary>
+        /// Optional. The Agent registry containing the agents, MCP servers and tools associated with this engine. Field
+        /// is required if the engine has an Agent Gateway setting.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("associatedAgentRegistry")]
+        public virtual string AssociatedAgentRegistry { get; set; }
+
+        /// <summary>
         /// Configurations for the Chat Engine. Only applicable if solution_type is SOLUTION_TYPE_CHAT.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chatEngineConfig")]
@@ -53099,7 +53142,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
         /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` *
         /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
-        /// `cross-product-intelligence`
+        /// `cross-product-intelligence` * `deep-research`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
