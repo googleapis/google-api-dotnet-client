@@ -2265,6 +2265,17 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includePrefixes")]
         public virtual System.Collections.Generic.IList<string> IncludePrefixes { get; set; }
 
+        /// <summary>
+        /// Optional. If specified, objects in the source matching any of the storage classes in this field will be
+        /// transferred. Objects in storage classes not included in this field will be skipped. If empty, the default
+        /// behavior regarding the storage classes is applied. This includes all storage classes except "GLACIER" as per
+        /// default behavior. Currently, this field only supports S3 data source. For the list of valid Amazon S3
+        /// storage classnames, please refer to the AWS documentation:
+        /// https://docs.aws.amazon.com/AmazonS3/latest/userguide/sc-howtoset.html
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeStorageClasses")]
+        public virtual System.Collections.Generic.IList<string> IncludeStorageClasses { get; set; }
+
         private string _lastModifiedBeforeRaw;
 
         private object _lastModifiedBefore;
@@ -3120,7 +3131,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual System.Nullable<bool> DeleteObjectsFromSourceAfterTransfer { get; set; }
 
         /// <summary>
-        /// Whether objects that exist only in the sink should be deleted. **Note:** This option and
+        /// Whether objects that exist only in the sink should be deleted from the sink. **Note:** This option and
         /// delete_objects_from_source_after_transfer are mutually exclusive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteObjectsUniqueInSink")]
