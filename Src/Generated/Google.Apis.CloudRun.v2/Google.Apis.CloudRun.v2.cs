@@ -415,7 +415,9 @@ namespace Google.Apis.CloudRun.v2
 
                 /// <summary>Creates an Instance.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent"><c>null</c></param>
+                /// <param name="parent">
+                /// Required. The location and project in which this Instance should be created.
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Instance body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
@@ -432,6 +434,7 @@ namespace Google.Apis.CloudRun.v2
                         InitParameters();
                     }
 
+                    /// <summary>Required. The location and project in which this Instance should be created.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -497,14 +500,14 @@ namespace Google.Apis.CloudRun.v2
                     }
                 }
 
-                /// <summary>Deletes a Instance</summary>
-                /// <param name="name"><c>null</c></param>
+                /// <summary>Deletes an Instance</summary>
+                /// <param name="name">Required. The name of the Instance to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a Instance</summary>
+                /// <summary>Deletes an Instance</summary>
                 public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -514,6 +517,7 @@ namespace Google.Apis.CloudRun.v2
                         InitParameters();
                     }
 
+                    /// <summary>Required. The name of the Instance to delete.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -571,14 +575,14 @@ namespace Google.Apis.CloudRun.v2
                     }
                 }
 
-                /// <summary>Gets a Instance</summary>
-                /// <param name="name"><c>null</c></param>
+                /// <summary>Gets an Instance</summary>
+                /// <param name="name">Required. The name of the Instance to retrieve.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets a Instance</summary>
+                /// <summary>Gets an Instance</summary>
                 public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Instance>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -588,6 +592,7 @@ namespace Google.Apis.CloudRun.v2
                         InitParameters();
                     }
 
+                    /// <summary>Required. The name of the Instance to retrieve.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -696,10 +701,7 @@ namespace Google.Apis.CloudRun.v2
                 }
 
                 /// <summary>Lists Instances. Results are sorted by creation time, descending.</summary>
-                /// <param name="parent">
-                /// Required. The location and project to list resources on. Format:
-                /// projects/{project}/locations/{location}, where {project} can be project id or number.
-                /// </param>
+                /// <param name="parent">Required. The location and project to list resources on.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
@@ -715,10 +717,7 @@ namespace Google.Apis.CloudRun.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// Required. The location and project to list resources on. Format:
-                    /// projects/{project}/locations/{location}, where {project} can be project id or number.
-                    /// </summary>
+                    /// <summary>Required. The location and project to list resources on.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -790,9 +789,8 @@ namespace Google.Apis.CloudRun.v2
                 /// <summary>Updates an Instance.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The fully qualified name of this Instance. In CreateInstanceRequest, this field is ignored, and
-                /// instead composed from CreateInstanceRequest.parent and CreateInstanceRequest.instance_id. Format:
-                /// projects/{project}/locations/{location}/instances/{instance_id}
+                /// The fully qualified name of this Instance. In `CreateInstanceRequest`, this field is ignored, and
+                /// instead composed from `CreateInstanceRequest.parent` and `CreateInstanceRequest.instance_id`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Instance body, string name)
                 {
@@ -811,17 +809,17 @@ namespace Google.Apis.CloudRun.v2
                     }
 
                     /// <summary>
-                    /// The fully qualified name of this Instance. In CreateInstanceRequest, this field is ignored, and
-                    /// instead composed from CreateInstanceRequest.parent and CreateInstanceRequest.instance_id.
-                    /// Format: projects/{project}/locations/{location}/instances/{instance_id}
+                    /// The fully qualified name of this Instance. In `CreateInstanceRequest`, this field is ignored,
+                    /// and instead composed from `CreateInstanceRequest.parent` and
+                    /// `CreateInstanceRequest.instance_id`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. If set to true, and if the Instance does not exist, it will create a new one. The
-                    /// caller must have 'run.instances.create' permissions if this is set to true and the Instance does
-                    /// not exist.
+                    /// Optional. If set to `true`, and if the Instance does not exist, it will create a new one. The
+                    /// caller must have `run.instances.create` permissions if this is set to `true` and the Instance
+                    /// does not exist.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> AllowMissing { get; set; }
@@ -958,11 +956,7 @@ namespace Google.Apis.CloudRun.v2
 
                 /// <summary>Starts an Instance.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">
-                /// Required. The name of the Instance to stop. Format:
-                /// `projects/{project}/locations/{location}/instances/{instance}`, where `{project}` can be project id
-                /// or number.
-                /// </param>
+                /// <param name="name">Required. The name of the Instance to start.</param>
                 public virtual StartRequest Start(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2StartInstanceRequest body, string name)
                 {
                     return new StartRequest(this.service, body, name);
@@ -979,11 +973,7 @@ namespace Google.Apis.CloudRun.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// Required. The name of the Instance to stop. Format:
-                    /// `projects/{project}/locations/{location}/instances/{instance}`, where `{project}` can be project
-                    /// id or number.
-                    /// </summary>
+                    /// <summary>Required. The name of the Instance to start.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1019,11 +1009,7 @@ namespace Google.Apis.CloudRun.v2
 
                 /// <summary>Stops an Instance.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">
-                /// Required. The name of the Instance to stop. Format:
-                /// `projects/{project}/locations/{location}/instances/{instance}`, where `{project}` can be project id
-                /// or number.
-                /// </param>
+                /// <param name="name">Required. The name of the Instance to stop.</param>
                 public virtual StopRequest Stop(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2StopInstanceRequest body, string name)
                 {
                     return new StopRequest(this.service, body, name);
@@ -1040,11 +1026,7 @@ namespace Google.Apis.CloudRun.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// Required. The name of the Instance to stop. Format:
-                    /// `projects/{project}/locations/{location}/instances/{instance}`, where `{project}` can be project
-                    /// id or number.
-                    /// </summary>
+                    /// <summary>Required. The name of the Instance to stop.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -6228,7 +6210,7 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string EncryptionKeyRevocationAction { get; set; }
 
         /// <summary>
-        /// If encryption_key_revocation_action is SHUTDOWN, the duration before shutting down all instances. The
+        /// If `encryption_key_revocation_action` is `SHUTDOWN`, the duration before shutting down all instances. The
         /// minimum increment is 1 hour.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionKeyShutdownDuration")]
@@ -6280,7 +6262,7 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>
         /// Output only. A number that monotonically increases every time the user modifies the desired state. Please
-        /// note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a
+        /// note that unlike v1, this is an `int64` value. As with most Google APIs, its JSON representation will be a
         /// `string` instead of an `integer`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
@@ -6296,13 +6278,13 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>
         /// Optional. Provides the ingress settings for this Instance. On output, returns the currently observed ingress
-        /// settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
+        /// settings, or `INGRESS_TRAFFIC_UNSPECIFIED` if no revision is active.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ingress")]
         public virtual string Ingress { get; set; }
 
         /// <summary>
-        /// Optional. Disables IAM permission check for run.routes.invoke for callers of this Instance. For more
+        /// Optional. Disables IAM permission check for `run.routes.invoke` for callers of this Instance. For more
         /// information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invokerIamDisabled")]
@@ -6318,10 +6300,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>
         /// The launch stage as defined by [Google Cloud Platform Launch
         /// Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no
-        /// value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview
-        /// features in that stage. On read (or output), describes whether the resource uses preview features. For
-        /// example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be
-        /// BETA on output.
+        /// value is specified, `GA` is assumed. Set the launch stage to a preview stage on input to allow use of
+        /// preview features in that stage. On read (or output), describes whether the resource uses preview features.
+        /// For example, if `ALPHA` is provided as input, but only `BETA` and `GA`-level features are used, this field
+        /// will be `BETA` on output.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
         public virtual string LaunchStage { get; set; }
@@ -6331,9 +6313,8 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string LogUri { get; set; }
 
         /// <summary>
-        /// The fully qualified name of this Instance. In CreateInstanceRequest, this field is ignored, and instead
-        /// composed from CreateInstanceRequest.parent and CreateInstanceRequest.instance_id. Format:
-        /// projects/{project}/locations/{location}/instances/{instance_id}
+        /// The fully qualified name of this Instance. In `CreateInstanceRequest`, this field is ignored, and instead
+        /// composed from `CreateInstanceRequest.parent` and `CreateInstanceRequest.instance_id`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -6344,18 +6325,18 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>
         /// Output only. The generation of this Instance currently serving traffic. See comments in `reconciling` for
-        /// additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64
-        /// value. As with most Google APIs, its JSON representation will be a `string` instead of an `integer`.
+        /// additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an
+        /// `int64` value. As with most Google APIs, its JSON representation will be a `string` instead of an `integer`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observedGeneration")]
         public virtual System.Nullable<long> ObservedGeneration { get; set; }
 
         /// <summary>
-        /// Output only. Returns true if the Instance is currently being acted upon by the system to bring it into the
+        /// Output only. Returns `true` if the Instance is currently being acted upon by the system to bring it into the
         /// desired state. When a new Instance is created, or an existing one is updated, Cloud Run will asynchronously
         /// perform all necessary steps to bring the Instance to the desired serving state. This process is called
         /// reconciliation. While reconciliation is in process, `observed_generation` will have a transient value that
-        /// might mismatch the intended state. Once reconciliation is over (and this field is false), there are two
+        /// might mismatch the intended state. Once reconciliation is over (and this field is `false`), there are two
         /// possible outcomes: reconciliation succeeded and the serving state matches the Instance, or there was an
         /// error, and reconciliation failed. This state can be found in `terminal_condition.state`.
         /// </summary>
@@ -7358,10 +7339,6 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
-        /// <summary>Output only. Configuration for sandboxes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sandboxes")]
-        public virtual GoogleCloudRunV2SandboxConfiguration Sandboxes { get; set; }
-
         /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
@@ -7587,10 +7564,6 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("revision")]
         public virtual string Revision { get; set; }
 
-        /// <summary>Optional. Configuration for sandboxes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sandboxes")]
-        public virtual GoogleCloudRunV2SandboxConfiguration Sandboxes { get; set; }
-
         /// <summary>Optional. Scaling settings for this Revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scaling")]
         public virtual GoogleCloudRunV2RevisionScaling Scaling { get; set; }
@@ -7650,17 +7623,6 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Indicates that the request should be validated without actually deleting any resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
-    }
-
-    /// <summary>Configuration for sandboxes.</summary>
-    public class GoogleCloudRunV2SandboxConfiguration : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Container templates that can be launched through the `sandbox` CLI.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("templates")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRunV2Container> Templates { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>SecretEnvVarSource represents a source for the value of an EnvVar.</summary>
