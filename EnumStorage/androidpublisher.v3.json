@@ -122,6 +122,11 @@
     "featureGraphic",
     "tvBanner"
   ],
+  "Google.Apis.AndroidPublisher.v3.EditsResource+ImagesResource+UploadMediaUpload.AiGeneratedStateEnum": [
+    "aiGeneratedStateUnspecified",
+    "aiGeneratedStateNotAiGenerated",
+    "aiGeneratedStateAiGeneratedDeveloperAttested"
+  ],
   "Google.Apis.AndroidPublisher.v3.EditsResource+ImagesResource+UploadMediaUpload.AltEnum": [
     "json",
     "media",
@@ -141,6 +146,11 @@
   "Google.Apis.AndroidPublisher.v3.EditsResource+ImagesResource+UploadMediaUpload.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.AndroidPublisher.v3.EditsResource+ImagesResource+UploadRequest.AiGeneratedStateEnum": [
+    "aiGeneratedStateUnspecified",
+    "aiGeneratedStateNotAiGenerated",
+    "aiGeneratedStateAiGeneratedDeveloperAttested"
   ],
   "Google.Apis.AndroidPublisher.v3.EditsResource+ImagesResource+UploadRequest.ImageTypeEnum": [
     "appImageTypeUnspecified",
