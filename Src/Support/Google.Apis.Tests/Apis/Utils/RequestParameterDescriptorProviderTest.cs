@@ -23,9 +23,12 @@ using Xunit;
 
 namespace Google.Apis.Tests.Apis.Utils
 {
-    /// <summary>Tests for <see cref="Google.Apis.Util.RequestParameterDescriptorProvider"/>.</summary>
+    /// <summary>Tests for <see cref="RequestParameterDescriptorProvider"/>.</summary>
+    [Collection(ParamDescriptorCacheSequential)]
     public class RequestParameterDescriptorProviderTest
     {
+        internal const string ParamDescriptorCacheSequential = "RequestParameterDescriptorProvider Sequential Collection";
+
         internal class TestClass
         {
             [RequestParameter("test_param", RequestParameterType.Query)]

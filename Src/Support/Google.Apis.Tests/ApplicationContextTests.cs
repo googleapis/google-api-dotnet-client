@@ -22,7 +22,8 @@ using Xunit;
 
 namespace Google.Apis.Tests
 {
-    /// <summary>Tests for <see cref="Google.ApplicationContext"/>.</summary>
+    /// <summary>Tests for <see cref="ApplicationContext"/>.</summary>
+    [Collection(RequestParameterDescriptorProviderTest.ParamDescriptorCacheSequential)]
     public class ApplicationContextTests
     {
         // A mock logger that is identical to the NullLogger,
