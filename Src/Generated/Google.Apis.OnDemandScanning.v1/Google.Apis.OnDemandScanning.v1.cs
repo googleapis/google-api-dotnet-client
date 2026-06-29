@@ -1499,6 +1499,10 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("confidentialityImpact")]
         public virtual string ConfidentialityImpact { get; set; }
 
+        /// <summary>Exploit Maturity (E). Defined in CVSS v4.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exploitMaturity")]
+        public virtual string ExploitMaturity { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("exploitabilityScore")]
         public virtual System.Nullable<float> ExploitabilityScore { get; set; }
 
@@ -2578,6 +2582,24 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Indicates where an extracted package originates from.</summary>
+    public class IngestionSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The attachment URI that this package was extracted from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachmentUri")]
+        public virtual string AttachmentUri { get; set; }
+
+        /// <summary>The resource URL of the resource that was scanned to find this package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceUrl")]
+        public virtual string ResourceUrl { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Justification provides the justification when the state of the assessment if NOT_AFFECTED.</summary>
     public class Justification : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3196,6 +3218,13 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hashDigest")]
         public virtual string HashDigest { get; set; }
+
+        /// <summary>
+        /// The list of sources that were scanned to find this package. This can be a Docker image, an SBOM attachment,
+        /// or both, for example.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingestionSources")]
+        public virtual System.Collections.Generic.IList<IngestionSource> IngestionSources { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("layerDetails")]
         public virtual LayerDetails LayerDetails { get; set; }
