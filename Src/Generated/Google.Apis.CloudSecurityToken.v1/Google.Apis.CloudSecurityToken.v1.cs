@@ -34,6 +34,8 @@ namespace Google.Apis.CloudSecurityToken.v1
         /// <param name="initializer">The service initializer.</param>
         public CloudSecurityTokenService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Organizations = new OrganizationsResource(this);
+            Projects = new ProjectsResource(this);
             V1 = new V1Resource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://sts.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://sts.googleapis.com/batch");
@@ -56,6 +58,12 @@ namespace Google.Apis.CloudSecurityToken.v1
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
+
+        /// <summary>Gets the Organizations resource.</summary>
+        public virtual OrganizationsResource Organizations { get; }
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects { get; }
 
         /// <summary>Gets the V1 resource.</summary>
         public virtual V1Resource V1 { get; }
@@ -239,6 +247,452 @@ namespace Google.Apis.CloudSecurityToken.v1
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "organizations" collection of methods.</summary>
+    public class OrganizationsResource
+    {
+        private const string Resource = "organizations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OrganizationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Locations = new LocationsResource(service);
+        }
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations { get; }
+
+        /// <summary>The "locations" collection of methods.</summary>
+        public class LocationsResource
+        {
+            private const string Resource = "locations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LocationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                WorkloadIdentityPools = new WorkloadIdentityPoolsResource(service);
+            }
+
+            /// <summary>Gets the WorkloadIdentityPools resource.</summary>
+            public virtual WorkloadIdentityPoolsResource WorkloadIdentityPools { get; }
+
+            /// <summary>The "workloadIdentityPools" collection of methods.</summary>
+            public class WorkloadIdentityPoolsResource
+            {
+                private const string Resource = "workloadIdentityPools";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public WorkloadIdentityPoolsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Openid = new OpenidResource(service);
+                    WellKnown = new WellKnownResource(service);
+                }
+
+                /// <summary>Gets the Openid resource.</summary>
+                public virtual OpenidResource Openid { get; }
+
+                /// <summary>The "openid" collection of methods.</summary>
+                public class OpenidResource
+                {
+                    private const string Resource = "openid";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public OpenidResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Fetches the signing keys for an agentic or managed workload identity pool and returns them in
+                    /// JWKs format, defined in [RFC 7517](https://tools.ietf.org/html/rfc7517). For now, only agentic
+                    /// system pools are supported.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The name of the pool whose JWKS needs to be retrieved. Format:
+                    /// 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}'
+                    /// 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example(s):
+                    /// 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog'
+                    /// 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog'
+                    /// </param>
+                    public virtual GetJwksRequest GetJwks(string name)
+                    {
+                        return new GetJwksRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Fetches the signing keys for an agentic or managed workload identity pool and returns them in
+                    /// JWKs format, defined in [RFC 7517](https://tools.ietf.org/html/rfc7517). For now, only agentic
+                    /// system pools are supported.
+                    /// </summary>
+                    public class GetJwksRequest : CloudSecurityTokenBaseServiceRequest<Google.Apis.CloudSecurityToken.v1.Data.GoogleIdentityStsV1Jwks>
+                    {
+                        /// <summary>Constructs a new GetJwks request.</summary>
+                        public GetJwksRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the pool whose JWKS needs to be retrieved. Format:
+                        /// 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}'
+                        /// 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example(s):
+                        /// 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog'
+                        /// 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog'
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getJwks";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}/openid/jwks";
+
+                        /// <summary>Initializes GetJwks parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the WellKnown resource.</summary>
+                public virtual WellKnownResource WellKnown { get; }
+
+                /// <summary>The "well-known" collection of methods.</summary>
+                public class WellKnownResource
+                {
+                    private const string Resource = "wellKnown";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public WellKnownResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Gets the OIDC provider configuration for an agentic or managed workload identity pool following
+                    /// [the OIDC 1.0 discovery
+                    /// specification](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse).
+                    /// For now, only agentic system pools are supported.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The name of the pool whose OpenID provider configuration to retrieve. Format:
+                    /// 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}'
+                    /// 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example:
+                    /// 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog'
+                    /// 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog'
+                    /// </param>
+                    public virtual GetOpenidConfigurationRequest GetOpenidConfiguration(string name)
+                    {
+                        return new GetOpenidConfigurationRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets the OIDC provider configuration for an agentic or managed workload identity pool following
+                    /// [the OIDC 1.0 discovery
+                    /// specification](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse).
+                    /// For now, only agentic system pools are supported.
+                    /// </summary>
+                    public class GetOpenidConfigurationRequest : CloudSecurityTokenBaseServiceRequest<Google.Apis.CloudSecurityToken.v1.Data.GoogleIdentityStsV1OpenIdProviderConfig>
+                    {
+                        /// <summary>Constructs a new GetOpenidConfiguration request.</summary>
+                        public GetOpenidConfigurationRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the pool whose OpenID provider configuration to retrieve. Format:
+                        /// 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}'
+                        /// 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example:
+                        /// 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog'
+                        /// 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog'
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getOpenid-configuration";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}/.well-known/openid-configuration";
+
+                        /// <summary>Initializes GetOpenidConfiguration parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+$",
+                            });
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /// <summary>The "projects" collection of methods.</summary>
+    public class ProjectsResource
+    {
+        private const string Resource = "projects";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ProjectsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Locations = new LocationsResource(service);
+        }
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations { get; }
+
+        /// <summary>The "locations" collection of methods.</summary>
+        public class LocationsResource
+        {
+            private const string Resource = "locations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LocationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                WorkloadIdentityPools = new WorkloadIdentityPoolsResource(service);
+            }
+
+            /// <summary>Gets the WorkloadIdentityPools resource.</summary>
+            public virtual WorkloadIdentityPoolsResource WorkloadIdentityPools { get; }
+
+            /// <summary>The "workloadIdentityPools" collection of methods.</summary>
+            public class WorkloadIdentityPoolsResource
+            {
+                private const string Resource = "workloadIdentityPools";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public WorkloadIdentityPoolsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Openid = new OpenidResource(service);
+                    WellKnown = new WellKnownResource(service);
+                }
+
+                /// <summary>Gets the Openid resource.</summary>
+                public virtual OpenidResource Openid { get; }
+
+                /// <summary>The "openid" collection of methods.</summary>
+                public class OpenidResource
+                {
+                    private const string Resource = "openid";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public OpenidResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Fetches the signing keys for an agentic or managed workload identity pool and returns them in
+                    /// JWKs format, defined in [RFC 7517](https://tools.ietf.org/html/rfc7517). For now, only agentic
+                    /// system pools are supported.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The name of the pool whose JWKS needs to be retrieved. Format:
+                    /// 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}'
+                    /// 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example(s):
+                    /// 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog'
+                    /// 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog'
+                    /// </param>
+                    public virtual GetJwksRequest GetJwks(string name)
+                    {
+                        return new GetJwksRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Fetches the signing keys for an agentic or managed workload identity pool and returns them in
+                    /// JWKs format, defined in [RFC 7517](https://tools.ietf.org/html/rfc7517). For now, only agentic
+                    /// system pools are supported.
+                    /// </summary>
+                    public class GetJwksRequest : CloudSecurityTokenBaseServiceRequest<Google.Apis.CloudSecurityToken.v1.Data.GoogleIdentityStsV1Jwks>
+                    {
+                        /// <summary>Constructs a new GetJwks request.</summary>
+                        public GetJwksRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the pool whose JWKS needs to be retrieved. Format:
+                        /// 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}'
+                        /// 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example(s):
+                        /// 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog'
+                        /// 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog'
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getJwks";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}/openid/jwks";
+
+                        /// <summary>Initializes GetJwks parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the WellKnown resource.</summary>
+                public virtual WellKnownResource WellKnown { get; }
+
+                /// <summary>The "well-known" collection of methods.</summary>
+                public class WellKnownResource
+                {
+                    private const string Resource = "wellKnown";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public WellKnownResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Gets the OIDC provider configuration for an agentic or managed workload identity pool following
+                    /// [the OIDC 1.0 discovery
+                    /// specification](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse).
+                    /// For now, only agentic system pools are supported.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The name of the pool whose OpenID provider configuration to retrieve. Format:
+                    /// 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}'
+                    /// 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example:
+                    /// 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog'
+                    /// 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog'
+                    /// </param>
+                    public virtual GetOpenidConfigurationRequest GetOpenidConfiguration(string name)
+                    {
+                        return new GetOpenidConfigurationRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets the OIDC provider configuration for an agentic or managed workload identity pool following
+                    /// [the OIDC 1.0 discovery
+                    /// specification](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse).
+                    /// For now, only agentic system pools are supported.
+                    /// </summary>
+                    public class GetOpenidConfigurationRequest : CloudSecurityTokenBaseServiceRequest<Google.Apis.CloudSecurityToken.v1.Data.GoogleIdentityStsV1OpenIdProviderConfig>
+                    {
+                        /// <summary>Constructs a new GetOpenidConfiguration request.</summary>
+                        public GetOpenidConfigurationRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the pool whose OpenID provider configuration to retrieve. Format:
+                        /// 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}'
+                        /// 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example:
+                        /// 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog'
+                        /// 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog'
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getOpenid-configuration";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}/.well-known/openid-configuration";
+
+                        /// <summary>Initializes GetOpenidConfiguration parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+$",
+                            });
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -616,6 +1070,101 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         /// <summary>The type of access token. Always has the value `Bearer`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token_type")]
         public virtual string TokenType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A JSON web key set (JWK) See also https://datatracker.ietf.org/doc/html/rfc7517 and
+    /// https://github.com/spiffe/spiffe/blob/main/standards/JWT-SVID.md#6-representation-in-the-spiffe-bundle
+    /// </summary>
+    public class GoogleIdentityStsV1Jwk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Exponent value for kty="RSA".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("e")]
+        public virtual string E { get; set; }
+
+        /// <summary>Key ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kid")]
+        public virtual string Kid { get; set; }
+
+        /// <summary>Key type. Currently "RSA".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kty")]
+        public virtual string Kty { get; set; }
+
+        /// <summary>Modulus value for kty="RSA".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("n")]
+        public virtual string N { get; set; }
+
+        /// <summary>Public key use. Currently "jwt-svid".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("use")]
+        public virtual string Use { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for GetJwks.</summary>
+    public class GoogleIdentityStsV1Jwks : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The JWKS for this OP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keys")]
+        public virtual System.Collections.Generic.IList<GoogleIdentityStsV1Jwk> Keys { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response message for GetOpenIdProviderConfig. Message fields are defined in
+    /// https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse
+    /// </summary>
+    public class GoogleIdentityStsV1OpenIdProviderConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// URL pointing to an authorization endpoint under this issuer. Note: Currently this endpoint returns a 404.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorization_endpoint")]
+        public virtual string AuthorizationEndpoint { get; set; }
+
+        /// <summary>
+        /// JSON array containing a list of the JWS signing algorithms (alg values) supported by the OP for the ID token
+        /// to encode the claims in a JWT [JWT]. Note: Currently always "["RS256"]".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id_token_signing_alg_values_supported")]
+        public virtual System.Collections.Generic.IList<string> IdTokenSigningAlgValuesSupported { get; set; }
+
+        /// <summary>
+        /// URL using the https scheme with no query or fragment components that the OP asserts as its issuer
+        /// identifier.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issuer")]
+        public virtual string Issuer { get; set; }
+
+        /// <summary>URL of the OP's JWK Set [JWK] document, which MUST use the https scheme.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jwks_uri")]
+        public virtual string JwksUri { get; set; }
+
+        /// <summary>
+        /// JSON array containing a list of the OAuth 2.0 response_type values that this OP supports. Note: Currently
+        /// always "["id_token"]".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response_types_supported")]
+        public virtual System.Collections.Generic.IList<string> ResponseTypesSupported { get; set; }
+
+        /// <summary>
+        /// JSON array containing a list of the subject identifier types that this OP supports. Note: Currently always
+        /// "["public"]".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subject_types_supported")]
+        public virtual System.Collections.Generic.IList<string> SubjectTypesSupported { get; set; }
+
+        /// <summary>
+        /// URL pointing to a token endpoint under this issuer. Note: Currently this endpoint returns a 404.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("token_endpoint")]
+        public virtual string TokenEndpoint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
