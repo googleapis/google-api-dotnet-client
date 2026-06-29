@@ -11628,7 +11628,7 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bestEffortProvisioning")]
         public virtual BestEffortProvisioning BestEffortProvisioning { get; set; }
 
-        /// <summary>Which conditions caused the current node pool state.</summary>
+        /// <summary>Output only. Which conditions caused the current node pool state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<StatusCondition> Conditions { get; set; }
 
@@ -11637,8 +11637,8 @@ namespace Google.Apis.Container.v1.Data
         public virtual NodeConfig Config { get; set; }
 
         /// <summary>
-        /// This checksum is computed by the server based on the value of node pool fields, and may be sent on update
-        /// requests to ensure the client has an up-to-date value before proceeding.
+        /// Output only. This checksum is computed by the server based on the value of node pool fields, and may be sent
+        /// on update requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
