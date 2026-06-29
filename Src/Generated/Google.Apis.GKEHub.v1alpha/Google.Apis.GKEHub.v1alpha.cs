@@ -7027,6 +7027,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fleetobservability")]
         public virtual FleetObservabilityFeatureSpec Fleetobservability { get; set; }
 
+        /// <summary>Servicemesh feature spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mesh")]
+        public virtual ServiceMeshFeatureSpec Mesh { get; set; }
+
         /// <summary>Multicluster Ingress-specific spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiclusteringress")]
         public virtual MultiClusterIngressFeatureSpec Multiclusteringress { get; set; }
@@ -12527,6 +12531,17 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Severity level of the condition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>**Service Mesh**: Spec for the fleet for the servicemesh feature</summary>
+    public class ServiceMeshFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specifies modernization compatibility for the fleet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modernizationCompatibility")]
+        public virtual string ModernizationCompatibility { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
