@@ -794,6 +794,11 @@
     "YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION",
     "YOUTUBE_ASSET_TYPE_SITELINK"
   ],
+  "Google.Apis.DisplayVideo.v4.AdvertisersResource+ReachForecastResource+RetrievePlannableUserInterestsRequest.ProductCategoryEnum": [
+    "PLANNABLE_PRODUCT_CATEGORY_UNSPECIFIED",
+    "YOUTUBE",
+    "OPEN_AUCTION"
+  ],
   "Google.Apis.DisplayVideo.v4.AdvertisersResource+TargetingTypesResource+AssignedTargetingOptionsResource+CreateRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
     "TARGETING_TYPE_CHANNEL",
