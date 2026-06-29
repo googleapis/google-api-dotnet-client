@@ -5,7 +5,8 @@
     "BEST_PRACTICES",
     "PERFORMANCE",
     "PWA",
-    "SEO"
+    "SEO",
+    "AGENTIC_BROWSING"
   ],
   "Google.Apis.PagespeedInsights.v5.PagespeedapiResource+RunpagespeedRequest.StrategyEnum": [
     "STRATEGY_UNSPECIFIED",

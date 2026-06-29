@@ -359,6 +359,13 @@ namespace Google.Apis.PagespeedInsights.v5
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("SEO")]
                 SEO = 5,
+
+                /// <summary>
+                /// Agentic Browsing, category pertaining to a website's ability to be rendered by an agentic browsing
+                /// system.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("AGENTIC_BROWSING")]
+                AGENTICBROWSING = 6,
             }
 
             /// <summary>The locale used to localize formatted results</summary>
