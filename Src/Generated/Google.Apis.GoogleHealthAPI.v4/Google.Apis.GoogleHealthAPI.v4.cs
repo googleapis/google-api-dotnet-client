@@ -5995,6 +5995,7 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
 
         /// <summary>
         /// Required. The size of the time window to group data points into before applying the aggregation functions.
+        /// Must be at least 1 second.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windowSize")]
         public virtual object WindowSize { get; set; }
