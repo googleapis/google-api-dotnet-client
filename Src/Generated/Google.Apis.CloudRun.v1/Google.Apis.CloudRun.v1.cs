@@ -1377,18 +1377,20 @@ namespace Google.Apis.CloudRun.v1
                 this.service = service;
             }
 
-            /// <summary>Create a Instance.</summary>
+            /// <summary>Create an Instance.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The namespace in which the Instance should be created. Replace {namespace} with the project ID
-            /// or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+            /// Required. The resource's parent. In Cloud Run, it may be one of the following: *
+            /// `{project_id_or_number}` * `namespaces/{project_id_or_number}` *
+            /// `namespaces/{project_id_or_number}/instances` * `projects/{project_id_or_number}/locations/{region}` *
+            /// `projects/{project_id_or_number}/regions/{region}` Parent resource namespace.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.Instance body, string parent)
             {
                 return new CreateRequest(this.service, body, parent);
             }
 
-            /// <summary>Create a Instance.</summary>
+            /// <summary>Create an Instance.</summary>
             public class CreateRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Instance>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -1400,8 +1402,10 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// Required. The namespace in which the Instance should be created. Replace {namespace} with the
-                /// project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+                /// Required. The resource's parent. In Cloud Run, it may be one of the following: *
+                /// `{project_id_or_number}` * `namespaces/{project_id_or_number}` *
+                /// `namespaces/{project_id_or_number}/instances` * `projects/{project_id_or_number}/locations/{region}`
+                /// * `projects/{project_id_or_number}/regions/{region}` Parent resource namespace.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1436,17 +1440,19 @@ namespace Google.Apis.CloudRun.v1
                 }
             }
 
-            /// <summary>Delete a Instance.</summary>
+            /// <summary>Delete an Instance.</summary>
             /// <param name="name">
-            /// Required. The name of the Instance to delete. Replace {namespace} with the project ID or number. It
-            /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+            /// Required. The fully qualified name of the Instance to delete. It can be any of the following forms: *
+            /// `namespaces/{project_id_or_number}/instances/{instance_name}` (only when the `endpoint` is regional) *
+            /// `projects/{project_id_or_number}/locations/{region}/instances/{instance_name}` *
+            /// `projects/{project_id_or_number}/regions/{region}/instances/{instance_name}` Parent resource namespace.
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(this.service, name);
             }
 
-            /// <summary>Delete a Instance.</summary>
+            /// <summary>Delete an Instance.</summary>
             public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Status>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -1457,8 +1463,11 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the Instance to delete. Replace {namespace} with the project ID or number. It
-                /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+                /// Required. The fully qualified name of the Instance to delete. It can be any of the following forms:
+                /// * `namespaces/{project_id_or_number}/instances/{instance_name}` (only when the `endpoint` is
+                /// regional) * `projects/{project_id_or_number}/locations/{region}/instances/{instance_name}` *
+                /// `projects/{project_id_or_number}/regions/{region}/instances/{instance_name}` Parent resource
+                /// namespace.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1529,9 +1538,10 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>Get an Instance.</summary>
             /// <param name="name">
-            /// Required. The name of the Instance to retrieve. It takes the form
-            /// namespaces/{namespace}/instances/{Instance_name} and the `endpoint` must be regional. Replace
-            /// {namespace} with the project ID or number.
+            /// Required. The fully qualified name of the Instance to retrieve. It can be any of the following forms: *
+            /// `namespaces/{project_id_or_number}/instances/{instance_name}` (only when the `endpoint` is regional) *
+            /// `projects/{project_id_or_number}/locations/{region}/instances/{instance_name}` *
+            /// `projects/{project_id_or_number}/regions/{region}/instances/{instance_name}` Parent resource namespace.
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -1549,9 +1559,11 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the Instance to retrieve. It takes the form
-                /// namespaces/{namespace}/instances/{Instance_name} and the `endpoint` must be regional. Replace
-                /// {namespace} with the project ID or number.
+                /// Required. The fully qualified name of the Instance to retrieve. It can be any of the following
+                /// forms: * `namespaces/{project_id_or_number}/instances/{instance_name}` (only when the `endpoint` is
+                /// regional) * `projects/{project_id_or_number}/locations/{region}/instances/{instance_name}` *
+                /// `projects/{project_id_or_number}/regions/{region}/instances/{instance_name}` Parent resource
+                /// namespace.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1582,8 +1594,10 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>List Instances. Results are sorted by creation time, descending.</summary>
             /// <param name="parent">
-            /// Required. The namespace from which the Instances should be listed. Replace {namespace} with the project
-            /// ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+            /// Required. The parent from where the resources should be listed. In Cloud Run, it may be one of the
+            /// following: * `{project_id_or_number}` * `namespaces/{project_id_or_number}` *
+            /// `namespaces/{project_id_or_number}/instances` * `projects/{project_id_or_number}/locations/{region}` *
+            /// `projects/{project_id_or_number}/regions/{region}` Parent resource namespace.
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -1601,8 +1615,10 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// Required. The namespace from which the Instances should be listed. Replace {namespace} with the
-                /// project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+                /// Required. The parent from where the resources should be listed. In Cloud Run, it may be one of the
+                /// following: * `{project_id_or_number}` * `namespaces/{project_id_or_number}` *
+                /// `namespaces/{project_id_or_number}/instances` * `projects/{project_id_or_number}/locations/{region}`
+                /// * `projects/{project_id_or_number}/regions/{region}` Parent resource namespace.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1721,8 +1737,10 @@ namespace Google.Apis.CloudRun.v1
             /// <summary>Replace an Instance.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Required. The name of the Instance being replaced. Replace {namespace} with the project ID or number. It
-            /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+            /// Required. The fully qualified name of the Instance being replaced. It can be any of the following forms:
+            /// * `namespaces/{project_id_or_number}/instances/{instance_name}` (only when the `endpoint` is regional) *
+            /// `projects/{project_id_or_number}/locations/{region}/instances/{instance_name}` *
+            /// `projects/{project_id_or_number}/regions/{region}/instances/{instance_name}` Parent resource namespace.
             /// </param>
             public virtual ReplaceInstanceRequest ReplaceInstance(Google.Apis.CloudRun.v1.Data.Instance body, string name)
             {
@@ -1741,8 +1759,11 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the Instance being replaced. Replace {namespace} with the project ID or
-                /// number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+                /// Required. The fully qualified name of the Instance being replaced. It can be any of the following
+                /// forms: * `namespaces/{project_id_or_number}/instances/{instance_name}` (only when the `endpoint` is
+                /// regional) * `projects/{project_id_or_number}/locations/{region}/instances/{instance_name}` *
+                /// `projects/{project_id_or_number}/regions/{region}/instances/{instance_name}` Parent resource
+                /// namespace.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -4899,7 +4920,7 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// Get the IAM Access Control policy currently in effect for the given instance. This result does not
+                /// Gets the IAM Access Control policy currently in effect for the given instance. This result does not
                 /// include any inherited policies.
                 /// </summary>
                 /// <param name="resource">
@@ -4913,7 +4934,7 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// Get the IAM Access Control policy currently in effect for the given instance. This result does not
+                /// Gets the IAM Access Control policy currently in effect for the given instance. This result does not
                 /// include any inherited policies.
                 /// </summary>
                 public class GetIamPolicyRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Policy>
@@ -10471,7 +10492,7 @@ namespace Google.Apis.CloudRun.v1.Data
     }
 
     /// <summary>
-    /// Instance represents the configuration of a single Instance, which references a container image which is run to
+    /// An Instance represents the configuration of a single instance that references a container image and runs to
     /// completion.
     /// </summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
@@ -10494,11 +10515,11 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual ObjectMeta Metadata { get; set; }
 
-        /// <summary>Optional. Specification of the desired behavior of a Instance.</summary>
+        /// <summary>Optional. Specification of the desired behavior of an Instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
         public virtual InstanceSpec Spec { get; set; }
 
-        /// <summary>Output only. Current status of a Instance.</summary>
+        /// <summary>Output only. Current status of an Instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual InstanceStatus Status { get; set; }
 
@@ -10570,7 +10591,7 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>InstanceStatus represents the current state of a Instance.</summary>
+    /// <summary>InstanceStatus represents the current state of an Instance.</summary>
     public class InstanceStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -11143,22 +11164,22 @@ namespace Google.Apis.CloudRun.v1.Data
         /// `run.googleapis.com/build-image-uri`: Service. * `run.googleapis.com/build-name`: Service. *
         /// `run.googleapis.com/build-service-account`: Service. * `run.googleapis.com/build-source-location`: Service,
         /// Revision. * `run.googleapis.com/build-worker-pool`: Service. * `run.googleapis.com/client-name`: All
-        /// resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution . *
+        /// resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution, Instance. *
         /// `run.googleapis.com/container-dependencies`: Revision . * `run.googleapis.com/cpu-throttling`: Revision. *
         /// `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/default-url-disabled`: Service. *
         /// `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision *
-        /// `run.googleapis.com/encryption-key`: Revision, Execution . * `run.googleapis.com/execution-environment`:
-        /// Revision, Execution . * `run.googleapis.com/gc-traffic-tags`: Service. *
-        /// `run.googleapis.com/gpu-zonal-redundancy-disabled`: Revision. * `run.googleapis.com/health-check-disabled`:
-        /// Revision. * `run.googleapis.com/ingress`: Service, Instance. * `run.googleapis.com/invoker-iam-disabled`:
-        /// Service, Instance. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/minScale`:
-        /// Service. * `run.googleapis.com/maxScale`: Service. * `run.googleapis.com/manualInstanceCount`: Service. *
-        /// `run.googleapis.com/network-interfaces`: Revision, Execution. *
-        /// `run.googleapis.com/post-key-revocation-action-type`: Revision. `run.googleapis.com/scalingMode`: Service. *
-        /// `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. *
-        /// `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. *
-        /// `run.googleapis.com/vpc-access-connector`: Revision, Execution . * `run.googleapis.com/vpc-access-egress`:
-        /// Revision, Execution.
+        /// `run.googleapis.com/encryption-key`: Revision, Execution, Instance. *
+        /// `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`:
+        /// Service. * `run.googleapis.com/gpu-zonal-redundancy-disabled`: Revision. *
+        /// `run.googleapis.com/health-check-disabled`: Revision. * `run.googleapis.com/ingress`: Service, Instance. *
+        /// `run.googleapis.com/invoker-iam-disabled`: Service, Instance. * `run.googleapis.com/launch-stage`: Service,
+        /// Job. * `run.googleapis.com/minScale`: Service. * `run.googleapis.com/maxScale`: Service. *
+        /// `run.googleapis.com/manualInstanceCount`: Service. * `run.googleapis.com/network-interfaces`: Revision,
+        /// Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision.
+        /// `run.googleapis.com/scalingMode`: Service. * `run.googleapis.com/secrets`: Revision, Execution. *
+        /// `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. *
+        /// `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision,
+        /// Execution . * `run.googleapis.com/vpc-access-egress`: Revision, Execution.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
@@ -11626,10 +11647,6 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>Optional. Runtime. Leave unset for default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeClassName")]
         public virtual string RuntimeClassName { get; set; }
-
-        /// <summary>Optional. Container templates that can be launched through the `sandbox` CLI.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sandboxes")]
-        public virtual System.Collections.Generic.IList<Container> Sandboxes { get; set; }
 
         /// <summary>
         /// Email address of the IAM service account associated with the revision of the service. The service account
