@@ -1,4 +1,9 @@
 {
+  "Google.Apis.PostmasterTools.v2.DomainsResource+GetVerificationTokenRequest.VerificationMethodEnum": [
+    "DOMAIN_VERIFICATION_METHOD_UNSPECIFIED",
+    "TXT",
+    "CNAME"
+  ],
   "Google.Apis.PostmasterTools.v2.PostmasterToolsBaseServiceRequest<<TResponse>>.AltEnum": [
     "json",
     "media",
