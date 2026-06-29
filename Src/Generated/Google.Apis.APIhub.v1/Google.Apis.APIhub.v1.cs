@@ -60,6 +60,15 @@ namespace Google.Apis.APIhub.v1
         /// <summary>Available OAuth 2.0 scopes for use with the API hub API.</summary>
         public class Scope
         {
+            /// <summary>See your Google Cloud API hub data and the email address of your Google Account</summary>
+            public static string ApihubReadonly = "https://www.googleapis.com/auth/apihub.readonly";
+
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud API hub data and see the email address for your
+            /// Google Account
+            /// </summary>
+            public static string ApihubReadwrite = "https://www.googleapis.com/auth/apihub.readwrite";
+
             /// <summary>
             /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
             /// Account.
@@ -70,6 +79,15 @@ namespace Google.Apis.APIhub.v1
         /// <summary>Available OAuth 2.0 scope constants for use with the API hub API.</summary>
         public static class ScopeConstants
         {
+            /// <summary>See your Google Cloud API hub data and the email address of your Google Account</summary>
+            public const string ApihubReadonly = "https://www.googleapis.com/auth/apihub.readonly";
+
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud API hub data and see the email address for your
+            /// Google Account
+            /// </summary>
+            public const string ApihubReadwrite = "https://www.googleapis.com/auth/apihub.readwrite";
+
             /// <summary>
             /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
             /// Account.
