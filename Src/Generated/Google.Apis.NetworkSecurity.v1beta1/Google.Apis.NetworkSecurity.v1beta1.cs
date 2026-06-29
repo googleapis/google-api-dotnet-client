@@ -18812,6 +18812,13 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string Network { get; set; }
 
         /// <summary>
+        /// Output only. Identifier used by the data-path. See the NSI GENEVE format for more details:
+        /// https://docs.cloud.google.com/network-security-integration/docs/understand-geneve#network_id
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkCookie")]
+        public virtual System.Nullable<long> NetworkCookie { get; set; }
+
+        /// <summary>
         /// Output only. The current state of the resource does not match the user's intended state, and the system is
         /// working to reconcile them. This part of the normal operation (e.g. adding a new location to the target
         /// deployment group). See https://google.aip.dev/128.
