@@ -8152,6 +8152,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
+        /// <summary>Optional. Configuration for MySQL homogeneous migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mysqlHomogeneousConfig")]
+        public virtual MySqlHomogeneousConfig MysqlHomogeneousConfig { get; set; }
+
         /// <summary>
         /// The name (URI) of this migration job resource, in the form of:
         /// projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
@@ -8546,6 +8550,17 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for MySQL to MySQL migrations.</summary>
+    public class MySqlHomogeneousConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether the destination for the migration job is a primary instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isPrimaryDestination")]
+        public virtual System.Nullable<bool> IsPrimaryDestination { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
