@@ -1188,6 +1188,43 @@ namespace Google.Apis.HomeGraphService.v1.Data
     /// <summary>Contains the trait payload for a single trait.</summary>
     public class TraitData : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _commitTimeRaw;
+
+        private object _commitTime;
+
+        /// <summary>Other metadata for the trait. The time the client update was committed in the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitTime")]
+        public virtual string CommitTimeRaw
+        {
+            get => _commitTimeRaw;
+            set
+            {
+                _commitTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _commitTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CommitTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CommitTimeDateTimeOffset instead.")]
+        public virtual object CommitTime
+        {
+            get => _commitTime;
+            set
+            {
+                _commitTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _commitTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CommitTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CommitTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CommitTimeRaw);
+            set => CommitTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>The Provider Home API trait payload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trait")]
         public virtual System.Collections.Generic.IDictionary<string, object> Trait { get; set; }
