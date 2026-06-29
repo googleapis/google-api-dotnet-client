@@ -343,9 +343,9 @@ namespace Google.Apis.HypercomputeCluster.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. ID of the cluster to create. Must conform to
-                    /// [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case, alphanumeric, and at most
-                    /// 63 characters).
+                    /// Required. The ID of the cluster to create. The cluster ID must start with a lowercase letter
+                    /// (`a`-`z`), use only lowercase letters or numbers, and contain up to 10 characters. For example,
+                    /// specify `cluster001`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ClusterId { get; set; }
@@ -2568,9 +2568,9 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
         public virtual ComputeInstanceSlurmNodeSet ComputeInstance { get; set; }
 
         /// <summary>
-        /// Required. Identifier for the nodeset, which allows it to be referenced by partitions. Must conform to
-        /// [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case, alphanumeric, and at most 63
-        /// characters).
+        /// Required. The ID for the nodeset, which allows it to be referenced by cluster partitions. The nodeset ID
+        /// must start with a lowercase letter (`a`-`z`), use only lowercase letters or numbers, and contain up to 15
+        /// characters. For example, specify `nodeset001`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
