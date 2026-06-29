@@ -9351,7 +9351,7 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("readLocation")]
         public virtual string ReadLocation { get; set; }
 
-        /// <summary>The downscoped token that was created.</summary>
+        /// <summary>Input only. The downscoped token that was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual string Token { get; set; }
 
