@@ -3083,7 +3083,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectsMissingPermission")]
         public virtual System.Collections.Generic.IList<string> ProjectsMissingPermission { get; set; }
 
-        /// <summary>URI of the resource that caused the abort.</summary>
+        /// <summary>
+        /// URI of the resource that caused the abort. Format: * `projects/{project_id}/global/networks/{network_id}`
+        /// (VPC network) * `projects/{project_id}/zones/{zone}/instances/{instance_id}` (VM instance)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
         public virtual string ResourceUri { get; set; }
 
@@ -3120,7 +3123,9 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("runtime")]
         public virtual string Runtime { get; set; }
 
-        /// <summary>URI of an App Engine version.</summary>
+        /// <summary>
+        /// URI of the App Engine version. Format: `apps/{app_id}/services/{service_id}/versions/{version_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -3282,7 +3287,9 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>URI of a Cloud Function.</summary>
+        /// <summary>
+        /// URI of the Cloud Function. Format: `projects/{project_id}/locations/{location}/functions/{function_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -3305,7 +3312,9 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>URI of a Cloud Run job.</summary>
+        /// <summary>
+        /// URI of the Cloud Run job. Format: `projects/{project_id}/locations/{location}/jobs/{job_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -3346,11 +3355,16 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>URI of Cloud Run service this revision belongs to.</summary>
+        /// <summary>
+        /// URI of Cloud Run service this revision belongs to. Format:
+        /// `projects/{project_id}/locations/{location}/services/{service_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceUri")]
         public virtual string ServiceUri { get; set; }
 
-        /// <summary>URI of a Cloud Run revision.</summary>
+        /// <summary>
+        /// URI of the Cloud Run revision. Format: `projects/{project_id}/locations/{location}/revisions/{revision_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -3373,7 +3387,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("internalIp")]
         public virtual string InternalIp { get; set; }
 
-        /// <summary>URI of a Cloud SQL instance network or empty string if the instance does not have one.</summary>
+        /// <summary>
+        /// URI of a Cloud SQL instance network or empty string if the instance does not have one. In format
+        /// "projects/{project}/global/networks/{network}".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; }
 
@@ -3381,7 +3398,7 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
 
-        /// <summary>URI of a Cloud SQL instance.</summary>
+        /// <summary>URI of a Cloud SQL instance in format "projects/{project}/instances/{instance}"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -3566,7 +3583,11 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pscGoogleApiTarget")]
         public virtual string PscGoogleApiTarget { get; set; }
 
-        /// <summary>URI of the resource that the packet is delivered to.</summary>
+        /// <summary>
+        /// URI of the resource that the packet is delivered to. For example: *
+        /// `"projects/{project}/zones/{zone}/instances/{instance}"` *
+        /// `"projects/{project}/regions/{region}/networkEndpointGroups/{network_endpoint_group}"`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
         public virtual string ResourceUri { get; set; }
 
@@ -3585,7 +3606,9 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     /// <summary>For display only. Metadata associated with a serverless direct VPC egress connection.</summary>
     public class DirectVpcEgressConnectionInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>URI of direct access network.</summary>
+        /// <summary>
+        /// URI of the VPC network for direct egress. Format: `projects/{project_id}/global/networks/{network_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; }
 
@@ -3601,7 +3624,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selectedIpRange")]
         public virtual string SelectedIpRange { get; set; }
 
-        /// <summary>URI of direct access subnetwork.</summary>
+        /// <summary>
+        /// URI of the subnetwork for direct egress. Format:
+        /// `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetworkUri")]
         public virtual string SubnetworkUri { get; set; }
 
@@ -3628,7 +3654,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
 
-        /// <summary>URI of the resource that caused the drop.</summary>
+        /// <summary>
+        /// URI of the resource that caused the drop. Format: * `projects/{project_id}/global/firewalls/{firewall_id}`
+        /// (firewall rule) * `projects/{project_id}/global/routes/{route_id}` (route)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
         public virtual string ResourceUri { get; set; }
 
@@ -3921,7 +3950,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destinationIp")]
         public virtual string DestinationIp { get; set; }
 
-        /// <summary>URI of the network where this packet is sent to.</summary>
+        /// <summary>
+        /// URI of the network where this packet is sent to. Format:
+        /// `projects/{project_id}/global/networks/{network_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationNetworkUri")]
         public virtual string DestinationNetworkUri { get; set; }
 
@@ -3941,7 +3973,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceIp")]
         public virtual string SourceIp { get; set; }
 
-        /// <summary>URI of the network where this packet originates from.</summary>
+        /// <summary>
+        /// URI of the network where this packet originates from. Format:
+        /// `projects/{project_id}/global/networks/{network_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceNetworkUri")]
         public virtual string SourceNetworkUri { get; set; }
 
@@ -4022,8 +4057,9 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string FirewallRuleType { get; set; }
 
         /// <summary>
-        /// The URI of the VPC network that the firewall rule is associated with. This field is not applicable to
-        /// hierarchical firewall policy rules.
+        /// The URI of the VPC network that the firewall rule is associated with in format
+        /// "projects/{project}/global/networks/{network}". This field is not applicable to hierarchical firewall policy
+        /// rules.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; }
@@ -4044,7 +4080,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
 
         /// <summary>
         /// The URI of the firewall policy that this rule is associated with. This field is not applicable to VPC
-        /// firewall rules and implied VPC firewall rules.
+        /// firewall rules and implied VPC firewall rules. Format: * `locations/global/firewallPolicies/{policy_id}`
+        /// (hierarchical policy) * `projects/{project_id}/global/firewallPolicies/{policy_id}` (global network firewall
+        /// policy) * `projects/{project_id}/regions/{region}/firewallPolicies/{policy_id}` (regional network firewall
+        /// policy)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyUri")]
         public virtual string PolicyUri { get; set; }
@@ -4067,7 +4106,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetType")]
         public virtual string TargetType { get; set; }
 
-        /// <summary>The URI of the firewall rule. This field is not applicable to implied VPC firewall rules.</summary>
+        /// <summary>
+        /// The URI of the firewall rule in format "projects/{project}/global/firewalls/{firewall}". This field is not
+        /// applicable to implied VPC firewall rules.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -4082,7 +4124,11 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; }
 
-        /// <summary>URI of the resource that the packet is forwarded to.</summary>
+        /// <summary>
+        /// URI of the resource that the packet is forwarded to. Format: *
+        /// `projects/{project_id}/global/networks/{network_id}` (VPC peering network) *
+        /// `projects/{project_id}/regions/{region}/vpnGateways/{vpn_gateway_id}` (VPN gateway)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
         public virtual string ResourceUri { get; set; }
 
@@ -4116,7 +4162,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("matchedProtocol")]
         public virtual string MatchedProtocol { get; set; }
 
-        /// <summary>Network URI.</summary>
+        /// <summary>
+        /// URI of a VPC network where the forwarding rule is located in format
+        /// "projects/{project}/global/networks/{network}".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; }
 
@@ -4124,7 +4173,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pscGoogleApiTarget")]
         public virtual string PscGoogleApiTarget { get; set; }
 
-        /// <summary>URI of the PSC service attachment this forwarding rule targets (if applicable).</summary>
+        /// <summary>
+        /// URI of the PSC service attachment this forwarding rule targets (if applicable) in format
+        /// "projects/{project}/regions/{region}/serviceAttachments/{service_attachment}".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscServiceAttachmentUri")]
         public virtual string PscServiceAttachmentUri { get; set; }
 
@@ -4136,7 +4188,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; }
 
-        /// <summary>URI of the forwarding rule.</summary>
+        /// <summary>
+        /// URI of the forwarding rule in format "projects/{project}/global/forwardingRules/{forwarding_rule}" (global)
+        /// or "projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}" (regional).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -4151,11 +4206,16 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     /// <summary>For display only. Metadata associated with a Google Kubernetes Engine (GKE) cluster master.</summary>
     public class GKEMasterInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>URI of a GKE cluster network.</summary>
+        /// <summary>
+        /// URI of the GKE cluster network. Format: `projects/{project_id}/global/networks/{network_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterNetworkUri")]
         public virtual string ClusterNetworkUri { get; set; }
 
-        /// <summary>URI of a GKE cluster.</summary>
+        /// <summary>
+        /// URI of the GKE cluster. Format: * `projects/{project_id}/locations/{location}/clusters/{cluster_id}`
+        /// (regional cluster) * `projects/{project_id}/zones/{zone}/clusters/{cluster_id}` (zonal cluster)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterUri")]
         public virtual string ClusterUri { get; set; }
 
@@ -4222,7 +4282,9 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; }
 
-        /// <summary>URI of the network containing the GKE Pod.</summary>
+        /// <summary>
+        /// URI of the network containing the GKE Pod. Format: `projects/{project_id}/global/networks/{network_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; }
 
@@ -4269,7 +4331,9 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
 
-        /// <summary>URI of a hybrid subnet.</summary>
+        /// <summary>
+        /// URI of the hybrid subnet. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -4300,11 +4364,14 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkTags")]
         public virtual System.Collections.Generic.IList<string> NetworkTags { get; set; }
 
-        /// <summary>URI of a Compute Engine network.</summary>
+        /// <summary>URI of a Compute Engine network in format "projects/{project}/global/networks/{network}"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; }
 
-        /// <summary>URI of the PSC network attachment the NIC is attached to (if relevant).</summary>
+        /// <summary>
+        /// URI of the PSC network attachment the NIC is attached to (if relevant) in format
+        /// "projects/{project}/regions/{region}/networkAttachments/{network_attachment}"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscNetworkAttachmentUri")]
         public virtual string PscNetworkAttachmentUri { get; set; }
 
@@ -4322,7 +4389,9 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
-        /// <summary>URI of a Compute Engine instance.</summary>
+        /// <summary>
+        /// URI of a Compute Engine instance in format "projects/{project}/zones/{zone}/instances/{instance}"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -4333,7 +4402,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     /// <summary>For display only. Metadata associated with an Interconnect attachment.</summary>
     public class InterconnectAttachmentInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>URI of the Cloud Router to be used for dynamic routing.</summary>
+        /// <summary>
+        /// URI of the Cloud Router to be used for dynamic routing. Format:
+        /// `projects/{project_id}/regions/{region}/routers/{router_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudRouterUri")]
         public virtual string CloudRouterUri { get; set; }
 
@@ -4341,7 +4413,9 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>URI of the Interconnect where the Interconnect attachment is configured.</summary>
+        /// <summary>
+        /// URI of the Interconnect. Format: `projects/{project_id}/global/interconnects/{interconnect_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interconnectUri")]
         public virtual string InterconnectUri { get; set; }
 
@@ -4357,7 +4431,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
-        /// <summary>URI of an Interconnect attachment.</summary>
+        /// <summary>
+        /// URI of the Interconnect attachment. Format:
+        /// `projects/{project_id}/regions/{region}/interconnectAttachments/{attachment_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -4507,7 +4584,13 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("healthCheckFirewallState")]
         public virtual string HealthCheckFirewallState { get; set; }
 
-        /// <summary>URI of a Compute Engine instance or network endpoint.</summary>
+        /// <summary>
+        /// URI of the backend instance or network endpoint. Format: *
+        /// `projects/{project_id}/zones/{zone}/instances/{instance_id}` (instance) *
+        /// `projects/{project_id}/zones/{zone}/networkEndpointGroups/{neg_id}` (zonal NEG) *
+        /// `projects/{project_id}/regions/{region}/networkEndpointGroups/{neg_id}` (regional NEG) *
+        /// `projects/{project_id}/global/networkEndpointGroups/{neg_id}` (global NEG)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -4518,11 +4601,18 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     /// <summary>For display only. Metadata associated with the load balancer backend.</summary>
     public class LoadBalancerBackendInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>URI of the backend bucket this backend targets (if applicable).</summary>
+        /// <summary>
+        /// URI of the backend bucket this backend targets (if applicable) in format
+        /// "projects/{project}/global/backendBuckets/{backend_bucket}".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backendBucketUri")]
         public virtual string BackendBucketUri { get; set; }
 
-        /// <summary>URI of the backend service this backend belongs to (if applicable).</summary>
+        /// <summary>
+        /// URI of the backend service this backend belongs to (if applicable) in format
+        /// "projects/{project}/regions/{region}/backendServices/{backend_service}" (regional) or
+        /// "projects/{project}/global/backendServices/{backend_service}" (global).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backendServiceUri")]
         public virtual string BackendServiceUri { get; set; }
 
@@ -4535,16 +4625,26 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("healthCheckFirewallsConfigState")]
         public virtual string HealthCheckFirewallsConfigState { get; set; }
 
-        /// <summary>URI of the health check attached to this backend (if applicable).</summary>
+        /// <summary>
+        /// URI of the health check attached to this backend (if applicable). Format: *
+        /// `projects/{project_id}/global/healthChecks/{health_check_id}` *
+        /// `projects/{project_id}/regions/{region}/healthChecks/{health_check_id}` *
+        /// `projects/{project_id}/global/httpHealthChecks/{health_check_id}` (legacy)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthCheckUri")]
         public virtual string HealthCheckUri { get; set; }
 
-        /// <summary>URI of the instance group this backend belongs to (if applicable).</summary>
+        /// <summary>
+        /// URI of the instance group this backend belongs to (if applicable) in format
+        /// "projects/{project}/zones/{zone}/instanceGroups/{instance_group}".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceGroupUri")]
         public virtual string InstanceGroupUri { get; set; }
 
         /// <summary>
-        /// URI of the backend instance (if applicable). Populated for instance group backends, and zonal NEG backends.
+        /// URI of the backend instance (if applicable) in format
+        /// "projects/{project}/zones/{zone}/instances/{instance}". Populated for instance group backends, and zonal NEG
+        /// backends.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceUri")]
         public virtual string InstanceUri { get; set; }
@@ -4556,7 +4656,12 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>URI of the network endpoint group this backend belongs to (if applicable).</summary>
+        /// <summary>
+        /// URI of the network endpoint group this backend belongs to (if applicable) Format: *
+        /// `projects/{project_id}/zones/{zone}/networkEndpointGroups/{neg_id}` (zonal NEG) *
+        /// `projects/{project_id}/regions/{region}/networkEndpointGroups/{neg_id}` (regional NEG) *
+        /// `projects/{project_id}/global/networkEndpointGroups/{neg_id}` (global NEG)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkEndpointGroupUri")]
         public virtual string NetworkEndpointGroupUri { get; set; }
 
@@ -4564,7 +4669,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pscGoogleApiTarget")]
         public virtual string PscGoogleApiTarget { get; set; }
 
-        /// <summary>URI of the PSC service attachment this PSC NEG backend targets (if applicable).</summary>
+        /// <summary>
+        /// URI of the PSC service attachment this PSC NEG backend targets (if applicable) in format
+        /// "projects/{project}/regions/{region}/serviceAttachments/{service_attachment}".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscServiceAttachmentUri")]
         public virtual string PscServiceAttachmentUri { get; set; }
 
@@ -4579,7 +4687,13 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backendType")]
         public virtual string BackendType { get; set; }
 
-        /// <summary>Backend configuration URI.</summary>
+        /// <summary>
+        /// URI of the backend associated with the load balancer. Format: *
+        /// `projects/{project_id}/regions/{region}/backendServices/{backend_service_id}` *
+        /// `projects/{project_id}/global/backendServices/{backend_service_id}` *
+        /// `projects/{project_id}/regions/{region}/targetPools/{target_pool_id}` *
+        /// `projects/{project_id}/zones/{zone}/targetInstances/{target_instance_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backendUri")]
         public virtual string BackendUri { get; set; }
 
@@ -4645,7 +4759,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("natGatewayName")]
         public virtual string NatGatewayName { get; set; }
 
-        /// <summary>URI of the network where NAT translation takes place.</summary>
+        /// <summary>
+        /// URI of the VPC network where NAT translation takes place. Format:
+        /// `projects/{project_id}/global/networks/{network_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; }
 
@@ -4685,7 +4802,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; }
 
-        /// <summary>Uri of the Cloud Router. Only valid when type is CLOUD_NAT.</summary>
+        /// <summary>
+        /// URI of the Cloud Router. Only valid when type is CLOUD_NAT. Format:
+        /// `projects/{project_id}/regions/{region}/routers/{router_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routerUri")]
         public virtual string RouterUri { get; set; }
 
@@ -4708,7 +4828,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("matchedIpRange")]
         public virtual string MatchedIpRange { get; set; }
 
-        /// <summary>URI of the subnet matching the source IP address of the test.</summary>
+        /// <summary>
+        /// URI of the subnet matching the source IP address of the test in format
+        /// "projects/{project}/regions/{region}/subnetworks/{subnetwork}"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchedSubnetUri")]
         public virtual string MatchedSubnetUri { get; set; }
 
@@ -4716,7 +4839,7 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
 
-        /// <summary>URI of a Compute Engine network.</summary>
+        /// <summary>URI of a Compute Engine network in format "projects/{project}/global/networks/{network}"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -4727,7 +4850,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     /// <summary>For display only. Metadata associated with a layer 7 packet inspection by the firewall.</summary>
     public class NgfwPacketInspectionInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>URI of the security profile group associated with this firewall packet inspection.</summary>
+        /// <summary>
+        /// URI of the security profile group associated with this firewall packet inspection. Format:
+        /// `organizations/{organization_id}/locations/global/securityProfileGroups/{security_profile_group_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityProfileGroupUri")]
         public virtual string SecurityProfileGroupUri { get; set; }
 
@@ -5067,7 +5193,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     /// <summary>For display only. Metadata associated with ProxyConnection.</summary>
     public class ProxyConnectionInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>URI of the network where connection is proxied.</summary>
+        /// <summary>
+        /// URI of the VPC network where connection is proxied. Format:
+        /// `projects/{project_id}/global/networks/{network_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; }
 
@@ -5107,7 +5236,9 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; }
 
-        /// <summary>Uri of proxy subnet.</summary>
+        /// <summary>
+        /// URI of the proxy subnet. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetUri")]
         public virtual string SubnetUri { get; set; }
 
@@ -5236,7 +5367,9 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>URI of a Cloud Redis Instance network.</summary>
+        /// <summary>
+        /// URI of a Cloud Redis Instance network in format "projects/{project}/global/networks/{network}".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; }
 
@@ -5252,7 +5385,9 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
 
-        /// <summary>URI of a Cloud Redis Instance.</summary>
+        /// <summary>
+        /// URI of a Cloud Redis Instance in format "projects/{project}/locations/{location}/instances/{instance}"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -5279,7 +5414,8 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string AdvertisedRouteNextHopUri { get; set; }
 
         /// <summary>
-        /// For ADVERTISED dynamic routes, the URI of the Cloud Router that advertised the corresponding IP prefix.
+        /// For ADVERTISED dynamic routes, the URI of the Cloud Router that advertised the corresponding IP prefix in
+        /// format "projects/{project}/regions/{region}/routers/{router}".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertisedRouteSourceRouterUri")]
         public virtual string AdvertisedRouteSourceRouterUri { get; set; }
@@ -5302,26 +5438,30 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
 
         /// <summary>
         /// For PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised by NCC Hub, the URI of the corresponding
-        /// route in NCC Hub's routing table.
+        /// route in NCC Hub's routing table. Format:
+        /// `projects/{project_id}/locations/global/hubs/{hub_id}/routeTables/{route_table_id}/routes/{route_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nccHubRouteUri")]
         public virtual string NccHubRouteUri { get; set; }
 
         /// <summary>
-        /// URI of the NCC Hub the route is advertised by. PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised
-        /// by NCC Hub only.
+        /// URI of the NCC Hub the route is advertised by in format "projects/{project}/locations/global/hubs/{hub}".
+        /// PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised by NCC Hub only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nccHubUri")]
         public virtual string NccHubUri { get; set; }
 
         /// <summary>
-        /// URI of the destination NCC Spoke. PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised by NCC Hub
-        /// only.
+        /// URI of the destination NCC Spoke in format "projects/{project}/locations/{location}/spokes/{spoke}"
+        /// (regional) or "projects/{project}/locations/global/spokes/{spoke}" (global). PEERING_SUBNET and
+        /// PEERING_DYNAMIC routes that are advertised by NCC Hub only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nccSpokeUri")]
         public virtual string NccSpokeUri { get; set; }
 
-        /// <summary>URI of a VPC network where route is located.</summary>
+        /// <summary>
+        /// URI of a VPC network where route is located in format "projects/{project}/global/networks/{network}".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; }
 
@@ -5332,7 +5472,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextHop")]
         public virtual string NextHop { get; set; }
 
-        /// <summary>URI of a VPC network where the next hop resource is located.</summary>
+        /// <summary>
+        /// URI of a VPC network where the next hop resource is located in format
+        /// "projects/{project}/global/networks/{network}".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextHopNetworkUri")]
         public virtual string NextHopNetworkUri { get; set; }
 
@@ -5352,7 +5495,8 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string OriginatingRouteDisplayName { get; set; }
 
         /// <summary>
-        /// For PEERING_SUBNET and PEERING_STATIC routes, the URI of the originating SUBNET/STATIC route.
+        /// For PEERING_SUBNET and PEERING_STATIC routes, the URI of the originating SUBNET/STATIC route. Format:
+        /// `projects/{project_id}/global/routes/{route_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originatingRouteUri")]
         public virtual string OriginatingRouteUri { get; set; }
@@ -5393,7 +5537,8 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> SrcPortRanges { get; set; }
 
         /// <summary>
-        /// URI of a route. SUBNET, STATIC, PEERING_SUBNET (only for peering network) and POLICY_BASED routes only.
+        /// URI of a route in format "projects/{project}/global/routes/{route}". SUBNET, STATIC, PEERING_SUBNET (only
+        /// for peering network) and POLICY_BASED routes only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -5416,7 +5561,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     /// <summary>For display only. Metadata associated with the serverless network endpoint group backend.</summary>
     public class ServerlessNegInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>URI of the serverless network endpoint group.</summary>
+        /// <summary>
+        /// URI of the serverless network endpoint group in format
+        /// "projects/{project}/regions/{region}/networkEndpointGroups/{network_endpoint_group}".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negUri")]
         public virtual string NegUri { get; set; }
 
@@ -5808,7 +5956,9 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>URI of a VPC connector.</summary>
+        /// <summary>
+        /// URI of a VPC connector. Format: `projects/{project_id}/locations/{location}/connectors/{connector_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -6006,7 +6156,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; }
 
-        /// <summary>URI of a Compute Engine network where the VPN gateway is configured.</summary>
+        /// <summary>
+        /// URI of the VPC network where the VPN gateway is configured. Format:
+        /// `projects/{project_id}/global/networks/{network_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; }
 
@@ -6014,13 +6167,18 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
 
-        /// <summary>URI of a VPN gateway.</summary>
+        /// <summary>
+        /// URI of the VPN gateway. Format: * `projects/{project_id}/regions/{region}/vpnGateways/{vpn_gateway_id}` (HA
+        /// VPN gateway) * `projects/{project_id}/regions/{region}/targetVpnGateways/{target_vpn_gateway_id}` (Classic
+        /// VPN gateway)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
         /// <summary>
-        /// A VPN tunnel that is associated with this VPN gateway. There may be multiple VPN tunnels configured on a VPN
-        /// gateway, and only the one relevant to the test is displayed.
+        /// URI of the VPN tunnel associated with the VPN gateway. There may be multiple VPN tunnels configured on a VPN
+        /// gateway, and only the one relevant to the test is displayed. Format:
+        /// `projects/{project_id}/regions/{region}/vpnTunnels/{vpn_tunnel_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpnTunnelUri")]
         public virtual string VpnTunnelUri { get; set; }
@@ -6036,7 +6194,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>URI of a Compute Engine network where the VPN tunnel is configured.</summary>
+        /// <summary>
+        /// URI of the VPC network where the VPN tunnel is configured. Format:
+        /// `projects/{project_id}/global/networks/{network_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; }
 
@@ -6044,7 +6205,11 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
 
-        /// <summary>URI of a VPN gateway at remote end of the tunnel.</summary>
+        /// <summary>
+        /// URI of a VPN gateway at remote end of the tunnel. Format: *
+        /// `projects/{project_id}/regions/{region}/vpnGateways/{vpn_gateway_id}` (GCP HA VPN gateway) *
+        /// `projects/{project_id}/global/peerVpnGateways/{peer_vpn_gateway_id}` (GCP peer VPN gateway)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remoteGateway")]
         public virtual string RemoteGateway { get; set; }
 
@@ -6056,7 +6221,11 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("routingType")]
         public virtual string RoutingType { get; set; }
 
-        /// <summary>URI of the VPN gateway at local end of the tunnel.</summary>
+        /// <summary>
+        /// URI of the VPN gateway at local end of the tunnel. Format: *
+        /// `projects/{project_id}/regions/{region}/vpnGateways/{vpn_gateway_id}` (HA VPN gateway) *
+        /// `projects/{project_id}/regions/{region}/targetVpnGateways/{target_vpn_gateway_id}` (Classic VPN gateway)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceGateway")]
         public virtual string SourceGateway { get; set; }
 
@@ -6064,7 +6233,9 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceGatewayIp")]
         public virtual string SourceGatewayIp { get; set; }
 
-        /// <summary>URI of a VPN tunnel.</summary>
+        /// <summary>
+        /// URI of the VPN tunnel. Format: `projects/{project_id}/regions/{region}/vpnTunnels/{vpn_tunnel_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
