@@ -14441,6 +14441,10 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Metadata on content to be scanned.</summary>
     public class GooglePrivacyDlpV2ContentMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The file labels associated with the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileLabels")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FileLabel> FileLabels { get; set; }
+
         /// <summary>User provided key-value pairs of content metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2KeyValueMetadataProperty> Properties { get; set; }
@@ -14998,6 +15002,10 @@ namespace Google.Apis.DLP.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusionType")]
         public virtual string ExclusionType { get; set; }
+
+        /// <summary>File label to detect.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileLabelInfoType")]
+        public virtual GooglePrivacyDlpV2FileLabelInfoType FileLabelInfoType { get; set; }
 
         /// <summary>
         /// CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one
@@ -17412,6 +17420,36 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a file label.</summary>
+    public class GooglePrivacyDlpV2FileLabel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Google Drive labels published by Google.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleDriveLabel")]
+        public virtual GooglePrivacyDlpV2GoogleDriveLabelMetadata GoogleDriveLabel { get; set; }
+
+        /// <summary>Sensitivity labels published by Microsoft.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sensitivityLabel")]
+        public virtual GooglePrivacyDlpV2SensitivityLabelMetadata SensitivityLabel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for a custom infoType that detects file labels.</summary>
+    public class GooglePrivacyDlpV2FileLabelInfoType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Google Drive labels published by Google.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleDriveLabel")]
+        public virtual GooglePrivacyDlpV2GoogleDriveLabel GoogleDriveLabel { get; set; }
+
+        /// <summary>Sensitivity labels published by Microsoft.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sensitivityLabel")]
+        public virtual GooglePrivacyDlpV2SensitivityLabel SensitivityLabel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Set of files to scan.</summary>
     public class GooglePrivacyDlpV2FileSet : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17975,6 +18013,42 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Processing occurs in the global region.</summary>
     public class GooglePrivacyDlpV2GlobalProcessing : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Google Drive labels published by Google.</summary>
+    public class GooglePrivacyDlpV2GoogleDriveLabel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The field values of the Google Drive label to match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFieldsToMatch")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2LabelField> LabelFieldsToMatch { get; set; }
+
+        /// <summary>
+        /// The [label ID](https://developers.google.com/workspace/drive/labels/guides/overview) of the Google Drive
+        /// label.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelId")]
+        public virtual string LabelId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Google Drive labels published by Google.</summary>
+    public class GooglePrivacyDlpV2GoogleDriveLabelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The field values of the Google Drive label</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFields")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2LabelFieldMetadata> LabelFields { get; set; }
+
+        /// <summary>
+        /// The [label ID](https://developers.google.com/workspace/drive/labels/guides/overview) of the Google Drive
+        /// label.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelId")]
+        public virtual string LabelId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -19379,6 +19453,36 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Histogram of l-diversity equivalence class sensitive value frequencies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitiveValueFrequencyHistogramBuckets")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2LDiversityHistogramBucket> SensitiveValueFrequencyHistogramBuckets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The field values of the Google Drive label to match.</summary>
+    public class GooglePrivacyDlpV2LabelField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The identifier of the Label Field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The value of the Label Field to match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The field values of the Google Drive label</summary>
+    public class GooglePrivacyDlpV2LabelFieldMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The identifier of the Label Field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The value of the Label Field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual GooglePrivacyDlpV2Value Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21250,6 +21354,28 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Sensitivity labels published by Microsoft.</summary>
+    public class GooglePrivacyDlpV2SensitivityLabel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The GUID of the sensitivity label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guid")]
+        public virtual string Guid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Sensitivity labels published by Microsoft.</summary>
+    public class GooglePrivacyDlpV2SensitivityLabelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The GUID of the sensitivity label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guid")]
+        public virtual string Guid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Score is calculated from of all elements in the data profile. A higher level means the data is more sensitive.
     /// </summary>
@@ -21337,7 +21463,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentVersion")]
         public virtual GooglePrivacyDlpV2StoredInfoTypeVersion CurrentVersion { get; set; }
 
-        /// <summary>Resource name.</summary>
+        /// <summary>Output only. Resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -21404,7 +21530,8 @@ namespace Google.Apis.DLP.v2.Data
         private object _createTime;
 
         /// <summary>
-        /// Create timestamp of the version. Read-only, determined by the system when the version is created.
+        /// Output only. Create timestamp of the version. Read-only, determined by the system when the version is
+        /// created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
@@ -21439,11 +21566,11 @@ namespace Google.Apis.DLP.v2.Data
         }
 
         /// <summary>
-        /// Errors that occurred when creating this storedInfoType version, or anomalies detected in the storedInfoType
-        /// data that render it unusable. Only the five most recent errors will be displayed, with the most recent error
-        /// appearing first. For example, some of the data for stored custom dictionaries is put in the user's Cloud
-        /// Storage bucket, and if this data is modified or deleted by the user or another system, the dictionary
-        /// becomes invalid. If any errors occur, fix the problem indicated by the error message and use the
+        /// Output only. Errors that occurred when creating this storedInfoType version, or anomalies detected in the
+        /// storedInfoType data that render it unusable. Only the five most recent errors will be displayed, with the
+        /// most recent error appearing first. For example, some of the data for stored custom dictionaries is put in
+        /// the user's Cloud Storage bucket, and if this data is modified or deleted by the user or another system, the
+        /// dictionary becomes invalid. If any errors occur, fix the problem indicated by the error message and use the
         /// UpdateStoredInfoType API method to create another version of the storedInfoType to continue using it,
         /// reusing the same `config` if it was not the source of the error.
         /// </summary>
@@ -21451,12 +21578,12 @@ namespace Google.Apis.DLP.v2.Data
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Error> Errors { get; set; }
 
         /// <summary>
-        /// Stored info type version state. Read-only, updated by the system during dictionary creation.
+        /// Output only. Stored info type version state. Read-only, updated by the system during dictionary creation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>Statistics about this storedInfoType version.</summary>
+        /// <summary>Output only. Statistics about this storedInfoType version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
         public virtual GooglePrivacyDlpV2StoredInfoTypeStats Stats { get; set; }
 
