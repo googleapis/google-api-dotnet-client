@@ -6292,6 +6292,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("awsElasticNetworkInterfaceDetails")]
         public virtual AwsElasticNetworkInterfaceDetails AwsElasticNetworkInterfaceDetails { get; set; }
 
+        /// <summary>Output only. Asset information specific for AWS ElastiCache Clusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsElasticacheClusterDetails")]
+        public virtual AwsElastiCacheClusterDetails AwsElasticacheClusterDetails { get; set; }
+
         /// <summary>Output only. Asset information specific for AWS Load Balancers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsElbLoadBalancerDetails")]
         public virtual AwsElbLoadBalancerDetails AwsElbLoadBalancerDetails { get; set; }
@@ -6581,6 +6585,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Optional. Asset information specific for AWS Elastic Network Interfaces.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsElasticNetworkInterfaceDetails")]
         public virtual AwsElasticNetworkInterfaceDetails AwsElasticNetworkInterfaceDetails { get; set; }
+
+        /// <summary>Optional. Asset information specific for AWS ElastiCache Clusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsElasticacheClusterDetails")]
+        public virtual AwsElastiCacheClusterDetails AwsElasticacheClusterDetails { get; set; }
 
         /// <summary>Asset information specific for AWS Load Balancers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsElbLoadBalancerDetails")]
@@ -7166,6 +7174,13 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
 
     /// <summary>Asset information specific for AWS EKS clusters.</summary>
     public class AwsEksClusterDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of an AWS ElastiCache Cluster.</summary>
+    public class AwsElastiCacheClusterDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
