@@ -295,6 +295,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 Backups = new BackupsResource(service);
                 Instances = new InstancesResource(service);
                 Operations = new OperationsResource(service);
+                SharePools = new SharePoolsResource(service);
             }
 
             /// <summary>Gets the Backups resource.</summary>
@@ -2457,6 +2458,142 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 }
             }
 
+            /// <summary>Gets the SharePools resource.</summary>
+            public virtual SharePoolsResource SharePools { get; }
+
+            /// <summary>The "sharePools" collection of methods.</summary>
+            public class SharePoolsResource
+            {
+                private const string Resource = "sharePools";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SharePoolsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Acquires a share synchronously from the pre-provisioned share pool.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent share pool path, in the format
+                /// `projects/{project}/locations/{location}/sharePools/{share_pool}`.
+                /// </param>
+                public virtual AcquireShareRequest AcquireShare(Google.Apis.CloudFilestore.v1beta1.Data.AcquireShareRequest body, string parent)
+                {
+                    return new AcquireShareRequest(this.service, body, parent);
+                }
+
+                /// <summary>Acquires a share synchronously from the pre-provisioned share pool.</summary>
+                public class AcquireShareRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.AcquireShareResponse>
+                {
+                    /// <summary>Constructs a new AcquireShare request.</summary>
+                    public AcquireShareRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.AcquireShareRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent share pool path, in the format
+                    /// `projects/{project}/locations/{location}/sharePools/{share_pool}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudFilestore.v1beta1.Data.AcquireShareRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "acquireShare";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}:acquireShare";
+
+                    /// <summary>Initializes AcquireShare parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/sharePools/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Releases a share synchronously, marking it for background scrubbing.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent share pool path, in the format
+                /// `projects/{project}/locations/{location}/sharePools/{share_pool}`.
+                /// </param>
+                public virtual ReleaseShareRequest ReleaseShare(Google.Apis.CloudFilestore.v1beta1.Data.ReleaseShareRequest body, string parent)
+                {
+                    return new ReleaseShareRequest(this.service, body, parent);
+                }
+
+                /// <summary>Releases a share synchronously, marking it for background scrubbing.</summary>
+                public class ReleaseShareRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.ReleaseShareResponse>
+                {
+                    /// <summary>Constructs a new ReleaseShare request.</summary>
+                    public ReleaseShareRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.ReleaseShareRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent share pool path, in the format
+                    /// `projects/{project}/locations/{location}/sharePools/{share_pool}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudFilestore.v1beta1.Data.ReleaseShareRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "releaseShare";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}:releaseShare";
+
+                    /// <summary>Initializes ReleaseShare parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/sharePools/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
@@ -2628,6 +2765,36 @@ namespace Google.Apis.CloudFilestore.v1beta1
 }
 namespace Google.Apis.CloudFilestore.v1beta1.Data
 {
+    /// <summary>Request message for AcquireShare.</summary>
+    public class AcquireShareRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Requested size of the share in GiB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capacityGb")]
+        public virtual System.Nullable<int> CapacityGb { get; set; }
+
+        /// <summary>Required. Unique string generated by the CSI driver for exact retry idempotency.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Output message for AcquireShare.</summary>
+    public class AcquireShareResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The IP address of the physical Filestore instance hosting the share.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; }
+
+        /// <summary>The specific share identifier on the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shareId")]
+        public virtual string ShareId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A Filestore backup.</summary>
     public class Backup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4334,6 +4501,28 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endpointProject")]
         public virtual string EndpointProject { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ReleaseShare.</summary>
+    public class ReleaseShareRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The IP address of the physical Filestore instance hosting the share.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; }
+
+        /// <summary>Required. The specific share ID on the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shareId")]
+        public virtual string ShareId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ReleaseShare.</summary>
+    public class ReleaseShareResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
