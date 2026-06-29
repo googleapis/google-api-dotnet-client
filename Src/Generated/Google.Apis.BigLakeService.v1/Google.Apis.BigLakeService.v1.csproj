@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.BigLakeService.v1 Client Library</Title>
-    <Version>1.74.0.4057</Version>
+    <Version>1.75.0.4186</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2026 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -17,7 +17,7 @@
       Google APIs Client Library for working with Biglake v1.
 
       Product documentation is available at:
-      https://cloud.google.com/bigquery/
+      https://cloud.google.com/products/lakehouse
 
       API reference documentation for this package is available at:
       https://googleapis.dev/dotnet/Google.Apis.BigLakeService.v1/latest/api/Google.Apis.BigLakeService.v1.html
@@ -59,8 +59,8 @@
   <!-- common dependencies -->
   <ItemGroup>
     <PackageReference Include="ConfigureAwaitChecker.Analyzer" Version="5.0.0" PrivateAssets="All" />
-    <PackageReference Include="Google.Apis" Version="1.74.0" />
-    <PackageReference Include="Google.Apis.Auth" Version="1.74.0" />
+    <PackageReference Include="Google.Apis" Version="1.75.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.75.0" />
   </ItemGroup>
 
 </Project>
