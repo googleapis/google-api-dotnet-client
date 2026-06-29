@@ -857,7 +857,7 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         public virtual Color Color { get; set; }
 
         /// <summary>
-        /// Required. Along with `light_on_duration `, define the blink rate of LED flashes. Resolution defined by
+        /// Required. Along with `light_on_duration`, define the blink rate of LED flashes. Resolution defined by
         /// [proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lightOffDuration")]
@@ -905,7 +905,7 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fcmOptions")]
         public virtual FcmOptions FcmOptions { get; set; }
 
-        /// <summary>Optional. Firebase Installation ID to send a message to.</summary>
+        /// <summary>Firebase Installation ID to send a message to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fid")]
         public virtual string Fid { get; set; }
 
