@@ -2288,6 +2288,10 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
     /// <summary>Response for batch violation acknowledgement</summary>
     public class GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Count of acknowledged violations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acknowledgedViolationsCount")]
+        public virtual System.Nullable<int> AcknowledgedViolationsCount { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
