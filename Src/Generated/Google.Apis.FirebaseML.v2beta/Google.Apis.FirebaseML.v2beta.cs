@@ -3424,12 +3424,21 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual System.Collections.Generic.IDictionary<string, object> CustomConfigs { get; set; }
 
         /// <summary>
+        /// Optional. Deprecated: Use `enable_zero_data_retention` instead. Instructs Vertex Grounding to use Parallel's
+        /// Zero Data Retention Marketplace product. If this value is "false" or omitted, the Parallel Web Search for
+        /// Grounding standard subscription will be used. If this value is "true", the Parallel Web Search for Grounding
+        /// - ZDR subscription will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableDataRetention")]
+        public virtual System.Nullable<bool> EnableDataRetention { get; set; }
+
+        /// <summary>
         /// Optional. Instructs Vertex Grounding to use Parallel's Zero Data Retention Marketplace product. If this
         /// value is "false" or omitted, the Parallel Web Search for Grounding standard subscription will be used. If
         /// this value is "true", the Parallel Web Search for Grounding - ZDR subscription will be used.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableDataRetention")]
-        public virtual System.Nullable<bool> EnableDataRetention { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("enableZeroDataRetention")]
+        public virtual System.Nullable<bool> EnableZeroDataRetention { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
