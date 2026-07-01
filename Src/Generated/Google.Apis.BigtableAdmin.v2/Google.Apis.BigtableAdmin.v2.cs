@@ -9504,6 +9504,13 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string Edition { get; set; }
 
         /// <summary>
+        /// Output only. The region where Knowledge Catalog data is synced to and stored, including user-created
+        /// aspects.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeCatalogRegion")]
+        public virtual string KnowledgeCatalogRegion { get; set; }
+
+        /// <summary>
         /// Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a
         /// customer's organizational needs and deployment strategies. They can be used to filter resources and
         /// aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular
