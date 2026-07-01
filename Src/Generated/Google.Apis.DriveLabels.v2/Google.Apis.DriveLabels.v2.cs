@@ -679,7 +679,7 @@ namespace Google.Apis.DriveLabels.v2
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^labels/[^/]+/permissions/[^/]+$",
+                        Pattern = @"^labels/[^/]+/permissions/.*$",
                     });
                     RequestParameters.Add("useAdminAccess", new Google.Apis.Discovery.Parameter
                     {
@@ -1177,7 +1177,7 @@ namespace Google.Apis.DriveLabels.v2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^labels/[^/]+/revisions/[^/]+/permissions/[^/]+$",
+                            Pattern = @"^labels/[^/]+/revisions/[^/]+/permissions/.*$",
                         });
                         RequestParameters.Add("useAdminAccess", new Google.Apis.Discovery.Parameter
                         {
