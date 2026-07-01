@@ -766,8 +766,8 @@ namespace Google.Apis.GoogleHealthAPI.v4
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The parent resource where this subscriber will be created. Format: projects/{project} Example:
-            /// projects/my-project-123
+            /// Required. The parent resource where this subscriber will be created. Format: projects/{project_number}
+            /// Example: projects/1234567890
             /// </param>
             public virtual CreateRequest Create(Google.Apis.GoogleHealthAPI.v4.Data.CreateSubscriberPayload body, string parent)
             {
@@ -800,8 +800,8 @@ namespace Google.Apis.GoogleHealthAPI.v4
                 }
 
                 /// <summary>
-                /// Required. The parent resource where this subscriber will be created. Format: projects/{project}
-                /// Example: projects/my-project-123
+                /// Required. The parent resource where this subscriber will be created. Format:
+                /// projects/{project_number} Example: projects/1234567890
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
