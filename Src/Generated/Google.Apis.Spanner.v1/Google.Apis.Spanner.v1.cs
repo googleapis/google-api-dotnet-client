@@ -9704,11 +9704,19 @@ namespace Google.Apis.Spanner.v1.Data
             set => CommitTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>The isolation level used for the read-write transaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isolationLevel")]
+        public virtual string IsolationLevel { get; set; }
+
         /// <summary>
         /// If specified, transaction has not committed yet. You must retry the commit with the new precommit token.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("precommitToken")]
         public virtual MultiplexedSessionPrecommitToken PrecommitToken { get; set; }
+
+        /// <summary>The read lock mode used for the read-write transaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readLockMode")]
+        public virtual string ReadLockMode { get; set; }
 
         private string _snapshotTimestampRaw;
 
@@ -12225,16 +12233,19 @@ namespace Google.Apis.Spanner.v1.Data
 
         /// <summary>
         /// The number of nodes allocated to this instance partition. Users can set the `node_count` field to specify
-        /// the target number of nodes allocated to the instance partition. This may be zero in API responses for
-        /// instance partitions that are not yet in state `READY`.
+        /// the target number of nodes allocated to the instance partition. If autoscaling is enabled, node_count is
+        /// treated as an OUTPUT_ONLY field and reflects the current number of nodes allocated to the instance
+        /// partition. This may be zero in API responses for instance partitions that are not yet in state `READY`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
         public virtual System.Nullable<int> NodeCount { get; set; }
 
         /// <summary>
         /// The number of processing units allocated to this instance partition. Users can set the `processing_units`
-        /// field to specify the target number of processing units allocated to the instance partition. This might be
-        /// zero in API responses for instance partitions that are not yet in the `READY` state.
+        /// field to specify the target number of processing units allocated to the instance partition. If autoscaling
+        /// is enabled, processing_units is treated as an OUTPUT_ONLY field and reflects the current number of
+        /// processing units allocated to the instance partition. This might be zero in API responses for instance
+        /// partitions that are not yet in the `READY` state.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processingUnits")]
         public virtual System.Nullable<int> ProcessingUnits { get; set; }
