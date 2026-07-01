@@ -3695,6 +3695,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("confidentialityImpact")]
         public virtual string ConfidentialityImpact { get; set; }
 
+        /// <summary>Optional. Exploit Maturity (E). Defined in CVSS v4.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exploitMaturity")]
+        public virtual string ExploitMaturity { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("exploitabilityScore")]
         public virtual System.Nullable<float> ExploitabilityScore { get; set; }
 
