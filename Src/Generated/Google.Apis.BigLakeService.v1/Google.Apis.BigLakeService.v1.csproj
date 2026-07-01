@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.BigLakeService.v1 Client Library</Title>
-    <Version>1.75.0.4186</Version>
+    <Version>1.75.0.4193</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2026 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
