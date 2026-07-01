@@ -1208,6 +1208,13 @@ namespace Google.Apis.PolicyTroubleshooter.v3beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("explainedResources")]
         public virtual System.Collections.Generic.IList<GoogleCloudPolicytroubleshooterIamV3betaExplainedPABRuleExplainedResource> ExplainedResources { get; set; }
 
+        /// <summary>
+        /// Output only. Unsupported features detected in this rule. Supported values: * `OPERATION`: Permission
+        /// Subsetting (Operation constraints). See google.iam.v3.PrincipalAccessBoundaryPolicyRule.operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pabUnsupportedFeatures")]
+        public virtual System.Collections.Generic.IList<string> PabUnsupportedFeatures { get; set; }
+
         /// <summary>The relevance of this rule to the overall access state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relevance")]
         public virtual string Relevance { get; set; }
@@ -2212,6 +2219,19 @@ namespace Google.Apis.PolicyTroubleshooter.v3beta.Data
         /// <summary>Required. The access relationship of principals to the resources in this rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effect")]
         public virtual string Effect { get; set; }
+
+        /// <summary>
+        /// Optional. A list of Resource Manager resources. If an excluded resource is listed in the rule, then the rule
+        /// does not apply for that resource and its descendants. This takes precedence over the `resources` field. The
+        /// number of excluded resources in this field is limited to 500 across all rules in the policy. The following
+        /// resource types are supported: * Organizations, such as
+        /// `//cloudresourcemanager.googleapis.com/organizations/123`. * Folders, such as
+        /// `//cloudresourcemanager.googleapis.com/folders/123`. * Projects, such as
+        /// `//cloudresourcemanager.googleapis.com/projects/123` or
+        /// `//cloudresourcemanager.googleapis.com/projects/my-project-id`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedResources")]
+        public virtual System.Collections.Generic.IList<string> ExcludedResources { get; set; }
 
         /// <summary>
         /// Optional. The operation attributes that determine whether this rule applies to a request. If this field is
