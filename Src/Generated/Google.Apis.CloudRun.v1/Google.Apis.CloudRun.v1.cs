@@ -1410,6 +1410,13 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>
+                /// Optional. Indicates that the server should validate the request and populate default values without
+                /// persisting the request. Supported values: `all`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string DryRun { get; set; }
+
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudRun.v1.Data.Instance Body { get; set; }
 
@@ -1436,6 +1443,14 @@ namespace Google.Apis.CloudRun.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^namespaces/[^/]+$",
+                    });
+                    RequestParameters.Add("dryRun", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dryRun",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -1476,6 +1491,13 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual new string ApiVersion { get; set; }
 
+                /// <summary>
+                /// Optional. Indicates that the server should validate the request and populate default values without
+                /// persisting the request. Supported values: `all`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string DryRun { get; set; }
+
                 /// <summary>Optional. Cloud Run currently ignores this parameter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Kind { get; set; }
@@ -1512,6 +1534,14 @@ namespace Google.Apis.CloudRun.v1
                     RequestParameters.Add("apiVersion", new Google.Apis.Discovery.Parameter
                     {
                         Name = "apiVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("dryRun", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dryRun",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1768,6 +1798,13 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional. Indicates that the server should validate the request and populate default values without
+                /// persisting the request. Supported values: `all`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string DryRun { get; set; }
+
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudRun.v1.Data.Instance Body { get; set; }
 
@@ -1794,6 +1831,14 @@ namespace Google.Apis.CloudRun.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^namespaces/[^/]+/instances/[^/]+$",
+                    });
+                    RequestParameters.Add("dryRun", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dryRun",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -1963,6 +2008,13 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>
+                /// Optional. Indicates that the server should validate the request and populate default values without
+                /// persisting the request. Supported values: `all`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string DryRun { get; set; }
+
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudRun.v1.Data.Job Body { get; set; }
 
@@ -1989,6 +2041,14 @@ namespace Google.Apis.CloudRun.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^namespaces/[^/]+$",
+                    });
+                    RequestParameters.Add("dryRun", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dryRun",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -2023,6 +2083,13 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>Optional. Cloud Run currently ignores this parameter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual new string ApiVersion { get; set; }
+
+                /// <summary>
+                /// Optional. Indicates that the server should validate the request and populate default values without
+                /// persisting the request. Supported values: `all`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string DryRun { get; set; }
 
                 /// <summary>Optional. Cloud Run currently ignores this parameter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
@@ -2060,6 +2127,14 @@ namespace Google.Apis.CloudRun.v1
                     RequestParameters.Add("apiVersion", new Google.Apis.Discovery.Parameter
                     {
                         Name = "apiVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("dryRun", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dryRun",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2310,6 +2385,13 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional. Indicates that the server should validate the request and populate default values without
+                /// persisting the request. Supported values: `all`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string DryRun { get; set; }
+
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudRun.v1.Data.Job Body { get; set; }
 
@@ -2336,6 +2418,14 @@ namespace Google.Apis.CloudRun.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^namespaces/[^/]+/jobs/[^/]+$",
+                    });
+                    RequestParameters.Add("dryRun", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dryRun",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -11175,11 +11265,11 @@ namespace Google.Apis.CloudRun.v1.Data
         /// `run.googleapis.com/invoker-iam-disabled`: Service, Instance. * `run.googleapis.com/launch-stage`: Service,
         /// Job. * `run.googleapis.com/minScale`: Service. * `run.googleapis.com/maxScale`: Service. *
         /// `run.googleapis.com/manualInstanceCount`: Service. * `run.googleapis.com/network-interfaces`: Revision,
-        /// Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision.
+        /// Execution, Instance. * `run.googleapis.com/post-key-revocation-action-type`: Revision.
         /// `run.googleapis.com/scalingMode`: Service. * `run.googleapis.com/secrets`: Revision, Execution. *
         /// `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. *
         /// `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision,
-        /// Execution . * `run.googleapis.com/vpc-access-egress`: Revision, Execution.
+        /// Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution, Instance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
@@ -12129,6 +12219,13 @@ namespace Google.Apis.CloudRun.v1.Data
     /// <summary>Request message for starting a stopped Instance.</summary>
     public class StartInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Indicates that the server should validate the request and populate default values without
+        /// persisting the request. Supported values: `all`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dryRun")]
+        public virtual string DryRun { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -12255,6 +12352,13 @@ namespace Google.Apis.CloudRun.v1.Data
     /// <summary>Request message for stopping a running Instance.</summary>
     public class StopInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Indicates that the server should validate the request and populate default values without
+        /// persisting the request. Supported values: `all`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dryRun")]
+        public virtual string DryRun { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
