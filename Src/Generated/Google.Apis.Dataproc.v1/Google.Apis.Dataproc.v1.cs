@@ -14802,6 +14802,14 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>Defines machines types and a rank to which the machines types belong.</summary>
     public class InstanceSelection : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Disk configuration to apply to the instances in this instance selection. If specified on any entry
+        /// in instanceSelectionList, then it must be specified on every entry in instanceSelectionList and the
+        /// instanceGroupConfig must not specify any diskConfig.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskConfig")]
+        public virtual DiskConfig DiskConfig { get; set; }
+
         /// <summary>Optional. Full machine-type names, e.g. "n1-standard-16".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineTypes")]
         public virtual System.Collections.Generic.IList<string> MachineTypes { get; set; }
