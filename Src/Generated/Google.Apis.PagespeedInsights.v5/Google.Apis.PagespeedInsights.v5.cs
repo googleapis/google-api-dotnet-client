@@ -739,6 +739,10 @@ namespace Google.Apis.PagespeedInsights.v5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("auditRefs")]
         public virtual System.Collections.Generic.IList<AuditRefs> AuditRefs { get; set; }
 
+        /// <summary>Optional. How the category score should be displayed (e.g. as a fraction).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryScoreDisplayMode")]
+        public virtual string CategoryScoreDisplayMode { get; set; }
+
         /// <summary>A more detailed description of the category and its importance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
