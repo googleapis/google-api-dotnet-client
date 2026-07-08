@@ -1400,6 +1400,13 @@ namespace Google.Apis.Kmsinventory.v1.Data
         public virtual string GenerationFailureReason { get; set; }
 
         /// <summary>
+        /// Output only. Field indicating that the key wrapping key is trusted. This field is only valid for key purpose
+        /// AES_256_WRAPPING, and protection level HSM_SINGLE_TENANT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hsmTrusted")]
+        public virtual System.Nullable<bool> HsmTrusted { get; set; }
+
+        /// <summary>
         /// Output only. The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importFailureReason")]
@@ -1475,6 +1482,14 @@ namespace Google.Apis.Kmsinventory.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>
+        /// Immutable. Field indicating that the key may be wrapped by a trusted key. This field can be set for all key
+        /// purposes except ENCRYPT_DECRYPT, and is only valid for keys with protection level HSM_SINGLE_TENANT. This
+        /// field can only be set at creation or import time via CreateCryptoKeyVersion, or ImportCryptoKeyVersion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustedWrappingEnabled")]
+        public virtual System.Nullable<bool> TrustedWrappingEnabled { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1511,13 +1526,21 @@ namespace Google.Apis.Kmsinventory.v1.Data
     public class GoogleCloudKmsV1ExternalProtectionLevelOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field
-        /// instead of external_key_uri when using an EkmConnection.
+        /// Optional. The resource name of the backend environment where the key material of CryptoKeyVersions is
+        /// associated with. Setting this field overrides the CryptoKeyBackend. This field may be set when
+        /// CryptoKeyVersions is set to EXTERNAL_VPC. Format: `projects/*/locations/*/ekmConnections/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ekmConnectionBackendOverride")]
+        public virtual string EkmConnectionBackendOverride { get; set; }
+
+        /// <summary>
+        /// Optional. The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set
+        /// this field instead of external_key_uri when using an EkmConnection.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ekmConnectionKeyPath")]
         public virtual string EkmConnectionKeyPath { get; set; }
 
-        /// <summary>The URI for an external resource that this CryptoKeyVersion represents.</summary>
+        /// <summary>Optional. The URI for an external resource that this CryptoKeyVersion represents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalKeyUri")]
         public virtual string ExternalKeyUri { get; set; }
 
