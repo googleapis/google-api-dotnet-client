@@ -12,5 +12,10 @@
     "VIEW_UNSPECIFIED",
     "BASIC",
     "FULL"
+  ],
+  "Google.Apis.ParameterManager.v1.ProjectsResource+LocationsResource+TemplatesResource+VersionsResource+GetRequest.ViewEnum": [
+    "VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
   ]
 }
