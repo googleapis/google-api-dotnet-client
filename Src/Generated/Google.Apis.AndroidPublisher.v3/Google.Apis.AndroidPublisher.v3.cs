@@ -11593,6 +11593,83 @@ namespace Google.Apis.AndroidPublisher.v3
                 });
             }
         }
+
+        /// <summary>Provide refund preference and purchase usage for a chargeback request</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="packageName">
+        /// Required. The package name of the application for which this subscription or in-app item was purchased (for
+        /// example, 'com.some.thing').
+        /// </param>
+        /// <param name="orderId">
+        /// Required. The order ID provided to the user when the subscription or in-app order was purchased.
+        /// </param>
+        public virtual ReviewrefundRequest Reviewrefund(Google.Apis.AndroidPublisher.v3.Data.OrdersReviewRefundRequest body, string packageName, string orderId)
+        {
+            return new ReviewrefundRequest(this.service, body, packageName, orderId);
+        }
+
+        /// <summary>Provide refund preference and purchase usage for a chargeback request</summary>
+        public class ReviewrefundRequest : AndroidPublisherBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Reviewrefund request.</summary>
+            public ReviewrefundRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.OrdersReviewRefundRequest body, string packageName, string orderId) : base(service)
+            {
+                PackageName = packageName;
+                OrderId = orderId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The package name of the application for which this subscription or in-app item was purchased
+            /// (for example, 'com.some.thing').
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PackageName { get; private set; }
+
+            /// <summary>
+            /// Required. The order ID provided to the user when the subscription or in-app order was purchased.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string OrderId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidPublisher.v3.Data.OrdersReviewRefundRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "reviewrefund";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/applications/{packageName}/orders/{orderId}:reviewrefund";
+
+            /// <summary>Initializes Reviewrefund parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
     }
 
     /// <summary>The "purchases" collection of methods.</summary>
@@ -15321,6 +15398,44 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Coarse Geographic location details for where the consumption happened.</summary>
+    public class CoarseLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For
+        /// example, this can be a state, a province, an oblast, or a prefecture. For Spain, this is the province and
+        /// not the autonomous community (for example, "Barcelona" and not "Catalonia"). Many countries don't use an
+        /// administrative area in postal addresses. For example, in Switzerland, this should be left unpopulated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("administrativeArea")]
+        public virtual string AdministrativeArea { get; set; }
+
+        /// <summary>
+        /// Optional. Generally refers to the city or town portion of the address. Examples: US city, IT comune, UK post
+        /// town. In regions of the world where localities are not well defined or do not fit into this structure well,
+        /// leave `locality` empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locality")]
+        public virtual string Locality { get; set; }
+
+        /// <summary>
+        /// Required. [CLDR region code](https://cldr.unicode.org/) of the country/region of the address. This value is
+        /// never inferred and you must ensure the value is correct. Example: "CH" for Switzerland.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>
+        /// Optional. Sublocality of the address. For example, this can be a neighborhood, borough, or district. For
+        /// most addresses, you can omit this.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sublocality")]
+        public virtual string Sublocality { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An entry of conversation between user and developer.</summary>
     public class Comment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15331,6 +15446,83 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>A comment from a user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userComment")]
         public virtual UserComment UserComment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// List of events, each representing an instance where the user consumed or used the purchased item or service.
+    /// </summary>
+    public class ConsumptionUsageEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Free form text that allows developers to provide more info on the item consumed. Maximum length is
+        /// 5000 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumptionItemDescription")]
+        public virtual string ConsumptionItemDescription { get; set; }
+
+        private string _consumptionTimeRaw;
+
+        private object _consumptionTime;
+
+        /// <summary>Optional. Time when the user consumed, used, downloaded, opened, or streamed the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumptionTime")]
+        public virtual string ConsumptionTimeRaw
+        {
+            get => _consumptionTimeRaw;
+            set
+            {
+                _consumptionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _consumptionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ConsumptionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ConsumptionTimeDateTimeOffset instead.")]
+        public virtual object ConsumptionTime
+        {
+            get => _consumptionTime;
+            set
+            {
+                _consumptionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _consumptionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ConsumptionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ConsumptionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ConsumptionTimeRaw);
+            set => ConsumptionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. The IP address from which the consumption occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; }
+
+        /// <summary>Optional. Geographic location where the consumption occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual CoarseLocation Location { get; set; }
+
+        /// <summary>
+        /// Optional. Obfuscated string that is uniquely associated with the purchaser's user account in the app.
+        /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setObfuscatedAccountId(java.lang.String)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedAccountId")]
+        public virtual string ObfuscatedAccountId { get; set; }
+
+        /// <summary>
+        /// Optional. Obfuscated string that is uniquely associated with the purchaser's user profile in the app.
+        /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setObfuscatedProfileId(java.lang.String)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedProfileId")]
+        public virtual string ObfuscatedProfileId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18600,6 +18792,45 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Details of when the order was fully refunded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refundEvent")]
         public virtual RefundEvent RefundEvent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for the orders.reviewrefund API.</summary>
+    public class OrdersReviewRefundRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Percentage of the In-App purchase the customer consumed, in milliunits. Minimum: 0 Maximum:
+        /// 100,000. For paid apps, this can be omitted. Example : 45200 represents 45.2%.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumptionPercentageMilliunits")]
+        public virtual System.Nullable<int> ConsumptionPercentageMilliunits { get; set; }
+
+        /// <summary>
+        /// Optional. List of events, each representing an instance where the user consumed or used the purchased item
+        /// or service. Lists with over 1000 items will be rejected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumptionUsageEvents")]
+        public virtual System.Collections.Generic.IList<ConsumptionUsageEvent> ConsumptionUsageEvents { get; set; }
+
+        /// <summary>Required. The pending refund token included in the pending refund review notification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingRefundToken")]
+        public virtual string PendingRefundToken { get; set; }
+
+        /// <summary>
+        /// Required. Indicates your preference, based on your operational logic, as to whether the Play Store should
+        /// grant the refund.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refundPreference")]
+        public virtual string RefundPreference { get; set; }
+
+        /// <summary>
+        /// Required. Indicates whether you provided a free sample, trial, or information about the functionality prior
+        /// to the purchase.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleContentProvided")]
+        public virtual System.Nullable<bool> SampleContentProvided { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
