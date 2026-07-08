@@ -28310,6 +28310,15 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextSyncTime")]
         public virtual GoogleTypeDateTime NextSyncTime { get; set; }
 
+        /// <summary>
+        /// Output only. The static IP addresses used by this connector for OAuth APIs (e.g. end user authentication).
+        /// These are surfaced separately from `static_ip_addresses` so that customers can apply granular firewall
+        /// settings for OAuth endpoints. Only populated for connectors that have static IP enabled and are used for
+        /// actions and/or federated search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthStaticIpAddresses")]
+        public virtual System.Collections.Generic.IList<string> OauthStaticIpAddresses { get; set; }
+
         /// <summary>Required data connector parameters in structured json format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
@@ -30460,8 +30469,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string AppType { get; set; }
 
         /// <summary>
-        /// Optional. The Agent registry containing the agents, MCP servers and tools associated with this engine. Field
-        /// is required if the engine has an Agent Gateway setting.
+        /// Output only. The Agent registry containing the agents, MCP servers and tools associated with this engine.
+        /// Derived server-side from the linked Agent Gateway's registry.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associatedAgentRegistry")]
         public virtual string AssociatedAgentRegistry { get; set; }
@@ -30564,7 +30573,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
-        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` *
+        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` *
         /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
         /// `cross-product-intelligence` * `deep-research`
         /// </summary>
@@ -30949,9 +30958,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     public class GoogleCloudDiscoveryengineV1EngineSearchEngineConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The required subscription tier of this engine. They cannot be modified after engine creation. If
-        /// the required subscription tier is search, user with higher license tier like assist can still access the
-        /// standalone app associated with this engine.
+        /// Optional. The required subscription tier of this engine. If the required subscription tier is search, user
+        /// with higher license tier like assist can still access the standalone app associated with this engine. Web
+        /// grounding feature is only available on the app if it is set as
+        /// SubscriptionTier.SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredSubscriptionTier")]
         public virtual string RequiredSubscriptionTier { get; set; }
@@ -38628,7 +38638,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
-        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` *
+        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` *
         /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
         /// `cross-product-intelligence` * `deep-research`
         /// </summary>
@@ -38638,6 +38648,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Describes generative answer configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generativeAnswerConfig")]
         public virtual GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsGenerativeAnswerConfig GenerativeAnswerConfig { get; set; }
+
+        /// <summary>
+        /// Output only. Whether the Google Drive file picker is available to end-users. Declared `optional` for the
+        /// same field-presence reason as `onedrive_picker_enabled` above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleDrivePickerEnabled")]
+        public virtual System.Nullable<bool> GoogleDrivePickerEnabled { get; set; }
 
         /// <summary>Describes widget (or web app) interaction type</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interactionType")]
@@ -38662,6 +38679,16 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelConfigs")]
         public virtual System.Collections.Generic.IDictionary<string, string> ModelConfigs { get; set; }
+
+        /// <summary>
+        /// Output only. Whether the OneDrive file picker is available to end-users. Computed by the backend from admin
+        /// connector enablement (Business edition) or attached OneDrive connectors (Enterprise edition), combined with
+        /// the existing `disable-onedrive-upload` admin feature. Declared `optional` so an explicitly-computed `false`
+        /// is serialized with field presence. A plain proto3 `bool` drops a default `false` on the wire, which
+        /// prevented clients from distinguishing "picker disabled" (`false`) from "field not populated" (unset).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onedrivePickerEnabled")]
+        public virtual System.Nullable<bool> OnedrivePickerEnabled { get; set; }
 
         /// <summary>
         /// Controls whether result extract is display and how (snippet or extractive answer). Default to no result if
@@ -38766,6 +38793,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     public class GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsModelConfigInfoResolvedModel : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Output only. Admin-surface metadata; populated only for the Console admin Feature Control page (see
+        /// `AdminView`). Unset for end-user surfaces.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminView")]
+        public virtual GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsModelConfigInfoResolvedModelAdminView AdminView { get; set; }
+
+        /// <summary>
         /// Output only. Localized description text (e.g. `State-of-the-art reasoning`). Localized using the same locale
         /// as `display_name`.
         /// </summary>
@@ -38800,6 +38834,36 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
         public virtual string ModelId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Admin-surface metadata. Populated only when the request originates from the Cloud Console admin "Feature
+    /// Control" page; left unset for end-user surfaces (Web, Mobile). Lets the admin page render its toggle table
+    /// directly from the backend instead of a hardcoded client-side registry.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsModelConfigInfoResolvedModelAdminView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Whether the admin can toggle this model's enabled/disabled state via
+        /// `UiSettings.model_configs`. Derived from `MODEL_TAG_ADMIN_OVERRIDABLE`. When false, the model is "forced"
+        /// and its state is governed by `enabled_by_default`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminOverridable")]
+        public virtual System.Nullable<bool> AdminOverridable { get; set; }
+
+        /// <summary>
+        /// Output only. Whether the model is enabled when the admin has set no explicit override in
+        /// `UiSettings.model_configs`. Derived from `MODEL_TAG_ENABLED_BY_DEFAULT`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledByDefault")]
+        public virtual System.Nullable<bool> EnabledByDefault { get; set; }
+
+        /// <summary>Output only. Regions where this model is launched.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regions")]
+        public virtual System.Collections.Generic.IList<string> Regions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -39068,6 +39132,440 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationParams")]
         public virtual System.Collections.Generic.IDictionary<string, string> NotificationParams { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Evaluation insights for a program.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveEvaluationInsights : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of evaluation insights.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insights")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAlphaEvolveEvaluationInsightsAlphaEvolveEvaluationInsight> Insights { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single evaluation insight.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveEvaluationInsightsAlphaEvolveEvaluationInsight : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Label of the insight.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>Optional. Text of the insight.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the evaluation scores for the target metrics to optimize.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveEvaluationScores : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. List of evaluation scores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scores")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAlphaEvolveEvaluationScoresAlphaEvolveEvaluationScore> Scores { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Score for a single metric.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveEvaluationScoresAlphaEvolveEvaluationScore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Name of the metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
+        public virtual string Metric { get; set; }
+
+        /// <summary>Required. Score of a program for this metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An experiment is a single run of the AlphaEvolve agent, an evolutionary coding agent powered by LLM for
+    /// algorithm discovery and optimization.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperiment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Experiment configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfig Config { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Time when the experiment was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Specifies the name of the seed program used to start the experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initialAlphaEvolveProgram")]
+        public virtual string InitialAlphaEvolveProgram { get; set; }
+
+        /// <summary>
+        /// Identifier. The full resource name of the experiment. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The state of the experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Experiment stats.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentStats Stats { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration of an experiment.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Evolution settings for the experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evolutionSettings")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigEvolutionSettings EvolutionSettings { get; set; }
+
+        /// <summary>
+        /// Optional. Generation settings for the experiment, controlling how new program candidates are generated,
+        /// including things LLM parameters and user-provided context and prompts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generationSettings")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigGenerationSettings GenerationSettings { get; set; }
+
+        /// <summary>Required. Description of the problem to be solved by the experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("problemDescription")]
+        public virtual string ProblemDescription { get; set; }
+
+        /// <summary>Required. Primary programming language of the code being optimized.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("programLanguage")]
+        public virtual string ProgramLanguage { get; set; }
+
+        /// <summary>
+        /// Required. Run settings for the experiment, controlling the overall behavior of the experiment run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runSettings")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigRunSettings RunSettings { get; set; }
+
+        /// <summary>Required. Title of the experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Evolution settings for the experiment.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigEvolutionSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Parent sampling configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentSamplingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigEvolutionSettingsParentSamplingConfig ParentSamplingConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for parent sampling.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigEvolutionSettingsParentSamplingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Pareto sampling configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paretoSamplingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigEvolutionSettingsParentSamplingConfigParetoSamplingConfig ParetoSamplingConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for Pareto sampling.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigEvolutionSettingsParentSamplingConfigParetoSamplingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Probability [0.0, 1.0] of sampling parent programs from the Pareto frontier instead of normal
+        /// fitness-based sampling during candidate generation. Useful when optimizing multiple metrics simultaneously.
+        /// Default 0.0 (disabled). Only effective when evaluation returns multiple metrics in scores_to_optimize.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paretoSamplingProbability")]
+        public virtual System.Nullable<float> ParetoSamplingProbability { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Generation settings for the experiment.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigGenerationSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Additional user-provided context to be used during generation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("context")]
+        public virtual string Context { get; set; }
+
+        /// <summary>
+        /// Optional. When true, the LLM prompt includes the full program text (both mutable EVOLVE-BLOCK regions and
+        /// immutable boilerplate). When false (default), only the mutable EVOLVE-BLOCK regions are shown, saving
+        /// context window.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeFullProgramInPrompt")]
+        public virtual System.Nullable<bool> IncludeFullProgramInPrompt { get; set; }
+
+        /// <summary>
+        /// Optional. Per-model configuration. See `ModelConfig` for details. If left unset, the server selects a
+        /// default model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("models")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigGenerationSettingsModelConfig> Models { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Per-model configuration. Mutually exclusive with `model_mixture` and `model`: when `models` is set, both
+    /// `model_mixture` and `model` must be left unset. The same allowed-model list and at-most-2-models rule as for
+    /// `model_mixture` apply. In addition, each entry may specify a per-model `temperature` for LLM sampling. Unlike
+    /// `model_mixture`, weights here are *relative*: only their ratios matter (the server normalizes them), so callers
+    /// may use any positive numbers without having to ensure they sum to 1.0.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigGenerationSettingsModelConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Model name (e.g. `gemini-2.5-flash`, `gemini-3.1-pro-preview`). See `model_mixture` for the list
+        /// of allowed models.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Relative weight for this model in the mixture. Must be a finite, strictly positive value. Weights
+        /// across all entries are normalized server-side, so they need not sum to 1.0. Defaults to 1.0 when unset,
+        /// which is convenient when configuring a single model or an even mixture. Some Pro-tier models are capped at
+        /// most 50% of the total weight; requests violating that cap are rejected with INVALID_ARGUMENT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weight")]
+        public virtual System.Nullable<float> Weight { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Run settings for the experiment.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigRunSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Maximum number of programs that can be generated in parallel. Must be positive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("concurrency")]
+        public virtual System.Nullable<int> Concurrency { get; set; }
+
+        /// <summary>Optional. Maximum duration of the experiment. If unset, defaults to 24 hours.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDuration")]
+        public virtual object MaxDuration { get; set; }
+
+        /// <summary>
+        /// Required. Maximum number of programs to generate during the experiment run. The initial program counts
+        /// towards this limit. Must be greater than 1.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxPrograms")]
+        public virtual System.Nullable<int> MaxPrograms { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stats about the experiment.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Number of candidates generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidatesCount")]
+        public virtual System.Nullable<int> CandidatesCount { get; set; }
+
+        /// <summary>Output only. Number of candidates evaluated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluatedCandidatesCount")]
+        public virtual System.Nullable<int> EvaluatedCandidatesCount { get; set; }
+
+        /// <summary>Output only. Number of billed input tokens consumed by the experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputTokenCount")]
+        public virtual System.Nullable<long> InputTokenCount { get; set; }
+
+        /// <summary>Output only. Number of billed output tokens consumed by the experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputTokenCount")]
+        public virtual System.Nullable<long> OutputTokenCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a single program to be used within the context of an AlphaEvolve experiment.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveProgram : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Content of the program.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAlphaEvolveProgramContent Content { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Time when the program was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Evaluation results for the program.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluation")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAlphaEvolveProgramEvaluation Evaluation { get; set; }
+
+        /// <summary>Optional. Lock token for the program.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lockToken")]
+        public virtual string LockToken { get; set; }
+
+        /// <summary>
+        /// Identifier. Unique identifier for the program. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}/alphaEvolvePrograms/{alpha_evolve_program}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Optionally specifies which parent programs this program was evolved from. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}/alphaEvolvePrograms/{alpha_evolve_program}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentPrograms")]
+        public virtual System.Collections.Generic.IList<string> ParentPrograms { get; set; }
+
+        /// <summary>Output only. State of the program.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A self-contained message containing the content of a program. Can represent a collection of files.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveProgramContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Description of the program.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. A list of source files that make up the overall program.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("files")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAlphaEvolveSourceFile> Files { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Evaluation results for a program candidate.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveProgramEvaluation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Represents various insights about the candidate, which are not directly used as optimization
+        /// target, but that can be used to improve subsequent generations, and as such can be used to construct the
+        /// evolution prompt.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insights")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAlphaEvolveEvaluationInsights Insights { get; set; }
+
+        /// <summary>Optional. Contains the evaluation scores for the target metrics to optimize.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scores")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAlphaEvolveEvaluationScores Scores { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single source file with its path, content and metadata.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveSourceFile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The raw content of the file. This is a string and not bytes, because it should be ultimately
+        /// processed by the LLM as text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>Optional. Additional description of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. The relative path of the file, including the filename. e.g., "src/main.py", "utils/helpers.js",
+        /// "README.md"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>Optional. The programming language of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("programLanguage")]
+        public virtual string ProgramLanguage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -41958,6 +42456,15 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextSyncTime")]
         public virtual GoogleTypeDateTime NextSyncTime { get; set; }
 
+        /// <summary>
+        /// Output only. The static IP addresses used by this connector for OAuth APIs (e.g. end user authentication).
+        /// These are surfaced separately from `static_ip_addresses` so that customers can apply granular firewall
+        /// settings for OAuth endpoints. Only populated for connectors that have static IP enabled and are used for
+        /// actions and/or federated search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthStaticIpAddresses")]
+        public virtual System.Collections.Generic.IList<string> OauthStaticIpAddresses { get; set; }
+
         /// <summary>Required data connector parameters in structured json format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
@@ -43535,6 +44042,43 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
         public virtual System.Nullable<long> SuccessCount { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -43957,8 +44501,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string AppType { get; set; }
 
         /// <summary>
-        /// Optional. The Agent registry containing the agents, MCP servers and tools associated with this engine. Field
-        /// is required if the engine has an Agent Gateway setting.
+        /// Output only. The Agent registry containing the agents, MCP servers and tools associated with this engine.
+        /// Derived server-side from the linked Agent Gateway's registry.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associatedAgentRegistry")]
         public virtual string AssociatedAgentRegistry { get; set; }
@@ -44061,7 +44605,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
-        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` *
+        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` *
         /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
         /// `cross-product-intelligence` * `deep-research`
         /// </summary>
@@ -44566,9 +45110,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     public class GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The required subscription tier of this engine. They cannot be modified after engine creation. If
-        /// the required subscription tier is search, user with higher license tier like assist can still access the
-        /// standalone app associated with this engine.
+        /// Optional. The required subscription tier of this engine. If the required subscription tier is search, user
+        /// with higher license tier like assist can still access the standalone app associated with this engine. Web
+        /// grounding feature is only available on the app if it is set as
+        /// SubscriptionTier.SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredSubscriptionTier")]
         public virtual string RequiredSubscriptionTier { get; set; }
@@ -47846,6 +48391,87 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for AlphaEvolveService.ResumeExperiment long running operation.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaResumeExperimentMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time the operation was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Safety rating corresponding to the generated content.</summary>
     public class GoogleCloudDiscoveryengineV1alphaSafetyRating : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -49667,6 +50293,101 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Public URI for the sitemap, e.g. `www.example.com/sitemap.xml`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for AlphaEvolveService.StartExperiment long running operation.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaStartExperimentMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time the operation was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for AlphaEvolveService.StartExperiment.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaStartExperimentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Experiment to start. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -53036,8 +53757,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string AppType { get; set; }
 
         /// <summary>
-        /// Optional. The Agent registry containing the agents, MCP servers and tools associated with this engine. Field
-        /// is required if the engine has an Agent Gateway setting.
+        /// Output only. The Agent registry containing the agents, MCP servers and tools associated with this engine.
+        /// Derived server-side from the linked Agent Gateway's registry.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associatedAgentRegistry")]
         public virtual string AssociatedAgentRegistry { get; set; }
@@ -53140,7 +53861,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
-        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` *
+        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` *
         /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
         /// `cross-product-intelligence` * `deep-research`
         /// </summary>
@@ -53525,9 +54246,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     public class GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The required subscription tier of this engine. They cannot be modified after engine creation. If
-        /// the required subscription tier is search, user with higher license tier like assist can still access the
-        /// standalone app associated with this engine.
+        /// Optional. The required subscription tier of this engine. If the required subscription tier is search, user
+        /// with higher license tier like assist can still access the standalone app associated with this engine. Web
+        /// grounding feature is only available on the app if it is set as
+        /// SubscriptionTier.SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredSubscriptionTier")]
         public virtual string RequiredSubscriptionTier { get; set; }
