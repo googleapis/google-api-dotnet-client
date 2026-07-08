@@ -1435,6 +1435,71 @@ namespace Google.Apis.Container.v1
                     }
                 }
 
+                /// <summary>
+                /// CompleteControlPlaneUpgrade completes the rollback-safe upgrade by performing the step two upgrade
+                /// for a specific cluster.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name (project, location, cluster) of the cluster to complete upgrade. Specified in the
+                /// format `projects/*/locations/*/clusters/*`.
+                /// </param>
+                public virtual CompleteControlPlaneUpgradeRequest CompleteControlPlaneUpgrade(Google.Apis.Container.v1.Data.CompleteControlPlaneUpgradeRequest body, string name)
+                {
+                    return new CompleteControlPlaneUpgradeRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// CompleteControlPlaneUpgrade completes the rollback-safe upgrade by performing the step two upgrade
+                /// for a specific cluster.
+                /// </summary>
+                public class CompleteControlPlaneUpgradeRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new CompleteControlPlaneUpgrade request.</summary>
+                    public CompleteControlPlaneUpgradeRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.CompleteControlPlaneUpgradeRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name (project, location, cluster) of the cluster to complete upgrade. Specified in
+                    /// the format `projects/*/locations/*/clusters/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Container.v1.Data.CompleteControlPlaneUpgradeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "completeControlPlaneUpgrade";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:completeControlPlaneUpgrade";
+
+                    /// <summary>Initializes CompleteControlPlaneUpgrade parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Completes master IP rotation.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -4354,6 +4419,71 @@ namespace Google.Apis.Container.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// CompleteControlPlaneUpgrade completes the rollback-safe upgrade by performing the step two upgrade
+                /// for a specific cluster.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name (project, location, cluster) of the cluster to complete upgrade. Specified in the
+                /// format `projects/*/locations/*/clusters/*`.
+                /// </param>
+                public virtual CompleteControlPlaneUpgradeRequest CompleteControlPlaneUpgrade(Google.Apis.Container.v1.Data.CompleteControlPlaneUpgradeRequest body, string name)
+                {
+                    return new CompleteControlPlaneUpgradeRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// CompleteControlPlaneUpgrade completes the rollback-safe upgrade by performing the step two upgrade
+                /// for a specific cluster.
+                /// </summary>
+                public class CompleteControlPlaneUpgradeRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new CompleteControlPlaneUpgrade request.</summary>
+                    public CompleteControlPlaneUpgradeRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.CompleteControlPlaneUpgradeRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name (project, location, cluster) of the cluster to complete upgrade. Specified in
+                    /// the format `projects/*/locations/*/clusters/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Container.v1.Data.CompleteControlPlaneUpgradeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "completeControlPlaneUpgrade";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:completeControlPlaneUpgrade";
+
+                    /// <summary>Initializes CompleteControlPlaneUpgrade parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/zones/[^/]+/clusters/[^/]+$",
                         });
                     }
                 }
@@ -7437,6 +7567,13 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTime { get; set; }
 
+        /// <summary>
+        /// Output only. The current emulated version of the master endpoint. The version is in minor version format,
+        /// e.g. 1.30. No value or empty string means the cluster has no emulated version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentEmulatedVersion")]
+        public virtual string CurrentEmulatedVersion { get; set; }
+
         /// <summary>Output only. The current software version of the master endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentMasterVersion")]
         public virtual string CurrentMasterVersion { get; set; }
@@ -7771,6 +7908,13 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUsageExportConfig")]
         public virtual ResourceUsageExportConfig ResourceUsageExportConfig { get; set; }
 
+        /// <summary>
+        /// Optional. The rollback safe upgrade information of the cluster. This field is used when user manually
+        /// triggers a rollback safe upgrade.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollbackSafeUpgrade")]
+        public virtual RollbackSafeUpgrade RollbackSafeUpgrade { get; set; }
+
         /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
         public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
@@ -8040,6 +8184,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredDnsConfig")]
         public virtual DNSConfig DesiredDnsConfig { get; set; }
 
+        /// <summary>Optional. The desired emulated version for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredEmulatedVersion")]
+        public virtual string DesiredEmulatedVersion { get; set; }
+
         /// <summary>Enable/Disable Cilium Clusterwide Network Policy for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredEnableCiliumClusterwideNetworkPolicy")]
         public virtual System.Nullable<bool> DesiredEnableCiliumClusterwideNetworkPolicy { get; set; }
@@ -8302,6 +8450,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredResourceUsageExportConfig")]
         public virtual ResourceUsageExportConfig DesiredResourceUsageExportConfig { get; set; }
 
+        /// <summary>Optional. The desired rollback safe upgrade configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredRollbackSafeUpgrade")]
+        public virtual RollbackSafeUpgrade DesiredRollbackSafeUpgrade { get; set; }
+
         /// <summary>Enable/Disable Secret Manager Config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredSecretManagerConfig")]
         public virtual SecretManagerConfig DesiredSecretManagerConfig { get; set; }
@@ -8400,9 +8552,24 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pausedReason")]
         public virtual System.Collections.Generic.IList<string> PausedReason { get; set; }
 
+        /// <summary>Output only. The cluster's rollback-safe upgrade status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollbackSafeUpgradeStatus")]
+        public virtual RollbackSafeUpgradeStatus RollbackSafeUpgradeStatus { get; set; }
+
         /// <summary>The list of past auto upgrades.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeDetails")]
         public virtual System.Collections.Generic.IList<UpgradeDetails> UpgradeDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CompleteControlPlaneUpgradeRequest sets the name of target cluster to complete upgrade.</summary>
+    public class CompleteControlPlaneUpgradeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. API request version that initiates this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12771,6 +12938,76 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>RollbackSafeUpgrade is the configuration for the rollback safe upgrade.</summary>
+    public class RollbackSafeUpgrade : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A user-defined period for the cluster remains in the rollbackable state. ex: {seconds: 21600}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneSoakDuration")]
+        public virtual object ControlPlaneSoakDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RollbackSafeUpgradeStatus contains the rollback-safe upgrade status of a cluster.</summary>
+    public class RollbackSafeUpgradeStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _controlPlaneUpgradeRollbackEndTimeRaw;
+
+        private object _controlPlaneUpgradeRollbackEndTime;
+
+        /// <summary>Output only. The rollback-safe mode expiration time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneUpgradeRollbackEndTime")]
+        public virtual string ControlPlaneUpgradeRollbackEndTimeRaw
+        {
+            get => _controlPlaneUpgradeRollbackEndTimeRaw;
+            set
+            {
+                _controlPlaneUpgradeRollbackEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _controlPlaneUpgradeRollbackEndTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="ControlPlaneUpgradeRollbackEndTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ControlPlaneUpgradeRollbackEndTimeDateTimeOffset instead.")]
+        public virtual object ControlPlaneUpgradeRollbackEndTime
+        {
+            get => _controlPlaneUpgradeRollbackEndTime;
+            set
+            {
+                _controlPlaneUpgradeRollbackEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _controlPlaneUpgradeRollbackEndTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of
+        /// <see cref="ControlPlaneUpgradeRollbackEndTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ControlPlaneUpgradeRollbackEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ControlPlaneUpgradeRollbackEndTimeRaw);
+            set => ControlPlaneUpgradeRollbackEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The mode of the rollback-safe upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>Output only. The GKE version that the cluster previously used before step-one upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previousVersion")]
+        public virtual string PreviousVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>RotationConfig is config for secret manager auto rotation.</summary>
     public class RotationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14373,6 +14610,10 @@ namespace Google.Apis.Container.v1.Data
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. The emulated version before the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initialEmulatedVersion")]
+        public virtual string InitialEmulatedVersion { get; set; }
+
         /// <summary>The version before the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialVersion")]
         public virtual string InitialVersion { get; set; }
@@ -14422,6 +14663,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>Output only. The emulated version after the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetEmulatedVersion")]
+        public virtual string TargetEmulatedVersion { get; set; }
+
         /// <summary>The version after the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetVersion")]
         public virtual string TargetVersion { get; set; }
@@ -14435,6 +14680,10 @@ namespace Google.Apis.Container.v1.Data
     /// </summary>
     public class UpgradeEvent : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The current emulated version before the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentEmulatedVersion")]
+        public virtual string CurrentEmulatedVersion { get; set; }
+
         /// <summary>The current version before the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentVersion")]
         public virtual string CurrentVersion { get; set; }
@@ -14493,6 +14742,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
 
+        /// <summary>Output only. The target emulated version for the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetEmulatedVersion")]
+        public virtual string TargetEmulatedVersion { get; set; }
+
         /// <summary>The target version for the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetVersion")]
         public virtual string TargetVersion { get; set; }
@@ -14506,6 +14759,10 @@ namespace Google.Apis.Container.v1.Data
     /// </summary>
     public class UpgradeInfoEvent : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The current emulated version before the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentEmulatedVersion")]
+        public virtual string CurrentEmulatedVersion { get; set; }
+
         /// <summary>The current version before the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentVersion")]
         public virtual string CurrentVersion { get; set; }
@@ -14695,6 +14952,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Output only. The state of the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>Output only. The target emulated version for the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetEmulatedVersion")]
+        public virtual string TargetEmulatedVersion { get; set; }
 
         /// <summary>The target version for the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetVersion")]
