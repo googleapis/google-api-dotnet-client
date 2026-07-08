@@ -1095,6 +1095,81 @@ namespace Google.Apis.BigQueryReservation.v1
                         });
                     }
                 }
+
+                /// <summary>Updates an existing reservation group resource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The resource name of the reservation group, e.g.,
+                /// `projects/*/locations/*/reservationGroups/team1-prod`. The reservation_group_id must only contain
+                /// lower case alphanumeric characters or dashes. It must start with a letter and must not end with a
+                /// dash. Its maximum length is 64 characters.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.BigQueryReservation.v1.Data.ReservationGroup body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates an existing reservation group resource.</summary>
+                public class PatchRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1.Data.ReservationGroup>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryReservation.v1.Data.ReservationGroup body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The resource name of the reservation group, e.g.,
+                    /// `projects/*/locations/*/reservationGroups/team1-prod`. The reservation_group_id must only
+                    /// contain lower case alphanumeric characters or dashes. It must start with a letter and must not
+                    /// end with a dash. Its maximum length is 64 characters.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. Standard field mask for the set of fields to be updated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BigQueryReservation.v1.Data.ReservationGroup Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/reservationGroups/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Reservations resource.</summary>
@@ -3803,6 +3878,14 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. The parent reservation group of the reservation group. Format:
+        /// `projects/*/locations/*/reservationGroups/team1-prod` for non-root reservation groups, or
+        /// `projects/*/locations/*` for root reservation groups.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentGroup")]
+        public virtual string ParentGroup { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
