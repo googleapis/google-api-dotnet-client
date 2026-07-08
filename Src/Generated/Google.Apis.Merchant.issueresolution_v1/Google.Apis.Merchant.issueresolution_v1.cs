@@ -295,10 +295,14 @@ namespace Google.Apis.Merchant.issueresolution_v1
             /// <summary>
             /// Lists the `AggregateProductStatuses` resources for your merchant account. The response might contain
             /// fewer items than specified by `pageSize`. If `pageToken` was returned in previous request, it can be
-            /// used to obtain additional results.
+            /// used to obtain additional results. This method can only be accessed by standalone accounts and
+            /// sub-accounts of an advanced account. To retrieve product statuses for sub-accounts, you must first call
+            /// the accounts.listSubaccounts method to obtain a list of sub-accounts, and then call
+            /// `accounts.aggregateProductStatuses.list` for each sub-account individually.
             /// </summary>
             /// <param name="parent">
-            /// Required. The account to list aggregate product statuses for. Format: `accounts/{account}`
+            /// Required. The account to list aggregate product statuses for. Format: `accounts/{account}` Can only be
+            /// sub-accounts and standalone accounts.
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -308,7 +312,10 @@ namespace Google.Apis.Merchant.issueresolution_v1
             /// <summary>
             /// Lists the `AggregateProductStatuses` resources for your merchant account. The response might contain
             /// fewer items than specified by `pageSize`. If `pageToken` was returned in previous request, it can be
-            /// used to obtain additional results.
+            /// used to obtain additional results. This method can only be accessed by standalone accounts and
+            /// sub-accounts of an advanced account. To retrieve product statuses for sub-accounts, you must first call
+            /// the accounts.listSubaccounts method to obtain a list of sub-accounts, and then call
+            /// `accounts.aggregateProductStatuses.list` for each sub-account individually.
             /// </summary>
             public class ListRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.issueresolution_v1.Data.ListAggregateProductStatusesResponse>
             {
@@ -320,7 +327,8 @@ namespace Google.Apis.Merchant.issueresolution_v1
                 }
 
                 /// <summary>
-                /// Required. The account to list aggregate product statuses for. Format: `accounts/{account}`
+                /// Required. The account to list aggregate product statuses for. Format: `accounts/{account}` Can only
+                /// be sub-accounts and standalone accounts.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
