@@ -64,7 +64,7 @@ namespace Google.Apis.Blogger.v3
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
 
-        /// <summary>Available OAuth 2.0 scopes for use with the blogger API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Blogger API.</summary>
         public class Scope
         {
             /// <summary>Manage your Blogger account</summary>
@@ -74,7 +74,7 @@ namespace Google.Apis.Blogger.v3
             public static string BloggerReadonly = "https://www.googleapis.com/auth/blogger.readonly";
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the blogger API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Blogger API.</summary>
         public static class ScopeConstants
         {
             /// <summary>Manage your Blogger account</summary>
