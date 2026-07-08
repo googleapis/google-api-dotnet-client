@@ -20966,8 +20966,6 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// Optional. The attribution model to use for conversion measurement. This attribution model will determine how
         /// conversions are counted. The Primary model can be set by you for a floodlight config or group. More details
         /// [here](https://support.google.com/displayvideo/answer/7409983). Only applicable to Demand Gen line items.
-        /// Retrieval and management of Demand Gen resources is currently rolling out. This field will be available to
-        /// all partners by *June 24, 2026*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryAttributionModelId")]
         public virtual System.Nullable<long> PrimaryAttributionModelId { get; set; }
@@ -23542,9 +23540,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual System.Collections.Generic.IList<System.Nullable<long>> CreativeIds { get; set; }
 
         /// <summary>
-        /// Optional. Settings specific to Demand Gen line items. Only applicable to Demand Gen line items. Retrieval
-        /// and management of Demand Gen resources is currently rolling out. This field will be available to all
-        /// partners by *June 24, 2026*.
+        /// Optional. Settings specific to Demand Gen line items. Only applicable to Demand Gen line items.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("demandGenSettings")]
         public virtual DemandGenSettings DemandGenSettings { get; set; }
@@ -25959,8 +25955,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
     {
         /// <summary>
         /// Optional. Whether to exclude demographic expansion for Optimized Targeting. This field can only be set for
-        /// Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently rolling out. This field
-        /// will be available to all partners by *June 24, 2026*.
+        /// Demand Gen ad groups.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeDemographicExpansion")]
         public virtual System.Nullable<bool> ExcludeDemographicExpansion { get; set; }
@@ -26148,7 +26143,8 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// <summary>
         /// Optional. The third-party vendors measuring brand lift. The following third-party vendors are applicable: *
         /// `THIRD_PARTY_VENDOR_DYNATA` * `THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_INTAGE` *
-        /// `THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_MACROMILL`
+        /// `THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_MACROMILL` *Warning*: Starting **July 13, 2026**, this
+        /// field will no longer support `THIRD_PARTY_VENDOR_NIELSEN`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brandLiftVendorConfigs")]
         public virtual System.Collections.Generic.IList<ThirdPartyVendorConfig> BrandLiftVendorConfigs { get; set; }
