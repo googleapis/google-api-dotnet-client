@@ -4003,6 +4003,13 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("airflowConfigOverrides")]
         public virtual System.Collections.Generic.IDictionary<string, string> AirflowConfigOverrides { get; set; }
 
+        /// <summary>
+        /// Optional. The selected mode of audit logs replication. This field is supported for Cloud Composer
+        /// environments in versions composer-3-airflow-*.*.*-build.* and newer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditLogsReplicationMode")]
+        public virtual string AuditLogsReplicationMode { get; set; }
+
         /// <summary>Optional. The configuration for Cloud Data Lineage integration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudDataLineageIntegration")]
         public virtual CloudDataLineageIntegration CloudDataLineageIntegration { get; set; }
